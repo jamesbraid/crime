@@ -1289,3 +1289,211 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `gfx_frs_valid_pipenum` in `gfx.o`: tests a pipe number for the frame-rate scheduler, a 12-byte routine at offset 0x33c4. Established.
   It compares its argument with the board count `GfxNumberOfBoards` and returns 1 when it is smaller.
 <!-- gfx.o:end -->
+
+<!-- tile.o:begin -->
+# Kernel routines, one entry each (`tile.o`)
+
+- `tile_init` in `tile.o`: the one-time set-up of the tile pool, a 1692-byte routine at offset 0x0. Established.
+  It registers the debugger commands `tile_dump` and `tileq_dump` with `idbg_addfunc` and computes the first and last whole tile of the page range.
+  Pages of a partial first or last tile and of memory holes are marked locked through `tilepages_to_frag`.
+  Each tile gets a class number that changes at every memory-bank boundary (`addr_to_ibank`) and is queued with `tq_enqti`; a semaphore and a spinlock are initialised and the cache-clean threshold is set from `dcache_size`.
+- `tile_alloc` in `tile.o`: allocates a run of 64 KB tiles, a 2656-byte routine at offset 0x69c. Established.
+  It takes the tile allocation semaphore (`psema`, or `cpsema` without sleeping), reserves 16 pages per tile of the global pool with `reservemem`, and takes tiles from the class queues allowed by the class mask in its third argument.
+  Tiles come from `_pagealloc_size_node` on a node of `Nodepdaindr`, or by evicting a user of a tile with `tile_evict` and requeueing it with `tq_deqi` and `tq_enqti`.
+  A failure frees what it took (`tile_free`) and calls `setsxbrk`; flag bit 2 zeroes each tile through `tile_mapin`, `bzero` and `tile_mapout`, then `tile_cache_clean`, and `tiled_lowat` decides whether to wake the tile daemon with `cvsema`.
+- `tile_free` in `tile.o`: returns tiles to the pool, a 596-byte routine at offset 0x10fc. Established.
+  For each tile number it cleans stale ECC state with `tile_ecc_clean`, moves the tile to the head of its queue (`tq_deqi`, `tq_enqhi`) under `splhi` and frees its pages with `pagefree_size`.
+  It gives the reservation back with `unreservemem` and logs the event with `log_tstamp_event`.
+- `tile_mapin` in `tile.o`: gives a tile a kernel address, a 592-byte routine at offset 0x1350. Established.
+  A tile in the direct-mapped window is returned at that address; otherwise it takes 16 pages of kernel virtual space of the right cache colour with `kvalloc`.
+  It fills the page-table entries in `kptbl` with the cache bits from `pte_cachebits` and checks colour with `color_validation` when `vce_avoidance` is set.
+- `tile_mapout` in `tile.o`: releases the address that `tile_mapin` gave, a 56-byte routine at offset 0x15a0. Established.
+  An address outside the direct-mapped windows (below 0xc0000000 or at 0xff600000 and above) is returned with `kvfree` for 16 pages; others need nothing.
+- `do_tiled` in `tile.o`: one pass of the tile daemon, a 780-byte routine at offset 0x15d8. Established.
+  It walks the partly-locked tile queues from the fullest down and, for each unlocked page, allocates a replacement with `pagealloc_size` and moves the contents with `migr_migrate_frame`.
+  It then frees the old page with `pagefree_size`, requeues the tile with `tq_deqi` and `tq_enqti` and stops when `tiled_hiwat` says enough whole tiles exist.
+- `tiled` in `tile.o`: the body of the tile daemon, a 104-byte routine at offset 0x18e4. Established.
+  It initialises its wake-up semaphore with `init_sema` and loops: sleep on it with `psema`, take the allocation semaphore, run `do_tiled`, release it with `vsema`.
+  The page count `do_tiled` returns is added to a statistics word.
+- `tiled_lowat` in `tile.o`: tells whether the tile daemon should start, a 224-byte routine at offset 0x194c. Established.
+  It compares the free memory in whole or potential tiles (the node's free pages from `Nodepdaindr` plus the page-list counts at `tphead`) against the tuned threshold in `tune`.
+  It returns 1 when the daemon should run.
+- `tiled_hiwat` in `tile.o`: tells whether the tile daemon may stop, a 224-byte routine at offset 0x1a2c. Established.
+  It makes the same free-memory comparison as `tiled_lowat` with the tuned high-water value in `tune`, so the daemon stops once enough whole tiles are free.
+- `tile_cache_clean` in `tile.o`: writes back and invalidates the caches for a list of tiles, a 280-byte routine at offset 0x1b0c. Established.
+  When more tiles are listed than the threshold set in `tile_init` it flushes the whole cache with `flush_cache`.
+  Otherwise it cleans page by page with `_bclean_caches`, or with `color_validation` when `vce_avoidance` is set.
+- `tile_nclasses` in `tile.o`: reports the number of tile classes, a 12-byte routine at offset 0x1c24. Established.
+  It loads the highest class number kept in the pool's small-data variable at gp-30692 and returns it plus one.
+- `tile_ecc_clean` in `tile.o`: clears the stale-ECC state of a tile, a 208-byte routine at offset 0x1c30. Established.
+  When a page carries the stale mark it maps the tile with `tile_mapin`, zeroes it with `bzero` and unmaps it with `tile_mapout`.
+  It then flushes it with `tile_cache_clean`.
+- `tile_pagelock` in `tile.o`: records that an ordinary page inside a tile has become fixed, a 524-byte routine at offset 0x1d00. Established.
+  Under `splhi` it removes the tile from its queue (`tq_deqi`), sets the page's bit and raises the locked count at +0x4, and requeues it by the new count with `tq_enqti`.
+  The first lock on a tile moves its pages to the fragmented list with `tilepages_to_frag`, and `tiled_lowat` may wake the daemon with `cvsema`.
+- `tile_pageunlock` in `tile.o`: records that a page has become movable again, a 644-byte routine at offset 0x1f0c. Established.
+  Under `splhi` it removes the tile from its queue, clears the page's bit and lowers the locked count at +0x4 and requeues it with `tq_enqti`.
+  The last unlock returns the tile's pages to the whole list with `tilepages_to_unfrag`.
+- `tile_pageselect` in `tile.o`: picks which free page the page allocator takes, a 528-byte routine at offset 0x2190. Established.
+  For a movable request it examines the first few pages of the list and prefers one in the tile with the fewest locked pages; for a fixed request it prefers the tile with the most.
+  It reads more pages when few whole tiles remain, and uses `pfd_lowmem` to skip low-memory pages.
+- `tq_enqhi` in `tile.o`: puts a tile at the head of a queue, a 252-byte routine at offset 0x23a0. Established.
+  It links the tile record into the queue given by its index and raises the queue's count at +0x28.
+  It also updates the free count of the tile's memory-bank class at +0xc8.
+- `tq_enqti` in `tile.o`: puts a tile at the tail of a queue, a 256-byte routine at offset 0x249c. Established.
+  It links the tile at the tail of the queue given by its index and raises the count at +0x28 of the queue table.
+  It also updates the free count of the tile's class at +0xc8.
+- `tq_deqi` in `tile.o`: removes a tile from its queue, a 304-byte routine at offset 0x259c. Established.
+  It unlinks the tile record through its forward and back links, lowers the queue's count at +0x28 and clears the tile's queue number.
+  It also lowers the free count of the tile's class at +0xc8.
+- `tile_evict` in `tile.o`: asks the large-page layer to evict a tile's occupant, a 204-byte routine at offset 0x26cc. Established.
+  It maps the tile to its large-page index with `lpage_size_to_index`, calls `lpage_evict` and counts one more forced move in a statistics word at +0x20.
+- `tile_migr_pagealloc` in `tile.o`: allocates the destination page for a page migrated out of a tile, a 152-byte routine at offset 0x2798. Established.
+  It calls `_pagealloc_size_node` for one movable 4 KB page, of the source page's colour when `vce_avoidance` is set, and validates the colour with `color_validation`.
+- `tile_print` in `tile.o`: prints one tile record, a 268-byte routine at offset 0x2830. Established.
+  It prints the queue index, class, locked count and bitmap, links and the page record with `qprintf`.
+- `tile_dump` in `tile.o`: the debugger command that prints tiles, a 756-byte routine at offset 0x293c. Established.
+  It accepts a tile index, page record, page frame number or record address and prints that tile with `tile_print`.
+  An argument of -1 prints every tile.
+- `tileq_print` in `tile.o`: prints one tile queue, a 920-byte routine at offset 0x2c30. Established.
+  It prints the queue's counts at +0x28 and, for the unlocked queue, the per-class counts and the tiles that hold kernel dump pages, calling `tile_print` for them.
+- `tileq_dump` in `tile.o`: the debugger command that prints every non-empty tile queue, a 160-byte routine at offset 0x2fc8. Established.
+  It calls `tileq_print` for each queue in turn, or only the one named by its argument.
+<!-- tile.o:end -->
+
+<!-- a3_dd.o:begin -->
+# Kernel routines, one entry each (`a3_dd.o`)
+
+- `a3_probe` in `a3_dd.o`: detects the audio hardware and registers the audio subsystem, a 312-byte routine at offset 0x0. Established.
+  It probes the part with 64-bit register reads and writes (`pciio_pio_read64`, `pciio_pio_write64`) separated by `us_delay`, flushing with `wbflush`.
+  It allocates the 5928-byte subsystem record with `kmem_alloc`, records it in the hardware inventory (`add_to_inventory`) and adds it to the audio framework with `kdsp_add_subsys`.
+- `a3_start_subsys` in `a3_dd.o`: starts the audio subsystem, a 784-byte routine at offset 0x138. Established.
+  It sets up the codec (`a3_init_codec`), checks for the video option (`a3_check_for_video`) and creates devices, master clocks, clock generators and interfaces with the `a3_create_` routines.
+  It registers the error interrupt handler `a3_err_intr` with `setcrimevector` and writes the interrupt enables with `pciio_pio_write64` under `splhi`; the sample rate it starts from is 48000 (0xbb80).
+- `a3_create_ifs` in `a3_dd.o`: builds the analog input and output interface resources, a 1116-byte routine at offset 0x448. Established.
+  It initialises 272-byte resource records with `kdsp_init_resource`, attaches them (`kdsp_add_subresource`) and maps them with `kdsp_map_resource`.
+  The set and get method pointers are `a3_set_analog_out_if_params` and `a3_get_analog_out_if_params`, and the matching input pair; initial gains are written with `a3_write_output_gain` and `a3_write_input_gain`.
+- `a3_create_mclks` in `a3_dd.o`: builds the master-clock resources, a 340-byte routine at offset 0x8a4. Established.
+  It initialises three 288-byte resource records with `kdsp_init_resource`, one per master clock, and maps each with `kdsp_map_resource`.
+  The record stores the 375 divisor constant used by the clock arithmetic.
+- `a3_create_clockgen` in `a3_dd.o`: builds a clock-generator resource, a 448-byte routine at offset 0x9f8. Established.
+  It names the resource with `sprintf`, initialises a 352-byte record (`kdsp_init_resource`) and selects it with `kdsp_select_clockgen`.
+  It computes the starting divider with `a3_calculate_rate_frac`, programs it with `a3_set_clockgen` and registers the set and commit methods `a3_set_clockgen_params` and `a3_commit_clockgen_params`.
+- `a3_create_device` in `a3_dd.o`: builds a sample-buffer device, a 576-byte routine at offset 0xbb8. Established.
+  It finds the device's DMA ring buffer with `a3_get_dma_rb_addr`, initialises a 528-byte resource (`kdsp_init_resource`) and creates and adds the device with `kdsp_create_device` and `kdsp_add_device`.
+  It installs the methods `a3_start_dma`, `a3_stop_dma`, `a3_update_dev` and `a3_writeback_rb`; a failure destroys the devices and logs through `cmn_err`.
+- `a3_destroy_devices` in `a3_dd.o`: destroys the subsystem's devices, a 224-byte routine at offset 0xdf8. Established.
+  It calls `kdsp_destroy_device` for the three devices at +0x698, +0x8a8 and +0xa48 of the subsystem record.
+  It then releases the ring-buffer mappings with `page_mapout`.
+- `a3_edtinit` in `a3_dd.o`: the driver's registration entry, a 28-byte routine at offset 0xed8. Established.
+  It calls `a3_probe` and returns.
+- `a3_init_codec` in `a3_dd.o`: resets and programs the audio codec, a 568-byte routine at offset 0xef4. Established.
+  It writes the control register with `pciio_pio_write64`, waits with `us_delay`, and reads and writes the codec's registers with `do_read_codec_reg` and `do_write_codec_reg`.
+  The values written include 2056 (0x808), 3338 (0xd0a) and 15 for the clock and data formats; an option string is parsed with `atoi` when the boot argument names one.
+- `a3_get_dma_rb_addr` in `a3_dd.o`: finds the DMA ring-buffer memory of a device, a 244-byte routine at offset 0x112c. Established.
+  It obtains the physical buffer address with `get_isa_dma_buf_addr` for each of its two halves and maps the pages into kernel space with `page_mapin_pfn`.
+- `a3_write_input_source` in `a3_dd.o`: selects the analog input source, a 124-byte routine at offset 0x1220. Established.
+  It writes the codec's input-source register with `write_codec_reg` (value 771 for the line-and-microphone combination) and reconfigures the connection list with `connlist_reconfig`.
+- `a3_write_input_gain` in `a3_dd.o`: sets the input gain, a 132-byte routine at offset 0x129c. Established.
+  It limits each channel's gain value to 63 and writes the left and right values to the codec with `write_codec_reg`.
+- `a3_write_output_gain` in `a3_dd.o`: sets the output gain, a 76-byte routine at offset 0x1320. Established.
+  It takes the left and right values from the caller's two words and writes them with `write_codec_reg` at the codec offset held in the subsystem.
+- `a3_initial_val` in `a3_dd.o`: fills in the default parameter values of a resource, a 212-byte routine at offset 0x136c. Established.
+  It stores the defaults of the three interfaces' parameter tables at +0x1e8, +0x2a0 and +0xc30 and following of the subsystem record.
+- `a3_set_device_params` in `a3_dd.o`: applies a device's changed parameters, a 488-byte routine at offset 0x1440. Established.
+  It finds the interface resource a device is connected to (`kdsp_find_resource_in_list`, `kdsp_select_interface`) and rewrites the input source and gain with `a3_write_input_source` and `a3_write_input_gain`.
+  The codec words it writes include 0xe0e0 and 0xc0c0 for muted channels.
+- `a3_cg_update_hrb` in `a3_dd.o`: the clock-generator hook for a ring-buffer update, an 8-byte routine at offset 0x1628. Established.
+  It is a single return instruction with its delay slot, so the hook does no work.
+- `a3_set_analog_in_if_params` in `a3_dd.o`: applies the input interface's parameters, a 576-byte routine at offset 0x1630. Established.
+  It fetches the caller's parameter values (`kdsp_fetch_external`), converts decibel gains to register values with `kdsp_db_gain_to_regval` and writes them with `write_codec_reg`.
+  Input gain changes call `a3_write_input_gain`; the gain limit is 63.
+- `a3_get_analog_in_if_params` in `a3_dd.o`: reads back the input interface's parameters, a 440-byte routine at offset 0x1870. Established.
+  It converts the stored register gain values to decibels with `kdsp_regval_to_db_gain` and returns them to the caller with `kdsp_put_external`.
+- `a3_set_analog_out_if_params` in `a3_dd.o`: applies the output interface's parameters, a 544-byte routine at offset 0x1a28. Established.
+  It fetches the caller's values (`kdsp_fetch_external`), converts decibel gains with `kdsp_db_gain_to_regval` and writes the codec with `write_codec_reg`.
+  The output gain goes through `a3_write_output_gain`, with a limit of 63.
+- `a3_get_analog_out_if_params` in `a3_dd.o`: reads back the output interface's parameters, a 340-byte routine at offset 0x1c48. Established.
+  It converts the stored register gain values to decibels with `kdsp_regval_to_db_gain` and returns them with `kdsp_put_external` after `kdsp_find_param_info`.
+- `a3_set_clockgen_params` in `a3_dd.o`: applies a clock generator's parameters, a 420-byte routine at offset 0x1d9c. Established.
+  It finds each parameter with `kdsp_find_param_info` and the clock-source resource with `kdsp_find_resource_in_list`, and stores the divider and source words at +0x110 to +0x128 of the record.
+- `a3_commit_device_params` in `a3_dd.o`: the device's commit hook, an 8-byte routine at offset 0x1f40. Established.
+  It returns immediately with no work.
+- `a3_calculate_rate_frac` in `a3_dd.o`: computes a clock generator's rate fraction, a 264-byte routine at offset 0x1f48. Established.
+  It reduces the ratio of the master-clock rate and the requested rate to numerator and denominator limited to 0xffff with `kdsp_reduce_frac`, with the master-clock constant 375.
+- `a3_commit_clockgen_params` in `a3_dd.o`: commits a clock generator's new parameters, a 112-byte routine at offset 0x2050. Established.
+  It recomputes the rate fraction with `a3_calculate_rate_frac`, selects the master clock with `kdsp_select_mclk`, programs it with `a3_set_clockgen` and tells the users with `kdsp_update_cg_users`.
+- `a3_do_volume` in `a3_dd.o`: applies a volume change requested from the hardware control, a 1128-byte routine at offset 0x20c0. Established.
+  It reads the volume control register with `pciio_pio_read64`, writes it back to clear the event under `splhi`, and converts the register values with `kdsp_regval_to_db_gain`.
+  It updates the parameter lists with `kdsp_pv_list_op` and re-arms itself with `itimeout`.
+- `a3_timewrap_watchdog` in `a3_dd.o`: keeps the audio timestamp from wrapping, a 156-byte routine at offset 0x2528. Established.
+  At the profile level (`splprof`) it refreshes the three devices' timestamp offsets with `a3_update_timestamp_offsets` and re-arms itself with `itimeout` for 60000 ticks.
+- `a3_update_timestamp_offsets` in `a3_dd.o`: refreshes one subsystem's timestamp base, an 84-byte routine at offset 0x25c4. Established.
+  It reads the 64-bit timer with `pciio_pio_read64` and stores it in the offset words at +0x1fc and +0x200 of the subsystem record.
+- `a3_err_intr` in `a3_dd.o`: the audio error interrupt handler, a 144-byte routine at offset 0x2618. Established.
+  It reads the status with `pciio_pio_read64`, writes back the bits it handled with `pciio_pio_write64` and schedules `a3_do_volume` with `itimeout`.
+- `a3_shutdown` in `a3_dd.o`: stops the audio subsystem, a 200-byte routine at offset 0x26a8. Established.
+  It cancels the two timeouts with `untimeout`, masks the interrupt enables with `pciio_pio_write64`, removes the interrupt vector with `unsetcrimevector`, unmaps its resources and destroys the devices with `a3_destroy_devices`.
+- `do_read_codec_reg` in `a3_dd.o`: reads one codec register, a 148-byte routine at offset 0x2770. Established.
+  It writes the register number and read command to the control word with `pciio_pio_write64`, waits with `us_delay` and returns the data read back with `pciio_pio_read64`.
+- `write_codec_reg` in `a3_dd.o`: writes one codec register under the timeout level, a 132-byte routine at offset 0x2804. Established.
+  Under `spltimeout` it writes the register through `do_write_codec_reg` and may read it back with `do_read_codec_reg` to check; it restores the level with `splx`.
+- `do_write_codec_reg` in `a3_dd.o`: writes one codec register, a 96-byte routine at offset 0x2888. Established.
+  It writes the register number and the 16-bit value (masked with 0xffff) to the control word with `pciio_pio_write64`, flushes with `wbflush` and waits with `us_delay`.
+- `a3_start_dma` in `a3_dd.o`: starts a device's audio DMA, a 464-byte routine at offset 0x28e8. Established.
+  It writes the codec's format register with `write_codec_reg`, zeroes the ring buffer with `bzero` and writes it back with `dki_dcache_wb`.
+  It programs the ring-buffer registers with `pciio_pio_write64`, starts the DMA and arms `a3_timewrap_watchdog` with `itimeout`.
+- `a3_stop_dma` in `a3_dd.o`: stops a device's audio DMA, a 48-byte routine at offset 0x2ab8. Established.
+  It writes zero to the device's DMA control register, whose handle is kept at +0x1e0 of the device record, with `pciio_pio_write64`.
+  It then clears the running byte at +0x1b0.
+- `a3_pre_connect` in `a3_dd.o`: the hook run before a device connects, a 52-byte routine at offset 0x2ae8. Established.
+  It tests whether the device is the one at +0x568 of the subsystem record and whether the connected resource's type word at +0x9c equals 0x2000000d.
+  It returns 4 for a match and 0 otherwise.
+- `a3_set_clockgen` in `a3_dd.o`: programs the codec's sample-rate clock, a 444-byte routine at offset 0x2b1c. Established.
+  It picks the master clock and rate fraction from the generator record and writes the codec's clock registers with `write_codec_reg`.
+  The video-locked rates use `a3_set_video_rate` and the timing tables `mvpaudio_input_timing` and `mvpaudio_output_timing`.
+- `a3_set_video_rate` in `a3_dd.o`: sets a video-locked audio rate, a 288-byte routine at offset 0x2cd8. Established.
+  It looks the rate up in a table in `.data` (words at +0x1d18 to +0x1d24) and writes the codec's clock divider with `write_codec_reg`.
+- `a3_update_subsys` in `a3_dd.o`: refreshes the subsystem's counters, a 116-byte routine at offset 0x2df8. Established.
+  It reads the hardware timer with `pciio_pio_read64` and updates the three devices' counter words in the subsystem record.
+- `a3_update_dev` in `a3_dd.o`: refreshes one device's ring-buffer view, a 224-byte routine at offset 0x2e6c. Established.
+  It invalidates the data cache over the ring-buffer area with `dki_dcache_inval` and updates the read and write positions at +0x118 and +0x130 of the device.
+- `a3_writeback_rb` in `a3_dd.o`: writes a ring buffer back for the hardware, an 88-byte routine at offset 0x2f4c. Established.
+  It calls `kdsp_writeback_rb` and then writes the new tail position with `pciio_pio_write64`.
+- `a3_get_rb_mscust` in `a3_dd.o`: returns a ring buffer's media-stream timestamp, a 156-byte routine at offset 0x2fa4. Established.
+  It reads the timer with `pciio_pio_read64`, extends it with `fill_ust_highbits` and converts it to nanoseconds with `ust_to_nano`.
+- `a3_idbg_dump_codec_regs` in `a3_dd.o`: the debugger command that prints the codec registers, a 116-byte routine at offset 0x3040. Established.
+  It prints each register read with `do_read_codec_reg` through `qprintf`.
+- `a3_idbg_dump_subsys` in `a3_dd.o`: the debugger command that prints the subsystem record, a 252-byte routine at offset 0x30b4. Established.
+  It prints the record's fields from +0x150 on and the timing tables `mvpaudio_input_timing` and `mvpaudio_output_timing` with `qprintf`.
+- `a3_idbg_dump_device` in `a3_dd.o`: the debugger command that prints a device record, a 96-byte routine at offset 0x31b0. Established.
+  It prints the device's fields at +0x1e0 to +0x1f4 with `qprintf`.
+- `a3_idbg_dump_clockgen` in `a3_dd.o`: the debugger command that would print a clock generator, an 8-byte routine at offset 0x3210. Established.
+  It returns immediately with no output.
+- `a3_idbg_dump_hw` in `a3_dd.o`: the debugger command that prints the hardware registers, a 504-byte routine at offset 0x3218. Established.
+  It reads each audio register with `pciio_pio_read64` and prints its value with `qprintf`.
+- `a3_idbg_addfuncs` in `a3_dd.o`: registers the debugger commands, a 216-byte routine at offset 0x3410. Established.
+  It adds the five commands (codec registers, subsystem, device, clock generator and hardware) with `idbg_addfunc`.
+- `a3_idbg_delfuncs` in `a3_dd.o`: removes the debugger commands, a 100-byte routine at offset 0x34e8. Established.
+  It removes the same five commands with `idbg_delfunc`.
+- `_mvpi2c_wait_for_xfer_done` in `a3_dd.o`: polls the two-wire bus for the end of a transfer, a 56-byte routine at offset 0x354c. Established.
+  It reads the 64-bit status register at the kernel address 0xbf330010 up to 200 times and returns 0 as soon as bit 4 is set.
+  It returns 5 when the count runs out.
+- `_mvpi2c_wait_for_ack` in `a3_dd.o`: waits for the acknowledge of a byte, a 136-byte routine at offset 0x3584. Established.
+  It reads the status register at 0xbf330010 and, when bit 4 shows a transfer under way, waits for it with `_mvpi2c_wait_for_xfer_done`.
+  It then polls up to 200 times for bit 5 to clear and returns 0 on success, 5 on timeout and -1 when the transfer wait fails.
+- `_mvpi2c_force_bus_idle` in `a3_dd.o`: forces the bus to idle, a 124-byte routine at offset 0x360c. Established.
+  When bit 0 of the control and status word at 0xbf330010 shows the bus busy it writes that word back with bit 0 cleared and polls up to 200 times for bit 0 to drop.
+  It returns 0 when idle and 5 when the bus stays busy.
+- `mvpi2c_read_reg` in `a3_dd.o`: reads one register of the video-port chip over the two-wire bus, a 400-byte routine at offset 0x3688. Established.
+  It forces the bus idle with `_mvpi2c_force_bus_idle`, sends the device address and register number, waits for acknowledges with `_mvpi2c_wait_for_ack` and reads the byte back.
+- `mvp_i2c_reg` in `a3_dd.o`: finds a chip's entry in the video-port bus table, a 96-byte routine at offset 0x3818. Established.
+  It searches the table of 4-byte entries at +0xc of its first argument, between the indices held in bytes +0x3 and +0x4, for an entry whose first byte equals its second argument.
+  It returns the entry's address, or 0 when none matches.
+- `a3_mvp_probe` in `a3_dd.o`: probes for the video-port chip, a 104-byte routine at offset 0x3878. Established.
+  It takes the chip's table entry from `mvp_i2c_reg` (register index from the halfword at +0x6, or -2 when unset) and reads one register with `mvpi2c_read_reg`.
+  It returns 1 when the read did not answer -1 and 0 otherwise.
+- `a3_check_for_video` in `a3_dd.o`: notes whether the video option answers, a 72-byte routine at offset 0x38e0. Established.
+  It sets the video-present word at +0x1e8 of the subsystem record, calls `a3_mvp_probe` on the video chip's table and clears the word again when the probe fails.
+  It returns the word.
+<!-- a3_dd.o:end -->

@@ -480,7 +480,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00284ec	8	businfo	dwarf+sym
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00284f4	20	read_reg64	dwarf+symtab	35318dc3efd5	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028508	24	write_reg64	dwarf+symtab	be72b96394d8	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	flushbus	symtab	640df3041b0b	located	docs/functions.md#start-up-and-revision	Start-up and revision
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	wbflush	dwarf+symtab	640df3041b0b	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	wbflush	dwarf+symtab	640df3041b0b	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028540	20	Read_C0_LLADDR	dwarf+symtab	0bed81c21644	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028554	12	Read_C0_Config	dwarf+symtab	65d36b16835c	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028560	12	Write_C0_Config	dwarf+symtab	702d110d5a68	undocumented		
@@ -618,7 +618,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002be18	136	_xdigit	dwarf+f
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bea0	540	atob	dwarf+symtab	bf6371a4cbbe	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c0bc	28	atob_ptr	dwarf+symtab	21c63cd0c56e	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c0d8	564	atob_L	dwarf+symtab	5476042deba5	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c30c	32	atoi	dwarf+symtab	58de481c016a	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c30c	32	atoi	dwarf+symtab	58de481c016a	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c32c	164	atohex	dwarf+symtab	d67fb4892c7d	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c3d0	156	atohex_L	dwarf+symtab	8ef6e1035a7b	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c46c	28	atohex_ptr	dwarf+symtab	817c9990c674	undocumented		
@@ -754,61 +754,61 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa003163c	116	_count_CPUs	dwa
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00316b0	76	_get_numcpus	dwarf+symtab	213b8871b113	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00316fc	92	_init_libsc_private	dwarf+symtab	29d5d9cee465	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031758	40	EnterInteractiveMode	dwarf+symtab	67686af827c8	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x0	312	a3_probe	dwarf+funcnames+symtab	5b05e914f94c	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x138	784	a3_start_subsys	dwarf+funcnames+symtab	fdb8d80701bb	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x448	1116	a3_create_ifs	dwarf+funcnames+symtab	9301f970c2d1	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x8a4	340	a3_create_mclks	dwarf+funcnames+symtab	bd95e9c482fe	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x9f8	448	a3_create_clockgen	dwarf+funcnames+symtab	3aab3d0e014a	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xbb8	576	a3_create_device	dwarf+funcnames+symtab	6f5aea344c29	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xdf8	224	a3_destroy_devices	dwarf+funcnames+symtab	060978323f4d	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xed8	28	a3_edtinit	dwarf+symtab	34d7a2e33b85	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xef4	568	a3_init_codec	dwarf+funcnames+symtab	81418525b960	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x112c	244	a3_get_dma_rb_addr	dwarf+funcnames+symtab	37e693346b3e	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1220	124	a3_write_input_source	dwarf+funcnames+symtab	04b5218d9179	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x129c	132	a3_write_input_gain	dwarf+funcnames+symtab	0fe947cfa780	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1320	76	a3_write_output_gain	dwarf+funcnames+symtab	856b53dbcd88	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x136c	212	a3_initial_val	dwarf+funcnames+symtab	04c750d59d09	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1440	488	a3_set_device_params	dwarf+funcnames+symtab	37c81faa843b	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1628	8	a3_cg_update_hrb	dwarf+funcnames+symtab	78aa5094d5ec	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1630	576	a3_set_analog_in_if_params	dwarf+funcnames+symtab	c4b3797727c0	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1870	440	a3_get_analog_in_if_params	dwarf+funcnames+symtab	4243673eef54	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1a28	544	a3_set_analog_out_if_params	dwarf+funcnames+symtab	cb16e20f6c8e	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1c48	340	a3_get_analog_out_if_params	dwarf+funcnames+symtab	895e385b9c16	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1d9c	420	a3_set_clockgen_params	dwarf+funcnames+symtab	345af8e78d72	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1f40	8	a3_commit_device_params	dwarf+funcnames+symtab	78aa5094d5ec	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1f48	264	a3_calculate_rate_frac	dwarf+funcnames+symtab	ba7220cdc0d3	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2050	112	a3_commit_clockgen_params	dwarf+funcnames+symtab	091382ab5228	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x20c0	1128	a3_do_volume	dwarf+symtab	6dedb431eea3	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2528	156	a3_timewrap_watchdog	dwarf+symtab	f46059fcb0bc	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x25c4	84	a3_update_timestamp_offsets	dwarf+funcnames+symtab	12b2f13db01c	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2618	144	a3_err_intr	dwarf+funcnames+symtab	19b27dea7e5c	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x26a8	200	a3_shutdown	dwarf+funcnames+symtab	6565c72f29b7	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2770	148	do_read_codec_reg	dwarf+funcnames+symtab	6752a3f18ec7	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2804	132	write_codec_reg	dwarf+funcnames+symtab	8afc5e329e1d	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2888	96	do_write_codec_reg	dwarf+funcnames+symtab	f4684fbc0c24	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x28e8	464	a3_start_dma	dwarf+funcnames+symtab	d81094151f36	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2ab8	48	a3_stop_dma	dwarf+funcnames+symtab	67e1b58a55fe	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2ae8	52	a3_pre_connect	dwarf+funcnames+symtab	d0389424dbde	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2b1c	444	a3_set_clockgen	dwarf+funcnames+symtab	778fcf6ad31d	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2cd8	288	a3_set_video_rate	dwarf+funcnames+symtab	f140867fe1ae	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2df8	116	a3_update_subsys	dwarf+funcnames+symtab	bdb77205bce0	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2e6c	224	a3_update_dev	dwarf+funcnames+symtab	52394afa4ca2	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2f4c	88	a3_writeback_rb	dwarf+funcnames+symtab	522d016d09e7	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2fa4	156	a3_get_rb_mscust	dwarf+funcnames+symtab	1ee197352049	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3040	116	a3_idbg_dump_codec_regs	dwarf+symtab	e6f656a4e152	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x30b4	252	a3_idbg_dump_subsys	dwarf+symtab	0c033a95cb45	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x31b0	96	a3_idbg_dump_device	dwarf+symtab	8f024d494407	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3210	8	a3_idbg_dump_clockgen	dwarf+symtab	78aa5094d5ec	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3218	504	a3_idbg_dump_hw	dwarf+symtab	df56a3d550f0	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3410	216	a3_idbg_addfuncs	dwarf+funcnames+symtab	36290545e379	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x34e8	100	a3_idbg_delfuncs	dwarf+funcnames+symtab	7c9efa76d419	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x354c	56	_mvpi2c_wait_for_xfer_done	dwarf+funcnames+symtab	fdd12238744c	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3584	136	_mvpi2c_wait_for_ack	dwarf+funcnames+symtab	46e98aec426e	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x360c	124	_mvpi2c_force_bus_idle	dwarf+funcnames+symtab	1e99371abb45	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3688	400	mvpi2c_read_reg	dwarf+funcnames+symtab	5e690f9dde8b	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3818	96	mvp_i2c_reg	dwarf+funcnames+symtab	42e019252f95	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3878	104	a3_mvp_probe	dwarf+funcnames+symtab	448a124bc568	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x38e0	72	a3_check_for_video	dwarf+funcnames+symtab	6c29a6d067e9	undocumented		
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x0	312	a3_probe	dwarf+funcnames+symtab	5b05e914f94c	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x138	784	a3_start_subsys	dwarf+funcnames+symtab	fdb8d80701bb	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x448	1116	a3_create_ifs	dwarf+funcnames+symtab	9301f970c2d1	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x8a4	340	a3_create_mclks	dwarf+funcnames+symtab	bd95e9c482fe	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x9f8	448	a3_create_clockgen	dwarf+funcnames+symtab	3aab3d0e014a	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xbb8	576	a3_create_device	dwarf+funcnames+symtab	6f5aea344c29	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xdf8	224	a3_destroy_devices	dwarf+funcnames+symtab	060978323f4d	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xed8	28	a3_edtinit	dwarf+symtab	34d7a2e33b85	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xef4	568	a3_init_codec	dwarf+funcnames+symtab	81418525b960	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x112c	244	a3_get_dma_rb_addr	dwarf+funcnames+symtab	37e693346b3e	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1220	124	a3_write_input_source	dwarf+funcnames+symtab	04b5218d9179	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x129c	132	a3_write_input_gain	dwarf+funcnames+symtab	0fe947cfa780	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1320	76	a3_write_output_gain	dwarf+funcnames+symtab	856b53dbcd88	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x136c	212	a3_initial_val	dwarf+funcnames+symtab	04c750d59d09	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1440	488	a3_set_device_params	dwarf+funcnames+symtab	37c81faa843b	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1628	8	a3_cg_update_hrb	dwarf+funcnames+symtab	78aa5094d5ec	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1630	576	a3_set_analog_in_if_params	dwarf+funcnames+symtab	c4b3797727c0	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1870	440	a3_get_analog_in_if_params	dwarf+funcnames+symtab	4243673eef54	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1a28	544	a3_set_analog_out_if_params	dwarf+funcnames+symtab	cb16e20f6c8e	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1c48	340	a3_get_analog_out_if_params	dwarf+funcnames+symtab	895e385b9c16	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1d9c	420	a3_set_clockgen_params	dwarf+funcnames+symtab	345af8e78d72	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1f40	8	a3_commit_device_params	dwarf+funcnames+symtab	78aa5094d5ec	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1f48	264	a3_calculate_rate_frac	dwarf+funcnames+symtab	ba7220cdc0d3	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2050	112	a3_commit_clockgen_params	dwarf+funcnames+symtab	091382ab5228	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x20c0	1128	a3_do_volume	dwarf+symtab	6dedb431eea3	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2528	156	a3_timewrap_watchdog	dwarf+symtab	f46059fcb0bc	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x25c4	84	a3_update_timestamp_offsets	dwarf+funcnames+symtab	12b2f13db01c	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2618	144	a3_err_intr	dwarf+funcnames+symtab	19b27dea7e5c	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x26a8	200	a3_shutdown	dwarf+funcnames+symtab	6565c72f29b7	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2770	148	do_read_codec_reg	dwarf+funcnames+symtab	6752a3f18ec7	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2804	132	write_codec_reg	dwarf+funcnames+symtab	8afc5e329e1d	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2888	96	do_write_codec_reg	dwarf+funcnames+symtab	f4684fbc0c24	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x28e8	464	a3_start_dma	dwarf+funcnames+symtab	d81094151f36	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2ab8	48	a3_stop_dma	dwarf+funcnames+symtab	67e1b58a55fe	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2ae8	52	a3_pre_connect	dwarf+funcnames+symtab	d0389424dbde	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2b1c	444	a3_set_clockgen	dwarf+funcnames+symtab	778fcf6ad31d	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2cd8	288	a3_set_video_rate	dwarf+funcnames+symtab	f140867fe1ae	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2df8	116	a3_update_subsys	dwarf+funcnames+symtab	bdb77205bce0	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2e6c	224	a3_update_dev	dwarf+funcnames+symtab	52394afa4ca2	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2f4c	88	a3_writeback_rb	dwarf+funcnames+symtab	522d016d09e7	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x2fa4	156	a3_get_rb_mscust	dwarf+funcnames+symtab	1ee197352049	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3040	116	a3_idbg_dump_codec_regs	dwarf+symtab	e6f656a4e152	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x30b4	252	a3_idbg_dump_subsys	dwarf+symtab	0c033a95cb45	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x31b0	96	a3_idbg_dump_device	dwarf+symtab	8f024d494407	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3210	8	a3_idbg_dump_clockgen	dwarf+symtab	78aa5094d5ec	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3218	504	a3_idbg_dump_hw	dwarf+symtab	df56a3d550f0	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3410	216	a3_idbg_addfuncs	dwarf+funcnames+symtab	36290545e379	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x34e8	100	a3_idbg_delfuncs	dwarf+funcnames+symtab	7c9efa76d419	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x354c	56	_mvpi2c_wait_for_xfer_done	dwarf+funcnames+symtab	fdd12238744c	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3584	136	_mvpi2c_wait_for_ack	dwarf+funcnames+symtab	46e98aec426e	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x360c	124	_mvpi2c_force_bus_idle	dwarf+funcnames+symtab	1e99371abb45	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3688	400	mvpi2c_read_reg	dwarf+funcnames+symtab	5e690f9dde8b	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3818	96	mvp_i2c_reg	dwarf+funcnames+symtab	42e019252f95	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3878	104	a3_mvp_probe	dwarf+funcnames+symtab	448a124bc568	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x38e0	72	a3_check_for_video	dwarf+funcnames+symtab	6c29a6d067e9	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x0	288	crimeFifoEmptyHandler	dwarf+symtab	bce085c7d1a1	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x120	136	crimeEmptyWaitTimeout	dwarf+symtab	4a7208f5ffb4	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1a8	476	crimeFifoFullHandler	dwarf+symtab	4a4dd54765f5	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
@@ -1315,12 +1315,12 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4008	48	rtlock_owners
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4038	80	dumpcopy	dwarf+symtab	d007b61a8eba	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4088	56	update_ust_i	dwarf+symtab	78593e664901	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40c0	48	get_ust_nano	dwarf+symtab	5dc09cb76498	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40f0	44	ust_to_nano	dwarf+symtab	d365f6b4a716	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40f0	44	ust_to_nano	dwarf+symtab	d365f6b4a716	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x411c	12	get_ust	dwarf+symtab	459adfaf5b87	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4128	60	get_updated_ust_i	dwarf+symtab	a206aa8a228b	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4164	40	nano_to_ust	dwarf+symtab	06e441d5c219	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x418c	36	ust_init	dwarf+symtab	106424f27f33	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x41b0	160	fill_ust_highbits	dwarf+symtab	2e8d2cce3af5	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x41b0	160	fill_ust_highbits	dwarf+symtab	2e8d2cce3af5	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4250	64	update_ust	dwarf+symtab	a75a44a943e3	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4290	476	ecc_exception	dwarf+symtab	9a76902eb8ad	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4468	4	eccword	symtab	df3f619804a9	undocumented		
@@ -1656,7 +1656,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11620	8	cpuboard	dwar
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11628	72	fp_find	dwarf+symtab	777a198ee686	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11670	28	fp_init	dwarf+symtab	d51ef8b359e7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1168c	316	dprintf	dwarf+symtab	dbd2c1d0ea50	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_buf_addr	dwarf+symtab	dd800c4fb3a8	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_buf_addr	dwarf+symtab	dd800c4fb3a8	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1180c	20	query_cyclecntr	dwarf+symtab	8bdd40067301	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11820	24	absolute_rtc_current_time	dwarf+symtab	3f79b5b25c5c	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11838	96	get_crimerev	dwarf+symtab	7094f825e2b4	understood	docs/functions.md#start-up-and-revision	Start-up and revision
@@ -1682,7 +1682,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c34	12	do_sync_inst
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c40	72	siron	dwarf+symtab	0b0c520c2bd4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c88	68	siroff	dwarf+symtab	23ff907e1676	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11ccc	44	flushbus	dwarf+symtab	3fbcf98d39eb	understood	docs/functions.md#start-up-and-revision	Start-up and revision
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11cf8	16	wbflush	dwarf+symtab	93593d9a07f4	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11cf8	16	wbflush	dwarf+symtab	93593d9a07f4	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	8	ip26_enable_ucmem	dwarf+symtab	78aa5094d5ec	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip26_return_ucmem	symtab	d7276fd812c6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip28_enable_ucmem	symtab	d7276fd812c6	undocumented		
@@ -2083,10 +2083,10 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8638	40	mvpi2c_read_confi
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8660	184	mvpi2c_reset	dwarf+symtab	fc6ed6259da6	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8718	88	mvpi2c_fastmode	dwarf+symtab	1500ccda3e8f	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8770	164	mvpi2c_check	dwarf+symtab	13ca95b146ea	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8814	328	_mvpi2c_wait_for_xfer_done	dwarf+funcnames	6768a0c0a7f0	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x895c	388	_mvpi2c_wait_for_ack	dwarf+funcnames	79fba20bb175	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8ae0	476	_mvpi2c_force_bus_idle	dwarf+funcnames	6a473e90578e	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8cbc	724	mvpi2c_read_reg	dwarf+symtab	be3a65057bbb	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8814	328	_mvpi2c_wait_for_xfer_done	dwarf+funcnames	6768a0c0a7f0	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x895c	388	_mvpi2c_wait_for_ack	dwarf+funcnames	79fba20bb175	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8ae0	476	_mvpi2c_force_bus_idle	dwarf+funcnames	6a473e90578e	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8cbc	724	mvpi2c_read_reg	dwarf+symtab	be3a65057bbb	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8f90	264	_mvpi2c_write_adrs	dwarf+funcnames	c5486bee3958	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9098	596	mvpi2c_write_reg	dwarf+symtab	85e1c3f65273	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x92ec	712	mvpi2c_init_regs	dwarf+symtab	bfffcc088b53	undocumented		
@@ -2131,30 +2131,30 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xca34	348	mvpsystem_ioctl	dwarf+symtab	8f1f5b63b37f	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xcb90	668	move_mipmap	dwarf+funcnames	af2564518518	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xce2c	632	mvpmipmap_move_mipmap	dwarf+symtab	2402b7553212	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x0	1692	tile_init	dwarf+symtab	049fada86ee2	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x69c	2656	tile_alloc	dwarf+symtab	751db26b37a4	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x10fc	596	tile_free	dwarf+symtab	7e76f77ce489	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1350	592	tile_mapin	dwarf+symtab	b2b9f69b834d	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15a0	56	tile_mapout	dwarf+symtab	202f3d626f1d	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15d8	780	do_tiled	dwarf+funcnames+symtab	55e07dd64b44	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x18e4	104	tiled	dwarf+symtab	efb097df521c	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x194c	224	tiled_lowat	dwarf+funcnames+symtab	68346ed0daa4	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1a2c	224	tiled_hiwat	dwarf+funcnames+symtab	e186921080f8	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1b0c	280	tile_cache_clean	dwarf+funcnames+symtab	08d0a6852ac1	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c24	12	tile_nclasses	dwarf+symtab	5a9a9fcf7720	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c30	208	tile_ecc_clean	dwarf+funcnames+symtab	c8eae6fa74e1	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1d00	524	tile_pagelock	dwarf+symtab	77067ed50375	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1f0c	644	tile_pageunlock	dwarf+symtab	14acbd9aeb01	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2190	528	tile_pageselect	dwarf+symtab	3e0f1c075aa4	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x23a0	252	tq_enqhi	dwarf+funcnames+symtab	b93ea53f5dfc	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x249c	256	tq_enqti	dwarf+funcnames+symtab	166e921de1fd	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x259c	304	tq_deqi	dwarf+funcnames+symtab	fd60b7693332	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x26cc	204	tile_evict	dwarf+funcnames+symtab	ac4294f63950	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2798	152	tile_migr_pagealloc	dwarf+symtab	84dfddde1e75	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2830	268	tile_print	dwarf+funcnames+symtab	79d917353c2b	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x293c	756	tile_dump	dwarf+funcnames+symtab	616e068809f2	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2c30	920	tileq_print	dwarf+funcnames+symtab	6bf62c934d3c	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2fc8	160	tileq_dump	dwarf+funcnames+symtab	21fe815250b5	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x0	1692	tile_init	dwarf+symtab	049fada86ee2	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x69c	2656	tile_alloc	dwarf+symtab	751db26b37a4	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x10fc	596	tile_free	dwarf+symtab	7e76f77ce489	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1350	592	tile_mapin	dwarf+symtab	b2b9f69b834d	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15a0	56	tile_mapout	dwarf+symtab	202f3d626f1d	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15d8	780	do_tiled	dwarf+funcnames+symtab	55e07dd64b44	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x18e4	104	tiled	dwarf+symtab	efb097df521c	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x194c	224	tiled_lowat	dwarf+funcnames+symtab	68346ed0daa4	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1a2c	224	tiled_hiwat	dwarf+funcnames+symtab	e186921080f8	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1b0c	280	tile_cache_clean	dwarf+funcnames+symtab	08d0a6852ac1	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c24	12	tile_nclasses	dwarf+symtab	5a9a9fcf7720	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c30	208	tile_ecc_clean	dwarf+funcnames+symtab	c8eae6fa74e1	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1d00	524	tile_pagelock	dwarf+symtab	77067ed50375	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1f0c	644	tile_pageunlock	dwarf+symtab	14acbd9aeb01	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2190	528	tile_pageselect	dwarf+symtab	3e0f1c075aa4	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x23a0	252	tq_enqhi	dwarf+funcnames+symtab	b93ea53f5dfc	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x249c	256	tq_enqti	dwarf+funcnames+symtab	166e921de1fd	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x259c	304	tq_deqi	dwarf+funcnames+symtab	fd60b7693332	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x26cc	204	tile_evict	dwarf+funcnames+symtab	ac4294f63950	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2798	152	tile_migr_pagealloc	dwarf+symtab	84dfddde1e75	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2830	268	tile_print	dwarf+funcnames+symtab	79d917353c2b	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x293c	756	tile_dump	dwarf+funcnames+symtab	616e068809f2	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2c30	920	tileq_print	dwarf+funcnames+symtab	6bf62c934d3c	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2fc8	160	tileq_dump	dwarf+funcnames+symtab	21fe815250b5	understood	docs/functions.md#kernel-routines-one-entry-each-tileo	Kernel routines, one entry each (`tile.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x0	312	pane_gc	dwarf+funcnames+symtab	c8d899b03879	understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x138	456	bind_pane	dwarf+funcnames+symtab	d8f0e0abf2c5	understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x300	64	unbind_pane	dwarf+funcnames+symtab	33847a99a40d	understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
