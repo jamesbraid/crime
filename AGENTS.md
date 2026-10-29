@@ -174,6 +174,9 @@ below `understood` and carry on. Hand off only when your assigned area meets
 the definition above, or when the session ends. In that case, say in
 `docs/open-questions.md` where you stopped and what comes next.
 
+
+A row becomes `understood` only through an entry whose subject it is: a table row whose first column is the item, a list item or heading that starts with it, or a header comment on it. That entry carries a label, a role and hardware effect, and a citation specific to the item (its offset, address, callee, archive member or source path, not just a release). Other names in the entry count as mentions. A function is understood only in the binary the entry cites, plus any build with identical code. When more than five entries share one sentence pattern, they count at most as `located`, so read each item and write its own sentence. [docs/inventory/README.md](docs/inventory/README.md) gives the exact rule.
+
 ---
 
 ## 8. Working on this repository
