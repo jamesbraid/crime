@@ -8,7 +8,7 @@ Established (read from the X server and from NetBSD `crmfb_fill_rect` and `crmfb
 
 Established: the X server leaves the MTE mode depth field at 0 (8-bit) for 16- and 32-bit drawables. Mode `0x820` (crm.s 26919, 29675, 56237) is copy, source TLB B, destination TLB A, depth field 0, no ECC bits. Inferred: because columns are bytes, the engine moves bytes and the depth field only changes how a clear value or stipple is expanded; this is not shown by the code, which only copies.
 
-Unknown: what the engine does with a start column that is not a multiple of the transfer width, and whether bit 16 of an end word carries any meaning besides the low column bit.
+Settled in pass 7: bit 16 of an end word is the low bit of the byte column; every sender (the X server's `0x10000`/`0x30000`, NetBSD's `- 1`) uses it that way and no sender gives it another meaning. Columns that are not multiples of a transfer unit: the senders avoid them. The X server sends the MTE only 256-byte-aligned column ranges and copies the edges with the pixel pipeline (below); NetBSD's MTE copies keep the source and destination columns equal (`crmfb_scroll`); the kernel's linear copies carry the descriptor `mte_engine` (`kernel.o` `.data` `0x560`) whose last two words are `0x1f` and `0x20000`, the second being the 128 KiB chunk the copy loop uses, the first inferred to be a 32-byte alignment that source and destination must share (one 256-bit memory word, [spec] PDF 160). What the engine does when source and destination columns differ within a 32-byte word: unknown: no shipped software or published source depends on it. Routes tried: the X module, `kernel.o`, NetBSD `crmfb`, Linux, MAME, [spec] (the MTE chapter has register tables only).
 
 ## Copy sequence in the X server
 
@@ -19,7 +19,7 @@ Established (crm.s 26890-27051 and the identical sequences at 29640-29720 and 56
 3. The remaining rows, and the edge columns outside a 128-pixel (16-bit) or 64-pixel (32-bit) multiple, are copied by the pixel pipeline's transfer path: source address and vertex pair written, committed through the start alias.
 4. After the last box the code writes MTE FLUSH (`+0x3078`) with 0 and PixPipeFlush (`+0x21f8`) with 0.
 
-Inferred: the split exists because the MTE moves only multiples of a fixed unit of rows and bytes. The masks are 16 rows by 256 bytes for 16-bit pixels and 8 rows by 256 bytes for 32-bit pixels, i.e. 256 bytes in x for both; the row unit is not a constant number of bytes and its reason is unknown.
+Inferred: the split exists because the MTE moves only multiples of a fixed unit of rows and bytes. The masks are 16 rows by 256 bytes for 16-bit pixels and 8 rows by 256 bytes for 32-bit pixels, i.e. 256 bytes in x for both. Settled in pass 7 as far as software reaches: NetBSD's MTE fills (`crmfb_fill_rect`) take any row range and its MTE copies any multiple of the font height, so the row unit is the X server's choice for its copies, not a rule software elsewhere obeys. Whether the engine itself copies tiles faster or only correctly in such units: unknown: no shipped software or published source depends on it. Routes tried: the X module, NetBSD `crmfb`, [spec], `ide.IP32`.
 
 Established: the MTE Y step is only ever written as `+1` here. NetBSD writes `-1` for a copy whose destination lies below the source in memory order (`crmfb_set_mte_direction`) and swaps the start and end rows. The X server does not; it orders the boxes instead (not decoded), so the descending-copy case is established only from NetBSD.
 
@@ -35,6 +35,5 @@ The kernel clear (`crime_clear_buffer`) uses the same address word. See MTE.h fo
 
 ## Unknown
 
-- MTE completion. The engine's idle bit is status bit 25 (NetBSD `CRIME_DE_MTE_IDLE`); IRIX polls the combined idle bit 28 only.
-- MTE interrupts, reset, any DMA to host memory, and ordering of an MTE operation against pixel-pipeline primitives beyond "write FLUSH at the end".
-- Whether the stipple pattern repeats every 8 or every 32 bits.
+- MTE completion: the engine's MTE idle bit is status bit 25 (NetBSD `CRIME_DE_MTE_IDLE`); IRIX polls the combined idle bit 28 only. Interrupts, reset, host-memory transfers and ordering against pixel-pipeline primitives are settled or labelled in `docs/reset.md` (pass 7): commit order, no MTE-specific interrupt, no reset value any software depends on.
+- Stipple period, settled in pass 7 as a driver expectation: the X server's stippled MTE fill sends one MTE operation per row and, before each, writes STIPPLEMASK with a 32-bit word built from the pattern and rotated by a column-dependent amount (`crm.s` 2489, 2546: a right rotate of a 32-bit value by `n` and `32 - n`). A 32-bit rotation only makes sense for a 32-pixel repeat, so the engine applies the mask with a period of 32 pixels starting at the destination's start column (inferred). NetBSD never sets the MTE stipple bit (it stipples through the pixel pipeline). Bit order within the word beyond that: unknown: no other software depends on it.

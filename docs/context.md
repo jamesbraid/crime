@@ -37,7 +37,7 @@ After MakeCurrent succeeds libGLcore stores `0x7d` (every bit except `0x02` and 
 
 - Non-global (zero): `0x2060` Primitive, `0x2070`-`0x2078` X vertices, `0x2080`-`0x209c` GL vertices, `0x20a0`, `0x20a8`-`0x20b4` transfer, `0x20c0`, `0x20c4` stipple, `0x20d0` foreground colour, `0x20e0`-`0x20fc` and `0x2100`-`0x210c` shade steppers, `0x2120`-`0x215c` texture steppers, `0x2178`-`0x218c` fog steppers, `0x2190`, `0x2194` anti-alias, `0x21c8`-`0x21d8` depth steppers.
 - Global (non-zero): `0x2000`-`0x2058` (buffer modes, clip mode, DrawMode, screen masks, scissor, window offsets), `0x20d8` background colour, `0x2110` and `0x2118` texture mode and format, `0x2160` and `0x2168`, `0x2170` fog colour, `0x2198`-`0x21bc` alpha test, blend, logic op, colour mask, `0x21c0`, `0x21e0`, `0x21e8`, `0x21f0`, `0x21f8`.
-- Differences from the labels in `CRIME_RE.h` (the labels there came from the specification): the kernel treats `0x20d0` (foreground colour) as non-global and `0x21f0` (PixPipeNull) as global. The kernel's view is what its save logic assumes; whether the hardware distinguishes them is unknown.
+- Against the specification's pixel-pipe table ([spec] PDF 165-166, table 7-3, which marks each register G or NG): `0x20d0` (foreground colour) is NG there too, so the kernel agrees with the hardware classification. `0x21f0` (PixPipeNull) is NG in the specification and global in the kernel's table; it is a write-only register with no state, and the kernel uses its shadow slot as the flag word (above), so the difference changes only where `crmFindPP` stops walking back (a null commit is treated as a boundary), never what is replayed (inferred). Settled: no hardware difference to model.
 - Values 1 and 2 in the table appear to mark the even and odd 32-bit halves of a register (inferred from the repeating `1,2` pairs on 32-bit registers and `1,1` pairs on 64-bit ones). Only the even half is ever consulted (established, `crmFindPP`).
 
 ## Switch sequence (`k:crimePcxSwap`)
@@ -106,7 +106,6 @@ GBE registers are not part of the switch (see Summary). Per-drawable display sta
 
 ## Unknown
 
-- Whether hardware treats `0x20d0` and `0x21f0` as the kernel assumes.
-- The meaning of address-word bit 45.
-- What happens to a primitive that has begun when the engine is reloaded (the kernel only switches after the idle wait; no mid-primitive save exists).
+- Address-word bit 45: inferred to be the start flag, set on an entry written through the start alias (`+0x800`). Reasoning: bits 39:32 hold the register's doubleword index (address bits 10:3) and bits 42:40 its group (address bits 14:12), so address bit 11, the start alias, is the one address bit the decoded fields leave out, and `crmFindPP` stops at it exactly where a committed primitive ends. A model must set it on start-alias entries for the kernel's save to stop at the right place. Beyond that: unknown: no shipped software or published source depends on it. Routes tried: [spec] (the interface-buffer chapter gives the address RAM without a layout, PDF 163-164, 185-186), the 6.5.30 kernel, NetBSD, Linux, MAME.
+- A primitive that has begun when the engine is reloaded: unknown: no shipped software or published source depends on it. The kernel switches only after its idle wait and never saves mid-primitive state, and the specification says committed primitives run to completion atomically ([spec] PDF 186). Routes tried: [spec], the 6.5.30 kernel (`crimePcxSwap`, `crmSavePP`), NetBSD, Linux, MAME.
 - Whether the kernel reads back anything else on the O2 with a different CPU module.

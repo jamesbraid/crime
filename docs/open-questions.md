@@ -18,15 +18,6 @@ Route key, used in the tables:
 
 | Question | Owner | Tried | Next |
 |---|---|---|---|
-| Role of the engine register at `+0x408` (written 0 first at initialisation and during error recovery; no public source names it) | `docs/reset.md` | K, S, L | D: the IDE rendering-engine tests, then R |
-| Reset values of the rendering and MTE registers | `docs/reset.md` | K, S, L | D: IDE register tests compare read-backs with expected values. If none, label unknown: every driver writes these registers before use |
-| Whether the MTE keeps the interface buffer's order with rendering primitives, and whether MTE reads see linear-TLB entries changed while a primitive is in flight | `docs/reset.md` | K, X, S | S again for the interface-buffer chapter's ordering text; then E to record the order the X server relies on |
-| Whether the hardware raises an interrupt for MTE completion (Linux names engine-idle interrupts at inputs 24 and 27 without saying whether they cover the MTE) | `docs/reset.md`, `CRIME.h` | K, L, S | D, then R; IRIX 6.5.30 masks both, so if no software unmasks them, label unknown |
-| MTE behaviour for a start column that is not a multiple of the transfer width, and bit 16 of an end word | `docs/mte.md` | K, X, L | X: the copy paths that send unaligned columns (`crmBitBlt*`, `crmCopyWindow`) and what they correct in software |
-| Row unit of the MTE (16 rows at 16 bit, 8 at 32 bit in the X server's split) | `docs/mte.md` | X, K | S rendering chapter; L (NetBSD `crmfb` copy) for the unit it assumes |
-| Stipple repeat period of the MTE stipple mode (8 or 32 bits) | `docs/mte.md` | X, K | X: the stippled-fill senders and the pattern they build; L (NetBSD `crmfb`) |
-| Whether the engine treats `0x20d0` as non-global and `0x21f0` as global, as the kernel's save logic assumes; address-word bit 45 in the saved interface buffer | `docs/context.md` | K, S | S interface-buffer chapter; R for other kernel releases' save code |
-| What the engine does to a primitive begun when the context is switched mid-primitive | `docs/context.md` | K | The kernel switches only after an idle wait, so no shipped software reaches this state; after S is re-read, label unknown: no shipped software depends on it |
 | Whether pixel-transfer step registers count bytes or pixels; overlap of copy source and destination | `docs/pixel-transfer.md` | G, K | X copy paths (direction choice for overlapping copies); S |
 | Depth and blend arithmetic: precision and rounding of window z, of the 13.6 vertex field, and of the blend factors | `CRIME_RE.h`, `docs/rendering.md` | G, S | The software rasteriser in `libGLcore` (`so_*` span code) as the reference the hardware path was meant to match; then label unknown |
 | Hardware fog: the blend of fog colour and pixel colour, clamping of the 8.12 stepper, and state-word bits `0x8` and `0x10` | `docs/opengl.md` | G, S | The software fog path in `libGLcore` (`__glFogFragmentSlow`, `__glFogColorSlow`) as the intended formula; then label |
