@@ -93,7 +93,7 @@ Sources: `crime_kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitG
 
 ## Tile lists (`crmInitGbeData`, `crmLoadGbelists`)
 
-Established: the kernel keeps one 0x600-byte block per GBE with these parts:
+Established: the offsets, the 13-bit tile entry format and the pointer words below. Inferred (the decompiler's loops are ambiguous): which list belongs to which plane, and the interlaced split. The kernel keeps one 0x600-byte block per GBE with these parts:
 
 | Offset | Content | How built |
 |---|---|---|
@@ -102,7 +102,7 @@ Established: the kernel keeps one 0x600-byte block per GBE with these parts:
 | +0x0a0 | 64 entries, one per 4 bytes, each a copy of the same 13-bit tile number in the high halfword (the fourth tile of the colour-index chunk) | `crmInitGbeData` |
 | +0x120, +0x160 | contiguous 16-bit tile numbers, 13 bits each (`& 0x1fff`), from the overlay chunk, in two copies (the second copy starts at the half way tile row for interlaced or field-doubled modes) | both functions |
 | +0x200, +0x300 | contiguous 16-bit tile numbers from the frame buffer chunk, `ceil(width / (512 / bytes per pixel))` entries per row, in row-major order, the second list starting half way for interlaced modes | both functions |
-| +0x400, +0x500 | zero in the code read here | |
+| +0x400, +0x500 | not filled by the two functions read; whether another path fills them is unknown | |
 
 `crmLoadGbelists` rebuilds the frame and overlay lists after a mode change, copies 0x200 bytes of the overlay list into a kernel-supplied buffer, and then sets bit 0 in each of the seven pointer words. Inferred: bit 0 is the DMA-enable bit of the corresponding `*_CONTROL` register when the word is loaded there (GBE.h says `FRM_CONTROL` carries the pointer and enable); the kernel passes the words to `gbeStartVideoTiming` as the three control register values.
 
@@ -110,4 +110,4 @@ Established tile geometry: a frame-buffer tile row is 512 bytes wide, so a tile 
 
 ## Overlay and underlay planes
 
-Established: the overlay plane is an 8-bit plane described by `OVR_WIDTH_TILE`, `OVR_CONTROL` and its own tile list; the display-ID plane (`DID_CONTROL`) points at the 64-entry list above. IRIX allocates both through the colour-index chunk allocator (`crmAllocOverlayBuffer`, `crmAllocCid`): the allocator requests a 16-tile chunk for a `0x500`-sized surface, otherwise `(size + 127) / 128` tiles of the 8-bit kind. Unknown: the pixel-to-window-ID mapping (which overlay values select which table entry), underlay plane behaviour, and whether the overlay is composited above or below the frame buffer; no decoded code states either.
+Established: the overlay plane is an 8-bit plane described by `OVR_WIDTH_TILE`, `OVR_CONTROL` and its own tile list; the display-ID plane (`DID_CONTROL`) points at the 64-entry list above. Unknown: the pixel-to-window-ID mapping (which overlay values select which table entry), underlay plane behaviour, and whether the overlay is composited above or below the frame buffer; no decoded code states either.
