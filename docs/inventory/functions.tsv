@@ -4308,7 +4308,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9470	92	SGetPointerMappingR
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e94d0	184	SrvXkbFreeKeyboard	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9590	740	XdmcpOptions	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9880	1904	XkbHandleBell	dynsym	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9ff0	812	rrmEvent	dynsym	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9ff0	812	rrmEvent	dynsym	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea320	256	getArray..MNB	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea420	184	RecordFlushReplyBuffer..GIG	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea4e0	368	AccessCreatePixmap	dynsym	undocumented		
@@ -13987,9 +13987,9 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456a20	6636	miWideLine	dynsym	doc
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x458410	2916	nfbDoBitBltSP	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x458f80	1684	nfbGetSpans	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x459620	652	nfbCreateStereoGC	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4598b0	2708	crmValidateVisual	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45a350	4332	gbeLoadDispIDs	dynsym	documented	docs/gbe.md#window-id-type-and-colour-map-codes	Window ID type and colour-map codes
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b440	340	gbeLoadDIDTable	dynsym	documented	docs/gbe.md#window-id-type-and-colour-map-codes	Window ID type and colour-map codes
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4598b0	2708	crmValidateVisual	dynsym	documented	docs/gbe.md#how-a-window-gets-its-window-id-index	How a window gets its window-ID index
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45a350	4332	gbeLoadDispIDs	dynsym	documented	docs/gbe.md#how-the-did-plane-is-filled-crmso-gbeloaddispids	How the DID plane is filled (`crm.so` `gbeLoadDispIDs`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b440	340	gbeLoadDIDTable	dynsym	documented	docs/gbe.md#how-the-did-plane-is-filled-crmso-gbeloaddispids	How the DID plane is filled (`crm.so` `gbeLoadDispIDs`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b5a0	40	miRegionNotEmpty	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b5d0	1224	miRegionAppend	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45baa0	2884	miRegionValidate	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14089,9 +14089,9 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x483bf0	2240	mfbSolidWhiteArea	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4844b0	1044	mfbCopyRotatePixmap	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4848d0	4376	mfbTileAreaPPWGeneral	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4859f0	2312	nfbSolidPolyGlyphBlt	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486300	896	rrmOGLBindRNToClip	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486300	896	rrmOGLBindRNToClip	dynsym	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486680	80	crmInitWindowType	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4866d0	900	rrmDoubleBufferWindow	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4866d0	900	rrmDoubleBufferWindow	dynsym	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486a60	8	mfbUnrealizeFont	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486a70	336	cmapDID	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x486bc0	1296	rrmOGLUnbindRNFromClip	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
@@ -14110,7 +14110,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489d10	276	cfbAllocatePrivates	dy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489e30	300	cfb32AllocatePrivates	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489f60	304	cfb16AllocatePrivates	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48a090	436	crmKernInit	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48a250	5112	crmInit	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48a250	5112	crmInit	dynsym	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48b650	8	crmInitAllocator	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48b660	384	crmInitRootWindow	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48b7e0	3564	crmAttachXvc	dynsym	documented	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
@@ -14457,7 +14457,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x55e460	304	nfbPostChangeSaveUnder
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x55e590	532	nfbChangeSaveUnder	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x55e7b0	5052	StealID	dynsym	documented	docs/gbe.md#what-the-third-word-is	What the third word is
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x55fb70	1488	rrmUnbindRNFromClip	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560140	780	rrmBindRNToClip	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560140	780	rrmBindRNToClip	dynsym	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560450	28	sgiReleaseCapabilityUnsupported	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560470	28	sgiEnableCapabilityUnsupported	dynsym	documented	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560490	280	nfb0RopLoop..EG	dynsym	documented	docs/xmodule.md#sample-server-layers	Sample-server layers

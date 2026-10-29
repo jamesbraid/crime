@@ -85,6 +85,20 @@
 #define GBE_DID_INHWCTRL    0x40000
 #define GBE_DID_CONTROL     0x40004
 /*
+ * DID table, as IRIX 6.5.30 builds it [E, x crm.so gbeLoadDispIDs 0x45a350;
+ * docs/gbe.md pass 9]:
+ * one 64 KiB table per DID_CONTROL base. Frame table of 32-bit entries from
+ * byte 0 (blocks 0-15): yend 10:0 (last line of the band), offset 18:11
+ * (16-bit units), block 25:19 (512-byte block). Line tables packed in
+ * blocks 16-127, never crossing a block: entries did 15:11 | xend 10:0, one
+ * per run, sorted by xend; a visible line's last entry ends at the display
+ * width - 1, not 2047. A final band below the screen uses yend 2047 and one
+ * entry xend 2047 with the RG3B2 reserved window ID (index 5, or 6 on GBE
+ * revision >= 2). DID index = the window's slot in the 32-entry window-ID
+ * slot table; windows matching in key and in entry bits 10:2 (TYP, CM, GM)
+ * share a slot [E, x StealID; rrm record masks 0xffffffff and 0x7fc].
+ */
+/*
  * Base-address latching [E, k:crime_init:gbeStartVideoTiming+0x0..]:
  * after writing FRM_CONTROL and OVR_CONTROL the kernel polls
  * FRM_INHWCTRL bit 0 and OVR_INHWCTRL bit 0 until each equals the DMA

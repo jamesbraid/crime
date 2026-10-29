@@ -47,9 +47,9 @@ CRIME 1.5	7-3	165	RE	0x2048	Scissor	1	0	64	R/W	1	documented	docs/context.md#the-
 CRIME 1.5	7-3	165	RE	0x2050	WinOffset.src	1	0	32	R/W	1	documented	docs/memory.md#cpu-address-windows-and-aliases-pass-6	CPU address windows and aliases (pass 6)
 CRIME 1.5	7-3	165	RE	0x2058	WinOffset.dst	1	0	32	R/W	1	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
 CRIME 1.5	7-3	165	RE	0x2060	Primitive	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	0	0	32	W	1	documented	docs/gbe.md#display-id-plane-fill-the-remaining-unknowns	Display-ID plane fill, the remaining unknowns
-CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	documented	docs/gbe.md#display-id-plane-fill-the-remaining-unknowns	Display-ID plane fill, the remaining unknowns
-CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	2	4	32	W	1	documented	docs/gbe.md#display-id-plane-fill-the-remaining-unknowns	Display-ID plane fill, the remaining unknowns
+CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	0	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	2	4	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
 CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
 CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	documented	docs/opengl.md#one-flat-triangle	One flat triangle
@@ -94,7 +94,7 @@ CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	documented	docs/context.md#gl
 CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
 CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	documented	docs/gbe.md#how-the-did-plane-is-filled-crmso-gbeloaddispids	How the DID plane is filled (`crm.so` `gbeLoadDispIDs`)
+CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
 CRIME 1.5	7-3	169	RE	0x2194	Antialias.cov	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
 CRIME 1.5	7-3	169	RE	0x2198	AlphaTest	1	0	32	R/W	1	documented	CRIME_RE.h:440	AlphaTest (+0x2198) [E, spec PDF 180; __glCrmPassAlphaFunc]
 CRIME 1.5	7-3	169	RE	0x21a0	Blend.constColor	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)

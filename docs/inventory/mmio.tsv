@@ -26,10 +26,10 @@ GBE	0x0	CTRLSTAT	w4	1	1	gbeProbe	gbeProbe argument	usr/cpu/sysgen/IP32boot/crime
 GBE	0x4	DOTCLK	r4,w4	2	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	docs/gbe.md#kernel-timing-record	Kernel timing record
 GBE	0x14	DEVICE_ID	r4	1	1	gbeProbe	gbeProbe argument	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):gbeProbe	documented	docs/gbe.md#kernel-timing-record	Kernel timing record
 GBE	0x10000	VT_0	r4,w4	4	3	early_gbe_stop;gbeProbe;mvptransfer_stop_dma-0x87c	constant address;gbeProbe argument	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):gbeProbe	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE	0x20004	OVR_1	r4	5	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:79	Overlay, frame and DID planes
-GBE	0x20008	OVR_2	r4,w4	4	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:80	Overlay, frame and DID planes
+GBE	0x20004	OVR_1	r4	5	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:82	Overlay, frame and DID planes
+GBE	0x20008	OVR_2	r4,w4	4	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:83	Overlay, frame and DID planes
 GBE	0x30008	FRM_2	r4	5	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE	0x3000c	FRM_3	r4,w4	4	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:84	Overlay, frame and DID planes
+GBE	0x3000c	FRM_3	r4,w4	4	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	GBE.h:87	Overlay, frame and DID planes
 GBE	0x40000	DID	r4	5	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	docs/gbe.md#display-id-did-tables-gbe-spec-pp-15-16-44	Display-ID (DID) tables ([gbe-spec] pp. 15-16, 44)
 GBE	0x40004	DID_SHADOW	r4,w4	4	1	early_gbe_stop	constant address	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop	documented	docs/gbe.md#display-id-did-tables-gbe-spec-pp-15-16-44	Display-ID (DID) tables ([gbe-spec] pp. 15-16, 44)
 GBE	0x70000	CRS_0	w4	1	1	crime_tpinit	crimeBoards+4	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
