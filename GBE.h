@@ -161,6 +161,10 @@
  * line2) and is latched in CRIME, which software can only clear [E, rev 1.1
  * gbe-spec p.20]. IRIX programs line 1 at vblank start - 32 and line 0 at
  * vblank start + 4, wrapped at the frame total [E, k:crime_retrace:
- * gbeCacheVtInfo]. */
+ * gbeCacheVtInfo]. Lines 2 (VT_INTR23 23:12, CRIME input 18) and 3
+ * (11:0, input 19) belong to the kernel's high-level interrupt scheduler,
+ * which multiplexes per-frame line requests over them and parks an idle
+ * line at 0xfff [E, k:crime_retrace 0x2a64-0x316c, crime:crimeInterrupt;
+ * docs/gbe.md]. */
 
 #endif /* GBE_H */
