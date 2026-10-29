@@ -2,7 +2,7 @@ binary	group	role	kind	abi	bytes	sha256	copies	functions	access_sites	unresolved
 sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	21	0	documented	docs/gbe.md#pass-7-the-diagnostics-and-the-remaining-display-questions	Pass 7: the diagnostics and the remaining display questions
 sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	19	0	named-only	docs/open-questions.md#open-questions	Open questions
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0	0	0	documented	docs/gbe.md#video-timing-period	Video timing period
-usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
+usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	documented	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	documented	docs/functions.md#functions-by-role	Functions by role
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	documented	docs/functions.md#functions-by-role	Functions by role
@@ -56,7 +56,7 @@ usr/gfx/ucode/CRM/vof/640x480_60.vfo	video-formats	board-data	data	-	12416	39b35
 usr/gfx/ucode/CRM/vof/800x600_60.vfo	video-formats	board-data	data	-	12424	0d0ab781ff5cc464		0	0	0	undocumented		
 usr/gfx/ucode/CRM/vof/800x600_72.vfo	video-formats	board-data	data	-	12424	db28df16143bbd83		0	0	0	undocumented		
 usr/lib/X11/dyDDX/crm.so	x-module	board-x-module	shared-object	n32	1861396	4d5bf5d105b6afbb		840	0	0	documented	docs/gbe.md#stereo-format-files-and-the-conversion-to-the-kernel-record	Stereo format files and the conversion to the kernel record
-usr/lib/X11/dyDDX/glx.so	x-shared	shared-x-server	shared-object	n32	646360	ba330e08d1e52cb2		981	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence
+usr/lib/X11/dyDDX/glx.so	x-shared	shared-x-server	shared-object	n32	646360	ba330e08d1e52cb2		981	0	0	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/lib/dmedia/imageconverters/debug/vicedv.so	video-libraries	board-library	shared-object	o32	643984	ef3434452fe0e07e		95	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	video-libraries	board-library	shared-object	o32	136276	c0740542b572954e		64	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/lib/dmedia/imageconverters/debug/vicers.so	video-libraries	board-library	shared-object	o32	64972	16f3d67bc6b0a5f5		26	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
