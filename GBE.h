@@ -131,7 +131,7 @@
  * which is the X server's reading. Linux gbefb waits while cm_fifo >= 63,
  * which treats the same field as an occupancy count [E, linux gbefb.c];
  * Linux's reading disagrees with the specification and with IRIX, and its
- * behaviour on real silicon is [U] (capture listed in docs/captures.md).
+ * behaviour on real silicon is [U] (docs/open-questions.md).
  * Inferred: the six-bit field wraps at 64, so an empty FIFO on rev 1.1
  * reads 0, which is why revisions before 2 accept 0 and why the spec's
  * reset value is 0.

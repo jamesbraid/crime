@@ -41,7 +41,7 @@ Established differences from libGLcore: with flag bit 1 the kernel adds `0x1000`
 
 ## Unknown
 
-- Which GL entry points call the kernel pixel DMA request (libGLcore's `crm_pixel` uses its own path). Needs a capture: trace the graphics ioctls a GL program issues, with the ioctl number below, while it calls DrawPixels, ReadPixels and CopyPixels.
+- Settled: no GL entry point calls the kernel pixel DMA request; only the X module's image routines send it (`docs/ioctls.md`, senders).
 - What fields +0x10..+0x20 hold exactly (screen x and y, of source and destination, are likely).
 - Whether source and destination steps are counted in bytes or pixels in hardware (libGLcore: bytes, as the pixel size is its X step).
 - Overlap handling between a copy's source and destination.

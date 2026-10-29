@@ -157,8 +157,8 @@
  * holds until a commit; the kernel saves them on a context switch and the
  * write to +0x4008 discards them (resets the uncommitted part of the
  * interface buffer). Its use after TLB loads would then clear any partial
- * user state left behind the kernel's writes. A capture showing the status
- * pointers before and after a +0x4008 write would settle it [U].
+ * user state left behind the kernel's writes [U]; routes tried and the
+ * next one in docs/open-questions.md.
  */
 #define RE_IB_DISCARD           0x4008  /* [I] name */
 
@@ -394,8 +394,9 @@
  * Filter arithmetic: nothing in libGLcore, the X server or the kernel
  * computes texel weights for the hardware path; the driver only selects
  * filter codes, so the blend of the 2x2 (and between mipmap levels)
- * cannot be recovered from these binaries [U]. A capture of a magnified
- * two-texel texture would settle the weight precision and rounding.
+ * cannot be recovered from these binaries [U]. Next route: the software
+ * texture path in libGLcore as the intended arithmetic
+ * (docs/open-questions.md).
  *
  * Texel storage [E, gl:crm_texture, k:crime_tiles]:
  * - The kernel prepares a per-texture image of all 28 texture TLB

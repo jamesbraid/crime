@@ -201,7 +201,7 @@ Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), GBE
 
 ### The third WID word `0x3c0n`
 
-Pass 3 found no reader. Pass 4 (end of this file) settles what the word is: a software matching key that never reaches the hardware. The meaning of its bits stays unknown there, with the capture that would settle it.
+Pass 3 found no reader. Pass 4 (end of this file) settles what the word is: a software matching key that never reaches the hardware. The meaning of its bits stays open there, with the next route in `docs/open-questions.md`.
 
 ### Overlay and underlay compositing
 
@@ -229,7 +229,7 @@ Binaries: IRIX 6.5.30 `ddx/crm.so`, `ddx/Xsgi`, and the kernel `crime.o` decompi
 - Established (`crmInvalidate`, `crm.so` `0x45fb64..0x45fb78`): a window's slot is filled by `key = window[+0x20] ^ 4` and `value = window[+0x24]`.
 - Inferred: so the third word is the window's flag word (`+0x20`) in the form that a reserved slot expects, and the reserved slots gbeInit installs are pre-made entries that any window whose flags match under the mask may reuse for free. The pairing of the key's low two bits with pixel format (see the tables above) is then a property of those window flags, not of GBE.
 - Established: `0x3c0n` does not appear as an immediate anywhere else in `crm.so` or `Xsgi` (searched for `addiu ...,zero,0x3c0n` and `ori ...,0x3c0n`), so it is only ever compared through the masks, never tested by name.
-- Unknown: the meaning of the bits of window `+0x20` (the `0x3c` in bits 15:10 and the `n` field), and the two mask values. Needs a capture: dump the window records and the slot table header of a running X server (for example a core of `Xsgi` or a debugger read at `rrmInit` exit) with windows of each visual open.
+- Unknown: the meaning of the bits of window `+0x20` (the `0x3c` in bits 15:10 and the `n` field), and the two mask values. Both are set in software: the next route is `rrmInit` in `Xsgi` for the header masks and the writers of window private `+0x20` (`docs/open-questions.md`).
 
 ### Overlay and underlay
 
@@ -239,7 +239,7 @@ Binaries: IRIX 6.5.30 `ddx/crm.so`, `ddx/Xsgi`, and the kernel `crime.o` decompi
 
 ### Display-ID plane fill, the remaining unknowns
 
-- Unknown: how `gbeLoadDispIDs` (`crm.so` `0x45a350`) maps an X window to a window ID index. The routine is a long unrolled walk over clip-region rectangles (a first part at `0x45a3d8..0x45a700` only counts them and sizes a stack buffer); the selection of the index per window was not followed. Needs a capture: dump the DID tile list of a running system (`DID_CONTROL` pointer, one 512-byte slot per line) with two windows of different visuals side by side.
+- Unknown: how `gbeLoadDispIDs` (`crm.so` `0x45a350`) maps an X window to a window ID index. The routine is a long unrolled walk over clip-region rectangles (a first part at `0x45a3d8..0x45a700` only counts them and sizes a stack buffer); the selection of the index per window was not followed; finishing that reading is the next route (`docs/open-questions.md`).
 - Settled in pass 6 (rev 1.1 specification, field `xend`): the x in a DID entry is the end of a run. Earlier text: whether the x in a DID entry marks the start or the end of a run. The last entry of a line carries `width - 1` (established above), which fits an end-of-run reading (inferred), but no read code shows GBE's comparison. Needs the same capture, or a Linux/NetBSD-independent GBE datasheet, which this workspace does not have.
 
 # Pass 6: cross-read against the GBE specification and the remaining kernel globals
@@ -325,7 +325,7 @@ Established by reading `crime_retrace.o` (IRIX 6.5.30, `.text` 0x2a64-0x316c: `c
 - `crime_hli_unsched(board, id)` unlinks the request and frees it; when the chain of line 2 or 3 becomes empty it parks that field at `0xfff` (ORs `0xfff000` or `0xfff` into the copy and writes `VT_INTR23`). It returns 6 for an unknown id. `crime_hli_update(board, id, line, span)` unlinks a request, stores the new line and span and schedules it again; as written it never matches a request that is alone on its chain (it skips chains whose head has no successor), and returns 6 then.
 - No object in this workspace calls `crime_hli_sched`, `crime_hli_unsched` or `crime_hli_update` (an `nm` scan of every object and archive under `root/` finds them only as definitions); they are exported for kernel modules that are not part of the graphics files listed in IRIX_FILES.md. Which modules use them, and with which lines, is outside this workspace, not a hardware question. With no caller, a stock graphics session leaves lines 2 and 3 at `0xfff`.
 
-Unknown, with a capture listed: whether a line interrupt can fire twice for one `vt_y` match when the line is reprogrammed past the beam.
+Unknown, listed in `docs/open-questions.md`: whether a line interrupt can fire twice for one `vt_y` match when the line is reprogrammed past the beam.
 
 ## Kernel globals behind the timing code (`crime_init.o` symbols and relocations)
 
@@ -337,4 +337,4 @@ The decompiler prints every global-pointer-relative load as the same name; resol
 
 ## What remains unknown for the display back end
 
-Every item below is listed with its capture in [captures.md](captures.md): the colour-map FIFO reading on real silicon; later-revision reset values and the 6144-entry map; the DID table layout the X module produces and why `xend` is `width - 1`; the GBE address window for low memory; the frame period against `VT_XYMAX`; the meaning of the board strap codes and of `crm_dc_board_installed`; the third window-ID word (settled as a software key, bits unknown); the video-capture block (`VC_*`), which IRIX never touches in the files read.
+Every item below is listed with its routes in [open-questions.md](open-questions.md): the colour-map FIFO reading on real silicon; later-revision reset values and the 6144-entry map; the DID table layout the X module produces and why `xend` is `width - 1`; the GBE address window for low memory; the frame period against `VT_XYMAX`; the meaning of the board strap codes and of `crm_dc_board_installed`; the third window-ID word (settled as a software key, bits unknown); the video-capture block (`VC_*`), which IRIX never touches in the files read.

@@ -45,7 +45,8 @@
  * so if any 1.5 part shipped, IRIX 6.5.30 could not drive its graphics.
  * NetBSD names family 0xA "1.1", "1.3" or "1.4" by the upper 32 bits of the
  * register and family 0xB "1.5" [netbsd crime.c crime_attach]; this
- * repository has no capture showing which value a given O2 returns [U].
+ * repository has found no shipped software or published output showing
+ * which value a given O2 returns [U] (docs/open-questions.md).
  */
 #define CRIME_ID_FAMILY_SHIPPED 0xa0        /* [I] */
 #define CRIME_ID_REJECTED_EARLY 0xa0        /* [E] refused by crimeProbe */

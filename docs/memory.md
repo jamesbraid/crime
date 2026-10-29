@@ -29,7 +29,7 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 - Established (specification PDF 47–48): physical `0x80000000` is a 1 GiB no-ECC alias of memory, provided so that the CPU can read memory the rendering engine wrote without ECC errors. Frame `0x80000` is that alias, so a tile number with bit 15 set names a tile through the alias.
 - Established (`crmMapChunk`): the CPU mapping of a tile entry v is page frames `v << 4` onward, so bit 15 of the entry becomes physical address bit 31 for CPU access.
 - Established (`crm_get_dms_tiles`, `crmDefineTex`): imported video tiles and every texture TLB entry are ORed with `0x8000` explicitly.
-- Inferred: IRIX keeps renderer tiles in the no-ECC alias and bit 15 of a tile entry is physical address bit 31, which also fits NetBSD setting `0x8000` on every programmed tile. Whether the frame-buffer allocation takes the alias branch (the attribute `crmAllocTiles` passes was not decoded) and whether hardware also treats the bit as a validity mark are unknown; a capture of the frame-buffer TLB words of a running IRIX desktop would settle the first.
+- Inferred: IRIX keeps renderer tiles in the no-ECC alias and bit 15 of a tile entry is physical address bit 31, which also fits NetBSD setting `0x8000` on every programmed tile. Whether the frame-buffer allocation takes the alias branch (the attribute `crmAllocTiles` passes was not decoded) and whether hardware also treats the bit as a validity mark are unknown; the first is a software question, next route: the attribute `crmAllocTiles` receives from its callers (`docs/open-questions.md`).
 - What a TLB miss or an out-of-range tile index does (the kernel never provokes one).
 - The exact rule for the texture level start table.
 
@@ -116,7 +116,7 @@ The CPU interface decodes a 40-bit physical address (established, PDF 47); the s
 - No graphics kernel object (`crime`, `crime_init`, `crime_tiles`, `crime_dma`, `crime_retrace`, `crime_tp`, `crime_zbuf`, `rrm`, `gfx`) builds an address in the frame buffer or depth buffer apertures: a search of every `lui` and `ori`/`li` that could build `0x1000_0000`, `0x1200_0000` or their KSEG variants finds only status-bit masks (`0x1000_0000` is the engine idle bit). Inferred: IRIX renders and scans out through the rendering TLB and tile lists only, and never reads or writes pixels through the apertures. A user client's mapping is the kernel shadow record and the engine register pages, not the apertures (`crimeMapGfx` maps pages of kernel memory, [docs/ioctls.md](ioctls.md)).
 - Tile lists use physical 64 KiB tile numbers (low memory only in practice: the GBE list entry mask is 13 bits, `crmLoadGbelists`). The texture, frame buffer and colour-index TLB entries carry bit 15 for the no-ECC alias as above.
 
-## Unknown (each listed in `docs/captures.md`)
+## Unknown (each listed with its routes in `docs/open-questions.md`)
 
 - The aperture addressing rule and which TLB serves it; whether stores through the aperture write the same bytes the engine would.
 - Which device answers the high alias (the specification's table has a question mark) and whether the high alias is exactly the upper 512 MiB of the full window.
