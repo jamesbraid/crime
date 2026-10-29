@@ -31,7 +31,7 @@ Inferred: the hardware uses only the low 17 bits of the linear address, so the a
 
 ## Kernel pixel DMA
 
-Established (`crimePixelDma`, `crmpixdma`): a separate graphics ioctl takes a 0x28-byte request and performs the same transfer inside the kernel. Fields (byte offsets, from the code that reads them): +0x00 user address; +0x04 row stride in bytes (must be at least the width); +0x08 row width in bytes (at most 0x2000); +0x0c rows (at most 0x800); +0x10, +0x14, +0x18, +0x1c four coordinates; +0x20 a further offset used with flag 2; +0x24 pixel size in bytes; +0x25 flags. The kernel rejects a request whose total span exceeds 0x180000 bytes, or whose fields are out of range, with `EINVAL` (22).
+Established (`crimePixelDma`, `crmpixdma`; the ioctl number is `0x55f2`, read from the kernel's ioctl dispatch in `crime.c`: below `0x55f3` and not the cursor-position request `0x55f1`, with the 0x28-byte `copyin` that precedes the call; inferred from the order of the dispatch tests, since the code carries no table of request names): a separate graphics ioctl takes a 0x28-byte request and performs the same transfer inside the kernel. Fields (byte offsets, from the code that reads them): +0x00 user address; +0x04 row stride in bytes (must be at least the width); +0x08 row width in bytes (at most 0x2000); +0x0c rows (at most 0x800); +0x10, +0x14, +0x18, +0x1c four coordinates; +0x20 a further offset used with flag 2; +0x24 pixel size in bytes; +0x25 flags. The kernel rejects a request whose total span exceeds 0x180000 bytes, or whose fields are out of range, with `EINVAL` (22).
 
 Flags in +0x25: bit 0 means rows are walked bottom to top (the start address is the last row); bit 1 means use the GL vertex registers; bit 2 selects linear TLB A, else B; bit 3 means the hardware reads user memory (upload) and the source address is written to `+0x20a0`, otherwise the destination address goes to `+0x20b0` (download) and `+0x20a0` carries the screen coordinates.
 
@@ -41,7 +41,7 @@ Established differences from libGLcore: with flag bit 1 the kernel adds `0x1000`
 
 ## Unknown
 
-- The ioctl number of the kernel pixel DMA request, and which GL entry points call it (libGLcore's `crm_pixel` uses its own path).
+- Which GL entry points call the kernel pixel DMA request (libGLcore's `crm_pixel` uses its own path). Needs a capture: trace the graphics ioctls a GL program issues, with the ioctl number below, while it calls DrawPixels, ReadPixels and CopyPixels.
 - What fields +0x10..+0x20 hold exactly (screen x and y, of source and destination, are likely).
 - Whether source and destination steps are counted in bytes or pixels in hardware (libGLcore: bytes, as the pixel size is its X step).
 - Overlap handling between a copy's source and destination.
