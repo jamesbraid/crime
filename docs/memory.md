@@ -21,7 +21,15 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 
 ## Unknown
 
-- Whether bit 15 of a frame-buffer or CID TLB entry means anything to the hardware, and what the engine does on an access through an entry whose bit is clear. The CRIME 1.5 specification text read so far does not settle it.
+- What the engine does on an access through an entry whose bit 15 is clear. The specification (PDF 137) says only that the memory controller deasserts every bank select for a request the renderer marks as made through an invalid TLB entry; it does not say which entry bit marks validity.
+
+## Bit 15 and the no-ECC alias (pass 3)
+
+- Established (`os.a` member `tile.o`, `tile_alloc` offsets `0x9a4`–`0x9bc` and `0xa5c`–`0xa6c`): the base kernel's tile allocator returns each frame either unchanged or ORed with `0x80000`, chosen by a page attribute, and indexes its own tile table with `(frame >> 4) & 0x0fff7fff`, that is with bit 15 of the tile number masked off.
+- Established (specification PDF 47–48): physical `0x80000000` is a 1 GiB no-ECC alias of memory, provided so that the CPU can read memory the rendering engine wrote without ECC errors. Frame `0x80000` is that alias, so a tile number with bit 15 set names a tile through the alias.
+- Established (`crmMapChunk`): the CPU mapping of a tile entry v is page frames `v << 4` onward, so bit 15 of the entry becomes physical address bit 31 for CPU access.
+- Established (`crm_get_dms_tiles`, `crmDefineTex`): imported video tiles and every texture TLB entry are ORed with `0x8000` explicitly.
+- Inferred: IRIX keeps renderer tiles in the no-ECC alias and bit 15 of a tile entry is physical address bit 31, which also fits NetBSD setting `0x8000` on every programmed tile. Whether the frame-buffer allocation takes the alias branch (the attribute `crmAllocTiles` passes was not decoded) and whether hardware also treats the bit as a validity mark are unknown; a capture of the frame-buffer TLB words of a running IRIX desktop would settle the first.
 - What a TLB miss or an out-of-range tile index does (the kernel never provokes one).
 - The exact rule for the texture level start table.
 
