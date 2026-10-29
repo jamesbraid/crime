@@ -26,14 +26,14 @@ Rasterizer, pixel pipeline, texture and depth, fed by the host through the rende
 
 | Area | Status | Owner | Datasheet topic | Seed |
 |---|---|---|---|---|
-| Registers and fields | partial | `CRM_RE.h`, `docs/rendering.md` | rendering engine | group bases (translation, pixel state, memory transfer, status) and the NetBSD start alias from public sources; individual registers beyond the groups not yet mapped |
-| Command and FIFO formats | partial | `CRM_RE.h`, `docs/rendering.md` | rendering engine | start-alias snapshot, in-order execution, flush semantics; 9.12 RGBA stepper format; FIFO depth conflict (128 against 64) |
-| DMA | none | `CRM_RE.h`, `docs/rendering.md` | rendering engine |  |
-| Interrupts | partial | `CRM_RE.h`, `docs/rendering.md` | rendering engine | FIFO threshold stall and interrupt; numbering conflict unresolved |
-| Reset | none | `CRM_RE.h`, `docs/rendering.md` | rendering engine |  |
-| Context save and restore | none | `CRM_RE.h`, `docs/rendering.md` | rendering engine |  |
-| Texture formats and filtering (incl. precision) | none | `CRM_RE.h`, `docs/rendering.md` | rendering engine | specification text is explicitly unfinished here |
-| Depth and pixel arithmetic | none | `CRM_RE.h`, `docs/rendering.md` | rendering engine |  |
+| Registers and fields | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | group bases (translation, pixel state, memory transfer, status) and the NetBSD start alias from public sources; individual registers beyond the groups not yet mapped. Found: full map from the specification plus driver-derived DrawMode, Primitive, Texture.mode/format, AlphaTest, LogicOp, Depth.func and Stencil.mode encodings in `CRIME_RE.h`; DrawMode bits 8 and 9 swapped against the specification |
+| Command and FIFO formats | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | start-alias snapshot, in-order execution, flush semantics; 9.12 RGBA stepper format; FIFO depth conflict (128 against 64). Found: start alias commits through any register; IntfBuf control layout and IRIX thresholds; FIFO depth 64 inferred from the kernel overflow check; libGLcore never reads the level |
+| DMA | none | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found:  |
+| Interrupts | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | FIFO threshold stall and interrupt; numbering conflict unresolved. Found: IRIX registers inputs 25 (empty level) and 26 (full level); handler protocol in `CRIME_RE.h` |
+| Reset | none | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found:  |
+| Context save and restore | none | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found:  |
+| Texture formats and filtering (incl. precision) | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | specification text is explicitly unfinished here. Found: mode fields and filter codes match the specification; wrap codes do not (border clamp sent as 1); format word gives 4 sub-texel bits and a 1024 maximum (inferred); filter arithmetic unknown |
+| Depth and pixel arithmetic | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found: vertex float-bias encoding, 9.12 colour scale 4096, depth scale 64, stencil and depth-function words; window-z range and blend arithmetic unread |
 
 ### MTE
 
@@ -56,7 +56,7 @@ The CPU interface, ECC memory controller, rendering TLB and interrupt controller
 |---|---|---|---|---|
 | CPU windows and aliases | partial | `CRIME.h`, `docs/memory.md` | memory controller | low, high, full and no-ECC aliases, frame and depth apertures, GBE DMA window from public sources |
 | Registers and fields | partial | `CRIME.h`, `docs/memory.md` | memory controller | ID, control and error-status offsets, eight bank controls, 64-bit access rule; shipped revision unknown. Found: ID accepted by IRIX 6.5.30 is family 0xA, revision non-zero; 0xb1 would be refused (`CRIME.h`) |
-| Rendering TLB | none | `CRM_RE.h`, `docs/memory.md` | memory controller | translation group at +0x1000 of the rendering window; entry format and tile mapping not read |
+| Rendering TLB | partial | `CRIME_RE.h`, `docs/memory.md` | memory controller | translation group at +0x1000 of the rendering window; entry format and tile mapping not read. Found: frame-buffer TLB packs four 16-bit tile numbers per register, linear TLB two 32-bit entries with valid bit 31 (`CRIME_RE.h`) |
 | Interrupts | partial | `CRIME.h`, `docs/memory.md` | memory controller | GBE sources route to inputs 16-19; rendering and memory-error numbering conflicts open. Found: IRIX vectors 16-19 (GBE), 25, 26; GBE acks clear bits in +0x028; memory and CPU error vectors are in the base kernel, not held here (`CRIME.h`) |
 | Reset | partial | `CRIME.h`, `docs/memory.md` | memory controller | control register reset bits and watchdog behaviour differ between revisions |
 | ECC and error reporting | none | `CRIME.h`, `docs/memory.md` | memory controller | no-ECC alias semantics only; error injection and status decode unknown |
@@ -82,8 +82,8 @@ The OpenGL driver's software transform and lighting and its emission of renderin
 
 | Area | Status | Owner | Datasheet topic | Seed |
 |---|---|---|---|---|
-| Command and FIFO formats | none | `CRM_RE.h`, `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | none yet; file layout and DWARF status of the O2 libGLcore unverified |
+| Command and FIFO formats | none | `CRIME_RE.h`, `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | none yet; file layout and DWARF status of the O2 libGLcore unverified. Found: none yet; file layout and DWARF status of the O2 libGLcore unverified |
 | Software transform and lighting | none | `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | CRIME has no geometry engine, so the host path owns this |
 | Context save and restore | none | `crime_kernel/include/crime_kern.h`, `docs/opengl.md` | command grammar | how the kernel shares the engine among clients unknown |
-| Texture formats and filtering (incl. precision) | none | `CRM_RE.h`, `docs/opengl.md` | command grammar |  |
+| Texture formats and filtering (incl. precision) | none | `CRIME_RE.h`, `docs/opengl.md` | command grammar | Found:  |
 | Display and scanout | none | `GBE.h`, `ddx/include/crime_ddx.h`, `docs/opengl.md` | command grammar | mode set and overlay programming by the X module unknown |

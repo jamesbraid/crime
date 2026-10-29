@@ -65,10 +65,10 @@ Other public sources in this repository:
 
 Our primary output is a set of C header files at the repository root, one per chip or block, in the style of gr2 and gr4. **The code is the document.** Each header holds register offsets and fields, packet and token formats, state machines and constants, with a comment on every definition saying how it was derived and whether it is established, inferred or unknown.
 
-Planned headers (none written yet; `docs/coverage.md` tracks each):
+Planned headers (`docs/coverage.md` tracks each):
 
 1. **`CRIME.h`**: address map, CPU interface, memory controller, interrupts, ID and reset.
-2. **`CRM_RE.h`**: rendering engine registers, primitive and pixel state, FIFO, TLB, texture.
+2. **`CRIME_RE.h`**: rendering engine registers, primitive and pixel state, FIFO, TLB, texture.
 3. **`MTE.h`**: the memory transfer engine.
 4. **`GBE.h`**: display back end registers, tiles, overlay, cursor, colormap, timing.
 
