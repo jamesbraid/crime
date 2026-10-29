@@ -267,3 +267,54 @@ Constant stores the inventory found without a documented meaning, decoded with t
 - `0x21f0` (PixPipeNull) = `0x0` through the start alias in `__glCrmFlatTriangle`: a commit that changes no state, used when the last parameter written does not itself go through the alias.
 
 `+0x2134`, between Texture.Qs (`+0x2130`) and Texture.dsqdx (`+0x2138`), is not in the specification's table, which skips from `0x130` to `0x138`. Established (`__glCrmFillTriangle`, N32 `crm_astextri.s` lines 960-1135): libGLcore computes two flags per textured triangle, one for s and one for t, each set by a range test on that coordinate's vertex values (comparisons against 7.0, and against 15.0 on the `GL_REPEAT` (`0x2901`) path after subtracting the floor of the minimum; the exact bounds per wrap mode were not traced); it writes `s_flag | t_flag << 1` to `+0x2134`, and scales the start and slope values of a flagged coordinate by 2^39 instead of 2^43 (the float constants `0x53000000` and `0x55000000`). Inferred: bit 0 and bit 1 tell the engine that the s or t steppers carry four fewer fraction bits, extending their range sixteen-fold. The register is a texture-coordinate shift control; the engine's use of it beyond that is unknown: no shipped software or published source depends on more.
+
+## Constant words by register
+
+Every constant word the inventory finds stored to a rendering or transfer-engine register, one row each, with the routine that stores it and what the word selects. Offsets are from the rendering window `0x15000000`. The readings use the field tables of the specification and the bit names in `CRIME_RE.h`; the sections above give the sequences around each store.
+
+| Register | Word | Stored by | What it selects | Label |
+|---|---|---|---|---|
+| `+0x2000` | `0x504` | `crmSwapBufd` in `crime_retrace.o` | BufMode.src for a 16-bit screen: tiled source through TLB B, 16-bit words, colour-index pixels | established |
+| `+0x2000` | `0x628` | `crmSwapBufd` in `crime_retrace.o` | BufMode.src for a 32-bit screen: tiled source through TLB B, 32-bit words, RGBA pixels | established |
+| `+0x2000` | `0x1228` | `__glCrmUpdatePolyStipple` in the o32 `libGLcore.so` | BufMode.src: the stipple pattern is read from host memory through linear TLB A as 32-bit RGBA pixels | established |
+| `+0x2008` | `0x104` | `crmSwapBufd` in `crime_retrace.o` | BufMode.dst for a 16-bit screen: the same format written through TLB A | established |
+| `+0x2008` | `0x228` | `crmSwapBufd` in `crime_retrace.o` | BufMode.dst for a 32-bit screen: the same format written through TLB A | established |
+| `+0x2010` | `0x0` | `crmSwapBufd` in `crime_retrace.o` | ClipMode with the clip-ID and all five screen-mask tests off, because the swap boxes are already clipped | established |
+| `+0x2010` | `0x800` | `crmSetSmask` in `crm.so` | ClipMode with only the clip-ID test on, used when the window is clipped by the clip-ID plane | established |
+| `+0x2010` | `0xc00` | `crmSetSmask` in `crm.so` | ClipMode with the clip-ID test on and the second clip-ID map selected | established |
+| `+0x2018` | `0x200278` | `crmSwapBufd` in `crime_retrace.o` | DrawMode for the swap copy: pixel transfer (bit 21), logic op enabled (bit 9) and all four pixel bytes written (bits 6:3) | established |
+| `+0x2018` | `0x400007` | `__glCrmEnableDepthTest` in the o32 `libGLcore.so` | DrawMode in GL mode with depth test, depth write and stencil test and no colour writes, a depth-and-stencil-only pass | established |
+| `+0x2018` | `0x600040` | `__glCrmUpdatePolyStipple` in `libGLcore.so` | DrawMode in GL mode with pixel transfer that writes byte 3 only, which uploads the stipple pattern into the stencil byte | established |
+| `+0x2018` | `0x600078` | `crmReadPixelsXfer` in `libGLcore.so` | DrawMode for a read-back: GL mode, pixel transfer and all four pixel bytes enabled | established |
+| `+0x2050` | `0x0` | `crmSwapBufd` in `crime_retrace.o` | WinOffset.src cleared, because the swap boxes are already in frame-buffer coordinates | established |
+| `+0x2058` | `0x0` | `crmSwapBufd` in `crime_retrace.o` | WinOffset.dst cleared for the same reason as the source offset | established |
+| `+0x2060` | `0x3020000` | `crmSwapBufd` in `crime_retrace.o` | Primitive: a rectangle with edge type 2, drawn for the edge pieces of every swap box | established |
+| `+0x20a8` | `0x1` | `crmReadPixelsXfer` in `libGLcore.so` | pixel-transfer source X step of one pixel, because a read-back walks the frame buffer by screen position | established |
+| `+0x20a8` | `0x4` | `__glCrmUpdatePolyStipple` in the o32 `libGLcore.so` | pixel-transfer source X step of four bytes, one 32-bit pattern pixel in host memory | inferred from the step rule in pixel-transfer.md |
+| `+0x20ac` | `0x1` | `crmReadPixelsXfer` in `libGLcore.so` | pixel-transfer source Y step of one row, the frame-buffer walk of a read-back | established |
+| `+0x20ac` | `0x4` | `__glCrmUpdatePolyStipple` in the o32 `libGLcore.so` | pixel-transfer source Y step equal to the pixel size, so the pattern rows lie back to back with no gap | inferred from the step rule in pixel-transfer.md |
+| `+0x20c0` | `0x1f0000` | `__glCrmDumpStippledFlatSpan` in the o32 `libGLcore.so` | Stipple.mode with start index 0, maximum index 31 and no repeat, so all 32 pattern rows are used in turn (spec table 7-12) | established |
+| `+0x20f0` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Shade.drdx and dgdx (one 64-bit store) cleared for the minor axis, or for both axes when the line is flat or its end colours match | established |
+| `+0x20f8` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Shade.drdy and dgdy (one 64-bit store) cleared under the same rule as the x slopes of red and green | established |
+| `+0x2100` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Shade.dbdx and dadx (one 64-bit store) cleared under the same minor-axis rule as red and green | established |
+| `+0x2104` | `0x0` | `__glCrmSmoothCILine` in `libGLcore.so` | Shade.dadx cleared: the colour-index line carries no alpha gradient | established |
+| `+0x2108` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Shade.dbdy and dady (one 64-bit store) cleared under the same minor-axis rule as red and green | established |
+| `+0x210c` | `0x0` | `__glCrmDepthLine` in `libGLcore.so` | Shade.dady cleared: lines carry no alpha gradient across their minor axis | established |
+| `+0x2134` | `0x0` | `__glCrmPolygonOffsetPoint` in `libGLcore.so` | the texture-coordinate shift flags cleared for a point, which keeps the full fraction precision | inferred from the flag reading in this chapter |
+| `+0x2158` | `0x0` | `__glCrmVertexPointFast` in the o32 `libGLcore.so` | Texture.dqdx cleared: a point has no gradient, so it takes its vertex start values | established |
+| `+0x215c` | `0x0` | `__glCrmVertexPointFast` in the o32 `libGLcore.so` | Texture.dqdy cleared for the same reason as the x slope of a point | established |
+| `+0x2178` | `0xff000` | `__glCrmRenderCheapFogLine` in `libGLcore.so` | Fog.Fs of 255 in the 8.12 form, which the fog stage turns into a factor of exactly one and leaves the pre-fogged colour as it is | established |
+| `+0x2180` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Fog.dfdx cleared for the minor axis of a line; the major axis carries the fog change | established |
+| `+0x2188` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Fog.dfdy cleared for the minor axis of a line; the major axis carries the fog change | established |
+| `+0x21b0` | `0x3` | `crmSwapBufd` in `crime_retrace.o` | LogicOp code 3, the copy operation, so the swap writes source pixels unchanged | established |
+| `+0x21d0` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Depth.dzdx cleared for the minor axis of a line; the major axis carries the depth change | established |
+| `+0x21d8` | `0x0` | `__glCrmAntiAliasLineRGB` in `libGLcore.so` | Depth.dzdy cleared for the minor axis of a line; the major axis carries the depth change | established |
+| `+0x21e8` | `0x0` | `__glCrmInitStencil` in `libGLcore.so` | Stencil.mask cleared at initialisation, so no stencil bit is written until GL enables it | established |
+| `+0x21e8` | `0xff` | `__glCrmEnableDepthTest` in `libGLcore.so` | Stencil.mask with all eight stencil bits writable in the depth-and-stencil pass | established |
+| `+0x21f0` | `0x0` | `crime_load_linear_tlb` in `crime_dma.o` | PixPipeNull written through the start alias, a commit that changes no state after a TLB load | established |
+| `+0x21f8` | `0x0` | `crm_copy_swap_boxes` in `crime_retrace.o` | PixPipeFlush after the edge copies of a swap box, before the next box starts | established |
+| `+0x3000` | `0x820` | `crmSwapBufd` in `crime_retrace.o` | MTE.mode: copy, source through TLB B and destination through TLB A, the same word the X server uses | established |
+| `+0x3008` | `0xffffffff` | `crmSwapBufd` in `crime_retrace.o` | MTE.byteMask with every byte enabled, so the copy moves whole words | established |
+| `+0x3040` | `0x1` | `crmSwapBufd` in `crime_retrace.o` | MTE source Y step of one line, a plain top-to-bottom copy | established |
+| `+0x3048` | `0x1` | `crmSwapBufd` in `crime_retrace.o` | MTE destination Y step of one line, matching the source step | established |
+| `+0x3078` | `0x0` | `crime_clear_buffer` in `crime_dma.o` | MTE.flush after the last rectangle of a kernel buffer clear, before the idle wait | established |
