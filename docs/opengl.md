@@ -32,7 +32,6 @@ The thresholds differ by CPU module: 20 for R10000-family and RM7000 modules, 48
 
 ## Open
 
-- Which low bits of the biased vertex floats the rasteriser reads (unknown).
-- The window-z range behind the depth scale of 64 (unknown).
+- The rasteriser reads at most vertex bits 17:0 (inferred from the integer clear path; see `CRIME_RE.h`), and window z spans 0 to 0x3fffffff, giving a 24-bit depth with 12 fraction bits in the register (inferred). Both still want a capture to confirm.
 - Fog factor and antialiasing set-up (`crm_ctri`, `crm_aalineasm`) are not read yet.
-- Texture download path: `crmSubtileTexels`, `crmTileTexels` and the texture TLB loader `crmLoadTexTlb` in the kernel are not read yet.
+- Texture download: texels are CPU stores into kernel-mapped tiles and the texture TLB is reloaded whole on bind (see `CRIME_RE.h`); the per-format table that picks subtiling is not decoded.
