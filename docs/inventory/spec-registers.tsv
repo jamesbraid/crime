@@ -106,7 +106,7 @@ CRIME 1.5	7-3	169	RE	0x21c8	Depth.Zs	1	0	64	W	1	documented	docs/pixel-arithmetic
 CRIME 1.5	7-3	169	RE	0x21d0	Depth.dzdx	1	0	64	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
 CRIME 1.5	7-3	169	RE	0x21d8	Depth.dzdy	1	0	64	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
 CRIME 1.5	7-3	169	RE	0x21e0	Stencil.mode	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	170	RE	0x21e8	Stencil.mask	1	0	32	R/W	1	documented	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
+CRIME 1.5	7-3	170	RE	0x21e8	Stencil.mask	1	0	32	R/W	1	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
 CRIME 1.5	7-3	170	RE	0x21f0	PixPipeNull	1	0	32	W	1	documented	docs/context.md#the-shadow-record	The shadow record
 CRIME 1.5	7-3	170	RE	0x21f8	PixPipeFlush	1	0	32	W	1	documented	docs/mte.md#copy-sequence-in-the-x-server	Copy sequence in the X server
 CRIME 1.5	7-15	183	RE	0x3000	MTE.mode	1	0	32	R/W	1	documented	docs/context.md#the-shadow-record	The shadow record

@@ -317,7 +317,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023850	140	_munge_decc	dwa
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00238dc	96	_read_tag	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002393c	88	_write_tag	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023994	108	FlushAllCaches	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023994	108	flush_cache	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023994	108	flush_cache	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023a00	196	invalidate_sc_page	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023ac4	132	invalidate_sc_line	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023b48	108	invalidate_caches	dwarf+symtab	undocumented		
@@ -359,7 +359,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024924	56	_init_signals	dw
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002495c	96	Signal	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00249bc	28	sigdefault	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00249d8	8	sigignore	dwarf+funcnames	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00249e0	60	psignal	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00249e0	60	psignal	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a1c	44	issig	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a48	72	psig	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a90	76	ffs	dwarf+symtab	undocumented		
@@ -467,7 +467,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028004	36	ip32_set_cpuled	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028028	48	is_protected_adrs	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028058	300	flash_getversion	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028184	36	init_pci	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00281a8	52	delay	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00281a8	52	delay	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00281dc	64	cpufreq	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002821c	16	setup_idarr	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002822c	120	generic_intr_func	dwarf+funcnames	undocumented		
@@ -625,7 +625,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c46c	28	atohex_ptr	dwarf
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c488	880	strtoull	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca18	40	iscloseonexec	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca40	1384	bcopy	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002cfa8	216	bzero	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002cfa8	216	bzero	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d080	288	bcmp	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d1a0	120	_cksum1	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d218	24	nuxi_s	dwarf+symtab	undocumented		
@@ -653,7 +653,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e5bc	100	putstr	dwarf+fu
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e620	348	printf	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e77c	324	vprintf	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e8c0	96	poke	dwarf+funcnames	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e920	148	sprintf	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e920	148	sprintf	dwarf+symtab	documented	docs/functions.md#boards	Boards
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e9b4	12	_init_ttyputc	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e9c0	360	ttyprintf	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002eb28	336	vttyprintf	dwarf+symtab	undocumented		
@@ -716,22 +716,22 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00310b4	140	addlarge	dwarf+
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031140	56	addulongtolarge	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031178	28	longtolarge	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031194	12	ulongtolarge	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	cpsema	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	cpsema	symtab	documented	docs/functions.md#panes	Panes
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	dma_mapbp	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	dummy_func	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	freesema	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_sema	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_spinlock	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	freesema	symtab	documented	docs/functions.md#device-entry-points	Device entry points
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_sema	symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_spinlock	symtab	documented	docs/functions.md#device-entry-points	Device entry points
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	initnsema	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	makesname	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	preemptchk	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	documented	docs/functions.md#process-hooks	Process hooks
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl0	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl5	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl7	symtab	documented	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splhi	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splhi	symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splimp	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splx	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splx	symtab	documented	docs/functions.md#lookup-tables	Lookup tables
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spsema	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svpsema	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svsema	symtab	undocumented		
@@ -739,7 +739,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	timeout	symtab	do
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	untimeout	symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	vsema	symtab	documented	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a8	8	suser	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311b0	8	cvsema	dwarf+symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311b0	8	cvsema	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311b8	164	init_rb	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa003125c	56	create_rb	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031294	72	rbsetbs	dwarf+symtab	undocumented		
@@ -1025,120 +1025,120 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0x0	252	crmAd
 usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0xfc	220	crmSubtractBackTiles	dwarf+symtab	documented	docs/functions.md#depth-and-back-buffer-tile-accounting-crime_zbufo-crime_dbo	Depth and back-buffer tile accounting (`crime_zbuf.o`, `crime_db.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x0	56	crmIsGlobalRegWrite	dwarf+symtab	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x38	296	crmFindPP	dwarf+symtab	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	documented	docs/functions.md#device-entry-points	Device entry points
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	documented	docs/functions.md#graphics-device-layer-gfxo	Graphics device layer (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	documented	docs/functions.md#device-entry-points	Device entry points
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	documented	docs/functions.md#graphics-device-layer-gfxo	Graphics device layer (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	documented	docs/functions.md#locks-on-the-device-list	Locks on the device list
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	documented	docs/functions.md#boards	Boards
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x0	512	VEC_int	dwarf+symtab	documented	docs/memory.md#interrupt-controller-as-irix-6530-drives-it	Interrupt controller as IRIX 6.5.30 drives it
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x84	280	tfp_special_int_exit	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19c	100	kpreemption	symtab	undocumented		
@@ -1261,7 +1261,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3030	64	flash_set_nvr
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3070	48	prom_does_eccinit	dwarf+symtab	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x30a0	248	flash_sync_globals	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3198	160	dump_nvram_vars	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3238	88	copyin	dwarf+symtab	documented	docs/ioctls.md#graphics-ioctl-interface-irix-6530-o2	Graphics ioctl interface (IRIX 6.5.30, O2)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3238	88	copyin	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3290	88	copyout	dwarf+symtab	documented	docs/ioctls.md#graphics-ioctl-interface-irix-6530-o2	Graphics ioctl interface (IRIX 6.5.30, O2)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x32e8	88	swcopyin	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3340	88	swcopyout	dwarf+symtab	undocumented		
@@ -1269,7 +1269,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3398	88	uzero	dwarf+s
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x33f0	20	cerror	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3404	276	memset	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	4	blkclr	symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	180	bzero	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	180	bzero	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x351c	176	bzero_cdx_entry	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzero_end	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzerror	dwarf+symtab	undocumented		
@@ -1388,7 +1388,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c1c	16	uncached	dwar
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c2c	140	_munge_decc	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7cb8	96	_read_tag	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7d18	88	_write_tag	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7d70	96	flush_cache	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7d70	96	flush_cache	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7dd0	364	cacheOP	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7f3c	44	__prefetch_store	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7f68	44	__prefetch_load	dwarf+symtab	undocumented		
@@ -1468,7 +1468,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl6	symtab	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio0	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio1	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio2	symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi_relnet	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhintr	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splimp	symtab	undocumented		
@@ -1482,7 +1482,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb308	132	spl65	symtab
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb308	132	splprof	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb38c	132	spl7	dwarf+symtab	documented	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb410	64	splecc	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splx	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splx	dwarf+symtab	documented	docs/functions.md#lookup-tables	Lookup tables
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splxecc	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4b4	72	splint	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4fc	32	isspl0	dwarf+symtab	undocumented		
@@ -1631,7 +1631,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10bb8	312	etoh	dwarf+
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10cf0	80	getsysid	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10d40	68	flash_led	dwarf+funcnames	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10d84	108	pg_setcachable	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10df0	8	pte_cachebits	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10df0	8	pte_cachebits	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10df8	44	reset_leds	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10e24	28	sys_setled	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10e40	108	bump_leds	dwarf+symtab	undocumented		
@@ -1645,7 +1645,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f48	44	node_getmaxc
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f74	24	bank_size	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f8c	348	_addr_to_ibank	dwarf+funcnames	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x110e8	28	addr_to_bank	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11104	32	addr_to_ibank	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11104	32	addr_to_ibank	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x111e0	60	cpu_godown	dwarf+funcnames	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1121c	196	cpu_waitforreset	dwarf+symtab	undocumented		
@@ -2131,98 +2131,98 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xca34	348	mvpsystem_ioctl	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xcb90	668	move_mipmap	dwarf+funcnames	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xce2c	632	mvpmipmap_move_mipmap	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x0	1692	tile_init	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x0	1692	tile_init	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x69c	2656	tile_alloc	dwarf+symtab	documented	docs/memory.md#bit-15-and-the-no-ecc-alias-pass-3	Bit 15 and the no-ECC alias (pass 3)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x10fc	596	tile_free	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1350	592	tile_mapin	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15a0	56	tile_mapout	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15d8	780	do_tiled	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x18e4	104	tiled	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x194c	224	tiled_lowat	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1a2c	224	tiled_hiwat	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1b0c	280	tile_cache_clean	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15d8	780	do_tiled	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x18e4	104	tiled	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x194c	224	tiled_lowat	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1a2c	224	tiled_hiwat	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1b0c	280	tile_cache_clean	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c24	12	tile_nclasses	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c30	208	tile_ecc_clean	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1d00	524	tile_pagelock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1f0c	644	tile_pageunlock	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2190	528	tile_pageselect	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x23a0	252	tq_enqhi	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x249c	256	tq_enqti	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x259c	304	tq_deqi	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x26cc	204	tile_evict	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2798	152	tile_migr_pagealloc	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2830	268	tile_print	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x293c	756	tile_dump	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2c30	920	tileq_print	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2fc8	160	tileq_dump	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x0	312	pane_gc	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x138	456	bind_pane	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x300	64	unbind_pane	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x340	100	clip2pane	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3a4	164	pane_cleanup	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x448	72	pane_setnullclip	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x490	8	pane_validmask	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x498	132	invalidate_pane	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x51c	116	invalidate_pane_buffer	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x590	472	validate_pane_clip	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x768	152	validate_pane_swapbuf	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x800	68	validate_pane_buffer	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x844	160	validate_my_pane_buffer	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x8e4	1072	validate_my_pane_resources	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xd14	248	init_panes	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xe0c	212	RRM_init_panes	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xee0	160	RRM_init	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xf80	72	RRM_Init	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xfc8	100	rrmDoUnMapGfx	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x102c	136	rrmUnMapGfx	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x10b4	188	rrmInvalidateRN	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1c30	208	tile_ecc_clean	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1d00	524	tile_pagelock	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1f0c	644	tile_pageunlock	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2190	528	tile_pageselect	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x23a0	252	tq_enqhi	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x249c	256	tq_enqti	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x259c	304	tq_deqi	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x26cc	204	tile_evict	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2798	152	tile_migr_pagealloc	dwarf+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2830	268	tile_print	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x293c	756	tile_dump	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2c30	920	tileq_print	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x2fc8	160	tileq_dump	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x0	312	pane_gc	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x138	456	bind_pane	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x300	64	unbind_pane	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x340	100	clip2pane	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3a4	164	pane_cleanup	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x448	72	pane_setnullclip	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x490	8	pane_validmask	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x498	132	invalidate_pane	dwarf+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x51c	116	invalidate_pane_buffer	dwarf+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x590	472	validate_pane_clip	dwarf+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x768	152	validate_pane_swapbuf	dwarf+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x800	68	validate_pane_buffer	dwarf+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x844	160	validate_my_pane_buffer	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x8e4	1072	validate_my_pane_resources	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xd14	248	init_panes	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xe0c	212	RRM_init_panes	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xee0	160	RRM_init	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xf80	72	RRM_Init	dwarf+symtab	documented	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0xfc8	100	rrmDoUnMapGfx	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x102c	136	rrmUnMapGfx	dwarf+symtab	documented	docs/functions.md#device-entry-points	Device entry points
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x10b4	188	rrmInvalidateRN	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1170	400	RRM_InvalidateRN	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1300	176	rrmUnbindProcFromRN	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1300	176	rrmUnbindProcFromRN	dwarf+funcnames+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x13b0	244	RRM_BindProcToRN	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x14a4	776	RRM_BindRNToReadAndClip	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x17ac	156	RRM_BindRNToClip	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1848	36	RRM_UnbindRNFromClip	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x186c	736	RRM_OpenRN	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1b4c	796	rrmCloseRN	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e68	32	RRM_CloseRN	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e88	600	RRM_Exit	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e0	8	rrmGetResourceMask	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e8	936	rrmSuspend	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2490	1084	rrmResume	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x28cc	164	rrmSetResourceMask	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x186c	736	RRM_OpenRN	dwarf+funcnames+symtab	documented	docs/functions.md#resource-manager-rrmo	Resource manager (`rrm.o`)
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1b4c	796	rrmCloseRN	dwarf+funcnames+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e68	32	RRM_CloseRN	dwarf+funcnames+symtab	documented	docs/functions.md#resource-manager-rrmo	Resource manager (`rrm.o`)
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e88	600	RRM_Exit	dwarf+symtab	documented	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e0	8	rrmGetResourceMask	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e8	936	rrmSuspend	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2490	1084	rrmResume	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x28cc	164	rrmSetResourceMask	dwarf+symtab	documented	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2970	72	RRM_ValidateSwapBuf	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x29b8	68	rrmValidateBuffer	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x29b8	68	rrmValidateBuffer	dwarf+symtab	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x29fc	84	RRM_ValidateMessage	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2a50	200	RRM_SetDisplayMode	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2b18	336	RRM_LoadDisplayMode	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2c68	88	RRM_GetDisplayModes	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2cc0	100	rrmValidateMyRetrace	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2d24	68	rrmValidateRetrace	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2d68	360	rrmAllocPcxid	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2ed0	580	rrmValidateMyPcx	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2cc0	100	rrmValidateMyRetrace	dwarf+funcnames+symtab	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2d24	68	rrmValidateRetrace	dwarf+symtab	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2d68	360	rrmAllocPcxid	dwarf+funcnames+symtab	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2ed0	580	rrmValidateMyPcx	dwarf+funcnames+symtab	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3114	256	RRM_ValidateClip	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3214	872	RRM_ValidFault	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3214	872	RRM_ValidFault	dwarf+symtab	documented	docs/functions.md#process-hooks	Process hooks
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x357c	96	RRM_CheckValidFault	dwarf+symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x35dc	224	rrmSwapWait	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x36bc	648	RRM_SwapBuf	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3944	236	rrmSwapUnGroup	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x35dc	224	rrmSwapWait	dwarf+funcnames+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x36bc	648	RRM_SwapBuf	dwarf+funcnames+symtab	documented	docs/functions.md#resource-manager-rrmo	Resource manager (`rrm.o`)
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3944	236	rrmSwapUnGroup	dwarf+funcnames+symtab	documented	docs/functions.md#panes	Panes
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3a30	120	RRM_SwapUnGroup	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3aa8	304	RRM_SwapGroup	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3bd8	340	RRM_SwapReady	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3d2c	164	RRM_CushionBuffer	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3dd0	196	RRM_MGR_SwapBuf	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3e94	76	rrmValidateMGRSwapBufSTREAM	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3ee0	68	rrmValidateMGRSwapBuf	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3f24	72	rrmGenlockNotifySTREAM	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3f6c	68	rrmGenlockNotify	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3e94	76	rrmValidateMGRSwapBufSTREAM	dwarf+funcnames+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3ee0	68	rrmValidateMGRSwapBuf	dwarf+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3f24	72	rrmGenlockNotifySTREAM	dwarf+funcnames+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3f6c	68	rrmGenlockNotify	dwarf+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x3fb0	108	RRM_WaitForRetrace	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x401c	40	RRM_SetSwapInterval	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4044	248	RRM_Message	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x413c	20	RRM_SetVideoSync	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4150	68	RRM_GetVideoSync	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4194	108	RRM_WaitVideoSync	dwarf+funcnames+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4200	212	rrmWaitVideoSync	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x42d4	308	rrmValidateVideoSync	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4200	212	rrmWaitVideoSync	dwarf+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x42d4	308	rrmValidateVideoSync	dwarf+symtab	documented	docs/functions.md#swap-and-video-sync-waits	Swap and video-sync waits
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4408	120	RRM_MapClipToSwapbufID	dwarf+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4480	1104	RRM_Dispatch	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1005f6a0	268	__start	dynsym	undocumented		
