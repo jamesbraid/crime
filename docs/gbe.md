@@ -132,7 +132,7 @@ Sources: `crime_kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitG
 - Established (`crimeSetDisplayMode`): the kernel takes an index below 0x20 and a 32-bit value from the X module, writes the value to table entry `index` and to a per-index shadow record (24 bytes per entry, value at +0x24 of the board's record), and returns "invalid" for an index of 0x20 or more. When the same per-revision kernel flag as in the timing code is non-zero it clears bit 10 (`GAMMA`) first. If the low two bits (`BUF`) of the value are 0, it also marks that entry's record (flag byte +0x3a = 1) and sets a board-wide flag (+0x1c = 1).
 - Established (`crmInitTp`): the text port programs entry 0 with the value 3 (buffer 3, type 0).
 - Inferred: the `BUF` value 0 means "no buffer", which the kernel notes so the retrace handler does not flip it; values 1 and 2 are the two double-buffer halves that the retrace handler swaps (see GBE.h).
-- Unknown: the meaning of each `TYP` and `CM` code as IRIX uses it. The X module writes the table through this ioctl; its value construction was not traced in the stripped module.
+- Settled in pass 6 for `BUF`, `TYP`, `CM`, gamma and `AUX` (rev 1.1 specification, see below). Earlier text: the meaning of each `TYP` and `CM` code as IRIX uses it. The X module writes the table through this ioctl; its value construction was not traced in the stripped module.
 
 ## Window ID type and colour-map codes
 
@@ -204,7 +204,7 @@ Pass 3 found no reader. Pass 4 (end of this file) settles what the word is: a so
 
 ### Overlay and underlay compositing
 
-Still unknown after a bounded search. Neither the X module nor the kernel writes an overlay-to-WID mapping or a transparency value to any GBE register. The overlay plane is set up only through `OVR_WIDTH_TILE`, `OVR_CONTROL` and its tile list.
+Settled for GBE revision 1.1 by the specification (see "Overlay, cursor and display-mode compositing" in pass 6 below): overlay value 0 is transparent, the cursor wins over the overlay and the overlay over the normal planes, and no register carries a key. The bounded search of the binaries found that neither the X module nor the kernel writes an overlay-to-WID mapping or a transparency value to any GBE register. The overlay plane is set up only through `OVR_WIDTH_TILE`, `OVR_CONTROL` and its tile list.
 
 ### Colour-map entry `0x1102`
 
@@ -234,12 +234,12 @@ Binaries: IRIX 6.5.30 `ddx/crm.so`, `ddx/Xsgi`, and the kernel `crime.o` decompi
 
 - Established (kernel `crm_enableovl`, `crime.c` line 1042): the only overlay code in the kernel driver changes a drawable's rendering state, not a GBE register. It sets the drawable word at `+0x18` to `0x228`, and if that is the current drawable it saves the pixel pipe, reloads the three rendering TLBs for the drawable (`crmLoadTlbABC`), and restores. It is reached from ioctl `0x5609` with bit 4 of the user flags; bit 1 of the same flags selects the sibling `crm_enablesz` (z buffer). Inferred: overlay planes are a per-drawable rendering target (extra tile set) that the rasteriser writes, with the scanout side set up by `OVR_*` and its tile list as already recorded.
 - Established: nothing in `crm.so`, `Xsgi`, the kernel or Linux/NetBSD writes a transparent value, a key colour or an overlay-to-window-ID map to a GBE register. The X module's overlay code is the generic `nfbInitServerOverlayVisualsProperty`, which sets the X property only.
-- Unknown: whether GBE composites the overlay plane over, under or by replacing the frame buffer, and the transparent pixel value. The GBE register set in `GBE.h` (and Linux `gbe.h`) has no register that could carry the key, which suggests the compositing rule is fixed in hardware (inferred, from the register list only). Needs a capture: write a known value into the overlay plane over a known frame buffer on a real O2 and read the pixels back through the video output, once for each of overlay value 0 and non-zero.
+- Settled in pass 6: the overlay composites over the normal planes and value 0 is transparent (rev 1.1 specification). Earlier text, kept as the reasoning before the specification was read: the GBE register set in `GBE.h` (and Linux `gbe.h`) has no register that could carry the key, which suggests the compositing rule is fixed in hardware (inferred, from the register list only). Needs a capture: write a known value into the overlay plane over a known frame buffer on a real O2 and read the pixels back through the video output, once for each of overlay value 0 and non-zero.
 
 ### Display-ID plane fill, the remaining unknowns
 
 - Unknown: how `gbeLoadDispIDs` (`crm.so` `0x45a350`) maps an X window to a window ID index. The routine is a long unrolled walk over clip-region rectangles (a first part at `0x45a3d8..0x45a700` only counts them and sizes a stack buffer); the selection of the index per window was not followed. Needs a capture: dump the DID tile list of a running system (`DID_CONTROL` pointer, one 512-byte slot per line) with two windows of different visuals side by side.
-- Unknown: whether the x in a DID entry marks the start or the end of a run. The last entry of a line carries `width - 1` (established above), which fits an end-of-run reading (inferred), but no read code shows GBE's comparison. Needs the same capture, or a Linux/NetBSD-independent GBE datasheet, which this workspace does not have.
+- Settled in pass 6 (rev 1.1 specification, field `xend`): the x in a DID entry is the end of a run. Earlier text: whether the x in a DID entry marks the start or the end of a run. The last entry of a line carries `width - 1` (established above), which fits an end-of-run reading (inferred), but no read code shows GBE's comparison. Needs the same capture, or a Linux/NetBSD-independent GBE datasheet, which this workspace does not have.
 
 # Pass 6: cross-read against the GBE specification and the remaining kernel globals
 
