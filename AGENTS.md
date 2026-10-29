@@ -105,7 +105,7 @@ Scripts (`scripts/`, run from the repository root):
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
 - `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `libglcore/asm/` and `manifest.json`, and write `libglcore/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
 - `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `ddx/groups.json`. Its default module path is a placeholder; pass the real one.
-- `inventory.py`: count what the in-scope binaries contain and mark each entry documented, no-software-dependency, named-only or undocumented. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
+- `inventory.py`: count what the in-scope binaries contain and grade each entry understood, located, named-only, undocumented or no-software-dependency. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
 - `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
 
 The scripts descend from gr4's and carry its BSD-3 notice ([scripts/LICENSE-gr4](scripts/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
