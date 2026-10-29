@@ -6664,7 +6664,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95275c	2288	__glCrmPickP
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95304c	152	__glcrmim_DrawPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9530e4	184	__glcrmim_ReadPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95319c	280	__glcrmim_PixelZoom	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9532b4	3928	__glCrmPickDrawPixels	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9532b4	3928	__glCrmPickDrawPixels	dynsym+mdebug	documented	docs/pixel-transfer.md#the-step-registers	The step registers
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95420c	2832	__glCrmPickReadPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd954d1c	2924	__glCrmPickCopyPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955888	1260	__glCrmSetupPixelRenderOps	dynsym+mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
@@ -6672,7 +6672,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd955d74	14464	crmFas
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955f5c	2732	crmDrawPixelsXfer	dynsym+mdebug	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd956a08	5472	crmDrawPixelsXfer2	dynsym+mdebug	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd957f68	3468	crmReadPixelsXfer	dynsym+mdebug	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd958cf4	1760	crmCopyPixelsXfer	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd958cf4	1760	crmCopyPixelsXfer	dynsym+mdebug	documented	docs/pixel-transfer.md#the-step-registers	The step registers
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9593d4	544	crmCopyPixelsXferRW	dynsym+mdebug	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9595f4	552	convertRGBXToRGBA	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95981c	556	convertXBGRToABGR	mdebug	undocumented		
@@ -10789,7 +10789,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953600	2020	__glCrmPic
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953df0	144	__glcrmim_DrawPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953e80	140	__glcrmim_ReadPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953f10	228	__glcrmim_PixelZoom	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd954000	4372	__glCrmPickDrawPixels	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd954000	4372	__glCrmPickDrawPixels	dwarf+dynsym	documented	docs/pixel-transfer.md#the-step-registers	The step registers
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955120	3092	__glCrmPickReadPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955d40	3012	__glCrmPickCopyPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956910	964	__glCrmSetupPixelRenderOps	dwarf+dynsym	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
@@ -10797,7 +10797,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd956ce0	436	crmFas
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956ea0	2508	crmDrawPixelsXfer	dwarf+dynsym	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd958b90	3100	crmReadPixelsXfer	dwarf+dynsym	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	documented	docs/pixel-transfer.md#the-step-registers	The step registers
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd959d70	500	crmCopyPixelsXferRW	dwarf+dynsym	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd959f70	836	convertRGBXToRGBA	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95a2c0	852	convertXBGRToABGR	dwarf+funcnames	undocumented		
