@@ -119,7 +119,7 @@ IDENT = re.compile(r'[A-Za-z_][A-Za-z0-9_$.]*[A-Za-z0-9_$]|[A-Za-z_]')
 CODELIKE = re.compile(r'(?=.*[_0-9])|(?=.*[a-z][A-Z])')
 HEXLIT = re.compile(r'(\+?)\b0[xX]([0-9a-fA-F]+)\b')
 DECLIT = re.compile(r'(?<![\w.+-])(\d{1,10})(?![\w.])')
-FILELIKE = re.compile(r'[A-Za-z0-9_+-]+(?:\.[A-Za-z0-9_+-]+)+')
+FILELIKE = re.compile(r'[A-Za-z0-9_+@-]+(?:\.[A-Za-z0-9_+@-]+)+')
 WORD = re.compile(r'\b[A-Za-z]{2,}\b')
 
 
@@ -539,6 +539,10 @@ class DocIndex:
         for n in names:
             if n:
                 hits += self.files.get(n, [])
+                if '.' not in n:
+                    # an extensionless file name reads like any other name, with the same
+                    # rules for names that are also English words
+                    hits += self.name_hits(n)
         return self.best(hits)
 
     def value_hits(self, values, files=None, context=None, plus_ok=True, bare=True, absolute=()):

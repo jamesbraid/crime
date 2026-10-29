@@ -22,13 +22,13 @@ usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61
 usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	understood	docs/gbe.md#overlay-and-underlay	Overlay and underlay
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	762	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	988	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	undocumented		
-usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	0	0	undocumented		
+usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	no-software-dependency	docs/reset.md#settled-in-pass-7	Settled in pass 7
+usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60.vfo	video-formats	board-data	data	-	12424	45d9f5371ac77067		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60p.vfo	video-formats	board-data	data	-	12436	9249d599f9467622		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_70.vfo	video-formats	board-data	data	-	12424	1eb5fb546f8e7ff4		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
@@ -44,14 +44,14 @@ usr/gfx/ucode/CRM/vof/1280x492_120s.vfo	video-formats	board-data	data	-	12740	ac
 usr/gfx/ucode/CRM/vof/1600x1024_48p.vfo	video-formats	board-data	data	-	12440	10eeed945de58285		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1600x1024_50p.vfo	video-formats	board-data	data	-	12440	7e6d3ed92e892c41		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1600x1024_60p.vfo	video-formats	board-data	data	-	12440	08e67bdf0fe51bef		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo	video-formats	board-data	data	-	12440	7f7e1c0a50aa2574		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1024x768_70.vfo	video-formats	board-data	data	-	12440	a3958df501bcec4a		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1024x768_75.vfo	video-formats	board-data	data	-	12440	b94ac42fa1c7323f		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1280x1024_48.vfo	video-formats	board-data	data	-	12444	0e10a86432d67d24		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1280x1024_50.vfo	video-formats	board-data	data	-	12444	f68a970336c4b4b9		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1280x1024_60.vfo	video-formats	board-data	data	-	12444	3c83d50d25734014		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1280x1024_72.vfo	video-formats	board-data	data	-	12444	6e6232a7b5febc08		0	0	0	undocumented		
-usr/gfx/ucode/CRM/vof/2@1280x1024_75.vfo	video-formats	board-data	data	-	12444	e5e5bfaa96b55a17		0	0	0	undocumented		
+usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo	video-formats	board-data	data	-	12440	7f7e1c0a50aa2574		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1024x768_70.vfo	video-formats	board-data	data	-	12440	a3958df501bcec4a		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1024x768_75.vfo	video-formats	board-data	data	-	12440	b94ac42fa1c7323f		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1280x1024_48.vfo	video-formats	board-data	data	-	12444	0e10a86432d67d24		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1280x1024_50.vfo	video-formats	board-data	data	-	12444	f68a970336c4b4b9		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1280x1024_60.vfo	video-formats	board-data	data	-	12444	3c83d50d25734014		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1280x1024_72.vfo	video-formats	board-data	data	-	12444	6e6232a7b5febc08		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/ucode/CRM/vof/2@1280x1024_75.vfo	video-formats	board-data	data	-	12444	e5e5bfaa96b55a17		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/640x480_60.vfo	video-formats	board-data	data	-	12416	39b35bb70d1d00d9		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/800x600_60.vfo	video-formats	board-data	data	-	12424	0d0ab781ff5cc464		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/800x600_72.vfo	video-formats	board-data	data	-	12424	db28df16143bbd83		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
@@ -80,4 +80,4 @@ usr/lib32/dmedia/video/mvp.so	video-libraries	board-library	shared-object	n32	30
 usr/lib32/internal/libvice.so	video-libraries	board-library	shared-object	n32	35156	8c3cbe4632d5f1e8		51	0	0	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	video-libraries	board-library	shared-object	n32	76084	9feef3be85dbeac2		64	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/lib64/libXsgivc.so	video-libraries	board-library	shared-object	n64	80696	7aac36571fb57b90		64	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/sbin/Confidence/dualchannel	standalone	board-diagnostic	executable	o32	70132	9051ef55a049d983		39	0	0	undocumented		
+usr/sbin/Confidence/dualchannel	standalone	board-diagnostic	executable	o32	70132	9051ef55a049d983		39	0	0	named-only	docs/binaries.md#diagnostics	Diagnostics
