@@ -1,5 +1,5 @@
 binary	role	abi	elf_section	address	size	name	source	status	doc	section
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	dwarf+symtab	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	dwarf+symtab	documented	docs/opengl.md#fog	Fog
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010340	8	_quit	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010348	8	db_printf	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010350	1608	symmon_brkhandler	dwarf+symtab	documented	docs/binaries.md#diagnostics	Diagnostics
@@ -1225,7 +1225,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1534	160	wait_for_int
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ac	40	wait_for_interrupt_fix_loc	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15d4	1072	in_cksum_sub	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x16e8	808	in_cksum_pref	symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1a10	400	start	dwarf+symtab	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1a10	400	start	dwarf+symtab	documented	docs/opengl.md#fog	Fog
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1b54	76	proc1	symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1ba0	72	mlclosure	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1be8	8	silence_all_audio	dwarf+symtab	undocumented		
@@ -6585,12 +6585,12 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94406c	104	MakeCurr
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9440d4	8204	MakeCurrentRead	mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945350	1600	__glCrmCreateContext	dynsym+mdebug	documented	CRIME_RE.h:299	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945990	636	__glCrmFillCheapFogTriangle	dynsym+mdebug	documented	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945c0c	236	__glCrmFillStippledTriangle	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945c0c	236	__glCrmFillStippledTriangle	dynsym+mdebug	documented	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945cf8	512	__glCrmFillFrontBackTriangle	dynsym+mdebug	documented	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLeftRightTriangle	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9460e0	1520	FillSubTriangle	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9466d0	6888	SetInitialParameters	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd946e40	4324	__glCrmFillSlowTriangle	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd946e40	4324	__glCrmFillSlowTriangle	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947f30	120	__glCrmPassDepthMask	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947fa8	420	__glCrmPassDepthFunc	dynsym+mdebug	documented	docs/pixel-arithmetic.md#the-depth-buffer-and-the-test	The depth buffer and the test
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94814c	108	__glCrmEnableDepthTest	dynsym+mdebug	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
@@ -6617,7 +6617,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94990c	436	__glCrmScisso
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949ac0	464	__glCrmScissorStippledLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949c90	272	__glCrmRenderCheapFogLine	dynsym+mdebug	documented	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949da0	724	__glCrmRenderAliasLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	documented	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	undocumented		
@@ -6821,7 +6821,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9723b8	2388	crmFree
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9725e8	108	__glCrmFreeTexObj	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd972654	168	__glCrmFreeTextureState	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9726fc	228	__glCrmInitTextureObject	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9727e0	1324	__glCrmPickTextureProcs	dynsym+mdebug	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9727e0	1324	__glCrmPickTextureProcs	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972d0c	1716	crmExtractTexel	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9733c0	1192	crmComputeTexLevelSize	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd973868	2512	crmCreateLevel	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -6848,7 +6848,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd977f64	156	__glcrmim_Tex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978000	156	__glcrmim_TexParameterf	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97809c	104	__glcrmim_TexParameteriv	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978104	96	__glcrmim_TexParameteri	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978164	640	__glcrmim_BindTextureEXT	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978164	640	__glcrmim_BindTextureEXT	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9783e4	2296	__glcrmim_GetTexImage	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978cdc	676	__glcrmim_TexImage1D	dynsym+mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd978f80	672	__glcrmlei_TexImage1D	dynsym+mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
@@ -8430,7 +8430,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5c70	1348	__glInitLine
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e61b4	1132	__glRenderAliasLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6620	192	__glRenderFlatFogLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e66e0	1424	__glInitAALineData	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6c70	1804	__glRenderAntiAliasLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6c70	1804	__glRenderAntiAliasLine	dynsym+mdebug	documented	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e737c	76	__glPolygonOffsetLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e73d0	300	__glProcessLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e74fc	260	__glProcessLine3NW	dynsym+mdebug	undocumented		
@@ -8450,7 +8450,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e92d4	236	__glDepthPass
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e93c0	296	__glDepthPassStippledLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e94e8	368	__glStoreLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e9658	452	__glStoreStippledLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e981c	972	__glAntiAliasLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e981c	972	__glAntiAliasLine	dynsym+mdebug	no-software-dependency	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e9be8	1000	__glAntiAliasStippledLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e9fd0	312	__gllc_Bitmap	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ea108	196	__glle_Bitmap	dynsym+mdebug	undocumented		
@@ -8568,7 +8568,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f38d0	1236	__glGenericP
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3da4	532	__glGenericPickTriangleProcs	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3fb8	92	__glGenericPickRenderBitmapProcs	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4014	60	__glGenericPickClipProcs	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4050	2832	__glGenericPickTextureProcs	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4050	2832	__glGenericPickTextureProcs	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4b60	120	__glGenericPickFogProcs	dynsym+mdebug	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4bd8	136	__glGenericPickBufferProcs	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4c60	1848	__glGenericPickPixelProcs	dynsym+mdebug	undocumented		
@@ -8598,7 +8598,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fb464	284	__glSnapXRigh
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fb580	6364	__glComputePolygonOffset	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fb5f4	180	__glPolygonOffsetForLineAndPoint	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fb6a8	508	__glPolygonOffsetZ	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fc034	2476	__glFillTriangle	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fc034	2476	__glFillTriangle	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fc9e0	292	__glFillFlatFogTriangle	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcb10	148	__glMatValidateVbuf0N	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcba4	136	__glMatValidateVbuf0V1	dynsym+mdebug	undocumented		
@@ -8895,7 +8895,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1c81c	1084	__glTextureR
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1cc58	1188	__glTextureRGB_N_NMN_StippledSpan	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d100	76	__glLookUpTextureParams	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d14c	80	__glLookUpTextureTexobjs	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d19c	140	__glLookUpTexture	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d19c	140	__glLookUpTexture	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d228	80	__glLookUpTextureObject	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda1d278	784	Clampf	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d2b4	64	__glCopyTexImage	dynsym+mdebug	undocumented		
@@ -8961,7 +8961,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20944	88	__glExtractTex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2099c	236	__glExtractTexel3RGB8_B	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20a88	284	__glExtractTexel3RGBA8_B	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda20ba4	436	IsTextureConsistent	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20d08	80	__glIsTextureConsistent	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20d08	80	__glIsTextureConsistent	dynsym+mdebug	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda20d58	828	CheckTexImageArgs	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda21094	3236	ComputeTexLevelSize	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21518	336	__glTexCreateProxyLevel	dynsym+mdebug	undocumented		
@@ -10710,12 +10710,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945d40	104	MakeCu
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945db0	5940	MakeCurrentRead	dwarf+funcnames	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9474f0	3176	__glCrmCreateContext	dwarf+dynsym	documented	CRIME_RE.h:299	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948160	604	__glCrmFillCheapFogTriangle	dwarf+dynsym	documented	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9483c0	204	__glCrmFillStippledTriangle	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9483c0	204	__glCrmFillStippledTriangle	dwarf+dynsym	documented	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948490	464	__glCrmFillFrontBackTriangle	dwarf+dynsym	documented	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948660	428	__glCrmFillLeftRightTriangle	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948810	1412	FillSubTriangle	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948da0	1512	SetInitialParameters	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd949390	3252	__glCrmFillSlowTriangle	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd949390	3252	__glCrmFillSlowTriangle	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a050	124	__glCrmPassDepthMask	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a0d0	372	__glCrmPassDepthFunc	dwarf+dynsym	documented	docs/pixel-arithmetic.md#the-depth-buffer-and-the-test	The depth buffer and the test
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a250	112	__glCrmEnableDepthTest	dwarf+dynsym	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
@@ -10742,7 +10742,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b610	776	__glCrmScis
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b920	900	__glCrmScissorStippledLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bcb0	260	__glCrmRenderCheapFogLine	dwarf+dynsym	documented	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bdc0	644	__glCrmRenderAliasLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	documented	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c750	424	__glCrmRenderFrontBackLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c900	476	__glCrmRenderLeftRightLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cae0	720	__glCrmFlatColorLine	dwarf+dynsym	undocumented		
@@ -10946,7 +10946,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f9f0	528	crmFre
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fc00	116	__glCrmFreeTexObj	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fc80	172	__glCrmFreeTextureState	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fd30	236	__glCrmInitTextureObject	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fe20	1592	__glCrmPickTextureProcs	dwarf+dynsym	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fe20	1592	__glCrmPickTextureProcs	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd970460	1296	crmExtractTexel	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd970970	1860	crmComputeTexLevelSize	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9710c0	2408	crmCreateLevel	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -10973,7 +10973,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976a40	112	__glcrmim_T
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976ab0	108	__glcrmim_TexParameterf	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976b20	100	__glcrmim_TexParameteriv	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976b90	96	__glcrmim_TexParameteri	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976bf0	800	__glcrmim_BindTextureEXT	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976bf0	800	__glcrmim_BindTextureEXT	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd976f10	2780	__glcrmim_GetTexImage	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9779f0	636	__glcrmim_TexImage1D	dwarf+dynsym	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd977c70	632	__glcrmlei_TexImage1D	dwarf+dynsym	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
@@ -12555,7 +12555,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6330	1196	__glInitLi
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e67e0	920	__glRenderAliasLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6b80	188	__glRenderFlatFogLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6c40	1260	__glInitAALineData	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7130	1816	__glRenderAntiAliasLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7130	1816	__glRenderAntiAliasLine	dwarf+dynsym	documented	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7850	76	__glPolygonOffsetLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e78a0	400	__glProcessLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7a30	352	__glProcessLine3NW	dwarf+dynsym	undocumented		
@@ -12575,7 +12575,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea340	416	__glDepthPa
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea4e0	456	__glDepthPassStippledLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea6b0	332	__glStoreLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea800	440	__glStoreStippledLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea9c0	1016	__glAntiAliasLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ea9c0	1016	__glAntiAliasLine	dwarf+dynsym	no-software-dependency	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9eadc0	1052	__glAntiAliasStippledLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9eb1e0	324	__gllc_Bitmap	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9eb330	180	__glle_Bitmap	dwarf+dynsym	undocumented		
@@ -12693,7 +12693,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5520	1264	__glGeneri
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5a10	500	__glGenericPickTriangleProcs	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c10	84	__glGenericPickRenderBitmapProcs	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c70	64	__glGenericPickClipProcs	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5cb0	2816	__glGenericPickTextureProcs	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5cb0	2816	__glGenericPickTextureProcs	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f67b0	116	__glGenericPickFogProcs	dwarf+dynsym	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6830	136	__glGenericPickBufferProcs	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f68c0	1612	__glGenericPickPixelProcs	dwarf+dynsym	undocumented		
@@ -12723,7 +12723,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc100	208	__glSnapXRi
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fc1d0	64	__glComputePolygonOffset	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc210	160	__glPolygonOffsetForLineAndPoint	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc2b0	344	__glPolygonOffsetZ	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fcab0	2020	__glFillTriangle	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fcab0	2020	__glFillTriangle	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd2a0	276	__glFillFlatFogTriangle	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd3c0	184	__glMatValidateVbuf0N	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd480	136	__glMatValidateVbuf0V1	dwarf+dynsym	undocumented		
@@ -13020,7 +13020,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1daf0	1112	__glTextur
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1df50	1212	__glTextureRGB_N_NMN_StippledSpan	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e410	72	__glLookUpTextureParams	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e460	76	__glLookUpTextureTexobjs	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e4b0	144	__glLookUpTexture	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e4b0	144	__glLookUpTexture	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e540	76	__glLookUpTextureObject	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda1e590	36	Clampf	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e5c0	52	__glCopyTexImage	dwarf+dynsym	undocumented		
@@ -13086,7 +13086,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21ad0	72	__glExtractT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21b20	140	__glExtractTexel3RGB8_B	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21bb0	164	__glExtractTexel3RGBA8_B	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21c60	324	IsTextureConsistent	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	documented	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21e10	2076	CheckTexImageArgs	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda22630	1768	ComputeTexLevelSize	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda22d20	352	__glTexCreateProxyLevel	dwarf+dynsym	undocumented		

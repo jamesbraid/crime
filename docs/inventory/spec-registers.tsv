@@ -90,10 +90,10 @@ CRIME 1.5	7-3	168	RE	0x2158	Texture.dqdx	1	0	32	W	1	documented	docs/context.md#s
 CRIME 1.5	7-3	168	RE	0x215c	Texture.dqdy	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
 CRIME 1.5	7-3	168	RE	0x2160	Texture.borderColor	1	0	32	R/W	1	documented	CRIME_RE.h:381	Texture.mode (+0x2110)
 CRIME 1.5	7-3	168	RE	0x2168	Texture.envColor	1	0	32	R/W	1	documented	CRIME_RE.h:376	Texture.mode (+0x2110)
-CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	documented	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
 CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
 CRIME 1.5	7-3	169	RE	0x2194	Antialias.cov	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
 CRIME 1.5	7-3	169	RE	0x2198	AlphaTest	1	0	32	R/W	1	documented	CRIME_RE.h:440	AlphaTest (+0x2198) [E, spec PDF 180; __glCrmPassAlphaFunc]
