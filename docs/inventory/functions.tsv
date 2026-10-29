@@ -6364,7 +6364,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9317ac	88	__glim_MipsNoX
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931804	88	__glim_MipsNoXFVertex3fvFast	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93185c	88	__glim_MipsNoXFVertex4fvFast	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9318b4	248	__glim_MipsNoXFVertex2fvFast2D	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9319b0	1196	__glCrmAntiAliasLineRGB	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9319b0	1196	__glCrmAntiAliasLineRGB	dynsym+mdebug	understood	docs/libglcore.md#crm_aalineasmma	`crm_aalineasm.ma`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931e60	64	__glMipsXForm2_2DNRW	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931ea0	80	__glMipsXForm2_2DW	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931ef0	96	__glMipsXForm2_W	dynsym+mdebug	undocumented		
@@ -6433,23 +6433,23 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9345e8	452	__glFastCalcR
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9347ac	10608	vvec	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934878	960	__glCalcRGBColor	dynsym+mdebug	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934c40	236	__glCrmFlatTriangle	dynsym+mdebug	understood	docs/opengl.md#one-flat-triangle	One flat triangle
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934ec8	316	__glCrmSmoothCITriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935004	508	__glCrmSmoothRGBTriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935200	600	__glCrmSmoothRGBATriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935458	428	__glCrmSmoothCIZTriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935604	596	__glCrmSmoothRGBZTriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935858	688	__glCrmSmoothRGBAZTriangle	dynsym+mdebug	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934ec8	316	__glCrmSmoothCITriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935004	508	__glCrmSmoothRGBTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935200	600	__glCrmSmoothRGBATriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935458	428	__glCrmSmoothCIZTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935604	596	__glCrmSmoothRGBZTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935858	688	__glCrmSmoothRGBAZTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935b10	120	__glCalcEyeLinear	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935b88	120	__glCalcObjectLinear	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c00	24	__glCalcTexture	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c20	2816	__glCrmFillTriangle	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936720	52	__glCrmColorOptLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936720	52	__glCrmColorOptLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93711c	1632	LongStippledLine	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937540	20	__glFirstLinesVertex	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937554	40	__glBeginLines	dynsym+mdebug	undocumented		
@@ -6469,7 +6469,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd937bec	600	AccumAll
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd937e44	696	AccumResize	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9380fc	1080	AccumulateLoad	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938534	852	AddMultiply	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938888	1252	Return	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938888	1252	Return	mdebug	understood	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938d6c	12	AccumPick	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938d78	564	SlowSoftClear	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd938fac	2220	AccumClear	mdebug	undocumented		
@@ -6504,32 +6504,32 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93cd80	2920	__glcrmim_En
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93d8e8	3280	__glcrmim_Disable	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e5b8	156	__glCrmEnableAlphaTest	dynsym+mdebug	named-only	CRIME_RE.h:266	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e654	160	__glCrmPassAlphaFunc	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e6f4	284	__glCrmEnableBlend	dynsym+mdebug	named-only	CRIME_RE.h:267	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e810	900	__glCrmPassBlendFunc	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93eb94	340	__glCrmPassBlendColor	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ece8	120	__glCrmEnableDither	dynsym+mdebug	named-only	docs/opengl.md#global-state	Global state
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ed60	132	__glCrmEnableLogicOp	dynsym+mdebug	named-only	CRIME_RE.h:270	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ede4	456	__glCrmPassLogicOp	dynsym+mdebug	named-only	CRIME_RE.h:452	LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table]
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e6f4	284	__glCrmEnableBlend	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e810	900	__glCrmPassBlendFunc	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93eb94	340	__glCrmPassBlendColor	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ece8	120	__glCrmEnableDither	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ed60	132	__glCrmEnableLogicOp	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ede4	456	__glCrmPassLogicOp	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93efac	156	__glCrmEnableFogTest	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f048	244	__glCrmPassFog	dynsym+mdebug	understood	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f13c	484	__glCrmPassColorMask	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f13c	484	__glCrmPassColorMask	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f320	56	__glCrmShadeModel	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f360	2548	__glCrmRenderBitmap	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ff60	600	__glCrmRenderLeftRightBitmap	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f360	2548	__glCrmRenderBitmap	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ff60	600	__glCrmRenderLeftRightBitmap	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	mdebug	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940350	1180	ReadCISpan	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9407ec	60	ReadCI	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940db0	48	MakeCurrentCI	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940de0	16	ResizeCI	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940df0	1956	PickCI	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940e2c	444	__glCrmInitCI	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940ff0	212	__glCrmDownloadCurrentColor	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9410c4	268	__glCrmDownloadRasterColor	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940ff0	212	__glCrmDownloadCurrentColor	dynsym+mdebug	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9410c4	268	__glCrmDownloadRasterColor	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9411d0	104	__glCrmClampScaleAndDownload	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941238	188	__glcrmim_Indexf	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941238	188	__glcrmim_Indexf	dynsym+mdebug	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9412f4	64	__glcrmim_Indexd	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941334	68	__glcrmim_Indexi	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941378	76	__glcrmim_Indexs	dynsym+mdebug	undocumented		
@@ -6542,52 +6542,52 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941538	92	__glcrmim_Inde
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941594	100	RasterPos2SetColor	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9415f8	100	RasterPos3SetColor	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94165c	100	RasterPos4SetColor	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9416c0	1216	ApplySetColor	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9416c0	1216	ApplySetColor	mdebug	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94172c	156	__glCrmUnlayerColorProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9417c8	272	__glCrmLayerColorProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9418d8	364	__glcrmim_FastColor4ub	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941a44	76	__glcrmim_FastColor3ub	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9418d8	364	__glcrmim_FastColor4ub	dynsym+mdebug	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941a44	76	__glcrmim_FastColor3ub	dynsym+mdebug	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941a90	72	__glcrmim_FastColor3ubv	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941ad8	72	__glcrmim_FastColor4ubv	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941b20	40	__glCrmCalcAlphaColor	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941b50	48	__glCrmIoctl	dynsym+mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941b50	48	__glCrmIoctl	dynsym+mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941b80	56	crmScanVice	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941bb8	244	GetBoardInfo	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941bb8	244	GetBoardInfo	mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941c68	68	__glCrmAllocAccum	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941cac	464	CheckViewport	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941e7c	272	FindWindowSize	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941f8c	220	ApplyViewport	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942068	636	ApplyScissor	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9422e4	2808	crmGetBufMode	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9422e4	2808	crmGetBufMode	mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94281c	68	__glCrmGetSrcBufMode	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942860	68	__glCrmGetDstBufMode	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9428a4	384	__glCrmSetDrawBuffer	dynsym+mdebug	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942a24	384	__glCrmSetReadBuffer	dynsym+mdebug	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942ba4	476	__glCrmSetCurrentBuffers	dynsym+mdebug	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942d80	92	__glCrmSetStoreBuffer	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942860	68	__glCrmGetDstBufMode	dynsym+mdebug	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9428a4	384	__glCrmSetDrawBuffer	dynsym+mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942a24	384	__glCrmSetReadBuffer	dynsym+mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942ba4	476	__glCrmSetCurrentBuffers	dynsym+mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942d80	92	__glCrmSetStoreBuffer	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942ddc	332	PickBufferProcs	mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942f28	260	SwapBuffers	mdebug	named-only	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94302c	296	DecoupleSwapBuffers	mdebug	named-only	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942f28	260	SwapBuffers	mdebug	understood	docs/libglcore.md#pix_cxc	`pix_cx.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94302c	296	DecoupleSwapBuffers	mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943124	48	__glCrmFlushAndConfirm	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943154	72	Finish	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94319c	8	Flush	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9431a4	180	DestroyHWContext	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943258	644	LoseCurrent	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943338	420	__glCrmUpdateHardwareState	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943338	420	__glCrmUpdateHardwareState	dynsym+mdebug	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9434dc	164	DissociateDMPbuffer	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943580	1052	IsCompatibleDMPbuffer	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94399c	952	AssociateDMPbuffer	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94399c	952	AssociateDMPbuffer	mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943d54	288	ValidateDMPbuffers	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943e74	140	FreeDMPbuffer	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943f00	312	MakeCurrentDMPbuffer	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd944038	52	VisualsMatch	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94406c	104	MakeCurrent	mdebug	named-only	docs/context.md#the-shadow-record	The shadow record
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9440d4	8204	MakeCurrentRead	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9440d4	8204	MakeCurrentRead	mdebug	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945350	1600	__glCrmCreateContext	dynsym+mdebug	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945990	636	__glCrmFillCheapFogTriangle	dynsym+mdebug	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945c0c	236	__glCrmFillStippledTriangle	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945cf8	512	__glCrmFillFrontBackTriangle	dynsym+mdebug	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLeftRightTriangle	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945990	636	__glCrmFillCheapFogTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945c0c	236	__glCrmFillStippledTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945cf8	512	__glCrmFillFrontBackTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLeftRightTriangle	dynsym+mdebug	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9460e0	1520	FillSubTriangle	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9466d0	6888	SetInitialParameters	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd946e40	4324	__glCrmFillSlowTriangle	dynsym+mdebug	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
@@ -6598,14 +6598,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481b8	16	PickDepth
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481c8	20	FetchDepth	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481dc	24	StoreDepth	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481f4	24	StoreDepthAlways	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	named-only	CRIME_RE.h:310	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c6c	16	ResizeSz	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd948fc4	132	__glCrmForceNonTagClear	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	understood	docs/libglcore.md#so_depthopc	`so_depthop.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd948fc4	132	__glCrmForceNonTagClear	dynsym+mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949048	356	__glCrmInitDepth	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9491b0	124	crmIglooSwaptmesh	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94922c	240	crmIglooFullScreen	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94922c	240	crmIglooFullScreen	mdebug	understood	docs/libglcore.md#crm_iglooc	`crm_igloo.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9492e0	60	__glcrmim_n3f	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94931c	88	crmIgloolmcolor	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd949374	80	crmIglooApplyColor	mdebug	undocumented		
@@ -6615,17 +6615,17 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949560	420	__glCrmWideLi
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949704	520	__glCrmWideStippledLineRep	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94990c	436	__glCrmScissorLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949ac0	464	__glCrmScissorStippledLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949c90	272	__glCrmRenderCheapFogLine	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949c90	272	__glCrmRenderCheapFogLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949da0	724	__glCrmRenderAliasLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	named-only	docs/opengl.md#antialiasing	Antialiasing
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94adf0	356	__glCrmFogCILine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94af54	6492	__glCrmTexturedLine	dynsym+mdebug	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94adf0	356	__glCrmFogCILine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94af54	6492	__glCrmTexturedLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94c8b0	132	__glCrmPolygonOffsetLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94c940	5340	__glCrmStoreLine	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94de1c	5480	__glCrmStoreStippledLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94c940	5340	__glCrmStoreLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linespanc	`crm_linespan.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94de1c	5480	__glCrmStoreStippledLine	dynsym+mdebug	understood	docs/libglcore.md#crm_linespanc	`crm_linespan.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94f390	8316	crmlcCheckTexImageArgs	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94f5b0	144	__glcrmle_TexImage1D	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94f640	448	__glcrmlc_TexImage1D	dynsym+mdebug	undocumented		
@@ -6643,18 +6643,18 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95015c	188	__glcrmlc_Nor
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950218	188	__glcrmlc_Normal3fv	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9502d4	176	__glcrmlc_TexCoord2f	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950384	176	__glcrmlc_TexCoord2fv	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950440	360	__glCrmPickSpanProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9505a8	708	__glCrmPickTriangleProcs	dynsym+mdebug	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950440	360	__glCrmPickSpanProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9505a8	708	__glCrmPickTriangleProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95086c	84	__glCrmPickClipProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9508c0	1356	__glCrmPickLineProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950e0c	212	__glCrmPickRenderBitmapProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950ee0	800	__glCrmPickVertexProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9508c0	1356	__glCrmPickLineProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_aalineasmma	`crm_aalineasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950e0c	212	__glCrmPickRenderBitmapProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950ee0	800	__glCrmPickVertexProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd951200	524	__glCrmPickStoreProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95140c	576	crmSetupPrimAdjustment	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9515f0	92	__glCrmValidate	dynsym+mdebug	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95164c	2500	__glCrmValidateLighting	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95172c	2268	__glCrmPickAllProcs	dynsym+mdebug	understood	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952010	260	LoadLinearTlb	mdebug	named-only	docs/pixel-transfer.md#linear-tlb-loading	Linear TLB loading
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95172c	2268	__glCrmPickAllProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952010	260	LoadLinearTlb	mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952114	140	pinBuffer	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521a0	92	unpinBuffer	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521fc	224	mapScratch	mdebug	undocumented		
@@ -6664,15 +6664,15 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95275c	2288	__glCrmPickP
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95304c	152	__glcrmim_DrawPixels	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9530e4	184	__glcrmim_ReadPixels	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95319c	280	__glcrmim_PixelZoom	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9532b4	3928	__glCrmPickDrawPixels	dynsym+mdebug	named-only	docs/pixel-transfer.md#the-step-registers	The step registers
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9532b4	3928	__glCrmPickDrawPixels	dynsym+mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95420c	2832	__glCrmPickReadPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd954d1c	2924	__glCrmPickCopyPixels	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955888	1260	__glCrmSetupPixelRenderOps	dynsym+mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd955d74	14464	crmFastDoubleStore	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955f5c	2732	crmDrawPixelsXfer	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955888	1260	__glCrmSetupPixelRenderOps	dynsym+mdebug	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd955d74	14464	crmFastDoubleStore	mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955f5c	2732	crmDrawPixelsXfer	dynsym+mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd956a08	5472	crmDrawPixelsXfer2	dynsym+mdebug	named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd957f68	3468	crmReadPixelsXfer	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd958cf4	1760	crmCopyPixelsXfer	dynsym+mdebug	named-only	docs/pixel-transfer.md#the-step-registers	The step registers
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd958cf4	1760	crmCopyPixelsXfer	dynsym+mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9593d4	544	crmCopyPixelsXferRW	dynsym+mdebug	named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9595f4	552	convertRGBXToRGBA	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95981c	556	convertXBGRToABGR	mdebug	undocumented		
@@ -6693,22 +6693,22 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a79c	164	convertS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a840	280	convertRGBA5551To1555	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a958	1716	convertRGBA1555To5551	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b3f4	444	RenderPointFog	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b5b0	1832	RenderPointTextured	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95bcd8	1064	RenderPointN	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b3f4	444	RenderPointFog	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b5b0	1832	RenderPointTextured	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95bcd8	1064	RenderPointN	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95c0a4	92	__glCrmPolygonOffsetPoint	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95c100	236	Coverage	mdebug	named-only	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95c1ec	2400	RenderAntiAliasedPoint	mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cb4c	476	RenderFrontBackPoint	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderLeftRightPoint	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95cf2c	640	__glCrmPickPointProcs	dynsym+mdebug	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRenderPointRGBA	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	named-only	docs/opengl.md#antialiasing	Antialiasing
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cb4c	476	RenderFrontBackPoint	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderLeftRightPoint	mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95cf2c	640	__glCrmPickPointProcs	dynsym+mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRenderPointRGBA	dynsym+mdebug	understood	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	understood	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLineEquation	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	undocumented		
@@ -6731,21 +6731,21 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963b60	108	__glCrmRaster
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963bcc	108	__glCrmRasterPos3	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963c38	108	__glCrmRasterPos4	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963ca4	312	__glcrmim_RenderMode	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963e38	464	EndLLoop	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963e38	464	EndLLoop	mdebug	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963f98	60	__glCrmBeginLLoop	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd963fd4	52	__glCrmBeginLStrip	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964008	68	SetHoldVertex	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96404c	200	EndPolygon	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9640ac	104	__glCrmBeginPolygon	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964114	492	EndPoints	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9641ec	264	__glCrmBeginPoints	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964300	13168	crmSpanDoubleStore	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964114	492	EndPoints	mdebug	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9641ec	264	__glCrmBeginPoints	dynsym+mdebug	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964300	13168	crmSpanDoubleStore	mdebug	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964528	752	__glCrmSpanRenderRGBA	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964818	948	__glCrmSpanRenderRGBA2	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964bcc	708	__glCrmSpanRenderCI	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964bcc	708	__glCrmSpanRenderCI	dynsym+mdebug	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964e90	832	__glCrmSpanRenderCI2	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9651d0	872	__glCrmSpanRenderDepth	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd965538	800	__glCrmSpanRenderDepth2	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9651d0	872	__glCrmSpanRenderDepth	dynsym+mdebug	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd965538	800	__glCrmSpanRenderDepth2	dynsym+mdebug	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd965858	816	__glCrmSpanRenderStencil	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd965b88	952	__glCrmSpanRenderStencil2	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd965f40	716	__glCrmSpanReadColor	dynsym+mdebug	undocumented		
@@ -6755,14 +6755,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9665a0	888	__glCrmSpanRe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966918	636	__glCrmSpanReadStencil	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966b94	452	__glCrmSpanReadStencil2	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966d60	1248	__glCrmFastRect	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967240	512	__glCrmFrontBackRect	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967440	548	__glCrmLeftRightRect	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967670	216	StoreRGBA	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGBA2	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967878	1340	ReturnRGBASpan	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967240	512	__glCrmFrontBackRect	dynsym+mdebug	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967440	548	__glCrmLeftRightRect	dynsym+mdebug	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967670	216	StoreRGBA	mdebug	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGBA2	mdebug	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967878	1340	ReturnRGBASpan	mdebug	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967db4	1140	ReadRGBASpan	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968228	60	ReadRGBA	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968264	2228	ClearRGBA	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968264	2228	ClearRGBA	mdebug	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd968ae8	48	MakeCurrentRGBA	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b18	16	ResizeRGBA	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b28	29868	FreeRGBA	mdebug	undocumented		
@@ -6781,39 +6781,39 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96a070	1716	__glCrmStore
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96a724	1824	__glCrmStoreRGBAStippledSpan	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96ae44	1036	__glCrmOffsetSpan	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96b250	1436	__glCrmOffsetStippledSpan	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96b7ec	3012	__glCrmDumpPerPixelSpan	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96c3b0	3252	__glCrmDumpPerPixelStippledSpan	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96d064	2580	__glCrmDumpSpan	dynsym+mdebug	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96da78	3544	__glCrmDumpStippledSpan	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96e850	1024	__glCrmDumpStippledFlatSpan	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96ec50	1304	__glCrmDumpStippledSmoothSpan	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96b7ec	3012	__glCrmDumpPerPixelSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96c3b0	3252	__glCrmDumpPerPixelStippledSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96d064	2580	__glCrmDumpSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96da78	3544	__glCrmDumpStippledSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96e850	1024	__glCrmDumpStippledFlatSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96ec50	1304	__glCrmDumpStippledSmoothSpan	dynsym+mdebug	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f168	848	__glCrmDumpSPBuffSpan	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f4b8	588	__glCrmDumpSPBuffSpanRed	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f710	72	__glCrmPassStencilMask	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f758	240	__glCrmEnableStencilTest	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f710	72	__glCrmPassStencilMask	dynsym+mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f758	240	__glCrmEnableStencilTest	dynsym+mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f848	532	__glCrmPassStencilMode	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96fa5c	1400	__glCrmUpdatePolyStipple	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96fa5c	1400	__glCrmUpdatePolyStipple	dynsym+mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffd4	12	PickStencil	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffe0	20	FetchStencil	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96fff4	304	StoreStencil	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970124	20	TestFunc	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970138	828	ClearStencil	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970138	828	ClearStencil	mdebug	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970474	296	crmPickPolyStippleMode	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970524	120	MakeCurrentStencil	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97059c	388	ResizeStencil	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970634	224	__glCrmInitStencil	dynsym+mdebug	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970720	204	crmDoDepthStore	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9707ec	96	crmDoDoubleStore	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97084c	160	crmDoDoubleStore_S	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9708ec	384	crmDoDoubleStore_D	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970a6c	660	crmDoDoubleStore_SD	mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97084c	160	crmDoDoubleStore_S	mdebug	understood	docs/libglcore.md#crm_storec	`crm_store.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9708ec	384	crmDoDoubleStore_D	mdebug	understood	docs/libglcore.md#crm_storec	`crm_store.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970a6c	660	crmDoDoubleStore_SD	mdebug	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970c20	220	__glCrmGenericPickStoreProcs	dynsym+mdebug	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970d00	376	__glCrmTexIoctl	mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970e78	92	texFastBind	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctlBind	mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctlBind	mdebug	understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970f64	988	crmUpdateSharedTiles	mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd971340	92	crmCalcDMTexture	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	understood	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972250	360	crmFreeTexImage	mdebug	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -6897,9 +6897,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c4e4	280	__glce_DrawAr
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c5fc	292	__glce_DrawElements	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c720	324	__glce_DrawRangeElements	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c864	264	__glce_ArrayElementEXT	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c96c	140	__glDlistAllocOp2	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c96c	140	__glDlistAllocOp2	dynsym+mdebug	named-only	docs/libglcore.md#display-list-compile-and-execute	Display-list compile and execute
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c9f8	12	__glDlistFreeOp	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97ca04	236	__glDlistAppendOp	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97ca04	236	__glDlistAppendOp	dynsym+mdebug	named-only	docs/libglcore.md#display-list-compile-and-execute	Display-list compile and execute
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97caf0	404	ApplyMatChange	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97cc84	3932	FreeFastMaterial	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97cd50	1148	__glDlistOptimizeMaterial	dynsym+mdebug	undocumented		
@@ -7532,7 +7532,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9910e0	208	__glMipsNorma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9911b0	256	__glMipsCopyDispatch	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9912b0	1344	__glStencilTestSpan_asm	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9917f0	16	__glFrac	dynsym+mdebug	named-only	docs/pixel-arithmetic.md#filter-weights	Filter weights
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991800	12	__glFloor	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991800	12	__glFloor	dynsym+mdebug	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991810	8	__glDT_NEVER	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991818	32	__glDT_LEQUAL	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991838	32	__glDT_LEQUAL_s	dynsym+mdebug	undocumented		
@@ -7558,54 +7558,54 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919b8	12	__glDT_GEQUAL_
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919c4	8	__glDT_ALWAYS_M	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919d0	408	__glDepthTestLine_LESS_asm	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991b68	408	__glDepthTestLine_LESS_s_asm	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991d00	1056	__glDepthTestLine_asm	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991e8c	12	__glDTP_NEVER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991e98	32	__glDTP_LEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991eb8	32	__glDTP_LEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ed8	32	__glDTP_LESS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ef8	32	__glDTP_LESS_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f18	28	__glDTP_EQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f34	32	__glDTP_GREATER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f54	32	__glDTP_GREATER_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f74	28	__glDTP_NOTEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f90	32	__glDTP_GEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fb0	32	__glDTP_GEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fd0	12	__glDTP_ALWAYS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fdc	32	__glDTP_LEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ffc	32	__glDTP_LEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99201c	32	__glDTP_LESS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99203c	32	__glDTP_LESS_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99205c	28	__glDTP_EQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992078	32	__glDTP_GREATER_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992098	32	__glDTP_GREATER_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920b8	28	__glDTP_NOTEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920d4	32	__glDTP_GEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920f4	32	__glDTP_GEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992114	12	__glDTP_ALWAYS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992120	944	__glDepthTestSpan_asm	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9921ec	16	__glDTS_NEVER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9921fc	40	__glDTS_LEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992224	40	__glDTS_LEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99224c	40	__glDTS_LESS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992274	40	__glDTS_LESS_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99229c	36	__glDTS_EQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9922c0	40	__glDTS_GREATER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9922e8	40	__glDTS_GREATER_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992310	36	__glDTS_NOTEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992334	40	__glDTS_GEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99235c	40	__glDTS_GEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992384	12	__glDTS_ALWAYS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992390	32	__glDTS_LEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923b0	32	__glDTS_LEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923d0	32	__glDTS_LESS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923f0	32	__glDTS_LESS_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992410	28	__glDTS_EQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99242c	32	__glDTS_GREATER_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99244c	32	__glDTS_GREATER_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99246c	28	__glDTS_NOTEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992488	32	__glDTS_GEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9924a8	32	__glDTS_GEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9924c8	8	__glDTS_ALWAYS_M	dynsym	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991d00	1056	__glDepthTestLine_asm	dynsym+mdebug	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991e8c	12	__glDTP_NEVER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991e98	32	__glDTP_LEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991eb8	32	__glDTP_LEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ed8	32	__glDTP_LESS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ef8	32	__glDTP_LESS_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f18	28	__glDTP_EQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f34	32	__glDTP_GREATER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f54	32	__glDTP_GREATER_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f74	28	__glDTP_NOTEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991f90	32	__glDTP_GEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fb0	32	__glDTP_GEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fd0	12	__glDTP_ALWAYS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991fdc	32	__glDTP_LEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991ffc	32	__glDTP_LEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99201c	32	__glDTP_LESS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99203c	32	__glDTP_LESS_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99205c	28	__glDTP_EQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992078	32	__glDTP_GREATER_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992098	32	__glDTP_GREATER_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920b8	28	__glDTP_NOTEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920d4	32	__glDTP_GEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9920f4	32	__glDTP_GEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992114	12	__glDTP_ALWAYS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992120	944	__glDepthTestSpan_asm	dynsym+mdebug	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9921ec	16	__glDTS_NEVER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9921fc	40	__glDTS_LEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992224	40	__glDTS_LEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99224c	40	__glDTS_LESS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992274	40	__glDTS_LESS_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99229c	36	__glDTS_EQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9922c0	40	__glDTS_GREATER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9922e8	40	__glDTS_GREATER_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992310	36	__glDTS_NOTEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992334	40	__glDTS_GEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99235c	40	__glDTS_GEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992384	12	__glDTS_ALWAYS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992390	32	__glDTS_LEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923b0	32	__glDTS_LEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923d0	32	__glDTS_LESS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9923f0	32	__glDTS_LESS_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992410	28	__glDTS_EQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99242c	32	__glDTS_GREATER_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99244c	32	__glDTS_GREATER_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99246c	28	__glDTS_NOTEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd992488	32	__glDTS_GEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9924a8	32	__glDTS_GEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9924c8	8	__glDTS_ALWAYS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9924d0	228	__glDepthTestStippledSpan_asm	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9925b4	300	__glDepthTestStencilSpan_asm	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9926e0	312	__glDepthTestStencilStippledSpan_asm	dynsym+mdebug	undocumented		
@@ -7789,7 +7789,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9aa280	81728	PickSp
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9aeabc	1676	__glClipDrawPixels	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af148	652	__glComputeSpanPixelArray	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af3d4	148	__glLoadUnpackModes	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af468	348	__glInitDrawPixelsInfo	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af468	348	__glInitDrawPixelsInfo	dynsym+mdebug	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af5c4	604	__glDrawPixelSpans	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9af820	480	__glDrawPixels2	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9afa00	432	__glDrawPixels1	dynsym+mdebug	undocumented		
@@ -8337,7 +8337,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da374	292	__glFogStippl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da498	524	__glFogSpanSlow	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da6a4	628	__glFogStippledSpanSlow	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da918	412	__glFogFragmentSlow	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9daab4	272	__glFogVertex	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9daab4	272	__glFogVertex	dynsym+mdebug	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dabc4	100	__glFogVertexLinear	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dac28	124	__glFogColorSlow	dynsym+mdebug	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dacb0	248	__glim_GetTexEnvfv	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -8585,7 +8585,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f64c0	384	__glRenderAli
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6640	128	__glRenderFlatFogPoint	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f66c0	576	__glRenderAliasedPointN	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6900	76	__glPolygonOffsetPoint	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6950	48	__glBeginPoints	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6950	48	__glBeginPoints	dynsym+mdebug	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6980	32	__glEndPoints	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f9420	3900	__glFillAntiAliasedTriangle	dynsym+mdebug	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fa360	612	clipToPlane	mdebug	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
@@ -8666,7 +8666,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda012b0	232	__glMaskCISpa
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda013a0	228	__glim_Begin	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01484	112	__glim_End	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014f4	8	__glNop	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014fc	32	__glEndPrim	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014fc	32	__glEndPrim	dynsym+mdebug	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0151c	52	__glim_UnimplementedExtension	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01550	188	__glim_RasterPos2dv	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0160c	152	__glim_RasterPos2fv	dynsym+mdebug	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -9283,7 +9283,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda40dd0	3568	XferMod
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda40e54	1752	viceCheckRequest	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda4152c	1056	viceSetIter	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda4194c	620	viceLateLumaConvert	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32	.text	0xd80da70	1784	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32	.text	0xd80da70	1784	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32	.text	0xd80e170	532	__glXInit	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e170	72	__glXMalloc	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32	.text	0xd80e390	420	isNotProxy	dwarf+funcnames	undocumented		
@@ -9960,7 +9960,7 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd842084	336	__glx_Instrumen
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8421d4	364	__glx_PollInstrumentsSGIX	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd842340	268	__glx_FlushRasterSGIX	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32	.text	0xd8434a0	56	_init	dwarf	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd931010	1324	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd931010	1324	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931540	12	glNewList	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93154c	12	glEndList	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931558	12	glCallList	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -10489,7 +10489,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932ffc	88	__glim_MipsN
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933054	88	__glim_MipsNoXFVertex3fvFast	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9330ac	88	__glim_MipsNoXFVertex4fvFast	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933104	248	__glim_MipsNoXFVertex2fvFast2D	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933200	1196	__glCrmAntiAliasLineRGB	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933200	1196	__glCrmAntiAliasLineRGB	dwarf+dynsym	understood	docs/libglcore.md#crm_aalineasmma	`crm_aalineasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9336b0	64	__glMipsXForm2_2DNRW	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9336f0	80	__glMipsXForm2_2DW	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933740	96	__glMipsXForm2_W	dwarf+dynsym	undocumented		
@@ -10558,23 +10558,23 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935e08	420	__glFastCal
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd935fac	204	vvec	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936078	912	__glCalcRGBColor	dwarf+dynsym	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936410	232	__glCrmFlatTriangle	dwarf+dynsym	understood	docs/opengl.md#one-flat-triangle	One flat triangle
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9364f8	408	__glCrmFlatZTriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936690	296	__glCrmSmoothCITriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9367b8	448	__glCrmSmoothRGBTriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936978	540	__glCrmSmoothRGBATriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936b94	384	__glCrmSmoothCIZTriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936d14	536	__glCrmSmoothRGBZTriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936f2c	628	__glCrmSmoothRGBAZTriangle	dwarf+dynsym	named-only	docs/opengl.md#which-triangle-routine-is-chosen-__glcrmpicktriangleprocs	Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9364f8	408	__glCrmFlatZTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936690	296	__glCrmSmoothCITriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9367b8	448	__glCrmSmoothRGBTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936978	540	__glCrmSmoothRGBATriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936b94	384	__glCrmSmoothCIZTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936d14	536	__glCrmSmoothRGBZTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936f2c	628	__glCrmSmoothRGBAZTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9371a0	120	__glCalcEyeLinear	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937218	120	__glCalcObjectLinear	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937290	24	__glCalcTexture	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938028	268	__glCrmSmoothCILine	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938134	652	__glCrmFogRGBLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDepthLine	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938028	268	__glCrmSmoothCILine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938134	652	__glCrmFogRGBLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDepthLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd93871c	1048	LongStippledLine	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b40	20	__glFirstLinesVertex	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b60	40	__glBeginLines	dwarf+dynsym	undocumented		
@@ -10594,7 +10594,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939230	520	AccumA
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939440	612	AccumResize	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9396b0	960	AccumulateLoad	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939a70	740	AddMultiply	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939d60	1068	Return	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939d60	1068	Return	dwarf+funcnames	understood	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd93a190	8	AccumPick	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd93a1a0	840	SlowSoftClear	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd93a4f0	1044	AccumClear	dwarf+funcnames	undocumented		
@@ -10629,32 +10629,32 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93e390	3716	__glcrmim_
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93f220	4052	__glcrmim_Disable	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940200	160	__glCrmEnableAlphaTest	dwarf+dynsym	named-only	CRIME_RE.h:266	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9402a0	116	__glCrmPassAlphaFunc	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940320	256	__glCrmEnableBlend	dwarf+dynsym	named-only	CRIME_RE.h:267	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940420	856	__glCrmPassBlendFunc	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940780	144	__glCrmPassBlendColor	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940810	108	__glCrmEnableDither	dwarf+dynsym	named-only	docs/opengl.md#global-state	Global state
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940880	120	__glCrmEnableLogicOp	dwarf+dynsym	named-only	CRIME_RE.h:270	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940900	436	__glCrmPassLogicOp	dwarf+dynsym	named-only	CRIME_RE.h:452	LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table]
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940320	256	__glCrmEnableBlend	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940420	856	__glCrmPassBlendFunc	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940780	144	__glCrmPassBlendColor	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940810	108	__glCrmEnableDither	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940880	120	__glCrmEnableLogicOp	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940900	436	__glCrmPassLogicOp	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940ac0	152	__glCrmEnableFogTest	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940b60	96	__glCrmPassFog	dwarf+dynsym	understood	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940bc0	648	__glCrmPassColorMask	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940bc0	648	__glCrmPassColorMask	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e50	52	__glCrmShadeModel	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e90	3156	__glCrmRenderBitmap	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941af0	456	__glCrmRenderFrontBackBitmap	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941cc0	540	__glCrmRenderLeftRightBitmap	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd941ee0	144	StoreCI	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd941f70	224	StoreCI2	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e90	3156	__glCrmRenderBitmap	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941af0	456	__glCrmRenderFrontBackBitmap	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941cc0	540	__glCrmRenderLeftRightBitmap	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd941ee0	144	StoreCI	dwarf+funcnames	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd941f70	224	StoreCI2	dwarf+funcnames	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942050	848	ReadCISpan	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9423a0	28	ReadCI	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9423c0	1156	ClearCI	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9423c0	1156	ClearCI	dwarf+funcnames	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942850	52	MakeCurrentCI	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942890	16	ResizeCI	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9428a0	52	PickCI	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9428e0	440	__glCrmInitCI	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942aa0	176	__glCrmDownloadCurrentColor	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942b50	176	__glCrmDownloadRasterColor	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942aa0	176	__glCrmDownloadCurrentColor	dwarf+dynsym	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942b50	176	__glCrmDownloadRasterColor	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942c00	108	__glCrmClampScaleAndDownload	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942c70	108	__glcrmim_Indexf	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942c70	108	__glcrmim_Indexf	dwarf+dynsym	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942ce0	60	__glcrmim_Indexd	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942d20	64	__glcrmim_Indexi	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942d60	64	__glcrmim_Indexs	dwarf+dynsym	undocumented		
@@ -10667,52 +10667,52 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942f00	68	__glcrmim_In
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942f50	100	RasterPos2SetColor	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942fc0	100	RasterPos3SetColor	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943030	100	RasterPos4SetColor	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9430a0	96	ApplySetColor	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9430a0	96	ApplySetColor	dwarf+funcnames	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943100	432	__glCrmUnlayerColorProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9432b0	760	__glCrmLayerColorProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9435b0	216	__glcrmim_FastColor4ub	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943690	52	__glcrmim_FastColor3ub	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9435b0	216	__glcrmim_FastColor4ub	dwarf+dynsym	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943690	52	__glcrmim_FastColor3ub	dwarf+dynsym	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9436d0	68	__glcrmim_FastColor3ubv	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943720	68	__glcrmim_FastColor4ubv	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943770	32	__glCrmCalcAlphaColor	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943790	52	__glCrmIoctl	dwarf+dynsym	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd943790	52	__glCrmIoctl	dwarf+dynsym	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9437d0	52	crmScanVice	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943810	148	GetBoardInfo	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943810	148	GetBoardInfo	dwarf+funcnames	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9438b0	64	__glCrmAllocAccum	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9438f0	452	CheckViewport	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943ac0	236	FindWindowSize	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943bb0	208	ApplyViewport	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943c80	656	ApplyScissor	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943f10	1276	crmGetBufMode	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943f10	1276	crmGetBufMode	dwarf+funcnames	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944410	68	__glCrmGetSrcBufMode	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944460	68	__glCrmGetDstBufMode	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9444b0	416	__glCrmSetDrawBuffer	dwarf+dynsym	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944650	420	__glCrmSetReadBuffer	dwarf+dynsym	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944800	436	__glCrmSetCurrentBuffers	dwarf+dynsym	named-only	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9449c0	84	__glCrmSetStoreBuffer	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944460	68	__glCrmGetDstBufMode	dwarf+dynsym	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9444b0	416	__glCrmSetDrawBuffer	dwarf+dynsym	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944650	420	__glCrmSetReadBuffer	dwarf+dynsym	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944800	436	__glCrmSetCurrentBuffers	dwarf+dynsym	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9449c0	84	__glCrmSetStoreBuffer	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944a20	360	PickBufferProcs	dwarf+funcnames	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944b90	248	SwapBuffers	dwarf+funcnames	named-only	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944c90	240	DecoupleSwapBuffers	dwarf+funcnames	named-only	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944b90	248	SwapBuffers	dwarf+funcnames	understood	docs/libglcore.md#pix_cxc	`pix_cx.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944c90	240	DecoupleSwapBuffers	dwarf+funcnames	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944d80	60	__glCrmFlushAndConfirm	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944dc0	68	Finish	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e10	8	Flush	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e20	140	DestroyHWContext	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944eb0	204	LoseCurrent	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944f80	280	__glCrmUpdateHardwareState	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944f80	280	__glCrmUpdateHardwareState	dwarf+dynsym	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9450a0	136	DissociateDMPbuffer	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945130	1064	IsCompatibleDMPbuffer	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945560	1184	AssociateDMPbuffer	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945560	1184	AssociateDMPbuffer	dwarf+funcnames	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945a00	316	ValidateDMPbuffers	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945b40	132	FreeDMPbuffer	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945bd0	312	MakeCurrentDMPbuffer	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945d10	48	VisualsMatch	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945d40	104	MakeCurrent	dwarf+funcnames	named-only	docs/context.md#the-shadow-record	The shadow record
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945db0	5940	MakeCurrentRead	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945db0	5940	MakeCurrentRead	dwarf+funcnames	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9474f0	3176	__glCrmCreateContext	dwarf+dynsym	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948160	604	__glCrmFillCheapFogTriangle	dwarf+dynsym	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9483c0	204	__glCrmFillStippledTriangle	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948490	464	__glCrmFillFrontBackTriangle	dwarf+dynsym	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948660	428	__glCrmFillLeftRightTriangle	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948160	604	__glCrmFillCheapFogTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9483c0	204	__glCrmFillStippledTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948490	464	__glCrmFillFrontBackTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948660	428	__glCrmFillLeftRightTriangle	dwarf+dynsym	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948810	1412	FillSubTriangle	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948da0	1512	SetInitialParameters	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd949390	3252	__glCrmFillSlowTriangle	dwarf+dynsym	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
@@ -10723,14 +10723,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDept
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2f0	8	StoreDepthAlways	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	named-only	CRIME_RE.h:310	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94aca0	128	__glCrmForceNonTagClear	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	understood	docs/libglcore.md#so_depthopc	`so_depthop.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94aca0	128	__glCrmForceNonTagClear	dwarf+dynsym	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94ad20	344	__glCrmInitDepth	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94ae80	108	crmIglooSwaptmesh	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aef0	148	crmIglooFullScreen	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aef0	148	crmIglooFullScreen	dwarf+funcnames	understood	docs/libglcore.md#crm_iglooc	`crm_igloo.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94af90	60	__glcrmim_n3f	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94afd0	84	crmIgloolmcolor	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94b030	72	crmIglooApplyColor	dwarf+funcnames	undocumented		
@@ -10740,17 +10740,17 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b220	444	__glCrmWide
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b3e0	548	__glCrmWideStippledLineRep	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b610	776	__glCrmScissorLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b920	900	__glCrmScissorStippledLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bcb0	260	__glCrmRenderCheapFogLine	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bcb0	260	__glCrmRenderCheapFogLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bdc0	644	__glCrmRenderAliasLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	named-only	docs/opengl.md#antialiasing	Antialiasing
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c750	424	__glCrmRenderFrontBackLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c900	476	__glCrmRenderLeftRightLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cae0	720	__glCrmFlatColorLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cdb0	360	__glCrmFogCILine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cf20	4220	__glCrmTexturedLine	dwarf+dynsym	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c750	424	__glCrmRenderFrontBackLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c900	476	__glCrmRenderLeftRightLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cae0	720	__glCrmFlatColorLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cdb0	360	__glCrmFogCILine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cf20	4220	__glCrmTexturedLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94dfa0	128	__glCrmPolygonOffsetLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94e020	4284	__glCrmStoreLine	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94f0e0	4416	__glCrmStoreStippledLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94e020	4284	__glCrmStoreLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linespanc	`crm_linespan.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94f0e0	4416	__glCrmStoreStippledLine	dwarf+dynsym	understood	docs/libglcore.md#crm_linespanc	`crm_linespan.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd950220	756	crmlcCheckTexImageArgs	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd950520	124	__glcrmle_TexImage1D	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9505a0	416	__glcrmlc_TexImage1D	dwarf+dynsym	undocumented		
@@ -10768,18 +10768,18 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951050	192	__glcrmlc_N
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951110	184	__glcrmlc_Normal3fv	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9511d0	180	__glcrmlc_TexCoord2f	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951290	180	__glcrmlc_TexCoord2fv	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951350	368	__glCrmPickSpanProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9514c0	736	__glCrmPickTriangleProcs	dwarf+dynsym	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951350	368	__glCrmPickSpanProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9514c0	736	__glCrmPickTriangleProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_ctric	`crm_ctri.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9517a0	92	__glCrmPickClipProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951800	1400	__glCrmPickLineProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951d80	184	__glCrmPickRenderBitmapProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951e40	964	__glCrmPickVertexProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951800	1400	__glCrmPickLineProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_aalineasmma	`crm_aalineasm.ma`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951d80	184	__glCrmPickRenderBitmapProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951e40	964	__glCrmPickVertexProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd952210	540	__glCrmPickStoreProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952430	540	crmSetupPrimAdjustment	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd952650	88	__glCrmValidate	dwarf+dynsym	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9526b0	240	__glCrmValidateLighting	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9527a0	2008	__glCrmPickAllProcs	dwarf+dynsym	understood	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952f80	236	LoadLinearTlb	dwarf+funcnames	named-only	docs/pixel-transfer.md#linear-tlb-loading	Linear TLB loading
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9527a0	2008	__glCrmPickAllProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952f80	236	LoadLinearTlb	dwarf+funcnames	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953070	132	pinBuffer	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953100	60	unpinBuffer	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953140	224	mapScratch	dwarf+funcnames	undocumented		
@@ -10789,15 +10789,15 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953600	2020	__glCrmPic
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953df0	144	__glcrmim_DrawPixels	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953e80	140	__glcrmim_ReadPixels	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953f10	228	__glcrmim_PixelZoom	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd954000	4372	__glCrmPickDrawPixels	dwarf+dynsym	named-only	docs/pixel-transfer.md#the-step-registers	The step registers
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd954000	4372	__glCrmPickDrawPixels	dwarf+dynsym	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955120	3092	__glCrmPickReadPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955d40	3012	__glCrmPickCopyPixels	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956910	964	__glCrmSetupPixelRenderOps	dwarf+dynsym	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd956ce0	436	crmFastDoubleStore	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956ea0	2508	crmDrawPixelsXfer	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956910	964	__glCrmSetupPixelRenderOps	dwarf+dynsym	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd956ce0	436	crmFastDoubleStore	dwarf+funcnames	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956ea0	2508	crmDrawPixelsXfer	dwarf+dynsym	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd958b90	3100	crmReadPixelsXfer	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	named-only	docs/pixel-transfer.md#the-step-registers	The step registers
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd959d70	500	crmCopyPixelsXferRW	dwarf+dynsym	named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd959f70	836	convertRGBXToRGBA	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95a2c0	852	convertXBGRToABGR	dwarf+funcnames	undocumented		
@@ -10818,22 +10818,22 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95b930	552	conver
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bb60	456	convertRGBA5551To1555	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bd30	456	convertRGBA1555To5551	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95bf00	1080	__GL_CRM_SCALE_PIXEL_SPAN	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c340	304	__glcrmim_2DPointVertex2fv	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c470	200	__glCrmVertexPointFast	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c540	184	RenderPoint	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c600	112	RenderPointCI	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c670	568	RenderPointDepth	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c8b0	432	RenderPointFog	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95ca60	1500	RenderPointTextured	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d040	880	RenderPointN	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c340	304	__glcrmim_2DPointVertex2fv	dwarf+dynsym	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c470	200	__glCrmVertexPointFast	dwarf+dynsym	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c540	184	RenderPoint	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c600	112	RenderPointCI	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c670	568	RenderPointDepth	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c8b0	432	RenderPointFog	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95ca60	1500	RenderPointTextured	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d040	880	RenderPointN	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95d3b0	92	__glCrmPolygonOffsetPoint	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d410	336	Coverage	dwarf+funcnames	named-only	docs/opengl.md#antialiasing	Antialiasing
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d560	1828	RenderAntiAliasedPoint	dwarf+funcnames	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95dc90	404	RenderFrontBackPoint	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95de30	464	RenderLeftRightPoint	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e000	584	__glCrmPickPointProcs	dwarf+dynsym	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e250	136	__glCrmRenderPointRGBA	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e2d8	168	__glCrmRenderPointDepthRGBA	dwarf+dynsym	named-only	docs/opengl.md#antialiasing	Antialiasing
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95dc90	404	RenderFrontBackPoint	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95de30	464	RenderLeftRightPoint	dwarf+funcnames	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e000	584	__glCrmPickPointProcs	dwarf+dynsym	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e250	136	__glCrmRenderPointRGBA	dwarf+dynsym	understood	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e2d8	168	__glCrmRenderPointDepthRGBA	dwarf+dynsym	understood	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e380	280	FindLineEquation	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e4a0	124	FindPlaneEquation	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e520	152	FindPlaneEquation2	dwarf+funcnames	undocumented		
@@ -10856,21 +10856,21 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963570	112	__glCrmRast
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9635e0	112	__glCrmRasterPos3	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963650	112	__glCrmRasterPos4	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9636c0	292	__glcrmim_RenderMode	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963860	264	EndLLoop	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963860	264	EndLLoop	dwarf+funcnames	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963970	60	__glCrmBeginLLoop	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9639b0	52	__glCrmBeginLStrip	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9639f0	72	SetHoldVertex	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963a40	92	EndPolygon	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963aa0	112	__glCrmBeginPolygon	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963b10	316	EndPoints	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963c50	344	__glCrmBeginPoints	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963db0	480	crmSpanDoubleStore	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963b10	316	EndPoints	dwarf+funcnames	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963c50	344	__glCrmBeginPoints	dwarf+dynsym	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd963db0	480	crmSpanDoubleStore	dwarf+funcnames	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd963f90	936	__glCrmSpanRenderRGBA	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964340	800	__glCrmSpanRenderRGBA2	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964660	872	__glCrmSpanRenderCI	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964660	872	__glCrmSpanRenderCI	dwarf+dynsym	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9649d0	676	__glCrmSpanRenderCI2	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964c80	716	__glCrmSpanRenderDepth	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964f50	856	__glCrmSpanRenderDepth2	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964c80	716	__glCrmSpanRenderDepth	dwarf+dynsym	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd964f50	856	__glCrmSpanRenderDepth2	dwarf+dynsym	understood	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9652b0	988	__glCrmSpanRenderStencil	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd965690	756	__glCrmSpanRenderStencil2	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd965990	644	__glCrmSpanReadColor	dwarf+dynsym	undocumented		
@@ -10880,14 +10880,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd965fc0	600	__glCrmSpan
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966220	580	__glCrmSpanReadStencil	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966470	336	__glCrmSpanReadStencil2	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9665c0	1044	__glCrmFastRect	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9669e0	464	__glCrmFrontBackRect	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966bb0	516	__glCrmLeftRightRect	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966dc0	208	StoreRGBA	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966e90	288	StoreRGBA2	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966fb0	832	ReturnRGBASpan	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9669e0	464	__glCrmFrontBackRect	dwarf+dynsym	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966bb0	516	__glCrmLeftRightRect	dwarf+dynsym	understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966dc0	208	StoreRGBA	dwarf+funcnames	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966e90	288	StoreRGBA2	dwarf+funcnames	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966fb0	832	ReturnRGBASpan	dwarf+funcnames	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9672f0	1644	ReadRGBASpan	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd967960	28	ReadRGBA	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd967980	1752	ClearRGBA	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd967980	1752	ClearRGBA	dwarf+funcnames	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd968060	52	MakeCurrentRGBA	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9680a0	16	ResizeRGBA	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9680b0	116	FreeRGBA	dwarf+funcnames	undocumented		
@@ -10906,39 +10906,39 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9690d0	640	__glCrmStor
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969350	900	__glCrmStoreRGBAStippledSpan	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9696e0	840	__glCrmOffsetSpan	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969a30	1404	__glCrmOffsetStippledSpan	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969fb0	2576	__glCrmDumpPerPixelSpan	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96a9c0	2820	__glCrmDumpPerPixelStippledSpan	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96b4d0	1612	__glCrmDumpSpan	dwarf+dynsym	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96bb20	2632	__glCrmDumpStippledSpan	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c570	864	__glCrmDumpStippledFlatSpan	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c8d0	916	__glCrmDumpStippledSmoothSpan	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969fb0	2576	__glCrmDumpPerPixelSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96a9c0	2820	__glCrmDumpPerPixelStippledSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96b4d0	1612	__glCrmDumpSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96bb20	2632	__glCrmDumpStippledSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c570	864	__glCrmDumpStippledFlatSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c8d0	916	__glCrmDumpStippledSmoothSpan	dwarf+dynsym	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cc70	640	__glCrmDumpSPBuffSpan	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cef0	536	__glCrmDumpSPBuffSpanRed	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d110	76	__glCrmPassStencilMask	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d160	228	__glCrmEnableStencilTest	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d110	76	__glCrmPassStencilMask	dwarf+dynsym	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d160	228	__glCrmEnableStencilTest	dwarf+dynsym	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d250	500	__glCrmPassStencilMode	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d450	964	__glCrmUpdatePolyStipple	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d450	964	__glCrmUpdatePolyStipple	dwarf+dynsym	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d820	8	PickStencil	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d830	8	FetchStencil	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d840	284	StoreStencil	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d960	8	TestFunc	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d970	684	ClearStencil	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d970	684	ClearStencil	dwarf+funcnames	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dc20	172	crmPickPolyStippleMode	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96dcd0	124	MakeCurrentStencil	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dd50	164	ResizeStencil	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96de00	216	__glCrmInitStencil	dwarf+dynsym	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dee0	120	crmDoDepthStore	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96df60	92	crmDoDoubleStore	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dfc0	136	crmDoDoubleStore_S	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e050	296	crmDoDoubleStore_D	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e180	336	crmDoDoubleStore_SD	dwarf+funcnames	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dfc0	136	crmDoDoubleStore_S	dwarf+funcnames	understood	docs/libglcore.md#crm_storec	`crm_store.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e050	296	crmDoDoubleStore_D	dwarf+funcnames	understood	docs/libglcore.md#crm_storec	`crm_store.c`
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e180	336	crmDoDoubleStore_SD	dwarf+funcnames	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96e2d0	224	__glCrmGenericPickStoreProcs	dwarf+dynsym	understood	docs/opengl.md#register-roles	Register roles
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e500	64	texFastBind	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUpdateSharedTiles	dwarf+funcnames	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	understood	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96f770	296	__glCrmResetTextureState	dwarf+dynsym	named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f8a0	328	crmFreeTexImage	dwarf+funcnames	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -11022,9 +11022,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97b1f0	516	__glce_Draw
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97b400	540	__glce_DrawElements	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97b620	572	__glce_DrawRangeElements	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97b860	468	__glce_ArrayElementEXT	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97ba40	124	__glDlistAllocOp2	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97ba40	124	__glDlistAllocOp2	dwarf+dynsym	named-only	docs/libglcore.md#display-list-compile-and-execute	Display-list compile and execute
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97bac0	8	__glDlistFreeOp	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97bad0	236	__glDlistAppendOp	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97bad0	236	__glDlistAppendOp	dwarf+dynsym	named-only	docs/libglcore.md#display-list-compile-and-execute	Display-list compile and execute
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd97bbc0	436	ApplyMatChange	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd97bd80	200	FreeFastMaterial	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97be50	1296	__glDlistOptimizeMaterial	dwarf+dynsym	undocumented		
@@ -11657,7 +11657,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9915a0	208	__glMipsNor
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991670	256	__glMipsCopyDispatch	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991770	1472	__glStencilTestSpan_asm	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d30	16	__glFrac	dwarf+dynsym	named-only	docs/pixel-arithmetic.md#filter-weights	Filter weights
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d40	12	__glFloor	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d40	12	__glFloor	dwarf+dynsym	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d50	8	__glDT_NEVER	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d58	32	__glDT_LEQUAL	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d78	32	__glDT_LEQUAL_s	dwarf+dynsym	undocumented		
@@ -11683,54 +11683,54 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ef8	12	__glDT_GEQUA
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991f04	8	__glDT_ALWAYS_M	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991f10	412	__glDepthTestLine_LESS_asm	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9920ac	412	__glDepthTestLine_LESS_s_asm	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992248	1056	__glDepthTestLine_asm	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9923d4	12	__glDTP_NEVER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9923e0	32	__glDTP_LEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992400	32	__glDTP_LEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992420	32	__glDTP_LESS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992440	32	__glDTP_LESS_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992460	28	__glDTP_EQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99247c	32	__glDTP_GREATER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99249c	32	__glDTP_GREATER_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924bc	28	__glDTP_NOTEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924d8	32	__glDTP_GEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924f8	32	__glDTP_GEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992518	12	__glDTP_ALWAYS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992524	32	__glDTP_LEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992544	32	__glDTP_LEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992564	32	__glDTP_LESS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992584	32	__glDTP_LESS_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925a4	28	__glDTP_EQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925c0	32	__glDTP_GREATER_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925e0	32	__glDTP_GREATER_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992600	28	__glDTP_NOTEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99261c	32	__glDTP_GEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99263c	32	__glDTP_GEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99265c	20	__glDTP_ALWAYS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992670	944	__glDepthTestSpan_asm	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99273c	16	__glDTS_NEVER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99274c	40	__glDTS_LEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992774	40	__glDTS_LEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99279c	40	__glDTS_LESS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9927c4	40	__glDTS_LESS_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9927ec	36	__glDTS_EQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992810	40	__glDTS_GREATER	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992838	40	__glDTS_GREATER_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992860	36	__glDTS_NOTEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992884	40	__glDTS_GEQUAL	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928ac	40	__glDTS_GEQUAL_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928d4	12	__glDTS_ALWAYS	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928e0	32	__glDTS_LEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992900	32	__glDTS_LEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992920	32	__glDTS_LESS_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992940	32	__glDTS_LESS_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992960	28	__glDTS_EQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99297c	32	__glDTS_GREATER_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99299c	32	__glDTS_GREATER_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929bc	28	__glDTS_NOTEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929d8	32	__glDTS_GEQUAL_M	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929f8	32	__glDTS_GEQUAL_M_s	dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992a18	8	__glDTS_ALWAYS_M	dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992248	1056	__glDepthTestLine_asm	dwarf+dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9923d4	12	__glDTP_NEVER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9923e0	32	__glDTP_LEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992400	32	__glDTP_LEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992420	32	__glDTP_LESS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992440	32	__glDTP_LESS_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992460	28	__glDTP_EQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99247c	32	__glDTP_GREATER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99249c	32	__glDTP_GREATER_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924bc	28	__glDTP_NOTEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924d8	32	__glDTP_GEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9924f8	32	__glDTP_GEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992518	12	__glDTP_ALWAYS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992524	32	__glDTP_LEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992544	32	__glDTP_LEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992564	32	__glDTP_LESS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992584	32	__glDTP_LESS_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925a4	28	__glDTP_EQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925c0	32	__glDTP_GREATER_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9925e0	32	__glDTP_GREATER_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992600	28	__glDTP_NOTEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99261c	32	__glDTP_GEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99263c	32	__glDTP_GEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99265c	20	__glDTP_ALWAYS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992670	944	__glDepthTestSpan_asm	dwarf+dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99273c	16	__glDTS_NEVER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99274c	40	__glDTS_LEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992774	40	__glDTS_LEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99279c	40	__glDTS_LESS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9927c4	40	__glDTS_LESS_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9927ec	36	__glDTS_EQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992810	40	__glDTS_GREATER	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992838	40	__glDTS_GREATER_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992860	36	__glDTS_NOTEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992884	40	__glDTS_GEQUAL	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928ac	40	__glDTS_GEQUAL_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928d4	12	__glDTS_ALWAYS	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9928e0	32	__glDTS_LEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992900	32	__glDTS_LEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992920	32	__glDTS_LESS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992940	32	__glDTS_LESS_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992960	28	__glDTS_EQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99297c	32	__glDTS_GREATER_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd99299c	32	__glDTS_GREATER_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929bc	28	__glDTS_NOTEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929d8	32	__glDTS_GEQUAL_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9929f8	32	__glDTS_GEQUAL_M_s	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992a18	8	__glDTS_ALWAYS_M	dynsym	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992a20	228	__glDepthTestStippledSpan_asm	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992b04	300	__glDepthTestStencilSpan_asm	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd992c30	312	__glDepthTestStencilStippledSpan_asm	dwarf+dynsym	undocumented		
@@ -11914,7 +11914,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9a87b0	14816	Pick
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ac190	1252	__glClipDrawPixels	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ac680	516	__glComputeSpanPixelArray	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ac890	144	__glLoadUnpackModes	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ac920	332	__glInitDrawPixelsInfo	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ac920	332	__glInitDrawPixelsInfo	dwarf+dynsym	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9aca70	616	__glDrawPixelSpans	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9acce0	512	__glDrawPixels2	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9acee0	456	__glDrawPixels1	dwarf+dynsym	undocumented		
@@ -12462,7 +12462,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8830	568	__glFogStip
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8a70	472	__glFogSpanSlow	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8c50	612	__glFogStippledSpanSlow	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8ec0	356	__glFogFragmentSlow	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9030	260	__glFogVertex	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9030	260	__glFogVertex	dwarf+dynsym	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9140	76	__glFogVertexLinear	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9190	104	__glFogColorSlow	dwarf+dynsym	named-only	docs/opengl.md#fog	Fog
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9200	216	__glim_GetTexEnvfv	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -12710,7 +12710,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7ed0	248	__glRenderA
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7fd0	124	__glRenderFlatFogPoint	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8050	460	__glRenderAliasedPointN	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8220	76	__glPolygonOffsetPoint	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8270	48	__glBeginPoints	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8270	48	__glBeginPoints	dwarf+dynsym	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f82a0	32	__glEndPoints	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fa2e0	3140	__glFillAntiAliasedTriangle	dwarf+dynsym	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9faf30	660	clipToPlane	dwarf+funcnames	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
@@ -12791,7 +12791,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCIS
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	understood	docs/libglcore.md#crm_primc	`crm_prim.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02ac0	52	__glim_UnimplementedExtension	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02b00	164	__glim_RasterPos2dv	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02bb0	136	__glim_RasterPos2fv	dwarf+dynsym	understood	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -16366,7 +16366,7 @@ usr/lib/internal/libvice.so	board-library	o32		0xd003480	224	__vu_writefile	dyns
 usr/lib/internal/libvice.so	board-library	o32		0xd003560	264	__vu_appendfile	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003668	320	__vu_mapfileandreturnfd	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd0037a8	328	__vu_mapfile	dynsym+mdebug	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd0038f0	200	vice_dmbuf_settlb	dynsym+mdebug	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd0038f0	200	vice_dmbuf_settlb	dynsym+mdebug	understood	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/lib/internal/libvice.so	board-library	o32		0xd0039b8	164	vice_dmbuf_requirements	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003a5c	124	vice_dmbuf_outpool	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003ad8	216	vice_dmbuf_send	dynsym+mdebug	undocumented		
@@ -16435,7 +16435,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf408484	788	XSGIvcNVLoadVideoFormatCom
 usr/lib/libXsgivc.so	board-library	o32		0xf408798	804	XSGIvcLoadVideoFormatByName	dynsym+mdebug	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408abc	808	XSGIvcNVLoadVideoFormatByName	dynsym+mdebug	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408de4	360	XSGIvcMultiCursorSetMode	dynsym+mdebug	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x402b60	1524	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x402b60	1524	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x403190	68	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x4031e0	228	make_qparse_pool	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x4032d0	180	make_dvcoeff_pool	dwarf+funcnames	undocumented		
@@ -16531,7 +16531,7 @@ usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x410e48	343
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x411bb4	2800	_GETBITSUR4x8	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x4126a4	64	_bits4x8	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x4126e4	3436	_APPENDBITSUR4x8	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x401710	1204	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x401710	1204	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x401bec	68	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x401c30	204	init_formats	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x401cfc	124	free_formats	dwarf+funcnames	undocumented		
@@ -16596,7 +16596,7 @@ usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x407
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407e4c	388	jhead_make	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407fd0	328	jhead_luma_make	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x408118	240	vjpeg_qfmt	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401170	764	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401170	764	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401470	68	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x4014b4	204	init_formats	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401580	124	free_formats	dwarf+funcnames	undocumented		
@@ -16623,7 +16623,7 @@ usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x40243
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x402528	128	_e_swap_field	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x4025a8	916	rs_send	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x40293c	392	rs_recv	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x402b00	1524	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x402b00	1524	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403100	52	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403140	188	make_qparse_pool	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403200	156	make_dvcoeff_pool	dwarf+funcnames	undocumented		
@@ -16719,7 +16719,7 @@ usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x40b960	3436	_APP
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x40c6d0	2800	_GETBITSUR4x8	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x40d1c0	64	_bits4x8	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x40d200	3436	_APPENDBITSUR4x8	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x4016b0	864	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x4016b0	864	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x401a20	52	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x401a54	132	init_formats	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x401ad8	92	free_formats	dwarf+funcnames	undocumented		
@@ -16784,7 +16784,7 @@ usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x405394	12
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405410	336	jhead_make	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405560	272	jhead_luma_make	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405670	104	vjpeg_qfmt	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x400e10	524	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x400e10	524	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32		0x401020	344	dmICInitDso	dwarf+dynsym	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401178	212	Open	dwarf+funcnames	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x40124c	96	Close	dwarf+funcnames	undocumented		
@@ -16804,7 +16804,7 @@ usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401780	8	
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401788	1724	Send	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401e44	144	Recv	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401ed4	176	VerifySrcDstConv	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401110	584	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401110	584	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401360	52	_poolneeds	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401394	132	init_formats	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401418	92	free_formats	dwarf+funcnames	undocumented		
@@ -16831,7 +16831,7 @@ usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401ef8	184	
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401fb0	56	_e_swap_field	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401fe8	612	rs_send	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x40224c	268	rs_recv	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	undocumented		
@@ -16946,7 +16946,7 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4150d0	424	mvpSetVideoP
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415430	96	mvpSendI2C	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415490	368	mvpGetI2CData	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	undocumented		
@@ -17061,7 +17061,7 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4150d0	424	mvpSetVideoPortCon
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415430	96	mvpSendI2C	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415490	368	mvpGetI2CData	dwarf+dynsym	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0017a0	464	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0017a0	464	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/internal/libvice.so	board-library	n32		0xd001980	12	vice_get_lib_rev	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00198c	568	vice_open	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001bc4	116	vice_open_and_setetc	dwarf+dynsym	undocumented		
@@ -17106,13 +17106,13 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd003168	200	__vu_writefile	dw
 usr/lib32/internal/libvice.so	board-library	n32		0xd003230	216	__vu_appendfile	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd003308	292	__vu_mapfileandreturnfd	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00342c	296	__vu_mapfile	dwarf+dynsym	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd003554	180	vice_dmbuf_settlb	dwarf+dynsym	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd003554	180	vice_dmbuf_settlb	dwarf+dynsym	understood	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/lib32/internal/libvice.so	board-library	n32		0xd003608	168	vice_dmbuf_requirements	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd0036b0	124	vice_dmbuf_outpool	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00372c	228	vice_dmbuf_send	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd003810	268	vice_dmbuf_recv	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00391c	276	vice_dmbuf_msend	dwarf+dynsym	undocumented		
-usr/lib32/libXsgivc.so	board-library	n32	.text	0xf4029d0	344	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib32/libXsgivc.so	board-library	n32	.text	0xf4029d0	344	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/libXsgivc.so	board-library	n32		0xf402b30	1616	XSGIvcQueryChannelInfo	dwarf+dynsym	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf403180	60	XSGIvcQueryOutputBlanking	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4031c0	60	XSGIvcSetOutputPedestal	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
@@ -17176,7 +17176,7 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf409670	60	XSGIvcSetOutputPhaseH	dwa
 usr/lib32/libXsgivc.so	board-library	n32		0xf4096b0	60	XSGIvcSetOutputPhaseV	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4096f0	308	XSGIvcSelectInput	dwarf+dynsym	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf409830	172	XSGIvcSetOutputGain	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
-usr/lib64/libXsgivc.so	board-library	n64	.text	0x2003120	292	_stub	dwarf	named-only	docs/xsgivc.md#helpers	Helpers
+usr/lib64/libXsgivc.so	board-library	n64	.text	0x2003120	292	_stub	dwarf	understood	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib64/libXsgivc.so	board-library	n64		0x2003250	1712	XSGIvcQueryChannelInfo	dwarf+dynsym	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2003900	64	XSGIvcQueryOutputBlanking	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2003940	64	XSGIvcSetOutputPedestal	dwarf+dynsym	named-only	docs/xsgivc.md#output-controls	Output controls
