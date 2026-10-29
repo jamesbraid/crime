@@ -1130,3 +1130,162 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
   It takes requests 1000 to 1099 through a table of 16-byte entries in `.data` and copies the argument block in with `copyin`, returning 14 or 22 for a bad pointer or number.
   It serialises with the node's call semaphore (`psema`, priority 25) for the requests that name a node, waits for board ownership with `us_delay`, and releases with `vsema`.
 <!-- rrm.o:end -->
+
+<!-- gfx.o:begin -->
+# Kernel routines, one entry each (`gfx.o`)
+
+- `gfxtable_readerlock` in `gfx.o`: takes a read hold on a table lock, a 56-byte routine at offset 0x0. Established.
+  Under `splhi` it adds one to the reader count in the first word of the lock it is given, then restores the level with `splx`.
+- `gfxtable_readerunlock` in `gfx.o`: drops a read hold, a 56-byte routine at offset 0x38. Established.
+  Under `splhi` it subtracts one from the reader count in the first word of the lock and restores the level with `splx`.
+- `gfxtable_writerlock` in `gfx.o`: takes the write side of a table lock, a 112-byte routine at offset 0x70. Established.
+  It raises the level with `splhi` and, while the reader count is positive, restores it, sleeps 1000 nanoseconds with `nano_delay` and raises it again.
+  It returns the old level, which `gfxtable_writerunlock` restores.
+- `gfxtable_writerunlock` in `gfx.o`: releases the write side of a table lock, a 28-byte routine at offset 0xe0. Established.
+  It passes the saved level in its second argument to `splx`.
+- `init_gfx_group_table` in `gfx.o`: creates the thread-group lookup table once, a 160-byte routine at offset 0xfc. Established.
+  When no table exists it allocates 64 bytes (16 chain heads) with `kern_malloc`, zeroes them and initialises the table lock with `spinlock_init`.
+  An allocation failure is reported with `cmn_err`.
+- `gfx_group_find` in `gfx.o`: finds the group record of a thread, a 180-byte routine at offset 0x19c. Established.
+  It maps the thread handle to its group handle with `threadhandle_to_threadgrouphandle` and picks the chain from the handle's low four bits (bits 12 to 15 when those are zero).
+  It walks the chain under `gfxtable_readerlock`, comparing the handle at +0x0 of each record, and returns the match or none.
+- `gfx_group_create` in `gfx.o`: makes a group record for a thread, a 184-byte routine at offset 0x250. Established.
+  It allocates 20 bytes with `kern_malloc`, stores the group handle at +0x0, zeroes the attach count at +0x4 and the word at +0x8 and initialises the spinlock at +0xc.
+  It links the record at the head of its chain, link at +0x10, under `gfxtable_writerlock`.
+- `gfx_group_destroy` in `gfx.o`: removes and frees a group record, a 204-byte routine at offset 0x308. Established.
+  Under `gfxtable_writerlock` it unlinks the record from its chain through the link at +0x10.
+  It then destroys the record's spinlock (`spinlock_destroy`) and frees it with `kern_free`.
+- `init_gthread_table` in `gfx.o`: creates the thread lookup table once, a 164-byte routine at offset 0x3d4. Established.
+  It allocates 192 bytes (16 buckets of 12) with `kern_malloc`, zeroes them with `bzero` and initialises each bucket's spinlock at +0x4 with `spinlock_init`.
+  An allocation failure is reported with `cmn_err`.
+- `gthread_create` in `gfx.o`: makes the record of a thread, a 256-byte routine at offset 0x478. Established.
+  It allocates 20 bytes with `kern_malloc`, stores the handle at +0x0 and zeroes the flags (+0x4), device list (+0x8) and group (+0xc).
+  The bucket comes from a multiply-by-29 fold of the handle's upper three bytes masked to four bits; the record is linked at +0x10 under `gfxtable_writerlock`, and a thread with a group is attached with `gthread_attach_group`.
+- `gthread_destroy` in `gfx.o`: removes and frees the record of a thread, a 248-byte routine at offset 0x578. Established.
+  Under `gfxtable_writerlock` it unlinks the record from its bucket chain through the link at +0x10.
+  It then frees it with `kern_free`.
+- `gthread_attach_list` in `gfx.o`: points a thread at a device list, a 160-byte routine at offset 0x670. Established.
+  Given a list it adds one to its reference count at +0x0 and stores it at +0x8 of the thread.
+  Given none it allocates a 20-byte list with `kern_malloc`, with count 1, a sleep variable at +0x8 (`init_sv`) and a spinlock at +0xc (`spinlock_init`).
+- `gthread_detach_list` in `gfx.o`: drops a thread's device list, an 84-byte routine at offset 0x710. Established.
+  It clears the thread's list pointer at +0x8 and lowers the list's count at +0x0.
+  At zero it destroys the spinlock at +0xc (`spinlock_destroy`) and the sleep variable at +0x8 (`sv_destroy`) and frees the list with `kern_free`.
+- `gthread_attach_group` in `gfx.o`: attaches a thread to a group, a 76-byte routine at offset 0x764. Established.
+  Under `splhi` it adds one to the group's attach count at +0x4 and stores the group at +0xc of the thread.
+- `gthread_detach_group` in `gfx.o`: detaches a thread from its group, an 80-byte routine at offset 0x7b0. Established.
+  When the thread has a group (+0xc) it clears the pointer and lowers the group's attach count at +0x4 under `splhi`.
+- `gthread_find` in `gfx.o`: finds the record of a thread, a 224-byte routine at offset 0x800. Established.
+  It folds the handle's upper three bytes, multiplied by 29, into one of 16 buckets and walks the chain through the link at +0x10 under `gfxtable_readerlock`.
+  It returns the record whose handle (+0x0) matches, or none.
+- `gthread_find_gfxp` in `gfx.o`: returns a thread's first device, a 56-byte routine at offset 0x8e0. Established.
+  It calls `gthread_find`, follows the device list pointer at +0x8 and returns the word at +0x10 of the list, or 0 when either is missing.
+- `gthread_scan` in `gfx.o`: runs a callback over every thread record, a 348-byte routine at offset 0x918. Established.
+  The callback gets phase 0 once before any lock, phase 1 for each record whose exiting flag (+0x4) is clear with all buckets read-locked, and phase 2 once afterwards.
+  A non-zero return from phase 0 or 1 stops the scan and is returned.
+- `GfxRegisterBoard` in `gfx.o`: adds a board to the table of boards, a 256-byte routine at offset 0xa74. Established.
+  When the board count `GfxNumberOfBoards` is below `GfxBoardLimit` it allocates a 36-byte record with `kern_malloc` and stores the caller's method table at +0x1c and the state at +0x20.
+  It runs `RRM_Init` on the state; when the table is full it reports through `cmn_err`.
+- `GfxAddHwgraphEdge` in `gfx.o`: publishes a board in the hardware graph, a 232-byte routine at offset 0xb74. Established.
+  It finds the board record whose state word (+0x20) equals its second argument and labels the given vertex with the board's index through `graph_info_add_LBL`.
+  It formats a name from the index with `sprintf`, creates the parent vertex once with `hwgraph_path_add` and adds the edge with `hwgraph_edge_add`.
+- `gfx_disp` in `gfx.o`: the dispatch-time check for a thread, a 308-byte routine at offset 0xc5c. Established.
+  It finds the thread with `gthread_find` and walks its device list; for each device whose board is active (state word +0x3c positive) it tests the owner (+0x28) and busy count (+0x2c).
+  It tests the board semaphore at +0x20 with `valusema` and returns 1 when nothing stops the thread, 0 otherwise.
+- `gfx_fault` in `gfx.o`: the fault hook of the graphics mapping, a 216-byte routine at offset 0xd90. Established.
+  It finds the calling thread's record with `curthreadhandle` and `gthread_find` and returns 1 when there is none.
+  It takes the device semaphore (+0x2c, unless the device flag 0x8 is set), calls the board method at +0x38 for a flag-0x1 device and revalidates through `RRM_ValidFault`.
+  It returns 0 when that succeeded and 1 when not.
+- `gfx_exit` in `gfx.o`: the process-exit hook, a 420-byte routine at offset 0xe68. Established.
+  It sets the exiting flag in the thread record (+0x4) and, outside a share group, calls each device's board method at +0x1c.
+  In a group, under `GfxListReaderLock`, the last thread (`threadgroup_refcnt` equal to 1) makes each owning device release its board through the method at +0x60 and `vsema`.
+- `gfx_shcheck` in `gfx.o`: tears down a thread that leaves a share group, a 576-byte routine at offset 0x100c. Established.
+  It releases the board a device of the thread owns (method +0x60, clear owner, `vsema`) and destroys the thread's handles with `ddv_destroy_handle`.
+  It detaches the list and group with `gthread_detach_list` and `gthread_detach_group`, clears the scheduler entry (`cleargfxsched_thread`) and destroys the record with `gthread_destroy`.
+- `gfx_shdup` in `gfx.o`: duplicates the graphics state on a fork or share, a 124-byte routine at offset 0x124c. Established.
+  It does nothing when the parent has no device or its first device is flagged 0x8; otherwise it creates a record for the child with `gthread_create`.
+  It gives the child the parent's list with `gthread_attach_list` and registers it with `setgfxsched_thread`.
+- `GfxKiller` in `gfx.o`: the scan callback that evicts other users of a board, a 252-byte routine at offset 0x12c8. Established.
+  In phase 1 it looks at each thread whose device list (under `GfxListReaderLock`) holds a device on the board state named in the message and skips the caller's own group.
+  It sends the signal named in the message (+0x10, 9 from its callers) to that thread's process with `threadhandle_to_proc` and `psignal`.
+- `gfxcleanup` in `gfx.o`: releases the streams side of a device record, a 52-byte routine at offset 0x13c4. Established.
+  When the record's lock word at +0x20 is set it destroys the spinlock with `spinlock_destroy`, then frees the record with `kern_free`.
+- `GfxOpen` in `gfx.o`: the streams open of the control stream, a 368-byte routine at offset 0x13f8. Established.
+  Only a clone open (fourth argument 2) is accepted, else it returns 19; it finds the caller's device with `curthreadhandle` and `gthread_find_gfxp`.
+  It evicts other holders with `gthread_scan` and `GfxKiller`, drops the streams lock for 100 ticks (`streams_unlock`, `delay`), and makes the device number from `getemajor` and `makedevice`.
+  It then installs the queue as the board's control stream and resets its panes with `RRM_init_panes`.
+- `GfxUnmanage` in `gfx.o`: releases a board from its control stream, a 392-byte routine at offset 0x1568. Established.
+  It clears the stream pointers in the board record, signals the other users with `gthread_scan` and `GfxKiller`, and makes the device take the board semaphore with `psema`, 537 priority.
+  It waits for the busy flag to clear with `us_delay`, releases the board with `vsema`, and re-initialises the console with `cn_init` when the closing stream was the board's.
+- `GfxClose` in `gfx.o`: the streams close, a 108-byte routine at offset 0x16f0. Established.
+  When the device is not bound it clears bit 0 of the device flags at +0x20 and calls `gfxcleanup`; otherwise it calls `GfxUnmanage`.
+- `GfxProto` in `gfx.o`: handles a protocol message on the write side, a 260-byte routine at offset 0x175c. Established.
+  It reads a tag from the message's first word: tag 102 calls a board method with two words from the message and answers with a message of type 138 through `qreply`.
+  Other tags are answered or freed (`freemsg`), and an unknown message is logged with `cmn_err`.
+- `GfxWput` in `gfx.o`: the write-side put procedure, a 156-byte routine at offset 0x1860. Established.
+  Messages of type 1 and 131 go to `GfxProto`; a flush message (type 134) flushes the write queue with `flushq` when its write bit (0x2) is set and is freed with `freemsg`.
+  Anything else is logged with `cmn_err`.
+- `sendMsg` in `gfx.o`: builds the message the window system receives and queues it, a 260-byte routine at offset 0x18fc. Established.
+  It zeroes the block with `bzero`, fills it with the queue's identifying halfwords and the caller's type, length and words, and puts it on the queue with `putq`.
+- `GfxDelayedMessage` in `gfx.o`: the buffer-call retry for a message that found no buffer, a 164-byte routine at offset 0x1a00. Established.
+  It tries `allocb` again and, on success, sends the message with `sendMsg`, wakes the sleeping sender with `wakeup` and frees the heap copy with `kern_free`.
+  When the buffer is still missing it re-arms `bufcall`, and logs a failure with `cmn_err`.
+- `GfxSendMessage` in `gfx.o`: the common sender of messages to the window system, a 352-byte routine at offset 0x1aa4. Established.
+  It allocates a message buffer with `allocb`; when none is free it copies the message to a block from `kern_malloc` with `bcopy` and retries from `bufcall` through `GfxDelayedMessage`.
+  Outside interrupt context it sleeps with `sleep` (dropping the streams lock) until the retry has run.
+- `GfxMessage` in `gfx.o`: the task-level entry for sending a message, a 28-byte routine at offset 0x1c04. Established.
+  It calls `GfxSendMessage` with a zero second argument, meaning it may sleep.
+- `GfxIntrMessage` in `gfx.o`: the interrupt-level entry for sending a message, a 28-byte routine at offset 0x1c20. Established.
+  It calls `GfxSendMessage` with a second argument of 1, meaning it must not sleep.
+- `GfxRqService` in `gfx.o`: the service procedure of the read queue, a 124-byte routine at offset 0x1c3c. Established.
+  It takes each queued message with `getq` and hands it to the next module's put procedure when `canput` allows.
+  Otherwise it returns the message with `putbq` and stops.
+- `GfxDetach` in `gfx.o`: ends a device's binding to a board, a 244-byte routine at offset 0x1cb8. Established.
+  When the device is bound it validates the old handle with `gfxdd_lookup`, closes its render nodes with `RRM_Exit` and calls `GfxUnmanage` if the stream is still the board's.
+  Under the streams lock it clears the board record's stream pointers if they were this device's and zeroes the device's board links; the handle is destroyed with `ddv_destroy_handle`.
+- `gfxinit` in `gfx.o`: the driver's one-time initialisation, a 204-byte routine at offset 0x1dac. Established.
+  It initialises the board semaphore and the device semaphore with `init_sema`, creates the group and thread tables (`init_gfx_group_table`, `init_gthread_table`) and allocates the device table of `GfxDevLimit` entries with `kern_calloc`.
+  It registers the `gfxinfo` record with `ksym_add` and logs an allocation failure with `cmn_err`.
+- `gfx_conflict_scan` in `gfx.o`: the scan callback that refuses a clash between graphics users, a 240-byte routine at offset 0x1e78. Established.
+  For each other thread's device on the same board it takes and releases the device semaphore with `psema` and `vsema`.
+  A device in the conflicting mode sets the message's result to 3, on which `gfxopen` fails.
+- `irisgl_sproc_setup_scan` in `gfx.o`: gives a share-group member the opener's devices, a 148-byte routine at offset 0x1f68. Established.
+  For a member other than the opener that has no record it creates one with `gthread_create` and sets flag 0x2 in its word at +0x4.
+  It attaches the opener's device list under `GfxListWriterLock` and registers the thread with `setgfxsched_thread`.
+- `gfxopen` in `gfx.o`: the character-device open, a 1120-byte routine at offset 0x1ffc. Established.
+  Under the device semaphore (`psema`) it checks the minor number, finds a free slot of the device table and reuses or creates the thread and group records (`gthread_create`, `gfx_group_find`).
+  It refuses a conflicting user with `gfx_conflict_scan`, allocates and zeroes a 60-byte device record (`kern_malloc`, `bzero`) with its lock and semaphore (`init_spinlock`, `init_sema`).
+  A user of the older interface also runs `irisgl_sproc_setup_scan` over its share group with `curthreadgroup_scan`.
+- `irisgl_sproc_cleanup` in `gfx.o`: undoes the setup scan for one group, a 104-byte routine at offset 0x245c. Established.
+  In phase 1 it takes each member of the group (word +0xc equal to the group) off the scheduler with `cleargfxsched_thread`.
+  It detaches its list and group (`gthread_detach_list`, `gthread_detach_group`) and clears flag 0x2 at +0x4.
+- `gfxclose` in `gfx.o`: the character-device close, a 1396-byte routine at offset 0x24c4. Established.
+  Under the device semaphore it finds the device, calls `GfxDetach`, unlinks it from its list under `GfxListWriterLock`, frees its semaphore with `freesema` and destroys the thread record when it was the last.
+  When the shared list empties it runs `irisgl_sproc_cleanup` through `gthread_scan` and releases the streams side with `gfxcleanup`.
+  A thread found with unexpected state is logged with its process name and id and signalled with `psignal`.
+- `GfxListWriterLock` in `gfx.o`: takes the write side of a device list lock, a 116-byte routine at offset 0x2a38. Established.
+  It raises the level with `splhi` and, while the reader count at +0x4 is positive, sleeps with `sv_wait` on the variable at +0x8.
+  It returns the old level.
+- `GfxListWriterUnlock` in `gfx.o`: releases the write side, a 28-byte routine at offset 0x2aac. Established.
+  It restores the saved level from its second argument with `splx`.
+- `GfxListReaderLock` in `gfx.o`: takes a read hold on a device list, a 56-byte routine at offset 0x2ac8. Established.
+  Under `splhi` it adds one to the reader count at +0x4 of the list and restores the level with `splx`.
+- `GfxListReaderUnlock` in `gfx.o`: drops a read hold, a 68-byte routine at offset 0x2b00. Established.
+  Under `splhi` it lowers the reader count at +0x4 and wakes a waiting writer with `sv_signal` on the variable at +0x8.
+- `gfxread` in `gfx.o`: the character-device read, an 8-byte routine at offset 0x2b44. Established.
+  It returns the constant 54 and uses none of its arguments, so the device cannot be read.
+- `gfxwrite` in `gfx.o`: the character-device write, an 8-byte routine at offset 0x2b4c. Established.
+  It returns the constant 54 and uses none of its arguments, so the device cannot be written.
+- `gfxmap` in `gfx.o`: the character-device map entry, an 8-byte routine at offset 0x32c8. Established.
+  It returns the constant 54 without touching its arguments; the graphics window is mapped through the board's own request instead.
+- `gfxunmap` in `gfx.o`: the character-device unmap entry, an 8-byte routine at offset 0x32d0. Established.
+  It returns the constant 54 without touching its arguments.
+- `gfxioctl` in `gfx.o`: the request entry of the driver, a 1908-byte routine at offset 0x2b54. Established.
+  It counts the call in the `gfxinfo` record, finds the device by the low 16 bits of the minor number and serialises on the device semaphore with `psema`.
+  Requests 1000 to 9999 go to `RRM_Dispatch`, requests of 10000 and above to the board method at +0x64, and the generic board requests are served in place with `copyin`.
+- `gfx_shalloc` in `gfx.o`: creates a share group for the calling thread, a 192-byte routine at offset 0x32d8. Established.
+  It makes a group record with `gfx_group_create`, attaches the thread to it with `gthread_attach_group` and stores the caller's value at +0x34 of each device on the thread's list under `splhi`.
+- `gfx_shfree` in `gfx.o`: destroys the calling thread's share group, a 44-byte routine at offset 0x3398. Established.
+  It finds the group of the thread with `curthreadhandle` and `gfx_group_find` and passes it to `gfx_group_destroy`.
+- `gfx_frs_valid_pipenum` in `gfx.o`: tests a pipe number for the frame-rate scheduler, a 12-byte routine at offset 0x33c4. Established.
+  It compares its argument with the board count `GfxNumberOfBoards` and returns 1 when it is smaller.
+<!-- gfx.o:end -->

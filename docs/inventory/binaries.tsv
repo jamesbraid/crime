@@ -27,7 +27,7 @@ usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	1
 usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	762	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	988	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60.vfo	video-formats	board-data	data	-	12424	45d9f5371ac77067		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60p.vfo	video-formats	board-data	data	-	12436	9249d599f9467622		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools

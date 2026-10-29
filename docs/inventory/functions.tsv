@@ -675,7 +675,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fccc	76	getblock	dwarf+f
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fd18	116	free	dwarf+symtab	ba0f973e2e2d	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fd8c	200	realloc	dwarf+symtab	d09dd1eee39e	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fe54	28	calloc	dwarf+symtab	e70ad13cffe3	named-only	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fe70	76	kern_calloc	dwarf+symtab	cc5a24bebb17	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fe70	76	kern_calloc	dwarf+symtab	cc5a24bebb17	named-only	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002febc	236	align_malloc	dwarf+symtab	bddd307e17bc	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ffa8	28	align_free	dwarf+symtab	b9a6d8c9a173	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ffc4	36	dmabuf_malloc	dwarf+symtab	17b91d141624	undocumented		
@@ -1025,120 +1025,120 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0x0	252	crmAd
 usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0xfc	220	crmSubtractBackTiles	dwarf+symtab	68c95571b852	understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x0	56	crmIsGlobalRegWrite	dwarf+symtab	d9e3771f06f3	understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x38	296	crmFindPP	dwarf+symtab	fdb88bf51129	understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	b39132323af9	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	97ce1ba0067d	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	1facc9913e68	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	189307946336	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	fce96993b52f	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	9c7f1ed49eea	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	ddbfbee535d4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	5001cce282c4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	383241214c63	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	f277f056a13f	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	d43480f1e9ea	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	3b864b36fe9a	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	0e6aef1bffde	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	ec40e82cabd1	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	0a880416c092	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	ae7b19ea5434	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	a27ab9acabcc	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	675671f2ffb4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e	named-only	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	b39132323af9	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	97ce1ba0067d	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	1facc9913e68	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	189307946336	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	fce96993b52f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	9c7f1ed49eea	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	ddbfbee535d4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	5001cce282c4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	383241214c63	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	f277f056a13f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	d43480f1e9ea	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	3b864b36fe9a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	0e6aef1bffde	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	ec40e82cabd1	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	0a880416c092	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	ae7b19ea5434	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	a27ab9acabcc	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	675671f2ffb4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e	understood	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	35f296c7d9e5	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	a156bd83d9d1	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	e8cd89309b7a	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	41cb92b65d74	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	ce73cbd732fa	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	f0ed041048a0	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	a91e22d3445b	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	358e65cd5e65	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	9a48377761c4	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	86783893021e	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	c016cf4ea4f8	named-only	docs/functions.md#graphics-device-layer-gfxo	Graphics device layer (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	060c5f91580a	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	dee8e95ccc8b	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	c05a5d01dee9	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	189307946336	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	7fe7a083ff17	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	80b3ab831cc3	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	51c7121f653d	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	9e4f40012c15	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	b39132323af9	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	97ce1ba0067d	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	1facc9913e68	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	189307946336	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	fce96993b52f	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	9c7f1ed49eea	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	ddbfbee535d4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	5001cce282c4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	383241214c63	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	f277f056a13f	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	d43480f1e9ea	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	3b864b36fe9a	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	0e6aef1bffde	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	ec40e82cabd1	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	0a880416c092	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	ae7b19ea5434	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	a27ab9acabcc	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	675671f2ffb4	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e	named-only	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	35f296c7d9e5	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	a156bd83d9d1	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	e8cd89309b7a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	41cb92b65d74	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	ce73cbd732fa	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	f0ed041048a0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	a91e22d3445b	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	358e65cd5e65	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	9a48377761c4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	86783893021e	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	c016cf4ea4f8	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	060c5f91580a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	dee8e95ccc8b	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	c05a5d01dee9	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	189307946336	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	7fe7a083ff17	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	80b3ab831cc3	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	51c7121f653d	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	9e4f40012c15	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x0	56	gfxtable_readerlock	dwarf+symtab	b39132323af9	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	97ce1ba0067d	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	1facc9913e68	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe0	28	gfxtable_writerunlock	dwarf+symtab	189307946336	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xfc	160	init_gfx_group_table	dwarf+funcnames+symtab	fce96993b52f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x19c	180	gfx_group_find	dwarf+symtab	9c7f1ed49eea	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x250	184	gfx_group_create	dwarf+symtab	ddbfbee535d4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x308	204	gfx_group_destroy	dwarf+symtab	5001cce282c4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3d4	164	init_gthread_table	dwarf+funcnames+symtab	383241214c63	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x478	256	gthread_create	dwarf+symtab	f277f056a13f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x578	248	gthread_destroy	dwarf+symtab	d43480f1e9ea	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x670	160	gthread_attach_list	dwarf+symtab	3b864b36fe9a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	0e6aef1bffde	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	ec40e82cabd1	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	0a880416c092	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	ae7b19ea5434	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	a27ab9acabcc	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	675671f2ffb4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e	understood	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	35f296c7d9e5	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	a156bd83d9d1	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	e8cd89309b7a	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	41cb92b65d74	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	ce73cbd732fa	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	f0ed041048a0	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	a91e22d3445b	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	358e65cd5e65	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	9a48377761c4	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	86783893021e	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f	named-only	docs/functions.md#streams-side	STREAMS side
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	c016cf4ea4f8	named-only	docs/functions.md#graphics-device-layer-gfxo	Graphics device layer (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	060c5f91580a	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	dee8e95ccc8b	named-only	docs/functions.md#lookup-tables	Lookup tables
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	c05a5d01dee9	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	189307946336	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	7fe7a083ff17	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	80b3ab831cc3	named-only	docs/functions.md#locks-on-the-device-list	Locks on the device list
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	51c7121f653d	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	9a0f9311b660	named-only	docs/functions.md#device-entry-points	Device entry points
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	9e4f40012c15	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66	named-only	docs/functions.md#process-hooks	Process hooks
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6	named-only	docs/functions.md#boards	Boards
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x12c8	252	GfxKiller	dwarf+symtab	35f296c7d9e5	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13c4	52	gfxcleanup	dwarf+funcnames+symtab	a156bd83d9d1	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x13f8	368	GfxOpen	dwarf+funcnames+symtab	e8cd89309b7a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1568	392	GfxUnmanage	dwarf+funcnames+symtab	41cb92b65d74	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x16f0	108	GfxClose	dwarf+funcnames+symtab	ce73cbd732fa	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x175c	260	GfxProto	dwarf+funcnames+symtab	f0ed041048a0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1860	156	GfxWput	dwarf+funcnames+symtab	a91e22d3445b	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x18fc	260	sendMsg	dwarf+funcnames+symtab	358e65cd5e65	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1a00	164	GfxDelayedMessage	dwarf+funcnames+symtab	9a48377761c4	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	dwarf+funcnames+symtab	86783893021e	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	c016cf4ea4f8	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x245c	104	irisgl_sproc_cleanup	dwarf+funcnames+symtab	060c5f91580a	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x24c4	1396	gfxclose	dwarf+symtab	dee8e95ccc8b	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2a38	116	GfxListWriterLock	dwarf+symtab	c05a5d01dee9	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2aac	28	GfxListWriterUnlock	dwarf+symtab	189307946336	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2ac8	56	GfxListReaderLock	dwarf+symtab	7fe7a083ff17	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b00	68	GfxListReaderUnlock	dwarf+symtab	80b3ab831cc3	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b44	8	gfxread	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b4c	8	gfxwrite	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x2b54	1908	gfxioctl	dwarf+symtab	51c7121f653d	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32c8	8	gfxmap	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d0	8	gfxunmap	dwarf+symtab	9a0f9311b660	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	9e4f40012c15	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x0	512	VEC_int	dwarf+symtab	155bac8904f9	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x84	280	tfp_special_int_exit	symtab	10ffc0806a27	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19c	100	kpreemption	symtab	cba4d4792bc3	undocumented		
