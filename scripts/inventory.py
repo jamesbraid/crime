@@ -73,10 +73,10 @@ COLUMNS = {
     'ucode': ['program', 'kind', 'address', 'name', 'detail', 'status', 'doc', 'section'],
     'spec-registers': ['spec', 'table', 'page', 'window', 'offset', 'name', 'count', 'stride', 'width', 'rw',
                        'reached_in_code', 'status', 'doc', 'section'],
-    'summary': ['table', 'rows', 'understood', 'understood_distinct', 'templated', 'located', 'named_only',
+    'summary': ['table', 'rows', 'understood', 'understood_with_open', 'understood_distinct', 'templated', 'located', 'named_only',
                 'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
                 'pct_mentioned', 'pct_done', 'unresolved_sites', 'truncated', 'audited_real_pct',
-                'audited_sample', 'audited_date'],
+                'audited_sample', 'audited_date', 'computes'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -167,6 +167,17 @@ def role_words(text, subj):
 
 LABEL = re.compile(r'\b(?:established|inferred)\b', re.I)
 UNKNOWN = re.compile(r'\bunknown\b', re.I)
+# A sentence that says "unknown" about the entry's role or effect leaves nothing to understand; one that
+# says it about a sub-fact (which unit serves which source, the width of one field) does not.
+ROLE_UNKNOWN = re.compile(r'\b(?:role|effect|purpose|function|behaviou?r|meaning|semantics)\b|'
+                          r'\bwhat\b[^.;]{0,40}\b(?:does|do|is\s+for|are\s+for|means|computes)\b|\bused\s+for\b', re.I)
+# An entry "computes" when it names the routine's inputs, its outputs and the transformation between them,
+# each with a word that says so. Reading, writing, storing and extent words are not enough: they locate.
+COMPUTES_IN = re.compile(r'\b(?:inputs?|operands?|arguments?|takes|consumes)\b', re.I)
+COMPUTES_OUT = re.compile(r'\b(?:outputs?|results?|returns|produces|yields)\b', re.I)
+COMPUTES_OP = re.compile(r'\b(?:computes?|calculates?|evaluates?|transforms?|converts?|multiplies|divides|'
+                         r'subtracts|adds|accumulates|clamps|normali[sz]es|interpolates|rounds|scales|packs|'
+                         r'unpacks|shifts|combines|compares|selects|derives)\b', re.I)
 # A hedge says the role was not derived from the item itself, so it demotes the entry as "unknown" does.
 HEDGE = re.compile(
     r"\bnot\s+(?:yet\s+)?(?:derived|shown|determined|known|established|decoded|identified|verified|"
@@ -184,6 +195,17 @@ CITE_SOURCE = re.compile(r'\b[\w+@-]+\.(?:c|h|cc|cpp|s|asm|u|lst|y|l)\b')
 CITE_BINARY = re.compile(r'[\w+@-]+\.(?:o|a|so|bin|elf|u)\b')
 LOCATED = re.compile(r'\b(?:address(?:es)?|offsets?|sizes?|bytes?|records?|extents?|callers?|called|sites?|'
                      r'calls?|entry|entries|lanes?)\b|0[xX][0-9a-fA-F]+', re.I)
+_NUM = r'(?:0[xX][0-9a-fA-F]+|\d+)'
+_RANGE = _NUM + r'(?:\s*(?:[:\-\u2013]|\.\.|\bto\b)\s*' + _NUM + r')?'
+_SEP = r'\s*(?:,|;|/|\band\b|\bor\b)\s*(?:and\s+|or\s+)?'
+_FIELD = (r'(?:`[^`\s]+`|(?=\w*[_0-9A-Z])\w+)(?:\s*[\[(]\s*' + _RANGE + r'(?:' + _SEP + _RANGE +
+          r')*\s*[\])])?')
+# The bit positions and field names of the entry's own subject: a list that "bit(s)" or "field(s)" introduces
+# and that holds nothing but numbers or field names, each with at most its own bit range. They describe the
+# subject, so they are not extra items on the line.
+FIELD_LIST = re.compile(r'\bbits?(?:\s+positions?)?\b\s*:?\s*\[?' + _RANGE + r'\]?(?:' + _SEP + r'\[?' + _RANGE +
+                        r'\]?)*|\bfields?\b\s*(?::|\bare\b|\bis\b)?\s*' + _FIELD + r'(?:' + _SEP + _FIELD + r')*',
+                        re.I)
 NUMLIST = re.compile(r'\b(?:0[xX][0-9a-fA-F]+|\d+)\b(?:\s*(?:,|;|\band\b|\bor\b)\s*\b(?:0[xX][0-9a-fA-F]+|\d+)\b)+')
 ADDRESS_HEAD = ('offset', 'address', 'addr', 'entry', 'record')
 NUMBER_HEAD = ('ioctl', 'entry', 'record', 'routine', 'slot', 'request')
@@ -317,24 +339,55 @@ def data_items(text, subj, own=frozenset()):
     return items
 
 
+def open_split(text):
+    """The entry without the sentences that say something is unknown, and those sentences."""
+    cells, dropped = [], []
+    for cell in bare_text(text).split('|'):
+        keep = []
+        for sent in re.split(r'(?<=[.!?;])\s+', cell.strip()):
+            if UNKNOWN.search(sent):
+                dropped.append(sent)
+            elif sent:
+                keep.append(sent)
+        cells.append(' ' + ' '.join(keep) + ' ' if keep else ' ')
+    return '|'.join(cells), dropped
+
+
+def stated(text, subj, own):
+    return bool(LABEL.search(text) and len(role_words(text, subj)) >= MIN_ROLE_WORDS
+                and len(data_items(text, subj, own)) >= MIN_DATA)
+
+
+def computes(text):
+    return bool(COMPUTES_IN.search(text) and COMPUTES_OUT.search(text) and COMPUTES_OP.search(text))
+
+
 def classify(text, subj=frozenset(), head=None):
     """The status one entry (a table row, a list item, a paragraph or a header comment)
     earns for its subject. The entry must carry a derivation citation specific to the item, one
     that is not the row's own address. Behaviour labelled unknown, or hedged as not derived, is
     located. With an established or inferred label, enough words of role that do not merely
     restate the subject's name, and at least MIN_DATA items stated about the subject, it is
-    understood."""
+    understood. An "unknown" about a sub-fact does not demote an entry whose role and effect, read without
+    the sentences that say it, still qualify: it stays understood and is returned as open, so the summary
+    can count it. The result is (status, open)."""
     t = bare_text(text)
     own = frozenset()
     if head is not None and t.strip().startswith('|'):
         own = own_values([c.strip() for c in t.strip().strip('|').split('|')])
     if not item_cite(t, subj, own):
-        return 'named-only'
-    if UNKNOWN.search(t) or HEDGE.search(t):
-        return 'located' if LOCATED.search(t) else 'named-only'
-    if LABEL.search(t) and len(role_words(t, subj)) >= MIN_ROLE_WORDS and len(data_items(t, subj, own)) >= MIN_DATA:
-        return 'understood'
-    return 'named-only'
+        return 'named-only', False
+    if HEDGE.search(t):
+        return ('located' if LOCATED.search(t) else 'named-only'), False
+    if UNKNOWN.search(t):
+        rest, dropped = open_split(t)
+        if (not any(ROLE_UNKNOWN.search(d) for d in dropped) and item_cite(rest, subj, own)
+                and stated(rest, subj, own)):
+            return 'understood', True
+        return ('located' if LOCATED.search(t) else 'named-only'), False
+    if stated(t, subj, own):
+        return 'understood', False
+    return 'named-only', False
 
 
 def skeleton(text):
@@ -366,10 +419,12 @@ def sentences(text):
 
 class Entry:
     """One table row, list item, paragraph or header comment, with what it earns."""
-    __slots__ = ('text', 'level', 'skel', 'capped', 'nsd_capped', 'keys', 'subj', 'sents', 'nsd_sents')
+    __slots__ = ('text', 'level', 'skel', 'capped', 'nsd_capped', 'keys', 'subj', 'sents', 'nsd_sents',
+                 'open', 'computes')
 
-    def __init__(self, text, level, subj=frozenset()):
-        self.text, self.level, self.subj = text, level, subj
+    def __init__(self, text, level, subj=frozenset(), open_=False):
+        self.text, self.level, self.subj, self.open = text, level, subj, open_
+        self.computes = level == 'understood' and computes(open_split(text)[0] if open_ else bare_text(text))
         self.skel = skeleton(text)
         self.capped = self.nsd_capped = False
         self.keys = None
@@ -379,6 +434,8 @@ class Entry:
         for sent in sentences(text):
             if NSD_PHRASE.search(sent):
                 self.nsd_sents.append(skeleton(sent))
+            elif open_ and UNKNOWN.search(sent):
+                continue                  # an open sub-fact is not one of the entry's role sentences
             elif plain_words(sent) >= 3:
                 self.sents.append((skeleton(sent), len(role_words(sent, subj))))
 
@@ -401,9 +458,12 @@ class Entry:
 PATHTOK = re.compile(r'[\w.+@$-]+(?:/[\w.+@$-]+)*(?:\([\w.+@$-]+\))?')
 
 
-def line_items(text):
-    """How many things one line names: distinct identifiers, plus numbers written as a list."""
+def line_items(text, subj=frozenset()):
+    """How many things one line names: distinct identifiers, plus numbers written as a list. For an entry
+    with a subject, the bit positions and fields of that subject (FIELD_LIST) are not counted."""
     t = bare_text(text)
+    if subj:
+        t = FIELD_LIST.sub(' ', t)
     items = set()
     for sp in re.findall(r'`([^`]*)`', t):
         sp = sp.strip()
@@ -542,7 +602,7 @@ class DocIndex:
         """Index one line. code_spans are the parts written as code. level is what the
         entry holding the line earns, which a line naming many items does not get. Only the
         entry's subject (the keys in subj) earns it; every other item the line names is a mention."""
-        if line_items(text) > MAX_ITEMS:
+        if line_items(text, subj) > MAX_ITEMS:
             level, nsd = 'named-only', False
 
         def hit(k, code, c=ctx):
@@ -655,8 +715,9 @@ class DocIndex:
                     else:
                         unit = leading_unit(lines[entries[e][0]]) or hunit
                     keys = frozenset(unit_keys(unit)) if unit else frozenset()
-                    lvl = 'named-only' if is_head else classify(etext, keys, head if is_table else None)
-                    entry_obj[e] = (Entry(etext, lvl, keys), keys)
+                    lvl, opn = (('named-only', False) if is_head
+                                else classify(etext, keys, head if is_table else None))
+                    entry_obj[e] = (Entry(etext, lvl, keys, opn), keys)
                     if not is_head and not index:
                         self.entries.append(entry_obj[e][0])
                 if e in entry_obj:
@@ -751,8 +812,8 @@ class DocIndex:
                 name, val = d.group(1), num(re.sub(r'[uUlL]+$', '', d.group(2)))
                 # the definition is the subject of the comment above it and the one beside it
                 skey = {('id', name), ('hex', val & 0xffffffffffffffff)}
-                commented = 'named-only' if index else classify(ctext, skey)
-                ent = Entry(ctext, commented, frozenset(skey))
+                commented, opn = ('named-only', False) if index else classify(ctext, skey)
+                ent = Entry(ctext, commented, frozenset(skey), opn)
                 if ctext and not index:
                     self.entries.append(ent)
                 h = self.hit(rel, n, ref, section, commented, nsd, True, ctx, ent)
@@ -781,8 +842,9 @@ class DocIndex:
 
     @staticmethod
     def best(hits, demote=None):
-        """(status, doc, section, skeleton, templated) of the best hit; first in index order on a
-        tie. A hit that demote() names earns at most located."""
+        """(status, doc, section, skeleton, templated, open, computes) of the best hit; first in index
+        order on a tie. A hit that demote() names earns at most located. open and computes describe the
+        entry behind an understood status."""
         top, tst = None, None
         for h in hits:
             st = h.status()
@@ -790,9 +852,17 @@ class DocIndex:
                 st = 'located'
             if top is None or RANK[st] > RANK[tst] or (RANK[st] == RANK[tst] and h.order < top.order):
                 top, tst = h, st
+        if tst == 'understood':
+            # an entry with no open sub-fact is the better witness of an understood row
+            clean = [h for h in hits if h.status() == 'understood' and not (h.ent is not None and h.ent.open)
+                     and not (demote is not None and demote(h))]
+            if top.ent is not None and top.ent.open and clean:
+                top = min(clean, key=lambda h: h.order)
         if top is None:
-            return ('undocumented', '', '', '', False)
-        return (tst, top.ref, top.section, top.ent.skel if top.ent is not None else '', top.templated())
+            return ('undocumented', '', '', '', False, False, False)
+        full = tst == 'understood' and top.ent is not None and top.level == 'understood'
+        return (tst, top.ref, top.section, top.ent.skel if top.ent is not None else '', top.templated(),
+                full and top.ent.open, full and top.ent.computes)
 
     def name_hits(self, name):
         hits = self.names.get(name, [])
@@ -2302,7 +2372,9 @@ def image_keys(label):
 
 
 def put_status(row, st):
-    row['status'], row['doc'], row['section'], row['_skel'], row['_templated'] = st
+    st = tuple(st) + (False,) * (7 - len(st))
+    row['status'], row['doc'], row['section'], row['_skel'], row['_templated'] = st[:5]
+    row['_open'], row['_computes'] = st[5], st[6]
 
 
 def window_files(cfg, win):
@@ -2330,7 +2402,7 @@ def window_forms(cfg, win, off):
 
 
 def best_of(*sts):
-    top = ('undocumented', '', '', '', False)
+    top = ('undocumented', '', '', '', False, False, False)
     for s in sts:
         if RANK[s[0]] > RANK[top[0]]:
             top = s
@@ -2770,6 +2842,7 @@ def build(cfg, a, tmp):
         srows.append(summary_row(t, out[t], total_unres if t == 'mmio' else ''))
         if t == 'ucode':
             srows[-1]['truncated'] = '; '.join(truncated)
+            srows[-1]['computes'] = sum(1 for r in out[t] if r['status'] == 'understood' and r.get('_computes'))
         if t == 'functions':
             best = {}
             for r in out['functions']:
@@ -2789,10 +2862,10 @@ def build(cfg, a, tmp):
     bin_rows = [summary_row('functions in ' + b, rs, '') for b, rs in by_bin.items()]
     write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows + bin_rows)
     for r in srows:
-        print('%-28s %7s  understood %6s (%5s%%, %s distinct, %s templated)  located-or-better %5s%%  '
-              'mentioned %5s%%  nsd %5s' %
-              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['understood_distinct'],
-               r['templated'], r['pct_located_or_better'], r['pct_mentioned'], r['no_software_dependency']),
+        print('%-28s %7s  understood %6s (%5s%%, %s with open, %s distinct, %s templated)  '
+              'located-or-better %5s%%  mentioned %5s%%  nsd %5s' %
+              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['understood_with_open'],
+               r['understood_distinct'], r['templated'], r['pct_located_or_better'], r['pct_mentioned'], r['no_software_dependency']),
               file=sys.stderr)
     by_win = collections.Counter()
     for (b, w), v in unresolved.items():
@@ -2906,7 +2979,9 @@ def summary_row(name, rows, unresolved):
     def pct(x):
         return '%.1f' % (100.0 * x / n) if n else '0.0'
     nsd = c['no-software-dependency']
-    return {'table': name, 'rows': n, 'understood': c['understood'], 'understood_distinct': distinct,
+    opened = sum(1 for r in rows if r['status'] == 'understood' and r.get('_open'))
+    return {'table': name, 'rows': n, 'understood': c['understood'], 'understood_with_open': opened,
+            'understood_distinct': distinct,
             'templated': templated, 'located': c['located'],
             'named_only': c['named-only'], 'undocumented': c['undocumented'], 'no_software_dependency': nsd,
             'pct_understood': pct(c['understood']),
@@ -2930,15 +3005,15 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
              'is understood or labelled as having no software dependency. "Distinct" counts the differently '
              'worded entries behind the understood rows, so templated bulk shows.'
              % (len(imgs), elf), '',
-             '| Table | Rows | % understood | % located or better | % mentioned | Understood | Distinct | '
-             'Located | No software dependency | Named only | Undocumented |',
-             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+             '| Table | Rows | % understood | % located or better | % mentioned | Understood | With open | '
+             'Distinct | Located | No software dependency | Named only | Undocumented |',
+             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for r in srows:
         link = r['table'] if r['table'] in TABLES else None
         label = '[%s](inventory/%s.tsv)' % (link, link) if link else r['table']
-        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d | %d |' % (
+        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d | %d | %d |' % (
             label, r['rows'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
-            r['understood'], r['understood_distinct'], r['located'], r['no_software_dependency'],
+            r['understood'], r['understood_with_open'], r['understood_distinct'], r['located'], r['no_software_dependency'],
             r['named_only'], r['undocumented']))
     audited = [r for r in srows if r.get('audited_date')]
     if audited:

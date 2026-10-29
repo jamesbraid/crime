@@ -127,6 +127,7 @@ One row per table, plus `functions (distinct names)`, which counts each function
 |---|---|
 | `table`, `rows` | the table and its row count |
 | `understood`, `located`, `named_only`, `undocumented`, `no_software_dependency` | rows at each status |
+| `understood_with_open` | understood rows whose entry also says a sub-fact is `unknown` (see Open sub-facts). They are counted in `understood` too, so the open facts stay visible |
 | `understood_distinct` | different sentence skeletons behind the understood rows |
 | `templated` | rows held at `located` because their entry's skeleton is over the template cap |
 | `pct_understood` | understood rows as a percentage |
@@ -136,6 +137,7 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | `unresolved_sites` | for `mmio`: register access sites whose offset could not be traced |
 | `truncated` | for `ucode`: a table the config reads in part, as `program: N of M entries`; empty when every entry is read |
 | `audited_real_pct`, `audited_sample`, `audited_date` | the latest independent audit of the table: the share of the sampled understood rows that held up, the sample size and the date, read from `audits.tsv`; empty when the table was never audited |
+| `computes` | for `ucode` only: understood rows whose entry states what the routine computes (see What understood means). Empty for every other table |
 
 ### audits.tsv
 
@@ -146,9 +148,9 @@ Committed by hand, not generated: one row per table per independent audit (an au
 A mention is not understanding. The status of an item is the best of the entries that mention it, and an entry earns its status only for its subject. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
 
 - `undocumented`: no entry mentions it.
-- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
-- `located`: the entry carries a citation of its own and says the behaviour is `unknown` or hedges it (below), and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this, and so is a pointer-table row whose entry holds 0.
-- `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address), a citation of its own, and no `unknown` and no hedge anywhere in it. The words are not read for meaning: check the cited section.
+- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members (the bit positions and fields of the entry's own subject are not counted, see Fields and bit positions); an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
+- `located`: the entry carries a citation of its own and says the item's role or effect is `unknown` or hedges it (below), and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this, and so is a pointer-table row whose entry holds 0.
+- `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address), a citation of its own, no hedge anywhere in it, and no `unknown` about its role or effect. An `unknown` about a sub-fact does not demote it (see Open sub-facts). The words are not read for meaning: check the cited section.
 - `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished. Like every other status it goes to the entry's subject only.
 
 A row is done when it is `understood` or `no-software-dependency`. The repository is finished when every row of every table is done.
@@ -180,6 +182,16 @@ An entry that says what it did not derive is not a derivation. "Not derived", "n
 
 The plain words of a role sentence do not count when they come from the subject's name. The identifier is split at underscores and case (`mClearEram` is `m`, `clear`, `eram`); a word of prose that is one of those parts, an inflection of one (`clears`), or the word an abbreviation stands for (`exp`, `exponential`) is dropped before the count of six. "Clears external memory" for `mClearEram` has one word of its own.
 
+### Fields and bit positions
+
+A line that names more than three items documents none of them, but the bit positions and fields of the entry's own subject are part of describing it, not extra items. For an entry that has a subject, a list that `bit`, `bits`, `bit positions`, `field` or `fields` introduces is not counted when it holds nothing but numbers or bit ranges (`bits 3, 5, 7 and 9`, `bits 31:28`) or field names, each with at most its own bit range (``fields `EN` [0], `MODE` [3:1], `BUSY` [7]``). A field name is a backticked name or a code-like word. Any other identifier on the line still counts, and a list that mixes in a name that is not a field of the subject, or has no subject, is counted as before. The fields stay items stated about the subject for the two-item minimum.
+
+### Open sub-facts
+
+An entry that states its role and effect, labelled established or inferred, may say that a sub-fact is `unknown` (which of three identical groups serves which source, what one field holds) and stay understood. The test is mechanical: take out every sentence (or table cell) that says `unknown`; if what is left still has a label, six role words that do not restate the name, two items stated about the subject and a citation of its own, the entry is understood. It is also counted in `understood_with_open`. Put each open sub-fact in a sentence of its own, with the route that would settle it, so the rest of the entry does not depend on it.
+
+The entry is demoted to `located` when the `unknown` sentence is about the role itself: it names the role, effect, purpose, function, behaviour, meaning or semantics, or says what the item does, is for or means. Hedges (below) still demote the whole entry. The grader reads words, not meaning, so an entry whose role is really the open fact can still pass: the audits catch that.
+
 ### Templated entries
 
 Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. The cap applies to each sentence, not to the entry. An entry is split into its sentences (each table cell, then each sentence in it) and a sentence that has three plain words or more is masked the same way. When more than 5 entries (`TEMPLATE_CAP` in the script) contain a sentence with one skeleton, counting table rows, list items, paragraphs and header comments across every document read, that sentence is a template. An entry grades at most `located` when most of its sentences are templates, or when the role words of the sentences that are not templates are fewer than six: a shared sentence added to a unique one earns nothing for the entry. The sentence that says no software depends on a fact is counted separately, and caps only a no-software-dependency status. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
@@ -199,6 +211,20 @@ A `limit` in the config that reads fewer entries than the file holds is reported
 ### Builds of one function
 
 A function row exists once per binary. When a name is defined with different code in several binaries, an entry credits it only in the binary the entry names: by its path as `binaries.tsv` spells it, from any directory down (`usr/gfx/arch/IP32CRM/libGLcore.so`, or just `libGLcore.so` when no other binary has that name), or for an archive member by `gfxs.a(gfx_flow.o)` or the member alone. The name must pick out one binary: a path that matches several builds with different code names none of them. Builds with the same `code_sha` for that name have the same code and share the credit. Every other build is at most `located`. A name that has the same code wherever it is defined needs no citation of a binary. `summary.tsv` has one row, `functions in <binary>`, per binary with functions.
+
+### What understood means for each table
+
+Every table uses the same entry test above, so what a row's entry has to state differs by what the row is. `understood` shows that an entry states the following for the row, with a derivation of its own. It does not show the entry is right: `audits.tsv` does.
+
+- `binaries`: what the file is and the role it plays for this family, with where that was read.
+- `functions`: the function's role and effect, in the build the entry names when builds differ.
+- `mmio`: the register at this offset has a stated role and effect. Bits or fields that were not decoded can stay open.
+- `tokens`: the token or command word has a stated meaning and effect on the host command stream.
+- `ioctls`: the request has a stated handler effect.
+- `ucode`: usually the routine's extent (address, size, records) and how the host selects it (its entry point, dispatch slot or command). That is structure, not what the routine computes. The `computes` column of `summary.tsv` counts the understood ucode rows that say more.
+- `spec-registers`: the specification's register has a documented name and role.
+
+`computes` is the ucode-only count of understood, uncapped rows whose entry contains all three of: a word for the routine's inputs (`input`, `operand`, `argument`, `takes`, `consumes`), a word for its outputs (`output`, `result`, `returns`, `produces`, `yields`) and a verb for the transformation between them (`computes`, `calculates`, `converts`, `multiplies`, `adds`, `clamps`, `packs`, `selects` and similar; the list is `COMPUTES_OP` in the script). Reads, writes, stores and extent words do not count because they locate the routine without saying what it does. The test is deliberately narrow and reads words, not meaning; it can miss an entry that says the same thing differently, and an entry that uses all three words can still be wrong.
 
 ### Distinct counts
 
@@ -231,6 +257,19 @@ Percent understood before and after the later rules (own-address citations, hedg
 | ioctls | 100.0 to 98.2 | 1.1 to 1.1 | 83.3 to 69.0 |
 | ucode | 95.1 to 30.3 | 96.0 to 96.0 | no rows |
 | spec-registers | 48.3 to 40.1 | no rows | 55.2 to 55.2 |
+
+Percent understood before and after the field-list and open-sub-fact rules, from the same documents on 2026-10-29. Only one table moved: the Odyssey `tokens` entries label open sub-facts (what a block's operands hold) that used to demote them, and 36 of the rows are now understood with open facts. No current entry lists bit positions or fields on a line over the item limit, so that rule changed no row yet.
+
+| Table | InfiniteReality | Odyssey | CRIME |
+|---|---:|---:|---:|
+| binaries | 5.3 to 5.3 | 0.0 to 0.0 | 6.1 to 6.1 |
+| functions | 7.7 to 7.7 | 0.1 to 0.1 | 1.7 to 1.7 |
+| functions (distinct names) | 6.9 to 6.9 | 0.3 to 0.3 | 2.4 to 2.4 |
+| mmio | 92.5 to 92.5 | 86.6 to 86.6 | 100.0 to 100.0 |
+| tokens | 52.7 to 52.7 | 79.2 to 93.3 | 100.0 to 100.0 |
+| ioctls | 98.2 to 98.2 | 98.9 to 98.9 | 100.0 to 100.0 |
+| ucode | 30.3 to 30.3 | 96.0 to 96.0 | no rows |
+| spec-registers | 77.7 to 77.7 | no rows | 93.7 to 93.7 |
 
 How a mention is found:
 
