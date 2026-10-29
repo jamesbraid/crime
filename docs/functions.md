@@ -805,3 +805,121 @@ Each entry names one routine of the 6.5.30 `crime_i2c.o` (a member of `crime.a`)
   It sets the thread's function with `xthread_set_func`, copies a name with `fetch_kname` and `strncpy`, and waits on `ipsema`.
 - `macevec_intrd` in `mace.o`: the body of a MACE interrupt thread. Inferred from its call.
   Its 15 instructions call `ipsema` to sleep until the interrupt wakes the thread.
+
+# Kernel routines, one entry each (`kernel.o`, CRIME and GBE users)
+
+Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that touches CRIME, GBE or the CRIME interrupt path, says what it does to the registers, and cites offsets or callees, from `objdump -d -r` and `crime_kernel/disasm/kernel/kernel.text.s`. Every entry carries a label.
+
+## Start-up and revision
+
+- `mlreset` in `kernel.o`: the machine-level reset run at start-up, a 672-byte routine at offset 0x8738. Established.
+  It rewrites the CPU interface control word at +0x8 with the watchdog enable cleared and, for processor implementations from 0x23, the two SysAD bits set.
+  It zeroes the interrupt status, enable and error registers and the watchdog at +0x30, and registers the handlers for inputs 28, 29, 21 and 20 with `setcrimevector`.
+- `get_crimerev` in `kernel.o`: derives a revision code from the CRIME identity doubleword, a 96-byte routine at offset 0x11838. Established.
+  A non-zero low nibble gives 17, an upper word of 1 gives 19 and any other non-zero upper word gives 20, cached in a kernel word after the first read.
+- `__sysad_wbflush` in `kernel.o`: drains the CPU write buffer, a 16-byte routine at offset 0x13e0. Established.
+  It executes `sync` and then loads the CRIME identity register at 0xb4000000, so the load completes only after earlier writes have left the processor.
+- `flushbus` in `kernel.o`: forces earlier register writes out to CRIME, a 44-byte routine at offset 0x11ccc. Established.
+  It loads the CPU interface control register at +0x8 and discards the value, which is the read-back ordering that `mlreset` and the GBE routines rely on.
+- `add_ioboard` in `kernel.o`: resets the video engine and registers it with the hardware inventory, a 8-byte routine at offset 0x8160. Established.
+  It writes 4 to the VICE register at 0xb700e014 and 0 to 0xb70001bc with `us_delay` of 10 microseconds after each, VICE being the 0x17000000 window.
+  It then tests bit 31 of the CRIME interrupt status, the VICE line, and when it is set calls `add_to_inventory`.
+## Bus-error probes
+
+- `badaddr` in `kernel.o`: probes whether a physical address responds, a 312-byte routine at offset 0x14270. Established.
+  It clears the CPU and memory error status at +0x48 and +0x250 and the MACE error register at 0xbf080004, sets a flag halfword at +194 of the current thread, and loads 1, 2, 4 or 8 bytes from the address.
+  It then reads +0x8 as a barrier and tests +0x28 against mask 0x300080; a set bit sends it to the failure exit.
+- `badaddr_val` in `kernel.o`: the same probe that also returns the loaded value, a 380-byte routine at offset 0x143a8. Established.
+  It stores the 1, 2, 4 or 8 bytes read through its third argument, after the same clearing of the error registers, and calls `cmn_err` for any other width.
+- `wbadaddr` in `kernel.o`: the write counterpart of the probe, a 356-byte routine at offset 0x14524. Established.
+  It stores a zero of the requested width, 1, 2, 4 or 8 bytes, to the address instead of loading from it, and uses the same error-register clearing and checks as `badaddr`.
+- `wbadaddr_val` in `kernel.o`: the write probe that takes a value, a 384-byte routine at offset 0x14688. Inferred from its structure.
+  It shares the clearing and the +0x28 check of the other probes and calls `cmn_err` for a width other than 1, 2, 4 or 8.
+- `earlybadaddr` in `kernel.o`: the probe used before the thread record exists, a 296-byte routine at offset 0x14808. Established.
+  It clears the same error registers as `badaddr` but stores 9 in a kernel word where `badaddr` sets a flag halfword in the thread record.
+  It keeps the same +0x28 test against 0x300080 after the load.
+- `baerror` in `kernel.o`: the failure exit shared by the probes, a 100-byte routine at offset 0x149a8. Established.
+  It clears +0x48 and +0x250 and the MACE register at 0xbf080004, restores the saved status register and clears the thread flag at +194 before it returns 1.
+- `earlybaerror` in `kernel.o`: the failure exit of the early probe, a 88-byte routine at offset 0x14a0c. Established.
+  It clears the same registers, restores the status register, stores 0 in the kernel word that `earlybadaddr` set to 9, and returns 1.
+- `VEC_dbe` in `kernel.o`: the data bus error vector, a 132-byte routine at offset 0x1c2d4. Established.
+  It copies +0x48, +0x40, +0x250, +0x258 and +0x58 into kernel globals, clears +0x250 and +0x48 and the MACE register, and jumps to `VEC_trap`.
+- `VEC_ibe` in `kernel.o`: the instruction bus error vector, a 156-byte routine at offset 0x20dc0. Established.
+  It takes the same register snapshot as the data vector, clears the same error registers and also jumps to `VEC_trap`.
+- `dobuserr` in `kernel.o`: the entry that reports a bus error, a 60-byte routine at offset 0x102b0. Inferred from its structure.
+  It calls one unnamed local routine, which the revision code of `get_crimerev` steers to `print_buserr_rev1` or `print_buserr_rev0`.
+- `dobuserre` in `kernel.o`: the error-exit helper of the bus-error path, a 68-byte routine at offset 0x1026c. Established.
+  It returns 0 when its third argument is 1, and otherwise reads the ECC syndrome at +0x260 and check bits at +0x268 into globals before calling an unnamed decoder.
+- `print_buserr_rev1` in `kernel.o`: prints the CPU and memory error registers of revision 1 and later parts, a 272-byte routine at offset 0x102ec. Established.
+  Its only call is `cmn_err`, with the status bits of tables 5-17 and 6-16 of the CRIME specification.
+- `print_buserr_rev0` in `kernel.o`: prints the ten error bits of the revision-0 part, a 456-byte routine at offset 0x103fc. Established.
+  It tests bits 0 to 9 of the status word and reaches `vice_err`, `log_ecc_err` and `ecc_error_correction`.
+  It also calls `print_buserr_rev1` for the memory error part.
+## Memory and ECC
+
+- `ecc_enable` in `kernel.o`: turns on ECC checking, a 84-byte routine at offset 0x920c. Established.
+  It writes 1 to the memory control register at +0x200, but only when the kernel option consulted through `is_enabled` is set.
+- `ecc_disable` in `kernel.o`: turns off ECC checking, a 12-byte routine at offset 0x9260. Established.
+  It stores 0 to the memory control register at +0x200 and nothing else.
+- `ecc_handler` in `kernel.o`: the correctable memory error handler, a 1368-byte routine at offset 0xd894. Established.
+  It reads +0x48, +0x250, +0x40, +0x258 and +0x260 and calls `ecc_fixctag` and `ecc_fixcdata` for errors in the processor's caches.
+  It also calls `timeout` and `kthread_get_pid`, and clears +0x48 once the error has been recorded.
+- `ecc_error_correction` in `kernel.o`: rewrites the faulty memory word, a 160-byte routine at offset 0xff50. Established.
+  It maps the physical address with `map_physaddr`, rewrites the memory with `scrub_memory` and clears +0x250 before it calls `unmap_physaddr`.
+- `unmap_physaddr` in `kernel.o`: releases the temporary mapping and captures the error state, a 100-byte routine at offset 0xfea4. Established.
+  It reads +0x48, +0x40, +0x250, +0x258, +0x58, +0x268 and +0x260 into globals, clears +0x48 and +0x250, and frees the TLB entry with `unmaptlb`.
+
+## Interrupts and timers
+
+- `VEC_int` in `kernel.o`: the interrupt vector, a 512-byte routine at offset 0x0. Established.
+  It saves the interrupt enable register at +0x18 in the frame, installs the mask for the highest level from a table, and calls `intr`.
+- `intr` in `kernel.o`: the generic interrupt dispatcher, a 588-byte routine at offset 0xa578. Established.
+  It reads the CRIME interrupt status at +0x10 and runs the vectors in priority order, calling `splint` and `getcause` and logging with `log_tstamp_event`.
+  It reads and writes the software interrupt register at +0x20 at its end.
+- `setcrimevector` in `kernel.o`: registers a handler on a CRIME interrupt input, a 624-byte routine at offset 0xaaf8. Established.
+  It rejects inputs above 32 and priorities above 5, then creates or joins a gang with `create_crimegang` and `join_crimegang`.
+  It sets the level masks with `setsplmasks` and calls `crimevec_thread_setup` for a threaded handler.
+- `crime_intr_enable` in `kernel.o`: enables one CRIME interrupt input, a 64-byte routine at offset 0xa248. Established.
+  It raises the level with `spl7` and sets bit n of the level-0 mask in the table at -23880($zero), so the hardware mask changes on the next level change.
+- `crime_intr_disable` in `kernel.o`: disables one CRIME interrupt input, a 68-byte routine at offset 0xa288. Established.
+  It clears bit n of the level-0 mask under `spl7` and reads the interrupt status at +0x10.
+  It also calls `splint` and `vsema` in its 198 instructions.
+- `synthclock` in `kernel.o`: raises the synthesised clock interrupt, a 220-byte routine at offset 0x9ff8. Inferred from its register use and calls.
+  It reads and writes the software interrupt register at +0x20 under `spl7` and runs `clock` and `hwperf_intr`.
+- `synthackkgclock` in `kernel.o`: acknowledges the synthesised clock interrupt, a 216-byte routine at offset 0xa0d4. Inferred from its register use.
+  It reads and writes the software interrupt register at +0x20 under `spl7`.
+- `crimegang` in `kernel.o`: the entry of a ganged interrupt, a 108-byte routine at offset 0xa1dc. Inferred from its size.
+  Its 30 instructions run the handlers that `join_crimegang` chained on one input.
+- `spl0` in `kernel.o`: drops to interrupt level 0, a 80-byte routine at offset 0xb1cc. Established.
+  It stores the first entry of the mask table at -23880 into the interrupt enable register at +0x18 and writes 0 to the level word at -23840.
+  It sets the interrupt-enable bits of the processor status register and returns the old level in bits 15:8 of the old status.
+- `spl7` in `kernel.o`: raises to level 24, the highest software level, a 132-byte routine at offset 0xb38c. Established.
+  It acts only when the level word at -23840 is below 24, then stores table entry 24 into +0x18 with the processor interrupt bit masked off.
+  The old level comes back in bits 15:8 of the returned status.
+- `splx` in `kernel.o`: restores a level saved by an earlier `spl` call, a 100-byte routine at offset 0xb450. Established.
+  It takes the level from bits 15:8 of its argument, loads that level's processor status bits from a table at offset 3120 and its mask from the table at -23880.
+  It stores the mask into +0x18 and the level into the word at -23840, then restores the argument as the status register.
+- `splhi` in `kernel.o`: raises to level 8, a 132-byte routine at offset 0xb21c. Established.
+  It acts only when the level word at -23840 is below 8, then stores table entry 8 into +0x18 and 8 into the level word.
+  A call made at a higher level changes nothing and returns the current level.
+- `splint` in `kernel.o`: sets the level given by its argument for the duration of an interrupt handler, a 72-byte routine at offset 0xb4b4. Established.
+  It stores the table entry for that argument into +0x18 without testing the current level and records it in the word at -23840.
+  It leaves the processor interrupt-enable bit set in the status register it returns.
+- `splprof` in `kernel.o`: raises to level 16, the profiling-clock level, a 132-byte routine at offset 0xb308. Established.
+  It acts only when the level word at -23840 is below 16, then stores table entry 16 into +0x18.
+  It returns the old level in bits 15:8 of the status, like the other raising routines.
+- `setkgvector` in `kernel.o`: registers the kernel-graphics handler, a 8-byte routine at offset 0xa7c4. Established.
+  It stores its first argument in a kernel global at gp-32680 and does nothing else.
+- `_cpuclkper100ticks` in `kernel.o`: calibrates the processor count register against the CRIME timer, a 172-byte routine at offset 0x140f8. Established.
+  It stores 0 to the timer at +0x38, polls its sign-extended low word until it reaches 23496 and sums the count register over four passes.
+- `_ticksper1024inst` in `kernel.o`: times a fixed instruction loop with the CRIME timer, a 56-byte routine at offset 0x140c0. Established.
+  It reads +0x38 before and after a loop of 512 iterations, over two passes, and returns the difference.
+- `delay_calibrate` in `kernel.o`: sets the microsecond delay loop count, a 132-byte routine at offset 0x141a4. Established.
+  It measures a spin loop with two reads of +0x38, multiplies the difference by 15, divides by 100000 and stores the result in a kernel word.
+- `absolute_rtc_current_time` in `kernel.o`: returns the free-running time, a 24-byte routine at offset 0x11820. Established.
+  It loads the 64-bit CRIME timer at +0x38 and masks it to 32 bits.
+- `query_cyclecntr` in `kernel.o`: reports the cycle counter's address and resolution, a 20-byte routine at offset 0x1180c. Established.
+  It stores 15000 as the resolution and returns the address 0xb400003c of the timer's low word.
+- `early_gbe_stop` in `kernel.o`: stops GBE before the kernel hands the machine back to the PROM, a 564-byte routine at offset 0x8504. Established.
+  It clears the DMA enables at +0x30008, +0x20008 and +0x40004, bumps each shadow word by 32, waits up to 400000 reads, and writes 0x80000000 to +0x10000.
+  It clears bit 20 of the dot-clock word at +0x4 last, with `flushbus` after each store.

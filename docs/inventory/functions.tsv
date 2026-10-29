@@ -479,7 +479,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00284c4	40	_circ_nread	dwar
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00284ec	8	businfo	dwarf+symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00284f4	20	read_reg64	dwarf+symtab	35318dc3efd5	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028508	24	write_reg64	dwarf+symtab	be72b96394d8	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	flushbus	symtab	640df3041b0b	named-only	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	flushbus	symtab	640df3041b0b	located	docs/functions.md#start-up-and-revision	Start-up and revision
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028520	32	wbflush	dwarf+symtab	640df3041b0b	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028540	20	Read_C0_LLADDR	dwarf+symtab	0bed81c21644	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028554	12	Read_C0_Config	dwarf+symtab	65d36b16835c	undocumented		
@@ -504,12 +504,12 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028de4	300	ds2502_get_eadd
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028f10	236	setup_gpdas	dwarf+symtab	02230224b811	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0028ffc	8	check_gpdas	dwarf+funcnames	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029004	8	dump_gpda	dwarf+symtab	78aa5094d5ec	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002900c	60	delay_calibrate	dwarf+funcnames	f1dc0f197e23	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002900c	60	delay_calibrate	dwarf+funcnames	f1dc0f197e23	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029048	196	us_delay	dwarf+symtab	34333fe040d0	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029140	4	_delayend	dwarf+symtab	df3f619804a9	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029144	48	_timerticksper1024inst	dwarf+symtab	0b17777f7ba7	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029174	56	_ticksper1024inst	dwarf+symtab	118df3355b83	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00291ac	180	_cpuclkper100ticks	dwarf+symtab	b90fb6bba559	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029174	56	_ticksper1024inst	dwarf+symtab	118df3355b83	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00291ac	180	_cpuclkper100ticks	dwarf+symtab	b90fb6bba559	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029280	20	delayloop	dwarf+symtab	409d97401ab1	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029294	52	GetMemoryDescriptor	dwarf+symtab	78bf2ca9fa15	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00292c8	296	md_init	dwarf+symtab	1095ca191287	undocumented		
@@ -546,7 +546,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a68c	24	setsr	symtab	0eb
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6a4	20	GetCause	symtab	9f95fcfe1fbb	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6a4	20	get_CAUSE	dwarf+symtab	9f95fcfe1fbb	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6a4	20	get_cause	symtab	9f95fcfe1fbb	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6a4	20	getcause	symtab	9f95fcfe1fbb	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6a4	20	getcause	symtab	9f95fcfe1fbb	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	SetCause	symtab	1acd403f9290	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	set_CAUSE	dwarf+symtab	1acd403f9290	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	set_cause	symtab	1acd403f9290	undocumented		
@@ -726,12 +726,12 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	initnsema	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	makesname	symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	preemptchk	symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	78aa5094d5ec	named-only	docs/functions.md#process-hooks	Process hooks
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl0	symtab	78aa5094d5ec	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl0	symtab	78aa5094d5ec	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl5	symtab	78aa5094d5ec	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl7	symtab	78aa5094d5ec	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splhi	symtab	78aa5094d5ec	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl7	symtab	78aa5094d5ec	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splhi	symtab	78aa5094d5ec	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splimp	symtab	78aa5094d5ec	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splx	symtab	78aa5094d5ec	named-only	docs/functions.md#lookup-tables	Lookup tables
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splx	symtab	78aa5094d5ec	located	docs/functions.md#interrupts-and-timers	Interrupts and timers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spsema	symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svpsema	symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svsema	symtab	78aa5094d5ec	undocumented		
@@ -1139,7 +1139,7 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d0	8	gfxunmap	
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_shalloc	dwarf+symtab	9e4f40012c15	named-only	docs/functions.md#process-hooks	Process hooks
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66	named-only	docs/functions.md#process-hooks	Process hooks
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6	named-only	docs/functions.md#boards	Boards
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x0	512	VEC_int	dwarf+symtab	155bac8904f9	named-only	docs/memory.md#interrupt-controller-as-irix-6530-drives-it	Interrupt controller as IRIX 6.5.30 drives it
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x0	512	VEC_int	dwarf+symtab	155bac8904f9	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x84	280	tfp_special_int_exit	symtab	10ffc0806a27	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19c	100	kpreemption	symtab	cba4d4792bc3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x200	36	arcs_write	dwarf+symtab	dc3b226a3454	undocumented		
@@ -1154,7 +1154,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4b0	28	prom_eaddr	dwa
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4cc	576	arcs_to_dsk	dwarf+funcnames	92d9c8602332	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x70c	244	exception_exit	dwarf+symtab	902d94cc154f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x75c	164	exception_leave	symtab	431ed835a2b6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x800	172	unmaptlb	dwarf+symtab	655ef2d328bb	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x800	172	unmaptlb	dwarf+symtab	655ef2d328bb	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8ac	96	invaltlb	dwarf+symtab	77c8882b31cb	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x90c	160	tlbwired	dwarf+symtab	45075db6b023	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ac	324	tlbdropin	dwarf+symtab	54e7c4896037	undocumented		
@@ -1196,7 +1196,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1314	12	_dki_dcache_w
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1320	12	_dki_dcache_inval	dwarf+symtab	da89f70a37dc	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x132c	44	__cdx_blkfill	dwarf+symtab	ce4c55e396e2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1358	136	__cdx_blkcopy	dwarf+symtab	eba3df348ffc	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e0	16	__sysad_wbflush	dwarf+symtab	ef70f690c08c	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e0	16	__sysad_wbflush	dwarf+symtab	ef70f690c08c	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f0	8	apcvsema	symtab	87506497337c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f0	8	appsema	symtab	87506497337c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f0	8	apvsema	symtab	87506497337c	undocumented		
@@ -1210,7 +1210,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f0	8	vme_adapter	sy
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f8	8	apcpsema	symtab	a7e7ca11a6b8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f8	8	dummyret1_func	dwarf+symtab	a7e7ca11a6b8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1400	8	_get_timestamp	dwarf+symtab	6cc16abd70ee	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1408	12	scrub_memory	dwarf+symtab	6abcfdf068c2	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1408	12	scrub_memory	dwarf+symtab	6abcfdf068c2	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1414	128	tlbgetlo	dwarf+symtab	53e69b52af9c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1494	32	getcachesz	dwarf+symtab	8d2d001b2026	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b4	12	get_r10k_config	dwarf+symtab	65d36b16835c	undocumented		
@@ -1401,15 +1401,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8034	8	sw_cachesynch_
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x803c	60	sw_cachesynch_op4	symtab	4ed9bec976a4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8078	52	sw_cachesynch_op3	symtab	cc773be909ed	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x80ac	96	cache_tag_ecc	dwarf+symtab	1615e2a780f6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	VEC_trap	dwarf+symtab	ffdd7d585250	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	VEC_trap	dwarf+symtab	ffdd7d585250	named-only	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	soft_trap	symtab	ffdd7d585250	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8160	8	add_ioboard	dwarf+symtab	78aa5094d5ec	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8160	8	add_ioboard	dwarf+symtab	78aa5094d5ec	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8168	124	add_vice	dwarf+funcnames	f5016f23145c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x81e4	216	add_cpuboard	dwarf+symtab	9b2b408e83de	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x82bc	268	init_sysid	dwarf+symtab	2a61486e82df	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x83c8	316	setup_ip32_flags	dwarf+funcnames	1e233f1fa920	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8504	564	early_gbe_stop	dwarf+symtab	e911ead8ba71	understood	docs/gbe.md#registers-the-base-kernel-touches-at-shutdown-early_gbe_stop	Registers the base kernel touches at shutdown (`early_gbe_stop`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8738	672	mlreset	dwarf+symtab	9034f85615ef	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8504	564	early_gbe_stop	dwarf+symtab	e911ead8ba71	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8738	672	mlreset	dwarf+symtab	9034f85615ef	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x89d8	88	timestamp_init	dwarf+symtab	4b9b771fe735	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8a30	440	init_all_devices	dwarf+symtab	0687c468fe37	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8be8	200	allowboot	dwarf+symtab	29ed372df219	undocumented		
@@ -1419,8 +1419,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8f5c	180	last_phys_pf
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9010	116	isa_dma_buf_init	dwarf+symtab	05a38d2bed9b	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9084	88	scrub_memory_block	dwarf+funcnames	321512bb3edd	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x90dc	304	ecc_meminit	dwarf+symtab	cc40abe5210c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x920c	84	ecc_enable	dwarf+symtab	6c3ab54e0964	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9260	12	ecc_disable	dwarf+symtab	a818e747ab4f	named-only	docs/gbe.md#registers-the-base-kernel-touches-at-shutdown-early_gbe_stop	Registers the base kernel touches at shutdown (`early_gbe_stop`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x920c	84	ecc_enable	dwarf+symtab	6c3ab54e0964	understood	docs/functions.md#memory-and-ecc	Memory and ECC
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9260	12	ecc_disable	dwarf+symtab	a818e747ab4f	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x926c	88	mace_hwgraph_lookup	dwarf+symtab	a70418764d63	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x92c4	96	is_extk0_pfn	dwarf+symtab	3982eaa30be2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9324	276	extk0_pages_added	dwarf+symtab	bf50c02eeb40	undocumented		
@@ -1438,29 +1438,29 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ef0	48	strayc0	dwarf
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f20	52	crimestray	dwarf+funcnames	f83e6405ae8b	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f54	36	crmerr_intr	dwarf+symtab	b1f452e5d4f9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f78	128	set_hwperf_intr	dwarf+symtab	a1c1ca8f8334	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ff8	220	synthclock	dwarf+symtab	1de465b95fe4	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa0d4	216	synthackkgclock	dwarf+symtab	c2819ce19a11	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ff8	220	synthclock	dwarf+symtab	1de465b95fe4	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa0d4	216	synthackkgclock	dwarf+symtab	c2819ce19a11	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa1ac	48	is_thd	dwarf+funcnames	37ace133b894	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa1dc	108	crimegang	dwarf+symtab	cb3a138505af	named-only	docs/memory.md#registers-and-sequences	Registers and sequences
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa248	64	crime_intr_enable	dwarf+symtab	296e46e5ca75	named-only	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa288	68	crime_intr_disable	dwarf+symtab	c9cb8f2fec13	named-only	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa1dc	108	crimegang	dwarf+symtab	cb3a138505af	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa248	64	crime_intr_enable	dwarf+symtab	296e46e5ca75	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa288	68	crime_intr_disable	dwarf+symtab	c9cb8f2fec13	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa2cc	684	crime_intr	dwarf+funcnames	ed775fd57a19	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa578	588	intr	dwarf+symtab	7d8af72607ca	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7c4	8	setkgvector	dwarf+symtab	0704e46b90c8	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa578	588	intr	dwarf+symtab	7d8af72607ca	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7c4	8	setkgvector	dwarf+symtab	0704e46b90c8	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7cc	360	getcvpriority	dwarf+symtab	5bec9452990c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa934	200	create_crimegang	dwarf+symtab	a8a39d587dc3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa9fc	144	join_crimegang	dwarf+symtab	4a21d14bf335	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaa8c	108	setsplmasks	dwarf+symtab	c11dddfd6b3d	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaaf8	624	setcrimevector	dwarf+symtab	b8066599d247	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa934	200	create_crimegang	dwarf+symtab	a8a39d587dc3	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa9fc	144	join_crimegang	dwarf+symtab	4a21d14bf335	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaa8c	108	setsplmasks	dwarf+symtab	c11dddfd6b3d	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaaf8	624	setcrimevector	dwarf+symtab	b8066599d247	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xad68	144	enable_ithreads	dwarf+symtab	6ba728abf48d	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thread_setup	dwarf+symtab	2b2dd8548d53	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thread_setup	dwarf+symtab	2b2dd8548d53	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xae50	88	crimevec_intrd_init	dwarf+symtab	a2adfedb9477	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaea8	144	crimevec_intrd	dwarf+symtab	ffc2fdd4997c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf38	80	bust_crimegang	dwarf+funcnames	1cb83da467e6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf88	348	leave_crimegang	dwarf+funcnames	9f604c3cde13	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	dwarf+symtab	11c5f3fb207f	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1a8	36	sendintr	dwarf+symtab	f9a9f6566807	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1cc	80	spl0	dwarf+symtab	67fd70f20787	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1cc	80	spl0	dwarf+symtab	67fd70f20787	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl1	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl3	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl5	symtab	2204b057e629	undocumented		
@@ -1468,7 +1468,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl6	symtab	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio0	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio1	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splgio2	symtab	2204b057e629	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi	dwarf+symtab	2204b057e629	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi	dwarf+symtab	2204b057e629	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhi_relnet	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splhintr	symtab	2204b057e629	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splimp	symtab	2204b057e629	undocumented		
@@ -1479,12 +1479,12 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	splvme	symta
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb2a0	52	issplhi	dwarf+symtab	ad372c36f7f8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb2d4	52	issplprof	dwarf+symtab	db61764e0b92	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb308	132	spl65	symtab	f2798e5c5417	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb308	132	splprof	dwarf+symtab	f2798e5c5417	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb38c	132	spl7	dwarf+symtab	eb4efc90de15	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb308	132	splprof	dwarf+symtab	f2798e5c5417	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb38c	132	spl7	dwarf+symtab	eb4efc90de15	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb410	64	splecc	dwarf+symtab	9d41a659e3ee	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splx	dwarf+symtab	36bfc546d0e2	named-only	docs/functions.md#lookup-tables	Lookup tables
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splx	dwarf+symtab	36bfc546d0e2	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splxecc	symtab	36bfc546d0e2	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4b4	72	splint	dwarf+symtab	8e2c388976a9	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4b4	72	splint	dwarf+symtab	8e2c388976a9	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4fc	32	isspl0	dwarf+symtab	f82aa27804e6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb51c	8	allowintrs	dwarf+symtab	78aa5094d5ec	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb524	8	delay_for_intr	dwarf+symtab	6cc16abd70ee	undocumented		
@@ -1582,12 +1582,12 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd0f4	828	ecc_cleanup	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd430	568	ecc_panic	dwarf+symtab	0189efeda75f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd668	236	ecc_is_branch	dwarf+funcnames	8ec9087ef8ef	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd754	320	ecc_get_perr_addr	dwarf+funcnames	27fef7747f66	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd894	1368	ecc_handler	dwarf+symtab	98fa34b9fb73	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd894	1368	ecc_handler	dwarf+symtab	98fa34b9fb73	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xddec	116	ecc_fixmem	dwarf+funcnames	7dfd1bacee97	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde60	572	ecc_fixcache	dwarf+funcnames	29b57cd751f8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe09c	136	ecc_find_bad_cline	dwarf+symtab	591ea919a261	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe124	1016	ecc_fixctag	dwarf+symtab	e1d2bbe3849f	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe51c	916	ecc_fixcdata	dwarf+symtab	ebe349c5060d	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe124	1016	ecc_fixctag	dwarf+symtab	e1d2bbe3849f	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe51c	916	ecc_fixcdata	dwarf+symtab	ebe349c5060d	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe8b0	76	init_ecc_info	dwarf+funcnames	dbbb187940a0	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe8fc	52	ecc_assign_msg	dwarf+funcnames	be4b43b69ae7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe930	284	ecc_print_msg	dwarf+funcnames	cb6045567676	undocumented		
@@ -1610,18 +1610,18 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfa74	128	ecc_cache_li
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfaf4	108	ecc_cache_block_mask	dwarf+funcnames	e06837b7368a	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb60	60	ecc_same_cache_block	dwarf+symtab	e1684c3f46fe	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb9c	576	decode_inst	dwarf+symtab	9cb250dd414d	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfddc	200	map_physaddr	dwarf+symtab	1aa7ca9a289a	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfea4	100	unmap_physaddr	dwarf+symtab	7b1df8db27d9	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfddc	200	map_physaddr	dwarf+symtab	1aa7ca9a289a	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfea4	100	unmap_physaddr	dwarf+symtab	7b1df8db27d9	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff08	72	err_save_regs	dwarf+funcnames	2da3aa775f12	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff50	160	ecc_error_correction	dwarf+symtab	e2c015d7e3cf	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff50	160	ecc_error_correction	dwarf+symtab	e2c015d7e3cf	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfff0	52	syn_to_data_bit	dwarf+funcnames	b1ee0a6235c3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10024	40	bitcount	dwarf+funcnames	71634bd9f6e9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1004c	84	lowbitset	dwarf+funcnames	76dde5713684	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x100a0	460	log_ecc_err	dwarf+symtab	cfc0a5e93cd7	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1026c	68	dobuserre	dwarf+symtab	925b18ad042c	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102b0	60	dobuserr	dwarf+symtab	1d07a08050ca	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102ec	272	print_buserr_rev1	dwarf+symtab	33600ca346a2	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x103fc	456	print_buserr_rev0	dwarf+symtab	26bba8e26917	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x100a0	460	log_ecc_err	dwarf+symtab	cfc0a5e93cd7	named-only	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1026c	68	dobuserre	dwarf+symtab	925b18ad042c	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102b0	60	dobuserr	dwarf+symtab	1d07a08050ca	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102ec	272	print_buserr_rev1	dwarf+symtab	33600ca346a2	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x103fc	456	print_buserr_rev0	dwarf+symtab	26bba8e26917	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x105c4	400	print_memerr	dwarf+funcnames	fe461b7c095d	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10754	796	dobuserr_common	dwarf+funcnames	ac9d62335fa8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10a70	164	idle_err	dwarf+symtab	32299afe00d7	undocumented		
@@ -1657,9 +1657,9 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11628	72	fp_find	dwar
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11670	28	fp_init	dwarf+symtab	d51ef8b359e7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1168c	316	dprintf	dwarf+symtab	dbd2c1d0ea50	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_buf_addr	dwarf+symtab	dd800c4fb3a8	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1180c	20	query_cyclecntr	dwarf+symtab	8bdd40067301	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11820	24	absolute_rtc_current_time	dwarf+symtab	3f79b5b25c5c	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11838	96	get_crimerev	dwarf+symtab	7094f825e2b4	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1180c	20	query_cyclecntr	dwarf+symtab	8bdd40067301	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11820	24	absolute_rtc_current_time	dwarf+symtab	3f79b5b25c5c	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11838	96	get_crimerev	dwarf+symtab	7094f825e2b4	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11898	92	unmaptlb_range	dwarf+symtab	b2c6132d54d6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x118f4	56	tfi_save	dwarf+symtab	e1201bb656c5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1192c	56	tfi_restore	dwarf+symtab	61268ef6fa4e	undocumented		
@@ -1671,7 +1671,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b8c	8	getpc	dwarf+s
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b94	8	getsp	dwarf+symtab	2c412fc24dd8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b9c	12	getpcsp	dwarf+symtab	ca6d9b37dfc3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11ba8	8	getgp	dwarf+symtab	4429c69e8a79	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bb0	12	getcause	dwarf+symtab	974544a72c7c	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bb0	12	getcause	dwarf+symtab	974544a72c7c	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bbc	12	setcause	dwarf+symtab	65b1fd11f742	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bc8	28	getbadvaddr	dwarf+symtab	a441cce0f1d1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11be4	28	get_sr	dwarf+symtab	6392b7eb9124	undocumented		
@@ -1681,7 +1681,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c28	12	set_lladdr	d
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c34	12	do_sync_instruction	dwarf+symtab	0fc560405654	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c40	72	siron	dwarf+symtab	0b0c520c2bd4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c88	68	siroff	dwarf+symtab	23ff907e1676	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11ccc	44	flushbus	dwarf+symtab	3fbcf98d39eb	named-only	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11ccc	44	flushbus	dwarf+symtab	3fbcf98d39eb	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11cf8	16	wbflush	dwarf+symtab	93593d9a07f4	named-only	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	8	ip26_enable_ucmem	dwarf+symtab	78aa5094d5ec	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip26_return_ucmem	symtab	d7276fd812c6	undocumented		
@@ -1731,18 +1731,18 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b5c	28	cache_preemp
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b78	656	findcpufreq_raw	dwarf+symtab	4d1c1b9e4b1f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e08	60	findcpufreq	dwarf+symtab	0195442af336	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e44	636	cpu_mhz_rating	dwarf+symtab	a13e2905fd36	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140c0	56	_ticksper1024inst	dwarf+symtab	547293136b7f	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140f8	172	_cpuclkper100ticks	dwarf+symtab	92097777333d	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x141a4	132	delay_calibrate	dwarf+symtab	291163649fe1	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140c0	56	_ticksper1024inst	dwarf+symtab	547293136b7f	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140f8	172	_cpuclkper100ticks	dwarf+symtab	92097777333d	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x141a4	132	delay_calibrate	dwarf+symtab	291163649fe1	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14240	48	delayloop	dwarf+symtab	1938f7aab185	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14270	312	badaddr	dwarf+symtab	307b09f44029	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x143a8	380	badaddr_val	dwarf+symtab	1acbf1f49434	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14524	356	wbadaddr	dwarf+symtab	dad9ed0e3eab	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14688	384	wbadaddr_val	dwarf+symtab	15c3f333834b	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14808	296	earlybadaddr	dwarf+symtab	73366b237b85	named-only	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14270	312	badaddr	dwarf+symtab	307b09f44029	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x143a8	380	badaddr_val	dwarf+symtab	1acbf1f49434	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14524	356	wbadaddr	dwarf+symtab	dad9ed0e3eab	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14688	384	wbadaddr_val	dwarf+symtab	15c3f333834b	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14808	296	earlybadaddr	dwarf+symtab	73366b237b85	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14930	120	wbadmemaddr	dwarf+symtab	1bd3747c10d2	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x149a8	100	baerror	dwarf+symtab	e8eac1f73224	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a0c	88	earlybaerror	dwarf+symtab	f697dc69ced7	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x149a8	100	baerror	dwarf+symtab	e8eac1f73224	understood	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a0c	88	earlybaerror	dwarf+symtab	f697dc69ced7	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a64	12	VEC_breakpoint	dwarf+symtab	3614e4802762	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a6c	4	kernelbp	symtab	cd09e81bee54	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	dwarf+symtab	dcffcaf7af27	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -1864,7 +1864,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1be98	8	first_address
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1be98	8	migrate_timeouts	dwarf+symtab	78aa5094d5ec	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1bea0	792	fpunit_fpload_s	dwarf+symtab	c23982345858	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c1b8	284	renorm_d	dwarf+symtab	0cd2c9b70619	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c2d4	132	VEC_dbe	dwarf+symtab	9affc89ef9bb	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c2d4	132	VEC_dbe	dwarf+symtab	9affc89ef9bb	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c358	208	renorm_s	dwarf+symtab	ba88255bcca5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c428	116	_add_sd	dwarf+symtab	eff1626bd16c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1c49c	1076	fpunit_fpload_d	dwarf+symtab	ddf851a0f780	undocumented		
@@ -1876,7 +1876,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1ce70	1184	_div_sd	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d310	368	dumptlb	dwarf+symtab	195055af0d39	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d480	148	checkAllTlbsDumped	dwarf+symtab	896d0a78c5a7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d514	56	flash_getenv	dwarf+symtab	25a6b637c068	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d554	8	vice_err	dwarf+symtab	87506497337c	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d554	8	vice_err	dwarf+symtab	87506497337c	named-only	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d55c	20	VEC_nofault	dwarf+symtab	14ce28ea91c9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d570	900	VEC_cpfault	dwarf+symtab	12e1caab9a18	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d8f4	264	hwperf_init	dwarf+symtab	d7350d48960c	undocumented		
@@ -1900,7 +1900,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e378	80	hwperf_setup
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e3c8	200	hwperf_multiplex_events	dwarf+symtab	6ba879742c27	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e490	116	hwperf_add_counters	dwarf+symtab	d55f06e3ef9b	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e504	192	hwperf_fork_counters	dwarf+symtab	1a35a88a1e82	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e5c4	28	hwperf_intr	dwarf+symtab	34d7a2e33b85	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e5c4	28	hwperf_intr	dwarf+symtab	34d7a2e33b85	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e5e0	188	hwperf_sys_counters	dwarf+symtab	cb854e8a5c34	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e69c	224	hwperf_get_access	dwarf+symtab	6a3f3ace177e	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1e77c	364	hwperf_check_release	dwarf+symtab	b262c55767aa	undocumented		
@@ -1944,7 +1944,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x201d8	24	mul64	dwarf+
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x201f0	1508	madd	dwarf+symtab	aee940845dca	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x207d4	1420	add	dwarf+symtab	a6d3f0cb7e85	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20d60	96	VEC_tlbmod	dwarf+symtab	35e6262e7e79	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20dc0	156	VEC_ibe	dwarf+symtab	81f3305849e7	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20dc0	156	VEC_ibe	dwarf+symtab	81f3305849e7	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e5c	8	btool_size	dwarf+symtab	87506497337c	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e64	8	btool_getinfo	dwarf+symtab	627e969afad0	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e6c	8	btool_reinit	dwarf+symtab	78aa5094d5ec	undocumented		
