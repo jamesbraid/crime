@@ -3433,7 +3433,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141570	892	glxMiAllocDeepWind
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101418f0	136	RLineTo..NCC	dynsym	348a73b8c720	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141980	396	inflateSync	dynsym	26cb85e2f466	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141b10	92	SGetInputFocusReply	dynsym	a0292fe36b58	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141f50	132	QueueWorkProc	dynsym	de2bf1a908c8	named-only	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141f50	132	QueueWorkProc	dynsym	de2bf1a908c8	named-only	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10141fe0	3076	FontFileListOneFontWithInfo..NN	dynsym	e09e0fc5d9de	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10142bf0	476	DeletePassiveGrab	dynsym	d23db019f3f3	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10142dd0	76	sp_begin_contour_black	dynsym	7ac43e631f90	undocumented		
@@ -14021,7 +14021,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46af50	4804	cfb8ClippedLineCopy	d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46c220	8624	cfb32SegmentSS	dynsym	8fff696ad34f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46e3d0	3196	miFillConvexPoly	dynsym	0ff62503ea24	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46f050	728	nfbDoBitBltSS	dynsym	ef73fe70d81f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46f330	636	crmKeyClick	dynsym	de56aa91728f	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46f330	636	crmKeyClick	dynsym	de56aa91728f	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46f5b0	1540	crmCopyWindow	dynsym	642dce1137c1	understood	docs/xmodule.md#copies-and-pixel-transfer	Copies and pixel transfer
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46fbc0	916	crmUninstallHWColormap	dynsym	6afb004018f7	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x46ff60	1384	crmDestroyWindow	dynsym	efbef6a68872	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
@@ -14316,7 +14316,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x515450	252	crmInvalidateSoftDB	dy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x515550	2172	crmLineSD	dynsym	3aeb1e4cb61b	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x515dd0	1840	crmSegmentSD	dynsym	84d06bca3d43	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x516500	992	crmDrawCID	dynsym	d7a1c13ea371	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5168e0	804	crmBell	dynsym	712f8bd0d2a3	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5168e0	804	crmBell	dynsym	712f8bd0d2a3	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x516c10	8	crmFreeFBBlock	dynsym	78aa5094d5ec	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x516c20	652	crmAllocatePbuffer	dynsym	d8c9089d8a1b	understood	docs/xmodule.md#pixel-buffers	Pixel buffers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x516eb0	8	crmReadFBBlock	dynsym	87506497337c	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
@@ -14565,7 +14565,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5776e0	1020	miGetArcPts..CDB	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577ae0	592	hookX..HEB	dynsym	37e9aa05e94e	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577d30	88	miRegionDestroy	dynsym	a2d7eb04826c	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577d90	200	nfb9RopLoop..NG	dynsym	0e0ac842665a	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577e60	128	crmCheckAudio..F	dynsym	af8dc4224ad2	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577e60	128	crmCheckAudio..F	dynsym	af8dc4224ad2	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577ee0	148	SwapDone..AF	dynsym	efbab980e3d7	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577f80	284	miDsin..PCB	dynsym	639d1446c801	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5780a0	440	nfbStereoPaintWindowBorder..EI	dynsym	cd974e130711	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14617,7 +14617,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584700	1168	nfbInfRender..IJ	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584b90	744	computeDashMap..HDB	dynsym	275a31b82e02	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584e80	264	SetDIDMode	dynsym	02abac9697dd	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584f90	76	miBSCheapDestroyGC..CP	dynsym	8572b1103e3f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584fe0	180	crmRingClick..H	dynsym	c4699917bbf2	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584fe0	180	crmRingClick..H	dynsym	c4699917bbf2	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5850a0	640	QuickSortRects..PM	dynsym	419bb46564ec	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585320	184	nfb6RopLoop..KG	dynsym	21c566c61c6f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5853e0	96	miBSCheapChangeGC..AP	dynsym	d7ec333807d0	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14630,7 +14630,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586bb0	780	nfbStereoValidateClip.
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586ec0	248	miBSImageGlyphBlt..KAB	dynsym	fbe13b250d72	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586fc0	3828	cfbPolyGlyphBlt8Clipped..AM	dynsym	7fc768ea62af	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x587ec0	436	nfbInfPolyPoint..OJ	dynsym	6ef382f7b80f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588080	156	crmOpenAudio..C	dynsym	7f0f66d45ca9	located	docs/xmodule.md#bell-and-audio	Bell and audio
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588080	156	crmOpenAudio..C	dynsym	7f0f66d45ca9	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588120	1068	QuickSortSpansX..HO	dynsym	65291d6a64e1	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588550	268	crmInitScrnSaver	dynsym	e4263be967c9	located	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588660	176	DelayValidateClipCallback..HE	dynsym	9f5d2198f480	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
@@ -14660,7 +14660,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e900	76	nfbInfPolyText8..GK	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e950	88	cfbDestroyPixmap	dynsym	1a972112271e	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e9b0	2056	cfbZeroArcSS8Xor..AL	dynsym	19e5075ce89f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f1c0	1800	nfbPutPlane..DG	dynsym	605e83e3af91	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f8d0	180	crmRingBell..G	dynsym	dc577a224f6b	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f8d0	180	crmRingBell..G	dynsym	dc577a224f6b	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f990	2280	cfbZeroArcSS8Xor..EM	dynsym	95f5e5e3fd6b	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590280	412	ValidateClip..GE	dynsym	bc40f7329838	located	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590420	420	crmMonitorCommand..LC	dynsym	464ef9b1c8ce	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
@@ -14701,7 +14701,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x597660	248	miBSPolyText8..GAB	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x597760	184	nfb7RopLoop..LG	dynsym	2c66f2bb10b4	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x597820	2420	cfbZeroArcSS8General..BM	dynsym	7d899298bf5d	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5981a0	248	nfb1MaskRopLoop..FH	dynsym	336a349c718a	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5982a0	240	crmGetSampleRate..B	dynsym	5b79487af6ef	located	docs/xmodule.md#bell-and-audio	Bell and audio
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5982a0	240	crmGetSampleRate..B	dynsym	5b79487af6ef	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x598390	680	crmStrGamma8..KB	dynsym	7364af478e74	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x598640	176	nfbMarkWindow	dynsym	44e5cdc15123	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5986f0	232	nfb3MaskRopLoop..HH	dynsym	6896203f2a19	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers

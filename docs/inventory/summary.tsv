@@ -1,7 +1,7 @@
 table	rows	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes
 binaries	82	5	0	4	0	0	77	0	0	6.1	6.1	100.0	6.1						
-functions	17280	288	0	287	70	204	3819	12969	0	1.7	2.8	24.9	1.7			66.7	15	2026-10-29	
-functions (distinct names)	11726	287	0	287	54	117	2338	8984	0	2.4	3.4	23.4	2.4						
+functions	17280	295	0	294	68	202	3814	12969	0	1.7	2.9	24.9	1.7			66.7	15	2026-10-29	
+functions (distinct names)	11726	294	0	294	52	115	2333	8984	0	2.5	3.5	23.4	2.5						
 mmio	145	145	0	139	0	0	0	0	0	100.0	100.0	100.0	100.0	40		100.0	10	2026-10-29	
 tokens	44	44	0	41	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	10	2026-10-29	
 ioctls	42	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29	
@@ -33,7 +33,7 @@ functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	8	669	0	0.0	0.0	1.2	0
 functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	0	0	16	79	1218	2151	0	0.0	2.3	37.6	0.0						
 functions in usr/gfx/gfxinit	227	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0						
 functions in usr/gfx/setmon	249	0	0	0	0	0	24	225	0	0.0	0.0	9.6	0.0						
-functions in usr/lib/X11/dyDDX/crm.so	840	14	0	14	38	38	788	0	0	1.7	6.2	100.0	1.7						
+functions in usr/lib/X11/dyDDX/crm.so	840	21	0	21	36	36	783	0	0	2.5	6.8	100.0	2.5						
 functions in usr/lib/X11/dyDDX/glx.so	981	0	0	0	0	0	0	981	0	0.0	0.0	0.0	0.0						
 functions in usr/lib/dmedia/imageconverters/debug/vicedv.so	95	0	0	0	0	0	1	94	0	0.0	0.0	1.1	0.0						
 functions in usr/lib/dmedia/imageconverters/debug/vicejpeg.so	64	0	0	0	0	0	1	63	0	0.0	0.0	1.6	0.0						
