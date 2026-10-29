@@ -77,11 +77,14 @@
 #define IB_COUNT_DEFAULT    10
 
 /*
- * FIFO depth: 64 entries [I].
+ * FIFO depth: 64 entries [I, strong].
  * - crimeFifoFullHandler reports "fifo Overflow! Current level at %d" when
  *   the status level reads 65 or more [E, k:crime:crimeFifoFullHandler+0x1c,
  *   compare with 65; string in crime.o .rodata].
  * - NetBSD's read and write pointers are 6 bits wide [E, netbsd].
+ * - crmSavePP walks the buffer as a ring of 64: it takes
+ *   (write pointer - start pointer), adds 64 when negative, and wraps its
+ *   index to 0 on reaching 64 [E, k:crime:crmSavePP+0x8..0xc0].
  * - The level field is 7 bits wide [E, kernel masks with 0x7f], which a
  *   64-entry buffer needs to represent "full" (64).
  * The specification's 128-entry data RAM [spec PDF 163] and the 7-bit
@@ -126,11 +129,27 @@
  */
 #define TLB_LIN_VALID           0x80000000u /* [E] */
 
-/* The kernel waits for the FIFO to drain after every eight TLB writes in
- * crimeInitHW and writes 0 to +0x4008 after every TLB load [E,
- * k:crime_init:crimeInitHW, k:crime_tiles:crmLoadTlbABC+0xb0]. TLB writes
- * therefore pass through the interface buffer [I]. What +0x4008 does is [U]. */
-#define RE_STATUS_4008          0x4008
+/*
+ * +0x4008: written with 0, only by the kernel, never by libGLcore or the X
+ * server [E]. Writers: crimeInitHW (after draining the FIFO between TLB
+ * batches), crmLoadTlbABC, crmLoadCidTlb, the crime_dma loaders,
+ * crimeValidateClip, crimePcxSwap, crimeRestore, crimePrivate, and
+ * crmSavePP [E]. crmSavePP is the telling one [E, k:crime:crmSavePP]:
+ *   1. read status; start = bits 5:0, write pointer = bits 11:6;
+ *   2. wait until the committed work drains (crmFifoWait with n = ib_full);
+ *   3. copy each entry from start up to the write pointer out of
+ *      IB_ADDR(i) (64-bit) and IB_DATA(i) (two 32-bit words) into the
+ *      context's save area;
+ *   4. write 0 to +0x4008.
+ * Inferred: entries between the start pointer and the write pointer are
+ * parameters written since the last start-alias commit, which the engine
+ * holds until a commit; the kernel saves them on a context switch and the
+ * write to +0x4008 discards them (resets the uncommitted part of the
+ * interface buffer). Its use after TLB loads would then clear any partial
+ * user state left behind the kernel's writes. A capture showing the status
+ * pointers before and after a +0x4008 write would settle it [U].
+ */
+#define RE_IB_DISCARD           0x4008  /* [I] name */
 
 /* ==== Pixel pipeline (+0x2000) ============================================ */
 /* G = global (applied after the pipe drains), NG = per primitive [E, spec PDF 164]. */
@@ -257,11 +276,19 @@
  * gl:crm_astri:__glCrmFlatTriangle sdc1 to 0x2080/0x2088/0x2090], and it
  * finds the pixel corner by clearing the low six bits of those raw bits
  * [E, __glCrmFlatZTriangle "and $a7, -64"]. The specification calls the
- * register 13.6 fixed point [spec PDF 166]. Inferred: the hardware takes
- * the low 19 (or more) bits as 13.6 fixed point, which makes the effective
- * window coordinate x + 4096 and the exponent bits don't-care. Which bits
- * the rasteriser actually reads is [U].
+ * register 13.6 fixed point [spec PDF 166].
+ * The same library also writes plain integers: the static ClearDepth (unit
+ * crm_depth) draws a rectangle (Primitive 0x03020000) with Vertex.GL words
+ * of (window x) << 6 and (window y) << 6 and no float bias [E], and the
+ * kernel's pixel DMA does the same [E, k:crime_dma:crmpixdma+0x258].
+ * Both paths use the same window offset. For pixel x the triangle path
+ * sends 0x48040000 + 64x and the rectangle path 64x, so the rasteriser must
+ * ignore bits 31:18 and read at most bits 17:0 as unsigned 12.6 fixed point
+ * (0 to 4095 + 63/64) [I, strong]. That is enough for the 2048-pixel buffer
+ * limit. The specification's "13.6" would make bit 18 significant; the
+ * driver cannot work if it is.
  */
+#define VTX_FIXED_BITS      18          /* [I] bits 17:0 used */
 #define VTX_FLOAT_BIAS      135168.0f   /* [E, value]; meaning [I] */
 #define VTX_SUBPIXEL_BITS   6           /* [E, spec; consistent with bias] */
 
@@ -282,9 +309,18 @@
  * Depth slopes: Zs, dz/dx, dz/dy are 64-bit integers made by truncating
  * (window z * 64.0) toward zero (gc+32024 = 0x42800000) [E,
  * gl:crm_astri:__glCrmFlatZTriangle trunc.l.s]. Zs is evaluated at the
- * pixel corner below and left of the start vertex [E, same function]. The
- * window-z range, and so how this maps onto the spec's 25.12 format, is [U].
+ * pixel corner below and left of the start vertex [E, same function].
+ * Window z spans 0 .. 0x3fffffff: libGLcore sets the depth maximum
+ * (gc+31304) to 0x3fffffff [E, gl:crm_context] and SetDepthRange scales
+ * the viewport z to [near, far] * that maximum [E, gl:soft/so_xform].
+ * Multiplied by 64 the largest value is 2^36, which is exactly the spec's
+ * 25.12 format holding a 24-bit integer part: the stored depth equals
+ * window z / 64, a 24-bit depth buffer value, with 12 fraction bits in the
+ * register [I]. Depth.func bits 23:0 are computed the same way from the
+ * clear depth (gc+1640, set by glClearDepth) [E], so they hold the depth
+ * clear value in buffer units [I].
  */
+#define DEPTH_WINDOW_MAX    0x3fffffffu /* [E] */
 #define DEPTH_SCALE         64.0f
 
 /* ---- Texture.mode (+0x2110) ---------------------------------------------- */
@@ -334,6 +370,24 @@
  * texel index with 4 fraction bits, and the index masks keep w + 4 bits,
  * so: maximum texture size 1024 (shift >= 0), and 4 sub-texel bits feed
  * the bilinear weights. Hardware rounding of those weights is [U].
+ * Filter arithmetic: nothing in libGLcore, the X server or the kernel
+ * computes texel weights for the hardware path; the driver only selects
+ * filter codes, so the blend of the 2x2 (and between mipmap levels)
+ * cannot be recovered from these binaries [U]. A capture of a magnified
+ * two-texel texture would settle the weight precision and rounding.
+ *
+ * Texel storage [E, gl:crm_texture, k:crime_tiles]:
+ * - The kernel prepares a per-texture image of all 28 texture TLB
+ *   registers (crmDefineTex) and crmLoadTexTlb writes the 28 doublewords
+ *   wholesale on bind.
+ * - Texels reach memory through CPU stores into the texture's tiles, which
+ *   the kernel maps into the process (crmMapChunk); no MTE or DMA transfer
+ *   is involved in the glTexImage path read so far [I].
+ * - Unsubtiled textures are written row by row, 128 rows per 64 KiB tile,
+ *   advancing 0x10000 to the next tile (crmTileSpan), i.e. the frame-buffer
+ *   tile layout [I]. Subtiled layout: see MTE.h.
+ * - Texel depth is 16 or 32 bits only (Texture.mode bits 19:18) [E, spec
+ *   PDF 178]; there are no 8-bit texels to subtile.
  */
 #define TF_USHIFT_SHIFT     44
 #define TF_VSHIFT_SHIFT     40
@@ -347,6 +401,14 @@
 /* ---- AlphaTest (+0x2198) [E, spec PDF 180; __glCrmPassAlphaFunc] --------- */
 /* bits 11:8 = GL func - GL_NEVER; bits 7:0 = trunc(ref * 255). */
 
+/* ---- Blend.func (+0x21a8) [E, gl:crm_attrib:__glCrmPassBlendFunc] -------- */
+/* Equation bits 11:8: FUNC_ADD 0, MIN 1, MAX 2, SUBTRACT 3,
+ * REVERSE_SUBTRACT 4. Source 7:4 and destination 3:0 factor codes are
+ * exactly the specification's table [spec PDF 181]. One driver rule: when
+ * the drawable has no alpha bits, DST_ALPHA is sent as ONE (1),
+ * ONE_MINUS_DST_ALPHA as ZERO (0) and SRC_ALPHA_SATURATE as ZERO, so the
+ * hardware need not invent destination alpha [E]. */
+
 /* ---- LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table] -- */
 /* bits 3:0 = GL op - GL_CLEAR (0x1500); identity for all 16 ops. The spec
  * table is empty [spec PDF 182]. */
@@ -355,8 +417,8 @@
 #define DF_FUNC_SHIFT       25  /* 3 bits: GL func - GL_NEVER */
 #define DF_BIT24            (1u << 24)  /* set when the driver uses the depth
                                            unit for stencil-only drawing [E]; meaning [U] */
-#define DF_VALUE_MASK       0x00ffffffu /* (u32 gc+31304 * double gc+1640) >> 6;
-                                           purpose [U], likely a depth reference */
+#define DF_VALUE_MASK       0x00ffffffu /* (0x3fffffff * clear depth) >> 6: the
+                                           24-bit clear value [E arithmetic, I use] */
 
 /* ---- Stencil.mode (+0x21e0) [E, gl:crm_stencil:__glCrmPassStencilMode] --- */
 /* The spec table is empty [spec PDF 182]. */
@@ -379,7 +441,8 @@ enum crime_stencil_op {     /* [E] */
 #define ST_MTE_IDLE         (1u << 25)  /* [E, netbsd] */
 #define ST_LEVEL_SHIFT      18          /* 7 bits [E, kernel masks 0x7f] */
 #define ST_RDPTR_SHIFT      12          /* 6 bits [E, netbsd] */
-#define ST_WRPTR_SHIFT      6           /* 6 bits [E, netbsd] */
+#define ST_WRPTR_SHIFT      6           /* 6 bits [E, netbsd; kernel crmSavePP] */
+#define ST_START_MASK       0x3f        /* bits 5:0: start of uncommitted entries [E position, I meaning] */
 
 /*
  * Flow control as IRIX uses it [E]:

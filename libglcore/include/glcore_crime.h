@@ -40,7 +40,8 @@
 /* Register access. */
 #define GC_DRAWMODE         32088   /* 0x7d58: DrawMode being built [E, crm_attrib] */
 #define GC_DRAWMODE_SENT    32092   /* 0x7d5c: last DrawMode written [E] */
-#define GC_RETADDR_SAVE     32096   /* triangle routines save $ra here [E] */
+#define GC_PRIM_SENT        32096   /* last Primitive word written; the assembly triangle
+                                       routines overwrite it with $ra to invalidate it [E, ClearDepth compares it; I, purpose] */
 #define GC_HW               32184   /* 0x7db8: user mapping of the rendering
                                        window; register offsets as in CRIME_RE.h [E,
                                        __glCrmFlushAndConfirm polls +0x4000 through it] */
