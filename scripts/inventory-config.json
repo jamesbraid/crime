@@ -1,122 +1,75 @@
 {
+  "family": "O2 (CRIME and GBE)",
+  "docs": {
+    "prose": ["docs/*.md"],
+    "headers": ["*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],
+    "tables": [],
+    "index": ["AGENTS.md", "README.md", "IRIX_FILES.md", "docs/coverage.md", "docs/open-questions.md", "docs/captures.md"],
+    "dumps": [],
+    "skip": ["docs/inventory/*"]
+  },
+  "prepare": [],
+  "binaries": [
+    {"group": "kernel", "role": "board-kernel", "paths": ["usr/cpu/sysgen/IP32boot/crime.a", "usr/cpu/sysgen/IP32boot/mace.o"]},
+    {"group": "kernel-video", "role": "board-kernel", "paths": ["usr/cpu/sysgen/IP32boot/mvp.o", "usr/cpu/sysgen/IP32boot/a3_dd.o"]},
+    {"group": "kernel-shared", "role": "shared-kernel", "paths": ["usr/cpu/sysgen/IP32boot/gfx.o", "usr/cpu/sysgen/IP32boot/gfxs.a", "usr/cpu/sysgen/IP32boot/rrm.o", "usr/cpu/sysgen/IP32boot/kernel.o"]},
+    {"group": "kernel-shared", "role": "shared-kernel", "paths": ["usr/cpu/sysgen/IP32boot/os.a"], "members": ["tile.o"]},
+    {"group": "libraries", "role": "board-library", "paths": ["usr/gfx/arch/IP32CRM/libGL.so", "usr/gfx/arch/IP32CRM/libGLcore.so", "usr/gfx/arch/IP32CRM32/libGL.so", "usr/gfx/arch/IP32CRM32/libGLcore.so"]},
+    {"group": "x-module", "role": "board-x-module", "paths": ["usr/lib/X11/dyDDX/crm.so"]},
+    {"group": "x-shared", "role": "shared-x-server", "paths": ["usr/lib/X11/dyDDX/glx.so", "usr/gfx/arch/GENERIC/Xsgi"]},
+    {"group": "video-libraries", "role": "board-library", "paths": ["usr/lib32/libXsgivc.so", "usr/lib/libXsgivc.so", "usr/lib64/libXsgivc.so", "usr/lib/dmedia/video/mvp.so", "usr/lib/dmedia/video/debug/mvp.so", "usr/lib32/dmedia/video/mvp.so", "usr/lib32/dmedia/video/debug/mvp.so", "usr/lib/internal/libvice.so", "usr/lib32/internal/libvice.so", "usr/lib/dmedia/imageconverters/vice*.so", "usr/lib32/dmedia/imageconverters/vice*.so", "usr/lib/dmedia/imageconverters/debug/vice*.so", "usr/lib32/dmedia/imageconverters/debug/vice*.so"]},
+    {"group": "tools", "role": "shared-tool", "paths": ["usr/gfx/gfxinit", "usr/gfx/setmon"]},
+    {"group": "video-formats", "role": "board-data", "paths": ["usr/gfx/ucode/CRM/vof"]},
+    {"group": "standalone", "role": "board-diagnostic", "paths": ["sbin/stand/ide.IP32", "sbin/stand/symmon.IP32", "usr/sbin/Confidence/dualchannel"]},
+    {"group": "firmware", "role": "board-firmware", "paths": ["usr/cpu/firmware/ip32prom.image"]}
+  ],
+  "exclude": [],
   "windows": [
-    {
-      "name": "CRIME",
-      "lo": "0x14000000",
-      "hi": "0x15000000",
-      "note": "CPU interface and memory controller registers (CRIME 1.5 spec, table 5-7, 6-12)"
-    },
-    {
-      "name": "RE",
-      "lo": "0x15000000",
-      "hi": "0x16000000",
-      "note": "rendering engine, offsets from 0x15000000 (CRIME 1.5 spec, figure 7-3)"
-    },
-    {
-      "name": "GBE",
-      "lo": "0x16000000",
-      "hi": "0x17000000",
-      "note": "display back end (GBE spec 3.1)"
-    },
-    {
-      "name": "MACEV",
-      "lo": "0x1f100000",
-      "hi": "0x1f280000",
-      "note": "MACE video in 1, video in 2 and video out, three 0x80000 windows from 0x1f100000 (Linux asm/ip32/mace.h struct sgi_mace)"
-    },
-    {
-      "name": "MACEAV",
-      "lo": "0x1f400000",
-      "hi": "0x1f800000",
-      "note": "the audio and video block the CRIME specification system map lists at 0x1f400000"
-    }
+    {"name": "CRIME", "size": "0x1000000", "physical": "0x14000000", "docs": ["CRIME.h", "docs/memory.md", "docs/reset.md"]},
+    {"name": "RE", "size": "0x1000000", "physical": "0x15000000", "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md"]},
+    {"name": "GBE", "size": "0x1000000", "physical": "0x16000000", "docs": ["GBE.h", "docs/gbe.md"]},
+    {"name": "MACEV", "size": "0x180000", "physical": "0x1f100000", "docs": ["*.h", "docs/*.md"]},
+    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "docs/*.md"]}
   ],
-  "field_pointers": [
-    {
-      "binary": "libGLcore.so",
-      "disp": "32184",
-      "window": "RE",
-      "why": "gc+32184 is the hardware pointer libGLcore stores register writes through (docs/context.md)"
-    },
-    {
-      "binary": "crime.a",
-      "disp": "120",
-      "window": "RE",
-      "why": "board record +120 holds the KSEG1 pointer to 0x15000000 (crime_kernel/include/crime_kern.h CRB_RE_BASE)"
-    },
-    {
-      "binary": "crime.a",
-      "global": "crimeBoards",
-      "disp": "4",
-      "window": "GBE",
-      "why": "crimeBoards+4 holds the GBE KSEG1 base (crime_kernel/include/crime_kern.h)"
-    }
+  "bases": [
+    {"type": "constant", "lo": "0x14000000", "hi": "0x15000000", "window": "CRIME", "translate": true, "computed": true, "label": "constant address", "why": "CPU interface and memory controller registers (CRIME 1.5 specification, tables 5-7 and 6-12)"},
+    {"type": "constant", "lo": "0x15000000", "hi": "0x16000000", "window": "RE", "translate": true, "computed": true, "label": "constant address", "why": "rendering engine (CRIME 1.5 specification, figure 7-3)"},
+    {"type": "constant", "lo": "0x16000000", "hi": "0x17000000", "window": "GBE", "translate": true, "computed": true, "label": "constant address", "why": "display back end (GBE specification, section 3.1)"},
+    {"type": "constant", "lo": "0x1f100000", "hi": "0x1f280000", "window": "MACEV", "translate": true, "computed": true, "label": "constant address", "why": "MACE video in 1, video in 2 and video out, three 0x80000 windows (Linux asm/ip32/mace.h struct sgi_mace)"},
+    {"type": "constant", "lo": "0x1f400000", "hi": "0x1f800000", "window": "MACEAV", "translate": true, "computed": true, "label": "constant address", "why": "the audio and video block the CRIME specification system map lists at 0x1f400000"},
+    {"type": "field", "disp": 32184, "window": "RE", "label": "context +32184", "binaries": ["*libGLcore.so"], "why": "gc+32184 is the hardware pointer libGLcore stores register writes through (docs/context.md)"},
+    {"type": "field", "disp": 120, "window": "RE", "label": "board record +120", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "board record +120 holds the KSEG1 pointer to 0x15000000 (crime_kernel/include/crime_kern.h CRB_RE_BASE)"},
+    {"type": "global", "symbol": "crimeBoards", "disp": 4, "window": "GBE", "label": "crimeBoards+4", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "crimeBoards+4 holds the GBE KSEG1 base (crime_kernel/include/crime_kern.h)"},
+    {"type": "argument", "function": "gbeProbe", "reg": 4, "window": "GBE", "label": "gbeProbe argument", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"}
   ],
-  "argument_pointers": [
-    {
-      "binary": "crime.a",
-      "function": "gbeProbe",
-      "reg": 4,
-      "window": "GBE",
-      "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"
-    }
+  "accessors": [],
+  "aliases": [
+    {"window": "RE", "lo": "0x2800", "hi": "0x4000", "bit": "0x800", "why": "a store to offset + 0x800 in the pixel-pipe and transfer-engine groups is the start alias of offset (CRIME 1.5 specification)"}
   ],
-  "ioctl": {
-    "range": [
-      "0x5200",
-      "0x56ff"
-    ],
-    "handler_functions": "(?i)ioctl|dispatch|crimePrivate",
-    "send_functions": [
-      "ioctl",
-      "fcntl"
+  "tokens": {
+    "window": "RE",
+    "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md"],
+    "sources": [
+      {"type": "stores", "label": "code", "kind": "word", "window": "RE", "lo": "0x2000", "hi": "0x4000", "register": true}
     ]
   },
-  "documentation": {
-    "chapters": [
-      "docs/*.md"
+  "ioctls": {
+    "send_functions": ["ioctl", "fcntl"],
+    "ranges": [
+      ["0x5200", "0x56ff"]
     ],
-    "headers": [
-      "*.h",
-      "crime_kernel/include/*.h",
-      "libglcore/include/*.h"
+    "min_decimal": 1000000000,
+    "docs": ["docs/ioctls.md", "docs/context.md", "docs/gbe.md", "docs/pixel-transfer.md", "docs/memory.md"],
+    "dispatchers": [
+      {"type": "compare", "name": "crime private", "functions": "(?i)ioctl|dispatch|crimePrivate", "range": ["0x5200", "0x56ff"]}
     ],
-    "header_files": [
-      "*.h"
-    ],
-    "ioctl_files": [
-      "docs/ioctls.md",
-      "docs/context.md",
-      "docs/gbe.md",
-      "docs/pixel-transfer.md",
-      "docs/memory.md"
-    ],
-    "window_files": {
-      "CRIME": [
-        "CRIME.h",
-        "docs/memory.md",
-        "docs/reset.md"
-      ],
-      "RE": [
-        "CRIME_RE.h",
-        "MTE.h",
-        "docs/mte.md",
-        "docs/pixel-transfer.md",
-        "docs/context.md",
-        "docs/opengl.md"
-      ],
-      "GBE": [
-        "GBE.h",
-        "docs/gbe.md"
-      ],
-      "MACEV": [
-        "*.h",
-        "docs/*.md"
-      ],
-      "MACEAV": [
-        "*.h",
-        "docs/*.md"
-      ]
-    }
-  }
+    "classes": [
+      {"lo": "0x5200", "hi": "0x56ff", "name": "graphics"}
+    ]
+  },
+  "ucode": [],
+  "spec_registers": [
+    {"type": "rows", "spec": "CRIME 1.5", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["5-7", 113, "CRIME", "0x0", "ID-Revision", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x8", "CPU Interface Control", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x10", "Interrupt Status", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x18", "Interrupt Enable", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x20", "Software Interrupt", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x28", "Hardware Interrupt", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x30", "Watchdog Timer", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x38", "Crime Timer", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x40", "CPU Error Address", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x4048", "CPU Error Status", 1, 0, 64, ""], ["7-1", 163, "RE", "0x0", "IntfBuf.data[128]", 128, 8, 64, "R/W"], ["7-1", 164, "RE", "0x200", "IntfBuf.addr[128]", 128, 8, 64, "R/W"], ["7-1", 164, "RE", "0x400", "IntfBuf.ctl", 1, 0, 32, "W"], ["6-12", 150, "CRIME", "0x200", "MC Status/Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x208", "Bank 0 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x210", "Bank 1 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x218", "Bank 2 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x220", "Bank 3 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x228", "Bank 4 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x230", "Bank 5 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x238", "Bank 6 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x240", "Bank 7 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x248", "Refresh Counter", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x250", "Memory Error Status", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x258", "Memory Error Address", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x260", "ECC Syndrome Bits", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x268", "ECC Generated Check Bits", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x270", "ECC Replacement Check Bits", 1, 0, 64, ""], ["7-15", 183, "RE", "0x3000", "MTE.mode", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3008", "MTE.byteMask", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3010", "MTE.stippleMask", 1, 0, 32, "W"], ["7-15", 183, "RE", "0x3018", "MTE.fgValue", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3020", "MTE.src0", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3028", "MTE.src1", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3030", "MTE.dst0", 1, 0, 32, "W"], ["7-15", 183, "RE", "0x3038", "MTE.dst1", 1, 0, 32, "W"], ["7-15", 184, "RE", "0x3040", "MTE.srcYStep", 1, 0, 32, "R/W"], ["7-15", 184, "RE", "0x3048", "MTE.dstYStep", 1, 0, 32, "R/W"], ["7-15", 184, "RE", "0x3070", "MTE.null", 1, 0, 32, "W"], ["7-15", 184, "RE", "0x3078", "MTE.\ufb02ush", 1, 0, 32, "W"], ["7-3", 165, "RE", "0x2000", "BufMode.src", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2008", "BufMode.dst", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2010", "ClipMode", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2018", "DrawMode", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2020", "ScrMask[0]", 0, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2028", "ScrMask[1]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2030", "ScrMask[2]", 2, 8, 64, "R/W"], ["7-3", 165, "RE", "0x2038", "ScrMask[3]", 3, 8, 64, "R/W"], ["7-3", 165, "RE", "0x2040", "ScrMask[4]", 4, 8, 64, "R/W"], ["7-3", 165, "RE", "0x2048", "Scissor", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2050", "WinOffset.src", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2058", "WinOffset.dst", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2060", "Primitive", 1, 0, 32, "W"], ["7-3", 165, "RE", "0x2070", "Vertex.X[0]", 0, 0, 32, "W"], ["7-3", 165, "RE", "0x2074", "Vertex.X[1]", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2078", "Vertex.X[2]", 2, 4, 32, "W"], ["7-3", 166, "RE", "0x2080", "Vertex.GL[0].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2084", "Vertex.GL[0].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2088", "Vertex.GL[1].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x208c", "Vertex.GL[1].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2090", "Vertex.GL[2].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2094", "Vertex.GL[2].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20a0", "PixelXfer.src.addr", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20a8", "PixelXfer.src.xStep", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20ac", "PixelXfer.src.yStep", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20b0", "PixelXfer.dst.linAddr", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20b4", "PixelXfer.dst.linStride", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20c0", "Stipple.mode", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20c4", "Stipple.pattern", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20d0", "Shade.fgColor", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20d8", "Shade.bgColor", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20e0", "Shade.Rs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20e4", "Shade.Gs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20e8", "Shade.Bs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20ec", "Shade.As", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f0", "Shade.drdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f4", "Shade.dgdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f8", "Shade.drdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20fc", "Shade.dgdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2100", "Shade.dbdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2104", "Shade.dadx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2108", "Shade.dbdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x210c", "Shade.dady", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2110", "Texture.mode", 1, 0, 32, "R/W"], ["7-3", 167, "RE", "0x2118", "Texture.format", 1, 0, 64, "R/W"], ["7-3", 167, "RE", "0x2120", "Texture.SQs", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2128", "Texture.TQs", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2130", "Texture.Qs", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x2138", "Texture.dsqdx", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2140", "Texture.dsqdy", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2148", "Texture.dtqdx", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2150", "Texture.dtqdy", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2158", "Texture.dqdx", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x215c", "Texture.dqdy", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x2160", "Texture.borderColor", 1, 0, 32, "R/W"], ["7-3", 168, "RE", "0x2168", "Texture.envColor", 1, 0, 32, "R/W"], ["7-3", 168, "RE", "0x2170", "Fog.color", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x2178", "Fog.Fs", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2180", "Fog.dfdx", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2188", "Fog.dfdy", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2190", "Antialias.line", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2194", "Antialias.cov", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2198", "AlphaTest", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21a0", "Blend.constColor", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21a8", "Blend.func", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21b0", "LogicOp", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21b8", "ColorMask", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21c0", "Depth.func", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21c8", "Depth.Zs", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21d0", "Depth.dzdx", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21d8", "Depth.dzdy", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21e0", "Stencil.mode", 1, 0, 32, "R/W"], ["7-3", 170, "RE", "0x21e8", "Stencil.mask", 1, 0, 32, "R/W"], ["7-3", 170, "RE", "0x21f0", "PixPipeNull", 1, 0, 32, "W"], ["7-3", 170, "RE", "0x21f8", "PixPipeFlush", 1, 0, 32, "W"], ["7-2", 164, "RE", "0x1000", "TLB.fbA[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1200", "TLB.fbB[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1400", "TLB.fbC[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1600", "TLB.tex[28]", 28, 8, 64, "R/W"], ["7-2", 164, "RE", "0x16e0", "TLB.cid[4]", 4, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1700", "TLB.linearA[16]", 16, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1780", "TLB.linearB[16]", 16, 8, 64, "R/W"]]},
+    {"type": "rows", "spec": "GBE rev 1.1", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["3.2", 36, "GBE", "0x0", "CTRLSTAT", 1, 0, 32, "R/W"], ["3.2", 36, "GBE", "0x4", "DOTCLK", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x8", "I2C", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0xc", "SYSCLK", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x10", "I2CFP", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x14", "DEVICE_ID", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10000", "VT_0", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10004", "VT_1", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10008", "VT_2", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x1000c", "VT_3", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10010", "VT_4", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10014", "VT_5", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10018", "VT_6", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x1001c", "VT_7", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10020", "VT_8", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10024", "VT_9", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10028", "VT_10", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x1002c", "VT_11", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10030", "VT_12", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10034", "VT_13", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10038", "VT_14", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x1003c", "VT_15", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10040", "VT_16", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10044", "VT_17", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10048", "VT_18", 1, 0, 32, "R/W"], ["3.2", 41, "GBE", "0x1004c", "VT_19", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20000", "OVR_0", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20004", "OVR_1", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20008", "OVR_2", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30000", "FRM_0", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30004", "FRM_1", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30008", "FRM_2", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x3000c", "FRM_3", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x40000", "DID", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x40004", "DID_SHADOW", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x48000", "WID[32]", 32, 4, 32, "R/W"], ["3.2", 45, "GBE", "0x50000", "CMAP[4608]", 4608, 4, 32, "R/W"], ["3.2", 45, "GBE", "0x58000", "CMFIFO", 1, 0, 32, "R/W"], ["3.2", 45, "GBE", "0x60000", "GMAP[256]", 256, 4, 32, "R/W"], ["3.2", 46, "GBE", "0x70000", "CRS_0", 1, 0, 32, "R/W"], ["3.2", 46, "GBE", "0x70004", "CRS_1", 1, 0, 32, "R/W"], ["3.2", 46, "GBE", "0x70008", "CRS_CM[3]", 3, 4, 32, "R/W"], ["3.2", 46, "GBE", "0x78000", "CRS_GLY[64]", 64, 4, 32, "R/W"], ["3.2", 47, "GBE", "0x80000", "VC_0", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80004", "VC_1", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80008", "VC_2", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x8000c", "VC_3", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80010", "VC_4", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80014", "VC_5", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80018", "VC_6", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x8001c", "VC_7", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80020", "VC_8", 1, 0, 32, "R/W"]]}
+  ]
 }

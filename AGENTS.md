@@ -105,7 +105,7 @@ Scripts (`scripts/`, run from the repository root):
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
 - `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `libglcore/asm/` and `manifest.json`, and write `libglcore/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
 - `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `ddx/groups.json`. Its default module path is a placeholder; pass the real one.
-- `inventory.py`: count what the in-scope binaries contain and mark each entry documented, named-only or undocumented. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
+- `inventory.py`: count what the in-scope binaries contain and mark each entry documented, no-software-dependency, named-only or undocumented. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
 - `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
 
 The scripts descend from gr4's and carry its BSD-3 notice ([scripts/LICENSE-gr4](scripts/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
@@ -179,11 +179,14 @@ Workflow: populate `root/` (IRIX_FILES.md), run `scripts/populate-root`, run `sc
 
 The inventory is the work list. [docs/coverage.md](docs/coverage.md) shows the measured percentage for each table, and the rows themselves are in `docs/inventory/`:
 
+- `binaries.tsv`: every file in scope, with its role and access counts.
 - `functions.tsv`: every function symbol in each in-scope binary.
 - `mmio.tsv`: every CRIME, rendering-engine, GBE and MACE-video offset the code reaches.
 - `tokens.tsv`: constant words stored to rendering-engine registers.
 - `ioctls.tsv`: graphics ioctl requests sent or handled.
+- `ucode.tsv`: empty for this family, which has no microcode.
 - `spec-registers.tsv`: every register in the public CRIME 1.5 and GBE specifications.
+- `summary.tsv`: the counts behind the table in `docs/coverage.md`.
 
 Take rows whose status is `undocumented` (then `named-only`), sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `documented` when a chapter under `docs/` or a header names it with its derivation; `scripts/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
 
@@ -192,7 +195,7 @@ In the same commit as any finding:
 1. Run `scripts/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `docs/inventory/` and `docs/coverage.md`.
 2. Update the affected area row in `docs/coverage.md`.
 
-Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory.py` or `scripts/inventory-config.json` and say why in the commit.
+Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory-config.json` and say why in the commit. `scripts/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `scripts/inventory-config.json`.
 
 Roles:
 
