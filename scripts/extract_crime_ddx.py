@@ -7,7 +7,7 @@ scripts/extract_crime_ddx.py
 
 Extracts functions, symbols and disassembly from an X server DDX module
 (a module under ddx/) into per-group assembly for m2c.
-Usage: extract_crime_ddx.py [SO [OUT_DIR]]   (default ddx/crime_x.so, a placeholder until the module name is verified; OUT_DIR default ddx)
+Usage: extract_crime_ddx.py [SO [OUT_DIR]]   (default ddx/crm.so; OUT_DIR default ddx)
 
 Functions are grouped by the lowercase prefix of their name (e.g. a name
 starting `abcDraw...` goes to group `abc`). To group them your own way, put
@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scripts.resolve_got import build_got_map
 from scripts.toolchain import objdump
 
-TARGET_SO = sys.argv[1] if len(sys.argv) > 1 else 'ddx/crime_x.so'
+TARGET_SO = sys.argv[1] if len(sys.argv) > 1 else 'ddx/crm.so'
 OUT_DIR = sys.argv[2] if len(sys.argv) > 2 else 'ddx'
 MODULE = os.path.splitext(os.path.basename(TARGET_SO))[0]
 

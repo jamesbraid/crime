@@ -40,16 +40,16 @@ Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 19
 
 For licensing reasons proprietary SGI binaries are **not checked into source control** (the local `root/` tree is gitignored). Copy them from an authentic IRIX distribution into `root/` following [IRIX_FILES.md](IRIX_FILES.md). Disassembly, decompiled C, headers and notes derived from them are committed.
 
-The subdirectories below contain relative symbolic links resolving into `root/` (`scripts/populate-root` creates them from the `links` block in IRIX_FILES.md). **No O2 install has been inspected yet, so the targets and the DWARF status are unverified.**
+The subdirectories below contain relative symbolic links, one per file, resolving into `root/` (`scripts/populate-root` creates them from the `links` and `archives` blocks in IRIX_FILES.md). The targets were verified against IRIX 6.5.30 (O2 install and install media).
 
-| Directory | Contents | Target in `root/` | DWARF status |
+| Directory | Contents | Target in `root/` | Debug level (6.5.30) |
 |---|---|---|---|
-| `crime_kernel/` | kernel graphics objects for IP32 | `usr/cpu/sysgen/IP32boot/` | unverified |
-| `libglcore/` | O2 `libGLcore.so` per ABI, `libGL.so` | `usr/gfx/arch/` | unverified |
-| `ddx/` | the O2 X server module, `glx.so`, `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` | unverified |
-| `diags/` | graphics diagnostics and state-dump tools | `usr/gfx/`, `usr/diags/` | unverified |
+| `crime_kernel/` | `crime.a` members (`crime*.o`), `mace.o`, `gfx.o`, `rrm.o`, `gfxs/` (`gfxs.a` members) | `usr/cpu/sysgen/IP32boot/` | DWARF with lines (names, no types); `crime_busts.o` and `gfx_debug.o` have no lines |
+| `libglcore/` | `libGLcore_n32.so`, `libGL_n32.so`, `libGLcore_o32.so`, `libGL_o32.so` | `usr/gfx/arch/IP32CRM32/`, `IP32CRM/` | N32: DWARF with lines (164 compile units in libGLcore); o32: `.mdebug` symbols only |
+| `ddx/` | `crm.so`, `glx.so`, `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` | stripped |
+| `diags/` | `gfxinit`, `ide.IP32`, `crm_vof/` (video format files) | `usr/gfx/`, `sbin/stand/`, `usr/gfx/ucode/CRM/` | stripped |
 
-Fill the DWARF column from `scripts/map_binaries.py` once the files exist. In the sibling InfiniteReality workspace the 6.5.30 DWARF was thin (function names, source file names and line numbers, no types), so expect to recover structures from code; 6.5.0 binaries carry full debug info.
+Debug information by release: no release has DWARF with types or structure members for this board (IRIX_FILES.md section 5). Names and line numbers are the most any file gives, so recover structures from the CRIME specification, the Linux and NetBSD drivers and the code.
 
 Other public sources in this repository:
 
