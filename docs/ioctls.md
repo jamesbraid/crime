@@ -36,7 +36,7 @@ Failures return a small number: 11, 12, 14, 16, 19 or 22 (established as the con
 | `0x560b` | 0x10 | `crime_i2c_cmd` | general I2C command; result returned in the status path | established: a compare in `crimePrivate`, `crime.o` |
 | `0x560c` | 0x20 out | `crimeFrameInfo` | copy out frame-buffer information | established: a compare in `crimePrivate`, `crime.o` |
 | `0x560d` | 0x38 | `crmInitialize` | first-time driver initialisation for the board; the board record must have bit 0 of byte `+0x98` set | established: a compare in `crimePrivate`, `crime.o` |
-| `0x560e` | 0x14 out | | copies out 0x14 bytes of data the listing builds on the stack (content not decoded) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560e` | 0x14 out | | copies out the 0x14-byte kernel tile-use counter array `crm_tileusage` (see the entry below) | established: a compare in `crimePrivate`, `crime.o` |
 | `0x560f` | 0 | `crime_i2cFpProbe` | re-probe the flat panel | established: a compare in `crimePrivate`, `crime.o` |
 | `0x5610` | 4 | `crimeBlankscreen` | blank or unblank; the word selects ([gbe.md](gbe.md), blanking) | established: a compare in `crimePrivate`, `crime.o` |
 | `0x5611` | | | not a request: the boundary of the dispatcher's binary search just above `0x5610`, so it takes the path for unhandled requests and fails with 22 | established: the `sltiu` against 22033 in `crimePrivate`, `crime.o` |
@@ -97,10 +97,50 @@ Senders of the remaining requests. Established by searching every instruction of
 
 The inventory's request scan matches any constant in the graphics number range, so it also picks up seven requests that go to other drivers. Established: none of them reaches the O2 graphics driver, because its dispatcher `crimePrivate` in `crime.o` has no compare for any of them; the only compare in the `0x52xx` range is `0x5213`. The STREAMS numbers below are the stream-head requests `'S' << 8` plus a small number, named in the shipped header 6.5.5 root/usr/include/sys/stropts.h.
 
-- `0x5302`: established as the STREAMS ioctl that pushes a module onto a stream (header above). Xsgi's `sgiGetDeviceFD`, `sgiCheckDevices` and `sgiDeviceControl` send it to push a line discipline onto an input-device stream (call sites in the 6.5.30 Xsgi).
-- `0x5303`: established as the STREAMS ioctl that pops the top module off a stream (header above). Only `sgiGetDeviceFD` in the 6.5.30 Xsgi sends it, to undo a push on an input-device stream.
-- `0x5308`: established as the STREAMS ioctl that passes a module-specific request down a stream (header above). `SetRectOffsets` and 32 other routines of the 6.5.30 Xsgi send it; that they wrap their device requests in it is inferred from the sender names and the number.
-- `0x530c`: established as the STREAMS ioctl that links a stream below a multiplexer (header above). `shmiqLink` in the 6.5.30 Xsgi sends it at `0x10094150` to place an input-device stream under the shared-memory input queue.
-- `0x530d`: established as the STREAMS ioctl that unlinks a stream from below a multiplexer (header above). `shmiqLink` (`0x10094278`) and `sgiCloseDevice` in the 6.5.30 Xsgi send it to take an input device off the shared input queue.
-- `0x5315`: established as the STREAMS ioctl that lists the modules on a stream (header above). `sgiIsModulePresent` in the 6.5.30 Xsgi sends it first with a null argument at `0x101f6f90`, which returns the module count, then with a buffer at `0x101f7014`.
-- `0x5214`: established as an ioctl sent only by `ng1_setmon` in the 6.5.30 setmon (`0x1000f474`); no other instruction of the tool loads the constant. The routine is the monitor-setting path for the Indy and Indigo XL boards (inferred from the name); the O2 path, `crm_setmon`, never sends it, and the O2 kernel answers it with error 22.
+- `0x5302`: the STREAMS push ioctl, which makes the stream head insert the module named by its argument above the driver (header 6.5.5 root/usr/include/sys/stropts.h). Established.
+  `sgiGetDeviceFD` in the 6.5.30 Xsgi sends it at 0x10096d34 with the module-name pointer as the argument.
+  It sends it only after `sgiIsModulePresent` reports the module absent and after a pop, and a non-zero result reaches `ErrorF` with the module name.
+- `0x5303`: the STREAMS pop ioctl, which removes the module nearest the stream head (same header). Established.
+  `sgiGetDeviceFD` sends it at 0x10096d20 with a zero argument, directly before the push of `0x5302`.
+  The pair replaces whichever module was on top of an input-device stream with the one the caller names.
+- `0x5308`: the STREAMS pass-through ioctl that carries a command, timeout, length and data pointer down a stream (same header). Established.
+  `ddxMultiCursorSetNoOffsets` in the 6.5.30 Xsgi sends it at 0x1007ace8 with command word 0x8008510c and a length of 8.
+  `shmiqLink` sends it at 0x10094180 with command word 0xc0045108 and a 4-byte buffer holding the link identifier that `0x530c` returned.
+- `0x530c`: the STREAMS link ioctl, which attaches a second stream beneath a multiplexer driver (same header). Established.
+  `shmiqLink` in the 6.5.30 Xsgi sends it at 0x10094150 with a descriptor loaded from its stack frame at offset 56.
+  The returned link identifier feeds the `0x5308` request that follows at 0x10094180.
+- `0x530d`: the STREAMS unlink ioctl, which detaches a stream by the link identifier (same header). Established.
+  `shmiqLink` sends it at 0x10094278 when the free-slot index has reached 32, using the identifier stored in the entry, and at 0x100942b0 with the fresh identifier.
+  `sgiCloseDevice` sends it at 0x10062c14 for each device entry it closes, taking the identifier from the entry's word at offset 18496.
+- `0x5315`: the STREAMS list ioctl, which returns the names of the modules on a stream (same header). Established.
+  `sgiIsModulePresent` in the 6.5.30 Xsgi sends it first with a null argument at 0x101f6f90, and the positive return value is the module count.
+  It then allocates nine bytes per module name with `__malloc..ML` (eight characters and a terminator) and calls it again to fetch the names, so it can compare each against the wanted one.
+- `0x5214`: an ioctl that the O2 driver rejects with error 22. Established.
+  `ng1_setmon` in the 6.5.30 setmon sends it at 0x1000f474 with a buffer at stack offset 4256, between the ioctls 104 and 110.
+  No other instruction of the tool loads the constant, and the O2 route `crm_setmon` never sends it.
+
+## Driver requests with their own entries
+
+- `0x55f8`: the ioctl that releases the client's mapping of its 0x288-byte shadow record, sent with no argument. Established.
+  `crimePrivate` in `crime.o` takes the mapping record from client offset +0x4c and returns 22 when it is absent.
+  If the record's word at +0x18 is set and `gfxdd_lookup` finds nothing, the answer is 11; otherwise it calls `crmUnmapPages` and clears that word.
+  `crmUnmapGbe` in `crm.so` sends it during screen tear-down.
+- `0x55f9`: the ioctl that releases the 0x600-byte GBE block that `0x55fc` mapped, sent with no argument. Established.
+  `crimePrivate` needs the mapping record at client offset +0x4c (else 22) and a back-link of the board list that still points at the board (else 22).
+  It answers 11 while the record's mapped-address word at +0x88 is zero, then clears the four chunk entries at +0x84 and calls `crmUnmapChunk`.
+  After that it calls `crmUnmapPages` on the record at +0x1cc and zeroes both words.
+- `0x560c`: the ioctl that returns 32 bytes of frame information to the caller. Established.
+  `crimeFrameInfo` in `crime_retrace.o` runs under the mutex at +840 of the record that board offset +140 points at.
+  It scans 32 slots of 24 bytes for the calling client and sets output byte 26 when that slot's flag at +56 is non-zero.
+  Output byte 27 is the byte at +1360 of the object at client offset +76, and `crm_getustmsc` fills in the rest of the record.
+- `0x560e`: the ioctl that returns the driver's tile-use counters in 20 bytes. Established.
+  `crimePrivate` calls `copyout` with a length of 20 on `crm_tileusage`, a ten-halfword array in `crime_tiles.o`.
+  `crmAllocChunk` adds a chunk's tile count to the entry at offset 2 and to the entry of its tile class, and `crmFreeChunk` subtracts both.
+  `getFBConsumption` in `crm.so` is its sender.
+- `0x560f`: the ioctl that re-probes the flat panel, sent with no argument. Established.
+  `crimePrivate` returns 22 unless the board has a panel record at +124 and a bus handle at +128.
+  It stores 1 in a driver global, calls `crime_i2cFpProbe` with the bus handle and writes the result byte to offset +46 of the panel record.
+  That byte is the probe flag that the `0x5213` command checks.
+- `0x564f`: an ioctl the driver accepts and ignores, sent with no argument. Established.
+  The dispatcher `crimePrivate` reaches it by the compare against 22095 and calls `cmn_err` with a fixed message.
+  It returns 0, so a client that sends it sees success with no state change.

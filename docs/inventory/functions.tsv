@@ -2378,7 +2378,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007a5b0	364	ProcXineramaDestro
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007a720	740	AccessImageText8	dynsym	926b53e7ed70	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007aa10	208	SProcPolyText	dynsym	e6928a46aebd	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007aae0	464	XkbRF_GetComponents	dynsym	4aa758260dfb	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007acb0	1956	ddxMultiCursorSetNoOffsets	dynsym	d690133228a4	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007acb0	1956	ddxMultiCursorSetNoOffsets	dynsym	d690133228a4	named-only	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007b460	5284	_FontFileAddScalableNames..LN	dynsym	42ead1c528fd	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007c910	428	ProcSGIvcSetOutputSync	dynsym	0a7b2e43333e	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007cac0	484	InitModMap..CG	dynsym	71e2aa1939be	undocumented		
@@ -4297,7 +4297,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e71c0	552	SProcSGICapDispatc
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e73f0	292	SProcSecurityDispatch..JDD	dynsym	e5d427039df8	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e7520	80	FontFileEmptyBitmapSource	dynsym	27ad500db875	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e7570	272	AccessChangeHosts	dynsym	c0407262d303	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e7680	1752	__malloc..ML	dynsym	38328e55bc87	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e7680	1752	__malloc..ML	dynsym	38328e55bc87	named-only	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e7d60	2304	ProcXvQueryEncodings..LKE	dynsym	87e7c86da263	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e8660	180	ProcScreenSaverDisable..INE	dynsym	a3d5ac0a6a71	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e8720	1596	yylook	dynsym	c51dd1ee30db	undocumented		
@@ -5133,7 +5133,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fcc0	360	sgiCapPolyGlyphBlt
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fe30	1560	ShapeFreeEvents..FNC	dynsym	984c9d9a5d98	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280450	520	_fs_client_access..NFB	dynsym	a2d3bc8f8992	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280660	748	SrvXkbResizeKeyActions	dynsym	ffc9cd3ca027	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280980	1920	sgiCheckDevices	dynsym	c3351645e2dd	named-only	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280980	1920	sgiCheckDevices	dynsym	c3351645e2dd	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10281100	3592	SecurityLoadPropertyAccessList..GED	dynsym	35836a475b23	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10281f10	2952	CIDComputeStdProps..DNB	dynsym	dccaba4e0ced	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10282aa0	1964	T1FillFontInfo	dynsym	6e997e60ed9f	undocumented		
