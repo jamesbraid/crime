@@ -647,3 +647,161 @@ Each entry names one routine of the 6.5.30 `crime_tp.o`, `crime_tiles.o`, `crime
   It indexes a 128-byte table with `(offset >> 2) & 0x3ff` for offsets 0x2000 to 0x21ff and answers 1 for every other offset.
 - `crmFindPP` in `crime_debug.o`: finds where the uncommitted writes begin. Established.
   It walks backward through the 64-entry ring and stops at an entry with bit 45 set or one that `crmIsGlobalRegWrite` calls global.
+
+# Kernel routines, one entry each (`crime_i2c.o` and `mace.o`)
+
+Each entry names one routine of the 6.5.30 `crime_i2c.o` (a member of `crime.a`) or `mace.o`, says what it does on the I2C buses behind GBE or on the MACE interrupt mask, and cites callees or offsets, from `objdump -d -r`. Every entry carries a label.
+
+## Bus primitives (`crime_i2c.o`)
+
+- `i2_start` in `crime_i2c.o`: generates an I2C start condition on one of the two GBE buses. Established.
+  A selector of 1 picks the flat-panel register at GBE +0x10 and any other value the monitor register at +0x8.
+  It writes 0, calls `i2_sync_clk`, then writes 1 and 3, reading each value back and pausing with `us_delay` for a time held in a kernel global.
+- `i2_start_addr` in `crime_i2c.o`: a start condition followed by the address byte. Established.
+  It calls `i2_start` and then `i2_sendbyte` with the address, and returns 1 when the second call reports success and 0 when it does not.
+- `i2_stop` in `crime_i2c.o`: generates the stop condition on the selected bus. Inferred from its structure.
+  Its 106 instructions write the bus register at +0x8 or +0x10 in several steps and call only `us_delay` between the writes.
+- `i2_sync_clk` in `crime_i2c.o`: waits for the clock line of the selected bus to read high. Established.
+  It polls bit 1 of the register at +0x8, or +0x10 for selector 1, up to 61 times with `us_delay` of 1 microsecond between reads.
+  It returns 1 when the line rose and 0 on time-out, and `i2_start`, `i2_sendbyte` and `i2_master_recvbyte` all call it.
+- `i2_sendbyte` in `crime_i2c.o`: sends one byte as bus master. Inferred from its structure.
+  Its 311 instructions repeat a write to the bus register, a call to `i2_sync_clk` and a delay with `us_delay`, once for each bit.
+- `i2_master_recvbyte` in `crime_i2c.o`: receives one byte as bus master. Inferred from its structure.
+  Its 254 instructions pair reads of the bus register with calls to `i2_sync_clk` and `us_delay`, repeated for each bit.
+- `i2_slave_recvbyte` in `crime_i2c.o`: receives one byte while the device drives the clock. Inferred from its structure.
+  It raises the priority with `splprof`, waits on the bus lines with `i2_spin_for` for each bit and restores the level with `splx`.
+- `i2_wait_for_bus` in `crime_i2c.o`: waits until the selected bus reads idle before a command. Established.
+  It writes 0 to the bus register, then polls the inverted low two bits with `us_delay` of 100 microseconds per step, up to a count held in a kernel global.
+- `i2_spin_for` in `crime_i2c.o`: polls the bus lines until they show a wanted value. Established.
+  It reads the bus register of the selected bus at +0x8 or +0x10, inverts it and keeps the low two bits, and compares them under a mask with the wanted value.
+  It stores the sampled byte through an optional pointer and returns 1 when the value was seen before the count ran out.
+- `i2_wait_for_stop` in `crime_i2c.o`: waits for the master's stop condition after a slave read. Inferred from its call.
+  Its only call is `i2_spin_for`, made in 39 instructions.
+## Monitor identification (`crime_i2c.o`)
+
+- `crime_i2cSetMonitor` in `crime_i2c.o`: selects which monitor channel the bus routines address. Established.
+  It reads the 32-bit register whose address is its first argument, masks it with one kernel word and ORs in one of two other words chosen by its second argument.
+  The 36-byte routine at offset 0x0 writes the result back and makes no call.
+- `crime_i2cReset` in `crime_i2c.o`: returns the monitor bus to idle. Inferred from its structure.
+  Its 149 instructions write the bus register several times with `us_delay` pauses between the writes and call nothing else.
+- `crime_i2cFixupAfterErr` in `crime_i2c.o`: recovers the monitor bus after a failed transfer. Established from its calls.
+  It waits with `us_delay` and then sends a stop condition with `i2_stop`.
+- `crime_i2cfpFixupAfterErr` in `crime_i2c.o`: the same recovery for the flat-panel bus. Established from its calls.
+  It waits with `us_delay` and then issues `i2_stop`, in 30 instructions.
+- `crime_i2cProbe` in `crime_i2c.o`: reads the monitor identification block over DDC, the kernel side of ioctl 0x5607. Established.
+  It takes the bus mutex with `mutex_lock`, selects the monitor with `crime_i2cSetMonitor` and clears the buffer with `bzero`.
+  It then addresses the monitor with `i2_start` and `i2_sendbyte`, reads the bytes with `i2_master_recvbyte` and checks them with `crime_EdidCksum`.
+- `crime_validate_ddc_data` in `crime_i2c.o`: accepts or rejects a monitor identification block. Established from its calls.
+  It tests the block with `crime_i2cValidEdid`, asks `sgiEdid` whether the maker is the vendor's, applies `crmFixupSony24`, and copies the result with `bcopy`.
+- `i2cfp_DMI2_FailedEDID` in `crime_i2c.o`: records that reading a channel's panel identification failed. Established.
+  It stores 1 in the halfword at +0x32 of the channel's 8-byte table entry and clears the halfword at +0x1ec of the board information record.
+- `crime_EdidCksum` in `crime_i2c.o`: computes the checksum of an identification block. Established.
+  The 76-byte routine at offset 0x70c adds the 128 bytes of the block modulo 256 in a loop that takes two bytes per pass, and a valid block sums to 0.
+- `crime_i2cValidEdid` in `crime_i2c.o`: checks an identification block's header. Established.
+  It requires bytes 0 to 7 to be 00 ff ff ff ff ff ff 00, stores 1 in the halfword at +0x4 of the monitor record and returns 1 when the halfword at +0x6 is zero.
+- `sgiEdid` in `crime_i2c.o`: tests the manufacturer code of an identification block. Established.
+  The 56-byte routine at offset 0x7e8 returns 1 when byte 8 is 0x4c and byte 9 is 0xf8 or 0xe9, with no call.
+- `crmFixupSony24` in `crime_i2c.o`: patches the identification block of one Sony 24-inch monitor model. Established.
+  The 72-byte routine at offset 0x820 acts when bytes 10, 11 and 21 are 0, 1 and 0x30: it sets byte 11 to 0x11 and lowers the checksum byte at 127 by 16.
+## Command channel (`crime_i2c.o`)
+
+- `crime_copyin_cmd` in `crime_i2c.o`: copies a user's bus command into the kernel. Established from its call.
+  Its only call is `copyin`, made in 45 instructions.
+- `crime_i2c_cmd` in `crime_i2c.o`: the kernel side of ioctl 0x560b, the general I2C command. Established.
+  It takes the bus mutex, copies the command with `crime_copyin_cmd` and sends the bytes with `i2_start` and `i2_sendbyte`.
+  A device-specific command goes through `crime_Probe2AB` or `crime_2abCmdWrapper`, and the reply goes out with `copyout`.
+- `crime_Probe2AB` in `crime_i2c.o`: detects the 2AB device on the monitor bus. Established.
+  It resets the bus with `crime_i2cReset`, sends a command with `crime_2abSendCmd`, reads the reply with `crime_2abGetReply` and compares it with `strncmp`.
+- `crime_2abCmdWrapper` in `crime_i2c.o`: sends a command to the 2AB device and collects the reply. Established.
+  It calls `crime_2abSendCmd` and then `crime_2abGetReply`, with a `us_delay` pause for the device to answer.
+- `crime_2abSendCmd` in `crime_i2c.o`: writes a command to the 2AB device. Established.
+  It waits for the bus with `i2_wait_for_bus`, sends a start and the bytes with `i2_start` and `i2_sendbyte` and ends with `i2_stop`.
+  A failed byte goes to `crime_i2cFixupAfterErr`.
+- `crime_2abGetReply` in `crime_i2c.o`: reads a reply from the 2AB device as a bus slave. Established.
+  It raises the priority with `splprof`, receives bytes with `i2_slave_recvbyte` and waits for the stop with `i2_wait_for_stop`.
+  It restores the level with `splx` and recovers a failed transfer with `crime_i2cFixupAfterErr`.
+
+## Flat-panel option board (`crime_i2c.o`)
+
+- `crime_i2cFpProbe` in `crime_i2c.o`: identifies the flat panel and records it. Established.
+  It reads the identification with `i2cfp_PanelID` and records the result in the hardware inventory with `add_to_inventory`.
+  It updates an existing record through `find_inventory` and `replace_in_inventory`, and ends the transfer with `i2_stop`.
+- `crime_i2cFpHotProbe` in `crime_i2c.o`: repeats the panel probe on a timer. Established.
+  It calls `crime_i2cFpProbe` and, when the panel state changed, switches the panel on with `i2cfp_PanelOn` or schedules the change with `crime_FpSchedForRetrace`.
+  It re-arms itself with `timeout` and logs through `cmn_err`.
+- `i2cfp_PortRead` in `crime_i2c.o`: reads one byte from a device on the flat-panel bus. Established from its calls.
+  It addresses the device with `i2_start_addr`, receives with `i2_master_recvbyte` and ends with `i2_stop`.
+- `i2cfp_PortWrite` in `crime_i2c.o`: writes one byte to a device on the flat-panel bus. Established from its calls.
+  It addresses the device with `i2_start_addr`, sends with `i2_sendbyte` and ends with `i2_stop`.
+- `i2cfp_PanelID` in `crime_i2c.o`: reads the panel type. Established.
+  It reads the port at bus address 0x70 with `i2cfp_PortRead`, and on success stores bits 7:5 of the byte through its output pointer and returns 1.
+- `i2cfp_DualChannelProbe` in `crime_i2c.o`: probes the dual-channel option. Established.
+  It reads the port at bus address 0x7e with `i2cfp_PortRead`, writes 0xff with `i2cfp_PortWrite` and reads bits 6:5 back.
+- `i2cfp_DualChannelCommand` in `crime_i2c.o`: sends a command byte to the dual-channel option. Established.
+  It writes its argument to the port at bus address 0x7e through `i2cfp_PortWrite`, in 10 instructions.
+- `i2cfp_SetBit` in `crime_i2c.o`: switches one control line of the panel port. Established.
+  It writes 0xef through `i2cfp_PortWrite` to bus address 0x70 and sets a driver flag to 1 for an on request.
+  An off request writes 0xe7 there and clears the flag.
+- `i2cfp_PanelOn` in `crime_i2c.o`: switches the flat panel on. Established.
+  It reapplies the video timing with `crime_setvideotiming`, sets the control bits with `i2cfp_PortWrite` and `i2cfp_SetBit` and raises the backlight with `i2cfp_BlUp`.
+  It also restores the audio controls with `i2cfp_AudioVolLeft`, `i2cfp_AudioVolRight` and the tone routines.
+- `i2cfp_PanelOff` in `crime_i2c.o`: switches the flat panel off. Inferred from its structure.
+  It makes reads through `i2cfp_PortRead` and writes through `i2cfp_PortWrite` in 45 instructions.
+- `i2cfp_BlUp` in `crime_i2c.o`: raises the panel backlight. Inferred from its structure.
+  Its only call is `i2cfp_PortWrite`, made in 91 instructions.
+- `i2cfp_BlDown` in `crime_i2c.o`: lowers the panel backlight. Inferred from its structure.
+  Its only call is `i2cfp_PortWrite`, made in 99 instructions.
+- `i2cfp_AudioVolLeft` in `crime_i2c.o`: sets one audio control of the panel's chip over the bus. Inferred from its structure.
+  Its 46 instructions call `i2_start_addr`, `i2_sendbyte` and `i2_stop` in that order.
+- `i2cfp_AudioVolRight` in `crime_i2c.o`: sets a second audio control of the panel's chip. Inferred from its structure.
+  Its 46 instructions are the same `i2_start_addr`, `i2_sendbyte`, `i2_stop` sequence at a different address in the object.
+- `i2cfp_AudioBass` in `crime_i2c.o`: sets a third audio control of the panel's chip. Inferred from its structure.
+  Another 46-instruction copy of the same three-call sequence, reached from `i2cfp_PanelOn`.
+- `i2cfp_AudioTreble` in `crime_i2c.o`: sets a fourth audio control of the panel's chip. Inferred from its structure.
+  The fourth 46-instruction copy of the three-call sequence, also reached from `i2cfp_PanelOn`.
+- `i2cfp_AudioSwitch` in `crime_i2c.o`: sets a switch control of the panel's audio chip. Inferred from its structure.
+  Its 52 instructions run the same `i2_start_addr`, `i2_sendbyte`, `i2_stop` sequence with six more instructions of set-up.
+- `crime_i2cfp_command` in `crime_i2c.o`: the kernel side of ioctl 0x5213, the flat-panel command. Established from its calls.
+  It reaches `i2cfp_PanelOn`, `i2cfp_PanelOff` and `i2cfp_SetBit`, and the audio and panel-controller routines, in 172 instructions.
+- `i2cfp_DMI2_BkltWrapper` in `crime_i2c.o`: serves a user program's backlight request. Established.
+  It copies the argument in with `copyin`, runs `i2cfp_DMI2_BkltFuncs` and returns the result with `copyout`.
+- `i2cfp_DMI2_BkltFuncs` in `crime_i2c.o`: reads or writes the panel controller's backlight registers. Established.
+  It addresses the controller with `i2_start_addr`, exchanges bytes with `i2_sendbyte` and `i2_master_recvbyte` and ends with `i2_stop`.
+- `i2cfp_DMI2_SensorFuncs` in `crime_i2c.o`: serves a user program's sensor request. Established.
+  It copies the request in and the result out, reads the sensor registers over the same bus, and logs a bad command with `cmn_err`.
+- `i2cfp_DMI2_EnableSequel` in `crime_i2c.o`: runs the panel controller's enable sequence. Inferred from its structure.
+  It makes one read with `i2cfp_PortRead` and one write with `i2cfp_PortWrite`, in 27 instructions.
+- `i2cfp_DMI2_DisableSequel` in `crime_i2c.o`: runs the panel controller's disable sequence. Inferred from its structure.
+  It makes one read with `i2cfp_PortRead` and one write with `i2cfp_PortWrite`, in 28 instructions.
+- `i2cfp_DMI2_KernelEDID` in `crime_i2c.o`: reads the panel's identification block for the kernel's own use. Established.
+  It takes the bus mutex, clears a buffer with `bzero`, reads the block with `i2_start`, `i2_sendbyte` and `i2_master_recvbyte` and checks it with `crime_EdidCksum`.
+- `i2cfp_DMI2_EDIDFuncs` in `crime_i2c.o`: serves a user program's request to read or write the panel's identification block. Established.
+  It copies the request in with `copyin`, takes the bus mutex and uses `i2cfp_PortRead`, `i2cfp_PortWrite` and the byte routines for the transfer.
+
+## MACE interrupt mask (`mace.o`)
+
+- `mace_mask_enable` in `mace.o`: sets interrupt-mask bits in MACE. Established.
+  It raises the level with `spl7`, reads the 64-bit mask at 0xbf310018 with `pciio_pio_read64` and writes it back ORed with the argument through `pciio_pio_write64`.
+- `mace_mask_disable` in `mace.o`: clears interrupt-mask bits in MACE. Established.
+  It reads the mask with `pciio_pio_read64` under `spl7` and writes it back with the given bits cleared using `pciio_pio_write64`.
+- `mace_mask_update` in `mace.o`: replaces the selected mask bits. Established.
+  It reads the mask under `spl7`, keeps the bits its first argument does not select and ORs in the second argument, then writes it with `pciio_pio_write64`.
+- `mace_mask_read` in `mace.o`: returns the current mask. Established.
+  It reads the 64-bit register at 0xbf310018 with `pciio_pio_read64` under `spl7` and returns the value.
+- `mace_mask_write` in `mace.o`: stores a whole new mask. Established.
+  It writes its argument to the register at 0xbf310018 with `pciio_pio_write64` under `spl7`.
+- `mace_stray` in `mace.o`: the handler for a MACE interrupt that has no registered source. Established.
+  Its only call is `cmn_err`, at level 4, with the address of `intr` as an argument.
+- `mace_tbl_init` in `mace.o`: initialises the table of MACE interrupt handlers. Established.
+  It walks 10 slots of 56 bytes each, storing the address of `mace_stray` as the handler and clearing the other fields, with no call.
+- `mace_is_thd` in `mace.o`: tells whether a source is served by an interrupt thread. Established.
+  The 64-byte routine at offset 0x1ec returns 1 when any of bits 19:16 of its second argument is set and 0 otherwise, with no call.
+- `setmaceisavector` in `mace.o`: installs a handler for one MACE bit. Established.
+  It chooses a direct vector or a thread with `mace_is_thd` and `xthread_setup`, and ties the bit to the CRIME input through `setcrimevector`.
+  It formats the thread's name with `sprintf` and calls `panic` for an input other than 4 or 5.
+- `mace_intr` in `mace.o`: the common MACE interrupt entry. Inferred from its calls.
+  It reads the 64-bit register with `pciio_pio_read64`, masks the source with `mace_mask_disable` and wakes the handler with `vsema`.
+- `macevec_intrd_setup` in `mace.o`: prepares the interrupt thread for a MACE source. Inferred from its calls.
+  It sets the thread's function with `xthread_set_func`, copies a name with `fetch_kname` and `strncpy`, and waits on `ipsema`.
+- `macevec_intrd` in `mace.o`: the body of a MACE interrupt thread. Inferred from its call.
+  Its 15 instructions call `ipsema` to sleep until the interrupt wakes the thread.
