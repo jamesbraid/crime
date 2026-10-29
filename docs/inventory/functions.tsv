@@ -2,8 +2,8 @@ binary	role	abi	elf_section	address	size	name	source	status	doc	section
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	dwarf+symtab	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010340	8	_quit	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010348	8	db_printf	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010350	1608	symmon_brkhandler	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010370	28	symmon_exceptnorm	symtab	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010350	1608	symmon_brkhandler	dwarf+symtab	documented	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010370	28	symmon_exceptnorm	symtab	documented	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001038c	28	symmon_exceptutlb	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103a8	28	symmon_exceptxut	symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103c4	28	exceptecc	symtab	undocumented		
@@ -419,7 +419,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00269f8	308	init_consenv	dw
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b2c	36	_init_eiob	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b50	52	_get_iobbuf	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b84	28	_free_iobbuf	dwarf+symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	dwarf+symtab	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	dwarf+symtab	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026cd8	216	_scandevs	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026db0	152	new_eiob	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026e48	48	get_eiob	dwarf+symtab	undocumented		
@@ -636,7 +636,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2d0	8	get_pc	symtab	und
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2d0	8	getpc	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2d8	8	get_sp	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2d8	8	getsp	symtab	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2e0	12	debug	symtab	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2e0	12	debug	symtab	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2e0	12	exec_brkpt	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2ec	20	quiet_debug	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d300	16	memcpy	dwarf+symtab	undocumented		
@@ -754,7 +754,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa003163c	116	_count_CPUs	dwa
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00316b0	76	_get_numcpus	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00316fc	92	_init_libsc_private	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0031758	40	EnterInteractiveMode	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x0	312	a3_probe	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x0	312	a3_probe	dwarf+funcnames+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x138	784	a3_start_subsys	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x448	1116	a3_create_ifs	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x8a4	340	a3_create_mclks	dwarf+funcnames+symtab	undocumented		
@@ -762,11 +762,11 @@ usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x9f8	448	a3_create_clock
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xbb8	576	a3_create_device	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xdf8	224	a3_destroy_devices	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xed8	28	a3_edtinit	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xef4	568	a3_init_codec	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0xef4	568	a3_init_codec	dwarf+funcnames+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x112c	244	a3_get_dma_rb_addr	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1220	124	a3_write_input_source	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x129c	132	a3_write_input_gain	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1320	76	a3_write_output_gain	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1320	76	a3_write_output_gain	dwarf+funcnames+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x136c	212	a3_initial_val	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1440	488	a3_set_device_params	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x1628	8	a3_cg_update_hrb	dwarf+funcnames+symtab	undocumented		
@@ -871,7 +871,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x57d4	116	crime
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5848	84	crime_regmatch	dwarf+funcnames+symtab	documented	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x589c	88	crime_channel_info	dwarf+symtab	documented	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x58f4	40	crime_present	dwarf+symtab	documented	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x591c	164	crime_video_info	dwarf+symtab	no-software-dependency	docs/gbe.md#video-capture-block	Video capture block
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x591c	164	crime_video_info	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x59c0	32	crime_resync_sched	dwarf+symtab	documented	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x59e0	72	crm_callvideo	dwarf+symtab	documented	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x0	128	crm_curproc_vtop	dwarf+symtab	documented	CRIME_RE.h:140	TLB group (+0x1000, kernel)
@@ -899,7 +899,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x6c	440
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x224	888	crmInitGbeData	dwarf+symtab	documented	docs/gbe.md#window-id-table-and-the-tile-lists	Window ID table and the tile lists
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x59c	1356	crmLoadGbelists	dwarf+symtab	documented	docs/functions.md#timing-record-and-start-of-video-crime_inito	Timing record and start of video (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xae8	136	crimeBlankscreen	dwarf+symtab	documented	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb70	16	crime_retrace_callback	dwarf+symtab	no-software-dependency	docs/gbe.md#video-capture-block	Video capture block
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb70	16	crime_retrace_callback	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	1120	crimeRetraceHandler	dwarf+symtab	documented	docs/gbe.md#interrupts-gbe-spec-pp-20-7	Interrupts ([gbe-spec] pp. 20, 7)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xfe0	184	crime_i2cFpGbeRetrace	dwarf+funcnames+symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1098	60	crime_FpSchedForRetrace	dwarf+symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
@@ -921,7 +921,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2e1c	1
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2ee0	360	crime_hli_unsched	dwarf+symtab	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x3048	292	crime_hli_update	dwarf+symtab	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x316c	264	crm_getustmsc	dwarf+funcnames+symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x3274	68	crime_getustmsc	dwarf+symtab	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x3274	68	crime_getustmsc	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x32b8	200	crimeFrameInfo	dwarf+symtab	documented	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32	.text	0x0	772	crmAddZ	dwarf+symtab	documented	docs/functions.md#depth-and-back-buffer-tile-accounting-crime_zbufo-crime_dbo	Depth and back-buffer tile accounting (`crime_zbuf.o`, `crime_db.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32	.text	0x304	376	crmSubtractZ	dwarf+symtab	documented	docs/functions.md#drawables-and-render-nodes-crimeo	Drawables and render nodes (`crime.o`)
@@ -936,7 +936,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x978	24	crim
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x990	44	crime_positioncursor	dwarf+funcnames+symtab	documented	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x9bc	284	crime_clearfb	dwarf+symtab	documented	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0xad8	232	crime_tpinit	dwarf+funcnames+symtab	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x0	260	crime_tileaddr_for_vice	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x0	260	crime_tileaddr_for_vice	dwarf+symtab	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x104	520	crm_get_dms_tiles	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x30c	180	crm_tileclassinit	dwarf+symtab	documented	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x3c0	244	crmAllocTiles	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
@@ -1040,7 +1040,7 @@ usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x670	160	gthread_attach_l
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	undocumented		
@@ -1064,7 +1064,7 @@ usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/gbe.md#stereo-format-files-and-the-conversion-to-the-kernel-record	Stereo format files and the conversion to the kernel record
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	undocumented		
@@ -1097,7 +1097,7 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x670	160	gthread_
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x710	84	gthread_detach_list	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x764	76	gthread_attach_group	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x7b0	80	gthread_detach_group	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x800	224	gthread_find	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x8e0	56	gthread_find_gfxp	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_scan	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	undocumented		
@@ -1121,7 +1121,7 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessa
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/gbe.md#stereo-format-files-and-the-conversion-to-the-kernel-record	Stereo format files and the conversion to the kernel record
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1ffc	1120	gfxopen	dwarf+symtab	undocumented		
@@ -1451,14 +1451,14 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7cc	360	getcvpriorit
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa934	200	create_crimegang	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa9fc	144	join_crimegang	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaa8c	108	setsplmasks	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaaf8	624	setcrimevector	dwarf+symtab	documented	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaaf8	624	setcrimevector	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xad68	144	enable_ithreads	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thread_setup	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xae50	88	crimevec_intrd_init	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaea8	144	crimevec_intrd	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf38	80	bust_crimegang	dwarf+funcnames	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf88	348	leave_crimegang	dwarf+funcnames	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1a8	36	sendintr	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1cc	80	spl0	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl1	symtab	undocumented		
@@ -1745,7 +1745,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x149a8	100	baerror	dwa
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a0c	88	earlybaerror	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a64	12	VEC_breakpoint	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a6c	4	kernelbp	symtab	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	dwarf+symtab	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	dwarf+symtab	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ab8	4	sstepbp	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14abc	1004	intrnorm	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	undocumented		
@@ -2134,8 +2134,8 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xce2c	632	mvpmipmap_move_m
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x0	1692	tile_init	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x69c	2656	tile_alloc	dwarf+symtab	documented	docs/memory.md#bit-15-and-the-no-ecc-alias-pass-3	Bit 15 and the no-ECC alias (pass 3)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x10fc	596	tile_free	dwarf+symtab	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1350	592	tile_mapin	dwarf+symtab	undocumented		
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15a0	56	tile_mapout	dwarf+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x1350	592	tile_mapin	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15a0	56	tile_mapout	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x15d8	780	do_tiled	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x18e4	104	tiled	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	shared-kernel	n32	.text	0x194c	224	tiled_lowat	dwarf+funcnames+symtab	undocumented		
@@ -2224,7 +2224,7 @@ usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4194	108	RRM_WaitVideoSy
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4200	212	rrmWaitVideoSync	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x42d4	308	rrmValidateVideoSync	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4408	120	RRM_MapClipToSwapbufID	dwarf+symtab	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4480	1104	RRM_Dispatch	dwarf+symtab	documented	docs/ioctls.md#graphics-ioctl-interface-irix-6530-o2	Graphics ioctl interface (IRIX 6.5.30, O2)
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x4480	1104	RRM_Dispatch	dwarf+symtab	documented	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1005f6a0	268	__start	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1005f7ac	12	_mcount	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1005f7c0	640	XkbInitNames..FBF	dynsym	undocumented		
@@ -3568,7 +3568,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c970	320	ProcDbeDeallocateB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cab0	228	DbeSetupBackgroundPainter..EJC	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cba0	572	AccessInitClientSocketAttrs	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cde0	108	FreeAtom	dynsym	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ce50	84	rrmSetReservedDID	dynsym	documented	docs/gbe.md#window-id-type-and-colour-map-codes	Window ID type and colour-map codes
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ce50	84	rrmSetReservedDID	dynsym	documented	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ceb0	924	ProcESAStubStart	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015d250	368	FontFileDirectoryChanged	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015d3c0	440	AccessLookupColor	dynsym	undocumented		
@@ -4331,7 +4331,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ebf10	8	MITResetProc..PJE	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ebf20	556	ProcPanoramiXDispatch..CAD	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec150	224	LbxProxyConnection	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec230	664	LbxGetModifierMapping	dynsym	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec4d0	952	rrmInit	dynsym	documented	docs/gbe.md#what-the-third-word-is	What the third word is
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec4d0	952	rrmInit	dynsym	documented	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec890	176	XkbDDXFakePointerMotion	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec940	1060	XkbVModMaskText	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ecd70	3912	ProcXineramaFillPoly	dynsym	undocumented		
@@ -13656,8 +13656,8 @@ usr/gfx/setmon	shared-tool	n32		0x1000d4dc	164	odyGetVOFpath	dynsym	undocumented
 usr/gfx/setmon	shared-tool	n32		0x1000d580	740	odyDoFramelock	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000d864	2252	odysetmon	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000e130	732	npsetmon	dynsym	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
-usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
+usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	documented	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/setmon	shared-tool	n32		0x1000fa18	268	venice_get_dg2_eeprom	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fb24	416	venice_set_dg2_eeprom	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fcc4	236	venice_grok_dg2_eeprom_error	dynsym	undocumented		
@@ -15716,7 +15716,7 @@ usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x4037a4	
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x403878	672	verify_compressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x403b18	184	get_default_uncompressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x403bd0	464	get_default_compressed	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x403c88	280	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x403c88	280	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x403da0	688	dve_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x404050	968	dv_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x404418	420	dv_close	mdebug	undocumented		
@@ -15810,7 +15810,7 @@ usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x40218
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x402260	472	verify_compressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x402438	184	get_default_uncompressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x4024f0	464	get_default_compressed	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x4025a8	280	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x4025a8	280	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x4026c0	956	e_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x402a7c	168	e_cleanup	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x402b24	120	e_close	mdebug	undocumented		
@@ -15871,7 +15871,7 @@ usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401408	
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x4014f8	676	needsConvert	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x40179c	212	verify	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401870	340	get_default	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32		0x401928	156	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32		0x401928	156	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x4019c4	468	rs_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401b98	192	rs_close	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401c58	236	rs_describe	mdebug	undocumented		
@@ -15901,7 +15901,7 @@ usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x403728	196	ve
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x4037ec	652	verify_compressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x403a78	172	get_default_uncompressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x403b24	440	get_default_compressed	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x403bd0	268	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x403bd0	268	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x403cdc	676	dve_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x403f80	948	dv_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x404334	412	dv_close	mdebug	undocumented		
@@ -15995,7 +15995,7 @@ usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4020f8	172	
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4021a4	408	verify_compressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x40233c	168	get_default_uncompressed	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4023e4	436	get_default_compressed	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x40248c	268	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x40248c	268	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x402598	864	e_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4028f8	160	e_cleanup	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x402998	108	e_close	mdebug	undocumented		
@@ -16049,7 +16049,7 @@ usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4069a4	1468
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406af8	420	jhead_make	dynsym+mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406c9c	348	jhead_luma_make	dynsym+mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406e00	340	vjpeg_qfmt	dynsym+mdebug	undocumented		
-usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32		0x401020	356	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32		0x401020	356	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401184	236	Open	mdebug	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401270	116	Close	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x4012e4	300	GetDescription	mdebug	undocumented		
@@ -16075,7 +16075,7 @@ usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x4013d4	232	re
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x4014bc	620	needsConvert	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x401728	172	verify	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x4017d4	312	get_default	mdebug	undocumented		
-usr/lib/dmedia/imageconverters/vicers.so	board-library	o32		0x40187c	144	dmICInitDso	dynsym+mdebug	undocumented		
+usr/lib/dmedia/imageconverters/vicers.so	board-library	o32		0x40187c	144	dmICInitDso	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x40190c	368	rs_open	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x401a7c	168	rs_close	mdebug	undocumented		
 usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x401b24	224	rs_describe	mdebug	undocumented		
@@ -16097,16 +16097,16 @@ usr/lib/dmedia/imageconverters/vicers.so	board-library	o32	.text	0x40230c	324	rs
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403280	36	mvpRead	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodeProtoById	mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403b64	224	mvpCloseVideo	dynsym+mdebug	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40403c	384	mvpDestroyPath	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4041bc	52	mvpAddNode	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4041f0	124	mvpRemoveNode	dynsym+mdebug	undocumented		
@@ -16211,16 +16211,16 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x41352c	388	mvpGetI2CData	
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403280	36	mvpRead	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodeProtoById	mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403b64	224	mvpCloseVideo	dynsym+mdebug	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40403c	384	mvpDestroyPath	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4041bc	52	mvpAddNode	dynsym+mdebug	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4041f0	124	mvpRemoveNode	dynsym+mdebug	undocumented		
@@ -16331,11 +16331,11 @@ usr/lib/internal/libvice.so	board-library	o32		0xd001dfc	196	vice_unlock	dynsym+
 usr/lib/internal/libvice.so	board-library	o32		0xd001ec0	236	vice_piow	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001fac	268	vice_pior	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd0020b8	140	vice_alloc	dynsym+mdebug	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd002144	184	vice_settlb	dynsym+mdebug	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd0021fc	136	vice_updatetlb	dynsym+mdebug	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002144	184	vice_settlb	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/internal/libvice.so	board-library	o32		0xd0021fc	136	vice_updatetlb	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002284	184	vice_mmap	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd00233c	116	vice_munmap	dynsym+mdebug	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd0023b0	168	vice_bcopyhto	dynsym+mdebug	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd0023b0	168	vice_bcopyhto	dynsym+mdebug	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002458	168	vice_bcopywto	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002500	8	vice_chip_init	dynsym+mdebug	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002510	560	vice_file	dynsym+mdebug	undocumented		
@@ -16404,7 +16404,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf404f80	72	XSGIvcQueryOutputPedestal	d
 usr/lib/libXsgivc.so	board-library	o32		0xf404fc8	72	XSGIvcQueryOutputPhaseH	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf405010	72	XSGIvcQueryOutputPhaseSCH	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf405058	72	XSGIvcQueryOutputPhaseV	dynsym+mdebug	undocumented		
-usr/lib/libXsgivc.so	board-library	o32		0xf4050a0	72	XSGIvcQueryChannelGammaMap	dynsym+mdebug	undocumented		
+usr/lib/libXsgivc.so	board-library	o32		0xf4050a0	72	XSGIvcQueryChannelGammaMap	dynsym+mdebug	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib/libXsgivc.so	board-library	o32		0xf4050e8	72	XSGIvcQueryOutputBlanking	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf405130	364	XSGIvcSetOutputSync	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf40529c	480	XSGIvcQueryOutputSync	dynsym+mdebug	undocumented		
@@ -16415,7 +16415,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf4059ac	640	XSGIvcQueryPlatformParamet
 usr/lib/libXsgivc.so	board-library	o32		0xf405c2c	460	XSGIvcQueryScreenGammaMaps	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf405df8	496	XSGIvcQueryGammaMap	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf405fe8	488	XSGIvcStoreGammaColors8	dynsym+mdebug	undocumented		
-usr/lib/libXsgivc.so	board-library	o32		0xf4061d0	492	XSGIvcStoreGammaColors16	dynsym+mdebug	undocumented		
+usr/lib/libXsgivc.so	board-library	o32		0xf4061d0	492	XSGIvcStoreGammaColors16	dynsym+mdebug	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib/libXsgivc.so	board-library	o32		0xf4063bc	788	XSGIvcQueryGammaColors	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf4066d0	344	XSGIvcSelectInput	dynsym+mdebug	undocumented		
 usr/lib/libXsgivc.so	board-library	o32		0xf406828	60	XSGIvcFreeVideoFormatInfo	dynsym+mdebug	undocumented		
@@ -16447,7 +16447,7 @@ usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x40391
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x4039e0	716	verify_compressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x403cb0	212	get_default_uncompressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x403d90	208	get_default_compressed	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x403e60	260	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x403e60	260	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x403f70	700	dve_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x404230	1000	dv_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x404620	364	dv_close	dwarf+funcnames	undocumented		
@@ -16542,7 +16542,7 @@ usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x402
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x402410	524	verify_compressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x40261c	212	get_default_uncompressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x4026f0	208	get_default_compressed	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x4027c0	264	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x4027c0	264	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x4028c8	1032	e_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x402cd0	148	e_cleanup	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x402d64	112	e_close	dwarf+funcnames	undocumented		
@@ -16604,7 +16604,7 @@ usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x4015f
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401708	728	needsConvert	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x4019e0	204	verify	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401aac	212	get_default	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32		0x401b80	152	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32		0x401b80	152	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401c18	480	rs_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401df8	188	rs_close	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401eb4	224	rs_describe	dwarf+funcnames	undocumented		
@@ -16635,7 +16635,7 @@ usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x4036c0	148	
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403760	536	verify_compressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403980	160	get_default_uncompressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403a20	156	get_default_compressed	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x403ac0	224	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x403ac0	224	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403ba0	532	dve_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x403dc0	732	dv_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x4040a0	272	dv_close	dwarf+funcnames	undocumented		
@@ -16730,7 +16730,7 @@ usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x401f7c	14
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x40200c	380	verify_compressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x402188	152	get_default_uncompressed	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x402220	148	get_default_compressed	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x4022b4	232	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x4022b4	232	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x40239c	724	e_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x402670	104	e_cleanup	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x4026d8	84	e_close	dwarf+funcnames	undocumented		
@@ -16785,7 +16785,7 @@ usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405410	336	jhe
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405560	272	jhead_luma_make	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405670	104	vjpeg_qfmt	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x400e10	524	_stub	dwarf	undocumented		
-usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32		0x401020	344	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32		0x401020	344	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401178	212	Open	dwarf+funcnames	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x40124c	96	Close	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x4012ac	276	GetDescription	dwarf+funcnames	undocumented		
@@ -16812,7 +16812,7 @@ usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401474	220	
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401550	544	needsConvert	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401770	140	verify	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x4017fc	152	get_default	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32		0x401894	132	dmICInitDso	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32		0x401894	132	dmICInitDso	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401918	320	rs_open	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401a58	136	rs_close	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/imageconverters/vicers.so	board-library	n32	.text	0x401ae0	200	rs_describe	dwarf+funcnames	undocumented		
@@ -16835,16 +16835,16 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403830	544	_stub	d
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404410	256	mvpCloseVideo	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404940	384	mvpDestroyPath	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404ac0	32	mvpAddNode	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404ae0	104	mvpRemoveNode	dwarf+dynsym	undocumented		
@@ -16950,16 +16950,16 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf	u
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404410	256	mvpCloseVideo	dwarf+dynsym	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404940	384	mvpDestroyPath	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404ac0	32	mvpAddNode	dwarf+dynsym	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404ae0	104	mvpRemoveNode	dwarf+dynsym	undocumented		
@@ -17071,11 +17071,11 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd001d90	196	vice_unlock	dwarf
 usr/lib32/internal/libvice.so	board-library	n32		0xd001e54	196	vice_piow	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001f18	216	vice_pior	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001ff0	120	vice_alloc	dwarf+dynsym	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002068	160	vice_settlb	dwarf+dynsym	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002108	140	vice_updatetlb	dwarf+dynsym	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002068	160	vice_settlb	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/internal/libvice.so	board-library	n32		0xd002108	140	vice_updatetlb	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002194	144	vice_mmap	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002224	112	vice_munmap	dwarf+dynsym	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002294	180	vice_bcopyhto	dwarf+dynsym	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002294	180	vice_bcopyhto	dwarf+dynsym	documented	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002348	180	vice_bcopywto	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd0023fc	8	vice_chip_init	dwarf+dynsym	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002404	412	vice_file	dwarf+dynsym	undocumented		
@@ -17132,7 +17132,7 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf4046a0	60	XSGIvcQueryOutputPhaseSCH
 usr/lib32/libXsgivc.so	board-library	n32		0xf4046e0	60	XSGIvcQueryOutputPedestal	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf404720	428	XSGIvcQueryScreenGammaMaps	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf4048d0	732	XSGIvcNVLoadVideoFormatByName	dwarf+dynsym	undocumented		
-usr/lib32/libXsgivc.so	board-library	n32		0xf404bb0	452	XSGIvcStoreGammaColors16	dwarf+dynsym	undocumented		
+usr/lib32/libXsgivc.so	board-library	n32		0xf404bb0	452	XSGIvcStoreGammaColors16	dwarf+dynsym	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib32/libXsgivc.so	board-library	n32		0xf404d80	440	XSGIvcQueryVersion	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf404f40	308	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf405080	120	ReadFieldInfo	dwarf+funcnames	documented	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
@@ -17161,7 +17161,7 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf407500	544	XSGIvcQueryVideoScreenIn
 usr/lib32/libXsgivc.so	board-library	n32		0xf407720	676	XSGIvcNVLoadVideoFormat	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf4079d0	328	XSGIvcMultiCursorSetMode	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf407b20	332	XSGIvcSetOutputSync	dwarf+dynsym	undocumented		
-usr/lib32/libXsgivc.so	board-library	n32		0xf407c70	60	XSGIvcQueryChannelGammaMap	dwarf+dynsym	undocumented		
+usr/lib32/libXsgivc.so	board-library	n32		0xf407c70	60	XSGIvcQueryChannelGammaMap	dwarf+dynsym	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib32/libXsgivc.so	board-library	n32		0xf407cb0	568	XSGIvcQueryPlatformParameter	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32		0xf407ef0	428	XSGIvcSetChannelInputRectangle	dwarf+dynsym	undocumented		
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf4080a0	1940	wire_to_event	dwarf+funcnames	undocumented		
@@ -17196,7 +17196,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2004ee0	64	XSGIvcQueryOutputPhaseSCH
 usr/lib64/libXsgivc.so	board-library	n64		0x2004f20	64	XSGIvcQueryOutputPedestal	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x2004f60	444	XSGIvcQueryScreenGammaMaps	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x2005120	764	XSGIvcNVLoadVideoFormatByName	dwarf+dynsym	undocumented		
-usr/lib64/libXsgivc.so	board-library	n64		0x2005420	472	XSGIvcStoreGammaColors16	dwarf+dynsym	undocumented		
+usr/lib64/libXsgivc.so	board-library	n64		0x2005420	472	XSGIvcStoreGammaColors16	dwarf+dynsym	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib64/libXsgivc.so	board-library	n64		0x2005600	456	XSGIvcQueryVersion	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x20057d0	324	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64	.text	0x2005920	120	ReadFieldInfo	dwarf	documented	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
@@ -17225,7 +17225,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2007ef0	564	XSGIvcQueryVideoScreenIn
 usr/lib64/libXsgivc.so	board-library	n64		0x2008130	716	XSGIvcNVLoadVideoFormat	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x2008400	344	XSGIvcMultiCursorSetMode	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x2008560	348	XSGIvcSetOutputSync	dwarf+dynsym	undocumented		
-usr/lib64/libXsgivc.so	board-library	n64		0x20086c0	64	XSGIvcQueryChannelGammaMap	dwarf+dynsym	undocumented		
+usr/lib64/libXsgivc.so	board-library	n64		0x20086c0	64	XSGIvcQueryChannelGammaMap	dwarf+dynsym	documented	docs/binaries.md#diagnostics	Diagnostics
 usr/lib64/libXsgivc.so	board-library	n64		0x2008700	584	XSGIvcQueryPlatformParameter	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64		0x2008950	444	XSGIvcSetChannelInputRectangle	dwarf+dynsym	undocumented		
 usr/lib64/libXsgivc.so	board-library	n64	.text	0x2008b10	1844	wire_to_event	dwarf	undocumented		
