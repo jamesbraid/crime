@@ -47,11 +47,9 @@ Sources: `libglcore/asm/CRIME.IP32.N32_M4.O/mips4_xform.s`, `mips4_vclip.s` and 
 
 ## Open
 
-- The validation call-outs through gc+0x2e0c to +0x2e58 in `__glCrmPickAllProcs` were not followed.
-
 - The rasteriser reads at most vertex bits 18:0, unsigned (inferred from the integer clear path; see `CRIME_RE.h`), and window z spans 0 to 0x3fffffff, giving a 24-bit depth with 12 fraction bits in the register (inferred). Both still want a capture to confirm.
-- Fog factor and antialiasing set-up (`crm_ctri`, `crm_aalineasm`) are not read yet.
-- Texture download: texels are CPU stores into kernel-mapped tiles and the texture TLB is reloaded whole on bind (see `CRIME_RE.h`); the per-format table that picks subtiling is not decoded.
+- Fog and antialiasing set-up are decoded in the pass 5 section below.
+- Texture download: texels are CPU stores into kernel-mapped tiles and the texture TLB is reloaded whole on bind (see `CRIME_RE.h`). The per-format table is decoded in pass 5 below; two environment flags in it remain unread.
 
 ## Transform, clip-check and triangle variants (pass 4)
 
@@ -115,7 +113,85 @@ Established from the decompilation and disassembly (`crm_pick`, `0x0d9527a0..0x0
 | 0x2002 | `e & 0x20` otherwise | role unknown |
 | 0x80000 | `e & 2`, not `gc[0x704] & 0x800`, and a blend factor or equation in gc+0x724..0x72c is one of the constants listed above | inferred: blend features the hardware cannot do, sent to the software path |
 
-The function stores `m` in gc+30436 and also in gc+0x7dc0-based words, and then calls validation steps through function pointers at gc+0x2e0c to +0x2e58 and `__glCrmValidate`. Those call-outs were not read.
+The function stores `m` in gc+30436 and also in gc+0x7dc0-based words, and then calls validation steps through function pointers at gc+0x2e0c to +0x2e58 and `__glCrmValidate`. The call-outs are decoded in the next section.
 
 - Unknown: the GL meaning of the "role unknown" rows (the enable bits of `e`). Needs the public GL enable-bit layout of this context: a capture of `e` while enabling one GL capability at a time under a debugger, since the offsets are not named by any symbol.
-- Outside this row: the validation call-outs through gc+0x2e0c to +0x2e58 belong to the command-format row and are listed under Open below.
+- The validation call-outs are decoded below.
+
+### Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+
+Established (disassembly of `crm_pick.s` `0x0d952800..0x0d952d40` for the calls, `crm_context.s` for the slot contents). The context initialiser stores a re-pick function in each of the gc slots below (the slots are plain function pointers, offsets decimal); `__glCrmPickAllProcs` calls them in this order when the dirty word at gc+11756 has the stated bits. Every call passes the context as its only argument and returns nothing used.
+
+| gc slot | Function stored there | Called when dirty word (gc+11756) has | What it re-selects |
+|---|---|---|---|
+| +11796 | `__glCrmPickTextureProcs` | `0x21` (first call; also recomputes the byte gc+28216 from gc+3220 and word gc+28208) | texture procedure slots |
+| +11864 | `__glGenericPickDepthProcs` | `0x80` | depth-test procedures |
+| 30656 and 30660 objects, method at +160 | per-buffer objects, not decoded | always for the first; the second when the byte gc+3222 is nonzero | per-buffer state refresh after `m` is built (inferred from position; role of the objects not read) |
+| +11836 | `PickBufferProcs` | always, in the `m` tail | draw-buffer selection: reads the draw-buffer enum at gc+1892 (GL_FRONT 0x404, GL_BACK 0x405, GL_LEFT 0x406, GL_RIGHT 0x407, GL_FRONT_AND_BACK 0x408) and calls `__glCrmSetCurrentBuffers` |
+| +11840 | `__glCrmPickStoreProcs` | `0x2f` (last pick, direct call of the function; slot +11840 is the same function used by the re-entrant path) | pixel store (write) procedures |
+| +11804 | `__glGenericPickTransformProcs` | always in the tail | transform procedures |
+| `__glCrmValidate` (+11784) | calls `__glCrmUnlayerColorProcs`, the pick function in gc+11868 (`__glCrmPickAllProcs` itself, a re-entry), then `__glCrmLayerColorProcs` | always | wraps colour-procedure layering around a repick |
+| +11792 | `__glGenericPickColorMaterialProcs` | always (call-site is a mangled `jal` in the disassembly; target read from the slot store) | colour-material procedures (inferred call; slot established) |
+| +11788 | `__glGenericPickBlendProcs` | always | blend procedures |
+| +11800 | `__glGenericPickFogProcs` | always | fog procedures |
+| +11832 | `__glGenericPickParameterClipProcs` | always | parameter clip procedures |
+| +11828 | `__glCrmPickClipProcs` | tail after `m` | clip procedures |
+| +12656 | `__glConvertStipple`, then `__glCrmUpdatePolyStipple` | dirty bit `0x40`; the converter runs first, then bit 1 of the word at gc+32928 sets its bit 2, and `__glCrmUpdatePolyStipple` runs when bit 2 is set | polygon-stipple conversion to the engine layout |
+| +11808 | `__glCrmPickPointProcs` | `0x29` | point procedures |
+| +11812 | `__glCrmPickLineProcs` | `0x23` | line procedures |
+| +11844 | `__glCrmPickSpanProcs` | `0x25` | span procedures |
+| +11816 | `__glCrmPickTriangleProcs` | `0x25` (immediately after the span pick) | triangle procedures (decoded above) |
+| +11824 | `__glCrmPickPixelProcs` | `0x31` | pixel procedures |
+| +11820 | `__glCrmPickRenderBitmapProcs`, then `__glValidateAlphaTest` when bit 0 of the word gc+11752 is set | `0x21` | bitmap procedures and alpha-test validation |
+| +11916 | `__glComputeClipBox` | after the bitmap pick | the clip box |
+| +11848 | `__glCrmPickVertexProcs` | `0x27` | vertex procedures |
+
+After the last call the function clears gc+11756 and gc+11752 (established, both stores of zero). The dirty-word bit names are not recovered: only which bits gate which pick is established. Unknown: the GL state each dirty bit stands for; a debugger capture of gc+11756 after enabling one capability at a time would name them.
+
+## Fog and antialiasing set-up (pass 5)
+
+Sources: IRIX 6.5.30 N32 `libGLcore` (`so_pick.s`, `crm_ctri.s`, `crm_astextri.s`, `crm_attrib.s`, `crm_point.s`, `crm_span.s`, `crm_aalineasm.s`, `crm_polyaa.s`, `crm_context.s`). Register offsets are in `CRIME_RE.h`; `gc` is the context. The GL meaning of a context offset is my reading unless a constant ties it.
+
+### Fog
+
+- Established (`__glGenericPickFogProcs`): when enable bit `0x20` of gc+1792 is set it fills three slots. gc+12536 is the per-vertex fog-factor routine: none if the hint word gc+1912 is `0x1102` (GL_NICEST), `__glFogVertexLinear` if the fog-mode word gc+1588 is `0x2601` (GL_LINEAR), otherwise `__glFogVertex`. gc+12528 is `__glFogFragmentSlow` and gc+12532 is `__glFogColorSlow` (the per-vertex colour blend). With fog disabled all three are cleared. Inferred: bit `0x20` is GL_FOG and gc+1912 is the fog hint; the constants are the GL ones.
+- Established (`__glCrmPassFog`, skipped when the byte gc+3221 is nonzero): the fog colour register `+0x2170` is written (hardware and shadow copy both) with three floats from gc+1592, +1596 and +1600 truncated to integers and packed as `a << 24 | b << 16 | c << 8` with the low byte zero, where the float at +1592 is the top byte. Inferred: the three floats are the 0-255 scaled red, green and blue of the fog colour in that order (the packing is established, the order of the colour components is not tied to a GL name).
+- Established (`__glCrmEnableFogTest`, `CRIME_RE.h`): DrawMode bit 14 (`DM_FOG`) turns hardware fog on.
+- Established (point, line and span code, `crm_point.s`, `crm_span.s`, `crm_linespan.s`): the fog stepper registers `+0x2178` (start value), `+0x2180` and `+0x2188` (x and y gradients) are 32-bit integer stores. The start value is the vertex fog factor (a float in 0..1 at vertex offset +176, filled by gc+12536) times 255 times 4096 (a 12-bit fraction, so an 8.12 value). For a point both gradients are zero. For a triangle (`crm_astextri.s`, only when the state word gc+30436 has bit `0x2000`): the three vertex factors are scaled by 255, the plane equation is solved across the triangle with the same edge cross products used for the colour steppers, and all three results are multiplied by the float at gc+32016 (4096.0, stored by the context initialiser) and truncated.
+- Established (`__glCrmFillCheapFogTriangle`, installed in slot gc+12080 on top of the base routine when the state word has bit `0x2000` set and bit `0x8` clear, per `__glCrmPickTriangleProcs`): the per-vertex colour routine in gc+12532 is called for each vertex and the three vertices' colour pointers (record offset +8) are redirected to the results on the stack; then the wrapper clears state-word bit `0x2000`, sets bit `0x20000` (smooth), clears DrawMode bit 14 and sets bit 16 (`DM_SHADE`), calls the saved base routine from gc+12084, and restores the original DrawMode, state word and colour pointers. So this "cheap fog" blends fog into the vertex colours on the CPU and draws a smooth-shaded triangle with the hardware fog stage off. When bit `0x8` is set the unwrapped path above uses the hardware stepper instead. A matching line routine `__glCrmRenderCheapFogLine` exists (installed in `crm_pick.s`; not read further). Inferred: bit `0x8` of the state word means the pipe has hardware depth in use, so hardware fog is used only with it.
+- Established: the wrapper also sets DrawMode bit 0 (`DM_STENCIL`) and clears state-word bit `0x10` when state-word bit `0x10` is set and bit 1 of the word at gc+32928 is set. Inferred: bit `0x10` is a stencil-test enable (it is `e & 0x2000`, "role unknown" in the table above).
+- Unknown: the exact blend formula the hardware fog stage applies between the fog colour and the pixel colour, and whether the 8.12 stepper is clamped. Needs a capture (below).
+
+### Antialiasing
+
+- Established (`__glCrmAntiAliasLineRGB`, `crm_aalineasm.s`): the line routine does not use the triangle path. It writes the line's two endpoints and the primitive word as usual and finishes with one 64-bit store to the start alias of the AA register pair (`+0x2990`, which is `+0x2190` plus the start alias offset `0x800`), so the store both loads and commits. The high word (`+0x2190`, `PP_AA_LINE`) is `slope << 16 | position`: bits 31:16 are the minor-axis step per major-axis pixel, the line's slope scaled by the float gc+32028 (16384.0, stored by the context initialiser) and truncated; bits 15:0 are the minor-axis coordinate of the first major-axis pixel with 8 fraction bits, adjusted by the rounded product of the start offset and the slope. The low word (`+0x2194`, `PP_AA_COV`) is `a << 8 | b`, two 6-bit coverage fractions: each is the low six bits of the corresponding endpoint coordinate plus 32, or 64 minus it when the line's direction flag is set. Inferred (arithmetic, not a named field): these are the end-cap coverages. The routine selects x-major or y-major by comparing the absolute deltas (gc+8432 or +8440 in the register image for the unused axis).
+- Established (`crm_linedraw.s`): the non-assembly line path writes the same register pair as one 64-bit store at `+0x2190` directly (no start alias), built from the same two-halves layout.
+- Established: DrawMode bit 12 (`DM_AA_LINE`) enables the stage; bit 13 (`DM_COVERAGE`) is a separate bit. No libGLcore path was found that sets bit 13 from the AA paths read here (not searched in the X module or kernel).
+- Established (`__glCrmFillAATriangle`, `crm_polyaa.s`): polygon antialiasing is done in software. Vertex window coordinates are snapped to a `1 << gc+3736` sub-pixel grid, the signed area is tested for zero, and the polygon is split into sub-triangles (`FillAASubTriangle`) plus edge pixels drawn through `__glCrmRenderPointDepthRGBA`, with the coverage weights from `Coverage` and `ComputeCoverageStuff` and an index from `__glBuildAntiAliasIndex`. Hardware registers written are the ordinary vertex, colour, fog and depth steppers; the `PP_AA_LINE` and `PP_AA_COV` registers are not written by the polygon path (no store to `+0x2190` or `+0x2194` in `crm_polyaa.s`).
+- Unknown: the weighting function the AA stage applies to the coverage fractions and slope, and how coverage combines with alpha blending in the pixel pipe (the specification text is incomplete here). Needs a capture (below).
+
+## Texture format selection and download table (pass 5)
+
+Source: IRIX 6.5.30 N32 `libGLcore`, `crm_texture.s`: `crmComputeTexLevelSize` (`0x0d970970`, 1860 bytes; called from `__glCrmPickTextureProcs` and `crmCreateLevel`), `crmSetTextureParam`, `crmCreateLevel`. Names of record fields are mine.
+
+- Established (`crmComputeTexLevelSize`): for each level it takes the requested internal format, the level size and the border width. The usable size is the given size minus twice the border; it fails (returns -1) if either side exceeds the context limit at gc+0xE8C. It fills two records. The level record (offsets +0x40 to +0x5c) holds a GL base format, the stored internal format, and six bit counts (+0x48 red, +0x4c green, +0x50 blue, +0x54 alpha, +0x58 luminance, +0x5c intensity; the colour-to-offset naming is inferred from which counts are set for which format). The hardware record holds the texel type code at +0xC, the texel depth at +0x10 and the layout fields at +0, +4 and +8. It returns the level's storage size in bytes, `width * height << depth`.
+- Established, the format table. Each requested format collapses onto one stored format; all of the stored formats are 16 or 32 bits per texel (the depth value is a log2 of bytes: 1 for 16 bit, 2 for 32 bit). GL names below are the public OpenGL 1.2 and SGIS ones that match the numeric constants in the code.
+
+| Requested internal format (GL) | Stored format | Bits stored | Depth (log2 bytes) | Type code |
+|---|---|---|---|---|
+| `GL_ALPHA`, `GL_ALPHA4/8/12/16` | `GL_ALPHA16` | A 16 | 1 | 5 |
+| `GL_LUMINANCE`, `GL_LUMINANCE4/8/12/16` | `GL_LUMINANCE16` | L 16 | 1 | 7 |
+| `GL_LUMINANCE_ALPHA`, `GL_LUMINANCE4_ALPHA4`, `GL_LUMINANCE6_ALPHA2`, `GL_LUMINANCE8_ALPHA8`, `GL_LUMINANCE12_ALPHA4`, `GL_LUMINANCE12_ALPHA12`, `GL_LUMINANCE16_ALPHA16` | `GL_LUMINANCE8_ALPHA8` | L 8, A 8 | 1 | 8 |
+| `GL_INTENSITY`, `GL_INTENSITY4/8/12/16` | `GL_INTENSITY16` | I 16 | 1 | 6 |
+| `GL_RGB8`, `GL_RGB10`, `GL_RGB12`, `GL_RGB16` | `GL_RGBA8` (RGB stored in 32-bit texels) | R 8, G 8, B 8 | 2 | 1 |
+| `GL_R3_G3_B2` | `GL_RGB5_A1` (5-bit channels) | 5/5/5 | 1 | 1 |
+| `GL_RGB` (3, `0x1907`) | `GL_RGBA8` or `GL_RGB5_A1`, by the size test below | 8/8/8 or 5/5/5 | 2 or 1 | 1 |
+| `GL_RGBA` (4, `0x1908`) | `GL_RGBA8` or `GL_RGBA4`, by the size test below | 8/8/8/8 or 4/4/4/4 | 2 or 1 | 2 or 4 |
+| `GL_RGBA8`, `GL_RGB10_A2`, `GL_RGBA12`, `GL_RGBA16` | `GL_RGBA8` | 8/8/8/8 | 2 | 2 |
+| `GL_RGBA2`, `GL_RGBA4` | `GL_RGBA4` | 4/4/4/4 | 1 | 4 |
+| `GL_RGB5_A1` | `GL_RGB5_A1` | 5/5/5/1 | 1 | 2 |
+
+- Established: type code 3 is never produced by this routine. Established (`crmSetTextureParam`): the Texture.mode texel-type field (bits 23:20) receives the type code and the texel-depth field (bits 19:18) receives the depth value from the same record, so the codes above are what the hardware sees; the format record the mode is built from is the one at offset 32 of the texture object's image record (gc object +284).
+- Established, the choice between stored formats for RGB and RGBA requests: it depends on a count `n` read from gc+0xCC0 plus gc+0xCB8 plus gc+0xCBC and on one global byte-sized flag read gp-relative. Generic `GL_RGB` stores 8-bit channels in 32-bit texels when `n` is 16 or more or the flag is set, otherwise 5-bit channels in 16-bit texels. Generic `GL_RGBA` stores 4-bit channels (RGBA4) when `n` is below 9 and the flag is clear, otherwise RGBA8. The explicit sized formats in the table do not consult `n`. Not decoded: `GL_RGB4` and `GL_RGB5` fall through the decompiler's switch without a visible store (the jump table was lost); the disassembly was not checked for them. Unknown: what gc+0xCC0, +0xCB8 and +0xCBC count (the names are not recoverable; the fields sit with the texture-memory accounting) and the value of the global flag at gp-5784; both need a debugger read on a running process (captures list).
+- Established (hardware record layout fields): +0 is a flag word. Bit 0 is set when the larger level side is below 128 texels, bit 1 when it is 128 or more, and bit 2 (the subtiled flag that `crmSetTextureParam` copies to Texture.mode bit 24) is set when a second global flag at gp-5788 is zero and the caller's last argument is zero. +8 is the number of 64 KiB tile rows the level needs, `(height + 127) >> 7`; +4 is the number of tiles across, `((width << depth) + 511) >> 9`. Those two follow the frame-buffer tile geometry of 128 rows of 512 bytes per 64 KiB tile (consistent with the `CRIME_RE.h` description of unsubtiled textures). Unknown: the value of the global at gp-5788 and the meaning of the caller's last argument (it is passed through from `crmCreateLevel`'s last stack argument), so whether any shipping texture is subtiled is not established; needs a capture.
+- Established (span converters present in `crm_texture.s`): the CPU repacks source pixels into the stored layouts with `crmSpan_A16_to_A8`, `crmSpan_XA8_to_A8`, `crmSpan_RGB5_A1_to_A1_RGB5`, `crmSpan_A1_RGB5_to_RGB5_A1`, `crmSpan_RGB5_to_RGB5_A1`, `crmSpan_RGB8_to_RGBA8`, `crmSpan_RGBX8_to_RGBA8`, `crmSpan_RGBA8_to_A1_RGB5` and `crmSpan_RGBA8_to_RGBA4`, then `crmSubtileSpan` or `crmTileSpan` writes the rows. Established by name: stored 5-5-5-1 texels are held with the alpha bit in the low or high position (`A1_RGB5` against `RGB5_A1`); which one the hardware reads is not stated by the converter names alone. Unknown: the in-memory bit order of the 16-bit RGB5_A1 and RGBA4 texels. A texture-memory dump (captures list) settles it.

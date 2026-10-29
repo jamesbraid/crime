@@ -28,6 +28,30 @@ Display back end
 
 | Item | Owner | Capture |
 |---|---|---|
+| Batch size of the colour-map FIFO writes the X module issues against the free-slot count | `docs/gbe.md` | Trace GBE colour-map writes (`+0x...` FIFO port and the free-count field) while the X server installs a 256-entry map. |
 | Meaning of the bits of the window flag word that the reserved window-ID slots compare against (the third word `0x3c0n`) and of the two mask words | `docs/gbe.md` | Read the X server's window records and slot table header from a running server with one window of each visual type open. |
 | Overlay compositing rule and any transparent value | `docs/gbe.md` | On a real display, put known values in the overlay plane over a known frame buffer and read back the video output for overlay value zero and non-zero. |
 | How a window is assigned a window-ID index in the display-ID plane; whether the x in a DID entry is the start or the end of a run | `docs/gbe.md` | Dump the DID tile list (`DID_CONTROL` pointer, one 512-byte slot per line) with two windows of different visuals side by side. |
+| Real depth of the rendering FIFO (64 inferred from the kernel overflow check, 128 in the specification text) | `CRIME_RE.h` | Stall the engine with the stall level high, queue single register writes and read the fill level in RE status bits 24:18 until the queue refuses writes. |
+| Depth and blend arithmetic: precision and rounding of window z (25.12 inferred 24-bit depth with 12 fraction bits), of the vertex 13.6 bits 18:0 limit, and of the blend factors | `CRIME_RE.h`, `docs/rendering.md` | Draw two overlapping triangles whose z differ by one least-significant step and read the depth buffer; blend a known source over a known destination for each factor pair and read back. |
+
+CRIME memory controller
+
+| Item | Owner | Capture |
+|---|---|---|
+| Reset value of CONTROL (`+0x08`), the watchdog register (`+0x30`) and the memory control register (`+0x200`) before any software runs; what the two SysAD bits (13:12) change | `docs/memory.md` | Read the three registers from the PROM monitor at power-on, write each CONTROL bit alone and read back; with bit 13 or 12 toggled, observe whether system-bus parity checking changes (a deliberately corrupted write with a logic analyser on the bus). |
+| Whether the memory-control write of 1 enables ECC checking on reads and nothing else; behaviour of `+0x270` (ECC replacement) | `docs/memory.md`, `CRIME.h` | With ECC off then on, write a word through the no-ECC alias with a flipped check bit, read it through the normal alias and read `+0x250`, `+0x258`, `+0x260`, `+0x268`, `+0x270`. |
+| What each set bit of the CPU and memory error status means in the rev 0 and rev 1 layouts (IRIX prints a message per bit but the text is not in the listings) | `docs/memory.md` | Provoke each error type in turn (an access to unmapped physical space, a bad-parity write, a correctable and an uncorrectable ECC error) and read `+0x048` and `+0x250` after each. |
+| Whether hardware treats a TLB entry with bit 15 or 31 clear as invalid and what a lookup through it does (already listed above); how the texture level start table is derived | `docs/memory.md` | Dump the texture TLB (`+0x1600`) after binding a texture with 6 mip levels of known sizes and a second, larger texture; compare the start index of each level. |
+
+libGLcore command stream and rendering state
+
+| Item | Owner | Capture |
+|---|---|---|
+| Names of the dirty-word bits at gc+11756 and of the "role unknown" enable bits of the word at gc+1792 | `docs/opengl.md` | Under a debugger, enable one GL capability at a time and read gc+1792, gc+11756 and gc+30436 before and after the next draw call. |
+| What the objects at gc+30656 and gc+30660 (method at offset 160) do in the pick routine | `docs/opengl.md` | Break on the method during a buffer change and read the object. |
+| The blend of fog colour and pixel colour in the hardware fog stage, whether the 8.12 stepper is clamped, and the roles of state-word bits `0x8` and `0x10` | `docs/opengl.md` | Draw a one-pixel-wide span with hardware fog and known steppers (start 0, 0.5 and 1.0) over a known colour and read back the result. |
+| How the AA line stage combines slope, position and the two end coverage fractions, and how coverage meets alpha blending; whether DrawMode bit 13 is ever set by shipped software | `docs/opengl.md` | Draw one anti-aliased line with the AA register pair at known values over a black frame, read back the coverage per pixel; repeat with blending on. |
+| Texture format choice: what gc+0xCC0, +0xCB8 and +0xCBC count; the values of the two global flags that pick RGB8 against RGB5 and decide the subtiled bit; the fall-through formats `GL_RGB4` and `GL_RGB5` | `docs/opengl.md` | Under a debugger, call glTexImage2D with each internal format and read the hardware format record that crmComputeTexLevelSize fills, on a stock O2. |
+| Bit order of 16-bit RGB5_A1 and RGBA4 texels in memory | `docs/opengl.md` | Dump a texture tile after downloading a texture with one known texel of each channel value. |
+| Texel filter weights, precision and rounding (listed with the rendering items) | `CRIME_RE.h` | Draw a magnified two-texel texture and read back the intermediate pixels. |
