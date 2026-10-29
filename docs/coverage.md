@@ -67,14 +67,14 @@ Display back end: frame buffer scanout from system memory, overlay, cursor, colo
 
 | Area | Status | Owner | Datasheet topic | Seed |
 |---|---|---|---|---|
-| Registers and fields | partial | `GBE.h`, `docs/gbe.md` | display back end | register map and tile layout from the public specification and the Linux driver; reset values partly inferred |
+| Registers and fields | partial | `GBE.h` | display back end | register map and tile layout from the public specification and the Linux driver; reset values partly inferred. Found: IRIX use of control, timing, plane, mode, colour-map, gamma and cursor registers in `GBE.h` |
 | Command and FIFO formats | none | `GBE.h`, `docs/gbe.md` | display back end |  |
 | DMA | partial | `GBE.h`, `docs/gbe.md` | display back end | 64 KiB tile scanout from the full RAM window |
-| Interrupts | partial | `GBE.h`, `docs/gbe.md` | display back end | routes to CRIME inputs 16-19, latched and cleared by writing zero |
+| Interrupts | partial | `GBE.h` | display back end | routes to CRIME inputs 16-19, latched and cleared by writing zero. Found: line 0 retrace, line 1 pre-blank, 2-3 HLI; acknowledged by clearing CRIME +0x028 bits |
 | Reset | partial | `GBE.h`, `docs/gbe.md` | display back end | device ID and revision candidates; I2C released-line value |
 | Context save and restore | none | `GBE.h`, `docs/gbe.md` | display back end |  |
-| Display and scanout | none | `GBE.h`, `docs/gbe.md` | display back end |  |
-| Colormap FIFO | none | `GBE.h`, `docs/gbe.md` | display back end |  |
+| Display and scanout | partial | `GBE.h` | display back end | Found: CONTROL to INHWCTRL copy is asynchronous and polled; blanking deselects the pixel clock; buffer swaps flip the WID mode buffer bits at retrace |
+| Colormap FIFO | partial | `GBE.h` | display back end | Found: X server waits for 48 free slots, accepting 0 only on revisions before 2; Linux reads the field the opposite way (conflict recorded in `GBE.h`) |
 
 ### libGLcore to CRIME command stream
 
