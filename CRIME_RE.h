@@ -130,6 +130,17 @@
 #define TLB_LIN_VALID           0x80000000u /* [E] */
 
 /*
+ * Texture TLB [E, k:crime_tiles:crmDefineTex, crmLoadTexTlb]: 28 registers,
+ * four 16-bit entries each, value = (physical address >> 16) | 0x8000.
+ * Colour-index TLB [E, k:crime_tiles:crmLoadCidTlb]: 4 registers, four
+ * 16-bit entries each, entry = tile number without a flag bit. Full
+ * table of all clients and the texture level layout: docs/memory.md.
+ * Whether bit 15 is a valid bit in hardware is [U]; the frame-buffer loader
+ * never sets it.
+ */
+#define TLB_TEX_ENTRY(phys)     ((uint16_t)(((phys) >> 16) | 0x8000))  /* [E value, I meaning] */
+
+/*
  * +0x4008: written with 0, only by the kernel, never by libGLcore or the X
  * server [E]. Writers: crimeInitHW (after draining the FIFO between TLB
  * batches), crmLoadTlbABC, crmLoadCidTlb, the crime_dma loaders,
