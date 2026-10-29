@@ -165,6 +165,13 @@
 #define PP_VERTEX_X(n)      (0x2070 + 4 * (n))  /* NG, X primitives */
 #define PP_VERTEX_GL_X(n)   (0x2080 + 8 * (n))  /* NG */
 #define PP_VERTEX_GL_Y(n)   (0x2084 + 8 * (n))  /* NG */
+/* Transfer registers as IRIX writes them: see docs/pixel-transfer.md. [E]
+ * 0x20a0 source: screen position (x 31:16, y 15:0, 11 bits each) when the
+ * source buffer is a drawable, or a linear offset (low 17 bits) when it is
+ * linear TLB A or B; 0x20b0 is the destination linear offset. BufMode bits
+ * 12:10 pick the buffer (4 linear A, 5 linear B, as MTE_BUF_*) and bits 9:8
+ * the pixel size as log2 bytes. DrawMode byte-mask bit 3+i enables byte i of
+ * a 32-bit pixel (stencil is byte 3, depth bytes 2:0). */
 #define PP_XFER_SRC_ADDR    0x20a0
 #define PP_XFER_SRC_STRIDE  0x20a4  /* [E, netbsd]; absent from spec table */
 #define PP_XFER_SRC_XSTEP   0x20a8
