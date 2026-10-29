@@ -14,6 +14,8 @@ Order of the writes (established):
 
 The colour-index TLB (`+0x16e0`) is not cleared by this routine (established as an absence in the function). The reset state of every register is unknown from the kernel: it never reads any of them back before writing.
 
+Pass 3 (established): the only writers of `+0x408` in any object read are `crimeInitHW`, `crimeError` and two sites in crime.o (`0x5204`, `0x5800`, both writing zero); no read of it exists, and neither `gfxinit` nor `ide.IP32` contains its address. The specification's interface-buffer table ends at `+0x400` (PDF 163–164), so the register is not described there. The inference below is unchanged and still rests only on its position before an `IB_CTL` rewrite.
+
 Inferred: the `+0x408` write is a soft reset or flush of the rendering engine and its interface buffer. Basis: it is the first write of initialisation, and `crimeError` below writes it and then has to reprogram `IB_CTL` (a write-only register), which suggests the reset returns `IB_CTL` to its power-on value. Neither claim is shown by a source here; NetBSD does not name `+0x408` (its `crimereg.h` only has the CRIME control soft and hard reset bits at `0x0400` and `0x0800`, which this routine does not touch).
 
 ## Error recovery (`k:crime:crimeError`)
