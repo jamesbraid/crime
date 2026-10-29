@@ -450,7 +450,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027690	236	cpu_get_freq	dw
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002777c	72	flashWrite	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00277c4	8	flashFlush	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00277cc	52	flashEnable	dwarf+funcnames	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027800	44	log2	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027800	44	log2	dwarf+funcnames	documented	docs/memory.md#which-opengl-level-goes-in-which-slot	Which OpenGL level goes in which slot
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002782c	76	CRCengine	dwarf+symtab	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027878	204	setCPUSpecifics	dwarf+funcnames	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027944	200	setFPUSpecifics	dwarf+funcnames	undocumented		
@@ -6814,7 +6814,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970f64	988	crmUpdateSharedTiles	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd971340	92	crmCalcDMTexture	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	documented	docs/memory.md#texture-level-layout-in-the-texture-tlb	Texture level layout in the texture TLB
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972250	360	crmFreeTexImage	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9723b8	2388	crmFreeTexObj	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -6835,9 +6835,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd974870	216	crmSpan_
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd974948	764	crmSpan_RGBA8_to_A1_RGB5	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd974c44	724	crmSpan_RGBA8_to_RGBA4	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd974f18	2292	crmSubtileTexels	mdebug	documented	MTE.h:99	Subtiled textures (Texture.mode bit 24) [I]
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97580c	1104	crmSubtileSpan	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97580c	1104	crmSubtileSpan	mdebug	documented	docs/memory.md#levels-smaller-than-128-texels	Levels smaller than 128 texels
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd975c5c	492	crmTileTexels	mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd975e48	792	crmTileSpan	mdebug	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd975e48	792	crmTileSpan	mdebug	documented	docs/memory.md#levels-smaller-than-128-texels	Levels smaller than 128 texels
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd976160	348	crmCopySpan	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9762bc	940	crmCheckFastTexStore	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd976668	3504	crmTexSubImageStore	mdebug	documented	MTE.h:103	Subtiled textures (Texture.mode bit 24) [I]
@@ -10939,7 +10939,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoc
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUpdateSharedTiles	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	documented	docs/memory.md#texture-level-layout-in-the-texture-tlb	Texture level layout in the texture TLB
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96f770	296	__glCrmResetTextureState	dwarf+dynsym	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f8a0	328	crmFreeTexImage	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f9f0	528	crmFreeTexObj	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -10960,9 +10960,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd972670	552	crmSpa
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9728a0	792	crmSpan_RGBA8_to_A1_RGB5	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd972bc0	744	crmSpan_RGBA8_to_RGBA4	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd972eb0	2948	crmSubtileTexels	dwarf+funcnames	documented	MTE.h:99	Subtiled textures (Texture.mode bit 24) [I]
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd973a40	1848	crmSubtileSpan	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd973a40	1848	crmSubtileSpan	dwarf+funcnames	documented	docs/memory.md#levels-smaller-than-128-texels	Levels smaller than 128 texels
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974180	976	crmTileTexels	dwarf+funcnames	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974550	1260	crmTileSpan	dwarf+funcnames	documented	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974550	1260	crmTileSpan	dwarf+funcnames	documented	docs/memory.md#levels-smaller-than-128-texels	Levels smaller than 128 texels
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974a40	548	crmCopySpan	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974c70	788	crmCheckFastTexStore	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd974f90	4008	crmTexSubImageStore	dwarf+funcnames	documented	MTE.h:103	Subtiled textures (Texture.mode bit 24) [I]

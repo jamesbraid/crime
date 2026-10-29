@@ -29,12 +29,6 @@ Route key, used in the tables:
 | The bits of the window flag word the reserved window-ID slots compare against (the `0x3c0n` key) and the two mask words | `docs/gbe.md` | X (`StealID`, `crmInvalidate`, `rrmSetReservedDID`) | X: `rrmInit` (`Xsgi` `0x101ec4d0`) for the slot-table header masks, and the writers of window private `+0x20` in `Xsgi` |
 | How `gbeLoadDispIDs` assigns a window its window-ID index in the display-ID plane; where the frame table sits in the 64 KiB table; why the last entry carries `width - 1` | `docs/gbe.md` | X (`gbeLoadDispIDs` structure), S | X: finish reading `gbeLoadDispIDs` (`crm.so` `0x45a350`) |
 
-## CRIME memory controller
-
-| Question | Owner | Tried | Next |
-|---|---|---|---|
-| How the texture level start table is derived | `docs/memory.md` | K, G | G: the texture-TLB fill in `crmDefineTexture` and the kernel `crmDefineTex` path |
-
 ## Where work stopped
 
 29 October 2026, reader pass 8 (inventory backfill). Done: every constant word in the rendering-register table, every register in the specification tables and every register-offset row is documented or labelled (the kernel swap by copy, the window clip set-up, the linear TLB load, the bank control registers, the capture block's tile-address registers, the colour and texture steppers of lines, and the transfer engine's null register, labelled as having no software dependency; `docs/mte.md`, `docs/context.md`, `docs/memory.md`, `docs/gbe.md`, `docs/opengl.md`). Function index so far: the kernel objects of `crime.a` and `mace.o` (`docs/functions.md`), the X module `crm.so` (`docs/xmodule.md`, group roles mostly inferred from names and the sample server) and the exported OpenGL entry points of `libGLcore` (`docs/gl-entry-points.md`).
