@@ -118,7 +118,7 @@
 /*
  * Other inputs IRIX registers [E, k:kernel:mlreset, mace:setmaceisavector]:
  * 4 or 5 MACE ISA/misc (caller's choice), 28 and 29 (priority 1 and 2,
- * probably software interrupts [I]; the dispatcher forces SOFTINT bits 28
+ * the software interrupts, from the netbsd names; the dispatcher forces SOFTINT bits 28
  * and 29 under two kernel flags). All other inputs are never registered.
  * CONTROL (+0x08) at boot: bits 13:12 and 9 cleared for CPU implementation
  * < 0x23, else bit 9 cleared and 13:12 set [E; meaning U]. See docs/memory.md.
@@ -126,8 +126,8 @@
 #define CRIME_CONTROL           0x008       /* [E, k:kernel:mlreset] */
 #define CRIME_INT_MACE_A        4           /* [E] */
 #define CRIME_INT_MACE_B        5           /* [E] */
-#define CRIME_INT_SOFT0         28          /* [E vector; I purpose] */
-#define CRIME_INT_SOFT1         29          /* [E vector; I purpose] */
+#define CRIME_INT_SOFT0         28          /* [E vector; netbsd name] */
+#define CRIME_INT_SOFT1         29          /* [E vector; netbsd name] */
 
 #define CRIME_CPU_ERROR_ADDR    0x040       /* [E, kernel.o] */
 #define CRIME_CPU_ERROR_STAT    0x048       /* [E, kernel.o] used by IRIX, linux, netbsd */

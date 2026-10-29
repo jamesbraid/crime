@@ -127,7 +127,7 @@
  * linear TLB maps 32 pages of 4 KiB. The caller's list comes from
  * crm_curproc_vtop and is taken to be a 4 KiB page-frame number [I].
  */
-#define TLB_LIN_VALID           0x80000000u /* [E] */
+#define TLB_LIN_VALID           0x80000000u /* [E] value set by the loader; that it is a valid bit is [I] */
 
 /*
  * Texture TLB [E, k:crime_tiles:crmDefineTex, crmLoadTexTlb]: 28 registers,

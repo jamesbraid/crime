@@ -7,7 +7,7 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 | Client | Registers | Entries | Entry value | Source |
 |---|---|---|---|---|
 | Frame buffer A, B, C (`+0x1000`, `+0x1200`, `+0x1400`) | 64 each | 16 bits, four per register, entry 0 in bits 63:48 | physical address >> 16 (64 KiB tile number), no flag bits | `crmAllocTiles`, `crmLoadTlbABC` (established) |
-| Texture (`+0x1600`) | 28 | 16 bits, four per register | tile number with bit 15 set | `crmDefineTex`, `crmLoadTexTlb` (established; meaning of bit 15 inferred as valid) |
+| Texture (`+0x1600`) | 28 | 16 bits, four per register | tile number with bit 15 set | `crmDefineTex`, `crmLoadTexTlb` (established; bit 15 is the no-ECC alias bit, see below; whether it also marks validity is unknown) |
 | Colour index (CID, `+0x16e0`) | 4 | 16 bits, four per register | the tile list entry unchanged | `crmLoadCidTlb` (established) |
 | Linear A, B (`+0x1700`, `+0x1780`) | 16 each | 32 bits, two per register, even page in bits 63:32 | page frame number, bit 31 set | `loadLinearTlb` (established; see `docs/pixel-transfer.md`) |
 
@@ -61,7 +61,6 @@ Inferred: inputs 28 and 29 are software interrupts. The end of the dispatcher re
 ## Unknown
 
 - The meaning of CONTROL bits 13:12 and 9 and of the write to `+0x10`.
-- The source of inputs 28 and 29.
 - Whether INTSTAT bits for edge sources clear on read, are cleared by writing `+0x28`, or both (`CRIME.h` records the retrace and pre-blank acknowledgement).
 
 # Control, watchdog, time, ECC enable and revision code (pass 4)
