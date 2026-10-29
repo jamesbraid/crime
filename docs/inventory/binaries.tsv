@@ -4,23 +4,23 @@ sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ece
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0	0	0	documented	docs/gbe.md#video-timing-period	Video timing period
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	documented	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
-usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	documented	docs/gbe.md#stereo-format-files-and-the-conversion-to-the-kernel-record	Stereo format files and the conversion to the kernel record
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	kernel	board-kernel	object	n32	32916	1839b4af7754b7d8		29	36	0	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
-usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	kernel	board-kernel	object	n32	5876	1f59a4d0a4414528		2	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence
-usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	kernel	board-kernel	object	n32	11412	b6d0dcc90f598770		11	8	4	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
-usr/cpu/sysgen/IP32boot/crime.a(crime_busts.o)	kernel	board-kernel	object	n32	980	4b3d4554333ee522		0	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence
+usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	kernel	board-kernel	object	n32	32916	1839b4af7754b7d8		29	36	0	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	kernel	board-kernel	object	n32	5876	1f59a4d0a4414528		2	0	0	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	kernel	board-kernel	object	n32	11412	b6d0dcc90f598770		11	8	4	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_busts.o)	kernel	board-kernel	object	n32	980	4b3d4554333ee522		0	0	0	documented	docs/functions.md#functions-by-role	Functions by role
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	kernel	board-kernel	object	n32	26388	f422bfb8e7ac5464		33	12	7	documented	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	kernel	board-kernel	object	n32	45284	b8cf1d46113ad828		52	0	0	documented	docs/gbe.md#pass-7-the-diagnostics-and-the-remaining-display-questions	Pass 7: the diagnostics and the remaining display questions
-usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	kernel	board-kernel	object	n32	4820	cac57fb03217df9b		2	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	kernel	board-kernel	object	n32	45284	b8cf1d46113ad828		52	0	0	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	kernel	board-kernel	object	n32	4820	cac57fb03217df9b		2	0	0	documented	docs/functions.md#functions-by-role	Functions by role
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	4244	761feae31d6f6d83		2	0	4	documented	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
 usr/cpu/sysgen/IP32boot/gfx.o	kernel-shared	shared-kernel	object	n32	40296	d9324b66d28a576b		57	0	0	named-only	docs/open-questions.md#open-questions	Open questions
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	kernel-shared	shared-kernel	object	n32	40308	9f5a58ab7cd5b715		57	0	0	named-only	docs/open-questions.md#open-questions	Open questions
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence
 usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	154	0	documented	docs/memory.md#interrupt-controller-as-irix-6530-drives-it	Interrupt controller as IRIX 6.5.30 drives it
-usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	documented	docs/memory.md#interrupt-controller-as-irix-6530-drives-it	Interrupt controller as IRIX 6.5.30 drives it
-usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	documented	docs/gbe.md#pass-7-the-diagnostics-and-the-remaining-display-questions	Pass 7: the diagnostics and the remaining display questions
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	documented	docs/memory.md#bit-15-and-the-no-ecc-alias-pass-3	Bit 15 and the no-ECC alias (pass 3)
+usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	documented	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	documented	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	documented	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	0	0	documented	docs/ioctls.md#scheduling-a-swap-through-the-resource-manager	Scheduling a swap through the resource manager
 usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
