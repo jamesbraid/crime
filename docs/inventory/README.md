@@ -134,15 +134,21 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | `pct_mentioned` | every row except `undocumented`, as a percentage |
 | `pct_done` | understood and no-software-dependency rows as a percentage |
 | `unresolved_sites` | for `mmio`: register access sites whose offset could not be traced |
+| `truncated` | for `ucode`: a table the config reads in part, as `program: N of M entries`; empty when every entry is read |
+| `audited_real_pct`, `audited_sample`, `audited_date` | the latest independent audit of the table: the share of the sampled understood rows that held up, the sample size and the date, read from `audits.tsv`; empty when the table was never audited |
+
+### audits.tsv
+
+Committed by hand, not generated: one row per table per independent audit (an auditor who did not write the entries re-derived a random sample of understood rows from the binaries). Columns: `table`, `date`, `sample`, `real`, `shallow`, `wrong`, `note`. The percentage is `real` over `sample`. The audit measures the claims; the other columns measure what the entries say, so a table can be 100 % understood and still be audited at 60 %. Append a row after each audit; for a table the latest date is shown.
 
 ## Status
 
 A mention is not understanding. The status of an item is the best of the entries that mention it, and an entry earns its status only for its subject. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
 
 - `undocumented`: no entry mentions it.
-- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no citation of its own; an entry with a citation but no label; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
-- `located`: the entry carries a citation of its own and says the behaviour is `unknown`, and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this.
-- `understood`: the entry has a label (`established` or `inferred`), at least six plain words, which is the floor for stating a role and a hardware effect, a citation of its own, and no `unknown` anywhere in it. The words are not read for meaning: check the cited section.
+- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
+- `located`: the entry carries a citation of its own and says the behaviour is `unknown` or hedges it (below), and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this, and so is a pointer-table row whose entry holds 0.
+- `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address), a citation of its own, and no `unknown` and no hedge anywhere in it. The words are not read for meaning: check the cited section.
 - `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished. Like every other status it goes to the entry's subject only.
 
 A row is done when it is `understood` or `no-software-dependency`. The repository is finished when every row of every table is done.
@@ -161,16 +167,34 @@ Every other identifier, number or file name in the entry is a mention and stays 
 
 A derivation citation must tie the entry to its own item. Each of these counts, and none counts when it is the subject itself:
 
-- an offset (`+0x1a4`, "offset 0x40"), or a hex address after "address", "at", "entry", "record" or `@`, or a hex number alone in a column headed offset, address, entry or record;
+- an offset (`+0x1a4`, "offset 0x40"), or a hex address after "address", "at", "entry", "record" or `@`. A table row's own address, slot or index cell is its identity, not a derivation: a number that is the row's own cell (or its low 20 bits) does not count, only a different location does;
 - a callee or caller written in code (`calls` or `called from` followed by a backticked name);
 - a source file or a path with at least two slashes (`odsy_init.c`, `libglcore/asm/ODYSSEY/x.s`);
 - a binary or object file name (`odsy.o`, `libGLcore.so`) together with a backticked routine of it other than the subject.
 
 A release or patch number (`6.5.30m`, `patch 4103`), a binary name alone, and a link to another page are not citations: every item of a build shares them.
 
+### Hedges and restated names
+
+An entry that says what it did not derive is not a derivation. "Not derived", "not shown", "not determined", "not known", "not established", "not decoded", "unidentified", "unclear", "guess", "presumably", "speculative", "assumed", "named for", "named after", "from the name", "from its labels", "name only" and "name-derived" demote an entry to at most `located`, as `unknown` does (`HEDGE` in the script). A hedge about the entry's own subject is meant; write the behaviour you did derive in a sentence of its own and leave the hedged part out.
+
+The plain words of a role sentence do not count when they come from the subject's name. The identifier is split at underscores and case (`mClearEram` is `m`, `clear`, `eram`); a word of prose that is one of those parts, an inflection of one (`clears`), or the word an abbreviation stands for (`exp`, `exponential`) is dropped before the count of six. "Clears external memory" for `mClearEram` has one word of its own.
+
 ### Templated entries
 
-Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. When more than 5 entries (`TEMPLATE_CAP` in the script) share one skeleton, counting table rows, list items, paragraphs and header comments across every document read, all of them grade at most `located`. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
+Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. The cap applies to each sentence, not to the entry. An entry is split into its sentences (each table cell, then each sentence in it) and a sentence that has three plain words or more is masked the same way. When more than 5 entries (`TEMPLATE_CAP` in the script) contain a sentence with one skeleton, counting table rows, list items, paragraphs and header comments across every document read, that sentence is a template. An entry grades at most `located` when most of its sentences are templates, or when the role words of the sentences that are not templates are fewer than six: a shared sentence added to a unique one earns nothing for the entry. The sentence that says no software depends on a fact is counted separately, and caps only a no-software-dependency status. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
+
+### Pointer tables
+
+A row of a table that points at something (a dispatch entry that holds a handler address, a command that names a handler, an entry that holds a program address) says where the pointer is, not what its target computes. It is not credited by its target's entry. It earns a status only from an entry whose subject is the row's own number (the slot, entry or command number) and that names the table's program or the target; without one it is `named-only` when its target is mentioned and `undocumented` when it is not, except that an entry that holds 0 points nowhere and is `located`. The config marks such tables with `"pointer": true` (a `u16-table` is always one).
+
+### Namespaces
+
+A bare number is matched only in the chapters of its own table. A register window whose config lists no documents ignores the chapters `tokens.docs` lists, and tokens ignore the chapters the windows list, so the block id 0x004 written in a token chapter does not describe the register at offset 0x4. Name the token chapters in `tokens.docs` and the register chapters in each window's `docs` when one document set would otherwise serve both.
+
+### Truncated tables
+
+A `limit` in the config that reads fewer entries than the file holds is reported: `summary.tsv` has a `truncated` column on the table (`geif.u: 512 of 1024 entries`), the script prints a warning, and `docs/coverage.md` says the table was read in part. Prefer no `limit`.
 
 ### Builds of one function
 
@@ -194,6 +218,19 @@ Percent understood before and after the subject, citation, template and per-bina
 | ioctls | 100.0 to 74.5 | 11.0 to 1.1 | 100.0 to 83.3 |
 | ucode | 100.0 to 94.4 | 35.2 to 0.0 | no rows |
 | spec-registers | 93.4 to 16.1 | no rows | 91.4 to 55.2 |
+
+Percent understood before and after the later rules (own-address citations, hedges, name-derived role words, per-sentence template cap, pointer-table rows, namespaces), from the same documents on 2026-10-29. InfiniteReality gains a `ged1b.u` table of 512 distributor entries, which are undocumented, so its `ucode` row count rises from 3899 to 4411:
+
+| Table | InfiniteReality | Odyssey | CRIME |
+|---|---:|---:|---:|
+| binaries | 13.9 to 5.3 | 0.0 to 0.0 | 7.3 to 6.1 |
+| functions | 2.3 to 2.3 | 0.0 to 0.0 | 1.1 to 0.1 |
+| functions (distinct names) | 3.1 to 3.1 | 0.0 to 0.0 | 1.6 to 0.2 |
+| mmio | 50.9 to 50.9 | 86.6 to 86.6 | 55.5 to 55.5 |
+| tokens | 98.2 to 52.7 | 9.0 to 8.2 | 100.0 to 100.0 |
+| ioctls | 100.0 to 98.2 | 1.1 to 1.1 | 83.3 to 69.0 |
+| ucode | 95.1 to 30.3 | 96.0 to 96.0 | no rows |
+| spec-registers | 48.3 to 40.1 | no rows | 55.2 to 55.2 |
 
 How a mention is found:
 

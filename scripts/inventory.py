@@ -54,7 +54,8 @@ NSD_PHRASE = re.compile(r'no\s+shipped\s+software\s+or\s+published\s+source', re
 NSD_ROUTES = re.compile(r'\b(?:routes?|tried)\b', re.I)
 MAX_ITEMS = 3          # a line naming more items than this documents none of them
 MIN_ROLE_WORDS = 6     # plain words an entry needs to state a role and a hardware effect
-TEMPLATE_CAP = 5       # entries with the same sentence skeleton: more than this and they grade at most located
+TEMPLATE_CAP = 5       # entries that contain one sentence skeleton: more than this and that sentence earns nothing
+MIN_DATA = 2           # items an entry states about its subject: numbers or code names, citation included
 MARK_BEGIN, MARK_END = '<!-- inventory:begin -->', '<!-- inventory:end -->'
 OLD_MARKS = (re.compile(r'<!-- inventory:start[^>]*-->'),)
 
@@ -74,7 +75,8 @@ COLUMNS = {
                        'reached_in_code', 'status', 'doc', 'section'],
     'summary': ['table', 'rows', 'understood', 'understood_distinct', 'templated', 'located', 'named_only',
                 'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
-                'pct_mentioned', 'pct_done', 'unresolved_sites'],
+                'pct_mentioned', 'pct_done', 'unresolved_sites', 'truncated', 'audited_real_pct',
+                'audited_sample', 'audited_date'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -124,15 +126,54 @@ FILELIKE = re.compile(r'[A-Za-z0-9_+@-]+(?:\.[A-Za-z0-9_+@-]+)+')
 WORD = re.compile(r'\b[A-Za-z]{2,}\b')
 
 
-def plain_words(text):
+def plain_list(text):
     text = re.sub(r'`[^`]*`', ' ', text)
     text = re.sub(r'\]\([^)]*\)', ' ', text)
     text = re.sub(r'0[xX][0-9a-fA-F]+|\b\w*[_0-9]\w*\b|\b\w+[a-z][A-Z]\w*\b', ' ', text)
-    return len(WORD.findall(text))
+    return WORD.findall(text)
+
+
+def plain_words(text):
+    return len(plain_list(text))
+
+
+def name_parts(subj):
+    """The lower-case words an item's identifiers are made of: split at underscores, digits and case."""
+    parts = set()
+    for k in subj:
+        if k[0] == 'id':
+            for p in re.findall(r'[A-Z]+(?![a-z])|[A-Z]?[a-z]+', k[1]):
+                if len(p) >= 2:
+                    parts.add(p.lower())
+    return parts
+
+
+def from_name(word, parts):
+    """True when a word of prose is one of the identifier's own words, an inflection of it, or the
+    word an abbreviation in it stands for (exp, exponential): restating the name says nothing."""
+    w = word.lower()
+    for p in parts:
+        if w == p or (len(p) >= 3 and w.startswith(p)) or (len(w) >= 4 and p.startswith(w)):
+            return True
+    return False
+
+
+def role_words(text, subj):
+    """The plain words of an entry that do not come from its subject's name or its label."""
+    parts = name_parts(subj)
+    return [w for w in plain_list(text)
+            if not LABEL.fullmatch(w) and not from_name(w, parts)]
 
 
 LABEL = re.compile(r'\b(?:established|inferred)\b', re.I)
 UNKNOWN = re.compile(r'\bunknown\b', re.I)
+# A hedge says the role was not derived from the item itself, so it demotes the entry as "unknown" does.
+HEDGE = re.compile(
+    r"\bnot\s+(?:yet\s+)?(?:derived|shown|determined|known|established|decoded|identified|verified|"
+    r"confirmed|explained|understood)\b|\bnever\s+(?:decoded|derived)\b|"
+    r"\bguess(?:ed|es|work)?\b|\bpresum(?:ably|ed|es|ing)\b|\bspeculat\w*|\bassum(?:ed|ing)\b|"
+    r"\bnamed\s+(?:for|after)\b|\bfrom\s+(?:its|the|their)\s+(?:names?|labels?)\b|\bname[- ]only\b|"
+    r"\bname-derived\b|\bun(?:determined|identified|confirmed|verified|clear)\b", re.I)
 # What a citation must name to tie an entry to its own item: an offset, an address, a callee or
 # caller, or a source file. A release or a binary name is shared by every item of the build.
 CITE_OFFSET = re.compile(r'\+0[xX]([0-9a-fA-F]+)|\b(?:[Oo]ffsets?|[Aa]ddress(?:es)?|[Aa]ddr|[Aa]t|[Ee]ntry|[Rr]ecord)\s*[:=]?\s*'
@@ -217,48 +258,81 @@ def row_subject(text, head):
     return ''
 
 
-def item_cite(text, subj, head=None, cells=None):
-    """True when the entry names an offset, address, callee or source file other than its own subject."""
+def own_values(cells):
+    """The numbers a table row's own cells hold by themselves: its address, slot or index. They say
+    where the row's subject is, so they are its identity, not a derivation of it."""
+    own = set()
+    for c in cells or ():
+        m = re.fullmatch(r'[*_`]*\+?(?:0[xX]([0-9a-fA-F]+)|(\d+))[*_`]*', c.strip())
+        if m:
+            v = int(m.group(1), 16) if m.group(1) else int(m.group(2))
+            own.add(v)
+            own.add(v & 0xfffff)
+    return own
+
+
+def item_cite(text, subj, own=frozenset()):
+    """True when the entry names an offset, address, callee or source file other than its own
+    subject or the row's own address cells."""
     t = bare_text(text)
     for m in CITE_OFFSET.finditer(t):
-        h = next(g for g in m.groups() if g)
-        if ('hex', int(h, 16)) not in subj:
+        h = int(next(g for g in m.groups() if g), 16)
+        if ('hex', h) not in subj and h not in own and (h & 0xfffff) not in own:
             return True
     for m in CITE_CALL.finditer(t):
         if ('id', m.group(1).strip()) not in subj:
             return True
-    if CITE_PATH.search(t) or CITE_SOURCE.search(t):
-        return True
+    for m in CITE_PATH.finditer(t):
+        if ('file', m.group(0)) not in subj:
+            return True
+    for m in CITE_SOURCE.finditer(t):
+        if ('file', m.group(0)) not in subj and ('id', m.group(0)) not in subj:
+            return True
     # a binary together with a routine of it other than the subject: where the derivation was read
     if CITE_BINARY.search(t):
         for sp in re.findall(r'`([^`]+)`', t):
             sp = sp.strip()
             if re.fullmatch(r'[A-Za-z_][A-Za-z0-9_$]*', sp) and ('id', sp) not in subj:
                 return True
-    if head is not None and cells is not None:
-        # a cell holding only a hex number, in a column that gives offsets or addresses
-        for k, c in enumerate(cells):
-            m = re.fullmatch(r'`?\+?0[xX]([0-9a-fA-F]+)`?', c.strip())
-            if m and k < len(head) and any(w in head[k] for w in ADDRESS_HEAD) and \
-                    ('hex', int(m.group(1), 16)) not in subj:
-                return True
     return False
+
+
+def data_items(text, subj, own=frozenset()):
+    """The items an entry states about its subject: numbers and code names other than the subject's
+    own and the row's address cells."""
+    t = bare_text(text)
+    items = set()
+    for plus, h in HEXLIT.findall(t):
+        v = int(h, 16)
+        if ('hex', v) not in subj and v not in own and (v & 0xfffff) not in own:
+            items.add(('hex', v))
+    for m in DECLIT.finditer(t):
+        v = int(m.group(1))
+        if v >= 2 and ('dec', v) not in subj and v not in own:
+            items.add(('dec', v))
+    for sp in re.findall(r'`([^`]+)`', t):
+        sp = sp.strip()
+        if re.fullmatch(r'[A-Za-z_][A-Za-z0-9_$.]*[A-Za-z0-9_$]', sp) and ('id', sp) not in subj:
+            items.add(('id', sp))
+    return items
 
 
 def classify(text, subj=frozenset(), head=None):
     """The status one entry (a table row, a list item, a paragraph or a header comment)
-    earns for its subject. The entry must carry a derivation citation specific to the item;
-    with behaviour labelled unknown it is located, with an established or inferred label and
-    enough words for a role it is understood."""
+    earns for its subject. The entry must carry a derivation citation specific to the item, one
+    that is not the row's own address. Behaviour labelled unknown, or hedged as not derived, is
+    located. With an established or inferred label, enough words of role that do not merely
+    restate the subject's name, and at least MIN_DATA items stated about the subject, it is
+    understood."""
     t = bare_text(text)
-    cells = None
+    own = frozenset()
     if head is not None and t.strip().startswith('|'):
-        cells = [c.strip() for c in t.strip().strip('|').split('|')]
-    if not item_cite(t, subj, head, cells):
+        own = own_values([c.strip() for c in t.strip().strip('|').split('|')])
+    if not item_cite(t, subj, own):
         return 'named-only'
-    if UNKNOWN.search(t):
+    if UNKNOWN.search(t) or HEDGE.search(t):
         return 'located' if LOCATED.search(t) else 'named-only'
-    if LABEL.search(t) and plain_words(t) - len(LABEL.findall(t)) >= MIN_ROLE_WORDS:
+    if LABEL.search(t) and len(role_words(t, subj)) >= MIN_ROLE_WORDS and len(data_items(t, subj, own)) >= MIN_DATA:
         return 'understood'
     return 'named-only'
 
@@ -280,15 +354,42 @@ def skeleton(text):
     return ' '.join(out)
 
 
+def sentences(text):
+    """The sentences of an entry: each table cell, then each sentence inside it."""
+    out = []
+    for cell in bare_text(text).split('|'):
+        for sent in re.split(r'(?<=[.!?;])\s+', cell.strip()):
+            if sent.strip():
+                out.append(sent.strip())
+    return out
+
+
 class Entry:
     """One table row, list item, paragraph or header comment, with what it earns."""
-    __slots__ = ('text', 'level', 'skel', 'capped', 'keys', 'subj')
+    __slots__ = ('text', 'level', 'skel', 'capped', 'nsd_capped', 'keys', 'subj', 'sents', 'nsd_sents')
 
     def __init__(self, text, level, subj=frozenset()):
         self.text, self.level, self.subj = text, level, subj
         self.skel = skeleton(text)
-        self.capped = False
+        self.capped = self.nsd_capped = False
         self.keys = None
+        # (skeleton, role words) of each sentence long enough to state anything; the sentences that
+        # say no software depends on a fact are counted apart, for the no-dependency status
+        self.sents, self.nsd_sents = [], []
+        for sent in sentences(text):
+            if NSD_PHRASE.search(sent):
+                self.nsd_sents.append(skeleton(sent))
+            elif plain_words(sent) >= 3:
+                self.sents.append((skeleton(sent), len(role_words(sent, subj))))
+
+    def cap(self, count):
+        """True when too much of the entry is a sentence that more than TEMPLATE_CAP entries share:
+        most of its sentences are, or what is left of it has too few role words to state a role."""
+        over = [n for sk, n in self.sents if count[sk] > TEMPLATE_CAP]
+        if not over:
+            return False
+        left = sum(n for sk, n in self.sents if count[sk] <= TEMPLATE_CAP)
+        return 2 * len(over) > len(self.sents) or left < MIN_ROLE_WORDS
 
     def tokens(self):
         """The file and path names the entry writes, for the binaries it cites."""
@@ -369,7 +470,11 @@ class Hit:
 
     def templated(self):
         """True when the entry's sentence skeleton is shared by too many entries to be credited."""
-        return self.ent is not None and self.ent.capped and RANK[self.raw()] > RANK['located']
+        if self.ent is None:
+            return False
+        if self.nsd:
+            return self.ent.nsd_capped
+        return self.ent.capped and RANK[self.raw()] > RANK['located']
 
     def status(self):
         return 'located' if self.templated() else self.raw()
@@ -414,9 +519,11 @@ class DocIndex:
                     continue
                 seen.add(rel)
                 self.read_table(rel)
-        count = collections.Counter(e.skel for e in self.entries if e.skel)
+        count = collections.Counter(sk for e in self.entries for sk in {sk for sk, n in e.sents})
+        ncount = collections.Counter(sk for e in self.entries for sk in set(e.nsd_sents))
         for e in self.entries:
-            e.capped = bool(e.skel) and count[e.skel] > TEMPLATE_CAP
+            e.capped = e.cap(count)
+            e.nsd_capped = any(ncount[sk] > TEMPLATE_CAP for sk in e.nsd_sents)
 
     @staticmethod
     def expand(pat):
@@ -711,14 +818,17 @@ class DocIndex:
                     hits += self.name_hits(n)
         return self.best(hits)
 
-    def value_hits(self, values, files=None, context=None, plus_ok=True, bare=True, absolute=()):
+    def value_hits(self, values, files=None, context=None, plus_ok=True, bare=True, absolute=(), exclude=()):
+        """Hits for numbers, in the files the table's namespace allows: `files` when the config
+        lists them, otherwise every document except those `exclude` names (another table's chapters)."""
         out = []
         for v in values:
             for h in self.defs.get(v & 0xffffffffffffffff, []):
-                if in_files(h.file, files) and h.file.endswith('.h'):
+                if in_files(h.file, files) and not (files is None and globs_match(h.file, exclude)) \
+                        and h.file.endswith('.h'):
                     out.append(h)
             for h, plus in self.hexes.get(v, []):
-                if not in_files(h.file, files):
+                if not in_files(h.file, files) or (files is None and globs_match(h.file, exclude)):
                     continue
                 if plus and plus_ok:
                     out.append(h)
@@ -740,6 +850,18 @@ class DocIndex:
             for h, plus in self.hexes.get(v, []):
                 if h.ent is not None and (h.ent.subj & subj_keys) and in_files(h.file, files):
                     out.append(Hit(h.file, h.line, h.ref, h.section, h.ent.level, False, True, h.ctx, h.order, h.ent))
+        return out
+
+    def slot_hits(self, index, anchors):
+        """Hits from entries whose subject is the number `index` and that name the table's program
+        or the handler it points to. A pointer table's row is credited only by an entry of its own."""
+        out = []
+        for h in self.decs.get(index, []):
+            if h.ent is not None and ('dec', index) in h.ent.subj and any(a in h.ent.text for a in anchors if a):
+                out.append(h)
+        for h, plus in self.hexes.get(index, []):
+            if h.ent is not None and ('hex', index) in h.ent.subj and any(a in h.ent.text for a in anchors if a):
+                out.append(h)
         return out
 
     def dec_hits(self, values, files=None, context=None):
@@ -2215,6 +2337,22 @@ def best_of(*sts):
     return top
 
 
+def other_namespace(cfg, table):
+    """The documents that belong to another table: the token chapters when the table is a register
+    window, the register chapters when it is tokens. A bare number in one of them names a command
+    word or a register of that other table, not this table's item. Only tables whose config lists no
+    documents of their own are restricted by it."""
+    pats = []
+    if table == 'registers':
+        pats += cfg.get('tokens', {}).get('docs') or []
+    else:
+        for w in cfg.get('windows', []):
+            pats += w.get('docs') or []
+            for r in w.get('regions', []):
+                pats += r.get('docs') or []
+    return pats
+
+
 def context_words(cfg, key):
     return cfg.get('docs', {}).get('context', {}).get(key)
 
@@ -2325,7 +2463,8 @@ def build(cfg, a, tmp):
     def offset_status(win, off, extra_names=()):
         vals, absolute = window_forms(cfg, win, off)
         files = window_files(cfg, win)
-        hits = docs.value_hits(vals, files, context_words(cfg, 'registers') or REG_CONTEXT, absolute=absolute)
+        hits = docs.value_hits(vals, files, context_words(cfg, 'registers') or REG_CONTEXT, absolute=absolute,
+                               exclude=other_namespace(cfg, 'registers'))
         st = docs.best(hits)
         for r in spec_names(win, off):
             st = best_of(st, reg_name_status(r))
@@ -2442,7 +2581,7 @@ def build(cfg, a, tmp):
                 st = best_of(st, docs.best(docs.pair_hits([w], keys, files)))
             elif kind in tk.get('value_match', []):
                 ctx = tk.get('context', {}).get(kind) or REG_CONTEXT
-                st = best_of(st, docs.best(docs.value_hits([w], files, ctx)))
+                st = best_of(st, docs.best(docs.value_hits([w], files, ctx, exclude=other_namespace(cfg, 'tokens'))))
         row = {'kind': kind, 'value': ('0x%0' + str(tk.get('widths', {}).get(kind, vw)) + 'x') % w,
                'name': ';'.join(names), 'register': '' if reg is None else '0x%x' % reg,
                'detail': ' '.join(detail), 'sources': ','.join(sorted(e['src'])), 'sites': e['sites'],
@@ -2504,19 +2643,24 @@ def build(cfg, a, tmp):
     # ---------------------------------------------------------------- ucode
     rows = []
     labels = {}
+    truncated = []
     for src in cfg.get('ucode', []):
         t = src['type']
         if t == 'table':
             c = src['columns']
             for r in table_rows(src, tmp):
-                name = r.get(c['name'], '').strip()
+                name = r.get(c['name'], '').strip() if c.get('name') else ''
                 kind = src.get('kind', 'symbol')
                 for pat, k in src.get('kind_by_name', {}).items():
                     if re.search(pat, name):
                         kind = k
                 detail = ' '.join('%s=%s' % (d, r[d]) for d in c.get('detail', []) if r.get(d))
-                rows.append({'program': src['program'], 'kind': kind, 'address': r.get(c['address'], ''),
-                             'name': name, 'detail': detail, '_names': [name]})
+                row = {'program': src['program'], 'kind': kind, 'address': r.get(c['address'], ''),
+                       'name': name, 'detail': detail, '_names': [name]}
+                if src.get('pointer'):
+                    row['_pointer'] = (src['program'], r.get(c['address'], ''), name, False)
+                    row['_names'] = []
+                rows.append(row)
         elif t == 'symbols':
             p = os.path.join(REPO, fmt(src['file'], tmp))
             if not os.path.exists(p):
@@ -2532,14 +2676,24 @@ def build(cfg, a, tmp):
             if not os.path.exists(p):
                 continue
             d = open(p, 'rb').read()
-            for k in range(min(len(d) // 2, int(src.get('limit', 1 << 30)))):
+            take = min(len(d) // 2, int(src.get('limit', 1 << 30)))
+            if take < len(d) // 2:
+                truncated.append('%s: %d of %d entries' % (src['program'], take, len(d) // 2))
+            for k in range(take):
                 v = struct.unpack('>H', d[2 * k:2 * k + 2])[0]
                 name = labels.get((src['labels'], v), [''])[0]
                 rows.append({'program': src['program'], 'kind': src.get('kind', 'dispatch slot'), 'address': str(k),
-                             'name': name, 'detail': 'handler 0x%x' % v, '_names': [name]})
+                             'name': name, 'detail': 'handler 0x%x' % v, '_names': [],
+                             '_pointer': (src['program'], str(k), name, v == 0)})
         elif t == 'records':
             rows += record_routines(src)
     for r in rows:
+        ptr = r.pop('_pointer', None)
+        if ptr is not None:
+            st = pointer_status(docs, *ptr)
+            r.pop('_names', None)
+            put_status(r, st)
+            continue
         st = docs.by_name(*[n for n in r.pop('_names', []) if n])
         rec = r.pop('_record', None)
         if rec is not None and st[0] != 'understood':
@@ -2610,15 +2764,24 @@ def build(cfg, a, tmp):
     # ---------------------------------------------------------------- summary
     total_unres = sum(unresolved.values())
     resolved_sites = sum(e['sites'] for e in mmio.values())
+    audits = read_audits(os.path.join(a.out, 'audits.tsv'))
     srows = []
     for t in TABLES:
         srows.append(summary_row(t, out[t], total_unres if t == 'mmio' else ''))
+        if t == 'ucode':
+            srows[-1]['truncated'] = '; '.join(truncated)
         if t == 'functions':
             best = {}
             for r in out['functions']:
                 if r['name'] not in best or RANK[r['status']] > RANK[best[r['name']]['status']]:
                     best[r['name']] = r
             srows.append(summary_row('functions (distinct names)', list(best.values()), ''))
+    for r in srows:
+        au = audits.get(r['table'])
+        if au:
+            r['audited_real_pct'], r['audited_sample'], r['audited_date'] = au['pct'], au['n'], au['date']
+    for t in truncated:
+        print('WARNING: table read in part, %s' % t, file=sys.stderr)
     # one row per binary that has functions, after the tables
     by_bin = collections.OrderedDict()
     for r in out['functions']:
@@ -2697,9 +2860,41 @@ def record_routines(src):
     return rows
 
 
+def pointer_status(docs, program, index, target, zero):
+    """A row of a pointer table (a slot, an entry, a command that names a handler) is credited only
+    by an entry whose subject is that slot. What its handler is documented as is a mention of the
+    handler, not of the slot; an entry that holds 0 points nowhere and is located by the file."""
+    k = num(index) if re.fullmatch(r'(?:0[xX][0-9a-fA-F]+|\d+)', str(index).strip()) else None
+    st = docs.best(docs.slot_hits(k, (program, target))) if k is not None else ('undocumented', '', '', '', False)
+    if RANK[st[0]] < RANK['located'] and zero:
+        return ('located', '', '', '', False)
+    if st[0] == 'undocumented' and target and docs.by_name(target)[0] != 'undocumented':
+        return ('named-only', '', '', '', False)
+    return st
+
+
 def record_status(docs, v, cfg):
     words = cfg.get('docs', {}).get('context', {}).get('ucode') or ('entry', 'entries', 'routine', 'record')
     return docs.best([h for h in docs.decs.get(v, []) if ctx_match(h.ctx, words)])
+
+
+def read_audits(path):
+    """The latest independent audit of each table, from docs/inventory/audits.tsv: the sampled rows
+    graded real, shallow or wrong by someone who did not write them. The last row of a table with the
+    latest date wins."""
+    got = {}
+    if not os.path.exists(path):
+        return got
+    for r in read_tsv(path):
+        try:
+            n, real = int(r['sample']), int(r['real'])
+        except (KeyError, ValueError):
+            continue
+        t = r.get('table', '')
+        if n > 0 and (t not in got or r['date'] >= got[t]['date']):
+            got[t] = {'date': r['date'], 'n': n, 'real': real, 'pct': '%.1f' % (100.0 * real / n),
+                      'shallow': r.get('shallow', ''), 'wrong': r.get('wrong', '')}
+    return got
 
 
 def summary_row(name, rows, unresolved):
@@ -2745,6 +2940,20 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
             label, r['rows'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
             r['understood'], r['understood_distinct'], r['located'], r['no_software_dependency'],
             r['named_only'], r['undocumented']))
+    audited = [r for r in srows if r.get('audited_date')]
+    if audited:
+        lines += ['', '### Audited', '',
+                  'The share of understood rows that an independent audit found real when it re-derived a '
+                  'random sample from the binaries ([docs/inventory/audits.tsv](inventory/audits.tsv); the '
+                  'sample is small, so read the sample size). The percentages above are what the entries claim; '
+                  'this is how often the claim held up.', '',
+                  '| Table | Audited real | Sample | Date |', '|---|---:|---:|---|']
+        for r in audited:
+            lines.append('| %s | %s%% | %s | %s |' % (r['table'], r['audited_real_pct'], r['audited_sample'],
+                                                    r['audited_date']))
+    notes = [r for r in srows if r.get('truncated')]
+    for r in notes:
+        lines += ['', 'Read in part: %s (%s).' % (r['table'], r['truncated'])]
     tot = resolved + unres
     lines += ['',
               'Register access sites: %d found, %d resolved to an offset and %d (%s%%) unresolved, where the base '
