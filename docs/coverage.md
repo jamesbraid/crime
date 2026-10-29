@@ -31,7 +31,7 @@ Rasterizer, pixel pipeline, texture and depth, fed by the host through the rende
 | DMA | partial | `CRIME_RE.h`, `docs/pixel-transfer.md` | rendering engine | no separate DMA engine seen; transfers are the pixel pipe's transfer mode through the linear TLBs. Found: linear TLB load ioctl and entry format, DrawPixels and ReadPixels register sequences, kernel pixel-DMA request (`docs/pixel-transfer.md`); step-register encoding differs between kernel and libGLcore, ioctl number unread |
 | Interrupts | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | FIFO threshold stall and interrupt; numbering conflict unresolved. Found: IRIX registers inputs 25 (empty level) and 26 (full level); handler protocol in `CRIME_RE.h` |
 | Reset | none | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found:  |
-| Context save and restore | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found:. Found: the kernel saves uncommitted interface-buffer entries (address and data) on a context switch, then writes +0x4008 (crmSavePP) |
+| Context save and restore | partial | `CRIME_RE.h`, `docs/context.md` | rendering engine | Found: the kernel saves uncommitted interface-buffer entries (address and data) on a context switch, then writes +0x4008 (crmSavePP). Pass 2: full switch sequence, shadow record layout and flag word, global versus non-global register table, replay encoding (`docs/context.md`); `crimeRestore` argument mismatch unresolved |
 | Texture formats and filtering (incl. precision) | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | specification text is explicitly unfinished here. Found: mode fields and filter codes match the specification; wrap codes do not (border clamp sent as 1); format word gives 4 sub-texel bits and a 1024 maximum (inferred); filter arithmetic unknown Pass 2: blend codes match the spec; filter weights cannot be recovered from the binaries; texture TLB reloaded wholesale; texels written by the CPU into mapped tiles. |
 | Depth and pixel arithmetic | partial | `CRIME_RE.h`, `docs/rendering.md` | rendering engine | Found: vertex float-bias encoding, 9.12 colour scale 4096, depth scale 64, stencil and depth-function words; window-z range and blend arithmetic unread Pass 2: window z 0..0x3fffffff so Zs carries a 24-bit depth with 12 fraction bits; Depth.func low bits are the clear value; the rasteriser reads at most vertex bits 18:0 as unsigned 13.6 (inferred from the biased integer clear path). |
 
@@ -46,7 +46,7 @@ Memory transfer engine: copies, fills and transfers between the frame buffer, de
 | DMA | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
 | Interrupts | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
 | Reset | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
-| Context save and restore | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
+| Context save and restore | partial | `MTE.h`, `docs/context.md` | memory transfer | Found: MTE registers sit in the shadow record at 0x200 + offset and are reloaded only when flag bit 0x04 is set (globals 0x3000, 0x3008, 0x3018, 0x3020, 0x3028, 0x3040, 0x3048; non-globals 0x3010, 0x3030, 0x3038); kernel `mte_copy`/`mte_zero` save and replay around their own use; `crimeRestore` call convention unresolved |
 
 ### CRIME memory, TLB and interrupts
 
@@ -72,7 +72,7 @@ Display back end: frame buffer scanout from system memory, overlay, cursor, colo
 | DMA | partial | `GBE.h`, `docs/gbe.md` | display back end | 64 KiB tile scanout from the full RAM window |
 | Interrupts | partial | `GBE.h` | display back end | routes to CRIME inputs 16-19, latched and cleared by writing zero. Found: line 0 retrace, line 1 pre-blank, 2-3 HLI; acknowledged by clearing CRIME +0x028 bits |
 | Reset | partial | `GBE.h`, `docs/gbe.md` | display back end | device ID and revision candidates; I2C released-line value |
-| Context save and restore | none | `GBE.h`, `docs/gbe.md` | display back end |  |
+| Context save and restore | partial | `GBE.h`, `docs/context.md` | display back end | Found: no GBE register is saved or restored by the rendering context switch (absence in `crimePcxSwap` and the shadow loaders); per-drawable window-ID state is in `docs/gbe.md` |
 | Display and scanout | partial | `GBE.h`, `docs/gbe.md` | display back end | Found: window ID table writes and the tile lists IRIX builds for frame, overlay and display-ID planes (`docs/gbe.md`); overlay and underlay compositing and type codes unknown. Earlier: CONTROL to INHWCTRL copy is asynchronous and polled; blanking deselects the pixel clock; buffer swaps flip the WID mode buffer bits at retrace |
 | Colormap FIFO | partial | `GBE.h` | display back end | Found: X server waits for 48 free slots, accepting 0 only on revisions before 2; Linux reads the field the opposite way (conflict recorded in `GBE.h`) |
 
@@ -84,6 +84,6 @@ The OpenGL driver's software transform and lighting and its emission of renderin
 |---|---|---|---|---|
 | Command and FIFO formats | partial | `CRIME_RE.h`, `libglcore/include/glcore_crime.h`, `docs/opengl.md`, `docs/pixel-transfer.md` | command grammar | pixel transfer path read (`docs/pixel-transfer.md`). N32 libGLcore has names and lines, no types. Found: triangle emission order, start-alias commits, dual hardware/shadow writes, no level polling; see `docs/opengl.md` |
 | Software transform and lighting | none | `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | CRIME has no geometry engine, so the host path owns this |
-| Context save and restore | partial | `crime_kernel/include/crime_kern.h`, `docs/opengl.md` | command grammar | how the kernel shares the engine among clients unknown. Found: libGLcore mirrors every global register write into a kernel-provided shadow page; kernel-side reload not yet read (`crime_kernel/include/crime_kern.h`, `libglcore/include/glcore_crime.h`) |
+| Context save and restore | partial | `docs/context.md`, `libglcore/include/glcore_crime.h` | command grammar | Found: libGLcore mirrors every global register write into a kernel-provided shadow page, keeps a flag word at shadow offset 0x1f0 that gates which register groups the kernel reloads (0x7d after make-current), and spins for idle before clearing the stipple bit; kernel reload order in `docs/context.md` |
 | Texture formats and filtering (incl. precision) | partial | `CRIME_RE.h`, `docs/opengl.md` | command grammar | Found: GL enum to Texture.mode and Texture.format mapping in `CRIME_RE.h`; texel download and tiling unread |
 | Display and scanout | none | `GBE.h`, `ddx/include/crime_ddx.h`, `docs/opengl.md` | command grammar | mode set and overlay programming by the X module unknown |
