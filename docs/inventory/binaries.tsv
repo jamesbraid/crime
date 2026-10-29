@@ -21,7 +21,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	e
 usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	762	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
