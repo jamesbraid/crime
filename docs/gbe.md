@@ -439,3 +439,47 @@ Binaries: IRIX 6.5.30 `crm.so` (`usr/lib/X11/dyDDX/crm.so`, gp `0x5b0ea0`) and `
 | `+0x20004` | OVR_1, the live overlay control | polled, up to 400,000 reads, until its bit 0 clears, then until it equals the bumped control word, a fence for one blanking edge | established |
 | `+0x40000` | DID, the live display-ID control | polled the same way: first for bit 16 clear, then for equality with the bumped `DID_CONTROL` word | established |
 | `+0x4` | DOTCLK | last, after writing `0x80000000` to the timing register at `+0x10000` to freeze it, keeps only bit 20 of the dot-clock word and writes it back | established |
+
+## Specification registers by IRIX use
+
+One row per GBE register of the revision 1.1 specification that the sections above describe only as part of a group. The spec name comes first, then the offset and the Linux name, then what IRIX writes. Sources: the kernel listings under `crime_kernel/`, the X module and [gbe-spec].
+
+| Spec name | Offset | Role and IRIX use | Label |
+|---|---|---|---|
+| VT_1 | `+0x10004` | VT_XYMAX, the frame size: total pixels per line in 11:0, total lines in 23:12; it is cleared first, then `gbeStartVideoTiming` in `crime_init.o` writes the format's totals | established |
+| VT_2 | `+0x10008` | VT_VSYNC, the lines where vertical sync turns off (11:0) and on (23:12), written from the timing record by `gbeSetTimingRegs` in `crime_init.o` | established |
+| VT_3 | `+0x1000c` | VT_HSYNC, the pixel counts where horizontal sync turns off and on, written from the timing record by `gbeSetTimingRegs` in `crime_init.o` | established |
+| VT_4 | `+0x10010` | VT_VBLANK, the lines where vertical blanking turns off and on, written by `gbeSetTimingRegs` in `crime_init.o` and rewritten for interlace on early revisions | established |
+| VT_5 | `+0x10014` | VT_HBLANK, the pixel counts where horizontal blanking turns off and on, with the three- and five-pixel pipeline offsets `gbeSetTimingRegs` in `crime_init.o` applies | established |
+| VT_6 | `+0x10018` | VT_FLAGS, sync polarity and stereo flags: 0 for a CRT format, and bit 6 pulsed each stereo field by `crimeRetraceHandler` in `crime.o` | established |
+| VT_7 | `+0x1001c` | VT_F2RF_LOCK, the line of the field-to-frame lock, written by `gbeSetTimingRegs` in `crime_init.o` from the record's interlace flags | established |
+| VT_8 | `+0x10020` | VT_INTR01, the lines of the first two GBE interrupts; parked off-screen at start-up and rewritten by `crimeRetraceHandler` in `crime.o` each frame | established |
+| VT_9 | `+0x10024` | VT_INTR23, the lines of the last two GBE interrupts; parked off-screen by `crime_init` code in `crime_init.o` and rewritten by the retrace handler | established |
+| VT_13 | `+0x10034` | VT_HPIXEN, the horizontal pixel-enable window; parked at 0xffffff, then set last by `gbeStartVideoTiming` in `crime_init.o` once the timing runs | established |
+| VT_14 | `+0x10038` | VT_VPIXEN, the vertical pixel-enable window, the lines where active video starts and stops, set last by `gbeStartVideoTiming` in `crime_init.o` | established |
+| VT_15 | `+0x1003c` | VT_HCMAP, the pixel counts that clear and set the colour-map write enable, written from the record by `gbeSetTimingRegs` in `crime_init.o` | established |
+| VT_16 | `+0x10040` | VT_VCMAP, the lines that clear and set the colour-map write enable, written from the record by `gbeSetTimingRegs` in `crime_init.o` | established |
+| VT_17 | `+0x10044` | DID_START_XY, where the display-ID fetch starts relative to the sync edges, computed by `gbeSetTimingRegs` in `crime_init.o` from the record | established |
+| VT_18 | `+0x10048` | CRS_START_XY, where the cursor fetch starts, one line after the display-ID start, computed by `gbeSetTimingRegs` in `crime_init.o` | established |
+| VT_19 | `+0x1004c` | VC_START_XY, where the capture block's window starts, computed by `gbeSetTimingRegs` in `crime_init.o` with the same vertical field | established |
+| OVR_0 | `+0x20000` | OVR_WIDTH_TILE, the overlay width in 512-pixel tiles plus a remainder; `gbeStartVideoTiming` in `crime_init.o` pulses bit 13 to reset the overlay FIFO | established |
+| FRM_0 | `+0x30000` | FRM_SIZE_TILE, the frame width in tiles, remainder and pixel depth; `gbeStartVideoTiming` in `crime_init.o` pulses bit 15 to reset the frame FIFO | established |
+| FRM_1 | `+0x30004` | FRM_SIZE_PIXEL, the frame height in lines in bits 31:16, halved for an interlaced format, written by `gbeSetTimingRegs` in `crime_init.o` | established |
+| WID[32] | `+0x48000` | the 32-entry window-ID table; `crimeSetDisplayMode` in `crime.o` writes one entry per ioctl `0x55f4`, and the retrace handler rewrites the buffer bits on a swap | established |
+| CMFIFO | `+0x58000` | the colour-map FIFO free count in bits 5:0; the X module in `crm.so` polls it and waits for at least 48 free entries before a batch of colour-map writes | established |
+| GMAP[256] | `+0x60000` | the 256-entry gamma map, one red, green and blue byte per entry; `crimeSetGammaRamp` in `crime.o` loads it for ioctl `0x55f5` | established |
+| I2C | `+0x8` | the monitor DDC bus, two open-drain lines driven by bit-banging; the DDC probe `crime_i2cProbe` in `crime_i2c.o` reads the monitor identification through it | established |
+
+The capture block (spec pages 47-48). Each row is labelled as having no software dependency: no shipped software or published source depends on the block. Routes tried: the 6.5.30 kernel objects, the X module, the O2 video driver and libraries, and the Linux and NetBSD drivers (see the capture section above).
+
+| Spec name | Offset | Role from the specification | Label |
+|---|---|---|---|
+| VC_0 | `+0x80000` | left and right edges of the capture region | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_1 | `+0x80004` | top and bottom edges of the capture region | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_2 | `+0x80008` | capture DMA enable, flicker filter, field advance, full-screen and colour-space bypass bits | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_3 | `+0x8000c` | field select, descriptor-list DMA enable, field status bits and the descriptor pointer in 31:5 | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_4 | `+0x80010` | two 16-bit capture tile addresses of the descriptor list, the earlier in 31:16 | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_5 | `+0x80014` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_6 | `+0x80018` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_7 | `+0x8001c` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+| VC_8 | `+0x80020` | the last two 16-bit capture tile addresses of the descriptor list; write-only | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |

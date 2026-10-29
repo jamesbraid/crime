@@ -866,7 +866,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4af8	68	crimeI
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4b3c	700	crmAllocGfxBuffers	dwarf+funcnames+symtab	named-only	docs/functions.md#drawables-and-render-nodes-crimeo	Drawables and render nodes (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4df8	108	crmFirstInit	dwarf+funcnames+symtab	named-only	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4e64	1280	crime_earlyinit	dwarf+symtab	named-only	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5364	1136	crime_init	dwarf+symtab	understood	docs/xmodule.md#the-pointer-chain	The pointer chain
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5364	1136	crime_init	dwarf+symtab	understood	docs/gbe.md#specification-registers-by-irix-use	Specification registers by IRIX use
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x57d4	116	crimeError	dwarf+symtab	understood	docs/opengl.md#register-roles	Register roles
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5848	84	crime_regmatch	dwarf+funcnames+symtab	named-only	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x589c	88	crime_channel_info	dwarf+symtab	understood	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
@@ -900,7 +900,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x224	88
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x59c	1356	crmLoadGbelists	dwarf+symtab	named-only	docs/functions.md#timing-record-and-start-of-video-crime_inito	Timing record and start of video (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xae8	136	crimeBlankscreen	dwarf+symtab	understood	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb70	16	crime_retrace_callback	dwarf+symtab	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	1120	crimeRetraceHandler	dwarf+symtab	understood	CRIME.h:84	Interrupt registers
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	1120	crimeRetraceHandler	dwarf+symtab	understood	docs/gbe.md#specification-registers-by-irix-use	Specification registers by IRIX use
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xfe0	184	crime_i2cFpGbeRetrace	dwarf+funcnames+symtab	understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1098	60	crime_FpSchedForRetrace	dwarf+symtab	understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x10d4	2320	crimePreblankHandler	dwarf+symtab	understood	CRIME.h:84	Interrupt registers
@@ -912,8 +912,8 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2484	3
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x25b4	136	crimeSchedRetraceEvent	dwarf+symtab	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x263c	320	crimeRetraceCloseRN	dwarf+symtab	named-only	docs/functions.md#drawables-and-render-nodes-crimeo	Drawables and render nodes (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x277c	164	crmRetraceCloseAllRn	dwarf+symtab	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2820	128	crimeSetDisplayMode	dwarf+symtab	understood	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x28a0	204	crimeSetGammaRamp	dwarf+symtab	understood	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2820	128	crimeSetDisplayMode	dwarf+symtab	understood	docs/gbe.md#specification-registers-by-irix-use	Specification registers by IRIX use
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x28a0	204	crimeSetGammaRamp	dwarf+symtab	understood	docs/gbe.md#specification-registers-by-irix-use	Specification registers by IRIX use
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x296c	248	crmFindFreeDidTbl	dwarf+symtab	understood	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2a64	524	crime_hli_handler	dwarf+symtab	understood	CRIME.h:94	Interrupt registers
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2c70	428	crime_schedule_hli	dwarf+funcnames+symtab	named-only	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
@@ -973,7 +973,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x0	36	crime
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x24	496	crime_i2cReset	dwarf+funcnames+symtab	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x214	92	crime_i2cFixupAfterErr	dwarf+funcnames+symtab	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x270	92	crime_i2cfpFixupAfterErr	dwarf+funcnames+symtab	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2cc	608	crime_i2cProbe	dwarf+symtab	understood	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2cc	608	crime_i2cProbe	dwarf+symtab	understood	docs/gbe.md#specification-registers-by-irix-use	Specification registers by IRIX use
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x52c	448	crime_validate_ddc_data	dwarf+symtab	named-only	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x6ec	32	i2cfp_DMI2_FailedEDID	dwarf+symtab	named-only	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x70c	76	crime_EdidCksum	dwarf+funcnames+symtab	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)

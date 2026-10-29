@@ -364,3 +364,4 @@ One row per rendering, transfer-engine and status register, with what the regist
 | `+0x3030` | MTE.dst0 | the first destination address word of a copy or clear; written by `crm_copy_swap_boxes` and `crime_clear_buffer` in the kernel objects `crime_retrace.o` and `crime_dma.o` | established |
 | `+0x3038` | MTE.dst1 | the second destination word, written through the start alias to start the copy or clear (`crm_copy_swap_boxes` in `crime_retrace.o`) | established |
 | `+0x4000` | Status | the engine status word; `__glCrmFlushAndConfirm` in `libGLcore.so` spins on bit 28 (idle), and the kernel FIFO and retrace handlers in `crime.o` read it before touching the engine | established |
+| `+0x3070` | MTE.null | the transfer engine's commit-only register; no shipped software or published source depends on it, routes tried: the 6.5.30 kernel objects, `libGLcore.so`, `crm.so` and NetBSD (details in mte.md) | no software dependency |
