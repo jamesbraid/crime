@@ -14003,7 +14003,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45e690	176	rrmValidateTree	dynsym
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45e740	164	cfbCopyArea	dynsym	b565c42d356e	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45e7f0	4616	cfbDoBitbltCopy	dynsym	886e28b1bddf	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45fa00	1668	crmInvalidate	dynsym	f187c04b58f8	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x460090	656	FindBestID	dynsym	c64d08cf1580	located	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x460090	656	FindBestID	dynsym	c64d08cf1580	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x460320	120	rrmCopyWindow	dynsym	5a85d765c63f	understood	docs/xmodule.md#window-creation-and-mapping	Window creation and mapping
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4603a0	16528	crmTiledFS	dynsym	68f0a648bdf7	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464430	1168	miPolyGlyphBlt	dynsym	0b0d61845378	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14011,7 +14011,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4648c0	1544	miPushPixels	dynsym	0
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464ed0	276	crmValidateSwapbuf	dynsym	a6681a6f9c2d	located	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464ff0	1700	crmValidateClip	dynsym	5f89978c89d6	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4656a0	2628	FindFreeCID	dynsym	2f1e0da6eaa0	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4660f0	96	rrmNeedCID	dynsym	b4dc706ba56f	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4660f0	96	rrmNeedCID	dynsym	b4dc706ba56f	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x466150	1124	rrmValidateCID	dynsym	97838527b89d	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4665c0	232	rrmWorkProc	dynsym	be0ff38b86ef	understood	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4666b0	512	rrmProcessRequestQueue	dynsym	0c003899822e	understood	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
@@ -14473,7 +14473,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561310	1472	miUnionO..OM	dynsym	2
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5618d0	504	mergeDIDLists..GF	dynsym	5a81ea58addd	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561ad0	432	nfbInfPolySegment..AK	dynsym	a9ede7b73a7a	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561c80	704	miBSAllocate..ABB	dynsym	4a32e318d024	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561f40	8	ZBuffer..PE	dynsym	78aa5094d5ec	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561f40	8	ZBuffer..PE	dynsym	78aa5094d5ec	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561f50	196	miBSChangeWindowAttributes..MO	dynsym	ba1dc290cce2	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562020	324	ValidateMode..LE	dynsym	8562d554f0a8	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562170	264	nfb13MaskRopLoop..BI	dynsym	c5ce8b505d0c	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14486,7 +14486,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562a40	264	nfb11MaskRopLoop..PH	d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562b50	896	crmBlackCmap	dynsym	0048a7da7711	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562ed0	280	miDcos..OCB	dynsym	832bea6ec20f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562ff0	192	miClearDrawable	dynsym	ceae8969a112	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5630b0	364	Fullscreen..OE	dynsym	882e378dd896	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5630b0	364	Fullscreen..OE	dynsym	882e378dd896	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563220	844	crmEnumDir..AC	dynsym	5aae0a8cdace	located	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563570	892	tailSpan..KEB	dynsym	2b21da75a961	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5638f0	788	BindToClip..FE	dynsym	cc675746a25a	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
@@ -14516,11 +14516,11 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x567370	1056	miBSTranslateBackingS
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x567790	3972	drawArc..AFB	dynsym	3bc1d57329a3	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x568720	708	miBSPolyFillArc..FAB	dynsym	db100e3b3ef9	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5689f0	528	miBSPolyFillRect..EAB	dynsym	efe2b610c3f4	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x568c00	364	Dontfreeze..NE	dynsym	56d3fcde03cc	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x568c00	364	Dontfreeze..NE	dynsym	56d3fcde03cc	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x568d70	244	appendRequestQueue..EE	dynsym	a9905f2f51f1	understood	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x568e70	2732	miComputeEllipseSpans..GCB	dynsym	c2483ff78a28	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x569920	108	Unbind..JE	dynsym	e7a2127ba6b3	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x569990	308	AssignID..HF	dynsym	7f97c28f4975	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x569990	308	AssignID..HF	dynsym	7f97c28f4975	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x569ad0	4528	mfbDoBitbltOr	dynsym	a4a1db749959	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56ac80	200	nfb14RopLoop..CH	dynsym	1e63d725792f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56ad50	3172	crmFillTriangle..GD	dynsym	5611ecc08fcd	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
@@ -14553,7 +14553,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574770	6280	drawQuadrant..BFB	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576000	308	miBSCheapValidateGC..PO	dynsym	33cf5efd938b	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576140	1436	nfb10RopLoop..OG	dynsym	d1cb8f794588	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5766e0	440	nfbInfImageGlyphBlt..KK	dynsym	d25ae437e1b8	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5768a0	296	NewID..IF	dynsym	fdd8ffedf9ab	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5768a0	296	NewID..IF	dynsym	fdd8ffedf9ab	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5769d0	648	nfbInitServerOverlayVisualsProperty..NF	dynsym	e898e0b69c1f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576c60	292	miBSPutImage..KP	dynsym	e942d82dc83c	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576d90	108	itemSearchFunction..IC	dynsym	0d688481ab3f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14615,7 +14615,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x583fa0	1504	miComputeWideEllipse.
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584580	380	ValidateSwapbuf..KE	dynsym	0f70f90d3a92	located	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584700	1168	nfbInfRender..IJ	dynsym	e4d30924aa77	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584b90	744	computeDashMap..HDB	dynsym	275a31b82e02	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584e80	264	SetDIDMode	dynsym	02abac9697dd	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584e80	264	SetDIDMode	dynsym	02abac9697dd	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584f90	76	miBSCheapDestroyGC..CP	dynsym	8572b1103e3f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584fe0	180	crmRingClick..H	dynsym	c4699917bbf2	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5850a0	640	QuickSortRects..PM	dynsym	419bb46564ec	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
@@ -14682,7 +14682,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x593e70	2440	crmReadVideoFormat..F
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x594800	304	crmCanLoadOptionHW..DC	dynsym	c2032773b1a2	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x594930	1664	mfbSetScanline	dynsym	9b83dd543183	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x594fb0	96	ValidateSwapNClip..ME	dynsym	ef86eb8cbc1f	named-only	docs/xmodule.md#hardware-drawing-the-crm-routines	Hardware drawing (the `crm` routines)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x595010	60	GenlockNotify..CF	dynsym	111e8631c1a7	named-only	docs/xmodule.md#window-id-and-resource-manager-client-rrm	Window-ID and resource-manager client (`rrm`)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x595010	60	GenlockNotify..CF	dynsym	111e8631c1a7	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x595050	8	nfbNoopDDACreateScreenResources	dynsym	a7e7ca11a6b8	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x595060	372	nfbChangeClip..DJ	dynsym	5d0146dc4327	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5951e0	964	crmUnSchedMgrSwapBuf	dynsym	d010d4ad80df	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
@@ -14717,7 +14717,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a020	680	crmStrGamma16..LB	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a2d0	248	nfb7MaskRopLoop..LH	dynsym	8044e7f4fb5f	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a3d0	440	nfbInfFillPolygon..DK	dynsym	04d0033d5658	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a590	8	nfbNoopDDAClearBackingStore	dynsym	87506497337c	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a5a0	920	FindFreeID	dynsym	f243bbc3952f	located	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a5a0	920	FindFreeID	dynsym	f243bbc3952f	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59a940	2116	miBSFillSpans..IP	dynsym	aab200e6fc78	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59b190	872	miBSCopyArea..MP	dynsym	67f4f52f0bcd	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x59b500	348	miLineOnePoint..AO	dynsym	f4ebd84fe141	named-only	docs/xmodule.md#sample-server-layers	Sample-server layers
