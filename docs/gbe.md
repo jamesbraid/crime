@@ -435,10 +435,10 @@ Binaries: IRIX 6.5.30 `crm.so` (`usr/lib/X11/dyDDX/crm.so`, gp `0x5b0ea0`) and `
 |---|---|---|---|
 | `+0x3000c` | FRM_3 (`FRM_CONTROL`) | clears bit 0, the frame DMA enable, then adds 32 to bump the tile-list pointer by one unit and waits for the live copy to follow | established |
 | `+0x20008` | OVR_2 (`OVR_CONTROL`) | clears bit 0, the overlay DMA enable, then adds 32 in the same way as the frame control word | established |
-| `+0x40004` | DID_SHADOW (`DID_CONTROL`) | keeps only bit 16 of the word it reads back and writes that, then adds 32 in the same way | established |
+| `+0x40004` | DID_SHADOW (`DID_CONTROL`) | clears bit 16 (the display-ID DMA enable) of the word it reads back, keeps every other bit, and writes that, then adds 32 in the same way (the code ands with the complement of bit 16) | established |
 | `+0x20004` | OVR_1, the live overlay control | polled, up to 400,000 reads, until its bit 0 clears, then until it equals the bumped control word, a fence for one blanking edge | established |
 | `+0x40000` | DID, the live display-ID control | polled the same way: first for bit 16 clear, then for equality with the bumped `DID_CONTROL` word | established |
-| `+0x4` | DOTCLK | last, after writing `0x80000000` to the timing register at `+0x10000` to freeze it, keeps only bit 20 of the dot-clock word and writes it back | established |
+| `+0x4` | DOTCLK | last, after writing `0x80000000` to the timing register at `+0x10000` to freeze it, clears bit 20 of the dot-clock word, keeps every other bit, and writes it back (the code ands with the complement of bit 20) | established |
 
 ## Specification registers by IRIX use
 
