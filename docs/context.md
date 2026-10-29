@@ -125,3 +125,89 @@ GBE registers are not part of the switch (see Summary). Per-drawable display sta
 - Address-word bit 45: inferred to be the start flag, set on an entry written through the start alias (`+0x800`). Reasoning: bits 39:32 hold the register's doubleword index (address bits 10:3) and bits 42:40 its group (address bits 14:12), so address bit 11, the start alias, is the one address bit the decoded fields leave out, and `crmFindPP` stops at it exactly where a committed primitive ends. A model must set it on start-alias entries for the kernel's save to stop at the right place. Beyond that: unknown: no shipped software or published source depends on it. Routes tried: [spec] (the interface-buffer chapter gives the address RAM without a layout, PDF 163-164, 185-186), the 6.5.30 kernel, NetBSD, Linux, MAME.
 - A primitive that has begun when the engine is reloaded: unknown: no shipped software or published source depends on it. The kernel switches only after its idle wait and never saves mid-primitive state, and the specification says committed primitives run to completion atomically ([spec] PDF 186). Routes tried: [spec], the 6.5.30 kernel (`crimePcxSwap`, `crmSavePP`), NetBSD, Linux, MAME.
 - Whether the kernel reads back anything else on the O2 with a different CPU module.
+
+## Rendering-engine registers by access site (6.5.30)
+
+One entry per rendering-engine register the shipped 6.5.30 code reaches, or that the CRIME 1.5 specification lists and no code reaches, from `crime_kernel/disasm/`, `libglcore/asm/CRIME/` and the register tables of `root/spec/crime.txt` (tables 7-1 to 7-3). Offsets are from the rendering-engine window. Every entry carries a label.
+
+- `IntfBuf.data` at `+0x0`: 128 doubleword slots of the host interface buffer, which hold the data half of each register write waiting for the engine (table 7-1). Established.
+  `crmSavePP` in `crime.o` reads the low and high words of slot `s` at byte `8 * s` of the window and the matching address from `+0x200 + 8 * s`.
+  Its loop wraps the slot index back to 0 when it reaches 64, so IRIX treats the ring as 64 entries even though the table lists 128.
+- `TLB.fbB` at `+0x1200`: 64 registers of the second frame-buffer translation table, four 16-bit tile numbers each (table 7-2). Established.
+  `crmLoadTlbABC` in `crime_tiles.o` writes it together with the A and C tables from the drawable's tile list, shifting the physical address right by 16.
+  A write of 0 to `+0x4008` ends every such batch.
+- `TLB.fbC` at `+0x1400`: the third frame-buffer table, the same 64-register shape as `+0x1200` and `+0x1000` (table 7-2). Established.
+  The kernel skips the load for a slot whose cached serial equals the board's, by comparing words at board offsets 0xa4 to 0xac inside `crmValidateDrawable`.
+  A drawable whose cached serial matches the board's leaves it as it was.
+- `TLB.tex` at `+0x1600`: 28 registers of the texture table, four 16-bit tile numbers each (table 7-2). Established.
+  `crmLoadTexTlb` in `crime_tiles.o` rewrites all 28 doublewords on every texture bind from the 0x1d0-byte image `crmDefineTex` built.
+  Each entry is the physical address shifted right by 16, ORed with 0x8000.
+- `+0x16e0` TLB.cid: four registers of 16-bit colour-index tile entries (table 7-2). Established.
+  `crmLoadCidTlb` in `crime_tiles.o` takes the entry count from word `+4` of the descriptor and entry halfwords through the list pointer at `+8`.
+  It packs four entries per doubleword with entry 0 in the top halfword, stores each full doubleword at `+0x16e0` plus 8 per group of four, and ends with a write of 0 to `+0x4008` (`sw zero,16392`).
+- `+0x1708` TLB.linearA: the second doubleword of the 16-register linear table A, which holds two 32-bit page entries (table 7-2). Established.
+  The 16-pass copy loop of `crmValidateDrawable` in `crime_tiles.o` fills it on its second pass with the doubleword at descriptor offset `+0x58`.
+  Each pass of that loop stores one doubleword of table A, and bit 31 of each 32-bit entry is the valid bit.
+- `+0x1780` TLB.linearB: the first doubleword of linear table B, the host-memory table used for the destination of a read-back (table 7-2). Established.
+  `crmValidateDrawable` in `crime_tiles.o` fills it from descriptor offset `+0xd0` when the descriptor's word at `+0x24` or `+0x34` is non-zero.
+  Otherwise it zeroes all 32 linear doublewords once, and only if the board's loaded flag at `+0xb4` is set.
+- `+0x1788` TLB.linearB: the second doubleword of linear table B, taking descriptor offset `+0xd8` (table 7-2). Established.
+  The same second pass that writes `+0x1708` loads the doubleword at descriptor offset `+0xd8` into it.
+  Of its two 32-bit entries the upper one holds the even page and the lower one the odd page.
+- `+0x2020` ScrMask[0]: the first 64-bit screen mask, x start in bits 63:48, y start in 47:32, x end (exclusive) in 31:16 and y end in 15:0 (table 7-3). Established.
+  `crimeValidateClip` in `crime.o` writes the first clip rectangle here, and with an empty list writes the window's bounding box here and leaves the other four masks alone.
+  In the kernel's ClipMode word this register pairs with enable bit 5 and mode bit 0.
+- `+0x2028` ScrMask[1]: the second screen mask, same field layout as the first (table 7-3). Established.
+  `crmLoadGlobalsFromShadow` in `crime.o` reloads it second in its run of five 64-bit mask stores on a context switch.
+  It pairs with ClipMode enable bit 6 and mode bit 1 (the `0x21 << 1` term of the kernel's mask).
+- `+0x2030` ScrMask[2]: the third screen mask (table 7-3). Established.
+  `crmSetSmask` in `crm.so` stores it with a doubleword store for X clip rectangles, and mirrors the value at shadow offset `+0x30`, the register offset minus 0x2000.
+  Three rectangles make the kernel write ClipMode 0xe7, so this register's enable is bit 7 and its mode bit 2.
+- `+0x2038` ScrMask[3]: the fourth screen mask (table 7-3). Established.
+  A four-rectangle clip list makes `crimeValidateClip` in `crime.o` set ClipMode 0x1ef, which enables this mask through bit 8 and sets its mode bit 3.
+  A rectangle starting left of or above the origin is cut there before the 64-bit store, its end staying at start plus size.
+- `+0x2040` ScrMask[4]: the fifth and last screen mask (table 7-3). Established.
+  Only a clip list with five rectangles reaches it, giving ClipMode 0x3ff, so the enable is bit 9 and the mode bit 4 that the specification pairs with its own mask 0.
+  A list of more than five rectangles makes `crimeValidateClip` in `crime.o` write 0x21 and none of the masks.
+- `+0x2080` Vertex.GL[0].x: the start x of the first GL vertex pair, 13.6 fixed point, written with its y as one 64-bit store (table 7-3). Established.
+  `__glCrmFlatTriangle` and `__glCrmSmoothRGBTriangle` in `libGLcore.so` store the biased float window coordinates through it.
+  `__glCrmAntiAliasLineRGB` stores the raw float bits, whose low six bits are the sixty-fourths of a pixel.
+- `+0x2084` Vertex.GL[0].y: the start y of the first pair, a 32-bit word whose value is the line number shifted left by 6 and masked (table 7-3). Established.
+  `StoreRGBA` in `libGLcore.so` stores the shifted y word of a point here, directly after x at `+0x2080`.
+  `__glCrmDumpPerPixelSpan` in `libGLcore.so` stores it twice at sites 2472 and 2474 of `crm_span.s`.
+- `+0x2088` Vertex.GL[1].x: the end x of a line or the second corner of a triangle, 13.6 fixed point (table 7-3). Established.
+  `__glCrmDepthLine` and `__glCrmColorOptLine` in `libGLcore.so` write the end point of a line here.
+  The routine `crmLoadNonglobalsFromShadow` in `crime.o` replays it in its run of six vertex words.
+- `+0x208c` Vertex.GL[1].y: the end y of a line, a 32-bit word shifted left by 6 (table 7-3). Established.
+  `__glCrmDumpPerPixelSpan` in `libGLcore.so` writes it to the hardware and to the shadow record at offset 8332 in a back-to-back pair.
+  The first store goes through the hardware pointer and the second through the shadow pointer, both at the same offset.
+- `+0x20b4` PixelXfer.dst.linStride: the destination row step of a pixel read-back into host memory, in bytes (table 7-3). Established.
+  `crmReadPixelsXfer` in `libGLcore.so` stores the pixel size plus the stride excess here (offset 8372), and writes the same word to the shadow.
+  `crmLoadNonglobalsFromShadow` in `crime.o` reloads it just after the destination address at `+0x20b0`.
+- `+0x20e4` Shade.Gs: the start value of green for Gouraud shading, 9.12 fixed point (table 7-3). Established.
+  `__glCrmSmoothRGBLine` in `libGLcore.so` stores it together with red as one 64-bit word, from the float-bias trick that leaves the component times 4096 in the low bits.
+  The triangle routines `__glCrmSmoothRGBTriangle` and `__glCrmSmoothRGBATriangle` store it as a single float word.
+- `+0x20e8` Shade.Bs: the start value of blue, 9.12 fixed point (table 7-3). Established.
+  `__glCrmSmoothRGBLine` in `libGLcore.so` stores it as a 32-bit word of its own, apart from the red and green pair.
+  `__glCrmDumpSpan` writes it with the alpha start as one doubleword (`sdc1`) so that a span sets both together.
+- `+0x20ec` Shade.As: the start value of alpha, which also carries the colour index of an indexed-colour primitive (table 7-3). Established.
+  `__glCrmSmoothCIZTriangle` in `libGLcore.so` stores the index here instead of a blue or alpha value.
+  `__glCrmFillTriangle` in `libGLcore.so` stores it at three separate sites, lines 304, 355 and 406 of `crm_astextri.s`.
+- `+0x20f4` Shade.dgdx: the green slope along x, 9.12 per pixel step (table 7-3). Established.
+  `__glCrmSmoothRGBLine` in `libGLcore.so` stores it as a float word truncated to an integer, at line 310 of `crm_linedrawasm.s` on the x-major path.
+  That path writes the red slope at `+0x20f0` and the blue slope at `+0x2100` beside it, then commits through the start alias at `+0x2904`.
+- `+0x20fc` Shade.dgdy: the green slope along y (table 7-3). Established.
+  `__glCrmSmoothRGBLine` in `libGLcore.so` writes it on the y-major path at label `.L0d938014`, with the red slope at `+0x20f8` and the blue slope at `+0x2108`.
+  `__glCrmAntiAliasLineRGB` zeroes it on the minor axis, so a stale triangle slope never survives into a line.
+- `+0x2170` Fog.color: the fog colour as `red << 24 | green << 16 | blue << 8` (table 7-3). Established.
+  `__glCrmPassFog` in `libGLcore.so` truncates the three floats, shifts and ORs them, and stores the word to the hardware and, through the pointer at context offset 32188, to the shadow.
+  `crmLoadGlobalsFromShadow` reloads it under flag 0x40.
+- `+0x2190` Antialias.line: the antialiased-line step, a 2.14 slope in bits 31:16 and the ideal minor coordinate in bits 15:0 (table 7-3). Established.
+  `__glCrmAntiAliasLineRGB` in `libGLcore.so` computes the slope as the minor delta times 16384.0 times the reciprocal of the major delta.
+  `__glCrmTexturedLine` writes the pair as one 64-bit store (`sdc1` at offset 8592).
+- `+0x21c8` Depth.Zs: the 25.12 start depth, a 64-bit register (table 7-3). Established.
+  `__glCrmDepthLine` and `__glCrmFlatZTriangle` in `libGLcore.so` store the start depth here with a doubleword store.
+  `crmLoadNonglobalsFromShadow` reloads it with the two slope registers when flag 0x20 is set.
+- `+0x4008` write-zero register: the register the kernel writes 0 to after each batch of engine state. Established.
+  `crimePcxSwap` in `crime.o` stores it after saving the outgoing client with `crmSavePP`, and again after the incoming client's loads.
+  `crmLoadCidTlb` in `crime_tiles.o` ends with it (`sw zero,16392`), and so does `crime_load_linear_tlb` in `crime_dma.o`.

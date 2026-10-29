@@ -11,11 +11,11 @@ CRIME 1.5	5-7	113	CRIME	0x40	CPU Error Address	1	0	64		1	understood	docs/memory.
 CRIME 1.5	6-12	150	CRIME	0x200	MC Status/Control	1	0	64		1	understood	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
 CRIME 1.5	6-12	150	CRIME	0x208	Bank 0 Control	1	0	64		2	understood	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
 CRIME 1.5	6-12	150	CRIME	0x210	Bank 1 Control	1	0	64		2	understood	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
-CRIME 1.5	6-12	150	CRIME	0x218	Bank 2 Control	1	0	64		0	named-only	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x218	Bank 2 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x220	Bank 3 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x228	Bank 4 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x230	Bank 5 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
-CRIME 1.5	6-12	150	CRIME	0x238	Bank 6 Control	1	0	64		0	named-only	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x238	Bank 6 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x240	Bank 7 Control	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x248	Refresh Counter	1	0	64		0	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x250	Memory Error Status	1	0	64		1	understood	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
@@ -24,25 +24,25 @@ CRIME 1.5	6-12	150	CRIME	0x260	ECC Syndrome Bits	1	0	64		1	understood	docs/memor
 CRIME 1.5	6-12	150	CRIME	0x268	ECC Generated Check Bits	1	0	64		1	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	6-12	150	CRIME	0x270	ECC Replacement Check Bits	1	0	64		1	understood	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 CRIME 1.5	5-7	113	CRIME	0x4048	CPU Error Status	1	0	64		0	no-software-dependency	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
-CRIME 1.5	7-1	163	RE	0x0	IntfBuf.data[128]	128	8	64	R/W	0	understood	docs/memory.md#register-entries-whose-sites-need-more-than-three-names	Register entries whose sites need more than three names
+CRIME 1.5	7-1	163	RE	0x0	IntfBuf.data[128]	128	8	64	R/W	0	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-1	164	RE	0x200	IntfBuf.addr[128]	128	8	64	R/W	2	understood	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
 CRIME 1.5	7-1	164	RE	0x400	IntfBuf.ctl	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-2	164	RE	0x1000	TLB.fbA[64]	64	8	64	R/W	0	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1200	TLB.fbB[64]	64	8	64	R/W	0	named-only	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1400	TLB.fbC[64]	64	8	64	R/W	0	named-only	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1600	TLB.tex[28]	28	8	64	R/W	0	named-only	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x16e0	TLB.cid[4]	4	8	64	R/W	1	named-only	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
+CRIME 1.5	7-2	164	RE	0x1200	TLB.fbB[64]	64	8	64	R/W	0	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-2	164	RE	0x1400	TLB.fbC[64]	64	8	64	R/W	0	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-2	164	RE	0x1600	TLB.tex[28]	28	8	64	R/W	0	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-2	164	RE	0x16e0	TLB.cid[4]	4	8	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-2	164	RE	0x1700	TLB.linearA[16]	16	8	64	R/W	2	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1780	TLB.linearB[16]	16	8	64	R/W	2	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-2	164	RE	0x1780	TLB.linearB[16]	16	8	64	R/W	2	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	165	RE	0x2000	BufMode.src	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2008	BufMode.dst	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2010	ClipMode	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2018	DrawMode	1	0	32	R/W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	1	0	64	R/W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2028	ScrMask[1]	1	0	64	R/W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	1	0	64	R/W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	1	0	64	R/W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	1	0	64	R/W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	1	0	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	165	RE	0x2028	ScrMask[1]	1	0	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	1	0	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	1	0	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	1	0	64	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	165	RE	0x2048	Scissor	1	0	64	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	165	RE	0x2050	WinOffset.src	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2058	WinOffset.dst	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
@@ -50,29 +50,29 @@ CRIME 1.5	7-3	165	RE	0x2060	Primitive	1	0	32	W	1	understood	docs/opengl.md#const
 CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	named-only	docs/opengl.md#one-flat-triangle	One flat triangle
-CRIME 1.5	7-3	166	RE	0x208c	Vertex.GL[1].y	1	0	32	W	1	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	166	RE	0x208c	Vertex.GL[1].y	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	166	RE	0x2090	Vertex.GL[2].x	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x2094	Vertex.GL[2].y	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20a0	PixelXfer.src.addr	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20a8	PixelXfer.src.xStep	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	166	RE	0x20ac	PixelXfer.src.yStep	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	166	RE	0x20b0	PixelXfer.dst.linAddr	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	166	RE	0x20b4	PixelXfer.dst.linStride	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	166	RE	0x20b4	PixelXfer.dst.linStride	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	166	RE	0x20c0	Stipple.mode	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	166	RE	0x20c4	Stipple.pattern	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20d0	Shade.fgColor	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20d8	Shade.bgColor	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20e0	Shade.Rs	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20e4	Shade.Gs	1	0	32	W	1	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20e8	Shade.Bs	1	0	32	W	1	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20e4	Shade.Gs	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	167	RE	0x20e8	Shade.Bs	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x20f0	Shade.drdx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x20f8	Shade.drdy	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-CRIME 1.5	7-3	167	RE	0x20fc	Shade.dgdy	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	167	RE	0x20fc	Shade.dgdy	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x2100	Shade.dbdx	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	167	RE	0x2104	Shade.dadx	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	167	RE	0x2108	Shade.dbdy	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
@@ -90,11 +90,11 @@ CRIME 1.5	7-3	168	RE	0x2158	Texture.dqdx	1	0	32	W	1	understood	docs/opengl.md#co
 CRIME 1.5	7-3	168	RE	0x215c	Texture.dqdy	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	168	RE	0x2160	Texture.borderColor	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	168	RE	0x2168	Texture.envColor	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	named-only	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	named-only	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
+CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	169	RE	0x2194	Antialias.cov	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	169	RE	0x2198	AlphaTest	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	169	RE	0x21a0	Blend.constColor	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
@@ -102,7 +102,7 @@ CRIME 1.5	7-3	169	RE	0x21a8	Blend.func	1	0	32	R/W	1	understood	docs/opengl.md#re
 CRIME 1.5	7-3	169	RE	0x21b0	LogicOp	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	169	RE	0x21b8	ColorMask	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	169	RE	0x21c0	Depth.func	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	169	RE	0x21c8	Depth.Zs	1	0	64	W	1	named-only	docs/pixel-arithmetic.md#window-z-and-the-zs-dzdx-dzdy-words	Window z and the Zs, dz/dx, dz/dy words
+CRIME 1.5	7-3	169	RE	0x21c8	Depth.Zs	1	0	64	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	169	RE	0x21d0	Depth.dzdx	1	0	64	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	169	RE	0x21d8	Depth.dzdy	1	0	64	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	169	RE	0x21e0	Stencil.mode	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
