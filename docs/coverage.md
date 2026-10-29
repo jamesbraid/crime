@@ -2,6 +2,26 @@
 
 Map of what the O2 (CRIME and GBE) workspace has covered. It is the index later readers fill: each row is one area of one block. Block names follow `AGENTS.md`; a block's facts are labelled established, inferred or unknown in its header and docs, and this file says how far each area has got.
 
+<!-- inventory:begin -->
+
+## Measured coverage
+
+Counted from the binaries by `scripts/inventory.py`; the rows are in [docs/inventory/](inventory/README.md). A row is documented when a chapter under `docs/` or a header names it, named-only when only an index file does, undocumented otherwise.
+
+| Inventory | Rows | Documented | Named only | Undocumented | Percent documented |
+|---|---|---|---|---|---|
+| [Functions (every function symbol in scope)](inventory/functions.tsv) | 17995 | 556 | 7 | 17432 | 3.1% |
+| [Register offsets reached (CRIME, rendering engine, GBE, MACE video)](inventory/mmio.tsv) | 102 | 89 | 0 | 13 | 87.3% |
+| [Rendering-engine words (constant stores to register offsets)](inventory/tokens.tsv) | 19 | 4 | 0 | 15 | 21.1% |
+| [Graphics ioctl requests](inventory/ioctls.tsv) | 40 | 34 | 0 | 6 | 85.0% |
+| [Registers in the CRIME 1.5 and GBE specifications](inventory/spec-registers.tsv) | 174 | 149 | 0 | 25 | 85.6% |
+
+Scope: 82 files and archive members (55 ELF), listed in [binaries.tsv](inventory/binaries.tsv). The function rows repeat a function once per binary that carries it (debug and release builds, o32 and N32); by distinct name that is 11726 names, 353 documented (3.0%).
+
+<!-- inventory:end -->
+
+The rows below are the areas view: what each block and area has covered.
+
 ## Status key
 
 `none`: nothing derived yet. `partial`: some facts written with their derivation, gaps remain. `done`: every fact in the area is written and labelled, with nothing known to be missing. A reader who changes a row updates it in the same commit as the doc or header that backs it. No hardware is available: every unknown is settled from software and published material. A row is `done` only when every remaining unknown in it is answered or labelled "unknown: no shipped software or published source depends on it" with the routes tried; open questions, with routes tried and the next route, are in [open-questions.md](open-questions.md).

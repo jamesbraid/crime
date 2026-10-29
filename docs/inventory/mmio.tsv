@@ -1,0 +1,103 @@
+window	offset	reads	writes	via_start_alias	widths	evidence	binaries	first_binary	example	status	matched_by	doc
+CRIME	0x0	4	0	0	8	constant address	2	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):crimeProbe+0x4	documented	offset	CRIME.h#ID register (+0x00)
+CRIME	0x4	3	0	0	4	constant address	1	sbin/stand/ide.IP32	sbin/stand/ide.IP32:.text+0x44394	undocumented		
+CRIME	0x8	11	3	0	8	constant address	3	sbin/stand/ide.IP32	usr/cpu/sysgen/IP32boot/kernel.o:mlreset+0x1c	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x10	5	1	0	8	constant address	2	sbin/stand/ide.IP32	usr/cpu/sysgen/IP32boot/kernel.o:add_ioboard+0x40	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x18	1	12	0	8	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:VEC_int+0xc	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x20	5	5	0	8	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:synthclock+0x10	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x28	10	5	0	8	constant address	4	usr/cpu/sysgen/IP32boot/crime.a(crime.o)	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crime_init+0x1e8	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x30	0	1	0	8	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:mlreset+0x144	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME	0x38	17	3	0	8	constant address	3	sbin/stand/ide.IP32	usr/cpu/sysgen/IP32boot/kernel.o:absolute_rtc_current_time+0x8	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4); CRIME.h#Interrupt registers
+CRIME	0x40	5	0	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:ecc_handler+0x188	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x48	14	13	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:mlreset+0x28	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x50	0	1	0	8	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:mlreset+0x268	undocumented		
+CRIME	0x58	4	0	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:unmap_physaddr+0x88	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x200	2	2	0	8	constant address	3	sbin/stand/ide.IP32	usr/cpu/sysgen/IP32boot/kernel.o:ecc_enable+0x48	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME	0x208	2	0	0	4/8	constant address	2	sbin/stand/ide.IP32	sbin/stand/ide.IP32:.text+0x500b0	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4); docs/memory.md#Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
+CRIME	0x20c	1	0	0	4	constant address	1	sbin/stand/ide.IP32	sbin/stand/ide.IP32:.text+0x500ac	undocumented		
+CRIME	0x210	1	0	0	4	constant address	1	sbin/stand/ide.IP32	sbin/stand/ide.IP32:.text+0x500e0	undocumented		
+CRIME	0x214	1	0	0	4	constant address	1	sbin/stand/ide.IP32	sbin/stand/ide.IP32:.text+0x500e4	undocumented		
+CRIME	0x250	14	13	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:mlreset+0x30	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x258	5	0	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:ecc_handler+0x190	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x260	4	0	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:ecc_handler+0x5a8	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x268	3	0	0	8	constant address	2	sbin/stand/symmon.IP32	usr/cpu/sysgen/IP32boot/kernel.o:unmap_physaddr+0x90	documented	offset	CRIME.h#Interrupt registers
+CRIME	0x270	1	0	0	8	constant address	1	sbin/stand/symmon.IP32	sbin/stand/symmon.IP32:exception+0x11c	undocumented		
+GBE	0x0	0	1	0	4	base pointer	1	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):gbeProbe+0x20	documented	offset	GBE.h#Control
+GBE	0x4	1	1	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x1d0	documented	offset	GBE.h#Control
+GBE	0x14	1	0	0	4	base pointer	1	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):gbeProbe+0x0	documented	offset	GBE.h#Control
+GBE	0x10000	2	2	0	4	base pointer; constant address	3	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_init.o):gbeProbe+0x28	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE	0x20004	1	0	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x208	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x20008	1	1	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x68	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x30008	1	0	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x14	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x3000c	2	2	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x50	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x40000	1	0	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x21c	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x40004	2	2	0	4	constant address	1	usr/cpu/sysgen/IP32boot/kernel.o	usr/cpu/sysgen/IP32boot/kernel.o:early_gbe_stop+0x88	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE	0x70000	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x54	documented	offset	GBE.h#Cursor
+GBE	0x70004	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0xbc	documented	offset	GBE.h#Cursor
+GBE	0x70008	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x3c	undocumented		
+GBE	0x7000c	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x48	undocumented		
+GBE	0x78000	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x68	undocumented		
+GBE	0x78080	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x80	undocumented		
+GBE	0x78084	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0x94	undocumented		
+GBE	0x78088	0	1	0	4	pointer from crimeBoards	1	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o):crime_tpinit+0xa4	undocumented		
+RE	0x400	3	0	0	4	constant address; pointer field +120	2	sbin/stand/ide.IP32	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crimeFifoFullHandler+0x19c	documented	offset	CRIME_RE.h#Interface buffer (+0x0000, kernel)
+RE	0x2000	0	3	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:crmDrawPixelsXfer+0x2b4	documented	offset	CRIME_RE.h#Groups; CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2008	0	19	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmRenderLeftRightBitmap+0x68	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2018	0	164	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glBeginLLoop+0x1510	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2048	0	1	0	8	pointer field +32184	1	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAllocAccum+0x560	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2050	0	1	0	4	pointer field +120	1	usr/cpu/sysgen/IP32boot/crime.a(crime.o)	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crime_load_fbtlb+0x198	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2060	0	123	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x38	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2080	0	99	3	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x6c	documented	offset	docs/opengl.md#One flat triangle; docs/pixel-transfer.md#DrawPixels and ReadPixels in libGLcore (the transfer path)
+RE	0x2084	0	46	1	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmStippledColorOptLine+0xcc	documented	offset	docs/pixel-transfer.md#DrawPixels and ReadPixels in libGLcore (the transfer path)
+RE	0x2088	0	69	5	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x98	documented	offset	docs/opengl.md#One flat triangle; docs/pixel-transfer.md#DrawPixels and ReadPixels in libGLcore (the transfer path)
+RE	0x208c	0	33	15	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmStippledColorOptLine+0xd4	documented	offset	docs/pixel-transfer.md#DrawPixels and ReadPixels in libGLcore (the transfer path)
+RE	0x2090	0	22	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFlatTriangle+0x8c	documented	offset	docs/opengl.md#One flat triangle
+RE	0x20a0	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x1ec	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20a8	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x1cc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20ac	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x1d4	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20c0	0	16	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmStippledColorOptLine+0x90	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20c4	1	16	2	4	pointer field +120; pointer field +32184	3	usr/cpu/sysgen/IP32boot/crime.a(crime.o)	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crimePcxSwap+0x190	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20d0	0	72	27	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x3d8	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20e0	0	26	0	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x218	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20e4	0	14	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x224	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20e8	0	26	2	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x230	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20ec	0	32	4	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x244	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20f0	0	29	0	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x1f0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20f4	0	18	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothRGBTriangle+0x17c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20f8	0	29	0	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x1fc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x20fc	0	16	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothRGBTriangle+0x184	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2100	0	29	2	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x208	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2104	0	32	8	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothCITriangle+0x11c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2108	0	29	2	4/8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x210	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x210c	0	30	8	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothCITriangle+0x124	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2110	0	4	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmBeginPolygon+0x11c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2120	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0xab0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2128	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0xab4	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2130	0	6	2	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0xab8	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2134	0	6	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0x8e4	undocumented		
+RE	0x2138	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0x9a8	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2140	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0x9b0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2148	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0x9c4	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2150	0	6	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0x9cc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2158	0	6	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0xa18	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x215c	0	8	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFillTriangle+0xa3c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2170	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmPassFog+0x54	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2178	0	20	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x48c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2180	0	28	2	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x498	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2188	0	27	2	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x490	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2190	0	11	10	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x1b0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x2198	0	2	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmPassAlphaFunc+0x8c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21a0	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmPassBlendColor+0x84	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21a8	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmPassBlendFunc+0xdc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21b0	0	1	0	4	pointer field +32184	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmPassLogicOp+0x7c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21b8	0	5	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmPassColorMask+0x1bc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21c0	0	14	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmEnableDepthTest+0x550	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21c8	0	43	15	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x43c	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21d0	0	45	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x430	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21d8	0	45	0	8	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x428	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21e0	0	18	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmPassDepthFunc+0x118	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21e8	0	43	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmRenderLeftRightBitmap+0xbc	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21f0	0	14	14	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFlatTriangle+0xe8	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x21f8	0	2	0	4	pointer field +32184	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFlushAndConfirm+0x10	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+RE	0x4000	5	0	0	4	pointer field +120; pointer field +32184	4	usr/cpu/sysgen/IP32boot/crime.a(crime.o)	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crimeFifoFullHandler+0xc	documented	offset	CRIME_RE.h#Groups
+RE	0x4008	0	1	0	4	pointer field +120	1	usr/cpu/sysgen/IP32boot/crime.a(crime.o)	usr/cpu/sysgen/IP32boot/crime.a(crime.o):crimePrivate+0xe68	documented	offset	CRIME_RE.h#TLB group (+0x1000, kernel)

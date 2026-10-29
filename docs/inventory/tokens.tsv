@@ -1,0 +1,20 @@
+register	value	stores	via_start_alias	binaries	first_binary	example	status	doc
+0x2000	0x1228	1	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x144	undocumented	
+0x2018	0x400007	2	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmEnableDepthTest+0x68c	undocumented	
+0x2018	0x600040	1	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x16c	undocumented	
+0x2018	0x600078	1	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:crmReadPixelsXfer+0x20c	documented	docs/pixel-transfer.md#DrawPixels and ReadPixels in libGLcore (the transfer path)
+0x2060	0x3020000	5	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmEnableDepthTest+0x254	documented	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+0x20a8	0x4	1	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x1cc	documented	docs/context.md#Switch sequence (`k:crimePcxSwap`)
+0x20ac	0x4	1	0	1	usr/gfx/arch/IP32CRM32/libGLcore.so	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple+0x1d4	documented	docs/context.md#Switch sequence (`k:crimePcxSwap`)
+0x20f0	0x0	4	0	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x1f0	undocumented	
+0x20f8	0x0	6	0	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x1fc	undocumented	
+0x2100	0x0	4	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x208	undocumented	
+0x2104	0x0	2	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothCILine+0x108	undocumented	
+0x2108	0x0	6	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x210	undocumented	
+0x210c	0x0	4	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothCILine+0xfc	undocumented	
+0x2180	0x0	8	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x49c	undocumented	
+0x2188	0x0	10	2	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x490	undocumented	
+0x21d0	0x0	8	0	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x440	undocumented	
+0x21d8	0x0	10	0	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB+0x428	undocumented	
+0x21e8	0x0	6	0	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmInitStencil+0x244	undocumented	
+0x21f0	0x0	6	6	2	usr/gfx/arch/IP32CRM/libGLcore.so	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmFlatTriangle+0xe8	undocumented	

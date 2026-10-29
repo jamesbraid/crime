@@ -1,0 +1,175 @@
+spec	table	page	group	offset	absolute	name	count	stride	width	rw	reached_in_code	status	matched_by	doc
+CRIME 1.5	5-7	113	cpu	0x0	0x14000000	ID-Revision	1	0	64		2	documented	offset	CRIME.h#ID register (+0x00)
+CRIME 1.5	5-7	113	cpu	0x8	0x14000008	CPU Interface Control	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x10	0x14000010	Interrupt Status	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x18	0x14000018	Interrupt Enable	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x20	0x14000020	Software Interrupt	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x28	0x14000028	Hardware Interrupt	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x30	0x14000030	Watchdog Timer	1	0	64		1	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME 1.5	5-7	113	cpu	0x38	0x14000038	Crime Timer	1	0	64		1	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4); CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x40	0x14000040	CPU Error Address	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	5-7	113	cpu	0x4048	0x14004048	CPU Error Status	1	0	64		0	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	7-1	163	ib	0x0	0x15000000	IntfBuf.data[128]	128	8	64	R/W	0	documented	offset	CRIME_RE.h#Groups
+CRIME 1.5	7-1	164	ib	0x200	0x15000200	IntfBuf.addr[128]	128	8	64	R/W	1	documented	offset	docs/context.md#Saving and replaying uncommitted writes
+CRIME 1.5	7-1	164	ib	0x400	0x15000400	IntfBuf.ctl	1	0	32	W	1	documented	offset	CRIME_RE.h#Interface buffer (+0x0000, kernel)
+CRIME 1.5	6-12	150	mc	0x200	0x14000200	MC Status/Control	1	0	64		1	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME 1.5	6-12	150	mc	0x208	0x14000208	Bank 0 Control	1	0	64		2	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4); docs/memory.md#Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
+CRIME 1.5	6-12	150	mc	0x210	0x14000210	Bank 1 Control	1	0	64		2	undocumented		
+CRIME 1.5	6-12	150	mc	0x218	0x14000218	Bank 2 Control	1	0	64		0	undocumented		
+CRIME 1.5	6-12	150	mc	0x220	0x14000220	Bank 3 Control	1	0	64		0	undocumented		
+CRIME 1.5	6-12	150	mc	0x228	0x14000228	Bank 4 Control	1	0	64		0	undocumented		
+CRIME 1.5	6-12	150	mc	0x230	0x14000230	Bank 5 Control	1	0	64		0	undocumented		
+CRIME 1.5	6-12	150	mc	0x238	0x14000238	Bank 6 Control	1	0	64		0	undocumented		
+CRIME 1.5	6-12	150	mc	0x240	0x14000240	Bank 7 Control	1	0	64		0	documented	offset	docs/memory.md#Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
+CRIME 1.5	6-12	150	mc	0x248	0x14000248	Refresh Counter	1	0	64		0	documented	offset	docs/memory.md#Control, watchdog, time, ECC enable and revision code (pass 4); CRIME.h#Interrupt registers
+CRIME 1.5	6-12	150	mc	0x250	0x14000250	Memory Error Status	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	6-12	150	mc	0x258	0x14000258	Memory Error Address	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	6-12	150	mc	0x260	0x14000260	ECC Syndrome Bits	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	6-12	150	mc	0x268	0x14000268	ECC Generated Check Bits	1	0	64		1	documented	offset	CRIME.h#Interrupt registers
+CRIME 1.5	6-12	150	mc	0x270	0x14000270	ECC Replacement Check Bits	1	0	64		1	undocumented		
+CRIME 1.5	7-15	183	mte	0x3000	0x15003000	MTE.mode	1	0	32	R/W	0	documented	name	MTE.h#MTE.mode [E, spec PDF 184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3008	0x15003008	MTE.byteMask	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3010	0x15003010	MTE.stippleMask	1	0	32	W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3018	0x15003018	MTE.fgValue	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3020	0x15003020	MTE.src0	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3028	0x15003028	MTE.src1	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3030	0x15003030	MTE.dst0	1	0	32	W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	183	mte	0x3038	0x15003038	MTE.dst1	1	0	32	W	0	documented	name	CRIME_RE.h#Groups
+CRIME 1.5	7-15	184	mte	0x3040	0x15003040	MTE.srcYStep	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	184	mte	0x3048	0x15003048	MTE.dstYStep	1	0	32	R/W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	184	mte	0x3070	0x15003070	MTE.null	1	0	32	W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-15	184	mte	0x3078	0x15003078	MTE.ﬂush	1	0	32	W	0	documented	offset	MTE.h#Registers [E, spec PDF 183-184; netbsd]
+CRIME 1.5	7-3	165	pp	0x2000	0x15002000	BufMode.src	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Groups; CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2008	0x15002008	BufMode.dst	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2010	0x15002010	ClipMode	1	0	32	R/W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2018	0x15002018	DrawMode	1	0	32	R/W	1	documented	name	docs/open-questions.md#Rendering engine and memory transfer engine; CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2020	0x15002020	ScrMask[0]	0	0	64	R/W	0	undocumented		
+CRIME 1.5	7-3	165	pp	0x2028	0x15002028	ScrMask[1]	1	0	64	R/W	0	undocumented		
+CRIME 1.5	7-3	165	pp	0x2030	0x15002030	ScrMask[2]	2	8	64	R/W	0	undocumented		
+CRIME 1.5	7-3	165	pp	0x2038	0x15002038	ScrMask[3]	3	8	64	R/W	1	undocumented		
+CRIME 1.5	7-3	165	pp	0x2040	0x15002040	ScrMask[4]	4	8	64	R/W	2	undocumented		
+CRIME 1.5	7-3	165	pp	0x2048	0x15002048	Scissor	1	0	64	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2050	0x15002050	WinOffset.src	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2058	0x15002058	WinOffset.dst	1	0	32	R/W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	165	pp	0x2060	0x15002060	Primitive	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]; libglcore/include/glcore_crime.h#libglcore/include/glcore_crime.h
+CRIME 1.5	7-3	165	pp	0x2070	0x15002070	Vertex.X[0]	0	0	32	W	0	documented	offset	docs/pixel-transfer.md#Kernel pixel DMA
+CRIME 1.5	7-3	165	pp	0x2074	0x15002074	Vertex.X[1]	1	0	32	W	0	undocumented		
+CRIME 1.5	7-3	166	pp	0x2078	0x15002078	Vertex.X[2]	2	4	32	W	0	undocumented		
+CRIME 1.5	7-3	166	pp	0x2080	0x15002080	Vertex.GL[0].x	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x2084	0x15002084	Vertex.GL[0].y	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x2088	0x15002088	Vertex.GL[1].x	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x208c	0x1500208c	Vertex.GL[1].y	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x2090	0x15002090	Vertex.GL[2].x	1	0	32	W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x2094	0x15002094	Vertex.GL[2].y	1	0	32	W	0	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x20a0	0x150020a0	PixelXfer.src.addr	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20a8	0x150020a8	PixelXfer.src.xStep	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20ac	0x150020ac	PixelXfer.src.yStep	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20b0	0x150020b0	PixelXfer.dst.linAddr	1	0	32	W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20b4	0x150020b4	PixelXfer.dst.linStride	1	0	32	W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20c0	0x150020c0	Stipple.mode	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20c4	0x150020c4	Stipple.pattern	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20d0	0x150020d0	Shade.fgColor	1	0	32	W	1	documented	name	CRIME_RE.h#Groups; CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+CRIME 1.5	7-3	166	pp	0x20d8	0x150020d8	Shade.bgColor	1	0	32	R/W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	166	pp	0x20e0	0x150020e0	Shade.Rs	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20e4	0x150020e4	Shade.Gs	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20e8	0x150020e8	Shade.Bs	1	0	32	W	1	documented	name	CRIME_RE.h#Groups
+CRIME 1.5	7-3	167	pp	0x20ec	0x150020ec	Shade.As	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20f0	0x150020f0	Shade.drdx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20f4	0x150020f4	Shade.dgdx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20f8	0x150020f8	Shade.drdy	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x20fc	0x150020fc	Shade.dgdy	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x2100	0x15002100	Shade.dbdx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x2104	0x15002104	Shade.dadx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x2108	0x15002108	Shade.dbdy	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x210c	0x1500210c	Shade.dady	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	167	pp	0x2110	0x15002110	Texture.mode	1	0	32	R/W	1	documented	name	CRIME_RE.h#Texture.mode (+0x2110); CRIME_RE.h#Texture.format (+0x2118, 64-bit)
+CRIME 1.5	7-3	167	pp	0x2118	0x15002118	Texture.format	1	0	64	R/W	0	documented	name	CRIME_RE.h#Texture.format (+0x2118, 64-bit); libglcore/include/glcore_crime.h#libglcore/include/glcore_crime.h
+CRIME 1.5	7-3	167	pp	0x2120	0x15002120	Texture.SQs	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2128	0x15002128	Texture.TQs	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2130	0x15002130	Texture.Qs	1	0	32	W	1	documented	name	CRIME_RE.h#Groups
+CRIME 1.5	7-3	168	pp	0x2138	0x15002138	Texture.dsqdx	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2140	0x15002140	Texture.dsqdy	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2148	0x15002148	Texture.dtqdx	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2150	0x15002150	Texture.dtqdy	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2158	0x15002158	Texture.dqdx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x215c	0x1500215c	Texture.dqdy	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	168	pp	0x2160	0x15002160	Texture.borderColor	1	0	32	R/W	0	documented	name	CRIME_RE.h#Texture.mode (+0x2110)
+CRIME 1.5	7-3	168	pp	0x2168	0x15002168	Texture.envColor	1	0	32	R/W	0	documented	name	CRIME_RE.h#Texture.mode (+0x2110)
+CRIME 1.5	7-3	168	pp	0x2170	0x15002170	Fog.color	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2178	0x15002178	Fog.Fs	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2180	0x15002180	Fog.dfdx	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2188	0x15002188	Fog.dfdy	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2190	0x15002190	Antialias.line	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2194	0x15002194	Antialias.cov	1	0	32	W	0	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x2198	0x15002198	AlphaTest	1	0	32	R/W	1	documented	name	CRIME_RE.h#AlphaTest (+0x2198) [E, spec PDF 180; __glCrmPassAlphaFunc]
+CRIME 1.5	7-3	169	pp	0x21a0	0x150021a0	Blend.constColor	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x21a8	0x150021a8	Blend.func	1	0	32	R/W	1	documented	name	CRIME_RE.h#Blend.func (+0x21a8) [E, gl:crm_attrib:__glCrmPassBlendFunc]
+CRIME 1.5	7-3	169	pp	0x21b0	0x150021b0	LogicOp	1	0	32	R/W	1	documented	name	CRIME_RE.h#LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table]
+CRIME 1.5	7-3	169	pp	0x21b8	0x150021b8	ColorMask	1	0	32	R/W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x21c0	0x150021c0	Depth.func	1	0	32	R/W	1	documented	name	CRIME_RE.h#Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]; CRIME_RE.h#Depth.func (+0x21c0) [E, gl:crm_depth:__glCrmPassDepthFunc]
+CRIME 1.5	7-3	169	pp	0x21c8	0x150021c8	Depth.Zs	1	0	64	W	1	documented	name	CRIME_RE.h#Groups
+CRIME 1.5	7-3	169	pp	0x21d0	0x150021d0	Depth.dzdx	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x21d8	0x150021d8	Depth.dzdy	1	0	64	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-3	169	pp	0x21e0	0x150021e0	Stencil.mode	1	0	32	R/W	1	documented	name	CRIME_RE.h#Stencil.mode (+0x21e0) [E, gl:crm_stencil:__glCrmPassStencilMode]
+CRIME 1.5	7-3	170	pp	0x21e8	0x150021e8	Stencil.mask	1	0	32	R/W	1	documented	name	CRIME_RE.h#Stencil.mode (+0x21e0) [E, gl:crm_stencil:__glCrmPassStencilMode]
+CRIME 1.5	7-3	170	pp	0x21f0	0x150021f0	PixPipeNull	1	0	32	W	1	documented	name	CRIME_RE.h#Groups
+CRIME 1.5	7-3	170	pp	0x21f8	0x150021f8	PixPipeFlush	1	0	32	W	1	documented	offset	CRIME_RE.h#Pixel pipeline (+0x2000)
+CRIME 1.5	7-2	164	tlb	0x1000	0x15001000	TLB.fbA[64]	64	8	64	R/W	0	documented	offset	CRIME_RE.h#Groups
+CRIME 1.5	7-2	164	tlb	0x1200	0x15001200	TLB.fbB[64]	64	8	64	R/W	0	undocumented		
+CRIME 1.5	7-2	164	tlb	0x1400	0x15001400	TLB.fbC[64]	64	8	64	R/W	0	undocumented		
+CRIME 1.5	7-2	164	tlb	0x1600	0x15001600	TLB.tex[28]	28	8	64	R/W	0	undocumented		
+CRIME 1.5	7-2	164	tlb	0x16e0	0x150016e0	TLB.cid[4]	4	8	64	R/W	0	undocumented		
+CRIME 1.5	7-2	164	tlb	0x1700	0x15001700	TLB.linearA[16]	16	8	64	R/W	0	documented	offset	docs/pixel-transfer.md#Linear TLB loading
+CRIME 1.5	7-2	164	tlb	0x1780	0x15001780	TLB.linearB[16]	16	8	64	R/W	0	documented	offset	docs/pixel-transfer.md#Linear TLB loading
+GBE rev 1.1	3.2	36	gbe	0x0	0x16000000	CTRLSTAT	1	0	32	R/W	1	documented	name	docs/gbe.md#Pass 6: cross-read against the GBE specification and the remaining kernel globals; docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	36	gbe	0x4	0x16000004	DOTCLK	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); docs/open-questions.md#Display back end
+GBE rev 1.1	3.2	37	gbe	0x8	0x16000008	I2C	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	37	gbe	0xc	0x1600000c	SYSCLK	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	37	gbe	0x10	0x16000010	I2CFP	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	37	gbe	0x14	0x16000014	DEVICE_ID	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	38	gbe	0x10000	0x16010000	VT_0	1	0	32	R/W	1	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	38	gbe	0x10004	0x16010004	VT_1	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	38	gbe	0x10008	0x16010008	VT_2	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	38	gbe	0x1000c	0x1601000c	VT_3	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	38	gbe	0x10010	0x16010010	VT_4	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	38	gbe	0x10014	0x16010014	VT_5	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	39	gbe	0x10018	0x16010018	VT_6	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	39	gbe	0x1001c	0x1601001c	VT_7	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	39	gbe	0x10020	0x16010020	VT_8	1	0	32	R/W	0	documented	name	docs/gbe.md#Interrupts ([gbe-spec] pp. 20, 7)
+GBE rev 1.1	3.2	39	gbe	0x10024	0x16010024	VT_9	1	0	32	R/W	0	documented	name	docs/gbe.md#Interrupts ([gbe-spec] pp. 20, 7)
+GBE rev 1.1	3.2	39	gbe	0x10028	0x16010028	VT_10	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	39	gbe	0x1002c	0x1601002c	VT_11	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x10030	0x16010030	VT_12	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x10034	0x16010034	VT_13	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x10038	0x16010038	VT_14	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x1003c	0x1601003c	VT_15	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x10040	0x16010040	VT_16	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	40	gbe	0x10044	0x16010044	VT_17	1	0	32	R/W	0	documented	name	docs/gbe.md#Display-ID (DID) tables ([gbe-spec] pp. 15-16, 44)
+GBE rev 1.1	3.2	40	gbe	0x10048	0x16010048	VT_18	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	41	gbe	0x1004c	0x1601004c	VT_19	1	0	32	R/W	0	documented	offset	GBE.h#Video timing (+0x10000) [E, linux names]
+GBE rev 1.1	3.2	42	gbe	0x20000	0x16020000	OVR_0	1	0	32	R/W	0	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	42	gbe	0x20004	0x16020004	OVR_1	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	42	gbe	0x20008	0x16020008	OVR_2	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	43	gbe	0x30000	0x16030000	FRM_0	1	0	32	R/W	0	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	43	gbe	0x30004	0x16030004	FRM_1	1	0	32	R/W	0	documented	offset	GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	43	gbe	0x30008	0x16030008	FRM_2	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	43	gbe	0x3000c	0x1603000c	FRM_3	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	44	gbe	0x40000	0x16040000	DID	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	44	gbe	0x40004	0x16040004	DID_SHADOW	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#Overlay, frame and DID planes
+GBE rev 1.1	3.2	44	gbe	0x48000	0x16048000	WID[32]	32	4	32	R/W	0	documented	name	docs/gbe.md#How the DID plane is filled (`crm.so` `gbeLoadDispIDs`); docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	45	gbe	0x50000	0x16050000	CMAP[4608]	4608	4	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	45	gbe	0x58000	0x16058000	CMFIFO	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); docs/gbe.md#Colour-map FIFO (settles the conflict in `GBE.h`)
+GBE rev 1.1	3.2	45	gbe	0x60000	0x16060000	GMAP[256]	256	4	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	46	gbe	0x70000	0x16070000	CRS_0	1	0	32	R/W	1	documented	offset	GBE.h#Cursor
+GBE rev 1.1	3.2	46	gbe	0x70004	0x16070004	CRS_1	1	0	32	R/W	1	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	46	gbe	0x70008	0x16070008	CRS_CM[3]	3	4	32	R/W	2	undocumented		
+GBE rev 1.1	3.2	46	gbe	0x78000	0x16078000	CRS_GLY[64]	64	4	32	R/W	4	undocumented		
+GBE rev 1.1	3.2	47	gbe	0x80000	0x16080000	VC_0	1	0	32	R/W	0	documented	name	docs/open-questions.md#Display back end
+GBE rev 1.1	3.2	47	gbe	0x80004	0x16080004	VC_1	1	0	32	R/W	0	undocumented		
+GBE rev 1.1	3.2	47	gbe	0x80008	0x16080008	VC_2	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47); GBE.h#GBE.h
+GBE rev 1.1	3.2	47	gbe	0x8000c	0x1608000c	VC_3	1	0	32	R/W	0	documented	name	docs/gbe.md#Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	47	gbe	0x80010	0x16080010	VC_4	1	0	32	R/W	0	documented	name	docs/open-questions.md#Display back end
+GBE rev 1.1	3.2	48	gbe	0x80014	0x16080014	VC_5	1	0	32	R/W	0	undocumented		
+GBE rev 1.1	3.2	48	gbe	0x80018	0x16080018	VC_6	1	0	32	R/W	0	undocumented		
+GBE rev 1.1	3.2	48	gbe	0x8001c	0x1608001c	VC_7	1	0	32	R/W	0	undocumented		
+GBE rev 1.1	3.2	48	gbe	0x80020	0x16080020	VC_8	1	0	32	R/W	0	undocumented		

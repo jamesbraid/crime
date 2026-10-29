@@ -1,0 +1,122 @@
+{
+  "windows": [
+    {
+      "name": "CRIME",
+      "lo": "0x14000000",
+      "hi": "0x15000000",
+      "note": "CPU interface and memory controller registers (CRIME 1.5 spec, table 5-7, 6-12)"
+    },
+    {
+      "name": "RE",
+      "lo": "0x15000000",
+      "hi": "0x16000000",
+      "note": "rendering engine, offsets from 0x15000000 (CRIME 1.5 spec, figure 7-3)"
+    },
+    {
+      "name": "GBE",
+      "lo": "0x16000000",
+      "hi": "0x17000000",
+      "note": "display back end (GBE spec 3.1)"
+    },
+    {
+      "name": "MACEV",
+      "lo": "0x1f100000",
+      "hi": "0x1f280000",
+      "note": "MACE video in 1, video in 2 and video out, three 0x80000 windows from 0x1f100000 (Linux asm/ip32/mace.h struct sgi_mace)"
+    },
+    {
+      "name": "MACEAV",
+      "lo": "0x1f400000",
+      "hi": "0x1f800000",
+      "note": "the audio and video block the CRIME specification system map lists at 0x1f400000"
+    }
+  ],
+  "field_pointers": [
+    {
+      "binary": "libGLcore.so",
+      "disp": "32184",
+      "window": "RE",
+      "why": "gc+32184 is the hardware pointer libGLcore stores register writes through (docs/context.md)"
+    },
+    {
+      "binary": "crime.a",
+      "disp": "120",
+      "window": "RE",
+      "why": "board record +120 holds the KSEG1 pointer to 0x15000000 (crime_kernel/include/crime_kern.h CRB_RE_BASE)"
+    },
+    {
+      "binary": "crime.a",
+      "global": "crimeBoards",
+      "disp": "4",
+      "window": "GBE",
+      "why": "crimeBoards+4 holds the GBE KSEG1 base (crime_kernel/include/crime_kern.h)"
+    }
+  ],
+  "argument_pointers": [
+    {
+      "binary": "crime.a",
+      "function": "gbeProbe",
+      "reg": 4,
+      "window": "GBE",
+      "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"
+    }
+  ],
+  "ioctl": {
+    "range": [
+      "0x5200",
+      "0x56ff"
+    ],
+    "handler_functions": "(?i)ioctl|dispatch|crimePrivate",
+    "send_functions": [
+      "ioctl",
+      "fcntl"
+    ]
+  },
+  "documentation": {
+    "chapters": [
+      "docs/*.md"
+    ],
+    "headers": [
+      "*.h",
+      "crime_kernel/include/*.h",
+      "libglcore/include/*.h"
+    ],
+    "header_files": [
+      "*.h"
+    ],
+    "ioctl_files": [
+      "docs/ioctls.md",
+      "docs/context.md",
+      "docs/gbe.md",
+      "docs/pixel-transfer.md",
+      "docs/memory.md"
+    ],
+    "window_files": {
+      "CRIME": [
+        "CRIME.h",
+        "docs/memory.md",
+        "docs/reset.md"
+      ],
+      "RE": [
+        "CRIME_RE.h",
+        "MTE.h",
+        "docs/mte.md",
+        "docs/pixel-transfer.md",
+        "docs/context.md",
+        "docs/opengl.md"
+      ],
+      "GBE": [
+        "GBE.h",
+        "docs/gbe.md"
+      ],
+      "MACEV": [
+        "*.h",
+        "docs/*.md"
+      ],
+      "MACEAV": [
+        "*.h",
+        "docs/*.md"
+      ]
+    }
+  }
+}
