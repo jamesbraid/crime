@@ -376,3 +376,126 @@ Each entry names one routine of the 6.5.30 `crime.o` (a member of `crime.a`), sa
 - `crm_callvideo` in `crime.o`: calls the registered video re-start callback. Established.
   It checks the 64-byte slot for board 0, whose id word at +0x4 must equal the argument, and jumps through the pointer at +0x18 with the argument from +0x1c.
   `gbeRun` calls it after restarting the video timing, so the video driver learns of every re-start.
+
+# Kernel routines, one entry each (`crime_init.o` and `crime_retrace.o`)
+
+Each entry names one routine of the 6.5.30 `crime_init.o` or `crime_retrace.o` (members of `crime.a`), says what it does to GBE, the engine or the retrace machinery, and cites callees, offsets or sites, from `objdump -d -r` and the listings under `crime_kernel/disasm/`. Every entry carries a label.
+
+## Chip probe and display start (`crime_init.o`)
+
+- `gbeProbe` in `crime_init.o`: the GBE presence check and first set-up. Established.
+  It loads the device-identification word at +0x14 of the register window and goes on only when it equals 0x666.
+  It then stores 0x30000000 to the control word at +0x0 and, when bit 31 of the timing word at +0x10000 is set, stores 0 there to start the counters.
+- `crimeProbe` in `crime_init.o`: the CRIME presence check. Established.
+  It loads the identity doubleword at 0xb4000000, keeps the low byte and returns 0 for a high nibble other than 0xa or for exactly 0xa0.
+  Any later revision of the family returns 1, which `crime_earlyinit` takes as success.
+- `getNvramTiming` in `crime_init.o`: reads the monitor timing choice the PROM stored. Established.
+  It looks the option up with `kopt_find` and returns the format number 9 when its first character is `h` or `H`, 4 when it is `l` or `L`, and 0 otherwise.
+  The 29-instruction routine finds nothing when the option is absent and returns 0.
+- `crimeInitInfo` in `crime_init.o`: fills the board information record from the chip. Established.
+  It rewrites the GBE control word as the old clock select ORed with 0xaa000, reads the four strap bits and stores them at +0x28 with the chip revision at +0x2a.
+  It then calls `getNvramTiming` for the monitor format, copies the name with `strncpy` and, for a flat-panel channel, reads the panel's EDID through `i2cfp_DMI2_KernelEDID`.
+- `gbeSetTimingRegs` in `crime_init.o`: writes the video timing registers from a 0x30-byte timing record. Established.
+  It computes the horizontal and vertical totals, sync, blank and pixel-enable windows into +0x10004 to +0x1004c, with the dot-clock word at +0x4.
+  It calls `flushbus` after the stores and `i2cfp_DualChannelCommand` for the dual-channel option, and pauses with `us_delay` while the PLL settles.
+- `gbeStartVideoTiming` in `crime_init.o`: releases the timing counters once the registers are written. Established.
+  It clears bit 16 of CRIME's hardware-interrupt register (mask 0xfffeffff) through `flushbus`, pulses the FIFO reset bits 13 and 15 of the overlay and frame width words, and writes the pixel-enable windows last.
+  It waits with `us_delay` before clearing the freeze bit of the counter at +0x10000.
+- `crimeInitHW` in `crime_init.o`: the rendering-engine initialisation. Established.
+  It writes 0 to +0x408, switches the cursor off through GBE +0x70004 and sets the interface-buffer control word at +0x400 to 0x0fefff0a.
+  It clears the three frame-buffer TLBs with `crmFifoWait` pauses, clears linear TLBs A and B and the texture TLB, then selects thresholds by the CPU module that `get_cpu_irr` reports.
+  It finishes with `crmIdleWait`, the final control word and `flushbus`, and loads the gamma map with `gbeGmapInit`.
+- `crmInitTp` in `crime_init.o`: prepares the kernel textport. Established.
+  It programs window-ID entry 0 with the value 3 and translates the textport's buffers with `kvtophys`, writing them back with `dki_dcache_wb`.
+  It loads the text colours and the cursor through GBE and waits with `crmIdleWait` and `us_delay` between the steps.
+- `crmInvalidVideoTiming` in `crime_init.o`: validates the dot-clock fields of a user timing record. Established.
+  It reads the halfwords at +0x28, +0x2a and +0x2c and accepts 1 to 256 for the multiplier, 1 to 64 for the divider and 0 to 3 for the post-scaler.
+  It returns 0 for a valid record and 1 otherwise.
+- `crime_setvideotiming` in `crime_init.o`: the kernel side of loading a timing record, ioctl 0x55f6. Established.
+  It rejects format id 13 unless the board's flag byte at +0x98 has bit 1 set, sends custom records through `crmInvalidVideoTiming` and reapplies the information with `crimeInitInfo`.
+  When the frame size changed it resizes the frame buffer with `crmResizeFb` and restarts video with `gbeRun`, logging a failure through `cmn_err`.
+- `gbeGmapInit` in `crime_init.o`: loads the gamma map. Established.
+  When a driver flag is non-zero it writes 256 entries at +0x60000 from a 256-byte table in the object's data, each byte replicated into the three colour bytes.
+  When the flag is clear it writes a linear ramp whose step is 0x01010100.
+- `gbeRun` in `crime_init.o`: the single entry that starts video. Established.
+  It loads the tile lists with `crmLoadGbelists`, caches the vertical timing with `gbeCacheVtInfo` and writes the timing registers with `gbeSetTimingRegs`.
+  It then calls `gbeStartVideoTiming` and `crm_callvideo`, and on the stop path calls `gbeStop` first.
+- `gbeStop` in `crime_init.o`: stops the display. Established.
+  It saves the three DMA control words, clears their enable bits, waits up to 20000 times 10 microseconds with `us_delay` for the live copies to follow, and calls `flushbus` after each store.
+  `gbeCacheVtInfo` refreshes the cached timing values before the DMA enables are touched.
+
+## Retrace and swap scheduling (`crime_retrace.o`)
+
+- `crimeRetraceInit` in `crime_retrace.o`: allocates the retrace state at board start. Established.
+  It takes the memory with `kern_malloc`, clears it with `bzero` and initialises the mutex with `init_mutex`.
+- `gbeCacheVtInfo` in `crime_retrace.o`: computes the two interrupt lines of the current video mode. Established.
+  It puts the pre-blank line 32 before vertical blank and the retrace line 4 after it, and stores them in the cache under the retrace mutex.
+  The lines go to the interrupt register `+0x10020` through `flushbus`, written twice for the two latch stages.
+- `crmInitGbeData` in `crime_retrace.o`: builds the kernel's tables for GBE. Established.
+  It clears the window-ID and display-ID tables with `bzero` and gets the physical addresses of its blocks with `kvtophys`.
+  The first of the three display-ID tables is selected for the screen.
+- `crmLoadGbelists` in `crime_retrace.o`: writes the tile lists that GBE reads. Established.
+  It copies the frame, overlay and display-ID tile pointers into the GBE-visible block with `bcopy` and sets the three DMA control words.
+  Each entry is the 16-bit tile number of a 64 KiB tile, in a list at most 13 bits wide.
+- `crimeBlankscreen` in `crime_retrace.o`: the kernel side of ioctl 0x5610. Established.
+  It stores the argument in byte +0x19 of the state record at board offset +0x8c.
+  Unless a driver flag is zero or the panel byte at +0x2e equals 132, it stores a flat-panel vertical drive word to GBE +0x1002c: argument 2 gives 0xfff001, any other value a word built from the halfword at +0xe of the timing record.
+- `crime_retrace_callback` in `crime_retrace.o`: registers a retrace callback for another driver. Established.
+  The 16-byte routine at offset 0xb70 stores its second and third arguments in two kernel globals and returns 0, with no call.
+- `crimeRetraceHandler` in `crime_retrace.o`: the handler of GBE line 0, the retrace interrupt. Established.
+  It clears bit 16 of CRIME's hardware-interrupt register, validates swaps with `rrmValidateBuffer` and `rrmValidateRetrace`, and notifies video-sync waiters with `rrmValidateVideoSync`.
+  It rewrites the window-ID buffer bits for a swap, calls `crime_i2cFpGbeRetrace` for a pending panel change and reports a finished swap through `rrmValidateMGRSwapBuf`.
+- `crime_i2cFpGbeRetrace` in `crime_retrace.o`: carries out a flat-panel switch that was scheduled for retrace. Established.
+  It reads the request word that `crimeRetraceHandler` passes from +0x344: request 2 loads a linear ramp into the gamma map at +0x60000 and clears a driver flag.
+  Request 1 loads a 256-byte table into the same map and sets the flag, and either request clears the word.
+- `crime_FpSchedForRetrace` in `crime_retrace.o`: records a flat-panel on or off request. Established.
+  It clears the word at +0x344 of the retrace record, then stores 2 for an on request when the panel state byte at +0x28 is zero.
+  An off request stores 1 only when that state byte is non-zero.
+- `crimePreblankHandler` in `crime_retrace.o`: the handler of GBE line 1, the pre-blank interrupt. Established.
+  It clears bit 17 of CRIME's hardware-interrupt register and then maps and unmaps tiles with `tile_mapin` and `tile_mapout`.
+  It stamps results with `crmNextIncarnation`, copies with `bcopy`, and takes the swap lock with `mrtryaccess` and `mrunlock`.
+- `crm_copy_swap_boxes` in `crime_retrace.o`: copies the window rectangles of a buffer swap with the transfer engine. Established.
+  It waits for room with `crmFifoWait` and writes the source corners at +0x3020 and +0x3028 and the destination at +0x3030 and +0x3038 for each swap box.
+- `crmSwapBufd` in `crime_retrace.o`: the swap daemon, which carries out queued swaps outside interrupt context. Established.
+  It sleeps on a semaphore from `init_sema`, reloads the TLBs with `crmLoadTlbABC` and copies with `crm_copy_swap_boxes`.
+  It waits for idle with `crmIdleWait` and reports completion through `rrmValidateMGRSwapBuf`.
+- `crimeSchedSwapBuf` in `crime_retrace.o`: queues a buffer swap for a window slot. Established.
+  It uses slot 0 to 31 of the 0x18-byte records at board offset +0x8c, setting the state byte at +0x39 and the retrace count at +0x30.
+  It takes the lock with `mutex_lock` and logs a bad slot through `cmn_err`.
+- `crimeUnSchedSwapBuf` in `crime_retrace.o`: the kernel side of ioctl 0x560a. Established.
+  It removes a queued swap under the retrace mutex and invalidates the render node with `rrmInvalidateRN`.
+  It then calls `rrmDoUnMapGfx` so the next access validates again.
+- `crimeSchedMgrSwapBuf` in `crime_retrace.o`: queues a swap for the swap manager's own list. Established.
+  It first asks `RRM_CheckValidFault` for the fault state and then records the swap under the mutex, logging a bad request through `cmn_err`.
+- `crimeSchedRetraceEvent` in `crime_retrace.o`: appends a retrace-event record to the board's list. Established.
+  The head is at +0x340 and the link word of a record at +0x24, appended under the mutex at +0x348 unless the record is already on the list.
+- `crimeRetraceCloseRN` in `crime_retrace.o`: removes a closing render node's queued swaps and events. Established.
+  It walks the lists under `mutex_lock` and unlinks every record owned by the node in 83 instructions.
+- `crmRetraceCloseAllRn` in `crime_retrace.o`: the same removal for all render nodes at once. Established.
+  It clears the lists with `bzero` under `mutex_lock` and cancels the pending timeout with `untimeout`.
+- `crimeSetDisplayMode` in `crime_retrace.o`: the kernel side of ioctl 0x55f4, which writes one window-ID entry. Established.
+  It returns -22 unless the index is 0 to 31, clears bit 10 of the value when a driver flag is set, and stores it at +0x48000 plus four times the index.
+  The same value goes into the 24-byte slot of the state record at offset +0x24, and byte +0x3a of the slot is set when the low two bits are zero.
+- `crimeSetGammaRamp` in `crime_retrace.o`: the kernel side of ioctl 0x55f5, which loads the gamma map. Established.
+  It reads the red, green and blue bytes from three 256-byte planes of the request and passes each through a 256-byte lookup table.
+  It packs the results as red in bits 31:24, green in 23:16 and blue in 15:8 into the 256 entries at +0x60000.
+- `crmFindFreeDidTbl` in `crime_retrace.o`: the kernel side of ioctl 0x55fd. Established.
+  It searches the three display-ID tables under `mutex_lock` for an unused one and returns its index.
+- `crime_hli_handler` in `crime_retrace.o`: the dispatcher for GBE lines 2 and 3, at offset 0x2a64. Established.
+  It calls every request on the line's chain, then moves pending requests onto the hardware line and rewrites the line field of the interrupt register at +0x10024.
+  It ends by clearing bit 16 plus the line number of CRIME's hardware-interrupt register.
+- `crime_schedule_hli` in `crime_retrace.o`: places a line request on a hardware line, at offset 0x2c70. Established.
+  It tries line 2 then line 3, programs a free line at once, joins a busy line within three lines, and else queues the request pending.
+- `crime_hli_sched` in `crime_retrace.o`: adds a line request, at offset 0x2e1c. Established.
+  It allocates a 24-byte record with `kern_malloc`, gives it the next id from +0x324 and adds 40 to the line when relative, then calls `crime_schedule_hli`.
+- `crime_hli_unsched` in `crime_retrace.o`: removes a line request by id, at offset 0x2ee0. Established.
+  It frees the record with `kern_free` and parks an emptied hardware line at 0xfff; an id that is not on any chain returns 6.
+- `crime_hli_update` in `crime_retrace.o`: moves a request to a new line and span, at offset 0x3048. Established.
+  It unlinks the request, stores the line and span and schedules it again with `crime_schedule_hli`; a request alone on its chain is never matched and returns 6.
+- `crm_getustmsc` in `crime_retrace.o`: fills a retrace-synchronised time stamp record. Established.
+  It reads the system time with `update_ust` and `get_ust_nano` at raised priority from `splprof`, with the line count from bits 23:12 of the timing word at +0x10000.
+  It corrects the time by the fraction of the frame the beam has covered.
+- `crime_getustmsc` in `crime_retrace.o`: the entry the video driver imports. Established.
+  It takes a channel number and a record, finds the board in a 64-byte slot table and calls `crm_getustmsc` with the register pointer at +0x80 and the state at +0x8c.
+- `crimeFrameInfo` in `crime_retrace.o`: fills the 32-byte record for ioctl 0x560c. Established.
+  It sets byte 26 when the caller's swap slot is active and byte 27 from the client's object, under `mutex_lock`, and fills the rest through `crm_getustmsc`.

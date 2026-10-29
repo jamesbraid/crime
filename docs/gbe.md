@@ -500,11 +500,12 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
   The inventory scan finds no site here, while `gbeSetTimingRegs` in `crime_init.o` writes the counters `+0x10004` to `+0x10024` and `+0x10034` onward.
   Inferred: the 6.5.30 kernel leaves the flat-panel horizontal drive at its reset value.
 - `VT_11` at `+0x1002c`: the flat-panel vertical drive window in lines, clear in bits 11:0 and set in bits 23:12 (page 39). Established.
-  `gbeSetTimingRegs` in `crime_init.o` leaves the register at its reset value 0.
-  The scan of every in-scope binary shows no access at this offset.
+  `crimeBlankscreen` in `crime_retrace.o` stores `((halfword at +0xe of the timing record) + 1 & 0xfff) << 12 | 1` to unblank.
+  Blanking with argument 2 stores 0xfff001, which parks the window's set count at the last line.
+  It skips both stores when a kernel flag word is zero or when the byte at +0x2e of the record behind board offset +0x7c equals 132.
 - `VT_12` at `+0x10030`: the flat-panel data-enable window along a line, clear in bits 11:0 and set in bits 23:12 (page 40). Established.
-  The kernel's timing writer `gbeSetTimingRegs` steps from `+0x1002c` to `+0x10034` without touching it.
-  The register keeps its reset value 0 whenever IRIX has configured the display.
+  `crimePreblankHandler` in `crime_retrace.o` stores one of two kernel-held words to it on each pre-blank interrupt.
+  The choice follows a flag byte at +0x18 of the swap state that the same handler inverts every pass, at `xori ra,ra,0x1`.
 - `OVR_1` at `+0x20004`: the live overlay control, tile-list pointer in bits 31:5 and DMA enable in bit 0 (page 42). Established.
   `early_gbe_stop` in `kernel.o` polls its bit 0 until it clears, with a bound of 0x61a80 (400000) reads.
   It then polls until the register equals the bumped shadow word, as a fence for one blanking edge.
@@ -572,3 +573,7 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
 - `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established.
   A read returns no defined value because the register has no read path.
   No shipped software or published source accesses it. Routes tried: the kernel objects, the X module and the video libraries.
+- `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established.
+  `crimeRetraceHandler` in `crime_retrace.o` walks the 32 swap slots of 24 bytes each and advances its table pointer by 4 bytes per slot.
+  For a slot whose swap is due it rewrites the buffer bits of that slot's entry, the pair of low bits of the word.
+  `crimeSetDisplayMode` writes the same entry for ioctl 0x55f4 with index 1.
