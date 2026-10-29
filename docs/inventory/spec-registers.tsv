@@ -1,175 +1,175 @@
 spec	table	page	window	offset	name	count	stride	width	rw	reached_in_code	status	doc	section
-CRIME 1.5	5-7	113	CRIME	0x0	ID-Revision	1	0	64		2	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	5-7	113	CRIME	0x8	CPU Interface Control	1	0	64		1	documented	docs/memory.md#registers-and-sequences	Registers and sequences
-CRIME 1.5	5-7	113	CRIME	0x10	Interrupt Status	1	0	64		1	documented	docs/memory.md#details	Details
-CRIME 1.5	5-7	113	CRIME	0x18	Interrupt Enable	1	0	64		1	documented	docs/memory.md#details	Details
-CRIME 1.5	5-7	113	CRIME	0x20	Software Interrupt	1	0	64		1	documented	docs/memory.md#inputs-irix-registers	Inputs IRIX registers
-CRIME 1.5	5-7	113	CRIME	0x28	Hardware Interrupt	1	0	64		1	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	5-7	113	CRIME	0x30	Watchdog Timer	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	5-7	113	CRIME	0x38	Crime Timer	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	5-7	113	CRIME	0x40	CPU Error Address	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	6-12	150	CRIME	0x200	MC Status/Control	1	0	64		1	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	6-12	150	CRIME	0x208	Bank 0 Control	1	0	64		2	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	6-12	150	CRIME	0x210	Bank 1 Control	1	0	64		2	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	6-12	150	CRIME	0x218	Bank 2 Control	1	0	64		0	documented	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
-CRIME 1.5	6-12	150	CRIME	0x220	Bank 3 Control	1	0	64		0	documented	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
-CRIME 1.5	6-12	150	CRIME	0x228	Bank 4 Control	1	0	64		0	documented	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
-CRIME 1.5	6-12	150	CRIME	0x230	Bank 5 Control	1	0	64		0	documented	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
-CRIME 1.5	6-12	150	CRIME	0x238	Bank 6 Control	1	0	64		0	documented	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
-CRIME 1.5	6-12	150	CRIME	0x240	Bank 7 Control	1	0	64		0	documented	docs/memory.md#where-memory-sits-established-spec-pdf-135-153-linux-ip32-memoryc	Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
-CRIME 1.5	6-12	150	CRIME	0x248	Refresh Counter	1	0	64		0	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	6-12	150	CRIME	0x250	Memory Error Status	1	0	64		1	documented	docs/memory.md#registers-and-sequences	Registers and sequences
-CRIME 1.5	6-12	150	CRIME	0x258	Memory Error Address	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	6-12	150	CRIME	0x260	ECC Syndrome Bits	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	6-12	150	CRIME	0x268	ECC Generated Check Bits	1	0	64		1	documented	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
-CRIME 1.5	6-12	150	CRIME	0x270	ECC Replacement Check Bits	1	0	64		1	documented	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
-CRIME 1.5	5-7	113	CRIME	0x4048	CPU Error Status	1	0	64		0	documented	CRIME.h:174	Interrupt registers
-CRIME 1.5	7-1	163	RE	0x0	IntfBuf.data[128]	128	8	64	R/W	0	documented	docs/context.md#saving-and-replaying-uncommitted-writes	Saving and replaying uncommitted writes
-CRIME 1.5	7-1	164	RE	0x200	IntfBuf.addr[128]	128	8	64	R/W	2	documented	docs/context.md#the-shadow-record	The shadow record
-CRIME 1.5	7-1	164	RE	0x400	IntfBuf.ctl	1	0	32	W	1	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-2	164	RE	0x1000	TLB.fbA[64]	64	8	64	R/W	0	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-2	164	RE	0x1200	TLB.fbB[64]	64	8	64	R/W	0	documented	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1400	TLB.fbC[64]	64	8	64	R/W	0	documented	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1600	TLB.tex[28]	28	8	64	R/W	0	documented	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x16e0	TLB.cid[4]	4	8	64	R/W	1	documented	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
-CRIME 1.5	7-2	164	RE	0x1700	TLB.linearA[16]	16	8	64	R/W	2	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-2	164	RE	0x1780	TLB.linearB[16]	16	8	64	R/W	2	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	165	RE	0x2000	BufMode.src	1	0	32	R/W	1	documented	docs/memory.md#cpu-address-windows-and-aliases-pass-6	CPU address windows and aliases (pass 6)
-CRIME 1.5	7-3	165	RE	0x2008	BufMode.dst	1	0	32	R/W	1	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
-CRIME 1.5	7-3	165	RE	0x2010	ClipMode	1	0	32	R/W	1	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2018	DrawMode	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	0	0	64	R/W	1	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2028	ScrMask[1]	1	0	64	R/W	1	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	2	8	64	R/W	2	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	3	8	64	R/W	3	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	4	8	64	R/W	4	documented	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2048	Scissor	1	0	64	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	165	RE	0x2050	WinOffset.src	1	0	32	R/W	1	documented	docs/memory.md#cpu-address-windows-and-aliases-pass-6	CPU address windows and aliases (pass 6)
-CRIME 1.5	7-3	165	RE	0x2058	WinOffset.dst	1	0	32	R/W	1	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
-CRIME 1.5	7-3	165	RE	0x2060	Primitive	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	0	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	2	4	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	documented	docs/opengl.md#one-flat-triangle	One flat triangle
-CRIME 1.5	7-3	166	RE	0x208c	Vertex.GL[1].y	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	166	RE	0x2090	Vertex.GL[2].x	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	166	RE	0x2094	Vertex.GL[2].y	1	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x20a0	PixelXfer.src.addr	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	166	RE	0x20a8	PixelXfer.src.xStep	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	166	RE	0x20ac	PixelXfer.src.yStep	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	166	RE	0x20b0	PixelXfer.dst.linAddr	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	166	RE	0x20b4	PixelXfer.dst.linStride	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	166	RE	0x20c0	Stipple.mode	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x20c4	Stipple.pattern	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	166	RE	0x20d0	Shade.fgColor	1	0	32	W	1	documented	docs/opengl.md#one-flat-triangle	One flat triangle
-CRIME 1.5	7-3	166	RE	0x20d8	Shade.bgColor	1	0	32	R/W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	166	RE	0x20e0	Shade.Rs	1	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	167	RE	0x20e4	Shade.Gs	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20e8	Shade.Bs	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	167	RE	0x20f0	Shade.drdx	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20f8	Shade.drdy	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	167	RE	0x20fc	Shade.dgdy	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	167	RE	0x2100	Shade.dbdx	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	167	RE	0x2104	Shade.dadx	1	0	32	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x2108	Shade.dbdy	1	0	32	W	1	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-CRIME 1.5	7-3	167	RE	0x210c	Shade.dady	1	0	32	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	167	RE	0x2110	Texture.mode	1	0	32	R/W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	167	RE	0x2118	Texture.format	1	0	64	R/W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	167	RE	0x2120	Texture.SQs	1	0	64	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	168	RE	0x2128	Texture.TQs	1	0	64	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	168	RE	0x2130	Texture.Qs	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	168	RE	0x2138	Texture.dsqdx	1	0	64	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	168	RE	0x2140	Texture.dsqdy	1	0	64	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	168	RE	0x2148	Texture.dtqdx	1	0	64	W	1	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	168	RE	0x2150	Texture.dtqdy	1	0	64	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	168	RE	0x2158	Texture.dqdx	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	168	RE	0x215c	Texture.dqdy	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	168	RE	0x2160	Texture.borderColor	1	0	32	R/W	1	documented	CRIME_RE.h:381	Texture.mode (+0x2110)
-CRIME 1.5	7-3	168	RE	0x2168	Texture.envColor	1	0	32	R/W	1	documented	CRIME_RE.h:376	Texture.mode (+0x2110)
-CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	documented	docs/opengl.md#fog	Fog
-CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
-CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
-CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	documented	docs/opengl.md#fog	Fog
-CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
-CRIME 1.5	7-3	169	RE	0x2194	Antialias.cov	1	0	32	W	1	documented	docs/context.md#global-and-non-global-registers	Global and non-global registers
-CRIME 1.5	7-3	169	RE	0x2198	AlphaTest	1	0	32	R/W	1	documented	CRIME_RE.h:440	AlphaTest (+0x2198) [E, spec PDF 180; __glCrmPassAlphaFunc]
-CRIME 1.5	7-3	169	RE	0x21a0	Blend.constColor	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	169	RE	0x21a8	Blend.func	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	169	RE	0x21b0	LogicOp	1	0	32	R/W	1	documented	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
-CRIME 1.5	7-3	169	RE	0x21b8	ColorMask	1	0	32	R/W	1	documented	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
-CRIME 1.5	7-3	169	RE	0x21c0	Depth.func	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	169	RE	0x21c8	Depth.Zs	1	0	64	W	1	documented	docs/pixel-arithmetic.md#window-z-and-the-zs-dzdx-dzdy-words	Window z and the Zs, dz/dx, dz/dy words
-CRIME 1.5	7-3	169	RE	0x21d0	Depth.dzdx	1	0	64	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-3	169	RE	0x21d8	Depth.dzdy	1	0	64	W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	169	RE	0x21e0	Stencil.mode	1	0	32	R/W	1	documented	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
-CRIME 1.5	7-3	170	RE	0x21e8	Stencil.mask	1	0	32	R/W	1	documented	docs/functions.md#validation-on-a-fault	Validation on a fault
-CRIME 1.5	7-3	170	RE	0x21f0	PixPipeNull	1	0	32	W	1	documented	docs/context.md#the-shadow-record	The shadow record
-CRIME 1.5	7-3	170	RE	0x21f8	PixPipeFlush	1	0	32	W	1	documented	docs/mte.md#copy-sequence-in-the-x-server	Copy sequence in the X server
-CRIME 1.5	7-15	183	RE	0x3000	MTE.mode	1	0	32	R/W	1	documented	docs/context.md#the-shadow-record	The shadow record
-CRIME 1.5	7-15	183	RE	0x3008	MTE.byteMask	1	0	32	R/W	1	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
-CRIME 1.5	7-15	183	RE	0x3010	MTE.stippleMask	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	183	RE	0x3018	MTE.fgValue	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	183	RE	0x3020	MTE.src0	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	183	RE	0x3028	MTE.src1	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	183	RE	0x3030	MTE.dst0	1	0	32	W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	183	RE	0x3038	MTE.dst1	1	0	32	W	1	documented	CRIME_RE.h:40	Groups
-CRIME 1.5	7-15	184	RE	0x3040	MTE.srcYStep	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	184	RE	0x3048	MTE.dstYStep	1	0	32	R/W	1	documented	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
-CRIME 1.5	7-15	184	RE	0x3070	MTE.null	1	0	32	W	0	no-software-dependency	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
-CRIME 1.5	7-15	184	RE	0x3078	MTE.ﬂush	1	0	32	W	1	documented	docs/mte.md#mte-copies-fills-and-the-address-word	MTE: copies, fills and the address word
-GBE rev 1.1	3.2	36	GBE	0x0	CTRLSTAT	1	0	32	R/W	1	documented	docs/gbe.md#pass-6-cross-read-against-the-gbe-specification-and-the-remaining-kernel-globals	Pass 6: cross-read against the GBE specification and the remaining kernel globals
-GBE rev 1.1	3.2	36	GBE	0x4	DOTCLK	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	37	GBE	0x8	I2C	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	37	GBE	0xc	SYSCLK	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	37	GBE	0x10	I2CFP	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	37	GBE	0x14	DEVICE_ID	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	38	GBE	0x10000	VT_0	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	38	GBE	0x10004	VT_1	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	38	GBE	0x10008	VT_2	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	38	GBE	0x1000c	VT_3	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	38	GBE	0x10010	VT_4	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	38	GBE	0x10014	VT_5	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	39	GBE	0x10018	VT_6	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	39	GBE	0x1001c	VT_7	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	39	GBE	0x10020	VT_8	1	0	32	R/W	0	documented	docs/gbe.md#interrupts-gbe-spec-pp-20-7	Interrupts ([gbe-spec] pp. 20, 7)
-GBE rev 1.1	3.2	39	GBE	0x10024	VT_9	1	0	32	R/W	0	documented	docs/gbe.md#interrupts-gbe-spec-pp-20-7	Interrupts ([gbe-spec] pp. 20, 7)
-GBE rev 1.1	3.2	39	GBE	0x10028	VT_10	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	39	GBE	0x1002c	VT_11	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x10030	VT_12	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x10034	VT_13	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x10038	VT_14	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x1003c	VT_15	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x10040	VT_16	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	40	GBE	0x10044	VT_17	1	0	32	R/W	0	documented	docs/gbe.md#display-id-did-tables-gbe-spec-pp-15-16-44	Display-ID (DID) tables ([gbe-spec] pp. 15-16, 44)
-GBE rev 1.1	3.2	40	GBE	0x10048	VT_18	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	41	GBE	0x1004c	VT_19	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	42	GBE	0x20000	OVR_0	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	42	GBE	0x20004	OVR_1	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	42	GBE	0x20008	OVR_2	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	43	GBE	0x30000	FRM_0	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	43	GBE	0x30004	FRM_1	1	0	32	R/W	0	documented	docs/gbe.md#register-values	Register values
-GBE rev 1.1	3.2	43	GBE	0x30008	FRM_2	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	43	GBE	0x3000c	FRM_3	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	44	GBE	0x40000	DID	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	44	GBE	0x40004	DID_SHADOW	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	44	GBE	0x48000	WID[32]	32	4	32	R/W	0	documented	docs/gbe.md#how-the-did-plane-is-filled-crmso-gbeloaddispids	How the DID plane is filled (`crm.so` `gbeLoadDispIDs`)
-GBE rev 1.1	3.2	45	GBE	0x50000	CMAP[4608]	4608	4	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	45	GBE	0x58000	CMFIFO	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	45	GBE	0x60000	GMAP[256]	256	4	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	46	GBE	0x70000	CRS_0	1	0	32	R/W	1	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
-GBE rev 1.1	3.2	46	GBE	0x70004	CRS_1	1	0	32	R/W	1	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	46	GBE	0x70008	CRS_CM[3]	3	4	32	R/W	2	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
-GBE rev 1.1	3.2	46	GBE	0x78000	CRS_GLY[64]	64	4	32	R/W	4	documented	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
-GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	47	GBE	0x80004	VC_1	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	47	GBE	0x80008	VC_2	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	47	GBE	0x8000c	VC_3	1	0	32	R/W	0	documented	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
-GBE rev 1.1	3.2	47	GBE	0x80010	VC_4	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	48	GBE	0x80014	VC_5	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	48	GBE	0x80018	VC_6	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	48	GBE	0x8001c	VC_7	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
-GBE rev 1.1	3.2	48	GBE	0x80020	VC_8	1	0	32	R/W	0	documented	docs/gbe.md#video-capture-block	Video capture block
+CRIME 1.5	5-7	113	CRIME	0x0	ID-Revision	1	0	64		2	understood	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	5-7	113	CRIME	0x8	CPU Interface Control	1	0	64		1	understood	docs/memory.md#registers-and-sequences	Registers and sequences
+CRIME 1.5	5-7	113	CRIME	0x10	Interrupt Status	1	0	64		1	understood	docs/memory.md#details	Details
+CRIME 1.5	5-7	113	CRIME	0x18	Interrupt Enable	1	0	64		1	understood	docs/memory.md#registers-and-sequences	Registers and sequences
+CRIME 1.5	5-7	113	CRIME	0x20	Software Interrupt	1	0	64		1	named-only	docs/memory.md#inputs-irix-registers	Inputs IRIX registers
+CRIME 1.5	5-7	113	CRIME	0x28	Hardware Interrupt	1	0	64		1	understood	CRIME.h:83	Interrupt registers
+CRIME 1.5	5-7	113	CRIME	0x30	Watchdog Timer	1	0	64		1	understood	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME 1.5	5-7	113	CRIME	0x38	Crime Timer	1	0	64		1	understood	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME 1.5	5-7	113	CRIME	0x40	CPU Error Address	1	0	64		1	no-software-dependency	CRIME.h:141	Interrupt registers
+CRIME 1.5	6-12	150	CRIME	0x200	MC Status/Control	1	0	64		1	named-only	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	6-12	150	CRIME	0x208	Bank 0 Control	1	0	64		2	understood	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	6-12	150	CRIME	0x210	Bank 1 Control	1	0	64		2	understood	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	6-12	150	CRIME	0x218	Bank 2 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x220	Bank 3 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x228	Bank 4 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x230	Bank 5 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x238	Bank 6 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x240	Bank 7 Control	1	0	64		0	understood	docs/memory.md#memory-bank-control-registers-pass-8	Memory bank control registers (pass 8)
+CRIME 1.5	6-12	150	CRIME	0x248	Refresh Counter	1	0	64		0	understood	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+CRIME 1.5	6-12	150	CRIME	0x250	Memory Error Status	1	0	64		1	understood	docs/memory.md#registers-and-sequences	Registers and sequences
+CRIME 1.5	6-12	150	CRIME	0x258	Memory Error Address	1	0	64		1	no-software-dependency	CRIME.h:143	Interrupt registers
+CRIME 1.5	6-12	150	CRIME	0x260	ECC Syndrome Bits	1	0	64		1	no-software-dependency	CRIME.h:143	Interrupt registers
+CRIME 1.5	6-12	150	CRIME	0x268	ECC Generated Check Bits	1	0	64		1	no-software-dependency	CRIME.h:143	Interrupt registers
+CRIME 1.5	6-12	150	CRIME	0x270	ECC Replacement Check Bits	1	0	64		1	named-only	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	5-7	113	CRIME	0x4048	CPU Error Status	1	0	64		0	named-only	CRIME.h:174	Interrupt registers
+CRIME 1.5	7-1	163	RE	0x0	IntfBuf.data[128]	128	8	64	R/W	0	understood	docs/memory.md#settled-in-pass-7-see-crimeh	Settled in pass 7 (see `CRIME.h`)
+CRIME 1.5	7-1	164	RE	0x200	IntfBuf.addr[128]	128	8	64	R/W	2	named-only	docs/context.md#the-shadow-record	The shadow record
+CRIME 1.5	7-1	164	RE	0x400	IntfBuf.ctl	1	0	32	W	1	named-only	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-2	164	RE	0x1000	TLB.fbA[64]	64	8	64	R/W	0	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-2	164	RE	0x1200	TLB.fbB[64]	64	8	64	R/W	0	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
+CRIME 1.5	7-2	164	RE	0x1400	TLB.fbC[64]	64	8	64	R/W	0	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
+CRIME 1.5	7-2	164	RE	0x1600	TLB.tex[28]	28	8	64	R/W	0	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
+CRIME 1.5	7-2	164	RE	0x16e0	TLB.cid[4]	4	8	64	R/W	1	understood	docs/memory.md#rendering-tlb-formats	Rendering TLB formats
+CRIME 1.5	7-2	164	RE	0x1700	TLB.linearA[16]	16	8	64	R/W	2	understood	docs/context.md#linear-tlb-load-in-crmvalidatedrawable	Linear TLB load in `crmValidateDrawable`
+CRIME 1.5	7-2	164	RE	0x1780	TLB.linearB[16]	16	8	64	R/W	2	understood	docs/context.md#linear-tlb-load-in-crmvalidatedrawable	Linear TLB load in `crmValidateDrawable`
+CRIME 1.5	7-3	165	RE	0x2000	BufMode.src	1	0	32	R/W	1	understood	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	165	RE	0x2008	BufMode.dst	1	0	32	R/W	1	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
+CRIME 1.5	7-3	165	RE	0x2010	ClipMode	1	0	32	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2018	DrawMode	1	0	32	R/W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	0	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2028	ScrMask[1]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	2	8	64	R/W	2	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	3	8	64	R/W	3	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	4	8	64	R/W	4	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2048	Scissor	1	0	64	R/W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	165	RE	0x2050	WinOffset.src	1	0	32	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2058	WinOffset.dst	1	0	32	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2060	Primitive	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	0	0	32	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	2	4	32	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+CRIME 1.5	7-3	166	RE	0x208c	Vertex.GL[1].y	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+CRIME 1.5	7-3	166	RE	0x2090	Vertex.GL[2].x	1	0	32	W	1	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+CRIME 1.5	7-3	166	RE	0x2094	Vertex.GL[2].y	1	0	32	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	166	RE	0x20a0	PixelXfer.src.addr	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	166	RE	0x20a8	PixelXfer.src.xStep	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	166	RE	0x20ac	PixelXfer.src.yStep	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	166	RE	0x20b0	PixelXfer.dst.linAddr	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	166	RE	0x20b4	PixelXfer.dst.linStride	1	0	32	W	1	understood	docs/pixel-transfer.md#the-step-registers	The step registers
+CRIME 1.5	7-3	166	RE	0x20c0	Stipple.mode	1	0	32	R/W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	166	RE	0x20c4	Stipple.pattern	1	0	32	R/W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	166	RE	0x20d0	Shade.fgColor	1	0	32	W	1	named-only	docs/opengl.md#one-flat-triangle	One flat triangle
+CRIME 1.5	7-3	166	RE	0x20d8	Shade.bgColor	1	0	32	R/W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	166	RE	0x20e0	Shade.Rs	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20e4	Shade.Gs	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20e8	Shade.Bs	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20f0	Shade.drdx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20f8	Shade.drdy	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20fc	Shade.dgdy	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x2100	Shade.dbdx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x2104	Shade.dadx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x2108	Shade.dbdy	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x210c	Shade.dady	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x2110	Texture.mode	1	0	32	R/W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	167	RE	0x2118	Texture.format	1	0	64	R/W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	167	RE	0x2120	Texture.SQs	1	0	64	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	168	RE	0x2128	Texture.TQs	1	0	64	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	168	RE	0x2130	Texture.Qs	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	168	RE	0x2138	Texture.dsqdx	1	0	64	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x2140	Texture.dsqdy	1	0	64	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x2148	Texture.dtqdx	1	0	64	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x2150	Texture.dtqdy	1	0	64	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x2158	Texture.dqdx	1	0	32	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x215c	Texture.dqdy	1	0	32	W	1	located	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	168	RE	0x2160	Texture.borderColor	1	0	32	R/W	1	named-only	CRIME_RE.h:381	Texture.mode (+0x2110)
+CRIME 1.5	7-3	168	RE	0x2168	Texture.envColor	1	0	32	R/W	1	named-only	CRIME_RE.h:376	Texture.mode (+0x2110)
+CRIME 1.5	7-3	168	RE	0x2170	Fog.color	1	0	32	R/W	1	understood	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2178	Fog.Fs	1	0	32	W	1	understood	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2180	Fog.dfdx	1	0	32	W	1	understood	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2188	Fog.dfdy	1	0	32	W	1	understood	docs/opengl.md#fog	Fog
+CRIME 1.5	7-3	169	RE	0x2190	Antialias.line	1	0	32	W	1	understood	docs/opengl.md#antialiasing	Antialiasing
+CRIME 1.5	7-3	169	RE	0x2194	Antialias.cov	1	0	32	W	1	named-only	docs/context.md#global-and-non-global-registers	Global and non-global registers
+CRIME 1.5	7-3	169	RE	0x2198	AlphaTest	1	0	32	R/W	1	named-only	docs/coverage.md#crime-rendering-engine	CRIME rendering engine
+CRIME 1.5	7-3	169	RE	0x21a0	Blend.constColor	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	169	RE	0x21a8	Blend.func	1	0	32	R/W	1	named-only	docs/pixel-arithmetic.md#the-depth-buffer-and-the-test	The depth buffer and the test
+CRIME 1.5	7-3	169	RE	0x21b0	LogicOp	1	0	32	R/W	1	named-only	docs/coverage.md#crime-rendering-engine	CRIME rendering engine
+CRIME 1.5	7-3	169	RE	0x21b8	ColorMask	1	0	32	R/W	1	named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+CRIME 1.5	7-3	169	RE	0x21c0	Depth.func	1	0	32	R/W	1	named-only	docs/pixel-arithmetic.md#the-depth-buffer-and-the-test	The depth buffer and the test
+CRIME 1.5	7-3	169	RE	0x21c8	Depth.Zs	1	0	64	W	1	named-only	docs/pixel-arithmetic.md#window-z-and-the-zs-dzdx-dzdy-words	Window z and the Zs, dz/dx, dz/dy words
+CRIME 1.5	7-3	169	RE	0x21d0	Depth.dzdx	1	0	64	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-3	169	RE	0x21d8	Depth.dzdy	1	0	64	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	169	RE	0x21e0	Stencil.mode	1	0	32	R/W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
+CRIME 1.5	7-3	170	RE	0x21e8	Stencil.mask	1	0	32	R/W	1	named-only	docs/functions.md#validation-on-a-fault	Validation on a fault
+CRIME 1.5	7-3	170	RE	0x21f0	PixPipeNull	1	0	32	W	1	understood	docs/opengl.md#one-flat-triangle	One flat triangle
+CRIME 1.5	7-3	170	RE	0x21f8	PixPipeFlush	1	0	32	W	1	named-only	docs/mte.md#copy-sequence-in-the-x-server	Copy sequence in the X server
+CRIME 1.5	7-15	183	RE	0x3000	MTE.mode	1	0	32	R/W	1	named-only	docs/context.md#the-shadow-record	The shadow record
+CRIME 1.5	7-15	183	RE	0x3008	MTE.byteMask	1	0	32	R/W	1	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
+CRIME 1.5	7-15	183	RE	0x3010	MTE.stippleMask	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	183	RE	0x3018	MTE.fgValue	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	183	RE	0x3020	MTE.src0	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	183	RE	0x3028	MTE.src1	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	183	RE	0x3030	MTE.dst0	1	0	32	W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	183	RE	0x3038	MTE.dst1	1	0	32	W	1	named-only	CRIME_RE.h:40	Groups
+CRIME 1.5	7-15	184	RE	0x3040	MTE.srcYStep	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	184	RE	0x3048	MTE.dstYStep	1	0	32	R/W	1	named-only	docs/context.md#switch-sequence-kcrimepcxswap	Switch sequence (`k:crimePcxSwap`)
+CRIME 1.5	7-15	184	RE	0x3070	MTE.null	1	0	32	W	0	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
+CRIME 1.5	7-15	184	RE	0x3078	MTE.ﬂush	1	0	32	W	1	named-only	docs/mte.md#mte-copies-fills-and-the-address-word	MTE: copies, fills and the address word
+GBE rev 1.1	3.2	36	GBE	0x0	CTRLSTAT	1	0	32	R/W	1	understood	GBE.h:105	Overlay, frame and DID planes
+GBE rev 1.1	3.2	36	GBE	0x4	DOTCLK	1	0	32	R/W	1	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	37	GBE	0x8	I2C	1	0	32	R/W	0	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	37	GBE	0xc	SYSCLK	1	0	32	R/W	0	understood	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+GBE rev 1.1	3.2	37	GBE	0x10	I2CFP	1	0	32	R/W	0	understood	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+GBE rev 1.1	3.2	37	GBE	0x14	DEVICE_ID	1	0	32	R/W	1	understood	docs/gbe.md#how-a-window-gets-its-window-id-index	How a window gets its window-ID index
+GBE rev 1.1	3.2	38	GBE	0x10000	VT_0	1	0	32	R/W	1	understood	GBE.h:117	Overlay, frame and DID planes
+GBE rev 1.1	3.2	38	GBE	0x10004	VT_1	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	38	GBE	0x10008	VT_2	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	38	GBE	0x1000c	VT_3	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	38	GBE	0x10010	VT_4	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	38	GBE	0x10014	VT_5	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	39	GBE	0x10018	VT_6	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	39	GBE	0x1001c	VT_7	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	39	GBE	0x10020	VT_8	1	0	32	R/W	0	named-only	docs/gbe.md#interrupts-gbe-spec-pp-20-7	Interrupts ([gbe-spec] pp. 20, 7)
+GBE rev 1.1	3.2	39	GBE	0x10024	VT_9	1	0	32	R/W	0	named-only	docs/gbe.md#interrupts-gbe-spec-pp-20-7	Interrupts ([gbe-spec] pp. 20, 7)
+GBE rev 1.1	3.2	39	GBE	0x10028	VT_10	1	0	32	R/W	0	understood	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	39	GBE	0x1002c	VT_11	1	0	32	R/W	0	understood	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x10030	VT_12	1	0	32	R/W	0	understood	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x10034	VT_13	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x10038	VT_14	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x1003c	VT_15	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x10040	VT_16	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	40	GBE	0x10044	VT_17	1	0	32	R/W	0	named-only	docs/gbe.md#display-id-did-tables-gbe-spec-pp-15-16-44	Display-ID (DID) tables ([gbe-spec] pp. 15-16, 44)
+GBE rev 1.1	3.2	40	GBE	0x10048	VT_18	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	41	GBE	0x1004c	VT_19	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	42	GBE	0x20000	OVR_0	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	42	GBE	0x20004	OVR_1	1	0	32	R/W	1	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	42	GBE	0x20008	OVR_2	1	0	32	R/W	1	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	43	GBE	0x30000	FRM_0	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	43	GBE	0x30004	FRM_1	1	0	32	R/W	0	named-only	docs/gbe.md#register-values	Register values
+GBE rev 1.1	3.2	43	GBE	0x30008	FRM_2	1	0	32	R/W	1	understood	GBE.h:112	Overlay, frame and DID planes
+GBE rev 1.1	3.2	43	GBE	0x3000c	FRM_3	1	0	32	R/W	1	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	44	GBE	0x40000	DID	1	0	32	R/W	1	named-only	docs/coverage.md#gbe	GBE
+GBE rev 1.1	3.2	44	GBE	0x40004	DID_SHADOW	1	0	32	R/W	1	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	44	GBE	0x48000	WID[32]	32	4	32	R/W	0	named-only	docs/coverage.md#gbe	GBE
+GBE rev 1.1	3.2	45	GBE	0x50000	CMAP[4608]	4608	4	32	R/W	0	understood	docs/gbe.md#colour-map-writes-and-the-fifo-crminstallpseudocolormap	Colour-map writes and the FIFO (`crmInstallPseudoColorMap`)
+GBE rev 1.1	3.2	45	GBE	0x58000	CMFIFO	1	0	32	R/W	0	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	45	GBE	0x60000	GMAP[256]	256	4	32	R/W	0	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	46	GBE	0x70000	CRS_0	1	0	32	R/W	1	understood	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
+GBE rev 1.1	3.2	46	GBE	0x70004	CRS_1	1	0	32	R/W	1	understood	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
+GBE rev 1.1	3.2	46	GBE	0x70008	CRS_CM[3]	3	4	32	R/W	2	understood	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
+GBE rev 1.1	3.2	46	GBE	0x78000	CRS_GLY[64]	64	4	32	R/W	4	understood	docs/gbe.md#kernel-textport-cursor-set-up	Kernel textport cursor set-up
+GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	47	GBE	0x80004	VC_1	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	47	GBE	0x80008	VC_2	1	0	32	R/W	0	located	GBE.h:15	
+GBE rev 1.1	3.2	47	GBE	0x8000c	VC_3	1	0	32	R/W	0	named-only	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+GBE rev 1.1	3.2	47	GBE	0x80010	VC_4	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	48	GBE	0x80014	VC_5	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	48	GBE	0x80018	VC_6	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	48	GBE	0x8001c	VC_7	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block
+GBE rev 1.1	3.2	48	GBE	0x80020	VC_8	1	0	32	R/W	0	named-only	docs/gbe.md#video-capture-block	Video capture block

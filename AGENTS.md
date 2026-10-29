@@ -159,13 +159,18 @@ the owning chip header or chapter and delete the entry.
 ## 7. When work is finished
 
 A coverage row is done when every inventory entry in its area
-(`docs/inventory/`) is documented and every remaining unknown is labelled
+(`docs/inventory/`) is `understood` or `no-software-dependency`. `understood`
+means the entry for that item carries a label (established or inferred), a role
+and hardware effect, and a derivation citation (release, binary or path,
+offset, callee or source path) in the same entry. Naming an item, or listing it
+with others, is not enough. `no-software-dependency` is the section 6 label
 "unknown: no shipped software or published source depends on it", with the
-routes tried. Anything less is partial. The repository is finished when every
-inventory table reaches that state, not when the rows look full.
+routes tried. `located` (identity, address or size, and callers or sites cited,
+behaviour labelled unknown) and `named-only` are partial. The repository is
+finished when every inventory table reaches done, not when the rows look full.
 
-When you finish a task, regenerate the inventory, then pick the next
-undocumented entries and carry on. Hand off only when your assigned area meets
+When you finish a task, regenerate the inventory, then pick the next entries
+below `understood` and carry on. Hand off only when your assigned area meets
 the definition above, or when the session ends. In that case, say in
 `docs/open-questions.md` where you stopped and what comes next.
 
@@ -188,7 +193,7 @@ The inventory is the work list. [docs/coverage.md](docs/coverage.md) shows the m
 - `spec-registers.tsv`: every register in the public CRIME 1.5 and GBE specifications.
 - `summary.tsv`: the counts behind the table in `docs/coverage.md`.
 
-Take rows whose status is `undocumented` (then `named-only`), sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `documented` when a chapter under `docs/` or a header names it with its derivation; `scripts/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
+Take rows whose status is `undocumented` (then `named-only` and `located`), and take each to `understood`, sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `understood` when an entry (a table row, list item, paragraph or header comment) names it and also carries a label (established or inferred), a role and hardware effect, and a derivation citation, with no more than three items named on a line; a mention or a list of names reaches `named-only` at most. `scripts/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
 
 In the same commit as any finding:
 
@@ -199,8 +204,8 @@ Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mi
 
 Roles:
 
-- **Opus readers** take the open questions in `docs/open-questions.md` and the undocumented rows of the rendering-engine, ioctl and token tables.
-- **Sonnet readers** backfill undocumented rows of the function, register-offset and specification tables a binary at a time.
+- **Opus readers** take the open questions in `docs/open-questions.md` and take the rows of the rendering-engine, ioctl and token tables to `understood`.
+- **Sonnet readers** take the rows of the function, register-offset and specification tables below `understood` to `understood`, a binary at a time, `undocumented` first.
 
 Output rules:
 

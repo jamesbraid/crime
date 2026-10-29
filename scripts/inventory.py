@@ -48,9 +48,12 @@ import tempfile
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, 'scripts'))
 
-STATUSES = ('documented', 'no-software-dependency', 'named-only', 'undocumented')
-RANK = {'documented': 3, 'no-software-dependency': 2, 'named-only': 1, 'undocumented': 0}
+STATUSES = ('undocumented', 'named-only', 'located', 'understood', 'no-software-dependency')
+RANK = {'understood': 4, 'no-software-dependency': 3, 'located': 2, 'named-only': 1, 'undocumented': 0}
 NSD_PHRASE = re.compile(r'no\s+shipped\s+software\s+or\s+published\s+source', re.I)
+NSD_ROUTES = re.compile(r'\b(?:routes?|tried)\b', re.I)
+MAX_ITEMS = 3          # a line naming more items than this documents none of them
+MIN_ROLE_WORDS = 6     # plain words an entry needs to state a role and a hardware effect
 MARK_BEGIN, MARK_END = '<!-- inventory:begin -->', '<!-- inventory:end -->'
 OLD_MARKS = (re.compile(r'<!-- inventory:start[^>]*-->'),)
 
@@ -68,8 +71,9 @@ COLUMNS = {
     'ucode': ['program', 'kind', 'address', 'name', 'detail', 'status', 'doc', 'section'],
     'spec-registers': ['spec', 'table', 'page', 'window', 'offset', 'name', 'count', 'stride', 'width', 'rw',
                        'reached_in_code', 'status', 'doc', 'section'],
-    'summary': ['table', 'rows', 'documented', 'no_software_dependency', 'named_only', 'undocumented',
-                'pct_documented', 'pct_done', 'unresolved_sites'],
+    'summary': ['table', 'rows', 'understood', 'located', 'named_only', 'undocumented',
+                'no_software_dependency', 'pct_understood', 'pct_located_or_better', 'pct_mentioned',
+                'pct_done', 'unresolved_sites'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -126,21 +130,108 @@ def plain_words(text):
     return len(WORD.findall(text))
 
 
+LABEL = re.compile(r'\b(?:established|inferred)\b', re.I)
+UNKNOWN = re.compile(r'\bunknown\b', re.I)
+CITE = re.compile(
+    r'\b\d+\.\d+\.\d+[a-z]?\b'                                    # a release, 6.5.30m
+    r'|\bpatch(?:es)?\s+\d+'                                          # a patch
+    r'|[\w+-]+\.(?:o|a|so|c|h|cc|u|bin|elf|lst|asm|s|x)\b'            # a binary or source file
+    r'|\b[\w.+-]+/[\w.+-]+/[\w./+-]+'                                 # a path
+    r'|\+0x[0-9a-fA-F]+|\b[Oo]ffsets?\s+(?:0x)?[0-9a-fA-F]+'           # an offset
+    r'|\b(?:[Cc]alls?|[Cc]allees?|[Cc]allers?|called\s+(?:from|by))\b[^.|;`]{0,30}`')   # a callee
+LOCATED = re.compile(r'\b(?:address(?:es)?|offsets?|sizes?|bytes?|records?|extents?|callers?|called|sites?|'
+                     r'calls?|entry|entries|lanes?)\b|0[xX][0-9a-fA-F]+', re.I)
+NUMLIST = re.compile(r'\b(?:0[xX][0-9a-fA-F]+|\d+)\b(?:\s*(?:,|;|\band\b|\bor\b)\s*\b(?:0[xX][0-9a-fA-F]+|\d+)\b)+')
+
+
+def bare_text(text):
+    """The text without the targets of markdown links."""
+    return re.sub(r'\]\([^)]*\)', ']', text)
+
+
+def classify(text):
+    """The status one entry (a table row, a list item, a paragraph or a header comment)
+    earns for every item it mentions. The entry must carry a derivation citation; with
+    behaviour labelled unknown it is located, with an established or inferred label and
+    enough words for a role it is understood."""
+    t = bare_text(text)
+    if not CITE.search(t):
+        return 'named-only'
+    if UNKNOWN.search(t):
+        return 'located' if LOCATED.search(t) else 'named-only'
+    if LABEL.search(t) and plain_words(t) - len(LABEL.findall(t)) >= MIN_ROLE_WORDS:
+        return 'understood'
+    return 'named-only'
+
+
+def line_items(text):
+    """How many things one line names: distinct identifiers, plus numbers written as a list."""
+    t = bare_text(text)
+    items = set()
+    for sp in re.findall(r'`([^`]*)`', t):
+        sp = sp.strip()
+        if re.fullmatch(r'[+-]?(?:0[xX][0-9a-fA-F]+|\d+)', sp):
+            continue
+        if re.search(r'\s', sp):
+            items.add(sp)
+            continue
+        for m in IDENT.finditer(sp):
+            nm = m.group(0)
+            if '.' not in nm.strip('.') and not re.fullmatch(r'[xX][0-9a-fA-F]+', nm):
+                items.add(nm)
+    rest = re.sub(r'`[^`]*`', ' ', t)
+    rest = re.sub(r'\b\d\w*', ' ', rest)
+    for m in IDENT.finditer(rest):
+        nm = m.group(0).rstrip('.')
+        if '.' in nm:
+            continue
+        if CODELIKE.match(nm) or rest[m.end():m.end() + 1] == '(':
+            items.add(nm)
+    n = len(items)
+    for m in NUMLIST.finditer(t):
+        n += len(re.findall(r'0[xX][0-9a-fA-F]+|\d+', m.group(0)))
+    return n
+
+
+def ctx_match(ctx, words):
+    return any(re.search(r'\b' + re.escape(w.strip()), ctx) for w in words)
+
+
+def dec_contexts(text, head=None):
+    """(value, context) for each decimal number in a line: the three words before it and the
+    one after, or, for a table cell that is only the number, the column heading."""
+    out = []
+    cells = None
+    if head is not None and text.strip().startswith('|'):
+        cells = [c.strip() for c in text.strip().strip('|').split('|')]
+    for m in DECLIT.finditer(text):
+        before = re.findall(r'[A-Za-z0-9_]+', text[:m.start()])[-3:]
+        after = re.findall(r'[A-Za-z0-9_]+', text[m.end():])[:1]
+        ctx = ' '.join(before + after).lower()
+        if cells is not None:
+            for k, c in enumerate(cells):
+                if c.strip('`*') == m.group(1) and k < len(head):
+                    ctx += ' ' + head[k]
+                    break
+        out.append((int(m.group(1)), ctx))
+    return out
+
+
 def ambiguous(name):
     return len(name) <= 3 or re.fullmatch(r'[a-z]+', name) is not None
 
 
 class Hit:
-    __slots__ = ('file', 'line', 'ref', 'section', 'explained', 'nsd', 'code', 'ctx', 'order')
+    __slots__ = ('file', 'line', 'ref', 'section', 'level', 'nsd', 'code', 'ctx', 'order')
 
-    def __init__(self, file, line, ref, section, explained, nsd, code, ctx, order):
+    def __init__(self, file, line, ref, section, level, nsd, code, ctx, order):
         self.file, self.line, self.ref, self.section = file, line, ref, section
-        self.explained, self.nsd, self.code, self.ctx, self.order = explained, nsd, code, ctx, order
+        self.level, self.nsd, self.code, self.ctx, self.order = level, nsd, code, ctx, order
 
     def status(self):
         if self.nsd:
             return 'no-software-dependency'
-        return 'documented' if self.explained else 'named-only'
+        return self.level
 
 
 class DocIndex:
@@ -191,12 +282,16 @@ class DocIndex:
                 out.append(os.path.relpath(p, REPO))
         return out
 
-    def hit(self, file, line, ref, section, explained, nsd, code, ctx):
+    def hit(self, file, line, ref, section, level, nsd, code, ctx):
         self.order += 1
-        return Hit(file, line, ref, section, explained, nsd, code, ctx, self.order)
+        return Hit(file, line, ref, section, level, nsd, code, ctx, self.order)
 
-    def add_text(self, file, n, ref, section, text, explained, nsd, code_spans, code_all, ctx):
-        """Index one line. code_spans are the parts written as code."""
+    def add_text(self, file, n, ref, section, text, level, nsd, code_spans, code_all, ctx, head=None):
+        """Index one line. code_spans are the parts written as code. level is what the
+        entry holding the line earns, which a line naming many items does not get."""
+        if line_items(text) > MAX_ITEMS:
+            level, nsd = 'named-only', False
+        explained = level
         key = (file, n)
         code_text = ' '.join(code_spans)
         seen = set()
@@ -224,8 +319,8 @@ class DocIndex:
             v = int(h, 16)
             self.hexes[v].append((self.hit(file, n, ref, section, explained, nsd, True, ctx), bool(plus)))
             self.lines[key].add('hex:%x' % v)
-        for d in set(DECLIT.findall(text)):
-            self.decs[int(d)].append(self.hit(file, n, ref, section, explained, nsd, True, ctx))
+        for v, dctx in dec_contexts(text, head):
+            self.decs[v].append(self.hit(file, n, ref, section, explained, nsd, True, dctx))
 
     def read_md(self, rel, index):
         lines = open(os.path.join(REPO, rel), encoding='utf-8', errors='replace').read().split('\n')
@@ -251,9 +346,32 @@ class DocIndex:
             paras.append(cur)
         nsd_line = set()
         for p in paras:
-            if NSD_PHRASE.search(' '.join(lines[i] for i in p)):
+            ptext = ' '.join(lines[i] for i in p)
+            if NSD_PHRASE.search(ptext) and NSD_ROUTES.search(ptext):
                 nsd_line.update(p)
-        table_head_words = 0
+        # an entry is a table row, a list item with its continuation lines, or a paragraph
+        entry_of, entries, cur, efence = {}, [], None, False
+        for i, ln in enumerate(lines):
+            s = ln.strip()
+            if s.startswith('```'):
+                efence, cur = not efence, None
+                continue
+            if efence:
+                continue
+            if not s or s.startswith('#'):
+                cur = None
+            elif s.startswith('|'):
+                entries.append([i])
+                entry_of[i] = len(entries) - 1
+                cur = None
+            else:
+                if cur is None or re.match(r'([-*+]|\d+\.)\s', s):
+                    entries.append([])
+                    cur = len(entries) - 1
+                entries[cur].append(i)
+                entry_of[i] = cur
+        entry_level = {}
+        head = None
         prev_table = False
         for i, ln in enumerate(lines):
             n = i + 1
@@ -266,24 +384,23 @@ class DocIndex:
                 ref = '%s#%s' % (rel, slug(section))
             is_table = not fence and st.startswith('|')
             if is_table and not prev_table:
-                table_head_words = plain_words(st)
+                head = [c.strip().lower() for c in st.strip('|').split('|')]
             prev_table = is_table
             if fence:
-                words = plain_words(re.sub(r'(//|/\*|#)', ' ', ln))
-                explained = words >= 3
+                level = 'named-only'          # a listing restates its subject
                 spans, code_all = [ln], True
-            elif is_table:
-                explained = plain_words(st) >= 3 or table_head_words >= 2
-                spans = re.findall(r'`([^`]+)`', ln)
-                code_all = False
             else:
-                explained = plain_words(ln) >= 3
+                e = entry_of.get(i)
+                if e is not None and e not in entry_level:
+                    entry_level[e] = classify(' '.join(lines[j] for j in entries[e]))
+                level = entry_level.get(e, 'named-only')
                 spans, code_all = re.findall(r'`([^`]+)`', ln), False
             if index:
-                explained = False
+                level = 'named-only'
             nsd = (i in nsd_line) and not index
             ctx = (ln + ' ' + section).lower()
-            self.add_text(rel, n, ref, section, ln, explained, nsd, spans, code_all, ctx)
+            self.add_text(rel, n, ref, section, ln, level, nsd, spans, code_all, ctx,
+                          head if is_table else None)
 
     def read_header(self, rel, index):
         lines = open(os.path.join(REPO, rel), encoding='utf-8', errors='replace').read().split('\n')
@@ -323,7 +440,7 @@ class DocIndex:
                 while j < len(lines) and parts[j][3] and parts[j][2] and not re.fullmatch(r'[-=*/ ]*', parts[j][2]):
                     j += 1
                 text = ' '.join(parts[k][2] for k in range(i, j))
-                info = (plain_words(text), bool(NSD_PHRASE.search(text)), j - 1)
+                info = (text, bool(NSD_PHRASE.search(text) and NSD_ROUTES.search(text)), j - 1)
                 for k in range(i, j):
                     para[k] = info
                 i = j
@@ -349,16 +466,17 @@ class DocIndex:
                 last_para = para[i]
             if standalone:
                 if c:
-                    words, nsd = (para[i][0], para[i][1]) if para[i] else (plain_words(c), False)
-                    self.add_text(rel, n, ref, section, comment, words >= 3 and not index, nsd and not index,
-                                  re.findall(r'`([^`]+)`', comment), False, ctx)
+                    ptext, nsd = (para[i][0], para[i][1]) if para[i] else (c, False)
+                    self.add_text(rel, n, ref, section, comment, 'named-only' if index else classify(ptext),
+                                  nsd and not index, re.findall(r'`([^`]+)`', comment), False, ctx)
                 continue
-            cwords = plain_words(comment)
             above = last_para if (last_para and last_para[2] == i - 1) else None
-            commented = (cwords >= 3 or (above is not None and above[0] >= 3)) and not index
-            nsd = (bool(NSD_PHRASE.search(comment)) or (above is not None and above[1])) and not index
+            ctext = ' '.join(x for x in (above[0] if above else '', comment.strip()) if x)
+            commented = 'named-only' if index else classify(ctext)
+            nsd = (bool(NSD_PHRASE.search(comment) and NSD_ROUTES.search(comment)) or
+                   (above is not None and above[1])) and not index
             if comment.strip():
-                self.add_text(rel, n, ref, section, comment, cwords >= 3 and not index, nsd,
+                self.add_text(rel, n, ref, section, comment, 'named-only' if index else classify(comment), nsd,
                               re.findall(r'`([^`]+)`', comment), False, ctx)
             d = (re.match(r'\s*#\s*define\s+(\w+)\s+\(?\s*(-?0[xX][0-9a-fA-F]+|-?\d+)[uUlL]*\b', code) or
                  re.match(r'\s*(\w+)\s*=\s*\(?\s*(-?0[xX][0-9a-fA-F]+|-?\d+)[uUlL]*\)?\s*,?\s*$', code))
@@ -372,7 +490,7 @@ class DocIndex:
             else:
                 for m in IDENT.finditer(code):
                     nm = m.group(0).rstrip('.')
-                    self.names[nm].append(self.hit(rel, n, ref, section, False, False, True, ctx))
+                    self.names[nm].append(self.hit(rel, n, ref, section, 'named-only', False, True, ctx))
                     self.lines[(rel, n)].add('id:' + nm)
                 for plus, h in set(HEXLIT.findall(code)):
                     v = int(h, 16)
@@ -385,9 +503,9 @@ class DocIndex:
             for cell in ln.rstrip('\n').split('\t'):
                 cell = cell.strip()
                 if IDENT.fullmatch(cell):
-                    self.names[cell].append(self.hit(rel, n, rel, '', False, False, True, ''))
+                    self.names[cell].append(self.hit(rel, n, rel, '', 'named-only', False, True, ''))
                 for plus, h in HEXLIT.findall(cell):
-                    self.hexes[int(h, 16)].append((self.hit(rel, n, rel, '', False, False, True, ''), bool(plus)))
+                    self.hexes[int(h, 16)].append((self.hit(rel, n, rel, '', 'named-only', False, True, ''), bool(plus)))
 
     # ---------------------------------------------------------------- queries
 
@@ -447,7 +565,7 @@ class DocIndex:
         out = []
         for v in values:
             for h in self.decs.get(v, []):
-                if in_files(h.file, files) and (context is None or any(c in h.ctx for c in context)):
+                if in_files(h.file, files) and (context is None or ctx_match(h.ctx, context)):
                     out.append(h)
         return out
 
@@ -2102,7 +2220,7 @@ def build(cfg, a, tmp):
                 detail = [f['name']] + ['%s=0x%x' % (fl['name'], (w >> fl.get('shift', 0)) & num(fl['mask']))
                                         for fl in f.get('fields', [])] + detail
         st = docs.by_name(*(names + alt))
-        if st[0] != 'documented':
+        if st[0] != 'understood':
             files = tk.get('docs')
             if reg is not None:
                 keys = ['hex:%x' % reg] + ['id:' + r['name'].split('[')[0] for r in spec_names(tk.get('window', ''), reg)]
@@ -2211,7 +2329,7 @@ def build(cfg, a, tmp):
     for r in rows:
         st = docs.by_name(*[n for n in r.pop('_names', []) if n])
         rec = r.pop('_record', None)
-        if rec is not None and st[0] != 'documented':
+        if rec is not None and st[0] != 'understood':
             st = best_of(st, record_status(docs, rec, cfg))
         put_status(r, st)
     out['ucode'] = rows
@@ -2257,9 +2375,9 @@ def build(cfg, a, tmp):
             srows.append(summary_row('functions (distinct names)', [{'status': s} for s in best.values()], ''))
     write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows)
     for r in srows:
-        print('%-28s %7s  documented %6s (%5s%%)  nsd %5s  named-only %6s  undocumented %6s' %
-              (r['table'], r['rows'], r['documented'], r['pct_documented'], r['no_software_dependency'],
-               r['named_only'], r['undocumented']), file=sys.stderr)
+        print('%-28s %7s  understood %6s (%5s%%)  located-or-better %5s%%  mentioned %5s%%  nsd %5s' %
+              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['pct_located_or_better'],
+               r['pct_mentioned'], r['no_software_dependency']), file=sys.stderr)
     by_win = collections.Counter()
     for (b, w), v in unresolved.items():
         by_win[w] += v
@@ -2328,13 +2446,7 @@ def record_routines(src):
 
 def record_status(docs, v, cfg):
     words = cfg.get('docs', {}).get('context', {}).get('ucode') or ('entry', 'entries', 'routine', 'record')
-    hits = []
-    for h in docs.decs.get(v, []):
-        if not any(w in h.ctx for w in words):
-            continue
-        if v >= 100 or re.search(r'(%s)\W+(\w+\W+){0,2}%d\b' % ('|'.join(words), v), h.ctx):
-            hits.append(h)
-    return docs.best(hits)
+    return docs.best([h for h in docs.decs.get(v, []) if ctx_match(h.ctx, words)])
 
 
 def summary_row(name, rows, unresolved):
@@ -2343,10 +2455,13 @@ def summary_row(name, rows, unresolved):
 
     def pct(x):
         return '%.1f' % (100.0 * x / n) if n else '0.0'
-    return {'table': name, 'rows': n, 'documented': c['documented'],
-            'no_software_dependency': c['no-software-dependency'], 'named_only': c['named-only'],
-            'undocumented': c['undocumented'], 'pct_documented': pct(c['documented']),
-            'pct_done': pct(c['documented'] + c['no-software-dependency']), 'unresolved_sites': unresolved}
+    nsd = c['no-software-dependency']
+    return {'table': name, 'rows': n, 'understood': c['understood'], 'located': c['located'],
+            'named_only': c['named-only'], 'undocumented': c['undocumented'], 'no_software_dependency': nsd,
+            'pct_understood': pct(c['understood']),
+            'pct_located_or_better': pct(c['understood'] + c['located'] + nsd),
+            'pct_mentioned': pct(n - c['undocumented']),
+            'pct_done': pct(c['understood'] + nsd), 'unresolved_sites': unresolved}
 
 
 def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
@@ -2358,16 +2473,19 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
     lines = [MARK_BEGIN, '## Measured coverage', '',
              'Generated by `scripts/inventory.py` from %d distinct files in scope, %d of them ELF images. '
              'The rows are in [docs/inventory/](inventory/README.md), which defines every column and status. '
-             'A row is done when it is documented or labelled as having no software dependency.'
+             'The headline is the share **understood**: an entry that states a role and hardware effect, '
+             'labelled established or inferred, with a derivation. A mention alone (named only) is not '
+             'understanding. A row is done when it is understood or labelled as having no software dependency.'
              % (len(imgs), elf), '',
-             '| Table | Rows | Documented | No software dependency | Named only | Undocumented | % documented | % done |',
-             '|---|---:|---:|---:|---:|---:|---:|---:|']
+             '| Table | Rows | % understood | % located or better | % mentioned | Understood | Located | '
+             'No software dependency | Named only | Undocumented |',
+             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for r in srows:
         link = r['table'] if r['table'] in TABLES else None
         label = '[%s](inventory/%s.tsv)' % (link, link) if link else r['table']
-        lines.append('| %s | %d | %d | %d | %d | %d | %s | %s |' % (
-            label, r['rows'], r['documented'], r['no_software_dependency'], r['named_only'], r['undocumented'],
-            r['pct_documented'], r['pct_done']))
+        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d |' % (
+            label, r['rows'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
+            r['understood'], r['located'], r['no_software_dependency'], r['named_only'], r['undocumented']))
     tot = resolved + unres
     lines += ['',
               'Register access sites: %d found, %d resolved to an offset and %d (%s%%) unresolved, where the base '

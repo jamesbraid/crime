@@ -12,7 +12,7 @@ It also rewrites the block between the `inventory:begin` and `inventory:end` mar
 
 Every table except `summary.tsv` ends with the same three columns:
 
-- `status`: one of the four statuses below.
+- `status`: one of the five statuses below.
 - `doc`: where the best mention is, `file#anchor` for a markdown page and `file:line` for a header.
 - `section`: the heading of that page section, or the section banner of that header.
 
@@ -125,29 +125,37 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | Column | Meaning |
 |---|---|
 | `table`, `rows` | the table and its row count |
-| `documented`, `no_software_dependency`, `named_only`, `undocumented` | rows at each status |
-| `pct_documented` | documented rows as a percentage |
-| `pct_done` | documented and no-software-dependency rows as a percentage |
+| `understood`, `located`, `named_only`, `undocumented`, `no_software_dependency` | rows at each status |
+| `pct_understood` | understood rows as a percentage |
+| `pct_located_or_better` | understood, located and no-software-dependency rows as a percentage |
+| `pct_mentioned` | every row except `undocumented`, as a percentage |
+| `pct_done` | understood and no-software-dependency rows as a percentage |
 | `unresolved_sites` | for `mmio`: register access sites whose offset could not be traced |
 
 ## Status
 
-- `documented`: a doc or header explains the item. The item is named on a line that carries at least three plain words (words outside code spans, hex numbers and identifiers), or in a table whose header row has at least two, or in a header comment paragraph of at least three words, or it is a header definition with such a comment beside or directly above it.
-- `no-software-dependency`: the only explaining mention sits in a paragraph or comment labelled "unknown: no shipped software or published source depends on it" (`AGENTS.md` section 6). The row is finished.
-- `named-only`: the item appears only as a bare name or value: a list, a header definition without a comment, a committed table, or an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`).
-- `undocumented`: nothing mentions it.
+A mention is not understanding. The status of an item is the best of the entries that mention it. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
 
-A row is done when it is `documented` or `no-software-dependency`.
+- `undocumented`: no entry mentions it.
+- `named-only`: mentioned, but the entry does not reach `located`. This covers a bare mention; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no derivation citation; an entry with a citation but no label; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
+- `located`: the entry carries a derivation citation and says the behaviour is `unknown`, and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not.
+- `understood`: the entry has a label (`established` or `inferred`), at least six plain words, which is the floor for stating a role and a hardware effect, a derivation citation, and no `unknown` anywhere in it. The words are not read for meaning: check the cited section.
+- `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished.
+
+A derivation citation is one of: a release or patch (`6.5.30m`, `patch 4103`); a binary or source file name with a binary or source extension (`odsy_init.c`, `odsy.o`, `buzz_xform.bin`); a path with at least two slashes; an offset (`+0x1a4`, "offset 0x40"); or a callee or caller written in code (`calls` or `called from` followed by a backticked name). A link to another page is not a citation.
+
+A row is done when it is `understood` or `no-software-dependency`. The repository is finished when every row of every table is done.
 
 How a mention is found:
 
 - Names: an identifier in backticks or a code block, any identifier that looks like code (an underscore, a digit or an inner capital) anywhere in a line, and any identifier in a header. A short or all-lower-case name (`save`, `window`) also reads as English, so for those only backticks, code blocks, header code and the call form `name()` count. Write the name exactly as the binary spells it.
-- Register offsets: a header definition of the value, `+0xOFFSET`, the full physical address, or a bare hex value on a line or under a heading that says what it is (register, offset, field, FIFO, command and so on), in the docs the config lists for that window. A register a specification table names, whose name is documented, documents the offsets inside it.
+- Register offsets: a header definition of the value, `+0xOFFSET`, the full physical address, or a bare hex value on a line or under a heading that says what it is (register, offset, field, FIFO, command and so on), in the docs the config lists for that window. A register a specification table names, whose name is documented, takes that status for the offsets inside it.
+- Decimal numbers: a context word (the config's list, or for ioctls "ioctl") within the three words before the number or the one after it, or, for a table cell holding only the number, in the column heading. A number elsewhere on the line, or in the section heading, does not count.
 - Tokens and words: the token's names; for a word stored to a register, its value within two lines of the register's offset or name; for other words, the value on a line or under a heading that says what it is.
 - Ioctls: the handler names, and the number (decimal, or hex) in the config's ioctl docs on a line or under a heading that mentions ioctls.
-- Microcode: the symbol or label; a routine that has no name, by its record number next to "entry", "routine" or "record".
+- Microcode: the symbol or label; a routine that has no name, by its record number with "entry", "routine" or "record" next to it, as above.
 
-The status measures mention, not correctness: read the cited section. Generated listings, disassembly and verbatim dumps of a binary's own tables restate the binary and are not read.
+The status measures what an entry claims and cites, not whether it is right: read the cited section. Generated listings, disassembly and verbatim dumps of a binary's own tables restate the binary and are not read.
 
 ## How register accesses are found
 
