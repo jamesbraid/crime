@@ -188,3 +188,31 @@ Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), GBE
 - Established: the entry with index `0x1102` (4354, in group 17) is not written to the hardware, only to the software copy, when a screen flag (+0x18 of the same record) is non-zero; otherwise it is treated like any other entry. The reason is unknown.
 - Established: between entries the module checks the FIFO count with the revision-dependent test recorded in `GBE.h` (wait while the count is below 48 for revision 2 or later; before that wait while it is non-zero and below 48), at the start of the list and after a batch of entries.
 - Unknown: the batch size between FIFO checks (kept in a register the disassembly does not pin down), and whether the hardware drains the FIFO in strict write order.
+
+## Pass 3: display IDs, the third WID word, overlays, entry 0x1102 and libXsgivc
+
+### How the DID plane is filled (`crm.so` `gbeLoadDispIDs`)
+
+- Established: the routine builds 16-bit entries. The terminating entry of a line is `(t0 & 0xf800) | (width - 1)`, where `width` is the screen width halfword at +3472 of the screen record. Other entries are built with a shift of the window ID by 11 (`sll ..., 0xb`). So an entry is `WID << 11 | x`, with an 11-bit x.
+- Established: `t0` is chosen by the same revision word (+3476) as the colour-map FIFO test: `0x2fff` (WID 5) below revision 2 and `0x37ff` (WID 6) at revision 2 or above. In both reserved tables that index is the RG3B2 entry (`0x00b`), so the line ends in the same format whichever table is loaded.
+- Established: each display line owns a 512-byte slot (`line * 512`) that holds up to 256 entries; the routine counts lines up to 128 per 64 KiB block before moving to the next block. That is one 64 KiB DID tile per 128 lines.
+- Inferred: an entry gives the window ID that applies from (or up to) column x on that line, and the last entry covers the rest of the line to `width - 1`. Whether x marks a run's start or its end was not settled. Which of the three DID tile lists `gbeLoadDIDTable` selects (ioctl `0x55fd`) is displayed is per buffer state, as recorded above.
+
+### The third WID word `0x3c0n`
+
+Still unknown. The values were tested against the mode fields: the low two bits follow neither `TYP` nor `BUF`, and they differ between the 16-bit and 24-bit tables for the same format. No reader of the stored copies (+0xa0, +0xb0 of Xsgi's per-index record) was found among Xsgi's few visible `rrm` symbols, and Xsgi is otherwise stripped.
+
+### Overlay and underlay compositing
+
+Still unknown after a bounded search. Neither the X module nor the kernel writes an overlay-to-WID mapping or a transparency value to any GBE register. The overlay plane is set up only through `OVR_WIDTH_TILE`, `OVR_CONTROL` and its tile list.
+
+### Colour-map entry `0x1102`
+
+- Established (`crime_tp`): the kernel textport draws colour c as pixel value `c + 1` (`crime_color` replicates `c + 1` into all four bytes) and loads that colour into map entry `0x1100 + c + 1` (`crime_mapcolor` writes at `+0x54404 + 4c`). So entry `0x1102` is the textport's colour 1.
+- Inferred: the X module skips `0x1102` while its screen flag (+0x18) is set so as not to overwrite the colour the kernel textport is using. What sets that flag was not traced.
+
+### libXsgivc (`ddx/libXsgivc_n32.so`)
+
+- Established: the library is only the client side of the `SGI-VIDEO-CONTROL` X extension. It imports Xlib transport functions (`_XSend`, `_XReply`, `_XRead`) and no file functions, so it never reads `.vfo` files. `XSGIvcLoadVideoFormat` and its variants only send requests to the server, which builds the kernel record (see the vfo conversion above).
+- Established (`ReadFormatInfo`, DWARF names): the server describes a format in a 48-byte reply record. The library unpacks it into the caller's structure: four 16-bit values (stored at +260, +256, +268, +264), two 32-bit rates divided by 1000.0 into floats (+272, +276), seven more 32-bit values, a name whose length is in the record, and a count of 36-byte field records read by `ReadFieldInfo`.
+- Unknown: the meaning of each value. The DWARF has names and lines but no types.
