@@ -318,3 +318,49 @@ Every constant word the inventory finds stored to a rendering or transfer-engine
 | `+0x3040` | `0x1` | `crmSwapBufd` in `crime_retrace.o` | MTE source Y step of one line, a plain top-to-bottom copy | established |
 | `+0x3048` | `0x1` | `crmSwapBufd` in `crime_retrace.o` | MTE destination Y step of one line, matching the source step | established |
 | `+0x3078` | `0x0` | `crime_clear_buffer` in `crime_dma.o` | MTE.flush after the last rectangle of a kernel buffer clear, before the idle wait | established |
+
+## Register roles
+
+One row per rendering, transfer-engine and status register, with what the register holds and the code that reaches it. Offsets are from the rendering window `0x15000000`; names are the specification's. The sections above give the sequences around each access.
+
+| Offset | Register | Role and the code that reaches it | Label |
+|---|---|---|---|
+| `+0x400` | IntfBuf.ctl | the interface-buffer control word with the FIFO thresholds; the kernel FIFO handlers `crimeFifoFullHandler` and `crimeFifoEmptyHandler` in `crime.o` rewrite it to move the interrupt level | established |
+| `+0x408` | IntfBuf | written once by `crimeError` in `crime.o` during error recovery before the control word is rewritten; read as a reset of the interface buffer from that order | inferred |
+| `+0x2048` | Scissor | the 64-bit scissor rectangle; reloaded by `crmLoadGlobalsFromShadow` in `crime.o` on a context switch and written by `__glCrmAllocAccum` in `libGLcore.so` | established |
+| `+0x2070` | Vertex.X[0] | the first word of the X-server vertex form, two 16-bit coordinates; written by `crmpixdma` in `crime_dma.o` and by `crmLoadNonglobalsFromShadow` in `crime.o` | established |
+| `+0x2074` | Vertex.X[1] | the second X-server vertex word; written only by the context reload `crmLoadNonglobalsFromShadow` in `crime.o`, which replays a saved primitive | established |
+| `+0x2078` | Vertex.X[2] | the third X-server vertex word; written only by the context reload `crmLoadNonglobalsFromShadow` in `crime.o`, which replays a saved primitive | established |
+| `+0x2090` | Vertex.GL[2].x | the third GL vertex x in the 13.6 form, the last corner of a triangle; written by `__glCrmFillTriangle` and the other triangle routines of `libGLcore.so` | established |
+| `+0x2094` | Vertex.GL[2].y | the third GL vertex y in the 13.6 form; the triangle routines write it with x as one 64-bit store, and the context reload `crmLoadNonglobalsFromShadow` in `crime.o` writes it alone | established |
+| `+0x20a0` | PixelXfer.src.addr | the pixel-transfer source: a linear-TLB byte offset or a screen position, committed through the start alias by `crmReadPixelsXfer` in `libGLcore.so` and by `crmpixdma` in `crime_dma.o` | established |
+| `+0x20b0` | PixelXfer.dst.linAddr | the pixel-transfer destination byte offset in host memory for a read-back, written through the start alias by `crmReadPixelsXfer` in `libGLcore.so` | established |
+| `+0x20c4` | Stipple.pattern | the 32-bit stipple pattern row; the stippled span and line routines of `libGLcore.so` write it, and `crimePcxSwap` in `crime.o` reads it back on a context switch | established |
+| `+0x20d0` | Shade.fgColor | the flat or foreground colour, packed RGBA; written by `__glCrmDownloadCurrentColor` and most drawing routines of `libGLcore.so` | established |
+| `+0x20d8` | Shade.bgColor | the background colour for opaque stippling; only the context reload `crmLoadGlobalsFromShadow` in `crime.o` writes it, so IRIX never draws opaque stipples | established |
+| `+0x2110` | Texture.mode | the texture mode word with filter, wrap and level fields; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` when the texture state changes | established |
+| `+0x2118` | Texture.format | the 64-bit texture format word, texel type and level geometry; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` on a texture bind | established |
+| `+0x2120` | Texture.SQs | the 36.12 start value of s times q; written by `__glCrmFillTriangle` and the span routines of `libGLcore.so` with the +2048 rounding term | established |
+| `+0x2128` | Texture.TQs | the 36.12 start value of t times q; written beside the s start by `__glCrmFillTriangle` in `libGLcore.so` | established |
+| `+0x2130` | Texture.Qs | the 18.12 start value of q, at some sites committed through the start alias; `__glCrmFillTriangle` in `libGLcore.so` is among the writers | established |
+| `+0x2138` | Texture.dsqdx | the x slope of s times q as a 64-bit integer; written by `__glCrmFillTriangle` and `__glCrmStoreLine` in `libGLcore.so` | established |
+| `+0x2140` | Texture.dsqdy | the y slope of s times q; triangles write the plane slope and textured lines write zero so a stale slope does not carry over, with `__glCrmStoreLine` in `libGLcore.so` among the writers | established |
+| `+0x2148` | Texture.dtqdx | the x slope of t times q as a 64-bit integer; written by `__glCrmFillTriangle` and `__glCrmStoreLine` in `libGLcore.so` | established |
+| `+0x2150` | Texture.dtqdy | the y slope of t times q; textured lines write it as zero, triangles as the plane slope (`__glCrmFillTriangle` in `libGLcore.so`) | established |
+| `+0x2160` | Texture.borderColor | the texture border colour, packed RGBA; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` from the texture object | established |
+| `+0x2168` | Texture.envColor | the texture environment colour for the blend environment mode; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` | established |
+| `+0x2194` | Antialias.cov | the antialiasing coverage word; only the context reload `crmLoadNonglobalsFromShadow` in `crime.o` writes it, replaying a saved value | established |
+| `+0x2198` | AlphaTest | the alpha test function and reference value; written by `__glCrmPassAlphaFunc` in `libGLcore.so` when glAlphaFunc changes | established |
+| `+0x21a0` | Blend.constColor | the constant blend colour; written by `__glCrmPassBlendColor` in `libGLcore.so` for glBlendColor | established |
+| `+0x21a8` | Blend.func | the blend equation and the two blend factors; written by `__glCrmPassBlendFunc` in `libGLcore.so` for glBlendFunc | established |
+| `+0x21b8` | ColorMask | the per-channel write mask, bits 31:24 also the stencil write mask in a stencil draw; written by `__glCrmPassColorMask` and `crmDrawPixelsXfer` in `libGLcore.so` | established |
+| `+0x21c0` | Depth.func | the depth function in bits 27:25 and the clear value in bits 23:0; written by `__glCrmPassDepthFunc` and `__glCrmEnableDepthTest` in `libGLcore.so` | established |
+| `+0x21c8` | Depth.Zs | the 25.12 start depth of a primitive, often committed through the start alias; written by the depth triangle and span routines of `libGLcore.so` | established |
+| `+0x21e0` | Stencil.mode | the stencil function, reference and operations; written by `__glCrmPassStencilMode` and `__glCrmPassDepthFunc` in `libGLcore.so` | established |
+| `+0x3010` | MTE.stippleMask | the transfer-engine stipple mask; only the context reload `crmLoadNonglobalsFromShadow` in `crime.o` writes it, so IRIX never stipples a transfer | established |
+| `+0x3018` | MTE.fgValue | the fill value of a transfer-engine clear; written by `crime_clear_buffer` in `crime_dma.o` with the clear colour | established |
+| `+0x3020` | MTE.src0 | the first source address word of a transfer-engine copy; written by `crm_copy_swap_boxes` in `crime_retrace.o` for each swap box | established |
+| `+0x3028` | MTE.src1 | the second source address word of a copy, the far corner; written by `crm_copy_swap_boxes` in `crime_retrace.o` | established |
+| `+0x3030` | MTE.dst0 | the first destination address word of a copy or clear; written by `crm_copy_swap_boxes` and `crime_clear_buffer` in the kernel objects `crime_retrace.o` and `crime_dma.o` | established |
+| `+0x3038` | MTE.dst1 | the second destination word, written through the start alias to start the copy or clear (`crm_copy_swap_boxes` in `crime_retrace.o`) | established |
+| `+0x4000` | Status | the engine status word; `__glCrmFlushAndConfirm` in `libGLcore.so` spins on bit 28 (idle), and the kernel FIFO and retrace handlers in `crime.o` read it before touching the engine | established |

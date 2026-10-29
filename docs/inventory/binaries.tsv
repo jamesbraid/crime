@@ -1,6 +1,6 @@
 binary	group	role	kind	abi	bytes	sha256	copies	functions	access_sites	unresolved_sites	status	doc	section
 sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	21	0	understood	docs/memory.md#validity-and-misses-pass-7	Validity and misses (pass 7)
-sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	19	0	named-only	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	19	0	understood	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0	0	0	named-only	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	understood	docs/functions.md#functions-by-role	Functions by role
@@ -17,7 +17,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	42
 usr/cpu/sysgen/IP32boot/gfx.o	kernel-shared	shared-kernel	object	n32	40296	d9324b66d28a576b		57	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	kernel-shared	shared-kernel	object	n32	40308	9f5a58ab7cd5b715		57	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	154	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	154	0	understood	docs/gbe.md#registers-the-base-kernel-touches-at-shutdown-early_gbe_stop	Registers the base kernel touches at shutdown (`early_gbe_stop`)
 usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	understood	docs/functions.md#functions-by-role	Functions by role
 usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)

@@ -426,3 +426,16 @@ Binaries: IRIX 6.5.30 `crm.so` (`usr/lib/X11/dyDDX/crm.so`, gp `0x5b0ea0`) and `
 - Established (the shipped header `sys/rrm.h`, 6.5.5 `root/usr/include/sys/rrm.h`): the resource manager's swap and display-mode requests carry two mode words, one described as a hardware-dependent register value and one as a hardware-independent description of the display mode, and its invalidate request returns the hardware-independent word the window wants. The window record's value (`+0x24`) is the first kind (it is the window-ID table entry), and the key (`+0x20`) is the second.
 - Established (`libGLcore` `SwapBuffers`, `crm_context.s` `0x0d944b90..0x0d944c88`): the GL client sends resource-manager command 1005 with the render node, the new buffer index (0 or 1) as the hardware-dependent word and the context word gc+32040 as the hardware-independent word. The only change any `libGLcore` code makes to gc+32040 is bit 2: set when buffer 1 becomes current, cleared otherwise (the two stores in `SwapBuffers` and the two in `DecoupleSwapBuffers` are the only stores to that word in the library). This is the same bit 2 the X module copies from the kernel's 1010 reply.
 - Settled for the hardware contract: the key is a software description of the window's mode, compared only as a whole word (mask `0xffffffff`, above) and never written to GBE or to the kernel's window-ID ioctl. The reserved keys `0x3c00` to `0x3c03` are words no client builds (the immediate search above), so a GL window never shares a reserved slot. Unknown: no shipped software or published source depends on the meaning of individual key bits 13:10 or of the low field `n`; every reader compares the word whole. `gbedefs.h` and `crime_gbe.h` define only the hardware entry) and the shipped `sys/rrm.h` (names the word, defines no bits).
+
+## Registers the base kernel touches at shutdown (`early_gbe_stop`)
+
+`early_gbe_stop` in the 6.5.30 `kernel.o` (`.text` `0x8504`, 564 bytes) stops GBE before the kernel hands the machine back to the PROM; its callers are the restart and power-down paths beside `ecc_disable`. Established from its code:
+
+| Offset | Register | What `early_gbe_stop` does with it | Label |
+|---|---|---|---|
+| `+0x3000c` | FRM_3 (`FRM_CONTROL`) | clears bit 0, the frame DMA enable, then adds 32 to bump the tile-list pointer by one unit and waits for the live copy to follow | established |
+| `+0x20008` | OVR_2 (`OVR_CONTROL`) | clears bit 0, the overlay DMA enable, then adds 32 in the same way as the frame control word | established |
+| `+0x40004` | DID_SHADOW (`DID_CONTROL`) | keeps only bit 16 of the word it reads back and writes that, then adds 32 in the same way | established |
+| `+0x20004` | OVR_1, the live overlay control | polled, up to 400,000 reads, until its bit 0 clears, then until it equals the bumped control word, a fence for one blanking edge | established |
+| `+0x40000` | DID, the live display-ID control | polled the same way: first for bit 16 clear, then for equality with the bumped `DID_CONTROL` word | established |
+| `+0x4` | DOTCLK | last, after writing `0x80000000` to the timing register at `+0x10000` to freeze it, keeps only bit 20 of the dot-clock word and writes it back | established |
