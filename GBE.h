@@ -40,10 +40,25 @@
 #define GBE_VT_F2RF_LOCK    0x1001c
 #define GBE_VT_INTR01       0x10020 /* intr1 | intr0 << 12; rewritten in the retrace handler [E] */
 #define GBE_VT_INTR23       0x10024
+#define GBE_FP_HDRV         0x10028 /* names [linux]; IRIX parks them for CRT formats [E] */
+#define GBE_FP_VDRV         0x1002c
+#define GBE_FP_DE           0x10030
 #define GBE_VT_HPIXEN       0x10034
 #define GBE_VT_VPIXEN       0x10038
 #define GBE_VT_HCMAP        0x1003c
 #define GBE_VT_VCMAP        0x10040
+#define GBE_DID_START_XY    0x10044 /* names [linux]; formulas in docs/gbe.md [E] */
+#define GBE_CRS_START_XY    0x10048
+#define GBE_VC_START_XY     0x1004c
+/*
+ * DOTCLOCK [E, k:crime_init:gbeSetTimingRegs; layout agrees with linux]:
+ * (M - 1) | (N - 1) << 8 | P << 14 | 1 << 20 (run). M 1..256, N 1..64,
+ * P 0..3 are the only values the kernel accepts from a user table.
+ * How every timing register is derived from the kernel's timing record,
+ * and the .vfo timing values: docs/gbe.md.
+ */
+#define GBE_DOTCLOCK_RUN    (1u << 20)
+#define GBE_DOTCLOCK(m, n, p) ((((m) - 1) & 0xff) | ((((n) - 1) & 0x3f) << 8) | (((p) & 3) << 14))
 
 /* ---- Overlay, frame and DID planes --------------------------------------- */
 #define GBE_OVR_WIDTH_TILE  0x20000 /* bit 13 pulsed to reset the overlay FIFO [E] */
