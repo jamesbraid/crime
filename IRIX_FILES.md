@@ -23,6 +23,7 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 /usr/cpu/sysgen/IP32boot/gfx.o
 /usr/cpu/sysgen/IP32boot/gfxs.a
 /usr/cpu/sysgen/IP32boot/rrm.o
+/usr/cpu/sysgen/IP32boot/kernel.o
 /usr/gfx/arch/IP32CRM/libGL.so
 /usr/gfx/arch/IP32CRM/libGLcore.so
 /usr/gfx/arch/IP32CRM32/libGL.so
@@ -39,7 +40,7 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 
 | Group | Files | Location under `root/` |
 |---|---|---|
-| Kernel (`crime_kernel/`) | `crime.a` (11 members: `crime.o`, `crime_dma.o`, `crime_tiles.o`, `crime_zbuf.o`, ...), `mace.o`, `gfx.o`, `rrm.o`; `gfxs.a` (`gfx.o`, `gfx_debug.o`) | `usr/cpu/sysgen/IP32boot/` |
+| Kernel (`crime_kernel/`) | `crime.a` (11 members: `crime.o`, `crime_dma.o`, `crime_tiles.o`, `crime_zbuf.o`, ...), `mace.o`, `gfx.o`, `rrm.o`, `kernel.o` (the machine-dependent base kernel: interrupt set-up and the CRIME error handlers); `gfxs.a` (`gfx.o`, `gfx_debug.o`) | `usr/cpu/sysgen/IP32boot/` |
 | OpenGL core (`libglcore/`) | `libGL.so` and `libGLcore.so`, o32 in `IP32CRM/` and N32 in `IP32CRM32/` | `usr/gfx/arch/` |
 | X server modules (`ddx/`) | the CRIME module `crm.so`, `glx.so`, the server `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` |
 | Diagnostics and tools (`diags/`) | `gfxinit`, the CRM video format files (`vof/*.vfo`), the standalone `ide.IP32` | `usr/gfx/`, `usr/gfx/ucode/CRM/`, `sbin/stand/` |
@@ -95,6 +96,7 @@ root/usr/cpu/sysgen/IP32boot/gfxs.a crime_kernel/gfxs
 crime_kernel/mace.o root/usr/cpu/sysgen/IP32boot/mace.o
 crime_kernel/gfx.o root/usr/cpu/sysgen/IP32boot/gfx.o
 crime_kernel/rrm.o root/usr/cpu/sysgen/IP32boot/rrm.o
+crime_kernel/kernel.o root/usr/cpu/sysgen/IP32boot/kernel.o
 libglcore/libGL_o32.so root/usr/gfx/arch/IP32CRM/libGL.so
 libglcore/libGLcore_o32.so root/usr/gfx/arch/IP32CRM/libGLcore.so
 libglcore/libGL_n32.so root/usr/gfx/arch/IP32CRM32/libGL.so
