@@ -5,6 +5,10 @@
  * Sources:
  *   [spec]   CRIME 1.5 Specification rev 0.3, 2 June 1997 (PDF page numbers).
  *   [netbsd] netbsd/sys/arch/sgimips/dev/crmfbreg.h.
+ *   [hdr]    IRIX register layout headers: 6.5.5 root/usr/include/sys/
+ *            crimereg.h and crimedef.h (shipped with the release). Field
+ *            names cited, layout restated in our own words.
+ *            restated in our own words.
  *   [k:FILE:FUNC+OFF] IRIX 6.5.30 IP32boot crime.a member, function, byte
  *            offset in the relocated objdump listing.
  *   [gl:UNIT:FUNC] IRIX 6.5.30 N32 libGLcore (usr/gfx/arch/IP32CRM32), the
@@ -217,6 +221,7 @@
 #define PP_TEX_SQS          0x2120  /* 64-bit, 36.12 */
 #define PP_TEX_TQS          0x2128  /* 64-bit, 36.12 */
 #define PP_TEX_QS           0x2130  /* 32-bit, 18.12 */
+/* 0x2134: s/t stepper shift flags, named stShift in [hdr]; see docs/opengl.md */
 #define PP_TEX_DSQDX        0x2138
 #define PP_TEX_DSQDY        0x2140
 #define PP_TEX_DTQDX        0x2148
@@ -347,6 +352,9 @@
  * register [I]. Depth.func bits 23:0 are computed the same way from the
  * clear depth (gc+1640, set by glClearDepth) [E], so they hold the depth
  * clear value in buffer units [I].
+ * The driver does not add the half unit the spec recommends for rounding
+ * [E, all four Z triangle routines], so depths are truncated; stepper
+ * arithmetic, clamping and the test: docs/pixel-arithmetic.md.
  */
 #define DEPTH_WINDOW_MAX    0x3fffffffu /* [E] */
 #define DEPTH_SCALE         64.0f
@@ -401,9 +409,11 @@
  * Filter arithmetic: nothing in libGLcore, the X server or the kernel
  * computes texel weights for the hardware path; the driver only selects
  * filter codes, so the blend of the 2x2 (and between mipmap levels)
- * cannot be recovered from these binaries [U]. Next route: the software
- * texture path in libGLcore as the intended arithmetic
- * (docs/open-questions.md).
+ * cannot be recovered from these binaries [U]. The starts sq, tq and q
+ * get +2048 (half of the 12-bit fraction) after truncation, the slopes
+ * do not [E, __glCrmFillTriangle]. Level of detail, the software
+ * formula as the intended arithmetic and what stays unknown:
+ * docs/pixel-arithmetic.md.
  *
  * Texel storage [E, gl:crm_texture, k:crime_tiles]:
  * - The kernel prepares a per-texture image of all 28 texture TLB
@@ -436,7 +446,8 @@
  * exactly the specification's table [spec PDF 181]. One driver rule: when
  * the drawable has no alpha bits, DST_ALPHA is sent as ONE (1),
  * ONE_MINUS_DST_ALPHA as ZERO (0) and SRC_ALPHA_SATURATE as ZERO, so the
- * hardware need not invent destination alpha [E]. */
+ * hardware need not invent destination alpha [E]. Product width and
+ * rounding are [U]: docs/pixel-arithmetic.md. */
 
 /* ---- LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table] -- */
 /* bits 3:0 = GL op - GL_CLEAR (0x1500); identity for all 16 ops. The spec
@@ -445,7 +456,8 @@
 /* ---- Depth.func (+0x21c0) [E, gl:crm_depth:__glCrmPassDepthFunc] --------- */
 #define DF_FUNC_SHIFT       25  /* 3 bits: GL func - GL_NEVER */
 #define DF_BIT24            (1u << 24)  /* set when the driver uses the depth
-                                           unit for stencil-only drawing [E]; meaning [U] */
+                                           unit for stencil-only drawing [E]; named
+                                           enTagClear in [hdr]; effect [U] */
 #define DF_VALUE_MASK       0x00ffffffu /* (0x3fffffff * clear depth) >> 6: the
                                            24-bit clear value [E arithmetic, I use] */
 

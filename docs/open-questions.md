@@ -19,10 +19,8 @@ Route key, used in the tables:
 | Question | Owner | Tried | Next |
 |---|---|---|---|
 | Whether pixel-transfer step registers count bytes or pixels; overlap of copy source and destination | `docs/pixel-transfer.md` | G, K | X copy paths (direction choice for overlapping copies); S |
-| Depth and blend arithmetic: precision and rounding of window z, of the 13.6 vertex field, and of the blend factors | `CRIME_RE.h`, `docs/rendering.md` | G, S | The software rasteriser in `libGLcore` (`so_*` span code) as the reference the hardware path was meant to match; then label unknown |
 | Hardware fog: the blend of fog colour and pixel colour, clamping of the 8.12 stepper, and state-word bits `0x8` and `0x10` | `docs/opengl.md` | G, S | The software fog path in `libGLcore` (`__glFogFragmentSlow`, `__glFogColorSlow`) as the intended formula; then label |
 | AA lines: how slope, position and the two end coverage fractions combine, how coverage meets blending, and whether DrawMode bit 13 is ever set | `docs/opengl.md` | G, S | G: a scan of every DrawMode store for bit 13; the software AA line code as the intended weighting |
-| Texel filter weights, precision and rounding | `CRIME_RE.h` | G, S | The software texture path in `libGLcore` (`so_texture.s`) as the intended arithmetic; then label |
 
 ## Display back end
 
