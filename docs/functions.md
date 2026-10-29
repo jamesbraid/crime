@@ -923,3 +923,210 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `early_gbe_stop` in `kernel.o`: stops GBE before the kernel hands the machine back to the PROM, a 564-byte routine at offset 0x8504. Established.
   It clears the DMA enables at +0x30008, +0x20008 and +0x40004, bumps each shadow word by 32, waits up to 400000 reads, and writes 0x80000000 to +0x10000.
   It clears bit 20 of the dot-clock word at +0x4 last, with `flushbus` after each store.
+
+<!-- rrm.o:begin -->
+# Kernel routines, one entry each (`rrm.o`)
+
+- `pane_gc` in `rrm.o`: refills the cache of free pane slot numbers, a 312-byte routine at offset 0x0. Established.
+  It scans the 132-byte records of the pane table from a rotating start index and picks those whose use count (halfword +0x10) is zero.
+  It stores up to 8 slot numbers into a halfword cache array.
+- `bind_pane` in `rrm.o`: finds or creates the pane for a window key on a board, a 456-byte routine at offset 0x138. Established.
+  It takes the pane table semaphore with `psema` at priority 25 and scans for a record whose key (+0x4) and board word (+0x3c) match.
+  A new pane comes from the slot cache after `pane_gc` refills it; the use count at +0x10 is raised and the semaphore released with `vsema`.
+- `unbind_pane` in `rrm.o`: drops one use of a pane, a 64-byte routine at offset 0x300. Established.
+  It takes the pane table semaphore at priority 25 with `psema`, lowers the use count halfword at +0x10 by one and releases it with `vsema`.
+- `clip2pane` in `rrm.o`: maps a window key and board to its pane, a 100-byte routine at offset 0x340. Established.
+  It scans the pane table for a record with the key at +0x4 and the board word at +0x3c equal to the second argument's field +0x18.
+  It returns the record address, or 0 when none matches.
+- `pane_cleanup` in `rrm.o`: clears a pane when its window goes away, a 164-byte routine at offset 0x3a4. Established.
+  It finds the pane with `clip2pane`, clears the key at +0x4 and the valid-mask bits 1, 3 and 6 of the halfword at +0xc under `splhi`.
+  When a waiter bit is set it clears the owner at +0x2c, releases the validation semaphore at +0x24 and wakes the sleepers with `sv_signal`.
+  A pane in a swap group is removed from it with `rrmSwapUnGroup`.
+- `pane_setnullclip` in `rrm.o`: gives a pane the empty clip, a 72-byte routine at offset 0x448. Established.
+  It calls the device method at +0x2c of the board's method table with the pane's clip descriptor at +0x40.
+  It then sets valid-mask bits 0xca in the halfword at +0xc and adds one to the clip serial at +0x8.
+- `pane_validmask` in `rrm.o`: returns a pane's valid mask, an 8-byte routine at offset 0x490. Established.
+  It loads the halfword at +0xc of the pane and returns it.
+- `invalidate_pane` in `rrm.o`: clears named bits from a pane's valid mask, a 132-byte routine at offset 0x498. Established.
+  It finds the pane with `clip2pane`, adds bit 0x40 to the mask when the clip bit (0x2) is among those named, and clears them in the halfword at +0xc under `splhi`.
+  It returns the old mask, or 0 when no pane exists.
+- `invalidate_pane_buffer` in `rrm.o`: the same clearing for a buffer change, a 116-byte routine at offset 0x51c. Established.
+  It finds the pane with `clip2pane`, adds bit 0x40 when bit 0x2 is named and clears the named bits in the halfword at +0xc under `splhi`.
+  It returns 0.
+- `validate_pane_clip` in `rrm.o`: takes a clip from the window system into a pane, a 472-byte routine at offset 0x590. Established.
+  It finds the pane with `clip2pane`, allocates a 224-byte copy once with `kern_malloc` (stored at +0x5c) and copies up to 224 bytes of the caller's clip with `copyin`.
+  It copies the descriptor into the pane, adds one to the clip serial at +0x8 and sets valid bits 0x2 and 0x40 under `splhi`.
+  It wakes the clip waiters with `sv_signal` and releases the validation semaphore with `vsema`; an error path calls `cmn_err`.
+- `validate_pane_swapbuf` in `rrm.o`: records a completed swap in a pane, a 152-byte routine at offset 0x768. Established.
+  It finds the pane with `clip2pane`, stores the swap value at +0x14 and sets valid bit 0x8 in the halfword at +0xc under `splhi`.
+  If a waiter bit 0x8 was set it clears it, wakes the sleepers with `sv_signal`, releases the validation semaphore with `vsema` and clears the owner at +0x2c.
+- `validate_pane_buffer` in `rrm.o`: marks a pane's buffer valid, a 68-byte routine at offset 0x800. Established.
+  It sets bit 0x4 in the halfword at +0xc under `splhi` and wakes every sleeper on the buffer variable at +0x34 with `sv_broadcast`.
+- `validate_my_pane_buffer` in `rrm.o`: waits until a pane's buffer bit is valid, a 160-byte routine at offset 0x844. Established.
+  It tests bit 0x4 of the requested mask against the halfword at +0xc under `splhi` and, when missing, sleeps with `sv_wait_sig` on +0x34.
+  It brackets the sleep with `hold_nonfatalsig` and `release_nonfatalsig`, and returns -1 when a signal ends the wait.
+- `validate_my_pane_resources` in `rrm.o`: brings a pane up to the mask a caller needs, a 1072-byte routine at offset 0x8e4. Established.
+  It waits for the buffer with `validate_my_pane_buffer`, then for each missing clip or swap bit takes the validation semaphore at +0x24 with `cpsema`.
+  When it must ask the window system for the part it sends `GfxMessage` with a code from 2129 to 2131 and sleeps interruptibly for the answer.
+  A pane with a null clip is given the empty clip with `pane_setnullclip`.
+- `init_panes` in `rrm.o`: sets up the pane table once, a 248-byte routine at offset 0xd14. Established.
+  It initialises the table semaphore, and for every pane the validation semaphore (`init_sema`), two sleep variables (`init_sv`) and a spinlock (`spinlock_init`).
+  Each pane's owner word is set to -1.
+- `RRM_init_panes` in `rrm.o`: resets every pane of one board, a 212-byte routine at offset 0xe0c. Established.
+  It clears the valid mask (+0xc), waiter mask (+0xe) and owner (+0x2c) of each pane whose board word at +0x3c matches.
+  A held validation semaphore is released with `vsema` and a pane in a swap group leaves it through `rrmSwapUnGroup`.
+- `RRM_init` in `rrm.o`: prepares the render node table at start-up, a 160-byte routine at offset 0xee0. Established.
+  It marks node slots 1 up to the node limit free (byte +0x3a of each 116-byte record) and gives each a call semaphore with `init_sema`.
+  It then calls `init_panes` and sets the pane count to the node limit.
+- `RRM_Init` in `rrm.o`: prepares one board's state record, a 72-byte routine at offset 0xf80. Established.
+  It initialises the spinlock at +0x1c with `spinlock_init` and the board semaphore at +0x20 with `init_sema`.
+- `rrmDoUnMapGfx` in `rrm.o`: unmaps the graphics window of a device, a 100-byte routine at offset 0xfc8. Established.
+  Under `splhi` it sets flag 0x10 in the device's word at +0x4, calls the board method at +0x34 and clears the flag again.
+  The next access to the window then faults and is revalidated.
+- `rrmUnMapGfx` in `rrm.o`: unmaps the graphics window for the calling thread, a 136-byte routine at offset 0x102c. Established.
+  It acts only when the board provides the unmap method (+0x34) and the device is not private (flag 0x8 clear).
+  It finds the thread with `curthreadhandle` and `gthread_find`, and calls `rrmDoUnMapGfx` under `splhi` when the thread has a device list.
+- `rrmInvalidateRN` in `rrm.o`: clears named bits from a render node's valid mask, a 188-byte routine at offset 0x10b4. Established.
+  When the device already owns the board (owner word +0x28 of the board record equal to the device) it clears the bits in the halfword at +0x6 of the node under `splhi`.
+  Otherwise it takes the board semaphore at +0x20 with `psema` at priority 537, records the device as owner and waits with `us_delay` while the busy word at +0x3c is non-zero.
+- `RRM_InvalidateRN` in `rrm.o`: the handler for the invalidate request of the resource manager, a 400-byte routine at offset 0x1170. Established.
+  It checks the node number and mask it is given, clears pane parts with `invalidate_pane`, marks the buffer with `validate_pane_buffer` and clears the node's own bits with `rrmInvalidateRN`.
+  A change to the resource mask forces the next access to fault through `rrmUnMapGfx`, and the result is returned to the caller with `copyout`.
+- `rrmUnbindProcFromRN` in `rrm.o`: ends the current process's binding to a node, a 176-byte routine at offset 0x1300. Established.
+  It looks the thread up with `curthreadhandle` and `gthread_find` and takes the device list writer lock (`GfxListWriterLock`) when the thread has one.
+  It unmaps the graphics window with `rrmDoUnMapGfx` when the device is private, clears the board's current-node word at +0x28 and unlocks.
+- `RRM_BindProcToRN` in `rrm.o`: binds the calling process to a render node, a 244-byte routine at offset 0x13b0. Established.
+  It acts only for a private device (flag 0x8) and, when the device already has a different current node (+0x28), takes that node's call semaphore with `psema` at priority 25.
+  The old node is destroyed with `rrmCloseRN` if it has no owner device left (word +0x2c zero), otherwise unbound with `rrmUnbindProcFromRN`; the semaphore is released with `vsema`.
+  The new node gets the device at +0x30 and a busy byte of 1 at +0x3c, becomes the device's current node, and a held board semaphore is tested with `valusema`, yielding through `force_resched`.
+- `RRM_BindRNToReadAndClip` in `rrm.o`: binds a render node to a draw window and a read window, a 776-byte routine at offset 0x14a4. Established.
+  It finds or creates the panes for the two window keys with `bind_pane`, releases any old ones with `unbind_pane` and waits for the buffer with `validate_my_pane_buffer`.
+  It stores the pane pointers in the node (+0x50 draw, +0x54 read), clears the node's valid bits for the changed part, and returns the clip serial with `copyout`.
+- `RRM_BindRNToClip` in `rrm.o`: the single-window form of the bind, a 156-byte routine at offset 0x17ac. Established.
+  It copies the caller's window key into a local record, calls `RRM_BindRNToReadAndClip` with no read window and, when the device is private (flag 0x8), copies a 12-byte answer back.
+  Any failure of the copy returns error 14.
+- `RRM_UnbindRNFromClip` in `rrm.o`: unbinds a window from a node, a 36-byte routine at offset 0x1848. Established.
+  It calls `pane_cleanup` with the window key at +0x4 of its request and returns 0.
+- `RRM_OpenRN` in `rrm.o`: allocates a render node for a device, a 736-byte routine at offset 0x186c. Established.
+  Under the node table semaphore (`psema`, priority 25) it finds a free 116-byte slot, zeroes it with `bzero` and sets its owner device at +0x2c and its context number at +0x38 to -1.
+  It creates the node's sleep variable (`init_sv`) and spinlock (`spinlock_init`), waits for the board with `us_delay`, and returns the node number.
+- `rrmCloseRN` in `rrm.o`: destroys one render node, a 796-byte routine at offset 0x1b4c. Established.
+  It waits for ownership of the board (`psema`, `us_delay` while busy), unbinds the node's two panes with `unbind_pane` and bumps the generation count at +0x0 under `splhi`.
+  It then destroys the node's sleep variable and spinlock (`sv_destroy`, `spinlock_destroy`), marks the slot free at +0x3a and frees any attached memory with `kern_free`.
+- `RRM_CloseRN` in `rrm.o`: the request handler for closing a node, a 32-byte routine at offset 0x1e68. Established.
+  It calls `rrmCloseRN` and returns 0.
+- `RRM_Exit` in `rrm.o`: closes every node a device owns when the device closes, a 600-byte routine at offset 0x1e88. Established.
+  It walks the node table up to the node limit, and for each node whose owner (+0x2c) is the device takes its call semaphore (`psema`, priority 25) and calls `rrmCloseRN`.
+  It unbinds the process with `rrmUnbindProcFromRN` when a node was current and releases the semaphores with `vsema`.
+- `rrmGetResourceMask` in `rrm.o`: returns a node's requested resource mask, an 8-byte routine at offset 0x20e0. Established.
+  It loads the halfword at +0x4 of the node and returns it.
+- `rrmSetResourceMask` in `rrm.o`: changes a node's requested resource mask, a 164-byte routine at offset 0x28cc. Established.
+  Under `splhi` it reads the old mask (+0x4) and the valid bits (+0x6), adding the pane's valid mask from `pane_validmask` when the clip is requested.
+  When a newly requested part is not valid it calls `rrmUnMapGfx` so the next access faults; it then stores the new mask at +0x4.
+- `rrmSuspend` in `rrm.o`: stops every graphics device of the calling thread, a 936-byte routine at offset 0x20e8. Established.
+  It finds the thread with `gthread_find` and walks its device list under the reader lock, `GfxListReaderLock`.
+  For each device it calls the board's suspend method at +0x58, takes ownership of the board under `splhi` and records the device's counts at +0x28.
+- `rrmResume` in `rrm.o`: restarts the devices that `rrmSuspend` stopped, a 1084-byte routine at offset 0x2490. Established.
+  It walks the thread's device list under `GfxListReaderLock` and calls the board's resume method at +0x5c for each.
+  It unmaps the graphics window with `rrmDoUnMapGfx`, takes the board without sleeping with `cpsema` and restores the device flags.
+- `RRM_ValidateSwapBuf` in `rrm.o`: the request that records a finished swap, a 72-byte routine at offset 0x2970. Established.
+  It calls `RRM_CheckValidFault` first and returns error 14 when that fails.
+  Otherwise it passes the window key at +0x4 and the swap value at +0x8 of the request to `validate_pane_swapbuf`.
+- `rrmValidateBuffer` in `rrm.o`: marks a node's pane buffer valid and sets its swap due count, a 68-byte routine at offset 0x29b8. Established.
+  When the board keeps a retrace counter (state word +0x60) it stores the counter at +0x64 plus the pane's swap interval (+0x18) into the pane's due count at +0x1c.
+  It then calls `validate_pane_buffer` for the node's draw pane at +0x50.
+- `RRM_ValidateMessage` in `rrm.o`: the request that answers a validation message from the window system, an 84-byte routine at offset 0x29fc. Established.
+  It briefly raises and restores the level (`splhi`, `splx`), reads the mask halfword at +0x6 of the node and tests bit 0x20.
+  It calls `rrmValidateBuffer` for the node and returns 22 or 0 by that test.
+- `RRM_SetDisplayMode` in `rrm.o`: the request that selects a display mode, a 200-byte routine at offset 0x2a50. Established.
+  It runs `RRM_CheckValidFault` and returns 14 on failure, then builds a message with type 11 (type 139 for a private device) carrying the mode number at +0x10 of the node and the request's two words.
+  It sends it with `GfxMessage`, clears pane bit 8 with `invalidate_pane` and unmaps the window with `rrmUnMapGfx`.
+- `RRM_LoadDisplayMode` in `rrm.o`: the request that loads a display mode for a window, a 336-byte routine at offset 0x2b18. Established.
+  It finds the node's pane with `clip2pane`, checks the arguments (error 22 when invalid) and clears the node's mode bit with `rrmInvalidateRN`.
+  It then unmaps the window with `rrmUnMapGfx` so the next access reloads the mode.
+- `RRM_GetDisplayModes` in `rrm.o`: copies the list of display modes to the caller, an 88-byte routine at offset 0x2c68. Established.
+  The board state holds a mode count at +0x34 and a pointer at +0x38; the list is four bytes per mode.
+  It returns 22 when the caller's buffer is shorter, otherwise copies the list with `copyout` and returns 14 if the copy fails.
+- `rrmValidateMyRetrace` in `rrm.o`: waits for a retrace, a 100-byte routine at offset 0x2cc0. Established.
+  Under `splhi` it tests bit 0x10 of the requested mask (+0x4) against the valid mask (+0x6) of the node.
+  When the bit is missing it sleeps with `sv_wait` on the node's variable at +0x28 until `rrmValidateRetrace` wakes it.
+- `rrmValidateRetrace` in `rrm.o`: marks a node's retrace valid, a 68-byte routine at offset 0x2d24. Established.
+  Under `splhi` it sets bit 0x10 in the halfword at +0x6 of the node and wakes the sleeper on +0x28 with `sv_signal`.
+- `rrmAllocPcxid` in `rrm.o`: gives a node a hardware context number, a 360-byte routine at offset 0x2d68. Established.
+  A board with one context (count 1 at +0xc of the state) needs nothing. Otherwise it takes the first zero entry of the board's context table at +0x10 as the node's number (+0x38 of the node).
+  When none is free it takes the number of the node at the tail of the most-recently-used list (+0x18) and moves the requester to the head (+0x14).
+- `rrmValidateMyPcx` in `rrm.o`: makes sure the calling node has a hardware context, a 580-byte routine at offset 0x2ed0. Established.
+  It allocates a number with `rrmAllocPcxid` when the node (+0x38) has none, and when the number was taken from another node it clears that node's valid bits with `rrmInvalidateRN`.
+  It clears the pane's clip with `invalidate_pane`, and touches the shared `gfxinfo` statistics record.
+- `RRM_ValidateClip` in `rrm.o`: the request that accepts a window clip from the window system, a 256-byte routine at offset 0x3114. Established.
+  It runs `RRM_CheckValidFault` and then `validate_pane_clip` with the window key at +0x4 of the request.
+  When the device does not own the board it takes the board semaphore (`psema`, priority 537) and waits with `us_delay` while the busy word at +0x3c is set.
+- `RRM_ValidFault` in `rrm.o`: revalidates a node after the unmapped graphics window faults, an 872-byte routine at offset 0x3214. Established.
+  It first gives the node a hardware context with `rrmValidateMyPcx`, waits for the retrace and for each pane's missing parts, and takes the board with `ddv_lock`.
+  It then loads the context through the board's method at +0x30 and releases with `ddv_unlock`; a failure prints the process id with `cmn_err_tag` and sends the process signal 9 with `psignal`.
+- `RRM_CheckValidFault` in `rrm.o`: the fault check that the render requests make first, a 96-byte routine at offset 0x357c. Established.
+  It tests flags 0x4 and 0x1 in the device's word at +0x4 and returns -1 when the device has no node.
+  Otherwise it calls `RRM_ValidFault` with a zero second argument and returns -1 on failure, 0 on success.
+- `rrmSwapWait` in `rrm.o`: makes a swap wait for its retrace, a 224-byte routine at offset 0x35dc. Established.
+  It returns at once when the board's retrace counter (+0x64) plus one has reached the pane's due count at +0x1c.
+  Otherwise it queues the node on the board's list at +0x68 ordered by due count and sleeps with `sv_wait_sig` between `hold_nonfatalsig` and `release_nonfatalsig`, returning -1 on a signal.
+- `RRM_SwapBuf` in `rrm.o`: the swap-buffers request, a 648-byte routine at offset 0x36bc. Established.
+  It fetches the node's mask with `rrmGetResourceMask`, checks the fault state with `RRM_CheckValidFault` and clears the pane's buffer bits with `invalidate_pane`.
+  It sets the swap value and due count, marks the buffer valid with `validate_pane_buffer`, waits with `rrmSwapWait` and counts the swap in the `gfxinfo` record.
+- `rrmSwapUnGroup` in `rrm.o`: removes a pane from its swap group, a 236-byte routine at offset 0x3944. Established.
+  It unlinks the pane from the group list through the words at +0x7c and +0x80 of the group record and lowers the group count.
+  The last member frees the group record with `kern_free` and clears the pane's group pointer at +0x78.
+- `RRM_SwapUnGroup` in `rrm.o`: the request that leaves a swap group, a 120-byte routine at offset 0x3a30. Established.
+  Under the pane table semaphore (`psema`, priority 25) it finds the pane with `clip2pane` and returns error 2 when none exists and 15 when the pane has no group.
+  Otherwise it removes it with `rrmSwapUnGroup` and returns 0.
+- `RRM_SwapGroup` in `rrm.o`: the request that joins one pane to another's swap group, a 304-byte routine at offset 0x3aa8. Established.
+  It finds the pane of the first window key (error 2 if none) and, when it is already in a group, leaves it with `rrmSwapUnGroup`.
+  It finds the pane of the second key and refuses with error 6 when the two are on different boards or 15 when it is missing.
+  A second pane without a group gets a new 12-byte group record from `kern_malloc` and `bzero`; the first pane then links in at +0x78 and +0x7c and the group count at +0x0 rises by one.
+- `RRM_SwapReady` in `rrm.o`: the request that marks a swap-group slot ready or clears it, a 340-byte routine at offset 0x3bd8. Established.
+  The board state holds a slot count at +0x6c and a table of group pointers at +0x70; a slot number at or above the count returns 37.
+  It finds the pane with `clip2pane` (error 2 if none, 6 on another board, 15 when it has no group) and takes the board with `psema` at priority 537 and `us_delay`.
+  A set request stores the pane's group in the slot, with 17 when another group holds it; a clear request empties the slot, with 9 when it holds a different group.
+- `RRM_CushionBuffer` in `rrm.o`: the request that sets a pane's cushion-buffer flag, a 164-byte routine at offset 0x3d2c. Established.
+  It finds the pane with `clip2pane` and returns error 2 when none exists and 6 when the pane belongs to another board.
+  It returns 19 when the board lacks the method at +0x74, and otherwise stores the request's flag in byte +0x81 of the pane.
+- `RRM_MGR_SwapBuf` in `rrm.o`: the swap request of the window manager, request 1020, a 196-byte routine at offset 0x3dd0. Established.
+  It runs `RRM_CheckValidFault`, returning 14 on failure. A slot number (+0x4) below the board's slot count (+0x34) stores the request's value (+0x10) in the board's table at +0x38.
+  It then calls the board's method at +0x54 with the slot and the request's words and returns its error negated.
+  A larger slot number finds the pane of the key at +0x8 with `clip2pane` and sets the pane's halfword +0x12 to whether bit 4 of the value is clear.
+- `rrmValidateMGRSwapBufSTREAM` in `rrm.o`: the interrupt-time sender of the swap-done message, a 76-byte routine at offset 0x3e94. Established.
+  When a stream exists (+0x8 of the board record) it builds a message with type byte 9, length 3 and the swap value, and sends it with `GfxIntrMessage`.
+- `rrmValidateMGRSwapBuf` in `rrm.o`: schedules the swap-done message, a 68-byte routine at offset 0x3ee0. Established.
+  With a stream present it arms `streams_timeout` for `rrmValidateMGRSwapBufSTREAM` after a delay of 100 ticks, so the message leaves from a safe context.
+- `rrmGenlockNotifySTREAM` in `rrm.o`: the interrupt-time sender of the genlock-change message, a 72-byte routine at offset 0x3f24. Established.
+  It builds a message with type byte 12 and length 2 carrying one word and sends it with `GfxIntrMessage` when the board has a stream.
+- `rrmGenlockNotify` in `rrm.o`: schedules the genlock-change message, a 68-byte routine at offset 0x3f6c. Established.
+  It arms `streams_timeout` for `rrmGenlockNotifySTREAM` with a delay of 100 ticks when the board has a stream.
+- `RRM_WaitForRetrace` in `rrm.o`: the wait-for-retrace request, request 1007, a 108-byte routine at offset 0x3fb0. Established.
+  It runs `RRM_CheckValidFault` (error 14 on failure), clears the node's retrace bit 0x10 with `rrmInvalidateRN` and calls the board's method at +0x4c.
+  It then unmaps the window with `rrmUnMapGfx` so the next access sleeps until the retrace handler marks it valid.
+- `RRM_SetSwapInterval` in `rrm.o`: sets how many retraces a swap waits, request 1006, a 40-byte routine at offset 0x401c. Established.
+  It returns 22 when the interval in the request (+0x4) is negative and otherwise stores it at +0x1c of the node record and at +0x18 of the node's pane.
+- `RRM_Message` in `rrm.o`: the request that forwards a client message to the window system, request 1009, a 248-byte routine at offset 0x4044. Established.
+  It reads the pane's valid mask with `pane_validmask` under `splhi`, clears the node's bit with `rrmInvalidateRN` and the pane's with `invalidate_pane`.
+  It copies the message with `bcopy`, sends it with `GfxMessage` and unmaps the window with `rrmUnMapGfx`.
+- `RRM_SetVideoSync` in `rrm.o`: stores the video-sync divisor, request 1021, a 20-byte routine at offset 0x413c. Established.
+  It copies the word at +0x4 of the request into +0x50 of the board state and returns 0.
+- `RRM_GetVideoSync` in `rrm.o`: reads the video-sync divisor, request 1022, a 68-byte routine at offset 0x4150. Established.
+  It copies +0x50 of the board state into the request and returns it to the caller with `copyout` of 8 bytes, or error 14 when the copy fails.
+- `RRM_WaitVideoSync` in `rrm.o`: waits for a video-sync count, request 1023, a 108-byte routine at offset 0x4194. Established.
+  It passes the request's divisor (+0x4) and target (+0x8) to `rrmWaitVideoSync`.
+  After a successful wait it copies a 16-byte answer that includes a counter word read from the board state back with `copyout`, or returns error 14 when the copy fails.
+- `rrmWaitVideoSync` in `rrm.o`: queues a node for a video-sync count, a 212-byte routine at offset 0x4200. Established.
+  It returns 22 unless the divisor is positive and the target is below it, stores them at +0x60 and +0x64 of the node and links the node on the board's list at +0x54 through +0x6c.
+  It sleeps with `sv_wait_sig` between `hold_nonfatalsig` and `release_nonfatalsig` and returns -1 when a signal ends the wait.
+- `rrmValidateVideoSync` in `rrm.o`: wakes the video-sync waiters at a retrace, a 308-byte routine at offset 0x42d4. Established.
+  Under `splhi` it walks the board's video-sync list at +0x54 and wakes with `sv_signal` each node whose target (+0x64) equals the sync count (+0x50) modulo its divisor (+0x60).
+  It then walks the swap list at +0x68 and wakes, and unlinks, each node whose pane's due count (+0x1c) the retrace count (+0x64) plus one has reached.
+- `RRM_MapClipToSwapbufID` in `rrm.o`: maps a window key to its swap-buffer id, request 1025, a 120-byte routine at offset 0x4408. Established.
+  It finds the pane with `clip2pane`, stores the pane's swap value (+0x14) in the answer at +0x8, or -1 when no pane exists.
+  A caller with an answer buffer receives 12 bytes through `copyout`, error 14 when the copy fails.
+- `RRM_Dispatch` in `rrm.o`: the entry point of the resource-manager requests, a 1104-byte routine at offset 0x4480. Established.
+  It takes requests 1000 to 1099 through a table of 16-byte entries in `.data` and copies the argument block in with `copyin`, returning 14 or 22 for a bad pointer or number.
+  It serialises with the node's call semaphore (`psema`, priority 25) for the requests that name a node, waits for board ownership with `us_delay`, and releases with `vsema`.
+<!-- rrm.o:end -->

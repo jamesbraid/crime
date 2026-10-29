@@ -1,7 +1,7 @@
 table	rows	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes
 binaries	82	5	0	4	0	0	77	0	0	6.1	6.1	100.0	6.1						
-functions	17280	466	0	464	32	166	3685	12963	0	2.7	3.7	25.0	2.7			66.7	15	2026-10-29	
-functions (distinct names)	11726	465	0	464	16	79	2202	8980	0	4.0	4.6	23.4	4.0						
+functions	17280	536	0	534	32	166	3615	12963	0	3.1	4.1	25.0	3.1			66.7	15	2026-10-29	
+functions (distinct names)	11726	535	0	534	16	79	2132	8980	0	4.6	5.2	23.4	4.6						
 mmio	145	145	0	139	0	0	0	0	0	100.0	100.0	100.0	100.0	40		100.0	10	2026-10-29	
 tokens	44	44	0	41	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	10	2026-10-29	
 ioctls	42	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29	
@@ -25,7 +25,7 @@ functions in usr/cpu/sysgen/IP32boot/kernel.o	811	44	0	44	0	0	39	728	0	5.4	5.4	1
 functions in usr/cpu/sysgen/IP32boot/mace.o	12	12	0	12	0	0	0	0	0	100.0	100.0	100.0	100.0						
 functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	0	0	0	0	1	168	0	0.0	0.0	0.6	0.0						
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	0	0	0	0	24	0	0	0.0	0.0	100.0	0.0						
-functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	0	0	0	0	70	0	0	0.0	0.0	100.0	0.0						
+functions in usr/cpu/sysgen/IP32boot/rrm.o	70	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0						
 functions in usr/gfx/arch/GENERIC/Xsgi	2936	0	0	0	0	0	34	2902	0	0.0	0.0	1.2	0.0						
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	7	668	0	0.0	0.0	1.0	0.0						
 functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	0	0	16	79	1217	2151	0	0.0	2.3	37.6	0.0						
