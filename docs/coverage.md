@@ -84,6 +84,6 @@ The OpenGL driver's software transform and lighting and its emission of renderin
 |---|---|---|---|---|
 | Command and FIFO formats | partial | `CRIME_RE.h`, `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | N32 libGLcore has names and lines, no types. Found: triangle emission order, start-alias commits, dual hardware/shadow writes, no level polling; see `docs/opengl.md` |
 | Software transform and lighting | none | `libglcore/include/glcore_crime.h`, `docs/opengl.md` | command grammar | CRIME has no geometry engine, so the host path owns this |
-| Context save and restore | none | `crime_kernel/include/crime_kern.h`, `docs/opengl.md` | command grammar | how the kernel shares the engine among clients unknown |
+| Context save and restore | partial | `crime_kernel/include/crime_kern.h`, `docs/opengl.md` | command grammar | how the kernel shares the engine among clients unknown. Found: libGLcore mirrors every global register write into a kernel-provided shadow page; kernel-side reload not yet read (`crime_kernel/include/crime_kern.h`, `libglcore/include/glcore_crime.h`) |
 | Texture formats and filtering (incl. precision) | partial | `CRIME_RE.h`, `docs/opengl.md` | command grammar | Found: GL enum to Texture.mode and Texture.format mapping in `CRIME_RE.h`; texel download and tiling unread |
 | Display and scanout | none | `GBE.h`, `ddx/include/crime_ddx.h`, `docs/opengl.md` | command grammar | mode set and overlay programming by the X module unknown |
