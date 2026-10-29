@@ -6,7 +6,14 @@
  * [netbsd] sys/arch/sgimips/dev/crmfbreg.h; [k:FILE:FUNC+OFF] IRIX 6.5.30
  * IP32boot crime.a; [x:LINE] IRIX 6.5.30 crm.so, line in
  * ddx/asm/crm/crm/crm.s (the module is stripped).
- * Offsets are from 0x16000000. All registers are 32-bit [E, linux].
+ * [gbe-spec] "GBE ASIC spec for REV1.1", 18 July 1996 (its own page numbers);
+ * it describes revision 1.1 only, so "rev 1.1" marks facts from it.
+ * Offsets are from 0x16000000. All registers are 32-bit [E, linux; gbe-spec p.34].
+ * Reset values (rev 1.1, [gbe-spec] pp.36-47): CTRLSTAT chip id 1, every io pin
+ * pair 11 (input), clock select 00; DOTCLK 0; I2C and I2CFP released (1);
+ * SYSCLK tm(0) 1; DEVICE_ID 0x666; VT_XY freeze 1; all other timing, plane,
+ * DID and cursor registers 0; CMFIFO 0; VC_2 flicker and auto-field 1.
+ * Details and what IRIX does with them: docs/gbe.md, pass 6.
  */
 #ifndef GBE_H
 #define GBE_H
@@ -76,15 +83,23 @@
  * FRM_INHWCTRL bit 0 and OVR_INHWCTRL bit 0 until each equals the DMA
  * enable bit it wrote, then waits for VT_XY to pass a programmed line
  * before setting VT_HPIXEN/VT_VPIXEN (parked at 0xffffff meanwhile).
- * Inferred: GBE copies each *_CONTROL register into its *_INHWCTRL twin at
- * a frame boundary, not on the write, and software that needs the new
- * value live must wait for it. A model that applies *_CONTROL immediately
+ * Established, rev 1.1 [gbe-spec pp.42-44]: GBE copies each *_CONTROL register
+ * (spec names OVR_2, FRM_3, DID_SHADOW) into its *_INHWCTRL twin (OVR_1,
+ * FRM_2, DID) at the beginning of blanking, not on the write, and software
+ * that needs the new value live must wait for it. The tile-list pointer is
+ * bits 31:5, so IRIX's gbeStop adds 0x20 to see a changed pointer arrive.
+ * The DID control word is separate: bits 15:0 did_base (upper 16 bits of
+ * the physical address of one 64 KiB DID table), bit 16 DMA enable, not a
+ * pointer to a list [E, spec p.44; k:crime_retrace store of 0x10000 | tile]. A model that applies *_CONTROL immediately
  * would let this loop exit early but would tear mid-frame.
  */
 
 /* ---- Window ID (mode) table (+0x48000) ----------------------------------- */
 #define GBE_MODE(n)         (0x48000 + 4 * (n)) /* 32 entries [E, linux] */
-#define   GBE_MODE_BUF_MASK 0x3   /* buffer select [E, netbsd]; 1 or 2 per buffer */
+#define   GBE_MODE_BUF_MASK 0x3   /* buffer select [E, netbsd; gbe-spec p.44]: 01 lower half, 10 upper half, 11 both */
+/* Entry fields, rev 1.1 [gbe-spec p.44]: BUF 1:0; TYP 4:2 (0 I8, 1 I12, 2 RG3B2,
+ * 3 RGB4, 4 RGB5, 5 RGB8); CM 9:5 colour-map group (I8) or RGB8 direct map when
+ * non-zero; GM 10 (1 = gamma off); AUX 12:11 digital pixel bus [E, spec]. */
 /*
  * Buffer swaps: at retrace the kernel rewrites pending GBE_MODE entries
  * as (value & ~3) | buffer, choosing buffer 1 or 2 [E,
@@ -94,7 +109,7 @@
  */
 
 /* ---- Colour maps and the colour-map FIFO --------------------------------- */
-#define GBE_CMAP(n)         (0x50000 + 4 * (n)) /* 6144 entries [E, linux] */
+#define GBE_CMAP(n)         (0x50000 + 4 * (n)) /* 6144 entries [E, linux]; 4608 on rev 1.1 [E, gbe-spec]; overlay uses the last 256 */
 #define   GBE_CMAP_ENTRY(r, g, b) (((r) << 24) | ((g) << 16) | ((b) << 8)) /* [E] */
 #define GBE_CMAP_FIFO       0x58000
 #define   GBE_CMAP_FIFO_COUNT_MASK  0x3f    /* [E, x and k mask with 0x3f] */
@@ -111,10 +126,15 @@
  * revisions apparently never report 0 for an empty FIFO [I]. The
  * revision test reads a per-screen word that tracks GBE revision the way
  * the Linux driver's gbe_revision < 2 tests do [I].
- * Conflict: Linux gbefb waits while cm_fifo >= 63, which treats the same
- * field as an occupancy count [E, linux gbefb.c]. The two readings cannot
- * both be right for one revision; a capture of the register at reset and
- * after a burst of writes would settle it [U].
+ * Established, rev 1.1 [gbe-spec p.18, p.45]: the field is the number of FREE
+ * entries of a 64-deep FIFO (the true count may be higher, never lower),
+ * which is the X server's reading. Linux gbefb waits while cm_fifo >= 63,
+ * which treats the same field as an occupancy count [E, linux gbefb.c];
+ * Linux's reading disagrees with the specification and with IRIX, and its
+ * behaviour on real silicon is [U] (capture listed in docs/captures.md).
+ * Inferred: the six-bit field wraps at 64, so an empty FIFO on rev 1.1
+ * reads 0, which is why revisions before 2 accept 0 and why the spec's
+ * reset value is 0.
  * The kernel textport path writes map 17 (entries 0x1100 + i) without
  * effectively waiting [E, k:crime_tp:crime_mapcolor].
  */
@@ -136,6 +156,11 @@
 
 /* ---- Interrupts ------------------------------------------------------------ */
 /* GBE lines 0-3 reach CRIME inputs 16-19; see CRIME.h. Line 0 is the
- * retrace handler, line 1 pre-blank [E]. */
+ * retrace handler, line 1 pre-blank [E]. Each fires when vt_y equals its
+ * programmed line (VT_INTR01: line1 11:0, line0 23:12; VT_INTR23: line3,
+ * line2) and is latched in CRIME, which software can only clear [E, rev 1.1
+ * gbe-spec p.20]. IRIX programs line 1 at vblank start - 32 and line 0 at
+ * vblank start + 4, wrapped at the frame total [E, k:crime_retrace:
+ * gbeCacheVtInfo]. */
 
 #endif /* GBE_H */
