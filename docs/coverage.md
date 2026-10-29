@@ -73,7 +73,7 @@ Display back end: frame buffer scanout from system memory, overlay, cursor, colo
 | Interrupts | partial | `GBE.h` | display back end | routes to CRIME inputs 16-19, latched and cleared by writing zero. Found: line 0 retrace, line 1 pre-blank, 2-3 HLI; acknowledged by clearing CRIME +0x028 bits |
 | Reset | partial | `GBE.h`, `docs/gbe.md` | display back end | device ID and revision candidates; I2C released-line value |
 | Context save and restore | none | `GBE.h`, `docs/gbe.md` | display back end |  |
-| Display and scanout | partial | `GBE.h` | display back end | Found: CONTROL to INHWCTRL copy is asynchronous and polled; blanking deselects the pixel clock; buffer swaps flip the WID mode buffer bits at retrace |
+| Display and scanout | partial | `GBE.h`, `docs/gbe.md` | display back end | Found: window ID table writes and the tile lists IRIX builds for frame, overlay and display-ID planes (`docs/gbe.md`); overlay and underlay compositing and type codes unknown. Earlier: CONTROL to INHWCTRL copy is asynchronous and polled; blanking deselects the pixel clock; buffer swaps flip the WID mode buffer bits at retrace |
 | Colormap FIFO | partial | `GBE.h` | display back end | Found: X server waits for 48 free slots, accepting 0 only on revisions before 2; Linux reads the field the opposite way (conflict recorded in `GBE.h`) |
 
 ### libGLcore to CRIME command stream
