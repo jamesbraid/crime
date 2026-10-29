@@ -18,7 +18,7 @@ Inferred: the `+0x408` write is a soft reset or flush of the rendering engine an
 
 ## Error recovery (`k:crime:crimeError`)
 
-Called when a drain or idle wait times out (`crmSavePP`, `crimePcxSwap`, and the FIFO overflow path), established: print a driver warning at level 4, write `+0x408` with 0, delay 10 microseconds, rebuild the control word from the kernel's four threshold variables as `count | stall << 7 | empty << 14 | full << 21` and write it to `IB_CTL`, flush the bus. It does not clear the TLBs, re-run `crimeInitHW`, or touch the shadow record, so state that was queued is lost without notice (inferred from the function's body, which is short and shows no other writes).
+Called when a drain or idle wait times out (`crmSavePP`, `crimePcxSwap`) and when the timeout that guards the wait for the buffer-empty interrupt (input 25) expires (`crimeEmptyWaitTimeout`), established: print a driver warning at level 4, write `+0x408` with 0, delay 10 microseconds, rebuild the control word from the kernel's four threshold variables as `count | stall << 7 | empty << 14 | full << 21` and write it to `IB_CTL`, flush the bus. It does not clear the TLBs, re-run `crimeInitHW`, or touch the shadow record, so state that was queued is lost without notice (inferred from the function's body, which is short and shows no other writes).
 
 ## Kernel bulk zero and copy through the MTE
 
