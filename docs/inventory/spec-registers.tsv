@@ -38,18 +38,18 @@ CRIME 1.5	7-3	165	RE	0x2000	BufMode.src	1	0	32	R/W	1	understood	docs/opengl.md#c
 CRIME 1.5	7-3	165	RE	0x2008	BufMode.dst	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2010	ClipMode	1	0	32	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
 CRIME 1.5	7-3	165	RE	0x2018	DrawMode	1	0	32	R/W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	0	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2020	ScrMask[0]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
 CRIME 1.5	7-3	165	RE	0x2028	ScrMask[1]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	2	8	64	R/W	2	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	3	8	64	R/W	3	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
-CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	4	8	64	R/W	4	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2030	ScrMask[2]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2038	ScrMask[3]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
+CRIME 1.5	7-3	165	RE	0x2040	ScrMask[4]	1	0	64	R/W	1	understood	docs/context.md#window-clip-set-up-in-the-kernel-crimevalidateclip	Window clip set-up in the kernel (`crimeValidateClip`)
 CRIME 1.5	7-3	165	RE	0x2048	Scissor	1	0	64	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	165	RE	0x2050	WinOffset.src	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2058	WinOffset.dst	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	165	RE	0x2060	Primitive	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	0	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
+CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	2	4	32	W	1	understood	docs/opengl.md#register-roles	Register roles
+CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
 CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	understood	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
