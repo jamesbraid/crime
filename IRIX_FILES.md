@@ -34,8 +34,44 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 /usr/lib32/libXsgivc.so
 /usr/gfx/arch/GENERIC/Xsgi
 /usr/gfx/gfxinit
+/usr/gfx/setmon
 /usr/gfx/ucode/CRM/vof
 /sbin/stand/ide.IP32
+/sbin/stand/symmon.IP32
+/usr/cpu/firmware/ip32prom.image
+/usr/sbin/Confidence/dualchannel
+/usr/cpu/sysgen/IP32boot/mvp.o
+/usr/cpu/sysgen/IP32boot/a3_dd.o
+/usr/lib/libXsgivc.so
+/usr/lib64/libXsgivc.so
+/usr/lib/dmedia/video/mvp.so
+/usr/lib/dmedia/video/debug/mvp.so
+/usr/lib32/dmedia/video/mvp.so
+/usr/lib32/dmedia/video/debug/mvp.so
+/usr/lib/internal/libvice.so
+/usr/lib32/internal/libvice.so
+/usr/lib/dmedia/imageconverters/vicedv.so
+/usr/lib/dmedia/imageconverters/vicejpeg.so
+/usr/lib/dmedia/imageconverters/vicempeg.so
+/usr/lib/dmedia/imageconverters/vicers.so
+/usr/lib32/dmedia/imageconverters/vicedv.so
+/usr/lib32/dmedia/imageconverters/vicejpeg.so
+/usr/lib32/dmedia/imageconverters/vicempeg.so
+/usr/lib32/dmedia/imageconverters/vicers.so
+/usr/lib/dmedia/imageconverters/debug/vicedv.so
+/usr/lib/dmedia/imageconverters/debug/vicejpeg.so
+/usr/lib/dmedia/imageconverters/debug/vicers.so
+/usr/lib32/dmedia/imageconverters/debug/vicedv.so
+/usr/lib32/dmedia/imageconverters/debug/vicejpeg.so
+/usr/lib32/dmedia/imageconverters/debug/vicers.so
+```
+
+The `members` block lists the archive members that are in scope; an archive
+not named there is in scope whole. `os.a` is the whole base kernel, so only the
+tile allocator is read. `scripts/inventory.py` reads both blocks.
+
+```members
+/usr/cpu/sysgen/IP32boot/os.a tile.o
 ```
 
 ### Where each group goes
@@ -44,14 +80,21 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 |---|---|---|
 | Kernel (`crime_kernel/`) | `crime.a` (11 members: `crime.o`, `crime_dma.o`, `crime_tiles.o`, `crime_zbuf.o`, ...), `mace.o`, `gfx.o`, `rrm.o`, `kernel.o` (the machine-dependent base kernel: interrupt set-up and the CRIME error handlers), `os.a` (the base kernel, read for its tile allocator `tile.o`); `gfxs.a` (`gfx.o`, `gfx_debug.o`) | `usr/cpu/sysgen/IP32boot/` |
 | OpenGL core (`libglcore/`) | `libGL.so` and `libGLcore.so`, o32 in `IP32CRM/` and N32 in `IP32CRM32/` | `usr/gfx/arch/` |
-| X server modules (`ddx/`) | the CRIME module `crm.so`, `glx.so`, the server `Xsgi`, the N32 video-control client library `libXsgivc.so` (product `x_eoe`) | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/`, `usr/lib32/` |
-| Diagnostics and tools (`diags/`) | `gfxinit`, the CRM video format files (`vof/*.vfo`), the standalone `ide.IP32` | `usr/gfx/`, `usr/gfx/ucode/CRM/`, `sbin/stand/` |
+| X server modules (`ddx/`) | the CRIME module `crm.so`, `glx.so`, the server `Xsgi`, the video-control client library `libXsgivc.so` in o32, N32 and 64-bit builds (product `x_eoe`) | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/`, `usr/lib32/` |
+| Diagnostics and tools (`diags/`) | `gfxinit`, `setmon` (the monitor-timing tool), the CRM video format files (`vof/*.vfo`), the standalone `ide.IP32` and `symmon.IP32` (the standalone debug monitor, which decodes CRIME and VICE errors), the PROM image `ip32prom.image`, `Confidence/dualchannel` (the dual-channel flat-panel test, which drives CRIME's I2C) | `usr/gfx/`, `usr/gfx/ucode/CRM/`, `sbin/stand/`, `usr/cpu/firmware/`, `usr/sbin/Confidence/` |
+| Video and imaging (`video/`, plus `crime_kernel/mvp.o`, `crime_kernel/a3_dd.o`) | `mvp.o` (the O2 video-in and video-out kernel driver, which also reads GBE timing), `a3_dd.o` (the audio driver, which shares the MACE I2C and CRIME interrupt hooks), `mvp.so` (the video-library device module, release and debug, o32 and N32), `libvice.so` (the VICE imaging library) and the VICE image converters `vicedv.so`, `vicejpeg.so`, `vicempeg.so`, `vicers.so` | `usr/cpu/sysgen/IP32boot/`, `usr/lib/dmedia/video/`, `usr/lib32/dmedia/video/`, `usr/lib/internal/`, `usr/lib32/internal/`, `usr/lib*/dmedia/imageconverters/` |
 
 CRIME has no geometry engine and no microcode: the CRM ucode directory holds
 only video format files, and `libGLcore` transforms and lights on the CPU. The
 O2 has no `kpm`-style state-dump tool among these files. `ide.IP32` is the
 standalone diagnostic monitor; it is not installed by default (it ships in the
 `nfs` product, so the installed disk below lacks it).
+
+### How the scope was found
+
+The scope is measured, not recalled. `instigator extract --manifest-only` listed every installed file of the three 6.5.30 discs (Installation Tools and Overlays 1 of 3, Overlays 2 of 3 and 3 of 3; 39465 paths), `instigator extract --unpack` pulled the candidate directories (`usr/cpu/sysgen/IP32boot`, `usr/gfx`, `usr/lib/X11/dyDDX`, `usr/X11R6/lib/modules`, `sbin/stand`, `usr/cpu/firmware`, `usr/lib`, `usr/lib32`, `usr/lib64`, `usr/bin`, `usr/sbin`, `usr/diags`, `stand`), and a scan of every ELF file and archive for CRIME, CRM, GBE, MACE, MVP and VICE names and strings picked the files above. The kernel link symbols of every IP32boot object were also checked: only `crime.a`, `kernel.o`, `mace.o`, `mvp.o`, `a3_dd.o`, `pcimh.o`, `gfx.o`, `rrm.o`, `os.a` (the tile allocator `tile.o` and the context-switch hooks) and a few callers reach CRIME or MACE video. The other objects that mention `setcrimevector` or `mace_mask_*` (`pcimh.o`, `adp78.o`, `if_me.o`, the serial and parallel drivers) only register interrupts or use MACE peripherals other than video, and are outside this project.
+
+Examined and left out: the generic OpenGL libraries (`libGLC.so`, `libGLS.so`, `libGLU.so`), the IrisGL library (`usr/gfx/arch/IGLOO*/libgl.so`, which sits on OpenGL and has no CRIME code), the server-side `usr/gfx/arch/SERVER*/` libraries, the video library `libvl.so.1`, whose O2 behaviour is in `mvp.so`, `libmovieplay` and the other movie libraries, which only name VICE in strings, the MACE Ethernet driver `if_me.o`, and the `ucode` directories of other boards. The `.vfo` video format files are data; `ide.IP32` and `symmon.IP32` are in scope because they program CRIME and VICE directly. The `CRM` video format directory is the only one for this board.
 
 ## 2. Source of the files
 
@@ -111,6 +154,34 @@ ddx/Xsgi root/usr/gfx/arch/GENERIC/Xsgi
 diags/gfxinit root/usr/gfx/gfxinit
 diags/ide.IP32 root/sbin/stand/ide.IP32
 diags/crm_vof root/usr/gfx/ucode/CRM/vof
+crime_kernel/mvp.o root/usr/cpu/sysgen/IP32boot/mvp.o
+crime_kernel/a3_dd.o root/usr/cpu/sysgen/IP32boot/a3_dd.o
+ddx/libXsgivc_o32.so root/usr/lib/libXsgivc.so
+ddx/libXsgivc_64.so root/usr/lib64/libXsgivc.so
+diags/setmon root/usr/gfx/setmon
+diags/symmon.IP32 root/sbin/stand/symmon.IP32
+diags/ip32prom.image root/usr/cpu/firmware/ip32prom.image
+diags/dualchannel root/usr/sbin/Confidence/dualchannel
+video/mvp_o32.so root/usr/lib/dmedia/video/mvp.so
+video/mvp_o32_debug.so root/usr/lib/dmedia/video/debug/mvp.so
+video/mvp_n32.so root/usr/lib32/dmedia/video/mvp.so
+video/mvp_n32_debug.so root/usr/lib32/dmedia/video/debug/mvp.so
+video/libvice_o32.so root/usr/lib/internal/libvice.so
+video/libvice_n32.so root/usr/lib32/internal/libvice.so
+video/vicedv_o32.so root/usr/lib/dmedia/imageconverters/vicedv.so
+video/vicedv_n32.so root/usr/lib32/dmedia/imageconverters/vicedv.so
+video/vicedv_o32_debug.so root/usr/lib/dmedia/imageconverters/debug/vicedv.so
+video/vicedv_n32_debug.so root/usr/lib32/dmedia/imageconverters/debug/vicedv.so
+video/vicejpeg_o32.so root/usr/lib/dmedia/imageconverters/vicejpeg.so
+video/vicejpeg_n32.so root/usr/lib32/dmedia/imageconverters/vicejpeg.so
+video/vicejpeg_o32_debug.so root/usr/lib/dmedia/imageconverters/debug/vicejpeg.so
+video/vicejpeg_n32_debug.so root/usr/lib32/dmedia/imageconverters/debug/vicejpeg.so
+video/vicempeg_o32.so root/usr/lib/dmedia/imageconverters/vicempeg.so
+video/vicempeg_n32.so root/usr/lib32/dmedia/imageconverters/vicempeg.so
+video/vicers_o32.so root/usr/lib/dmedia/imageconverters/vicers.so
+video/vicers_n32.so root/usr/lib32/dmedia/imageconverters/vicers.so
+video/vicers_o32_debug.so root/usr/lib/dmedia/imageconverters/debug/vicers.so
+video/vicers_n32_debug.so root/usr/lib32/dmedia/imageconverters/debug/vicers.so
 ```
 
 ## 5. Debug information by release
