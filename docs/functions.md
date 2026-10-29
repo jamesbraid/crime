@@ -499,3 +499,151 @@ Each entry names one routine of the 6.5.30 `crime_init.o` or `crime_retrace.o` (
   It takes a channel number and a record, finds the board in a 64-byte slot table and calls `crm_getustmsc` with the register pointer at +0x80 and the state at +0x8c.
 - `crimeFrameInfo` in `crime_retrace.o`: fills the 32-byte record for ioctl 0x560c. Established.
   It sets byte 26 when the caller's swap slot is active and byte 27 from the client's object, under `mutex_lock`, and fills the rest through `crm_getustmsc`.
+
+# Kernel routines, one entry each (`crime_tp.o`, `crime_tiles.o` and the smaller objects)
+
+Each entry names one routine of the 6.5.30 `crime_tp.o`, `crime_tiles.o`, `crime_dma.o`, `crime_zbuf.o`, `crime_db.o` or `crime_debug.o` (members of `crime.a`), says what it does to the engine or the tile pool, and cites callees or offsets, from `objdump -d -r` and `crime_kernel/disasm/`. Every entry carries a label.
+
+## Kernel textport (`crime_tp.o`)
+
+- `crime_color` in `crime_tp.o`: sets the textport's current drawing colour. Established.
+  The 44-byte routine at offset 0x0 takes the colour index plus one, capped at 255, replicates that byte into all four bytes of a word and stores it in the object's data.
+  `crime_sboxfi` and `crime_pnt2i` take their foreground colour from that word.
+- `crime_mapcolor` in `crime_tp.o`: writes one colour-map entry for the textport. Established.
+  It polls the free count in bits 5:0 of the colour-map FIFO at +0x58000 and pauses 1 microsecond with `us_delay` per poll, then stores red, green and blue as `r << 24 | g << 16 | b << 8`.
+  The store goes to the overlay-group entry at +0x54404 plus four times the index, which is map entry 0x1101 plus the index.
+- `crime_sboxfi` in `crime_tp.o`: fills a rectangle with the current colour. Established.
+  It waits for seven free FIFO entries with `crmFifoWait`, writes DrawMode 0x2f8 and the foreground colour at +0x20d0, and picks Primitive 0x03020000, or 0x03000000 when the end lies before the start.
+  It writes the vertex pair at +0x2070 and the Primitive through the start alias, flushes at +0x21f8 and waits with `crmIdleWait`.
+- `crime_pnt2i` in `crime_tp.o`: draws a single pixel. Established.
+  It waits with `crmFifoWait` as the box fill does, writes Primitive 0x0 and the vertex as one 32-bit word, then waits with `crmIdleWait`.
+- `crime_cmov2i` in `crime_tp.o`: stores the textport's current raster position. Established.
+  The 20-byte routine at offset 0x2b0 saves its x and y arguments into two adjacent words of the object's data and makes no call.
+- `crime_drawbitmap` in `crime_tp.o`: draws one glyph bitmap at the raster position, the textport's character routine. Established.
+  It waits for FIFO room with `crmFifoWait` and writes the stipple mode at +0x20c0 and pattern at +0x20c4 with the vertex pair, row by row.
+  The 1664-byte body at offset 0x2c4 is unrolled for the glyph rows and ends in `crmIdleWait`.
+- `crime_unblank` in `crime_tp.o`: turns the picture back on for the textport. Established.
+  Its only call is `gbeBlankScreen`, made from 52 bytes at offset 0x944.
+- `crime_getdesc` in `crime_tp.o`: answers a descriptor query from the console layer. Established.
+  The 24-byte routine at offset 0x978 returns 1 for descriptor number 1 and 0 for any other number.
+- `crime_positioncursor` in `crime_tp.o`: moves the hardware cursor for the textport. Established.
+  It writes GBE +0x70000 with x in bits 11:0 and y in bits 27:16 in 44 bytes at offset 0x990 and returns 0.
+- `crime_clearfb` in `crime_tp.o`: clears the screen for the textport. Established.
+  It zeroes the shadow record with `bzero`, takes the screen size from the halfwords at +0x20 and +0x22 of the information record and sets colour 0 to black with `crime_mapcolor`.
+  It waits with `crmIdleWait` and loads window offsets 0, ClipMode 0x21, LogicOp 3 and both BufMode words 0x800, then fills the whole screen with `crime_sboxfi`.
+- `crime_tpinit` in `crime_tp.o`: loads the hardware cursor before the textport first blanks the screen. Established.
+  It stores colour 1 0xffffff00 and colour 2 0xff000000, position 0 and the glyph words, then control 1.
+  It then calls `gbeBlankScreen` and waits for the engine with `crmIdleWait`.
+
+## Tile allocation (`crime_tiles.o`)
+
+- `crime_tileaddr_for_vice` in `crime_tiles.o`: converts packed tile coordinates to tile numbers for the video engine. Established.
+  It treats each 16-bit entry as a column in bits 3:0 and a row in bits 15:4 and looks the tile up in the drawable's table.
+  The 260-byte routine at offset 0x0 returns 19 for an id with no drawable, 22 for a coordinate outside the grid and 14 for an unallocated tile, and makes no call.
+- `crm_get_dms_tiles` in `crime_tiles.o`: takes tiles from the dynamic memory service for video import. Established.
+  It opens a block with `dms_open`, reads its description with `dms_block_info` and its tile list with `dms_block_get_tile_list`.
+  A request to release closes it with `dms_close`, and `dms_block_start_dma` starts the transfer into the tiles.
+- `crm_tileclassinit` in `crime_tiles.o`: sets up the per-class tile masks. Established.
+  It asks the memory system for the number of tile classes with `tile_nclasses`, and with two classes the masks are the fixed values 1 and 2.
+- `crmAllocTiles` in `crime_tiles.o`: allocates the tiles for a chunk. Established.
+  It allocates a scratch array with `kern_malloc`, takes the tiles from `tile_alloc` in the chunk's class and stores each page frame shifted right by 4 as a 16-bit tile number.
+  The scratch array is released with `kern_free` afterwards.
+- `crmFreeTiles` in `crime_tiles.o`: returns tiles to the pool. Established.
+  It multiplies each 16-bit tile number by 16 to get page frames, drains the FIFO with `crmFifoWait` when the calling thread owns the graphics context, and frees the pages with `tile_free`.
+  It then subtracts the count from the two usage totals.
+- `crmFreeChunk` in `crime_tiles.o`: releases a chunk's tiles and clears its record. Established.
+  It zeroes the incarnation with `bzero`, returns pinned dynamic-memory tiles through `crm_get_dms_tiles` with an empty record and frees ordinary tiles with `crmFreeTiles`.
+- `crmAllocChunk` in `crime_tiles.o`: fills a chunk record and allocates its tiles. Established.
+  It calls `crmAllocTiles` when the count is non-zero, stamps the incarnation with `crmNextIncarnation` and adds the count to the global and per-class totals.
+  It returns 0 on success.
+- `resizechunk` in `crime_tiles.o`: builds a tile table for a new grid size after a window resize. Established.
+  It allocates the new table with `kern_malloc`, copies the old entries with `bcopy` and stamps a new incarnation through `crmNextIncarnation`.
+  The old table is released with `kern_free`.
+- `crmResizeFb` in `crime_tiles.o`: applies a resize to the frame buffer's chunks. Established.
+  It rebuilds each table with `resizechunk` and allocates the extra tiles with `crmAllocTiles` for the added rows and columns.
+- `crmAllocBackbuffer` in `crime_tiles.o`: allocates the tiles of a window's back buffer. Established.
+  It supports 16-bit and 32-bit pixels only, uses class 3 through `crmAllocChunk` and also allocates a private 512-byte tile table with `kern_malloc`.
+- `crmAllocPbuffer` in `crime_tiles.o`: computes the tile grid of a pixel buffer. Established.
+  It supports 8-bit, 16-bit and 32-bit pixels in class 0 and fills the chunk through `crmAllocChunk` without allocating any tiles.
+- `crmAllocPbufTiles` in `crime_tiles.o`: allocates the table and tiles of a pixel buffer. Established.
+  It allocates class 8 through `crmAllocChunk` or, for the second form, marks the chunk as pinned dynamic-memory tiles in class 9.
+  It clears the table with `bzero` and frees scratch memory with `kern_free`.
+- `crmDestroyPbuffer` in `crime_tiles.o`: frees a pixel buffer's chunks. Established.
+  It holds the owner's semaphore with `psema` and `vsema` around `crmFreeChunk`, and reports an inconsistent state through `cmn_err`.
+- `crmAllocFrameBuffer` in `crime_tiles.o`: allocates the tiles of a window's colour buffer. Established.
+  Columns are the width rounded up by the pixels in a 512-byte tile row for the pixel size, rows are the height rounded up to 128, and it uses class 2 through `crmAllocChunk`.
+- `crmAllocOverlayBuffer` in `crime_tiles.o`: allocates the 8-bit overlay. Established.
+  It uses 512 pixels per tile row at one byte per pixel and class 5, through `crmAllocChunk`.
+- `crmAllocCid` in `crime_tiles.o`: allocates the clip-ID buffer. Established.
+  It takes one tile per 128 rows, or a fixed set of 16 when its first argument is 0x500, through `crmAllocChunk`, and clears the table with `bzero`.
+- `crmAllocGbeTables` in `crime_tiles.o`: allocates the chunk that holds the display back end's tile lists. Established.
+  Its 11 instructions make one call to `crmAllocChunk` for the block that `crmInitGbeData` fills.
+- `crmAllocZbuffer` in `crime_tiles.o`: creates a drawable's depth-buffer record. Established.
+  It allocates a 0x28-byte chunk with a 512-byte table through `kern_malloc` and `crmAllocChunk`, class 4 or 8 when its first argument is set, with four bytes per pixel.
+- `crmAllocTex` in `crime_tiles.o`: allocates texture memory for ioctl 0x5601. Established.
+  It allocates the texture record with `kern_malloc` and `bzero`, takes tiles through `crmAllocChunk` or `crm_get_dms_tiles`, and maps them for the client with `crmMapChunk`.
+  The texture lock comes from `psema` and `vsema`.
+- `crmFreeTex` in `crime_tiles.o`: frees a texture and its lock. Established.
+  It releases the chunks with `crmFreeChunk`, unmaps them with `crmUnmapChunk` and frees the lock with `freesema` and `kmem_free`.
+- `crmDeallocTex` in `crime_tiles.o`: the kernel side of ioctl 0x5602. Established.
+  It frees the texture memory that `crmAllocTex` made under `psema`, unmapping with `crmUnmapChunk` and releasing with `crmFreeChunk`.
+- `crmDefineTex` in `crime_tiles.o`: defines a texture and builds its TLB image for ioctl 0x5603. Established.
+  It allocates the image with `kmem_alloc` and `bzero`, fills the level start table that `crmLoadTexTlb` writes, and allocates tiles with `crmAllocTex`.
+  `RRM_CheckValidFault` decides whether the engine has to be saved around the load.
+- `crmLoadTexTlb` in `crime_tiles.o`: writes the texture TLB. Established.
+  The 100-byte routine at offset 0x1d28 writes all 28 doublewords from the texture's image on every bind and makes no call.
+- `crmMapPages` in `crime_tiles.o`: maps kernel pages into a client. Established.
+  It creates the region with `crmCreateRegion` and maps the pages under `ddv_lock` with `ddv_mappages`, undoing the mapping with `gfxdd_munmap` on failure.
+- `crmUnmapPages` in `crime_tiles.o`: removes a page mapping. Established.
+  Its only call is `gfxdd_munmap`, made from 12 instructions at offset 0x1e24.
+- `crmMapChunk` in `crime_tiles.o`: maps a chunk's tiles into the client. Established.
+  It flattens the table with `crm_update_sz_tiles`, creates a region with `crmCreateRegion` and maps the frames with `ddv_mappfns`.
+  It undoes the mapping with `gfxdd_munmap` and returns the address from `ddv_getaddr`.
+- `crmCreateRegion` in `crime_tiles.o`: creates the user memory region for a mapping. Established.
+  Its only call is `gfxdd_mmap_mem`.
+- `crm_update_sz_tiles` in `crime_tiles.o`: flattens a chunk's tile table. Established.
+  The 132-byte routine at offset 0x2018 copies the non-zero entries, at most 256, into a flat array and returns the count, without any call.
+- `crm_tile_list` in `crime_tiles.o`: returns a chunk's tile numbers as a flat array. Established.
+  It uses `crm_update_sz_tiles` for a sparse chunk (flag bit 0) and a straight copy for the others.
+- `crmUnmapChunk` in `crime_tiles.o`: removes a chunk mapping. Established.
+  Its only call is `gfxdd_munmap`, in 12 instructions.
+- `crmValidateDrawable` in `crime_tiles.o`: loads the TLBs for the drawable of the incoming client. Established.
+  It calls `crmLoadTlbABC` for the frame-buffer tables and `crmLoadTexTlb` when the drawable has a texture, with the linear tables copied in its own loop.
+- `crmLoadTlbABC` in `crime_tiles.o`: loads the three frame-buffer TLBs from a drawable. Established.
+  It copies a ready 64-bit image or builds one from the tile list and rectangle, writing 64 registers at each of +0x1000, +0x1200 and +0x1400.
+- `crmLoadCidTlb` in `crime_tiles.o`: loads the colour-index TLB. Established.
+  It packs up to 16 entries into the four registers at +0x16e0 and ends with a write of 0 to +0x4008.
+
+## Pixel transfer and buffer clear (`crime_dma.o`)
+
+- `crm_curproc_vtop` in `crime_dma.o`: translates a user address of the current process to a physical frame. Established.
+  Its only call is `curproc_vtop`, and the 128-byte routine at offset 0x0 is used for every page of a pinned buffer.
+- `crmpixdma` in `crime_dma.o`: the register sequence for one pixel-DMA request when the caller owns the engine. Established.
+  It converts the coordinates, loads the linear TLB through `loadLinearTlb` and writes the transfer source, destination and step registers.
+- `crimePixelDma` in `crime_dma.o`: the kernel side of ioctl 0x55f2. Established.
+  It pins the user buffer with `fast_userdma`, translates it with `crm_curproc_vtop` and runs the transfer through `crmpixdma`.
+  It waits with `crmIdleWait`, unpins with `fast_undma` and reports a hang through `crimeError`.
+- `loadLinearTlb` in `crime_dma.o`: writes one linear TLB from a table of page frames. Established.
+  The 264-byte routine at offset 0x6b4 places the even page in bits 63:32 and the odd page in bits 31:0 of register `(page >> 1) & 15` with bit 31 set in each entry.
+- `crime_load_linear_tlb` in `crime_dma.o`: the kernel side of ioctl 0x5605. Established.
+  It pins a user buffer with `fast_userdma`, clears a 0x80-byte shadow image with `bzero`, fills it per page and writes it with `loadLinearTlb`.
+  Flag bit 6 commits through the start alias of +0x21f0 and waits with `crmIdleWait` before `fast_undma`.
+- `crime_clear_buffer` in `crime_dma.o`: the kernel side of ioctl 0x5606, which clears a buffer with the transfer engine. Established.
+  It starts one rectangle per step at +0x3018 and +0x3030 and ends with a write of 0 to +0x3078 and a wait with `crmIdleWait`.
+  `RRM_CheckValidFault` decides whether the engine state must be saved first.
+
+## Depth and back-buffer tile accounting
+
+- `crmAddZ` in `crime_zbuf.o`: gives a drawable depth tiles. Established.
+  It allocates the tiles of the covered area with `crmAllocTiles`, merges them into the drawable's depth record and stamps `crmNextIncarnation`.
+  If the allocation fails it removes what it had added with `crmSubtractZ`.
+- `crmSubtractZ` in `crime_zbuf.o`: frees depth tiles that no longer lie under any window. Established.
+  It rebuilds the record with `kern_malloc`, releases the tiles with `crmFreeTiles` and restamps with `crmNextIncarnation`.
+- `crmAddBackTiles` in `crime_db.o`: adds back-buffer tiles when a window grows or moves. Established.
+  It allocates the new tiles with `crmAllocTiles` and restamps the record with `crmNextIncarnation`.
+- `crmSubtractBackTiles` in `crime_db.o`: releases back-buffer tiles a window no longer covers. Established.
+  It rebuilds the record with `kern_malloc`, frees tiles with `crmFreeTiles` and stamps `crmNextIncarnation`.
+- `crmIsGlobalRegWrite` in `crime_debug.o`: classifies a saved register write. Established.
+  It indexes a 128-byte table with `(offset >> 2) & 0x3ff` for offsets 0x2000 to 0x21ff and answers 1 for every other offset.
+- `crmFindPP` in `crime_debug.o`: finds where the uncommitted writes begin. Established.
+  It walks backward through the 64-entry ring and stops at an entry with bit 45 set or one that `crmIsGlobalRegWrite` calls global.
