@@ -187,7 +187,8 @@ Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), GBE
 - Established: alongside each hardware store it keeps a software copy of the entry as `blue << 16 | green << 8 | red` in a table the screen record points at (offset +0x40).
 - Established: the entry with index `0x1102` (4354, in group 17) is not written to the hardware, only to the software copy, when a screen flag (+0x18 of the same record) is non-zero; otherwise it is treated like any other entry. The reason is unknown.
 - Established: between entries the module checks the FIFO count with the revision-dependent test recorded in `GBE.h` (wait while the count is below 48 for revision 2 or later; before that wait while it is non-zero and below 48), at the start of the list and after a batch of entries.
-- Unknown: the batch size between FIFO checks (kept in a register the disassembly does not pin down), and whether the hardware drains the FIFO in strict write order.
+- Established (`crmInstallPseudoColorMap`, the write loop at `0x473ae0..0x473bf0`): the loop counts entries in a register compared with 32 after each write and resets it to 0 after each wait, so it writes 33 entries per check, each check waiting until the count reads 48 or more (or, before revision 2, also accepting 0). Each entry goes to GBE `+0x50000 + 4 x index` as `R << 24 | G << 16 | B << 8` and to the module's software copy; index `0x1102` is skipped while the screen flag is set. 33 writes after a guaranteed 48 free never overrun the 64-entry FIFO (inferred).
+- Unknown: whether the hardware drains the FIFO in strict write order; no shipped software reads a colour-map entry back, so none depends on it.
 
 ## Pass 3: display IDs, the third WID word, overlays, entry 0x1102 and libXsgivc
 
