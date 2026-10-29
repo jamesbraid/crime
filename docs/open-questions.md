@@ -27,12 +27,7 @@ Route key, used in the tables:
 | Stipple repeat period of the MTE stipple mode (8 or 32 bits) | `docs/mte.md` | X, K | X: the stippled-fill senders and the pattern they build; L (NetBSD `crmfb`) |
 | Whether the engine treats `0x20d0` as non-global and `0x21f0` as global, as the kernel's save logic assumes; address-word bit 45 in the saved interface buffer | `docs/context.md` | K, S | S interface-buffer chapter; R for other kernel releases' save code |
 | What the engine does to a primitive begun when the context is switched mid-primitive | `docs/context.md` | K | The kernel switches only after an idle wait, so no shipped software reaches this state; after S is re-read, label unknown: no shipped software depends on it |
-| Whether the shipped CRIME reads ID `0xb1` or another value IRIX 6.5.30 accepts (family `0xA`, revision non-zero) | `CRIME.h` | K, S, L | P: `hinv` and boot messages; the kernel's revision decoder strings; D |
-| Which CRIME error input (20 or 21) is the CPU error and which the memory error; whether edge bits clear on read, on a write to `+0x28`, or both | `docs/memory.md`, `CRIME.h` | K, S, L | D (IDE error tests), R |
-| The function of CONTROL bits 13:12 and 9, and of the write to `+0x10` | `docs/memory.md` | K, S, L | D, the PROM image's start-up code |
-| Which TLB entry bit marks validity, and what a lookup through an invalid entry does | `docs/memory.md` | K, G, S, L | S translation chapter again; D |
 | Whether pixel-transfer step registers count bytes or pixels; overlap of copy source and destination | `docs/pixel-transfer.md` | G, K | X copy paths (direction choice for overlapping copies); S |
-| Real depth of the rendering FIFO (64 inferred from the kernel overflow check, 128 in the specification text) | `CRIME_RE.h` | K, S, L | D, R |
 | Depth and blend arithmetic: precision and rounding of window z, of the 13.6 vertex field, and of the blend factors | `CRIME_RE.h`, `docs/rendering.md` | G, S | The software rasteriser in `libGLcore` (`so_*` span code) as the reference the hardware path was meant to match; then label unknown |
 | Hardware fog: the blend of fog colour and pixel colour, clamping of the 8.12 stepper, and state-word bits `0x8` and `0x10` | `docs/opengl.md` | G, S | The software fog path in `libGLcore` (`__glFogFragmentSlow`, `__glFogColorSlow`) as the intended formula; then label |
 | AA lines: how slope, position and the two end coverage fractions combine, how coverage meets blending, and whether DrawMode bit 13 is ever set | `docs/opengl.md` | G, S | G: a scan of every DrawMode store for bit 13; the software AA line code as the intended weighting |
@@ -52,9 +47,6 @@ Route key, used in the tables:
 | How an offset in the frame-buffer (`0x10000000`) and depth (`0x12000000`) apertures maps to pixels, and what a read returns while the engine draws | `docs/memory.md` | K, X, G, S, L | X and G: any use of the apertures (none found so far); if none, label unknown |
 | Which device answers the high alias (`0x20000000`) and whether it equals the upper 512 MiB of the full window; the response to the reserved ranges | `docs/memory.md` | K, S, L | K: the IP32 memory-sizing code in the kernel proper and the PROM image |
 | Whether GBE can fetch below `0x40000000`, and what tile-entry bit 15 selects on the GBE side | `docs/gbe.md`, `docs/memory.md` | K, X, S, L | Both IRIX and Linux use low addresses for GBE tiles, which shows the expectation; S again for the decode table |
-| Reset values of CONTROL, the watchdog register and the memory control register; what SysAD bits 13:12 change | `docs/memory.md` | K, S, L | D, the PROM image |
-| Whether the memory-control write of 1 enables ECC checking and nothing else; `+0x270` | `docs/memory.md`, `CRIME.h` | K, S, L | D (memory tests), R |
-| The meaning of each CPU and memory error status bit in the rev 0 and rev 1 layouts | `docs/memory.md` | K | K: resolve the message-string relocations of the bus-error decoders in `crime_busts.o`; then D |
 | How the texture level start table is derived | `docs/memory.md` | K, G | G: the texture-TLB fill in `crmDefineTexture` and the kernel `crmDefineTex` path |
 
 ## Where work stopped

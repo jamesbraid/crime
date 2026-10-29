@@ -77,7 +77,11 @@
 #define IB_COUNT_DEFAULT    10
 
 /*
- * FIFO depth: 64 entries [I, strong].
+ * FIFO depth: 64 entries [E: the status register's read, write and start
+ * pointers are 6 bits (netbsd), the kernel walks the buffer as a ring of 64
+ * and paces itself by 64 - level (k:crime:crmSavePP, kernel.o
+ * mte_fifo_wait); the 128-entry figure of the specification's text is not
+ * what any shipped software or the register widths allow].
  * - crimeFifoFullHandler reports "fifo Overflow! Current level at %d" when
  *   the status level reads 65 or more [E, k:crime:crimeFifoFullHandler+0x1c,
  *   compare with 65; string in crime.o .rodata].
@@ -114,8 +118,12 @@
  * [I, arithmetic with spec PDF 186].
  * Entry value: physical address >> 16 (the 64 KiB tile number). crmMapChunk
  * maps tile entry v as page frames (v << 4) .. (v << 4) + 15 [E,
- * k:crime_tiles:crmMapChunk+0xbc..0xdc]. No valid bit is set by the
- * loader [E]; whether hardware has one is [U].
+ * k:crime_tiles:crmMapChunk+0xbc..0xdc]. Bit 15 of each entry is the
+ * valid bit [I, strong: the shipped ide.IP32 sets it on every entry it uses
+ * and zeroes the rest (0xa00e3450..0xa00e34a0); the spec has the engine
+ * suppress any access through an invalid entry, PDF 137]; the kernel's
+ * frame-buffer loader copies tile numbers that already carry it when the
+ * allocator returns them so (docs/memory.md).
  */
 #define TLB_FB_TILES_PER_REG    4
 #define TLB_FB_ENTRY(phys)      ((uint16_t)((phys) >> 16))  /* [I] */
@@ -127,7 +135,7 @@
  * linear TLB maps 32 pages of 4 KiB. The caller's list comes from
  * crm_curproc_vtop and is taken to be a 4 KiB page-frame number [I].
  */
-#define TLB_LIN_VALID           0x80000000u /* [E] value set by the loader; that it is a valid bit is [I] */
+#define TLB_LIN_VALID           0x80000000u /* [E] value set by every loader; valid bit [I, strong, docs/memory.md pass 7] */
 
 /*
  * Texture TLB [E, k:crime_tiles:crmDefineTex, crmLoadTexTlb]: 28 registers,
@@ -135,8 +143,7 @@
  * Colour-index TLB [E, k:crime_tiles:crmLoadCidTlb]: 4 registers, four
  * 16-bit entries each, entry = tile number without a flag bit. Full
  * table of all clients and the texture level layout: docs/memory.md.
- * Whether bit 15 is a valid bit in hardware is [U]; the frame-buffer loader
- * never sets it.
+ * Bit 15 is the valid bit [I, strong]; see docs/memory.md pass 7.
  */
 #define TLB_TEX_ENTRY(phys)     ((uint16_t)(((phys) >> 16) | 0x8000))  /* [E value, I meaning] */
 

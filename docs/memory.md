@@ -7,7 +7,7 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 | Client | Registers | Entries | Entry value | Source |
 |---|---|---|---|---|
 | Frame buffer A, B, C (`+0x1000`, `+0x1200`, `+0x1400`) | 64 each | 16 bits, four per register, entry 0 in bits 63:48 | physical address >> 16 (64 KiB tile number), no flag bits | `crmAllocTiles`, `crmLoadTlbABC` (established) |
-| Texture (`+0x1600`) | 28 | 16 bits, four per register | tile number with bit 15 set | `crmDefineTex`, `crmLoadTexTlb` (established; bit 15 is the no-ECC alias bit, see below; whether it also marks validity is unknown) |
+| Texture (`+0x1600`) | 28 | 16 bits, four per register | tile number with bit 15 set | `crmDefineTex`, `crmLoadTexTlb` (established; bit 15 is the valid bit, inferred in pass 7 below) |
 | Colour index (CID, `+0x16e0`) | 4 | 16 bits, four per register | the tile list entry unchanged | `crmLoadCidTlb` (established) |
 | Linear A, B (`+0x1700`, `+0x1780`) | 16 each | 32 bits, two per register, even page in bits 63:32 | page frame number, bit 31 set | `loadLinearTlb` (established; see `docs/pixel-transfer.md`) |
 
@@ -19,9 +19,11 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 - A texture can hold at most 112 tiles (28 registers times four entries) (established arithmetic). The caller number space is limited to 0x80 textures per context.
 - CID TLB: 16 entries in four registers; the count comes from the descriptor (+4) and entries past the count are zero (established). Register `n / 4` holds entry `n`, slot `n & 3`. What a CID tile holds (one tile covers 128 x 128 pixels at 32 bits) is covered by `GBE.h` and the overlay material, not here.
 
-## Unknown
+## Validity and misses (pass 7)
 
-- What the engine does on an access through an entry whose bit 15 is clear. The specification (PDF 137) says only that the memory controller deasserts every bank select for a request the renderer marks as made through an invalid TLB entry; it does not say which entry bit marks validity.
+- Established (shipped 6.5.30 `ide.IP32`, `0xa00e3450` to `0xa00e34a0`): the diagnostics build each frame-buffer TLB A doubleword from four tile numbers of their own low memory (`address >> 16`), OR `0x8000800080008000` into it so that bit 15 of every 16-bit entry is set, and store it at `+0x1000 + 8n`; unused entries are written as zero. The tile numbers there are plain memory addresses below 256 MiB, so bit 15 is not an address bit for them.
+- Established ([spec] PDF 137, PDF 49): the rendering engine flags a request made through an invalid TLB entry (bit 6 of its message to the memory controller), and the memory controller then deasserts every bank select, so the access does not happen; rendering-engine memory addresses are 30 bits (the memory error address register is 30 bits wide), so a 16-bit tile number needs only bits 13:0.
+- Inferred from both: bit 15 of a 16-bit tile entry (frame buffer, texture, colour index) and bit 31 of a 32-bit linear entry are valid bits; a lookup through an entry with the bit clear performs no memory access (writes are dropped; what a read returns is not stated, unknown: no shipped software depends on it, every writer zeroes unused entries and never draws through them). This supersedes the pass 3 inference that bit 15 is address bit 31: the CPU-side mapping of the same number through the no-ECC alias is a kernel convention and does not reach the engine. Routes tried: [spec], `ide.IP32`, the 6.5.30 kernel, NetBSD (sets `0x8000` and `0x80000000` on every programmed entry), Linux, MAME.
 
 ## Bit 15 and the no-ECC alias (pass 3)
 
@@ -58,10 +60,14 @@ Inferred: inputs 28 and 29 are software interrupts. The end of the dispatcher re
 - The CRIME dispatcher (established): pending = INTSTAT (`+0x10`) AND the saved mask, low 32 bits. Vectors are run in priority order, taken from a per-vector value; INTSTAT is read again after each pass and the loop ends when nothing is pending. Each vector entry is 48 bytes, holds a handler, argument, a spl group count, a 64-bit mask of bits to block at lower levels while it runs, and flags. Up to 16 handlers can be ganged on one input (`crimegang`). Inferred: inputs 25 and 26 are level-triggered, which would explain why `crimeFifoFullHandler` moves the thresholds before returning (see `CRIME_RE.h`).
 - `setcrimevector` rejects inputs above 32 and priorities above 5 (established).
 
-## Unknown
+## Settled in pass 7 (see `CRIME.h`)
 
-- The meaning of CONTROL bits 13:12 and 9 and of the write to `+0x10`.
-- Whether INTSTAT bits for edge sources clear on read, are cleared by writing `+0x28`, or both (`CRIME.h` records the retrace and pre-blank acknowledgement).
+- CONTROL fields and reset values come from the specification's own table ([spec] PDF 114-115, table 5-9), which earlier passes missed: bit 13 enables SysAD parity generation from CRIME to an R5000-class CPU, bit 12 enables CRIME's parity check on data from it, both reset 0; bit 9 is the watchdog enable, reset 0; bits 11 and 10 are cold and soft reset. IRIX's per-CPU choice (bits 13:12 set only for implementations 0x23 and later) therefore turns SysAD parity on for R5000-class modules only. The watchdog register's bit 20 (warm-reset time-out) and 19:0 (count) reset to 0 (table 5-14). Details in `CRIME.h`.
+- The write of 0 to `+0x10` (INTSTAT) has no effect: the register is read-only ([spec] PDF 116, table 5-10).
+- Edge-sensitive interrupt bits are cleared by writing 0 to them in `+0x28`; they are read/write there and nothing clears on read ([spec] PDF 117-118, table 5-13). Inputs 20 and 21 are the CPU-interface and memory errors, in that order ([spec] table 5-5, Linux, NetBSD).
+- The memory control register (`+0x200`) has two bits, both 0 at reset: bit 0 enables ECC, bit 1 makes the controller write the byte in `+0x270` (replicated four times) as the check bits instead of generated ones, a test feature ([spec] PDF 145, 150-151, tables 6-13 and 6-20). IRIX writes only 1 or 0, so only bit 0 is ever used.
+- Memory sizing as the shipped diagnostics do it (established, `ide.IP32` `0xa00f0228` to `0xa00f0300`): they read each bank control as two 32-bit words, bank 0 at `+0x208`/`+0x20c` and banks 1 to 7 from `+0x210` upward. Bit 8 of the low word gives the bank size, 32 MiB when clear (16 Mbit parts) and 128 MiB when set (64 Mbit parts), matching [spec] PDF 150-152. A bank whose two words equal bank 0's is counted as absent, so firmware fills unused bank controls with a copy of bank 0 (inferred from the comparison; the specification's lowest-number-wins decode makes such a copy harmless). The ID register's low word is read as a 32-bit word at `+0x4` (big-endian low half of `+0x00`) by the same program (`ide.IP32` `0xa00e4514`, `0xa010c7bc`).
+- The CPU error status bits of revision 1 and later and the memory error status bits are in `CRIME.h` ([spec] table 5-17, Linux `crime.h`). The revision-0 layout (ten bits and an enable register at `+0x050`, written `0x3ff` by `mlreset` on that revision only) has no published meaning: unknown, no shipped software or published source depends on it.
 
 # Control, watchdog, time, ECC enable and revision code (pass 4)
 
@@ -114,7 +120,7 @@ The CPU interface decodes a 40-bit physical address (established, PDF 47); the s
 
 - Every access to CRIME registers in the graphics kernel files goes through KSEG1 `0xb400_0000` (`lui 0xb400`; the listing counts are in the "Control, watchdog" section above). Only the CRIME base is a constant (`crimeProbe` and the handlers); the rendering-engine and GBE register pointers (the `0x1500_0000` and `0x1600_0000` windows) come from the board record the platform code hands in, and their constants never appear in the graphics objects.
 - No graphics kernel object (`crime`, `crime_init`, `crime_tiles`, `crime_dma`, `crime_retrace`, `crime_tp`, `crime_zbuf`, `rrm`, `gfx`) builds an address in the frame buffer or depth buffer apertures: a search of every `lui` and `ori`/`li` that could build `0x1000_0000`, `0x1200_0000` or their KSEG variants finds only status-bit masks (`0x1000_0000` is the engine idle bit). Inferred: IRIX renders and scans out through the rendering TLB and tile lists only, and never reads or writes pixels through the apertures. A user client's mapping is the kernel shadow record and the engine register pages, not the apertures (`crimeMapGfx` maps pages of kernel memory, [docs/ioctls.md](ioctls.md)).
-- Tile lists use physical 64 KiB tile numbers (low memory only in practice: the GBE list entry mask is 13 bits, `crmLoadGbelists`). The texture, frame buffer and colour-index TLB entries carry bit 15 for the no-ECC alias as above.
+- Tile lists use physical 64 KiB tile numbers (low memory only in practice: the GBE list entry mask is 13 bits, `crmLoadGbelists`). The texture, frame buffer and colour-index TLB entries carry bit 15, the valid bit (pass 7 above).
 
 ## Unknown (each listed with its routes in `docs/open-questions.md`)
 
