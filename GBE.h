@@ -23,8 +23,11 @@
 #define   GBE_CTRLSTAT_PCLK_MASK    0x30000000u /* [E, netbsd] 0 external, 3 internal */
 #define   GBE_CTRLSTAT_GPIO_IDLE    0x000aa000u /* GPIO3..6 input bits [E, netbsd names] */
 /* CTRLSTAT bits 3:0 read 1 on the rev 1.1 part and 2 on its successor; the
- * data bits 12, 14, 16, 18 of io_3..io_6, read as inputs, are the system
- * */
+ * data bits 12, 14, 16, 18 of io_3..io_6, read as inputs, form a 4-bit
+ * board strap (bit 12 = bit 0) whose only known use is the gamma
+ * workaround on value 0 [E, ide.IP32 0xa00e2c54 and 0xa00e2be4; k:crime_init;
+ * docs/gbe.md pass 7]. */
+#define   GBE_CTRLSTAT_REV_MASK     0x0000000fu /* 1 rev 1.1 part, 2 successor [E] */
 #define   GBE_CTRLSTAT_BOARDREV_BITS 0x00055000u /* [E] */
 #define GBE_DOTCLOCK        0x00004
 #define GBE_I2C             0x00008
@@ -135,16 +138,19 @@
  * which is the X server's reading. Linux gbefb waits while cm_fifo >= 63,
  * which treats the same field as an occupancy count [E, linux gbefb.c];
  * Linux's reading disagrees with the specification and with IRIX.
- * docs/gbe.md pass 7]: the field counts free entries on both revisions.
- * Revision 2 holds at most 63 entries: 63 = empty, 0 = full. Revision 1's
- * count wraps, so 0 means empty or full and software cannot tell; that is
- * why waits on revision 1 also accept 0, and why the spec's reset value
- * is 0. A model: free = 64 - used, reported mod 64, on revision 1;
- * free = 63 - used on revision 2, never more than 63 queued.
+ * Established [shipped 6.5.30 ide.IP32 colour-map waits, revision-gated,
+ * 0xa00d2674..0xa00d2788; docs/gbe.md pass 7]: software reads the field as
+ * free entries on both revisions; it waits for 63 on revision 2 and for 0
+ * on revision 1 to see an empty FIFO, and wants more than 16 free (or 0 on
+ * revision 1) before a batch. Inferred: revision 2 queues at most 63, so
+ * 0 = full; revision 1's count wraps, so 0 = empty or full, which is why
+ * its waits accept 0 and why the spec's reset value is 0. A model:
+ * free = (64 - used) mod 64 on revision 1; 63 - used on revision 2.
  * The kernel textport path writes map 17 (entries 0x1100 + i) without
  * effectively waiting [E, k:crime_tp:crime_mapcolor].
  */
 #define GBE_CMAP_FIFO_LOW_WATER 48  /* [E, X server threshold] */
+#define GBE_CMAP_FIFO_DEPTH     64  /* revision 1 [E, gbe-spec]; 63 on revision 2 [I, ide.IP32 waits] */
 
 /* ---- Gamma ---------------------------------------------------------------- */
 #define GBE_GMAP(n)         (0x60000 + 4 * (n)) /* 256 entries [E] */
