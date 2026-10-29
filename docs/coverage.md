@@ -42,7 +42,7 @@ Memory transfer engine: copies, fills and transfers between the frame buffer, de
 | Area | Status | Owner | Datasheet topic | Seed |
 |---|---|---|---|---|
 | Registers and fields | partial | `MTE.h` | memory transfer | transfer group at +0x3000 of the rendering window from public sources. Found: register map, mode fields and buffer codes in `MTE.h` |
-| Command and FIFO formats | partial | `MTE.h` | memory transfer | Found: kernel clear sequence (set-up, DST0, DST1 through the start alias, flush) and X copy mode 0x820; frame-buffer tile geometry; 16-bit subtiled texture layout inferred Pass 2: no 8-bit texels exist; subtile stepping is byte-based, 32-bit use unknown. |
+| Command and FIFO formats | partial | `MTE.h`, `docs/mte.md` | memory transfer | Found: byte-column address word, X server copy and fill sequences, split between MTE and transfer path (`docs/mte.md`); kernel clear sequence (set-up, DST0, DST1 through the start alias, flush) and X copy mode 0x820; frame-buffer tile geometry; 16-bit subtiled texture layout inferred Pass 2: no 8-bit texels exist; subtile stepping is byte-based, 32-bit use unknown. |
 | DMA | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
 | Interrupts | none | `MTE.h`, `docs/mte.md` | memory transfer |  |
 | Reset | none | `MTE.h`, `docs/mte.md` | memory transfer |  |

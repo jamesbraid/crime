@@ -12,6 +12,8 @@
 #ifndef MTE_H
 #define MTE_H
 
+#include <stdint.h>
+
 /* ---- Registers [E, spec PDF 183-184; netbsd] ----------------------------- */
 #define MTE_MODE            0x3000  /* G  */
 #define MTE_BYTEMASK        0x3008  /* G  */
@@ -54,6 +56,13 @@ enum mte_buf {  /* [E, spec PDF 185, MTE version of the table] */
  * - X server: mode 0x820 (copy, source TLB B, destination TLB A, 8-bit) at
  *   x:crm.s lines 26919 and 29675; several clears OR in MTE_MODE_STIPPLE.
  */
+
+/* ---- Address word [E, x:crm.s 26899-27048; netbsd crmfb_scroll] -----------
+ * SRC0/SRC1/DST0/DST1: byte column in 31:16, row in 15:0, whatever the pixel
+ * size. End word = last byte of the last pixel, so the X server adds 0x10000
+ * (16 bit) or 0x30000 (32 bit) to (x_end - 1) << (16 + log2 bytes per pixel).
+ * Full description: docs/mte.md. */
+#define MTE_ADDR(col_byte, row)   (((uint32_t)(col_byte) << 16) | ((row) & 0xffff))
 
 /* ---- Frame-buffer tiles [E, spec PDF 186-187] ----------------------------- */
 /*
