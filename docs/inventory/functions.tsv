@@ -6446,7 +6446,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c00	24	__glCalcTextur
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c20	2816	__glCrmFillTriangle	dynsym+mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936720	52	__glCrmColorOptLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	undocumented		
@@ -10571,7 +10571,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937290	24	__glCalcText
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938028	268	__glCrmSmoothCILine	dwarf+dynsym	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938134	652	__glCrmFogRGBLine	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDepthLine	dwarf+dynsym	undocumented		

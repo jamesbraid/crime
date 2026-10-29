@@ -26,7 +26,7 @@
   "exclude": [],
   "windows": [
     {"name": "CRIME", "size": "0x1000000", "physical": "0x14000000", "docs": ["CRIME.h", "docs/memory.md", "docs/reset.md"]},
-    {"name": "RE", "size": "0x1000000", "physical": "0x15000000", "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md"]},
+    {"name": "RE", "size": "0x1000000", "physical": "0x15000000", "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md", "docs/memory.md"]},
     {"name": "GBE", "size": "0x1000000", "physical": "0x16000000", "docs": ["GBE.h", "docs/gbe.md"]},
     {"name": "MACEV", "size": "0x180000", "physical": "0x1f100000", "docs": ["*.h", "docs/*.md"]},
     {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "docs/*.md"]}

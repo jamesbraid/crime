@@ -32,9 +32,9 @@ All values are 32-bit register writes, two 12-bit fields packed as `a << 12 | b`
 
 - `DOTCLOCK` (`+0x04`): `(M - 1) | (N - 1) << 8 | P << 14 | 1 << 20`. The loader first clears bit 20 (PLL stop), writes the rest, then waits 11000 microseconds. The register is the same layout Linux uses (`M` 7:0, `N` 13:8, `P` 15:14, run 20).
 - `VT_XYMAX` (`+0x10004`): written 0 in `gbeSetTimingRegs`, then `F14 | F1e << 12` in `gbeStartVideoTiming`.
-- `VT_VSYNC` (`+0x10008`): `F26 | F24 << 12`. `VT_HSYNC` (`+0x1000c`): `F1c | F1a << 12`. `VT_VBLANK` (`+0x10010`): `F22 | F20 << 12`.
+- Sync and blank limits (spec registers `VT_2`, `VT_3`, `VT_4`): `VT_VSYNC` (`+0x10008`) takes the line where vertical sync turns off in bits 11:0 and where it turns on in bits 23:12, `F26 | F24 << 12`; `VT_HSYNC` (`+0x1000c`) holds the pixel counts at which horizontal sync turns off and on, `F1c | F1a << 12`; `VT_VBLANK` (`+0x10010`) holds the lines where vertical blank turns off and on, `F22 | F20 << 12`. The off value is the low field in all three, as the specification's field tables give it.
 - `VT_HBLANK` (`+0x10014`): `(F18 - 3) | ((F16 + F14 - 5) mod F14) << 12`. For some GBE revisions (a kernel-global below 9) with the interlace flag set, `VT_VBLANK` and `VT_HBLANK` are rewritten as `F0a << 12 | 0xfff` and `F08 << 12 | 0xfff` (established; which revision a given value means is unknown).
-- `VT_HCMAP` (`+0x1003c`): `F18 | F16 << 12`. `VT_VCMAP` (`+0x10040`): `F22 | F20 << 12`.
+- Colour-map write window (spec registers `VT_15` and `VT_16`): `VT_HCMAP` (`+0x1003c`) holds the pixel counts that clear and set the colour-map write enable, `F18 | F16 << 12`, and `VT_VCMAP` (`+0x10040`) the lines that do the same vertically, `F22 | F20 << 12`. The specification's field table calls the high field of `VT_HCMAP` `vt_vcmap_on`, which reads as a typographical slip for `vt_hcmap_on`, the name the same specification uses in its timing description (inferred).
 - `VT_FLAGS` (`+0x10018`): 0 for a CRT format.
 - `VT_F2RF_LOCK` (`+0x1001c`): with flags `& 0x12`, `F20 | F20 << 12`; otherwise `F20 << 12 | 0xfff`.
 - `DID_START_XY` (`+0x10044`): the vertical field (23:12) is `v & 0xfff` where `v = F20 - F22 - 1`, negated when positive; the low field is `F18 - 20`, plus `F14` when that is negative. `CRS_START_XY` (`+0x10048`): the same vertical field, plus one line, and `F18 - G` modulo `F14`, where `G` is the same per-revision kernel global as above. `VC_START_XY` (`+0x1004c`): the vertical field with `F18 - 4`. The names are Linux's.
@@ -370,7 +370,15 @@ Unknown: no shipped software or published source depends on them. The kernel pro
 
 ## Video capture block
 
-Established ([gbe-spec] pp. 47-48): `VC_0` (`+0x80000`) left 11:0 and right 23:12 of the capture region, inclusive; `VC_1` (`+0x80004`) top 11:0 and bottom 23:12; `VC_2` (`+0x80008`) DMA enable 0, flicker filter 1, automatic field advance 2, full-screen output 3, colour-space bypass 4; `VC_3` (`+0x8000c`) field select 0, descriptor-list DMA enable 1 (not working on rev 1.1), field-corrupt 2, end-of-field 3, current field 4 (read only), descriptor pointer 31:5; `VC_4` to `VC_7` (`+0x80010` to `+0x8001c`) eight 16-bit tile addresses, two per register, the first in bits 31:16; `VC_8` (`+0x80020`) write-only.
+Established ([gbe-spec] pp. 47-48): `VC_0` (`+0x80000`) left 11:0 and right 23:12 of the capture region, inclusive; `VC_1` (`+0x80004`) top 11:0 and bottom 23:12; `VC_2` (`+0x80008`) DMA enable 0, flicker filter 1, automatic field advance 2, full-screen output 3, colour-space bypass 4; `VC_3` (`+0x8000c`) field select 0, descriptor-list DMA enable 1 (not working on rev 1.1), field-corrupt 2, end-of-field 3, current field 4 (read only), descriptor pointer 31:5; the descriptor list that `vc_descr_ptr` points at is also held in registers, ten 16-bit tile addresses two to a register with the earlier one in bits 31:16, as in the list below; `VC_8` is write-only.
+Tile-address registers of the capture block, in order (established, [gbe-spec] pp. 47-48; each holds two tile addresses of the descriptor list, the first in bits 31:16 and the second in bits 15:0):
+
+- `VC_4` at `+0x80010`: tile addresses 1 and 2.
+- `VC_5` at `+0x80014`: tile addresses 3 and 4.
+- `VC_6` at `+0x80018`: tile addresses 5 and 6.
+- `VC_7` at `+0x8001c`: tile addresses 7 and 8.
+- `VC_8` at `+0x80020`: tile addresses 9 and 10, write only.
+
 Established as absence: no shipped graphics or video software drives the block. The O2 video kernel driver `mvp.o` imports only `crime_getustmsc`, `crime_retrace_callback`, `crime_video_info` and the interrupt-vector calls (`nm`), with no GBE register access; `libXsgivc` has no GBE access; the 6.5.30 graphics objects and X module never reach `+0x80000`. So the capture behaviour beyond the register layout is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], `mvp.o`, `libXsgivc`, the 6.5.30 kernel and X module, Linux, NetBSD, MAME.
 
 ## Format-file state tables

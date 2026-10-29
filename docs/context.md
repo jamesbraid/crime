@@ -66,6 +66,10 @@ Order within `crmLoadNonglobalsFromShadow`: `0x2060`, `0x20a0`, `0x20a8`, `0x20a
 
 Note: the loaders do not reload the texture TLB, the Zs/stepper state of an unfinished primitive, or MTE registers when flag `0x04` is clear; the rest of the engine is assumed clean after the idle wait (inferred).
 
+### Linear TLB load in `crmValidateDrawable`
+
+Established (6.5.30 `crime_tiles.o`, the tail of `crmValidateDrawable`): the loop copies 16 doublewords from the drawable's descriptor, one pair per pass, linear A from descriptor `+0x50` onward into `0x1700 + 8i` (`0x1700`, `0x1708`, `0x1710`, `0x1718` and so on) and linear B from `+0xd0` onward into `0x1780 + 8i` (`0x1780`, `0x1788`, `0x1790`, `0x1798` and so on). It does this when the descriptor's word at `+0x24` or `+0x34` is non-zero, and then sets a "linear TLBs loaded" word in the board record (`+0xb4`). When both are zero the loop instead zeroes all 32 doublewords, but only if that board word is set, and clears it; so a drawable without linear pages costs one clear, not one per switch. Either way the function then writes 0 to `0x4008`.
+
 ## Saving and replaying uncommitted writes
 
 `crmSavePP` (established):
@@ -87,6 +91,18 @@ The kernel memory-transfer helpers `mte_copy` and `mte_zero` (kernel.o) call `cr
 - `mte_copy` (kernel.o, call at `0x9b80`) passes: a0 = the rendering-engine base pointer it last loaded, a1 = linear-A mask, a2 = linear-B mask, a3 = the stack address of its offset list, a4 = 5, a5 and a6 = its saved arrays, a7 = the saved entry count. Its offset list already holds full offsets such as `0x3020`. `mte_zero` has the same shape.
 
 Inferred effect as shipped (from the callee's code applied to those registers): the base pointer is used as the linear-A mask, so the linear-A doublewords chosen are those whose two-bit groups are non-zero in the pointer's low 32 bits; linear B is restored with the caller's linear-A mask; the list pointer is a kernel stack address, negative as a 32-bit count, so the register loop is skipped; the replay count is a stack address, also negative, so no saved entry is replayed. Only the `+0x4008` write happens as intended. So after a kernel MTE copy or clear, the interrupted client's uncommitted entries are discarded rather than restored, and the linear TLBs hold a mixture. The kernel object was evidently built against a different `crimeRestore` with an extra leading base argument. Whether this mismatch ever matters depends on whether a client had uncommitted entries when the kernel used the MTE (unknown).
+
+## Window clip set-up in the kernel (`crimeValidateClip`)
+
+Sources: 6.5.30 `crime.o` (`crimeValidateClip`, `objdump -d` and `crime_kernel/decomp/crime.c`); the ClipMode, ScrMask and WinOffset tables of the CRIME 1.5 specification. Labels as above.
+
+Established: when a window's clip list changes, the kernel rewrites the clip-related global registers of the client that owns it, from a descriptor holding the window origin (words at `+0x8`, `+0xc`), the bounding width and height (`+0x10`, `+0x14`), a rectangle count (`+0x18`) and a pointer to the list (`+0x1c`), each rectangle being four words: x, y, width, height. The new values always go into the client's shadow record; when the caller says the client is the one loaded on the engine, they also go to the hardware, with the pending writes saved and replayed around the update (`crmSavePP`, `crmRestorePP`): `0x2010` (ClipMode), the five 64-bit screen masks `0x2020`, `0x2028`, `0x2030`, `0x2038` and `0x2040`, and `0x2050`, `0x2058` (window offsets), followed by a write of 0 to `0x4008`.
+
+- Screen mask `n` (at `0x2020 + 8n`) is one rectangle, with x start in bits 63:48, y start in 47:32, x end (exclusive) in 31:16 and y end in 15:0. A list of one to five rectangles fills masks 0 to 4 in list order. A rectangle that starts left of or above the origin is cut there: its start becomes 0 and its end stays at the original start plus the size.
+- With no rectangles in the list, mask 0 (`0x2020`) takes the window's bounding box in the same form, and the other masks keep their old contents.
+- The two window offsets are `(x - 0x1000) << 16 | (y - 0x1000) & 0xffff` from the origin words. `0x2058` (destination) gets the drawing window's, `0x2050` (source) the read window's, which differs only when the two drawables differ. The bias is 4096 pixels: window-relative coordinates sent to the engine carry that bias (inferred from the subtraction; the arithmetic is established).
+- ClipMode: for each rectangle `i` the kernel sets bits `5 + i` and `i` (`0x21 << i`), so one rectangle gives `0x21`, two `0x63`, three `0xe7`, four `0x1ef` and five `0x3ff`. With no rectangles it writes `0x21`, or `0x821` when the descriptor's word at `+0x24` is non-zero (clip-ID testing, bit 11), plus bit 10 (`0x400`, clip-ID map select) when the word at `+0x20` equals 1. With more than five rectangles it writes `0x21` and no mask; the shadow keeps its earlier mask 0 (the caller that handles such lists was not traced).
+- Discrepancy with the specification's table: the table assigns bit 9 to the enable of mask 0 and bit 4 to its inside/outside mode, descending to bits 5 and 0 for mask 4. The kernel pairs bit `5 + i` (enable) with bit `i` (mode, 1 = pass inside) for the mask it loads at `0x2020 + 8i`, which is the table's bits for mask `4 - i`. Each enable and its mode bit are the same mask in both numberings, so only the pairing with a register differs. Inferred: the table's mask numbering runs opposite to the register order, or its bit labels are mirrored; the driver's pairing is the one shipped software relies on. The table also gives all five ScrMask rows the description "screen mask 0", which supports the view that its numbering was copied carelessly.
 
 ## The libGLcore side (pass 6)
 
