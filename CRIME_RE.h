@@ -277,18 +277,21 @@
  * finds the pixel corner by clearing the low six bits of those raw bits
  * [E, __glCrmFlatZTriangle "and $a7, -64"]. The specification calls the
  * register 13.6 fixed point [spec PDF 166].
- * The same library also writes plain integers: the static ClearDepth (unit
- * crm_depth) draws a rectangle (Primitive 0x03020000) with Vertex.GL words
- * of (window x) << 6 and (window y) << 6 and no float bias [E], and the
- * kernel's pixel DMA does the same [E, k:crime_dma:crmpixdma+0x258].
- * Both paths use the same window offset. For pixel x the triangle path
- * sends 0x48040000 + 64x and the rectangle path 64x, so the rasteriser must
- * ignore bits 31:18 and read at most bits 17:0 as unsigned 12.6 fixed point
- * (0 to 4095 + 63/64) [I, strong]. That is enough for the 2048-pixel buffer
- * limit. The specification's "13.6" would make bit 18 significant; the
- * driver cannot work if it is.
+ * The same library also writes integers: the static ClearDepth (unit
+ * crm_depth) draws a rectangle (Primitive 0x03020000) whose Vertex.GL
+ * words are (window coordinate + gc+3660) << 6, i.e. the same 0x21000 bias
+ * applied in integer arithmetic [E]. For pixel x the triangle path sends
+ * 0x48040000 + 64x and the clear path 0x00840000 + 64x. The words agree
+ * only in bits 18:0, so the rasteriser can read at most bits 18:0 [I,
+ * strong]: an unsigned 13.6 field holding x + 4096, with bit 18 meaning
+ * +4096, not a sign. Bits above 18 differ between the two producers and
+ * must be ignored or at least tolerated. Whether silicon ignores them
+ * entirely, or the exponent and integer prefixes happen to be accepted, is
+ * [U]. (A pass-two reading that the clear path carried no bias was wrong.)
+ * The kernel's pixel DMA (k:crime_dma:crmpixdma+0x258) also builds
+ * Vertex.GL words with shifts of six; its bias was not traced.
  */
-#define VTX_FIXED_BITS      18          /* [I] bits 17:0 used */
+#define VTX_FIXED_BITS      19          /* [I] bits 18:0 used, unsigned */
 #define VTX_FLOAT_BIAS      135168.0f   /* [E, value]; meaning [I] */
 #define VTX_SUBPIXEL_BITS   6           /* [E, spec; consistent with bias] */
 
