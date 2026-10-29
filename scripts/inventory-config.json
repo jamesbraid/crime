@@ -40,7 +40,8 @@
     {"type": "field", "disp": 32184, "window": "RE", "label": "context +32184", "binaries": ["*libGLcore.so"], "why": "gc+32184 is the hardware pointer libGLcore stores register writes through (docs/context.md)"},
     {"type": "field", "disp": 120, "window": "RE", "label": "board record +120", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "board record +120 holds the KSEG1 pointer to 0x15000000 (crime_kernel/include/crime_kern.h CRB_RE_BASE)"},
     {"type": "global", "symbol": "crimeBoards", "disp": 4, "window": "GBE", "label": "crimeBoards+4", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "crimeBoards+4 holds the GBE KSEG1 base (crime_kernel/include/crime_kern.h)"},
-    {"type": "argument", "function": "gbeProbe", "reg": 4, "window": "GBE", "label": "gbeProbe argument", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"}
+    {"type": "argument", "function": "gbeProbe", "reg": 4, "window": "GBE", "label": "gbeProbe argument", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"},
+    {"type": "argument", "function": "crmSetSmask", "reg": 4, "window": "RE", "label": "crmSetSmask argument", "binaries": ["usr/lib/X11/dyDDX/crm.so"], "why": "all 23 callers in the X module pass the rendering-register mapping (word 0 of the module's screen private record) as the first argument; the scan cannot follow that two-level chain itself (docs/xmodule.md, register access)"}
   ],
   "accessors": [],
   "aliases": [
@@ -48,7 +49,7 @@
   ],
   "tokens": {
     "window": "RE",
-    "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md"],
+    "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md", "docs/xmodule.md"],
     "sources": [
       {"type": "stores", "label": "code", "kind": "word", "window": "RE", "lo": "0x2000", "hi": "0x4000", "register": true}
     ]

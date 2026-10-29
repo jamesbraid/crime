@@ -5,6 +5,8 @@ word	0x00001228		0x2000		code	1	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpd
 word	0x00000104		0x2008		code	1	1	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
 word	0x00000228		0x2008		code	1	1	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
 word	0x00000000		0x2010		code	1	1	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	named-only	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
+word	0x00000800		0x2010		code	1	1	usr/lib/X11/dyDDX/crm.so:crmSetSmask	named-only	docs/xmodule.md#crmsetsmask-and-the-clipmode-words	`crmSetSmask` and the ClipMode words
+word	0x00000c00		0x2010		code	1	1	usr/lib/X11/dyDDX/crm.so:crmSetSmask	named-only	docs/xmodule.md#crmsetsmask-and-the-clipmode-words	`crmSetSmask` and the ClipMode words
 word	0x00200278		0x2018		code	1	1	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	named-only	docs/mte.md#copy-sequence-in-the-x-server	Copy sequence in the X server
 word	0x00400007		0x2018		code	2	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmEnableDepthTest	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 word	0x00600040		0x2018		code	1	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)

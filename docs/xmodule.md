@@ -39,3 +39,61 @@ What the routines of the IRIX 6.5.30 X module `usr/lib/X11/dyDDX/crm.so` do, by 
 | Monochrome frame buffer (`mfb`) | `mfbAllocatePrivates`, `mfbBlackSolidFS`, `mfbBlackStippleFS`, `mfbBresS`, `mfbCopyArea`, `mfbCopyPlane`, `mfbCopyRotatePixmap`, `mfbDoBitblt`, `mfbDoBitbltCopy`, `mfbDoBitbltCopyInverted`, `mfbDoBitbltGeneral`, `mfbDoBitbltOr`, `mfbDoBitbltXor`, `mfbFillPolyBlack`, `mfbFillPolyInvert`, `mfbFillPolyWhite`, `mfbGetImage`, `mfbImageGlyphBltBlack`, `mfbImageGlyphBltWhite`, `mfbInvertSolidFS`, `mfbInvertStippleFS`, `mfbLineSD`, `mfbLineSS`, `mfbPixmapToRegion`, `mfbPolyFillArcSolid`, `mfbPolyFillRect`, `mfbPolyGlyphBltBlack`, `mfbPolyGlyphBltInvert`, `mfbPolyGlyphBltWhite`, `mfbPolyPoint`, `mfbPushPixels`, `mfbPutImage`, `mfbRealizeFont`, `mfbReduceRop`, `mfbSegmentSD`, `mfbSegmentSS`, `mfbSetScanline`, `mfbSetSpans`, `mfbSolidBlackArea`, `mfbSolidInvertArea`, `mfbSolidPP`, `mfbSolidWhiteArea`, `mfbStippleBlackArea`, `mfbStippleInvertArea`, `mfbStippleWhiteArea`, `mfbTEGlyphBltBlack`, `mfbTEGlyphBltWhite`, `mfbTileAreaPPWCopy`, `mfbTileAreaPPWGeneral`, `mfbTileFS`, `mfbUnnaturalStippleFS`, `mfbUnnaturalTileFS`, `mfbUnrealizeFont`, `mfbValidateGC`, `mfbWhiteSolidFS`, `mfbWhiteStippleFS`, `mfbXRotatePixmap`, `mfbZeroArcSS..JM`, `mfbZeroPolyArcSS` | The sample server's one-bit-per-pixel drawing code, used for bitmaps and for windows of depth 1. |
 | Symbol database and XDR (`SDB`, `xdr`) | `SDBcloseReadDatabase`, `SDBgetSymbolDataAddress`, `SDBgetSymbolDatatype`, `SDBgetSymbolElementCount`, `SDBgetSymbolValueArray`, `SDBinitializeSymbolTableEntries`, `SDBprocessOneUserMethod`, `SDBreadOpenDatabase`, `SDBsetupMemoryInterface`, `compareSTEName`, `mapTypeToXDRPROC`, `xdr_SDBdataType`, `xdr_SDBelementIndex`, `xdr_SDBfileHeader`, `xdr_SDBfileOffset`, `xdr_SDBsymbolName`, `xdr_SDBsymbolTableEntry`, `xdr_SDBversionNumber`, `xdr_typedData` | A small symbol database and its on-disk encoding: the module reads format files and parameter tables through it (`SDBreadOpenDatabase`, `SDBgetSymbolValueArray`), with external data representation routines for the headers and entries. |
 | Arc and span helpers | `QuickSortRects..PM`, `QuickSortSpans..BN`, `QuickSortSpansX..HO`, `arcSpan..IEB`, `arcSpan0..JEB`, `computeBound..FEB`, `computeDashMap..HDB`, `drawArc..AFB`, `drawQuadrant..BFB`, `drawZeroArc..MDB`, `fillSpans..MEB`, `hookEllipseY..GEB`, `hookX..HEB`, `itemSearchFunction..IC`, `newFinalSpan..OEB`, `realAllocSpan`, `realFindSpan..NEB`, `sortLineTab..OC`, `tailEllipseY..NDB`, `tailSpan..KEB`, `tailX..HCB` | File-local helpers of the arc, span and polygon code (the two dots and letters after a name are a suffix the MIPSpro compiler added to a file-local routine). |
+
+## Register access
+
+How the X module reaches the rendering engine and GBE, and which registers each hardware routine writes. Sources: the IRIX 6.5.30 `crm.so` disassembly (`objdump -d`), its dynamic symbol table and MIPS GOT (`readelf -A`, canonical `$gp` `0x5b0ea0`), and the kernel's `crime.o` (`crimeMapGfx`, `crime_init`). Labels as above.
+
+### The pointer chain
+
+- Established (`crmKernInit`, `crm.so` `0x48a090`): the module allocates a 0xda0-byte screen private record (`Xalloc(3488)`), stores it in the screen's private array, `pScreen->devPrivates` at screen record `+0x1b4`, at the slot named by the small-data global `crmScreenPrivateIndex` (`0x5aa0f8`, `$gp - 28072`), and also in a module table. It then calls the server's `irixKernInit`, which returns the user address of the graphics mapping; the module stores that address at private `+0x0` and the address plus `0x5000` at private `+0x8`.
+- Established (`crimeMapGfx`, `crime.o`): the kernel maps five pages of the rendering engine (board record `+0x78`, the KSEG1 pointer to `0x15000000`) at the start of the mapping and, for the owning process only, `0x81` pages of GBE (board record `+0x80`, which `crime_init` fills from the second word of the board table, the GBE base) at `+0x5000`. So private `+0x0` is the rendering engine at offset 0 and private `+0x8` is GBE at offset 0. The five pages cover `0x15000000` to `0x15004fff` (translation, pixel state, transfer engine and status groups); the GBE pages cover `0x16000000` to `0x16080fff`.
+- Established: private `+0xc` points to the module's shadow record. Every store to a pixel-state register is paired with a store of the same value to the shadow at the register offset minus `0x2000` (for example `+0x2008` and shadow `+0x8`, `+0x2040` and shadow `+0x40`; `crmSetSmask`, `crmSolidPolyFillRect`).
+- Established, the access pattern: a hardware routine loads `crmScreenPrivateIndex`, shifts it left by 2, adds it to the word at `+0x1b4` of the screen record, loads the private pointer from that slot (displacement 0), and then loads the rendering pointer from displacement 0 of the private record (`crmSolidPolyFillRect` `0x43d230..0x43d260`). Stores then use the register offset as the displacement (`sw $11,8200($18)` is BufMode.dst `+0x2008`); start-alias stores add `0x800` to the address with `ori` first (`+0x2070 | 0x800`, `0x43d334..0x43d340`).
+
+### Why the register scan resolves only `crmSetSmask`
+
+The scan's bases are a constant, a field at a fixed displacement, a global, an argument and a return value. The rendering pointer is two displacement-0 loads away from the screen record; a field rule at displacement 0 would also type the private pointer itself (and every other displacement-0 load in the same routines, such as the graphics-context private) as a register window, producing false sites. The one exact expression is the first argument of `crmSetSmask`: all 23 calls in the module load it from private `+0x0` (checked call by call, including the delay-slot moves in `crmSolidPolyFillRect` and the frame-pointer spill at `-656($30)` in `crmZeroPolyArc`), so it is configured as an argument base. Its eight sites are ClipMode `+0x2010` (three stores) and the screen masks `+0x2020` to `+0x2040`.
+
+### `crmSetSmask` and the ClipMode words
+
+Established (`crm.so` `0x58a930`; arguments: rendering pointer, shadow pointer, list of 64-bit masks, count n): with the small-data flag `use_cid` (`0x5aa638`) clear, it stores the n masks (n = 1 to 5) into `ScrMask` `+0x2020` upward, last mask first, as 64-bit stores, and writes ClipMode `+0x2010` from a table indexed by n (0 to 5) in `.rodata` at `0x5a2400`: `0x0`, `0x21`, `0x63`, `0xe7`, `0x1ef`, `0x3ff`, the same per-rectangle enable bits the kernel's `crimeValidateClip` uses ([context.md](context.md)). With `use_cid` set it writes ClipMode `0x800` (clip-ID test only), or `0xc00` (clip-ID test and clip-ID map select) when `use_cid` is 1, keeps the masks unused, and when the mask list differs from the cached one rebuilds a region and draws the clip-ID plane through `crmDrawCID` with `use_cid` as the map selector.
+
+### Offsets reached, by routine
+
+Established by replaying the module's code with the chain above followed by hand (private `+0x0` as the rendering engine, private `+0x8` as GBE). Every offset below is a register already named in [CRIME_RE.h](../CRIME_RE.h), [MTE.h](../MTE.h) or [GBE.h](../GBE.h). Offsets are relative to the rendering engine unless marked GBE; "alias" stores go through the start alias (`+0x800`).
+
+| Routines | Offsets |
+|---|---|
+| `crmSetSmask` | `+0x2010`, `+0x2020`, `+0x2028`, `+0x2030`, `+0x2038`, `+0x2040` |
+| `crmSolidPolyFillRect`, `crmFillPolygon` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078`. `crmSolidPolyFillRect` also stores the rectangle vertices through the start alias of `+0x2070` (`0x43d464`, read by hand: the replay loses the offset at the loop head) |
+| `crmFillTriangle..GD` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` |
+| `crmFillHWTriangle..HD` | as `crmFillTriangle..GD`, plus `+0x2010` and `+0x2078` |
+| `crmValidateVisual` | as `crmFillTriangle..GD`, plus `+0x2074` (alias) |
+| `crmDrawImage` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8` |
+| `crmFillTriangleMTE..FD`, `crmTileRects` | `+0x2008`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` |
+| `crmValidateClip` | as `crmTileRects`, plus `+0x3078` |
+| `crmDrawCID` | transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` |
+| `crmImageGlyphBlt`, `crmPolyGlyphBlt` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3010`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` |
+| `crmImageGlyphBltP2C`, `crmImageGlyphBltP4C`, `crmPolyGlyphBltP2C`, `crmPolyGlyphBltP4C`, `crmPolyGlyphBltP5C` | as `crmImageGlyphBlt`, plus `+0x20c4` |
+| `crmImageGlyphBltP5C` | as `crmImageGlyphBltP2C`, without `+0x2010` and `+0x21f8` |
+| `crmImageGlyphBltP3C` | as `crmImageGlyphBlt`, without `+0x2010` and `+0x21f8` |
+| `crmPolyGlyphBltP3C` | as `crmImageGlyphBltP3C`, without `+0x2070` |
+| `crmImageGlyphBltP5CS`, `crmPolyGlyphBltP5CS` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20c4`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` (no transfer engine) |
+| `crmLineSS`, `crmSegmentSS` | `+0x2008`, `+0x2018`, `+0x2058`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8` |
+| `crmPolyPoint` | as `crmLineSS`, plus `+0x2010`, the screen masks `+0x2020` to `+0x2040`, `+0x2070` and `+0x21f8` |
+| `crmSegmentSD` | as `crmPolyPoint`, plus `+0x20c0`, `+0x20c4` and `+0x20d8` |
+| `crmLineSD` | as `crmSegmentSD`, plus `+0x21f0` (alias) |
+| `crmReadImage8`, `crmReadImage16`, `crmReadImage16on16`, `crmReadImage16on32`, `crmReadImage24` | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x20a8` (64-bit, both steps), `+0x20b4` |
+| `crmInitHW..HB` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21f8`; transfer engine as `crmSolidPolyFillRect` |
+| `crmSolidFillSpans` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` |
+| `crmInvalidate`, `crmInitiateBufferSwap`, `crmUnSchedMgrSwapBuf`, `crmDestroyWindow` | the swap-by-copy sequence of [mte.md](mte.md): `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20a0` (alias), `+0x20a8`, `+0x21b0`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3020`, `+0x3028`, `+0x3030`, `+0x3038`, `+0x3040`, `+0x3048`, `+0x3078` |
+| `crmBitBltSS..M` (read by hand) | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070` (64-bit), `+0x20a8`, `+0x21b0` |
+| `crmZeroPolyArc` (read by hand) | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` |
+| `crmStorePseudoColors`, `crmInstallPseudoColorMap`, `crmBlackCmap` | GBE `+0x58000` (colour-map FIFO level, read) |
+| `crmBlankScreen` | GBE `+0x58000`, `+0x54408` (map entry `0x1102`), `+0x70004` (cursor control) |
+| `crmDisplayCursor` | GBE `+0x70004`, `+0x70008`, `+0x7000c`, `+0x70010` (cursor control and the three cursor colours) |
+| `crmInstallCursor` | GBE `+0x70004`, `+0x78000`, `+0x78004` (cursor glyph) |
+| `crmPowerSaver..O` | GBE `+0x10018` (`VT_FLAGS`, read and written) |
+
+The two routines read by hand keep the rendering pointer in a frame-pointer spill slot (`crmZeroPolyArc`, `-656($30)`) or reach their store loop through a block the replay cannot enter with known values (`crmBitBltSS..M`, private pointer in `$17`, rendering pointer loaded at `0x598b98`); the replay misses them. Both were checked instruction by instruction. The colour-map store loops reach `+0x50000 + 4n` with a computed index and are left as unresolved GBE sites (three in the replay); their layout is in [gbe.md](gbe.md). The mapping does not cover the CRIME CPU-interface window at `0x14000000`, so the module cannot reach it.
