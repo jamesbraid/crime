@@ -85,9 +85,16 @@ enum mte_buf {  /* [E, spec PDF 185, MTE version of the table] */
  * [E, the stepping code]. Reading that as a layout: 4 x 4-texel blocks of
  * 32 bytes (one 8-byte row of four texels per 8 bytes), sixteen blocks
  * across a 512-byte block row covering 64 texels, and sixteen block rows
- * per 8 KiB, giving 64 x 64-texel 8 KiB subtiles at 16 bits [I]. The
- * 32-bit and 8-bit variants and the order of subtiles within a 64 KiB
- * tile are [U].
+ * per 8 KiB, giving 64 x 64-texel 8 KiB subtiles at 16 bits [I].
+ * Other depths: there are no 8-bit texels (Texture.mode texelDepth is 16
+ * or 32 only [E, spec PDF 178]). crmSubtileTexels and crmSubtileSpan use
+ * the same byte-address stepping (8, +0x18, +0x1e00) whatever the format
+ * and move texels as 16-bit halfwords with a per-halfword write mask [E].
+ * Inferred: the layout is defined in bytes, so a 32-bit subtiled texture
+ * would hold 2 x 4 texels per 32-byte cell and 32 x 64 texels per 8 KiB;
+ * whether the driver ever subtiles 32-bit formats is [U] (the per-format
+ * table that sets the subtiled flag was not decoded). The order of the
+ * eight 8 KiB subtiles within a 64 KiB tile is [U].
  */
 #define SUBTILE_BLOCK_BYTES 32      /* [I] */
 #define SUBTILE_BYTES       0x2000  /* [I] at 16 bits per texel */
