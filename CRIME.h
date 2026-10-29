@@ -81,8 +81,8 @@
 #define CRIME_INT_GBE1          17          /* [E] */
 #define CRIME_INT_GBE2          18          /* [E] */
 #define CRIME_INT_GBE3          19          /* [E] */
-#define CRIME_INT_CPUERR        20          /* [I] netbsd and linux agree; not in the IRIX graphics objects */
-#define CRIME_INT_MEMERR        21          /* [I] same; spec prose says 20, spec table 21 */
+#define CRIME_INT_CPUERR        20          /* [I] netbsd and linux; IRIX does not distinguish */
+#define CRIME_INT_MEMERR        21          /* [I] same; spec prose (PDF 109) says CPU 21, memory 20 */
 #define CRIME_INT_RE_EMPTY_EDGE 22          /* [I, linux] */
 #define CRIME_INT_RE_FULL_EDGE  23          /* [I, linux] */
 #define CRIME_INT_RE_IDLE_EDGE  24          /* [I, linux] */
@@ -91,13 +91,37 @@
 #define CRIME_INT_RE_IDLE       27          /* [I, linux] */
 #define CRIME_INT_VICE          31          /* [E, netbsd] */
 /*
- * The memory and CPU error vectors live in the base IRIX kernel, which this
- * repository does not hold, so IRIX gives no evidence on the 20/21 question
- * yet [U]. Both public drivers assign CPU 20 and memory 21, matching the
- * specification's table rather than its prose.
+ * Error interrupts in IRIX 6.5.30 [E, k:kernel:mlreset+0x100..0x124]:
+ * mlreset installs the same handler, buserror_intr, on input 21 and on
+ * input 20, both at the same priority (3). Its capture routine reads every
+ * CRIME error register and decides from their contents, not from the input
+ * number [E, kernel.o static routine at 0xff08, called from dobuserr]:
+ *   reads  +0x048 CPU error status, +0x040 CPU error address,
+ *          +0x058 VICE error address, +0x250 memory error status,
+ *          +0x258 memory error address, +0x260, +0x268 (ECC syndrome and
+ *          check bits per netbsd names)
+ *   clears +0x048 and +0x250 by writing zero
+ * kernel.o also carries separate decoders print_buserr_rev0 and
+ * print_buserr_rev1, so the error-status layout differs by CRIME revision
+ * [E, symbols; which revision each serves is U].
+ * Consequences: for IRIX, a model may raise either input for either error
+ * and still be handled, but must keep the error status in +0x048 and
+ * +0x250 until software writes zero. Which input the silicon uses for
+ * which error remains [U]; the public drivers say CPU 20, memory 21, the
+ * specification's prose says the reverse.
+ *
+ * IRIX reads the CPU error status at +0x048, never at the 1.5 draft's
+ * +0x4048 [E, no access to +0x4048 anywhere in kernel.o]. That agrees with
+ * the ID probe: the shipped part behaves like the pre-1.5 layout [I].
  */
 
-#define CRIME_CPU_ERROR_STAT_15 0x4048      /* 1.5 draft offset [E, spec PDF 49] */
-#define CRIME_CPU_ERROR_STAT_11 0x0048      /* earlier offset, used by linux and netbsd [E] */
+#define CRIME_CPU_ERROR_ADDR    0x040       /* [E, kernel.o] */
+#define CRIME_CPU_ERROR_STAT    0x048       /* [E, kernel.o] used by IRIX, linux, netbsd */
+#define CRIME_VICE_ERROR_ADDR   0x058       /* [E, kernel.o; name netbsd] */
+#define CRIME_MEM_ERROR_STAT    0x250       /* [E, kernel.o] */
+#define CRIME_MEM_ERROR_ADDR    0x258       /* [E, kernel.o] */
+#define CRIME_MEM_ERROR_ECC_SYN 0x260       /* [E read; name netbsd] */
+#define CRIME_MEM_ERROR_ECC_CHK 0x268       /* [E read; name netbsd] */
+#define CRIME_CPU_ERROR_STAT_15 0x4048      /* 1.5 draft offset [E, spec PDF 49]; unused by IRIX */
 
 #endif /* CRIME_H */
