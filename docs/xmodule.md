@@ -1,6 +1,6 @@
 # X module functions by role
 
-What the routines of the IRIX 6.5.30 X module `usr/lib/X11/dyDDX/crm.so` do, by group. Sources: the module's symbol table (840 symbols), the assembly listing `ddx/asm/crm/crm/crm.s`, and the public X11 sample server whose names the module reuses. Labels: **established** where an earlier chapter read the code (the copy, fill and swap sequences of [mte.md](mte.md); the colour-map and ID code of [gbe.md](gbe.md)); **inferred** otherwise, from the routine's name, its group and the sample server's well-known behaviour. The module is stripped of local symbols, so file-local routines carry a compiler suffix (two dots and letters) in the lists.
+What the routines of the IRIX 6.5.30 X module `usr/lib/X11/dyDDX/crm.so` do, by group. Sources: the module's symbol table (840 symbols), the assembly listing `ddx/asm/crm/crm/crm.s`, and the public X11 sample server whose names the module reuses. Labels: **established** where the code was read; the per-routine evidence is in [Derivations from the code](#derivations-from-the-code) below, and earlier chapters hold the detailed sequences (the copy, fill and swap sequences of [mte.md](mte.md); the colour-map and ID code of [gbe.md](gbe.md)). The group tables give each group's role; where a routine's role rests on its name rather than on what its code does, its derivation row says so and the role is **inferred**. The module is stripped of local symbols, so file-local routines carry a compiler suffix (two dots and letters) in the lists.
 
 ## Hardware drawing (the `crm` routines)
 
@@ -97,3 +97,291 @@ Established by replaying the module's code with the chain above followed by hand
 | `crmPowerSaver..O` | GBE `+0x10018` (`VT_FLAGS`, read and written) |
 
 The two routines read by hand keep the rendering pointer in a frame-pointer spill slot (`crmZeroPolyArc`, `-656($30)`) or reach their store loop through a block the replay cannot enter with known values (`crmBitBltSS..M`, private pointer in `$17`, rendering pointer loaded at `0x598b98`); the replay misses them. Both were checked instruction by instruction. The colour-map store loops reach `+0x50000 + 4n` with a computed index and are left as unresolved GBE sites (three in the replay); their layout is in [gbe.md](gbe.md). The mapping does not cover the CRIME CPU-interface window at `0x14000000`, so the module cannot reach it.
+## Derivations from the code
+
+How each hardware and resource-manager routine's role was derived. Source: a full disassembly of the IRIX 6.5.30 `crm.so`, with each call site resolved through the module's global offset table (`$gp` `0x5b0ea0`; local and global entries split at `DT_MIPS_LOCAL_GOTNO` 893). Each row of the tables below is one routine: its address, its role, and what in the code establishes it.
+
+- Requests are the ioctl number in `$a1` at each call to `ioctl`, including a value set in the call's delay slot. Graphics-driver requests are named after their kernel handlers in [ioctls.md](ioctls.md). Requests 102 to 104 are the generic board requests of the shipped public header `/usr/include/sys/gfx.h`. Requests from 1000 (`0x3e8`) up are resource-manager commands from the dispatch table in [ioctls.md](ioctls.md).
+- Register writes are stores through the rendering pointer described in [The pointer chain](#the-pointer-chain), each paired with a shadow store at the register offset minus `0x2000`. A routine counts as writing registers only when it stores to the drawing mode (`+0x2018`), the primitive (`+0x2060`) or the transfer engine's mode (`+0x3000`). That rule keeps out unrelated records with large offsets, such as the audio state of the bell routines. The register names are in [CRIME_RE.h](../CRIME_RE.h) and [MTE.h](../MTE.h).
+- Calls and callers are direct calls resolved through the offset table, leaving out C-library and allocation calls. Each row names at most one callee and one caller; the full call lists come from the same disassembly.
+- "Reports failures with its own message" means the routine passes a string from the module's read-only data to `ErrorF`, `FatalError` or `perror`. The messages are not quoted here.
+- Routines read by hand have a fuller description in their row. Those include the colour-map FIFO stores, the cursor control write and the screen-wrapper hooks of the `rrm` routines.
+
+Negative result, established over the same disassembly: none of the 165 `mi`, 165 `nfb`, 218 `cfb`, 59 `mfb` and 20 `SDB` or `xdr` routines sends an ioctl or writes the drawing-mode, primitive or transfer-engine mode registers. The sample-server layers draw into memory only. The one call from them into the hardware layer is `rrmValidateCID`, called from the `nfb` layer. Their roles in the table above stay inferred from the sample server's names.
+
+### Mono images and glyphs
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmDrawOpaqueMonoImage` | 0x4283e0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, drawing mode, primitive, vertex, stipple, foreground colour, background colour, logic op, colour mask and flush registers. |
+| `crmDrawMonoImage` | 0x42dce0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers. |
+| `crmImageGlyphBltP2C` | 0x42eba0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmImageGlyphBlt` | 0x4351f0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `QueryGlyphExtents`. |
+| `crmPolyGlyphBlt` | 0x4429d0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `QueryGlyphExtents`. |
+| `crmPolyGlyphBltP4C` | 0x44de30 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmImageGlyphBltP3C` | 0x51a1e0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmImageGlyphBltP4C` | 0x51ae70 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmImageGlyphBltP5CS` | 0x51bb90 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers; calls `crmSetSmask`. |
+| `crmImageGlyphBltP5C` | 0x51c170 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmPolyGlyphBltP2C` | 0x51ce50 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmPolyGlyphBltP3C` | 0x51d9b0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmPolyGlyphBltP5C` | 0x51e5b0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmPolyGlyphBltP5CS` | 0x51f1f0 | Established (crm.so, 6.5.30): draws one-bit images or text glyphs with the rendering engine; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, stipple, foreground colour, logic op, colour mask and flush registers; calls `crmSetSmask`. |
+
+### Rectangle and span fills
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmPaintWindowBackground` | 0x437f70 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels. |
+| `crmDrawSolidRects` | 0x4385f0 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers and drives the transfer engine. |
+| `crmSolidPolyFillRect` | 0x43d180 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, clip mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmStippledFillRects` | 0x4449c0 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, drawing mode, primitive, vertex, stipple, foreground colour, background colour, logic op and colour mask registers. |
+| `crmStippledFS` | 0x446120 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, drawing mode, primitive, vertex, stipple, foreground colour, background colour, logic op, colour mask and flush registers. |
+| `crmSolidFillSpans` | 0x4463b0 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, clip mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `crmSetSmask`. |
+| `crmSolidSpans` | 0x44dbb0 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers and drives the transfer engine. |
+| `crmPaintWindowBorder` | 0x44fd80 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; calls `nmbxCanSupportBuffers`. |
+| `crmTiledFS` | 0x4603a0 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, foreground colour, logic op, colour mask and flush registers. |
+| `crmTileRects` | 0x470b80 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode registers and drives the transfer engine. |
+| `crmTiledFS8_W4` | 0x519b60 | Established (crm.so, 6.5.30): fills rectangles or spans of pixels; writes the destination buffer mode registers and drives the transfer engine. |
+
+### Polygons, triangles and arcs
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmFillPolygon` | 0x441990 | Established (crm.so, 6.5.30): fills polygons, triangles or arcs; writes the destination buffer mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers and drives the transfer engine; calls `miFillConvexPoly`. |
+| `crmZeroPolyArc` | 0x5204b0 | Established (crm.so, 6.5.30): fills polygons, triangles or arcs; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, foreground colour, logic op, colour mask and flush registers; calls `miPolyArc`. |
+| `crmFillTriangle..GD` | 0x56ad50 | Established (crm.so, 6.5.30): fills polygons, triangles or arcs; writes the destination buffer mode, drawing mode, primitive, foreground colour, logic op, colour mask and flush registers; called from `crmFillPolygon`. |
+| `crmFillTriangleMTE..FD` | 0x578260 | Established (crm.so, 6.5.30): fills polygons, triangles or arcs; writes the destination buffer mode registers and drives the transfer engine; called from `crmFillPolygon`. |
+| `crmFillHWTriangle..HD` | 0x57ad50 | Established (crm.so, 6.5.30): fills polygons, triangles or arcs; writes the destination buffer mode, clip mode, drawing mode, primitive, vertex, logic op, colour mask and flush registers; calls `crmSetSmask`; called from `crmFillPolygon`. |
+
+### Lines and points
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmLineSS` | 0x440a50 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, clip mode, drawing mode, screen masks, window offset, primitive, vertex, foreground colour, logic op, colour mask and flush registers; calls `miRegionCreate`. |
+| `crmSegmentSS` | 0x445760 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, clip mode, drawing mode, screen masks, window offset, primitive, foreground colour, logic op, colour mask and flush registers; calls `crmDrawCID`. |
+| `crmPolyPoint` | 0x44ea90 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, clip mode, drawing mode, screen masks, window offset, primitive, foreground colour, logic op, colour mask and flush registers; calls `crmDrawCID`. |
+| `crmLineSD` | 0x515550 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, clip mode, drawing mode, screen masks, window offset, primitive, vertex, stipple, foreground colour, background colour, logic op, colour mask and flush registers; calls `crmSetSmask`. |
+| `crmSegmentSD` | 0x515dd0 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, clip mode, drawing mode, screen masks, window offset, primitive, stipple, foreground colour, background colour, logic op, colour mask and flush registers; calls `crmSetSmask`. |
+| `crmDrawPoints` | 0x517d00 | Established (crm.so, 6.5.30): draws thin lines, segments or points; writes the destination buffer mode, drawing mode, window offset, primitive, foreground colour, logic op, colour mask and flush registers. |
+
+### Copies and pixel transfer
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmDrawImage` | 0x444e70 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step, foreground colour, logic op, colour mask and flush registers; reports failures with its own message. |
+| `crmReadImage24` | 0x44f560 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step and transfer stride registers; reports failures with its own message. |
+| `crmReadImage8` | 0x451ef0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step and transfer stride registers; reports failures with its own message. |
+| `crmCopyWindow` | 0x46f5b0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x5608 (rebuild back-buffer tiles); calls `crmBitBltSS..M`. |
+| `crmCopyRect` | 0x473dc0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, logic op, colour mask and flush registers. |
+| `crmDrawCID` | 0x516500 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; writes the drives the transfer engine; called from `crmLineSD`. |
+| `crmFreeFBBlock` | 0x516c10 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels. |
+| `crmReadFBBlock` | 0x516eb0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels. |
+| `crmWriteFBSubBlock` | 0x516fb0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels. |
+| `crmReadConvertPixels` | 0x5172f0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; reports failures with its own message. |
+| `crmReadImage16` | 0x517f10 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step and transfer stride registers; reports failures with its own message; calls `crmReadImage16on32`. |
+| `crmReadImage16on32` | 0x518d60 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step and transfer stride registers; reports failures with its own message; called from `crmReadImage16`. |
+| `crmReadImage16on16` | 0x5192c0 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x55f2 (pixel DMA); writes the source buffer mode, destination buffer mode, drawing mode, primitive, transfer step and transfer stride registers; reports failures with its own message; called from `crmReadImage16`. |
+| `crmBitBltSS..M` | 0x598960 | Established (crm.so, 6.5.30): copies or transfers blocks of pixels; sends ioctl 0x5608 (rebuild back-buffer tiles); writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step and logic op registers; reports failures with its own message; called from `crmCopyWindow`. |
+
+### Cursor
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmDisplayCursor` | 0x4377e0 | Established (crm.so, 6.5.30): controls the hardware cursor; sends ioctl 0x55f1 (cursor position); reports failures with its own message. |
+| `crmInstallCursor` | 0x437c50 | Established (crm.so, 6.5.30): controls the hardware cursor; sends ioctl 0x55f1 (cursor position); reports failures with its own message. |
+| `crmDummySetCursorColor` | 0x515030 | Established (crm.so, 6.5.30): controls the hardware cursor; reports failures with its own message. |
+| `crmCursorOn` | 0x515070 | Established (crm.so, 6.5.30): sets or clears bit 0 of the cursor-control shadow (+28 of the cursor record) and, when the cursor is not blanked (+24 zero), stores it to GBE +0x70004, the cursor control register. |
+
+### Colour maps and gamma
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmInstallHWColormap` | 0x43cd60 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; calls `WalkTree`. |
+| `crmInstallTrueColorMap` | 0x43d170 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps. |
+| `crmUninstallHWColormap` | 0x46fbc0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; calls `LookupIDByType`. |
+| `crmInstallPseudoColorMap` | 0x473890 | Established (crm.so, 6.5.30): builds 8-byte colour records on the stack (16-bit entry index at +2; red, green and blue reduced from 16 to 8 bits by a right shift of 8 at +4, +5, +6) for the map's allocated cells. |
+| `crmInitializeColormap` | 0x4789d0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; calls `nfbCreateHWColormap`. |
+| `crmStorePseudoColors` | 0x479140 | Established (crm.so, 6.5.30): reads the GBE base from the screen record (+8), polls the colour-map FIFO count at GBE +0x58000 (low six bits against 48, or against zero when the revision byte +3476 is 2 or more), then stores `red << 24 | green << 16 | blue << 8` at GBE +0x50000 + 4 * index and in a shadow copy (+64). |
+| `cmapDID` | 0x486a70 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; calls `LookupIDByType`; called from `FindBestID`. |
+| `gbeInit` | 0x48fd20 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; sends ioctl 0x55f4 (window-ID entry); calls `rrmSetReservedDID`. |
+| `rrmCreateDefColormap` | 0x4916c0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; reports failures with its own message; calls `CreateColormap`; called from `crmInit`. |
+| `crmStoreDirectColors` | 0x514860 | Established (crm.so, 6.5.30): the same GBE colour-map FIFO poll and +0x50000 store as `crmStorePseudoColors`, for the three component ramps of a direct-colour map. |
+| `crmInstallDirectColorMap` | 0x514cc0 | Established (crm.so, 6.5.30): the same colour-map FIFO poll and +0x50000 stores, writing every entry of a direct-colour map's group. |
+| `crmStoreTrueColors` | 0x514fe0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps. |
+| `crmSetColorNoOp` | 0x514ff0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; reports failures with its own message. |
+| `crmChangeDIDCmap` | 0x516fc0 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; sends ioctl 0x3f9 (resource-manager display-mode load); reports failures with its own message; calls `StealID`. |
+| `crmBlackCmap` | 0x562b50 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; reports failures with its own message; called from `crmInit`. |
+| `crmQryGammaCol..OB` | 0x588710 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps. |
+| `crmStrGamma8..KB` | 0x598390 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; sends ioctl 0x55f5 (gamma ramp); reports failures with its own message. |
+| `crmStrGamma16..LB` | 0x59a020 | Established (crm.so, 6.5.30): loads colour maps, window IDs or gamma ramps; sends ioctl 0x55f5 (gamma ramp); reports failures with its own message. |
+
+### Validation of graphics contexts and windows
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmValidateWindowGC` | 0x43db70 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; reports failures with its own message; calls `crmNewGCOps..K`. |
+| `crmValidateReducedGC` | 0x43ee50 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; calls `FindWindowWithOptional`; called from `crmValidateWindowGC`. |
+| `crmValidateWindowPriv` | 0x446b80 | Established (crm.so, 6.5.30): picks one of three operation tables by the window depth byte (+2: up to 8, up to 16, deeper) and stores it as the first word of the window's `crm` private record, then classifies the window's mode word by range. |
+| `crmValidateMode` | 0x44fa80 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; sends ioctl 0x3f9 (resource-manager display-mode load); reports failures with its own message; calls `LookupIDByType`. |
+| `crmValidateVisual` | 0x4598b0 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; writes the destination buffer mode, drawing mode, primitive, vertex, foreground colour, logic op, colour mask and flush registers; calls `gbeLoadDIDTable`. |
+| `crmValidateTree` | 0x51f770 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; calls `crmInvalidateSoftDB`. |
+| `ValidateMode..LE` | 0x562020 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; reports failures with its own message; calls `FindFreeID`. |
+| `crmValidateReservedMode` | 0x564d70 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; sends ioctl 0x55f4 (window-ID entry); reports failures with its own message; calls `rrmSetReservedDID`. |
+| `crmNewGCOps..K` | 0x576ef0 | Established (crm.so, 6.5.30): recomputes drawing routines or window state after a change; called from `crmValidateWindowGC`. |
+
+### Double buffering and swaps
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmValidateSwapbuf` | 0x464ed0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x3f4 (resource-manager swap-buffer validation); reports failures with its own message; calls `FlushClientCaches`. |
+| `crmValidateClip` | 0x464ff0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x55ff (validate a drawable clip) and 1 other request; writes the destination buffer mode registers and drives the transfer engine. |
+| `crmInitiateBufferSwap` | 0x475500 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x55ff (validate a drawable clip) and 2 other requests; writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, logic op and flush registers and drives the transfer engine; reports failures with its own message; calls `AssignID..HF`. |
+| `crmSwapDone` | 0x476640 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `dbcDelayedSwapBufferDone`. |
+| `crmValidateSoftDB` | 0x5150e0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x5608 (rebuild back-buffer tiles); calls `crmValidateSoftDBTree..BB`; called from `crmValidateTree`. |
+| `crmInvalidateSoftDB` | 0x515450 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `crmUnSchedMgrSwapBuf`; called from `crmValidateTree`. |
+| `crmCalculateSoftDBClip..AB` | 0x563df0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; reports failures with its own message; called from `crmValidateSoftDBTree..BB`. |
+| `crmValidateSoftDBTree..BB` | 0x566450 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `crmCalculateSoftDBClip..AB`; called from `crmValidateSoftDB`. |
+| `SwapDone..AF` | 0x577ee0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `dbcDelayedSwapBufferDone`. |
+| `DelayValidateClip..IE` | 0x583eb0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `TimerSet`; called from `ValidateClip..GE`. |
+| `ValidateSwapbuf..KE` | 0x584580 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; reports failures with its own message; calls `FindFreeID`; called from `ValidateSwapNClip..ME`. |
+| `SwapInitiated..BF` | 0x586a80 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `dbcNoticeSwapInitiated`. |
+| `DelayValidateClipCallback..HE` | 0x588660 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `TimerFree`. |
+| `getFBConsumption..KC` | 0x58ada0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x560e (frame-buffer use); reports failures with its own message; called from `crmQryPltParam`. |
+| `ValidateClip..GE` | 0x590280 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; reports failures with its own message; calls `DelayValidateClip..IE`; called from `DelayValidateClipCallback..HE`. |
+| `ValidateSwapNClip..ME` | 0x594fb0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; calls `ValidateSwapbuf..KE`. |
+| `crmUnSchedMgrSwapBuf` | 0x5951e0 | Established (crm.so, 6.5.30): tracks buffer swaps and clips across them; sends ioctl 0x560a (cancel a scheduled swap); writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, logic op and flush registers and drives the transfer engine; calls `dbcDelayedSwapBufferDone`; called from `crmInvalidateSoftDB`. |
+
+### Screen set-up and tear-down
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmDestroyWindow` | 0x46ff60 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x5600 (close a pixel buffer) and 1 other request; writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, logic op and flush registers and drives the transfer engine; reports failures with its own message; calls `dbcDelayedSwapBufferDone`. |
+| `crmCreateWindow` | 0x4741e0 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `FindWindowWithOptional`. |
+| `crmInitWindowType` | 0x486680 | Established (crm.so, 6.5.30): sets the window private halfword at +2 to 1 when the screen's `crm` private word +24 is non-zero, else to 0. |
+| `crmCloseScreen` | 0x489970 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `rrmCloseScreen`. |
+| `crmUnmapGbe` | 0x489a50 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x55f8 (unmap the shadow record) and 1 other request; reports failures with its own message; called from `crmCloseScreen`. |
+| `crmCloseAllocator` | 0x489b10 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows. |
+| `crmResetXvc` | 0x489b20 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; called from `crmCloseScreen`. |
+| `crmKernInit` | 0x48a090 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `AllocateGCPrivate`; called from `crmInit`. |
+| `crmInit` | 0x48a250 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x560d (driver initialisation) and 6 other requests; reports failures with its own message; calls `ddxGetBoardInfo`. |
+| `crmInitAllocator` | 0x48b650 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows. |
+| `crmInitRootWindow` | 0x48b660 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; reports failures with its own message; calls `crmInitScrnSaver`. |
+| `crmAttachXvc` | 0x48b7e0 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x55f5 (gamma ramp); reports failures with its own message; calls `crmMakeFileName..PB`; called from `crmInit`. |
+| `crmPostInit` | 0x48cc60 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; reports failures with its own message; calls `strcasecmp`. |
+| `crmDefaultTTExists` | 0x48da90 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; reports failures with its own message; calls `SDBreadOpenDatabase`; called from `crmInit`. |
+| `crmProbe` | 0x492930 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows. |
+| `crmBlankScreen` | 0x519840 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x5610 (blank the screen); called from `crmPowerSaver..O`. |
+| `crmSetStereoMode` | 0x519b10 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `nfbSetStereoMode`. |
+| `crmLoadAndFree` | 0x51fc80 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; reports failures with its own message; calls `SDBcloseReadDatabase`. |
+| `crmPowerSaver..O` | 0x565a00 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `crmSetBacklight..N`. |
+| `crmSetCntrl..MB` | 0x567220 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows. |
+| `crmQryCntrl..NB` | 0x57ef00 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows. |
+| `crmInitScrnSaver` | 0x588550 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `syssgi`; called from `crmInitRootWindow`. |
+| `crmInitHW..HB` | 0x58a2b0 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; writes the destination buffer mode, drawing mode, primitive, foreground colour, logic op and flush registers and drives the transfer engine; called from `crmInit`. |
+| `crmSetSmask` | 0x58a930 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; calls `miRegionCreate`; called from `crmFillHWTriangle..HD`. |
+| `crmInitMonitorProtocol..MC` | 0x592800 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; sends ioctl 0x560b (I2C command). |
+| `crmCanLoadOptionHW..DC` | 0x594800 | Established (crm.so, 6.5.30): sets up or tears down the screen and its windows; reports failures with its own message; called from `crmReadVideoFormat..FC`. |
+
+### Video formats and monitor
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmLoadTimingTable` | 0x48c5d0 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; sends ioctl 0x55f6 (timing table); reports failures with its own message; calls `gbeLoadDIDTable`; called from `crmAttachXvc`. |
+| `crmQryMonitor` | 0x48d410 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message. |
+| `crmLstVideoFmt` | 0x51f840 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `crmEnumDir..AC`. |
+| `crmQryPltParam` | 0x51f920 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `scaninvent`. |
+| `crmSetPltParam` | 0x520220 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message. |
+| `crmMakeFileName..PB` | 0x562280 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; called from `crmAttachXvc`. |
+| `crmEnumDir..AC` | 0x563220 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `re_comp`; called from `crmLstVideoFmt`. |
+| `crmBuildFmtList..GC` | 0x56b9c0 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `crmReadVideoFormat..FC`. |
+| `crmBuildFmtInfoArray..HC` | 0x571f20 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; called from `crmLstVideoFmt`. |
+| `crmMonitorCommand..LC` | 0x590420 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; sends ioctl 0x560b (I2C command); reports failures with its own message. |
+| `crmReadVideoFormat..FC` | 0x593e70 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `SDBreadOpenDatabase`; called from `crmBuildFmtList..GC`. |
+| `crmLdFmtByName..NC` | 0x595740 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; reports failures with its own message; calls `crmMakeFileName..PB`. |
+| `crmSetBacklight..N` | 0x5987e0 | Established (crm.so, 6.5.30): finds, loads or applies video formats and monitor settings; sends ioctl 0x5213 (flat-panel I2C); called from `crmPowerSaver..O`. |
+
+### Bell and audio
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmKeyClick` | 0x46f330 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; calls `crmGetSampleRate..B`. |
+| `crmBell` | 0x5168e0 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; calls `crmGetSampleRate..B`. |
+| `crmCheckAudio..F` | 0x577e60 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; calls `ALgetfilled`. |
+| `crmRingClick..H` | 0x584fe0 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; reports failures with its own message; calls `ALwritesamps`. |
+| `crmOpenAudio..C` | 0x588080 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; calls `ALnewconfig`; called from `crmRingBell..G`. |
+| `crmRingBell..G` | 0x58f8d0 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; reports failures with its own message; calls `ALwritesamps`. |
+| `crmGetSampleRate..B` | 0x5982a0 | Established (crm.so, 6.5.30): rings the bell or key click through the audio library; calls `ALgetparams`; called from `crmBell`. |
+
+### Pixel buffers
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `crmAllocatePbuffer` | 0x516c20 | Established (crm.so, 6.5.30): creates or destroys off-screen pixel buffers; sends ioctl 0x55fe (open a pixel buffer); reports failures with its own message; calls `FindWindowWithOptional`. |
+| `crmDeallocatePbuffer` | 0x516ec0 | Established (crm.so, 6.5.30): creates or destroys off-screen pixel buffers; sends ioctl 0x5600 (close a pixel buffer); reports failures with its own message. |
+
+### Window creation and mapping
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `rrmCopyWindow` | 0x460320 | Established (crm.so, 6.5.30): calls the screen's saved copy-window hook (screen record +224) after reinstalling the original, then puts itself back: the sample server's screen-wrapper pattern. |
+| `rrmDestroyDrawable` | 0x4709c0 | Established (crm.so, 6.5.30): follows a window through creation, mapping and destruction; calls `TimerFree`. |
+| `rrmDestroyWindow` | 0x470af0 | Established (crm.so, 6.5.30): calls two hooks of the resource-manager screen record (+100, +116), the second being the saved destroy-window hook (+184), wrapper pattern. |
+| `rrmUndoubleBufferWindow` | 0x473550 | Established (crm.so, 6.5.30): follows a window through creation, mapping and destruction. |
+| `rrmUnmapWindow` | 0x473560 | Established (crm.so, 6.5.30): updates the window's `rrm` private halfwords, then calls the saved unmap hook (+200) with the wrapper pattern. |
+| `rrmMapWindow` | 0x474e30 | Established (crm.so, 6.5.30): follows a window through creation, mapping and destruction; calls `incrRRMpriv`. |
+| `rrmCreateWindow` | 0x475010 | Established (crm.so, 6.5.30): clears the window's `rrm` private word, then calls the screen's saved create-window hook (+180) with the same wrapper pattern. |
+| `rrmDoubleBufferWindow` | 0x4866d0 | Established (crm.so, 6.5.30): follows a window through creation, mapping and destruction; reports failures with its own message; calls `nfbSetDidFlags`. |
+| `rrmInitRootWindow..LF` | 0x560670 | Established (crm.so, 6.5.30): follows a window through creation, mapping and destruction; reports failures with its own message; calls `MakeAtom`; called from `rrmMapWindow`. |
+
+### Clip, tree and request handling
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `rrmValidateTree` | 0x45e690 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `rrmInvalidateWindowTree..KF`. |
+| `rrmWorkProc` | 0x4665c0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `GetTimeInMillis`. |
+| `rrmProcessRequestQueue` | 0x4666b0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `FindFreeID`. |
+| `rrmOGLBindRNToClip` | 0x486300 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `nfbSetDidFlags`. |
+| `rrmOGLUnbindRNFromClip` | 0x486bc0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; reports failures with its own message; calls `nfbSetDidFlags`. |
+| `rrmDisposeClip` | 0x4870d0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; sends ioctl 0x3ec (resource-manager unbind); reports failures with its own message. |
+| `rrmUnbindRNFromClip` | 0x55fb70 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `cmapDID`. |
+| `rrmBindRNToClip` | 0x560140 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `incrRRMpriv`. |
+| `BindToClip..FE` | 0x5638f0 | Established (crm.so, 6.5.30): looks up the drawable, initialises its GLX window private (`glxInitWinPriv`) and calls the resource-manager screen hooks at +52, +56, +64 and +68. |
+| `rrmInvalidateWindowTree..KF` | 0x565bb0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; called from `rrmValidateTree`. |
+| `rrmWakeupHandler..DE` | 0x566340 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `GetTimeInMillis`. |
+| `appendRequestQueue..EE` | 0x568d70 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `QueueWorkProc`; called from `ValidateClip..GE`. |
+| `Unbind..JE` | 0x569920 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; reports failures with its own message. |
+| `RecomputeExposures..PF` | 0x573b60 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current. |
+| `rrmBlockHandler..CE` | 0x590ee0 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current; calls `GetTimeInMillis`. |
+| `RecomputeLayeredExposures..AG` | 0x596740 | Established (crm.so, 6.5.30): keeps the kernel view of window clips current. |
+
+### Colour-index (clip-ID) and window-ID assignment
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `gbeLoadDispIDs` | 0x45a350 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; reports failures with its own message; calls `sortLineTab..OC`; called from `gbeLoadDIDTable`. |
+| `gbeLoadDIDTable` | 0x45b440 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; sends ioctl 0x55fd (free display-ID table); reports failures with its own message; calls `gbeLoadDispIDs`; called from `crmLoadTimingTable`. |
+| `crmInvalidate` | 0x45fa00 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; sends ioctl 0x3f2 (resource-manager invalidate); writes the source buffer mode, destination buffer mode, drawing mode, primitive, vertex, transfer step, logic op and flush registers and drives the transfer engine; calls `SetDIDMode`. |
+| `FindBestID` | 0x460090 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; calls `NewID..IF`; called from `ValidateMode..LE`. |
+| `FindFreeCID` | 0x4656a0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `nfbSetStereoBuffer`. |
+| `rrmNeedCID` | 0x4660f0 | Established (crm.so, 6.5.30): returns 1 when the window has no clip record (+52) or when the screen's clip-ID count is below the window's (+4 of the clip record), else 0. |
+| `rrmValidateCID` | 0x466150 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `nfbSetStereoBuffer`. |
+| `incrRRMpriv` | 0x482d90 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `rrmBindRNToClip`. |
+| `StealID` | 0x55e7b0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; calls `SetDIDMode`; called from `SetReservedID`. |
+| `mergeDIDLists..GF` | 0x5618d0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `StealID`. |
+| `ZBuffer..PE` | 0x561f40 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs. |
+| `Fullscreen..OE` | 0x5630b0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; reports failures with its own message. |
+| `Dontfreeze..NE` | 0x568c00 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; reports failures with its own message. |
+| `AssignID..HF` | 0x569990 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `FindBestID`. |
+| `NewID..IF` | 0x5768a0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `FindBestID`. |
+| `SetDIDMode` | 0x584e80 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; called from `StealID`. |
+| `GenlockNotify..CF` | 0x595010 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; calls `XvcSendScreenLockChangeEvent`. |
+| `SetReservedID` | 0x5996f0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; calls `StealID`; called from `crmInstallHWColormap`. |
+| `FindFreeID` | 0x59a5a0 | Established (crm.so, 6.5.30): assigns or reclaims clip IDs and window IDs; calls `AssignID..HF`; called from `ValidateClip..GE`. |
+
+### Unsupported capability stubs
+
+| Routine | Address | Role and derivation |
+|---|---|---|
+| `sgiReleaseCapabilityUnsupported` | 0x560450 | Established (crm.so, 6.5.30): same body as `sgiEnableCapabilityUnsupported`: returns the error base plus one. |
+| `sgiEnableCapabilityUnsupported` | 0x560470 | Established (crm.so, 6.5.30): returns the multibuffer extension's error base plus one, an X error code, without doing anything else. |
