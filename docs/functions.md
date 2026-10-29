@@ -192,3 +192,187 @@ The monitor is probed over the DDC bus of the display connector, and the optiona
 - `rrmSwapWait` returns at once when the board's retrace counter plus one has reached the pane's due count; otherwise it queues the node on the board's list of pending swaps (`+104` of the state), ordered by due count, and sleeps interruptibly (`sv_wait_sig`) until the retrace handler wakes it, returning -1 if a signal ends the wait. `rrmSwapUnGroup` removes a pane from its swap group: it takes the group count down, relinks the group's pane chain, clears the board's table entries that named the group and frees the group record (`kern_free`) at zero. Established.
 - `rrmValidateMGRSwapBufSTREAM` sends the X server a message of type 9 carrying the swap value through the interrupt-safe path (`GfxIntrMessage`); `rrmValidateMGRSwapBuf` schedules it 100 ticks ahead when the queue exists (`streams_timeout`), which is how a swap completed in interrupt context is reported. `rrmGenlockNotifySTREAM` and `rrmGenlockNotify` do the same with message type 12 for a genlock change. Established.
 - `rrmWaitVideoSync` checks its arguments (error 22 unless the count is positive and the target is below it), queues the node on the board's video-sync list and sleeps interruptibly until woken. `rrmValidateVideoSync` runs at a vertical retrace: it wakes each queued video-sync waiter whose remainder equals the count modulo its divisor (`divu`, `mfhi`, `sv_signal`), then wakes the waiters on the swap list whose due count has been reached. Established for the structure; which board word supplies the count in the first loop is not decoded.
+
+# Kernel routines, one entry each (`crime.o`)
+
+Each entry names one routine of the 6.5.30 `crime.o` (a member of `crime.a`), says what it does to the board or the kernel, and cites the routines it calls or the offsets it reads, from `objdump -d -r` and `crime_kernel/disasm/crime/crime.text.s`. Every entry carries a label.
+
+## Interrupt and FIFO handlers
+
+- `crimeFifoEmptyHandler` in `crime.o`: the handler for interrupt input 25, raised when the engine's command FIFO falls to its empty level. Established.
+  It reads the wait-state word at +0x220 of the board record: state 2 means a thread sleeps in `crmFifoWait`.
+  For state 2 it cancels the timer stored at +0x228 with `untimeout`, signals the sleep variable at +0x22c with `sv_signal` and clears the state.
+  State 1 cancels the timer at +0x13c, decrements a counter reached through the pointer at +0x28, and any other state logs through `cmn_err` at level 5.
+- `crimeEmptyWaitTimeout` in `crime.o`: the timer routine that guards a wait for the FIFO-empty interrupt. Established.
+  If the wait state at +0x220 is still set it masks input 25 with `crime_intr_disable` under `splhi` and clears the timer word at +0x13c.
+  It then calls `crimeError` with the engine's register pointer from +0x78, clears +0x220 and +0x3c, and decrements the same counter behind +0x28.
+- `crimeFifoFullHandler` in `crime.o`: the handler for interrupt input 26, raised while the command FIFO is above its full level. Established.
+  It reads the FIFO level from bits 24:18 of the status word at +0x4000 and tests bit 26 of the interrupt status register.
+  It brackets its wait with `gfx_waitf_on` and `gfx_waitf_off` and polls with `us_delay` for 1 microsecond up to 100 times before it gives up.
+- `crimeFifoWaitTimeout` in `crime.o`: the timer routine for the sleep inside `crmFifoWait`. Established.
+  It logs through `cmn_err` at level 4, masks input 25 with `crime_intr_disable`, and stores 1 in the timeout flag at +0x224.
+  It then wakes the sleeper on the sleep variable at +0x22c with `sv_signal` under `splhi`.
+- `crmFifoWait` in `crime.o`: waits until the interface buffer holds at most a given level, with a poll limit in its third argument. Established.
+  It first polls bits 24:18 of the status word up to 100 times with `us_delay` for 1 microsecond each.
+  If the level stays high it writes the empty threshold into bits 20:14 of the control word (mask 0xffe03fff), enables input 25 with `crime_intr_enable`, arms `timeout` and sleeps with `sv_wait` on +0x22c.
+- `crmIdleWait` in `crime.o`: waits for the engine to go idle, polling up to its second argument times 1 microsecond. Established.
+  Each pass reads the status word at +0x4000 and ends when bit 28 is set and the FIFO level in bits 24:18 is zero, calling `us_delay` otherwise.
+  When the count runs out it reports through `cmn_err` and returns failure.
+- `crimeError` in `crime.o`: the recovery after a drain or idle wait times out. Established.
+  It prints a level-4 warning with `cmn_err`, writes 0 to the engine's reset register at +0x408 and pauses 10 microseconds with `us_delay`.
+  It then rebuilds the interface-buffer control word from four kernel threshold variables (count, stall at bit 7, empty at bit 14, full at bit 21), writes it to +0x400 and calls `flushbus`.
+- `crimeInterrupt` in `crime.o`: the interrupt entry for the display-line inputs of the video back end. Established.
+  It tests the input number for the two GBE lines and hands the line number (the input minus 16) and the board record to `crime_hli_handler`.
+  Any other input returns without a call.
+
+## Board entry points and start-up
+
+- `crimeInitialize` in `crime.o`: registers the board with the kernel's hardware tree and marks it initialised. Established.
+  It makes one call to `htp_register_board`, which this object does not define, and sets the byte at +0x98 of the board record.
+- `crimeStart` in `crime.o`: the second start-up step, which prepares each display channel. Established.
+  It blanks the screen through `gbeBlankScreen` and probes a channel whose size halfword at +0x22 is still zero over DDC with `crime_i2cProbe`.
+  It then checks the data with `crime_validate_ddc_data` and, for a flat-panel channel of type 3, reads the panel identification with `i2cfp_DMI2_KernelEDID`.
+- `crmInitialize` in `crime.o`: the first-time driver initialisation for the board, reached by ioctl 0x560d. Established.
+  It stops the display with `gbeStop`, invalidates the timing with `crmInvalidVideoTiming` and allocates the buffers with `crmAllocGfxBuffers` and the tile lists with `crmInitGbeData`.
+  It then re-runs `crimeInitHW`, reloads the TLBs with `crmLoadTlbABC` and `crmLoadCidTlb` for the owning thread, and re-probes the flat panel with `crime_i2cFpProbe`.
+- `crimeDownload` in `crime.o`: returns 0 and does nothing. Established.
+  This family has no microcode, so the 8-byte routine at offset 0xa6c only fills the graphics driver's method table.
+- `crime_earlyinit` in `crime.o`: the one-time start-up before the first client. Established.
+  It probes the chip with `crimeProbe`, stops the display with `gbeStop` and fills the board record with `crimeInitInfo`.
+  It then calls `crimeInitHW`, `gbeRun` and `crmInitTp`, which start the engine, the video timing and the kernel textport.
+- `crime_init` in `crime.o`: the board registration called from the kernel's hardware inventory pass. Established.
+  It allocates the board record with `kern_malloc`, adds the board to the inventory with `add_to_inventory` and initialises its mutex, lock and sleep variable.
+  It then calls `crimeRetraceInit`, registers with `GfxRegisterBoard` and installs interrupt vectors with `setcrimevector` before the first monitor probe.
+- `crmFirstInit` in `crime.o`: the allocation step before any client exists. Established.
+  It calls `crmAllocGbeTables` for the display back end's tile lists and `crm_tileclassinit` for the per-class tile masks.
+- `crimeInfo` in `crime.o`: copies the board information record to user space. Established.
+  It calls `copyout` with at most 0x1f0 bytes and returns error 14 if the copy fails.
+- `crimeAttach` in `crime.o`: maps the board's 0x86000-byte window into the calling process. Established.
+  It first tries `gfxdd_recycle` for an existing mapping and then `gfxdd_mmap`, and answers 22 for an offset that is not page aligned and 12 on failure.
+  A successful attach counts one more in the board record at +0x140.
+- `crimeDetach` in `crime.o`: removes the user mapping of the graphics window with `gfxdd_munmap`. Established from its single call in `crime.o`.
+- `crime_regmatch` in `crime.o`: the callback for a mapping that is being re-registered. Established.
+  If an old mapping exists it unmaps the graphics window with `crimeUnMapGfx`, clears the handle word and destroys the old handle through `ddv_destroy_handle`.
+  It then records the new handle.
+- `crimeMapGfx` in `crime.o`: gives the caller a kernel-virtual address for the graphics pages. Established.
+  It obtains the physical address with `ddv_getaddr` and maps the segment with `v_mapkvsegment`.
+- `crimeUnMapGfx` in `crime.o`: revokes the user mapping of the graphics window. Established from its calls.
+  It finds the calling thread's state with `thread_issproc` and `gthread_find`, then calls `ddv_invalphys_fal` and `crimeInvalTLB`.
+- `crimeInvalTLB` in `crime.o`: a thin wrapper that invalidates the processor TLB for the graphics mapping. Established.
+  Its only call is `ddv_invaltlb`.
+- `crimeSuspend` in `crime.o`: a method-table hook that clears the word at +0x48 of the board record. Established.
+  The 36-byte routine at offset 0x36d8 returns 0 at once for a null board, and leaves a board whose word at +0x3c is non-zero unchanged.
+- `crimeResume` in `crime.o`: the matching hook that undoes the +0x48 flag and reschedules. Established.
+  When the word at +0x48 is non-zero it calls `force_resched` and then clears it, so threads parked by the suspend run again; a null board returns 0.
+- `crimeLockOut` in `crime.o`: the lock-out query of the graphics method table; it returns 1 without using any argument. Established.
+  The 8-byte body at offset 0x36c8 means this board never refuses the lock request.
+- `crimePcxSwitch` in `crime.o`: the context-switch query of the method table; it returns 0 without using any argument. Established.
+  The 8-byte body at offset 0x36d0 leaves the real switch to `crimePcxSwap`, which the resource manager calls separately.
+
+## Drawables and render nodes
+
+- `crm_createdrawable` in `crime.o`: allocates one drawable record. Established.
+  It takes the memory from `kern_malloc` and clears it with `bzero`, so a new record starts with no tiles, clip or id.
+- `crm_freedrawable` in `crime.o`: releases a drawable record. Established.
+  It clears the whole record with `bzero` before handing it to `kern_free`.
+- `crm_finddrawable` in `crime.o`: looks a drawable up by its id, the word at +0x8, and creates it when the id is absent. Established.
+  The records sit on a doubly linked list in increasing id order, searched under the table's lock with `mutex_lock` and `mutex_unlock`.
+  A missing id is created in order by `crm_createdrawable`.
+- `crm_mapcliptodraw` in `crime.o`: the same list search without the creation step. Established.
+  The 92-byte routine at offset 0xba0 returns nothing for an id that is not on the list and makes no lock call.
+- `crm_destroydrawable` in `crime.o`: tears a drawable down under its lock, which `mutex_mine` confirms the caller holds. Established.
+  It frees the pixel buffer with `crmDestroyPbuffer` and the depth tiles with `crmSubtractZ`.
+  Finally it releases the record through `crm_freedrawable`.
+- `crm_unbinddrawable` in `crime.o`: detaches a drawable from a render node and may destroy it. Established from the call.
+  Its only callee is `crm_destroydrawable`, and it is that routine's only caller; the reference counting before the call was not read.
+- `crimeInitSpecialDDRN` in `crime.o`: prepares the render node used in the X-server mode of ioctl 0x5651. Established from its call.
+  Its 34 instructions call `crm_finddrawable` once.
+- `crimeCreateDDRN` in `crime.o`: allocates the kernel memory for a new render node. Established.
+  It takes the node from `kern_malloc` and a second area from `kvpalloc`, clears them with `bzero` and runs `crimeInitSpecialDDRN` for the special node.
+- `crimeDestroyDDRN` in `crime.o`: reverses node creation when a client closes. Established.
+  It closes the node's retrace users with `crimeRetraceCloseRN`, frees its textures with `crmFreeTex` and unpins the scratch buffer with `crmunpinscratch`.
+  It then unmaps the pages and chunks with `crmUnmapPages` and `crmUnmapChunk` and unbinds every drawable through `crm_unbinddrawable`.
+- `crmunpinscratch` in `crime.o`: releases a user buffer that was pinned for DMA. Established.
+  Its only call is `fast_undma`, which drops the pin taken when the buffer was mapped.
+- `crm_enableovl` in `crime.o`: attaches the overlay planes to a drawable, the bit 2 case of ioctl 0x5609. Established.
+  When `RRM_CheckValidFault` says the caller owns the engine it saves queued writes with `crmSavePP`, reloads the frame-buffer TLBs with `crmLoadTlbABC` and replays the writes with `crmRestorePP`.
+- `crm_enablesz` in `crime.o`: attaches the depth buffer to a drawable, the bit 0 case of ioctl 0x5609. Established.
+  It allocates the record with `kern_malloc` and `crmAllocZbuffer` and adds the covered depth tiles with `crmAddZ` between `psema` and `vsema`.
+  The TLB reload follows the same `crmSavePP`, `crmLoadTlbABC` and `crmRestorePP` sequence as the overlay case.
+- `crmRecomputeSZ` in `crime.o`: recomputes the depth tiles under a drawable's window after its clip changed. Established from its calls.
+  It takes the buffer semaphore with `psema`, drops the old coverage with `crmSubtractZ` and adds the new with `crmAddZ`.
+  The semaphore is released with `vsema` after the second call.
+- `crm_changedrawables` in `crime.o`: changes the drawables bound to a render node. Established from its calls.
+  Its 145 instructions call `crm_finddrawable` to resolve ids, `crm_makecurrentpbuf` for a pixel buffer and `crm_unbinddrawable` for a binding that ends.
+- `crm_makecurrentpbuf` in `crime.o`: allocates the tile list of a pixel buffer that is being made current. Established.
+  Its only call is `crmAllocPbufTiles`.
+- `crimeSetNullClip` in `crime.o`: fills a clip descriptor with the empty clip. Established.
+  The 56-byte routine at offset 0xa74 gives the descriptor no rectangles, a bounding box of -1 and two words set to 1, for a window with nothing visible.
+- `crimeValidateClip` in `crime.o`: rewrites the clip-related engine registers when a window's clip list changes. Established.
+  It updates the drawables with `crm_changedrawables` and the depth coverage with `crmRecomputeSZ`, and reloads the TLBs with `crmLoadTlbABC`.
+  Pending writes are saved and replayed around the update with `crmSavePP` and `crmRestorePP`, and the new ClipMode, screen masks and window offsets go to +0x2010 to +0x2058.
+- `crimeValidateDDClip` in `crime.o`: the kernel side of ioctl 0x55ff, which validates a drawable's clip region for the X server. Established.
+  It copies the 0x118-byte request in with `copyin` and finds the drawable with `crm_finddrawable`.
+  It builds the kernel's copy of the clip with `kern_malloc`, `bzero` and `bcopy` and releases the earlier copy with `kern_free`.
+- `crimeUpdateBackTiles` in `crime.o`: rebuilds a drawable's back-buffer tile list, the kernel side of ioctl 0x5608. Established.
+  It adds and removes tiles with `crmAddBackTiles` and `crmSubtractBackTiles` and takes a lock with `mrupdatef` and `mrunlock`.
+  It saves and replays queued writes with `crmSavePP` and `crmRestorePP` around the TLB reload.
+- `crimeOpenPbuf` in `crime.o`: the kernel side of ioctl 0x55fe, which opens a pixel buffer. Established.
+  It finds or creates the drawable with `crm_finddrawable`, allocates with `kern_malloc` and computes the tile grid with `crmAllocPbuffer`.
+  It calls `crm_destroydrawable` when a step after the drawable exists fails.
+- `crimeClosePbuf` in `crime.o`: the kernel side of ioctl 0x5600, which closes a pixel buffer. Established.
+  It finds the drawable with `crm_mapcliptodraw` between `mutex_lock` and `mutex_unlock` and removes it with `crm_destroydrawable`.
+  `RRM_CheckValidFault` decides whether the engine state needs saving first.
+- `crmAllocGfxBuffers` in `crime.o`: allocates the per-drawable buffers that its visual needs. Established.
+  It can call `crmAllocFrameBuffer`, `crmAllocBackbuffer`, `crmAllocOverlayBuffer` and `crmAllocCid` and frees the previous set with `crmFreeChunk`.
+  Each result is stamped with `crmNextIncarnation` and the buffer's lock comes from `sema_alloc`.
+- `crmNextIncarnation` in `crime.o`: returns the next value of a global counter. Established.
+  It raises the interrupt level with `splhi`, increments the counter and restores the level with `splx`, so each tile chunk and drawable change gets a unique stamp.
+- `crime_load_fbtlb` in `crime.o`: the kernel side of ioctl 0x55f7, which selects a frame-buffer TLB set. Established.
+  It calls `crm_changedrawables`, takes the dynamic-memory tiles with `crm_get_dms_tiles` and reloads the TLBs inside the `crmSavePP` and `crmRestorePP` pair.
+  `RRM_CheckValidFault` decides whether the caller owns the engine.
+
+## Context switch and engine state
+
+- `crimePcxSwap` in `crime.o`: switches the engine from one client's context to another. Established.
+  It brackets the switch with `gfx_waitc_on` and `gfx_waitc_off`, saves the outgoing client with `crmSavePP` and waits for idle with `crmIdleWait`.
+  It then validates clip and drawable with `crimeValidateClip` and `crmValidateDrawable`, loads the shadow registers with `crmLoadGlobalsFromShadow` and `crmLoadNonglobalsFromShadow`, and replays the incoming client's saved writes with `crmRestorePP`.
+- `crmSavePP` in `crime.o`: saves the pixel-pipe writes the engine has queued but not yet committed. Established.
+  It drains committed work with `crmFifoWait` and reads each entry's address and data words from the interface buffer between the start pointer (bits 5:0) and the write pointer (bits 11:6) of the status word.
+  A timeout there goes to `crimeError`, and the loop wraps its slot index at 64.
+- `crmRestorePP` in `crime.o`: replays the writes that `crmSavePP` saved. Established.
+  For each saved address word it rebuilds the register offset from the byte in bits 39:32 and the three bits in 42:40, then the width code in bits 44:43 selects the store.
+  Code 2 stores the first data word, code 1 the second data word at offset +0x4, and code 3 a doubleword; any other code is logged with `cmn_err`.
+- `crmLoadGlobalsFromShadow` in `crime.o`: reloads the global engine registers from a client's shadow record on a context switch. Established.
+  Its 83 instructions store, in order, the buffer modes at +0x2000 and +0x2008, ClipMode, DrawMode, the five 64-bit screen masks and the window offsets, followed by the flagged groups.
+  It makes no call, because every store goes to the engine window.
+- `crmLoadNonglobalsFromShadow` in `crime.o`: reloads the per-primitive registers from the shadow record. Established.
+  It begins with Primitive at +0x2060 and the transfer addresses, and replays the GL vertex words +0x2080 to +0x2094 unless flag 0x80 selects the X-server vertex form.
+  It makes no call, so every store goes straight to the engine window.
+- `restore_linear` in `crime.o`: copies saved doublewords back into one linear TLB. Established.
+  Its loop walks the 16 doublewords of the table two bits of a mask at a time, copies each selected doubleword from the saved image to the engine through KSEG1 and clears the mask bits it has served.
+  The 104-byte routine at offset 0x357c stops early once the mask is empty.
+- `crimeRestore` in `crime.o`: restores the engine after the engine state was lost. Established.
+  It rewrites a list of transfer-engine registers from the shadow image at +0x3000 and reloads linear TLB A at +0x1700 and B at +0x1780 through `restore_linear`.
+  It then writes 0 to +0x4008 and, when saved writes exist, replays them with `crmRestorePP`.
+
+## Dispatch, cursor and video services
+
+- `crimePrivate` in `crime.o`: the driver's private ioctl dispatcher, 1086 instructions long. Established.
+  It narrows the request number through a binary tree of `sltiu` tests and copies each argument in or out with `copyin` and `copyout`.
+  Unrecognised request numbers log through `cmn_err` and fail with 22, and the handlers it calls include `crmMapPages`, `crmDefineTex` and `crimeSetGammaRamp`.
+- `crimeLoadTimingTable` in `crime.o`: the kernel side of ioctl 0x55f6. Established.
+  It passes the user's 0x30-byte timing record and the board's information pointer at +0x7c to `crime_setvideotiming`.
+- `crimePositionCursor` in `crime.o`: the kernel side of ioctl 0x55f1, which moves the hardware cursor. Established.
+  It stores the requested x and y at +0x9c and +0xa0 of the board record and packs the cursor word at +0x94 as x minus the hot-spot byte at +0x9a in bits 11:0 and y minus the byte at +0x9b in bits 27:16.
+  It sets the pending flag at +0x99, and when bit 1 of the video format flags at +0x38 is set it subtracts 512 from a y above 512 first.
+- `crime_present` in `crime.o`: answers the video driver's question whether the board exists. Established.
+  The 40-byte routine at offset 0x58f4 returns -1 for any board number other than 0, and for board 0 returns 1 when the board table's record at +0x8 is set and 0 when it is not.
+- `crime_video_info` in `crime.o`: fills a video-information record for the video driver. Established.
+  It copies the three bytes at +0x28 to +0x2a of the channel's record to the output, adds 500 to the word at +0x40 and divides by 1000 for the fourth byte, and copies the halfwords at +0x3c and +0x3e.
+  It then sets bit 1 of the flag halfword at +0x8 of the output from bit 1 of the record's flags at +0x38, and bit 0 once the board's mapped-GBE word at +0x88 is set.
+- `crime_resync_sched` in `crime.o`: lets another driver register a video re-start callback. Established.
+  It stores the callback pointer at +0x18 and its argument at +0x1c of the 64-byte slot for the channel number and returns 0.
+- `crm_callvideo` in `crime.o`: calls the registered video re-start callback. Established.
+  It checks the 64-byte slot for board 0, whose id word at +0x4 must equal the argument, and jumps through the pointer at +0x18 with the argument from +0x1c.
+  `gbeRun` calls it after restarting the video timing, so the video driver learns of every re-start.
