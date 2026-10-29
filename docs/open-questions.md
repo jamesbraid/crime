@@ -35,11 +35,10 @@ Route key, used in the tables:
 
 | Question | Owner | Tried | Next |
 |---|---|---|---|
-| How an offset in the frame-buffer (`0x10000000`) and depth (`0x12000000`) apertures maps to pixels, and what a read returns while the engine draws | `docs/memory.md` | K, X, G, S, L | X and G: any use of the apertures (none found so far); if none, label unknown |
-| Which device answers the high alias (`0x20000000`) and whether it equals the upper 512 MiB of the full window; the response to the reserved ranges | `docs/memory.md` | K, S, L | K: the IP32 memory-sizing code in the kernel proper and the PROM image |
-| Whether GBE can fetch below `0x40000000`, and what tile-entry bit 15 selects on the GBE side | `docs/gbe.md`, `docs/memory.md` | K, X, S, L | Both IRIX and Linux use low addresses for GBE tiles, which shows the expectation; S again for the decode table |
 | How the texture level start table is derived | `docs/memory.md` | K, G | G: the texture-TLB fill in `crmDefineTexture` and the kernel `crmDefineTex` path |
 
 ## Where work stopped
 
-The measured inventory (`docs/inventory/`) was added in this commit series; no area has been worked from it yet. The entries above replace the old hardware-capture list (`docs/captures.md`, renamed to this file); the libGLcore command and GBE interrupt rows were closed from the binaries on 29 October 2026, and the colour-map write batch read. Next, in order: the window-ID key (`rrmInit` masks), `gbeLoadDispIDs`, the error-bit strings in `crime_busts.o`, route D for the reset-value and error questions, then the undocumented rows of the register-offset and ioctl inventory tables.
+29 October 2026, reader pass 7. Settled or labelled from the specifications' own register tables, the shipped 6.5.30 `ide.IP32`, `kernel.o`, `crime_i2c.o`, `crime_init.o`, `mvp.o`, the X module and libGLcore strings and listings, Linux and NetBSD: every GBE question except the two window-ID ones, every CRIME ID, interrupt, control, ECC, error-status, TLB-validity and FIFO-depth question, the MTE and context questions, and the aperture and alias questions (see pass 7 in `docs/gbe.md`, `docs/memory.md`, `docs/reset.md`, `docs/mte.md`, `docs/context.md`, `docs/opengl.md`, and `CRIME.h`). `docs/inventory/` was not regenerated in these commits, because another change is rewriting the inventory script; the next run will pick up the newly documented offsets and words.
+
+Next, in order: the window-ID key (`rrmInit` masks) and `gbeLoadDispIDs`; the texture level start table (`crmDefineTexture`); the pixel-transfer step unit and overlap direction in the X copy paths; then the four arithmetic questions, reading libGLcore's software span, fog, antialiased-line and texture code as the intended formulas before labelling the hardware arithmetic. After that, the undocumented rows of the register-offset and token inventory tables (GBE cursor rows from `crime_tpinit`, `+0x70008` to `+0x78088`).
