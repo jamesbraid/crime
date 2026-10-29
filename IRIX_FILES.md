@@ -24,12 +24,14 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 /usr/cpu/sysgen/IP32boot/gfxs.a
 /usr/cpu/sysgen/IP32boot/rrm.o
 /usr/cpu/sysgen/IP32boot/kernel.o
+/usr/cpu/sysgen/IP32boot/os.a
 /usr/gfx/arch/IP32CRM/libGL.so
 /usr/gfx/arch/IP32CRM/libGLcore.so
 /usr/gfx/arch/IP32CRM32/libGL.so
 /usr/gfx/arch/IP32CRM32/libGLcore.so
 /usr/lib/X11/dyDDX/crm.so
 /usr/lib/X11/dyDDX/glx.so
+/usr/lib32/libXsgivc.so
 /usr/gfx/arch/GENERIC/Xsgi
 /usr/gfx/gfxinit
 /usr/gfx/ucode/CRM/vof
@@ -40,9 +42,9 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 
 | Group | Files | Location under `root/` |
 |---|---|---|
-| Kernel (`crime_kernel/`) | `crime.a` (11 members: `crime.o`, `crime_dma.o`, `crime_tiles.o`, `crime_zbuf.o`, ...), `mace.o`, `gfx.o`, `rrm.o`, `kernel.o` (the machine-dependent base kernel: interrupt set-up and the CRIME error handlers); `gfxs.a` (`gfx.o`, `gfx_debug.o`) | `usr/cpu/sysgen/IP32boot/` |
+| Kernel (`crime_kernel/`) | `crime.a` (11 members: `crime.o`, `crime_dma.o`, `crime_tiles.o`, `crime_zbuf.o`, ...), `mace.o`, `gfx.o`, `rrm.o`, `kernel.o` (the machine-dependent base kernel: interrupt set-up and the CRIME error handlers), `os.a` (the base kernel, read for its tile allocator `tile.o`); `gfxs.a` (`gfx.o`, `gfx_debug.o`) | `usr/cpu/sysgen/IP32boot/` |
 | OpenGL core (`libglcore/`) | `libGL.so` and `libGLcore.so`, o32 in `IP32CRM/` and N32 in `IP32CRM32/` | `usr/gfx/arch/` |
-| X server modules (`ddx/`) | the CRIME module `crm.so`, `glx.so`, the server `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` |
+| X server modules (`ddx/`) | the CRIME module `crm.so`, `glx.so`, the server `Xsgi`, the N32 video-control client library `libXsgivc.so` (product `x_eoe`) | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/`, `usr/lib32/` |
 | Diagnostics and tools (`diags/`) | `gfxinit`, the CRM video format files (`vof/*.vfo`), the standalone `ide.IP32` | `usr/gfx/`, `usr/gfx/ucode/CRM/`, `sbin/stand/` |
 
 CRIME has no geometry engine and no microcode: the CRM ucode directory holds
@@ -90,6 +92,7 @@ the archive's members are unpacked inside `root/` and linked into `LINKDIR`.
 ```archives
 root/usr/cpu/sysgen/IP32boot/crime.a crime_kernel
 root/usr/cpu/sysgen/IP32boot/gfxs.a crime_kernel/gfxs
+root/usr/cpu/sysgen/IP32boot/os.a crime_kernel/os
 ```
 
 ```links
@@ -103,6 +106,7 @@ libglcore/libGL_n32.so root/usr/gfx/arch/IP32CRM32/libGL.so
 libglcore/libGLcore_n32.so root/usr/gfx/arch/IP32CRM32/libGLcore.so
 ddx/crm.so root/usr/lib/X11/dyDDX/crm.so
 ddx/glx.so root/usr/lib/X11/dyDDX/glx.so
+ddx/libXsgivc_n32.so root/usr/lib32/libXsgivc.so
 ddx/Xsgi root/usr/gfx/arch/GENERIC/Xsgi
 diags/gfxinit root/usr/gfx/gfxinit
 diags/ide.IP32 root/sbin/stand/ide.IP32
