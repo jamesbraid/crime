@@ -22,6 +22,10 @@
 #define GBE_CTRLSTAT        0x00000 /* low 4 bits: chip revision [E, linux gbe_revision] */
 #define   GBE_CTRLSTAT_PCLK_MASK    0x30000000u /* [E, netbsd] 0 external, 3 internal */
 #define   GBE_CTRLSTAT_GPIO_IDLE    0x000aa000u /* GPIO3..6 input bits [E, netbsd names] */
+/* CTRLSTAT bits 3:0 read 1 on the rev 1.1 part and 2 on its successor; the
+ * data bits 12, 14, 16, 18 of io_3..io_6, read as inputs, are the system
+ * */
+#define   GBE_CTRLSTAT_BOARDREV_BITS 0x00055000u /* [E] */
 #define GBE_DOTCLOCK        0x00004
 #define GBE_I2C             0x00008
 #define GBE_SYSCLK          0x0000c
@@ -109,7 +113,7 @@
  */
 
 /* ---- Colour maps and the colour-map FIFO --------------------------------- */
-#define GBE_CMAP(n)         (0x50000 + 4 * (n)) /* 6144 entries [E, linux]; 4608 on rev 1.1 [E, gbe-spec]; overlay uses the last 256 */
+#define GBE_CMAP(n)         (0x50000 + 4 * (n)) /* 4608 entries on revision 1 [E, gbe-spec]; 6144 on revision 2 [I, X module's revision-2 window tables; linux]; overlay at 0x1100-0x11ff on both [E, software use] */
 #define   GBE_CMAP_ENTRY(r, g, b) (((r) << 24) | ((g) << 16) | ((b) << 8)) /* [E] */
 #define GBE_CMAP_FIFO       0x58000
 #define   GBE_CMAP_FIFO_COUNT_MASK  0x3f    /* [E, x and k mask with 0x3f] */
@@ -130,16 +134,17 @@
  * entries of a 64-deep FIFO (the true count may be higher, never lower),
  * which is the X server's reading. Linux gbefb waits while cm_fifo >= 63,
  * which treats the same field as an occupancy count [E, linux gbefb.c];
- * Linux's reading disagrees with the specification and with IRIX, and its
- * behaviour on real silicon is [U] (docs/open-questions.md).
- * Inferred: the six-bit field wraps at 64, so an empty FIFO on rev 1.1
- * reads 0, which is why revisions before 2 accept 0 and why the spec's
- * reset value is 0.
+ * Linux's reading disagrees with the specification and with IRIX.
+ * docs/gbe.md pass 7]: the field counts free entries on both revisions.
+ * Revision 2 holds at most 63 entries: 63 = empty, 0 = full. Revision 1's
+ * count wraps, so 0 means empty or full and software cannot tell; that is
+ * why waits on revision 1 also accept 0, and why the spec's reset value
+ * is 0. A model: free = 64 - used, reported mod 64, on revision 1;
+ * free = 63 - used on revision 2, never more than 63 queued.
  * The kernel textport path writes map 17 (entries 0x1100 + i) without
  * effectively waiting [E, k:crime_tp:crime_mapcolor].
  */
 #define GBE_CMAP_FIFO_LOW_WATER 48  /* [E, X server threshold] */
-#define GBE_CMAP_FIFO_DEPTH     64  /* [I] */
 
 /* ---- Gamma ---------------------------------------------------------------- */
 #define GBE_GMAP(n)         (0x60000 + 4 * (n)) /* 256 entries [E] */

@@ -42,16 +42,7 @@ Route key, used in the tables:
 
 | Question | Owner | Tried | Next |
 |---|---|---|---|
-| Reset values of every GBE register on shipped revisions (the rev 1.1 specification gives them for 1.1), and which revision has the 6144-entry colour map | `docs/gbe.md` | K, X, S, L | D, the PROM image's GBE start-up, P (`gfxinfo` revision lines) |
-| What the board strap value in `CTRLSTAT` `io_3` to `io_6` encodes, what `crm_dc_board_installed` records, and why `gbemn` defaults to 54 | `docs/gbe.md` | K, S | K: the writers of `crm_dc_board_installed` in the other IP32 kernel objects for the flat-panel and dual-channel options; D |
-| Whether `VT_XYMAX` totals give a period of total or total plus one; whether `VT_INTR01` fires at `F20 - 32` and `F20 + 4` | `docs/gbe.md` | K, S, L | P: published refresh rates for the shipped formats against the programmed totals |
-| `DOTCLK` bit 20, which IRIX sets to run the PLL and clears to stop it, but which the rev 1.1 specification leaves undefined | `docs/gbe.md`, `GBE.h` | K, S, L | R, D |
-| Whether a GBE line interrupt fires again when its line is rewritten to a line the beam has passed or is on | `docs/gbe.md` | K, S | S again (interrupt chapter); the scheduler never programs a line within three of a busy one, so if S is silent, label unknown: no shipped software depends on it |
-| What the `.vfo` state tables (28 line types and signal edge tables) drive; no GBE register consumes them | `docs/gbe.md` | K, X, S | The other format consumers on the install (`setmon`, the dual-channel tool); then label |
-| The video-capture registers `VC_0` to `VC_4` (`+0x80000`) | `docs/gbe.md` | K, X, S | The O2 video drivers and `libXsgivc` |
-| Whether `CMFIFO` counts free entries (specification, X server) or occupied entries (Linux) on shipped silicon, and whether an empty FIFO reads 0 or 64 | `docs/gbe.md`, `GBE.h` | X, S, L | The kernel textport's colour-map writes (`crime_tp`); D |
 | The bits of the window flag word the reserved window-ID slots compare against (the `0x3c0n` key) and the two mask words | `docs/gbe.md` | X (`StealID`, `crmInvalidate`, `rrmSetReservedDID`) | X: `rrmInit` (`Xsgi` `0x101ec4d0`) for the slot-table header masks, and the writers of window private `+0x20` in `Xsgi` |
-| Whether the overlay rule of the rev 1.1 specification holds on later revisions, and which colour-map window the overlay uses on the 6144-entry revision | `docs/gbe.md` | K, X, S | K and X: the colour-map index ranges loaded per revision |
 | How `gbeLoadDispIDs` assigns a window its window-ID index in the display-ID plane; where the frame table sits in the 64 KiB table; why the last entry carries `width - 1` | `docs/gbe.md` | X (`gbeLoadDispIDs` structure), S | X: finish reading `gbeLoadDispIDs` (`crm.so` `0x45a350`) |
 
 ## CRIME memory controller
