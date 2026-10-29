@@ -78,3 +78,36 @@ Rows with no entry: `1024x768_96s` and `1280x492_120s` (the stereo formats) hold
 - The value of the per-revision kernel global `G` and what it counts.
 - Whether `VT_XYMAX` takes totals or totals minus one (the kernel passes `F14` and `F1e`; whether those are totals is not shown).
 - The stereo format layouts.
+
+# Window ID table and the tile lists
+
+Sources: `crime_kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitGbeData`, `crmLoadGbelists`), `crime_kernel/decomp/crime_init.c` (`crmInitTp`), Linux `include/video/gbe.h`. Labels as above.
+
+## Window ID table (`+0x48000`)
+
+- Established (Linux `gbe.h`): 32 entries; fields `BUF` 1:0, `TYP` 4:2, `CM` 9:5 (colour map selector), `GAMMA` 10, `AUX` 12:11.
+- Established (`crimeSetDisplayMode`): the kernel takes an index below 0x20 and a 32-bit value from the X module, writes the value to table entry `index` and to a per-index shadow record (24 bytes per entry, value at +0x24 of the board's record), and returns "invalid" for an index of 0x20 or more. When the same per-revision kernel flag as in the timing code is non-zero it clears bit 10 (`GAMMA`) first. If the low two bits (`BUF`) of the value are 0, it also marks that entry's record (flag byte +0x3a = 1) and sets a board-wide flag (+0x1c = 1).
+- Established (`crmInitTp`): the text port programs entry 0 with the value 3 (buffer 3, type 0).
+- Inferred: the `BUF` value 0 means "no buffer", which the kernel notes so the retrace handler does not flip it; values 1 and 2 are the two double-buffer halves that the retrace handler swaps (see GBE.h).
+- Unknown: the meaning of each `TYP` and `CM` code as IRIX uses it. The X module writes the table through this ioctl; its value construction was not traced in the stripped module.
+
+## Tile lists (`crmInitGbeData`, `crmLoadGbelists`)
+
+Established: the kernel keeps one 0x600-byte block per GBE with these parts:
+
+| Offset | Content | How built |
+|---|---|---|
+| +0x00, +0x04, +0x08 | physical addresses of the lists at +0x160, +0x120 and +0x0a0 | `kvtophys` |
+| +0x4c, +0x50, +0x54, +0x58 | physical addresses of the lists at +0x200, +0x300, +0x400, +0x500 | `kvtophys` |
+| +0x0a0 | 64 entries, one per 4 bytes, each a copy of the same 13-bit tile number in the high halfword (the fourth tile of the colour-index chunk) | `crmInitGbeData` |
+| +0x120, +0x160 | contiguous 16-bit tile numbers, 13 bits each (`& 0x1fff`), from the overlay chunk, in two copies (the second copy starts at the half way tile row for interlaced or field-doubled modes) | both functions |
+| +0x200, +0x300 | contiguous 16-bit tile numbers from the frame buffer chunk, `ceil(width / (512 / bytes per pixel))` entries per row, in row-major order, the second list starting half way for interlaced modes | both functions |
+| +0x400, +0x500 | zero in the code read here | |
+
+`crmLoadGbelists` rebuilds the frame and overlay lists after a mode change, copies 0x200 bytes of the overlay list into a kernel-supplied buffer, and then sets bit 0 in each of the seven pointer words. Inferred: bit 0 is the DMA-enable bit of the corresponding `*_CONTROL` register when the word is loaded there (GBE.h says `FRM_CONTROL` carries the pointer and enable); the kernel passes the words to `gbeStartVideoTiming` as the three control register values.
+
+Established tile geometry: a frame-buffer tile row is 512 bytes wide, so a tile is 128 pixels wide at 32 bits and 256 pixels at 16 bits; the overlay (8 bits) uses 512-pixel tiles; the CRIME tile number in the list is the 64 KiB tile number as in `docs/memory.md`. Rows of a list hold exactly the tiles of one tile row of the surface (128 pixel rows).
+
+## Overlay and underlay planes
+
+Established: the overlay plane is an 8-bit plane described by `OVR_WIDTH_TILE`, `OVR_CONTROL` and its own tile list; the display-ID plane (`DID_CONTROL`) points at the 64-entry list above. IRIX allocates both through the colour-index chunk allocator (`crmAllocOverlayBuffer`, `crmAllocCid`): the allocator requests a 16-tile chunk for a `0x500`-sized surface, otherwise `(size + 127) / 128` tiles of the 8-bit kind. Unknown: the pixel-to-window-ID mapping (which overlay values select which table entry), underlay plane behaviour, and whether the overlay is composited above or below the frame buffer; no decoded code states either.
