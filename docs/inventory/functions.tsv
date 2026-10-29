@@ -6566,8 +6566,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942a24	384	__glCrmSetRea
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942ba4	476	__glCrmSetCurrentBuffers	dynsym+mdebug	documented	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942d80	92	__glCrmSetStoreBuffer	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942ddc	332	PickBufferProcs	mdebug	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942f28	260	SwapBuffers	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94302c	296	DecoupleSwapBuffers	mdebug	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942f28	260	SwapBuffers	mdebug	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94302c	296	DecoupleSwapBuffers	mdebug	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943124	48	__glCrmFlushAndConfirm	dynsym+mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943154	72	Finish	mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94319c	8	Flush	mdebug	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
@@ -10691,8 +10691,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944650	420	__glCrmSetR
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944800	436	__glCrmSetCurrentBuffers	dwarf+dynsym	documented	docs/ioctls.md#0x55f7-frame-buffer-tlb-set-selection	`0x55f7`: frame-buffer TLB set selection
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9449c0	84	__glCrmSetStoreBuffer	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944a20	360	PickBufferProcs	dwarf+funcnames	documented	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944b90	248	SwapBuffers	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944c90	240	DecoupleSwapBuffers	dwarf+funcnames	documented	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944b90	248	SwapBuffers	dwarf+funcnames	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944c90	240	DecoupleSwapBuffers	dwarf+funcnames	documented	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944d80	60	__glCrmFlushAndConfirm	dwarf+dynsym	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944dc0	68	Finish	dwarf+funcnames	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e10	8	Flush	dwarf+funcnames	documented	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)

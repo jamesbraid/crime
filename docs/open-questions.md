@@ -14,11 +14,6 @@ Route key, used in the tables:
 - **P**: published output from real O2s: `hinv`, `gfxinfo`, kernel and X server messages in newsgroup and mailing-list posts, through the Library's public roots.
 - **E**: running the shipped software under an emulator to record what it writes and expects back; it shows the driver's expectation, not the hardware's behaviour.
 
-## Display back end
-
-| Question | Owner | Tried | Next |
-|---|---|---|---|
-
 ## Where work stopped
 
 29 October 2026, reader pass 8 (inventory backfill). Done: every constant word in the rendering-register table, every register in the specification tables and every register-offset row is documented or labelled (the kernel swap by copy, the window clip set-up, the linear TLB load, the bank control registers, the capture block's tile-address registers, the colour and texture steppers of lines, and the transfer engine's null register, labelled as having no software dependency; `docs/mte.md`, `docs/context.md`, `docs/memory.md`, `docs/gbe.md`, `docs/opengl.md`). Function index so far: the kernel objects of `crime.a` and `mace.o` (`docs/functions.md`), the X module `crm.so` (`docs/xmodule.md`, group roles mostly inferred from names and the sample server) and the exported OpenGL entry points of `libGLcore` (`docs/gl-entry-points.md`).
