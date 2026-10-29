@@ -1,33 +1,33 @@
 binary	group	role	kind	abi	bytes	sha256	copies	functions	access_sites	unresolved_sites	status	doc	section
-sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	21	0	understood	docs/memory.md#validity-and-misses-pass-7	Validity and misses (pass 7)
-sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	19	0	understood	docs/memory.md#register-roles-for-the-remaining-crime-registers	Register roles for the remaining CRIME registers
+sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	21	0	named-only	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	19	0	named-only	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0	0	0	named-only	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	kernel	board-kernel	object	n32	32916	1839b4af7754b7d8		29	36	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	kernel	board-kernel	object	n32	5876	1f59a4d0a4414528		2	0	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	kernel	board-kernel	object	n32	11412	b6d0dcc90f598770		11	8	4	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_busts.o)	kernel	board-kernel	object	n32	980	4b3d4554333ee522		0	0	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	kernel	board-kernel	object	n32	26388	f422bfb8e7ac5464		33	12	7	understood	docs/context.md#linear-tlb-load-in-crmvalidatedrawable	Linear TLB load in `crmValidateDrawable`
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	kernel	board-kernel	object	n32	45284	b8cf1d46113ad828		52	0	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	kernel	board-kernel	object	n32	4820	cac57fb03217df9b		2	0	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	4244	761feae31d6f6d83		2	0	4	understood	docs/functions.md#functions-by-role	Functions by role
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	kernel	board-kernel	object	n32	32916	1839b4af7754b7d8		29	36	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	kernel	board-kernel	object	n32	5876	1f59a4d0a4414528		2	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	kernel	board-kernel	object	n32	11412	b6d0dcc90f598770		11	8	4	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_busts.o)	kernel	board-kernel	object	n32	980	4b3d4554333ee522		0	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	kernel	board-kernel	object	n32	26388	f422bfb8e7ac5464		33	12	7	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	kernel	board-kernel	object	n32	45284	b8cf1d46113ad828		52	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	kernel	board-kernel	object	n32	4820	cac57fb03217df9b		2	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	4244	761feae31d6f6d83		2	0	4	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfx.o	kernel-shared	shared-kernel	object	n32	40296	d9324b66d28a576b		57	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	kernel-shared	shared-kernel	object	n32	40308	9f5a58ab7cd5b715		57	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	154	0	understood	docs/gbe.md#registers-the-base-kernel-touches-at-shutdown-early_gbe_stop	Registers the base kernel touches at shutdown (`early_gbe_stop`)
-usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	understood	docs/functions.md#functions-by-role	Functions by role
-usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	154	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	1	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	understood	docs/gbe.md#overlay-and-underlay	Overlay and underlay
+usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	762	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	762	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	988	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	no-software-dependency	docs/reset.md#settled-in-pass-7	Settled in pass 7
+usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	988	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60.vfo	video-formats	board-data	data	-	12424	45d9f5371ac77067		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60p.vfo	video-formats	board-data	data	-	12436	9249d599f9467622		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
@@ -55,7 +55,7 @@ usr/gfx/ucode/CRM/vof/2@1280x1024_75.vfo	video-formats	board-data	data	-	12444	e
 usr/gfx/ucode/CRM/vof/640x480_60.vfo	video-formats	board-data	data	-	12416	39b35bb70d1d00d9		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/800x600_60.vfo	video-formats	board-data	data	-	12424	0d0ab781ff5cc464		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/800x600_72.vfo	video-formats	board-data	data	-	12424	db28df16143bbd83		0	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
-usr/lib/X11/dyDDX/crm.so	x-module	board-x-module	shared-object	n32	1861396	4d5bf5d105b6afbb		840	8	0	understood	docs/gbe.md#what-the-third-word-is	What the third word is
+usr/lib/X11/dyDDX/crm.so	x-module	board-x-module	shared-object	n32	1861396	4d5bf5d105b6afbb		840	8	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/lib/X11/dyDDX/glx.so	x-shared	shared-x-server	shared-object	n32	646360	ba330e08d1e52cb2		981	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/lib/dmedia/imageconverters/debug/vicedv.so	video-libraries	board-library	shared-object	o32	643984	ef3434452fe0e07e		95	0	0	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	video-libraries	board-library	shared-object	o32	136276	c0740542b572954e		64	0	0	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries

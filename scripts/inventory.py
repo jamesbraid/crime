@@ -54,13 +54,14 @@ NSD_PHRASE = re.compile(r'no\s+shipped\s+software\s+or\s+published\s+source', re
 NSD_ROUTES = re.compile(r'\b(?:routes?|tried)\b', re.I)
 MAX_ITEMS = 3          # a line naming more items than this documents none of them
 MIN_ROLE_WORDS = 6     # plain words an entry needs to state a role and a hardware effect
+TEMPLATE_CAP = 5       # entries with the same sentence skeleton: more than this and they grade at most located
 MARK_BEGIN, MARK_END = '<!-- inventory:begin -->', '<!-- inventory:end -->'
 OLD_MARKS = (re.compile(r'<!-- inventory:start[^>]*-->'),)
 
 COLUMNS = {
     'binaries': ['binary', 'group', 'role', 'kind', 'abi', 'bytes', 'sha256', 'copies', 'functions',
                  'access_sites', 'unresolved_sites', 'status', 'doc', 'section'],
-    'functions': ['binary', 'role', 'abi', 'elf_section', 'address', 'size', 'name', 'source',
+    'functions': ['binary', 'role', 'abi', 'elf_section', 'address', 'size', 'name', 'source', 'code_sha',
                   'status', 'doc', 'section'],
     'mmio': ['window', 'offset', 'name', 'access', 'sites', 'binaries', 'functions', 'evidence', 'example',
              'status', 'doc', 'section'],
@@ -71,9 +72,9 @@ COLUMNS = {
     'ucode': ['program', 'kind', 'address', 'name', 'detail', 'status', 'doc', 'section'],
     'spec-registers': ['spec', 'table', 'page', 'window', 'offset', 'name', 'count', 'stride', 'width', 'rw',
                        'reached_in_code', 'status', 'doc', 'section'],
-    'summary': ['table', 'rows', 'understood', 'located', 'named_only', 'undocumented',
-                'no_software_dependency', 'pct_understood', 'pct_located_or_better', 'pct_mentioned',
-                'pct_done', 'unresolved_sites'],
+    'summary': ['table', 'rows', 'understood', 'understood_distinct', 'templated', 'located', 'named_only',
+                'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
+                'pct_mentioned', 'pct_done', 'unresolved_sites'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -132,16 +133,20 @@ def plain_words(text):
 
 LABEL = re.compile(r'\b(?:established|inferred)\b', re.I)
 UNKNOWN = re.compile(r'\bunknown\b', re.I)
-CITE = re.compile(
-    r'\b\d+\.\d+\.\d+[a-z]?\b'                                    # a release, 6.5.30m
-    r'|\bpatch(?:es)?\s+\d+'                                          # a patch
-    r'|[\w+-]+\.(?:o|a|so|c|h|cc|u|bin|elf|lst|asm|s|x)\b'            # a binary or source file
-    r'|\b[\w.+-]+/[\w.+-]+/[\w./+-]+'                                 # a path
-    r'|\+0x[0-9a-fA-F]+|\b[Oo]ffsets?\s+(?:0x)?[0-9a-fA-F]+'           # an offset
-    r'|\b(?:[Cc]alls?|[Cc]allees?|[Cc]allers?|called\s+(?:from|by))\b[^.|;`]{0,30}`')   # a callee
+# What a citation must name to tie an entry to its own item: an offset, an address, a callee or
+# caller, or a source file. A release or a binary name is shared by every item of the build.
+CITE_OFFSET = re.compile(r'\+0[xX]([0-9a-fA-F]+)|\b(?:[Oo]ffsets?|[Aa]ddress(?:es)?|[Aa]ddr|[Aa]t|[Ee]ntry|[Rr]ecord)\s*[:=]?\s*'
+                         r'0[xX]([0-9a-fA-F]+)|@\s*0[xX]([0-9a-fA-F]+)')
+CITE_CALL = re.compile(r'\b(?:[Cc]alls?|[Cc]allees?|[Cc]allers?|called\s+(?:from|by)|reached\s+from)\b[^.|;`]{0,30}`([^`]+)`')
+CITE_PATH = re.compile(r'\b[\w.+@-]+/[\w.+@-]+/[\w./+@-]+')
+CITE_SOURCE = re.compile(r'\b[\w+@-]+\.(?:c|h|cc|cpp|s|asm|u|lst|y|l)\b')
+CITE_BINARY = re.compile(r'[\w+@-]+\.(?:o|a|so|bin|elf|u)\b')
 LOCATED = re.compile(r'\b(?:address(?:es)?|offsets?|sizes?|bytes?|records?|extents?|callers?|called|sites?|'
                      r'calls?|entry|entries|lanes?)\b|0[xX][0-9a-fA-F]+', re.I)
 NUMLIST = re.compile(r'\b(?:0[xX][0-9a-fA-F]+|\d+)\b(?:\s*(?:,|;|\band\b|\bor\b)\s*\b(?:0[xX][0-9a-fA-F]+|\d+)\b)+')
+ADDRESS_HEAD = ('offset', 'address', 'addr', 'entry', 'record')
+NUMBER_HEAD = ('ioctl', 'entry', 'record', 'routine', 'slot', 'request')
+LEAD = re.compile(r'^\s*(?:(?:[-*+]|\d+\.)\s+)?[*_]*')
 
 
 def bare_text(text):
@@ -149,19 +154,150 @@ def bare_text(text):
     return re.sub(r'\]\([^)]*\)', ']', text)
 
 
-def classify(text):
+def unit_keys(u):
+    """The items a subject span names: identifiers, numbers and file names."""
+    keys = set()
+    for m in IDENT.finditer(u):
+        nm = m.group(0).rstrip('.')
+        if not re.fullmatch(r'[xX][0-9a-fA-F]+', nm):
+            keys.add(('id', nm))
+    for plus, h in HEXLIT.findall(u):
+        keys.add(('hex', int(h, 16)))
+    for m in DECLIT.finditer(u):
+        keys.add(('dec', int(m.group(1))))
+    for m in FILELIKE.finditer(u):
+        keys.add(('file', m.group(0)))
+    return keys
+
+
+def leading_unit(text, bare_numbers=False):
+    """The leading identifier of a list item or paragraph: a code span, a code-like word or a
+    hex number at its start, after any bullet and emphasis. '' when it starts with prose."""
+    t = bare_text(text)
+    t = LEAD.sub('', t, count=1)
+    t = re.sub(r'^\[(?=`)', '', t)
+    m = re.match(r'`([^`]+)`', t)
+    if m:
+        return m.group(1)
+    m = re.match(r'(\+?0[xX][0-9a-fA-F]+|[A-Za-z_][A-Za-z0-9_$.]*[A-Za-z0-9_$])(?![\w(])', t)
+    if m and (m.group(0)[0] in '+0' or CODELIKE.match(m.group(0))):
+        return m.group(0)
+    m = re.match(r'([A-Za-z_][A-Za-z0-9_$]*)\(\)', t)
+    if m:
+        return m.group(1)
+    return ''
+
+
+def cell_unit(cell, head_cell=''):
+    """The subject span of one table cell, or '' when the cell holds no identifier."""
+    c = bare_text(cell).strip()
+    m = re.search(r'`([^`]+)`', c)
+    if m:
+        return m.group(1)
+    if re.fullmatch(r'[*_]*\+?0[xX][0-9a-fA-F]+[*_]*', c):
+        return c.strip('*_')
+    if re.fullmatch(r'[*_]*\d+[*_]*', c):
+        return c.strip('*_') if any(w in head_cell for w in NUMBER_HEAD) else ''
+    for w in c.replace('(', ' (').split():
+        w = w.strip('*_,;:')
+        if re.fullmatch(r'[A-Za-z_][A-Za-z0-9_$.]*[A-Za-z0-9_$]', w) and CODELIKE.match(w):
+            return w
+    return ''
+
+
+def row_subject(text, head):
+    """The subject span of a table row: its first cell that holds an identifier."""
+    cells = [c.strip() for c in text.strip().strip('|').split('|')]
+    if all(re.fullmatch(r':?-{2,}:?|', c) for c in cells):
+        return ''
+    for k, c in enumerate(cells):
+        u = cell_unit(c, head[k] if head and k < len(head) else '')
+        if u:
+            return u
+    return ''
+
+
+def item_cite(text, subj, head=None, cells=None):
+    """True when the entry names an offset, address, callee or source file other than its own subject."""
+    t = bare_text(text)
+    for m in CITE_OFFSET.finditer(t):
+        h = next(g for g in m.groups() if g)
+        if ('hex', int(h, 16)) not in subj:
+            return True
+    for m in CITE_CALL.finditer(t):
+        if ('id', m.group(1).strip()) not in subj:
+            return True
+    if CITE_PATH.search(t) or CITE_SOURCE.search(t):
+        return True
+    # a binary together with a routine of it other than the subject: where the derivation was read
+    if CITE_BINARY.search(t):
+        for sp in re.findall(r'`([^`]+)`', t):
+            sp = sp.strip()
+            if re.fullmatch(r'[A-Za-z_][A-Za-z0-9_$]*', sp) and ('id', sp) not in subj:
+                return True
+    if head is not None and cells is not None:
+        # a cell holding only a hex number, in a column that gives offsets or addresses
+        for k, c in enumerate(cells):
+            m = re.fullmatch(r'`?\+?0[xX]([0-9a-fA-F]+)`?', c.strip())
+            if m and k < len(head) and any(w in head[k] for w in ADDRESS_HEAD) and \
+                    ('hex', int(m.group(1), 16)) not in subj:
+                return True
+    return False
+
+
+def classify(text, subj=frozenset(), head=None):
     """The status one entry (a table row, a list item, a paragraph or a header comment)
-    earns for every item it mentions. The entry must carry a derivation citation; with
-    behaviour labelled unknown it is located, with an established or inferred label and
+    earns for its subject. The entry must carry a derivation citation specific to the item;
+    with behaviour labelled unknown it is located, with an established or inferred label and
     enough words for a role it is understood."""
     t = bare_text(text)
-    if not CITE.search(t):
+    cells = None
+    if head is not None and t.strip().startswith('|'):
+        cells = [c.strip() for c in t.strip().strip('|').split('|')]
+    if not item_cite(t, subj, head, cells):
         return 'named-only'
     if UNKNOWN.search(t):
         return 'located' if LOCATED.search(t) else 'named-only'
     if LABEL.search(t) and plain_words(t) - len(LABEL.findall(t)) >= MIN_ROLE_WORDS:
         return 'understood'
     return 'named-only'
+
+
+def skeleton(text):
+    """The sentence skeleton of an entry: identifiers, file names and numbers masked, punctuation
+    and case dropped. Entries that differ only in the items they name share one."""
+    t = bare_text(text)
+    t = re.sub(r'`[^`]*`', ' ID ', t)
+    t = FILELIKE.sub(' ID ', t)
+    t = HEXLIT.sub(' ID ', t)
+    t = re.sub(r'\b\w*[_0-9]\w*\b|\b\w+[a-z][A-Z]\w*\b', ' ID ', t)
+    t = re.sub(r'[^A-Za-z]+', ' ', t)
+    out = []
+    for w in t.lower().split():
+        if w == 'id' and out and out[-1] == 'id':
+            continue
+        out.append(w)
+    return ' '.join(out)
+
+
+class Entry:
+    """One table row, list item, paragraph or header comment, with what it earns."""
+    __slots__ = ('text', 'level', 'skel', 'capped', 'keys', 'subj')
+
+    def __init__(self, text, level, subj=frozenset()):
+        self.text, self.level, self.subj = text, level, subj
+        self.skel = skeleton(text)
+        self.capped = False
+        self.keys = None
+
+    def tokens(self):
+        """The file and path names the entry writes, for the binaries it cites."""
+        if self.keys is None:
+            self.keys = frozenset(m.group(0) for m in PATHTOK.finditer(self.text.replace('`', ' ')))
+        return self.keys
+
+
+PATHTOK = re.compile(r'[\w.+@$-]+(?:/[\w.+@$-]+)*(?:\([\w.+@$-]+\))?')
 
 
 def line_items(text):
@@ -222,16 +358,21 @@ def ambiguous(name):
 
 
 class Hit:
-    __slots__ = ('file', 'line', 'ref', 'section', 'level', 'nsd', 'code', 'ctx', 'order')
+    __slots__ = ('file', 'line', 'ref', 'section', 'level', 'nsd', 'code', 'ctx', 'order', 'ent')
 
-    def __init__(self, file, line, ref, section, level, nsd, code, ctx, order):
+    def __init__(self, file, line, ref, section, level, nsd, code, ctx, order, ent=None):
         self.file, self.line, self.ref, self.section = file, line, ref, section
-        self.level, self.nsd, self.code, self.ctx, self.order = level, nsd, code, ctx, order
+        self.level, self.nsd, self.code, self.ctx, self.order, self.ent = level, nsd, code, ctx, order, ent
+
+    def raw(self):
+        return 'no-software-dependency' if self.nsd else self.level
+
+    def templated(self):
+        """True when the entry's sentence skeleton is shared by too many entries to be credited."""
+        return self.ent is not None and self.ent.capped and RANK[self.raw()] > RANK['located']
 
     def status(self):
-        if self.nsd:
-            return 'no-software-dependency'
-        return self.level
+        return 'located' if self.templated() else self.raw()
 
 
 class DocIndex:
@@ -243,8 +384,8 @@ class DocIndex:
         self.hexes = collections.defaultdict(list)     # value -> [(hit, plus)]
         self.decs = collections.defaultdict(list)
         self.defs = collections.defaultdict(list)      # value -> [hit] for header #define / enum values
-        self.lines = collections.defaultdict(set)      # (file, line) -> {'hex:..', 'id:..'}
         self.order = 0
+        self.entries = []                              # every prose entry, for the template cap
         d = cfg['docs']
         index = set()
         for p in d.get('index', []):
@@ -273,6 +414,9 @@ class DocIndex:
                     continue
                 seen.add(rel)
                 self.read_table(rel)
+        count = collections.Counter(e.skel for e in self.entries if e.skel)
+        for e in self.entries:
+            e.capped = bool(e.skel) and count[e.skel] > TEMPLATE_CAP
 
     @staticmethod
     def expand(pat):
@@ -282,17 +426,22 @@ class DocIndex:
                 out.append(os.path.relpath(p, REPO))
         return out
 
-    def hit(self, file, line, ref, section, level, nsd, code, ctx):
+    def hit(self, file, line, ref, section, level, nsd, code, ctx, ent=None):
         self.order += 1
-        return Hit(file, line, ref, section, level, nsd, code, ctx, self.order)
+        return Hit(file, line, ref, section, level, nsd, code, ctx, self.order, ent)
 
-    def add_text(self, file, n, ref, section, text, level, nsd, code_spans, code_all, ctx, head=None):
+    def add_text(self, file, n, ref, section, text, level, nsd, code_spans, code_all, ctx, head=None,
+                 subj=frozenset(), ent=None):
         """Index one line. code_spans are the parts written as code. level is what the
-        entry holding the line earns, which a line naming many items does not get."""
+        entry holding the line earns, which a line naming many items does not get. Only the
+        entry's subject (the keys in subj) earns it; every other item the line names is a mention."""
         if line_items(text) > MAX_ITEMS:
             level, nsd = 'named-only', False
-        explained = level
-        key = (file, n)
+
+        def hit(k, code, c=ctx):
+            if k in subj:
+                return self.hit(file, n, ref, section, level, nsd, code, c, ent)
+            return self.hit(file, n, ref, section, 'named-only', False, code, c, ent)
         code_text = ' '.join(code_spans)
         seen = set()
         for m in IDENT.finditer(code_text):
@@ -300,8 +449,7 @@ class DocIndex:
             if nm in seen:
                 continue
             seen.add(nm)
-            self.names[nm].append(self.hit(file, n, ref, section, explained, nsd, True, ctx))
-            self.lines[key].add('id:' + nm)
+            self.names[nm].append(hit(('id', nm), True))
         if not code_all:
             for m in IDENT.finditer(re.sub(r'`[^`]*`', ' ', text)):
                 nm = m.group(0).rstrip('.')
@@ -311,16 +459,14 @@ class DocIndex:
                 if not call and not CODELIKE.match(nm):
                     continue
                 seen.add(nm)
-                self.names[nm].append(self.hit(file, n, ref, section, explained, nsd, call, ctx))
-                self.lines[key].add('id:' + nm)
+                self.names[nm].append(hit(('id', nm), call))
         for m in FILELIKE.finditer(code_text if not code_all else text):
-            self.files[m.group(0)].append(self.hit(file, n, ref, section, explained, nsd, True, ctx))
+            self.files[m.group(0)].append(hit(('file', m.group(0)), True))
         for plus, h in set(HEXLIT.findall(text)):
             v = int(h, 16)
-            self.hexes[v].append((self.hit(file, n, ref, section, explained, nsd, True, ctx), bool(plus)))
-            self.lines[key].add('hex:%x' % v)
+            self.hexes[v].append((hit(('hex', v), True), bool(plus)))
         for v, dctx in dec_contexts(text, head):
-            self.decs[v].append(self.hit(file, n, ref, section, explained, nsd, True, dctx))
+            self.decs[v].append(hit(('dec', v), True, dctx))
 
     def read_md(self, rel, index):
         lines = open(os.path.join(REPO, rel), encoding='utf-8', errors='replace').read().split('\n')
@@ -370,9 +516,10 @@ class DocIndex:
                     cur = len(entries) - 1
                 entries[cur].append(i)
                 entry_of[i] = cur
-        entry_level = {}
+        entry_obj = {}
         head = None
         prev_table = False
+        hunit = ''
         for i, ln in enumerate(lines):
             n = i + 1
             st = ln.strip()
@@ -382,25 +529,39 @@ class DocIndex:
             if not fence and re.match(r'#{1,6}\s', ln):
                 section = re.sub(r'^#+\s*', '', ln).strip()
                 ref = '%s#%s' % (rel, slug(section))
+                hunit = cell_unit(section)
             is_table = not fence and st.startswith('|')
-            if is_table and not prev_table:
+            is_head = is_table and not prev_table
+            if is_head:
                 head = [c.strip().lower() for c in st.strip('|').split('|')]
             prev_table = is_table
+            subj, ent = frozenset(), None
             if fence:
                 level = 'named-only'          # a listing restates its subject
                 spans, code_all = [ln], True
             else:
                 e = entry_of.get(i)
-                if e is not None and e not in entry_level:
-                    entry_level[e] = classify(' '.join(lines[j] for j in entries[e]))
-                level = entry_level.get(e, 'named-only')
+                if e is not None and e not in entry_obj:
+                    etext = ' '.join(lines[j] for j in entries[e])
+                    if is_table:
+                        unit = '' if is_head else row_subject(ln, head)
+                    else:
+                        unit = leading_unit(lines[entries[e][0]]) or hunit
+                    keys = frozenset(unit_keys(unit)) if unit else frozenset()
+                    lvl = 'named-only' if is_head else classify(etext, keys, head if is_table else None)
+                    entry_obj[e] = (Entry(etext, lvl, keys), keys)
+                    if not is_head and not index:
+                        self.entries.append(entry_obj[e][0])
+                if e in entry_obj:
+                    ent, subj = entry_obj[e]
+                level = ent.level if ent is not None else 'named-only'
                 spans, code_all = re.findall(r'`([^`]+)`', ln), False
             if index:
                 level = 'named-only'
             nsd = (i in nsd_line) and not index
             ctx = (ln + ' ' + section).lower()
             self.add_text(rel, n, ref, section, ln, level, nsd, spans, code_all, ctx,
-                          head if is_table else None)
+                          head if is_table else None, subj, ent)
 
     def read_header(self, rel, index):
         lines = open(os.path.join(REPO, rel), encoding='utf-8', errors='replace').read().split('\n')
@@ -466,35 +627,37 @@ class DocIndex:
                 last_para = para[i]
             if standalone:
                 if c:
-                    ptext, nsd = (para[i][0], para[i][1]) if para[i] else (c, False)
-                    self.add_text(rel, n, ref, section, comment, 'named-only' if index else classify(ptext),
-                                  nsd and not index, re.findall(r'`([^`]+)`', comment), False, ctx)
+                    # a comment on its own line has no subject: what it names is mentioned
+                    self.add_text(rel, n, ref, section, comment, 'named-only', False,
+                                  re.findall(r'`([^`]+)`', comment), False, ctx)
                 continue
             above = last_para if (last_para and last_para[2] == i - 1) else None
             ctext = ' '.join(x for x in (above[0] if above else '', comment.strip()) if x)
-            commented = 'named-only' if index else classify(ctext)
             nsd = (bool(NSD_PHRASE.search(comment) and NSD_ROUTES.search(comment)) or
                    (above is not None and above[1])) and not index
             if comment.strip():
-                self.add_text(rel, n, ref, section, comment, 'named-only' if index else classify(comment), nsd,
+                self.add_text(rel, n, ref, section, comment, 'named-only', False,
                               re.findall(r'`([^`]+)`', comment), False, ctx)
             d = (re.match(r'\s*#\s*define\s+(\w+)\s+\(?\s*(-?0[xX][0-9a-fA-F]+|-?\d+)[uUlL]*\b', code) or
                  re.match(r'\s*(\w+)\s*=\s*\(?\s*(-?0[xX][0-9a-fA-F]+|-?\d+)[uUlL]*\)?\s*,?\s*$', code))
             if d:
                 name, val = d.group(1), num(re.sub(r'[uUlL]+$', '', d.group(2)))
-                h = self.hit(rel, n, ref, section, commented, nsd, True, ctx)
+                # the definition is the subject of the comment above it and the one beside it
+                skey = {('id', name), ('hex', val & 0xffffffffffffffff)}
+                commented = 'named-only' if index else classify(ctext, skey)
+                ent = Entry(ctext, commented, frozenset(skey))
+                if ctext and not index:
+                    self.entries.append(ent)
+                h = self.hit(rel, n, ref, section, commented, nsd, True, ctx, ent)
                 self.names[name].append(h)
                 self.defs[val & 0xffffffffffffffff].append(h)
-                self.lines[(rel, n)].add('id:' + name)
-                self.lines[(rel, n)].add('hex:%x' % (val & 0xffffffffffffffff))
             else:
                 for m in IDENT.finditer(code):
                     nm = m.group(0).rstrip('.')
                     self.names[nm].append(self.hit(rel, n, ref, section, 'named-only', False, True, ctx))
-                    self.lines[(rel, n)].add('id:' + nm)
                 for plus, h in set(HEXLIT.findall(code)):
                     v = int(h, 16)
-                    self.hexes[v].append((self.hit(rel, n, ref, section, commented, nsd, True, ctx), bool(plus)))
+                    self.hexes[v].append((self.hit(rel, n, ref, section, 'named-only', False, True, ctx), bool(plus)))
 
     def read_table(self, rel):
         for n, ln in enumerate(open(os.path.join(REPO, rel), encoding='utf-8', errors='replace'), 1):
@@ -510,16 +673,19 @@ class DocIndex:
     # ---------------------------------------------------------------- queries
 
     @staticmethod
-    def best(hits):
-        """(status, doc, section) of the best hit; first in index order on a tie."""
-        top = None
+    def best(hits, demote=None):
+        """(status, doc, section, skeleton, templated) of the best hit; first in index order on a
+        tie. A hit that demote() names earns at most located."""
+        top, tst = None, None
         for h in hits:
-            if top is None or RANK[h.status()] > RANK[top.status()] or \
-                    (RANK[h.status()] == RANK[top.status()] and h.order < top.order):
-                top = h
+            st = h.status()
+            if demote is not None and RANK[st] > RANK['located'] and demote(h):
+                st = 'located'
+            if top is None or RANK[st] > RANK[tst] or (RANK[st] == RANK[tst] and h.order < top.order):
+                top, tst = h, st
         if top is None:
-            return ('undocumented', '', '')
-        return (top.status(), top.ref, top.section)
+            return ('undocumented', '', '', '', False)
+        return (tst, top.ref, top.section, top.ent.skel if top.ent is not None else '', top.templated())
 
     def name_hits(self, name):
         hits = self.names.get(name, [])
@@ -527,12 +693,12 @@ class DocIndex:
             hits = [h for h in hits if h.code]
         return hits
 
-    def by_name(self, *names):
+    def by_name(self, *names, demote=None):
         hits = []
         for n in names:
             if n:
                 hits += self.name_hits(n)
-        return self.best(hits)
+        return self.best(hits, demote)
 
     def by_file(self, *names):
         hits = []
@@ -565,6 +731,17 @@ class DocIndex:
                 out.append(h)
         return out
 
+    def pair_hits(self, values, subj_keys, files=None):
+        """Hits for numbers written in an entry whose subject is one of subj_keys, at what the
+        entry earns. A command word stored to a register is a pair: the register is the entry's
+        subject and the word is the datum it states for it."""
+        out = []
+        for v in values:
+            for h, plus in self.hexes.get(v, []):
+                if h.ent is not None and (h.ent.subj & subj_keys) and in_files(h.file, files):
+                    out.append(Hit(h.file, h.line, h.ref, h.section, h.ent.level, False, True, h.ctx, h.order, h.ent))
+        return out
+
     def dec_hits(self, values, files=None, context=None):
         out = []
         for v in values:
@@ -572,12 +749,6 @@ class DocIndex:
                 if in_files(h.file, files) and (context is None or ctx_match(h.ctx, context)):
                     out.append(h)
         return out
-
-    def near(self, h, key, dist=2):
-        for k in range(h.line - dist, h.line + dist + 1):
-            if key in self.lines.get((h.file, k), ()):
-                return True
-        return False
 
 
 def in_files(f, files):
@@ -778,11 +949,12 @@ def dwarf_subprograms(path):
 
 
 def functions_of(img, elf, path):
-    """{name: [elf_section, address, size, sources]} for one image."""
+    """{name: [elf_section, address, size, sources, code_sha]} for one image. code_sha is the
+    first 12 hex digits of the hash of the function's bytes, empty when they are not known."""
     g = img['group']
     if g.get('string_names'):
         names = sorted({m.decode('latin1') for m in re.findall(g['string_names'].encode(), img['data'])})
-        return {n: ['', 0, 0, {'strings'}] for n in names}
+        return {n: ['', 0, 0, {'strings'}, ''] for n in names}
     if elf is None:
         return {}
     funcs = {}
@@ -838,6 +1010,27 @@ def functions_of(img, elf, path):
             nxt = a[i] if i < len(a) else ends.get(e[0])
             if nxt and nxt > e[1]:
                 e[2] = nxt - e[1]
+    secdata = {}
+    segs = None
+    for name, e in funcs.items():
+        sha = ''
+        sec = elf.get_section_by_name(e[0]) if e[0] else None
+        if sec is not None and e[2] and sec['sh_type'] != 'SHT_NOBITS':
+            if e[0] not in secdata:
+                secdata[e[0]] = sec.data()
+            off = e[1] - sec['sh_addr']
+            if 0 <= off and off + e[2] <= len(secdata[e[0]]):
+                sha = hashlib.sha256(secdata[e[0]][off:off + e[2]]).hexdigest()[:12]
+        elif sec is None and e[1] and e[2]:
+            # no section headers: find the loadable segment that holds the address
+            if segs is None:
+                segs = [(sg['p_vaddr'], sg['p_filesz'], sg.data()) for sg in elf.iter_segments()
+                        if sg['p_type'] == 'PT_LOAD']
+            for va, fsz, data in segs:
+                if va <= e[1] and e[1] + e[2] <= va + fsz:
+                    sha = hashlib.sha256(data[e[1] - va:e[1] - va + e[2]]).hexdigest()[:12]
+                    break
+        e.append(sha)
     return funcs
 
 
@@ -1968,8 +2161,26 @@ def short_list(items, k=6):
     return s + (';+%d more' % (len(items) - k) if len(items) > k else '')
 
 
+def image_keys(label):
+    """The ways a document can write a binary's name: its path from any directory down, and for an
+    archive member the member alone or after the archive."""
+    path, member = label, ''
+    if label.endswith(')') and '(' in label:
+        path, member = label[:-1].split('(', 1)
+    comps = path.split('/')
+    keys = set()
+    for i in range(len(comps)):
+        suf = '/'.join(comps[i:])
+        keys.add(suf)
+        if member:
+            keys.add('%s(%s)' % (suf, member))
+    if member:
+        keys.add(member)
+    return keys
+
+
 def put_status(row, st):
-    row['status'], row['doc'], row['section'] = st
+    row['status'], row['doc'], row['section'], row['_skel'], row['_templated'] = st
 
 
 def window_files(cfg, win):
@@ -1997,7 +2208,7 @@ def window_forms(cfg, win, off):
 
 
 def best_of(*sts):
-    top = ('undocumented', '', '')
+    top = ('undocumented', '', '', '', False)
     for s in sts:
         if RANK[s[0]] > RANK[top[0]]:
             top = s
@@ -2227,10 +2438,8 @@ def build(cfg, a, tmp):
         if st[0] != 'understood':
             files = tk.get('docs')
             if reg is not None:
-                keys = ['hex:%x' % reg] + ['id:' + r['name'].split('[')[0] for r in spec_names(tk.get('window', ''), reg)]
-                hits = [h for h in docs.value_hits([w], files, None, absolute=())
-                        if any(docs.near(h, k) for k in keys)]
-                st = best_of(st, docs.best(hits))
+                keys = {('hex', reg)} | {('id', r['name'].split('[')[0]) for r in spec_names(tk.get('window', ''), reg)}
+                st = best_of(st, docs.best(docs.pair_hits([w], keys, files)))
             elif kind in tk.get('value_match', []):
                 ctx = tk.get('context', {}).get(kind) or REG_CONTEXT
                 st = best_of(st, docs.best(docs.value_hits([w], files, ctx)))
@@ -2339,6 +2548,33 @@ def build(cfg, a, tmp):
     out['ucode'] = rows
 
     # ---------------------------------------------------------------- functions and binaries
+    # A name that several builds define with different code is understood in the build an entry
+    # cites. Builds whose code is the same (equal code_sha) share the credit; any other build is
+    # at most located. A name with one code in every build needs no citation.
+    name_rows = collections.defaultdict(dict)       # name -> {binary: code group}
+    for lab, fl in funcs.items():
+        for name, e in fl.items():
+            name_rows[name][lab] = e[4] or 'L:' + lab
+    token_images = collections.defaultdict(set)     # path written in a document -> binaries it names
+    for img in imgs:
+        for lab in [img['label']] + img['copies']:
+            for k in image_keys(lab):
+                token_images[k].add(img['label'])
+    cited = {}
+
+    def cited_groups(ent, name):
+        k = (id(ent), name)
+        if k not in cited:
+            rows_of, out = name_rows[name], set()
+            for t in ent.tokens():
+                t = re.sub(r'^(?:\./|/)+', '', t.strip('.,;:'))
+                t = t[5:] if t.startswith('root/') else t
+                got = {rows_of[b] for b in token_images.get(t, ()) if b in rows_of}
+                if len(got) == 1:
+                    out |= got
+            cited[k] = out
+        return cited[k]
+
     rows = []
     brows = []
     for img in imgs:
@@ -2346,10 +2582,16 @@ def build(cfg, a, tmp):
         g = img['group']
         fl = funcs.get(lab, {})
         for name in sorted(fl, key=lambda n: (fl[n][1], n)):
-            sec, addr, size, srcs = fl[name]
+            sec, addr, size, srcs, csha = fl[name]
             row = {'binary': lab, 'role': g['role'], 'abi': abi.get(lab, '-'), 'elf_section': sec,
-                   'address': '0x%x' % addr, 'size': size or '', 'name': name, 'source': '+'.join(sorted(srcs))}
-            put_status(row, docs.by_name(name))
+                   'address': '0x%x' % addr, 'size': size or '', 'name': name, 'source': '+'.join(sorted(srcs)),
+                   'code_sha': csha}
+            grp = name_rows[name][lab]
+            if len(set(name_rows[name].values())) == 1:
+                put_status(row, docs.by_name(name))     # one build of this code: the name says which
+            else:
+                put_status(row, docs.by_name(name, demote=lambda h, name=name, grp=grp: (
+                    h.ent is None or grp not in cited_groups(h.ent, name))))
             rows.append(row)
         base = os.path.basename(img['path'])
         st = docs.by_file(img['member'] or base, *([base] if img['member'] else []))
@@ -2374,14 +2616,21 @@ def build(cfg, a, tmp):
         if t == 'functions':
             best = {}
             for r in out['functions']:
-                if r['name'] not in best or RANK[r['status']] > RANK[best[r['name']]]:
-                    best[r['name']] = r['status']
-            srows.append(summary_row('functions (distinct names)', [{'status': s} for s in best.values()], ''))
-    write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows)
+                if r['name'] not in best or RANK[r['status']] > RANK[best[r['name']]['status']]:
+                    best[r['name']] = r
+            srows.append(summary_row('functions (distinct names)', list(best.values()), ''))
+    # one row per binary that has functions, after the tables
+    by_bin = collections.OrderedDict()
+    for r in out['functions']:
+        by_bin.setdefault(r['binary'], []).append(r)
+    bin_rows = [summary_row('functions in ' + b, rs, '') for b, rs in by_bin.items()]
+    write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows + bin_rows)
     for r in srows:
-        print('%-28s %7s  understood %6s (%5s%%)  located-or-better %5s%%  mentioned %5s%%  nsd %5s' %
-              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['pct_located_or_better'],
-               r['pct_mentioned'], r['no_software_dependency']), file=sys.stderr)
+        print('%-28s %7s  understood %6s (%5s%%, %s distinct, %s templated)  located-or-better %5s%%  '
+              'mentioned %5s%%  nsd %5s' %
+              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['understood_distinct'],
+               r['templated'], r['pct_located_or_better'], r['pct_mentioned'], r['no_software_dependency']),
+              file=sys.stderr)
     by_win = collections.Counter()
     for (b, w), v in unresolved.items():
         by_win[w] += v
@@ -2455,12 +2704,15 @@ def record_status(docs, v, cfg):
 
 def summary_row(name, rows, unresolved):
     c = collections.Counter(r['status'] for r in rows)
+    distinct = len({r.get('_skel', '') for r in rows if r['status'] == 'understood'})
+    templated = sum(1 for r in rows if r.get('_templated'))
     n = len(rows)
 
     def pct(x):
         return '%.1f' % (100.0 * x / n) if n else '0.0'
     nsd = c['no-software-dependency']
-    return {'table': name, 'rows': n, 'understood': c['understood'], 'located': c['located'],
+    return {'table': name, 'rows': n, 'understood': c['understood'], 'understood_distinct': distinct,
+            'templated': templated, 'located': c['located'],
             'named_only': c['named-only'], 'undocumented': c['undocumented'], 'no_software_dependency': nsd,
             'pct_understood': pct(c['understood']),
             'pct_located_or_better': pct(c['understood'] + c['located'] + nsd),
@@ -2478,18 +2730,21 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
              'Generated by `scripts/inventory.py` from %d distinct files in scope, %d of them ELF images. '
              'The rows are in [docs/inventory/](inventory/README.md), which defines every column and status. '
              'The headline is the share **understood**: an entry that states a role and hardware effect, '
-             'labelled established or inferred, with a derivation. A mention alone (named only) is not '
-             'understanding. A row is done when it is understood or labelled as having no software dependency.'
+             'labelled established or inferred, with a derivation specific to its subject. A mention alone '
+             '(named only) is not understanding, and an entry credits only its subject. A row is done when it '
+             'is understood or labelled as having no software dependency. "Distinct" counts the differently '
+             'worded entries behind the understood rows, so templated bulk shows.'
              % (len(imgs), elf), '',
-             '| Table | Rows | % understood | % located or better | % mentioned | Understood | Located | '
-             'No software dependency | Named only | Undocumented |',
-             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+             '| Table | Rows | % understood | % located or better | % mentioned | Understood | Distinct | '
+             'Located | No software dependency | Named only | Undocumented |',
+             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for r in srows:
         link = r['table'] if r['table'] in TABLES else None
         label = '[%s](inventory/%s.tsv)' % (link, link) if link else r['table']
-        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d |' % (
+        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d | %d |' % (
             label, r['rows'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
-            r['understood'], r['located'], r['no_software_dependency'], r['named_only'], r['undocumented']))
+            r['understood'], r['understood_distinct'], r['located'], r['no_software_dependency'],
+            r['named_only'], r['undocumented']))
     tot = resolved + unres
     lines += ['',
               'Register access sites: %d found, %d resolved to an offset and %d (%s%%) unresolved, where the base '

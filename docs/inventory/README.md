@@ -50,6 +50,7 @@ One row per (binary, function symbol). A function present in several distinct bi
 | `size` | the symbol size; when the symbol has none, the distance to the next function in the section |
 | `name` | the symbol |
 | `source` | where the name came from: `symtab`, `dynsym`, `mdebug` (o32 procedure table), `funcnames` (`.debug_funcnames`), `dwarf`, or `strings` (names found by pattern in a raw image) |
+| `code_sha` | first 12 hex digits of the hash of the function's bytes, empty when they could not be read. A name with the same `code_sha` in two binaries has the same code there |
 
 ### mmio.tsv
 
@@ -120,12 +121,14 @@ One row per register a specification or a shipped register table lists.
 
 ### summary.tsv
 
-One row per table, plus `functions (distinct names)`, which counts each function name once at its best status.
+One row per table, plus `functions (distinct names)`, which counts each function name once at its best status, and then one row `functions in <binary>` per binary that has functions.
 
 | Column | Meaning |
 |---|---|
 | `table`, `rows` | the table and its row count |
 | `understood`, `located`, `named_only`, `undocumented`, `no_software_dependency` | rows at each status |
+| `understood_distinct` | different sentence skeletons behind the understood rows |
+| `templated` | rows held at `located` because their entry's skeleton is over the template cap |
 | `pct_understood` | understood rows as a percentage |
 | `pct_located_or_better` | understood, located and no-software-dependency rows as a percentage |
 | `pct_mentioned` | every row except `undocumented`, as a percentage |
@@ -134,17 +137,63 @@ One row per table, plus `functions (distinct names)`, which counts each function
 
 ## Status
 
-A mention is not understanding. The status of an item is the best of the entries that mention it. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
+A mention is not understanding. The status of an item is the best of the entries that mention it, and an entry earns its status only for its subject. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
 
 - `undocumented`: no entry mentions it.
-- `named-only`: mentioned, but the entry does not reach `located`. This covers a bare mention; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no derivation citation; an entry with a citation but no label; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
-- `located`: the entry carries a derivation citation and says the behaviour is `unknown`, and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not.
-- `understood`: the entry has a label (`established` or `inferred`), at least six plain words, which is the floor for stating a role and a hardware effect, a derivation citation, and no `unknown` anywhere in it. The words are not read for meaning: check the cited section.
-- `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished.
-
-A derivation citation is one of: a release or patch (`6.5.30m`, `patch 4103`); a binary or source file name with a binary or source extension (`odsy_init.c`, `odsy.o`, `buzz_xform.bin`); a path with at least two slashes; an offset (`+0x1a4`, "offset 0x40"); or a callee or caller written in code (`calls` or `called from` followed by a backticked name). A link to another page is not a citation.
+- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members; an entry with no citation of its own; an entry with a citation but no label; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
+- `located`: the entry carries a citation of its own and says the behaviour is `unknown`, and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this.
+- `understood`: the entry has a label (`established` or `inferred`), at least six plain words, which is the floor for stating a role and a hardware effect, a citation of its own, and no `unknown` anywhere in it. The words are not read for meaning: check the cited section.
+- `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished. Like every other status it goes to the entry's subject only.
 
 A row is done when it is `understood` or `no-software-dependency`. The repository is finished when every row of every table is done.
+
+### Subject
+
+An entry credits one item, its subject:
+
+- a table row: the first identifier in the first cell that holds one. An identifier is a backticked span, a code-like word (an underscore, a digit or an inner capital) or a hex number. A plain decimal counts only in a column headed ioctl, entry, record, routine, slot or request, so that a row-number column is skipped. The header row has no subject;
+- a list item or paragraph: the identifier it starts with, after any bullet and emphasis. When it starts with prose, the first identifier of the heading above it;
+- a header definition: the name it defines and its value, for the comment above it and the one beside it. A comment on a line of its own has no subject.
+
+Every other identifier, number or file name in the entry is a mention and stays `named-only`. One exception: a command word stored to a register is a pair, so the entry whose subject is the register credits the word it states.
+
+### Citation
+
+A derivation citation must tie the entry to its own item. Each of these counts, and none counts when it is the subject itself:
+
+- an offset (`+0x1a4`, "offset 0x40"), or a hex address after "address", "at", "entry", "record" or `@`, or a hex number alone in a column headed offset, address, entry or record;
+- a callee or caller written in code (`calls` or `called from` followed by a backticked name);
+- a source file or a path with at least two slashes (`odsy_init.c`, `libglcore/asm/ODYSSEY/x.s`);
+- a binary or object file name (`odsy.o`, `libGLcore.so`) together with a backticked routine of it other than the subject.
+
+A release or patch number (`6.5.30m`, `patch 4103`), a binary name alone, and a link to another page are not citations: every item of a build shares them.
+
+### Templated entries
+
+Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. When more than 5 entries (`TEMPLATE_CAP` in the script) share one skeleton, counting table rows, list items, paragraphs and header comments across every document read, all of them grade at most `located`. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
+
+### Builds of one function
+
+A function row exists once per binary. When a name is defined with different code in several binaries, an entry credits it only in the binary the entry names: by its path as `binaries.tsv` spells it, from any directory down (`usr/gfx/arch/IP32CRM/libGLcore.so`, or just `libGLcore.so` when no other binary has that name), or for an archive member by `gfxs.a(gfx_flow.o)` or the member alone. The name must pick out one binary: a path that matches several builds with different code names none of them. Builds with the same `code_sha` for that name have the same code and share the credit. Every other build is at most `located`. A name that has the same code wherever it is defined needs no citation of a binary. `summary.tsv` has one row, `functions in <binary>`, per binary with functions.
+
+### Distinct counts
+
+`understood_distinct` in `summary.tsv` is the number of different sentence skeletons behind a table's understood rows. A table whose understood rows rest on few skeletons is templated bulk even when no skeleton is over the cap.
+
+### Effect of these rules
+
+Percent understood before and after the subject, citation, template and per-binary rules were added, from the same documents:
+
+| Table | InfiniteReality | Odyssey | CRIME |
+|---|---:|---:|---:|
+| binaries | 17.2 to 11.2 | 40.6 to 0.0 | 31.7 to 7.3 |
+| functions | 12.6 to 1.0 | 0.8 to 0.0 | 10.9 to 1.1 |
+| functions (distinct names) | 7.7 to 1.4 | 0.6 to 0.0 | 9.3 to 1.6 |
+| mmio | 100.0 to 15.1 | 38.8 to 6.0 | 95.6 to 55.5 |
+| tokens | 98.4 to 75.0 | 27.1 to 0.8 | 100.0 to 100.0 |
+| ioctls | 100.0 to 74.5 | 11.0 to 1.1 | 100.0 to 83.3 |
+| ucode | 100.0 to 94.4 | 35.2 to 0.0 | no rows |
+| spec-registers | 93.4 to 16.1 | no rows | 91.4 to 55.2 |
 
 How a mention is found:
 
