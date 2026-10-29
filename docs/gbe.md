@@ -178,3 +178,13 @@ Established tile geometry: a frame-buffer tile row is 512 bytes wide, so a tile 
 ## Overlay and underlay planes
 
 Established: the overlay plane is an 8-bit plane described by `OVR_WIDTH_TILE`, `OVR_CONTROL` and its own tile list; the display-ID plane (`DID_CONTROL`) points at the 64-entry list above. Unknown: the pixel-to-window-ID mapping (which overlay values select which table entry), underlay plane behaviour, and whether the overlay is composited above or below the frame buffer; no decoded code states either.
+
+## Colour-map writes and the FIFO (`crmInstallPseudoColorMap`)
+
+Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), GBE.h. GBE has no command stream; the only FIFO a driver sees is the colour-map write FIFO at `+0x58000`. Labels as above.
+
+- Established: the X module installs a pseudo-colour map one entry at a time from a list of 8-byte records (a 16-bit index at +2, red, green, blue bytes at +4, +5, +6). Each entry becomes one 32-bit store to `GBE + 0x50000 + 4 * index` of `red << 24 | green << 16 | blue << 8`, the layout `GBE_CMAP_ENTRY` gives. The index is the global entry number, so a window's colour-map group (the `CM` value of its window ID times 256, see above) is part of the index.
+- Established: alongside each hardware store it keeps a software copy of the entry as `blue << 16 | green << 8 | red` in a table the screen record points at (offset +0x40).
+- Established: the entry with index `0x1102` (4354, in group 17) is not written to the hardware, only to the software copy, when a screen flag (+0x18 of the same record) is non-zero; otherwise it is treated like any other entry. The reason is unknown.
+- Established: between entries the module checks the FIFO count with the revision-dependent test recorded in `GBE.h` (wait while the count is below 48 for revision 2 or later; before that wait while it is non-zero and below 48), at the start of the list and after a batch of entries.
+- Unknown: the batch size between FIFO checks (kept in a register the disassembly does not pin down), and whether the hardware drains the FIFO in strict write order.
