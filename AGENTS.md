@@ -138,6 +138,13 @@ shows as the driver's expectation, not as proof of hardware behaviour.
 Write findings in your own words. Never paste vendor source, HDL or
 proprietary binaries into the repository.
 
+Findings taken from the linked IRIX source tree are committed like any
+other finding: restated in your own words and cited by path, as in
+`<source path>` or `<source path>`, with the release
+(a release). Each chip header lists the source paths it drew on in its
+opening comment. Never copy code, comments, macro bodies or file layout. Where
+a 6.5.30 binary confirms the same fact, cite both.
+
 Some facts no software reveals, such as the reset value of a register no
 driver reads. When every route is exhausted, label the fact "unknown: no
 shipped software or published source depends on it" and list the routes you
