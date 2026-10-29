@@ -2531,7 +2531,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100924f0	6436	ProcRecordGetCont
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10093e20	308	AccessSetSelectionOwner	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10093f60	108	pcfError	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10093fe0	308	AccessKillClient	dynsym	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094120	484	shmiqLink	dynsym	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094120	484	shmiqLink	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094310	1356	AccessSocket	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094860	352	AccessWarpPointer	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100949c0	92	SProcDCStubDispatch	dynsym	undocumented		
@@ -5133,7 +5133,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fcc0	360	sgiCapPolyGlyphBlt
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fe30	1560	ShapeFreeEvents..FNC	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280450	520	_fs_client_access..NFB	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280660	748	SrvXkbResizeKeyActions	dynsym	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280980	1920	sgiCheckDevices	dynsym	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10280980	1920	sgiCheckDevices	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10281100	3592	SecurityLoadPropertyAccessList..GED	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10281f10	2952	CIDComputeStdProps..DNB	dynsym	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10282aa0	1964	T1FillFontInfo	dynsym	undocumented		
@@ -13656,8 +13656,8 @@ usr/gfx/setmon	shared-tool	n32		0x1000d4dc	164	odyGetVOFpath	dynsym	undocumented
 usr/gfx/setmon	shared-tool	n32		0x1000d580	740	odyDoFramelock	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000d864	2252	odysetmon	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000e130	732	npsetmon	dynsym	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
+usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	documented	docs/ioctls.md#requests-in-the-scan-that-the-graphics-driver-never-sees	Requests in the scan that the graphics driver never sees
 usr/gfx/setmon	shared-tool	n32		0x1000fa18	268	venice_get_dg2_eeprom	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fb24	416	venice_set_dg2_eeprom	dynsym	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fcc4	236	venice_grok_dg2_eeprom_error	dynsym	undocumented		
