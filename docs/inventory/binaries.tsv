@@ -4,7 +4,7 @@ sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ece
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0	0	0	documented	docs/gbe.md#video-timing-period	Video timing period
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	111	3	documented	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
-usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	documented	docs/pixel-transfer.md#linear-tlb-loading	Linear TLB loading
+usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	19	3	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	kernel	board-kernel	object	n32	19972	8a1446b8d97db075		14	8	0	documented	docs/gbe.md#stereo-format-files-and-the-conversion-to-the-kernel-record	Stereo format files and the conversion to the kernel record
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	kernel	board-kernel	object	n32	32916	1839b4af7754b7d8		29	36	0	documented	docs/gbe.md#high-level-interrupt-scheduler-lines-2-and-3	High-level interrupt scheduler (lines 2 and 3)
 usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	kernel	board-kernel	object	n32	5876	1f59a4d0a4414528		2	0	0	named-only	AGENTS.md#2-project-binaries--evidence	2. Project Binaries & Evidence

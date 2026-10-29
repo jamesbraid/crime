@@ -904,7 +904,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	11
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xfe0	184	crime_i2cFpGbeRetrace	dwarf+funcnames+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1098	60	crime_FpSchedForRetrace	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x10d4	2320	crimePreblankHandler	dwarf+symtab	documented	CRIME.h:84	Interrupt registers
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x19e4	760	crm_copy_swap_boxes	dwarf+funcnames+symtab	undocumented		
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x19e4	760	crm_copy_swap_boxes	dwarf+funcnames+symtab	documented	docs/mte.md#buffer-swap-by-copy-in-the-kernel-crmswapbufd	Buffer swap by copy in the kernel (`crmSwapBufd`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1cdc	1044	crmSwapBufd	dwarf+symtab	documented	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x20f0	504	crimeSchedSwapBuf	dwarf+symtab	undocumented		
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x22e8	412	crimeUnSchedSwapBuf	dwarf+symtab	documented	docs/ioctls.md#driver-requests-crimeioctl	Driver requests (`crimeIoctl`)
@@ -6694,7 +6694,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a840	280	convertR
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a958	1716	convertRGBA1555To5551	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	undocumented		
@@ -10819,7 +10819,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bb60	456	conver
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bd30	456	convertRGBA1555To5551	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95bf00	1080	__GL_CRM_SCALE_PIXEL_SPAN	dwarf+dynsym	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c340	304	__glcrmim_2DPointVertex2fv	dwarf+dynsym	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c470	200	__glCrmVertexPointFast	dwarf+dynsym	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c470	200	__glCrmVertexPointFast	dwarf+dynsym	documented	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c540	184	RenderPoint	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c600	112	RenderPointCI	dwarf+funcnames	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c670	568	RenderPointDepth	dwarf+funcnames	undocumented		
