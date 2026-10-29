@@ -23,8 +23,7 @@ Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 19
 - CPU-interface registers take 64-bit doubleword accesses only (established, [spec] PDF 113-115). Eight memory bank controls sit at +`0x208` to +`0x240`; bit 8 selects 16 Mbit or 64 Mbit SDRAM geometry (established, [spec] PDF 150, 152).
 - Revisions (established, [spec] PDF 113-119, 49, 215): CRIME 1.5 reads ID `0xb1`; the draft records 1.1 as `0xa1`, earlier `0xa0`, with the CPU error-status register at `0x14000048` instead of `0x14004048` and a 36-bit rather than 40-bit CPU decode. [linux] (`arch/mips/sgi-ip32/crime.c`) uses the earlier offset. The ID of shipped silicon is **unknown** here, and the specification says its rendering chapter still needs updating for 1.1.
 - GBE interrupts route to CRIME interrupt inputs 16-19 (established, [spec]). GBE reads its frame buffer from system memory in 64 KiB tiles (established, [linux] `drivers/video/fbdev/gbefb.c`).
-- The rendering chapter is unfinished in the specification: translation, rasterization, texel lookup and filtering have explicit holes (PDF 187, 191, 193, 195, 202-205). The FIFO is 128 entries in the text, 64 in [netbsd]. The memory-error interrupt prose says input 20 while its table assigns memory to 21 and CPU to 20. Treat each as unknown until a binary or capture settles it.
-- Do not use the specification's embedded source-code and HDL pages as a source for this project's findings.
+- The rendering chapter is unfinished in the specification: translation, rasterization, texel lookup and filtering have explicit holes (PDF 187, 191, 193, 195, 202-205). The FIFO is 128 entries in the text, 64 in [netbsd]. The memory-error interrupt prose says input 20 while its table assigns memory to 21 and CPU to 20. Treat each as unknown until a binary or a published source settles it.
 
 ### Major blocks
 
@@ -106,28 +105,100 @@ Scripts (`scripts/`, run from the repository root):
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
 - `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `libglcore/asm/` and `manifest.json`, and write `libglcore/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
 - `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `ddx/groups.json`. Its default module path is a placeholder; pass the real one.
+- `inventory.py`: count what the in-scope binaries contain and mark each entry documented, named-only or undocumented. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
 - `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
 
 The scripts descend from gr4's and carry its BSD-3 notice ([scripts/LICENSE-gr4](scripts/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
 
 ---
 
-## 6. Working on this repository
+## 6. Evidence: software only, any source
 
-Workflow: populate `root/` (IRIX_FILES.md), run `scripts/populate-root`, run the scripts above, then read, write headers and docs, and update `docs/coverage.md`.
+No hardware is available for this work. Do not plan, request or wait for
+measurements on a real machine. Every question is answered from software and
+published material, and a row is not finished while either still has
+something to read.
+
+Readers may open anything:
+
+- every shipped binary on every IRIX release, and any disassembly or
+  decompilation of it;
+- the IRIX source tree linked from this repository;
+- vendor specifications, including any embedded source code or HDL pages;
+- public drivers and emulators: Linux, NetBSD, OpenBSD, MAME and others;
+- manuals, release notes and man pages;
+- published output from real machines: `hinv`, `gfxinfo`, `irsaudit`, ide
+  diagnostic transcripts, X server logs and screenshots in newsgroup and
+  mailing-list posts, web pages, archives and forums.
+
+Running the shipped software under an emulator, to watch which registers it
+touches and what it expects back, is also software evidence. Label what it
+shows as the driver's expectation, not as proof of hardware behaviour.
+
+Write findings in your own words. Never paste vendor source, HDL or
+proprietary binaries into the repository.
+
+Some facts no software reveals, such as the reset value of a register no
+driver reads. When every route is exhausted, label the fact "unknown: no
+shipped software or published source depends on it" and list the routes you
+tried. An emulator author then chooses a value and documents the choice. Never
+write "needs capture".
+
+An open question is not a stopping point. Record it in
+`docs/open-questions.md` with every route already tried and the next one to
+try, then carry on with other work. When a question is answered, move it into
+the owning chip header or chapter and delete the entry.
+
+## 7. When work is finished
+
+A coverage row is done when every inventory entry in its area
+(`docs/inventory/`) is documented and every remaining unknown is labelled
+"unknown: no shipped software or published source depends on it", with the
+routes tried. Anything less is partial. The repository is finished when every
+inventory table reaches that state, not when the rows look full.
+
+When you finish a task, regenerate the inventory, then pick the next
+undocumented entries and carry on. Hand off only when your assigned area meets
+the definition above, or when the session ends. In that case, say in
+`docs/open-questions.md` where you stopped and what comes next.
+
+---
+
+## 8. Working on this repository
+
+Workflow: populate `root/` (IRIX_FILES.md), run `scripts/populate-root`, run `scripts/inventory.py`, pick work from the inventory, then read, write headers and docs, and regenerate the inventory.
+
+### Picking work
+
+The inventory is the work list. [docs/coverage.md](docs/coverage.md) shows the measured percentage for each table, and the rows themselves are in `docs/inventory/`:
+
+- `functions.tsv`: every function symbol in each in-scope binary.
+- `mmio.tsv`: every CRIME, rendering-engine, GBE and MACE-video offset the code reaches.
+- `tokens.tsv`: constant words stored to rendering-engine registers.
+- `ioctls.tsv`: graphics ioctl requests sent or handled.
+- `spec-registers.tsv`: every register in the public CRIME 1.5 and GBE specifications.
+
+Take rows whose status is `undocumented` (then `named-only`), sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `documented` when a chapter under `docs/` or a header names it with its derivation; `scripts/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
+
+In the same commit as any finding:
+
+1. Run `scripts/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `docs/inventory/` and `docs/coverage.md`.
+2. Update the affected area row in `docs/coverage.md`.
+
+Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory.py` or `scripts/inventory-config.json` and say why in the commit.
 
 Roles:
 
-- **Opus readers** take the Priority list in `docs/coverage.md`, in order.
-- **Sonnet readers** backfill `docs/coverage.md` rows one block at a time.
+- **Opus readers** take the open questions in `docs/open-questions.md` and the undocumented rows of the rendering-engine, ioctl and token tables.
+- **Sonnet readers** backfill undocumented rows of the function, register-offset and specification tables a binary at a time.
 
 Output rules:
 
 - Findings go in chip headers at the repository root plus `docs/` chapters, written in your own words.
-- Label every fact established, inferred or unknown, with its derivation: binary and release, function or offset, or the public source path.
+- Label every fact established, inferred or unknown, with its derivation: binary and release, function or offset, or the source path.
 - Update `docs/coverage.md` in the same commit as the finding.
 - Commit disassembly, decompiled C and traces you produce as data; keep the proprietary binaries in `root/`. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps are gitignored.
-- Commit what you cite: findings may rest on IRIX binaries or public sources only.
+- Commit what you cite: findings may rest on any source section 6 allows, named in the finding.
 
 Downstream emulator projects consume the headers and docs; they should not need to read the binaries.
 
