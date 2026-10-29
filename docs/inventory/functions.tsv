@@ -285,7 +285,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021164	360	bc	dwarf+funcna
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00212cc	720	dprint	dwarf+funcnames	51f6112aa3ac	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002159c	40	fms	dwarf+funcnames	b6328348d876	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00215c4	36	mem_error	dwarf+symtab	53fa47908292	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021600	156	_r4600sc_disable_scache	dwarf+symtab	ef2a9777bba1	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021600	156	_r4600sc_disable_scache	dwarf+symtab	ef2a9777bba1	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002169c	420	_r4600sc_enable_scache	dwarf+symtab	2aafc1b5d3a5	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021840	164	_r4600sc_vtop	dwarf+symtab	8e88846e755a	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00218e4	28	_r4600sc_cache_index	dwarf+symtab	ee4a76593ac3	undocumented		
@@ -444,7 +444,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027410	40	cpu_hardreset	dw
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027438	40	cpu_softreset	dwarf+symtab	3c6e0f585374	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027460	8	cpu_reset	dwarf+symtab	78aa5094d5ec	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027468	128	cpu_rtcinit	dwarf+symtab	e3dd9f771d4f	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00274e8	260	cpu_powerdown	dwarf+symtab	2cb8b4a7d500	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00274e8	260	cpu_powerdown	dwarf+symtab	2cb8b4a7d500	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00275ec	164	cpu_scandevs	dwarf+symtab	791dfc1041ad	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027690	236	cpu_get_freq	dwarf+symtab	53ac7e48aebd	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002777c	72	flashWrite	dwarf+funcnames	b3d6c39d4f38	undocumented		
@@ -1144,8 +1144,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x84	280	tfp_special_in
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19c	100	kpreemption	symtab	cba4d4792bc3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x200	36	arcs_write	dwarf+symtab	dc3b226a3454	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x224	144	arcs_load	dwarf+symtab	003a28c72928	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2b4	140	prom_autoboot	dwarf+symtab	fc998cb41cdc	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x340	120	prom_reinit	dwarf+symtab	c70daadc5cfc	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2b4	140	prom_autoboot	dwarf+symtab	fc998cb41cdc	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x340	120	prom_reinit	dwarf+symtab	c70daadc5cfc	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b8	76	arcs_setuproot	dwarf+symtab	1e64f206065f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x404	68	arcs_getenv	dwarf+symtab	7c42c23a4bec	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x448	64	arcs_nvram_tab	dwarf+symtab	31a34eb96816	undocumented		
@@ -1246,7 +1246,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2350	44	init_flash_ro
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x237c	376	get_flash_version	dwarf+funcnames	027b8ea603a7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x24f4	28	update_flash_version	dwarf+symtab	ac1bbde0ea38	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2510	28	load_nvram_tab	dwarf+symtab	34d7a2e33b85	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x252c	20	flash_version	dwarf+symtab	506ac9e2524c	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x252c	20	flash_version	dwarf+symtab	506ac9e2524c	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2540	24	flash_write_enable	dwarf+funcnames	5b8115db5346	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2558	28	flash_write_disable	dwarf+funcnames	405e32e668ed	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2574	288	flash_write_sector	dwarf+symtab	15cb92e001eb	undocumented		
@@ -1256,9 +1256,9 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x29e8	412	set_nvram	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2b84	304	flash_create_env_hdr	dwarf+funcnames	8929c7ff7ad7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2cb4	100	flash_copy_entry	dwarf+funcnames	f22ed93945c3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2d18	84	flash_body_cksum	dwarf+symtab	a582b47c155c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2d6c	708	flash_write_env	dwarf+symtab	6b569464108d	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x2d6c	708	flash_write_env	dwarf+symtab	6b569464108d	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3030	64	flash_set_nvram_changed	dwarf+symtab	3828cf4b6318	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3070	48	prom_does_eccinit	dwarf+symtab	b8c4e4282613	named-only	docs/memory.md#control-watchdog-time-ecc-enable-and-revision-code-pass-4	Control, watchdog, time, ECC enable and revision code (pass 4)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3070	48	prom_does_eccinit	dwarf+symtab	b8c4e4282613	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x30a0	248	flash_sync_globals	dwarf+symtab	1443870fe270	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3198	160	dump_nvram_vars	dwarf+symtab	209790be7c29	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3238	88	copyin	dwarf+symtab	851d9aa69ef0	named-only	docs/functions.md#device-entry-points	Device entry points
@@ -1313,15 +1313,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3fd0	56	bcopy_end	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3fd0	56	swbcopy	dwarf+symtab	7b8004182b30	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4008	48	rtlock_ownerstamp	dwarf+symtab	bb1686541a64	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4038	80	dumpcopy	dwarf+symtab	d007b61a8eba	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4088	56	update_ust_i	dwarf+symtab	78593e664901	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40c0	48	get_ust_nano	dwarf+symtab	5dc09cb76498	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40f0	44	ust_to_nano	dwarf+symtab	d365f6b4a716	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x411c	12	get_ust	dwarf+symtab	459adfaf5b87	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4128	60	get_updated_ust_i	dwarf+symtab	a206aa8a228b	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4164	40	nano_to_ust	dwarf+symtab	06e441d5c219	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x418c	36	ust_init	dwarf+symtab	106424f27f33	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x41b0	160	fill_ust_highbits	dwarf+symtab	2e8d2cce3af5	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4250	64	update_ust	dwarf+symtab	a75a44a943e3	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4088	56	update_ust_i	dwarf+symtab	78593e664901	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40c0	48	get_ust_nano	dwarf+symtab	5dc09cb76498	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x40f0	44	ust_to_nano	dwarf+symtab	d365f6b4a716	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x411c	12	get_ust	dwarf+symtab	459adfaf5b87	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4128	60	get_updated_ust_i	dwarf+symtab	a206aa8a228b	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4164	40	nano_to_ust	dwarf+symtab	06e441d5c219	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x418c	36	ust_init	dwarf+symtab	106424f27f33	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x41b0	160	fill_ust_highbits	dwarf+symtab	2e8d2cce3af5	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4250	64	update_ust	dwarf+symtab	a75a44a943e3	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4290	476	ecc_exception	dwarf+symtab	9a76902eb8ad	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4468	4	eccword	symtab	df3f619804a9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x446c	384	r10k_ecc_exception	dwarf+symtab	6e2149c47267	undocumented		
@@ -1361,7 +1361,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5ac4	48	pio_badaddr	d
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5af4	56	pio_badaddr_val	dwarf+symtab	114271ef4b05	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b2c	48	pio_wbadaddr	dwarf+symtab	45034b7759d0	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b5c	64	pio_wbadaddr_val	dwarf+symtab	50c1bb4149d7	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b9c	160	_r4600sc_disable_scache	dwarf+symtab	c8607602ef93	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b9c	160	_r4600sc_disable_scache	dwarf+symtab	c8607602ef93	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5c3c	432	_r4600sc_enable_scache	dwarf+symtab	c2e8bfebb5bd	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5dec	168	_r4600sc_vtop	dwarf+symtab	f316b14ff121	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5e94	28	_r4600sc_cache_index	dwarf+symtab	ee4a76593ac3	undocumented		
@@ -1405,7 +1405,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	VEC_trap	dwar
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	soft_trap	symtab	ffdd7d585250	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8160	8	add_ioboard	dwarf+symtab	78aa5094d5ec	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8168	124	add_vice	dwarf+funcnames	f5016f23145c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x81e4	216	add_cpuboard	dwarf+symtab	9b2b408e83de	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x81e4	216	add_cpuboard	dwarf+symtab	9b2b408e83de	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x82bc	268	init_sysid	dwarf+symtab	2a61486e82df	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x83c8	316	setup_ip32_flags	dwarf+funcnames	1e233f1fa920	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8504	564	early_gbe_stop	dwarf+symtab	e911ead8ba71	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
@@ -1416,9 +1416,9 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8be8	200	allowboot	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8cb0	360	setupbadmem	dwarf+symtab	a2119278e649	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8e18	324	szmem	dwarf+symtab	3887d387cb65	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8f5c	180	last_phys_pfn	dwarf+symtab	5f8456013698	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9010	116	isa_dma_buf_init	dwarf+symtab	05a38d2bed9b	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9010	116	isa_dma_buf_init	dwarf+symtab	05a38d2bed9b	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9084	88	scrub_memory_block	dwarf+funcnames	321512bb3edd	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x90dc	304	ecc_meminit	dwarf+symtab	cc40abe5210c	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x90dc	304	ecc_meminit	dwarf+symtab	cc40abe5210c	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x920c	84	ecc_enable	dwarf+symtab	6c3ab54e0964	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9260	12	ecc_disable	dwarf+symtab	a818e747ab4f	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x926c	88	mace_hwgraph_lookup	dwarf+symtab	a70418764d63	undocumented		
@@ -1427,15 +1427,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9324	276	extk0_pages_
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9438	212	extk0_wiremem	dwarf+symtab	51697af3464d	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x950c	292	extk0_mem_alloc	dwarf+symtab	c5859ef6dfe3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9630	816	extk0_avail_alloc	dwarf+symtab	baf89b58bfd8	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9960	212	early_mte_zero	dwarf+symtab	62153d542e0d	named-only	docs/reset.md#kernel-bulk-zero-and-copy-through-the-mte	Kernel bulk zero and copy through the MTE
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9a34	380	mte_copy	dwarf+symtab	c31c9bf99396	named-only	docs/context.md#other-users-of-the-save-and-replay	Other users of the save and replay
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9bb0	280	mte_zero	dwarf+symtab	64d011315df8	named-only	docs/context.md#other-users-of-the-save-and-replay	Other users of the save and replay
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9cc8	84	mte_delay	dwarf+symtab	17ab3211423b	named-only	docs/reset.md#kernel-bulk-zero-and-copy-through-the-mte	Kernel bulk zero and copy through the MTE
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d1c	84	mte_spin	dwarf+symtab	a241301469f8	named-only	docs/reset.md#kernel-bulk-zero-and-copy-through-the-mte	Kernel bulk zero and copy through the MTE
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d70	272	mte_set_tlb	dwarf+symtab	5b9d8c0a4857	named-only	docs/reset.md#kernel-bulk-zero-and-copy-through-the-mte	Kernel bulk zero and copy through the MTE
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9e80	112	mte_fifo_wait	dwarf+symtab	e2ed07372b97	named-only	docs/reset.md#kernel-bulk-zero-and-copy-through-the-mte	Kernel bulk zero and copy through the MTE
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9960	212	early_mte_zero	dwarf+symtab	62153d542e0d	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9a34	380	mte_copy	dwarf+symtab	c31c9bf99396	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9bb0	280	mte_zero	dwarf+symtab	64d011315df8	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9cc8	84	mte_delay	dwarf+symtab	17ab3211423b	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d1c	84	mte_spin	dwarf+symtab	a241301469f8	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d70	272	mte_set_tlb	dwarf+symtab	5b9d8c0a4857	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9e80	112	mte_fifo_wait	dwarf+symtab	e2ed07372b97	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ef0	48	strayc0	dwarf+funcnames	9c6ab412d98a	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f20	52	crimestray	dwarf+funcnames	f83e6405ae8b	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f20	52	crimestray	dwarf+funcnames	f83e6405ae8b	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f54	36	crmerr_intr	dwarf+symtab	b1f452e5d4f9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f78	128	set_hwperf_intr	dwarf+symtab	a1c1ca8f8334	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ff8	220	synthclock	dwarf+symtab	1de465b95fe4	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
@@ -1444,21 +1444,21 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa1ac	48	is_thd	dwarf+
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa1dc	108	crimegang	dwarf+symtab	cb3a138505af	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa248	64	crime_intr_enable	dwarf+symtab	296e46e5ca75	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa288	68	crime_intr_disable	dwarf+symtab	c9cb8f2fec13	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa2cc	684	crime_intr	dwarf+funcnames	ed775fd57a19	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa2cc	684	crime_intr	dwarf+funcnames	ed775fd57a19	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa578	588	intr	dwarf+symtab	7d8af72607ca	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7c4	8	setkgvector	dwarf+symtab	0704e46b90c8	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7cc	360	getcvpriority	dwarf+symtab	5bec9452990c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa934	200	create_crimegang	dwarf+symtab	a8a39d587dc3	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa9fc	144	join_crimegang	dwarf+symtab	4a21d14bf335	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa7cc	360	getcvpriority	dwarf+symtab	5bec9452990c	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa934	200	create_crimegang	dwarf+symtab	a8a39d587dc3	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa9fc	144	join_crimegang	dwarf+symtab	4a21d14bf335	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaa8c	108	setsplmasks	dwarf+symtab	c11dddfd6b3d	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaaf8	624	setcrimevector	dwarf+symtab	b8066599d247	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xad68	144	enable_ithreads	dwarf+symtab	6ba728abf48d	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thread_setup	dwarf+symtab	2b2dd8548d53	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xae50	88	crimevec_intrd_init	dwarf+symtab	a2adfedb9477	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaea8	144	crimevec_intrd	dwarf+symtab	ffc2fdd4997c	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf38	80	bust_crimegang	dwarf+funcnames	1cb83da467e6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf88	348	leave_crimegang	dwarf+funcnames	9f604c3cde13	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	dwarf+symtab	11c5f3fb207f	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xad68	144	enable_ithreads	dwarf+symtab	6ba728abf48d	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thread_setup	dwarf+symtab	2b2dd8548d53	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xae50	88	crimevec_intrd_init	dwarf+symtab	a2adfedb9477	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaea8	144	crimevec_intrd	dwarf+symtab	ffc2fdd4997c	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf38	80	bust_crimegang	dwarf+funcnames	1cb83da467e6	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf88	348	leave_crimegang	dwarf+funcnames	9f604c3cde13	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	dwarf+symtab	11c5f3fb207f	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1a8	36	sendintr	dwarf+symtab	f9a9f6566807	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1cc	80	spl0	dwarf+symtab	67fd70f20787	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl1	symtab	2204b057e629	undocumented		
@@ -1494,11 +1494,11 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb5c4	48	stopclocks	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb5f4	48	startkgclock	dwarf+symtab	61bd7ed18399	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb624	48	slowkgclock	dwarf+symtab	fd027248dd82	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb654	196	r4kcount_intr	dwarf+symtab	4abb35fd140a	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb718	48	ackkgclock	dwarf+symtab	2582c7a875cd	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb718	48	ackkgclock	dwarf+symtab	2582c7a875cd	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb748	48	ackrtclock	dwarf+symtab	f9c34a51642e	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb778	308	tick_maint	dwarf+symtab	991321902ec9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb8ac	184	onesec_maint	dwarf+symtab	d502ad981cfe	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb964	392	fastick_maint	dwarf+symtab	5f5bc0bb76b7	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb8ac	184	onesec_maint	dwarf+symtab	d502ad981cfe	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb964	392	fastick_maint	dwarf+symtab	5f5bc0bb76b7	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xbaec	100	tick_actions	dwarf+symtab	d5a1f6a4a034	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xbb50	236	timeout_get_queuehead	dwarf+symtab	a72fb702707f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xbc3c	208	chktimeout_tick	dwarf+symtab	facc9fba54c2	undocumented		
@@ -1522,7 +1522,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc680	84	enable_fastcl
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6d4	8	query_cyclecntr_size	dwarf+symtab	6d182be018f1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6dc	28	query_fasttimer	dwarf+symtab	fd467ca0ef47	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6f8	40	timepoke	dwarf+symtab	475cf51a1052	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc720	40	fast_timepoke	dwarf+symtab	4602b92b8a4b	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc720	40	fast_timepoke	dwarf+symtab	4602b92b8a4b	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc748	88	inithrestime	dwarf+symtab	3da6838eade0	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc7a0	28	atomicAddInt	dwarf+symtab	fc57e68455bd	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc7a0	28	atomicAddLong	symtab	fc57e68455bd	undocumented		
@@ -1612,7 +1612,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb60	60	ecc_same_cach
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb9c	576	decode_inst	dwarf+symtab	9cb250dd414d	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfddc	200	map_physaddr	dwarf+symtab	1aa7ca9a289a	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfea4	100	unmap_physaddr	dwarf+symtab	7b1df8db27d9	understood	docs/functions.md#memory-and-ecc	Memory and ECC
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff08	72	err_save_regs	dwarf+funcnames	2da3aa775f12	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff08	72	err_save_regs	dwarf+funcnames	2da3aa775f12	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xff50	160	ecc_error_correction	dwarf+symtab	e2c015d7e3cf	understood	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfff0	52	syn_to_data_bit	dwarf+funcnames	b1ee0a6235c3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10024	40	bitcount	dwarf+funcnames	71634bd9f6e9	undocumented		
@@ -1623,7 +1623,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102b0	60	dobuserr	dwa
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102ec	272	print_buserr_rev1	dwarf+symtab	33600ca346a2	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x103fc	456	print_buserr_rev0	dwarf+symtab	26bba8e26917	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x105c4	400	print_memerr	dwarf+funcnames	fe461b7c095d	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10754	796	dobuserr_common	dwarf+funcnames	ac9d62335fa8	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10754	796	dobuserr_common	dwarf+funcnames	ac9d62335fa8	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10a70	164	idle_err	dwarf+symtab	32299afe00d7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10b14	52	earlynofault	dwarf+symtab	d03eb83da7bb	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10b48	112	pci_error_intr	dwarf+symtab	64b901de2d5a	undocumented		
@@ -1646,7 +1646,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f74	24	bank_size	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f8c	348	_addr_to_ibank	dwarf+funcnames	b36924608ea9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x110e8	28	addr_to_bank	dwarf+symtab	01dd5ac1768e	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11104	32	addr_to_ibank	dwarf+symtab	4b4d324dfb91	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	dwarf+symtab	aab8996edc9d	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	dwarf+symtab	aab8996edc9d	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x111e0	60	cpu_godown	dwarf+funcnames	92b4c8f90e02	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1121c	196	cpu_waitforreset	dwarf+symtab	5b600a705233	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x112e0	304	power_dump	dwarf+symtab	8d7b85384552	undocumented		
@@ -1656,7 +1656,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11620	8	cpuboard	dwar
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11628	72	fp_find	dwarf+symtab	777a198ee686	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11670	28	fp_init	dwarf+symtab	d51ef8b359e7	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1168c	316	dprintf	dwarf+symtab	dbd2c1d0ea50	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_buf_addr	dwarf+symtab	dd800c4fb3a8	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_buf_addr	dwarf+symtab	dd800c4fb3a8	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1180c	20	query_cyclecntr	dwarf+symtab	8bdd40067301	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11820	24	absolute_rtc_current_time	dwarf+symtab	3f79b5b25c5c	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11838	96	get_crimerev	dwarf+symtab	7094f825e2b4	understood	docs/functions.md#start-up-and-revision	Start-up and revision
@@ -1698,7 +1698,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x121f4	192	rtc_init	dw
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x122b4	504	inittodr	dwarf+symtab	5c4f629b92f2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x124ac	28	resettodr	dwarf+symtab	34d7a2e33b85	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x124c8	532	rtodc	dwarf+symtab	5d67821cb229	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x126dc	780	wtodc	dwarf+symtab	781ecac648a2	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x126dc	780	wtodc	dwarf+symtab	781ecac648a2	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x129e8	576	_clock_func	dwarf+funcnames	00bdc0462db8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12c28	216	read_dallas_nvram	dwarf+symtab	6e5f2e897e6b	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12d00	216	write_dallas_nvram	dwarf+symtab	b21651d9ba34	undocumented		
@@ -1707,7 +1707,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12e48	116	clearbadclo
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12ebc	100	isbadclock	dwarf+funcnames	06c6976444ff	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12f20	696	set_autopoweron	dwarf+symtab	d85899924571	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x131d8	260	get_dayof_week	dwarf+funcnames	55ee26e5cad6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x132dc	84	chktimedrift	dwarf+symtab	e7c2a34212ed	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x132dc	84	chktimedrift	dwarf+symtab	e7c2a34212ed	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13380	536	systrap	dwarf+symtab	1cbdefa42e52	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13598	16	VEC_syscall	dwarf+symtab	2e0bd42eb1b1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x135a8	48	get_fpc_csr	dwarf+symtab	4ae48183406b	undocumented		
@@ -1730,7 +1730,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b28	52	us_delaybus	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b5c	28	cache_preempt_limit	dwarf+symtab	34d7a2e33b85	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b78	656	findcpufreq_raw	dwarf+symtab	4d1c1b9e4b1f	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e08	60	findcpufreq	dwarf+symtab	0195442af336	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e44	636	cpu_mhz_rating	dwarf+symtab	a13e2905fd36	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13e44	636	cpu_mhz_rating	dwarf+symtab	a13e2905fd36	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140c0	56	_ticksper1024inst	dwarf+symtab	547293136b7f	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x140f8	172	_cpuclkper100ticks	dwarf+symtab	92097777333d	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x141a4	132	delay_calibrate	dwarf+symtab	291163649fe1	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
