@@ -99,13 +99,25 @@ enum mte_buf {  /* [E, spec PDF 185, MTE version of the table] */
  * or 32 only [E, spec PDF 178]). crmSubtileTexels and crmSubtileSpan use
  * the same byte-address stepping (8, +0x18, +0x1e00) whatever the format
  * and move texels as 16-bit halfwords with a per-halfword write mask [E].
- * Inferred: the layout is defined in bytes, so a 32-bit subtiled texture
- * would hold 2 x 4 texels per 32-byte cell and 32 x 64 texels per 8 KiB;
- * whether the driver ever subtiles 32-bit formats is [U] (the per-format
- * table that sets the subtiled flag was not decoded). The order of the
- * eight 8 KiB subtiles within a 64 KiB tile is [U].
+ * The full address of a texel is set by the store routine that calls
+ * crmSubtileSpan [E, gl:crm_texture:crmTexSubImageStore 0x0d9751f8-
+ * 0x0d9752a4]: with y the row and b = x << log2(bytes per texel) the byte
+ * column, the 64 KiB tile is (y >> 7) * tiles_across + (b >> 9) and the
+ * offset in it is, with yl = y & 0x7f and bl = b & 0x1ff:
+ *   bits  2:0  bl bits 2:0      bits 10:9  yl bits 5:4
+ *   bits  4:3  yl bits 1:0      bits 12:11 yl bits 3:2
+ *   bits  8:5  bl bits 6:3      bits 14:13 bl bits 8:7
+ *   bit  15    yl bit 6
+ * So a 32-byte cell is 8 bytes by 4 rows, an 8 KiB subtile is 128 bytes by
+ * 64 rows, and the eight subtiles of a tile are numbered
+ * (yl >> 6) * 4 + (bl >> 7): four across, two down [E for what the driver
+ * writes; inferred that the engine reads the same layout when Texture.mode
+ * bit 24 is set]. The layout is in bytes, so a 32-bit subtiled texture
+ * holds 2 x 4 texels per cell and 32 x 64 per subtile [E, same code].
+ * The driver subtiles every level it creates, 16- and 32-bit alike,
+ * unless GLCRMTEXUSEONCE is set [E, crmComputeTexLevelSize; docs/opengl.md].
  */
-#define SUBTILE_BLOCK_BYTES 32      /* [I] */
-#define SUBTILE_BYTES       0x2000  /* [I] at 16 bits per texel */
+#define SUBTILE_BLOCK_BYTES 32      /* [E] 8 bytes x 4 rows */
+#define SUBTILE_BYTES       0x2000  /* [E] 128 bytes x 64 rows */
 
 #endif /* MTE_H */

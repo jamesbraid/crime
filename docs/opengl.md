@@ -76,7 +76,7 @@ Not every 4-input 2D routine was compared term by term (`__glMipsXForm4_2DW`, `_
 - Established, `__glMipsClipCheckSafe2/3/4`: for vertices known to be inside; they load clip x, y, z, w from the vertex record at +112 to +124, take the reciprocal of w and jump through a context slot (gc+11936, +11940 and +11944 for 2, 3 and 4 components), so no comparison is made.
 - Established, `__glMipsClipCheckAll2/3/4`: save the caller-saved registers and call the C routines `__glClipCheckAll2/3/4`. Inferred from the name only: these also test the user clip planes (not read).
 - Established, `__glMipsClipCheck2D_2/_3/_3_vtx/_4`: the transform and the window-box test in one routine. They apply the combined matrix stored at gc+29748 (terms M[0], M[4], M[16], M[20], M[48], M[52], and for 3 components M[40], M[56]) to the object-space x and y at vertex offsets +16, +20 (+24), store the window x and y at +128 and +132 and compare them with the viewport box at gc+29732 to gc+29744 (x low, y low, x high, y high). `_3_vtx` also compares the transformed z with plus and minus the value at gc+3544 and jumps through gc+11948; it writes the mask into the vertex record at +4. Return value of the others is the four-bit mask (x low, x high, y low, y high order as the FP status bits come out).
-- Established (`so_context`, `0x0d9d....`): gc+3544 is initialised to 1.0 and gc+3540 to 0.5. Inferred: gc+3544 is the z clip bound used by `_3_vtx` (the test is z < -bound or z > bound). Unknown: whether any state call changes it; needs a capture of the context after a depth-range change (a debugger read of gc+3544).
+- Established (`so_context.s` `__glEarlyInitContext`, the stores at its lines 68-69): gc+3544 is initialised to 1.0 and gc+3540 to 0.5. Established by a scan of every N32 libGLcore listing for a word, float or doubleword store at offsets 3536 to 3547: that initialiser is the only writer, so gc+3544 stays 1.0 for the life of a context; the clip, triangle and line code (`mips4_vclip.s`, `crm_ctri.s`, `crm_line.s`, `crm_linedrawasm.s`) only read it. Inferred: it is the z clip bound used by `_3_vtx` (the test is z < -bound or z > bound).
 - Established (`so_polyclip`, `__glDoPolygonClip` at `0x0d9fb530`, `clipToPlane` and `clipToPlaneEye`): polygon clipping is generic Sutherland-Hodgman over an on-stack vertex buffer (8 KiB frame, 400-byte vertex records). The caller's mask has the six frustum plane bits in its low six bits and one bit per user clip plane above them (`mask >> 6`; the user planes' equations are 16 bytes each from gc+1748); frustum planes clip in clip space, user planes through `clipToPlaneEye` in eye space. When the AA bit is set it clips through `__glFillAntiAliasedTriangle`. Inferred: `__glClipCheckAll2/3/4` return that combined mask.
 
 ### Which triangle routine is chosen (`__glCrmPickTriangleProcs`)
@@ -97,25 +97,46 @@ Established from the decompilation and disassembly (`crm_pick`, `0x0d9527a0..0x0
 |---|---|---|
 | 0x1 | `c` nonzero | RGB mode |
 | 0x8 | `c` nonzero and byte gc+28216 nonzero (that byte is `c` and word gc+28208 both nonzero, recomputed on a state change) | established condition; role inferred as hardware depth in use |
-| 0x100 | `c` nonzero and `e & 2` | inferred: blend enabled |
-| 0x200 | `c` nonzero and `e & 1` | inferred: alpha test enabled |
+| 0x100 | `c` nonzero and `e & 2` | blend enabled (GL_BLEND) |
+| 0x200 | `c` nonzero and `e & 1` | alpha test enabled (GL_ALPHA_TEST) |
 | 0x800 | RGB mode and the four colour-write-mask bytes gc+1884 to 1887 are not all set; or, in colour-index mode, gc+1880 and gc+30736 differ | inferred: a partial colour write mask (one of the combinations the fast routines do not do) |
-| 0x80 | colour-index mode and `e & 4` | colour-index and one enable bit; role unknown |
+| 0x80 | colour-index mode and `e & 4` | colour-index logic op enabled (`e & 4` is GL_INDEX_LOGIC_OP, table below) |
 | 0x20002 | gc+1392 is GL_SMOOTH (shade model) | smooth shading |
 | 0x4004, then 0x40000 | RGB mode, `e & 0x10`, byte gc+3225 nonzero and bit 24 of `e` set; 0x40000 added when gc+500 or gc+504 is non-zero (two floats) | inferred: depth test with a depth buffer, plus a polygon-offset-like pair of floats; `0x4` here is what the triangle table reads as its Z bit (which therefore means depth test active, not depth write) |
-| 0x10000 | `e & 0x1000` | enable bit; role unknown |
-| 0x40 | `e & 8` | enable bit; role unknown |
-| 0x10 | `e & 0x2000` | enable bit; role unknown |
-| 0x8000 | `e & 0x100` | enable bit; role unknown |
-| 0x20 | `e & 0x8000` and byte gc+3226 nonzero | enable bit; role unknown |
-| 0x400 | `e & 0x40` and byte gc+1413 nonzero | enable bit; role unknown |
+| 0x10000 | `e & 0x1000` | face culling enabled (GL_CULL_FACE) |
+| 0x40 | `e & 8` | dithering enabled (GL_DITHER) |
+| 0x10 | `e & 0x2000` | polygon stipple enabled (GL_POLYGON_STIPPLE) |
+| 0x8000 | `e & 0x100` | line stipple enabled (GL_LINE_STIPPLE) |
+| 0x20 | `e & 0x8000` and byte gc+3226 nonzero | stencil test enabled (GL_STENCIL_TEST) on a visual with stencil (gc+3226 inferred to be the stencil-present byte, the neighbour of the depth-present byte gc+3225) |
+| 0x400 | `e & 0x40` and byte gc+1413 nonzero | lighting enabled (GL_LIGHTING) with the light-model byte gc+1413 set (which light-model field it is: not traced) |
 | 0x1000 | `e & 0x20`, and the hint word gc+1912 is GL_NICEST or the pipe has the byte gc+28216 set and drawable flag 0x8000 clear | inferred: a request for the higher quality path |
-| 0x2002 | `e & 0x20` otherwise | role unknown |
+| 0x2002 | `e & 0x20` otherwise | fog enabled (GL_FOG) on the cheaper path |
 | 0x80000 | `e & 2`, not `gc[0x704] & 0x800`, and a blend factor or equation in gc+0x724..0x72c is one of the constants listed above | inferred: blend features the hardware cannot do, sent to the software path |
 
 The function stores `m` in gc+30436 and also in gc+0x7dc0-based words, and then calls validation steps through function pointers at gc+0x2e0c to +0x2e58 and `__glCrmValidate`. The call-outs are decoded in the next section.
 
-- Unknown: the GL meaning of the "role unknown" rows (the enable bits of `e`). Needs the public GL enable-bit layout of this context: a capture of `e` while enabling one GL capability at a time under a debugger, since the offsets are not named by any symbol.
+- Established: the enable word `e` (gc+1792) bit for each capability, by running every enum from 0 to 0x87ff through `__glim_Enable` (`so_attrib.s`, `0x0d9c2a70..0x0d9c371c`; the routine is a compare tree, no jump table, so a path-by-path evaluation of the listing gives each case; `__glim_Disable` clears the same bits). GL names are the public enum values:
+
+| `e` bit | Capability | `e` bit | Capability |
+|---|---|---|---|
+| 0x1 | GL_ALPHA_TEST | 0x10000 | GL_TEXTURE_1D |
+| 0x2 | GL_BLEND | 0x20000 | GL_TEXTURE_2D |
+| 0x4 | GL_INDEX_LOGIC_OP | 0x40000 to 0x200000 | GL_TEXTURE_GEN_S, T, R, Q |
+| 0x8 | GL_DITHER | 0x400000 | GL_NORMALIZE |
+| 0x10 | GL_DEPTH_TEST | 0x800000 | GL_AUTO_NORMAL |
+| 0x20 | GL_FOG | 0x1000000 | GL_POLYGON_OFFSET_FILL (0x8037) |
+| 0x40 | GL_LIGHTING | 0x2000000, 0x4000000, 0x8000000 | GL_CONVOLUTION_1D, _2D, GL_SEPARABLE_2D |
+| 0x80 | GL_COLOR_MATERIAL | 0x10000000, 0x20000000 | GL_HISTOGRAM, GL_MINMAX |
+| 0x100 | GL_LINE_STIPPLE | 0x40000000 | GL_TEXTURE_3D (0x806f) |
+| 0x200 | GL_LINE_SMOOTH | 0x80000000 | GL_TEXTURE_COLOR_TABLE_SGI (0x80bc) |
+| 0x400 | GL_POINT_SMOOTH | | |
+| 0x800 | GL_POLYGON_SMOOTH | | |
+| 0x1000 | GL_CULL_FACE | | |
+| 0x2000 | GL_POLYGON_STIPPLE | | |
+| 0x4000 | GL_SCISSOR_TEST | | |
+| 0x8000 | GL_STENCIL_TEST | | |
+
+  The other capabilities use neighbouring words: gc+1796 (GL_POLYGON_OFFSET_POINT 0x200, _LINE 0x400; the three colour tables 0x80d0 to 0x80d2 as bits 0 to 2), gc+1800 (GL_LIGHT0 to 7, bits 0 to 7), gc+1804 (GL_CLIP_PLANE0 to 5), gc+1808 (GL_MAP1_*), gc+1812 (GL_MAP2_*); GL_COLOR_LOGIC_OP calls `__glim_BlendEquationEXT` instead of setting a bit. The vertex-array enables (0x8074 to 0x8079) set bits of gc+5356 and gc+5344, not `e`.
 - The validation call-outs are decoded below.
 
 ### Validation call-outs of `__glCrmPickAllProcs` (pass 5)
@@ -126,7 +147,7 @@ Established (disassembly of `crm_pick.s` `0x0d952800..0x0d952d40` for the calls,
 |---|---|---|---|
 | +11796 | `__glCrmPickTextureProcs` | `0x21` (first call; also recomputes the byte gc+28216 from gc+3220 and word gc+28208) | texture procedure slots |
 | +11864 | `__glGenericPickDepthProcs` | `0x80` | depth-test procedures |
-| 30656 and 30660 objects, method at +160 | per-buffer objects, not decoded | always for the first; the second when the byte gc+3222 is nonzero | per-buffer state refresh after `m` is built (inferred from position; role of the objects not read) |
+| 30656 and 30660 objects, method at +160 | the front and back colour-buffer records: `MakeCurrentRead` (`crm_context.s`, the stores at `0x0d9465c0..0x0d9465dc`) points gc+30656 at the 220-byte record embedded at gc+30664 and, when the double-buffer byte gc+3222 is set, gc+30660 at the one at gc+30884. Offset 160 of each record is its pick routine, `PickRGBA` (`crm_rgb.s`, `0x0d9683b0..0x0d968440`, stored by `__glCrmInitRGB`) or the colour-index counterpart | always for the front record; the back one when gc+3222 is set | the buffer's span-store routine at record +164: the plain or the alternative store by the byte gc+30652, or `StoreSPBuffRGBA` / `StoreSPBuffRed` when the current drawable is a pixel buffer of type 4 with a 16-bit or wider store. `__glCrmSetDrawBuffer`'s callers choose between the two records for GL_FRONT and GL_BACK |
 | +11836 | `PickBufferProcs` | always, in the `m` tail | draw-buffer selection: reads the draw-buffer enum at gc+1892 (GL_FRONT 0x404, GL_BACK 0x405, GL_LEFT 0x406, GL_RIGHT 0x407, GL_FRONT_AND_BACK 0x408) and calls `__glCrmSetCurrentBuffers` |
 | +11840 | `__glCrmPickStoreProcs` | `0x2f` (last pick, direct call of the function; slot +11840 is the same function used by the re-entrant path) | pixel store (write) procedures |
 | +11804 | `__glGenericPickTransformProcs` | always in the tail | transform procedures |
@@ -146,7 +167,20 @@ Established (disassembly of `crm_pick.s` `0x0d952800..0x0d952d40` for the calls,
 | +11916 | `__glComputeClipBox` | after the bitmap pick | the clip box |
 | +11848 | `__glCrmPickVertexProcs` | `0x27` | vertex procedures |
 
-After the last call the function clears gc+11756 and gc+11752 (established, both stores of zero). The dirty-word bit names are not recovered: only which bits gate which pick is established. Unknown: the GL state each dirty bit stands for; a debugger capture of gc+11756 after enabling one capability at a time would name them.
+After the last call the function clears gc+11756 and gc+11752 (established, both stores of zero). Established: the dirty-word bits, by collecting every store to gc+11756 in the N32 listings with the immediate ORed in just before it (all of `asm/*/*.s`), and naming each by its setters:
+
+| Bit | Set by | Group |
+|---|---|---|
+| 0x1 | every `glEnable`/`glDisable`, alpha function, blend function and equation, colour mask, clear values, depth function and mask, draw buffer, fog parameters, shade model, stencil function, mask and op, texture image, binding and parameters, viewport check | general rendering state |
+| 0x2 | line stipple, line width, polygon mode, hints, the line enables | line state |
+| 0x4 | cull face, front face, polygon mode, polygon offset, polygon stipple pattern, the polygon enables, stencil enable, the colour, index and stencil clears and stencil resize | polygon state |
+| 0x8 | point size, polygon mode, hints, the point enables | point state |
+| 0x10 | pixel store, pixel transfer, pixel zoom, read buffer, convolution filters, colour tables, the imaging enables | pixel-transfer state |
+| 0x20 | light and light-model parameters, lighting and light enables | lighting state |
+| 0x40 | only the context copy (0x44) and the full reset (0xff at make-current and buffer set-up); it gates the stipple conversion | stipple pattern to reconvert (inferred) |
+| 0x80 | depth function, depth mask, depth-test enable, make-current, the depth clear and z-count readjust | depth state |
+
+The second word gc+11752 carries three finer bits: 0x1 alpha function, 0x2 stencil function or mask, 0x4 stencil operation (setters `__glim_AlphaFunc`, `__glim_StencilFunc`, `__glim_StencilMask`, `__glim_StencilOp` and their `__glcrmim_` counterparts). So the gates in the table above read: texture pick on 0x21 (general or lighting), lines 0x23, spans and triangles 0x25, vertices 0x27, points 0x29, stores 0x2f, pixels 0x31.
 
 ## Fog and antialiasing set-up (pass 5)
 
@@ -195,6 +229,6 @@ Source: IRIX 6.5.30 N32 `libGLcore`, `crm_texture.s`: `crmComputeTexLevelSize` (
 - Established, the choice between stored formats for RGB and RGBA requests: it depends on a count `n` read from gc+0xCB8 plus gc+0xCBC plus gc+0xCC0 and on one global flag read gp-relative. Generic `GL_RGB` stores 8-bit channels in 32-bit texels when `n` is 16 or more or the flag is set, otherwise 5-bit channels in 16-bit texels. Generic `GL_RGBA` stores 4-bit channels (RGBA4) when `n` is below 9 and the flag is clear, otherwise RGBA8. The explicit sized formats in the table do not consult `n`.
 - Established (disassembly, pass 6): `GL_RGB4` (`0x804f`) and `GL_RGB5` (`0x8050`), and `GL_RGB2_EXT` (`0x804e`) with them, take the same branch as `GL_R3_G3_B2`: base format `GL_RGB`, stored tag `GL_RGB5_A1`, red, green and blue counts 5, alpha count left 0, depth value 1 (16-bit texels), type code 1. The decompiler's jump table lost these cases; the compare chain in `crmComputeTexLevelSize` ends in `0x804e`, `0x804f` and `0x8050` tests that all jump to the shared 5/5/5 store. So there is no fall-through gap: every requested internal format in the OpenGL 1.1 list reaches a stored format.
 - Established (pass 6): the two global flags are environment variables read once, on the first call of `__glCrmResetTextureState` (`crm_texture.s`; the block is guarded by a cached word whose initial value in `.sdata` is -1, and it calls `getenv` eight times, storing each result gp-relative): the flag at gp-22404 (the decompiler's "gp-5784") is set when `GLCRMTEXFORCE32` exists in the environment and the flag at gp-22408 ("gp-5788") when `GLCRMTEXUSEONCE` does. The other six are `GLCRMTEXDUMP`, `GLCRMTEXNODEALLOC`, `GLCRMTEXALLCLAMPMODES`, `GLCRMTEXUSEFASTBIND`, `GLCRMTEXUSEFULLBIND` and `GLCRMTEXNOVICE`; their uses are not decoded here. So with neither variable set, which is the default unless the user sets them: generic `GL_RGB` and `GL_RGBA` use the 16-bit forms when `n` is small, and a texture is subtiled (record flag bit 2) whenever the caller's last argument is zero. Inferred reading: `GLCRMTEXFORCE32` forces 32-bit texels; `GLCRMTEXUSEONCE` suppresses subtiling. The flag meanings come from the variable names and the branches; no shipped documentation was read.
-- Inferred (pass 6): the three fields summed into `n` are the red, green and blue bit counts of the drawable's visual. Gc+0xCB8 and +0xCBC are read as the red and green sizes in the pixel-buffer code (`vice_pbuffer.s`, compared with 16), gc+3268 (0xCC4) is tested for alpha in `__glCrmPassBlendFunc`, and the thresholds fit sums of component sizes (RG3B2 8, RGB5 15, RGB8 24). Consequence (inferred): a 16-bit-colour visual textures at 5-5-5-1 and a 24-bit one at 8-8-8-8.
-- Established (hardware record layout fields): +0 is a flag word. Bit 0 is set when the larger level side is below 128 texels, bit 1 when it is 128 or more, and bit 2 (the subtiled flag that `crmSetTextureParam` copies to Texture.mode bit 24) is set when a second global flag at gp-5788 is zero and the caller's last argument is zero. +8 is the number of 64 KiB tile rows the level needs, `(height + 127) >> 7`; +4 is the number of tiles across, `((width << depth) + 511) >> 9`. Those two follow the frame-buffer tile geometry of 128 rows of 512 bytes per 64 KiB tile (consistent with the `CRIME_RE.h` description of unsubtiled textures). The flag at gp-22408 is `GLCRMTEXUSEONCE` (above). Unknown: the meaning of the caller's last argument (it is passed through from `crmCreateLevel`'s last stack argument), so whether any shipping texture is subtiled by default is not established; needs a capture.
-- Established (span converters present in `crm_texture.s`): the CPU repacks source pixels into the stored layouts with `crmSpan_A16_to_A8`, `crmSpan_XA8_to_A8`, `crmSpan_RGB5_A1_to_A1_RGB5`, `crmSpan_A1_RGB5_to_RGB5_A1`, `crmSpan_RGB5_to_RGB5_A1`, `crmSpan_RGB8_to_RGBA8`, `crmSpan_RGBX8_to_RGBA8`, `crmSpan_RGBA8_to_A1_RGB5` and `crmSpan_RGBA8_to_RGBA4`, then `crmSubtileSpan` or `crmTileSpan` writes the rows. Established by name: stored 5-5-5-1 texels are held with the alpha bit in the low or high position (`A1_RGB5` against `RGB5_A1`); which one the hardware reads is not stated by the converter names alone. Unknown: the in-memory bit order of the 16-bit RGB5_A1 and RGBA4 texels. A texture-memory dump (captures list) settles it.
+- Established (`__glCrmInitRGB`, `crm_rgb.s` from `0x0d968470`; `so_blend.s`): gc+0xCB8, +0xCBC, +0xCC0 and +0xCC4 are the four colour component bit counts of the visual: `__glCrmInitRGB` adds all four and selects the buffer layout by the total (8, 15, 16, 24 or 32), and the blend set-up turns each into a maximum `(1 << n) - 1`. Inferred from the public context-modes order: red, green, blue, alpha. The three summed into `n` are therefore the red, green and blue counts. Gc+0xCB8 and +0xCBC are read as the red and green sizes in the pixel-buffer code (`vice_pbuffer.s`, compared with 16), gc+3268 (0xCC4) is tested for alpha in `__glCrmPassBlendFunc`, and the thresholds fit sums of component sizes (RG3B2 8, RGB5 15, RGB8 24). Consequence (inferred): a 16-bit-colour visual textures at 5-5-5-1 and a 24-bit one at 8-8-8-8.
+- Established (hardware record layout fields): +0 is a flag word. Bit 0 is set when the larger level side is below 128 texels, bit 1 when it is 128 or more, and bit 2 (the subtiled flag that `crmSetTextureParam` copies to Texture.mode bit 24) is set when a second global flag at gp-5788 is zero and the caller's last argument is zero. +8 is the number of 64 KiB tile rows the level needs, `(height + 127) >> 7`; +4 is the number of tiles across, `((width << depth) + 511) >> 9`. Those two follow the frame-buffer tile geometry of 128 rows of 512 bytes per 64 KiB tile (consistent with the `CRIME_RE.h` description of unsubtiled textures). The flag at gp-22408 is `GLCRMTEXUSEONCE` (above). Established (`crm_texture.s`): `crmCreateLevel` (`0x0d9710c0..0x0d971a28`) loads its last argument as the byte at its frame +527 (the low byte of the caller's stack word +12) and passes it to `crmComputeTexLevelSize` (`0x0d970970..0x0d9710b4`), which sets bit 2 only when that byte and the `GLCRMTEXUSEONCE` flag are both zero (the test at `0x0d970a98`); the format and texel depth play no part. Its only callers, `__glcrmim_TexImage1D`, `__glcrmim_TexImage2D`, `__glcrmlei_TexImage1D`, `__glcrmlei_TexImage2D`, `__glcrmim_CopyTexImage1DEXT` and `__glcrmim_CopyTexImage2DEXT`, all store zero in that word. So every texture level the shipped library creates is subtiled, 16-bit and 32-bit alike, unless the user sets `GLCRMTEXUSEONCE`.
+- Established (span converters present in `crm_texture.s`): the CPU repacks source pixels into the stored layouts with `crmSpan_A16_to_A8`, `crmSpan_XA8_to_A8`, `crmSpan_RGB5_A1_to_A1_RGB5`, `crmSpan_A1_RGB5_to_RGB5_A1`, `crmSpan_RGB5_to_RGB5_A1`, `crmSpan_RGB8_to_RGBA8`, `crmSpan_RGBX8_to_RGBA8`, `crmSpan_RGBA8_to_A1_RGB5` and `crmSpan_RGBA8_to_RGBA4`, then `crmSubtileSpan` or `crmTileSpan` writes the rows. Established by name: stored 5-5-5-1 texels are held with the alpha bit in the low or high position (`A1_RGB5` against `RGB5_A1`); which one the hardware reads is not stated by the converter names alone. Established from the download converters' arithmetic (`crmSpan_RGBA8_to_RGBA4` `0x0d972bc0..0x0d972ea8`, `crmSpan_RGBA8_to_A1_RGB5` `0x0d9728a0..0x0d972bb8`, `crmSpan_RGB5_A1_to_A1_RGB5` `0x0d971eb0..0x0d972088`): from RGBA bytes the RGBA4 texel is `R[7:4] << 12 | G[7:4] << 8 | B[7:4] << 4 | A[7:4]`, and the 5-5-5-1 texel is stored with alpha in bit 15: `A[7] << 15 | R[7:3] << 10 | G[7:3] << 5 | B[7:3]`; a GL `GL_RGB5_A1` source (alpha in bit 0) is rotated right by one bit to reach that order. Inferred: the engine reads 16-bit texels in this order, since the driver writes nothing else.

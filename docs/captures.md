@@ -1,6 +1,6 @@
 # Open items and the capture that would settle each
 
-Everything here is **unknown** from the binaries and public sources read so far. Each entry names the owning file, what is unknown, and the capture or measurement on real hardware that would settle it. A capture means an observation of a running machine: a register read, a bus or video trace, or a memory dump while a stated program runs. Rows of `docs/coverage.md` are marked done once their remaining unknowns are listed here.
+Everything here is **unknown** from the binaries and public sources read so far. Each entry names the owning file, what is unknown, and the capture or measurement on real hardware that would settle it. A capture means an observation of a running machine: a register read, a bus or video trace, or a memory dump while a stated program runs. Rows of `docs/coverage.md` are marked done once their remaining unknowns are listed here. Items that the shipped binaries answer do not belong here; they were moved into the owning documents (subtile layout and the 32-bit case, texture steppers in the shadow, the senders of each ioctl, the dirty and enable bits, the colour-buffer objects, the texel bit order, the texture-format inputs, the `0x5605` flag bit 5 and odd start page, the window-system methods and `LoseCurrent`).
 
 Rendering engine and memory transfer engine
 
@@ -13,16 +13,13 @@ Rendering engine and memory transfer engine
 | Behaviour for an MTE start column that is not a multiple of the transfer width, and bit 16 of an end word | `docs/mte.md` | MTE copy of a few bytes at odd columns into a pre-filled buffer; read the buffer back. |
 | Row unit of the MTE (16 rows at 16 bit, 8 at 32 bit in the X server's split) | `docs/mte.md` | Copy rectangles of 1 to 20 rows through the MTE only and see which heights complete. |
 | Stipple repeat period of the MTE stipple mode (8 or 32 bits) | `docs/mte.md` | MTE stippled fill with a known `+0x3010` pattern across a row; read the result. |
-| Subtile ordering inside a 64 KiB tile, and whether 32-bit texels are ever subtiled | `MTE.h` | Dump a texture memory tile after a texture download of a recognisable 64 by 64 16-bit image, then of a 32-bit one. |
 | Whether hardware treats `0x20d0` as non-global and `0x21f0` as global, as the kernel's save logic assumes; meaning of address-word bit 45 in the saved interface buffer | `docs/context.md` | Dump the interface buffer entries after writing each of the two registers and during a stalled queue. |
 | What the engine does to a primitive that has begun when the context is switched mid-primitive | `docs/context.md` | Not available from software the kernel runs; needs a logic-analyser capture on the CRIME rendering bus across a forced switch. |
 | Whether the CRIME on a shipped O2 reads ID `0xb1` or another value that IRIX 6.5.30 accepts (family `0xA`, revision non-zero) | `CRIME.h` | Read `0x14000000` on a stock O2. |
 | Which of the two CRIME error interrupts (input 20 or 21) is the CPU error and which is the memory error; whether edge-source bits clear on read, on write to `+0x28`, or both | `docs/memory.md`, `CRIME.h` | Provoke a CPU bus error and a memory ECC error on separate runs with both inputs unmasked; read INTSTAT; then read it twice and write `+0x28`. |
 | The function of CONTROL bits 13:12 and 9 and of the write to `+0x10` | `docs/memory.md` | Read CONTROL after PROM start, write each bit alone, read back. |
 | Which TLB entry bit marks validity; behaviour of a lookup through an invalid entry | `docs/memory.md` | Draw through a frame-buffer TLB entry with each of bits 15 and 31 cleared in turn and observe whether the memory controller faults. |
-| Which GL entry points call the kernel pixel DMA request (ioctl `0x55f2`) | `docs/pixel-transfer.md` | Trace the graphics ioctls issued by a GL program calling DrawPixels, ReadPixels and CopyPixels. |
 | Whether step registers count bytes or pixels in hardware; overlap of copy source and destination | `docs/pixel-transfer.md` | Run a pixel transfer with a step of 2 on a 16-bit and then a 32-bit buffer; copy a rectangle onto an overlapping one in each direction. |
-| Which flag bit 5 of ioctl `0x5605` does, and why an odd start page with 32 pages fails | `docs/pixel-transfer.md` | Issue the ioctl with bit 5 set and unset on the same buffer, and with an odd start page of 31 and 32 pages, and read the linear TLB afterwards. |
 
 Display back end
 
@@ -59,13 +56,6 @@ libGLcore command stream and rendering state
 
 | Item | Owner | Capture |
 |---|---|---|
-| Whether the texture steppers (`0x2120` to `0x215c`) reach the kernel shadow record: the kernel reloads them from it when flag bit `0x08` is set, a scan of libGLcore found no store through the shadow pointer | `docs/context.md` | Under a debugger, set a texture stepper through libGLcore, then force a context switch and compare the shadow record page (ioctl `0x55f3` reply) with the register read-back. |
-| What the method at gc+40 returns (the hardware pointer stored at gc+0x7db8), the conditions under which `LoseCurrent` flushes, and the meaning of flag bits `0x2` and `0x8` that libGLcore passes in ioctl `0x5609` | `docs/context.md`, `docs/ioctls.md` | Under a debugger, break in `MakeCurrentRead` and `LoseCurrent` and print the three values and the argument block. |
-| (Reopened, readable from disassembly) Which libGLcore paths send the requests `0x560a`, `0x5608`, `0x55ff` and `0x5650`, what the render node of the resource manager (commands 1000 to 1025) is, and what the argument bytes of `0x55f7` select beyond the TLB slot | `docs/ioctls.md` | Trace the ioctls of a GL program that swaps, resizes and binds textures (`par` or a tracing kernel). |
-| (Reopened, readable from disassembly) Names of the dirty-word bits at gc+11756 and of the "role unknown" enable bits of the word at gc+1792 | `docs/opengl.md` | Under a debugger, enable one GL capability at a time and read gc+1792, gc+11756 and gc+30436 before and after the next draw call. |
-| What the objects at gc+30656 and gc+30660 (method at offset 160) do in the pick routine | `docs/opengl.md` | Break on the method during a buffer change and read the object. |
 | The blend of fog colour and pixel colour in the hardware fog stage, whether the 8.12 stepper is clamped, and the roles of state-word bits `0x8` and `0x10` | `docs/opengl.md` | Draw a one-pixel-wide span with hardware fog and known steppers (start 0, 0.5 and 1.0) over a known colour and read back the result. |
 | How the AA line stage combines slope, position and the two end coverage fractions, and how coverage meets alpha blending; whether DrawMode bit 13 is ever set by shipped software | `docs/opengl.md` | Draw one anti-aliased line with the AA register pair at known values over a black frame, read back the coverage per pixel; repeat with blending on. |
-| Texture format choice: that gc+0xCB8, +0xCBC and +0xCC0 are the visual's red, green and blue bit counts (inferred from neighbouring code, not read as such); whether any shipping texture is subtiled by default (the caller's last argument); what the environment variables `GLCRMTEXFORCE32` and `GLCRMTEXUSEONCE` do beyond the two branches read | `docs/opengl.md` | Under a debugger, call glTexImage2D with each internal format on a 16-bit and on a 24-bit visual, with and without those variables, and read the hardware format record that crmComputeTexLevelSize fills, on a stock O2. |
-| Bit order of 16-bit RGB5_A1 and RGBA4 texels in memory | `docs/opengl.md` | Dump a texture tile after downloading a texture with one known texel of each channel value. |
 | Texel filter weights, precision and rounding (listed with the rendering items) | `CRIME_RE.h` | Draw a magnified two-texel texture and read back the intermediate pixels. |
