@@ -1,0 +1,16 @@
+{
+  "target": "ddx/crm.so",
+  "total_funcs": 840,
+  "total_objects": 183,
+  "modules": {
+    "cfb": 218,
+    "crm": 135,
+    "mfb": 59,
+    "mi": 165,
+    "misc": 30,
+    "nfb": 165,
+    "other": 37,
+    "rrm": 23,
+    "xdr": 8
+  }
+}
