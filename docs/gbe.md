@@ -8,6 +8,7 @@ The kernel holds each video format as a record of 16-bit fields (a built-in tabl
 
 | Offset | Role | Used for |
 |---|---|---|
+| 0x00 (32-bit) | format id: 1 to 15 for built-in records, 0 for a record the X module built (see the stereo and conversion section) | selects the record |
 | 0x04 (32-bit) | flags; bits 1 and 4 (`& 0x12`) select the frame-lock line | `VT_F2RF_LOCK` |
 | 0x08, 0x0a | active width, active height (inferred) | flat-panel drive registers; copied to drawables |
 | 0x0c (32-bit) | frame rate (inferred) | copied to drawables |
@@ -18,10 +19,12 @@ The kernel holds each video format as a record of 16-bit fields (a built-in tabl
 | 0x1e | total lines per frame | `VT_XYMAX` high field |
 | 0x20, 0x22 | vertical blank bounds | `VT_VBLANK`, `VT_VCMAP`, `VT_VPIXEN` |
 | 0x24, 0x26 | vsync on and off | `VT_VSYNC` |
-| 0x28, 0x2a, 0x2c | PLL M, N, P | `DOTCLOCK` |
-| 0x2d, 0x2e, 0x2f (bytes) | interlace flag, panel type, frame buffer pixel size (0x20 = 32 bit) | see below |
+| 0x28, 0x2a | PLL M, N | `DOTCLOCK` |
+| 0x2c | PLL P (the kernel masks it with 3 and `crmInvalidVideoTiming` accepts 0 to 3) | `DOTCLOCK` |
 
 `crmInvalidVideoTiming` accepts a user record only if 1 <= M <= 256, 1 <= N <= 64 and 0 <= P <= 3 (established). Format id 13 is rejected with a message and ids 1 to 15 select the built-in table (established).
+
+Correction (established, `gbeSetTimingRegs`): the byte tests at 0x2d, 0x2e and 0x2f in that function are on the board's information structure (the same one `crimeInitInfo` fills: width and height halfwords at 0x20 and 0x22, a panel-type byte at 0x2e, the frame buffer pixel size byte at 0x2f, 0x20 meaning 32 bit), not on the 0x30-byte timing record, which `gbeSetTimingRegs` reaches through a pointer in that structure. An earlier version of the table above listed those bytes as record fields. For the record, offset 0x2c holds PLL P. The meaning of the byte at 0x2d of the board structure (called the interlace flag above) is inferred from its use (`VT_VBLANK` and `VT_HBLANK` rewrite, double height at `crimeInitInfo`) and not otherwise established.
 
 ## Register values
 
@@ -70,14 +73,54 @@ A fixed block of 32-bit values inside each file holds the timing in the order be
 
 The computed refresh equals the file name for every row, which supports the field order. The `2@` files repeat the numbers of the matching single-channel formats (1024x768 at 60, 70 and 75 Hz; 1280x1024 at 48, 50, 60, 72 and 75 Hz); the `p` files differ from their base only in the file layout (the block starts a few words later). Established differences: the `2@` and `p` files carry extra leading words; their meaning is unknown.
 
-Rows with no entry: `1024x768_96s` and `1280x492_120s` (the stereo formats) hold a different block layout and were not decoded. The `1600x1024_60p` horizontal numbers are odd (back porch 45, sync 35) and sum to the stated total; the format is likely a panel mode.
+Stereo formats, decoded below: `1024x768_96s` and `1280x492_120s`.
+ The `1600x1024_60p` horizontal numbers are odd (back porch 45, sync 35) and sum to the stated total; the format is likely a panel mode.
+
+## Stereo format files and the conversion to the kernel record
+
+Sources: the two stereo `.vfo` files, `ddx/crm.so` (`crmLoadTimingTable`, dynsym-visible, 0x48c5d0), the kernel built-in table in `crime_kernel/crime_init.o` (`.data`, 15 records of 0x30 bytes from file offset 0x22e8), kernel `crime_setvideotiming`. `gfxinit` only holds the paths `/var/X11/Xvc/Crm0_TimingTable` and `Crm1_TimingTable` and a monitor-info reader, and no vfo conversion code (strings and dynsym checked); the conversion lives in the X module, which reads the format file through the `SDB` read routines it imports.
+
+### Layout of the stereo files (established by position and arithmetic)
+
+The numeric block sits after the state-table fill (runs of 1, 2, 3, 4) as in the mono files: pixel clock, then H back, sync, front, active in pixel clocks, then the active line count and the vertical group. A mono file lists the vertical group once, in pixel clocks (lines times line length): back porch, sync width, sync width plus the horizontal sync width, active, front porch. A stereo file lists the same group twice, each repetition preceded by the active line count, and the second repetition is identical to the first:
+
+| File | Pixel clock Hz | H back, sync, front, active | Per-field V back, sync, active, front (lines) | Lines per frame | Frame rate |
+|---|---|---|---|---|---|
+| 1024x768_96s | 103,502,592 | 182, 104, 26, 1024 (total 1336) | 33, 3, 768, 3 (807 per field) | 1614 | 48.00 Hz (96 fields) |
+| 1280x492_120s | 107,143,949 | 250, 120, 30, 1280 (total 1680) | 34, 3, 492, 3 (532 per field) | 1064 | 59.94 Hz (119.88 fields) |
+
+Verified by dividing the pixel counts by the line length (for example 44088 = 33 x 1336 and 4112 = 4008 + 104 in the first file; 57120 = 34 x 1680, 5160 = 5040 + 120 in the second) and by the clock: 103,502,592 / (1336 x 1614) = 48.00, 107,143,949 / (1680 x 1064) = 59.94. The header words differ from a mono file only in the active height at +0x98 (1536 and 984, twice the field height) and a count of 2 at +0xc0 (also at +0xbc in the first file); the per-field line count repeats at +0xc4 and +0xc8; the files carry an `OptionHardware` value `None` (string at about +0x190); a name string follows (`1024x768_96 Stereo Window` for the first file), and the frame rate double is the full-frame rate. Unknown: the meaning of the second occurrence of each header word, and what the "sync plus hsync" entry feeds; the stereo files also carry the line-type and edge tables that are not decoded.
+
+### Conversion in `crmLoadTimingTable` (established from the disassembly)
+
+The function takes an in-memory format description (not the file layout; it is built by a library this workspace does not hold) and an open format file, and builds a 0x30-byte kernel record on its stack, then sends it with ioctl `0x55f6` to `crimeLoadTimingTable`. From the stores, with `W`, `H` the description's width and height words (+0x104, +0x100), `T` total pixels per line (+0x10c), `L` total lines (+0x108), `rate` the float at +0x110, `clk` the integer at +0x118, `hb`, `hs`, `hf` the three horizontal words at +0x11c, +0x120, +0x124, and `vb`, `vs`, `vf` the three vertical pixel counts at offsets +8, +0xc, +0x14 of the table the description points to (+0x130):
+
+| Record field | Value |
+|---|---|
+| 0x08, 0x0a | W, H |
+| 0x0c | rate x 1000, truncated |
+| 0x10 | clk / 1000, truncated |
+| 0x14, 0x16, 0x18 | T, W, W + hf + hs + hb |
+| 0x1a, 0x1c | W + hf, W + hf + hs |
+| 0x1e | L |
+| 0x20, 0x22 | H, H + (vb + vs + vf) / T |
+| 0x24, 0x26 | H + vf / T, that + vs / T |
+| 0x28, 0x2a, 0x2c | the file's `DacPll_M`, `DacPll_N`, `DacPll_P` (read with `SDBgetSymbolValueScalar`) |
+| 0x04 | flags: 0x02 when the description's class word (+0x134) is 4, 0x10 when it is 1, otherwise from the file's `OptionHardware` string: `None` 0, `Presenter_1024` 0x100, `Presenter_1280` 0x200, `Flatpanel_1600SW` 0x400, `O2_DCD` 0x800; any other name prints an error |
+| 0x00 | format id, 0 when the three PLL symbols are present |
+
+Cross-check (established): applying these rules to the numbers of 13 of the 14 mono files, and to `1280x492_120s`, reproduces fields 0x14 to 0x26 of a kernel built-in record exactly (640x480_60 id 1, 800x600_60 and _72 ids 2 and 3, 1024x768 at 60, 70 and 75 ids 4 to 6, 1280x1024 at 48, 50, 60, 72 and 75 ids 7 to 11, 1280x492_120s id 13, 1600x1024_48p and _50p id 15, the `p` variants the same as their bases). Not reproduced: `1024x768_96s` (no built-in record) and `1600x1024_60p` (no built-in record).
+
+- Stereo specifics (established from the stereo file and built-in id 13): the line total at 0x1e and the vertical numbers at 0x20 to 0x26 are per field (532 lines for `1280x492_120s`, not 1064); the record rate at 0x0c is the field rate (119,880) and the flags word is 2 (the stereo class code). The kernel-held pixel clock 107,072 kHz differs from the file's 107,143.9 kHz by 0.07 percent; the kernel's number is not the file's divided by 1000. Reason unknown.
+- Fallback (established): when any of the three `DacPll` symbols is missing, the function instead picks a built-in id from the width, height and rounded rate (640x480 at 60: id 1; 800x600 at 60, 72: 2, 3; 1024x768 at 60, 70, 75: 4 to 6; 1280x1024 at 48, 50, 60, 72, 75: 7 to 11; 1280x492 at 60: 13) and sends that. Inferred: for the shipped files the PLL symbols exist (the files carry `DacPll_M/N/P`), so the id is 0 and the kernel gets a fully custom record; `1024x768_96s` and the 1600-wide files take this path because they match no built-in id.
+- Kernel side (established, `crime_setvideotiming`): id 13 is only accepted when the board's flag byte (+0x98 bit 1) is set or no board is named, and then only if a byte at +0x2b of the board structure is clear; otherwise the call returns "invalid". Inferred: that flag marks a stereo-capable output path. A custom record (id 0) goes through `crmInvalidVideoTiming` (1 <= M <= 256, 1 <= N <= 64, P below 4).
+- Unknown: what 0x2d..0x2f of the board structure mean beyond the uses above, whether any shipped stereo mode uses the stereo emitter output, and the library that builds the description and fills the vertical table.
 
 ## Unknown
 
-- How the format file's state tables map to the kernel record, and which program (the X module or `gfxinit`; both are stripped) does the conversion.
+- How the state tables (the 28 line types and signal edge tables) of a format file map to anything: the conversion below uses only the timing numbers and the PLL values.
 - The value of the per-revision kernel global `G` and what it counts.
 - Whether `VT_XYMAX` takes totals or totals minus one (the kernel passes `F14` and `F1e`; whether those are totals is not shown).
-- The stereo format layouts.
 
 # Window ID table and the tile lists
 
