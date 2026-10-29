@@ -6,42 +6,43 @@ The requests the kernel graphics driver accepts and the requests libGLcore and t
 
 Failures return a small number: 11, 12, 14, 16, 19 or 22 (established as the constants the code returns; reading them as the usual errno meanings busy, no memory, bad address, in use, no device and invalid is an inference).
 
-| Request | Arg bytes | Kernel function | What it does |
-|---|---|---|---|
-| `0x5213` | 12 | `crime_i2cfp_command` | flat-panel I2C command; needs a probed panel (board byte `+0x2e`) |
-| `0x55f1` | 4 | `crimePositionCursor` | cursor position; the two halfwords are stored in the board record and the position is applied through `CRS_POS` (see `docs/gbe.md`) |
-| `0x55f2` | 0x28 | `crimePixelDma` | pixel DMA request (`docs/pixel-transfer.md`) |
-| `0x55f3` | 4 out | `crmMapPages` | map the client's 0x288-byte shadow record, return its address (`docs/context.md`) |
-| `0x55f4` | 8 | `crimeSetDisplayMode` | write window-ID entry: index word, value word (`docs/gbe.md`) |
-| `0x55f5` | 0x304 | `crimeSetGammaRamp` | load the gamma map (0x304 bytes: four header bytes and 256 triples; layout inferred from the size and the three-byte GMAP entries) |
-| `0x55f6` | 0x30 | `crimeLoadTimingTable` | load the 0x30-byte timing record (`docs/gbe.md`) |
-| `0x55f7` | 8 | `crime_load_fbtlb` | select a frame-buffer TLB set (below) |
-| `0x55f8` | 0 | `crmUnmapPages` | unmap the shadow record of `0x55f3` |
-| `0x55f9` | 0 | `crmUnmapChunk`, `crmUnmapPages` | unmap the block `0x55fc` mapped |
-| `0x55fc` | 4 out | `crmMapPages`, `crmMapChunk` | map the 0x600-byte GBE block of `docs/gbe.md` and four 64 KiB chunks; return the block's address |
-| `0x55fd` | 8 | `crmFindFreeDidTbl` | when the first word is 1, return a free DID table in the second word (used by the X module's `gbeLoadDIDTable`) |
-| `0x55fe` | 0x14 | `crimeOpenPbuf` | open a pixel buffer |
-| `0x55ff` | 0x118 | `crimeValidateDDClip` | validate a drawable's clip |
-| `0x5600` | 8 | `crimeClosePbuf` | close a pixel buffer |
-| `0x5601` | 0x10 | `crmAllocTex` | allocate texture memory, returns the 0x10-byte record |
-| `0x5602` | | `crmDeallocTex` | free it |
-| `0x5603` | 0x24 | `crmDefineTex` | define a texture (`docs/memory.md`, texture TLB) |
-| `0x5604` | 4 out | (inline) | create a drawable record (0x220 bytes), give it the next id from a board counter, link it on a board list, return the id |
-| `0x5605` | 0xc | `crime_load_linear_tlb` | `docs/pixel-transfer.md` |
-| `0x5606` | 0xc | `crime_clear_buffer` | clear a buffer through the transfer engine (`docs/mte.md`) |
-| `0x5607` | 8 | `crime_i2cProbe` | read the monitor identification data over I2C (up to 0x80 bytes out) |
-| `0x5608` | 0x102 | `crimeUpdateBackTiles` | rebuild a drawable's back-buffer tile list |
-| `0x5609` | 0x10 | `crm_enablesz`, `crm_enableovl` | bind a drawable id: the third word of the argument (+8) is a flag word and the fourth (+0xc) the id; bit 0 attaches depth, bit 2 attaches the overlay (`docs/gbe.md`); then the id is looked up in the board list and attached to the client |
-| `0x560a` | 4 | `crimeUnSchedSwapBuf` | cancel a scheduled swap |
-| `0x560b` | 0x10 | `crime_i2c_cmd` | general I2C command; result returned in the status path |
-| `0x560c` | 0x20 out | `crimeFrameInfo` | copy out frame-buffer information |
-| `0x560d` | 0x38 | `crmInitialize` | first-time driver initialisation for the board; the board record must have bit 0 of byte `+0x98` set |
-| `0x560e` | 0x14 out | | copies out 0x14 bytes of data the listing builds on the stack (content not decoded) |
-| `0x560f` | 0 | `crime_i2cFpProbe` | re-probe the flat panel |
-| `0x5610` | 4 | `crimeBlankscreen` | blank or unblank; the word selects (`docs/gbe.md`, blanking) |
-| `0x564f` | 0 | | logs a message and returns success |
-| `0x5650` | 4 | `crmLoadTexTlb` | select texture set `n` (below 0x80) for the client and reload the texture TLB |
-| `0x5651` | 0 | `crimeInitSpecialDDRN`, `crmSwapBufd` | X-server mode: stores `0x84` in the shadow flag word, builds the special render node and swaps (`docs/context.md`); returns busy if already running |
+| Request | Arg bytes | Kernel function | What it does | Derivation |
+|---|---|---|---|---|
+| `0x5213` | 12 | `crime_i2cfp_command` | flat-panel I2C command; needs a probed panel (board byte `+0x2e`) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f1` | 4 | `crimePositionCursor` | cursor position; the two halfwords are stored in the board record and the position is applied through `CRS_POS` (see [gbe.md](gbe.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f2` | 0x28 | `crimePixelDma` | pixel DMA request ([pixel-transfer.md](pixel-transfer.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f3` | 4 out | `crmMapPages` | map the client's 0x288-byte shadow record, return its address ([context.md](context.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f4` | 8 | `crimeSetDisplayMode` | write window-ID entry: index word, value word ([gbe.md](gbe.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f5` | 0x304 | `crimeSetGammaRamp` | load the gamma map (0x304 bytes: four header bytes and 256 triples; layout inferred from the size and the three-byte GMAP entries) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f6` | 0x30 | `crimeLoadTimingTable` | load the 0x30-byte timing record ([gbe.md](gbe.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f7` | 8 | `crime_load_fbtlb` | select a frame-buffer TLB set (below) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f8` | 0 | `crmUnmapPages` | unmap the shadow record of `0x55f3` | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55f9` | 0 | `crmUnmapChunk`, `crmUnmapPages` | unmap the block `0x55fc` mapped | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55fc` | 4 out | `crmMapPages`, `crmMapChunk` | map the 0x600-byte GBE block of [gbe.md](gbe.md) and four 64 KiB chunks; return the block's address | established: the dispatcher compare in `crime.o` |
+| `0x55fd` | 8 | `crmFindFreeDidTbl` | when the first word is 1, return a free DID table in the second word (used by the X module's `gbeLoadDIDTable`) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55fe` | 0x14 | `crimeOpenPbuf` | open a pixel buffer; the 0x14 bytes are five words: drawable id, width, height, bytes per pixel and flags | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55ff` | 0x118 | `crimeValidateDDClip` | validate a drawable's clip region; only the X module's clip validation and swap start send it | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5600` | 8 | `crimeClosePbuf` | close a pixel buffer; the two words are the drawable id and a flag word | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5601` | 0x10 | `crmAllocTex` | allocate texture memory, returns the 0x10-byte record | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5602` | | `crmDeallocTex` | free the texture memory that `0x5601` allocated | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5603` | 0x24 | `crmDefineTex` | define a texture ([memory.md](memory.md), texture TLB) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5604` | 4 out | (inline) | create a drawable record (0x220 bytes), give it the next id from a board counter, link it on a board list, return the id | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5605` | 0xc | `crime_load_linear_tlb` | pin a user buffer and load linear TLB A or B with its pages ([pixel-transfer.md](pixel-transfer.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5606` | 0xc | `crime_clear_buffer` | clear a buffer through the transfer engine ([mte.md](mte.md)) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5607` | 8 | `crime_i2cProbe` | read the monitor identification data over I2C (up to 0x80 bytes out) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5608` | 0x102 | `crimeUpdateBackTiles` | rebuild a drawable's back-buffer tile list | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5609` | 0x10 | `crm_enablesz`, `crm_enableovl` | bind a drawable id: the third word of the argument (+8) is a flag word and the fourth (+0xc) the id; bit 0 attaches depth, bit 2 attaches the overlay ([gbe.md](gbe.md)); then the id is looked up in the board list and attached to the client | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560a` | 4 | `crimeUnSchedSwapBuf` | cancel a buffer swap queued for the retrace handler; the X module sends it when a window is destroyed | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560b` | 0x10 | `crime_i2c_cmd` | general I2C command; result returned in the status path | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560c` | 0x20 out | `crimeFrameInfo` | copy out frame-buffer information | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560d` | 0x38 | `crmInitialize` | first-time driver initialisation for the board; the board record must have bit 0 of byte `+0x98` set | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560e` | 0x14 out | | copies out 0x14 bytes of data the listing builds on the stack (content not decoded) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x560f` | 0 | `crime_i2cFpProbe` | re-probe the flat panel | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5610` | 4 | `crimeBlankscreen` | blank or unblank; the word selects ([gbe.md](gbe.md), blanking) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5611` | | | not a request: the boundary of the dispatcher's binary search just above `0x5610`, so it takes the path for unhandled requests and fails with 22 | established: the `sltiu` against 22033 in `crimePrivate`, `crime.o` |
+| `0x564f` | 0 | | logs a message and returns success | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5650` | 4 | `crmLoadTexTlb` | select texture set `n` (below 0x80) for the client and reload the texture TLB | established: a compare in `crimePrivate`, `crime.o` |
+| `0x5651` | 0 | `crimeInitSpecialDDRN`, `crmSwapBufd` | X-server mode: stores `0x84` in the shadow flag word, builds the special render node and swaps ([context.md](context.md)); returns busy if already running | established: a compare in `crimePrivate`, `crime.o` |
 
 Unknown request numbers return 22 after logging. Established: the table above covers every compare in the dispatcher; the order of the compare chain is a binary tree, not the numeric order.
 
@@ -94,7 +95,12 @@ Senders of the remaining requests. Established by searching every instruction of
 
 ## Requests in the scan that the graphics driver never sees
 
-The inventory's request scan matches any constant in the graphics number range, so it also picks up seven requests that go to other drivers. None of them reaches the O2 graphics driver: `crimeIoctl` has no compare for any of them (established negative over the dispatcher above; the only compare in the `0x52xx` range is `0x5213`).
+The inventory's request scan matches any constant in the graphics number range, so it also picks up seven requests that go to other drivers. Established: none of them reaches the O2 graphics driver, because its dispatcher `crimePrivate` in `crime.o` has no compare for any of them; the only compare in the `0x52xx` range is `0x5213`. The STREAMS numbers below are the stream-head requests `'S' << 8` plus a small number, named in the shipped header 6.5.5 root/usr/include/sys/stropts.h.
 
-- `0x5302`, `0x5303`, `0x5308`, `0x530c`, `0x530d`, `0x5315`: STREAMS ioctl requests, the stream-head numbers `'S' << 8` plus 2, 3, 8, 12, 13 and 21, which the shipped header `sys/stropts.h` names push a module, pop a module, send a module-specific request, link a stream below a multiplexer, unlink it, and list the modules on a stream (established: numbers from the 6.5.5 `root/usr/include/sys/stropts.h`). Xsgi's input-device code sends them to its input queue and serial-device streams: `shmiqLink` (`Xsgi` `0x10094150`, `0x10094278`) links and unlinks a device stream under the shared-memory input queue multiplexer; `sgiIsModulePresent` (`0x101f6f90`, `0x101f7014`) first sends `0x5315` with a null argument, which returns the module count, then again with a buffer (established from the two call sites); `sgiGetDeviceFD`, `sgiCheckDevices` and `sgiDeviceControl` push and pop line-discipline modules; `SetRectOffsets` and the 32 other senders of `0x5308` wrap their device requests in the module-specific form (inferred from the sender names and the number only).
-- `0x5214`: an ioctl sent only by `setmon`'s `ng1_setmon` (`setmon` `0x1000f474`), the monitor-setting path for the Indy and Indigo2 XL board family (inferred from the name). The O2 path in the same tool is `crm_setmon`, which does not send it (established: no `0x5214` constant outside `ng1_setmon`). The O2 kernel rejects it as an unknown request (22).
+- `0x5302`: established as the STREAMS ioctl that pushes a module onto a stream (header above). Xsgi's `sgiGetDeviceFD`, `sgiCheckDevices` and `sgiDeviceControl` send it to push a line discipline onto an input-device stream (call sites in the 6.5.30 Xsgi).
+- `0x5303`: established as the STREAMS ioctl that pops the top module off a stream (header above). Only `sgiGetDeviceFD` in the 6.5.30 Xsgi sends it, to undo a push on an input-device stream.
+- `0x5308`: established as the STREAMS ioctl that passes a module-specific request down a stream (header above). `SetRectOffsets` and 32 other routines of the 6.5.30 Xsgi send it; that they wrap their device requests in it is inferred from the sender names and the number.
+- `0x530c`: established as the STREAMS ioctl that links a stream below a multiplexer (header above). `shmiqLink` in the 6.5.30 Xsgi sends it at `0x10094150` to place an input-device stream under the shared-memory input queue.
+- `0x530d`: established as the STREAMS ioctl that unlinks a stream from below a multiplexer (header above). `shmiqLink` (`0x10094278`) and `sgiCloseDevice` in the 6.5.30 Xsgi send it to take an input device off the shared input queue.
+- `0x5315`: established as the STREAMS ioctl that lists the modules on a stream (header above). `sgiIsModulePresent` in the 6.5.30 Xsgi sends it first with a null argument at `0x101f6f90`, which returns the module count, then with a buffer at `0x101f7014`.
+- `0x5214`: established as an ioctl sent only by `ng1_setmon` in the 6.5.30 setmon (`0x1000f474`); no other instruction of the tool loads the constant. The routine is the monitor-setting path for the Indy and Indigo XL boards (inferred from the name); the O2 path, `crm_setmon`, never sends it, and the O2 kernel answers it with error 22.
