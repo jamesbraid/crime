@@ -154,7 +154,7 @@ Decoded records (value fields: `BUF` / `TYP` / `CM` / `GAMMA`; every record has 
 
 - Established (`gbeHWCmaps`, `arHWCmaps` objects): the `CM` value times 256 is the first colour-map entry of the group the record selects (the records hold `0x1000`, `0xf00`, `0xe00`, `0xd00`, `0xc00`, `0xb00`, `0x1100` for the `gbe` set and `0x1200` to `0x1700`, `0xb00`, `0x1100` for the `ar` set). With 6144 colour-map entries that gives 24 groups of 256, which fits a 5-bit field that only reaches 24 in use.
 - Inferred: the 8-bit index windows (TYP I8) each get their own 256-entry colour map (five groups at `gbe`, six at `ar`); a 12-bit index type, RG3B2 and ARGB5 windows use no group; the 24-bit RGB8 window of the `gbe` and `ar` 24-bit tables is the gamma-corrected one (`GAMMA` 1) with CM 11, and a second RGB8 entry has gamma off. Basis: the tables above, and that `GAMMA` is the only record that sets bit 10.
-- Unknown: what the third word `0x3c0n` means. Its low two bits do not track `TYP` consistently across tables (for I12 it is 0 in the 16-bit tables and 2 in the 24-bit ones; for ARGB5 it is 1 and 3). The constant `0x3c` in bits 15:10 and the stored halfword 13 are also unexplained.
+- Established in Pass 4 (end of file): the third word is a software matching key and never reaches the hardware; its bit meaning stays unknown. Pass 3 text: its low two bits do not track `TYP` consistently across tables (for I12 it is 0 in the 16-bit tables and 2 in the 24-bit ones; for ARGB5 it is 1 and 3). The constant `0x3c` in bits 15:10 and the stored halfword 13 are also unexplained.
 - Unknown: how the window ID plane (display-ID plane) is filled per window. `gbeLoadDispIDs` (`crm.so`) walks the window clip regions with a heavily unrolled loop and `gbeLoadDIDTable` picks one of three DID tile lists through ioctl `0x55fd`; the mapping from X window to WID index, and from an index to a pixel format in a frame buffer that holds mixed formats, was not traced.
 - Unknown: overlay and underlay compositing. No read code shows the overlay plane's pixel value selecting or replacing a window ID, nor transparency. The X module carries the generic overlay-visual strings (`SERVER_OVERLAY_VISUALS`, `TRANSPARENT_PIXEL`, `FRAME_BUFFER_LAYER`) in its generic server code, which is not evidence that O2 hardware uses them. Neither Linux nor NetBSD enables the overlay plane (both write `OVR_WIDTH_TILE` as 0). The kernel's own overlay path (`crm_enableovl`) rewrites a drawable's tile table, not a GBE register, as far as the decompilation shows.
 
@@ -200,7 +200,7 @@ Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), GBE
 
 ### The third WID word `0x3c0n`
 
-Still unknown. The values were tested against the mode fields: the low two bits follow neither `TYP` nor `BUF`, and they differ between the 16-bit and 24-bit tables for the same format. No reader of the stored copies (+0xa0, +0xb0 of Xsgi's per-index record) was found among Xsgi's few visible `rrm` symbols, and Xsgi is otherwise stripped.
+Pass 3 found no reader. Pass 4 (end of this file) settles what the word is: a software matching key that never reaches the hardware. The meaning of its bits stays unknown there, with the capture that would settle it.
 
 ### Overlay and underlay compositing
 
@@ -216,3 +216,27 @@ Still unknown after a bounded search. Neither the X module nor the kernel writes
 - Established: the library is only the client side of the `SGI-VIDEO-CONTROL` X extension. It imports Xlib transport functions (`_XSend`, `_XReply`, `_XRead`) and no file functions, so it never reads `.vfo` files. `XSGIvcLoadVideoFormat` and its variants only send requests to the server, which builds the kernel record (see the vfo conversion above).
 - Established (`ReadFormatInfo`, DWARF names): the server describes a format in a 48-byte reply record. The library unpacks it into the caller's structure: four 16-bit values (stored at +260, +256, +268, +264), two 32-bit rates divided by 1000.0 into floats (+272, +276), seven more 32-bit values, a name whose length is in the record, and a count of 36-byte field records read by `ReadFieldInfo`.
 - Unknown: the meaning of each value. The DWARF has names and lines but no types.
+
+## Pass 4: the third WID word and overlay, read again
+
+Binaries: IRIX 6.5.30 `ddx/crm.so`, `ddx/Xsgi`, and the kernel `crime.o` decompilation. Addresses are the virtual addresses shown by `objdump -d` of each file.
+
+### What the third word is
+
+- Established (`rrmSetReservedDID`, Xsgi `0x1015ce50`; `gbeInit`): the record `gbeInit` hands over is `(index, key = third word, value)`. The function writes `key` at `+0xa0` and `+0xb0`, `value` at `+0xa4` and `+0xb4`, the halfword 13 at `+0xa8` and 1 at `+0xb8` of a 36-byte slot inside the per-screen record, slot number = index. The kernel is told only `index` and `value` (ioctl `0x55f4`), never the key. So the key is not a hardware field: it never reaches a GBE register or the kernel.
+- Established (`StealID`, `crm.so` `0x55e7b0`, the loop at `0x55e8e8..0x55e938` and the repeat at `0x55ee7c..0x55eec8`): when the X module needs a window ID it scans these 36-byte slots and calls two slots interchangeable when `(window[+0x20] & maskA) == (slot.key & maskA)` and `(window[+0x24] & maskB) == (slot.value & maskB)`, where `window` is the window's private record and the two masks are the words at `+0x10` and `+0x14` of the slot table header (the header also holds the slot count at `+0`). The same loop compares a halfword of each slot at `+0xaa` with a halfword at `+2` of the window record and skips slots whose flag halfword at `+0xa8` has bit 0x14 set (or, in the second loop, bit 0x8 clear).
+- Established (`crmInvalidate`, `crm.so` `0x45fb64..0x45fb78`): a window's slot is filled by `key = window[+0x20] ^ 4` and `value = window[+0x24]`.
+- Inferred: so the third word is the window's flag word (`+0x20`) in the form that a reserved slot expects, and the reserved slots gbeInit installs are pre-made entries that any window whose flags match under the mask may reuse for free. The pairing of the key's low two bits with pixel format (see the tables above) is then a property of those window flags, not of GBE.
+- Established: `0x3c0n` does not appear as an immediate anywhere else in `crm.so` or `Xsgi` (searched for `addiu ...,zero,0x3c0n` and `ori ...,0x3c0n`), so it is only ever compared through the masks, never tested by name.
+- Unknown: the meaning of the bits of window `+0x20` (the `0x3c` in bits 15:10 and the `n` field), and the two mask values. Needs a capture: dump the window records and the slot table header of a running X server (for example a core of `Xsgi` or a debugger read at `rrmInit` exit) with windows of each visual open.
+
+### Overlay and underlay
+
+- Established (kernel `crm_enableovl`, `crime.c` line 1042): the only overlay code in the kernel driver changes a drawable's rendering state, not a GBE register. It sets the drawable word at `+0x18` to `0x228`, and if that is the current drawable it saves the pixel pipe, reloads the three rendering TLBs for the drawable (`crmLoadTlbABC`), and restores. It is reached from ioctl `0x5609` with bit 4 of the user flags; bit 1 of the same flags selects the sibling `crm_enablesz` (z buffer). Inferred: overlay planes are a per-drawable rendering target (extra tile set) that the rasteriser writes, with the scanout side set up by `OVR_*` and its tile list as already recorded.
+- Established: nothing in `crm.so`, `Xsgi`, the kernel or Linux/NetBSD writes a transparent value, a key colour or an overlay-to-window-ID map to a GBE register. The X module's overlay code is the generic `nfbInitServerOverlayVisualsProperty`, which sets the X property only.
+- Unknown: whether GBE composites the overlay plane over, under or by replacing the frame buffer, and the transparent pixel value. The GBE register set in `GBE.h` (and Linux `gbe.h`) has no register that could carry the key, which suggests the compositing rule is fixed in hardware (inferred, from the register list only). Needs a capture: write a known value into the overlay plane over a known frame buffer on a real O2 and read the pixels back through the video output, once for each of overlay value 0 and non-zero.
+
+### Display-ID plane fill, the remaining unknowns
+
+- Unknown: how `gbeLoadDispIDs` (`crm.so` `0x45a350`) maps an X window to a window ID index. The routine is a long unrolled walk over clip-region rectangles (a first part at `0x45a3d8..0x45a700` only counts them and sizes a stack buffer); the selection of the index per window was not followed. Needs a capture: dump the DID tile list of a running system (`DID_CONTROL` pointer, one 512-byte slot per line) with two windows of different visuals side by side.
+- Unknown: whether the x in a DID entry marks the start or the end of a run. The last entry of a line carries `width - 1` (established above), which fits an end-of-run reading (inferred), but no read code shows GBE's comparison. Needs the same capture, or a Linux/NetBSD-independent GBE datasheet, which this workspace does not have.
