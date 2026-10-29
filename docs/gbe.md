@@ -379,7 +379,7 @@ Tile-address registers of the capture block, in order (established, [gbe-spec] p
 - `VC_7` at `+0x8001c`: tile addresses 7 and 8.
 - `VC_8` at `+0x80020`: tile addresses 9 and 10, write only.
 
-Established as absence: no shipped graphics or video software drives the block. The O2 video kernel driver `mvp.o` imports only `crime_getustmsc`, `crime_retrace_callback`, `crime_video_info` and the interrupt-vector calls (`nm`), with no GBE register access; `libXsgivc` has no GBE access; the 6.5.30 graphics objects and X module never reach `+0x80000`. So the capture behaviour beyond the register layout is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], `mvp.o`, `libXsgivc`, the 6.5.30 kernel and X module, Linux, NetBSD, MAME.
+Established as absence: no shipped graphics or video software drives the block. The O2 video kernel driver `mvp.o` imports only `crime_getustmsc`, `crime_retrace_callback`, `crime_video_info` and the interrupt-vector calls (`nm`), and its only GBE register access is a read of the timing counter `VT_0` at the start of its text; `libXsgivc` has no GBE access; the 6.5.30 graphics objects and X module never reach `+0x80000`. So the capture behaviour beyond the register layout is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], `mvp.o`, `libXsgivc`, the 6.5.30 kernel and X module, Linux, NetBSD, MAME.
 
 ## Format-file state tables
 
@@ -470,16 +470,105 @@ One row per GBE register of the revision 1.1 specification that the sections abo
 | GMAP[256] | `+0x60000` | the 256-entry gamma map, one red, green and blue byte per entry; `crimeSetGammaRamp` in `crime.o` loads it for ioctl `0x55f5` | established |
 | I2C | `+0x8` | the monitor DDC bus, two open-drain lines driven by bit-banging; the DDC probe `crime_i2cProbe` in `crime_i2c.o` reads the monitor identification through it | established |
 
-The capture block (spec pages 47-48). Each row is labelled as having no software dependency: no shipped software or published source depends on the block. Routes tried: the 6.5.30 kernel objects, the X module, the O2 video driver and libraries, and the Linux and NetBSD drivers (see the capture section above).
+The capture block registers `VC_0` to `VC_8` have their own entries under "GBE registers by access site" below.
 
-| Spec name | Offset | Role from the specification | Label |
-|---|---|---|---|
-| VC_0 | `+0x80000` | left and right edges of the capture region | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_1 | `+0x80004` | top and bottom edges of the capture region | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_2 | `+0x80008` | capture DMA enable, flicker filter, field advance, full-screen and colour-space bypass bits | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_3 | `+0x8000c` | field select, descriptor-list DMA enable, field status bits and the descriptor pointer in 31:5 | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_4 | `+0x80010` | two 16-bit capture tile addresses of the descriptor list, the earlier in 31:16 | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_5 | `+0x80014` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_6 | `+0x80018` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_7 | `+0x8001c` | the next two 16-bit capture tile addresses of the descriptor list | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
-| VC_8 | `+0x80020` | the last two 16-bit capture tile addresses of the descriptor list; write-only | no shipped software or published source depends on it; routes tried: the 6.5.30 kernel, the X module, the video driver, Linux and NetBSD |
+# GBE registers by access site (6.5.30)
+
+One entry per register that the shipped 6.5.30 code reaches, or that the revision 1.1 specification lists and nothing reaches, from `crime_kernel/disasm/` and `root/spec/gbe.txt` (register tables on pages 36 to 48). Every entry carries a label.
+
+- `CTRLSTAT` at `+0x0`: the general control word, with chip revision in bits 3:0, ten two-bit pin pairs and the pixel-clock select in bits 29:28. Established.
+  `gbeProbe` in `crime_init.o` stores 0x30000000 to it once the identity check passes, which selects the internal dot-clock PLL and drives every pin low.
+  The word is written with a single 32-bit store, the only store `gbeProbe` makes before the freeze test.
+  `gbeBlankScreen` alternates between 0x000aa000 and 0x300aa000 to drop and restore the clock select.
+- `DEVICE_ID` at `+0x14`: the fixed chip identification word, reset value 0x666 and the same as the JTAG identification (page 37). Established.
+  `gbeProbe` in `crime_init.o` loads it with `lw v0,20(a0)` and exclusive-ors with 0x666.
+  Only an exact match lets the probe continue, so a different value or an absent chip makes it return without writing anything.
+- `I2C` at `+0x8`: the monitor DDC bus, bit 0 the open-drain data line and bit 1 the clock line, both resetting to 1 (page 37). Established.
+  `i2_start` in `crime_i2c.o` takes a bus selector and the GBE base: selector 1 picks the register at `+0x10`, any other value this one.
+  It writes 0, calls `i2_sync_clk`, then writes 1 and 3, reading each value back and pausing with `us_delay` for a time held in a kernel global.
+- `I2CFP` at `+0x10`: the flat-panel bus with the same two open-drain lines at bits 0 and 1 (page 37). Established.
+  `i2_start` in `crime_i2c.o` selects it when its first argument is 1, with the same write sequence of 0, 1 and 3 as for `+0x8`.
+  `i2cfp_DualChannelProbe` probes the 8-bit port of the dual-channel option at bus address 0x7e through it.
+- `SYSCLK` at `+0xc`: the system PLL test controls, with `tm(0)` the only bit set at reset and gain and divider fields in bits 14:8 (page 37). Established.
+  The inventory scan resolves no access at this offset in any of the 82 in-scope binaries.
+  Inferred: the PLL keeps its reset test configuration for the whole run, because no in-scope code writes the register.
+- `VT_0` at `+0x10000`: the video timing counter pair, `vt_x` in bits 11:0, `vt_y` in bits 23:12 and the freeze flag in bit 31, set at reset (page 38). Established.
+  `gbeProbe` in `crime_init.o` stores 0 to it only when bit 31 reads set, which starts the counters.
+  `early_gbe_stop` in `kernel.o` stores 0x80000000 to it after the DMA enables are clear, freezing video timing before the hand-off to the PROM.
+  The routine at offset 0 of `mvp.o` loads it, shifts right by 12, masks 12 bits and returns 1 when the current line is below 1024.
+- `VT_10` at `+0x10028`: the flat-panel horizontal drive window, with the clear count in bits 11:0 and the set count in bits 23:12 (page 39). Established.
+  The inventory scan finds no site here, while `gbeSetTimingRegs` in `crime_init.o` writes the counters `+0x10004` to `+0x10024` and `+0x10034` onward.
+  Inferred: the 6.5.30 kernel leaves the flat-panel horizontal drive at its reset value.
+- `VT_11` at `+0x1002c`: the flat-panel vertical drive window in lines, clear in bits 11:0 and set in bits 23:12 (page 39). Established.
+  `gbeSetTimingRegs` in `crime_init.o` leaves the register at its reset value 0.
+  The scan of every in-scope binary shows no access at this offset.
+- `VT_12` at `+0x10030`: the flat-panel data-enable window along a line, clear in bits 11:0 and set in bits 23:12 (page 40). Established.
+  The kernel's timing writer `gbeSetTimingRegs` steps from `+0x1002c` to `+0x10034` without touching it.
+  The register keeps its reset value 0 whenever IRIX has configured the display.
+- `OVR_1` at `+0x20004`: the live overlay control, tile-list pointer in bits 31:5 and DMA enable in bit 0 (page 42). Established.
+  `early_gbe_stop` in `kernel.o` polls its bit 0 until it clears, with a bound of 0x61a80 (400000) reads.
+  It then polls until the register equals the bumped shadow word, as a fence for one blanking edge.
+  A set bit 0 here also makes the routine run the full stop sequence when the frame control is already clear.
+- `OVR_2` at `+0x20008`: the overlay shadow word, copied into the live register at the start of blanking (page 42). Established.
+  `early_gbe_stop` in `kernel.o` loads it, clears bit 0 (mask -2) and stores it back behind a `flushbus` call.
+  After the wait it adds 32 to the word, advancing the tile-list pointer by one 32-byte unit so that the copy is retriggered.
+- `FRM_2` at `+0x30008`: the live normal-plane control, tile pointer in bits 31:5 and DMA enable in bit 0 (page 43). Established.
+  `early_gbe_stop` in `kernel.o` tests bit 0 first with `andi at,at,1`.
+  When it is clear the routine tests `+0x20004` and `+0x40000` and returns at `.L000086ec` if neither display DMA is running.
+  The same register is polled in the wait loops of the stop sequence.
+- `FRM_3` at `+0x3000c`: the normal-plane shadow, copied into the live register at the start of blanking (page 43). Established.
+  `early_gbe_stop` in `kernel.o` loads it, clears bit 0 and stores it back before it touches the overlay word.
+  After the wait loop it adds 32 and stores again, then waits for `+0x30008` to equal the new word.
+- `DID` at `+0x40000`: the live display-ID control, `did_base` in bits 15:0 and the DMA enable in bit 16 (page 44). Established.
+  `early_gbe_stop` in `kernel.o` tests bit 16 with `and a5,a5,s2` using 0x10000.
+  The second wait loop compares the register with the bumped shadow word.
+- `DID_SHADOW` at `+0x40004`: the display-ID shadow, loaded into the live register at the start of blanking (page 44). Established.
+  `early_gbe_stop` in `kernel.o` clears bit 16 by anding with the complement of 0x10000.
+  It later adds 32 to the whole word, the same pointer bump used for the frame and overlay shadows.
+- `CMAP` at `+0x50000`: the colour map, 4608 entries of 32 bits on revision 1.1 (page 45). Established.
+  `crmStorePseudoColors` at 0x479140 in `crm.so` stores `red << 24 | green << 16 | blue << 8` at `+0x50000 + 4 * index` after a FIFO check.
+  `crmInstallDirectColorMap` stores whole groups the same way.
+  The 6.5.30 kernel never writes the map.
+- `CMFIFO` at `+0x58000`: the colour-map write FIFO free count in bits 5:0, 64 deep on revision 1.1 (page 45). Established.
+  `crmInstallPseudoColorMap` at 0x473890 in `crm.so` reads it and waits for a count of 48 before each batch of 33 entries.
+  `ide.IP32` masks it with 0x3f at 0xa00d2674 and waits for 17 on revision 2.
+- `CRS_0` at `+0x70000`: the cursor position, x in bits 15:0 and y in bits 31:16 (page 46). Established.
+  `crime_tpinit` in `crime_tp.o` stores `zero` to it with `sw zero,0(t1)` after loading the colours, parking the cursor at the top left.
+  No other graphics kernel object writes the register.
+- `CRS_1` at `+0x70004`: the cursor control word, bit 0 the enable and zero at reset (page 46). Established.
+  `crime_tpinit` in `crime_tp.o` stores 1 at the end of its set-up (`sw v0,4(t1)` with `li v0,1`), then calls `gbeBlankScreen`.
+  The cursor therefore comes on before the screen is blanked.
+- `CRS_CM` at `+0x70008`: the three cursor colours, each in the colour-map byte order `RR GG BB 00` (page 46). Established.
+  `crime_tpinit` in `crime_tp.o` writes colour 1 at `+0x70008` with -256, that is 0xffffff00 (white).
+  It writes colour 2 at `+0x7000c` with `lui at,0xff00`, that is 0xff000000 (red).
+  The third colour is never written by the kernel.
+- `CRS_GLY` at `+0x78000`: the 64 words of the 32 by 32 cursor glyph, two bits per pixel (page 46). Established.
+  `crime_tpinit` in `crime_tp.o` copies the first 32 words from a table in its data section in a counted loop to `+0x78000` onward.
+  It then clears words 32 to 63 from `+0x78080`, three stores to `+0x78080`, `+0x78084` and `+0x78088` per loop pass.
+- `VC_0` at `+0x80000`: the capture region's horizontal bounds, the left edge in bits 11:0 and the right edge in bits 23:12 (page 47). Established.
+  No shipped software or published source depends on this register: the inventory scan reaches no access at this offset.
+  Routes tried: the 6.5.30 kernel objects, the X module, `libXsgivc`, the video libraries and the specification.
+- `VC_1` at `+0x80004`: the capture region's vertical bounds, top line in bits 11:0 and bottom line in bits 23:12 (page 47). Established.
+  Neither a shipped binary nor a published driver programs the vertical window, and no in-scope binary has a site here.
+  No shipped software or published source needs its value to run. Routes tried: `mvp.o`, `libXsgivc`, `crm.so` and the specification table.
+- `VC_2` at `+0x80008`: the capture mode word, DMA enable in bit 0, flicker filter in bit 1, automatic field advance in bit 2, full-screen output in bit 3 and colour-space bypass in bit 4 (page 47). Established.
+  The reset value 3 comes from the flicker filter and automatic field advance bits.
+  No shipped software or published source depends on the capture enable. Routes tried: every graphics kernel object, `crm.so` and the video drivers.
+- `VC_3` at `+0x8000c`: the capture sequencing word, field select in bit 0 and the descriptor-list DMA enable in bit 1, which the specification marks as not working on revision 1.1 (page 47). Established.
+  Bits 31:5 point at the descriptor list, and bits 4:2 report field-corrupt, end-of-field and the current field.
+  No shipped software or published source depends on these status bits. Routes tried: the 6.5.30 kernel and X module and the specification.
+- `VC_4` at `+0x80010`: the first pair of capture tile addresses, tile 1 in bits 31:16 and tile 2 in bits 15:0 (page 47). Established.
+  The five tile registers `+0x80010` to `+0x80020` together hold the ten tiles of one captured field.
+  No shipped software or published source depends on the tile addresses of this pair. Routes tried: the inventory scan, `mvp.o` and `libXsgivc`.
+- `VC_5` at `+0x80014`: the second pair of capture tile addresses, tiles 3 and 4, the earlier one in the upper half (page 48). Established.
+  It follows `+0x80010` at a four-byte step, as each register holds two 16-bit entries.
+  No shipped software or published source uses a value written here. Routes tried: every in-scope binary's resolved sites and the specification.
+- `VC_6` at `+0x80018`: the third pair of capture tile addresses, tiles 5 and 6 (page 48). Established.
+  The middle register of the five, it sits between `+0x80014` and `+0x8001c`.
+  No shipped software or published source reads or writes it. Routes tried: the video kernel driver, the X module and the diagnostics.
+- `VC_7` at `+0x8001c`: the fourth pair of capture tile addresses, tiles 7 and 8 (page 48). Established.
+  Only tiles 9 and 10 in `+0x80020` follow it in the descriptor list.
+  No shipped software or published source touches it. Routes tried: the in-scope disassembly and the specification.
+- `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established.
+  A read returns no defined value because the register has no read path.
+  No shipped software or published source accesses it. Routes tried: the kernel objects, the X module and the video libraries.

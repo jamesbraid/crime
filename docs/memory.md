@@ -164,3 +164,86 @@ Established (specification, memory decode text): for every request the controlle
 | `+0x200` | MC Status/Control | the memory control register, bit 0 ECC enable; `ecc_enable` and `ecc_disable` in `kernel.o` write it, and `wbflush` reads it back, which drains the CPU write buffer (inferred purpose of the read) | established |
 | `+0x270` | ECC Replacement Check Bits | the replacement check byte used when memory control bit 1 is set; only the exception path of `symmon.IP32` reads it; that it is printed beside the other memory error registers is inferred from that path | established read, inferred use |
 | `+0x4048` | CPU Error Status, at its revision 1.5 draft position | no shipped software or published source depends on it: IRIX reads the CPU error status at `+0x48` only; routes tried: every access in the 6.5.30 `kernel.o`, the diagnostics and Linux | no software dependency |
+
+## CRIME registers by access site (6.5.30)
+
+One row per register offset the shipped code reaches, from the disassembly under `crime_kernel/disasm/` and from `ide.IP32` and `symmon.IP32` in `sbin/stand/`. Field layouts are those of the CRIME 1.5 specification (`root/spec/crime.txt`, register tables 5-8 to 5-17 and 6-13 to 6-20). Every row carries a label in its last column.
+
+| Offset | Register | Role, hardware effect and the code that shows it | Label |
+|---|---|---|---|
+| `+0x30` | Watchdog Timer | the two-stage reset counter (table 5-14: bit 20 time-out flag, bits 19:0 count). `mlreset` in `kernel.o` stores 0 to it just before it calls `init_sysid`, which stops and clears the counter for the whole run; no other graphics kernel or diagnostic code writes it | established |
+| `+0x50` | CPU Error Enable, revision 0 only | the enable word of the revision-0 part. `mlreset` in `kernel.o` stores 1023 (0x3ff) to it only when `get_crimerev` returns 0, at `.L00008998`, and no later part has the register | established |
+| `+0x58` | VICE Error Address | the address latched when the video engine's access failed. `VEC_dbe` and `VEC_ibe` read it with `+0x40`, `unmap_physaddr` reads it between the CPU and memory error registers, and `symmon.IP32` saves it at 0xa00104e8 in its exception frame | established |
+| `+0x258` | Memory Error Address | the 30-bit address of the first failing memory access (table 6-17). `ecc_handler` in `kernel.o` reads it as the address to scrub, and `VEC_dbe` and `unmap_physaddr` save it with the status | established |
+| `+0x268` | ECC Generated Check Bits | the check bytes the controller computed for the failing word (table 6-19). `dobuserre` in `kernel.o` reads it with `+0x260` to print both words, and `unmap_physaddr` saves it in the same snapshot; `symmon.IP32` saves it at `0xa0010528` | established |
+| `+0x270` | ECC Replacement Check Bits | the byte replicated four times as the check bits when `+0x200` bit 1 is set (table 6-20). `symmon.IP32` loads it at `0xa0010538` as the last register of its exception frame; no shipped code writes it | established |
+| `+0x218` | Bank 2 Control | reset value 2; with 32 MiB parts its match field selects addresses 0x0400_0000 to 0x05ff_ffff (bits 29:25 equal to 2). The sizing loops of `cpu_get_memsize` in `symmon.IP32` and of `ide.IP32` reach it as the third step from `+0x210`, and no shipped code writes it (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x220` | Bank 3 Control | reset value 3, which puts a 32 MiB bank at 0x0600_0000 to 0x07ff_ffff. With 128 MiB parts, bits 4:2 of 3 are 0, the same match as bank 0, so firmware has to rewrite the field before a 64 Mbit bank 3 is usable; no shipped IRIX code does (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x228` | Bank 4 Control | reset value 4, selecting 32 MiB at 0x0800_0000 to 0x09ff_ffff; the 128 MiB form compares bits 4:2 of 4, which is 1, and so decodes the 128 MiB window at 0x0800_0000 (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x230` | Bank 5 Control | the sixth register, reset value 5: 32 MiB parts answer at 0x0a00_0000. The two different decodes of one register, five bits against address bits 29:25 or three bits against 29:27, mean bank 5 and bank 4 collide under 128 MiB parts, where the lower number wins (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x238` | Bank 6 Control | reset value 6 selects 0x0c00_0000 to 0x0dff_ffff with 32 MiB parts. `cpu_get_memsize` in `symmon.IP32` reads it as the seventh doubleword of its loop, ending when its counter reaches 8 at `0xa0027e70` (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x240` | Bank 7 Control | the last bank register, reset value 7, covering 0x0e00_0000 to 0x0fff_ffff with 32 MiB parts, so eight such banks reach 256 MiB from physical 0. The loop of `ide.IP32` ends after it (table 6-14, `root/spec/crime.txt`) | established |
+| `+0x248` | Refresh Counter | an 11-bit SDRAM refresh interval (bits 10:0, table 6-15). The shipped graphics kernel and the diagnostics never touch it, so the PROM's value stays in force; the field has no reset value in the specification (`root/spec/crime.txt`) | inferred |
+
+### Register entries whose sites need more than three names
+
+- `+0x0` ID-Revision: the chip identity doubleword, family value 0xa in bits 7:4 and revision in bits 3:0, revision 1 on the 1.1 part (table 5-8). Established.
+  `crimeProbe` in `crime_init.o` keeps the low byte and rejects any high nibble other than 0xa.
+  It returns 0 for exactly 0xa0, the revision-0 part, and 1 for every later revision.
+  `get_crimerev` in `kernel.o` loads the whole doubleword and derives a revision code of 17 from a non-zero low nibble, 19 from an upper word of 1 and 20 from any other non-zero upper word.
+  `__sysad_wbflush` follows a `sync` with a load of the register, so the read completes only once the CPU write buffer has drained.
+- `+0x4` ID-Revision, low word: the same identity byte read as a 32-bit load at byte offset 4, the low half in big-endian order. Established.
+  `ide.IP32` loads it at 0xa00e4514 and again at 0xa010ca00.
+  Both loads are followed by a compare with 0xa1 (`li at,161`, at 0xa00e4518 and 0xa010ca0c), so the diagnostics proceed only on family 0xa revision 1.
+- `+0x8` CPU Interface Control: the processor-interface mode word (table 5-9). Established.
+  `mlreset` in `kernel.o` loads it on entry and stores it back with bit 9 (watchdog enable) cleared.
+  It also sets bits 13:12 when the implementation field of the processor revision register is 0x23 or higher, and clears them otherwise (masks -513, -12801 and 0x3000).
+  `flushbus` and `badaddr` in `kernel.o` load it only to order earlier register writes, and the load result is discarded.
+  `ide.IP32` stores 0x400 (bit 10, soft reset) at 0xa00e47a8 and 0x800 (bit 11, cold reset) at 0xa00e47c4, each in a loop that repeats until the machine resets.
+- `+0x10` Interrupt Status: the read-only OR of the hardware and software interrupt registers (table 5-10). Established.
+  `crimeFifoFullHandler` in `crime.o` shifts bit 26, the rendering-engine FIFO-full level, to the sign position to test it.
+  `add_ioboard` in `kernel.o` masks bit 31, the VICE line, to decide whether it registers a video-engine board through `add_to_inventory`.
+  `intr` in `kernel.o` reads it to find the pending sources.
+  The routine at 0xa00c4ba8 in `ide.IP32` prints its low 16 bits, the MACE sources.
+- `+0x18` Interrupt Enable: the interrupt priority mask, written by IRIX as its only interrupt-level control. Established.
+  `VEC_int` in `kernel.o` loads it on entry and installs the mask for the active level from the 64-bit level table indexed by the spl level.
+  `splx`, `spl0` and `spl7` write the mask of the new level to it, so priority is realised by rewriting this register rather than the processor's own mask.
+  `mlreset` writes 0 to it before any vector is registered.
+- `+0x28` Hardware Interrupt: the edge-latched interrupt causes, cleared by writing zero to the bit (table 5-13). Established.
+  `crimeRetraceHandler` in `crime_retrace.o` clears bit 16 (mask 0xfffeffff) and `crimePreblankHandler` clears bit 17 (mask 0xfffdffff).
+  `crime_hli_handler` picks the mask for GBE line 0, 1, 2 or 3 by a compare chain (0xfffe, 0xfffd, 0xfffb, 0xfff7 in the high half) and writes it back.
+  `crime_init` in `crime.o` clears bits 19:16 with mask 0xfff0ffff before it registers the retrace vectors.
+  `badaddr` in `kernel.o` reads it after a probe load and tests mask 0x300080, so a memory error (bit 21), a CPU interface error (bit 20) or MACE line 7 makes the probe fail.
+- `+0x38` Crime Timer: the free-running 32-bit timer on the 66.7 MHz clock (table 5-15), which IRIX also uses as a stopwatch by writing it. Established.
+  `_cpuclkper100ticks` in `kernel.o` stores 0 and polls until the sign-extended low word reaches 23496 while sampling the processor count register.
+  `_ticksper1024inst` subtracts two loads around a 512-iteration spin loop.
+  `delay_calibrate` does the same around a long spin loop, multiplies the difference by 15 and divides by 100000 to get the microsecond loop count.
+  `absolute_rtc_current_time` returns its low word.
+  `ide.IP32` stores 0 at 0xa00fea80 and spins until the count passes the microsecond argument times 66.
+- `+0x40` CPU Error Address: bits 33:2 of the physical address of a failed processor access (table 5-16). Established.
+  `VEC_dbe` and `VEC_ibe` in `kernel.o` copy it into kernel globals beside `+0x48`, `+0x58` and the memory error registers.
+  `ecc_handler` and `unmap_physaddr` read it for the correctable-error report.
+  `symmon.IP32` saves it first, at 0xa00104c8, into its exception frame.
+- `+0x48` CPU Error Status: bit 2 CPU illegal address and bits 1:0 the write-parity flags of revision 1 and later (table 5-17), cleared by software. Established.
+  `badaddr`, `wbadaddr` and `earlybadaddr` in `kernel.o` store 0 to it before a probe and reload it afterwards, so a stale error cannot be blamed on the probe.
+  `VEC_dbe` stores its snapshot and then zeroes it, and `mlreset` zeroes it on entry.
+- `+0x208` Bank 0 Control: the first of eight SDRAM bank registers (table 6-14: bit 8 part size, bits 4:0 the address match). Established.
+  `cpu_get_memsize` in `symmon.IP32` loads it as a doubleword at 0xa0027e44 and uses it as the reference value.
+  A later bank is counted only when its register differs from this one.
+  `ide.IP32` reads its low half at 0xa00f022c and its high half at 0xa00f0230.
+- `+0x20c` Bank 0 Control, low word: the low half of bank 0, whose bit 8 is the part size. Established.
+  `ide.IP32` loads it with `lw` at 0xa00f022c before its sizing loop.
+  It keeps the value at stack slot 20 as the template that identical banks are compared against.
+- `+0x210` Bank 1 Control: the second bank register and the start of the sizing loop. Established.
+  `cpu_get_memsize` in `symmon.IP32` starts its pointer here, `ori a2,a2,0x210` at 0xa0027e6c.
+  It adds 128 MiB for bit 8 set and 32 MiB for clear to a running total, skipping any bank equal to bank 0.
+  `ide.IP32` runs the same loop from 0xa00f025c.
+- `+0x214` Bank 1 Control, low word: the low half of bank 1 as a 32-bit load. Established.
+  `ide.IP32` loads it at 0xa00f0264 with `lw t5,4(v0)`.
+  It tests bit 8 of the value against the bank-0 low word to choose 32 or 128 MiB.
+- `+0x250` Memory Error Status: bits 27:25 invalid address on RMW, write or read, bits 24:23 ECC read errors, bit 22 multiple hard errors, bits 21:20 hard and soft error, bits 18:15 the requesting unit (table 6-16). Established.
+  `badaddr` and `VEC_dbe` in `kernel.o` store 0 to it to clear it before and after a probe.
+  `ecc_error_correction` stores 0 to it after `scrub_memory` has rewritten the faulty word.
+- `+0x260` ECC Syndrome Bits: one syndrome byte for each 64-bit quarter of the 256-bit memory word (table 6-18). Established.
+  A routine without a symbol that follows `ecc_handler` in `kernel.o` stores it at record offset 140, beside two 0xdeadbeef filler words.
+  `dobuserre` and `unmap_physaddr` read it to report the failing bits.
