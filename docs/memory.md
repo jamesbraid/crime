@@ -76,3 +76,49 @@ Sources: `crime_kernel/disasm/kernel/kernel.text.s` (`mlreset`, `ecc_disable`, `
 - Established, revision code (`get_crimerev`): it reads the 64-bit ID once and caches a revision code. Low nibble non-zero gives 17; then a non-zero high word gives 19 if it is 1 and 20 otherwise. A low nibble of zero and a zero high word gives 0. Inferred: 17, 19 and 20 are decimal spellings of the hexadecimal revision numbers 1.1, 1.3 and 1.4 that [netbsd] reads from the same upper word (the arithmetic is established, the equivalence is the spelling coincidence). The code branches on it three ways: code 19 is tested after the ID read at start-up; a non-zero code runs `early_gbe_stop`, and `dobuserr` calls `print_buserr_rev1` for non-zero codes and `print_buserr_rev0` for code 0, which answers the open question in `CRIME.h` of which decoder serves which (inferred from that branch): `rev0` is the part whose low ID nibble and upper word are both zero (family A revision 0, the `0xa0` part the graphics probe refuses), `rev1` every other part. The two decoders test different status bits (rev 0: `0x217`, `0x1e0`, `0x200`, `0x100`, `0x80`, `0x40`, `0x20`, `0x10`, `0x8`, `0x4`, `0x2`, `0x1` of the CPU error status; rev 1: `0x5`, `0x4`, `0x1`, `0x2`) and print a message per set bit; the message text is in data the listings do not resolve (unknown, so the meaning of each bit is not recovered from IRIX).
 - Established ([netbsd] names in `crimereg.h`): inputs 28 and 29 are `CRIME_INT_SOFT0` and `CRIME_INT_SOFT1` (`0x10000000` and `0x20000000`), the software interrupts. This settles the question left open above; IRIX raises them through SOFTINT as recorded.
 - Established ([netbsd] `crimereg.h`): interrupt inputs 0-15 are the MACE-routed sources (video in and out, Ethernet, serial, audio, PCI slots and bridge); IRIX registers only 4 and 5 for them (the MACE ISA and misc inputs), so the rest reach the kernel through MACE's own interrupt layer (unknown, outside this repository's scope).
+
+# CPU address windows and aliases (pass 6)
+
+Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 135-153 (memory controller); Linux `arch/mips/sgi-ip32/ip32-memory.c`, `ip32-dma.c`, `arch/mips/include/asm/ip32/crime.h`; MAME `src/mame/sgi/o2.cpp`; the IRIX kernel listings under `crime_kernel/`. Labels as above.
+
+## The map (established, [spec] PDF 47-48, table 3-1)
+
+| CPU physical address | Size | Function | Responds |
+|---|---|---|---|
+| `0x0_0000_0000` | 256 MiB | low memory alias (also what KSEG0 reaches) | CRIME |
+| `0x0_1000_0000` | 32 MiB | frame buffer aperture | CRIME |
+| `0x0_1200_0000` | 32 MiB | depth buffer aperture | CRIME |
+| `0x0_1400_0000` | 32 MiB | CRIME registers | CRIME |
+| `0x0_1600_0000` | 16 MiB | GBE registers | GBE |
+| `0x0_1700_0000` | 16 MiB | VICE registers and RAM | VICE |
+| `0x0_1800_0000` to `0x0_1fff_ffff` | | MACE windows (PCI low I/O 32 MiB, PCI low memory 32 MiB at `0x1a00_0000`, PCI configuration `0x1c00_0000`, I/O `0x1f00_0000`, audio/video `0x1f40_0000`, super I/O `0x1f80_0000`, ROM `0x1fc0_0000`) | MACE |
+| `0x0_2000_0000` | 512 MiB | high memory alias | the table shows a question mark |
+| `0x0_4000_0000` | 1 GiB | full memory | CRIME |
+| `0x0_8000_0000` | 1 GiB | no-ECC memory alias | CRIME |
+| `0x1_0000_0000` | 4 GiB | PCI I/O (high) | MACE |
+| `0x2_0000_0000` | 4 GiB | PCI memory (high) | MACE |
+
+The CPU decode is 40 bits wide in CRIME 1.5 and 36 bits in CRIME 1.1 (established, PDF 49). The map shows `0x0_c000_0000` (1 GiB) and the space above `0x3_0000_0000` as reserved.
+
+- Memory aliases (established, PDF 47): the first 256 MiB is reachable at the low alias so KSEG0 needs no TLB entry; the full 1 GiB needs TLB entries at the full window; "the high 512 MiB is aliased into the upper 512 MiB of the first gigabyte" of address space, which the specification gives as a more compact page-table option than the 1.5 to 2 GiB range. Interpretation (inferred): the high alias at `0x2000_0000` to `0x3fff_ffff` is the same memory as the upper half (offset 512 MiB and up) of the full window. A given physical location must be reached through exactly one of the low alias, the high alias or the full window, or the caches see incoherent copies (established, PDF 47).
+- Frame and depth apertures (established, PDF 47): "linear address space access" to the current 2048 by 2048 by 32-bit frame and depth buffers as the rendering engine maps them. Unknown: how an aperture offset maps to tiled memory, which rendering TLB (A, B or C) it uses, and what a read does while the engine writes; no public source or binary read documents it (the kernel and library code read here never touch either window, below).
+- No-ECC alias (established, PDF 47): reads and writes skip ECC checking and correction only; ECC is still generated on writes and a sub-doubleword write still makes a read-modify-write. The specification gives its purpose as reading raw memory in an ECC fix-up routine and reading data the rendering engine wrote without raising ECC errors. The rendering TLB reaches the same alias through bit 15 of a tile entry (see above).
+- Reverse-endian memory exists only for devices: PCI sees memory at two windows, native at `0x4000_0000` and reverse endian at `0` (established, PDF 51-52, tables 3-5 and 3-6). The CPU map has no reverse-endian window.
+- Other masters (established, PDF 49-52): VICE sees only `0x4000_0000` full memory and the no-ECC alias at `0x8000_0000`; MACE DMA sees full memory, no-ECC memory and nothing below; GBE sees the full memory window and the specification marks everything else reserved. Linux agrees for non-PCI devices: it adds `0x4000_0000` to a RAM offset (`phys_to_dma`, `CRIME_HI_MEM_BASE`), and for PCI devices uses offset zero. IRIX and Linux both give GBE tile numbers below that window; see `docs/gbe.md` (pass 6).
+
+## Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
+
+- Eight external banks each hold a pair of DIMMs; 1M by 16 SDRAM makes a 32 MiB bank, 4M by 16 a 128 MiB bank; total 32 MiB to 1 GiB. Each bank control register (`+0x208` to `+0x240`, doublewords, bit 8 size) holds five bits that are compared with request address bits 29:25 for a 32 MiB bank, or bits 4:2 with 29:27 for a 128 MiB bank; reset values are 0 to 7 for banks 0 to 7. Linux builds the bank's base as `(control & 0x1f) << 25` and the size from bit 8, and adds `0x4000_0000` when a bank ends above 256 MiB. So physical memory is one block of up to 1 GiB at the full window, with its first 256 MiB repeated at physical 0 (the low alias). Memory above 256 MiB is therefore only addressable through the high alias or full window, never by KSEG0.
+- MAME's `o2.cpp` maps 32 MiB of RAM at 0 and eight 32 MiB mirrors per 128 MiB bank from `0x4000_0000`; it models neither aperture nor alias and is not evidence for them (established by reading the file).
+
+## What IRIX does (established, kernel listings)
+
+- Every access to CRIME registers in the graphics kernel files goes through KSEG1 `0xb400_0000` (`lui 0xb400`; the listing counts are in the "Control, watchdog" section above). The rendering engine and GBE pointers (`0x1500_0000`, `0x1600_0000` windows) are passed in by the platform code that calls `crimeInitHW`; the constant never appears in the graphics objects.
+- No graphics kernel object (`crime`, `crime_init`, `crime_tiles`, `crime_dma`, `crime_retrace`, `crime_tp`, `crime_zbuf`, `rrm`, `gfx`) builds an address in the frame buffer or depth buffer apertures: a search of every `lui` and `ori`/`li` that could build `0x1000_0000`, `0x1200_0000` or their KSEG variants finds only status-bit masks (`0x1000_0000` is the engine idle bit). Inferred: IRIX renders and scans out through the rendering TLB and tile lists only, and never reads or writes pixels through the apertures. A user client's mapping is the kernel shadow record and the engine register pages, not the apertures (`crimeMapGfx` maps pages of kernel memory, [docs/ioctls.md](ioctls.md)).
+- Tile lists use physical 64 KiB tile numbers (low memory only in practice: the GBE list entry mask is 13 bits, `crmLoadGbelists`). The texture, frame buffer and colour-index TLB entries carry bit 15 for the no-ECC alias as above.
+
+## Unknown (each listed in `docs/captures.md`)
+
+- The aperture addressing rule and which TLB serves it; whether stores through the aperture write the same bytes the engine would.
+- Which device answers the high alias (the specification's table has a question mark) and whether the high alias is exactly the upper 512 MiB of the full window.
+- Response to the reserved ranges.
