@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Tests of the rules in inventory.py that do not need root/: the `computes` count, the scope filter and the
-per-build credit of the functions table.
+"""Tests of the rules in inventory.py that do not need root/: the `computes` count, the scope filter, the
+per-build credit of the functions table and the template cap.
 
 Run from the repository root: python3 scripts/test_inventory.py
 """
@@ -142,6 +142,38 @@ class CodeGroups(unittest.TestCase):
                                          {'program': 'ge.u', 'kind': 'label', 'name': 'not_an_elf_name'}])
         self.assertEqual(len(set(g['shared'].values())), 1)
         self.assertNotIn('not_an_elf_name', g)
+
+
+class TemplateCap(unittest.TestCase):
+    ROWS = ['| `HP_COLOR3B` | 3 | `__glkonim_Color3b` | Current colour from three signed bytes scaled into the colour range. | inferred |',
+            '| `HP_COLOR3S` | 3 | `__glkonim_Color3s` | Current colour from three signed shorts scaled into the colour range. | inferred |',
+            '| `HP_COLOR3I` | 3 | `__glkonim_Color3i` | Current colour from three signed integers scaled into the colour range. | inferred |',
+            '| `HP_COLOR4UB` | 4 | `__glkonim_Color4ub` | Current colour from four unsigned bytes scaled into the colour range. | inferred |',
+            '| `HP_COLOR4US` | 4 | `__glkonim_Color4us` | Current colour from four unsigned shorts scaled into the colour range. | inferred |',
+            '| `HP_COLOR4UI` | 4 | `__glkonim_Color4ui` | Current colour from four unsigned integers scaled into the colour range. | inferred |']
+
+    def capped(self, rows, data=True):
+        ents = [inv.Entry(r, 'understood', data=data) for r in rows]
+        count = inv.collections.Counter(sk for e in ents for sk in {sk for sk, n, ev in e.sents if sk is not None})
+        return [e.cap(count) for e in ents]
+
+    def test_a_frame_filled_with_different_types_is_one_sentence(self):
+        self.assertEqual(len({inv.cap_key(r.split('|')[4]) for r in self.ROWS}), 1)
+        self.assertEqual(self.capped(self.ROWS), [True] * 6)
+        self.assertEqual(self.capped(self.ROWS[:5]), [False] * 5)
+
+    def test_different_sentences_stay_apart(self):
+        self.assertNotEqual(inv.cap_key('Current colour from three signed bytes scaled into the colour range.'),
+                            inv.cap_key('Current normal from three signed bytes scaled to unit length.'))
+
+    def test_a_short_cell_repeated_word_for_word_counts(self):
+        rows = ['| `arm_t%d` | 0x%x | prints payload, then hangs | **Established** |' % (i, i) for i in range(6)]
+        self.assertEqual(self.capped(rows), [True] * 6)
+        self.assertEqual(self.capped(rows[:5]), [False] * 5)
+
+    def test_short_cells_around_different_values_stay_apart(self):
+        rows = ['| `DoReq%d` | 0x%x | writes register 0x%x | **Established** |' % (i, i, 0x2300 + i) for i in range(6)]
+        self.assertEqual(self.capped(rows), [False] * 6)
 
 
 if __name__ == '__main__':

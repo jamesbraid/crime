@@ -556,6 +556,27 @@ def skeleton(text):
     return ' '.join(out)
 
 
+# The words a generated frame varies from row to row without saying anything new: the data type, its
+# signedness and the count of components ("from three signed bytes", "from four unsigned shorts").
+TYPE_WORD = re.compile(r'\b(?:un)?signed\b|\b(?:bytes?|shorts?|integers?|ints?|floats?|doubles?)\b|'
+                       r'\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|sixteen)\b', re.I)
+
+
+def cap_key(text, short=False):
+    """What the template cap compares. A sentence is its skeleton with the type and count words masked too, so
+    one frame filled with different types is one sentence. A short cell of a data table is compared whole,
+    as written: the same few words in many rows are one cell repeated, while the same words around
+    different values (a register number, a bit) stay apart."""
+    if short:
+        return 'cell: ' + ' '.join(re.sub(r'[*_`]+', '', bare_text(text)).lower().split())
+    out = []
+    for w in skeleton(TYPE_WORD.sub(' TYPEWORD ', text)).split():
+        if w == 'typeword' and out and out[-1] in ('typeword', 'id'):
+            continue
+        out.append(w)
+    return ' '.join(out)
+
+
 def sentences(text):
     """The sentences of an entry: each table cell, then each sentence inside it."""
     out = []
@@ -598,16 +619,16 @@ class Entry:
             elif open_ and UNKNOWN.search(sent):
                 continue                  # an open sub-fact is not one of the entry's role sentences
             elif plain_words(sent) >= 3:
-                # the short cells of a data-table row still give their role words, but no skeleton of theirs is counted
-                self.sents.append((None if data and short else skeleton(sent), len(role_words(sent, subj)),
+                # a short cell of a data-table row counts only as the same cell repeated in other rows
+                self.sents.append((cap_key(sent, data and short), len(role_words(sent, subj)),
                                    bool(EVIDENCE.search(sent))))
 
     def cap(self, count):
         """True when too much of the entry is a sentence that more than TEMPLATE_CAP entries share:
         most of its sentences are, or what is left of it has too few role words to state a role. In a row of
         a structured data table that states decoded values of its own, repeated words
-        around different values are not one sentence repeated: a short cell of such a row is never a template,
-        but its role words still count."""
+        around different values are not one sentence repeated: a short cell of such a row is a template only
+        when the same cell, word for word, recurs in more than TEMPLATE_CAP entries."""
         over = [n for sk, n, ev in self.sents if count[sk] > TEMPLATE_CAP]
         if not over:
             return False
