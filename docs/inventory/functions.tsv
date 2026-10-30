@@ -3009,7 +3009,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f1910	564	ProcQueryFont	dyns
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f1b50	3436	FlxProc..IDC	dynsym	26fcee8fa85b		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f28c0	164	WriteSwappedPortNotifyEvent..IKE	dynsym	429e07e54634		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2970	124	_fs_write_pad	dynsym	5aae07d07cf8		out:14	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f29f0	92	FreeScratchPixmapHeader	dynsym	8ff4ec957761		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f29f0	92	FreeScratchPixmapHeader	dynsym	8ff4ec957761		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2a50	432	ESAStubExtensionInit	dynsym	6bbb8750e2a9		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2c00	1520	SProcXineramaDbeGetVisualInfo..CJC	dynsym	c6287a57af8e		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f31f0	380	dbcNoticeSwapInitiated	dynsym	0ad190966da3		in	understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
@@ -13887,7 +13887,7 @@ usr/gfx/setmon	shared-tool	n32		0x100354fc	4	__istart	dynsym	df3f619804a9		in	un
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4278f0	2760	nfbImageGlyphBlt	dynsym	c1079ee8591a		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4283b8	36	SDBsetupMemoryInterface	dynsym	796671d10db3		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4283e0	3776	crmDrawOpaqueMonoImage	dynsym	282a76ffc6bd		in	understood	docs/xmodule.md#mono-images-and-glyphs	Mono images and glyphs
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4292a0	732	cfb8LineSS1Rect	dynsym	f17e0ea7b0a7		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4292a0	732	cfb8LineSS1Rect	dynsym	f17e0ea7b0a7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x429580	2304	cfb8LineSS1RectCopy	dynsym	0f1bd9621193		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x429e80	332	cfb32SegmentSS1Rect	dynsym	dacde91bc524		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x429fd0	2560	cfb32SegmentSS1RectCopy	dynsym	78f238cfd850		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -13895,7 +13895,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42a9d0	5688	cfbPolyFillArcSolidCo
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42c010	3756	cfb32PolyFillRect	dynsym	45da7331d364		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42cec0	2376	cfb32PolyGlyphBlt8	dynsym	dd27c771f7c6		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42d810	764	cfb32FillRectSolidCopy	dynsym	16f159651105		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42db10	464	cfbZeroPolyArcSS8Copy	dynsym	1894d436c792		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42db10	464	cfbZeroPolyArcSS8Copy	dynsym	1894d436c792		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42dce0	3776	crmDrawMonoImage	dynsym	6dd3fac93b41		in	understood	docs/xmodule.md#mono-images-and-glyphs	Mono images and glyphs
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42eba0	3044	crmImageGlyphBltP2C	dynsym	46212313343f		in	understood	docs/xmodule.md#mono-images-and-glyphs	Mono images and glyphs
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42f790	4436	miFillArcSliceSetup	dynsym	4cbb38c3cb37		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -13919,7 +13919,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4390d0	880	miWindowExposures	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439440	268	miRegionInit	dynsym	6dfe7300879d		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439550	8	miRegionExtents	dynsym	f211f0c174df		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439560	100	miRegionEmpty	dynsym	bba651a25aae		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4395d0	580	miRectIn	dynsym	b8aa99f24b48		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4395d0	580	miRectIn	dynsym	b8aa99f24b48		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439820	380	miRegionCopy	dynsym	ed70cfb5f45c		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4399a0	72	miRegionUninit	dynsym	032f5565a04a		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4399f0	84	nfbCursorLimits	dynsym	3d4b2388700e		in	understood	docs/nfb-layer.md#screen-hooks	Screen hooks
@@ -13927,7 +13927,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439a50	2532	cfb8SegmentSS1RectCop
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43a440	332	cfb8SegmentSS1Rect	dynsym	1fdd776d4172		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43a590	3780	cfbPolyFillRect	dynsym	45c5d484f980		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43b460	4436	cfbValidateGC	dynsym	02c579d8e929		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43c5c0	1948	cfbFillRectSolidCopy	dynsym	f5c936a1a571		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43c5c0	1948	cfbFillRectSolidCopy	dynsym	f5c936a1a571		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43cd60	1036	crmInstallHWColormap	dynsym	3f9961cd9b87		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43d170	8	crmInstallTrueColorMap	dynsym	78aa5094d5ec		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x43d180	2536	crmSolidPolyFillRect	dynsym	bd636ac0ef30		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
@@ -13971,7 +13971,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44f560	1300	crmReadImage24	dynsym
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44fa80	756	crmValidateMode	dynsym	2ca4896f1fc1		in	understood	docs/xmodule.md#validation-of-graphics-contexts-and-windows	Validation of graphics contexts and windows
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44fd80	1052	crmPaintWindowBorder	dynsym	da65de748ec8		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4501a0	5408	miZeroLine	dynsym	dbbb49613309		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4516c0	2088	cfbBitBlt	dynsym	c738bf146dbb		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4516c0	2088	cfbBitBlt	dynsym	c738bf146dbb		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x451ef0	5340	crmReadImage8	dynsym	d24750881900		in	understood	docs/xmodule.md#copies-and-pixel-transfer	Copies and pixel transfer
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4533d0	564	mfbCopyPlane	dynsym	3121a02bcb87		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x453610	2208	mfbCopyArea	dynsym	ced2e0b24c0d		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
@@ -14050,14 +14050,14 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x474ca0	8	nfbPositionWindow	dynsym
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x474cb0	372	nfbRealizeWindow	dynsym	822a0cecb980		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x474e30	480	rrmMapWindow	dynsym	d029a0d31e0b		in	understood	docs/xmodule.md#window-creation-and-mapping	Window creation and mapping
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x475010	120	rrmCreateWindow	dynsym	ae6e27266b44		in	understood	docs/xmodule.md#window-creation-and-mapping	Window creation and mapping
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x475090	1124	cfbSolidSpansCopy	dynsym	b53134c0a057		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x475090	1124	cfbSolidSpansCopy	dynsym	b53134c0a057		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x475500	4408	crmInitiateBufferSwap	dynsym	a854616edb1e		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x476640	188	crmSwapDone	dynsym	4b89f2d4cd8e		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x476700	1508	cfb8SetOpaqueStipple	dynsym	8d3401cc1f27		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x476700	1508	cfb8SetOpaqueStipple	dynsym	8d3401cc1f27		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x476cf0	4620	cfbCopyPlane1to8	dynsym	6852ff19ebb8		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x477f00	1200	cfbCopyPlane	dynsym	89ca598df7df		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4783b0	740	cfbResolveColor	dynsym	e99f6afc3eab		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4786a0	808	cfbPutImage	dynsym	9b75e7402d2e		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4783b0	740	cfbResolveColor	dynsym	e99f6afc3eab		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4786a0	808	cfbPutImage	dynsym	9b75e7402d2e		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4789d0	1892	crmInitializeColormap	dynsym	febf96789448		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x479140	1864	crmStorePseudoColors	dynsym	4cac57d2c7bb		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x479890	9112	mfbDoBitblt	dynsym	442cfdff8594		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
@@ -14154,7 +14154,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x495e70	4904	cfb32ClippedLineCopy	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4971a0	4904	cfb16ClippedLineCopy	dynsym	9e621b0f6464		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4984d0	1520	cfb32LineSS1RectPreviousCopy	dynsym	2be7f055b9ec		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x498ac0	1528	cfb16LineSS1RectPreviousCopy	dynsym	7f52c826eabc		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4990c0	1460	cfb8LineSS1RectPreviousCopy	dynsym	dad9b1f99dac		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4990c0	1460	cfb8LineSS1RectPreviousCopy	dynsym	dad9b1f99dac		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x499680	3552	cfb16LineSS1RectGeneral	dynsym	8ee857f24931		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49a460	3372	cfb8LineSS1RectGeneral	dynsym	993bc32871b7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49b190	5388	cfb16ClippedLineGeneral	dynsym	707c3d20b3de		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14202,7 +14202,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c2090	208	cfb16FillRectTileOdd	d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c2160	564	cfb16UnnaturalTileFS	dynsym	0c35abb12ad9		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c23a0	496	cfb32UnnaturalTileFS	dynsym	2238630afa9b		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c2590	9564	cfb8Stipple32FS	dynsym	fabfdef43d5a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c4af0	560	cfbUnnaturalTileFS	dynsym	016089e073d7		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c4af0	560	cfbUnnaturalTileFS	dynsym	016089e073d7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c4d20	3824	cfb8OpaqueStipple32FS	dynsym	2ae9ed76c9ce		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c5c10	6032	cfbUnnaturalStippleFS	dynsym	b8def497f8d4		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4c73a0	2500	cfbGetSpans	dynsym	dfd57a7b552f		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14214,7 +14214,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca210	356	cfb16ImageGlyphBlt8	dy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca380	388	cfbImageGlyphBlt8	dynsym	29b594a503e2		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca510	332	cfb32ImageGlyphBlt8	dynsym	425219e81506		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca660	412	cfb32GetImage	dynsym	a9a98411255d		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca800	580	cfbGetImage	dynsym	63bcf22aadc1		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ca800	580	cfbGetImage	dynsym	63bcf22aadc1		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4caa50	416	cfb16GetImage	dynsym	ca266f52b963		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4cabf0	16028	cfb16LineSD	dynsym	e48a0e69130d		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4cea90	9368	cfb16LineSS	dynsym	dba2abf53108		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14223,9 +14223,9 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4d32c0	16100	cfbLineSD	dynsym	707
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4d71b0	15804	cfb32LineSD	dynsym	29c4c06485ed		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4daf70	1036	cfb16XRotatePixmap	dynsym	2400bb7a0cf4		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4db380	536	cfb16YRotatePixmap	dynsym	781e7d04fca3		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4db5a0	872	cfbCopyRotatePixmap	dynsym	6d39eb998ab8		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4db910	1036	cfbXRotatePixmap	dynsym	cb827969e85a		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dbd20	536	cfbYRotatePixmap	dynsym	0991c1b5ab9e		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4db5a0	872	cfbCopyRotatePixmap	dynsym	6d39eb998ab8		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4db910	1036	cfbXRotatePixmap	dynsym	cb827969e85a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dbd20	536	cfbYRotatePixmap	dynsym	0991c1b5ab9e		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dbf40	856	cfb32CopyRotatePixmap	dynsym	1d9976eff720		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dc2a0	536	cfb32YRotatePixmap	dynsym	0a8bb0c286b5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dc4c0	1056	cfb32XRotatePixmap	dynsym	5ccbba504188		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14237,7 +14237,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dfaf0	5996	cfbFillPoly1RectGener
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e1260	6060	cfb16FillPoly1RectGeneral	dynsym	df66f119c008		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e2a10	1484	cfb16PolyPoint	dynsym	6ab191c63670		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e2fe0	1500	cfb32PolyPoint	dynsym	5533f47f70a3		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e35c0	1276	cfbPolyPoint	dynsym	07bc71d702de		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e35c0	1276	cfbPolyPoint	dynsym	07bc71d702de		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e3ac0	3940	cfbPushPixels8	dynsym	d55d06553342		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e4a30	9456	cfb8FillRectTransparentStippled32	dynsym	c4b93e04dc03		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e6f20	3832	cfb8FillRectOpaqueStippled32	dynsym	53fa9aa10fb5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14255,27 +14255,27 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f7b90	1640	cfb16FillRectSolidCop
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f8200	1868	cfb16FillRectSolidGeneral	dynsym	a62b1375ffce		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f8950	1220	cfb32SolidSpansGeneral	dynsym	cb4290ac0677		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f8e20	752	cfb32FillRectSolidGeneral	dynsym	f84b9f9593c6		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f9110	2060	cfbFillRectSolidGeneral	dynsym	6bf58ec4dd95		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f9920	1628	cfbSolidSpansGeneral	dynsym	59cd1921ba02		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f9110	2060	cfbFillRectSolidGeneral	dynsym	6bf58ec4dd95		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f9920	1628	cfbSolidSpansGeneral	dynsym	59cd1921ba02		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4f9f80	1468	cfb16SolidSpansGeneral	dynsym	0141cb1766c8		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fa540	1020	cfb32FillRectSolidXor	dynsym	df1680675b78		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fa940	2792	cfb16FillRectSolidXor	dynsym	0b88cf674dc5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fb430	952	cfb32SolidSpansXor	dynsym	ab7a33339db9		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fb7f0	2956	cfbFillRectSolidXor	dynsym	66d112c52c1d		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fc380	1128	cfb16SolidSpansXor	dynsym	d410c189f03b		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fc7f0	1244	cfbSolidSpansXor	dynsym	c8f15f4dbc26		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fc7f0	1244	cfbSolidSpansXor	dynsym	c8f15f4dbc26		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4fccd0	24196	cfbTEGlyphBlt8	dynsym	de472be6758b		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x502b60	1120	cfb32Tile32FSCopy	dynsym	7f9f033780d1		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x502fc0	1184	cfb32FillRectTile32Copy	dynsym	9dff7f145216		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x503460	2140	cfbFillRectTile32Copy	dynsym	4decfa5d46a5		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x503460	2140	cfbFillRectTile32Copy	dynsym	4decfa5d46a5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x503cc0	1476	cfb16Tile32FSCopy	dynsym	0016fe07ea75		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x504290	2156	cfb16FillRectTile32Copy	dynsym	a5189a94984a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x504b00	1476	cfbTile32FSCopy	dynsym	2753695aba16		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x504b00	1476	cfbTile32FSCopy	dynsym	2753695aba16		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5050d0	4456	cfb16FillRectTile32General	dynsym	026880ff7490		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x506240	1908	cfb16Tile32FSGeneral	dynsym	f7506c13306c		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5069c0	1436	cfb32Tile32FSGeneral	dynsym	ea43a0fd64ec		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x506f60	1596	cfb32FillRectTile32General	dynsym	ca0e4a98c47a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5075a0	1912	cfbTile32FSGeneral	dynsym	f389b706f83c		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5075a0	1912	cfbTile32FSGeneral	dynsym	f389b706f83c		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x507d20	4456	cfbFillRectTile32General	dynsym	c8c81c3dbc7c		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x508e90	2660	cfb16FillSpanTileOddCopy	dynsym	e6d5a532a8d3		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x509900	2040	cfb16FillSpanTile32sCopy	dynsym	04faf9a473b7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14283,15 +14283,15 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50a100	2384	cfb16FillBoxTile32sCo
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50aa50	2808	cfb16FillBoxTileOddCopy	dynsym	985f51c4a44a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50b550	1092	cfb32FillSpanTile32sCopy	dynsym	2c40453cb88d		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50b9a0	1332	cfb32FillBoxTile32sCopy	dynsym	3e60ac0914f9		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50bee0	2024	cfbFillSpanTile32sCopy	dynsym	cad253374349		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50bee0	2024	cfbFillSpanTile32sCopy	dynsym	cad253374349		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50c6d0	2368	cfbFillBoxTile32sCopy	dynsym	3351e279a082		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50d010	2792	cfbFillBoxTileOddCopy	dynsym	b9f9aef72a71		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50db00	2644	cfbFillSpanTileOddCopy	dynsym	ae086803ecdb		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50e560	2152	cfbFillBoxTile32sGeneral	dynsym	fd6a74a9fe28		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50e560	2152	cfbFillBoxTile32sGeneral	dynsym	fd6a74a9fe28		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50edd0	1824	cfb16FillSpanTile32sGeneral	dynsym	d647fc6eb9a1		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50f4f0	2816	cfbFillSpanTileOddGeneral	dynsym	197571a0f4a4		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x50fff0	2924	cfbFillBoxTileOddGeneral	dynsym	d92a938b1874		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x510b60	1824	cfbFillSpanTile32sGeneral	dynsym	f3d1f1ab0024		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x510b60	1824	cfbFillSpanTile32sGeneral	dynsym	f3d1f1ab0024		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x511280	2152	cfb16FillBoxTile32sGeneral	dynsym	36fdb5ea31c4		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x511af0	1140	cfb32FillBoxTile32sGeneral	dynsym	c5096b01e379		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x511f70	2816	cfb16FillSpanTileOddGeneral	dynsym	9e0aefcf8412		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14300,11 +14300,11 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x512e20	2924	cfb16FillBoxTileOddGe
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x513990	464	cfb32ZeroPolyArcSSCopy	dynsym	c18df17ab4f2		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x513b60	464	cfb16ZeroPolyArcSSCopy	dynsym	e6fe4659b707		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x513d30	468	cfb16ZeroPolyArcSSGeneral	dynsym	82e92af830a5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x513f10	468	cfbZeroPolyArcSS8General	dynsym	7c276c702e70		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x513f10	468	cfbZeroPolyArcSS8General	dynsym	7c276c702e70		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5140f0	468	cfb32ZeroPolyArcSSGeneral	dynsym	54ee7a4f9af1		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5142d0	468	cfb16ZeroPolyArcSSXor	dynsym	bca1c0d52883		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5144b0	468	cfb32ZeroPolyArcSSXor	dynsym	e8f269463086		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x514690	464	cfbZeroPolyArcSS8Xor	dynsym	718dbf339d3d		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x514690	464	cfbZeroPolyArcSS8Xor	dynsym	718dbf339d3d		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x514860	1108	crmStoreDirectColors	dynsym	01338841b3ce		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x514cc0	788	crmInstallDirectColorMap	dynsym	b2dc637afb33		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x514fe0	8	crmStoreTrueColors	dynsym	78aa5094d5ec		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
@@ -14654,11 +14654,11 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c270	4272	miWideSegment..FO	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d320	216	nfb12RopLoop..AH	dynsym	f8aba4e7ddec		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d400	220	miBSFree..BBB	dynsym	aa9a91a358ce		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d4e0	936	miSubtractO..AN	dynsym	d9540ff7cedc		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d890	1992	cfbZeroArcSS8Copy..FL	dynsym	1ea669e4d943		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d890	1992	cfbZeroArcSS8Copy..FL	dynsym	1ea669e4d943		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e060	2200	cfbZeroArcSS8Copy..FM	dynsym	ac2a4f129c94		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e900	76	nfbInfPolyText8..GK	dynsym	531ea7f18d8a		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e950	88	cfbDestroyPixmap	dynsym	1a972112271e		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e9b0	2056	cfbZeroArcSS8Xor..AL	dynsym	19e5075ce89f		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e9b0	2056	cfbZeroArcSS8Xor..AL	dynsym	19e5075ce89f		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f1c0	1800	nfbPutPlane..DG	dynsym	605e83e3af91		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f8d0	180	crmRingBell..G	dynsym	dc577a224f6b		in	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f990	2280	cfbZeroArcSS8Xor..EM	dynsym	95f5e5e3fd6b		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
