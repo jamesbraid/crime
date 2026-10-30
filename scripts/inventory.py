@@ -1873,7 +1873,11 @@ class Unit:
         FIRST = [None] * len(blocks)
         FIRST[0] = dict(entry)
         for k in range(1, len(blocks)):
-            if not preds[k]:
+            st, en = blocks[k]
+            if not preds[k] and not (en - st == 1 and not is_branch(insns[st][1])):
+                # unreached, so a switch target or dead code. A lone instruction nothing reaches is
+                # a nop pad or a copy of a branch's delay slot placed before its target; it would
+                # feed an empty state into the block after it and lose every window base there
                 IN[k] = {}
         self.recording = False
         work = sorted(k for k in range(len(blocks)) if IN[k] is not None)
@@ -1948,7 +1952,7 @@ class Unit:
                 return
             t = branch_target(insns[i])
             tb = bindex.get(index.get(t)) if t is not None else None
-            uncond = mn == 'j' or (mn == 'beq' and ops[:2] == ['$0', '$0']) or (mn == 'bgez' and ops[:1] == ['$0'])
+            uncond = mn == 'j' or (mn == 'beq' and ops[:2] == ['$0', '$0']) or (mn in ('bgez', 'bgezl') and ops[:1] == ['$0'])
             if tb is not None:
                 yield tb, regs
             if not uncond and nxt is not None:
@@ -2220,6 +2224,9 @@ class Unit:
             disp = num(mm.group(1))
             bk = int(mm.group(2))
             bv = ('c', 0) if bk == 0 else regs.get(bk)
+            if bv and bv[0] == 'sp':
+                # a frame pointer set to sp plus a constant: its slots are sp slots
+                bk, disp, bv = 29, disp + bv[1], None
             width = LOADS.get(mn) or STORES[mn]
             if mn in STORES:
                 value = val(ops[0]) if mn not in ('swc1', 'sdc1', 'swc2', 'sdc2') else None
@@ -2253,13 +2260,17 @@ class Unit:
         elif mn in ('addiu', 'daddiu', 'addi', 'daddi') and n == 3:
             s = val(ops[1])
             imm = num(ops[2])
-            if rel and rel[0] in ('R_MIPS_LO16', 'R_MIPS_GOT_OFST', 'R_MIPS_GPREL16', 'R_MIPS_GOT_LO16'):
+            if ops[1] == '$29' and not rel:
+                v = ('sp', imm)
+            elif rel and rel[0] in ('R_MIPS_LO16', 'R_MIPS_GOT_OFST', 'R_MIPS_GPREL16', 'R_MIPS_GOT_LO16'):
                 if s and s[0] == 's' and s[1] == rel[1]:
                     v = ('s', rel[1], s[2] + imm + rel[2])
                 else:
                     v = ('s', rel[1], imm + rel[2])
             elif s and s[0] == 'c':
                 v = ('c', s32(s[1] + imm) if mn in ('addiu', 'addi') else s64(s[1] + imm))
+            elif s and s[0] == 'sp':
+                v = ('sp', s[1] + imm)
             elif s and s[0] == 'w':
                 v = ('w', s[1], None if s[2] is None else s[2] + imm, s[3])
             elif s and s[0] in ('s', 'cu'):
@@ -2284,6 +2295,8 @@ class Unit:
                 v = a
             elif mn in ('or', 'addu', 'daddu') and ops[1] == '$0':
                 v = c
+            elif a and c and {a[0], c[0]} == {'cp', 'ci'} and a[1] == c[1] and mn in ('addu', 'daddu'):
+                v = ('cq', a[1])
             elif a and c and a[0] == 'c' and c[0] == 'c':
                 if mn == 'or':
                     r = a[1] | c[1]
@@ -2327,6 +2340,8 @@ class Unit:
                     v = ('c', s64(s64(u) >> sa))
             elif s and s[0] == 's' and mn.startswith('dsll'):
                 v = s
+            elif s and s[0] == 'ci' and mn in ('sll', 'dsll'):
+                v = s
         elif mn in ('movn', 'movz'):
             v = None
         setr(d, v)
@@ -2335,6 +2350,23 @@ class Unit:
         info, img = self.info, self.img
         if bk == 29:
             return regs.get(('m', disp))
+        # configured record chains
+        for b in self.m.bases:
+            if b['type'] != 'chain' or not self.applies(b, img, self.fname):
+                continue
+            if mn not in b.get('loads', ('lw', 'ld', 'lwu')):
+                continue
+            cid = b.get('label', 'chain')
+            if bk not in (0, 29) and disp == num(b['index_disp']):
+                return ('ci', cid)
+            if disp == num(b['array_disp']) and bk not in (0, 29) and not (bv and bv[0] in ('c', 's')):
+                return ('cp', cid)
+            if bv and bv[0] == 'cq' and bv[1] == cid and disp == 0:
+                return ('cr', cid)
+            if bv and bv[0] == 'cr' and bv[1] == cid:
+                for f in b['fields']:
+                    if num(f['disp']) == disp:
+                        return ('w', f['window'], num(f.get('offset', 0)), f.get('label', cid + ' +%d' % disp))
         # configured pointer fields and globals
         for b in self.m.bases:
             t = b['type']

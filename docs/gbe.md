@@ -533,6 +533,10 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
 - `CMFIFO` at `+0x58000`: the colour-map write FIFO free count in bits 5:0, 64 deep on revision 1.1 (page 45). Established.
   `crmInstallPseudoColorMap` at 0x473890 in `crm.so` reads it and waits for a count of 48 before each batch of 33 entries.
   `ide.IP32` masks it with 0x3f at 0xa00d2674 and waits for 17 on revision 2.
+- `GMAP[256]` at `+0x60000`, entry 1 at `+0x60004`: the gamma map, one word per entry in `RR GG BB 00` order. Established.
+  `crime_i2cFpGbeRetrace` in `crime_retrace.o` writes a linear ramp (a running value that starts at 0 and gains 0x01010100 per entry) for a flat-panel request of 2, two entries per pass of an unrolled loop.
+  The second store of the first pass, `sw a4,-4(a6)` at offset 0x1034 after the pointer has advanced by 8, is the word at `+0x60004`; the later passes cover the rest of the map up to entry 255.
+  A request of 1 copies a 256-byte table through the same window with one byte replicated into the three colour fields.
 - `CRS_0` at `+0x70000`: the cursor position, x in bits 15:0 and y in bits 31:16 (page 46). Established.
   `crime_tpinit` in `crime_tp.o` stores `zero` to it with `sw zero,0(t1)` after loading the colours, parking the cursor at the top left.
   No other graphics kernel object writes the register.

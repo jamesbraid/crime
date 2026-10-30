@@ -241,6 +241,22 @@ One row per register offset the shipped code reaches, from the disassembly under
 - `+0x214` Bank 1 Control, low word: the low half of bank 1 as a 32-bit load. Established.
   `ide.IP32` loads it at 0xa00f0264 with `lw t5,4(v0)`.
   It tests bit 8 of the value against the bank-0 low word to choose 32 or 128 MiB.
+- `+0x21c` Bank 2 Control, low word: the low half of bank 2 as a 32-bit load. Established.
+  `ide.IP32` loads it with `lw t3,12(v0)` at 0xa00f02ac, in the first of its six unrolled passes after bank 1.
+  A bank is skipped only when both of its words equal bank 0's; otherwise bit 8 of this word adds 32 or 128 MiB to the total.
+- `+0x224` Bank 3 Control, low word: bank 3's size bit and match field. Established.
+  The next unrolled pass of the `ide.IP32` sizing loop reads it with `lw t1,12(v0)` at 0xa00f02f4, after the pointer has advanced by 8.
+  It is compared with the bank-0 low word kept at stack slot 20, and bit 8 selects the size added.
+- `+0x22c` Bank 4 Control, low word: read by the third pass of the same loop. Established.
+  `ide.IP32` has `lw t7,12(v0)` at 0xa00f033c, with the high word of the bank loaded at 0xa00f0338.
+  The 0x100 mask on it picks 0x02000000 or 0x08000000 for the running total in `v1`.
+- `+0x234` Bank 5 Control, low word: the fourth pass, which loads it at 0xa00f0384 with `lw t5,12(v0)`. Established.
+  Its high word comes from `lw t4,8(v0)` at 0xa00f0380, and both are compared with bank 0 before the size test.
+- `+0x23c` Bank 6 Control, low word: loaded by the fifth pass at 0xa00f03cc with `lw t3,12(v0)`. Established.
+  Equality with both words of bank 0 skips the bank; a differing word falls through to the bit 8 test.
+- `+0x244` Bank 7 Control, low word: the last word the sizing loop reads. Established.
+  `ide.IP32` loads it with `lw t1,12(v0)` at 0xa00f0414, the sixth unrolled pass, the last of the loop.
+  Banks 2 to 7 therefore each contribute one high and one low load, as the pairs at `+0x218` to `+0x240` already show.
 - `+0x250` Memory Error Status: bits 27:25 invalid address on RMW, write or read, bits 24:23 ECC read errors, bit 22 multiple hard errors, bits 21:20 hard and soft error, bits 18:15 the requesting unit (table 6-16). Established.
   `badaddr` and `VEC_dbe` in `kernel.o` store 0 to it to clear it before and after a probe.
   `ecc_error_correction` stores 0 to it after `scrub_memory` has rewritten the faulty word.

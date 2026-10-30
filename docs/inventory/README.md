@@ -344,12 +344,13 @@ The status measures what an entry claims and cites, not whether it is right: rea
 
 ## How register accesses are found
 
-Each function of every ELF file in scope is disassembled and replayed over its basic blocks to a fixed point. A register or a stack slot keeps a value across a join only when every path into the join agrees; when the paths agree on the window but not the offset, it keeps the window with an untraced offset. Constants are followed through `lui`, `ori`, `addiu`, shifts, adds and loads from read-only data, literal pools and the GOT. A value becomes a register window base when the config says so:
+Each function of every ELF file in scope is disassembled and replayed over its basic blocks to a fixed point. A register or a stack slot keeps a value across a join only when every path into the join agrees (a block that nothing reaches and that is a single instruction, a nop pad or a copy of a branch's delay slot, is left out of the join; a larger unreached block, a switch target, starts with nothing known); when the paths agree on the window but not the offset, it keeps the window with an untraced offset. A frame pointer set to the stack pointer plus a constant addresses the same stack slots as the stack pointer. Constants are followed through `lui`, `ori`, `addiu`, shifts, adds and loads from read-only data, literal pools and the GOT. A value becomes a register window base when the config says so:
 
 - `constant`: an address in a fixed range (a physical window, a kernel segment address of one, or a fixed user mapping);
 - `field`: a load from a given displacement, the pointer field a structure keeps the base in;
 - `global`: a load from a given offset of a named global;
 - `argument`: a register on entry to a named function;
+- `chain`: a record reached through an array of per-owner pointers. A load at `array_disp` gives the array, a slot number loaded at `index_disp` (any base register) and scaled by the word size is added, the owner's record is loaded from the slot at displacement 0, and each configured `fields` entry (a displacement into that record) is a window base. The slot number is checked, so a record of another owner in the same array type is not mistaken for the window;
 - `return`: the value a named function returns.
 
 The replay then learns two more sources inside each file: a function whose every call site passes the same window in an argument register starts with it, and a call to a function that always returns a window base yields it. An accessor (a function that takes a register address in an argument) counts as an access at that address.

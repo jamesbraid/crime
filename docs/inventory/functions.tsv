@@ -812,41 +812,41 @@ usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x38e0	72	a3_check_for_vi
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32		0x0		crimeFifoEmptyHandler	dwarf+symtab			understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x120	136	crimeEmptyWaitTimeout	dwarf+symtab	4a7208f5ffb4		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1a8	476	crimeFifoFullHandler	dwarf+symtab	4a4dd54765f5		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x384	88	crimeInfo	dwarf+funcnames+symtab	0a6fa520383e		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3dc	56	crmNextIncarnation	dwarf+symtab	e3891ad111bc		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x384	88	crimeInfo	dwarf+funcnames+symtab	0a6fa520383e		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3dc	56	crmNextIncarnation	dwarf+symtab	e3891ad111bc		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x414	256	crimeAttach	dwarf+funcnames+symtab	aaa1aeb184a6		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x514	64	crimeDetach	dwarf+funcnames+symtab	fb1e1ba9958c		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x514	64	crimeDetach	dwarf+funcnames+symtab	fb1e1ba9958c		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x554	76	crimeInitialize	dwarf+funcnames+symtab	b95ae9850a40		understood	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5a0	324	crimeStart	dwarf+funcnames+symtab	d3a34ba0d4a4		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x6e4	904	crmInitialize	dwarf+funcnames+symtab	3ad50663e40a		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x6e4	904	crmInitialize	dwarf+funcnames+symtab	3ad50663e40a		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xa6c	8	crimeDownload	dwarf+funcnames+symtab	87506497337c		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xa74	56	crimeSetNullClip	dwarf+funcnames+symtab	0786c2aaa697		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xaac	92	crimePositionCursor	dwarf+symtab	e4b70d4975ca		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xb08	80	crm_freedrawable	dwarf+funcnames+symtab	2acda91d75de		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xb58	72	crm_createdrawable	dwarf+funcnames+symtab	13150561bc82		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xb08	80	crm_freedrawable	dwarf+funcnames+symtab	2acda91d75de		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xb58	72	crm_createdrawable	dwarf+funcnames+symtab	13150561bc82		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xba0	92	crm_mapcliptodraw	dwarf+funcnames+symtab	6c1dd6aaf39b		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xbfc	200	crm_finddrawable	dwarf+funcnames+symtab	b1107b23ae1f		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xcc4	424	crm_unbinddrawable	dwarf+funcnames+symtab	62a39a31c9f5		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xe6c	112	crimeInitSpecialDDRN	dwarf+funcnames+symtab	fef034ad6c50		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xedc	308	crimeCreateDDRN	dwarf+funcnames+symtab	0b14fd6652d9		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1010	44	crmunpinscratch	dwarf+funcnames+symtab	1a566214ef49		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x103c	528	crimeDestroyDDRN	dwarf+funcnames+symtab	58c5622d1a42		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x124c	360	crm_destroydrawable	dwarf+funcnames+symtab	f5c8d2ff006f		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x13b4	224	crm_enableovl	dwarf+funcnames+symtab	cab4eadea544		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1494	1008	crm_enablesz	dwarf+funcnames+symtab	54d084c59f6b		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1884	1808	crmRecomputeSZ	dwarf+funcnames+symtab	b29cc845aa69		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1f94	540	crm_changedrawables	dwarf+funcnames+symtab	9532001cd8d6		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xcc4	424	crm_unbinddrawable	dwarf+funcnames+symtab	62a39a31c9f5		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xe6c	112	crimeInitSpecialDDRN	dwarf+funcnames+symtab	fef034ad6c50		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0xedc	308	crimeCreateDDRN	dwarf+funcnames+symtab	0b14fd6652d9		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1010	44	crmunpinscratch	dwarf+funcnames+symtab	1a566214ef49		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x103c	528	crimeDestroyDDRN	dwarf+funcnames+symtab	58c5622d1a42		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x124c	360	crm_destroydrawable	dwarf+funcnames+symtab	f5c8d2ff006f		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x13b4	224	crm_enableovl	dwarf+funcnames+symtab	cab4eadea544		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1494	1008	crm_enablesz	dwarf+funcnames+symtab	54d084c59f6b		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1884	1808	crmRecomputeSZ	dwarf+funcnames+symtab	b29cc845aa69		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1f94	540	crm_changedrawables	dwarf+funcnames+symtab	9532001cd8d6		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x21b0	964	crimeValidateClip	dwarf+funcnames+symtab	6f960773e3b4		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2574	672	crimeValidateDDClip	dwarf+funcnames+symtab	a8af031d03cd		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2814	396	crimeUpdateBackTiles	dwarf+funcnames+symtab	1a2d7760072d		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x29a0	40	crimeInvalTLB	dwarf+funcnames+symtab	37c97347f4cc		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x29c8	188	crimeMapGfx	dwarf+funcnames+symtab	acd57adc5906		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2a84	176	crimeUnMapGfx	dwarf+funcnames+symtab	925661265058		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2574	672	crimeValidateDDClip	dwarf+funcnames+symtab	a8af031d03cd		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2814	396	crimeUpdateBackTiles	dwarf+funcnames+symtab	1a2d7760072d		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x29a0	40	crimeInvalTLB	dwarf+funcnames+symtab	37c97347f4cc		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x29c8	188	crimeMapGfx	dwarf+funcnames+symtab	acd57adc5906		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2a84	176	crimeUnMapGfx	dwarf+funcnames+symtab	925661265058		located	docs/functions.md#board-entry-points-and-set-up-crimeo	Board entry points and set-up (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2b34	96	crimeFifoWaitTimeout	dwarf+symtab	1e30a47ffcea		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2b94	552	crmFifoWait	dwarf+symtab	2dabf3bb592b		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2dbc	152	crmIdleWait	dwarf+symtab	fe2757caf69b		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2e54	420	crimePcxSwap	dwarf+funcnames+symtab	e305272db21e		understood	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2ff8	288	crmSavePP	dwarf+symtab	55a03069ebc3		understood	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2e54	420	crimePcxSwap	dwarf+funcnames+symtab	e305272db21e		located	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x2ff8	288	crmSavePP	dwarf+symtab	55a03069ebc3		located	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3118	296	crmRestorePP	dwarf+symtab	0c299a70e22c		understood	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3240	500	crmLoadNonglobalsFromShadow	dwarf+funcnames+symtab	5870aebae80c		understood	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3434	328	crmLoadGlobalsFromShadow	dwarf+funcnames+symtab	5ccf62d90b61		understood	docs/functions.md#context-switch-and-engine-state	Context switch and engine state
@@ -857,32 +857,32 @@ usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x36d0	8	crimePc
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x36d8	36	crimeSuspend	dwarf+funcnames+symtab	64eb9e1e7aa9		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x36fc	48	crimeResume	dwarf+funcnames+symtab	65e901a4f03d		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x372c	36	crimeLoadTimingTable	dwarf+symtab	bef5d9b755e7		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3750	268	crimeOpenPbuf	dwarf+symtab	4be77ba079de		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x385c	160	crimeClosePbuf	dwarf+symtab	cb15bec61cd9		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x38fc	76	crm_makecurrentpbuf	dwarf+funcnames+symtab	800a65f5a7ef		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3948	648	crime_load_fbtlb	dwarf+funcnames+symtab	dd869745f78d		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3bd0	3880	crimePrivate	dwarf+funcnames+symtab	4187a34dc7a3		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4af8	68	crimeInterrupt	dwarf+funcnames+symtab	488a4aa4e0ed		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4b3c	700	crmAllocGfxBuffers	dwarf+funcnames+symtab	43fcf10b7369		understood	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4df8	108	crmFirstInit	dwarf+funcnames+symtab	662ff6e21de0		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4e64	1280	crime_earlyinit	dwarf+symtab	82634f827943		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5364	1136	crime_init	dwarf+symtab	a2b39027a7fd		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3750	268	crimeOpenPbuf	dwarf+symtab	4be77ba079de		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x385c	160	crimeClosePbuf	dwarf+symtab	cb15bec61cd9		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x38fc	76	crm_makecurrentpbuf	dwarf+funcnames+symtab	800a65f5a7ef		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3948	648	crime_load_fbtlb	dwarf+funcnames+symtab	dd869745f78d		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x3bd0	3880	crimePrivate	dwarf+funcnames+symtab	4187a34dc7a3		located	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4af8	68	crimeInterrupt	dwarf+funcnames+symtab	488a4aa4e0ed		located	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4b3c	700	crmAllocGfxBuffers	dwarf+funcnames+symtab	43fcf10b7369		located	docs/functions.md#drawables-and-render-nodes	Drawables and render nodes
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4df8	108	crmFirstInit	dwarf+funcnames+symtab	662ff6e21de0		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x4e64	1280	crime_earlyinit	dwarf+symtab	82634f827943		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5364	1136	crime_init	dwarf+symtab	a2b39027a7fd		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x57d4	116	crimeError	dwarf+symtab	2ffd214b0ccc		understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5848	84	crime_regmatch	dwarf+funcnames+symtab	57d579c8fcf3		understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x5848	84	crime_regmatch	dwarf+funcnames+symtab	57d579c8fcf3		located	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x589c	88	crime_channel_info	dwarf+symtab	a29a7ac15c6c		understood	docs/functions.md#video-channel-services-crimeo	Video channel services (`crime.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x58f4	40	crime_present	dwarf+symtab	28a4ac414972		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x591c	164	crime_video_info	dwarf+symtab	4a74c9e567bc		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x59c0	32	crime_resync_sched	dwarf+symtab	1936e1a3e7b2		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x59e0	72	crm_callvideo	dwarf+symtab	82f0a6e71a7a		understood	docs/functions.md#dispatch-cursor-and-video-services	Dispatch, cursor and video services
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32		0x0		crm_curproc_vtop	dwarf+symtab			understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x80	888	crmpixdma	dwarf+symtab	d64f76273fdb		understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x3f8	700	crimePixelDma	dwarf+symtab	c62cc1e0baf0		understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x80	888	crmpixdma	dwarf+symtab	d64f76273fdb		located	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x3f8	700	crimePixelDma	dwarf+symtab	c62cc1e0baf0		located	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x6b4	264	loadLinearTlb	dwarf+funcnames+symtab	abe981116ea3		understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0x7bc	896	crime_load_linear_tlb	dwarf+symtab	5a34f6ac57ee		understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	board-kernel	n32	.text	0xb3c	1028	crime_clear_buffer	dwarf+symtab	33ee251f9838		understood	docs/functions.md#pixel-transfer-and-buffer-clear-crime_dmao	Pixel transfer and buffer clear (`crime_dma.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32		0x0		gbeProbe	dwarf+symtab			understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x44	68	crimeProbe	dwarf+symtab	048d0487d69e		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x88	100	getNvramTiming	dwarf+funcnames+symtab	7bfb3fb85d03		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x44	68	crimeProbe	dwarf+symtab	048d0487d69e		located	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x88	100	getNvramTiming	dwarf+funcnames+symtab	7bfb3fb85d03		located	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0xec	940	crimeInitInfo	dwarf+symtab	aa2b107fdea6		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x498	1244	gbeSetTimingRegs	dwarf+funcnames+symtab	bc9598ad6aa8		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x974	540	gbeStartVideoTiming	dwarf+funcnames+symtab	678b6a340e86		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
@@ -891,30 +891,30 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0xde4	864	c
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x1144	88	crmInvalidVideoTiming	dwarf+symtab	bfa94366c01a		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x119c	732	crime_setvideotiming	dwarf+symtab	267ca0b3f3d2		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x1478	152	gbeGmapInit	dwarf+funcnames+symtab	84854b0897b1		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x1510	192	gbeRun	dwarf+symtab	49c068b6caa6		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x15d0	300	gbeBlankScreen	dwarf+symtab	8bfb9ae6d383		understood	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x1510	192	gbeRun	dwarf+symtab	49c068b6caa6		located	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x15d0	300	gbeBlankScreen	dwarf+symtab	8bfb9ae6d383		located	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
 usr/cpu/sysgen/IP32boot/crime.a(crime_init.o)	board-kernel	n32	.text	0x16fc	420	gbeStop	dwarf+symtab	a6bb28abaefb		understood	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32		0x0		crimeRetraceInit	dwarf+symtab			understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32		0x0		crimeRetraceInit	dwarf+symtab			located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x6c	440	gbeCacheVtInfo	dwarf+symtab	f0e4f841fb02		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x224	888	crmInitGbeData	dwarf+symtab	13ec47372b55		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x59c	1356	crmLoadGbelists	dwarf+symtab	d6d3a0e97d89		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x224	888	crmInitGbeData	dwarf+symtab	13ec47372b55		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x59c	1356	crmLoadGbelists	dwarf+symtab	d6d3a0e97d89		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xae8	136	crimeBlankscreen	dwarf+symtab	f5fc282d04d5		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb70	16	crime_retrace_callback	dwarf+symtab	7a4a7c478ec0		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	1120	crimeRetraceHandler	dwarf+symtab	5746372566f9		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xb80	1120	crimeRetraceHandler	dwarf+symtab	5746372566f9		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0xfe0	184	crime_i2cFpGbeRetrace	dwarf+funcnames+symtab	e428ac64d755		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1098	60	crime_FpSchedForRetrace	dwarf+symtab	8a46ba6d3aec		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x10d4	2320	crimePreblankHandler	dwarf+symtab	82fe0f1bc944		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x10d4	2320	crimePreblankHandler	dwarf+symtab	82fe0f1bc944		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x19e4	760	crm_copy_swap_boxes	dwarf+funcnames+symtab	56776134d7ab		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1cdc	1044	crmSwapBufd	dwarf+symtab	25a8d840b36f		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x1cdc	1044	crmSwapBufd	dwarf+symtab	25a8d840b36f		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x20f0	504	crimeSchedSwapBuf	dwarf+symtab	599033fa5739		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x22e8	412	crimeUnSchedSwapBuf	dwarf+symtab	bea92e8b1d78		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2484	304	crimeSchedMgrSwapBuf	dwarf+symtab	7d47caa1a712		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x22e8	412	crimeUnSchedSwapBuf	dwarf+symtab	bea92e8b1d78		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2484	304	crimeSchedMgrSwapBuf	dwarf+symtab	7d47caa1a712		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x25b4	136	crimeSchedRetraceEvent	dwarf+symtab	b33d015b54b0		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x263c	320	crimeRetraceCloseRN	dwarf+symtab	be11ccac786f		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x277c	164	crmRetraceCloseAllRn	dwarf+symtab	fdfdc2866ce2		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x263c	320	crimeRetraceCloseRN	dwarf+symtab	be11ccac786f		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x277c	164	crmRetraceCloseAllRn	dwarf+symtab	fdfdc2866ce2		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2820	128	crimeSetDisplayMode	dwarf+symtab	c1b9c9a406d7		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x28a0	204	crimeSetGammaRamp	dwarf+symtab	1027a9ec9e3e		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x296c	248	crmFindFreeDidTbl	dwarf+symtab	ac9a010e2f2f		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x296c	248	crmFindFreeDidTbl	dwarf+symtab	ac9a010e2f2f		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2a64	524	crime_hli_handler	dwarf+symtab	96bc12ce997a		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2c70	428	crime_schedule_hli	dwarf+funcnames+symtab	b863f015c392		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2e1c	196	crime_hli_sched	dwarf+symtab	6ba0a0241929		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
@@ -922,109 +922,109 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x2ee0	3
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x3048	292	crime_hli_update	dwarf+symtab	e52b183e25bd		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x316c	264	crm_getustmsc	dwarf+funcnames+symtab	bdbdb5587700		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x3274	68	crime_getustmsc	dwarf+symtab	00251dfc869e		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x32b8	200	crimeFrameInfo	dwarf+symtab	11bd84672cc6		understood	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32		0x0		crmAddZ	dwarf+symtab			understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
-usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32	.text	0x304	376	crmSubtractZ	dwarf+symtab	5141cc82c9e8		understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
+usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	board-kernel	n32	.text	0x32b8	200	crimeFrameInfo	dwarf+symtab	11bd84672cc6		located	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32		0x0		crmAddZ	dwarf+symtab			located	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
+usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	board-kernel	n32	.text	0x304	376	crmSubtractZ	dwarf+symtab	5141cc82c9e8		located	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32		0x0		crime_color	dwarf+funcnames+symtab			understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x2c	164	crime_mapcolor	dwarf+funcnames+symtab	55fcf109c5b6		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0xd0	296	crime_sboxfi	dwarf+funcnames+symtab	a613c327da96		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x1f8	184	crime_pnt2i	dwarf+funcnames+symtab	7e2357e7e2e1		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x1f8	184	crime_pnt2i	dwarf+funcnames+symtab	7e2357e7e2e1		located	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x2b0	20	crime_cmov2i	dwarf+funcnames+symtab	942de99898db		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x2c4	1664	crime_drawbitmap	dwarf+funcnames+symtab	1a7a77f64ed4		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x944	52	crime_unblank	dwarf+funcnames+symtab	4660a33d277e		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x978	24	crime_getdesc	dwarf+funcnames+symtab	bf6e6d8d8a67		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x990	44	crime_positioncursor	dwarf+funcnames+symtab	a724df5fcafb		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0x9bc	284	crime_clearfb	dwarf+symtab	a5f387d3f598		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0xad8	232	crime_tpinit	dwarf+funcnames+symtab	eb846ae11e9e		understood	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	board-kernel	n32	.text	0xad8	232	crime_tpinit	dwarf+funcnames+symtab	eb846ae11e9e		located	docs/functions.md#kernel-textport-crime_tpo	Kernel textport (`crime_tp.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32		0x0		crime_tileaddr_for_vice	dwarf+symtab			understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x104	520	crm_get_dms_tiles	dwarf+symtab	b5e423d342a2		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x104	520	crm_get_dms_tiles	dwarf+symtab	b5e423d342a2		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x30c	180	crm_tileclassinit	dwarf+symtab	b5633b2529ca		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x3c0	244	crmAllocTiles	dwarf+symtab	5db40c1531e7		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x4b4	300	crmFreeTiles	dwarf+symtab	5565df7bdd68		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x5e0	272	crmFreeChunk	dwarf+symtab	19211198a45d		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x6f0	172	crmAllocChunk	dwarf+symtab	53131aa75521		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x79c	416	resizechunk	dwarf+funcnames+symtab	9b81d1ed6d8e		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x93c	892	crmResizeFb	dwarf+symtab	40b66739bc8f		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xcb8	276	crmAllocBackbuffer	dwarf+symtab	770d78619158		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xdcc	232	crmAllocPbuffer	dwarf+symtab	966fff84d8c7		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xeb4	168	crmAllocPbufTiles	dwarf+symtab	313908542139		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xf5c	216	crmDestroyPbuffer	dwarf+symtab	ca53bb3860e5		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1034	244	crmAllocFrameBuffer	dwarf+symtab	ed4ff7eb021e		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1128	132	crmAllocOverlayBuffer	dwarf+symtab	9ce4a36f66d6		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x11ac	268	crmAllocCid	dwarf+symtab	499c11ab7230		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x12b8	36	crmAllocGbeTables	dwarf+symtab	c3cc4c6ed79b		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x12dc	264	crmAllocZbuffer	dwarf+symtab	22904d05a6a9		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x13e4	520	crmAllocTex	dwarf+symtab	69b822cdb2cf		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x15ec	428	crmFreeTex	dwarf+symtab	1620acd1c58f		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1798	312	crmDeallocTex	dwarf+symtab	7731875b03f6		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x18d0	1112	crmDefineTex	dwarf+symtab	1ffc1e761ad2		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x3c0	244	crmAllocTiles	dwarf+symtab	5db40c1531e7		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x4b4	300	crmFreeTiles	dwarf+symtab	5565df7bdd68		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x5e0	272	crmFreeChunk	dwarf+symtab	19211198a45d		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x6f0	172	crmAllocChunk	dwarf+symtab	53131aa75521		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x79c	416	resizechunk	dwarf+funcnames+symtab	9b81d1ed6d8e		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x93c	892	crmResizeFb	dwarf+symtab	40b66739bc8f		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xcb8	276	crmAllocBackbuffer	dwarf+symtab	770d78619158		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xdcc	232	crmAllocPbuffer	dwarf+symtab	966fff84d8c7		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xeb4	168	crmAllocPbufTiles	dwarf+symtab	313908542139		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0xf5c	216	crmDestroyPbuffer	dwarf+symtab	ca53bb3860e5		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1034	244	crmAllocFrameBuffer	dwarf+symtab	ed4ff7eb021e		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1128	132	crmAllocOverlayBuffer	dwarf+symtab	9ce4a36f66d6		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x11ac	268	crmAllocCid	dwarf+symtab	499c11ab7230		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x12b8	36	crmAllocGbeTables	dwarf+symtab	c3cc4c6ed79b		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x12dc	264	crmAllocZbuffer	dwarf+symtab	22904d05a6a9		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x13e4	520	crmAllocTex	dwarf+symtab	69b822cdb2cf		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x15ec	428	crmFreeTex	dwarf+symtab	1620acd1c58f		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1798	312	crmDeallocTex	dwarf+symtab	7731875b03f6		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x18d0	1112	crmDefineTex	dwarf+symtab	1ffc1e761ad2		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1d28	100	crmLoadTexTlb	dwarf+symtab	6b9774bdfc15		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1d8c	152	crmMapPages	dwarf+symtab	1d3c986b554e		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1d8c	152	crmMapPages	dwarf+symtab	1d3c986b554e		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1e24	40	crmUnmapPages	dwarf+symtab	3ec6d97ab450		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1e4c	408	crmMapChunk	dwarf+symtab	337a893cc6ed		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1fe4	52	crmCreateRegion	dwarf+symtab	7bafaf95cf3b		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1e4c	408	crmMapChunk	dwarf+symtab	337a893cc6ed		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x1fe4	52	crmCreateRegion	dwarf+symtab	7bafaf95cf3b		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x2018	132	crm_update_sz_tiles	dwarf+symtab	caf4f7b43d50		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x209c	160	crm_tile_list	dwarf+symtab	82d843ac8083		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x213c	40	crmUnmapChunk	dwarf+symtab	91dc37de15d8		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x209c	160	crm_tile_list	dwarf+symtab	82d843ac8083		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x213c	40	crmUnmapChunk	dwarf+symtab	91dc37de15d8		located	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x2164	336	crmValidateDrawable	dwarf+symtab	6e746607fe26		understood	docs/context.md#linear-tlb-load-in-crmvalidatedrawable	Linear TLB load in `crmValidateDrawable`
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x22b4	432	crmLoadTlbABC	dwarf+symtab	8712e9d1fc4d		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	board-kernel	n32	.text	0x2464	156	crmLoadCidTlb	dwarf+symtab	500dae6460d6		understood	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32		0x0		crime_i2cSetMonitor	dwarf+funcnames+symtab			understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x24	496	crime_i2cReset	dwarf+funcnames+symtab	59d13950cdcd		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x214	92	crime_i2cFixupAfterErr	dwarf+funcnames+symtab	7feb3038ba34		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x270	92	crime_i2cfpFixupAfterErr	dwarf+funcnames+symtab	3e67618d3357		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2cc	608	crime_i2cProbe	dwarf+symtab	61b1d6cd9185		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x52c	448	crime_validate_ddc_data	dwarf+symtab	c8ab5c6724e4		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x24	496	crime_i2cReset	dwarf+funcnames+symtab	59d13950cdcd		located	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x214	92	crime_i2cFixupAfterErr	dwarf+funcnames+symtab	7feb3038ba34		located	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x270	92	crime_i2cfpFixupAfterErr	dwarf+funcnames+symtab	3e67618d3357		located	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2cc	608	crime_i2cProbe	dwarf+symtab	61b1d6cd9185		located	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x52c	448	crime_validate_ddc_data	dwarf+symtab	c8ab5c6724e4		located	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x6ec	32	i2cfp_DMI2_FailedEDID	dwarf+symtab	e1fdf4951b23		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x70c	76	crime_EdidCksum	dwarf+funcnames+symtab	1d18fc426527		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x758	144	crime_i2cValidEdid	dwarf+funcnames+symtab	b6ce3830632a		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x7e8	56	sgiEdid	dwarf+funcnames+symtab	0977e9a4bf6c		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x820	72	crmFixupSony24	dwarf+funcnames+symtab	b4934a154cd7		understood	docs/functions.md#monitor-identification-crime_i2co	Monitor identification (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x868	148	crime_copyin_cmd	dwarf+funcnames+symtab	95fc83145980		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x8fc	764	crime_i2c_cmd	dwarf+symtab	9a548939b8d1		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0xbf8	724	crime_Probe2AB	dwarf+funcnames+symtab	bff8a4359308		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0xecc	312	crime_2abCmdWrapper	dwarf+funcnames+symtab	883d80e8b0b7		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1004	604	crime_2abSendCmd	dwarf+funcnames+symtab	f5b71eeac7e6		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1260	560	crime_2abGetReply	dwarf+funcnames+symtab	165fab9820ba		understood	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1490	584	crime_i2cFpProbe	dwarf+symtab	9bf8fd94e975		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x16d8	408	crime_i2cFpHotProbe	dwarf+symtab	e42d069d4c5d		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1870	136	i2cfp_PortRead	dwarf+funcnames+symtab	ee7cc7052fcc		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x18f8	128	i2cfp_PortWrite	dwarf+funcnames+symtab	6703ff740708		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1978	72	i2cfp_PanelID	dwarf+funcnames+symtab	0793c3234290		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x19c0	196	i2cfp_DualChannelProbe	dwarf+symtab	fe977c8ad228		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1a84	32	i2cfp_DualChannelCommand	dwarf+symtab	5973f7db111f		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x868	148	crime_copyin_cmd	dwarf+funcnames+symtab	95fc83145980		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x8fc	764	crime_i2c_cmd	dwarf+symtab	9a548939b8d1		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0xbf8	724	crime_Probe2AB	dwarf+funcnames+symtab	bff8a4359308		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0xecc	312	crime_2abCmdWrapper	dwarf+funcnames+symtab	883d80e8b0b7		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1004	604	crime_2abSendCmd	dwarf+funcnames+symtab	f5b71eeac7e6		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1260	560	crime_2abGetReply	dwarf+funcnames+symtab	165fab9820ba		located	docs/functions.md#command-channel-crime_i2co	Command channel (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1490	584	crime_i2cFpProbe	dwarf+symtab	9bf8fd94e975		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x16d8	408	crime_i2cFpHotProbe	dwarf+symtab	e42d069d4c5d		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1870	136	i2cfp_PortRead	dwarf+funcnames+symtab	ee7cc7052fcc		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x18f8	128	i2cfp_PortWrite	dwarf+funcnames+symtab	6703ff740708		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1978	72	i2cfp_PanelID	dwarf+funcnames+symtab	0793c3234290		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x19c0	196	i2cfp_DualChannelProbe	dwarf+symtab	fe977c8ad228		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1a84	32	i2cfp_DualChannelCommand	dwarf+symtab	5973f7db111f		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1aa4	328	i2_start	dwarf+funcnames+symtab	a871b813bb0b		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1bec	76	i2_start_addr	dwarf+funcnames+symtab	7572ecdde90f		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1bec	76	i2_start_addr	dwarf+funcnames+symtab	7572ecdde90f		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1c38	360	i2_stop	dwarf+funcnames+symtab	52f5c641eba3		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1da0	176	i2_sync_clk	dwarf+funcnames+symtab	00508ac9974f		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1e50	1088	i2_sendbyte	dwarf+funcnames+symtab	c43b1ff04a8a		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2290	308	i2_wait_for_bus	dwarf+funcnames+symtab	8a2f039110a3		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x1e50	1088	i2_sendbyte	dwarf+funcnames+symtab	c43b1ff04a8a		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2290	308	i2_wait_for_bus	dwarf+funcnames+symtab	8a2f039110a3		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x23c4	268	i2_spin_for	dwarf+funcnames+symtab	4ca49d630873		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x24d0	140	i2_wait_for_stop	dwarf+funcnames+symtab	23a3c5fe9c27		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x255c	808	i2_slave_recvbyte	dwarf+funcnames+symtab	0db7aef5c348		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2884	908	i2_master_recvbyte	dwarf+funcnames+symtab	859ef3c35df9		understood	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2c10	144	i2cfp_DMI2_BkltWrapper	dwarf+funcnames+symtab	05c2e507bb39		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2ca0	380	i2cfp_DMI2_BkltFuncs	dwarf+symtab	487d631bfd2a		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2e1c	720	i2cfp_DMI2_SensorFuncs	dwarf+funcnames+symtab	b9a69911c5af		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x30ec	96	i2cfp_DMI2_EnableSequel	dwarf+funcnames+symtab	fa1b637cb97a		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x314c	100	i2cfp_DMI2_DisableSequel	dwarf+funcnames+symtab	36a3d6ba0ad5		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x31b0	784	i2cfp_PanelOn	dwarf+symtab	a0158c49bd3e		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x34c0	156	i2cfp_PanelOff	dwarf+symtab	cffc0838ab44		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x355c	332	i2cfp_BlUp	dwarf+funcnames+symtab	3c18271bc8dd		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x36a8	360	i2cfp_BlDown	dwarf+funcnames+symtab	6d6166e317f6		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3810	508	i2cfp_DMI2_KernelEDID	dwarf+symtab	b57ce18ae840		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3a0c	972	i2cfp_DMI2_EDIDFuncs	dwarf+funcnames+symtab	c8c4ed5e354f		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3dd8	160	i2cfp_AudioVolLeft	dwarf+funcnames+symtab	d0f975f16f9c		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3e78	160	i2cfp_AudioVolRight	dwarf+funcnames+symtab	f3b9001bc04a		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3f18	160	i2cfp_AudioBass	dwarf+funcnames+symtab	95270be59189		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3fb8	160	i2cfp_AudioTreble	dwarf+funcnames+symtab	7cba4e08a013		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x4058	180	i2cfp_AudioSwitch	dwarf+funcnames+symtab	326dbd80b3b0		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x410c	76	i2cfp_SetBit	dwarf+funcnames+symtab	6ed25ba892c8		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x4158	580	crime_i2cfp_command	dwarf+symtab	fdd32437a8e7		understood	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32		0x0		crmAddBackTiles	dwarf+symtab			understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
-usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0xfc	220	crmSubtractBackTiles	dwarf+symtab	68c95571b852		understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x24d0	140	i2_wait_for_stop	dwarf+funcnames+symtab	23a3c5fe9c27		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x255c	808	i2_slave_recvbyte	dwarf+funcnames+symtab	0db7aef5c348		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2884	908	i2_master_recvbyte	dwarf+funcnames+symtab	859ef3c35df9		located	docs/functions.md#bus-primitives-crime_i2co	Bus primitives (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2c10	144	i2cfp_DMI2_BkltWrapper	dwarf+funcnames+symtab	05c2e507bb39		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2ca0	380	i2cfp_DMI2_BkltFuncs	dwarf+symtab	487d631bfd2a		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x2e1c	720	i2cfp_DMI2_SensorFuncs	dwarf+funcnames+symtab	b9a69911c5af		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x30ec	96	i2cfp_DMI2_EnableSequel	dwarf+funcnames+symtab	fa1b637cb97a		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x314c	100	i2cfp_DMI2_DisableSequel	dwarf+funcnames+symtab	36a3d6ba0ad5		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x31b0	784	i2cfp_PanelOn	dwarf+symtab	a0158c49bd3e		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x34c0	156	i2cfp_PanelOff	dwarf+symtab	cffc0838ab44		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x355c	332	i2cfp_BlUp	dwarf+funcnames+symtab	3c18271bc8dd		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x36a8	360	i2cfp_BlDown	dwarf+funcnames+symtab	6d6166e317f6		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3810	508	i2cfp_DMI2_KernelEDID	dwarf+symtab	b57ce18ae840		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3a0c	972	i2cfp_DMI2_EDIDFuncs	dwarf+funcnames+symtab	c8c4ed5e354f		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3dd8	160	i2cfp_AudioVolLeft	dwarf+funcnames+symtab	d0f975f16f9c		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3e78	160	i2cfp_AudioVolRight	dwarf+funcnames+symtab	f3b9001bc04a		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3f18	160	i2cfp_AudioBass	dwarf+funcnames+symtab	95270be59189		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x3fb8	160	i2cfp_AudioTreble	dwarf+funcnames+symtab	7cba4e08a013		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x4058	180	i2cfp_AudioSwitch	dwarf+funcnames+symtab	326dbd80b3b0		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x410c	76	i2cfp_SetBit	dwarf+funcnames+symtab	6ed25ba892c8		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	board-kernel	n32	.text	0x4158	580	crime_i2cfp_command	dwarf+symtab	fdd32437a8e7		located	docs/functions.md#flat-panel-option-board-crime_i2co	Flat-panel option board (`crime_i2c.o`)
+usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32		0x0		crmAddBackTiles	dwarf+symtab			located	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
+usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	board-kernel	n32	.text	0xfc	220	crmSubtractBackTiles	dwarf+symtab	68c95571b852		located	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32		0x0		crmIsGlobalRegWrite	dwarf+symtab			understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
-usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x38	296	crmFindPP	dwarf+symtab	fdb88bf51129		understood	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
+usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	board-kernel	n32	.text	0x38	296	crmFindPP	dwarf+symtab	fdb88bf51129		located	docs/functions.md#depth-and-back-buffer-tile-accounting	Depth and back-buffer tile accounting
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32		0x0		gfxtable_readerlock	dwarf+symtab			located	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x38	56	gfxtable_readerunlock	dwarf+symtab	97ce1ba0067d		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x70	112	gfxtable_writerlock	dwarf+symtab	1facc9913e68		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
@@ -1046,7 +1046,7 @@ usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x918	348	gthread_scan	dwa
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e		understood	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
@@ -1063,7 +1063,7 @@ usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1aa4	352	GfxSendMessage	
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30		understood	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfx.o	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
@@ -1103,7 +1103,7 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x918	348	gthread_
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xa74	256	GfxRegisterBoard	dwarf+symtab	8a86d0f31835		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xb74	232	GfxAddHwgraphEdge	dwarf+symtab	0379733cc0a3		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xc5c	308	gfx_disp	dwarf+symtab	a4adb007436e		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e		understood	docs/functions.md#process-hooks	Process hooks
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xd90	216	gfx_fault	dwarf+symtab	e67f9bceb73e		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0xe68	420	gfx_exit	dwarf+symtab	ec946e5ccae4		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x100c	576	gfx_shcheck	dwarf+symtab	32cf4342cef5		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x124c	124	gfx_shdup	dwarf+symtab	b8b92087e707		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
@@ -1120,7 +1120,7 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1aa4	352	GfxSend
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c04	28	GfxMessage	dwarf+symtab	3c93e672fd02		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c20	28	GfxIntrMessage	dwarf+symtab	168ef11418d0		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1c3c	124	GfxRqService	dwarf+funcnames+symtab	4a472ce0526f		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30		understood	docs/functions.md#streams-side	STREAMS side
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1cb8	244	GfxDetach	dwarf+funcnames+symtab	5b5403cdad30		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1dac	204	gfxinit	dwarf+symtab	408a5f9b7a3a		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1e78	240	gfx_conflict_scan	dwarf+funcnames+symtab	2903472e5e10		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x1f68	148	irisgl_sproc_setup_scan	dwarf+funcnames+symtab	a290700481fc		understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
@@ -1950,18 +1950,18 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e64	8	btool_getinfo
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e6c	8	btool_reinit	symtab	78aa5094d5ec		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e80	28	other_prda	symtab	475baf4e8548		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x20e9c	64	otherprda	symtab	e60fe1ff466d		undocumented		
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32		0x0		mace_mask_disable	dwarf+symtab			understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x50	76	mace_mask_enable	dwarf+symtab	71568779a361		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x9c	92	mace_mask_update	dwarf+symtab	cc4c3cb8abb0		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0xf8	64	mace_mask_read	dwarf+symtab	952a3bce225d		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x138	64	mace_mask_write	dwarf+symtab	b9ef9396b382		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x178	44	mace_stray	dwarf+funcnames+symtab	55bba3953b0d		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x1a4	72	mace_tbl_init	dwarf+symtab	1ba343d10869		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32		0x0		mace_mask_disable	dwarf+symtab			located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x50	76	mace_mask_enable	dwarf+symtab	71568779a361		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x9c	92	mace_mask_update	dwarf+symtab	cc4c3cb8abb0		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0xf8	64	mace_mask_read	dwarf+symtab	952a3bce225d		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x138	64	mace_mask_write	dwarf+symtab	b9ef9396b382		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x178	44	mace_stray	dwarf+funcnames+symtab	55bba3953b0d		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x1a4	72	mace_tbl_init	dwarf+symtab	1ba343d10869		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x1ec	64	mace_is_thd	dwarf+funcnames+symtab	82348d05268f		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x22c	480	setmaceisavector	dwarf+symtab	9840cd46ee33		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x40c	220	mace_intr	dwarf+symtab	0522300af2d1		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x4e8	120	macevec_intrd_setup	dwarf+funcnames+symtab	68b7f559486e		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
-usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x560	56	macevec_intrd	dwarf+funcnames+symtab	f517c4af7a14		understood	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x22c	480	setmaceisavector	dwarf+symtab	9840cd46ee33		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x40c	220	mace_intr	dwarf+symtab	0522300af2d1		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x4e8	120	macevec_intrd_setup	dwarf+funcnames+symtab	68b7f559486e		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mace.o	board-kernel	n32	.text	0x560	56	macevec_intrd	dwarf+funcnames+symtab	f517c4af7a14		located	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32		0x0		gbe_too_late	dwarf+funcnames			undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x34	128	mvptransfer_too_many_errors	dwarf+funcnames	5883dd10206d		undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb4	168	mvptransfer_datacount	dwarf+funcnames	7681331c6e01		undocumented		
@@ -2186,7 +2186,7 @@ usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x186c	736	RRM_OpenRN	dwar
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1b4c	796	rrmCloseRN	dwarf+funcnames+symtab	83f43864825e		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e68	32	RRM_CloseRN	dwarf+funcnames+symtab	5d5acc5da73f		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x1e88	600	RRM_Exit	dwarf+symtab	e8562e50dfd5		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
-usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e0	8	rrmGetResourceMask	dwarf+symtab	0d94b77e1c7c		understood	docs/functions.md#set-up-and-tear-down	Set-up and tear-down
+usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e0	8	rrmGetResourceMask	dwarf+symtab	0d94b77e1c7c		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x20e8	936	rrmSuspend	dwarf+symtab	f48f10426863		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x2490	1084	rrmResume	dwarf+symtab	9598ac450ea1		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
 usr/cpu/sysgen/IP32boot/rrm.o	shared-kernel	n32	.text	0x28cc	164	rrmSetResourceMask	dwarf+symtab	639840328507		understood	docs/functions.md#kernel-routines-one-entry-each-rrmo	Kernel routines, one entry each (`rrm.o`)
@@ -7541,7 +7541,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991878	32	__glDT_LESS_s	
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991898	28	__glDT_EQUAL	dynsym+mdebug	fdb4bec7893e		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918b4	32	__glDT_GREATER	dynsym+mdebug	f7f6e892ef39		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918d4	32	__glDT_GREATER_s	dynsym+mdebug	f7a89a777739		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918f4	28	__glDT_NOTEQUAL	dynsym+mdebug	1faf3acf2bbb		understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918f4	28	__glDT_NOTEQUAL	dynsym+mdebug	1faf3acf2bbb		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991910	32	__glDT_GEQUAL	dynsym+mdebug	8e6383ff89e2		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991930	32	__glDT_GEQUAL_s	dynsym+mdebug	4443adb0ca2f		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991950	12	__glDT_ALWAYS	dynsym+mdebug	634ccb8317f8		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
@@ -7552,7 +7552,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99197c	8	__glDT_LESS_M_s
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991984	12	__glDT_EQUAL_M	dynsym+mdebug	99ee3294a715		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991990	8	__glDT_GREATER_M	dynsym+mdebug	7b96baa79399		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991998	8	__glDT_GREATER_M_s	dynsym+mdebug	974a3b709882		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919a0	12	__glDT_NOTEQUAL_M	dynsym+mdebug	8e046160f1b6		understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919a0	12	__glDT_NOTEQUAL_M	dynsym+mdebug	8e046160f1b6		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919ac	12	__glDT_GEQUAL_M	dynsym+mdebug	73b8e7b7fb73		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919b8	12	__glDT_GEQUAL_M_s	dynsym+mdebug	6e36564c3d18		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9919c4	8	__glDT_ALWAYS_M	dynsym+mdebug	a7e7ca11a6b8		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
@@ -8258,7 +8258,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3a68	184	__glInitDepth
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3b20	204	__glGenericFreeDlist	dynsym+mdebug	83efe18722d7		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3bec	56	__glGenericExecuteDlist	dynsym+mdebug	434e98fbde3f		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3c24	216	__glGenericAllocDlist	dynsym+mdebug	34151e866248		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3cfc	8	__glle_Nop	dynsym+mdebug	f211f0c174df		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3cfc	8	__glle_Nop	dynsym+mdebug	f211f0c174df		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3d04	648	__glGenericDlistCompiler	dynsym+mdebug	2b1cc61c72a1		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3f8c	56	__glNopFreeDlist	dynsym+mdebug	8f40bd70ef64		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d3fc4	12	__glNopExecuteDlist	dynsym+mdebug	691e766163b1		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
@@ -8494,11 +8494,11 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edbd0	64	__glle_Disable
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edc10	404	__gllc_Disable	dynsym+mdebug	af893e3853a7		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edda4	64	__glle_Enable	dynsym+mdebug	137f9977949a		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edde4	360	__gllc_Enable	dynsym+mdebug	93807f1d1c51		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf4c	8	__glle_DrawArraysEXT	dynsym+mdebug	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf4c	8	__glle_DrawArraysEXT	dynsym+mdebug	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf54	48	__glle_DrawArrays	dynsym+mdebug	2f7f65db2964		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf84	8	__glle_DrawElements	dynsym+mdebug	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf8c	8	__glle_DrawRangeElements	dynsym+mdebug	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf94	8	__glle_ArrayElementEXT	dynsym+mdebug	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf84	8	__glle_DrawElements	dynsym+mdebug	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf8c	8	__glle_DrawRangeElements	dynsym+mdebug	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf94	8	__glle_ArrayElementEXT	dynsym+mdebug	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9edf9c	136	__glle_ColorTableSGI	dynsym+mdebug	4a8b0a88920d		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ee024	580	__gllc_ColorTableSGI	dynsym+mdebug	a62ed1a6ea74		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ee268	136	__glle_ColorSubTable	dynsym+mdebug	a303ac28b95e		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
@@ -10581,10 +10581,10 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b60	40	__glBeginLin
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b90	172	__glOtherLStripVertex	dwarf+dynsym	52902ec061f2		located	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938c40	188	__glSecondLStripVertex	dwarf+dynsym	59ed8cf5c3d6		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938d00	112	__glFirstLStripVertex	dwarf+dynsym	15a2bc01d53e		named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938d70	44	__glBeginLStrip	dwarf+dynsym	d5db3b3826b3		understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938d70	44	__glBeginLStrip	dwarf+dynsym	d5db3b3826b3		located	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd938da0	32	FirstLLoopVertex	dwarf+funcnames	6146461c0375	multi-unit	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938dc0	112	__glEndLLoop	dwarf+dynsym	93736c092ac7		understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938e30	56	__glBeginLLoop	dwarf+dynsym	655db2925017		understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938dc0	112	__glEndLLoop	dwarf+dynsym	93736c092ac7		located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938e30	56	__glBeginLLoop	dwarf+dynsym	655db2925017		located	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd938e70	380	InitVICE	dwarf+funcnames	e2bd9fb6ca9b		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd938ff0	140	AccumMakeCurrent	dwarf+funcnames	e445abd294ef		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd939080	108	AccumLoseCurrent	dwarf+funcnames	604b71f585fa		undocumented		
@@ -11000,16 +11000,16 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd979f00	648	__glDlistCo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a190	60	__glDlistIsBlock	dwarf+dynsym	55d0fd8dcf65		located	docs/sample-implementation.md#dl_blockc	dl_block.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a1d0	76	__glDlistTransientBlock	dwarf+dynsym	786fe58d6061		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a220	132	__glDlistFreeTransient	dwarf+dynsym	480a7eb2a2db		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a2b0	44	__glShareDlist	dwarf+dynsym	9ff3ae3e605c		understood	docs/sample-implementation.md#dl_initc	dl_init.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a2b0	44	__glShareDlist	dwarf+dynsym	9ff3ae3e605c		located	docs/sample-implementation.md#dl_initc	dl_init.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a2e0	160	__glInitDlistState	dwarf+dynsym	64772905443d		located	docs/sample-implementation.md#dl_initc	dl_init.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a380	176	__glFreeDlistState	dwarf+dynsym	ec433afeb078		located	docs/sample-implementation.md#dl_initc	dl_init.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a430	140	__glDoInterpret	dwarf+dynsym	917a847266ab		understood	docs/sample-implementation.md#dl_interps	dl_interp.s
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a4bc	24	__glle_Sentinel	dwarf+dynsym	2ab5073a9e5e		understood	docs/sample-implementation.md#dl_interps	dl_interp.s
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a430	140	__glDoInterpret	dwarf+dynsym	917a847266ab		located	docs/sample-implementation.md#dl_interps	dl_interp.s
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a4bc	24	__glle_Sentinel	dwarf+dynsym	2ab5073a9e5e		located	docs/sample-implementation.md#dl_interps	dl_interp.s
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a4e0	364	__glim_NewList	dwarf+dynsym	a0d6aae5f891		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a650	60	__glce_EndList	dwarf+dynsym	bfeb31ffbe00		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a690	312	__glim_EndList	dwarf+dynsym	47c75148abcb		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd97a7d0	160	DoCallList	dwarf+funcnames	256453281c83		located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a870	140	__gllc_CallList	dwarf+dynsym	8029e8eb79f3		understood	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a870	140	__gllc_CallList	dwarf+dynsym	8029e8eb79f3		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a900	72	__glle_CallList	dwarf+dynsym	6ad4a9fb7661		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a950	468	__glce_CallList	dwarf+dynsym	be64b859b094		located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97ab30	516	__glce_CallLists	dwarf+dynsym	6311a1075ef3		located	docs/sample-implementation.md#dl_listc	dl_list.c
@@ -11061,12 +11061,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d4c0	72	__glDlistIsP
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d510	72	__glDisposeDlist	dwarf+dynsym	3032a34796f9		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d560	8	__glEmptyFreeDlist	dwarf+dynsym	78aa5094d5ec		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d570	8	__glEmptyExecuteDlist	dwarf+dynsym	78aa5094d5ec		located	docs/sample-implementation.md#dl_tablec	dl_table.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d580	152	__glDlistNewArray	dwarf+dynsym	a65d21602431		understood	docs/sample-implementation.md#dl_tablec	dl_table.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d620	92	__glDlistFreeArray	dwarf+dynsym	917cb8e27857		understood	docs/sample-implementation.md#dl_tablec	dl_table.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d580	152	__glDlistNewArray	dwarf+dynsym	a65d21602431		located	docs/sample-implementation.md#dl_tablec	dl_table.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d620	92	__glDlistFreeArray	dwarf+dynsym	917cb8e27857		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d680	108	__glim_IsList	dwarf+dynsym	36aa4d9b674f		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d6f0	164	__glim_GenLists	dwarf+dynsym	b94e73befe52		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d7a0	88	__glim_ListBase	dwarf+dynsym	6bf7c85a67ad		located	docs/sample-implementation.md#dl_tablec	dl_table.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d800	124	__glim_DeleteLists	dwarf+dynsym	08ce4ece7f87		understood	docs/sample-implementation.md#dl_tablec	dl_table.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d800	124	__glim_DeleteLists	dwarf+dynsym	08ce4ece7f87		located	docs/sample-implementation.md#dl_tablec	dl_table.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d880	116	__gllc_ListBase	dwarf+dynsym	542712e0635a		located	docs/sample-implementation.md#g_lcompc	g_lcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d900	156	__gllc_Color3b	dwarf+dynsym	ee52954e848d		located	docs/sample-implementation.md#g_lcompc	g_lcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97d9a0	152	__gllc_Color3bv	dwarf+dynsym	c996bcaa6408		located	docs/sample-implementation.md#g_lcompc	g_lcomp.c
@@ -11666,7 +11666,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991db8	32	__glDT_LESS_
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991dd8	28	__glDT_EQUAL	dwarf+dynsym	fdb4bec7893e		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991df4	32	__glDT_GREATER	dwarf+dynsym	f7f6e892ef39		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e14	32	__glDT_GREATER_s	dwarf+dynsym	f7a89a777739		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e34	28	__glDT_NOTEQUAL	dwarf+dynsym	1faf3acf2bbb		understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e34	28	__glDT_NOTEQUAL	dwarf+dynsym	1faf3acf2bbb		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e50	32	__glDT_GEQUAL	dwarf+dynsym	8e6383ff89e2		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e70	32	__glDT_GEQUAL_s	dwarf+dynsym	4443adb0ca2f		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e90	12	__glDT_ALWAYS	dwarf+dynsym	634ccb8317f8		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
@@ -11677,7 +11677,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ebc	8	__glDT_LESS_M
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ec4	12	__glDT_EQUAL_M	dwarf+dynsym	99ee3294a715		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ed0	8	__glDT_GREATER_M	dwarf+dynsym	7b96baa79399		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ed8	8	__glDT_GREATER_M_s	dwarf+dynsym	974a3b709882		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ee0	12	__glDT_NOTEQUAL_M	dwarf+dynsym	8e046160f1b6		understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ee0	12	__glDT_NOTEQUAL_M	dwarf+dynsym	8e046160f1b6		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991eec	12	__glDT_GEQUAL_M	dwarf+dynsym	73b8e7b7fb73		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ef8	12	__glDT_GEQUAL_M_s	dwarf+dynsym	6e36564c3d18		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991f04	8	__glDT_ALWAYS_M	dwarf+dynsym	a7e7ca11a6b8		located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
@@ -12226,9 +12226,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c7ed0	368	__glBlendSp
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8040	340	__glBlendSpan_SA_ZERO	dwarf+dynsym	00f449b95ca9		located	docs/sample-implementation.md#so_blendc	so_blend.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c81a0	408	__glBlendSpan_SA_ONE	dwarf+dynsym	39f260b63846		located	docs/sample-implementation.md#so_blendc	so_blend.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8340	292	__glBlendStippledSpan	dwarf+dynsym	14d5969e3a09		located	docs/sample-implementation.md#so_blendc	so_blend.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8470	52	__glInitBuffer	dwarf+dynsym	dea7ed8c0e27		understood	docs/sample-implementation.md#so_buffersc	so_buffers.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84b0	60	__glMakeCurrentBuffer	dwarf+dynsym	2aa34bb12da0		understood	docs/sample-implementation.md#so_buffersc	so_buffers.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84f0	60	__glLoseCurrentBuffer	dwarf+dynsym	5ffb619c732f		understood	docs/sample-implementation.md#so_buffersc	so_buffers.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8470	52	__glInitBuffer	dwarf+dynsym	dea7ed8c0e27		located	docs/sample-implementation.md#so_buffersc	so_buffers.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84b0	60	__glMakeCurrentBuffer	dwarf+dynsym	2aa34bb12da0		located	docs/sample-implementation.md#so_buffersc	so_buffers.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84f0	60	__glLoseCurrentBuffer	dwarf+dynsym	5ffb619c732f		located	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8530	252	__glResizeBuffer	dwarf+dynsym	1f788ceddef1		named-only	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8630	12	__glMoveBuffer	dwarf+dynsym	8688c1290edb		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8640	72	__glFreeBuffer	dwarf+dynsym	b84292d629d3		undocumented		
@@ -12260,12 +12260,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c93e0	156	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9480	172	__glim_Color4sv	dwarf+dynsym	c0a1ddcf4195		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9530	124	__glim_Color4us	dwarf+dynsym	632075f024be		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c95b0	140	__glim_Color4usv	dwarf+dynsym	5e723bd50bee		located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9640	16	__glim_Indexd	dwarf+dynsym	eea7c63db90a		understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9650	12	__glim_Indexf	dwarf+dynsym	17e166caf76a		understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9640	16	__glim_Indexd	dwarf+dynsym	eea7c63db90a		located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9650	12	__glim_Indexf	dwarf+dynsym	17e166caf76a		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9660	20	__glim_Indexi	dwarf+dynsym	0ca9f225ac63		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9680	20	__glim_Indexs	dwarf+dynsym	0ca9f225ac63		located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96a0	20	__glim_Indexdv	dwarf+dynsym	b68372d692e7		understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96c0	16	__glim_Indexfv	dwarf+dynsym	1f8fd20e6fbb		understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96a0	20	__glim_Indexdv	dwarf+dynsym	b68372d692e7		located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96c0	16	__glim_Indexfv	dwarf+dynsym	1f8fd20e6fbb		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96d0	24	__glim_Indexiv	dwarf+dynsym	385423dd2149		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96f0	24	__glim_Indexsv	dwarf+dynsym	577c5a302811		located	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9710	20	__glim_Indexub	dwarf+dynsym	0ca9f225ac63		located	docs/sample-implementation.md#so_capic	so_capi.c
@@ -12354,7 +12354,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d0f90	360	__glFillDef
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d1100	196	__glCheckMap3Params	dwarf+dynsym	b39b5bbe470a		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d11d0	188	FetchNon32	dwarf+funcnames	46a2ee27d9f5		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1290	64	Fetch32	dwarf+funcnames	555036df7486		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d12d0	8	StoreNEVER	dwarf+funcnames	87506497337c		understood	docs/sample-implementation.md#so_depthopc	so_depthop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d12d0	8	StoreNEVER	dwarf+funcnames	87506497337c		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d12e0	104	StoreLESS	dwarf+funcnames	8c4dcc3d6cbc		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1350	104	StoreLESS_s	dwarf+funcnames	0d41c3db4235		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d13c0	100	StoreEQUAL	dwarf+funcnames	6da86c65a79b		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
@@ -12362,7 +12362,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1430	104	StoreL
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d14a0	104	StoreLEQUAL_s	dwarf+funcnames	47af9cf30eaf		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1510	104	StoreGREATER	dwarf+funcnames	fed56e92e1cd		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1580	104	StoreGREATER_s	dwarf+funcnames	fb9915fcdc57		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d15f0	100	StoreNOTEQUAL	dwarf+funcnames	ae3337f0b82c		understood	docs/sample-implementation.md#so_depthopc	so_depthop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d15f0	100	StoreNOTEQUAL	dwarf+funcnames	ae3337f0b82c		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1660	104	StoreGEQUAL	dwarf+funcnames	048ce476b741		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d16d0	104	StoreGEQUAL_s	dwarf+funcnames	66fe4a9d5729		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1740	84	StoreALWAYS	dwarf+funcnames	8f8b0d69f6f8		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
@@ -12373,22 +12373,22 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d18c0	88	StoreLE
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1920	88	StoreLEQUAL_W_s	dwarf+funcnames	52f14293be0d		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1980	84	StoreGREATER_W	dwarf+funcnames	b9f6fb00d3ea		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d19e0	84	StoreGREATER_W_s	dwarf+funcnames	1305f374bcdb		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1a40	88	StoreNOTEQUAL_W	dwarf+funcnames	fb9c6f027c42		understood	docs/sample-implementation.md#so_depthopc	so_depthop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1a40	88	StoreNOTEQUAL_W	dwarf+funcnames	fb9c6f027c42		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1aa0	88	StoreGEQUAL_W	dwarf+funcnames	062bb1b19489		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1b00	88	StoreGEQUAL_W_s	dwarf+funcnames	20b50c578c7d		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1b60	8	StoreALWAYS_W	dwarf+funcnames	a7e7ca11a6b8		understood	docs/sample-implementation.md#so_depthopc	so_depthop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d1b60	8	StoreALWAYS_W	dwarf+funcnames	a7e7ca11a6b8		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2670	232	__glInitDepth24	dwarf+dynsym	85a14d333db2		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2760	228	__glInitDepth32	dwarf+dynsym	d8b8e33aecb9		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2850	172	__glInitDepth	dwarf+dynsym	c10a39b71de2		located	docs/sample-implementation.md#so_depthopc	so_depthop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2900	192	__glGenericFreeDlist	dwarf+dynsym	1cb899b93c35		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d29c0	52	__glGenericExecuteDlist	dwarf+dynsym	1f2eae830973		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2a00	208	__glGenericAllocDlist	dwarf+dynsym	f82de830ae89		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ad0	8	__glle_Nop	dwarf+dynsym	f211f0c174df		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ad0	8	__glle_Nop	dwarf+dynsym	f211f0c174df		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ae0	916	__glGenericDlistCompiler	dwarf+dynsym	030934e22e49		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2e80	52	__glNopFreeDlist	dwarf+dynsym	a8bfc95502ac		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2e80	52	__glNopFreeDlist	dwarf+dynsym	a8bfc95502ac		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ec0	8	__glNopExecuteDlist	dwarf+dynsym	78aa5094d5ec		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ed0	112	__glNopAllocDlist	dwarf+dynsym	aca49d4e4422		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2f40	124	__glNopDlistCompiler	dwarf+dynsym	d26169e8f0f5		understood	docs/sample-implementation.md#so_dlistc	so_dlist.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2ed0	112	__glNopAllocDlist	dwarf+dynsym	aca49d4e4422		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2f40	124	__glNopDlistCompiler	dwarf+dynsym	d26169e8f0f5		located	docs/sample-implementation.md#so_dlistc	so_dlist.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d2fc0	96	__glEvalComputeK	dwarf+dynsym	1493fed638a5		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d3020	644	__glInitEvaluatorState	dwarf+dynsym	b66585a0a638		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d32b0	228	__glFreeEvaluatorState	dwarf+dynsym	071a0cd87c04		located	docs/sample-implementation.md#so_evalc	so_eval.c
@@ -12414,10 +12414,10 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d3d50	280	__glim_Eval
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d3e70	164	__glim_EvalPoint2	dwarf+dynsym	aeffa24b45e6		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d3f20	248	__glFillMap1f	dwarf+dynsym	77efd7064209		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4020	196	__glFillMap1d	dwarf+dynsym	fae0c138a37b		located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d40f0	16	__glMap1_size	dwarf+dynsym	e92836addc71		understood	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d40f0	16	__glMap1_size	dwarf+dynsym	e92836addc71		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4100	308	__glFillMap2f	dwarf+dynsym	0cc6b5c6f884		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4240	276	__glFillMap2d	dwarf+dynsym	71d1bdf99314		located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4360	32	__glMap2_size	dwarf+dynsym	5901dfe17ba6		understood	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4360	32	__glMap2_size	dwarf+dynsym	5901dfe17ba6		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4380	288	__glSetUpMap1	dwarf+dynsym	887635176025		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d44a0	332	__glSetUpMap2	dwarf+dynsym	f1777f7337a3		located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d45f0	284	PreEvaluate	dwarf+funcnames	d0a6ec998d3f		located	docs/sample-implementation.md#so_evalc	so_eval.c
@@ -12455,8 +12455,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8050	88	__glFeedback
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d80b0	88	__glFeedbackPoint	dwarf+dynsym	fc4e8121ac52		located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8110	212	__glFeedbackLine	dwarf+dynsym	efd50b1a9723		located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d81f0	1204	__glFeedbackTriangle	dwarf+dynsym	cfe76cc98317		located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d86b0	88	__glim_Finish	dwarf+dynsym	1646b91644a5		understood	docs/sample-implementation.md#so_finishc	so_finish.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8710	88	__glim_Flush	dwarf+dynsym	aa09f27c18b1		understood	docs/sample-implementation.md#so_finishc	so_finish.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d86b0	88	__glim_Finish	dwarf+dynsym	1646b91644a5		located	docs/sample-implementation.md#so_finishc	so_finish.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8710	88	__glim_Flush	dwarf+dynsym	aa09f27c18b1		located	docs/sample-implementation.md#so_finishc	so_finish.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8770	180	__glFogSpan	dwarf+dynsym	20456f7bf114		located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8830	568	__glFogStippledSpan	dwarf+dynsym	87459aa6abe9		located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8a70	472	__glFogSpanSlow	dwarf+dynsym	06f3a0971d61		located	docs/sample-implementation.md#so_fogc	so_fog.c
@@ -12518,11 +12518,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2940	444	__glim_GetM
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2b00	212	__glGetMinmaxParameters	dwarf+dynsym	6478efc99084		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2be0	52	__glim_GetMinmaxParameterivEXT	dwarf+dynsym	7e14bdc55a5c		located	docs/sample-implementation.md#so_histogramc	so_histogram.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2c20	52	__glim_GetMinmaxParameterfvEXT	dwarf+dynsym	c50682cc7ddd		located	docs/sample-implementation.md#so_histogramc	so_histogram.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2c60	128	__glConvertStipple	dwarf+dynsym	6991e3bb40ad		understood	docs/sample-implementation.md#so_imagec	so_image.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2c60	128	__glConvertStipple	dwarf+dynsym	6991e3bb40ad		located	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2ce0	220	__glImageSize	dwarf+dynsym	3d653ea27feb		located	docs/sample-implementation.md#so_imagec	so_image.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2dc0	84	__glImageSize3D	dwarf+dynsym	98d8177df9d2		understood	docs/sample-implementation.md#so_imagec	so_image.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2dc0	84	__glImageSize3D	dwarf+dynsym	98d8177df9d2		located	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e2e20	3304	__glFillImage3D	dwarf+dynsym	b0510dc41bf2		located	docs/sample-implementation.md#so_imagec	so_image.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e3b10	72	__glFillImage	dwarf+dynsym	ab8ef0645cfc		understood	docs/sample-implementation.md#so_imagec	so_image.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e3b10	72	__glFillImage	dwarf+dynsym	ab8ef0645cfc		located	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e3b60	1212	__glEmptyImage	dwarf+dynsym	df37e0482262		located	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4020	68	__glScaleColorf	dwarf+dynsym	21313d30893b		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4070	232	__glClampAndScaleColorf	dwarf+dynsym	abc14a3d246c		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
@@ -12539,13 +12539,13 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4940	1180	__glCalcCI
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4de0	424	__glFastCalcCIColor	dwarf+dynsym	c99682503ce4		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4f90	88	__glFogCIColor	dwarf+dynsym	9edb27b6608d		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4ff0	156	__glFogLitCIColor	dwarf+dynsym	c96237de0cb2		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5090	148	__glChangeOneMaterialColor	dwarf+dynsym	cac905cd474c		understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5090	148	__glChangeOneMaterialColor	dwarf+dynsym	cac905cd474c		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5130	168	__glChangeBothMaterialColors	dwarf+dynsym	1158000790d7		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e51e0	348	ComputeMaterialState	dwarf+funcnames	c5010109aa0e		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5340	744	ComputeLightState	dwarf+funcnames	7236b6fa203e		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5630	296	ComputeLightProcs	dwarf+funcnames	af2ea57629a4		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5760	456	ComputeLightMaterialState	dwarf+funcnames	924ebd90ee51		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5930	144	__glValidateMaterial	dwarf+dynsym	92d178828bd8		understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5930	144	__glValidateMaterial	dwarf+dynsym	92d178828bd8		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e59c0	140	__glValidateLighting	dwarf+dynsym	4be944ae9c20		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5a50	320	__glGenericPickColorMaterialProcs	dwarf+dynsym	dee6674e65d5		located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5b90	1556	__glClipLine	dwarf+dynsym	d76f7f173201		located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
@@ -12619,18 +12619,18 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efbd0	68	__glle_Disab
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efc20	444	__gllc_Disable	dwarf+dynsym	a00070021d85		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efde0	68	__glle_Enable	dwarf+dynsym	a7dde26b1510		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efe30	396	__gllc_Enable	dwarf+dynsym	162ee05456e3		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9effc0	8	__glle_DrawArraysEXT	dwarf+dynsym	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9effc0	8	__glle_DrawArraysEXT	dwarf+dynsym	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9effd0	52	__glle_DrawArrays	dwarf+dynsym	c2cab1aee4a1		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0010	8	__glle_DrawElements	dwarf+dynsym	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0020	8	__glle_DrawRangeElements	dwarf+dynsym	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0030	8	__glle_ArrayElementEXT	dwarf+dynsym	f211f0c174df		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0010	8	__glle_DrawElements	dwarf+dynsym	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0020	8	__glle_DrawRangeElements	dwarf+dynsym	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0030	8	__glle_ArrayElementEXT	dwarf+dynsym	f211f0c174df		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0040	116	__glle_ColorTableSGI	dwarf+dynsym	62a2aeb6fa79		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f00c0	516	__gllc_ColorTableSGI	dwarf+dynsym	4db7e60dbe5b		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f02d0	116	__glle_ColorSubTable	dwarf+dynsym	a185c7248666		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0350	416	__gllc_ColorSubTable	dwarf+dynsym	5c3a082a7287		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f04f0	736	__gllc_DrawArraysEXT	dwarf+dynsym	43c68748b665		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f07d0	400	__gllc_DrawElements	dwarf+dynsym	39660337d787		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0960	92	__gllc_DrawRangeElements	dwarf+dynsym	6ca4b0e2c4cb		understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0960	92	__gllc_DrawRangeElements	dwarf+dynsym	6ca4b0e2c4cb		located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f09c0	140	__glCopyMatrix	dwarf+dynsym	ace0679d4223		located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0a50	96	__glMakeIdentity	dwarf+dynsym	5a6fcb7abf24		located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0ab0	240	__glMultMatrix	dwarf+dynsym	bfc3db566172		located	docs/sample-implementation.md#so_mathc	so_math.c
@@ -12643,9 +12643,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1160	136	__glDeleteA
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f11f0	208	__glArenaAlloc	dwarf+dynsym	67521813d004		located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f12c0	116	__glArenaFreeAll	dwarf+dynsym	c5554cc94f5c		located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1340	340	__glNamesNewArray	dwarf+dynsym	33ceb3b01cd7		located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f14a0	16	freeLeafData	dwarf+funcnames	68688d3c36c3		understood	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f14a0	16	freeLeafData	dwarf+funcnames	68688d3c36c3		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f14b0	72	freeLeaf	dwarf+funcnames	43751b1678c6		located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1500	16	freeBranch	dwarf+funcnames	68688d3c36c3		understood	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1500	16	freeBranch	dwarf+funcnames	68688d3c36c3		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1510	356	__glNamesFreeTree	dwarf+dynsym	1344cc4e2665		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1680	236	__glNamesFreeArray	dwarf+dynsym	86e78ea4d65e		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1770	128	findLeaf	dwarf+funcnames	5fb8c184f320		located	docs/sample-implementation.md#so_namesc	so_names.c
@@ -12679,8 +12679,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4330	1068	__glNamesD
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4760	80	__glNamesIsName	dwarf+dynsym	ff5eea43af6e		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f47b0	216	__glNamesGenNames	dwarf+dynsym	eccc96b19d3b		located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4890	320	__glNamesDeleteNames	dwarf+dynsym	95c13dd49477		located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49d0	32	__glim_Normal3d	dwarf+dynsym	37e3f67df0d5		understood	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49f0	44	__glim_Normal3dv	dwarf+dynsym	6f624c5015b5		understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49d0	32	__glim_Normal3d	dwarf+dynsym	37e3f67df0d5		located	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49f0	44	__glim_Normal3dv	dwarf+dynsym	6f624c5015b5		located	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		located	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a80	96	__glim_Normal3bv	dwarf+dynsym	fee8b6a14594		located	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ae0	84	__glim_Normal3s	dwarf+dynsym	05ea6a363bb3		located	docs/sample-implementation.md#so_napic	so_napi.c
@@ -12702,7 +12702,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6fc0	320	__glGeneric
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7100	52	__glGenericValidate	dwarf+dynsym	dd26f31675b4		located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7140	560	__glGenericModeFlags	dwarf+dynsym	f8d17b326be8		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7370	1100	__glGenericPickAllProcs	dwarf+dynsym	b6727771aed2		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f77c0	64	__glBuildAntiAliasIndex	dwarf+dynsym	fa3d9e18825e		understood	docs/sample-implementation.md#so_pntaac	so_pntaa.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f77c0	64	__glBuildAntiAliasIndex	dwarf+dynsym	fa3d9e18825e		located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7950	652	__glRenderAntiAliasedRGBPoint	dwarf+dynsym	61d5fb243bbf		located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7be0	564	__glRenderAntiAliasedCIPoint	dwarf+dynsym	f29ba421d7a7		located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7e20	176	__glRenderAliasedPoint1_NoTex	dwarf+dynsym	5b3635b5ea1e		undocumented		
@@ -12710,14 +12710,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7ed0	248	__glRenderA
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7fd0	124	__glRenderFlatFogPoint	dwarf+dynsym	4003377081ec		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8050	460	__glRenderAliasedPointN	dwarf+dynsym	c49ef4a42f10		located	docs/sample-implementation.md#so_pntdrawc	so_pntdraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8220	76	__glPolygonOffsetPoint	dwarf+dynsym	bcf7b25134f4		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8270	48	__glBeginPoints	dwarf+dynsym	e0e4cc4defcf		understood	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f82a0	32	__glEndPoints	dwarf+dynsym	a721c36747a8		understood	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8270	48	__glBeginPoints	dwarf+dynsym	e0e4cc4defcf		located	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f82a0	32	__glEndPoints	dwarf+dynsym	a721c36747a8		located	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fa2e0	3140	__glFillAntiAliasedTriangle	dwarf+dynsym	d6a21b76783b		located	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9faf30	660	clipToPlane	dwarf+funcnames	38a8ea572743		located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fb1d0	856	clipToPlaneEye	dwarf+funcnames	297858b76ff7		located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fb530	920	__glDoPolygonClip	dwarf+dynsym	45abd0ec4b82		located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fb8d0	264	__glClipPolygon	dwarf+dynsym	be6e220975ae		located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fb9e0	72	__glClipTriangle	dwarf+dynsym	16e1810828b6		understood	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fb9e0	72	__glClipTriangle	dwarf+dynsym	16e1810828b6		located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fbfa0	344	__glSnapXLeft	dwarf+dynsym	4ce46f67b9b2		located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc100	208	__glSnapXRight	dwarf+dynsym	737987db5f3e		located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fc1d0	64	__glComputePolygonOffset	dwarf+funcnames	ac77934deb45		undocumented		
@@ -12733,24 +12733,24 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd5f0	176	__glMatVali
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd6a0	136	__glMatValidateV2V3	dwarf+dynsym	a08d873d20a1		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd730	144	OtherTFanVertex	dwarf+funcnames	e6140651d5b7		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd7c0	56	SecondTFanVertex	dwarf+funcnames	01acf2bd8f04		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd800	44	FirstTFanVertex	dwarf+funcnames	c97529f499f3		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd800	44	FirstTFanVertex	dwarf+funcnames	c97529f499f3		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd830	52	__glBeginTFan	dwarf+dynsym	2df49c555741		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd870	52	SecondTStripVertex	dwarf+funcnames	7b479ca3ab62		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd8b0	48	FirstTStripVertex	dwarf+funcnames	2d2a10cfe87e		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd8e0	52	__glBeginTStrip	dwarf+dynsym	3a3c35b0e7e3		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd920	152	ThirdTrianglesVertex	dwarf+funcnames	652ebdd4a687		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9c0	44	SecondTrianglesVertex	dwarf+funcnames	a7faba1b1780		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9f0	44	FirstTrianglesVertex	dwarf+funcnames	b16f9ad055e4		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9c0	44	SecondTrianglesVertex	dwarf+funcnames	a7faba1b1780		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9f0	44	FirstTrianglesVertex	dwarf+funcnames	b16f9ad055e4		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fda20	44	__glBeginTriangles	dwarf+dynsym	07e912ea3039		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fda50	300	FourthQStripVertex	dwarf+funcnames	3df1a708e1c4		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdb80	56	ThirdQStripVertex	dwarf+funcnames	4f3c2d24f8f9		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbc0	48	SecondQStripVertex	dwarf+funcnames	dad39bea52b0		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbf0	48	FirstQStripVertex	dwarf+funcnames	e6113e48ba05		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdc20	52	__glBeginQStrip	dwarf+dynsym	53e08d2317cc		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc60	40	ThirdQuadsVertex	dwarf+funcnames	40d815ec86bc		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc90	44	SecondQuadsVertex	dwarf+funcnames	f748d4623117		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc60	40	ThirdQuadsVertex	dwarf+funcnames	40d815ec86bc		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc90	44	SecondQuadsVertex	dwarf+funcnames	f748d4623117		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcc0	44	__glFirstQuadsVertex	dwarf+dynsym	a9fdd331a3d0		named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcf0	40	__glBeginQuads	dwarf+dynsym	291172f5287e		understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcf0	40	__glBeginQuads	dwarf+dynsym	291172f5287e		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdd20	652	PolygonVertex	dwarf+funcnames	1312b01a92e0		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdfb0	148	__glEndPolygon	dwarf+dynsym	b27c3c312319		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe050	56	__glBeginPolygon	dwarf+dynsym	cd2ba6c6c44d		located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
@@ -12789,9 +12789,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda024c0	392	__glLogicOp
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02650	336	__glMaskRGBASpan	dwarf+dynsym	615a73bb705c		located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCISpan	dwarf+dynsym	14f5cb44f02f		located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	f967241bd51e		located	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		understood	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	78aa5094d5ec		named-only	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	a4856082e021		understood	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	a4856082e021		located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02ac0	52	__glim_UnimplementedExtension	dwarf+dynsym	c653b390bc58		understood	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02b00	164	__glim_RasterPos2dv	dwarf+dynsym	366018db3490		located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02bb0	136	__glim_RasterPos2fv	dwarf+dynsym	36355b799f92		located	docs/sample-implementation.md#so_rapic	so_rapi.c
@@ -12864,19 +12864,19 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05610	52	__glFragment
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05650	80	__glColorSubTable_size	dwarf+dynsym	f125020d85a1		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda056a0	164	__glReadSpan	dwarf+dynsym	ad95f61ef035		located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05750	488	__glReturnSpan	dwarf+dynsym	26d55e5c2ef1		located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05940	76	__glFetchSpan	dwarf+dynsym	5aad186f31ff		understood	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05990	84	__glInitLUTCache	dwarf+dynsym	dead696b1754		understood	docs/sample-implementation.md#so_speccachec	so_speccache.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05940	76	__glFetchSpan	dwarf+dynsym	5aad186f31ff		located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05990	84	__glInitLUTCache	dwarf+dynsym	dead696b1754		located	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda059f0	316	__glFreeLUTCache	dwarf+dynsym	d13fed829f31		located	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05b30	140	findEntry	dwarf+funcnames	a2426a14ab02		located	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05bc0	744	__glCreateSpecLUT	dwarf+dynsym	6741f70a2be2		located	docs/sample-implementation.md#so_speccachec	so_speccache.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05eb0	80	__glFreeSpecLUT	dwarf+dynsym	b703b05a7349		understood	docs/sample-implementation.md#so_speccachec	so_speccache.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05eb0	80	__glFreeSpecLUT	dwarf+dynsym	b703b05a7349		located	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05f00	52	Fetch	dwarf+funcnames	01f08e9dbc32		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05f40	76	Store	dwarf+funcnames	77d493fdc792		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05fe0	68	FailOp	dwarf+funcnames	924d2eace67d		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06030	68	PassDepthFailOp	dwarf+funcnames	db2fd0714dd6		understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06030	68	PassDepthFailOp	dwarf+funcnames	db2fd0714dd6		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06080	68	DepthPassOp	dwarf+funcnames	ce3a549407ec		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda064a0	260	buildOpTable	dwarf+funcnames	299507cdb36d		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda065b0	144	FreeStencilBuf	dwarf+funcnames	d39e90a357cf		understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda065b0	144	FreeStencilBuf	dwarf+funcnames	d39e90a357cf		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda06640	656	__glValidateStencil	dwarf+dynsym	03e05c8475f3		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda06910	180	__glInitStencil8	dwarf+dynsym	a9ce4ec60c45		located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda069d0	336	__glDoStore_ASD	dwarf+dynsym	60c3df11bb4f		located	docs/sample-implementation.md#so_storec	so_store.c
@@ -12976,34 +12976,34 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda112d0	4284	DoNor
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda12390	376	DoInterpolate	dwarf+funcnames	a8e1f624f9fd		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda12510	616	DoInterpolateNormal	dwarf+funcnames	99742c7c2f83		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda12780	5644	DoRender	dwarf+funcnames	b03c8a7b8008		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13d90	36	__glim_TexCoord1d	dwarf+dynsym	cf983df71f26		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13dc0	32	__glim_TexCoord1f	dwarf+dynsym	fa1cf99b4646		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13de0	40	__glim_TexCoord1i	dwarf+dynsym	44a6eba89f4b		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e10	40	__glim_TexCoord1s	dwarf+dynsym	44a6eba89f4b		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e40	40	__glim_TexCoord1dv	dwarf+dynsym	560c8d283906		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e70	36	__glim_TexCoord1fv	dwarf+dynsym	721582d60731		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13d90	36	__glim_TexCoord1d	dwarf+dynsym	cf983df71f26		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13dc0	32	__glim_TexCoord1f	dwarf+dynsym	fa1cf99b4646		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13de0	40	__glim_TexCoord1i	dwarf+dynsym	44a6eba89f4b		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e10	40	__glim_TexCoord1s	dwarf+dynsym	44a6eba89f4b		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e40	40	__glim_TexCoord1dv	dwarf+dynsym	560c8d283906		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e70	36	__glim_TexCoord1fv	dwarf+dynsym	721582d60731		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ea0	44	__glim_TexCoord1iv	dwarf+dynsym	9d18c58526de		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ed0	44	__glim_TexCoord1sv	dwarf+dynsym	dc39d76b5503		located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f00	40	__glim_TexCoord2d	dwarf+dynsym	e4e222ff3ece		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f00	40	__glim_TexCoord2d	dwarf+dynsym	e4e222ff3ece		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f30	48	__glim_TexCoord2i	dwarf+dynsym	900800e2749b		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f60	48	__glim_TexCoord2s	dwarf+dynsym	900800e2749b		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f90	48	__glim_TexCoord2dv	dwarf+dynsym	8065e132b9c0		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13fc0	56	__glim_TexCoord2iv	dwarf+dynsym	9e6fdd224659		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14000	56	__glim_TexCoord2sv	dwarf+dynsym	b1672a18b4cb		located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14040	40	__glim_TexCoord3d	dwarf+dynsym	9689aaccc17d		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14070	28	__glim_TexCoord3f	dwarf+dynsym	a5b001f261a0		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14040	40	__glim_TexCoord3d	dwarf+dynsym	9689aaccc17d		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14070	28	__glim_TexCoord3f	dwarf+dynsym	a5b001f261a0		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14090	52	__glim_TexCoord3i	dwarf+dynsym	fa74a505eda4		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda140d0	52	__glim_TexCoord3s	dwarf+dynsym	fa74a505eda4		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14110	52	__glim_TexCoord3dv	dwarf+dynsym	74fd532383eb		located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14150	40	__glim_TexCoord3fv	dwarf+dynsym	e9a1eef46490		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14150	40	__glim_TexCoord3fv	dwarf+dynsym	e9a1eef46490		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14180	64	__glim_TexCoord3iv	dwarf+dynsym	b9145b308d51		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda141c0	64	__glim_TexCoord3sv	dwarf+dynsym	52a84ee917cd		located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14200	40	__glim_TexCoord4d	dwarf+dynsym	2bc721af3e64		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14230	24	__glim_TexCoord4f	dwarf+dynsym	e736c1aa7ae2		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14200	40	__glim_TexCoord4d	dwarf+dynsym	2bc721af3e64		located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14230	24	__glim_TexCoord4f	dwarf+dynsym	e736c1aa7ae2		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14250	56	__glim_TexCoord4i	dwarf+dynsym	5f5a0e80d8c3		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14290	56	__glim_TexCoord4s	dwarf+dynsym	5f5a0e80d8c3		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda142d0	56	__glim_TexCoord4dv	dwarf+dynsym	1cc3aaaf6b3f		located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14310	40	__glim_TexCoord4fv	dwarf+dynsym	128706ae4599		understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14310	40	__glim_TexCoord4fv	dwarf+dynsym	128706ae4599		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14340	72	__glim_TexCoord4iv	dwarf+dynsym	9313b2f8c191		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14390	72	__glim_TexCoord4sv	dwarf+dynsym	f8ba6e506fdd		located	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda143e0	3852	__glTextureRGB_F_F_Span	dwarf+dynsym	37e82c6c3f85		undocumented		
@@ -13022,11 +13022,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e410	72	__glLookUpTe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e460	76	__glLookUpTextureTexobjs	dwarf+dynsym	27e22ee31471		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e4b0	144	__glLookUpTexture	dwarf+dynsym	618c0731ddee		named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e540	76	__glLookUpTextureObject	dwarf+dynsym	98445cbf0c6b		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda1e590	36	Clampf	dwarf+funcnames	57b54dd10ac5		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda1e590	36	Clampf	dwarf+funcnames	57b54dd10ac5		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e5c0	52	__glCopyTexImage	dwarf+dynsym	881ea7c3e395		understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e600	52	__glReadTexImage	dwarf+dynsym	40d00f8da215		understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e640	60	__glTexInitTextureObject	dwarf+dynsym	94b1a569b81f		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e680	24	__glShareTextureObjects	dwarf+dynsym	b66ab29ab6c9		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e680	24	__glShareTextureObjects	dwarf+dynsym	b66ab29ab6c9		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1e6a0	496	__glEarlyInitTextureState	dwarf+dynsym	1acfa1f491d2		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda1e890	472	InitTextureMachine	dwarf+funcnames	39ac52652648		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1ea70	1328	__glInitTextureState	dwarf+dynsym	ea093878bdce		located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13034,10 +13034,10 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1efa0	436	__glFreeTex
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f160	528	__glim_TexGenfv	dwarf+dynsym	0e86d6c9ff26		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f370	84	__glim_TexGenf	dwarf+dynsym	0b6d6fb622f4		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f3d0	560	__glim_TexGendv	dwarf+dynsym	f6a4b476a9e5		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f600	84	__glim_TexGend	dwarf+dynsym	01c43a1b6473		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f600	84	__glim_TexGend	dwarf+dynsym	01c43a1b6473		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f660	580	__glim_TexGeniv	dwarf+dynsym	905683f8c53c		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f8b0	84	__glim_TexGeni	dwarf+dynsym	b708f0b3833f		understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f910	60	__glTexGendv_size	dwarf+dynsym	c84ef1da36c7		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f8b0	84	__glim_TexGeni	dwarf+dynsym	b708f0b3833f		located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f910	60	__glTexGendv_size	dwarf+dynsym	c84ef1da36c7		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f950	52	__glTexGenfv_size	dwarf+dynsym	42fda5cf183a		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f990	52	__glTexGeniv_size	dwarf+dynsym	ce9b17000cb6		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f9d0	1328	__glim_TexParameterfv	dwarf+dynsym	03ccccd2984c		located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13049,7 +13049,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20850	52	__glTexParam
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20890	328	__glim_TexEnvfv	dwarf+dynsym	6259348b349c		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda209e0	84	__glim_TexEnvf	dwarf+dynsym	f8c549b763ca		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20a40	316	__glim_TexEnviv	dwarf+dynsym	23d97a431c6c		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20b80	84	__glim_TexEnvi	dwarf+dynsym	0b2d465bd1d4		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20b80	84	__glim_TexEnvi	dwarf+dynsym	0b2d465bd1d4		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20be0	44	__glTexEnvfv_size	dwarf+dynsym	9d52cc8de8c7		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20c10	52	__glTexEnviv_size	dwarf+dynsym	a6a99eb21a8c		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20c50	120	__glim_TextureColorMaskSGIS	dwarf+dynsym	5cad327804dd		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
@@ -13067,7 +13067,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21170	68	__glExtractT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda211c0	68	__glExtractTexelRGBA_B	dwarf+dynsym	bdac7f5850b3		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21210	44	__glExtractTexelA_B	dwarf+dynsym	389bf31f5286		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21240	44	__glExtractTexelI_B	dwarf+dynsym	4c243c6b3d71		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21270	112	__glExtractTexelRGB8_B	dwarf+dynsym	5285759a9828		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21270	112	__glExtractTexelRGB8_B	dwarf+dynsym	5285759a9828		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda212e0	136	__glExtractTexelRGBA8_B	dwarf+dynsym	4b7b5236c045		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21370	132	__glExtractTexel3L	dwarf+dynsym	1fe14bd00fc8		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21400	152	__glExtractTexel3LA	dwarf+dynsym	1902cb3c5cd3		undocumented		
@@ -13127,7 +13127,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277b0	52	__glTextureM
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277f0	68	__glTextureModulateLA	dwarf+dynsym	c0ed17f7c0f8		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27840	52	__glTextureModulateRGB	dwarf+dynsym	d7f9d11fe05d		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27880	68	__glTextureModulateRGBA	dwarf+dynsym	fd9ea9630b2b		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278d0	20	__glTextureModulateA	dwarf+dynsym	e32947060236		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278d0	20	__glTextureModulateA	dwarf+dynsym	e32947060236		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278f0	68	__glTextureModulateI	dwarf+dynsym	1618256b58d4		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27940	52	__glTextureDecalRGB	dwarf+dynsym	8b7fb754b780		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27980	100	__glTextureDecalRGBA	dwarf+dynsym	3b7870087cc7		located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13135,13 +13135,13 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda279f0	80	__glTextureB
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27a40	96	__glTextureBlendLA	dwarf+dynsym	994465f28300		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27aa0	104	__glTextureBlendRGB	dwarf+dynsym	a1b3916a0c1d		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b10	120	__glTextureBlendRGBA	dwarf+dynsym	e863d53326cd		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b90	20	__glTextureBlendA	dwarf+dynsym	e32947060236		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b90	20	__glTextureBlendA	dwarf+dynsym	e32947060236		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27bb0	100	__glTextureBlendI	dwarf+dynsym	40e81eba5a7a		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c20	52	__glTextureReplaceL	dwarf+dynsym	b23f73331aac		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c60	68	__glTextureReplaceLA	dwarf+dynsym	498746e6de00		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cb0	52	__glTextureReplaceRGB	dwarf+dynsym	8b7fb754b780		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cf0	68	__glTextureReplaceRGBA	dwarf+dynsym	2ffcb4dae815		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d40	20	__glTextureReplaceA	dwarf+dynsym	4d5bdf315d6c		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d40	20	__glTextureReplaceA	dwarf+dynsym	4d5bdf315d6c		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d60	68	__glTextureReplaceI	dwarf+dynsym	5d39bd863d26		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27db0	36	__GL_TEXENV_CLAMP	dwarf+dynsym	ccc805ae7669		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27de0	272	__glTextureSBModulateL	dwarf+dynsym	d8ee2377de68		undocumented		
@@ -13184,14 +13184,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2e170	860	__glTexture
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2e4d0	1616	__glTextureCTReplaceRGBA	dwarf+dynsym	1ffe5848b3e0		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2eb20	464	__glTextureCTReplaceA	dwarf+dynsym	2f8c8029ca0a		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2ecf0	1620	__glTextureCTReplaceI	dwarf+dynsym	984ed46d03f8		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f350	8	__glNopPolygonRho	dwarf+dynsym	c56f035b0568		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f350	8	__glNopPolygonRho	dwarf+dynsym	c56f035b0568		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f360	324	__glComputePolygonRho	dwarf+dynsym	be16cfbcd101		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f4b0	8	__glNopLineRho	dwarf+dynsym	c56f035b0568		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f4b0	8	__glNopLineRho	dwarf+dynsym	c56f035b0568		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f4c0	296	__glComputeLineRho	dwarf+dynsym	5d089c7313a7		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f5f0	108	__glFastTextureFragment	dwarf+dynsym	80636963e343		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f660	136	__glTextureFragment	dwarf+dynsym	9e551eaf4c73		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f6f0	268	__glMipMapFragment	dwarf+dynsym	091d072bb64e		located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda2f800	40	Dot	dwarf+funcnames	ef4b8255b093		understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda2f800	40	Dot	dwarf+funcnames	ef4b8255b093		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda2f830	252	SphereGen	dwarf+funcnames	ec4a5b72eb70		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f930	1000	__glCalcMixedTexture	dwarf+dynsym	69117788e8e7		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2fd20	116	__glCalcSphereMap	dwarf+dynsym	7f1329ee829d		located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13225,8 +13225,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda323f0	396	__glim_Copy
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32580	412	__glim_CopyTexSubImage2DEXT	dwarf+dynsym	77f9f09fe186		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32720	408	__glim_CopyTexSubImage3DEXT	dwarf+dynsym	7fecfd158a96		located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda328c0	148	__glim_SelectTextureCoordSetSGIS	dwarf+dynsym	c25065ecf4cc		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32960	12	__glim_EdgeFlag	dwarf+dynsym	7e4b0606176e		understood	docs/sample-implementation.md#so_vapic	so_vapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32970	16	__glim_EdgeFlagv	dwarf+dynsym	8597538eb988		understood	docs/sample-implementation.md#so_vapic	so_vapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32960	12	__glim_EdgeFlag	dwarf+dynsym	7e4b0606176e		located	docs/sample-implementation.md#so_vapic	so_vapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32970	16	__glim_EdgeFlagv	dwarf+dynsym	8597538eb988		located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32980	168	__glim_Vertex2fv	dwarf+dynsym	bc1f54268fef		located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32a30	168	__glim_Vertex3fv	dwarf+dynsym	bca79224a5b3		located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32ae0	168	__glim_Vertex4fv	dwarf+dynsym	5f99faa2a0da		located	docs/sample-implementation.md#so_vapic	so_vapi.c
@@ -13276,15 +13276,15 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33ed0	368	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34040	500	__glim_TexCoordPointerEXT	dwarf+dynsym	46c2b225e7e3		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34240	144	__glim_EdgeFlagPointerEXT	dwarf+dynsym	fe1c7fd0e87b		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda342d0	312	__glim_IndexPointerEXT	dwarf+dynsym	dfba55e56537		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34410	88	__glim_ColorPointer	dwarf+dynsym	f76757b29ca6		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34410	88	__glim_ColorPointer	dwarf+dynsym	f76757b29ca6		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34470	416	__glim_DrawElements	dwarf+dynsym	f4d0bb395ce8		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34610	92	__glim_DrawRangeElements	dwarf+dynsym	4d8514b73033		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34670	88	__glim_EdgeFlagPointer	dwarf+dynsym	755629f552dd		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda346d0	88	__glim_IndexPointer	dwarf+dynsym	54b04e2d841b		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34670	88	__glim_EdgeFlagPointer	dwarf+dynsym	755629f552dd		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda346d0	88	__glim_IndexPointer	dwarf+dynsym	54b04e2d841b		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34730	704	__glim_InterleavedArrays	dwarf+dynsym	06bb0e3a42b6		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda349f0	88	__glim_NormalPointer	dwarf+dynsym	bf243079a15b		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34a50	88	__glim_TexCoordPointer	dwarf+dynsym	3504a7ccefda		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34ab0	88	__glim_VertexPointer	dwarf+dynsym	334f74c0fc91		understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda349f0	88	__glim_NormalPointer	dwarf+dynsym	bf243079a15b		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34a50	88	__glim_TexCoordPointer	dwarf+dynsym	3504a7ccefda		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34ab0	88	__glim_VertexPointer	dwarf+dynsym	334f74c0fc91		located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34b10	136	__glim_InterleavedTextureCoordSetsSGIS	dwarf+dynsym	c4eab3176136		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34ba0	72	__glClipCheckAll2	dwarf+dynsym	dccf69c9d873		understood	docs/sample-implementation.md#so_vertexc	so_vertex.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34bf0	64	__glClipCheckAll3	dwarf+dynsym	17c2fe8f36e8		understood	docs/sample-implementation.md#so_vertexc	so_vertex.c
@@ -13304,11 +13304,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda358e0	292	__glim_Load
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35a10	232	__glim_MultMatrixf	dwarf+dynsym	acd4cc0ee83b		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35b00	296	__glim_MultMatrixd	dwarf+dynsym	0f8612c3e292		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35c30	108	__glim_Rotatef	dwarf+dynsym	b005e8107c0a		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ca0	112	__glim_Rotated	dwarf+dynsym	6452e7d87cd0		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ca0	112	__glim_Rotated	dwarf+dynsym	6452e7d87cd0		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35d10	100	__glim_Scalef	dwarf+dynsym	07b8b5a55836		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35d80	104	__glim_Scaled	dwarf+dynsym	ef8ad9f5964a		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35d80	104	__glim_Scaled	dwarf+dynsym	ef8ad9f5964a		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35df0	100	__glim_Translatef	dwarf+dynsym	456ae197ba69		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35e60	104	__glim_Translated	dwarf+dynsym	6519509fc2b3		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35e60	104	__glim_Translated	dwarf+dynsym	6519509fc2b3		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ed0	124	__glim_PushMatrix	dwarf+dynsym	dc8ef1e468f7		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35f50	124	__glim_PopMatrix	dwarf+dynsym	6d28c9ec0c3d		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35fd0	456	__glim_Frustum	dwarf+dynsym	f746c841345c		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -13339,7 +13339,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37720	400	__glDoRotat
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda378b0	160	__glScaleMatrix	dwarf+dynsym	5b593eb329ac		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37950	68	__glDoScale	dwarf+dynsym	43f0cc00ffa6		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda379a0	180	__glTranslateMatrix	dwarf+dynsym	a5bff0241816		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37a60	68	__glDoTranslate	dwarf+dynsym	98c7078c6905		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37a60	68	__glDoTranslate	dwarf+dynsym	98c7078c6905		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37ab0	248	__glComputeClipBox	dwarf+dynsym	df0b7e350d49		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37bb0	156	__glReCompute2DMatrix	dwarf+dynsym	4891296dd9d4		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37c50	128	__glGenericPickMvpMatrixProcs	dwarf+dynsym	fa8c522b3167		located	docs/sample-implementation.md#so_xformc	so_xform.c
