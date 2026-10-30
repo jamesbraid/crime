@@ -1643,4 +1643,6 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
   It fails when the length or the user address is negative or when address plus length passes 0x7fff8000. It sets the halfword at +194 of the current thread (pointed to by -24552) to 2, calls `bcopy`, clears the halfword and returns zero.
 - `copyout` in `kernel.o`: copies to user space, a 88-byte routine at offset 0x3290. Established.
   It makes the same checks on the destination, sets and clears the same halfword around a call to `bcopy`, and returns zero.
+- `stkscr3` in `kernel.o`: the kernel-stack overflow trap, a 148-byte routine at offset 0x1945c. Established.
+  It stores the stack pointer in the overflow word, prints the exception program counter, the stack pointer and the saved frame register, switches to the kernel stack held at -24156 from register zero and prints the return address and the old byte at -24513, which it set to 3. It then selects level 24, stores that level's mask from the table at -23880 to the CRIME interrupt enable register at +0x18, sets bit 0 plus the bits 16 and 2 of the current status, calls `panic` with a fixed message and, if that returns, jumps to `_baduk`.
 <!-- kernel.o:end -->

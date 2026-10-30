@@ -348,7 +348,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00219d8	52	_r4600sc_limit	s
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021a0c	352	_r4600sc_inval_cache	symtab	595c146acd82		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021b6c	736	_r4600sc_index_inval	symtab	68059d767c3a		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021e4c	892	__dcache_inval	symtab	9f1529a55f0f		undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00221c8	684	__dcache_wb	symtab	8f0155449e7f		undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00221c8	684	__dcache_wb	symtab	8f0155449e7f		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022474	688	__dcache_wb_inval	symtab	1bf1fbec4b3e		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022724	1148	__icache_inval	symtab	cf014a91df62		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022ba0	840	__cache_wb_inval	symtab	ff102c5333cc	shared-address	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
@@ -547,7 +547,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002951c	288	md_dealloc	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002963c	408	md_add	symtab	9f73ecd733ef		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00297d4	340	_save_exceptions	symtab	18ada72dd351		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029928	312	_restore_exceptions	symtab	fdb874baac29		undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029a60	316	_hook_exceptions	symtab	1086fd119f4e		undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029a60	316	_hook_exceptions	symtab	1086fd119f4e		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029b9c	344	_inst_vec	symtab	cb25dd9e4207		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029cf4	144	findFlashSegmentHdr	symtab	52c648bfb3b6		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029d84	88	findFlashSegment	symtab	28431e1f63a5		undocumented		
@@ -1413,7 +1413,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5eb0	60	_r4600sc_limi
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5eec	340	_r4600sc_inval_cache	symtab	158c844a26a5		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6040	724	_r4600sc_index_inval	symtab	daf0d5de0c6a		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6314	884	__dcache_inval	symtab	7eddeede4478		undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6688	672	__dcache_wb	symtab	ae711d51c9b6		undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6688	672	__dcache_wb	symtab	ae711d51c9b6		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6928	672	__dcache_wb_inval	symtab	842f29aae226		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6bc8	1140	__icache_inval	symtab	51bf6a88af56		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x703c	832	__cache_wb_inval	symtab	640368f1ae79		named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
@@ -1755,10 +1755,10 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a6c	4	kernelbp	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	symtab	dcffcaf7af27		named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ab8	4	sstepbp	symtab	0df244da6067		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14abc	1004	intrnorm	symtab	1c5abbf32d0d		undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	ad0c94b16a45		undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	ad0c94b16a45		named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ea8	184	ecommon	symtab	6208f2b74d23		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ef8	104	ecommon_allsaved	symtab	0a92d5116a83		undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f60	1308	_hook_exceptions	symtab	ddbe165da9d6		undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f60	1308	_hook_exceptions	symtab	ddbe165da9d6		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1547c	116	sw_cachesynch_patch	symtab	c05aa0dd66d1		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15500	12	utlbmiss_prolog_up	symtab	5f40a62a50cc		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1550c	116	eutlbmiss_prolog_up	symtab	5b517952cbe9		undocumented		
@@ -1805,7 +1805,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15934	24	_endexceptno
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1594c	24	_ecc_end	symtab	ba1c3ba6bd47	shared-address	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1594c	24	_r10k_ecc_errorvec	symtab	ba1c3ba6bd47	shared-address	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	892	_r10k_ecc_end	symtab	17330d2fd81a	shared-address	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	96	is_in_pfdat	symtab	9914d4307cfb	shared-address	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	96	is_in_pfdat	symtab	9914d4307cfb	shared-address	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ce0	384	clean_icache	symtab	04bb19d8632e		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15e60	508	clean_dcache	symtab	b85fb8a42723		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1605c	104	__vm_dcache_inval	symtab	50c60352ae10		undocumented		
@@ -1847,7 +1847,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1942c	12	stkovflw	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19438	12	stkundflw	symtab	5083bc5c2473		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19444	12	stkscr1	symtab	66c317c94e00		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19450	12	stkscr2	symtab	01e2f2bfc947		undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1945c	148	stkscr3	symtab	a8db726d7e60		undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1945c	148	stkscr3	symtab	a8db726d7e60		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x194f0	428	_cvtd_s	symtab	35492be66d9f		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1969c	356	round_w	symtab	123827bd1d61		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x19800	2308	round_s	symtab	ff7df7b74353		undocumented		
@@ -13920,7 +13920,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439440	268	miRegionInit	dynsym	6d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439550	8	miRegionExtents	dynsym	f211f0c174df		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439560	100	miRegionEmpty	dynsym	bba651a25aae		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4395d0	580	miRectIn	dynsym	b8aa99f24b48		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439820	380	miRegionCopy	dynsym	ed70cfb5f45c		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439820	380	miRegionCopy	dynsym	ed70cfb5f45c		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4399a0	72	miRegionUninit	dynsym	032f5565a04a		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4399f0	84	nfbCursorLimits	dynsym	3d4b2388700e		understood	docs/nfb-layer.md#screen-hooks	Screen hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439a50	2532	cfb8SegmentSS1RectCopy	dynsym	155cb5953785		located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14480,7 +14480,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562170	264	nfb13MaskRopLoop..BI	d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562280	196	crmMakeFileName..PB	dynsym	c0d638ead124		understood	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562350	440	nfbStereoPaintWindowBackground..FI	dynsym	cbf3c2398b0f		understood	docs/nfb-layer.md#stereo-wrappers	Stereo wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562510	592	miBSPolyPoint..OP	dynsym	74a8ee074f80		located	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562760	304	miBSPushPixels..MAB	dynsym	c2ced1878134		located	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562760	304	miBSPushPixels..MAB	dynsym	c2ced1878134		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562890	432	nfbInfPolyArc..CK	dynsym	6e95ded6a145		understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562a40	264	nfb11MaskRopLoop..PH	dynsym	9bbbc6590871		understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562b50	896	crmBlackCmap	dynsym	0048a7da7711		understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
@@ -14550,12 +14550,12 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x573c20	1860	tailX..HCB	dynsym	e8d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574370	420	miRoundCap..NCB	dynsym	f22ff2681f39		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574520	592	miBSPolylines..PP	dynsym	e3fe5d544586		located	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574770	6280	drawQuadrant..BFB	dynsym	97a95a4432fc		located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576000	308	miBSCheapValidateGC..PO	dynsym	33cf5efd938b		located	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576000	308	miBSCheapValidateGC..PO	dynsym	33cf5efd938b		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576140	1436	nfb10RopLoop..OG	dynsym	d1cb8f794588		understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5766e0	440	nfbInfImageGlyphBlt..KK	dynsym	d25ae437e1b8		understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5768a0	296	NewID..IF	dynsym	fdd8ffedf9ab		understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5769d0	648	nfbInitServerOverlayVisualsProperty..NF	dynsym	e898e0b69c1f		understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576c60	292	miBSPutImage..KP	dynsym	e942d82dc83c		located	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576c60	292	miBSPutImage..KP	dynsym	e942d82dc83c		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576d90	108	itemSearchFunction..IC	dynsym	0d688481ab3f		understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576e00	228	nfbCopyClip..EJ	dynsym	c380b0e199d9		understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576ef0	1164	crmNewGCOps..K	dynsym	a88b17c525ea		understood	docs/xmodule.md#validation-of-graphics-contexts-and-windows	Validation of graphics contexts and windows
