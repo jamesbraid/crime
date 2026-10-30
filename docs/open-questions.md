@@ -16,7 +16,10 @@ Route key, used in the tables:
 
 ## Where work stopped
 
-29 October 2026, reader pass 11 (function backfill). Functions understood: 859 of 17,280 (5.0 %), up from 288. Done in this pass: every hardware drawing, resource-manager, colour-map, cursor, window-ID, swap, screen set-up, video-format and audio routine of `crm.so` that is not a sample-server layer routine (192 of 840 rows understood); every routine of `rrm.o`, `gfx.o`, `tile.o` and `a3_dd.o`; the transfer-engine helpers, error-register save, interrupt vector, gang and time routines of `kernel.o` (81 of 811); and about 95 CRIME driver rows of the N32 `libGLcore.so`, each cited to that build by link because the o32 build has different code under the same names.
+29 October 2026, reader pass 12 (audit and sample-server code). Functions understood: 1,343 of 17,280 (7.8 %), up from 859 at the start of the pass. Done in this pass:
+
+- An audit of the function backfill: 20 entries sampled from the 258 labelled established, each read against its full body, graded 12 real, 3 shallow and 5 wrong (`docs/inventory/audits.tsv`). The wrong ones, and three sibling entries that shared one fault, were rewritten; entries built from call lists or register-store summaries and not read in full are now labelled inferred.
+- [sample-server.md](sample-server.md): one entry for each of the 483 sample-server routines of `crm.so` (`mi`, backing store, `cfb`, `mfb`, arc and region helpers, symbol database and conversion). Each names the public X.Org file that holds the same routine. 47 were read in full and are established; the rest are matched by calls and shape and are inferred. Two differences from the public body turned up in the small routines read: the block-transfer selectors and the plane-copy routines of `cfb16` and `cfb32` differ from the public body (the plane copy forwards to a global hook).
 
 Writing rules learned from the grader, for the next reader:
 
@@ -27,8 +30,9 @@ Writing rules learned from the grader, for the next reader:
 
 Next, in order:
 
-- `crm.so`: the 647 sample-server layer rows (`mi`, `nfb`, `cfb`, `mfb`, `SDB`, `xdr`) draw into memory only. Each needs its own entry from its disassembly; the group tables name too many routines per row to count.
-- `libGLcore.so`: the o32 build (`IP32CRM`) of the same units, the exported entry points and the 423 routines the stubs reach, and the routines the unit tables left out (`__glFogVertex`, `__glFloor`, `__glBeginPoints`, `__glEndPrim`, `__glGenericPickPointProcs`, `__glGenericPickDrawPixels`, `__glSlowPickDrawPixels`, `__glBuildAntiAliasIndex`, `__glCrmPassDepthFunc`, `__glCrmPassStencilMode`). The remaining 46 rows of the N32 build are in the stub and entry tables.
+- `crm.so`: the 165 `nfb` routines (SGI's own frame-buffer layer: no public source; read each disassembly and cite callers and callees), then read the inferred sample-server entries in full, largest first, against the public body, noting every SGI change like the ones already found in the `cfb` selectors.
+- `libGLcore.so`: the o32 build (`IP32CRM`) of the same units, the exported entry points and the 423 routines the stubs reach, and the routines the unit tables left out (`__glFogVertex`, `__glFloor`, `__glBeginPoints`, `__glEndPrim`, `__glGenericPickPointProcs`, `__glGenericPickDrawPixels`, `__glSlowPickDrawPixels`, `__glBuildAntiAliasIndex`, `__glCrmPassDepthFunc`, `__glCrmPassStencilMode`). The remaining 46 rows of the N32 build are in the stub and entry tables. Read the libGLcore entries still labelled inferred in full.
+- `Xsgi`, `glx.so`: the same sample-server identification as for `crm.so`, against the public source (`dix`, `mi`, `os`, `Xext`, `GL` and the GLX extension).
 - `kernel.o`: 694 undocumented rows remain, mostly outside graphics (ECC and cache handlers, system calls); the graphics-relevant ones left are the transfer-engine users listed in `docs/functions.md`.
-- `Xsgi`, `glx.so`, `libGL.so`, `symmon.IP32`, `setmon`, `gfxinit`, `mvp.o` and the video libraries, as before: read call lists and bodies; a role inferred from a name alone does not count.
+- `libGL.so`, `symmon.IP32`, `setmon`, `gfxinit`, `mvp.o` and the video libraries, as before: read call lists and bodies; a role inferred from a name alone does not count.
 - The binaries table and `libXsgivc.so` request rows, as listed in the previous pass.
