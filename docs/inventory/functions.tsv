@@ -9126,9 +9126,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32588	124	__glim_Vertex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32604	132	__glim_Vertex4iv	dynsym+mdebug	9b257f026aa7		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32688	156	__glim_Vertex4s	dynsym+mdebug	3d7c9d177c49		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32724	132	__glim_Vertex4sv	dynsym+mdebug	b57e6445703b		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda327b0	136	__glInitVertexArrayState	dynsym+mdebug	d3eeb019e12b		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32838	732	__glim_ArrayElementEXT	dynsym+mdebug	f4fe50275ec1		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32b14	340	__glim_DrawArraysEXT	dynsym+mdebug	5925dce1f023		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda327b0	136	__glInitVertexArrayState	dynsym+mdebug	d3eeb019e12b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32838	732	__glim_ArrayElementEXT	dynsym+mdebug	f4fe50275ec1		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32b14	340	__glim_DrawArraysEXT	dynsym+mdebug	5925dce1f023		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32c68	56	glMultiTexCoord1svSGIS	mdebug	a862df7a883a		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32ca0	56	glMultiTexCoord2svSGIS	mdebug	f2f94eb77b91		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32cd8	56	glMultiTexCoord3svSGIS	mdebug	8273bc5f2b2e		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -9145,21 +9145,21 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32f08	56	glMultiTe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32f40	56	glMultiTexCoord2dvSGIS	mdebug	89584500f626		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32f78	56	glMultiTexCoord3dvSGIS	mdebug	b14513a0161a		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda32fb0	5868	glMultiTexCoord4dvSGIS	mdebug	fa179a1bd25b		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32fe8	360	__glim_VertexPointerEXT	dynsym+mdebug	2167bdabade6		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33150	340	__glim_NormalPointerEXT	dynsym+mdebug	8e5a0f96357a		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda332a4	368	__glim_ColorPointerEXT	dynsym+mdebug	641816398ee6		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33414	552	__glim_TexCoordPointerEXT	dynsym+mdebug	b483161a4434		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3363c	136	__glim_EdgeFlagPointerEXT	dynsym+mdebug	6e357a105885		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda336c4	344	__glim_IndexPointerEXT	dynsym+mdebug	b0269b83b3f3		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3381c	104	__glim_ColorPointer	dynsym+mdebug	35c53a43bed5		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33884	424	__glim_DrawElements	dynsym+mdebug	cb76e3eebeb3		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33a2c	100	__glim_DrawRangeElements	dynsym+mdebug	a07e57b2d7b4		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33a90	100	__glim_EdgeFlagPointer	dynsym+mdebug	272fb968aa6a		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33af4	100	__glim_IndexPointer	dynsym+mdebug	f36c6b25441b		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33b58	852	__glim_InterleavedArrays	dynsym+mdebug	5906733a6406		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33eac	100	__glim_NormalPointer	dynsym+mdebug	0b4fbd5b7117		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33f10	104	__glim_TexCoordPointer	dynsym+mdebug	7be52c9db103		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33f78	104	__glim_VertexPointer	dynsym+mdebug	48b7f811239d		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32fe8	360	__glim_VertexPointerEXT	dynsym+mdebug	2167bdabade6		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33150	340	__glim_NormalPointerEXT	dynsym+mdebug	8e5a0f96357a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda332a4	368	__glim_ColorPointerEXT	dynsym+mdebug	641816398ee6		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33414	552	__glim_TexCoordPointerEXT	dynsym+mdebug	b483161a4434		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3363c	136	__glim_EdgeFlagPointerEXT	dynsym+mdebug	6e357a105885		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda336c4	344	__glim_IndexPointerEXT	dynsym+mdebug	b0269b83b3f3		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3381c	104	__glim_ColorPointer	dynsym+mdebug	35c53a43bed5		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33884	424	__glim_DrawElements	dynsym+mdebug	cb76e3eebeb3		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33a2c	100	__glim_DrawRangeElements	dynsym+mdebug	a07e57b2d7b4		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33a90	100	__glim_EdgeFlagPointer	dynsym+mdebug	272fb968aa6a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33af4	100	__glim_IndexPointer	dynsym+mdebug	f36c6b25441b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33b58	852	__glim_InterleavedArrays	dynsym+mdebug	5906733a6406		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33eac	100	__glim_NormalPointer	dynsym+mdebug	0b4fbd5b7117		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33f10	104	__glim_TexCoordPointer	dynsym+mdebug	7be52c9db103		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33f78	104	__glim_VertexPointer	dynsym+mdebug	48b7f811239d		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda33fe0	136	__glim_InterleavedTextureCoordSetsSGIS	dynsym+mdebug	6d4d7cb4d122		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34070	68	__glClipCheckAll2	dynsym+mdebug	411ff0e022ef		in	located	docs/sample-implementation.md#so_vertexc	so_vertex.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda340b4	60	__glClipCheckAll3	dynsym+mdebug	ef7115b744f8		in	located	docs/sample-implementation.md#so_vertexc	so_vertex.c
@@ -13251,9 +13251,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33210	112	__glim_Vert
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33280	128	__glim_Vertex4iv	dwarf+dynsym	966ff6aab38c		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33300	112	__glim_Vertex4s	dwarf+dynsym	ba3692e9f472		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33370	128	__glim_Vertex4sv	dwarf+dynsym	090d4672c910		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda333f0	136	__glInitVertexArrayState	dwarf+dynsym	de840b3e88c9		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda333f0	136	__glInitVertexArrayState	dwarf+dynsym	de840b3e88c9		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33480	612	__glim_ArrayElementEXT	dwarf+dynsym	1944de5e2efe		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda336f0	328	__glim_DrawArraysEXT	dwarf+dynsym	c5c493f6d26a		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda336f0	328	__glim_DrawArraysEXT	dwarf+dynsym	c5c493f6d26a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33840	52	glMultiTexCoord1svSGIS	dwarf+funcnames	f0a0a090dc06		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33880	52	glMultiTexCoord2svSGIS	dwarf+funcnames	86f0a6993cc5		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda338c0	52	glMultiTexCoord3svSGIS	dwarf+funcnames	5c4bb11c3771		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -13270,18 +13270,18 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33b40	52	glMulti
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33b80	52	glMultiTexCoord2dvSGIS	dwarf+funcnames	ab7bdf01fa6e		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33bc0	52	glMultiTexCoord3dvSGIS	dwarf+funcnames	ab21f02b33e6		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33c00	52	glMultiTexCoord4dvSGIS	dwarf+funcnames	e55d7443d52b		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33c40	344	__glim_VertexPointerEXT	dwarf+dynsym	ca8053158c28		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33da0	300	__glim_NormalPointerEXT	dwarf+dynsym	c72780f519f4		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33ed0	368	__glim_ColorPointerEXT	dwarf+dynsym	38e4bb25292a		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34040	500	__glim_TexCoordPointerEXT	dwarf+dynsym	46c2b225e7e3		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34240	144	__glim_EdgeFlagPointerEXT	dwarf+dynsym	fe1c7fd0e87b		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda342d0	312	__glim_IndexPointerEXT	dwarf+dynsym	dfba55e56537		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33c40	344	__glim_VertexPointerEXT	dwarf+dynsym	ca8053158c28		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33da0	300	__glim_NormalPointerEXT	dwarf+dynsym	c72780f519f4		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33ed0	368	__glim_ColorPointerEXT	dwarf+dynsym	38e4bb25292a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34040	500	__glim_TexCoordPointerEXT	dwarf+dynsym	46c2b225e7e3		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34240	144	__glim_EdgeFlagPointerEXT	dwarf+dynsym	fe1c7fd0e87b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda342d0	312	__glim_IndexPointerEXT	dwarf+dynsym	dfba55e56537		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34410	88	__glim_ColorPointer	dwarf+dynsym	f76757b29ca6		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34470	416	__glim_DrawElements	dwarf+dynsym	f4d0bb395ce8		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34610	92	__glim_DrawRangeElements	dwarf+dynsym	4d8514b73033		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34470	416	__glim_DrawElements	dwarf+dynsym	f4d0bb395ce8		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34610	92	__glim_DrawRangeElements	dwarf+dynsym	4d8514b73033		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34670	88	__glim_EdgeFlagPointer	dwarf+dynsym	755629f552dd		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda346d0	88	__glim_IndexPointer	dwarf+dynsym	54b04e2d841b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34730	704	__glim_InterleavedArrays	dwarf+dynsym	06bb0e3a42b6		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34730	704	__glim_InterleavedArrays	dwarf+dynsym	06bb0e3a42b6		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda349f0	88	__glim_NormalPointer	dwarf+dynsym	bf243079a15b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34a50	88	__glim_TexCoordPointer	dwarf+dynsym	3504a7ccefda		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda34ab0	88	__glim_VertexPointer	dwarf+dynsym	334f74c0fc91		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c

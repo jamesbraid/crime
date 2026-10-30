@@ -1707,41 +1707,358 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
 
 ### so_vertarray.c
 
-- `__glInitVertexArrayState` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets every vertex-array record to its default, a size and float type for the vertex, normal, colour, index and texture arrays, a do-nothing procedure in each slot, no arrays enabled and a count limit of the largest integer, and it occupies 136 bytes at address 0xda333f0; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and source extent alone, the shipped routine making no direct call where the public body names `AllocateVbuf`, the shipped routine spanning 31 source lines against 87 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glInitVertexArrayState` in usr/gfx/arch/IP32CRM32/libGLcore.so: Initialises the vertex-array
+  defaults of the context in `$a0`, doing the same 24 word stores as the o32 routine in a different
+  order. The element-routine slots at 0x13bc, 0x13d4, 0x13f0,
+  0x1408, 0x1424, 0x1438,
+  0x14c0 and 0x14d8 receive `__glNop`, which the
+  N32 code fetches with a global-offset-table-relative load placed last; sizes 4 go to 0x13a8,
+  0x13dc and 0x1410; the float code 0x1406 goes to the type fields 0x13ac,
+  0x13c4, 0x13e0, 0x13f8,
+  0x1414, 0x14b0 and 0x14c8; the word at 0x14f0 gets 1, the three words from 0x14e0 to 0x14e8 get
+  zero and the two limits at 0x14f4 and 0x14f8 get 0x7fffffff. It occupies 136 bytes at offset
+  0xda333f0, the same as the o32 body, and it is a leaf with no stack frame in both builds. Read in
+  the N32 build against `__glInitVertexArrayState` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c;
+  the draw-routine table and the buffer allocation of the public routine are missing here. It
+  touches no CRIME hardware. Established.
+- `__glInitVertexArrayState` in usr/gfx/arch/IP32CRM/libGLcore.so: Gives the vertex-array part of a
+  new context its defaults; the context pointer is argument `$a0`. It points the eight
+  element-routine slots (vertex 0x13bc, normal 0x13d4, colour 0x13f0, index 0x1408, legacy texture
+  0x1424, edge flag 0x1438, and the extra slots 0x14c0 and 0x14d8) at `__glNop`, sets the vertex,
+  colour and legacy texture sizes (0x13a8, 0x13dc, 0x1410) to 4, and sets the vertex, normal,
+  colour, index and legacy texture types (0x13ac, 0x13c4, 0x13e0,
+  0x13f8, 0x1414) and the types of the two extra records (0x14b0,
+  0x14c8) to 0x1406, which is float. The word at 0x14f0 becomes 1, the mask words at 0x14e0, 0x14e4
+  and 0x14e8 become zero, and the two limits at 0x14f4 and 0x14f8 become 0x7fffffff. It occupies 136
+  bytes at offset 0xda327b0. Compared with `__glInitVertexArrayState` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public routine also fills
+  a table of per-mode draw routines, sets a batch size and allocates the working vertex buffer, and
+  none of that appears in this body, which makes no calls. It touches no CRIME hardware.
+  Established.
 - `__glim_ArrayElementEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends one array element to the pipeline by passing straight on to the standard form of the call, and it occupies 612 bytes at address 0xda33480; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name, the shipped routine making its calls through procedure pointers, the shipped routine spanning 48 source lines against 4 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_DrawArraysEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: draws vertex-array primitives by passing straight on to the standard form of the call, and it occupies 328 bytes at address 0xda336f0; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name, the shipped routine calling `__glSetError` where the public body names other callees, the shipped routine spanning 26 source lines against 6 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_VertexPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the vertex array with a size, type and explicit element count, rejecting a negative count with an invalid-value error, and it occupies 344 bytes at address 0xda33c40; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 34 source lines against 12 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_NormalPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the normal array with an explicit element count, rejecting a negative count with an invalid-value error, and it occupies 300 bytes at address 0xda33da0; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 33 source lines against 12 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_ColorPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the colour array with a size, type and explicit element count, rejecting a negative count with an invalid-value error, and it occupies 368 bytes at address 0xda33ed0; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 34 source lines against 12 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoordPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the texture-coordinate array of the active unit with a size, type, stride and explicit element count, validating them itself where the public body forwards to the non-extension routine: a negative stride or count, a size outside 1 to 4, a type outside 0x1400 to 0x140a and a missing entry in the context's size-and-type procedure table each end in a `__glSetError` call; otherwise it stores size, type, stride, count, pointer and the selected procedures into the active unit's array record, which starts at offset 5180 and takes 28 bytes per unit, and updates the array signature word at offset 5340; which error code belongs to which check is not verified, and it occupies 500 bytes at address 0xda34040; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`; the shipped routine's 47 source lines against 13 in the public body are the inlined checks and stores, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_EdgeFlagPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the edge-flag array with an explicit element count, rejecting a negative stride or count with an invalid-value error and installing the edge-flag copy routine and the array pointer, and it occupies 144 bytes at address 0xda34240; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the 18 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_IndexPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the colour-index array with an explicit element count, rejecting a negative count with an invalid-value error, and it occupies 312 bytes at address 0xda342d0; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 32 source lines against 12 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_DrawArraysEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Draws `count` array elements
+  starting at `first` in mode `mode` with the same logic as the o32 body: invalid-operation (0x502)
+  when the word at 0x1018 is 1, invalid-value (0x501) for a negative start or count, invalid-enum
+  (0x500) when the mode is 10 or above. With one texture unit (word 0xe1c equal to 1) and no extra
+  arrays (word 0x14e8 zero) it jumps through the per-combination routine table whose base is stored
+  at 0x3174, indexed by the presence mask at 0x14ec, passing the three arguments on in `$a0`, `$a1`
+  and `$a2`. Without that fast case it brackets a loop of element calls (slot 0x318) between begin
+  (slot 0x1c) and end (slot 0x2c) of the table at context word 0x17b8. It occupies 328 bytes at
+  offset 0xda336f0. Compared with `__glim_DrawArraysEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the N32 build; this build is 12 bytes smaller
+  than the o32 one and differs only in its frame, which saves `$s0` to `$s3`,
+  `$gp` and `$ra` with 64-bit stores in a 0x30-byte frame. It touches no CRIME hardware.
+  Established.
+- `__glim_VertexPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Installs the vertex array from
+  size, type, stride, count and pointer, writing the same context record as the o32 routine. Errors
+  are the same: 0x501 for a negative stride, a negative count or a size outside 2..4 and 0x500 for a
+  type outside 0x1400..0x140a or a missing element routine, and each error stores `__glNop` into the
+  routine slot at 0x13bc after calling `__glSetError`. The pointer comes in register `$t0`, the
+  fifth argument register of the N32 convention, instead of the o32 stack slot. Field stores are
+  pointer 0x13a4, size 0x13a8, type 0x13ac, effective stride 0x13b0, user stride 0x13b4, count
+  0x13b8 and routine 0x13bc, plus the size shifted by 4 and the type flag ORed into the signature
+  word at 0x14dc after a mask of 0xffffff00. It occupies 344 bytes at offset 0xda33c40, 16 bytes
+  smaller than the o32 body. Read in the N32 build against `__glim_VertexPointerEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c. It touches no CRIME hardware. Established.
+- `__glim_NormalPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Installs the three-component
+  normal array from type, stride, count and pointer, with the o32 checks (0x501 for a negative
+  stride or count, 0x500 for a bad type or missing routine, `__glNop` stored into the slot at 0x13d4
+  on failure). Its stores are the same as in o32: pointer 0x13c0, type 0x13c4, effective stride
+  0x13c8, user stride 0x13cc, count 0x13d0, routine 0x13d4, and the type flag into the signature
+  word at 0x14dc. The pointer is the fourth argument in `$a3` in both builds because no size
+  argument exists, so unlike the vertex routine nothing arrives in `$t0`. It occupies 300 bytes at
+  offset 0xda33da0, 40 bytes smaller than the o32 body. Read in the
+  N32 build against `__glim_NormalPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c. It
+  touches no CRIME hardware. Established.
+- `__glim_ColorPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the colour array from size,
+  type, stride, count and pointer, with the same checks and the same context record as the o32
+  build. Size must be 3 or 4 and neither stride nor count may be negative (0x501), the type must lie
+  in 0x1400..0x140a and have an element routine in the lookup table (0x500), and every failure
+  writes `__glNop` into the routine slot 0x13f0 after calling `__glSetError`. The pointer arrives in
+  `$t0`. On success the stores are pointer 0x13d8, size 0x13dc, type 0x13e0, user stride 0x13e8,
+  count 0x13ec, effective stride 0x13e4 and routine 0x13f0, followed by an update of the 0x14dc
+  signature word using a mask ending in 0xf000 and the size shifted by 16. It occupies 368 bytes at
+  offset 0xda33ed0, the same length as the o32 body. Read in the N32 build against
+  `__glim_ColorPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c. It touches no CRIME
+  hardware. Established.
+- `__glim_TexCoordPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Installs the
+  texture-coordinate array of the currently selected texture unit from size, type, stride, count and
+  pointer. Errors match the o32 body: 0x501 for a negative stride or count or a size outside 1..4,
+  0x500 for a bad type or a missing routine, with `__glNop` stored at 0x1424 before the call to
+  `__glSetError`. The unit is the context word at 0x6e34 plus the constant 0xffff7c39, and the
+  per-unit record of seven words (pointer 0x143c, size 0x1440, type 0x1444, effective stride 0x1448,
+  user stride 0x144c, count 0x1450, routine 0x1454 for unit zero) sits 0x1c bytes apart for each
+  further unit. Only unit zero also writes the mirror record at 0x140c to 0x1424 and the signature
+  field at 0x14dc (type flag at bit 20, size at bit 24, with 0x07f00000 cleared). The pointer comes
+  in `$t0`. It occupies 500 bytes at offset 0xda34040, 52 bytes less than the
+  o32 body at 552. Read in the N32 build against `__glim_TexCoordPointerEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c. It touches no CRIME hardware. Established.
+- `__glim_EdgeFlagPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Installs the edge-flag array
+  from stride, count and pointer, with the same record and signature update as the o32 body: pointer
+  at 0x1428, effective stride at 0x142c, user stride at 0x1430, count at 0x1434, `glEdgeFlagv` at
+  0x1438 and bit 0x08000000 ORed into the word at 0x14dc. The N32 compiler picks the default stride
+  with a MIPS IV conditional move (`movn` of the argument over a preloaded 1) instead of the o32
+  branch. The error exit for a negative stride or count calls `__glSetError` with 0x501 and places
+  `__glNop` in the 0x1438 slot from the call's delay slot, where the o32 code stores it first. It
+  occupies 144 bytes at offset 0xda34240, 8 bytes more than the o32 build. Read in the
+  N32 build against `__glim_EdgeFlagPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c. It
+  touches no CRIME hardware. Established.
+- `__glim_IndexPointerEXT` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the colour-index array from
+  type, stride, count and pointer exactly as the o32 routine does: 0x501 for a negative stride or
+  count, 0x500 for a type outside 0x1400..0x140a or without a routine, `__glNop` stored at 0x1408
+  before each error call to `__glSetError`. On success it fills the record at 0x13f4 (pointer),
+  0x13f8 (type), 0x13fc (effective stride), 0x1400 (user stride), 0x1404 (count) and 0x1408
+  (routine) and merges the type flag into the word at 0x14dc under the mask 0x0fffffff. It occupies
+  312 bytes at offset 0xda342d0, 32 bytes smaller than the o32 body. The
+  N32 code is read against `__glim_IndexPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c;
+  nothing else differs but the 64-bit frame handling. It touches no CRIME hardware. Established.
 - `__glim_ColorPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the colour array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda34410; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the size and type, picks the copy routines and fills in the array state itself: the shipped routine only checks the begin mode and forwards to `__glim_ColorPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_DrawElements` in usr/gfx/arch/IP32CRM32/libGLcore.so: draws primitives from an index array, rejecting a negative count with an invalid-value error and a mode above polygon with an invalid-enumeration error, locking the enabled vertex arrays and feeding each indexed element to the vertex entry points, and it occupies 416 bytes at address 0xda34470; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 32 source lines against 99 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_DrawRangeElements` in usr/gfx/arch/IP32CRM32/libGLcore.so: draws indexed primitives after checking that the range end is not below its start, reporting an invalid-value error otherwise, and then calls the plain indexed draw ignoring the range, and it occupies 92 bytes at address 0xda34610; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the 9 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_DrawElements` in usr/gfx/arch/IP32CRM32/libGLcore.so: Draws `count` indexed elements in
+  mode `mode` with `indices` of type byte, unsigned short or unsigned int (0x1401,
+  0x1403, 0x1405), the same behaviour as the o32 routine. Errors are 0x502 when the word at 0x1018
+  is 1, 0x501 for a negative count and 0x500 for a mode of 10 or more or an unlisted type, all
+  raised by `__glSetError`. It then calls begin at slot 0x106c, loops over the indices through a
+  type-specific loop calling the array-element slot at 0x1368 with the index in `$a0`, and calls end
+  at slot 0x107c. The N32 build addresses all three slots with a zero base register, as `lw $t9,
+  0x1368($zero)`, where the o32 build first puts 0x1000 into a register. It occupies 416 bytes at
+  offset 0xda34470, 8 bytes less than the o32 body. Read in the
+  N32 build against `__glim_DrawElements` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c; as in o32
+  there is no index widening, buffer lock or compiled draw path. It touches no CRIME hardware.
+  Established.
+- `__glim_DrawRangeElements` in usr/gfx/arch/IP32CRM32/libGLcore.so: Validates the index range and
+  hands the call to `__glim_DrawElements`. With mode in `$a0`, `start` in `$a1`,
+  `end` in `$a2`, count in `$a3` and type and indices in
+  `$t0` and `$t1`, an `end` below
+  `start` (unsigned) calls `__glSetError` with 0x501; otherwise count, type and indices are shifted
+  down into `$a1`, `$a2` and `$a3` and control passes by a
+  `bgezall` link-branch that targets the entry of the N32 `__glim_DrawElements` at 0xda34470. It
+  occupies 92 bytes at offset 0xda34610, 8 bytes less than the o32 body, since no argument has to be
+  reloaded from the stack. Read in the N32 build against `__glim_DrawRangeElements` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c; there is no begin-state test in either build. It
+  touches no CRIME hardware. Established.
 - `__glim_EdgeFlagPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the edge-flag array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda34670; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the stride and fills in the array state itself: the shipped routine only checks the begin mode and forwards to `__glim_EdgeFlagPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_IndexPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the colour-index array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda346d0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the stride and type, picks the copy routines and fills in the array state itself: the shipped routine only checks the begin mode and forwards to `__glim_IndexPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_InterleavedArrays` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets up the vertex, colour, normal and texture-coordinate arrays together from one interleaved array in one of the standard layouts such as vertex-only or texture-colour-normal-vertex, rejecting a negative stride or an unrecognised layout with the matching error, and it occupies 704 bytes at address 0xda34730; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, matched by name and by its direct calls, including `__glSetError`, the shipped routine spanning 108 source lines against 60 in the public body, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_InterleavedArrays` in usr/gfx/arch/IP32CRM32/libGLcore.so: Programs the vertex, normal,
+  colour and texture-coordinate arrays from one interleaved block, as in the o32 build but compiled
+  for 64-bit register saves: the prologue stores `$gp`, `$ra` and the saved registers with `sd` and
+  the frame is 0x30 bytes. Invalid-operation (0x502) is raised when the thread-area word at 0x1018
+  equals 1, invalid-value (0x501) for a negative stride and invalid-enum (0x500) for a format
+  outside 0x2a20..0x2a2d, each by calling `__glSetError`. The layout record is again 36 bytes, but
+  the routine addresses it from a base biased by 0x60000 and reads its fields at 0x1380 (the three
+  flag bytes), 0x1384, 0x1388 and 0x138c (counts), 0x1390 (colour type), 0x1394,
+  0x1398 and 0x139c (offsets) and 0x13a0 (natural stride), the same field order as the o32 record.
+  The per-texture-unit enable and pointer loop, the disable loop up to the word at 0xe1c and the
+  fixed disabling of the edge-flag and index arrays are the same as in o32, and the calls go through
+  the same dispatch slots 0x36c, 0x378, 0x368,
+  0x384, 0x388 and 0x38c. It occupies 704 bytes at offset 0xda34730,
+  148 bytes less than the o32 body. Derived by reading every instruction of this N32 build against
+  `__glim_InterleavedArrays` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c; as in o32 the public
+  store of the interleaved pointer and format is absent and the index branch is missing. It touches
+  no CRIME hardware. Established.
 - `__glim_NormalPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the normal array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda349f0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the stride and type, picks the copy routines and fills in the array state itself: the shipped routine only checks the begin mode and forwards to `__glim_NormalPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_TexCoordPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the texture-coordinate array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda34a50; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the size and type, picks the copy routines and fills in the array state of the active unit itself: the shipped routine only checks the begin mode and forwards to `__glim_TexCoordPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_VertexPointer` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the vertex array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and it occupies 88 bytes at address 0xda34ab0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c, differs from the public body, which checks the size and type, picks the copy routines and fills in the array state itself: the shipped routine only checks the begin mode and forwards to `__glim_VertexPointerEXT`, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_ArrayElementEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sends one array element to the pipeline by passing straight on to the standard form of the call, and in the older 32-bit build it occupies 732 bytes at address 0xda32838; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_DrawArraysEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: draws vertex-array primitives by passing straight on to the standard form of the call, and in the older 32-bit build it occupies 340 bytes at address 0xda32b14; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_VertexPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the vertex array with a size, type and explicit element count, rejecting a negative count with an invalid-value error, and in the older 32-bit build it occupies 360 bytes at address 0xda32fe8; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_NormalPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the normal array with an explicit element count, rejecting a negative count with an invalid-value error, and in the older 32-bit build it occupies 340 bytes at address 0xda33150; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_ColorPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the colour array with a size, type and explicit element count, rejecting a negative count with an invalid-value error, and in the older 32-bit build it occupies 368 bytes at address 0xda332a4; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoordPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the texture-coordinate array of the active unit with a size, type, stride and explicit element count, validating the arguments itself as the newer build does (not verified at this build's offsets), and in the older 32-bit build it occupies 552 bytes at address 0xda33414; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_EdgeFlagPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the edge-flag array with an explicit element count, rejecting a negative stride or count with an invalid-value error and installing the edge-flag copy routine and the array pointer, and in the older 32-bit build it occupies 136 bytes at address 0xda3363c; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_IndexPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the colour-index array with an explicit element count, rejecting a negative count with an invalid-value error, and in the older 32-bit build it occupies 344 bytes at address 0xda336c4; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_ColorPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the colour array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 104 bytes at address 0xda3381c; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_DrawElements` in usr/gfx/arch/IP32CRM/libGLcore.so: draws primitives from an index array, rejecting a negative count with an invalid-value error and a mode above polygon with an invalid-enumeration error, locking the enabled vertex arrays and feeding each indexed element to the vertex entry points, and in the older 32-bit build it occupies 424 bytes at address 0xda33884; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_DrawRangeElements` in usr/gfx/arch/IP32CRM/libGLcore.so: draws indexed primitives after checking that the range end is not below its start, reporting an invalid-value error otherwise, and then calls the plain indexed draw ignoring the range, and in the older 32-bit build it occupies 100 bytes at address 0xda33a2c; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_EdgeFlagPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the edge-flag array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 100 bytes at address 0xda33a90; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_IndexPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the colour-index array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 100 bytes at address 0xda33af4; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_InterleavedArrays` in usr/gfx/arch/IP32CRM/libGLcore.so: sets up the vertex, colour, normal and texture-coordinate arrays together from one interleaved array in one of the standard layouts such as vertex-only or texture-colour-normal-vertex, rejecting a negative stride or an unrecognised layout with the matching error, and in the older 32-bit build it occupies 852 bytes at address 0xda33b58; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_NormalPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the normal array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 100 bytes at address 0xda33eac; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoordPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the texture-coordinate array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 104 bytes at address 0xda33f10; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_VertexPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the vertex array by passing its arguments with a count of zero to the extension form of the call, with an invalid-operation error between begin and end, and in the older 32-bit build it occupies 104 bytes at address 0xda33f78; the public sample-implementation source gfx/lib/opengl/glcore/s_varray.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
+- `__glim_ArrayElementEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Sends the vertex-array element with
+  index `i` (argument `$a0`) down the immediate-mode path by invoking, for each enabled array, that
+  array's installed per-element routine with a pointer computed as base plus index times stride. The
+  routine loads the current context from the fixed address 0x1010 and snapshots three flag words,
+  the array-presence mask at 0x14ec, the texture-unit mask at 0x14e4 and a second mask at 0x14e8. It
+  tests the presence bits in this order: 1, 2, 4 (texture), 8,
+  0x10, then bits 1 and 2 of the second mask, and last 0x20, which here selects the vertex array.
+  The two arrays under bits 1 and 2 sit at 0x13c0 and
+  0x13d8 in the context (pointer, stride at +8, routine at +0x14). When the word at 0xe1c equals 1
+  the texture array under bit 4 is called at 0x140c, otherwise up to four per-unit records at
+  0x143c, 0x1458, 0x1474 and
+  0x1490 are walked under mask bits 1 to 8 and each routine receives the unit selector 0x83c7 to
+  0x83ca as its first argument and the element pointer as its second. It occupies 732 bytes at
+  offset 0xda32838. Compared with `__glim_ArrayElementEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public body forwards to a
+  version that calls each array routine with the pointer only and loops over texture units in a
+  generic way, whereas this body unrolls the four units and passes the selector, and it adds the
+  second mask whose two extra arrays at 0x14ac and 0x14c4 are not in the public source. Which two
+  arrays they are is unknown. It touches no CRIME hardware. Established.
+- `__glim_DrawArraysEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Draws `count` consecutive array
+  elements from index `first` in primitive mode `mode`; the public routine merely forwards to the
+  plain draw routine, but this body validates and draws inline. It reports 0x502 when the
+  thread-area word at 0x1018 is 1, 0x501 for negative `first` or
+  `count`, and 0x500 for a mode of 10 or more. When the word at 0xe1c is 1 and the extra-array mask
+  at 0x14e8 is zero, it indexes a table of precompiled draw routines whose base is read from context
+  word 0x3174 using the array-presence mask at 0x14ec as the index, and tail-calls the selected
+  routine with the original three arguments. Otherwise it falls back to begin through slot 0x1c of
+  the table behind context word 0x17b8, calls element slot 0x318 once for every index from `first`
+  up to `first + count`, and ends through slot 0x2c. It occupies 340 bytes at offset 0xda32b14. I
+  compared it with `__glim_DrawArraysEXT` and `__glim_DrawArrays` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c; the sample's render-buffer locking, its early return
+  for a zero count and its compile step are not present in this o32 body, which I read to its last
+  instruction. It touches no CRIME hardware. Established.
+- `__glim_VertexPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the vertex array:
+  arguments are element count `size` (2 to 4), component `type` (0x1400 to 0x140a), `stride`,
+  element `count` and the pointer, which arrives on the stack at 0x30 of the caller's frame. A
+  negative stride or count or a size outside 2..4 calls `__glSetError` with 0x501, a bad type with
+  0x500, and in both cases the vertex routine slot at context offset 0x13bc is set to `__glNop`. The
+  element routine is looked up in a table by type and size and a null entry also raises 0x500. On
+  success the context receives the pointer at 0x13a4, size at 0x13a8, type at 0x13ac, an effective
+  stride at 0x13b0 (the user stride, or a per-type default from a second table when zero), the user
+  stride at 0x13b4, the count at 0x13b8 and the routine at 0x13bc, and the vertex field of the
+  layout signature at 0x14dc is rewritten with the type flag and the size shifted left by 4. It
+  occupies 360 bytes at offset 0xda32fe8. Compared with `__glim_VertexPointerEXT` and
+  `__glim_VertexPointer` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the
+  public pair is two routines with a begin-state test and a separate copy-routine store, while this
+  body is one routine with no begin-state test and no copy routine. It touches no CRIME hardware.
+  Established.
+- `__glim_NormalPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the normal array from
+  type, stride, count and a pointer (there is no size argument, normals always having three
+  components). A negative stride or count produces 0x501 and a type outside 0x1400..0x140a or
+  without an element routine produces 0x500, in each case after the routine slot at context offset
+  0x13d4 has been set to `__glNop` and the error raised with `__glSetError`. A good call writes the
+  pointer at 0x13c0, type at 0x13c4, effective stride at 0x13c8 (a table default for the type when
+  the argument is zero), user stride at 0x13cc, count at 0x13d0 and the routine at 0x13d4, and
+  merges the type flag into the layout signature word at 0x14dc using a field mask ending in 0x9000.
+  It occupies 340 bytes at offset 0xda33150. Compared with `__glim_NormalPointerEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public form delegates to
+  the plain normal routine and then stores the count; this one inlines the work and omits the
+  begin-state test and copy-routine store. It touches no CRIME hardware. Established.
+- `__glim_ColorPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the colour array from
+  size, type, stride, count and a pointer taken from the stack. A size other than 3 or 4, or a
+  negative stride or count, gives 0x501, and a type outside 0x1400..0x140a or a missing element
+  routine gives 0x500, each through `__glSetError` after the colour routine slot at context offset
+  0x13f0 has been loaded with `__glNop`. Successful calls store the pointer at 0x13d8, size at
+  0x13dc, type at 0x13e0, effective stride at 0x13e4 (the user stride, or a per-type default when it
+  is zero), user stride at 0x13e8, count at 0x13ec and the looked-up element routine at 0x13f0, then
+  replace the colour part of the signature word at 0x14dc: the old field is cleared with the mask
+  0xfff00fff, the type flag goes in at bit 12 and the size at bit 16. It occupies 368 bytes at
+  offset 0xda332a4. Compared with `__glim_ColorPointerEXT` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public wrapper checks the
+  count, calls the plain colour routine and stores the count afterwards, whereas this body is
+  self-contained, tests no begin state and stores no copy routine. It touches no CRIME hardware.
+  Established.
+- `__glim_TexCoordPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the texture-coordinate
+  array for the texture unit currently selected. Arguments are size (1 to 4), type, stride, count
+  and a pointer on the stack. A negative stride or count, or a size outside 1..4, gives 0x501; a
+  type outside 0x1400..0x140a or a missing element routine gives 0x500, after `__glNop` has been
+  placed in the legacy routine slot at 0x1424. The selected unit is derived from the context word at
+  0x6e34 by adding 0xffff7c39, so the unit number is that word minus 0x83c7. A seven-word record
+  (pointer, size, type, effective stride, user stride, count, routine) is then written at 0x143c
+  plus 0x1c per unit; if the unit is zero the same seven words are also written at 0x140c, the
+  record the single-texture element path reads, and the signature word at 0x14dc receives the type
+  flag at bit 20 and the size at bit 24. It occupies 552 bytes at offset 0xda33414. Compared with
+  `__glim_TexCoordPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build:
+  the public body has one texture-coordinate record and no per-unit array. It touches no CRIME
+  hardware. Established.
+- `__glim_EdgeFlagPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the edge-flag array
+  from stride, count and a pointer to boolean bytes. A negative stride or negative count loads
+  `__glNop` into the routine slot at context offset 0x1438 and calls `__glSetError` with 0x501.
+  Otherwise it stores the pointer at 0x1428, the effective stride at 0x142c (the argument, or 1 byte
+  when it is zero, picked with a short branch), the user stride at 0x1430 and the count at 0x1434,
+  installs the exported entry `glEdgeFlagv` (found through the global offset table) as the element
+  routine at 0x1438, and sets bit 0x08000000 of the layout signature word at 0x14dc. It occupies 136
+  bytes at offset 0xda3363c. Compared with `__glim_EdgeFlagPointerEXT` and `__glim_EdgeFlagPointer`
+  in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public pair is split
+  into a checked wrapper and a worker with a copy-routine store and a begin-state test, whereas this
+  single body has neither. It touches no CRIME hardware. Established.
+- `__glim_IndexPointerEXT` in usr/gfx/arch/IP32CRM/libGLcore.so: Installs the colour-index array
+  from type, stride, count and pointer. A negative stride or count yields 0x501 and an unsupported
+  type or missing element routine yields 0x500, both after `__glNop` has been stored into the
+  routine slot at context offset 0x1408. The record written on success is pointer 0x13f4, type
+  0x13f8, effective stride 0x13fc (a per-type default when the argument is zero), user stride
+  0x1400, count 0x1404 and routine 0x1408, and the signature word at 0x14dc is masked with
+  0x0fffffff before the type flag is merged in at its high nibble. It occupies 344 bytes at offset
+  0xda336c4. Compared with `__glim_IndexPointerEXT` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c,
+  read in the o32 build: the public wrapper forwards to the plain index routine and stores the
+  count, while this routine does all of it in one body with no begin-state test. It touches no CRIME
+  hardware. Established.
+- `__glim_ColorPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the colour array without a count:
+  it calls `__glSetError` with 0x502 when the thread-area word at 0x1018 equals 1, and otherwise
+  calls `__glim_ColorPointerEXT` with the count argument forced to zero and the caller's pointer
+  moved from the fourth argument register to the stack slot where the five-argument form expects it.
+  It occupies 104 bytes at offset 0xda3381c. Compared with `__glim_ColorPointer` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public routine contains
+  the validation and the table lookup itself and the count-taking variant wraps it, while in this
+  binary the count-taking routine holds the work and the plain one is the wrapper, so the order of
+  dependence is reversed. It touches no CRIME hardware. Established.
+- `__glim_DrawElements` in usr/gfx/arch/IP32CRM/libGLcore.so: Sends `count` indexed array elements
+  in primitive mode `mode`, where the indices at `indices` (fourth argument) are bytes, unsigned
+  shorts or unsigned ints according to `type` (0x1401, 0x1403 or
+  0x1405). It sets 0x502 if the thread word at 0x1018 is 1, 0x501 for a negative count, and 0x500
+  for a mode of 10 or more or a type outside those three values. A valid call calls begin through
+  absolute slot 0x106c, then runs one of three loops that load each index with `lbu`, `lhu` or `lw`
+  and call the array-element slot at 0x1368, and finally calls end through 0x107c. It occupies 424
+  bytes at offset 0xda33884. Compared with `__glim_DrawElements` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build to its last instruction: the
+  public body widens byte and short indices into an allocated unsigned-int array, locks the render
+  buffers and hands the array to a compiled draw routine, none of which appears here, so every call
+  takes what the public source treats as its slow begin and end path. It touches no CRIME hardware.
+  Established.
+- `__glim_DrawRangeElements` in usr/gfx/arch/IP32CRM/libGLcore.so: Draws indexed elements after
+  checking the declared index range. Arguments are mode, `start`, `end`, count, type and indices,
+  the last two on the stack. If `end` is below `start` in an unsigned comparison the routine calls
+  `__glSetError` with 0x501; otherwise it reloads count, type and indices into `$a1`, `$a2` and
+  `$a3` and calls `__glim_DrawElements`, the mode staying in `$a0`. It occupies 100 bytes at offset
+  0xda33a2c. Compared with `__glim_DrawRangeElements` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public routine adds a
+  begin-state test and validation before the same two steps, and this binary has no begin-state test
+  of its own because the callee reports invalid use itself. It touches no CRIME hardware.
+  Established.
+- `__glim_EdgeFlagPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the edge-flag array from
+  stride and pointer; the pointer in `$a1` is moved to `$a2`, `$a1` (the count) is cleared, and
+  `__glim_EdgeFlagPointerEXT` is called, except that the thread-area word at 0x1018 equal to 1 gives
+  error 0x502 through `__glSetError`. It occupies 100 bytes at offset 0xda33a90. Compared with
+  `__glim_EdgeFlagPointer` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build:
+  the public body stores the edge-flag record itself, and in this binary only the callee does. It
+  touches no CRIME hardware. Established.
+- `__glim_IndexPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the colour-index array from type,
+  stride and pointer, forwarding to `__glim_IndexPointerEXT` after moving the pointer from `$a2` to
+  `$a3` and clearing `$a2` for the count. Inside a begin and end pair, identified by the thread-area
+  word at 0x1018 being 1, it instead raises 0x502 with `__glSetError`. It occupies 100 bytes at
+  offset 0xda33af4. Compared with `__glim_IndexPointer` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public body is the worker
+  that checks and stores, while this one is a thin guard in front of the count-taking routine. It
+  touches no CRIME hardware. Established.
+- `__glim_InterleavedArrays` in usr/gfx/arch/IP32CRM/libGLcore.so: Programs the vertex, normal,
+  colour and texture-coordinate array pointers from a single interleaved block. It first rejects a
+  call made inside a begin/end pair (error 0x502, tested against the word at 0x1018 of the thread
+  area) and a negative stride (0x501), and rejects any format outside 0x2a20..0x2a2d with 0x500. The
+  format indexes a table of 36-byte layout records (byte flags at +0, +1 and +2 for texture
+  coordinates, colour and normal, element counts at +4, +8 and +0xc, colour type at +0x10, byte
+  offsets at +0x14, +0x18 and +0x1c, natural stride at +0x20) and a zero stride is replaced by that
+  natural stride. The body switches off the edge-flag and index arrays, then runs one
+  enable-and-point pair per texture unit counted by the context word at 0x14f0 (each unit's pointer
+  advanced by the +0x14 field), disables the surplus units up to the count at 0xe1c, and finishes
+  with colour, normal and vertex arrays, all float-typed (0x1406) except the colour type read from
+  the record; it makes every one of these calls through the dispatch slots at 0x36c, 0x378, 0x368,
+  0x384, 0x388 and 0x38c of the table behind context word 0x17b8, never by direct call. It occupies
+  852 bytes at offset 0xda33b58. I compared it with `__glim_InterleavedArrays` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public body stores the
+  interleaved pointer and format in the context afterwards, and this binary shows no such store; the
+  public body also has a branch that points an index array for layouts that carry one, while this
+  body has no such branch and always disables the index array, and it adds the per-unit texture loop
+  that the public body lacks. It touches no CRIME hardware. Established.
+- `__glim_NormalPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the normal array from type,
+  stride and pointer: the pointer in `$a2` is moved to `$a3`, `$a2` is zeroed to act as the count,
+  and the call goes to `__glim_NormalPointerEXT` unless the thread-area word at 0x1018 is 1, in
+  which case `__glSetError` is called with 0x502. It occupies 100 bytes at offset 0xda33eac.
+  Compared with `__glim_NormalPointer` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the
+  o32 build: the public routine does the validation and fills the normal record, but this binary
+  leaves both to the count-taking callee and keeps only the begin-state guard. It touches no CRIME
+  hardware. Established.
+- `__glim_TexCoordPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture-coordinate array
+  from size, type, stride and pointer. A call made while the thread-area word at 0x1018 equals 1 is
+  rejected with 0x502 through `__glSetError`; any other call forwards to `__glim_TexCoordPointerEXT`
+  with a count of zero in the fourth argument register and the pointer pushed on the stack, which is
+  where the five-argument callee takes it. It occupies 104 bytes at offset 0xda33f10. Compared with
+  `__glim_TexCoordPointer` in ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build:
+  the public routine validates and fills the context directly, whereas here the validation lives in
+  the callee and this routine adds only the begin-state test. It touches no CRIME hardware.
+  Established.
+- `__glim_VertexPointer` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the vertex array from size,
+  type, stride and pointer. It reads the thread-area word at 0x1018 and raises 0x502 with
+  `__glSetError` when it is 1, and otherwise passes everything to `__glim_VertexPointerEXT`,
+  supplying zero as the count and moving the pointer to the outgoing stack slot at 0x10. It occupies
+  104 bytes at offset 0xda33f78. Compared with `__glim_VertexPointer` in
+  ogl-sample/gfx/lib/opengl/glcore/s_varray.c, read in the o32 build: the public body holds the
+  size, type and stride checks and writes the context, and the count variant calls it; here the
+  count variant does the writing and this entry only guards against use inside begin and end. It
+  touches no CRIME hardware. Established.
 
 ### so_vertex.c
 
