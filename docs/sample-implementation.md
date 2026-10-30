@@ -882,23 +882,165 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
   ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
 - `__glim_Indexd` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from a double by narrowing it to single precision and storing it in the context's current-colour-index word, and it occupies 16 bytes at address 0xd9c9640; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine narrows and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_Indexf` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from a float by storing it in the context's current-colour-index word, and it occupies 12 bytes at address 0xd9c9650; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine makes the one store and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexi` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from an integer by converting it to float and storing it in the context's current-colour-index word, and it occupies 20 bytes at address 0xd9c9660; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexs` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from a short by converting it to float and storing it in the context's current-colour-index word, and it occupies 20 bytes at address 0xd9c9680; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
+- `__glim_Indexi` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  signed int value taken from the argument registers, and here each integer is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to offset 0x1c0 of the context, leaving every other context word alone. The routine is a
+  leaf: no routine of the library is entered unlike the public routine, which also flags the vertex
+  cache as changed. The N32 body is a frameless leaf and neither `$ra` nor `$gp` is saved, with the
+  context loaded from address 0x1010. It occupies 20 bytes at offset 0xd9c9660, with 5 instructions
+  in all, the N32 body having been matched to `__glim_Indexi` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call count. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Indexs` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  signed short value taken from the argument registers, and here each short is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to offset 0x1c0 of the context, in a single pass with no loop. The routine is a leaf: no
+  routine of the library is entered and the vertex-cache flag store of the public body is absent.
+  The N32 body is a frameless leaf so `$ra` and `$gp` are left in their registers, and the context
+  pointer comes from the fixed address 0x1010. It occupies 20 bytes at offset 0xd9c9680, counting 5
+  instructions, and its listing in the N32 build was reduced to store offsets, constant loads and
+  call slots and set beside `__glim_Indexs` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
 - `__glim_Indexdv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from the first element of a double array by narrowing it and storing it in the context's current-colour-index word, and it occupies 20 bytes at address 0xd9c96a0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine narrows and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_Indexfv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from the first element of a float array by storing it in the context's current-colour-index word, and it occupies 16 bytes at address 0xd9c96c0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine makes the one store and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from the first element of an integer array by converting it to float and storing it in the context's current-colour-index word, and it occupies 24 bytes at address 0xd9c96d0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexsv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from the first element of a short array by converting it to float and storing it in the context's current-colour-index word, and it occupies 24 bytes at address 0xd9c96f0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexub` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from an unsigned byte by converting it to float and storing it in the context's current-colour-index word, and it occupies 20 bytes at address 0xd9c9710; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from the first element of an unsigned byte array by converting it to float and storing it in the context's current-colour-index word, and it occupies 24 bytes at address 0xd9c9730; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Indexd` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from a double by narrowing it to single precision and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 16 bytes at address 0xd9cb38c; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexf` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from a float by storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 16 bytes at address 0xd9cb39c; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexi` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from an integer by converting it to float and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 28 bytes at address 0xd9cb3ac; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexs` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from a short by converting it to float and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 32 bytes at address 0xd9cb3c8; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexdv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from the first element of a double array by narrowing it and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 24 bytes at address 0xd9cb3e8; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexfv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from the first element of a float array by storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 16 bytes at address 0xd9cb400; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexiv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from the first element of an integer array by converting it to float and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 24 bytes at address 0xd9cb410; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexsv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from the first element of a short array by converting it to float and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 24 bytes at address 0xd9cb428; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Indexubv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current colour index from the first element of an unsigned byte array by converting it to float and storing it in the context's current-colour-index word, and in the older 32-bit build it occupies 56 bytes at address 0xd9cb47c; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
+- `__glim_Indexiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  signed int value read through the pointer argument, and here each integer is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to the context at 0x1c0, in a single pass with no loop. The routine is a leaf: nothing is
+  dispatched through the context's procedure table and the vertex-cache flag store of the public
+  body is absent. The N32 body is a frameless leaf and neither `$ra` nor `$gp` is saved, and the
+  context pointer comes from the fixed address 0x1010. It occupies 24 bytes at offset 0xd9c96d0,
+  with 6 instructions in all, and its listing in the N32 build was reduced to store offsets,
+  constant loads and call slots and set beside `__glim_Indexiv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Indexsv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  signed short value read through the pointer argument, and here each short is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to offset 0x1c0 of the context, with no further bookkeeping. The routine is a leaf: no
+  routine of the library is entered although the public body sets a colour-changed flag, which this
+  build does not. The N32 body is a frameless leaf and neither `$ra` nor `$gp` is saved, and it
+  fetches the context from the fixed address 0x1010. It occupies 24 bytes at offset 0xd9c96f0, with
+  6 instructions in all, summarised from the N32 listing by its stores, constant loads and call slot
+  and compared with `__glim_Indexsv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Indexub` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  unsigned byte value taken from the argument registers, where each unsigned byte is converted to
+  float by the plain integer convert with no scaling. The result is written to the context slot at
+  0x1c0, with no further bookkeeping. The routine is a leaf: it neither calls a library routine nor
+  jumps through a pointer although the public body sets a colour-changed flag, which this build does
+  not. The N32 body is a frameless leaf so `$ra` and `$gp` are left in their registers, and it
+  fetches the context from the fixed address 0x1010. It occupies 20 bytes at offset 0xd9c9710,
+  counting 5 instructions, summarised from the N32 listing by its stores, constant loads and call
+  slot and compared with `__glim_Indexub` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Indexub` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  unsigned byte value taken from the argument registers, where each unsigned byte is converted to
+  float by the plain integer convert with no scaling, and the o32 code adds a sign-test correction
+  of 2^32 (0x4f800000) that an unsigned byte never needs. The result is written to context offset
+  0x1c0, with no further bookkeeping. The routine is a leaf: it contains no jump through the
+  context's procedure pointers although the public body sets a colour-changed flag, which this build
+  does not. The o32 routine leaves the stack pointer alone since it makes no call, and it fetches
+  the context from the fixed address 0x1010. The routine sits at offset 0xd9cb440 and is 60 bytes
+  long, 15 instructions long, summarised from the o32 listing by its stores, constant loads and call
+  slot and compared with `__glim_Indexub` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Indexubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour index from one
+  unsigned byte value read through the pointer argument, where each unsigned byte is converted to
+  float by the plain integer convert with no scaling. The result is written to offset 0x1c0 of the
+  context, and nothing else in the context is touched. The routine is a leaf: no routine of the
+  library is entered and the colour-changed flag that the public body sets is not stored here. The
+  N32 body is a frameless leaf and neither `$ra` nor `$gp` is saved, and the current context is read
+  from address 0x1010. It occupies 24 bytes at offset 0xd9c9730, with 6 instructions in all, with
+  the N32 build checked through its stores, constants and absence of calls against `__glim_Indexubv`
+  in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Indexd` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  double value taken from the argument registers, where each double is narrowed to float with no
+  scaling. The result is written to the context slot at 0x1c0, and nothing else in the context is
+  touched. The routine is a leaf: it neither calls a library routine nor jumps through a pointer and
+  the colour-changed flag that the public body sets is not stored here. The o32 body is a frameless
+  leaf so `$ra` and `$gp` are left in their registers, and the current context is read from address
+  0x1010. It occupies 16 bytes at offset 0xd9cb38c, counting 4 instructions, with the o32 build
+  checked through its stores, constants and absence of calls against `__glim_Indexd` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Indexf` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one float
+  value taken from the argument registers, where each float is moved through unchanged with no
+  conversion. The result is written to the context slot at 0x1c0, leaving every other context word
+  alone. The routine is a leaf: it neither calls a library routine nor jumps through a pointer
+  unlike the public routine, which also flags the vertex cache as changed. The o32 body is a
+  frameless leaf so `$ra` and `$gp` are left in their registers, with the context loaded from
+  address 0x1010. It occupies 16 bytes at offset 0xd9cb39c, counting 4 instructions, the o32 body
+  having been matched to `__glim_Indexf` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores,
+  scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_Indexi` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  signed int value taken from the argument registers, where each integer is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to context offset 0x1c0, in a single pass with no loop. The routine is a leaf: it contains
+  no jump through the context's procedure pointers and the vertex-cache flag store of the public
+  body is absent. The o32 body is a frameless leaf and never saves `$ra` or `$gp`, and the context
+  pointer comes from the fixed address 0x1010. It occupies 28 bytes at offset 0xd9cb3ac, made of 7
+  instructions, and its listing in the o32 build was reduced to store offsets, constant loads and
+  call slots and set beside `__glim_Indexi` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Indexs` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  signed short value taken from the argument registers, where each short is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to context offset 0x1c0, leaving every other context word alone. The routine is a leaf: it
+  contains no jump through the context's procedure pointers unlike the public routine, which also
+  flags the vertex cache as changed. The o32 routine leaves the stack pointer alone since it makes
+  no call, with the context loaded from address 0x1010. The routine sits at offset 0xd9cb3c8 and is
+  32 bytes long, 8 instructions long, the o32 body having been matched to `__glim_Indexs` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call count. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Indexdv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  double value read through the pointer argument, where each double is narrowed to float with no
+  scaling. The result is written to the context at 0x1c0, with no further bookkeeping. The routine
+  is a leaf: nothing is dispatched through the context's procedure table although the public body
+  sets a colour-changed flag, which this build does not. The o32 body is a frameless leaf and never
+  saves `$ra` or `$gp`, and it fetches the context from the fixed address 0x1010. It occupies 24
+  bytes at offset 0xd9cb3e8, made of 6 instructions, summarised from the o32 listing by its stores,
+  constant loads and call slot and compared with `__glim_Indexdv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Indexfv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  float value read through the pointer argument, where each float is moved through unchanged with no
+  conversion. The result is written to the context slot at 0x1c0, in a single pass with no loop. The
+  routine is a leaf: it neither calls a library routine nor jumps through a pointer and the
+  vertex-cache flag store of the public body is absent. The o32 body is a frameless leaf since it
+  makes no call, and the context pointer comes from the fixed address 0x1010. It occupies 16 bytes
+  at offset 0xd9cb400, 4 instructions long, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_Indexfv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Indexiv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  signed int value read through the pointer argument, where each integer is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to the context at 0x1c0, and nothing else in the context is touched. The routine is a
+  leaf: nothing is dispatched through the context's procedure table and the colour-changed flag that
+  the public body sets is not stored here. The o32 body is a frameless leaf and never saves `$ra` or
+  `$gp`, and the current context is read from address 0x1010. It occupies 24 bytes at offset
+  0xd9cb410, made of 6 instructions, with the o32 build checked through its stores, constants and
+  absence of calls against `__glim_Indexiv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Indexsv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  signed short value read through the pointer argument, where each short is converted to float by
+  the plain integer convert with no scaling, so the stored value equals the argument. The result is
+  written to the context at 0x1c0, leaving every other context word alone. The routine is a leaf:
+  nothing is dispatched through the context's procedure table unlike the public routine, which also
+  flags the vertex cache as changed. The o32 body is a frameless leaf and never saves `$ra` or
+  `$gp`, with the context loaded from address 0x1010. It occupies 24 bytes at offset 0xd9cb428, made
+  of 6 instructions, the o32 body having been matched to `__glim_Indexsv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call count. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Indexubv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour index from one
+  unsigned byte value read through the pointer argument, where each unsigned byte is converted to
+  float by the plain integer convert with no scaling, and the o32 code adds a sign-test correction
+  of 2^32 (0x4f800000) that an unsigned byte never needs. The result is written to context offset
+  0x1c0, and nothing else in the context is touched. The routine is a leaf: it contains no jump
+  through the context's procedure pointers and the colour-changed flag that the public body sets is
+  not stored here. The o32 routine leaves the stack pointer alone since it makes no call, and the
+  current context is read from address 0x1010. The routine sits at offset 0xd9cb47c and is 56 bytes
+  long, 14 instructions long, with the o32 build checked through its stores, constants and absence
+  of calls against `__glim_Indexubv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no
+  CRIME hardware. Inferred.
 
 ### so_clip.c
 
@@ -1623,20 +1765,157 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
 
 - `__glim_Normal3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from three doubles, narrowed to single precision and stored in the context's current-normal fields, and it occupies 32 bytes at address 0xd9f49d0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c, the same three stores after narrowing, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_Normal3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from an array of three doubles, narrowed to single precision and stored in the context's current-normal fields, and it occupies 44 bytes at address 0xd9f49f0; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c, the same three loads and stores after narrowing, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_Normal3b` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from three signed-byte arguments, each converted as twice the value plus one times the context's one-over-255 constant, and it occupies 84 bytes at address 0xd9f4a20; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from the first three signed bytes of an array, each converted as twice the value plus one times the one-over-255 constant, and it occupies 96 bytes at address 0xd9f4a80; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from three signed 16-bit arguments, each converted as twice the value plus one times the one-over-65535 constant, and it occupies 84 bytes at address 0xd9f4ae0; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from the first three signed 16-bit integers of an array, each converted as twice the value plus one times the one-over-65535 constant, and it occupies 96 bytes at address 0xd9f4b40; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from three 32-bit integer arguments, each converted as twice the value plus one times the one-over-4294965000 constant, and it occupies 92 bytes at address 0xd9f4ba0; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 8 source lines of the shipped routine being of comparable length to the public body's 10, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current normal from the first three 32-bit integers of an array, each converted as twice the value plus one times the context's one-over-4294965000 constant, and it occupies 104 bytes at address 0xd9f4c00; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 8 source lines of the shipped routine being of comparable length to the public body's 10, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Normal3d` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from three doubles, narrowed to single precision and stored in the context's current-normal fields, and in the older 32-bit build it occupies 40 bytes at address 0xd9f2d20; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from an array of three doubles, narrowed to single precision and stored in the context's current-normal fields, and in the older 32-bit build it occupies 48 bytes at address 0xd9f2d48; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3b` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from three signed-byte arguments, each converted as twice the value plus one times the context's one-over-255 constant, and in the older 32-bit build it occupies 120 bytes at address 0xd9f2d78; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3bv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from the first three signed bytes of an array, each converted as twice the value plus one times the one-over-255 constant, and in the older 32-bit build it occupies 108 bytes at address 0xd9f2df0; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3s` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from three signed 16-bit arguments, each converted as twice the value plus one times the one-over-65535 constant, and in the older 32-bit build it occupies 120 bytes at address 0xd9f2e5c; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from the first three signed 16-bit integers of an array, each converted as twice the value plus one times the one-over-65535 constant, and in the older 32-bit build it occupies 108 bytes at address 0xd9f2ed4; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3i` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from three 32-bit integer arguments, each converted as twice the value plus one times the one-over-4294965000 constant, and in the older 32-bit build it occupies 104 bytes at address 0xd9f2f40; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Normal3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current normal from the first three 32-bit integers of an array, each converted as twice the value plus one times the context's one-over-4294965000 constant, and in the older 32-bit build it occupies 124 bytes at address 0xd9f2fa8; the public sample-implementation source gfx/lib/opengl/glcore/s_napi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
+- `__glim_Normal3b` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed byte components taken from the argument registers, and here each byte is sign-extended,
+  doubled, incremented by one, converted to float and multiplied by the scale word at context offset
+  0xde0, the 1/255 constant by correspondence with the public byte rule. The results are written to
+  offset 0xd8, 0xd4 and 0xd0 of the context, leaving every other context word alone. The routine is
+  a leaf: no routine of the library is entered and no flag word is updated in the context by this
+  routine. The N32 body is a frameless leaf so `$ra` and `$gp` are left in their registers, and the
+  current context is read from address 0x1010. It occupies 84 bytes at offset 0xd9f4a20, counting 21
+  instructions, with the N32 build checked through its stores, constants and absence of calls
+  against `__glim_Normal3b` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Normal3bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed byte components read through the pointer argument, and here each byte is sign-extended,
+  doubled, incremented by one, converted to float and multiplied by the scale word at context offset
+  0xde0, the 1/255 constant by correspondence with the public byte rule. The results are written to
+  the context at 0xd0, 0xd4 and 0xd8, in a single pass with no loop. The routine is a leaf: nothing
+  is dispatched through the context's procedure table and the context receives no flag update. The
+  N32 body is a frameless leaf and neither `$ra` nor `$gp` is saved, with the context loaded from
+  address 0x1010. It occupies 96 bytes at offset 0xd9f4a80, with 24 instructions in all, the N32
+  body having been matched to `__glim_Normal3bv` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c by its
+  stores, scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed short components taken from the argument registers, and here each short is doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde8,
+  the 1/65535 constant by correspondence with the public short rule. The results are written to
+  offset 0xd8, 0xd4 and 0xd0 of the context, in a single pass with no loop. The routine is a leaf:
+  no routine of the library is entered and the context receives no flag update. The N32 body is a
+  frameless leaf so `$ra` and `$gp` are left in their registers, with the context loaded from
+  address 0x1010. It occupies 84 bytes at offset 0xd9f4ae0, counting 21 instructions, the N32 body
+  having been matched to `__glim_Normal3s` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c by its
+  stores, scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed short components read through the pointer argument, and here each short is doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde8,
+  the 1/65535 constant by correspondence with the public short rule. The results are written to
+  offset 0xd0, 0xd4 and 0xd8 of the context, with no further bookkeeping. The routine is a leaf: no
+  routine of the library is entered and it sets no changed flag in the context, which agrees with
+  the public body for this entry point. The N32 body is a frameless leaf so `$ra` and `$gp` are left
+  in their registers, and the context pointer comes from the fixed address 0x1010. It occupies 96
+  bytes at offset 0xd9f4b40, counting 24 instructions, and its listing in the N32 build was reduced
+  to store offsets, constant loads and call slots and set beside `__glim_Normal3sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed int components taken from the argument registers, and here each integer is converted to
+  float, run through a fused multiply-add that makes twice the value plus one, and multiplied by the
+  scale word at context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The
+  results are written to offset 0xd8, 0xd4 and 0xd0 of the context, and nothing else in the context
+  is touched. The routine is a leaf: no routine of the library is entered and it writes no
+  changed-state flag, matching what the public body does for this entry point. The N32 body is a
+  frameless leaf so `$ra` and `$gp` are left in their registers, and it fetches the context from the
+  fixed address 0x1010. It occupies 92 bytes at offset 0xd9f4ba0, counting 23 instructions,
+  summarised from the N32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Normal3i` of ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Normal3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current normal from three
+  signed int components read through the pointer argument, and here each integer is converted to
+  float, run through a fused multiply-add that makes twice the value plus one, and multiplied by the
+  scale word at context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The
+  results are written to the context at 0xd0, 0xd4 and 0xd8, leaving every other context word alone.
+  The routine is a leaf: nothing is dispatched through the context's procedure table and no flag
+  word is updated in the context by this routine. The N32 body is a frameless leaf and neither `$ra`
+  nor `$gp` is saved, and the current context is read from address 0x1010. It occupies 104 bytes at
+  offset 0xd9f4c00, with 26 instructions in all, with the N32 build checked through its stores,
+  constants and absence of calls against `__glim_Normal3iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three double
+  components taken from the argument registers, where each double is narrowed to float with no
+  scaling. The results are written to the context slot at 0xd0, 0xd4 and 0xd8, and nothing else in
+  the context is touched. The routine is a leaf: it neither calls a library routine nor jumps
+  through a pointer and it writes no changed-state flag, matching what the public body does for this
+  entry point. The o32 body is a frameless leaf since it makes no call, and it fetches the context
+  from the fixed address 0x1010. It occupies 40 bytes at offset 0xd9f2d20, 10 instructions long,
+  summarised from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Normal3d` of ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Normal3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three double
+  components read through the pointer argument, where each double is narrowed to float with no
+  scaling. The results are written to the context slot at 0xd0, 0xd4 and 0xd8, with no further
+  bookkeeping. The routine is a leaf: it neither calls a library routine nor jumps through a pointer
+  and it sets no changed flag in the context, which agrees with the public body for this entry
+  point. The o32 body is a frameless leaf since it makes no call, and the context pointer comes from
+  the fixed address 0x1010. It occupies 48 bytes at offset 0xd9f2d48, 12 instructions long, and its
+  listing in the o32 build was reduced to store offsets, constant loads and call slots and set
+  beside `__glim_Normal3dv` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Normal3b` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  byte components taken from the argument registers, where each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte rule. The results are written to context
+  offset 0xd0, 0xd4 and 0xd8, and nothing else in the context is touched. The routine is a leaf: it
+  contains no jump through the context's procedure pointers and it writes no changed-state flag,
+  matching what the public body does for this entry point. The o32 body is a frameless leaf and
+  never saves `$ra` or `$gp`, and it fetches the context from the fixed address 0x1010. It occupies
+  120 bytes at offset 0xd9f2d78, made of 30 instructions, summarised from the o32 listing by its
+  stores, constant loads and call slot and compared with `__glim_Normal3b` of
+  ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3bv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  byte components read through the pointer argument, where each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte rule. The results are written to context
+  offset 0xd0, 0xd4 and 0xd8, in a single pass with no loop. The routine is a leaf: it contains no
+  jump through the context's procedure pointers and the context receives no flag update. The o32
+  body is a frameless leaf and never saves `$ra` or `$gp`, with the context loaded from address
+  0x1010. It occupies 108 bytes at offset 0xd9f2df0, made of 27 instructions, the o32 body having
+  been matched to `__glim_Normal3bv` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c by its stores,
+  scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  short components taken from the argument registers, where each short is doubled, incremented by
+  one, converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535
+  constant by correspondence with the public short rule. The results are written to context offset
+  0xd0, 0xd4 and 0xd8, leaving every other context word alone. The routine is a leaf: it contains no
+  jump through the context's procedure pointers and no flag word is updated in the context by this
+  routine. The o32 body is a frameless leaf and never saves `$ra` or `$gp`, and the current context
+  is read from address 0x1010. It occupies 120 bytes at offset 0xd9f2e5c, made of 30 instructions,
+  with the o32 build checked through its stores, constants and absence of calls against
+  `__glim_Normal3s` in ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Normal3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  short components read through the pointer argument, where each short is doubled, incremented by
+  one, converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535
+  constant by correspondence with the public short rule. The results are written to the context at
+  0xd0, 0xd4 and 0xd8, with no further bookkeeping. The routine is a leaf: nothing is dispatched
+  through the context's procedure table and it sets no changed flag in the context, which agrees
+  with the public body for this entry point. The o32 body is a frameless leaf and neither `$ra` nor
+  `$gp` is saved, and the context pointer comes from the fixed address 0x1010. It occupies 108 bytes
+  at offset 0xd9f2ed4, with 27 instructions in all, and its listing in the o32 build was reduced to
+  store offsets, constant loads and call slots and set beside `__glim_Normal3sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Normal3i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  int components taken from the argument registers, where each integer is converted to float, run
+  through a fused multiply-add that makes twice the value plus one, and multiplied by the scale word
+  at context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to the context at 0xd0, 0xd4 and 0xd8, and nothing else in the context is touched. The
+  routine is a leaf: nothing is dispatched through the context's procedure table and it writes no
+  changed-state flag, matching what the public body does for this entry point. The o32 body is a
+  frameless leaf and neither `$ra` nor `$gp` is saved, and it fetches the context from the fixed
+  address 0x1010. It occupies 104 bytes at offset 0xd9f2f40, with 26 instructions in all, summarised
+  from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Normal3i` of ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Normal3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current normal from three signed
+  int components read through the pointer argument, where each integer is converted to float, run
+  through a fused multiply-add that makes twice the value plus one, and multiplied by the scale word
+  at context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to context offset 0xd0, 0xd4 and 0xd8, with no further bookkeeping. The routine is a leaf:
+  it contains no jump through the context's procedure pointers and it sets no changed flag in the
+  context, which agrees with the public body for this entry point. The o32 body is a frameless leaf
+  and never saves `$ra` or `$gp`, and the context pointer comes from the fixed address 0x1010. It
+  occupies 124 bytes at offset 0xd9f2fa8, made of 31 instructions, and its listing in the o32 build
+  was reduced to store offsets, constant loads and call slots and set beside `__glim_Normal3iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_napi.c. It touches no CRIME hardware. Inferred.
 
 ### so_pick.c
 
@@ -2046,60 +2325,556 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
 - `__glim_TexCoord1s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from one short converted to float with zero for the second and third components and one for the fourth, and it occupies 40 bytes at address 0xda13e10; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores after conversion, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_TexCoord1dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from the first element of a double array, narrowed, with zero for the second and third components and one for the fourth, and it occupies 40 bytes at address 0xda13e40; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores after narrowing, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_TexCoord1fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from the first element of a float array with zero for the second and third components and one for the fourth, and it occupies 36 bytes at address 0xda13e70; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord1iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first one 32-bit integer value of an array, converting each to float without scaling, and storing zero for the second and third components and one for the fourth, into the context's four coordinate words starting, and it occupies 44 bytes at address 0xda13ea0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord1sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first one 16-bit integer value of an array, converting each to float without scaling, and storing zero for the second and third components and one for the fourth, into the context's four coordinate words starting, and it occupies 44 bytes at address 0xda13ed0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_TexCoord1iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from one signed int value read through the pointer argument, where each integer is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context
+  offset 0xdd8). Each converted component is stored at the context slot at 0xe8, 0xe4, 0xec and
+  0xe0, in the order the code issues the stores. There is no callee: nothing is dispatched through
+  the context's procedure table and the context receives no flag update. The N32 routine leaves the
+  stack pointer alone and neither `$ra` nor `$gp` is saved, with the context loaded from address
+  0x1010. The routine sits at offset 0xda13ea0 and is 44 bytes long, with 11 instructions in all,
+  the N32 body having been matched to `__glim_TexCoord1iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale constants and call count. It
+  touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from one signed short value read through the pointer argument, where each short is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context
+  offset 0xdd8). Each converted component is stored at the context slot at 0xe8, 0xe4, 0xec and
+  0xe0, with the four stores issued in program order. There is no callee: no routine of the library
+  is entered and it sets no changed flag in the context, which agrees with the public body for this
+  entry point. The N32 routine leaves the stack pointer alone so `$ra` and `$gp` are left in their
+  registers, and the context pointer comes from the fixed address 0x1010. The routine sits at offset
+  0xda13ed0 and is 44 bytes long, counting 11 instructions, and its listing in the N32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_TexCoord1sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
 - `__glim_TexCoord2d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from two doubles, narrowed, with zero for the third component and one for the fourth, and it occupies 40 bytes at address 0xda13f00; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores after narrowing, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord2i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from two 32-bit integer arguments, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and it occupies 48 bytes at address 0xda13f30; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord2s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from two 16-bit integer arguments, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and it occupies 48 bytes at address 0xda13f60; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord2dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first two double values of an array, narrowing each to single precision, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and it occupies 48 bytes at address 0xda13f90; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord2iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first two 32-bit integer values of an array, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and it occupies 56 bytes at address 0xda13fc0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord2sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first two 16-bit integer values of an array, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and it occupies 56 bytes at address 0xda14000; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_TexCoord2i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed int values taken from the argument registers, where each integer is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8).
+  Each converted component is stored at offset 0xe8, 0xec, 0xe4 and
+  0xe0 of the context, in the order the code issues the stores. There is no callee: it contains no
+  jump through the context's procedure pointers and the context receives no flag update. The N32
+  routine leaves the stack pointer alone and never saves `$ra` or `$gp`, with the context loaded
+  from address 0x1010. The routine sits at offset 0xda13f30 and is 48 bytes long, made of 12
+  instructions, the N32 body having been matched to `__glim_TexCoord2i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale constants and call count. It
+  touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed short values taken from the argument registers, where each short is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8).
+  Each converted component is stored at offset 0xe8, 0xec, 0xe4 and
+  0xe0 of the context, with the four stores issued in program order. There is no callee: nothing is
+  dispatched through the context's procedure table and it sets no changed flag in the context, which
+  agrees with the public body for this entry point. The N32 routine leaves the stack pointer alone
+  and neither `$ra` nor `$gp` is saved, and the context pointer comes from the fixed address 0x1010.
+  The routine sits at offset 0xda13f60 and is 48 bytes long, with 12 instructions in all, and its
+  listing in the N32 build was reduced to store offsets, constant loads and call slots and set
+  beside `__glim_TexCoord2s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_TexCoord2dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from two double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, and the third coordinate is set to zero and the fourth to 1.0 (loaded from
+  context offset 0xdd8). Each converted component is stored at offset 0xe0, 0xec, 0xe8 and
+  0xe4 of the context, one store per coordinate word. There is no callee: nothing is dispatched
+  through the context's procedure table and it writes no changed-state flag, matching what the
+  public body does for this entry point. The N32 routine leaves the stack pointer alone and neither
+  `$ra` nor `$gp` is saved, and it fetches the context from the fixed address 0x1010. The routine
+  sits at offset 0xda13f90 and is 48 bytes long, with 12 instructions in all, summarised from the
+  N32 listing by its stores, constant loads and call slot and compared with `__glim_TexCoord2dv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed int values read through the pointer argument, where each integer is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8).
+  Single-precision stores put the four texture coordinate words at offset 0xe0, 0xec, 0xe8 and
+  0xe4 of the context, with the four stores issued in program order. No call is made: nothing is
+  dispatched through the context's procedure table and it sets no changed flag in the context, which
+  agrees with the public body for this entry point. No stack frame is opened by the N32 code and
+  neither `$ra` nor `$gp` is saved, and the context pointer comes from the fixed address 0x1010. Its
+  extent is 56 bytes at offset 0xda13fc0, with 14 instructions in all, and its listing in the N32
+  build was reduced to store offsets, constant loads and call slots and set beside
+  `__glim_TexCoord2iv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord2sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed short values read through the pointer argument, where each short is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  and the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8).
+  Single-precision stores put the four texture coordinate words at offset 0xe0, 0xec, 0xe8 and
+  0xe4 of the context, one store per coordinate word. No call is made: nothing is dispatched through
+  the context's procedure table and it writes no changed-state flag, matching what the public body
+  does for this entry point. No stack frame is opened by the N32 code and neither `$ra` nor `$gp` is
+  saved, and it fetches the context from the fixed address 0x1010. Its extent is 56 bytes at offset
+  0xda14000, with 14 instructions in all, summarised from the N32 listing by its stores, constant
+  loads and call slot and compared with `__glim_TexCoord2sv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
 - `__glim_TexCoord3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from three doubles, narrowed, with one for the fourth component, and it occupies 40 bytes at address 0xda14040; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores after narrowing, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_TexCoord3f` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from three floats with a fourth of one, and it occupies 28 bytes at address 0xda14070; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same three stores and the same value of one, here read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from three 32-bit integer arguments, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and it occupies 52 bytes at address 0xda14090; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from three 16-bit integer arguments, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and it occupies 52 bytes at address 0xda140d0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first three double values of an array, narrowing each to single precision, and storing one for the fourth component, into the context's four coordinate words starting, and it occupies 52 bytes at address 0xda14110; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_TexCoord3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed int values taken from the argument registers, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). Each
+  converted component is stored at context offset 0xec, 0xe8, 0xe4 and
+  0xe0, in a single pass with no loop. No call is made: it neither calls a library routine nor jumps
+  through a pointer and no flag word is updated in the context by this routine. No stack frame is
+  opened by the N32 code since it makes no call, and the current context is read from address
+  0x1010. Its extent is 52 bytes at offset 0xda14090, 13 instructions long, with the N32 build
+  checked through its stores, constants and absence of calls against `__glim_TexCoord3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed short values taken from the argument registers, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). Each
+  converted component is stored at the context at 0xec, 0xe8, 0xe4 and
+  0xe0, in the order the code issues the stores. No call is made: it neither calls a library routine
+  nor jumps through a pointer and the context receives no flag update. No stack frame is opened by
+  the N32 code since it makes no call, with the context loaded from address 0x1010. Its extent is 52
+  bytes at offset 0xda140d0, 13 instructions long, the N32 body having been matched to
+  `__glim_TexCoord3s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale constants
+  and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from three double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, and the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8).
+  Each converted component is stored at the context at 0xe0, 0xe4, 0xec and
+  0xe8, with the four stores issued in program order. There is no callee: it contains no jump
+  through the context's procedure pointers and it sets no changed flag in the context, which agrees
+  with the public body for this entry point. The N32 routine leaves the stack pointer alone and
+  never saves `$ra` or `$gp`, and the context pointer comes from the fixed address 0x1010. The
+  routine sits at offset 0xda14110 and is 52 bytes long, made of 13 instructions, and its listing in
+  the N32 build was reduced to store offsets, constant loads and call slots and set beside
+  `__glim_TexCoord3dv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
 - `__glim_TexCoord3fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from an array of three floats with one for the fourth component, and it occupies 40 bytes at address 0xda14150; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores, the value of one read from a context word rather than a global, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first three 32-bit integer values of an array, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and it occupies 64 bytes at address 0xda14180; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first three 16-bit integer values of an array, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and it occupies 64 bytes at address 0xda141c0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_TexCoord3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed int values read through the pointer argument, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). The results
+  are written to the context slot at 0xe0, 0xe4, 0xec and
+  0xe8, in a single pass with no loop. This body is a leaf routine: no routine of the library is
+  entered and no flag word is updated in the context by this routine. This N32 routine needs no
+  stack frame so `$ra` and `$gp` are left in their registers, and the current context is read from
+  address 0x1010. The body spans 64 bytes starting at offset 0xda14180, counting 16 instructions,
+  with the N32 build checked through its stores, constants and absence of calls against
+  `__glim_TexCoord3iv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed short values read through the pointer argument, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8).
+  Single-precision stores put the four texture coordinate words at context offset 0xe0, 0xe4, 0xec
+  and 0xe8, in the order the code issues the stores. This body is a leaf routine: no routine of the
+  library is entered and the context receives no flag update. This N32 routine needs no stack frame
+  so `$ra` and `$gp` are left in their registers, with the context loaded from address 0x1010. The
+  body spans 64 bytes starting at offset 0xda141c0, counting 16 instructions, the N32 body having
+  been matched to `__glim_TexCoord3sv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores,
+  scale constants and call count. It touches no CRIME hardware. Inferred.
 - `__glim_TexCoord4d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from four doubles, narrowed to single precision, and it occupies 40 bytes at address 0xda14200; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores after narrowing, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_TexCoord4f` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from four floats, and it occupies 24 bytes at address 0xda14230; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four stores into the first unit's coordinate, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from four 32-bit integer arguments, converting each to float without scaling, into the context's four coordinate words starting, and it occupies 56 bytes at address 0xda14250; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from four 16-bit integer arguments, converting each to float without scaling, into the context's four coordinate words starting, and it occupies 56 bytes at address 0xda14290; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first four double values of an array, narrowing each to single precision, into the context's four coordinate words starting, and it occupies 56 bytes at address 0xda142d0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_TexCoord4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed int values taken from the argument registers, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and all four coordinates come from the arguments. Single-precision stores put the four
+  texture coordinate words at offset 0xec, 0xe8, 0xe4 and
+  0xe0 of the context, in a single pass with no loop. No call is made: nothing is dispatched through
+  the context's procedure table and no flag word is updated in the context by this routine. No stack
+  frame is opened by the N32 code and neither `$ra` nor `$gp` is saved, and the current context is
+  read from address 0x1010. Its extent is 56 bytes at offset 0xda14250, with 14 instructions in all,
+  with the N32 build checked through its stores, constants and absence of calls against
+  `__glim_TexCoord4i` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed short values taken from the argument registers, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and all four coordinates come from the arguments. Single-precision stores put the four
+  texture coordinate words at the context slot at 0xec, 0xe8, 0xe4 and
+  0xe0, in the order the code issues the stores. No call is made: nothing is dispatched through the
+  context's procedure table and the context receives no flag update. No stack frame is opened by the
+  N32 code and neither `$ra` nor `$gp` is saved, with the context loaded from address 0x1010. Its
+  extent is 56 bytes at offset 0xda14290, with 14 instructions in all, the N32 body having been
+  matched to `__glim_TexCoord4s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale
+  constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from four double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, and all four coordinates come from the arguments. Single-precision stores
+  put the four texture coordinate words at the context slot at 0xe0, 0xe4, 0xe8 and
+  0xec, with the four stores issued in program order. No call is made: no routine of the library is
+  entered and it sets no changed flag in the context, which agrees with the public body for this
+  entry point. No stack frame is opened by the N32 code so `$ra` and `$gp` are left in their
+  registers, and the context pointer comes from the fixed address 0x1010. Its extent is 56 bytes at
+  offset 0xda142d0, counting 14 instructions, and its listing in the N32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_TexCoord4dv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
 - `__glim_TexCoord4fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of the first unit from an array of four floats, and it occupies 40 bytes at address 0xda14310; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c, the same four loads and stores, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
-- `__glim_TexCoord4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first four 32-bit integer values of an array, converting each to float without scaling, into the context's four coordinate words starting, and it occupies 72 bytes at address 0xda14340; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current texture coordinate of unit zero from the first four 16-bit integer values of an array, converting each to float without scaling, into the context's four coordinate words starting, and it occupies 72 bytes at address 0xda14390; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, matched by name, neither the shipped routine nor the public body calling anything, the 6 source lines of the shipped routine being of comparable length to the public body's 9, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_TexCoord1d` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from one double, narrowed, with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 52 bytes at address 0xda13210; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1f` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from one float with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 44 bytes at address 0xda13244; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1i` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from one integer converted to float with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 52 bytes at address 0xda13270; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1s` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from one short converted to float with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 68 bytes at address 0xda132a4; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from the first element of a double array, narrowed, with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 52 bytes at address 0xda132e8; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1fv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from the first element of a float array with zero for the second and third components and one for the fourth, and in the older 32-bit build it occupies 52 bytes at address 0xda1331c; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first one 32-bit integer value of an array, converting each to float without scaling, and storing zero for the second and third components and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 60 bytes at address 0xda13350; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord1sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first one 16-bit integer value of an array, converting each to float without scaling, and storing zero for the second and third components and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 60 bytes at address 0xda1338c; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2d` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from two doubles, narrowed, with zero for the third component and one for the fourth, and in the older 32-bit build it occupies 52 bytes at address 0xda133c8; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2i` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from two 32-bit integer arguments, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 60 bytes at address 0xda133fc; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2s` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from two 16-bit integer arguments, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 84 bytes at address 0xda13438; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first two double values of an array, narrowing each to single precision, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 60 bytes at address 0xda1348c; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first two 32-bit integer values of an array, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 68 bytes at address 0xda134c8; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord2sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first two 16-bit integer values of an array, converting each to float without scaling, and storing zero for the third component and one for the fourth, into the context's four coordinate words starting, and in the older 32-bit build it occupies 68 bytes at address 0xda1350c; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3d` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from three doubles, narrowed, with one for the fourth component, and in the older 32-bit build it occupies 48 bytes at address 0xda13550; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3f` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from three floats with a fourth of one, and in the older 32-bit build it occupies 40 bytes at address 0xda13580; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3i` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from three 32-bit integer arguments, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and in the older 32-bit build it occupies 56 bytes at address 0xda135a8; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3s` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from three 16-bit integer arguments, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and in the older 32-bit build it occupies 88 bytes at address 0xda135e0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first three double values of an array, narrowing each to single precision, and storing one for the fourth component, into the context's four coordinate words starting, and in the older 32-bit build it occupies 56 bytes at address 0xda13638; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3fv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from an array of three floats with one for the fourth component, and in the older 32-bit build it occupies 40 bytes at address 0xda13670; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first three 32-bit integer values of an array, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and in the older 32-bit build it occupies 72 bytes at address 0xda13698; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first three 16-bit integer values of an array, converting each to float without scaling, and storing one for the fourth component, into the context's four coordinate words starting, and in the older 32-bit build it occupies 72 bytes at address 0xda136e0; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4d` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from four doubles, narrowed to single precision, and in the older 32-bit build it occupies 48 bytes at address 0xda13728; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4f` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from four floats, and in the older 32-bit build it occupies 40 bytes at address 0xda13758; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4i` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from four 32-bit integer arguments, converting each to float without scaling, into the context's four coordinate words starting, and in the older 32-bit build it occupies 56 bytes at address 0xda13780; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4s` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from four 16-bit integer arguments, converting each to float without scaling, into the context's four coordinate words starting, and in the older 32-bit build it occupies 104 bytes at address 0xda137b8; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first four double values of an array, narrowing each to single precision, into the context's four coordinate words starting, and in the older 32-bit build it occupies 56 bytes at address 0xda13820; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4fv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of the first unit from an array of four floats, and in the older 32-bit build it occupies 40 bytes at address 0xda13858; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first four 32-bit integer values of an array, converting each to float without scaling, into the context's four coordinate words starting, and in the older 32-bit build it occupies 84 bytes at address 0xda13880; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_TexCoord4sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current texture coordinate of unit zero from the first four 16-bit integer values of an array, converting each to float without scaling, into the context's four coordinate words starting, and in the older 32-bit build it occupies 84 bytes at address 0xda138d4; the public sample-implementation source gfx/lib/opengl/glcore/s_tapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
+- `__glim_TexCoord4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed int values read through the pointer argument, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and all four coordinates come from the arguments. The results are written to offset
+  0xe0, 0xe4, 0xe8 and
+  0xec of the context, with the four stores issued in program order. This body is a leaf routine:
+  nothing is dispatched through the context's procedure table and it writes no changed-state flag,
+  matching what the public body does for this entry point. This N32 routine needs no stack frame and
+  neither `$ra` nor `$gp` is saved, and it fetches the context from the fixed address 0x1010. The
+  body spans 72 bytes starting at offset 0xda14340, with 18 instructions in all, summarised from the
+  N32 listing by its stores, constant loads and call slot and compared with `__glim_TexCoord4iv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed short values read through the pointer argument, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, and all four coordinates come from the arguments. The results are written to offset
+  0xe0, 0xe4, 0xe8 and
+  0xec of the context, one store per coordinate word. This body is a leaf routine: nothing is
+  dispatched through the context's procedure table and no flag word is updated in the context by
+  this routine. This N32 routine needs no stack frame and neither `$ra` nor `$gp` is saved, and the
+  current context is read from address 0x1010. The body spans 72 bytes starting at offset 0xda14390,
+  with 18 instructions in all, with the N32 build checked through its stores, constants and absence
+  of calls against `__glim_TexCoord4sv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_TexCoord1d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from one double value taken from the argument registers, where each double is narrowed to float
+  with no scaling, while the second and third coordinates are set to zero and the fourth to 1.0
+  (loaded from context offset 0xdd8). Single-precision stores put the four texture coordinate words
+  at the context slot at 0xe4, 0xe0, 0xe8 and
+  0xec, one store per coordinate word. No call is made: no routine of the library is entered and it
+  writes no changed-state flag, matching what the public body does for this entry point. No stack
+  frame is opened by the o32 code so `$ra` and `$gp` are left in their registers, and it fetches the
+  context from the fixed address 0x1010. Its extent is 52 bytes at offset 0xda13210, counting 13
+  instructions, summarised from the o32 listing by its stores, constant loads and call slot and
+  compared with `__glim_TexCoord1d` of ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_TexCoord1f` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from one float value taken from the argument registers, where each float is moved through
+  unchanged with no conversion, while the second and third coordinates are set to zero and the
+  fourth to 1.0 (loaded from context offset 0xdd8). Each converted component is stored at offset
+  0xe0, 0xe4, 0xe8 and
+  0xec of the context, in a single pass with no loop. There is no callee: nothing is dispatched
+  through the context's procedure table and no flag word is updated in the context by this routine.
+  The o32 routine leaves the stack pointer alone and neither `$ra` nor `$gp` is saved, and the
+  current context is read from address 0x1010. The routine sits at offset 0xda13244 and is 44 bytes
+  long, with 11 instructions in all, with the o32 build checked through its stores, constants and
+  absence of calls against `__glim_TexCoord1f` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from one signed int value taken from the argument registers, where each integer is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context offset
+  0xdd8). Single-precision stores put the four texture coordinate words at the context slot at 0xe4,
+  0xe8, 0xec and 0xe0, in a single pass with no loop. No call is made: no routine of the library is
+  entered and no flag word is updated in the context by this routine. No stack frame is opened by
+  the o32 code so `$ra` and `$gp` are left in their registers, and the current context is read from
+  address 0x1010. Its extent is 52 bytes at offset 0xda13270, counting 13 instructions, with the o32
+  build checked through its stores, constants and absence of calls against `__glim_TexCoord1i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from one signed short value taken from the argument registers, where each short is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context offset
+  0xdd8). The results are written to the context slot at 0xe4, 0xe8, 0xec and
+  0xe0, in the order the code issues the stores. This body is a leaf routine: nothing is dispatched
+  through the context's procedure table and the context receives no flag update. This o32 routine
+  needs no stack frame and neither `$ra` nor `$gp` is saved, with the context loaded from address
+  0x1010. The body spans 68 bytes starting at offset 0xda132a4, with 17 instructions in all, the o32
+  body having been matched to `__glim_TexCoord1s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by
+  its stores, scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from one double value read through the pointer argument, where each double is narrowed to
+  float with no scaling, while the second and third coordinates are set to zero and the fourth to
+  1.0 (loaded from context offset 0xdd8). Each converted component is stored at context offset 0xe4,
+  0xe8, 0xe0 and 0xec, in the order the code issues the stores. No call is made: no routine of the
+  library is entered and the context receives no flag update. No stack frame is opened by the o32
+  code so `$ra` and `$gp` are left in their registers, with the context loaded from address 0x1010.
+  Its extent is 52 bytes at offset 0xda132e8, counting 13 instructions, the o32 body having been
+  matched to `__glim_TexCoord1dv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale
+  constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1fv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from one float value read through the pointer argument, where each float is moved through
+  unchanged with no conversion, while the second and third coordinates are set to zero and the
+  fourth to 1.0 (loaded from context offset 0xdd8). Each converted component is stored at context
+  offset 0xe0, 0xe4, 0xe8 and
+  0xec, with the four stores issued in program order. No call is made: it neither calls a library
+  routine nor jumps through a pointer and it sets no changed flag in the context, which agrees with
+  the public body for this entry point. No stack frame is opened by the o32 code since it makes no
+  call, and the context pointer comes from the fixed address 0x1010. Its extent is 52 bytes at
+  offset 0xda1331c, 13 instructions long, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_TexCoord1fv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from one signed int value read through the pointer argument, where each integer is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  while the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context
+  offset 0xdd8). Single-precision stores put the four texture coordinate words at context offset
+  0xe4, 0xe8, 0xec and
+  0xe0, with the four stores issued in program order. This body is a leaf routine: it neither calls
+  a library routine nor jumps through a pointer and it sets no changed flag in the context, which
+  agrees with the public body for this entry point. This o32 routine needs no stack frame since it
+  makes no call, and the context pointer comes from the fixed address 0x1010. The body spans 60
+  bytes starting at offset 0xda13350, 15 instructions long, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_TexCoord1iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord1sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from one signed short value read through the pointer argument, where each short is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  while the second and third coordinates are set to zero and the fourth to 1.0 (loaded from context
+  offset 0xdd8). Single-precision stores put the four texture coordinate words at context offset
+  0xe4, 0xe8, 0xec and
+  0xe0, one store per coordinate word. This body is a leaf routine: it neither calls a library
+  routine nor jumps through a pointer and it writes no changed-state flag, matching what the public
+  body does for this entry point. This o32 routine needs no stack frame since it makes no call, and
+  it fetches the context from the fixed address 0x1010. The body spans 60 bytes starting at offset
+  0xda1338c, 15 instructions long, summarised from the o32 listing by its stores, constant loads and
+  call slot and compared with `__glim_TexCoord1sv` of ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from two double values taken from the argument registers, where each double is narrowed to float
+  with no scaling, while the third coordinate is set to zero and the fourth to 1.0 (loaded from
+  context offset 0xdd8). Each converted component is stored at context offset 0xe0, 0xe4, 0xe8 and
+  0xec, one store per coordinate word. No call is made: it neither calls a library routine nor jumps
+  through a pointer and it writes no changed-state flag, matching what the public body does for this
+  entry point. No stack frame is opened by the o32 code since it makes no call, and it fetches the
+  context from the fixed address 0x1010. Its extent is 52 bytes at offset 0xda133c8, 13 instructions
+  long, summarised from the o32 listing by its stores, constant loads and call slot and compared
+  with `__glim_TexCoord2d` of ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_TexCoord2i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from two signed int values taken from the argument registers, where each integer is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8).
+  Single-precision stores put the four texture coordinate words at context offset 0xe8, 0xec, 0xe0
+  and 0xe4, in a single pass with no loop. This body is a leaf routine: it neither calls a library
+  routine nor jumps through a pointer and no flag word is updated in the context by this routine.
+  This o32 routine needs no stack frame since it makes no call, and the current context is read from
+  address 0x1010. The body spans 60 bytes starting at offset 0xda133fc, 15 instructions long, with
+  the o32 build checked through its stores, constants and absence of calls against
+  `__glim_TexCoord2i` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord2s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from two signed short values taken from the argument registers, where each short is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset 0xdd8). The
+  results are written to context offset 0xe8, 0xec, 0xe0 and
+  0xe4, one store per coordinate word. This body is a leaf routine: it contains no jump through the
+  context's procedure pointers and it sets no changed flag in the context, which agrees with the
+  public body for this entry point. This o32 routine needs no stack frame and never saves `$ra` or
+  `$gp`, and the context pointer comes from the fixed address 0x1010. The body spans 84 bytes
+  starting at offset 0xda13438, made of 21 instructions, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_TexCoord2s` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from two double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, while the third coordinate is set to zero and the fourth to 1.0 (loaded
+  from context offset 0xdd8). Single-precision stores put the four texture coordinate words at the
+  context at 0xe0, 0xe8, 0xec and
+  0xe4, in the order the code issues the stores. This body is a leaf routine: it neither calls a
+  library routine nor jumps through a pointer and the context receives no flag update. This o32
+  routine needs no stack frame since it makes no call, with the context loaded from address 0x1010.
+  The body spans 60 bytes starting at offset 0xda1348c, 15 instructions long, the o32 body having
+  been matched to `__glim_TexCoord2dv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores,
+  scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed int values read through the pointer argument, where each integer is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  while the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset
+  0xdd8). The results are written to the context slot at 0xe0, 0xe8, 0xec and
+  0xe4, with the four stores issued in program order. This body is a leaf routine: no routine of the
+  library is entered and it sets no changed flag in the context, which agrees with the public body
+  for this entry point. This o32 routine needs no stack frame so `$ra` and `$gp` are left in their
+  registers, and the context pointer comes from the fixed address 0x1010. The body spans 68 bytes
+  starting at offset 0xda134c8, counting 17 instructions, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_TexCoord2iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord2sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from two signed short values read through the pointer argument, where each short is converted
+  to float by the plain integer convert with no scaling, so the stored value equals the argument,
+  while the third coordinate is set to zero and the fourth to 1.0 (loaded from context offset
+  0xdd8). The results are written to the context slot at 0xe0, 0xe8, 0xec and
+  0xe4, one store per coordinate word. This body is a leaf routine: no routine of the library is
+  entered and it writes no changed-state flag, matching what the public body does for this entry
+  point. This o32 routine needs no stack frame so `$ra` and `$gp` are left in their registers, and
+  it fetches the context from the fixed address 0x1010. The body spans 68 bytes starting at offset
+  0xda1350c, counting 17 instructions, summarised from the o32 listing by its stores, constant loads
+  and call slot and compared with `__glim_TexCoord2sv` of ogl-sample/gfx/lib/opengl/glcore/s_tapi.c.
+  It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from three double values taken from the argument registers, where each double is narrowed to float
+  with no scaling, while the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8).
+  Each converted component is stored at the context at 0xe0, 0xe4, 0xec and
+  0xe8, one store per coordinate word. There is no callee: it contains no jump through the context's
+  procedure pointers and it writes no changed-state flag, matching what the public body does for
+  this entry point. The o32 routine leaves the stack pointer alone and never saves `$ra` or `$gp`,
+  and it fetches the context from the fixed address 0x1010. The routine sits at offset 0xda13550 and
+  is 48 bytes long, made of 12 instructions, summarised from the o32 listing by its stores, constant
+  loads and call slot and compared with `__glim_TexCoord3d` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3f` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from three float values taken from the argument registers, where each float is moved through
+  unchanged with no conversion, while the fourth coordinate is set to 1.0 (loaded from context
+  offset 0xdd8). Each converted component is stored at the context slot at 0xe0, 0xe4, 0xe8 and
+  0xec, one store per coordinate word. There is no callee: no routine of the library is entered and
+  it writes no changed-state flag, matching what the public body does for this entry point. The o32
+  routine leaves the stack pointer alone so `$ra` and `$gp` are left in their registers, and it
+  fetches the context from the fixed address 0x1010. The routine sits at offset 0xda13580 and is 40
+  bytes long, counting 10 instructions, summarised from the o32 listing by its stores, constant
+  loads and call slot and compared with `__glim_TexCoord3f` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from three signed int values taken from the argument registers, where each integer is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). Single-precision stores
+  put the four texture coordinate words at the context at 0xec, 0xe0, 0xe4 and
+  0xe8, with the four stores issued in program order. No call is made: it contains no jump through
+  the context's procedure pointers and it sets no changed flag in the context, which agrees with the
+  public body for this entry point. No stack frame is opened by the o32 code and never saves `$ra`
+  or `$gp`, and the context pointer comes from the fixed address 0x1010. Its extent is 56 bytes at
+  offset 0xda135a8, made of 14 instructions, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_TexCoord3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from three signed short values taken from the argument registers, where each short is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). The results are written to
+  context offset 0xec, 0xe0, 0xe4 and
+  0xe8, with the four stores issued in program order. The routine is a leaf: it neither calls a
+  library routine nor jumps through a pointer and the context receives no flag update. The o32 body
+  is a frameless leaf since it makes no call, with the context loaded from address 0x1010. It
+  occupies 88 bytes at offset 0xda135e0, 22 instructions long, the o32 body having been matched to
+  `__glim_TexCoord3s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale constants
+  and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from three double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, while the fourth coordinate is set to 1.0 (loaded from context offset
+  0xdd8). Single-precision stores put the four texture coordinate words at the context at 0xe0,
+  0xe4, 0xec and 0xe8, one store per coordinate word. No call is made: it contains no jump through
+  the context's procedure pointers and it writes no changed-state flag, matching what the public
+  body does for this entry point. No stack frame is opened by the o32 code and never saves `$ra` or
+  `$gp`, and it fetches the context from the fixed address 0x1010. Its extent is 56 bytes at offset
+  0xda13638, made of 14 instructions, summarised from the o32 listing by its stores, constant loads
+  and call slot and compared with `__glim_TexCoord3dv` of ogl-sample/gfx/lib/opengl/glcore/s_tapi.c.
+  It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3fv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from three float values read through the pointer argument, where each float is moved through
+  unchanged with no conversion, while the fourth coordinate is set to 1.0 (loaded from context
+  offset 0xdd8). Each converted component is stored at the context slot at 0xe0, 0xe4, 0xec and
+  0xe8, in a single pass with no loop. There is no callee: no routine of the library is entered and
+  no flag word is updated in the context by this routine. The o32 routine leaves the stack pointer
+  alone so `$ra` and `$gp` are left in their registers, and the current context is read from address
+  0x1010. The routine sits at offset 0xda13670 and is 40 bytes long, counting 10 instructions, with
+  the o32 build checked through its stores, constants and absence of calls against
+  `__glim_TexCoord3fv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed int values read through the pointer argument, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, while the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). The
+  results are written to the context at 0xe0, 0xe4, 0xec and
+  0xe8, one store per coordinate word. This body is a leaf routine: it contains no jump through the
+  context's procedure pointers and the context receives no flag update. This o32 routine needs no
+  stack frame and never saves `$ra` or `$gp`, with the context loaded from address 0x1010. The body
+  spans 72 bytes starting at offset 0xda13698, made of 18 instructions, the o32 body having been
+  matched to `__glim_TexCoord3iv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores, scale
+  constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from three signed short values read through the pointer argument, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, while the fourth coordinate is set to 1.0 (loaded from context offset 0xdd8). The
+  results are written to offset 0xe0, 0xe4, 0xec and
+  0xe8 of the context, in the order the code issues the stores. This body is a leaf routine: nothing
+  is dispatched through the context's procedure table and it sets no changed flag in the context,
+  which agrees with the public body for this entry point. This o32 routine needs no stack frame and
+  neither `$ra` nor `$gp` is saved, and the context pointer comes from the fixed address 0x1010. The
+  body spans 72 bytes starting at offset 0xda136e0, with 18 instructions in all, and its listing in
+  the o32 build was reduced to store offsets, constant loads and call slots and set beside
+  `__glim_TexCoord3sv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord4d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from four double values taken from the argument registers, where each double is narrowed to float
+  with no scaling, while all four coordinates come from the arguments. Each converted component is
+  stored at the context at 0xe0, 0xe4, 0xe8 and
+  0xec, in a single pass with no loop. There is no callee: it contains no jump through the context's
+  procedure pointers and no flag word is updated in the context by this routine. The o32 routine
+  leaves the stack pointer alone and never saves `$ra` or `$gp`, and the current context is read
+  from address 0x1010. The routine sits at offset 0xda13728 and is 48 bytes long, made of 12
+  instructions, with the o32 build checked through its stores, constants and absence of calls
+  against `__glim_TexCoord4d` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_TexCoord4f` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from four float values taken from the argument registers, where each float is moved through
+  unchanged with no conversion, while all four coordinates come from the arguments. The routine
+  writes its floats to context offset 0xe0, 0xe4, 0xe8 and
+  0xec, in the order the code issues the stores. There is no callee: no routine of the library is
+  entered and the context receives no flag update. The o32 routine leaves the stack pointer alone so
+  `$ra` and `$gp` are left in their registers, with the context loaded from address 0x1010. The
+  routine sits at offset 0xda13758 and is 40 bytes long, counting 10 instructions, the o32 body
+  having been matched to `__glim_TexCoord4f` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its
+  stores, scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from four signed int values taken from the argument registers, where each integer is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  all four coordinates come from the arguments. Single-precision stores put the four texture
+  coordinate words at the context at 0xe0, 0xe4, 0xe8 and
+  0xec, in a single pass with no loop. No call is made: it contains no jump through the context's
+  procedure pointers and no flag word is updated in the context by this routine. No stack frame is
+  opened by the o32 code and never saves `$ra` or `$gp`, and the current context is read from
+  address 0x1010. Its extent is 56 bytes at offset 0xda13780, made of 14 instructions, with the o32
+  build checked through its stores, constants and absence of calls against `__glim_TexCoord4i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit zero
+  from four signed short values taken from the argument registers, where each short is converted to
+  float by the plain integer convert with no scaling, so the stored value equals the argument, while
+  all four coordinates come from the arguments. The results are written to context offset 0xe0,
+  0xe4, 0xe8 and 0xec, in the order the code issues the stores. The routine is a leaf: it neither
+  calls a library routine nor jumps through a pointer and no flag word is updated in the context by
+  this routine. The o32 body is a frameless leaf since it makes no call, and the current context is
+  read from address 0x1010. It occupies 104 bytes at offset 0xda137b8, 26 instructions long, with
+  the o32 build checked through its stores, constants and absence of calls against
+  `__glim_TexCoord4s` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_TexCoord4dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from four double values read through the pointer argument, where each double is narrowed to
+  float with no scaling, while all four coordinates come from the arguments. Single-precision stores
+  put the four texture coordinate words at offset 0xe0, 0xe4, 0xe8 and
+  0xec of the context, in the order the code issues the stores. No call is made: it contains no jump
+  through the context's procedure pointers and the context receives no flag update. No stack frame
+  is opened by the o32 code and never saves `$ra` or `$gp`, with the context loaded from address
+  0x1010. Its extent is 56 bytes at offset 0xda13820, made of 14 instructions, the o32 body having
+  been matched to `__glim_TexCoord4dv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c by its stores,
+  scale constants and call count. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4fv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from four float values read through the pointer argument, where each float is moved through
+  unchanged with no conversion, while all four coordinates come from the arguments. The routine
+  writes its floats to context offset 0xe0, 0xe4, 0xe8 and
+  0xec, with the four stores issued in program order. There is no callee: it neither calls a library
+  routine nor jumps through a pointer and it sets no changed flag in the context, which agrees with
+  the public body for this entry point. The o32 routine leaves the stack pointer alone since it
+  makes no call, and the context pointer comes from the fixed address 0x1010. The routine sits at
+  offset 0xda13858 and is 40 bytes long, 10 instructions long, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_TexCoord4fv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed int values read through the pointer argument, where each integer is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, while all four coordinates come from the arguments. The results are written to the
+  context at 0xe0, 0xe4, 0xe8 and
+  0xec, in the order the code issues the stores. This body is a leaf routine: it contains no jump
+  through the context's procedure pointers and it writes no changed-state flag, matching what the
+  public body does for this entry point. This o32 routine needs no stack frame and never saves `$ra`
+  or `$gp`, and it fetches the context from the fixed address 0x1010. The body spans 84 bytes
+  starting at offset 0xda13880, made of 21 instructions, summarised from the o32 listing by its
+  stores, constant loads and call slot and compared with `__glim_TexCoord4iv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_TexCoord4sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the texture coordinate of unit
+  zero from four signed short values read through the pointer argument, where each short is
+  converted to float by the plain integer convert with no scaling, so the stored value equals the
+  argument, while all four coordinates come from the arguments. The results are written to the
+  context at 0xe0, 0xe4, 0xe8 and
+  0xec, with the four stores issued in program order. This body is a leaf routine: it contains no
+  jump through the context's procedure pointers and no flag word is updated in the context by this
+  routine. This o32 routine needs no stack frame and never saves `$ra` or `$gp`, and the current
+  context is read from address 0x1010. The body spans 84 bytes starting at offset 0xda138d4, made of
+  21 instructions, with the o32 build checked through its stores, constants and absence of calls
+  against `__glim_TexCoord4sv` in ogl-sample/gfx/lib/opengl/glcore/s_tapi.c. It touches no CRIME
+  hardware. Inferred.
 
 ### so_texture.c
 

@@ -8135,16 +8135,16 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb048	196	__glim_Color4
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb10c	188	__glim_Color4sv	dynsym+mdebug	2fe2cfd22468		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb1c8	232	__glim_Color4us	dynsym+mdebug	58a6b4d6ffc3		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb2b0	220	__glim_Color4usv	dynsym+mdebug	f38d531b82ca		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb38c	16	__glim_Indexd	dynsym+mdebug	8a569724dee9		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb39c	16	__glim_Indexf	dynsym+mdebug	9f1a1d0ea05f		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3ac	28	__glim_Indexi	dynsym+mdebug	41769db5f9d9		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3c8	32	__glim_Indexs	dynsym+mdebug	96d408160ae6		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3e8	24	__glim_Indexdv	dynsym+mdebug	e63f8acc2fb2		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb400	16	__glim_Indexfv	dynsym+mdebug	fd889ce92333		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb410	24	__glim_Indexiv	dynsym+mdebug	d645ff5d36bc		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb428	24	__glim_Indexsv	dynsym+mdebug	342e02038c7e		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb440	60	__glim_Indexub	dynsym+mdebug	944f349556e0		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb47c	56	__glim_Indexubv	dynsym+mdebug	dc1af7f5e95d		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb38c	16	__glim_Indexd	dynsym+mdebug	8a569724dee9		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb39c	16	__glim_Indexf	dynsym+mdebug	9f1a1d0ea05f		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3ac	28	__glim_Indexi	dynsym+mdebug	41769db5f9d9		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3c8	32	__glim_Indexs	dynsym+mdebug	96d408160ae6		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3e8	24	__glim_Indexdv	dynsym+mdebug	e63f8acc2fb2		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb400	16	__glim_Indexfv	dynsym+mdebug	fd889ce92333		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb410	24	__glim_Indexiv	dynsym+mdebug	d645ff5d36bc		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb428	24	__glim_Indexsv	dynsym+mdebug	342e02038c7e		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb440	60	__glim_Indexub	dynsym+mdebug	944f349556e0		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb47c	56	__glim_Indexubv	dynsym+mdebug	dc1af7f5e95d		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb4c0	524	__glim_Clear	dynsym+mdebug	96e1cf8138ba		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cb6d0	124	Clip	mdebug	8688eda00dbb		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cb74c	204	ClipC	mdebug	39d9421abae7		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
@@ -8554,14 +8554,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f272c	1028	__glNamesDel
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b30	88	__glNamesIsName	dynsym+mdebug	e818a1601bb7		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b88	188	__glNamesGenNames	dynsym+mdebug	07c5acce3538		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2c44	208	__glNamesDeleteNames	dynsym+mdebug	de99d70cbf0a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d20	40	__glim_Normal3d	dynsym+mdebug	e753e2baa620		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d48	48	__glim_Normal3dv	dynsym+mdebug	8ee40e1adbcd		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d78	120	__glim_Normal3b	dynsym+mdebug	3c2266380581		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2df0	108	__glim_Normal3bv	dynsym+mdebug	6fafa8bb9afc		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2e5c	120	__glim_Normal3s	dynsym+mdebug	df0536c499ca		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2ed4	108	__glim_Normal3sv	dynsym+mdebug	1f9f312b628b		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2f40	104	__glim_Normal3i	dynsym+mdebug	a4e769a5101d		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2fa8	124	__glim_Normal3iv	dynsym+mdebug	95a53771ebf5		in	located	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d20	40	__glim_Normal3d	dynsym+mdebug	e753e2baa620		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d48	48	__glim_Normal3dv	dynsym+mdebug	8ee40e1adbcd		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d78	120	__glim_Normal3b	dynsym+mdebug	3c2266380581		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2df0	108	__glim_Normal3bv	dynsym+mdebug	6fafa8bb9afc		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2e5c	120	__glim_Normal3s	dynsym+mdebug	df0536c499ca		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2ed4	108	__glim_Normal3sv	dynsym+mdebug	1f9f312b628b		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2f40	104	__glim_Normal3i	dynsym+mdebug	a4e769a5101d		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2fa8	124	__glim_Normal3iv	dynsym+mdebug	95a53771ebf5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3030	1912	__glGenericPickSpanProcs	dynsym+mdebug	92c93c0805cf		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f37a8	296	__glGenericPickPointProcs	dynsym+mdebug	b30391499465		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f38d0	1236	__glGenericPickLineProcs	dynsym+mdebug	3822f69ece1c		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
@@ -8851,36 +8851,36 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda106d8	4316	DoNorma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda117b4	608	DoInterpolate	mdebug	d58cfecd2651		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda11a14	944	DoInterpolateNormal	mdebug	459cb0328f83		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda11dc4	46260	DoRender	mdebug	97f8578d07c8		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13210	52	__glim_TexCoord1d	dynsym+mdebug	bcb773c5eddc		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13244	44	__glim_TexCoord1f	dynsym+mdebug	d9f70dba3330		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13270	52	__glim_TexCoord1i	dynsym+mdebug	c56d51000f11		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132a4	68	__glim_TexCoord1s	dynsym+mdebug	a344b9583803		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132e8	52	__glim_TexCoord1dv	dynsym+mdebug	81d9cc50d4f5		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1331c	52	__glim_TexCoord1fv	dynsym+mdebug	c9dfd301adec		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13350	60	__glim_TexCoord1iv	dynsym+mdebug	5d2279c7ac3e		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1338c	60	__glim_TexCoord1sv	dynsym+mdebug	cdab484810cd		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133c8	52	__glim_TexCoord2d	dynsym+mdebug	b37c3075626a		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133fc	60	__glim_TexCoord2i	dynsym+mdebug	185f6ac32b6f		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13438	84	__glim_TexCoord2s	dynsym+mdebug	38f019e3dbce		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1348c	60	__glim_TexCoord2dv	dynsym+mdebug	8340bccd15be		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda134c8	68	__glim_TexCoord2iv	dynsym+mdebug	3ac2b67482d4		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1350c	68	__glim_TexCoord2sv	dynsym+mdebug	b80c3e295b52		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13550	48	__glim_TexCoord3d	dynsym+mdebug	b541102aebf9		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13580	40	__glim_TexCoord3f	dynsym+mdebug	e567ee0df5e7		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135a8	56	__glim_TexCoord3i	dynsym+mdebug	1b5036808300		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135e0	88	__glim_TexCoord3s	dynsym+mdebug	b628848600ff		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13638	56	__glim_TexCoord3dv	dynsym+mdebug	12d012b6628b		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13670	40	__glim_TexCoord3fv	dynsym+mdebug	cf6b63b840ac		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13698	72	__glim_TexCoord3iv	dynsym+mdebug	a58fc71eef3b		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda136e0	72	__glim_TexCoord3sv	dynsym+mdebug	95079973d689		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13728	48	__glim_TexCoord4d	dynsym+mdebug	3aa5d25f6068		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13758	40	__glim_TexCoord4f	dynsym+mdebug	9fa6da093cf1		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13780	56	__glim_TexCoord4i	dynsym+mdebug	2f1327947666		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda137b8	104	__glim_TexCoord4s	dynsym+mdebug	21f0db75216f		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13820	56	__glim_TexCoord4dv	dynsym+mdebug	a373cbaa7928		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13858	40	__glim_TexCoord4fv	dynsym+mdebug	bcc9f6388d6a		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13880	84	__glim_TexCoord4iv	dynsym+mdebug	d6269c0edc38		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda138d4	84	__glim_TexCoord4sv	dynsym+mdebug	a2ea35350dae		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13210	52	__glim_TexCoord1d	dynsym+mdebug	bcb773c5eddc		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13244	44	__glim_TexCoord1f	dynsym+mdebug	d9f70dba3330		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13270	52	__glim_TexCoord1i	dynsym+mdebug	c56d51000f11		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132a4	68	__glim_TexCoord1s	dynsym+mdebug	a344b9583803		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132e8	52	__glim_TexCoord1dv	dynsym+mdebug	81d9cc50d4f5		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1331c	52	__glim_TexCoord1fv	dynsym+mdebug	c9dfd301adec		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13350	60	__glim_TexCoord1iv	dynsym+mdebug	5d2279c7ac3e		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1338c	60	__glim_TexCoord1sv	dynsym+mdebug	cdab484810cd		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133c8	52	__glim_TexCoord2d	dynsym+mdebug	b37c3075626a		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133fc	60	__glim_TexCoord2i	dynsym+mdebug	185f6ac32b6f		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13438	84	__glim_TexCoord2s	dynsym+mdebug	38f019e3dbce		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1348c	60	__glim_TexCoord2dv	dynsym+mdebug	8340bccd15be		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda134c8	68	__glim_TexCoord2iv	dynsym+mdebug	3ac2b67482d4		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1350c	68	__glim_TexCoord2sv	dynsym+mdebug	b80c3e295b52		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13550	48	__glim_TexCoord3d	dynsym+mdebug	b541102aebf9		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13580	40	__glim_TexCoord3f	dynsym+mdebug	e567ee0df5e7		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135a8	56	__glim_TexCoord3i	dynsym+mdebug	1b5036808300		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135e0	88	__glim_TexCoord3s	dynsym+mdebug	b628848600ff		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13638	56	__glim_TexCoord3dv	dynsym+mdebug	12d012b6628b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13670	40	__glim_TexCoord3fv	dynsym+mdebug	cf6b63b840ac		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13698	72	__glim_TexCoord3iv	dynsym+mdebug	a58fc71eef3b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda136e0	72	__glim_TexCoord3sv	dynsym+mdebug	95079973d689		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13728	48	__glim_TexCoord4d	dynsym+mdebug	3aa5d25f6068		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13758	40	__glim_TexCoord4f	dynsym+mdebug	9fa6da093cf1		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13780	56	__glim_TexCoord4i	dynsym+mdebug	2f1327947666		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda137b8	104	__glim_TexCoord4s	dynsym+mdebug	21f0db75216f		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13820	56	__glim_TexCoord4dv	dynsym+mdebug	a373cbaa7928		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13858	40	__glim_TexCoord4fv	dynsym+mdebug	bcc9f6388d6a		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13880	84	__glim_TexCoord4iv	dynsym+mdebug	d6269c0edc38		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda138d4	84	__glim_TexCoord4sv	dynsym+mdebug	a2ea35350dae		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13930	3064	__glTextureRGB_F_F_Span	dynsym+mdebug	e553f88432c3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda14528	3280	__glTextureRGB_F_F_StippledSpan	dynsym+mdebug	9b0d5cd69fb9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda151f8	6608	__glTextureRGB_F_LML_Span	dynsym+mdebug	53dc651aa204		in	undocumented		
@@ -12262,14 +12262,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9530	124	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c95b0	140	__glim_Color4usv	dwarf+dynsym	5e723bd50bee		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9640	16	__glim_Indexd	dwarf+dynsym	eea7c63db90a		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9650	12	__glim_Indexf	dwarf+dynsym	17e166caf76a		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9660	20	__glim_Indexi	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9680	20	__glim_Indexs	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9660	20	__glim_Indexi	dwarf+dynsym	0ca9f225ac63		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9680	20	__glim_Indexs	dwarf+dynsym	0ca9f225ac63		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96a0	20	__glim_Indexdv	dwarf+dynsym	b68372d692e7		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96c0	16	__glim_Indexfv	dwarf+dynsym	1f8fd20e6fbb		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96d0	24	__glim_Indexiv	dwarf+dynsym	385423dd2149		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96f0	24	__glim_Indexsv	dwarf+dynsym	577c5a302811		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9710	20	__glim_Indexub	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9730	24	__glim_Indexubv	dwarf+dynsym	0f4fd3442995		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96d0	24	__glim_Indexiv	dwarf+dynsym	385423dd2149		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96f0	24	__glim_Indexsv	dwarf+dynsym	577c5a302811		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9710	20	__glim_Indexub	dwarf+dynsym	0ca9f225ac63		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9730	24	__glim_Indexubv	dwarf+dynsym	0f4fd3442995		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9750	484	__glim_Clear	dwarf+dynsym	b515bfed7c78		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9c9940	108	Clip	dwarf+funcnames	d7c053267ce1		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9c99b0	188	ClipC	dwarf+funcnames	ac157246ece7		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
@@ -12681,12 +12681,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f47b0	216	__glNamesGe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4890	320	__glNamesDeleteNames	dwarf+dynsym	95c13dd49477		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49d0	32	__glim_Normal3d	dwarf+dynsym	37e3f67df0d5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49f0	44	__glim_Normal3dv	dwarf+dynsym	6f624c5015b5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a80	96	__glim_Normal3bv	dwarf+dynsym	fee8b6a14594		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ae0	84	__glim_Normal3s	dwarf+dynsym	05ea6a363bb3		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4b40	96	__glim_Normal3sv	dwarf+dynsym	796b4b697e69		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ba0	92	__glim_Normal3i	dwarf+dynsym	234aa9870c23		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c00	104	__glim_Normal3iv	dwarf+dynsym	3f7c0365fa70		in	located	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a80	96	__glim_Normal3bv	dwarf+dynsym	fee8b6a14594		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ae0	84	__glim_Normal3s	dwarf+dynsym	05ea6a363bb3		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4b40	96	__glim_Normal3sv	dwarf+dynsym	796b4b697e69		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ba0	92	__glim_Normal3i	dwarf+dynsym	234aa9870c23		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c00	104	__glim_Normal3iv	dwarf+dynsym	3f7c0365fa70		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c70	1948	__glGenericPickSpanProcs	dwarf+dynsym	0b10a5753bc8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5410	272	__glGenericPickPointProcs	dwarf+dynsym	66612f74db84		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5520	1264	__glGenericPickLineProcs	dwarf+dynsym	e3706e89e811		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
@@ -12982,30 +12982,30 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13de0	40	__glim_TexCo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e10	40	__glim_TexCoord1s	dwarf+dynsym	44a6eba89f4b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e40	40	__glim_TexCoord1dv	dwarf+dynsym	560c8d283906		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e70	36	__glim_TexCoord1fv	dwarf+dynsym	721582d60731		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ea0	44	__glim_TexCoord1iv	dwarf+dynsym	9d18c58526de		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ed0	44	__glim_TexCoord1sv	dwarf+dynsym	dc39d76b5503		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ea0	44	__glim_TexCoord1iv	dwarf+dynsym	9d18c58526de		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ed0	44	__glim_TexCoord1sv	dwarf+dynsym	dc39d76b5503		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f00	40	__glim_TexCoord2d	dwarf+dynsym	e4e222ff3ece		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f30	48	__glim_TexCoord2i	dwarf+dynsym	900800e2749b		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f60	48	__glim_TexCoord2s	dwarf+dynsym	900800e2749b		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f90	48	__glim_TexCoord2dv	dwarf+dynsym	8065e132b9c0		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13fc0	56	__glim_TexCoord2iv	dwarf+dynsym	9e6fdd224659		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14000	56	__glim_TexCoord2sv	dwarf+dynsym	b1672a18b4cb		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f30	48	__glim_TexCoord2i	dwarf+dynsym	900800e2749b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f60	48	__glim_TexCoord2s	dwarf+dynsym	900800e2749b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f90	48	__glim_TexCoord2dv	dwarf+dynsym	8065e132b9c0		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13fc0	56	__glim_TexCoord2iv	dwarf+dynsym	9e6fdd224659		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14000	56	__glim_TexCoord2sv	dwarf+dynsym	b1672a18b4cb		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14040	40	__glim_TexCoord3d	dwarf+dynsym	9689aaccc17d		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14070	28	__glim_TexCoord3f	dwarf+dynsym	a5b001f261a0		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14090	52	__glim_TexCoord3i	dwarf+dynsym	fa74a505eda4		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda140d0	52	__glim_TexCoord3s	dwarf+dynsym	fa74a505eda4		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14110	52	__glim_TexCoord3dv	dwarf+dynsym	74fd532383eb		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14090	52	__glim_TexCoord3i	dwarf+dynsym	fa74a505eda4		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda140d0	52	__glim_TexCoord3s	dwarf+dynsym	fa74a505eda4		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14110	52	__glim_TexCoord3dv	dwarf+dynsym	74fd532383eb		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14150	40	__glim_TexCoord3fv	dwarf+dynsym	e9a1eef46490		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14180	64	__glim_TexCoord3iv	dwarf+dynsym	b9145b308d51		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda141c0	64	__glim_TexCoord3sv	dwarf+dynsym	52a84ee917cd		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14180	64	__glim_TexCoord3iv	dwarf+dynsym	b9145b308d51		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda141c0	64	__glim_TexCoord3sv	dwarf+dynsym	52a84ee917cd		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14200	40	__glim_TexCoord4d	dwarf+dynsym	2bc721af3e64		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14230	24	__glim_TexCoord4f	dwarf+dynsym	e736c1aa7ae2		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14250	56	__glim_TexCoord4i	dwarf+dynsym	5f5a0e80d8c3		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14290	56	__glim_TexCoord4s	dwarf+dynsym	5f5a0e80d8c3		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda142d0	56	__glim_TexCoord4dv	dwarf+dynsym	1cc3aaaf6b3f		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14250	56	__glim_TexCoord4i	dwarf+dynsym	5f5a0e80d8c3		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14290	56	__glim_TexCoord4s	dwarf+dynsym	5f5a0e80d8c3		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda142d0	56	__glim_TexCoord4dv	dwarf+dynsym	1cc3aaaf6b3f		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14310	40	__glim_TexCoord4fv	dwarf+dynsym	128706ae4599		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14340	72	__glim_TexCoord4iv	dwarf+dynsym	9313b2f8c191		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14390	72	__glim_TexCoord4sv	dwarf+dynsym	f8ba6e506fdd		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14340	72	__glim_TexCoord4iv	dwarf+dynsym	9313b2f8c191		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14390	72	__glim_TexCoord4sv	dwarf+dynsym	f8ba6e506fdd		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda143e0	3852	__glTextureRGB_F_F_Span	dwarf+dynsym	37e82c6c3f85		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda152f0	3848	__glTextureRGB_F_F_StippledSpan	dwarf+dynsym	3859718a9500		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda16200	7132	__glTextureRGB_F_LML_Span	dwarf+dynsym	b1ce38b244cb		in	undocumented		
