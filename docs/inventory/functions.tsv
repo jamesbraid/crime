@@ -8336,8 +8336,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da290	228	__glFogSpan	d
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da374	292	__glFogStippledSpan	dynsym+mdebug	74b73e2726d7		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da498	524	__glFogSpanSlow	dynsym+mdebug	f1d68acc9876		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da6a4	628	__glFogStippledSpanSlow	dynsym+mdebug	ff393eb958bc		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da918	412	__glFogFragmentSlow	dynsym+mdebug	c2cbd4b798db		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9daab4	272	__glFogVertex	dynsym+mdebug	4e11e7296a07		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da918	412	__glFogFragmentSlow	dynsym+mdebug	c2cbd4b798db		in	named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9daab4	272	__glFogVertex	dynsym+mdebug	4e11e7296a07		in	named-only	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dabc4	100	__glFogVertexLinear	dynsym+mdebug	3387f2b62fd3		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dac28	124	__glFogColorSlow	dynsym+mdebug	e6bdbdbf6597		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dacb0	248	__glim_GetTexEnvfv	dynsym+mdebug	bccb300fd0f4		in	located	docs/sample-implementation.md#so_getc	so_get.c
@@ -12457,12 +12457,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8110	212	__glFeedbac
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d81f0	1204	__glFeedbackTriangle	dwarf+dynsym	cfe76cc98317		in	located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d86b0	88	__glim_Finish	dwarf+dynsym	1646b91644a5		in	understood	docs/sample-implementation.md#so_finishc	so_finish.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8710	88	__glim_Flush	dwarf+dynsym	aa09f27c18b1		in	understood	docs/sample-implementation.md#so_finishc	so_finish.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8770	180	__glFogSpan	dwarf+dynsym	20456f7bf114		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8830	568	__glFogStippledSpan	dwarf+dynsym	87459aa6abe9		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8770	180	__glFogSpan	dwarf+dynsym	20456f7bf114		in	understood	docs/sample-implementation.md#so_fogc	so_fog.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8830	568	__glFogStippledSpan	dwarf+dynsym	87459aa6abe9		in	understood	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8a70	472	__glFogSpanSlow	dwarf+dynsym	06f3a0971d61		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8c50	612	__glFogStippledSpanSlow	dwarf+dynsym	5a3ebf455543		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8ec0	356	__glFogFragmentSlow	dwarf+dynsym	f207cbf0c60b		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9030	260	__glFogVertex	dwarf+dynsym	2565dfe432af		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d8ec0	356	__glFogFragmentSlow	dwarf+dynsym	f207cbf0c60b		in	named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9030	260	__glFogVertex	dwarf+dynsym	2565dfe432af		in	named-only	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9140	76	__glFogVertexLinear	dwarf+dynsym	88ca7d011e63		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9190	104	__glFogColorSlow	dwarf+dynsym	27bdda3e67cc		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9200	216	__glim_GetTexEnvfv	dwarf+dynsym	b502decc3a6f		in	located	docs/sample-implementation.md#so_getc	so_get.c
