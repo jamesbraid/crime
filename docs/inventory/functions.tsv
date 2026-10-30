@@ -4069,7 +4069,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b7db0	912	FindDictValue..IOB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b8140	1476	xdevScreenChange	dynsym	d692bbdd328f	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b8710	3184	ProcXineramaDbeGetVisualInfo..FIC	dynsym	be767d6654c0	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9380	228	MakeFontNamesRecord	dynsym	a068056e7627	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9470	260	Xrealloc	dynsym	1fd2182ef44d	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9470	260	Xrealloc	dynsym	1fd2182ef44d	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9580	212	MitAddCookie	dynsym	308a262a29e5	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9660	480	ProcSyncChangeAlarm..EIE	dynsym	60043c28a49a	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9840	1316	add_range	dynsym	6ad5912bd5ea	undocumented		
