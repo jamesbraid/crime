@@ -16,11 +16,11 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	kernel	board-kernel	object	n32	4820	
 usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	4244	761feae31d6f6d83		2	symtab	0	4	named-only	docs/context.md#context-save-and-restore-irix-6530-o2	Context save and restore (IRIX 6.5.30, O2)
 usr/cpu/sysgen/IP32boot/gfx.o	kernel-shared	shared-kernel	object	n32	40296	d9324b66d28a576b		57	symtab	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	kernel-shared	shared-kernel	object	n32	40308	9f5a58ab7cd5b715		57	symtab	0	0	undocumented		
-usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	none	0	0	located	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	none	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	symtab (dwarf addresses stale, dropped)	154	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	symtab	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	symtab+dwarf	1	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	symtab	0	0	located	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb04a26f8f76d		70	symtab	0	0	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	dynsym	0	0	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	dynsym+mdebug	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
@@ -56,7 +56,7 @@ usr/gfx/ucode/CRM/vof/640x480_60.vfo	video-formats	board-data	data	-	12416	39b35
 usr/gfx/ucode/CRM/vof/800x600_60.vfo	video-formats	board-data	data	-	12424	0d0ab781ff5cc464		0		0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/800x600_72.vfo	video-formats	board-data	data	-	12424	db28df16143bbd83		0		0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib/X11/dyDDX/crm.so	x-module	board-x-module	shared-object	n32	1861396	4d5bf5d105b6afbb		840	dynsym	2376	7	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/lib/X11/dyDDX/glx.so	x-shared	shared-x-server	shared-object	n32	646360	ba330e08d1e52cb2		981	dynsym	0	0	located	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/lib/X11/dyDDX/glx.so	x-shared	shared-x-server	shared-object	n32	646360	ba330e08d1e52cb2		981	dynsym	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/lib/dmedia/imageconverters/debug/vicedv.so	video-libraries	board-library	shared-object	o32	643984	ef3434452fe0e07e		95	dynsym+mdebug	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	video-libraries	board-library	shared-object	o32	136276	c0740542b572954e		64	dynsym+mdebug	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/lib/dmedia/imageconverters/debug/vicers.so	video-libraries	board-library	shared-object	o32	64972	16f3d67bc6b0a5f5		26	dynsym+mdebug	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
@@ -80,4 +80,4 @@ usr/lib32/dmedia/video/mvp.so	video-libraries	board-library	shared-object	n32	30
 usr/lib32/internal/libvice.so	video-libraries	board-library	shared-object	n32	35156	8c3cbe4632d5f1e8		51	dynsym+dwarf	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/lib32/libXsgivc.so	video-libraries	board-library	shared-object	n32	76084	9feef3be85dbeac2		64	dynsym+dwarf	0	0	named-only	docs/xsgivc.md#video-control-client-library-libxsgivcso	Video-control client library (`libXsgivc.so`)
 usr/lib64/libXsgivc.so	video-libraries	board-library	shared-object	n64	80696	7aac36571fb57b90		64	dynsym+dwarf	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
-usr/sbin/Confidence/dualchannel	standalone	board-diagnostic	executable	o32	70132	9051ef55a049d983		39	dynsym	0	0	located	docs/binaries.md#diagnostics	Diagnostics
+usr/sbin/Confidence/dualchannel	standalone	board-diagnostic	executable	o32	70132	9051ef55a049d983		39	dynsym	0	0	understood	docs/binaries.md#diagnostics	Diagnostics
