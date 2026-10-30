@@ -28,6 +28,7 @@ Reviewed and set aside: US 6,342,892 and its relatives (the Nintendo 64 signal p
 ## 1. O2 Technical Report, version 1.0
 
 - Identity: SGI, "O2 Technical Report", version 1.0, October 1997, 63 pages. Copy read: https://bukosek.si/hardware/collection/sgi-o2/o2-tech-report.pdf (SHA-256 `c0fad6ac1e1c982454c3b867c719bd6e62ef171cd0caa46f04ff2afc42c714ee`).
+- Stored copy: [docs/sources/reports/o2-technical-report-1.0.pdf](sources/reports/o2-technical-report-1.0.pdf), SHA-256 `c0fad6ac1e1c982454c3b867c719bd6e62ef171cd0caa46f04ff2afc42c714ee`, library path `graphics/o2/o2-technical-report-1.0.pdf`.
 - Covers: the whole machine. Chapter 3 memory, chapter 4 graphics (the rendering engine), chapter 7 imaging (ICE). The report calls CRIME the "MRE".
 - Match: exact; product level, so no register or width below what is quoted.
 
@@ -50,6 +51,7 @@ Open questions moved: the dither format list; the 6-bit fraction (to established
 ## 2. Unified Memory Architecture summary
 
 - Identity: SGI, "Unified Memory Architecture", white paper, 6 pages. https://www.sgidepot.co.uk/o2/1352.pdf (SHA-256 `984d35ab1ae7c3d74823bc90776d71541d177ce42f76eef13c35d750964ed395`).
+- Stored copy: [docs/sources/reports/o2-unified-memory-architecture.pdf](sources/reports/o2-unified-memory-architecture.pdf), SHA-256 `984d35ab1ae7c3d74823bc90776d71541d177ce42f76eef13c35d750964ed395`, library path `graphics/o2/o2-unified-memory-architecture-1352.pdf`.
 - Covers: the memory system at product level. Match: exact, but with no chip detail.
 
 Facts (established, published): a four-bank multiplexed SDRAM subsystem delivering a sustained 2.1 GB/s; every subsystem reaches memory through its own port; no local buffers for video, graphics, imaging or compression; a texture is used "by passing a pointer", with no copy. No arbitration order or widths beyond source 1. Bearing: none on an open entry; it states the design intent behind the rendering TLB.
@@ -57,6 +59,7 @@ Facts (established, published): a four-bank multiplexed SDRAM subsystem deliveri
 ## 3. O2 Digital Media white paper
 
 - Identity: SGI, "Silicon Graphics O2 Workstation Digital Media White Paper". https://www.sgidepot.co.uk/o2/o2dm.pdf (SHA-256 `53aeaa0f9578b9dea07189b973fc2c97363a15ddbf6b483bad1405eac523d18a`).
+- Stored copy: [docs/sources/reports/o2-digital-media-whitepaper.pdf](sources/reports/o2-digital-media-whitepaper.pdf), SHA-256 `53aeaa0f9578b9dea07189b973fc2c97363a15ddbf6b483bad1405eac523d18a`, library path `graphics/o2/o2-digital-media-whitepaper.pdf`.
 - Covers: imaging, video and compression at product level. Match: exact.
 
 Facts (established, published): "the O2 graphics engine processes data in 8-bit per component RGBA colour space" while video is 4:2:2 YCrCb of 8 or 10 bits, so the video path converts on entry; ICE does JPEG compression and decompression of video streams and texture images and accelerates the OpenGL imaging extensions; MPEG-1, H.261, Cinepak and Indeo are software. The 8-bit-per-component statement settles the blend operand width: the destination colour the blender reads is 8 bits per component, which [pixel-arithmetic.md](pixel-arithmetic.md) already derived from the frame formats. The product of an 8-bit colour and an 8-bit factor, and its rounding, are in no published source.
@@ -64,6 +67,7 @@ Facts (established, published): "the O2 graphics engine processes data in 8-bit 
 ## 4. OpenGL implementations paper (Graphics Hardware 1997)
 
 - Identity: "Realizing OpenGL: Two Implementations of One Architecture", Graphics Hardware workshop, 1997, 11 pages. Copy read: the proceedings PDF (SHA-256 `c568a0eaabffc399c548c18f9a768a4d3156def7a6ab548cbae1cccdfffa26c3`). Its second half is the O2.
+- Stored copy: [docs/sources/papers/kilgard97-realizing-opengl.pdf](sources/papers/kilgard97-realizing-opengl.pdf), SHA-256 `c568a0eaabffc399c548c18f9a768a4d3156def7a6ab548cbae1cccdfffa26c3`, library path `graphics/onyx/kilgard97-realizing-opengl.pdf`.
 - Match: exact.
 
 Facts (established, published):
@@ -79,6 +83,7 @@ Open questions moved: none closed.
 ## 5. US 6,104,417, unified memory with dynamic graphics memory allocation
 
 - Identity: US 6,104,417, "Unified memory computer architecture with dynamic graphics memory allocation", filed 1996-09-13, granted 2000-08-15, assigned to SGI by its inventors (a continuation application is US 2001/0019331; European family EP 0 829 820). https://patents.google.com/patent/US6104417A/en
+- Stored copy: [docs/sources/patents/US6104417.pdf](sources/patents/US6104417.pdf), SHA-256 `4765de14ef12d18e9e4774060db4281f0e64932f7bc381f4bcaf32d002f6d874`, library path `patents/US6104417-o2-unified-memory-dynamic-graphics.pdf`.
 - Covers: a memory controller and rendering engine on one IC (the text's "graphics rendering and memory controller IC"), a graphics back end, an I/O IC and an image processor and compression device (which a table names VICE, with MACE and GBE for the other clients), all sharing one SDRAM memory. The text does not use the product names; the match to CRIME, MACE, GBE and VICE rests on the table's labels, the 66 MHz clock and the 64 KB tile, and is high but **inferred**.
 - Match: high. Facts **inferred**.
 
@@ -93,18 +98,21 @@ Facts:
 ## 6. RealityEngine Graphics (SIGGRAPH 1993)
 
 - Identity: "RealityEngine Graphics", SIGGRAPH 93 proceedings, pages 109-116. Copy read: https://cseweb.ucsd.edu/~ravir/6160-fall04/papers/p109-akeley.pdf (SHA-256 `76b3bf10b66d0e8ee4f03971a7ecfa6540bfc919c58afce8e37062e5d3b08e71`).
+- Stored copy: [docs/sources/papers/akeley93-realityengine-graphics.pdf](sources/papers/akeley93-realityengine-graphics.pdf), SHA-256 `76b3bf10b66d0e8ee4f03971a7ecfa6540bfc919c58afce8e37062e5d3b08e71`, library path `papers/akeley93-realityengine-graphics.pdf`.
 - Covers: a high-end predecessor, not the O2. Match: lineage only; everything below is **inferred** for CRIME.
 - Facts: set-up treats each parameter as a plane equation with a signed slope in the positive X and Y directions, on the geometry side, which is the arrangement the O2 report describes with the host as the set-up engine ([pixel-arithmetic.md](pixel-arithmetic.md): slopes A and B from the three vertices); perspective correction by interpolating S/W, T/W, R/W and 1/W and dividing per pixel; level of detail from "the worst-case of the four pixel-to-texel X and Y ratios"; trilinear blend from the sub-texel and level fractions; colour components of 12 bits in the buffers and 12-to-10-bit dither before gamma. The first three agree in outline with the specification's steppers and the `rho = max(...)` level of detail ([pixel-arithmetic.md](pixel-arithmetic.md), [spec] PDF 204). The 12-bit and dither items do not carry to the 8-bit O2.
 
 ## 7. US 5,490,240, three-dimensional textures
 
 - Identity: US 5,490,240, "System and method of generating interactive computer graphic images incorporating three dimensional textures", filed 1993-07-09, granted 1996-02-06, assigned to SGI. https://patents.google.com/patent/US5490240A/en
+- Stored copy: [docs/sources/patents/US5490240.pdf](sources/patents/US5490240.pdf), SHA-256 `5a458b3d356fdde064a1cd1a323a0b8aa1ec17be2f8986df59073bad199fa3cf`, library path `patents/US5490240-three-dimensional-textures.pdf`.
 - Match: lineage only. The page names no product.
 - Facts (**inferred** for CRIME): the level of detail of a 2 x 2 quad (or per pixel) is the maximum of absolute differences of the texture coordinates across a step in x and in y; the fine level is `max(0, int(log2(LOD)))`, the coarse level is fine + 1, and the level fraction is `(LOD >> fine) - 1.0`, that is the LOD divided by 2^fine minus one, linear in LOD, not in log2 LOD; eight neighbouring texels are addressed from the integer parts, a trilinear lookup reads 16, and two 8-way interpolations are blended by the level fraction. **Bearing:** this is the candidate for the two entries in [pixel-arithmetic.md](pixel-arithmetic.md) that are "unknown: no shipped software or published source depends on it", the precision of the level of detail and how its fraction weights the two levels. The specification takes `LOD = log2(rho)` with rho a maximum; the patent's maximum matches. The linear fraction is a design of the generation before; whether CRIME keeps it is unknown. A discriminating reading: the diagnostic's texture tests, if any lists a level fraction (the O2 diagnostics were not read for this).
 
 ## 8. US 5,528,738 and US 5,581,680, line antialiasing
 
 - Identity: US 5,528,738, "Method and apparatus for antialiasing raster scanned, polygonal shaped images", and US 5,581,680, "Method and apparatus for antialiasing raster scanned images", both filed 1993-10-06, granted 1996-06-18 and 1996-12-03, assigned to SGI. https://patents.google.com/patent/US5528738A/en and https://patents.google.com/patent/US5581680A/en
+- Stored copy: [docs/sources/patents/US5528738.pdf](sources/patents/US5528738.pdf), SHA-256 `cb47d3ef58cce10ba21f6dff92fad75aaa5f2e227efd5dc26441acfc71774145`, library path `patents/US5528738-antialiasing-polygonal-images.pdf`; [docs/sources/patents/US5581680.pdf](sources/patents/US5581680.pdf), SHA-256 `e5e877440c75a70d7867cf9e8f76df553548703e5123d59aabbf2b51056b4c26`, library path `patents/US5581680-antialiasing-raster-images.pdf`.
 - Covers: an extension of Bresenham's algorithm that writes two pixels per step with coverage from a table, for a desktop workstation (the text names the Indy). Match: lineage only.
 - Facts (**inferred** for CRIME's antialiased lines): coordinates 16.4, deltas 17.4, the decision value and a sign term 18.8; the vertical distance to the pixel centre carried with 4 fraction bits and an accumulated error under 2^-5 over a 2^16 range; coverage from eight tables, one per octant, of 4-bit entries (16 entries to a 64-bit table), addressed by the distance and its one's complement together to give both pixels' coverage; a circular cone filter; endpoint coverage the table entry scaled by the end point's fractional coordinate (or its complement at the start point); for fractional end points a corrected first decision value; two pixels per iteration; blending `alpha x colour + (1 - alpha) x buffer`. **Bearing:** the O2 report's "two-pixel-wide lines", "slope- and distance-based coverage tables in ROM" and "filtered line endpoints" read like this design, and the specification's 2.14 slope field ([context.md](context.md)) plays the part of the patent's slope term. The widths differ (the O2 has 6 fraction bits, the patent 4), so the patent is not the CRIME circuit. It names the design's ingredients and nothing else: the table contents and widths of the O2 stay unknown. Route: the specification's antialiased-line step, with the patent's decision terms as the vocabulary to look for.
 
