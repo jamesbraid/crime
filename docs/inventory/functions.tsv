@@ -7984,7 +7984,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bfcd8	52	__glFreeAsyncM
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bfd0c	52	__glDisposeAsyncMarker	dynsym+mdebug	46a01e85ceb5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bfd40	212	__glim_AlphaFunc	dynsym+mdebug	da4aa36dc6d8		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bfe14	452	__glim_BlendFunc	dynsym+mdebug	08a400585026		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bffd8	244	__glim_BlendEquationEXT	dynsym+mdebug	218731914b62		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bffd8	244	__glim_BlendEquationEXT	dynsym+mdebug	218731914b62		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c00cc	292	__glim_ClearAccum	dynsym+mdebug	6d6bb94963f4		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c01f0	268	__glim_ClearColor	dynsym+mdebug	4144006dba2a		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c02fc	156	__glim_ClearDepth	dynsym+mdebug	8c7f05996cbd		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
@@ -8039,7 +8039,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c4448	3412	__glim_PopAt
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c519c	2480	__glim_Enable	dynsym+mdebug	9a0f411691c6		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c5b4c	2544	__glim_Disable	dynsym+mdebug	12426fe8f0e1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c653c	1688	__glim_IsEnabled	dynsym+mdebug	2b54c166d605		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6bd4	268	__glim_BlendColorEXT	dynsym+mdebug	baf0bb38e823		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6bd4	268	__glim_BlendColorEXT	dynsym+mdebug	baf0bb38e823		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6ce0	112	__glim_PolygonOffsetEXT	dynsym+mdebug	b515386da35c		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6d50	120	__glim_PolygonOffset	dynsym+mdebug	1a8f53e9efd8		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6dc8	388	__glFreeAttributeState	dynsym+mdebug	55086efe5468		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
@@ -12109,7 +12109,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd0c0	52	__glFreeAsyn
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd100	52	__glDisposeAsyncMarker	dwarf+dynsym	28f9c3729450		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd140	196	__glim_AlphaFunc	dwarf+dynsym	139084722428		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd210	600	__glim_BlendFunc	dwarf+dynsym	9768525ae782		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd470	296	__glim_BlendEquationEXT	dwarf+dynsym	6ca548a7bff8		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd470	296	__glim_BlendEquationEXT	dwarf+dynsym	6ca548a7bff8		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd5a0	204	__glim_ClearAccum	dwarf+dynsym	3fbcc9ec225e		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd670	184	__glim_ClearColor	dwarf+dynsym	09c06d3cd76f		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd730	132	__glim_ClearDepth	dwarf+dynsym	c61558410a11		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
@@ -12119,7 +12119,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd8d0	120	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bd950	260	__glim_ColorMaterial	dwarf+dynsym	72db72cc7bd7		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bda60	156	__glim_CullFace	dwarf+dynsym	4df80ca1a786		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bdb00	408	__glim_DepthFunc	dwarf+dynsym	488ef2bf0f37		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bdca0	200	__glim_DepthMask	dwarf+dynsym	e6ae0b3cd0d9		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bdca0	200	__glim_DepthMask	dwarf+dynsym	e6ae0b3cd0d9		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bdd70	476	__glim_DrawBuffer	dwarf+dynsym	e3a485a21ea9		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bdf50	492	__glim_Fogfv	dwarf+dynsym	9161113310fe		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be140	120	__glim_Fogf	dwarf+dynsym	0152baf614e5		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
@@ -12164,7 +12164,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c1b80	3820	__glim_Pop
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c2a70	3244	__glim_Enable	dwarf+dynsym	199672700a38		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c3720	3328	__glim_Disable	dwarf+dynsym	aade58963f06		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4420	2252	__glim_IsEnabled	dwarf+dynsym	20a7dd0ecab1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4cf0	184	__glim_BlendColorEXT	dwarf+dynsym	4e2057f34246		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4cf0	184	__glim_BlendColorEXT	dwarf+dynsym	4e2057f34246		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4db0	112	__glim_PolygonOffsetEXT	dwarf+dynsym	d903306253e0		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4e20	120	__glim_PolygonOffset	dwarf+dynsym	3bb5fa590e89		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4ea0	356	__glFreeAttributeState	dwarf+dynsym	0928f9dffd73		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
@@ -12547,7 +12547,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5630	296	Comput
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5760	456	ComputeLightMaterialState	dwarf+funcnames	924ebd90ee51		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5930	144	__glValidateMaterial	dwarf+dynsym	92d178828bd8		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e59c0	140	__glValidateLighting	dwarf+dynsym	4be944ae9c20		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5a50	320	__glGenericPickColorMaterialProcs	dwarf+dynsym	dee6674e65d5		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5a50	320	__glGenericPickColorMaterialProcs	dwarf+dynsym	dee6674e65d5		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5b90	1556	__glClipLine	dwarf+dynsym	d76f7f173201		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e61b0	180	__glFastClipSmoothLine	dwarf+dynsym	e3dccd8d083e		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6270	188	__glFastClipFlatLine	dwarf+dynsym	b66da997b2fd		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
