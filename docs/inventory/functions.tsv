@@ -2414,7 +2414,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10081e60	296	ChangeKeyMapping	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10081f90	124	SGravityEvent	dynsym	bf395a7be9e9		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082010	1896	SProcSetMBufferAttributes..GLC	dynsym	e232df752637		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082780	228	AccessUnmapSubwindows	dynsym	0ea92cfb7a9f		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082870	972	ddxFindAvailableBoards..CGC	dynsym	2274a65a044b		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082870	972	ddxFindAvailableBoards..CGC	dynsym	2274a65a044b		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082c40	220	RecordFlushAllContexts..PIG	dynsym	82db137aeab0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082d30	5116	scan_cidtype1font	dynsym	62c8d27158c6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10084130	132	fs_handle_unexpected..JEB	dynsym	434583f220cf		undocumented		
@@ -2564,7 +2564,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098280	536	AccessXSlowKeyExpi
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100984a0	36	XETSwInternAtom	dynsym	25c0dc7b80ee		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100984d0	1244	sgiCapFillPolygon..FCE	dynsym	3a19d9a11042		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100989b0	44	GetGlyphs	dynsym	539a3301c179		named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098a20	3008	dbcDelayedSwapBufferDone	dynsym	5c996286716f		named-only	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098a20	3008	dbcDelayedSwapBufferDone	dynsym	5c996286716f		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100995e0	192	XETrapGetCurrent	dynsym	767f9e59339c		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100996a0	1656	ProcXineramaDbeSwapBuffers..EIC	dynsym	778ca7a28c18		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10099d20	96	sXETrapEvent..EFG	dynsym	523b3056f996		undocumented		
@@ -3105,7 +3105,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10102e20	1032	XineramaCollectEx
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10103240	11776	sp_end_char_screen	dynsym	e7bd2077505a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106040	968	glxMiFreeDeepWindow	dynsym	3e5432398f8a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106410	180	XETSwGetProperty	dynsym	6b18baac9ccf		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101064d0	520	ddxRequestBoards	dynsym	2a35da44e65c		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101064d0	520	ddxRequestBoards	dynsym	2a35da44e65c		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101066e0	32	AutoResetServer	dynsym	f88a58325b7a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106700	804	FreeClientNeverRetainResources	dynsym	e2f6b34488ec		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106a30	108	TimerFree	dynsym	85d12de030cf		named-only	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
@@ -3312,7 +3312,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c430	228	XkbExtensionInit	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c520	8	ProcBadRequest	dynsym	a7e7ca11a6b8		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c530	144	SProcSGIvcQueryOutputSync..NGG	dynsym	dd9946c222c1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c5c0	1440	ReadXkmCompatMap..PKF	dynsym	d7b9be32b17b		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012cb60	1612	ddxOpenScreens	dynsym	9b522a139670		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012cb60	1612	ddxOpenScreens	dynsym	9b522a139670		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d1b0	68	XETSwGrabKey	dynsym	07647160506a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d200	68	XETSwAllocNamedColor	dynsym	07647160506a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d250	188	SetDefaultFont	dynsym	e835130e1fef		undocumented		
@@ -3342,7 +3342,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10132bf0	1192	ProcXkbPerClientF
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101330a0	108	SListHostsReply	dynsym	508e447c2827		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133110	608	ProcXSendExtensionEvent	dynsym	2c8773126fcb		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133370	836	sp_begin_char_screen	dynsym	ac350ea757a9		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101336c0	592	rrmUngrab	dynsym	520ef467115a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101336c0	592	rrmUngrab	dynsym	520ef467115a		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133910	228	_XkbFilterLockState..LGF	dynsym	3b3997b529b7		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133a00	100	glxMiCloseAllocator	dynsym	1c0aaf0234cb		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133a70	580	ProcShapeCombine..KNC	dynsym	bc8f3478e048		undocumented		
@@ -3563,7 +3563,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015b9b0	16	XSGIProcessingSynth
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015b9c0	1824	CheckConnections	dynsym	684c79f259c1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c0e0	856	CopyDeviceBtnArgs..NMF	dynsym	5237522b341c		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c440	216	EnableDevice	dynsym	7eda3a731034		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c520	1092	dbcSetDrawBuffer	dynsym	0eb1fcaa04ce		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c520	1092	dbcSetDrawBuffer	dynsym	0eb1fcaa04ce		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c970	320	ProcDbeDeallocateBackBufferName..MHC	dynsym	2b82a5b3ef3f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cab0	228	DbeSetupBackgroundPainter..EJC	dynsym	a27c5b008f54		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cba0	572	AccessInitClientSocketAttrs	dynsym	f0999838b70e		undocumented		
@@ -3889,7 +3889,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101985b0	48	sp_begin_contour_2d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101985e0	252	SrvXkbFreeGeomDoodads	dynsym	19f9aa1d86a0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101986e0	240	SProcSGIvcChannelInputRectangle..IHG	dynsym	bf45f79145b4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101987d0	320	ProcGetAtomName	dynsym	b4b0d259fd0a		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198910	1452	ddxPostOpenScreens	dynsym	b8bc19594d73		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198910	1452	ddxPostOpenScreens	dynsym	b8bc19594d73		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198ec0	216	XcpExtensionInit	dynsym	7dcf73e3df18		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198fa0	672	AwareModeProcSGIXineramaGetFullInfo	dynsym	6ffd58e7b8ff		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10199240	164	CloseInputDevice	dynsym	73d765d22d22		undocumented		
@@ -6434,7 +6434,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9347ac	10608	vvec	m
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934878	960	__glCalcRGBColor	dynsym+mdebug	d3eb2b594571		named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934c40	236	__glCrmFlatTriangle	dynsym+mdebug	753cfe20b694		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	668ba30e8bbe		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934ec8	316	__glCrmSmoothCITriangle	dynsym+mdebug	2c793ca95622		located	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934ec8	316	__glCrmSmoothCITriangle	dynsym+mdebug	2c793ca95622		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935004	508	__glCrmSmoothRGBTriangle	dynsym+mdebug	a87365eb212d		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935200	600	__glCrmSmoothRGBATriangle	dynsym+mdebug	076d0d7a2212		located	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935458	428	__glCrmSmoothCIZTriangle	dynsym+mdebug	c3cf7b35d82a		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
@@ -6445,7 +6445,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935b88	120	__glCalcObjec
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c00	24	__glCalcTexture	dynsym+mdebug	8908c104d955		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c20	2816	__glCrmFillTriangle	dynsym+mdebug	e70f8eeccd59		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936720	52	__glCrmColorOptLine	dynsym+mdebug	b0f98c9a1c41		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	06eca960c81e		located	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	06eca960c81e		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	aaaab0e9cccc		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	252d4e54a3a5		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	3dbe6ef4ccde		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
@@ -6515,7 +6515,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f048	244	__glCrmPassFo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f13c	484	__glCrmPassColorMask	dynsym+mdebug	07801047d27f		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f320	56	__glCrmShadeModel	dynsym+mdebug	4b268ced2991		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f360	2548	__glCrmRenderBitmap	dynsym+mdebug	caceec64cc8a		located	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	ef3f263ee0ac		located	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	ef3f263ee0ac		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ff60	600	__glCrmRenderLeftRightBitmap	dynsym+mdebug	c5b48149bd9c		located	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	mdebug	e3624b9a5f36		located	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	3b119cbde5f3		located	docs/libglcore.md#crm_cic	`crm_ci.c`
@@ -6526,10 +6526,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940db0	48	MakeCurre
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940de0	16	ResizeCI	mdebug	adf5923bc0c3		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940df0	1956	PickCI	mdebug	911236345e22		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940e2c	444	__glCrmInitCI	dynsym+mdebug	ce50119dc41c		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940ff0	212	__glCrmDownloadCurrentColor	dynsym+mdebug	c101987576fd		located	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9410c4	268	__glCrmDownloadRasterColor	dynsym+mdebug	116dfad1e701		located	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940ff0	212	__glCrmDownloadCurrentColor	dynsym+mdebug	c101987576fd		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9410c4	268	__glCrmDownloadRasterColor	dynsym+mdebug	116dfad1e701		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9411d0	104	__glCrmClampScaleAndDownload	dynsym+mdebug	1e87f0a6b16d		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941238	188	__glcrmim_Indexf	dynsym+mdebug	ce1cdb6433da		located	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941238	188	__glcrmim_Indexf	dynsym+mdebug	ce1cdb6433da		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9412f4	64	__glcrmim_Indexd	dynsym+mdebug	b5fa2fb4fedf		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941334	68	__glcrmim_Indexi	dynsym+mdebug	5440d17a432e		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941378	76	__glcrmim_Indexs	dynsym+mdebug	b7a97378bd64		undocumented		
@@ -6545,7 +6545,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94165c	100	RasterPo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9416c0	1216	ApplySetColor	mdebug	85e1b92fd3c9		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94172c	156	__glCrmUnlayerColorProcs	dynsym+mdebug	462e39f2dc39		named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9417c8	272	__glCrmLayerColorProcs	dynsym+mdebug	e63d021f86df		named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9418d8	364	__glcrmim_FastColor4ub	dynsym+mdebug	07604a158f23		located	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9418d8	364	__glcrmim_FastColor4ub	dynsym+mdebug	07604a158f23		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941a44	76	__glcrmim_FastColor3ub	dynsym+mdebug	295dafc3b185		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941a90	72	__glcrmim_FastColor3ubv	dynsym+mdebug	772a5d14a359		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941ad8	72	__glcrmim_FastColor4ubv	dynsym+mdebug	16d597e1a26e		undocumented		
@@ -6587,7 +6587,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945350	1600	__glCrmCreat
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945990	636	__glCrmFillCheapFogTriangle	dynsym+mdebug	f826c02e1c5e		located	docs/libglcore.md#crm_ctric	`crm_ctri.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945c0c	236	__glCrmFillStippledTriangle	dynsym+mdebug	13ba4013260d		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945cf8	512	__glCrmFillFrontBackTriangle	dynsym+mdebug	8d1bbabda5fe		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLeftRightTriangle	dynsym+mdebug	52409b64c458		located	docs/libglcore.md#crm_ctric	`crm_ctri.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLeftRightTriangle	dynsym+mdebug	52409b64c458		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9460e0	1520	FillSubTriangle	mdebug	fe3ea7efe2df	multi-unit	named-only	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9466d0	6888	SetInitialParameters	mdebug	d2981fe950f6	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd946e40	4324	__glCrmFillSlowTriangle	dynsym+mdebug	63cefec8e203		named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
@@ -6615,11 +6615,11 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949560	420	__glCrmWideLi
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949704	520	__glCrmWideStippledLineRep	dynsym+mdebug	8b5b12deb7b6		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94990c	436	__glCrmScissorLine	dynsym+mdebug	b4316f63500a		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949ac0	464	__glCrmScissorStippledLine	dynsym+mdebug	9c6e81e21352		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949c90	272	__glCrmRenderCheapFogLine	dynsym+mdebug	05ac6c544fb5		located	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949c90	272	__glCrmRenderCheapFogLine	dynsym+mdebug	05ac6c544fb5		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949da0	724	__glCrmRenderAliasLine	dynsym+mdebug	9d9d69fc3018		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	f277d4fdaf89		named-only	docs/opengl.md#antialiasing	Antialiasing
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	1a4c73a9b99a		located	docs/libglcore.md#crm_linec	`crm_line.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	272b09ad403d		located	docs/libglcore.md#crm_linec	`crm_line.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	f277d4fdaf89		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	1a4c73a9b99a		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	272b09ad403d		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	3ceeeeac7bc2		located	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94adf0	356	__glCrmFogCILine	dynsym+mdebug	4dcd439decf7		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94af54	6492	__glCrmTexturedLine	dynsym+mdebug	c704d76b1af3		located	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
@@ -6670,7 +6670,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd954d1c	2924	__glCrmPickC
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955888	1260	__glCrmSetupPixelRenderOps	dynsym+mdebug	20002154c04c		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd955d74	14464	crmFastDoubleStore	mdebug	57506b511d69		located	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd955f5c	2732	crmDrawPixelsXfer	dynsym+mdebug	4b142b0391aa		located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd956a08	5472	crmDrawPixelsXfer2	dynsym+mdebug	40c283baeb76		named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd956a08	5472	crmDrawPixelsXfer2	dynsym+mdebug	40c283baeb76		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd957f68	3468	crmReadPixelsXfer	dynsym+mdebug	87dbde8150fe		named-only	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd958cf4	1760	crmCopyPixelsXfer	dynsym+mdebug	2bae5108ca47		located	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9593d4	544	crmCopyPixelsXferRW	dynsym+mdebug	16d99a25890c		named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
@@ -6693,8 +6693,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a79c	164	convertS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a840	280	convertRGBA5551To1555	mdebug	123320b03800		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a958	1716	convertRGBA1555To5551	mdebug	96c7837fbb35		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	9b201adf08fb		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	bc764cd0611a		located	docs/libglcore.md#crm_pointc	`crm_point.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	b9cd08efa11e		located	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	bc764cd0611a		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	b9cd08efa11e		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	f3b4e9868222		located	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	7f05794a59ae		located	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	3a5b53c44685		located	docs/libglcore.md#crm_pointc	`crm_point.c`
@@ -6708,7 +6708,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cb4c	476	RenderFr
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderLeftRightPoint	mdebug	bc1d6b1fc12b		located	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95cf2c	640	__glCrmPickPointProcs	dynsym+mdebug	d2e96b50f242		located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRenderPointRGBA	dynsym+mdebug	0d1189322ee9		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	4668b0c53e5b		located	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	4668b0c53e5b		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLineEquation	mdebug	07472f1af46e	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	73753387a867	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	cbaa7672f060		undocumented		
@@ -6716,7 +6716,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d5dc	40	FindP	mde
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d604	48	FindP2	mdebug	6bf844833ddf		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d634	1464	ComputeCoverageStuff	mdebug	9808c3c9ef60	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95dbec	22132	FillAASubTriangle	mdebug	7b4d12e76507	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd961760	6908	__glCrmFillAATriangle	dynsym+mdebug	2ca33edfd9c4		named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd961760	6908	__glCrmFillAATriangle	dynsym+mdebug	2ca33edfd9c4		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963260	160	RemoveHalfPixelAdjust	mdebug	4e15a1a3a526		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963300	1016	RestoreHalfPixelAdjust	mdebug	8c4951abe1a8		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9633a4	328	__glcrmim_Begin	dynsym+mdebug	77afd5c71214		named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -6738,7 +6738,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964008	68	SetHoldVe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96404c	200	EndPolygon	mdebug	9eb92c356a60		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9640ac	104	__glCrmBeginPolygon	dynsym+mdebug	ed79526818bf		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964114	492	EndPoints	mdebug	6dd34418bb36		located	docs/libglcore.md#crm_primc	`crm_prim.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9641ec	264	__glCrmBeginPoints	dynsym+mdebug	57e9f97fe889		located	docs/libglcore.md#crm_primc	`crm_prim.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9641ec	264	__glCrmBeginPoints	dynsym+mdebug	57e9f97fe889		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd964300	13168	crmSpanDoubleStore	mdebug	5778e9b1288d		located	docs/libglcore.md#crm_pxspanc	`crm_pxspan.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964528	752	__glCrmSpanRenderRGBA	dynsym+mdebug	006d43ea2617		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd964818	948	__glCrmSpanRenderRGBA2	dynsym+mdebug	0b1fa512d84b		undocumented		
@@ -6754,9 +6754,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966278	808	__glCrmSpanRe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9665a0	888	__glCrmSpanReadDepth2	dynsym+mdebug	2be5bfdb2da6		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966918	636	__glCrmSpanReadStencil	dynsym+mdebug	0118e92e4179		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966b94	452	__glCrmSpanReadStencil2	dynsym+mdebug	6faf2fb7a401		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966d60	1248	__glCrmFastRect	dynsym+mdebug	1de63b1344b4		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967240	512	__glCrmFrontBackRect	dynsym+mdebug	471f97a34aae		located	docs/libglcore.md#crm_rectc	`crm_rect.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967440	548	__glCrmLeftRightRect	dynsym+mdebug	b67222b98b66		located	docs/libglcore.md#crm_rectc	`crm_rect.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966d60	1248	__glCrmFastRect	dynsym+mdebug	1de63b1344b4		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967240	512	__glCrmFrontBackRect	dynsym+mdebug	471f97a34aae		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967440	548	__glCrmLeftRightRect	dynsym+mdebug	b67222b98b66		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967670	216	StoreRGBA	mdebug	2b6872a066ce		located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGBA2	mdebug	411f52acf184		located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967878	1340	ReturnRGBASpan	mdebug	eef9de2e160a		located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
@@ -10742,7 +10742,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b610	776	__glCrmScis
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b920	900	__glCrmScissorStippledLine	dwarf+dynsym	bf2ec4ee9b1a		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bcb0	260	__glCrmRenderCheapFogLine	dwarf+dynsym	c4c728e97d21		understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bdc0	644	__glCrmRenderAliasLine	dwarf+dynsym	b33ca5962213		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	6d4e8553d066		named-only	docs/opengl.md#antialiasing	Antialiasing
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	6d4e8553d066		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c750	424	__glCrmRenderFrontBackLine	dwarf+dynsym	b17071552c7a		understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c900	476	__glCrmRenderLeftRightLine	dwarf+dynsym	5fe660080ec0		understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cae0	720	__glCrmFlatColorLine	dwarf+dynsym	6a8769466dd7		understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
@@ -10795,7 +10795,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955d40	3012	__glCrmPic
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956910	964	__glCrmSetupPixelRenderOps	dwarf+dynsym	23f20a8a47cf		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd956ce0	436	crmFastDoubleStore	dwarf+funcnames	a0bd1b7ddeb7		understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956ea0	2508	crmDrawPixelsXfer	dwarf+dynsym	1542bc359efd		understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	67d1736e3d52		named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	67d1736e3d52		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd958b90	3100	crmReadPixelsXfer	dwarf+dynsym	87ea423cb06d		named-only	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	77c988c307ee		understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd959d70	500	crmCopyPixelsXferRW	dwarf+dynsym	f50803ebf618		named-only	docs/pixel-transfer.md#drawpixels-and-readpixels-in-libglcore-the-transfer-path	DrawPixels and ReadPixels in libGLcore (the transfer path)
@@ -10841,7 +10841,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5c0	32	FindP	d
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5e0	40	FindP2	dwarf+funcnames	34c225db4557		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e610	92	ComputeCoverageStuff	dwarf+funcnames	83a6a9a2f28c	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e920	9836	FillAASubTriangle	dwarf+funcnames	8be7bc1d4c11	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd961680	5688	__glCrmFillAATriangle	dwarf+dynsym	d3d694473d9f		named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd961680	5688	__glCrmFillAATriangle	dwarf+dynsym	d3d694473d9f		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd962cc0	144	RemoveHalfPixelAdjust	dwarf+funcnames	a85b2c2e5a8d		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd962d50	148	RestoreHalfPixelAdjust	dwarf+funcnames	c4b8273a1212		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd962df0	304	__glcrmim_Begin	dwarf+dynsym	600e05c1d799		named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -10879,7 +10879,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd965c80	820	__glCrmSpan
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd965fc0	600	__glCrmSpanReadDepth2	dwarf+dynsym	9b5529db0168		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966220	580	__glCrmSpanReadStencil	dwarf+dynsym	17109a658fd0		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966470	336	__glCrmSpanReadStencil2	dwarf+dynsym	e81496ab6311		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9665c0	1044	__glCrmFastRect	dwarf+dynsym	ca289fa532a8		undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9665c0	1044	__glCrmFastRect	dwarf+dynsym	ca289fa532a8		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9669e0	464	__glCrmFrontBackRect	dwarf+dynsym	d7d5915ad99f		understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd966bb0	516	__glCrmLeftRightRect	dwarf+dynsym	a1df96ae8b63		understood	docs/libglcore.md#crm_rectc	`crm_rect.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd966dc0	208	StoreRGBA	dwarf+funcnames	a5362924dfed		understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
