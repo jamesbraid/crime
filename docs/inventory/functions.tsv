@@ -6393,7 +6393,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93295c	108	__glMipsClipC
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9329c8	140	__glMipsClipCheck2D_3	dynsym+mdebug	b03054c2891f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932a54	152	__glMipsClipCheck2D_3_vtx	dynsym+mdebug	7f39d9ea437e		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932aec	68	__glMipsClipCheck2D_4	dynsym+mdebug	fcf8c7c389c5		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b30	24	__glSaveN	dynsym+mdebug	e6df26f8e1f3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b30	24	__glSaveN	dynsym+mdebug	e6df26f8e1f3		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b48	20	__glSaveCI	dynsym+mdebug	9e2fa4165942		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b5c	24	__glSaveC	dynsym+mdebug	194b496f59a3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b74	24	__glSaveT	dynsym+mdebug	1b59438a8e9f		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
@@ -10518,13 +10518,13 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93413c	108	__glMipsCli
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9341a8	140	__glMipsClipCheck2D_3	dwarf+dynsym	dfeaf00a37ca		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934234	152	__glMipsClipCheck2D_3_vtx	dwarf+dynsym	1c4056562d23		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9342cc	76	__glMipsClipCheck2D_4	dwarf+dynsym	a3087f8745a3		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934320	24	__glSaveN	dwarf+dynsym	e6df26f8e1f3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934320	24	__glSaveN	dwarf+dynsym	e6df26f8e1f3		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934338	20	__glSaveCI	dwarf+dynsym	9e2fa4165942		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93434c	24	__glSaveC	dwarf+dynsym	eb5db073c316		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93434c	24	__glSaveC	dwarf+dynsym	eb5db073c316		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934364	24	__glSaveT	dwarf+dynsym	27d3c2335562		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93437c	40	__glSaveCT	dwarf+dynsym	c677d6d83058		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343a4	40	__glSaveNT	dwarf+dynsym	57413f705dcc		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343cc	56	__glSaveCAll	dwarf+dynsym	86554ea92537		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343cc	56	__glSaveCAll	dwarf+dynsym	86554ea92537		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934404	52	__glSaveCIAll	dwarf+dynsym	52777e01d5cf		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934438	68	__glSaveCN	dwarf+dynsym	0c066b11c58a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93447c	100	__glSaveCNT	dwarf+dynsym	f17d73997332		in	undocumented		
