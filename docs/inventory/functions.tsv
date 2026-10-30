@@ -6814,7 +6814,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970f64	988	crmUpdateSharedTiles	mdebug	bba7ae087451		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd971340	92	crmCalcDMTexture	mdebug	06cafa791193		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	012486f6788d		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	d2ebfd5cca80		named-only	docs/memory.md#texture-level-layout-in-the-texture-tlb	Texture level layout in the texture TLB
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	d2ebfd5cca80		located	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	ce17ebe7e579		named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972250	360	crmFreeTexImage	mdebug	eaab2d84f80d		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9723b8	2388	crmFreeTexObj	mdebug	65603cb5b28a		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -10932,14 +10932,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96df60	92	crmDoDo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dfc0	136	crmDoDoubleStore_S	dwarf+funcnames	2d97f79a6ce7		understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e050	296	crmDoDoubleStore_D	dwarf+funcnames	6d6ce6806e36		understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e180	336	crmDoDoubleStore_SD	dwarf+funcnames	777ca1fde501		understood	docs/libglcore.md#crm_storec	`crm_store.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96e2d0	224	__glCrmGenericPickStoreProcs	dwarf+dynsym	4f4e5ecf5671		located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96e2d0	224	__glCrmGenericPickStoreProcs	dwarf+dynsym	4f4e5ecf5671		understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	5d231abb2964		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e500	64	texFastBind	dwarf+funcnames	7dbff97882b1		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	370591f469ad		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUpdateSharedTiles	dwarf+funcnames	d04d201fbe65		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	d5fe460278b7		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	21705aa8efc4		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	b247131b42d5		named-only	docs/memory.md#texture-level-layout-in-the-texture-tlb	Texture level layout in the texture TLB
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	b247131b42d5		understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96f770	296	__glCrmResetTextureState	dwarf+dynsym	b12bcb1cbdbc		named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f8a0	328	crmFreeTexImage	dwarf+funcnames	0f93c9312c12		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f9f0	528	crmFreeTexObj	dwarf+funcnames	e30763b61d09		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends

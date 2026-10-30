@@ -338,8 +338,8 @@ One row per rendering, transfer-engine and status register, with what the regist
 | `+0x20c4` | Stipple.pattern | the 32-bit stipple pattern row; the stippled span and line routines of `libGLcore.so` write it, and `crimePcxSwap` in `crime.o` reads it back on a context switch | established |
 | `+0x20d0` | Shade.fgColor | the flat or foreground colour, packed RGBA; written by `__glCrmDownloadCurrentColor` and most drawing routines of `libGLcore.so` | established |
 | `+0x20d8` | Shade.bgColor | the background colour for opaque stippling; only the context reload `crmLoadGlobalsFromShadow` in `crime.o` writes it, so IRIX never draws opaque stipples | established |
-| `+0x2110` | Texture.mode | the texture mode word with filter, wrap and level fields; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` when the texture state changes | established |
-| `+0x2118` | Texture.format | the 64-bit texture format word, texel type and level geometry; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` on a texture bind | established |
+| `+0x2110` | Texture.mode | the texture mode word with filter, wrap and level fields; written by the texture-parameter routine `crmSetTextureParam` in `libGLcore.so` when the texture state changes | established |
+| `+0x2118` | Texture.format | the 64-bit texture format word, texel type and level geometry; written by `crmSetTextureParam` in `libGLcore.so` on a texture bind | established |
 | `+0x2120` | Texture.SQs | the 36.12 start value of s times q; written by `__glCrmFillTriangle` and the span routines of `libGLcore.so` with the +2048 rounding term | established |
 | `+0x2128` | Texture.TQs | the 36.12 start value of t times q; written beside the s start by `__glCrmFillTriangle` in `libGLcore.so` | established |
 | `+0x2130` | Texture.Qs | the 18.12 start value of q, at some sites committed through the start alias; `__glCrmFillTriangle` in `libGLcore.so` is among the writers | established |
@@ -347,8 +347,8 @@ One row per rendering, transfer-engine and status register, with what the regist
 | `+0x2140` | Texture.dsqdy | the y slope of s times q; triangles write the plane slope and textured lines write zero so a stale slope does not carry over, with `__glCrmStoreLine` in `libGLcore.so` among the writers | established |
 | `+0x2148` | Texture.dtqdx | the x slope of t times q as a 64-bit integer; written by `__glCrmFillTriangle` and `__glCrmStoreLine` in `libGLcore.so` | established |
 | `+0x2150` | Texture.dtqdy | the y slope of t times q; textured lines write it as zero, triangles as the plane slope (`__glCrmFillTriangle` in `libGLcore.so`) | established |
-| `+0x2160` | Texture.borderColor | the texture border colour, packed RGBA; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` from the texture object | established |
-| `+0x2168` | Texture.envColor | the texture environment colour for the blend environment mode; written by `__glCrmGenericPickStoreProcs` in `libGLcore.so` | established |
+| `+0x2160` | Texture.borderColor | the texture border colour, packed RGBA; written by `crmSetTextureParam` in `libGLcore.so` from the texture object | established |
+| `+0x2168` | Texture.envColor | the texture environment colour for the blend environment mode; written by `crmSetTextureParam` in `libGLcore.so` when the environment mode is blend | established |
 | `+0x2194` | Antialias.cov | the antialiasing coverage word; only the context reload `crmLoadNonglobalsFromShadow` in `crime.o` writes it, replaying a saved value | established |
 | `+0x2198` | AlphaTest | the alpha test function and reference value; written by `__glCrmPassAlphaFunc` in `libGLcore.so` when glAlphaFunc changes | established |
 | `+0x21a0` | Blend.constColor | the constant blend colour; written by `__glCrmPassBlendColor` in `libGLcore.so` for glBlendColor | established |
