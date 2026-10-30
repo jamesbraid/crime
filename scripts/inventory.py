@@ -490,7 +490,23 @@ def computes(text):
     return True
 
 
+# An entry that closes with this label says its facts were written quickly and not yet checked against the
+# binary or the source: whatever else it says, it earns at most "located".
+UNVERIFIED = re.compile(r'\bunverified\.(\s*\|?\s*)$', re.I)
+
+
 def classify(text, subj=frozenset(), head=None):
+    """The status of one entry (see classify_read). An entry that closes with the Unverified label is graded
+    as if it closed with Inferred, so its content is read the same way and the hedge words do not read the
+    label, and then capped at located."""
+    bare = bare_text(text)
+    if not UNVERIFIED.search(bare):
+        return classify_read(text, subj, head)
+    status, _ = classify_read(UNVERIFIED.sub(r'Inferred.\1', text), subj, head)
+    return ('located' if status == 'understood' else status), False
+
+
+def classify_read(text, subj=frozenset(), head=None):
     """The status one entry (a table row, a list item, a paragraph or a header comment)
     earns for its subject. The entry must carry a derivation citation specific to the item, one
     that is not the row's own address. Behaviour labelled unknown, or hedged as not derived, is

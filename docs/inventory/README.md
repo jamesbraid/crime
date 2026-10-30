@@ -204,6 +204,8 @@ A release or patch number (`6.5.30m`, `patch 4103`), a binary name alone, and a 
 
 ### Hedges and restated names
 
+An entry that closes with the label `Unverified.` (where others close with `Inferred.` or `Established.`) grades at most `located`, whatever else it says. It marks a batch of entries written quickly and not yet re-read against the binary, so that the understood count includes only what has been checked. The cap applies to the closing label alone, as the last words of the entry or of a table row's last cell; `Unverified` in the middle of an entry reads as a hedge, as below. Re-reading an entry means correcting it and replacing the label with `Established.` or `Inferred.`.
+
 An entry that says what it did not derive is not a derivation. "Not derived", "not shown", "not determined", "not known", "not established", "not decoded", "unidentified", "unclear", "guess", "presumably", "speculative", "assumed", "named for", "named after", "from the name", "from its labels", "name only" and "name-derived" demote an entry to at most `located`, as `unknown` does (`HEDGE` in the script). A hedge about the entry's own subject is meant; write the behaviour you did derive in a sentence of its own and leave the hedged part out.
 
 The plain words of a role sentence do not count when they come from the subject's name. The identifier is split at underscores and case (`mClearEram` is `m`, `clear`, `eram`); a word of prose that is one of those parts, an inflection of one (`clears`), or the word an abbreviation stands for (`exp`, `exponential`) is dropped before the count of six. "Clears external memory" for `mClearEram` has one word of its own.

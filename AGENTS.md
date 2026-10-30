@@ -160,6 +160,12 @@ reword or reformat an entry to change its grade. Independent audits sample
 entries against the binaries, and their measured rates are published beside
 the coverage figures.
 
+An entry that was written quickly and not yet checked against the binary or
+the source ends with "Unverified." in place of "Inferred." or "Established.".
+It grades at most `located`, whatever else it says, so the understood figure
+counts only what has been read. When you re-read it, correct it and change the
+label to established or inferred.
+
 Some facts no software reveals, such as the reset value of a register no
 driver reads. When every route is exhausted, label the fact "unknown: no
 shipped software or published source depends on it" and list the routes you
