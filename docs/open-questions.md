@@ -36,6 +36,20 @@ Patents, SGI technical reports, white papers and conference papers were searched
 
 ## Where work stopped
 
+30 October 2026, function backfill pass (the `nfb` layer, `crm.so` register routines, the X server, the o32 driver). Functions understood: 1,314 of 17,280 (7.6 %), up from 1,201 (7.0 %) at the start of the pass, counted with the same script and the same sibling workspaces. Done in this pass:
+
+- [nfb-layer.md](nfb-layer.md): all 32 routines that were only named now have an entry (20 established, 12 inferred where a branch or a recursive walk was followed in outline: the dashed line, the screen-to-pixmap copy, the plane writer, the context validator and the tree walks).
+- [xmodule.md](xmodule.md): nine `crm.so` rows that carried a template sentence and no offsets now state their own offsets, ioctls and the hand-copy fallback that the window-destroy, swap-cancel and invalidate routines repeat. The window-destroy hook is not screen set-up: it wraps the previous destroy hook and notifies the kernel.
+- [xsgi.md](xsgi.md): thirteen routines of the X server on the path to the graphics driver (board attach, the resource-manager records, the double-buffer tickets), read from the decompilation.
+- [libglcore-o32.md](libglcore-o32.md): 48 of the 81 o32 `libGLcore.so` routines that the register scan lists. The scan lists engine sites for routines that only call a method through the context, so each entry says which registers the body really stores; the N32 entry that credits `__glCrmGenericPickStoreProcs` with the texture registers should be re-read the same way. The o32 build uses MIPS IV reciprocal and conditional-move forms that the decompiler does not decode, so read those routines with `objdump -m mips:isa64`.
+
+Next, in order:
+
+- o32 `libGLcore.so`: the 33 routines still without an entry, of which 24 need the disassembly: `__glCrmFlatColorLine`, `__glCrmDepthLine`, `__glCrmSmoothRGBZTriangle`, `__glCrmSmoothRGBATriangle`, `__glCrmSmoothRGBAZTriangle`, `__glCrmSpanRenderDepth` and `..Depth2`, the `Dump*Span` routines, `__glCrmAntiAliasLineRGB`, `__glCrmFastRect`, `__glCrmStoreLine`, `__glCrmStoreStippledLine`, `__glCrmTexturedLine`, `__glCrmFillTriangle`, `__glCrmFillAATriangle`, `__glCrmPickAllProcs` and `__glCrmPickDrawPixels`. The decompilable ones left are `__glCrmFillCheapFogTriangle`, `__glCrmRenderLeftRightBitmap`, `__glCrmPassStencilMode`, `__glCrmUpdatePolyStipple`, `__glCrmRenderAntiAliasLine` and the four pixel-transfer routines `crmCopyPixelsXfer`, `crmDrawPixelsXfer`, `crmDrawPixelsXfer2` and `crmReadPixelsXfer`. The N32 build has 83 such routines and the same problem: its entries that name no build credit nothing where the two builds differ.
+- Xsgi: `dbcDelayedSwapBufferDone`, `dbcSetDrawBuffer`, `ddxOpenScreens`, `ddxPostOpenScreens`, `ddxFindAvailableBoards..CGC`, `ddxRequestBoards`, `rrmUngrab`, `ddxMultiCursor` and the video-control screen routines. Their decompilations are the ones to read first.
+- `crm.so`: the 51 register routines now all have a row with offsets; the inferred ones (`crmTiledFS`, `crmTileRects`, `crmFillTriangleMTE..FD`, `crmZeroPolyArc` and the line and segment routines) still need a read of the whole body.
+- The kernel's remaining graphics-relevant routines (the transfer-engine users listed in `docs/functions.md`): not started.
+
 29 October 2026, libGLcore against the public sample implementation. Functions understood: 4,916 of 17,280 (28.4 %), up from 1,476 (8.5 %) at the start of the pass. [sample-implementation.md](sample-implementation.md) now holds 1,844 entries for the N32 library and 1,614 for the o32 library: 141 N32 entries established after reading the whole body against the public source (most of them differ from it, and each difference is stated), the rest inferred from name, direct calls and source extent. The generated list-compile and list-replay routines are matched to the generator specification the sample carries, `generated/listcomp.ls`, with the record size checked against its layout rule and each replay routine tied to the public entry point that jumps through the same dispatch-table slot.
 
 Next, in order:
