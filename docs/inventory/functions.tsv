@@ -12166,7 +12166,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c3720	3328	__glim_Dis
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4420	2252	__glim_IsEnabled	dwarf+dynsym	20a7dd0ecab1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4cf0	184	__glim_BlendColorEXT	dwarf+dynsym	4e2057f34246		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4db0	112	__glim_PolygonOffsetEXT	dwarf+dynsym	d903306253e0		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4e20	120	__glim_PolygonOffset	dwarf+dynsym	3bb5fa590e89		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4e20	120	__glim_PolygonOffset	dwarf+dynsym	3bb5fa590e89		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4ea0	356	__glFreeAttributeState	dwarf+dynsym	0928f9dffd73		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5010	532	__glim_EnableClientState	dwarf+dynsym	49160434f825		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5230	584	__glim_DisableClientState	dwarf+dynsym	f7aecbc0e0cc		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
