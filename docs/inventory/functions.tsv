@@ -6502,18 +6502,18 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93be34	228	__glcrmim_Sci
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93bf18	3688	__glcrmim_PopAttrib	dynsym+mdebug	27a69334bd65		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93cd80	2920	__glcrmim_Enable	dynsym+mdebug	57637e9c02a5		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93d8e8	3280	__glcrmim_Disable	dynsym+mdebug	351bd93ae57f		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e5b8	156	__glCrmEnableAlphaTest	dynsym+mdebug	c6b6323d9899		named-only	CRIME_RE.h:266	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e5b8	156	__glCrmEnableAlphaTest	dynsym+mdebug	c6b6323d9899		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e654	160	__glCrmPassAlphaFunc	dynsym+mdebug	9d243ba60bb6		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e6f4	284	__glCrmEnableBlend	dynsym+mdebug	3498da953993		named-only	CRIME_RE.h:267	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e810	900	__glCrmPassBlendFunc	dynsym+mdebug	8610882fce30		located	docs/libglcore.md#crm_attribc	`crm_attrib.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e6f4	284	__glCrmEnableBlend	dynsym+mdebug	3498da953993		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93e810	900	__glCrmPassBlendFunc	dynsym+mdebug	8610882fce30		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93eb94	340	__glCrmPassBlendColor	dynsym+mdebug	244bc5cb42d7		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ece8	120	__glCrmEnableDither	dynsym+mdebug	6e7e1b693d15		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ed60	132	__glCrmEnableLogicOp	dynsym+mdebug	a55c7df2f02b		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ede4	456	__glCrmPassLogicOp	dynsym+mdebug	f1482336df2f		located	docs/libglcore.md#crm_attribc	`crm_attrib.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93efac	156	__glCrmEnableFogTest	dynsym+mdebug	1f2646438b82		named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ede4	456	__glCrmPassLogicOp	dynsym+mdebug	f1482336df2f		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93efac	156	__glCrmEnableFogTest	dynsym+mdebug	1f2646438b82		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f048	244	__glCrmPassFog	dynsym+mdebug	51699797182a		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f13c	484	__glCrmPassColorMask	dynsym+mdebug	07801047d27f		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f320	56	__glCrmShadeModel	dynsym+mdebug	4b268ced2991		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f320	56	__glCrmShadeModel	dynsym+mdebug	4b268ced2991		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f360	2548	__glCrmRenderBitmap	dynsym+mdebug	caceec64cc8a		located	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	ef3f263ee0ac		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ff60	600	__glCrmRenderLeftRightBitmap	dynsym+mdebug	c5b48149bd9c		located	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
@@ -6573,7 +6573,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943154	72	Finish	md
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94319c	8	Flush	mdebug	aab9a3b4a314	multi-unit	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9431a4	180	DestroyHWContext	mdebug	2985e72abc84		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943258	644	LoseCurrent	mdebug	2b298dd15a5e	multi-unit	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943338	420	__glCrmUpdateHardwareState	dynsym+mdebug	2d9374272374		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd943338	420	__glCrmUpdateHardwareState	dynsym+mdebug	2d9374272374		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9434dc	164	DissociateDMPbuffer	mdebug	7ebcc8cd90c9		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd943580	1052	IsCompatibleDMPbuffer	mdebug	f5c4a638126a		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94399c	952	AssociateDMPbuffer	mdebug	6b0ed0df4f2b		undocumented		
@@ -6591,7 +6591,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd945ef8	488	__glCrmFillLe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9460e0	1520	FillSubTriangle	mdebug	fe3ea7efe2df	multi-unit	named-only	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9466d0	6888	SetInitialParameters	mdebug	d2981fe950f6	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd946e40	4324	__glCrmFillSlowTriangle	dynsym+mdebug	63cefec8e203		named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947f30	120	__glCrmPassDepthMask	dynsym+mdebug	f29a3bc20804		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947f30	120	__glCrmPassDepthMask	dynsym+mdebug	f29a3bc20804		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947fa8	420	__glCrmPassDepthFunc	dynsym+mdebug	7e193e6b7064		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94814c	108	__glCrmEnableDepthTest	dynsym+mdebug	8db32c4b6a8b		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481b8	16	PickDepth	mdebug	f9e77de3221d		undocumented		
@@ -6790,8 +6790,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96ec50	1304	__glCrmDumpS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f168	848	__glCrmDumpSPBuffSpan	dynsym+mdebug	e43007136126		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f4b8	588	__glCrmDumpSPBuffSpanRed	dynsym+mdebug	0dcd5081be03		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f710	72	__glCrmPassStencilMask	dynsym+mdebug	03c99fa52dab		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f758	240	__glCrmEnableStencilTest	dynsym+mdebug	26e10275795c		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f848	532	__glCrmPassStencilMode	dynsym+mdebug	97e7d8be2ae4		named-only	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f758	240	__glCrmEnableStencilTest	dynsym+mdebug	26e10275795c		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96f848	532	__glCrmPassStencilMode	dynsym+mdebug	97e7d8be2ae4		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd96fa5c	1400	__glCrmUpdatePolyStipple	dynsym+mdebug	e1d4759aed62		located	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffd4	12	PickStencil	mdebug	691e766163b1		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffe0	20	FetchStencil	mdebug	53b85bae1eb2		undocumented		
@@ -6815,7 +6815,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970f64	988	crmUpdat
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd971340	92	crmCalcDMTexture	mdebug	06cafa791193		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	012486f6788d		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	d2ebfd5cca80		located	docs/libglcore.md#crm_texturec	`crm_texture.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	ce17ebe7e579		named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	ce17ebe7e579		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972250	360	crmFreeTexImage	mdebug	eaab2d84f80d		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9723b8	2388	crmFreeTexObj	mdebug	65603cb5b28a		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9725e8	108	__glCrmFreeTexObj	dynsym+mdebug	fb69888242bb		undocumented		
@@ -10627,18 +10627,18 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93d350	212	__glcrmim_S
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93d430	3932	__glcrmim_PopAttrib	dwarf+dynsym	53e7ed64afd5		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93e390	3716	__glcrmim_Enable	dwarf+dynsym	bf31fb66f631		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93f220	4052	__glcrmim_Disable	dwarf+dynsym	0bbf723982e4		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940200	160	__glCrmEnableAlphaTest	dwarf+dynsym	36b720a574d0		named-only	CRIME_RE.h:266	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940200	160	__glCrmEnableAlphaTest	dwarf+dynsym	36b720a574d0		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9402a0	116	__glCrmPassAlphaFunc	dwarf+dynsym	3b4f7d8c92c7		located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940320	256	__glCrmEnableBlend	dwarf+dynsym	0890594e5f51		named-only	CRIME_RE.h:267	DrawMode (+0x2018) [E, spec PDF 174 unless noted]
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940320	256	__glCrmEnableBlend	dwarf+dynsym	0890594e5f51		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940420	856	__glCrmPassBlendFunc	dwarf+dynsym	70fd232be10c		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940780	144	__glCrmPassBlendColor	dwarf+dynsym	0234ef5932ad		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940810	108	__glCrmEnableDither	dwarf+dynsym	dc5d21a14682		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940880	120	__glCrmEnableLogicOp	dwarf+dynsym	07fd7112f638		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940900	436	__glCrmPassLogicOp	dwarf+dynsym	bf9fa1281598		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940ac0	152	__glCrmEnableFogTest	dwarf+dynsym	dc77445dac66		named-only	docs/opengl.md#fog	Fog
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940ac0	152	__glCrmEnableFogTest	dwarf+dynsym	dc77445dac66		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940b60	96	__glCrmPassFog	dwarf+dynsym	eab9131c30a5		located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940bc0	648	__glCrmPassColorMask	dwarf+dynsym	30ad38c35be6		understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e50	52	__glCrmShadeModel	dwarf+dynsym	49a7e8520e94		undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e50	52	__glCrmShadeModel	dwarf+dynsym	49a7e8520e94		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e90	3156	__glCrmRenderBitmap	dwarf+dynsym	afbbf636d5a1		understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941af0	456	__glCrmRenderFrontBackBitmap	dwarf+dynsym	66e91819e545		understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd941cc0	540	__glCrmRenderLeftRightBitmap	dwarf+dynsym	ab3223724bc2		understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
@@ -10698,7 +10698,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944dc0	68	Finish	
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e10	8	Flush	dwarf+funcnames	78aa5094d5ec	multi-unit	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e20	140	DestroyHWContext	dwarf+funcnames	921495114088		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944eb0	204	LoseCurrent	dwarf+funcnames	41989361edac	multi-unit	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944f80	280	__glCrmUpdateHardwareState	dwarf+dynsym	726b4ed78f27		undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944f80	280	__glCrmUpdateHardwareState	dwarf+dynsym	726b4ed78f27		located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9450a0	136	DissociateDMPbuffer	dwarf+funcnames	d5c2336e1d7a		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945130	1064	IsCompatibleDMPbuffer	dwarf+funcnames	5f691132429c		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd945560	1184	AssociateDMPbuffer	dwarf+funcnames	6b4b33789cda		undocumented		
@@ -10716,7 +10716,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd948660	428	__glCrmFill
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948810	1412	FillSubTriangle	dwarf+funcnames	18bdc7cec9d8	multi-unit	named-only	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948da0	1512	SetInitialParameters	dwarf+funcnames	af3a373ac4c1	multi-unit	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd949390	3252	__glCrmFillSlowTriangle	dwarf+dynsym	0753f64bba9e		named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a050	124	__glCrmPassDepthMask	dwarf+dynsym	055dd7dc3bef		undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a050	124	__glCrmPassDepthMask	dwarf+dynsym	055dd7dc3bef		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a0d0	372	__glCrmPassDepthFunc	dwarf+dynsym	8cc6f959bc71		located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a250	112	__glCrmEnableDepthTest	dwarf+dynsym	6ec689fe341f		located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDepth	dwarf+funcnames	78aa5094d5ec		undocumented		
@@ -10915,8 +10915,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c8d0	916	__glCrmDump
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cc70	640	__glCrmDumpSPBuffSpan	dwarf+dynsym	0a07cfd45603		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cef0	536	__glCrmDumpSPBuffSpanRed	dwarf+dynsym	172075032b92		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d110	76	__glCrmPassStencilMask	dwarf+dynsym	34bf8831efe5		understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d160	228	__glCrmEnableStencilTest	dwarf+dynsym	259eef69d07e		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d250	500	__glCrmPassStencilMode	dwarf+dynsym	241da12cdad4		named-only	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d160	228	__glCrmEnableStencilTest	dwarf+dynsym	259eef69d07e		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d250	500	__glCrmPassStencilMode	dwarf+dynsym	241da12cdad4		located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d450	964	__glCrmUpdatePolyStipple	dwarf+dynsym	b1675f2e9496		understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d820	8	PickStencil	dwarf+funcnames	78aa5094d5ec		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d830	8	FetchStencil	dwarf+funcnames	87506497337c		undocumented		
@@ -10940,7 +10940,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUp
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	d5fe460278b7		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	21705aa8efc4		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96efc0	1964	crmSetTextureParam	dwarf+funcnames	b247131b42d5		understood	docs/libglcore.md#crm_texturec	`crm_texture.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96f770	296	__glCrmResetTextureState	dwarf+dynsym	b12bcb1cbdbc		named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96f770	296	__glCrmResetTextureState	dwarf+dynsym	b12bcb1cbdbc		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f8a0	328	crmFreeTexImage	dwarf+funcnames	0f93c9312c12		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96f9f0	528	crmFreeTexObj	dwarf+funcnames	e30763b61d09		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96fc00	116	__glCrmFreeTexObj	dwarf+dynsym	f224a8edb351		undocumented		

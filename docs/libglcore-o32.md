@@ -42,6 +42,41 @@ The o32 build uses the MIPS IV reciprocal and conditional-move forms (`recip.s`,
 - `__glCrmSmoothCIZTriangle` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): draws a Gouraud-shaded colour-index triangle with depth, 428 bytes at offset 0xd935458. It reciprocates the signed area (+0x75e0), ORs one of four direction words (`0x0`, `0x10000`, `0x20000`, `0x30000`, by the sign word at +0x75e4 and the caller's flag) into the primitive base at +0x7d68 and stores it to `+0x2060` of the first mapping; the three vertex words go to `+0x2080`, `+0x2088` and `+0x2090`. From the vertices' colour indices (the first float of each colour record) and depth floats it computes the two plane gradients of each with multiply-add steps against the edge deltas, and stores the colour-index slopes as integers to `+0x2104` and `+0x210c`, the start index to `+0x20ec`, the depth slopes as 64-bit integers to `+0x21d0` and `+0x21d8`, and the start depth through the start alias `+0x29c8`, which starts the triangle. Established.
 - `__glCrmSmoothRGBTriangle` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): draws a Gouraud-shaded RGB triangle without depth or alpha, 508 bytes at offset 0xd935004. It reciprocates the signed area (+0x75e0), picks the primitive word (`0x2010000`, `0x2020000`, `0x2030000` or `0x2000000`, by the sign word at +0x75e4 and the caller's flag) for `+0x2060` of the first mapping, and stores the three vertex words to `+0x2080`, `+0x2088` and `+0x2090`. For each colour channel it forms the two plane gradients from the vertices' colour floats and the edge deltas with multiply-add steps, scales them by the float at +0x7d10 and truncates to integers: red and green slopes go to `+0x20f0`, `+0x20f4`, `+0x20f8` and `+0x20fc`, the blue slopes to `+0x2100` and `+0x2108`, and the start red and green to `+0x20e0` and `+0x20e4`. The start blue goes through the start alias `+0x28e8`, which starts the triangle. Established.
 - `__glCrmFogRGBLine` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): draws a fogged RGBA line, 652 bytes at offset 0xd936b34. It sets up the longer axis, vertex words, primitive word and stipple state as the smooth RGB line does, including the 127-pixel exit for an x-major stippled line. It then takes each end's fog value (the float at +0xb0 of the vertex record) times 255 and the scale at +0x7d10, and stores the start fog to `+0x2178` and the fog slope to `+0x2180` (x-major) or `+0x2188` (y-major). When bit 17 of the word at +0x76e4 (smooth shading) is set it also stores the start colour to `+0x20e0`, `+0x20e8` and `+0x20ec` and the colour slopes as the smooth RGB line does, clears the other axis's slopes, and starts the line with a zero store through the start alias `+0x2908`. Otherwise it stores the packed flat colour to `+0x20d0` and starts the line with a zero store through `+0x2980` or `+0x2988`, the start aliases of the two fog slope registers. Established.
+- `__glCrmPassLogicOp` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): passes the OpenGL logic operation to the engine, 456 bytes at offset 0xd93ede4, whole body read from the disassembly with its 16-entry jump table read from the library's data. It runs when the byte at +0xc94 is zero, or when that byte is set and either the word at +0x72c equals 0xbf1 or bit 11 of the enable word at +0x704 is set; otherwise it returns without a store. It subtracts 0x1500 from the operation word at +0x740 and, for a result of 0 to 15, puts that number in the low four bits of a stack word, because the table sends each operation to the case that writes its own number. An operation outside that range leaves those bits as the stack held them, and the other 28 bits of the word are never written by the routine. It stores the word to the logic-op register `+0x21b0` of both register views, +0x7db8 and +0x7dbc. Established.
+- `__glCrmPassStencilMode` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): passes the stencil test setup to the engine, 528 bytes at offset 0xd96f848, whole body read from the disassembly. It returns at once when the byte at +0x7a5c is zero. It turns each of the three stencil operation words at +0x68c, +0x690 and +0x694 into a code: keep gives code 0, zero gives 1, replace 2, increment 3, decrement 4 and invert 5; any other word gives 0. It builds a 32-bit word of four bytes: byte 0 and byte 1 are the low bytes of the halfwords at +0x686 and +0x688; byte 2 holds the low three bits of the word at +0x680 in bits 6 to 4 and the first operation code in bits 3 to 0; byte 3 holds the second operation code in bits 7 to 4 and the third in bits 3 to 0. Bit 7 of byte 2 is written as zero. It stores the word to stencil mode `+0x21e0` of both register views at +0x7db8 and +0x7dbc. Established.
+- `__glCrmPassBlendFunc` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): passes the blend equation and the two blend factors to the engine, 900 bytes at offset 0xd93e810, whole body read from the disassembly with its three jump tables read from the library's data. It returns without a store when the byte at +0xc94 is zero or the word at +0x72c equals 0xbf1. It turns the equation word at +0x72c and the factor words at +0x724 and +0x728 into four-bit codes through the three jump tables and a few comparisons, listed in the blend code table below. A name outside the tables leaves its code as the stack held it. Byte 3 of the stored word holds the source code in its high nibble and the destination code in its low nibble, and the low nibble of byte 2 holds the equation code; the other bits of the word keep what the stack held. The word goes to blend function `+0x21a8` of both register views. Established.
+- `__glCrmUpdateHardwareState` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)): brings every engine state register up to date from the context in one pass, 420 bytes at offset 0xd943338, whole body read from the disassembly. It calls, each with the context as its only argument and in this order, the alpha-test, blend and dither enable and pass routines, then the logic-op, depth, shade-model, fog and stencil ones, and last the texture-state reset. In detail it calls `__glCrmEnableAlphaTest`, `__glCrmPassAlphaFunc`, `__glCrmEnableBlend`, `__glCrmPassBlendFunc`, `__glCrmPassBlendColor`, `__glCrmPassColorMask`, `__glCrmEnableDither`, `__glCrmEnableLogicOp`, `__glCrmPassLogicOp`, `__glCrmPassDepthFunc`, `__glCrmPassDepthMask`, `__glCrmEnableDepthTest`, `__glCrmShadeModel`, `__glCrmEnableFogTest`, `__glCrmPassFog`, `__glCrmPassStencilMode`, `__glCrmEnableStencilTest`, `__glCrmPassStencilMask` and `__glCrmResetTextureState`. It stores no register itself and returns nothing. Established.
+
+### Blend code table
+
+Codes `__glCrmPassBlendFunc` builds, read from its three jump tables and comparisons. Destination alpha, its inverse and the source alpha-saturate factor depend on whether the word at +0xcc4 is positive.
+
+| OpenGL name | Equation code | Source code | Destination code |
+|---|---:|---:|---:|
+| zero | | 0 | 0 |
+| one | | 1 | 1 |
+| source colour | | | 2 |
+| one minus source colour | | | 3 |
+| destination colour | | 2 | |
+| one minus destination colour | | 3 | |
+| source alpha | | 4 | 4 |
+| one minus source alpha | | 5 | 5 |
+| destination alpha, positive word | | 6 | 6 |
+| destination alpha otherwise | | 1 | 1 |
+| one minus destination alpha, positive word | | 7 | 7 |
+| one minus destination alpha otherwise | | 0 | 0 |
+| source alpha saturate, positive word | | 12 | |
+| source alpha saturate otherwise | | 0 | |
+| constant colour | | 8 | 8 |
+| one minus constant colour | | 9 | 9 |
+| constant alpha | | 10 | 10 |
+| one minus constant alpha | | 11 | 11 |
+| add | 0 | | |
+| minimum | 1 | | |
+| maximum | 2 | | |
+| subtract | 3 | | |
+| reverse subtract | 4 | | |
+
 
 ## Colour, point and vertex routines
 
