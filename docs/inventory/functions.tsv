@@ -12302,11 +12302,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cc440	280	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cc560	500	__glim_GetColorTableSGI	dwarf+dynsym	fd51786e8a3e		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cc760	504	__glColorTableModifiers	dwarf+dynsym	20e674f429fd		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cc960	388	__glColorTableParameterv	dwarf+funcnames	fa5fba9163f8		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccaf0	112	__glim_ColorTableParameterivSGI	dwarf+dynsym	3c0103d879e9		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccb60	112	__glim_ColorTableParameterfvSGI	dwarf+dynsym	6028c9696e3c		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccaf0	112	__glim_ColorTableParameterivSGI	dwarf+dynsym	3c0103d879e9		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccb60	112	__glim_ColorTableParameterfvSGI	dwarf+dynsym	6028c9696e3c		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9ccbd0	372	__glGetColorTableParameterv	dwarf+funcnames	13ecd9c1e120		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccd50	112	__glim_GetColorTableParameterivSGI	dwarf+dynsym	03455ead1358		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccdc0	112	__glim_GetColorTableParameterfvSGI	dwarf+dynsym	93bad2aaa191		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccd50	112	__glim_GetColorTableParameterivSGI	dwarf+dynsym	03455ead1358		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccdc0	112	__glim_GetColorTableParameterfvSGI	dwarf+dynsym	93bad2aaa191		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cce30	956	__glim_CopyColorTableSGI	dwarf+dynsym	c44dd3968aee		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd1f0	760	__glim_CopyColorSubTable	dwarf+dynsym	4f3a94ab73d6		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd4f0	236	__glInitColorTables	dwarf+dynsym	5d8839a31c44		in	undocumented		
