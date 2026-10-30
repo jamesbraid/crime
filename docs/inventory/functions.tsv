@@ -12126,7 +12126,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be140	120	__glim_Fogf
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be1c0	500	__glim_Fogiv	dwarf+dynsym	e6776c980ba8		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be3c0	116	__glim_Fogi	dwarf+dynsym	2f2faf9b5285		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be440	148	__glim_FrontFace	dwarf+dynsym	465a73383315		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be4e0	440	__glim_Hint	dwarf+dynsym	8879682d270f		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be4e0	440	__glim_Hint	dwarf+dynsym	8879682d270f		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be6a0	116	__glim_IndexMask	dwarf+dynsym	fde92e68a70a		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be720	308	__glTransformLightDirection	dwarf+dynsym	b12c10adeea9		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9be860	636	__glim_Lightfv	dwarf+dynsym	38b6466c4456		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
