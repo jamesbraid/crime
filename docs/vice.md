@@ -1,0 +1,111 @@
+# VICE: the imaging and compression engine
+
+VICE (video, imaging and compression engine; the product literature calls it ICE) is the O2's image-processing ASIC. It sits on the CPU bus beside CRIME, holds a small signal processor for pixel arithmetic, a bitstream processor for variable-length codes and two DMA channels that read and write system memory through a 64-entry translation buffer. The CRIME specification gives it the window at `0x17000000` and interrupt input 31; the shipped software that drives it is `libvice.so` and the image-converter plug-ins listed in [binaries.md](binaries.md). The specification below is the first register-level source this repository has for it.
+
+Labels follow [AGENTS.md](../AGENTS.md). Source key: **[vice]** is the *VICE Design Specification*, document 099-0123-003, version 1.0, 17 April 1997 ([docs/sources/specs/vice-design-specification-099-0123-003.pdf](sources/specs/vice-design-specification-099-0123-003.pdf), SHA-256 `c67e6ec6655b3682b3eaa2cb973236764d8c37ff03defa85eb3ebc6eaddaf804`); its printed page numbers equal the PDF page numbers. It describes the third chip revision (see `VICE_ID`). The copy in hand lacks the instruction-set appendix (printed pages 250 to 391 are absent), so the signal-processor and bitstream-processor instruction sets are unknown here; the register and DMA chapters are complete. **[report]** is the O2 Technical Report ([published-sources.md](published-sources.md), source 1), **[spec]** the CRIME 1.5 specification.
+
+## Block summary
+
+- Established ([vice] PDF 15-21): the chip holds a media signal processor (MSP) with 6 KB of data RAM in three banks of 2 KB (A, B and C) and 4 KB of instruction RAM, a 32-bit scalar unit at 66 MHz issuing one instruction a clock, a 128-bit vector unit at 66 MHz with one multiply and one accumulate a clock, and dual-issue dispatch. A bitstream processor (BSP) has a 16-bit load-store core with multi-cycle extensions and programmable tables for JPEG, MPEG-1, MPEG-2 and H.261 decoding. Two DMA channels move data between system memory and any memory inside the chip. The MSP data and instruction sizes agree with [report] (published-sources.md source 1, which reads 6 KB and 4 KB), so that entry now has a second source.
+- Established ([vice] PDF 19, 199): the whole chip runs on a 15 ns clock, 66 MHz, and the bus interface synchronises the roughly 100 MHz system bus to it.
+- Established ([vice] PDF 19-20): a DMA mode splits 4:2:2 YCrCb in memory into separate luma and chroma blocks in data RAM (and the reverse), with optional chroma decimation to 4:2:0; a half-pixel mode (17 pixels in, 16 out) exists but its descriptor bits are marked "not implemented, do not use" ([vice] PDF 69).
+- Established ([vice] PDF 18-20): the chip is a client of the CRIME processor-bus interface, using multiple outstanding reads that CRIME was extended to support, and arbitrates for the bus itself.
+- Unknown: the vector and scalar instruction encodings, the BSP instruction set and table formats, and what the shipped converters upload. Routes tried: [vice] chapters 2 to 4 (the appendix is missing from the copy), [report], the Nintendo 64 signal processor guide in the library (a related design, not this chip), the converters' export lists. Next: disassemble `libvice.so` and the plug-ins for the code images they load.
+
+## Address map and translation
+
+- Established ([vice] PDF 22-24, table 2): system addresses `0x17000000` to `0x1700ffff` hold the chip: data RAM banks A, B and C at `+0x8000`, `+0x8800` and `+0x9000` (2 KB each), the bitstream processor's input and output buffers in `+0x7000` to `+0x7fff` (output at `+0x7000`, input at `+0x7800`), kernel-restricted registers at `+0xe000`, the translation buffer at `+0xf000`, and the ordinary registers in the low page. An access to an unimplemented part of a range reads zeros rather than faulting.
+- Established ([vice] PDF 22-23): two address pins select one of four 1 MB blocks at `0x17000000`, `0x17100000`, `0x17200000` and `0x17300000`, matched against bus address bits 21:20 so that several chips could share the bus. The specification says more than one chip was never tested, even in simulation. The CRIME window of `0x17000000` for 16 MiB ([spec], [CRIME.h](../CRIME.h)) agrees with the first block.
+- Established ([vice] PDF 25, 33-35): the chip's own processors can address only its internal memories; system memory is reachable only by the DMA engines, through a 64-entry buffer that maps a 4 MB virtual space onto 64 KB physical pages, so one chip can touch at most 4 MB of memory at a time. Writing the buffer from the DMA engine needs a permission bit controlled by the host, and any address beyond the 4 MB range halts DMA and raises an interrupt.
+- Established ([vice] PDF 35-36): two address spaces select how a DMA address is decomposed. The linear space (`0x00800000` to `0x00bfffff` in the chip's view) takes the buffer index from bits 21:16 and 16 bits of offset. The tile space (`0x10800000` to `0x10bfffff`, selected by bit 28) arranges the 4 MB as a 4096 by 1024 byte rectangle of 512 by 128 byte tiles, takes the index from bits 21:19 and 11:9, and hides page crossings so processors see raster order. The 512 by 128 byte tile equals the 64 KB frame-buffer tile of [spec] and [linux] `gbefb.c`; that is independent support for the size, which the rendering chapters already use.
+- Established ([vice] PDF 38): a buffer entry is 32 bits, written whole: bit 0 valid, bit 1 writable (permits DMA writes to the page), bits 31:16 the 64 KB physical page number. The operating system's 4 KB page number of the first 4 KB of the range, shifted right by four, forms those upper bits. A missing entry gives the MSP a miss exception and halts the DMA engine ([vice] PDF 37, 65). This matches the user library's routines that set and update the VICE translation buffer (`vice_settlb`, `vice_updatetlb`, [binaries.md](binaries.md)); the match is by name and role, inferred.
+
+## Registers
+
+All registers sit on doubleword boundaries whatever their width; unused bits read zero ([vice] PDF 39, 44). Offsets are from the chip window. The `MSP` column of the register map ([vice] PDF 40-41) gives the coprocessor register the signal processor uses for the same register; the MSP cannot see the host-only ones.
+
+### Chip
+
+- `VICE_ID` at `+0x8`: established ([vice] PDF 40, 44). The read-only revision register; its low nibble numbers the chip revision from one to three, and the register map gives it a reset value of `0xe1`. A family tag in the high nibble is inferred.
+- `VICE_CFG` at `+0xe000`: established ([vice] PDF 40, 44). Bit 0 asks the chip to check the data-error flag on bus data it receives; bit 1 lets the MSP bypass the translation buffer when the DMA control register also asks for it. Both reset to zero; the bypass bit is the host's safety switch.
+- `VICE_INT` at `+0x160`: established ([vice] PDF 46, 41). The read-only cause register, nine active-high bits set by hardware and cleared through the reset register; each DMA channel has a completion and an error bit, and the rest are software, exception and bad-data causes.
+- `VICE_INT_RESET` at `+0xe008`: established ([vice] PDF 45). Write-only; a one clears the matching cause and a zero does nothing.
+- `VICE_INT_EN` at `+0xe010`: established ([vice] PDF 47). A read and write mask with the same bit order; masking only stops the pin, since `VICE_INT` shows the cause regardless.
+- `MSP_SW_INT` at `+0x1b8`: established ([vice] PDF 47). Write-only; any write sets the MSP software interrupt cause even when it is masked.
+- `BSP_SW_INT` at `+0x80`: established ([vice] PDF 47). The same for the BSP, set by any write.
+
+### Media signal processor
+
+- `MSP_CTL_STAT` at `+0x40`: established ([vice] PDF 49). Bit 0 starts the MSP when written one and halts it when written zero, and reads as running or halted; bit 1 releases the MSP from reset. Writing zero stops and resets it. The usual start is reset release, program counter load, then go.
+- `MSP_PC` at `+0x50`: established ([vice] PDF 50). Bits 15:2 hold the word address. Writing sets the fetch counter but reading returns the decode counter, so a read straight after a write differs.
+- `MSP_BadAddr` at `+0x58`: established ([vice] PDF 50). A read-only 32 bits, the load or store address that caused an address-error exception.
+- `MSP_WatchPoint` at `+0x60`: established ([vice] PDF 50). A doubleword-granular physical address in bits 31:3; a load or store to it raises the watchpoint exception.
+- `MSP_EPC` at `+0x68`: established ([vice] PDF 51). The read-only program counter of the instruction that caused the exception, bits 15:2.
+- `MSP_CAUSE` at `+0x70`: established ([vice] PDF 51). The read-only exception code in bits 6:2 (address errors, break, watchpoint, reserved instruction in either unit, contention, instruction fetch) with a branch-delay flag in bit 31.
+- `MSP_ExcpFlag` at `+0x48`: established ([vice] PDF 52). One sticky bit per exception code, cleared by software; all bits must be cleared before new exceptions are detected, and it shows exceptions that coincide when the cause register can hold only the highest priority.
+- `MSP_D_RAM` at `+0x100`: established ([vice] PDF 48). Three enable bits, one per data RAM bank, say which banks the scalar unit may touch. A load or store to a disabled bank is ignored and reads unknown data. Enabling all three is safe but stalls DMA on every scalar access.
+- `VICEMSP_COUNT` at `+0x108`: established ([vice] PDF 53). A writable 32-bit free-running clock counter; at 66 MHz it wraps in about 60 seconds.
+
+### Bitstream processor and mailboxes
+
+- `BSP_CTL_STAT` at `+0x110`: established ([vice] PDF 54, figure 47 on PDF 178-179). Bits 15 to 12 are the arithmetic flags (negative, zero, carry, overflow), zero after reset and changed only by arithmetic. Bits 11 to 9 are three software-set condition bits (EXT0 to EXT2) that branches can test. Bit 8 says the write buffer is empty, bits 7 and 6 mask the FIFO-empty-too-long and code-not-found interrupts (both reset masked), bits 5 and 4 reset the output and input bit counters on a one-to-zero change, bit 3 is an auto-increment control, bit 2 clears the bitstream buffer's valid-bit count on a one-to-zero change, bit 1 picks the zig-zag (0) or the alternate (1) coefficient scan, and bit 0 says the encode pipeline is empty. The bit positions below bit 6 are read from the figure; the text names the bits but gives no numbers. Bit 3's exact effect is not described.
+- `BSP_WatchPoint` at `+0x118`: established ([vice] PDF 54). A halfword address in bits 15:1; bit 0 is ignored so byte and halfword accesses both match.
+- `BSP_IN_COUNT` at `+0x120`: established ([vice] PDF 55). A 24-bit count of 32-bit transfers from the input FIFO into the BSP, which with the F valid-bits pointer lets the host compute bits consumed for rate control in decoding.
+- `BSP_OUT_COUNT` at `+0x128`: established ([vice] PDF 55). A 24-bit count of 16-bit transfers into the output write buffer, for the host's buffer control in encoding.
+- `BSP_PC` at `+0x140`: established ([vice] PDF 59). The 16-bit BSP program counter, reset to zero so an uninitialised BSP starts at instruction address zero.
+- `BSP_EPC` at `+0x148`: established ([vice] PDF 59). The read-only 16-bit address of the instruction that raised an exception, captured when the halt bit is set.
+- `BSP_HALT_RESET` at `+0x150`: established ([vice] PDF 60). Bit 1 releases the BSP from reset and the go bit starts it; clearing stops and resets it. A halt request completes in-flight instructions first and can wait forever on an unresolved stall.
+- `BSP_CAUSE` at `+0x158`: established ([vice] PDF 61). The read-only flags for the load and store address errors, break, reserved instruction, instruction address, bitstream error and write-buffer address error; the watchpoint flag exists but is "not implemented". A bitstream error does not stop the BSP: it jumps to instruction address `0xc0`.
+- `BSP_FIFO_CTL_STAT` at `+0x168`: established ([vice] PDF 62). Reports the 16-entry input FIFO empty (reset 1) and full flags, resets that FIFO, and carries two software signal bits wired straight to chip output pins.
+- `BSP_AVALID_BITS` at `+0x170`: established ([vice] PDF 63). A six-bit valid-bit pointer for the decode FIFO, reset to zero.
+- `BSP_FVALID_BITS` at `+0x178`: established ([vice] PDF 63). The same six-bit pointer for the encode FIFO, used with the counters above.
+- `BSP_RPAGE` at `+0x78`: inferred. The register map lists a 16-bit read/write register by this name ([vice] PDF 40) and no register section describes it; the architecture chapter (PDF 178) names an RPage register in the bitstream processor's alternate set as the base register for its loads and stores, and this is taken to be the host's view of it. Routes tried: the register map and text search of the whole specification. Next: the converters' use of the register.
+- `BSP_IN_BOX` at `+0x1f0`: established ([vice] PDF 56). A 15-bit message from the MSP to the BSP; bit 15 is set by any write and cleared by a read, so the sender can see whether the message was read.
+- `BSP_OUT_BOX` at `+0x1f8`: established ([vice] PDF 57). The reverse mailbox with the same self-clearing bit 15, written by the BSP and read by the MSP.
+- `HST_BSP_IN_BOX` at `+0x28`: established ([vice] PDF 58). A host-only shadow that reads the input mailbox without clearing its flag.
+- `HST_BSP_OUT_BOX` at `+0x30`: established ([vice] PDF 58). The shadow of the output mailbox, likewise without side effects.
+
+### DMA channels
+
+- `DMA_CTL_CH1` at `+0x180`: established ([vice] PDF 64). Go (cleared by hardware when done), interrupt enable, stop, reset, a four-bit one-hot choice of first descriptor set, translation-buffer bypass and flush bits. Writing zero to go does not stop a transfer; stop does.
+- `DMA_STAT_CH1` at `+0x188`: established ([vice] PDF 65). The read-only done, error, active and direction flags, the descriptor set in use and a four-bit state code: idle, halted by stop or by the descriptor, computing, waiting on CRIME for addresses or data, moving data, halted by a buffer miss or by a write to a read-only page, fetching descriptors.
+- `DMA_DATA_CH1` at `+0x190`: established ([vice] PDF 66). A 16-bit pattern repeated four times to a 64-bit word for the fill mode. Fill can target only chip memory, not system memory; system memory is filled by filling data RAM and then writing it out.
+- `DMA_MEM_PT_CH1` at `+0x198`: established ([vice] PDF 66). A read-only diagnostic copy of the last physical system address the engine computed, four-byte aligned.
+- `DMA_VICE_PT_CH1` at `+0x1a0`: established ([vice] PDF 66). A read-only diagnostic copy of the last chip-internal address.
+- `DMA_COUNT_CH1` at `+0x1a8`: established ([vice] PDF 67). The read-only bytes left in the current descriptor.
+- `DMA_CTL_CH2` at `+0x1c0`: established ([vice] PDF 64). The second channel's control register, the same layout as channel 1.
+- `DMA_STAT_CH2` at `+0x1c8`: established ([vice] PDF 65). The second channel's status, the same layout as channel 1.
+- `DMA_DATA_CH2` at `+0x1d0`: established ([vice] PDF 66). The fill pattern that the second channel replicates into each 64-bit word.
+- `DMA_MEM_PT_CH2` at `+0x1d8`: established ([vice] PDF 66). The second channel's system-address diagnostic.
+- `DMA_VICE_PT_CH2` at `+0x1e0`: established ([vice] PDF 66). The second channel's internal-address diagnostic.
+- `DMA_COUNT_CH2` at `+0x1e8`: established ([vice] PDF 67). Bytes still to move in the descriptor the second channel is working on.
+
+Each channel has four descriptor sets of eight 16-bit registers, stored at a stride of `0x40` from `+0x1000` for channel 1 and `+0x1100` for channel 2 ([vice] PDF 42-43, tables 6 and 7). The sets run in order without host help, and any descriptor can halt the channel after it completes ([vice] PDF 68).
+
+- `DMA_CTL_CH1_D1` at `+0x1000`: established ([vice] PDF 68-70). The descriptor's mode word: read or write, location inside the chip, block or interleave, luma half-pixel flags (not implemented), the Y/C split choices, fill, skip and halt. Block mode is the only working interleave setting.
+- `DMA_SMEM_HI_CH1_D1` at `+0x1008`: established ([vice] PDF 71). Upper 16 bits of the system address, virtual through the buffer or physical when bypassed; bit 28 chooses the tile space.
+- `DMA_SMEM_LO_CH1_D1` at `+0x1010`: established ([vice] PDF 71). Lower 16 bits of that address; it must be 16-byte aligned in Y/C split modes.
+- `DMA_WIDTH_CH1_D1` at `+0x1018`: established ([vice] PDF 71). Bytes in one memory strip, a multiple of 16 in the split modes.
+- `DMA_STRIDE_CH1_D1` at `+0x1020`: established ([vice] PDF 71-72). Bytes from the start of one strip to the next; for a 720 pixel 4:2:2 image at two bytes a pixel it is 1440.
+- `DMA_LINES_CH1_D1` at `+0x1028`: established ([vice] PDF 72). Number of strips to transfer.
+- `DMA_VMEM_Y_CH1_D1` at `+0x1030`: established ([vice] PDF 72). Chip-internal start address of the luma (or only) block, 8-byte granular.
+- `DMA_VMEM_C_CH1_D1` at `+0x1038`: established ([vice] PDF 72). Chip-internal start address of the chroma block; ignored in plain block mode.
+- `DMA_CTL_CH2_D1` at `+0x1100`: established ([vice] PDF 42-43). Channel 2's first descriptor mode word, the same fields as channel 1's.
+- `DMA_SMEM_HI_CH2_D1` at `+0x1108`: established ([vice] PDF 43). Channel 2's upper system address half.
+- `DMA_SMEM_LO_CH2_D1` at `+0x1110`: established ([vice] PDF 43). Channel 2's lower system address half.
+- `DMA_WIDTH_CH2_D1` at `+0x1118`: established ([vice] PDF 43). Channel 2's strip width in bytes.
+- `DMA_STRIDE_CH2_D1` at `+0x1120`: established ([vice] PDF 43). Channel 2's strip stride in bytes.
+- `DMA_LINES_CH2_D1` at `+0x1128`: established ([vice] PDF 43). Channel 2's strip count.
+- `DMA_VMEM_Y_CH2_D1` at `+0x1130`: established ([vice] PDF 43). Channel 2's internal luma address.
+- `DMA_VMEM_C_CH2_D1` at `+0x1138`: established ([vice] PDF 43). Channel 2's internal chroma address.
+
+DMA restrictions ([vice] PDF 33): fill does not work in Y/C split mode; split, luma-only and chroma-only modes need quadword width and start; the 4:2:2 to 4:2:0 split overwrites the chroma of the first line with the second, which is wrong for transfers that start on an odd line and was to be corrected in the next chip revision. Established.
+
+## Reported behaviour from software users
+
+- Inferred (secondhand: [a developer's 2002 post on imaging for O2](sources/reports/o2-imaging-techniques-usenet-2002.txt) and [a list from an SGI engineer reproduced on a hobbyist site](sources/reports/sgidepot-melting-the-ice.html)): the imaging extensions run on the chip only when every coefficient of an operation is either an integer of magnitude above one or a real in -1.0 to 1.0, never mixed; otherwise the CPU does it at a fraction of the speed. Capture is accelerated only for PAL and NTSC frame sizes. These describe what the IRIX driver does on top of the hardware, not the hardware itself.
+
+## Conflicts and open points
+
+- Conflict: [report] (as read in published-sources.md) rates the bitstream processor at 60 MHz, while [vice] gives the chip one clock of 66 MHz (a 15 ns period, PDF 199) and no separate bitstream clock. Unknown which is right for the shipped part; the specification covers revision 3 and the report is a product statement. Recorded in [open-questions.md](open-questions.md).
+- Agreement: both give two DMA channels with host, MSP and BSP programmability; the 64 KB translation granule matches [spec]'s 64 KB tile.

@@ -173,3 +173,89 @@ GBE rev 1.1	3.2	48	GBE	0x80014	VC_5	1	0	32	R/W	0	no-software-dependency	docs/gbe
 GBE rev 1.1	3.2	48	GBE	0x80018	VC_6	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	48	GBE	0x8001c	VC_7	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	48	GBE	0x80020	VC_8	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+MACE 2.0 video	5	33	MACEV	0x0	VIN.CONTROL	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x8	VIN.STATUS	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x10	VIN.CONFIG	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x18	VIN.NEXT_DESC	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x20	VIN.FLD_OFFSET	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x28	VIN.LINE_WIDTH	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x30	VIN.HCLIP_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x38	VIN.VCLIP_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x40	VIN.ALPHA_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x48	VIN.HCLIP_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x50	VIN.VCLIP_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x58	VIN.ALPHA_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x80	VIN.DMA_DESC	8	8	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x100000	VOUT.CONTROL	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100008	VOUT.STATUS	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100010	VOUT.CONFIG	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100018	VOUT.NEXT_DESC	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100020	VOUT.FLD_OFFSET	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100028	VOUT.FIELD_SIZE	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100030	VOUT.HPAD_ODD	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100038	VOUT.VPAD_ODD	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100040	VOUT.HPAD_EVEN	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100048	VOUT.VPAD_EVEN	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100050	VOUT.GEN_DLY	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100058	VOUT.VHW_CFG	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100080	VOUT.DMA_DESC	8	8	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+VICE 1.0	6	40	VICE	0x8	VICE_ID	1	0	8	R	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	40	VICE	0x28	HST_BSP_IN_BOX	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x30	HST_BSP_OUT_BOX	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x40	MSP_CTL_STAT	1	0	32	R/W	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x48	MSP_ExcpFlag	1	0	32	R/W	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x50	MSP_PC	1	0	32	R/W	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x58	MSP_BadAddr	1	0	32	R	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x60	MSP_WatchPoint	1	0	32	R/W	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x68	MSP_EPC	1	0	32	R	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x70	MSP_CAUSE	1	0	32	R	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x78	BSP_RPAGE	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x80	BSP_SW_INT	1	0	16	W	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	40	VICE	0x100	MSP_D_RAM	1	0	32	R/W	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x108	VICEMSP_COUNT	1	0	32	R	0	understood	docs/vice.md#media-signal-processor	Media signal processor
+VICE 1.0	6	40	VICE	0x110	BSP_CTL_STAT	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x118	BSP_WatchPoint	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x120	BSP_IN_COUNT	1	0	24	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x128	BSP_OUT_COUNT	1	0	24	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x140	BSP_PC	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	40	VICE	0x148	BSP_EPC	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x150	BSP_HALT_RESET	1	0	2	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x158	BSP_CAUSE	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x160	VICE_INT	1	0	9	R	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	41	VICE	0x168	BSP_FIFO_CTL_STAT	1	0	6	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x170	BSP_AVALID_BITS	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x178	BSP_FVALID_BITS	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x180	DMA_CTL_CH1	1	0	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x188	DMA_STAT_CH1	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x190	DMA_DATA_CH1	1	0	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x198	DMA_MEM_PT_CH1	1	0	32	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1a0	DMA_VICE_PT_CH1	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1a8	DMA_COUNT_CH1	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1b8	MSP_SW_INT	1	0	16	W	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	41	VICE	0x1c0	DMA_CTL_CH2	1	0	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1c8	DMA_STAT_CH2	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1d0	DMA_DATA_CH2	1	0	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1d8	DMA_MEM_PT_CH2	1	0	32	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1e0	DMA_VICE_PT_CH2	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1e8	DMA_COUNT_CH2	1	0	16	R	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	41	VICE	0x1f0	BSP_IN_BOX	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	6	41	VICE	0x1f8	BSP_OUT_BOX	1	0	16	R/W	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
+VICE 1.0	7	42	VICE	0x1000	DMA_CTL_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1008	DMA_SMEM_HI_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1010	DMA_SMEM_LO_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1018	DMA_WIDTH_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1020	DMA_STRIDE_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1028	DMA_LINES_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1030	DMA_VMEM_Y_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	42	VICE	0x1038	DMA_VMEM_C_CH1_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1100	DMA_CTL_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1108	DMA_SMEM_HI_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1110	DMA_SMEM_LO_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1118	DMA_WIDTH_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1120	DMA_STRIDE_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1128	DMA_LINES_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1130	DMA_VMEM_Y_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	7	43	VICE	0x1138	DMA_VMEM_C_CH2_D1	4	64	16	R/W	0	understood	docs/vice.md#dma-channels	DMA channels
+VICE 1.0	6	40	VICE	0xe000	VICE_CFG	1	0	16	R/W	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	40	VICE	0xe008	VICE_INT_RESET	1	0	9	W	0	understood	docs/vice.md#chip	Chip
+VICE 1.0	6	40	VICE	0xe010	VICE_INT_EN	1	0	9	R/W	0	understood	docs/vice.md#chip	Chip

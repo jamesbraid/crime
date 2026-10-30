@@ -8,7 +8,7 @@ Labels follow [AGENTS.md](../AGENTS.md), with one addition for published materia
 - **inferred**: a patent, or a paper about another product, says it. A patent describes a design and does not prove the shipped chip. A patent fact becomes established only where a binary or a stored test output agrees, and then the entry cites the binary and the owning chapter.
 - **unknown**: the source does not say.
 
-The CRIME 1.5 specification and the GBE specification, which this workspace already reads as [spec], are not repeated here.
+The CRIME 1.5 specification and the GBE specification, which this workspace already reads as [spec], are not repeated here. The MACE and VICE specifications are read in [mace-video.md](mace-video.md) and [vice.md](vice.md).
 
 ## Sources at a glance
 
@@ -22,6 +22,11 @@ The CRIME 1.5 specification and the GBE specification, which this workspace alre
 | 6 | RealityEngine Graphics (SIGGRAPH 1993) | paper | a predecessor | lineage only |
 | 7 | US 5,490,240, three-dimensional textures | patent | generic texture arithmetic | lineage only |
 | 8 | US 5,528,738 and US 5,581,680, line antialiasing | patents | a desktop workstation of 1993 | lineage only |
+| 9 | Hardware Developer's Handbook, release 2.0 (May 1997) | SGI handbook | board and connector facts of the O2 among other machines | exact, product level |
+| 10 | O2 Workstation Hardware Reference Guide, 007-3275 revisions 002 and 003 | SGI manual | the O2 as shipped: connectors, options | exact, product level |
+| 11 | O2 Desktop Workstation product guide 1067 (January 1997) | SGI product guide | the first O2 models | exact, product level |
+| 12 | O2 Digital Video Option and O2 Dual Display Option data sheets | SGI data sheets | two O2 options | exact, product level |
+| 13 | Two web notes on what ICE accelerates | secondhand | IRIX imaging on O2 | inferred only |
 
 Reviewed and set aside: US 6,342,892 and its relatives (the Nintendo 64 signal processor, a scalar unit with an eight-lane vector unit, with 4 KB of instruction and data memory; the ICE vector unit has the same lane shape but 6 KB of data memory, source 1, so they are related designs, not the same part); US 6,650,327 and its continuations (floating-point rasterisation, 1998, a later design). Searches found no SGI patent that describes the CRIME rendering pipeline's arithmetic, the GBE or the ICE. The one patent that does describe the chip (source 5) says nothing about interpolation, blending, texturing or dithering; its text on the pixel pipeline is limited to a one-paragraph unit list.
 
@@ -116,6 +121,58 @@ Facts:
 - Covers: an extension of Bresenham's algorithm that writes two pixels per step with coverage from a table, for a desktop workstation (the text names the Indy). Match: lineage only.
 - Facts (**inferred** for CRIME's antialiased lines): coordinates 16.4, deltas 17.4, the decision value and a sign term 18.8; the vertical distance to the pixel centre carried with 4 fraction bits and an accumulated error under 2^-5 over a 2^16 range; coverage from eight tables, one per octant, of 4-bit entries (16 entries to a 64-bit table), addressed by the distance and its one's complement together to give both pixels' coverage; a circular cone filter; endpoint coverage the table entry scaled by the end point's fractional coordinate (or its complement at the start point); for fractional end points a corrected first decision value; two pixels per iteration; blending `alpha x colour + (1 - alpha) x buffer`. **Bearing:** the O2 report's "two-pixel-wide lines", "slope- and distance-based coverage tables in ROM" and "filtered line endpoints" read like this design, and the specification's 2.14 slope field ([context.md](context.md)) plays the part of the patent's slope term. The widths differ (the O2 has 6 fraction bits, the patent 4), so the patent is not the CRIME circuit. It names the design's ingredients and nothing else: the table contents and widths of the O2 stay unknown. Route: the specification's antialiased-line step, with the patent's decision terms as the vocabulary to look for.
 
+## 9. Hardware Developer's Handbook, release 2.0
+
+- Identity: SGI, "Hardware Developers Handbook", release 2.0, May 1997, 339 PDF pages. Stored copy: [docs/sources/manuals/hardware-developers-handbook-2.0.pdf](sources/manuals/hardware-developers-handbook-2.0.pdf), SHA-256 `3da04c67414ac5794a1f04cb4a207e68919db25d10f518c9b599adb7a3805d8d`, library path `sgi-hw/hardware-developer-handbook-2.0.pdf`. Page numbers below are PDF pages.
+- Covers: bus, connector and board facts for every SGI desktop and server of the day; the O2 appears in the system table, the chassis chapter, the memory, monitor, video and PCI sections. It has no register information.
+- Match: exact, product level.
+
+Facts (established, published):
+
+- **Names.** The system table lists the O2 as development name "Moosehead" with graphics "CRM" and CPU board "IP32" (PDF 29). This agrees with the board name used throughout this workspace and with [mace-video.md](mace-video.md), which quotes the same development name from the MACE specification.
+- **Monitor connector.** The O2 uses a 15-pin D-sub monitor connector. Pin 9 carries +5 V limited to 0.5 A on a fuse shared with the mouse and keyboard, and pins 12 and 15 carry the two I2C lines to the monitor, with pin 11 as the older monitor-type pin (PDF 167, table 4-36 and its notes). The 007-3275 table (source 10) gives the same assignment, so the monitor I2C wiring is established by two published sources, and the `I2C` register of [gbe.md](gbe.md) is the host end of those two pins (inferred, because neither document names GBE).
+- **Video connectors.** On the O2 the analog S-video output is a four-pin mini-DIN and the input a seven-pin mini-DIN whose extra pins carry I2C data, clock and 12 V (PDF 185). The digital video connector is one 68-pin connector with one input port and one output port (PDF 190), and the protocol is close to but not the same as parallel CCIR 601. These match the two D1 ports and analog encoder of [mace-video.md](mace-video.md).
+- **Memory and expansion.** Memory modules are 278-pin DIMMs of 32 or 64 MB with ECC bits (PDF 159); there is one half-size PCI slot, 5 V only, with less power than the other machines (PDF 220, 232). The 278-pin count and the 288-bit width of source 11 fit one 256-bit word plus 32 check bits; inferred.
+
+## 10. O2 Workstation Hardware Reference Guide (007-3275)
+
+- Identity: SGI, "O2 Workstation Hardware Reference Guide", document 007-3275, revision 002 (234 pages) and revision 003 (1998, 250 pages), a setup, option-installation and connector manual. Stored copies: [manuals/007-3275-002.pdf](sources/manuals/007-3275-002.pdf), SHA-256 `835ef14519a633274439fe8531f3ce97162c00426366fb9153586ecfb3d531ae`, and [manuals/007-3275-003.pdf](sources/manuals/007-3275-003.pdf), SHA-256 `65e260baa1657f1278624cc9abbfa96fca4e739f1c4151bb79e31e398e3648bc`; library paths `3000/007-3275-002/pdf/007-3275-002.pdf` and `3000/007-3275-003/pdf/007-3275-003.pdf` in the technical publications set. The text names no chip: it never mentions CRIME, MACE, GBE or VICE.
+- Match: exact, product level. Page numbers are PDF pages; revision 003 is cited, revision 002 carries the same tables two to ten pages earlier (digital video port table at PDF 204-207).
+
+Facts (established, published):
+
+- **Digital video port pinout** (revision 003 PDF 215-216, table A-7): the 68-pin port carries ten input data lines and an input clock, ten output data lines and an output clock, I2C clock and data, one input and one output general-purpose line, camera microphone lines, and +5 V, plus and minus 12 V. Ten data bits on both directions match the 8-bit or 10-bit D1 ports of the MACE video channels.
+- **S-video pinout** (PDF 214): separate luma and chroma in and out, plus the I2C data, clock and 12 V pins the handbook describes.
+- **Monitor pinout** (PDF 216-217, table A-8): pin 12 is "IIC DATA", pin 15 "IIC CLOCK", pin 9 "+5 V, limited current", the same as source 9.
+- **Memory** (PDF 44): the O2 takes DIMMs, which cannot be fitted to the earlier workstations that used SIMMs.
+
+## 11. O2 Desktop Workstation product guide (1067)
+
+- Identity: SGI, "O2 Desktop Workstation", product guide with technical specifications, January 1997, six pages. Stored copy: [reports/o2-product-guide-1067.pdf](sources/reports/o2-product-guide-1067.pdf), SHA-256 `7cefac3d991f4b81280de3133d91388595a5e82bb7bc2bb932d0d37b881cef80`, library path `branding/sgi-1997-o2-1067-product-guide.pdf`.
+- Match: exact, for the first R5000 and R10000 models; marketing figures, not measurements.
+
+Facts (established, published; PDF 1):
+
+- Memory is synchronous DRAM described as "100 MHz, 4 banks, 288-bit wide", 32 to 256 MB with 16 Mbit parts and 128 MB to 1 GB with 64 Mbit parts. The bank count, width and capacities agree with source 1; the 100 MHz is the part grade, since source 1 and the CRIME specification clock the memory interface at 66 MHz with data pins toggling at 133 MHz. Recorded in [open-questions.md](open-questions.md) as an apparent difference.
+- Graphics: frame buffer formats of 32 plus 32 bits (32 plus 32 double-buffered), a 32-bit buffer split 16 plus 16, a 16-bit buffer split 8 plus 8, and an 8-bit overlay; hardware z-buffer, triangle rasterisation, texture mapping, stencil, anti-aliasing and source plus destination alpha; up to 1280 by 1024 at 75 Hz. Rates (R5000 180 MHz): 65 Mpixel/s fill, 40 Mpixel/s bilinear and 30 Mpixel/s trilinear textured fill, 377 thousand lit, Gouraud, depth-tested 50-pixel triangles a second. These are product-level numbers for model comparison, not hardware limits.
+- Video input and output: two input channels and one output channel; S-video and composite I/O with I2C control on S-video; digital camera; optional CCIR 601 digital video; hardware JPEG at 30 frames a second NTSC or 25 PAL, with H.261, QuickTime, Cinepak, AVI and MPEG-1 in software. This agrees with the channel counts of [mace-video.md](mace-video.md) and the JPEG-only hardware statement of source 3.
+
+## 12. O2 Digital Video Option and O2 Dual Display Option data sheets
+
+- Identity: SGI data sheets, sheet numbers 1570 (August 1999) and 2019; stored as [reports/o2-digital-video-option-1570.pdf](sources/reports/o2-digital-video-option-1570.pdf), SHA-256 `9d38a5ae4e412369e70d1c4ce3602ad51af887960769b2ee9f77fa431e874bef`, and [reports/o2-dual-display-option-2019.pdf](sources/reports/o2-dual-display-option-2019.pdf), SHA-256 `b34172e37ae5478f5a68e72a858cef978508a5e9d472781878f88c4e1416fcfd`. Library paths `graphics/o2/sgidepot-o2-digital-video-option-1570.pdf` and `graphics/o2/sgidepot-o2-dual-channel-display-2019.pdf`.
+
+Facts (established, published):
+
+- Digital video option (PDF 1-2): two independent input and two identical output streams of CCIR 601 serial digital video at 8 or 10 bits with PAL or NTSC timing; one output can carry a 4:0:0 alpha signal; genlock to the input, a house reference or an internal reference; synchronisation of audio and video to within 200 microseconds by the counter that [mace-video.md](mace-video.md) describes as the field stamp. The option occupies the digital media option slot of every O2.
+- Dual display option (PDF 1): one board drives two 1280 by 1024 monitors at 75 Hz from the single graphics channel, with a 38 Hz graphics update rate and the board outside the PCI slot. Inferred: the 38 Hz figure is half the 75 Hz display rate, which fits the dual-channel formats of [gbe.md](gbe.md) that repeat the single-channel numbers; the sheet does not say how.
+
+## 13. Web notes on ICE use
+
+- Identity: a list of what the imaging engine accelerates, attributed to an SGI engineer, on a hobbyist site ([reports/sgidepot-melting-the-ice.html](sources/reports/sgidepot-melting-the-ice.html), SHA-256 `681568fe8c57fe117e309051ab170b83e6b01f8b5a8c785716a7e93cc2c07ad9`), and a 2002 developer post on imaging techniques for the O2 ([reports/o2-imaging-techniques-usenet-2002.txt](sources/reports/o2-imaging-techniques-usenet-2002.txt), SHA-256 `1bc0f9592e99d05b732c81776364c2bf4c01e5c8dbabe64d130333ff1ad7e3a6`). Both are secondhand and the second says it has no SGI documentation.
+- Facts (inferred): capture is accelerated only at PAL or NTSC frame sizes, compression ratios near 4:1 to 5:1 for hardware motion JPEG, and OpenGL imaging operations reach about 7.8 million pixels a second for scale and bias and fall to about 1.2 million for a 7 by 7 non-separable convolution; the imaging engine accepts an operation only when all coefficients are integers above one in magnitude or all are reals within -1 to 1. See [vice.md](vice.md).
+
+Reviewed and not stored: the O2+ Hardware Reference Guide (007-4486-001) and the IRIX 6.3 for O2 Device Driver Programming Guide (007-3443-002), found in the library and read for the chip names. The first never names a chip and the second names only MACE, for the PCI error bits its PCI error handler receives. Several O2 option and upgrade sheets (memory, CPU upgrades, dual channel display installation, DVLink, flat panel adapter, audio-visual module) are in the library and carry no chip-level facts; no fact here rests on them.
+
 ## What these sources settle, by open question
 
 - **Rendering engine arithmetic, vertex position:** the 6 fraction bits are established (published).
@@ -125,4 +182,4 @@ Facts:
 - **Memory transfer engine and tiling:** 64 KB tiles, 256-entry translation per buffer, clears and copies at memory bandwidth, and a blend-capable pixel-transfer path (sources 1, 4 and 5).
 - **Antialiased lines:** two-pixel-wide, table-driven, coverage to alpha (source 1); design vocabulary from source 8.
 - **Shipped CRIME revision, FIFO depth and interrupt numbering:** not reached by any published source.
-- **ICE and VICE:** product-level description only (source 1); no register or microcode source.
+- **ICE and VICE:** the register map, DMA, translation and host interface are now read from the VICE specification ([vice.md](vice.md)); the signal-processor and bitstream instruction sets are still unread (the specification copy lacks its appendix).

@@ -131,7 +131,24 @@
 #define CRIME_INT_RE_FULL       26          /* [E] IRIX vector */
 #define CRIME_INT_RE_IDLE       27          /* [E, spec table 5-5]; no IRIX graphics object unmasks 24 or 27 */
 #define CRIME_INT_SYSCORERR     30          /* [E, spec table 5-5; linux] */
-#define CRIME_INT_VICE          31          /* [E, netbsd] */
+#define CRIME_INT_VICE          31          /* [E, netbsd; spec PDF 109, section 5.7.2: a registered copy of
+                                                the VICE interrupt pin, read-only] */
+/*
+ * Inputs 15 to 0 are routed from MACE [E, spec PDF 107-108, table 5-5]; the
+ * MACE video channels are the first three. All sixteen are read-only in the
+ * hardware interrupt register. IRIX registers only the MACE ISA and
+ * miscellaneous inputs (docs/memory.md); the video numbers below are from the
+ * specification and agree with netbsd's grouping, no IRIX object in scope
+ * names them.
+ */
+#define CRIME_INT_MACE_VID_IN1  0           /* [E, spec table 5-5] video input channel 1 */
+#define CRIME_INT_MACE_VID_IN2  1           /* [E, spec table 5-5] video input channel 2 */
+#define CRIME_INT_MACE_VID_OUT  2           /* [E, spec table 5-5] video output channel */
+#define CRIME_INT_MACE_ETHERNET 3           /* [E, spec table 5-5] */
+#define CRIME_INT_MACE_SERIAL   4           /* [E, spec table 5-5] peripheral controller, serial and parallel */
+#define CRIME_INT_MACE_MISC     5           /* [E, spec table 5-5] peripheral controller, keyboard, mouse, timer */
+#define CRIME_INT_MACE_AUDIO    6           /* [E, spec table 5-5] peripheral controller, audio */
+#define CRIME_INT_MACE_PCI_BRIDGE 7         /* [E, spec table 5-5] PCI error conditions */
 /*
  * Error interrupts in IRIX 6.5.30 [E, k:kernel:mlreset+0x100..0x124]:
  * mlreset installs the same handler, buserror_intr, on input 21 and on

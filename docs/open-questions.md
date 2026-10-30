@@ -31,8 +31,19 @@ Patents, SGI technical reports, white papers and conference papers were searched
 - **Memory transfer engine and tiling**: 64 KB tiles, 256 translation entries per buffer (the patent has two buffers, the chip three groups: open), clears and copies at memory bandwidth, and a pixel-transfer path through the rendering pipeline with blending.
 - **Shipped CRIME revision, FIFO depth (128 or 64), interrupt numbering**: no published source reaches them. The patent's slot-based arbitration differs from the fixed priority order the technical report states; the report is taken as the shipped one.
 - **Antialiased lines**: two-pixel-wide, ROM-table coverage applied to alpha (report); the table contents are in no source.
-- **ICE and VICE**: only the product-level description of the report and the white papers; no register or microcode source. Route not yet tried: the VICE specification and the `vice*.so` converters.
+- **ICE and VICE**: the VICE specification was read on 2026-10-30 ([vice.md](vice.md)); it settles the register map, translation buffer and DMA descriptors. What is left is below.
 - **Display engine**: narrow pixel formats expand to RGB8 by bit replication (report).
+
+## O2 video and imaging documents (2026-10-30)
+
+Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware developer's handbook, the O2 hardware reference guide (revisions 002 and 003), the O2+ reference guide, the 1997 product guide, the option data sheets, the sgidepot.co.uk pages, the Lurker's Guide notes on O2 video input, sgistuff.net pages and the Usenet archive via the library. Three public copies of each chip specification (bukosek.si, a NetBSD mirror, erikarn.github.io) are byte-identical, so a copy with the missing VICE appendix is not among them.
+
+- **VICE instruction sets and table formats.** The specification copy lacks printed pages 250 to 391. Routes tried: the library, the three mirrors above (same file), the web (nothing else public). Next: disassemble the code images `libvice.so` and the `vice*.so` converters load, and read the `crime_tileaddr_for_vice` caller chain in `kernel.o`.
+- **Bitstream processor clock.** The O2 Technical Report entry in [published-sources.md](published-sources.md) says the bitstream processor is rated 60 MHz. The VICE specification (PDF 199) gives the whole chip one 66 MHz clock and names no separate rate. Possible reading: the report quotes a per-block figure the specification does not repeat. Routes tried: both documents, the converters' export lists. Next: the report's figure again, and the BSP chapter of the specification.
+- **Memory clock wording.** The 1997 product guide says "100 MHz" synchronous DRAM; the technical report and the CRIME specification clock the memory interface at 66 MHz with 133 MHz data pins. Inferred: 100 MHz is the part grade. Routes tried: both. Next: the memory chapter of the CRIME specification for the refresh and CAS timing assumptions.
+- **PAL filter ratio in the MACE clip register text.** The register text (PDF 46) says "7868/720" where the overview and output register say 786 pixels, 12/11. Inferred: a misprint. No second source; the shipped video library is the next route (`mvp.o`).
+- **IRIX programming of MACE video framelock and genlock.** No binary in scope reaches the video window; see [mace-video.md](mace-video.md). Next: `mvp.o`, `mvp.so` and `libXsgivc.so`.
+- **VICE interrupt line.** [spec] says interrupt status bit 31 is a registered copy of a 100 MHz pin and [vice] gives the nine causes behind it; whether IRIX ever unmasks input 31 is not known. Routes tried: the kernel dispatcher in [memory.md](memory.md). Next: the VICE driver object in the kernel.
 
 ## Where work stopped
 
