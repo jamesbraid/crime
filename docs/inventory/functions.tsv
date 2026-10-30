@@ -6407,7 +6407,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932d00	136	__glEvenTStri
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932d88	136	__glOddTStripVertex	dynsym+mdebug	839706bf95d0	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932e10	116	__glEvenTStripVertexFast	dynsym+mdebug	719ccfdca45b	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932e84	116	__glOddTStripVertexFast	dynsym+mdebug	706daf8cc875	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932ef8	240	__glFourthQuadsVertex	dynsym+mdebug	e2cdfdc767eb	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932ef8	240	__glFourthQuadsVertex	dynsym+mdebug	e2cdfdc767eb	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932ff0	60	__glOtherLStripVertexFast	dynsym+mdebug	b85926c664af	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93302c	96	__glFastClipLine	dynsym+mdebug	ac953186621d	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93308c	32	__glSecondLinesVertex	dynsym+mdebug	6cd9777d0500	undocumented		
@@ -8624,7 +8624,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd2ec	100	FirstQSt
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd31c	52	__glBeginQStrip	dynsym+mdebug	ab752a52043a	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd350	40	ThirdQuadsVertex	mdebug	e6dc52eaeaaf	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd378	128	SecondQuadsVertex	mdebug	c7f21581487c	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd3a4	44	__glFirstQuadsVertex	dynsym+mdebug	f17fdf213ac1	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd3a4	44	__glFirstQuadsVertex	dynsym+mdebug	f17fdf213ac1	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd3d0	40	__glBeginQuads	dynsym+mdebug	84d64a493cad	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd3f8	29120	PolygonVertex	mdebug	b6c7ad327248	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd504	124	__glEndPolygon	dynsym+mdebug	1385906bbc08	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
@@ -10532,7 +10532,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9344e0	136	__glEvenTSt
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934568	136	__glOddTStripVertex	dwarf+dynsym	ccdd6272587e	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9345f0	116	__glEvenTStripVertexFast	dwarf+dynsym	337ee8ac4724	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934664	116	__glOddTStripVertexFast	dwarf+dynsym	f8f5b89ecec7	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9346d8	252	__glFourthQuadsVertex	dwarf+dynsym	0a3311958acf	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9346d8	252	__glFourthQuadsVertex	dwarf+dynsym	0a3311958acf	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9347e0	60	__glOtherLStripVertexFast	dwarf+dynsym	b85926c664af	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93481c	104	__glFastClipLine	dwarf+dynsym	eaea7431ca11	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934884	32	__glSecondLinesVertex	dwarf+dynsym	3537167e4533	undocumented		
@@ -12749,7 +12749,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbf0	48	FirstQS
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdc20	52	__glBeginQStrip	dwarf+dynsym	53e08d2317cc	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc60	40	ThirdQuadsVertex	dwarf+funcnames	40d815ec86bc	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc90	44	SecondQuadsVertex	dwarf+funcnames	f748d4623117	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcc0	44	__glFirstQuadsVertex	dwarf+dynsym	a9fdd331a3d0	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcc0	44	__glFirstQuadsVertex	dwarf+dynsym	a9fdd331a3d0	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcf0	40	__glBeginQuads	dwarf+dynsym	291172f5287e	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdd20	652	PolygonVertex	dwarf+funcnames	1312b01a92e0	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdfb0	148	__glEndPolygon	dwarf+dynsym	b27c3c312319	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
