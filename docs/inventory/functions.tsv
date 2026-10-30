@@ -6598,7 +6598,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481b8	16	PickDepth
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481c8	20	FetchDepth	mdebug	53b85bae1eb2		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481dc	24	StoreDepth	mdebug	75810d932729		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481f4	24	StoreDepthAlways	mdebug	75810d932729		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	8232766cf581		in	named-only	CRIME_RE.h:310	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	8232766cf581		in	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	981dc86c5ec7		in	located	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c6c	16	ResizeSz	mdebug	adf5923bc0c3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	73f69b166c83	multi-unit	in	named-only	docs/libglcore.md#so_depthopc	`so_depthop.c`
@@ -10723,7 +10723,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDept
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	87506497337c		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2f0	8	StoreDepthAlways	dwarf+funcnames	87506497337c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	named-only	CRIME_RE.h:310	Primitive (+0x2060) [E, spec PDF 175; values from gl:crm_astri]
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	a0f1994f1b24		in	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	6996258fbb54		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	b265ca773e31	multi-unit	in	named-only	docs/libglcore.md#so_depthopc	`so_depthop.c`

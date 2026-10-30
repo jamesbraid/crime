@@ -48,7 +48,7 @@ The share of understood rows that an independent audit found real when it re-der
 |---|---:|---:|---|
 | functions | 100.0% | 10 | 2026-10-30 |
 | mmio | 100.0% | 10 | 2026-10-29 |
-| tokens | 90.0% | 10 | 2026-10-29 |
+| tokens | 90.0% | 20 | 2026-10-30 |
 | ioctls | 100.0% | 10 | 2026-10-29 |
 | spec-registers | 100.0% | 10 | 2026-10-29 |
 
