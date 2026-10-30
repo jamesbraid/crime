@@ -8033,7 +8033,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c2da0	148	__glim_ShadeM
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c2e34	144	__glim_StencilMask	dynsym+mdebug	a622892155ee		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c2ec4	212	__glim_StencilFunc	dynsym+mdebug	220c485509d2		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c2f98	356	__glim_StencilOp	dynsym+mdebug	577dcc5e1986		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c30fc	2872	__glCopyContext	dynsym+mdebug	4814e39e308b		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c30fc	2872	__glCopyContext	dynsym+mdebug	4814e39e308b		in	named-only	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c3c34	2068	__glim_PushAttrib	dynsym+mdebug	ac8be4a27585		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c4448	3412	__glim_PopAttrib	dynsym+mdebug	ff542dbd5c03		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c519c	2480	__glim_Enable	dynsym+mdebug	9a0f411691c6		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
@@ -9192,7 +9192,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda358b4	184	__glUpdateVie
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3596c	172	__glUpdateViewportTransform	dynsym+mdebug	39176469f2af		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35a18	264	__glim_Viewport	dynsym+mdebug	fcb47b06ce64		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35b20	144	__glim_DepthRange	dynsym+mdebug	6ac499bb077a		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35bb0	160	__glReadjustZCounts	dynsym+mdebug	e14751474533		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35bb0	160	__glReadjustZCounts	dynsym+mdebug	e14751474533		in	named-only	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35c50	288	__glim_Scissor	dynsym+mdebug	08d144b701f0		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35d70	332	__glim_ClipPlane	dynsym+mdebug	43e663fa033e		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35ebc	180	__glPushModelViewMatrix	dynsym+mdebug	7abe6094ecd3		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -12158,7 +12158,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c00e0	152	__glim_Shad
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c0180	136	__glim_StencilMask	dwarf+dynsym	402da8759155		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c0210	208	__glim_StencilFunc	dwarf+dynsym	8043b401eb06		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c02e0	340	__glim_StencilOp	dwarf+dynsym	9d224d940d18		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c0440	3372	__glCopyContext	dwarf+dynsym	896d599eb410		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c0440	3372	__glCopyContext	dwarf+dynsym	896d599eb410		in	named-only	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c1170	2564	__glim_PushAttrib	dwarf+dynsym	31e2c71421e9		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c1b80	3820	__glim_PopAttrib	dwarf+dynsym	564394d3eaa7		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c2a70	3244	__glim_Enable	dwarf+dynsym	199672700a38		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
@@ -13317,7 +13317,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda363a0	176	__glUpdateV
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36450	172	__glUpdateViewportTransform	dwarf+dynsym	b20677355e50		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36500	240	__glim_Viewport	dwarf+dynsym	bd8c225d4576		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda365f0	140	__glim_DepthRange	dwarf+dynsym	c20d7eb5d118		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36680	168	__glReadjustZCounts	dwarf+dynsym	09e93f310fa9		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36680	168	__glReadjustZCounts	dwarf+dynsym	09e93f310fa9		in	named-only	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36730	276	__glim_Scissor	dwarf+dynsym	fdf240fc9d23		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36850	340	__glim_ClipPlane	dwarf+dynsym	9b8212e0f2ea		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda369b0	428	__glPushModelViewMatrix	dwarf+dynsym	9bcfde37c4b6		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
