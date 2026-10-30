@@ -145,6 +145,17 @@ other finding: restated in your own words and cited by path, as in
 opening comment. Never copy code, comments, macro bodies or file layout. Where
 a 6.5.30 binary confirms the same fact, cite both.
 
+Before you call a fact unknown, search the linked IRIX source tree for the
+device, its diagnostics and its PROM code, and list that search among the
+routes tried. A question is not exhausted until the source has been read.
+
+Label honestly. Use "established" only for what you read in full: the whole
+function body, table or source passage. A reading built from call lists,
+register-store summaries, a sibling build or a name is "inferred". Never
+reword or reformat an entry to change its grade. Independent audits sample
+entries against the binaries, and their measured rates are published beside
+the coverage figures.
+
 Some facts no software reveals, such as the reset value of a register no
 driver reads. When every route is exhausted, label the fact "unknown: no
 shipped software or published source depends on it" and list the routes you
