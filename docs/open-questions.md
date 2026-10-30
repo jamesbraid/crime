@@ -16,6 +16,15 @@ Route key, used in the tables:
 
 ## Where work stopped
 
+29 October 2026, libGLcore against the public sample implementation. Functions understood: 4,916 of 17,280 (28.4 %), up from 1,476 (8.5 %) at the start of the pass. [sample-implementation.md](sample-implementation.md) now holds 1,844 entries for the N32 library and 1,614 for the o32 library: 84 N32 entries established after reading the whole body against the public source (most of them differ from it, and each difference is stated), the rest inferred from name, direct calls and source extent. The generated list-compile and list-replay routines are matched to the generator specification the sample carries, `generated/listcomp.ls`, with the record size checked against its layout rule and each replay routine tied to the public entry point that jumps through the same dispatch-table slot.
+
+Next, in order:
+
+- Read more of the inferred N32 entries against the public body, the short ones first; the 84 established entries show the shipped code differs from the sample in many small ways (fixed routines where the sample reads context slots, extension forms that forward, assembly depth tests that take the stored value in a register), so a name match alone cannot stand for a read.
+- The o32 routines whose call count differs from the N32 build once tail calls and branch-and-link calls are counted, and those with a duplicated name that the pairing by order could not settle, still have no entry of their own.
+- About 460 routines of `so_texture.s`, `so_stubs.s`, `so_blend.s`, `so_subdiv.s`, `px_convolve.s`, the SGIS and SGIX extension code and the texture-fast-path spans have no counterpart in the public sample, whose version is 1.2.1. Route tried: the sample's own source and its generator specifications, by name with vendor suffixes dropped.
+- The 33 `g_vertarray.s` draw-array routines and the 64 list-compile and 41 list-replay routines of `g_lcomp.s` and `g_lexec.s` that do not follow the plain allocate-store-append shape.
+
 29 October 2026, reader pass 13 (the `nfb` layer and sample-server promotion). Functions understood: 1,476 of 17,280 (8.5 %), up from 1,343 (7.8 %) at the start of the pass. Done in this pass:
 
 - [nfb-layer.md](nfb-layer.md): 133 of the 165 `nfb` routines of `crm.so` now have an entry (107 established after reading the whole body, 26 inferred from calls and method slots). Searches of the public indexes found no copy of the layer or of the X server, so each routine is matched to the public X.Org routine it modifies where one exists and described from its body otherwise. Vendor changes found: the cursor recolour omits the unrealize and realize steps, the best-size query clamps cursors to 32 instead of the screen size, the clip release goes through the screen's region method, the window marker records a per-slot flag before the public steps, the position hook does nothing, and the layer adds a stereo path (twenty wrappers that draw once per eye) and a draw-through-children path (twelve wrappers and one recursive worker).
