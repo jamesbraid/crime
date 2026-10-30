@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tests of the rules in inventory.py that do not need root/: the `computes` count, the scope filter, the
-per-build credit of the functions table, the template cap and the
-function boundaries of the register-access scan.
+per-build credit of the functions table, the template cap, the
+function boundaries of the register-access scan and the credit of same-named functions.
 
 Run from the repository root: python3 scripts/test_inventory.py
 """
@@ -206,6 +206,19 @@ class SplitRuns(unittest.TestCase):
         runs = [['f', self.ins(0x1000, 0x1004)], ['g', self.ins(0x1008)]]
         table = {'f': ['.text', 0x1000, 8, {'symtab'}, ''], 'g': ['.text', 0x1008, 4, {'symtab'}, '']}
         self.assertEqual([n for n, ii in inv.split_runs(runs, table)], ['f', 'g'])
+
+
+class MultiUnit(unittest.TestCase):
+    # EramAlloc is defined in two compilation units; the row is the one at 0xd981360, 0x40 bytes
+    def test_an_address_inside_the_function_ties_the_entry_to_its_unit(self):
+        self.assertTrue(inv.cites_range('`EramAlloc` (0xd981360): carves a block from the free list.', 0xd981360, 0x40))
+        self.assertTrue(inv.cites_range('`EramAlloc` stores the size at 0xd98137c.', 0xd981360, 0x40))
+
+    def test_the_other_unit_or_the_name_alone_does_not(self):
+        self.assertFalse(inv.cites_range('`EramAlloc` (0xd9848d0): the other unit.', 0xd981360, 0x40))
+        self.assertFalse(inv.cites_range('`EramAlloc` carves a block from the free list.', 0xd981360, 0x40))
+        self.assertFalse(inv.cites_range('`EramAlloc` loads the word at +0x10.', 0x0, 0x40))
+        self.assertFalse(inv.cites_range('`EramAlloc` at 0xd981360.', 0xd981360, 0))
 
 
 if __name__ == '__main__':

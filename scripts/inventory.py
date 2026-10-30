@@ -3503,18 +3503,23 @@ def build(cfg, a, tmp):
                    'address': '0x%x' % addr, 'size': size or '', 'name': name, 'source': '+'.join(sorted(srcs)),
                    'code_sha': csha}
             grp = name_rows[name][lab]
-            if len(set(name_rows[name].values())) == 1:
-                put_status(row, docs.by_name(name))     # one build of this code: the name says which
-            else:
-                put_status(row, docs.by_name(name, demote=lambda h, name=name, grp=grp: (
-                    h.ent is None or grp not in cited_groups(h.ent, name))))
-            # a name defined in several compilation units, or several names at one address, cannot be
-            # tied to one function by name: such a row is rejected, at most named-only
+            demote = None
+            if len(set(name_rows[name].values())) > 1:
+                demote = lambda h, name=name, grp=grp: h.ent is None or grp not in cited_groups(h.ent, name)
+            # a name defined in several compilation units cannot be tied to one function by name: only an
+            # entry that cites an address inside this row's function credits it. Several names at one
+            # address are rejected outright, at most named-only
             fi = finfo.get(lab, {})
             row['_multi'] = name in fi.get('multi_unit', ())
             row['_shared'] = name in fi.get('shared_address', ())
             row['rejected'] = '+'.join(w for w, f in (('multi-unit', row['_multi']), ('shared-address', row['_shared'])) if f)
-            if (row['_multi'] or row['_shared']) and RANK[row['status']] > RANK['named-only']:
+            hits = docs.name_hits(name)
+            if row['_multi']:
+                hits = [h for h in hits if h.ent is not None and cites_range(h.ent.text, addr, size)]
+            put_status(row, docs.best(hits, demote))
+            if row['_multi'] and row['status'] == 'undocumented' and docs.name_hits(name):
+                row['status'] = 'named-only'
+            if row['_shared'] and RANK[row['status']] > RANK['named-only']:
                 row['status'], row['_open'], row['_computes'] = 'named-only', False, False
             rows.append(row)
         base = os.path.basename(img['path'])
@@ -3596,6 +3601,14 @@ REG_CONTEXT = ('register', 'offset', 'pio', 'window', 'fifo', 'port', 'status', 
                'read', 'write', 'address', 'field', 'word', 'command', 'block', 'bit', 'mask', 'interrupt',
                'dma', 'reset', 'base', 'map', 'token')
 IOCTL_CONTEXT = ('ioctl',)
+
+
+def cites_range(text, addr, size):
+    """True when the text writes an absolute address inside [addr, addr + size): the citation that ties an
+    entry to one of several same-named functions. An offset (+0x...) is not an address."""
+    if not addr or not size:
+        return False
+    return any(not m.group(1) and addr <= int(m.group(2), 16) < addr + size for m in HEXLIT.finditer(text))
 
 
 def code_groups(funcs, ucode_rows):

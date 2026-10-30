@@ -71,7 +71,7 @@ One row per (binary, function symbol). A function present in several distinct bi
 | `name` | the symbol |
 | `source` | where the name came from: `symtab`, `dynsym`, `mdebug` (o32 procedure table), `funcnames` (`.debug_funcnames`), `dwarf`, or `strings` (names found by pattern in a raw image) |
 | `code_sha` | first 12 hex digits of the hash of the function's bytes, empty when they could not be read. A name with the same `code_sha` in two binaries has the same code there |
-| `rejected` | `multi-unit` (the name is defined at several addresses in the binary), `shared-address` (another name has the row's address), both joined by `+`, or empty; a rejected row is at most `named-only` (see Function rows the generator rejects) |
+| `rejected` | `multi-unit` (the name is defined at several addresses in the binary), `shared-address` (another name has the row's address), both joined by `+`, or empty; a `shared-address` row is at most `named-only`, a `multi-unit` row needs an address inside it (see Function rows the generator rejects) |
 | `scope` | `in`, or `out:N` when rule N of the config's `scope` list excludes the function (see Scope) |
 
 ### mmio.tsv
@@ -262,7 +262,7 @@ The siblings are the config's `siblings` (`{name: path from the repository root}
 
 ### Function rows the generator rejects
 
-A function row stands for one function, so its name has to pick one out. A row is rejected, and is at most `named-only` whatever documents it, when its name is defined at more than one address in the binary (a name defined in several compilation units, such as a generic routine and a board's own copy of it) or when another name sits at its address (aliases and duplicates). `functions.tsv` says which in `rejected`: `multi-unit`, `shared-address` or both joined by `+`. `summary.tsv` counts them separately in `multi_unit` and `shared_address` for `functions` and the per-binary rows (a row can be in both), and `coverage.md` repeats the totals. A document can still be right about such a function, but the table cannot tell which row it means.
+A function row stands for one function, so its name has to pick one out. When its name is defined at more than one address in the binary (a name defined in several compilation units, such as a generic routine and a board's own copy of it), the row is the lowest definition, and only an entry that writes an address inside that function (its start or an instruction in it, not a `+0x` offset) credits it; an entry that names it without such an address makes it at most `named-only`. When another name sits at its address (aliases and duplicates), the row is rejected and is at most `named-only` whatever documents it. `functions.tsv` says which in `rejected`: `multi-unit`, `shared-address` or both joined by `+`. `summary.tsv` counts them separately in `multi_unit` and `shared_address` for `functions` and the per-binary rows (a row can be in both), and `coverage.md` repeats the totals. A document can still be right about a shared-address function, but the table cannot tell which row it means.
 
 ### Function addresses
 
