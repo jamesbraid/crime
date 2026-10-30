@@ -8168,13 +8168,13 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cc7a0	344	ClipCFT	
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cc8f8	5672	ClipBCFT	mdebug	64f34fe6245f		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ccaa0	240	__glGenericPickParameterClipProcs	dynsym+mdebug	baeb893f6c18		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ccb90	800	__glCheckColorTableArgs	dynsym+mdebug	2eabb457122c		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cceb0	524	__glCheckColorSubTableArgs	dynsym+mdebug	6b33f45f2b9a		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd0bc	452	__glLoadColorTableParams	dynsym+mdebug	afd50f882ae5		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cceb0	524	__glCheckColorSubTableArgs	dynsym+mdebug	6b33f45f2b9a		in	named-only	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd0bc	452	__glLoadColorTableParams	dynsym+mdebug	afd50f882ae5		in	named-only	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd280	900	__glColorTableSGI	dynsym+mdebug	a604588fd174		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd604	352	__glim_ColorTableSGI	dynsym+mdebug	27e21fa41ccc		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd764	568	__glColorSubTable	dynsym+mdebug	ce9d124c4104		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cd99c	304	__glim_ColorSubTable	dynsym+mdebug	0b447dab0fb2		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cdacc	612	__glim_GetColorTableSGI	dynsym+mdebug	a7e13a2ca79a		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cdacc	612	__glim_GetColorTableSGI	dynsym+mdebug	a7e13a2ca79a		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cdd30	496	__glColorTableModifiers	dynsym+mdebug	2b8d82423e50		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cdf20	524	__glColorTableParameterv	mdebug	93d51dc27aeb		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce01c	132	__glim_ColorTableParameterivSGI	dynsym+mdebug	eb924d1e9b53		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
@@ -8182,8 +8182,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce0a0	140	__glim_ColorT
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ce12c	3300	__glGetColorTableParameterv	mdebug	8b08f8ab2d30		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce22c	132	__glim_GetColorTableParameterivSGI	dynsym+mdebug	8e30aac5db2a		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce2b0	140	__glim_GetColorTableParameterfvSGI	dynsym+mdebug	67b72869cef3		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce33c	1020	__glim_CopyColorTableSGI	dynsym+mdebug	cafa1d6ab7c3		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce738	804	__glim_CopyColorSubTable	dynsym+mdebug	acb47f1c95c4		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce33c	1020	__glim_CopyColorTableSGI	dynsym+mdebug	cafa1d6ab7c3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce738	804	__glim_CopyColorSubTable	dynsym+mdebug	acb47f1c95c4		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cea5c	288	__glInitColorTables	dynsym+mdebug	663b3970ce45		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ceb7c	128	__glFreeColorTables	dynsym+mdebug	d2d102324514		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cebfc	520	__glCopyColorTableScaleBias	dynsym+mdebug	ff75454aecab		in	undocumented		
@@ -12293,8 +12293,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9ca950	328	ClipCF
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9caaa0	408	ClipBCFT	dwarf+funcnames	e740000844d0		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cac40	268	__glGenericPickParameterClipProcs	dwarf+dynsym	001a593c71fc		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cad50	2060	__glCheckColorTableArgs	dwarf+dynsym	76ca5c914eaf		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb560	816	__glCheckColorSubTableArgs	dwarf+dynsym	2b4bc34c023e		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb890	1184	__glLoadColorTableParams	dwarf+dynsym	f982afaff58f		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb560	816	__glCheckColorSubTableArgs	dwarf+dynsym	2b4bc34c023e		in	named-only	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb890	1184	__glLoadColorTableParams	dwarf+dynsym	f982afaff58f		in	named-only	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cbd30	900	__glColorTableSGI	dwarf+dynsym	0f21293a8b4a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cc0c0	344	__glim_ColorTableSGI	dwarf+dynsym	dcbd3278428f		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cc220	544	__glColorSubTable	dwarf+dynsym	5ecc47e4d358		in	undocumented		
@@ -12307,7 +12307,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccb60	112	__glim_Colo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9ccbd0	372	__glGetColorTableParameterv	dwarf+funcnames	13ecd9c1e120		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccd50	112	__glim_GetColorTableParameterivSGI	dwarf+dynsym	03455ead1358		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ccdc0	112	__glim_GetColorTableParameterfvSGI	dwarf+dynsym	93bad2aaa191		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cce30	956	__glim_CopyColorTableSGI	dwarf+dynsym	c44dd3968aee		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cce30	956	__glim_CopyColorTableSGI	dwarf+dynsym	c44dd3968aee		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd1f0	760	__glim_CopyColorSubTable	dwarf+dynsym	4f3a94ab73d6		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd4f0	236	__glInitColorTables	dwarf+dynsym	5d8839a31c44		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd5e0	116	__glFreeColorTables	dwarf+dynsym	6219f4332238		in	undocumented		
@@ -13963,7 +13963,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44bc80	432	nfbFillSpans	dynsym	b6
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44be30	400	nfbTellGainedMap	dynsym	a349022ef9d3		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44bfc0	664	nfbChangeWindowAttributes	dynsym	c09bd789e209		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44c260	2292	cfbPolyGlyphBlt8	dynsym	7461a7b61ea2		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44cb60	4172	cfbFillPoly1RectCopy	dynsym	071617a156c7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44cb60	4172	cfbFillPoly1RectCopy	dynsym	071617a156c7		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44dbb0	636	crmSolidSpans	dynsym	52ca631af999		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44de30	3168	crmPolyGlyphBltP4C	dynsym	a11ff1a00550		in	understood	docs/xmodule.md#mono-images-and-glyphs	Mono images and glyphs
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44ea90	2760	crmPolyPoint	dynsym	9e110a695505		in	understood	docs/xmodule.md#lines-and-points	Lines and points
@@ -14152,9 +14152,9 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4951d0	732	cfb16LineSS1Rect	dynsy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4954b0	2492	cfb32LineSS1RectCopy	dynsym	3f79e34461f0		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x495e70	4904	cfb32ClippedLineCopy	dynsym	6a6c3c6ef620		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4971a0	4904	cfb16ClippedLineCopy	dynsym	9e621b0f6464		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4984d0	1520	cfb32LineSS1RectPreviousCopy	dynsym	2be7f055b9ec		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x498ac0	1528	cfb16LineSS1RectPreviousCopy	dynsym	7f52c826eabc		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4990c0	1460	cfb8LineSS1RectPreviousCopy	dynsym	dad9b1f99dac		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4984d0	1520	cfb32LineSS1RectPreviousCopy	dynsym	2be7f055b9ec		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x498ac0	1528	cfb16LineSS1RectPreviousCopy	dynsym	7f52c826eabc		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4990c0	1460	cfb8LineSS1RectPreviousCopy	dynsym	dad9b1f99dac		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x499680	3552	cfb16LineSS1RectGeneral	dynsym	8ee857f24931		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49a460	3372	cfb8LineSS1RectGeneral	dynsym	993bc32871b7		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49b190	5388	cfb16ClippedLineGeneral	dynsym	707c3d20b3de		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -14230,11 +14230,11 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dbf40	856	cfb32CopyRotatePixmap	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dc2a0	536	cfb32YRotatePixmap	dynsym	0a8bb0c286b5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dc4c0	1056	cfb32XRotatePixmap	dynsym	5ccbba504188		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dc8e0	872	cfb16CopyRotatePixmap	dynsym	f8eb825b9d98		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dcc50	3904	cfb32FillPoly1RectCopy	dynsym	c86e4883fb61		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ddb90	4204	cfb16FillPoly1RectCopy	dynsym	20a2e38a7bef		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dec00	3820	cfb32FillPoly1RectGeneral	dynsym	d9ecd9151dad		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dfaf0	5996	cfbFillPoly1RectGeneral	dynsym	f89a174cb9e8		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e1260	6060	cfb16FillPoly1RectGeneral	dynsym	df66f119c008		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dcc50	3904	cfb32FillPoly1RectCopy	dynsym	c86e4883fb61		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4ddb90	4204	cfb16FillPoly1RectCopy	dynsym	20a2e38a7bef		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dec00	3820	cfb32FillPoly1RectGeneral	dynsym	d9ecd9151dad		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4dfaf0	5996	cfbFillPoly1RectGeneral	dynsym	f89a174cb9e8		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e1260	6060	cfb16FillPoly1RectGeneral	dynsym	df66f119c008		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e2a10	1484	cfb16PolyPoint	dynsym	6ab191c63670		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e2fe0	1500	cfb32PolyPoint	dynsym	5533f47f70a3		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4e35c0	1276	cfbPolyPoint	dynsym	07bc71d702de		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
