@@ -6,7 +6,7 @@ Public source: the X.Org server tree at tag `XORG-6_8_2` (`https://gitlab.freede
 
 Labels follow [AGENTS.md](../AGENTS.md): an entry is **Established** only where the whole routine was read against the public body; the rest are **Inferred**, matched to the public routine by its calls and shape rather than read end to end. Where an entry says it differs from the public body, the difference was read in the disassembly. Routes tried for the SGI-only code (the symbol-database reader, the line-table helpers and the `nfb` layer, which has no public counterpart): the public X.Org tree holds none either.
 
-Not yet covered here: the 165 `nfb` routines, which are SGI's own frame-buffer layer and have no public source.
+The 165 `nfb` routines have their own chapter, [nfb-layer.md](nfb-layer.md).
 
 ## Machine-independent layer (mi)
 
