@@ -2414,7 +2414,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10081e60	296	ChangeKeyMapping	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10081f90	124	SGravityEvent	dynsym	bf395a7be9e9		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082010	1896	SProcSetMBufferAttributes..GLC	dynsym	e232df752637		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082780	228	AccessUnmapSubwindows	dynsym	0ea92cfb7a9f		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082870	972	ddxFindAvailableBoards..CGC	dynsym	2274a65a044b		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082870	972	ddxFindAvailableBoards..CGC	dynsym	2274a65a044b		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082c40	220	RecordFlushAllContexts..PIG	dynsym	82db137aeab0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10082d30	5116	scan_cidtype1font	dynsym	62c8d27158c6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10084130	132	fs_handle_unexpected..JEB	dynsym	434583f220cf		undocumented		
@@ -2822,7 +2822,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c71a0	116	XdmcpFlush	dynsym	
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c7220	36	XETSwChangeHosts	dynsym	c7a5a2464853		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c7250	3356	RecordARequest..KIG	dynsym	ca58220de785		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c7f70	188	initFont	dynsym	13b6aa30ed6c		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8030	152	glxWrapRealizeWindow	dynsym	06ecadbf57c2		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8030	152	glxWrapRealizeWindow	dynsym	06ecadbf57c2		understood	docs/xsgi.md#opengl-window-hooks-read-pass-4	OpenGL window hooks (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c80d0	312	ProcNMBX_Dispatch..CPE	dynsym	436d81f2d85c		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c84f0	524	_fs_try_reconnect..MEB	dynsym	cc06c364fc99		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8700	1004	AccessQueryTree	dynsym	596c53e25c86		undocumented		
@@ -3199,7 +3199,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101161a0	504	DbeWindowPrivDelet
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101163a0	1724	fs_read_glyphs..EFB	dynsym	2b6b37b4bb4f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10116a60	5224	ProcXChangeFeedbackControl	dynsym	db62a8cb966a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10117ed0	1392	XETrapRequestVector	dynsym	cae9b41f6492		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10118440	428	ddxMultiCursorDisable	dynsym	bffa49b3119c		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10118440	428	ddxMultiCursorDisable	dynsym	bffa49b3119c		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101185f0	1328	_FontTransParseAddress..JIB	dynsym	968e0a85860d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10118b20	3632	ProcXSelectExtensionEvent	dynsym	911b61b92db3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10119950	136	InitFocusClassDeviceStruct	dynsym	1543fc021d48		undocumented		
@@ -3987,7 +3987,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101abd00	312	AddLocalHosts	dyns
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101abe40	308	PanoramiXInitViewport	dynsym	d1e579d27c64		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101abf80	124	_XkbDupString	dynsym	24e86addc737		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac000	756	GetFontPath	dynsym	06a58af125fc		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac300	384	ddxMultiCursorShowHide	dynsym	6b53be22d84b		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac300	384	ddxMultiCursorShowHide	dynsym	6b53be22d84b		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac480	2872	inflate_codes	dynsym	63fcf9cba04d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101acfc0	664	miShmPutImage..MEE	dynsym	93181816bbb4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad260	480	ddxSetColormapDflts	dynsym	e484bc0317f9		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
@@ -4335,7 +4335,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec4d0	952	rrmInit	dynsym	1bf
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec890	176	XkbDDXFakePointerMotion	dynsym	09b744a6f227		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec940	1060	XkbVModMaskText	dynsym	d42de9a0a7bf		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ecd70	3912	ProcXineramaFillPoly	dynsym	aaca1141f81b		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101edcc0	104	glxWrapPostValidateTree	dynsym	22ac4bcbd99a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101edcc0	104	glxWrapPostValidateTree	dynsym	22ac4bcbd99a		understood	docs/xsgi.md#opengl-window-hooks-read-pass-4	OpenGL window hooks (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101edd30	196	ProcSGIvcSetScreenExternalSyncSource	dynsym	a3229062d110		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ede00	408	XkbCFFreeRtrn	dynsym	bb09238eca35		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101edfa0	624	PanoramiXCheckMotion..JB	dynsym	0e4fdd9661d1		undocumented		
@@ -4352,7 +4352,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101efe70	240	ProcSGICapDispatch
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101eff70	456	AccessCopyGC	dynsym	d19da899fb0e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0140	168	ProcXagQueryVersion..FJD	dynsym	cf6e1ee12545		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f01f0	2732	t1_Xform	dynsym	2f8a35569bca		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0ca0	152	glxWrapUnrealizeWindow	dynsym	2ccffd70d024		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0ca0	152	glxWrapUnrealizeWindow	dynsym	2ccffd70d024		understood	docs/xsgi.md#opengl-window-hooks-read-pass-4	OpenGL window hooks (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0d40	324	ProcConfigureWindow	dynsym	85326015744d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0e90	8	sp_init_screen	dynsym	a7e7ca11a6b8		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101f0ea0	128	FXYConvert..AMB	dynsym	def2a885b868		undocumented		
@@ -4860,7 +4860,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102546d0	244	SProcScreenSaverDi
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102547d0	656	sProcAccessDispatch..OID	dynsym	f9ee6c88e6a0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10254a60	728	NextAvailableClient	dynsym	b7c8fafc309e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10254d40	644	ProcXkbGetCompatMap	dynsym	18384067170c		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10254fd0	188	glxWrapDestroyWindow	dynsym	0e22229694d9		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10254fd0	188	glxWrapDestroyWindow	dynsym	0e22229694d9		understood	docs/xsgi.md#opengl-window-hooks-read-pass-4	OpenGL window hooks (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10255090	228	_XSERVTransShmBufClose	dynsym	dc719b82d580		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10255180	8	sp_end_contour_out	dynsym	78aa5094d5ec		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10255190	2204	SProcIDispatch	dynsym	b2a95d8ec0f7		undocumented		
@@ -4902,7 +4902,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102599f0	7540	ProcLbxGrabCmap	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025b770	800	ProcDbeSwapBuffers..NHC	dynsym	9fe209072f8d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025ba90	152	mbufPostSwapBuffer	dynsym	2a9c6fe171ed		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025bb30	480	readCCM	dynsym	e15c3be1684d		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025bd10	128	glxWrapCreateWindow	dynsym	083a546150d0		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025bd10	128	glxWrapCreateWindow	dynsym	083a546150d0		understood	docs/xsgi.md#opengl-window-hooks-read-pass-4	OpenGL window hooks (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025bd90	2644	sp_line_black	dynsym	c47f543980c8		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025c7f0	40	_FontTransSocketSetOption..EHB	dynsym	747366dd4604		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1025c820	484	BitVectorCreateSet..PLG	dynsym	4d6e1dc88e8f		undocumented		
@@ -5126,7 +5126,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027eb40	1496	ProcLbxInternAtom
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f120	608	InitFonts	dynsym	492eb3796984		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f380	124	SLHostsExtend	dynsym	df6a8f5c1a70		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f400	408	SProcRecordRegisterClients..OKG	dynsym	83412398d14c		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f5a0	712	ddxMultiCursorEnable	dynsym	51f18919f638		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f5a0	712	ddxMultiCursorEnable	dynsym	51f18919f638		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027f870	520	LbxCmapInit	dynsym	76a3b3b410ef		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fb90	304	CreateAppGroup..IJD	dynsym	7e2c1c927fd0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1027fcc0	360	sgiCapPolyGlyphBlt..PCE	dynsym	e4477339248c		undocumented		
@@ -14106,7 +14106,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489a50	188	crmUnmapGbe	dynsym	0f5
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489b10	8	crmCloseAllocator	dynsym	78aa5094d5ec		understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489b20	260	crmResetXvc	dynsym	6d3c0cf59608		understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489c30	224	nfbCloseScreen	dynsym	b61239c5463f		understood	docs/nfb-layer.md#screen-hooks	Screen hooks
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489d10	276	cfbAllocatePrivates	dynsym	ab6dd808377b		located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489d10	276	cfbAllocatePrivates	dynsym	ab6dd808377b		understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489e30	300	cfb32AllocatePrivates	dynsym	a21105757524		located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489f60	304	cfb16AllocatePrivates	dynsym	703e1e8fa49d		located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x48a090	436	crmKernInit	dynsym	0b2bc956bd27		understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
@@ -14463,7 +14463,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560470	28	sgiEnableCapabilityUnsu
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560490	280	nfb0RopLoop..EG	dynsym	8735c9fa3968		understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5605b0	188	miFreeArcs..GDB	dynsym	9f8d9e2a24e9		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560670	172	rrmInitRootWindow..LF	dynsym	078da3de4376		understood	docs/xmodule.md#window-creation-and-mapping	Window creation and mapping
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560720	152	hookEllipseY..GEB	dynsym	261218772c7b		located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560720	152	hookEllipseY..GEB	dynsym	261218772c7b		understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5607c0	432	nfbInfPolyFillRect..EK	dynsym	923a4fedc966		understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560970	440	nfbInfPolyGlyphBlt..LK	dynsym	7f04edc340d6		understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560b30	1460	nfb15MaskRopLoop..DI	dynsym	73512eb657fe		understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
@@ -14498,7 +14498,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5647f0	1400	miFillPolyHelper	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564d70	240	crmValidateReservedMode	dynsym	389406872e5d		understood	docs/xmodule.md#validation-of-graphics-contexts-and-windows	Validation of graphics contexts and windows
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564e60	116	miBSChangeClip..LBB	dynsym	5fbd1a587518		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564ee0	612	miCreateBSPixmap..ACB	dynsym	f668955f5b77		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x565150	232	tailEllipseY..NDB	dynsym	1a943e752a65		located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x565150	232	tailEllipseY..NDB	dynsym	1a943e752a65		understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x565240	1976	nfbValidateGC..GJ	dynsym	8a746504925b		understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x565a00	424	crmPowerSaver..O	dynsym	1de8439028f6		understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x565bb0	1532	rrmInvalidateWindowTree..KF	dynsym	bc9d76b39ac2		understood	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
@@ -14649,7 +14649,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58a930	868	crmSetSmask	dynsym	6a3
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58aca0	248	miBSPolyText16..HAB	dynsym	1a8160b1fa09		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58ada0	508	getFBConsumption..KC	dynsym	5ac55fe29456		understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58afa0	4628	nfbComputeClipsSL..LI	dynsym	75a44d857d15		understood	docs/nfb-layer.md#larger-routines	Larger routines
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c1c0	176	miTileVirtualBS..PBB	dynsym	5b9808b30d02		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c1c0	176	miTileVirtualBS..PBB	dynsym	5b9808b30d02		understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c270	4272	miWideSegment..FO	dynsym	1fdfd61296b4		located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d320	216	nfb12RopLoop..AH	dynsym	f8aba4e7ddec		understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d400	220	miBSFree..BBB	dynsym	aa9a91a358ce		understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
