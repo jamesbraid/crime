@@ -8190,19 +8190,19 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cebfc	520	__glCopyColor
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee10	8	__glDispatchExec	mdebug	5a43f471c1b7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee18	92	__glBeginDispatchOverride	mdebug	affb911cf8c9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee74	6308	__glEndDispatchOverride	mdebug	5ae25d237946		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cee90	428	__glEarlyInitContext	dynsym+mdebug	a3f2379157c9		in	located	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cee90	428	__glEarlyInitContext	dynsym+mdebug	a3f2379157c9		in	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cf03c	932	__glContextSetColorScales	dynsym+mdebug	2a2d81cc4cd6		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cf3e0	2748	__glSoftResetContext	dynsym+mdebug	3a4db255a949		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cfe9c	112	__glDestroyContext	dynsym+mdebug	80f9d85cb899		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cff0c	684	__glDestroySoftContext	dynsym+mdebug	b8c3e43fe26e		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d01b8	236	__glFreePrivate	dynsym+mdebug	803762a6df6f		in	located	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d01b8	236	__glFreePrivate	dynsym+mdebug	803762a6df6f		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d02a4	188	__glSetError	dynsym+mdebug	a1d50f0be706		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0360	424	__glim_RenderMode	dynsym+mdebug	44555c6f2efb		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0508	280	__glChangeWindowSize	dynsym+mdebug	9d30ec5ee56f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0620	12	__glChangeReadWindowSize	dynsym+mdebug	3bb3620b5646		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d062c	236	__glFindWindowSize	dynsym+mdebug	d6b8ecf10ed7		in	named-only	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d062c	236	__glFindWindowSize	dynsym+mdebug	d6b8ecf10ed7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d0718	7960	FillBufferInfo	mdebug	53e3a9e6471d		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0784	348	__glMakeCurrentBuffers	dynsym+mdebug	60d382684c23		in	located	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0784	348	__glMakeCurrentBuffers	dynsym+mdebug	60d382684c23		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d08e0	232	__glLoseCurrentBuffers	dynsym+mdebug	0f05dbd89530		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d09c8	192	__glFreeBufData	dynsym+mdebug	8fd85acf9973		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0a90	1056	__glCheckConvolutionFilterArgs	dynsym+mdebug	571d9b40b952		in	undocumented		
@@ -12315,17 +12315,17 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd660	516	__glCopyCol
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cd870	8	__glDispatchExec	dwarf+funcnames	5a43f471c1b7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cd880	372	__glBeginDispatchOverride	dwarf+funcnames	8b47d073630e		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cda00	28	__glEndDispatchOverride	dwarf+funcnames	bb29d4a65f00		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cda20	388	__glEarlyInitContext	dwarf+dynsym	40c3db14466f		in	located	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cda20	388	__glEarlyInitContext	dwarf+dynsym	40c3db14466f		in	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cdbb0	908	__glContextSetColorScales	dwarf+dynsym	a6c54c83e4b7		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cdf40	2980	__glSoftResetContext	dwarf+dynsym	066957a9c1a3		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ceaf0	112	__glDestroyContext	dwarf+dynsym	51c119dd216a		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ceb60	536	__glDestroySoftContext	dwarf+dynsym	873391dee72f		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ced80	208	__glFreePrivate	dwarf+dynsym	1ff8ee5389e7		in	located	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ced80	208	__glFreePrivate	dwarf+dynsym	1ff8ee5389e7		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cee50	184	__glSetError	dwarf+dynsym	c0f1b2c3e37d		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cef10	420	__glim_RenderMode	dwarf+dynsym	a13380a9c394		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf0c0	260	__glChangeWindowSize	dwarf+dynsym	e421cd29b337		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1d0	12	__glChangeReadWindowSize	dwarf+dynsym	f8321c20ad29		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1e0	212	__glFindWindowSize	dwarf+dynsym	cf09e449cc12		in	named-only	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1e0	212	__glFindWindowSize	dwarf+dynsym	cf09e449cc12		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cf2c0	80	FillBufferInfo	dwarf+funcnames	7ac5ad24ef9d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf310	332	__glMakeCurrentBuffers	dwarf+dynsym	69a4daa12f71		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf460	212	__glLoseCurrentBuffers	dwarf+dynsym	f9432a348f42		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
