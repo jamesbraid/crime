@@ -13115,7 +13115,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda24eb0	676	__glLinearF
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25160	1284	__glLinearFilter2	dwarf+dynsym	f15dd1ce17bd		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25670	2144	__glLinearFilter3	dwarf+dynsym	8cb28ce4f550		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25ed0	52	__glFilter4Func	dwarf+dynsym	ddfbb05d5096		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25f10	52	__glLinearFilter	dwarf+dynsym	6384b0394bad		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25f10	52	__glLinearFilter	dwarf+dynsym	6384b0394bad		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25f50	52	__glNearestFilter	dwarf+dynsym	38852cbffcff		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda25f90	136	__glNMNFilter	dwarf+dynsym	0d087e5e581c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda26020	136	__glLMNFilter	dwarf+dynsym	25e0326c38ee		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
