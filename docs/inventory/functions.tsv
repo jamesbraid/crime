@@ -413,7 +413,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002495c	96	Signal	symtab	0c
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00249e0	60	psignal	symtab	040dabcc9a66		in	named-only	docs/functions.md#process-hooks	Process hooks
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a1c	44	issig	symtab	0a52cdeceee8		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a48	72	psig	symtab	449c852796b6		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a90	76	ffs	symtab	e1110d274743		in	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024a90	76	ffs	symtab	e1110d274743		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024adc	12	r4k_getticker	symtab	923a8ad58445		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024ae8	12	r4k_setticker	symtab	5967f733518c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024af4	12	r4k_setcompare	symtab	36d5b735ab25		in	undocumented		
@@ -436,7 +436,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024d80	12	_init_alarm	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024d8c	112	alarm	symtab	3dd084384fab		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024dfc	84	check_alarm	symtab	5acc16b8238e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024e50	924	Open	symtab	a1ff87bdecff		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00251ec	624	Read	symtab	e662a1f58904		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00251ec	624	Read	symtab	e662a1f58904		in	named-only	docs/sample-implementation.md#px_unpackc	px_unpack.c
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002545c	324	Write	symtab	5285cf3869fd		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00255a0	172	Close	symtab	981a2e1d9505		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002564c	176	Seek	symtab	0b519515affc		in	undocumented		
@@ -3125,7 +3125,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10108a10	664	LbxDecodePoly	dyns
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10108cb0	140	ProcUnmapWindow	dynsym	79c98e52e0a1		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10108d40	1096	ProcSetSelectionOwner	dynsym	e29b19c55463		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109190	272	TreeInsertRight..MI	dynsym	e890a88aaab1		in	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101092a0	256	SetWinSize	dynsym	17059e8c5e98		in	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101092a0	256	SetWinSize	dynsym	17059e8c5e98		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101093a0	372	sgiCapPolyText16..LCE	dynsym	4e931f9c45b8		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109520	376	fs_block_handler..IEB	dynsym	c297a12512ee		out:14	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101096a0	144	SProcSyncSetCounter..LIE	dynsym	d16e61b085dc		out:11	undocumented		
@@ -4519,7 +4519,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212720	584	sp_split_curve..GB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212970	408	ProcSGIvcSetScreenInputSyncSource	dynsym	733396828d89		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212b10	208	LbxAddExtensionAlias	dynsym	f8a5a2e89a56		out:13	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212be0	252	LbxCheckCompressInput..DBG	dynsym	3bc107702614		out:13	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212ce0	228	CheckCursorConfinement	dynsym	2a6247dd0778		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212ce0	228	CheckCursorConfinement	dynsym	2a6247dd0778		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10212de0	4816	FontFileOpenFont	dynsym	f555bcd6d40e		out:14	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102140b0	216	AllocateWindow	dynsym	1bc3b378074e		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10214190	4468	WriteXKBSection..PLF	dynsym	cc27b289164f		in	undocumented		
@@ -4945,7 +4945,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261360	284	ProcXvStopVideo..E
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261480	1972	XkbRF_Free	dynsym	cff3c17fee54		out:12	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261c40	204	AddAuthorization	dynsym	f01b1d89be2a		out:13	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261d10	280	AccessCopyColormap	dynsym	605c40b685bf		out:13	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261e30	304	SetBorderSize	dynsym	cdf7d45cf18b		in	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261e30	304	SetBorderSize	dynsym	cdf7d45cf18b		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10261f60	3608	FontFileReadDirectory	dynsym	b28c3201ad5a		out:14	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10262d80	632	UseMsg	dynsym	12424cb0e0f7		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10263000	496	ddxMultiCursorSetDefaultOffsets	dynsym	7cb155a3b8d6		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
@@ -7731,26 +7731,26 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a4fc8	676	__glSpanModif
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a526c	2128	__glSpanApplyRGBAColorTable	dynsym+mdebug	ec5815f62b34		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5ac0	528	__glInitPacker	dynsym+mdebug	5211fc4df6cb		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5cd0	108	__glInitPacker3D	dynsym+mdebug	1040fff0169c		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5d3c	172	__glSpanReduceRed	dynsym+mdebug	0c8d02fb4fb2		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5de8	172	__glSpanReduceGreen	dynsym+mdebug	9833def2076a		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5e94	172	__glSpanReduceBlue	dynsym+mdebug	9923f02abf48		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5f40	172	__glSpanReduceAlpha	dynsym+mdebug	c5d33dbeafcd		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5fec	484	__glSpanReduceRGB	dynsym+mdebug	7ea83650a904		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a61d0	484	__glSpanReduceBGR	dynsym+mdebug	5f2fa219aa82		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a63b4	352	__glSpanReorderABGR	dynsym+mdebug	04fb32e57a28		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6514	352	__glSpanReorderBGRA	dynsym+mdebug	dbaf5f478806		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6674	340	__glSpanReduceLuminance	dynsym+mdebug	3597bb12cf2b		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a67c8	404	__glSpanReduceLuminanceAlpha	dynsym+mdebug	864aff65c181		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a695c	204	__glSpanReduceRedAlpha	dynsym+mdebug	d0cac3ba6de3		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6a28	120	__glSpanReduceRedNS	dynsym+mdebug	0a28b31f41f9		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6aa0	120	__glSpanReduceGreenNS	dynsym+mdebug	736486091191		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6b18	120	__glSpanReduceBlueNS	dynsym+mdebug	9c06f480a4b8		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6b90	120	__glSpanReduceAlphaNS	dynsym+mdebug	97e8d22ce6b1		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6c08	200	__glSpanReduceRGBNS	dynsym+mdebug	6c8f77087ebd		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6cd0	200	__glSpanReduceBGRNS	dynsym+mdebug	6c8f77087ebd		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6d98	240	__glSpanReorderABGRNS	dynsym+mdebug	6ec381a5223c		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6e88	240	__glSpanReorderBGRANS	dynsym+mdebug	e1b97fb8e443		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6f78	160	__glSpanReduceRedAlphaNS	dynsym+mdebug	e3060f8b79ce		in	located	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5d3c	172	__glSpanReduceRed	dynsym+mdebug	0c8d02fb4fb2		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5de8	172	__glSpanReduceGreen	dynsym+mdebug	9833def2076a		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5e94	172	__glSpanReduceBlue	dynsym+mdebug	9923f02abf48		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5f40	172	__glSpanReduceAlpha	dynsym+mdebug	c5d33dbeafcd		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5fec	484	__glSpanReduceRGB	dynsym+mdebug	7ea83650a904		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a61d0	484	__glSpanReduceBGR	dynsym+mdebug	5f2fa219aa82		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a63b4	352	__glSpanReorderABGR	dynsym+mdebug	04fb32e57a28		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6514	352	__glSpanReorderBGRA	dynsym+mdebug	dbaf5f478806		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6674	340	__glSpanReduceLuminance	dynsym+mdebug	3597bb12cf2b		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a67c8	404	__glSpanReduceLuminanceAlpha	dynsym+mdebug	864aff65c181		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a695c	204	__glSpanReduceRedAlpha	dynsym+mdebug	d0cac3ba6de3		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6a28	120	__glSpanReduceRedNS	dynsym+mdebug	0a28b31f41f9		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6aa0	120	__glSpanReduceGreenNS	dynsym+mdebug	736486091191		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6b18	120	__glSpanReduceBlueNS	dynsym+mdebug	9c06f480a4b8		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6b90	120	__glSpanReduceAlphaNS	dynsym+mdebug	97e8d22ce6b1		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6c08	200	__glSpanReduceRGBNS	dynsym+mdebug	6c8f77087ebd		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6cd0	200	__glSpanReduceBGRNS	dynsym+mdebug	6c8f77087ebd		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6d98	240	__glSpanReorderABGRNS	dynsym+mdebug	6ec381a5223c		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6e88	240	__glSpanReorderBGRANS	dynsym+mdebug	e1b97fb8e443		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6f78	160	__glSpanReduceRedAlphaNS	dynsym+mdebug	e3060f8b79ce		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a7018	144	__glSpanPackUbyte	dynsym+mdebug	28dbebfc00d7		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a70a8	180	__glSpanPackByte	dynsym+mdebug	c33bb21eb200		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a715c	144	__glSpanPackUshort	dynsym+mdebug	910b28470ec5		in	located	docs/sample-implementation.md#px_packc	px_pack.c
@@ -7873,49 +7873,49 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6c64	532	__glInitUnpac
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6e78	108	__glInitUnpacker3D	dynsym+mdebug	ce678f06000b		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6ee4	2872	__glSpanUnpackBitmap	dynsym+mdebug	cea06f13b6cd		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b7a1c	2056	__glSpanUnpackBitmap2	dynsym+mdebug	e0e08ee35fa6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8224	100	__glSpanUnpackRGBubyte	dynsym+mdebug	92c1691afb95		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8288	68	__glSpanUnpackIndexUbyte	dynsym+mdebug	0c56ccbb4af0		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b82cc	96	__glSpanUnpackRGBAubyte	dynsym+mdebug	a20dee085521		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b832c	80	__glSpanSwapBytes2	dynsym+mdebug	4b8dd32c532c		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b837c	80	__glSpanSwapBytes2Dst	dynsym+mdebug	36f1b8586523		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b83cc	236	__glSpanSwapAndSkipBytes2	dynsym+mdebug	7525f87b5d8b		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b84b8	100	__glSpanSwapBytes4	dynsym+mdebug	fb3f723988f1		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b851c	100	__glSpanSwapBytes4Dst	dynsym+mdebug	0498b60931c8		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8580	328	__glSpanSwapAndSkipBytes4	dynsym+mdebug	912bfedc3e82		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b86c8	196	__glSpanSkipPixels1	dynsym+mdebug	78a30134d853		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b878c	196	__glSpanSkipPixels2	dynsym+mdebug	36fedad71683		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8850	196	__glSpanSkipPixels4	dynsym+mdebug	fabeb7f94ce6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8914	236	__glSpanSlowSkipPixels2	dynsym+mdebug	6e7c2a53cc2d		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8a00	328	__glSpanSlowSkipPixels4	dynsym+mdebug	1ff948c6a7fc		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8b48	80	__glSpanAlignPixels2	dynsym+mdebug	459422a837dc		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8b98	80	__glSpanAlignPixels2Dst	dynsym+mdebug	3d4bee5fd73f		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8be8	100	__glSpanAlignPixels4	dynsym+mdebug	6e192e1db664		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8c4c	100	__glSpanAlignPixels4Dst	dynsym+mdebug	045ca749adcc		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8cb0	84	__glSpanUnpackUbyte	dynsym+mdebug	706660ebbd5a		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8d04	144	__glSpanUnpackByte	dynsym+mdebug	b6c27016b065		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8d94	120	__glSpanUnpackUshort	dynsym+mdebug	ae1879d6e121		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8e0c	144	__glSpanUnpackShort	dynsym+mdebug	f8e80fb9102a		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8e9c	120	__glSpanUnpackUint	dynsym+mdebug	0b0e21dc8a28		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8f14	172	__glSpanUnpackInt	dynsym+mdebug	652c958acf73		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8fc0	292	__glSpanUnpack332Ubyte	dynsym+mdebug	3c75c4a65653		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b90e4	300	__glSpanUnpack233RevUbyte	dynsym+mdebug	dbb88e2d6f30		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9210	292	__glSpanUnpack565Ushort	dynsym+mdebug	89a3fd940fc0		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9334	300	__glSpanUnpack565RevUshort	dynsym+mdebug	cd654b8c28fb		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9460	348	__glSpanUnpack4444Ushort	dynsym+mdebug	5d297bdeed2b		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b95bc	348	__glSpanUnpack4444RevUshort	dynsym+mdebug	192cf55d88b4		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9718	188	__glSpanUnpack5551Ushort	dynsym+mdebug	10fdff5a362d		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b97d4	188	__glSpanUnpack1555RevUshort	dynsym+mdebug	2caae0fa1083		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9890	304	__glSpanUnpack8888Uint	dynsym+mdebug	0424702214f6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b99c0	300	__glSpanUnpack8888RevUint	dynsym+mdebug	02ce1fc11a9c		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9aec	316	__glSpanUnpack_10_10_10_2_Uint	dynsym+mdebug	790cd628983a		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9c28	316	__glSpanUnpack_2_10_10_10_RevUint	dynsym+mdebug	c0b6e77e7b92		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9d64	300	__glSpanUnpackUbyteI	dynsym+mdebug	3b0c4bbcb5ed		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9e90	208	__glSpanUnpackByteI	dynsym+mdebug	4bd3160d9a28		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9f60	300	__glSpanUnpackUshortI	dynsym+mdebug	bf4b2f04ce1f		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba08c	208	__glSpanUnpackShortI	dynsym+mdebug	66dd145dfeff		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba15c	300	__glSpanUnpackUintI	dynsym+mdebug	54ae09fea0fd		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba288	208	__glSpanUnpackIntI	dynsym+mdebug	40541ee90da9		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba358	116	__glSpanUnpackNonCompUint	dynsym+mdebug	b47c81359fff		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8224	100	__glSpanUnpackRGBubyte	dynsym+mdebug	92c1691afb95		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8288	68	__glSpanUnpackIndexUbyte	dynsym+mdebug	0c56ccbb4af0		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b82cc	96	__glSpanUnpackRGBAubyte	dynsym+mdebug	a20dee085521		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b832c	80	__glSpanSwapBytes2	dynsym+mdebug	4b8dd32c532c		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b837c	80	__glSpanSwapBytes2Dst	dynsym+mdebug	36f1b8586523		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b83cc	236	__glSpanSwapAndSkipBytes2	dynsym+mdebug	7525f87b5d8b		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b84b8	100	__glSpanSwapBytes4	dynsym+mdebug	fb3f723988f1		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b851c	100	__glSpanSwapBytes4Dst	dynsym+mdebug	0498b60931c8		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8580	328	__glSpanSwapAndSkipBytes4	dynsym+mdebug	912bfedc3e82		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b86c8	196	__glSpanSkipPixels1	dynsym+mdebug	78a30134d853		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b878c	196	__glSpanSkipPixels2	dynsym+mdebug	36fedad71683		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8850	196	__glSpanSkipPixels4	dynsym+mdebug	fabeb7f94ce6		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8914	236	__glSpanSlowSkipPixels2	dynsym+mdebug	6e7c2a53cc2d		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8a00	328	__glSpanSlowSkipPixels4	dynsym+mdebug	1ff948c6a7fc		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8b48	80	__glSpanAlignPixels2	dynsym+mdebug	459422a837dc		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8b98	80	__glSpanAlignPixels2Dst	dynsym+mdebug	3d4bee5fd73f		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8be8	100	__glSpanAlignPixels4	dynsym+mdebug	6e192e1db664		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8c4c	100	__glSpanAlignPixels4Dst	dynsym+mdebug	045ca749adcc		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8cb0	84	__glSpanUnpackUbyte	dynsym+mdebug	706660ebbd5a		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8d04	144	__glSpanUnpackByte	dynsym+mdebug	b6c27016b065		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8d94	120	__glSpanUnpackUshort	dynsym+mdebug	ae1879d6e121		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8e0c	144	__glSpanUnpackShort	dynsym+mdebug	f8e80fb9102a		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8e9c	120	__glSpanUnpackUint	dynsym+mdebug	0b0e21dc8a28		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8f14	172	__glSpanUnpackInt	dynsym+mdebug	652c958acf73		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8fc0	292	__glSpanUnpack332Ubyte	dynsym+mdebug	3c75c4a65653		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b90e4	300	__glSpanUnpack233RevUbyte	dynsym+mdebug	dbb88e2d6f30		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9210	292	__glSpanUnpack565Ushort	dynsym+mdebug	89a3fd940fc0		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9334	300	__glSpanUnpack565RevUshort	dynsym+mdebug	cd654b8c28fb		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9460	348	__glSpanUnpack4444Ushort	dynsym+mdebug	5d297bdeed2b		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b95bc	348	__glSpanUnpack4444RevUshort	dynsym+mdebug	192cf55d88b4		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9718	188	__glSpanUnpack5551Ushort	dynsym+mdebug	10fdff5a362d		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b97d4	188	__glSpanUnpack1555RevUshort	dynsym+mdebug	2caae0fa1083		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9890	304	__glSpanUnpack8888Uint	dynsym+mdebug	0424702214f6		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b99c0	300	__glSpanUnpack8888RevUint	dynsym+mdebug	02ce1fc11a9c		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9aec	316	__glSpanUnpack_10_10_10_2_Uint	dynsym+mdebug	790cd628983a		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9c28	316	__glSpanUnpack_2_10_10_10_RevUint	dynsym+mdebug	c0b6e77e7b92		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9d64	300	__glSpanUnpackUbyteI	dynsym+mdebug	3b0c4bbcb5ed		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9e90	208	__glSpanUnpackByteI	dynsym+mdebug	4bd3160d9a28		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b9f60	300	__glSpanUnpackUshortI	dynsym+mdebug	bf4b2f04ce1f		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba08c	208	__glSpanUnpackShortI	dynsym+mdebug	66dd145dfeff		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba15c	300	__glSpanUnpackUintI	dynsym+mdebug	54ae09fea0fd		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba288	208	__glSpanUnpackIntI	dynsym+mdebug	40541ee90da9		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba358	116	__glSpanUnpackNonCompUint	dynsym+mdebug	b47c81359fff		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba3cc	124	__glSpanClampPreFloat	dynsym+mdebug	0fcbfd6339c5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba448	104	__glSpanClampNegPreFloat	dynsym+mdebug	5aba5ac6d2ef		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ba4b0	124	__glSpanClampPostFloat	dynsym+mdebug	d7006b7180d9		in	undocumented		
@@ -11856,26 +11856,26 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a37c0	1156	__glSpanMo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a3c50	1732	__glSpanApplyRGBAColorTable	dwarf+dynsym	b9f403739954		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4320	480	__glInitPacker	dwarf+dynsym	bde80a96932a		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4500	112	__glInitPacker3D	dwarf+dynsym	052c7de5c664		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4570	152	__glSpanReduceRed	dwarf+dynsym	ebd07632d843		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4610	152	__glSpanReduceGreen	dwarf+dynsym	af8e9a6c4f64		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a46b0	152	__glSpanReduceBlue	dwarf+dynsym	6afb805d0bce		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4750	152	__glSpanReduceAlpha	dwarf+dynsym	d62d0fe18a3a		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a47f0	280	__glSpanReduceRGB	dwarf+dynsym	a3b5f2f9f9bc		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4910	280	__glSpanReduceBGR	dwarf+dynsym	a516242fc305		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4a30	344	__glSpanReorderABGR	dwarf+dynsym	65221d2783bd		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4b90	344	__glSpanReorderBGRA	dwarf+dynsym	fd5ae2de231e		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4cf0	296	__glSpanReduceLuminance	dwarf+dynsym	0f2f55d13d9d		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4e20	360	__glSpanReduceLuminanceAlpha	dwarf+dynsym	180ac93be336		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4f90	216	__glSpanReduceRedAlpha	dwarf+dynsym	213efa5ba427		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5070	136	__glSpanReduceRedNS	dwarf+dynsym	bd0979f761a3		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5100	136	__glSpanReduceGreenNS	dwarf+dynsym	2e636b9cb618		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5190	136	__glSpanReduceBlueNS	dwarf+dynsym	285288f9a806		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5220	136	__glSpanReduceAlphaNS	dwarf+dynsym	7b22d1782989		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a52b0	216	__glSpanReduceRGBNS	dwarf+dynsym	517d155d54fa		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5390	216	__glSpanReduceBGRNS	dwarf+dynsym	517d155d54fa		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5470	248	__glSpanReorderABGRNS	dwarf+dynsym	d4f353514158		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5570	248	__glSpanReorderBGRANS	dwarf+dynsym	2e4c479e6b7c		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5670	168	__glSpanReduceRedAlphaNS	dwarf+dynsym	ab4122e8fdd2		in	located	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4570	152	__glSpanReduceRed	dwarf+dynsym	ebd07632d843		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4610	152	__glSpanReduceGreen	dwarf+dynsym	af8e9a6c4f64		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a46b0	152	__glSpanReduceBlue	dwarf+dynsym	6afb805d0bce		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4750	152	__glSpanReduceAlpha	dwarf+dynsym	d62d0fe18a3a		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a47f0	280	__glSpanReduceRGB	dwarf+dynsym	a3b5f2f9f9bc		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4910	280	__glSpanReduceBGR	dwarf+dynsym	a516242fc305		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4a30	344	__glSpanReorderABGR	dwarf+dynsym	65221d2783bd		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4b90	344	__glSpanReorderBGRA	dwarf+dynsym	fd5ae2de231e		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4cf0	296	__glSpanReduceLuminance	dwarf+dynsym	0f2f55d13d9d		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4e20	360	__glSpanReduceLuminanceAlpha	dwarf+dynsym	180ac93be336		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4f90	216	__glSpanReduceRedAlpha	dwarf+dynsym	213efa5ba427		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5070	136	__glSpanReduceRedNS	dwarf+dynsym	bd0979f761a3		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5100	136	__glSpanReduceGreenNS	dwarf+dynsym	2e636b9cb618		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5190	136	__glSpanReduceBlueNS	dwarf+dynsym	285288f9a806		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5220	136	__glSpanReduceAlphaNS	dwarf+dynsym	7b22d1782989		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a52b0	216	__glSpanReduceRGBNS	dwarf+dynsym	517d155d54fa		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5390	216	__glSpanReduceBGRNS	dwarf+dynsym	517d155d54fa		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5470	248	__glSpanReorderABGRNS	dwarf+dynsym	d4f353514158		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5570	248	__glSpanReorderBGRANS	dwarf+dynsym	2e4c479e6b7c		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5670	168	__glSpanReduceRedAlphaNS	dwarf+dynsym	ab4122e8fdd2		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5720	248	__glSpanPackUbyte	dwarf+dynsym	23f133a54661		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a5820	172	__glSpanPackByte	dwarf+dynsym	251aeecee465		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a58d0	248	__glSpanPackUshort	dwarf+dynsym	b9064512f0d1		in	located	docs/sample-implementation.md#px_packc	px_pack.c
@@ -11998,49 +11998,49 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4570	484	__glInitUnp
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4760	112	__glInitUnpacker3D	dwarf+dynsym	b17f8a33b816		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b47d0	4540	__glSpanUnpackBitmap	dwarf+dynsym	acf7f95152ef		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b5990	2076	__glSpanUnpackBitmap2	dwarf+dynsym	214e7ad2b977		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b61b0	100	__glSpanUnpackRGBubyte	dwarf+dynsym	5670803e6aa4		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6220	156	__glSpanUnpackIndexUbyte	dwarf+dynsym	fe2f8bd1fe0e		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b62c0	104	__glSpanUnpackRGBAubyte	dwarf+dynsym	002f210fc58c		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6330	72	__glSpanSwapBytes2	dwarf+dynsym	2e6df3bf7fb6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6380	72	__glSpanSwapBytes2Dst	dwarf+dynsym	25e58e40e00b		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b63d0	120	__glSpanSwapAndSkipBytes2	dwarf+dynsym	79e729aae8e5		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6450	88	__glSpanSwapBytes4	dwarf+dynsym	2a3feb18eb52		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b64b0	88	__glSpanSwapBytes4Dst	dwarf+dynsym	3e59f99f0044		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6510	136	__glSpanSwapAndSkipBytes4	dwarf+dynsym	e03eee66ec66		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b65a0	188	__glSpanSkipPixels1	dwarf+dynsym	3956eb96c0ed		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6660	188	__glSpanSkipPixels2	dwarf+dynsym	f8a1b0aef28e		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6720	188	__glSpanSkipPixels4	dwarf+dynsym	9fb5a266c6f4		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b67e0	120	__glSpanSlowSkipPixels2	dwarf+dynsym	6534135ea1cf		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6860	136	__glSpanSlowSkipPixels4	dwarf+dynsym	78b22bde2e1a		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b68f0	72	__glSpanAlignPixels2	dwarf+dynsym	a992e574608d		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6940	72	__glSpanAlignPixels2Dst	dwarf+dynsym	2faf2460842e		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6990	88	__glSpanAlignPixels4	dwarf+dynsym	4b7d885834ef		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b69f0	88	__glSpanAlignPixels4Dst	dwarf+dynsym	3859a3a07554		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6a50	200	__glSpanUnpackUbyte	dwarf+dynsym	44583df27b05		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6b20	264	__glSpanUnpackByte	dwarf+dynsym	a519ca8769f9		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6c30	232	__glSpanUnpackUshort	dwarf+dynsym	85f61e8b0925		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6d20	264	__glSpanUnpackShort	dwarf+dynsym	778d93b58461		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6e30	264	__glSpanUnpackUint	dwarf+dynsym	3dba28928f72		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6f40	264	__glSpanUnpackInt	dwarf+dynsym	74a745c404dd		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7050	392	__glSpanUnpack332Ubyte	dwarf+dynsym	94e2c4949ef9		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b71e0	392	__glSpanUnpack233RevUbyte	dwarf+dynsym	eef74aadb8a1		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7370	392	__glSpanUnpack565Ushort	dwarf+dynsym	d669e45f5440		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7500	392	__glSpanUnpack565RevUshort	dwarf+dynsym	cf3ae0fd64f6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7690	488	__glSpanUnpack4444Ushort	dwarf+dynsym	d6881c116e2b		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7880	488	__glSpanUnpack4444RevUshort	dwarf+dynsym	d19f46590423		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7a70	448	__glSpanUnpack5551Ushort	dwarf+dynsym	5740e6bce6c9		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7c30	448	__glSpanUnpack1555RevUshort	dwarf+dynsym	5aba622aec62		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7df0	480	__glSpanUnpack8888Uint	dwarf+dynsym	98156109ba94		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7fd0	480	__glSpanUnpack8888RevUint	dwarf+dynsym	f0fdf6850bcb		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b81b0	480	__glSpanUnpack_10_10_10_2_Uint	dwarf+dynsym	3736567ee8c7		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8390	480	__glSpanUnpack_2_10_10_10_RevUint	dwarf+dynsym	ca8017debf5c		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8570	168	__glSpanUnpackUbyteI	dwarf+dynsym	3151d5623fa8		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8620	168	__glSpanUnpackByteI	dwarf+dynsym	f9968554c4dc		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b86d0	168	__glSpanUnpackUshortI	dwarf+dynsym	5c55ba334ce2		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8780	168	__glSpanUnpackShortI	dwarf+dynsym	04d6a1414d82		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8830	216	__glSpanUnpackUintI	dwarf+dynsym	8faf4a168c30		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8910	168	__glSpanUnpackIntI	dwarf+dynsym	e2722c2344f2		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b89c0	232	__glSpanUnpackNonCompUint	dwarf+dynsym	01574a070deb		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b61b0	100	__glSpanUnpackRGBubyte	dwarf+dynsym	5670803e6aa4		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6220	156	__glSpanUnpackIndexUbyte	dwarf+dynsym	fe2f8bd1fe0e		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b62c0	104	__glSpanUnpackRGBAubyte	dwarf+dynsym	002f210fc58c		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6330	72	__glSpanSwapBytes2	dwarf+dynsym	2e6df3bf7fb6		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6380	72	__glSpanSwapBytes2Dst	dwarf+dynsym	25e58e40e00b		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b63d0	120	__glSpanSwapAndSkipBytes2	dwarf+dynsym	79e729aae8e5		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6450	88	__glSpanSwapBytes4	dwarf+dynsym	2a3feb18eb52		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b64b0	88	__glSpanSwapBytes4Dst	dwarf+dynsym	3e59f99f0044		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6510	136	__glSpanSwapAndSkipBytes4	dwarf+dynsym	e03eee66ec66		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b65a0	188	__glSpanSkipPixels1	dwarf+dynsym	3956eb96c0ed		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6660	188	__glSpanSkipPixels2	dwarf+dynsym	f8a1b0aef28e		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6720	188	__glSpanSkipPixels4	dwarf+dynsym	9fb5a266c6f4		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b67e0	120	__glSpanSlowSkipPixels2	dwarf+dynsym	6534135ea1cf		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6860	136	__glSpanSlowSkipPixels4	dwarf+dynsym	78b22bde2e1a		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b68f0	72	__glSpanAlignPixels2	dwarf+dynsym	a992e574608d		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6940	72	__glSpanAlignPixels2Dst	dwarf+dynsym	2faf2460842e		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6990	88	__glSpanAlignPixels4	dwarf+dynsym	4b7d885834ef		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b69f0	88	__glSpanAlignPixels4Dst	dwarf+dynsym	3859a3a07554		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6a50	200	__glSpanUnpackUbyte	dwarf+dynsym	44583df27b05		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6b20	264	__glSpanUnpackByte	dwarf+dynsym	a519ca8769f9		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6c30	232	__glSpanUnpackUshort	dwarf+dynsym	85f61e8b0925		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6d20	264	__glSpanUnpackShort	dwarf+dynsym	778d93b58461		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6e30	264	__glSpanUnpackUint	dwarf+dynsym	3dba28928f72		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b6f40	264	__glSpanUnpackInt	dwarf+dynsym	74a745c404dd		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7050	392	__glSpanUnpack332Ubyte	dwarf+dynsym	94e2c4949ef9		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b71e0	392	__glSpanUnpack233RevUbyte	dwarf+dynsym	eef74aadb8a1		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7370	392	__glSpanUnpack565Ushort	dwarf+dynsym	d669e45f5440		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7500	392	__glSpanUnpack565RevUshort	dwarf+dynsym	cf3ae0fd64f6		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7690	488	__glSpanUnpack4444Ushort	dwarf+dynsym	d6881c116e2b		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7880	488	__glSpanUnpack4444RevUshort	dwarf+dynsym	d19f46590423		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7a70	448	__glSpanUnpack5551Ushort	dwarf+dynsym	5740e6bce6c9		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7c30	448	__glSpanUnpack1555RevUshort	dwarf+dynsym	5aba622aec62		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7df0	480	__glSpanUnpack8888Uint	dwarf+dynsym	98156109ba94		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b7fd0	480	__glSpanUnpack8888RevUint	dwarf+dynsym	f0fdf6850bcb		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b81b0	480	__glSpanUnpack_10_10_10_2_Uint	dwarf+dynsym	3736567ee8c7		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8390	480	__glSpanUnpack_2_10_10_10_RevUint	dwarf+dynsym	ca8017debf5c		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8570	168	__glSpanUnpackUbyteI	dwarf+dynsym	3151d5623fa8		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8620	168	__glSpanUnpackByteI	dwarf+dynsym	f9968554c4dc		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b86d0	168	__glSpanUnpackUshortI	dwarf+dynsym	5c55ba334ce2		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8780	168	__glSpanUnpackShortI	dwarf+dynsym	04d6a1414d82		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8830	216	__glSpanUnpackUintI	dwarf+dynsym	8faf4a168c30		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8910	168	__glSpanUnpackIntI	dwarf+dynsym	e2722c2344f2		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b89c0	232	__glSpanUnpackNonCompUint	dwarf+dynsym	01574a070deb		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8ab0	192	__glSpanClampPreFloat	dwarf+dynsym	edbdafbd04d4		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8b70	192	__glSpanClampNegPreFloat	dwarf+dynsym	4df2c671d762		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b8c30	192	__glSpanClampPostFloat	dwarf+dynsym	ac336646eec7		in	undocumented		
@@ -13915,7 +13915,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x437c50	792	crmInstallCursor	dynsy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x437f70	1656	crmPaintWindowBackground	dynsym	60f289b14466		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4385f0	1056	crmDrawSolidRects	dynsym	dc753c104eac		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x438a10	1720	miSendExposures	dynsym	882f8ad45010		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4390d0	880	miWindowExposures	dynsym	64f65c14b16b		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4390d0	880	miWindowExposures	dynsym	64f65c14b16b		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439440	268	miRegionInit	dynsym	6dfe7300879d		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439550	8	miRegionExtents	dynsym	f211f0c174df		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x439560	100	miRegionEmpty	dynsym	bba651a25aae		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -13947,14 +13947,14 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x447020	716	miComputeCompositeClip
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4472f0	1988	miFillPolygon	dynsym	aaa4d5514f0d		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x447ac0	2504	miFillGeneralPoly	dynsym	ee9b279a827b		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x448490	1684	miPolyRectangle	dynsym	c89d02fd09a2		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x448b30	500	miPolyText8	dynsym	01a4d6bc6ee9		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x448d30	1008	miCreateETandAET	dynsym	81ca7824fa3d		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x449120	1016	miClipSpans	dynsym	07ceb550c2af		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x448b30	500	miPolyText8	dynsym	01a4d6bc6ee9		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x448d30	1008	miCreateETandAET	dynsym	81ca7824fa3d		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x449120	1016	miClipSpans	dynsym	07ceb550c2af		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x449520	2156	miTranslateRegion	dynsym	1b20fbd15610		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x449d90	704	miRectsToRegion	dynsym	99498efd17ca		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a050	116	miRegionReset	dynsym	d536f95ce056		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a0d0	340	miRegionCreate	dynsym	764c60d02fbf		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a230	804	miIntersect	dynsym	c4b22f19cda9		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a230	804	miIntersect	dynsym	c4b22f19cda9		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a560	492	miClearToBackground	dynsym	54e941dc24cf		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44a750	2956	nfbCopyArea	dynsym	26d9496fda81		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x44b2e0	1308	nfbCopyPlane	dynsym	e128e34bd08e		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
@@ -13991,7 +13991,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4598b0	2708	crmValidateVisual	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45a350	4332	gbeLoadDispIDs	dynsym	f70d52924b54		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b440	340	gbeLoadDIDTable	dynsym	a6a779056981		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b5a0	40	miRegionNotEmpty	dynsym	8898e39ecd83		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b5d0	1224	miRegionAppend	dynsym	68eaae81bf2e		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45b5d0	1224	miRegionAppend	dynsym	68eaae81bf2e		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45baa0	2884	miRegionValidate	dynsym	ca088b11bdb2		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45c5f0	712	miUnion	dynsym	af4d1235aa59		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45c8c0	520	miSubtract	dynsym	dacaa4885cc9		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14006,7 +14006,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x45fa00	1668	crmInvalidate	dynsym	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x460090	656	FindBestID	dynsym	c64d08cf1580		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x460320	120	rrmCopyWindow	dynsym	5a85d765c63f		in	understood	docs/xmodule.md#window-creation-and-mapping	Window creation and mapping
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4603a0	16528	crmTiledFS	dynsym	68f0a648bdf7		in	understood	docs/xmodule.md#rectangle-and-span-fills	Rectangle and span fills
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464430	1168	miPolyGlyphBlt	dynsym	0b0d61845378		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464430	1168	miPolyGlyphBlt	dynsym	0b0d61845378		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4648c0	1544	miPushPixels	dynsym	0a6134c2b8d1		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464ed0	276	crmValidateSwapbuf	dynsym	a6681a6f9c2d		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x464ff0	1700	crmValidateClip	dynsym	5f89978c89d6		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
@@ -14068,11 +14068,11 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x47dea0	292	mfbGetImage	dynsym	f10
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x47dfd0	2260	mfbSolidBlackArea	dynsym	61ad24d918c9		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x47e8b0	4276	mfbPolyGlyphBltWhite	dynsym	453b2c68dd5d		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x47f970	2600	mfbSetSpans	dynsym	c9cd269f5437		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4803a0	900	miCopyPlane	dynsym	59dcf029caf6		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x480730	1488	miOpqStipDrawable	dynsym	875cb4bbbc5f		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4803a0	900	miCopyPlane	dynsym	59dcf029caf6		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x480730	1488	miOpqStipDrawable	dynsym	875cb4bbbc5f		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x480d00	2364	miPolyFillRect	dynsym	1104bea0ddf0		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x481640	296	miChangeClip	dynsym	a828ccde4116		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x481770	532	miPolyText16	dynsym	9384a4640ffc		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x481770	532	miPolyText16	dynsym	9384a4640ffc		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x481990	1952	nfbGetImage	dynsym	57a1dba0abad		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x482130	560	nfbRealizeCursor	dynsym	1fe61b160ba6		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x482360	56	nfbRecolorCursor	dynsym	0674dc70d543		in	understood	docs/nfb-layer.md#screen-hooks	Screen hooks
@@ -14100,7 +14100,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x487150	72	cfb16CopyPlane	dynsym	5
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4871a0	4548	cfb16UnnaturalStippleFS	dynsym	11357f17121a		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x488370	4000	cfb16ValidateGC	dynsym	85aac857adfe		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489310	808	cfb16PutImage	dynsym	1b1880003e6f		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489640	812	miSetShape	dynsym	7628bedce59b		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489640	812	miSetShape	dynsym	7628bedce59b		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489970	212	crmCloseScreen	dynsym	bffd3032293e		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489a50	188	crmUnmapGbe	dynsym	0f532b0cef80		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x489b10	8	crmCloseAllocator	dynsym	78aa5094d5ec		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
@@ -14388,7 +14388,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x545100	4536	miPolyFillArc	dynsym	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5462c0	2368	miFillSppPoly	dynsym	99ea95491c13		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546c00	8	miCopyGC	dynsym	78aa5094d5ec		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546c10	244	miCopyClip	dynsym	cbaf3db3e8a4		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546d10	456	miImageGlyphBlt	dynsym	4cd09d1341fc		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546d10	456	miImageGlyphBlt	dynsym	4cd09d1341fc		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546ee0	168	miImageText16	dynsym	2db826408b25		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546f90	504	miInverse	dynsym	1dec7730d3a4		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x547190	356	miPointInRegion	dynsym	bb47eaa32ff9		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14469,7 +14469,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560970	440	nfbInfPolyGlyphBlt..LK
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x560b30	1460	nfb15MaskRopLoop..DI	dynsym	73512eb657fe		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5610f0	440	nfbInfFillSpans..JJ	dynsym	17f8b5086469		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5612b0	96	miBSCheapDestroyClip..FP	dynsym	047b263ac558		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561310	1472	miUnionO..OM	dynsym	2d327ea7ccff		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561310	1472	miUnionO..OM	dynsym	2d327ea7ccff		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5618d0	504	mergeDIDLists..GF	dynsym	5a81ea58addd		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561ad0	432	nfbInfPolySegment..AK	dynsym	a9ede7b73a7a		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x561c80	704	miBSAllocate..ABB	dynsym	4a32e318d024		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
@@ -14488,13 +14488,13 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562ed0	280	miDcos..OCB	dynsym	832
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x562ff0	192	miClearDrawable	dynsym	ceae8969a112		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5630b0	364	Fullscreen..OE	dynsym	882e378dd896		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563220	844	crmEnumDir..AC	dynsym	5aae0a8cdace		in	understood	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563570	892	tailSpan..KEB	dynsym	2b21da75a961		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563570	892	tailSpan..KEB	dynsym	2b21da75a961		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5638f0	788	BindToClip..FE	dynsym	cc675746a25a		in	understood	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563c10	480	fillSpans..MEB	dynsym	9040da6908c3		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x563df0	1268	crmCalculateSoftDBClip..AB	dynsym	be6a4e7a1146		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5642f0	1196	drawZeroArc..MDB	dynsym	5ac58dec5d70		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5642f0	1196	drawZeroArc..MDB	dynsym	5ac58dec5d70		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5647a0	76	nfbInfPolyText16..HK	dynsym	aa17bff19910		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5647f0	1400	miFillPolyHelper	dynsym	234ce6bd9711		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5647f0	1400	miFillPolyHelper	dynsym	234ce6bd9711		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564d70	240	crmValidateReservedMode	dynsym	389406872e5d		in	understood	docs/xmodule.md#validation-of-graphics-contexts-and-windows	Validation of graphics contexts and windows
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564e60	116	miBSChangeClip..LBB	dynsym	5fbd1a587518		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x564ee0	612	miCreateBSPixmap..ACB	dynsym	f668955f5b77		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14529,7 +14529,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56bb90	400	sortLineTab..OC	dynsym
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56bd20	10244	miComputeArcs..IDB	dynsym	c083506ca01e		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56e530	672	miBSExposeCopy..BCB	dynsym	687dc4e54e85		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56e7d0	2652	nfbStereoCopyWindow..GI	dynsym	8f69a2f43bd0		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56f230	880	arcSpan..IEB	dynsym	28bc836e7c89		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56f230	880	arcSpan..IEB	dynsym	28bc836e7c89		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56f5a0	428	newFinalSpan..OEB	dynsym	51c6010a4680		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56f750	4172	cfbPolyGlyphRop8Clipped..NK	dynsym	2a5561ace245		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5707a0	2296	miLineProjectingCap	dynsym	2f7fad626940		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14537,7 +14537,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5710a0	2068	miBSSetSpans..JP	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5718c0	184	nfb1RopLoop..FG	dynsym	2cbd728e948a		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x571980	8	nfbNoopDDATranslateBackingStore	dynsym	87506497337c		in	understood	docs/nfb-layer.md#null-and-trivial-hooks	Null and trivial hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x571990	8	nfbChangeGC..PI	dynsym	78aa5094d5ec		in	understood	docs/nfb-layer.md#null-and-trivial-hooks	Null and trivial hooks
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5719a0	700	miGetPlane..MN	dynsym	ea4cfd610701		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5719a0	700	miGetPlane..MN	dynsym	ea4cfd610701		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x571c60	92	nfbInfCopyPlane..NJ	dynsym	f2d3a8890cb0		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x571cc0	604	miBSFillPolygon..DAB	dynsym	e1efda2b6b3f		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x571f20	548	crmBuildFmtInfoArray..HC	dynsym	00029acd8b00		in	understood	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
@@ -14561,7 +14561,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576e00	228	nfbCopyClip..EJ	dynsym
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576ef0	1164	crmNewGCOps..K	dynsym	a88b17c525ea		in	understood	docs/xmodule.md#validation-of-graphics-contexts-and-windows	Validation of graphics contexts and windows
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577380	440	nfbInfSetSpans..KJ	dynsym	0ad9ecc20530		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577540	412	realFindSpan..NEB	dynsym	bd58b927f2e5		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5776e0	1020	miGetArcPts..CDB	dynsym	6eb62a3f77f9		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5776e0	1020	miGetArcPts..CDB	dynsym	6eb62a3f77f9		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577ae0	592	hookX..HEB	dynsym	37e9aa05e94e		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577d30	88	miRegionDestroy	dynsym	a2d7eb04826c		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x577d90	200	nfb9RopLoop..NG	dynsym	0e0ac842665a		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
@@ -14614,14 +14614,14 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x583eb0	240	DelayValidateClip..IE	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x583fa0	1504	miComputeWideEllipse..ICB	dynsym	5b33d03a031b		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584580	380	ValidateSwapbuf..KE	dynsym	0f70f90d3a92		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584700	1168	nfbInfRender..IJ	dynsym	e4d30924aa77		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584b90	744	computeDashMap..HDB	dynsym	275a31b82e02		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584b90	744	computeDashMap..HDB	dynsym	275a31b82e02		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584e80	264	SetDIDMode	dynsym	02abac9697dd		in	understood	docs/xmodule.md#colour-index-clip-id-and-window-id-assignment	Colour-index (clip-ID) and window-ID assignment
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584f90	76	miBSCheapDestroyGC..CP	dynsym	8572b1103e3f		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x584fe0	180	crmRingClick..H	dynsym	c4699917bbf2		in	understood	docs/xmodule.md#bell-and-audio	Bell and audio
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5850a0	640	QuickSortRects..PM	dynsym	419bb46564ec		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585320	184	nfb6RopLoop..KG	dynsym	21c566c61c6f		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5853e0	96	miBSCheapChangeGC..AP	dynsym	d7ec333807d0		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585440	1092	QuickSortSpans..BN	dynsym	172cdadd9fed		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585440	1092	QuickSortSpans..BN	dynsym	172cdadd9fed		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585890	696	miCheckSubSaveUnder..CN	dynsym	47651a8e644a		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x585b50	3880	cfbPolyGlyphBlt8Clipped..JL	dynsym	e5d9667325e3		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586a80	136	SwapInitiated..BF	dynsym	18b66c6f9b53		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
@@ -14631,14 +14631,14 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586ec0	248	miBSImageGlyphBlt..KAB
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x586fc0	3828	cfbPolyGlyphBlt8Clipped..AM	dynsym	7fc768ea62af		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x587ec0	436	nfbInfPolyPoint..OJ	dynsym	6ef382f7b80f		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588080	156	crmOpenAudio..C	dynsym	7f0f66d45ca9		in	understood	docs/xmodule.md#bell-and-audio	Bell and audio
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588120	1068	QuickSortSpansX..HO	dynsym	65291d6a64e1		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588120	1068	QuickSortSpansX..HO	dynsym	65291d6a64e1		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588550	268	crmInitScrnSaver	dynsym	e4263be967c9		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588660	176	DelayValidateClipCallback..HE	dynsym	9f5d2198f480		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588710	532	crmQryGammaCol..OB	dynsym	94be1250f34c		in	understood	docs/xmodule.md#colour-maps-and-gamma	Colour maps and gamma
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588930	248	miBSPolyGlyphBlt..LAB	dynsym	0b662e1583e8		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x588a30	1560	computeBound..FEB	dynsym	c41a42024fb7		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x589050	128	nfbReadDisplayShutdown..MI	dynsym	748c6f8f8a7d		in	understood	docs/nfb-layer.md#screen-hooks	Screen hooks
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5890d0	740	miFillRectPolyHelper..PN	dynsym	f989b304df5b		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5890d0	740	miFillRectPolyHelper..PN	dynsym	f989b304df5b		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5893c0	3812	cfbPolyGlyphBlt8Clipped..OK	dynsym	f1c87812940c		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58a2b0	316	crmInitHW..HB	dynsym	05f0f852c583		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58a3f0	556	miIntersectO..NM	dynsym	029341231dc8		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14653,7 +14653,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c1c0	176	miTileVirtualBS..PBB	d
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58c270	4272	miWideSegment..FO	dynsym	1fdfd61296b4		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d320	216	nfb12RopLoop..AH	dynsym	f8aba4e7ddec		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d400	220	miBSFree..BBB	dynsym	aa9a91a358ce		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d4e0	936	miSubtractO..AN	dynsym	d9540ff7cedc		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d4e0	936	miSubtractO..AN	dynsym	d9540ff7cedc		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58d890	1992	cfbZeroArcSS8Copy..FL	dynsym	1ea669e4d943		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e060	2200	cfbZeroArcSS8Copy..FM	dynsym	ac2a4f129c94		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58e900	76	nfbInfPolyText8..GK	dynsym	531ea7f18d8a		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
@@ -14664,7 +14664,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f8d0	180	crmRingBell..G	dynsym	
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x58f990	2280	cfbZeroArcSS8Xor..EM	dynsym	95f5e5e3fd6b		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590280	412	ValidateClip..GE	dynsym	bc40f7329838		in	understood	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590420	420	crmMonitorCommand..LC	dynsym	464ef9b1c8ce		in	understood	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5905d0	568	miResizeBackingStore..CBB	dynsym	114e3b0ce1f2		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5905d0	568	miResizeBackingStore..CBB	dynsym	114e3b0ce1f2		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590810	432	nfbInfPolyFillArc..FK	dynsym	c189eff11608		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5909c0	776	nfbStereoDrawCID..II	dynsym	5d358b7e6d86		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x590cd0	520	miBSPolySegment..AAB	dynsym	cad8a5d60773		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)

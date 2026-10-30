@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	5	0	5	0	0	76	1	0	6.1	6.1	98.8	6.1							0			
-functions	15177	2103	2727	14	2618	613	2731	1922	7797	0	18.0	36.0	48.6	18.0			100.0	10	2026-10-30		22	62	233	
-functions (distinct names)	9682	2044	2102	13	2098	333	1292	971	5317	0	21.7	35.1	45.1	21.7							11			
+functions	15177	2103	2878	14	2769	588	2580	1924	7795	0	19.0	36.0	48.6	19.0			100.0	10	2026-10-30		22	62	233	
+functions (distinct names)	9682	2044	2190	13	2186	308	1204	973	5315	0	22.6	35.1	45.1	22.6							11			
 mmio	162	0	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -10,7 +10,7 @@ spec-registers	260	0	249	1	238	0	0	0	0	11	95.8	100.0	100.0	100.0			100.0	10	2026
 input root manifest	71																							37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
 input sibling kona																								99f969a532ffe26d56cb1248c523b72bb363858a
 input sibling odsy																								cf7842fb49c83696d273ffc9655e581c7bc1fc7f
-functions in sbin/stand/symmon.IP32	755	0	0	0	0	0	5	59	691	0	0.0	0.7	8.5	0.0							0	0	72	
+functions in sbin/stand/symmon.IP32	755	0	0	0	0	0	5	60	690	0	0.0	0.7	8.6	0.0							0	0	72	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	6	0	6	0	6	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
@@ -29,14 +29,14 @@ functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	1
 functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	0	0	0	0	4	1	164	0	0.0	2.4	3.0	0.0							0	0	2	
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
-functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	0	53	1379	0	2.9	2.9	6.5	2.9							0	0	0	
+functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	0	54	1378	0	2.9	2.9	6.6	2.9							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	7	668	0	0.0	0.0	1.0	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	594	1	594	280	1385	760	708	0	17.2	57.4	79.5	17.2							11	31	68	
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	657	1	657	280	1322	760	708	0	19.1	57.4	79.5	19.1							11	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	8	669	0	0.0	0.0	1.2	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	716	0	716	280	1263	761	708	0	20.8	57.4	79.5	20.8							11	31	68	
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	779	0	779	280	1200	761	708	0	22.6	57.4	79.5	22.6							11	31	68	
 functions in usr/gfx/gfxinit	227	0	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0							0	0	0	
 functions in usr/gfx/setmon	249	0	1	0	1	0	19	4	225	0	0.4	8.0	9.6	0.4							0	0	0	
-functions in usr/lib/X11/dyDDX/crm.so	840	0	786	9	782	53	53	1	0	0	93.6	99.9	100.0	93.6							0	0	0	
+functions in usr/lib/X11/dyDDX/crm.so	840	0	811	9	807	28	28	1	0	0	96.5	99.9	100.0	96.5							0	0	0	
 functions in usr/lib/X11/dyDDX/glx.so	981	0	0	0	0	0	0	0	981	0	0.0	0.0	0.0	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/debug/vicedv.so	95	0	0	0	0	0	0	1	94	0	0.0	0.0	1.1	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/debug/vicejpeg.so	64	0	0	0	0	0	0	1	63	0	0.0	0.0	1.6	0.0							0	0	0	
