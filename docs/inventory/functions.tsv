@@ -8423,9 +8423,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9e5104	41420	Comput
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5294	136	__glValidateMaterial	dynsym+mdebug	1b6464d01641		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e531c	152	__glValidateLighting	dynsym+mdebug	ddec4f236b05		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e53b4	328	__glGenericPickColorMaterialProcs	dynsym+mdebug	7a48039ed567		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5500	1524	__glClipLine	dynsym+mdebug	0b8a4f07fdfc		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5af4	188	__glFastClipSmoothLine	dynsym+mdebug	dc452dbd24fc		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5bb0	192	__glFastClipFlatLine	dynsym+mdebug	6d95d4cf492a		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5500	1524	__glClipLine	dynsym+mdebug	0b8a4f07fdfc		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5af4	188	__glFastClipSmoothLine	dynsym+mdebug	dc452dbd24fc		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5bb0	192	__glFastClipFlatLine	dynsym+mdebug	6d95d4cf492a		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5c70	1348	__glInitLineData	dynsym+mdebug	2c4b82693a7f		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e61b4	1132	__glRenderAliasLine	dynsym+mdebug	90edcb4ff980		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6620	192	__glRenderFlatFogLine	dynsym+mdebug	85f8c7c4f063		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
@@ -8665,7 +8665,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda011ec	196	__glMaskRGBAS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda012b0	232	__glMaskCISpan	dynsym+mdebug	ee7cbb91e1f3		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda013a0	228	__glim_Begin	dynsym+mdebug	39b09bf4186a		in	located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01484	112	__glim_End	dynsym+mdebug	d451ea1390ab		in	located	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014f4	8	__glNop	dynsym+mdebug	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014f4	8	__glNop	dynsym+mdebug	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014fc	32	__glEndPrim	dynsym+mdebug	fde50aa23826		in	located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0151c	52	__glim_UnimplementedExtension	dynsym+mdebug	ae238d08046e		in	located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01550	188	__glim_RasterPos2dv	dynsym+mdebug	e1bf3a6b6e7f		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
@@ -12548,9 +12548,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5760	456	Comput
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5930	144	__glValidateMaterial	dwarf+dynsym	92d178828bd8		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e59c0	140	__glValidateLighting	dwarf+dynsym	4be944ae9c20		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5a50	320	__glGenericPickColorMaterialProcs	dwarf+dynsym	dee6674e65d5		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5b90	1556	__glClipLine	dwarf+dynsym	d76f7f173201		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e61b0	180	__glFastClipSmoothLine	dwarf+dynsym	e3dccd8d083e		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6270	188	__glFastClipFlatLine	dwarf+dynsym	b66da997b2fd		in	located	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5b90	1556	__glClipLine	dwarf+dynsym	d76f7f173201		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e61b0	180	__glFastClipSmoothLine	dwarf+dynsym	e3dccd8d083e		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6270	188	__glFastClipFlatLine	dwarf+dynsym	b66da997b2fd		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6330	1196	__glInitLineData	dwarf+dynsym	4e96a3265376		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e67e0	920	__glRenderAliasLine	dwarf+dynsym	1d5acf02c35c		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6b80	188	__glRenderFlatFogLine	dwarf+dynsym	1ec2669e8156		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
@@ -12790,7 +12790,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02650	336	__glMaskRGB
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCISpan	dwarf+dynsym	14f5cb44f02f		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	f967241bd51e		in	located	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	a4856082e021		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02ac0	52	__glim_UnimplementedExtension	dwarf+dynsym	c653b390bc58		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02b00	164	__glim_RasterPos2dv	dwarf+dynsym	366018db3490		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
