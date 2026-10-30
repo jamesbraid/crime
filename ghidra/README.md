@@ -13,7 +13,7 @@ ghidra/
   import/<name>/       loader and import scripts for firmware images
   types/<name>/        data-type scripts
   scripts/             the shared IRIX scripts (IrixGp, IrixJumpTables,
-                       FindWindowStores, ...), byte-identical across workspaces
+                       FindWindowStores, MarkVolatileWindows, ...), byte-identical across workspaces
 ```
 
 ## Build and run

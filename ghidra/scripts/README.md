@@ -46,6 +46,12 @@ Ghidra (default import):
 - The decompiler infers call prototypes: a call to an external whose callee has no definition can lose its last argument.
 - A pointer to a table in `.rodata` that has no symbol of its own is named after the nearest string.
 
+## Seeing every store to a command window
+
+The decompiler treats a store to a constant address as a write to a global variable, and a later store to the same address replaces the earlier one. A routine that sends ten words to a FIFO at a fixed process address decompiles to one assignment, or two. A store through a pointer is never merged, so a window reached through a pointer loaded from a record (or through the zero register plus a displacement) already decompiles in full.
+
+`MarkVolatileWindows.java START-END[,START-END...]` fixes the constant-address case: it creates an uninitialized read/write block over each range (or marks an existing block) volatile, and the decompiler then keeps every access in order. Run it as a post-script before `DecompileFunctions.java`, with the window's process address range, for example `MarkVolatileWindows.java 10000-11000` for a FIFO at 0x10000. Ranges must lie outside the library's own blocks. Reads of the window are kept too. Check a routine by counting its non-stack `sw`/`sh`/`sb`/`swc1` instructions in the assembly against the assignments to the window in the decompile; they match. Measured on the IP30 N32 `__glOdysseySetProgram`: 31 stores in the assembly to the FIFO, 2 in the default decompile, 31 with the script. Measured on a pointer-based sender (Kona `konDrawSolidRects`, 14 stores through the FIFO pointer) and on Kona and CRIME libGLcore senders: the default decompile already matches the assembly, and the script changes nothing.
+
 ## Scripts
 
 Each script has its use in the opening comment. Run inside an image that has Ghidra's `analyzeHeadless`; create the project directory first (`mkdir -p /tmp/gp`), pass `-deleteProject` to leave nothing behind, and give a script path with `-scriptPath 'dir1;dir2'` when scripts live in more than one directory.
@@ -56,6 +62,7 @@ Each script has its use in the opening comment. Run inside an image that has Ghi
 | `IrixGp.java` | pre-script for shared objects, pre- or post-script for relocatable objects | sets gp and marks `.got`, `.rodata` and small-data blocks read-only. Shared objects: gp from the function prologues (agrees with `.got + 0x7ff0`), with a function's own value running only to the next code symbol. Relocatable objects: gp from the R_MIPS_GPREL16 relocation records, which must all agree |
 | `IrixJumpTables.java` | post-script, after `IrixGp.java` | finds the table base and case count behind each `jr`, reads the entries from the file's original bytes (shared objects) or the relocated image (relocatable objects), registers a jump-table override so the decompiler prints a `switch`, and re-flows the function body. Handles absolute entries and, for o32, entries that are offsets from gp |
 | `FindWindowStores.java` | post-script | lists calls of a store helper with the folded base-plus-offset address, or with helper `-` every load and store with its base tag (`field`, `chain`, `window`), base expression and offset |
+| `MarkVolatileWindows.java` | post-script, before the decompile script | declares address ranges volatile so the decompiler prints every store to a command window at a fixed address |
 | `DumpCallEdges.java` | post-script | dumps call edges and unresolved indirect calls |
 | `ApplyStruct.java` | post-script, before the decompile script | gives functions a typed first parameter from a C header |
 
