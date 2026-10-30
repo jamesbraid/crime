@@ -678,7 +678,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f964	236	memset	symtab	d
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fa50	192	_init_malloc	symtab	9f43bd53ccae		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fb10	444	malloc	symtab	11765cbcc144		named-only	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fd18	116	free	symtab	ba0f973e2e2d		named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fd8c	200	realloc	symtab	d09dd1eee39e		undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fd8c	200	realloc	symtab	d09dd1eee39e		named-only	docs/xsgi.md#board-bring-up	Board bring-up
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fe54	28	calloc	symtab	e70ad13cffe3		named-only	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002fe70	76	kern_calloc	symtab	cc5a24bebb17		named-only	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002febc	236	align_malloc	symtab	bddd307e17bc		undocumented		
@@ -2441,7 +2441,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10085b80	252	AugmentSelf	dynsym
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10085c80	96	recv_refuse_msg..BL	dynsym	f68859f94624		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10085ce0	868	GrabDevice	dynsym	9167ef7bdc3a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10086050	360	sgiCapImageGlyphBlt..OCE	dynsym	cb8e8d73cead		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100861c0	372	rrmCIDInit..DFC	dynsym	6db5eb148938		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100861c0	372	rrmCIDInit..DFC	dynsym	6db5eb148938		understood	docs/xsgi.md#resource-manager-records	Resource-manager records
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10086340	148	ShmDetachSegment..KEE	dynsym	651efc35017b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100863e0	3120	_fs_load_glyphs	dynsym	a26fde9b90dd		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10087010	788	XkbComputeControlsNotify	dynsym	62b7f29cdcf7		undocumented		
@@ -2994,7 +2994,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100ef150	448	_FontTransSocketIN
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100ef310	1740	XvcExtensionInit	dynsym	dfb30d32bd70		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100ef9e0	1100	LeaveNotifies..PC	dynsym	7da5ae82b171		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100efe30	40	RIGHT_BRACKET..IAC	dynsym	b78d62af488d		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100efe60	28	ddxGetBoardInfo	dynsym	54d1d19dd53b		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100efe60	28	ddxGetBoardInfo	dynsym	54d1d19dd53b		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100efe80	324	LbxServerGrab..IBG	dynsym	f9e734ea081a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100effd0	224	glxRemoveDeepWindow	dynsym	12665e6190d5		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f00b0	1628	doImageText	dynsym	935e9e7dccf0		undocumented		
@@ -3012,7 +3012,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2970	124	_fs_write_pad	dyns
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f29f0	92	FreeScratchPixmapHeader	dynsym	8ff4ec957761		named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2a50	432	ESAStubExtensionInit	dynsym	6bbb8750e2a9		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f2c00	1520	SProcXineramaDbeGetVisualInfo..CJC	dynsym	c6287a57af8e		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f31f0	380	dbcNoticeSwapInitiated	dynsym	0ad190966da3		named-only	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f31f0	380	dbcNoticeSwapInitiated	dynsym	0ad190966da3		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f3370	128	XkbDDXFakePointerButton	dynsym	d8df88746135		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f33f0	3932	ProcXineramaPolyPoint	dynsym	6838543ce855		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f4350	288	ProcStoreNamedColor	dynsym	3d488e07a26b		undocumented		
@@ -3026,7 +3026,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f59f0	700	_tr_flush_block	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5cb0	252	AllocatePixmap	dynsym	c1646b8f42e1		named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5db0	140	bdfWarning	dynsym	f03868979171		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5e40	280	SProcXCMiscDispatch..OND	dynsym	f932aec5350c		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5f60	28	dbcReset	dynsym	c6a5e92a60e8		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5f60	28	dbcReset	dynsym	c6a5e92a60e8		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f5f80	196	ProcLbxEstablishConnection	dynsym	85784c2de63a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f6050	232	shmiqInit	dynsym	ad401e7f82ec		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100f6140	1520	SProcSGIXineramaManageAwareClients..OFD	dynsym	c6ea85e18d14		undocumented		
@@ -3134,7 +3134,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109780	8	SGICapCloseDownProc.
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109790	228	SProcGrabButton	dynsym	4434557e8bf5		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109880	1568	bitmapGetGlyphs	dynsym	74cfaab30a29		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10109ea0	512	SProcDbeDispatch..OIC	dynsym	2fafe65dfa42		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010a0a0	176	dbcInit	dynsym	f502ea9689eb		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010a0a0	176	dbcInit	dynsym	f502ea9689eb		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010a150	132	FontFileResetFPE	dynsym	f07d4e2bdefb		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010a1e0	336	GetHosts	dynsym	b7410300633f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010a330	336	SwapClientRequestVector	dynsym	98090009f1d6		undocumented		
@@ -3148,7 +3148,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010b580	1448	ProcSGIvcQueryCon
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010bb30	300	inflate_trees_bits	dynsym	25ac8f1289e7		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010bc60	292	MakeEncodingArrayP..HNB	dynsym	2f2931ccd615		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010bd90	260	ProcXineramaSetClipRectangles	dynsym	852952081e82		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010bea0	712	dbcSwapBuffers	dynsym	76df6897640a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010bea0	712	dbcSwapBuffers	dynsym	76df6897640a		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010c170	5996	XkbHandleActions	dynsym	0149821f4b94		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010d8e0	164	AccessSetFontPath	dynsym	de62a0753021		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010d990	1388	bitmapComputeFontBounds	dynsym	0fca53a37b18		undocumented		
@@ -3259,7 +3259,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10123dc0	228	SProcRecolorCursor
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10123eb0	356	CheckWindowOptionalNeed	dynsym	c56f2601cd78		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124020	220	FontFileGetInfoBitmap..KN	dynsym	1f46bc7c19a1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124100	332	ProcUngrabKey	dynsym	fc0f9e55b4a3		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124250	1008	irixKernInit	dynsym	9cc2140f8522		named-only	docs/xmodule.md#the-pointer-chain	The pointer chain
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124250	1008	irixKernInit	dynsym	9cc2140f8522		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124640	152	SertafiedDelete..EEE	dynsym	9cb42eba0d75		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101246e0	528	ProcSGIvcQueryVideoScreenInfo	dynsym	86ec3d682338		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101248f0	3244	ProcXineramaSGICapRegisterInterest..GPD	dynsym	ae38fbdac40e		undocumented		
@@ -3288,7 +3288,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10129eb0	220	SrvXkbFreeServerMa
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10129f90	232	init_fs_handlers	dynsym	7074e90bf196		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a080	440	BitmapGetInfoScalable	dynsym	359f62be2e23		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a240	12	StandardMinorOpcode	dynsym	d2c726c5998c		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a250	240	ddxGetBoardName	dynsym	f0c5f4aa3a0a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a250	240	ddxGetBoardName	dynsym	f0c5f4aa3a0a		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a340	80	SendErrorToClient	dynsym	d11cbf5be68f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a390	140	sp_close_master_font	dynsym	d028edadb635		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012a420	564	CheckPhysLimits..OB	dynsym	6bd5f6794f29		undocumented		
@@ -3568,7 +3568,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c970	320	ProcDbeDeallocateB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cab0	228	DbeSetupBackgroundPainter..EJC	dynsym	a27c5b008f54		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cba0	572	AccessInitClientSocketAttrs	dynsym	f0999838b70e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cde0	108	FreeAtom	dynsym	ec70d27ec441		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ce50	84	rrmSetReservedDID	dynsym	4dadf872f3f8		named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ce50	84	rrmSetReservedDID	dynsym	4dadf872f3f8		understood	docs/xsgi.md#resource-manager-records	Resource-manager records
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015ceb0	924	ProcESAStubStart	dynsym	61fc4d681232		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015d250	368	FontFileDirectoryChanged	dynsym	245abae5f4c5		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015d3c0	440	AccessLookupColor	dynsym	48b4556d4b7f		undocumented		
@@ -3673,7 +3673,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1016f210	200	ScreenSaverResetPr
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1016f2e0	10936	BitmapScaleBitmaps..FAB	dynsym	56770629436e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10171da0	680	ProcPolyPoint	dynsym	b26c34e93fb4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10172050	48	_XSERVTransSocketRead..LH	dynsym	bdffe560b1d4		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10172080	428	AllocateScreenPrivateIndex	dynsym	f87b76aee2a8		named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10172080	428	AllocateScreenPrivateIndex	dynsym	f87b76aee2a8		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10172230	372	MoveWindowInStack	dynsym	661f4c7db3c3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101723b0	148	add_e_sign..EPB	dynsym	aa0f7c96df7f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10172450	1772	XETSwSetClipRectangles	dynsym	305cc985acbd		undocumented		
@@ -3921,7 +3921,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1019ff60	148	t1_Line	dynsym	987
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0000	300	ClippedRegionFromBox	dynsym	4cdc4f39797b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0130	268	sgiMapButtons	dynsym	777031ccd1e1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0240	472	AccessExtensionInit	dynsym	2ea065959a96		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0420	2728	realloc	dynsym	b75834446613		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0420	2728	realloc	dynsym	b75834446613		named-only	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a0ed0	456	XkbRF_CheckApplyDelayedRules	dynsym	070c91c70ca3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a10a0	380	TagDeleteTag	dynsym	6aa3dd72ac55		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101a1220	236	AccessUninstallColormap	dynsym	b69b5f51e307		undocumented		
@@ -4007,7 +4007,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ae3a0	28	add_1st_digits..POB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ae3c0	616	ProcXSetDeviceMode	dynsym	59343c2d6487		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ae630	5912	bdfReadFont	dynsym	4269ef03ad86		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101afd50	280	FreeAlarmClient..IHE	dynsym	0acde9d43a65		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101afe70	140	dbcTicketDelete..IKD	dynsym	0d35cded965d		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101afe70	140	dbcTicketDelete..IKD	dynsym	0d35cded965d		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101aff00	216	SGIMiscExtensionInit	dynsym	d50e58c045ab		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101affe0	1420	Decode..ICC	dynsym	89be5b2da655		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b0570	380	AccessGetAtomName	dynsym	3d250f74ecb5		undocumented		
@@ -4308,7 +4308,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9470	92	SGetPointerMappingR
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e94d0	184	SrvXkbFreeKeyboard	dynsym	6eaf1c67b0f9		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9590	740	XdmcpOptions	dynsym	9774e2f1747e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9880	1904	XkbHandleBell	dynsym	f66aaeb82a6e		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9ff0	812	rrmEvent	dynsym	46ce9b7f0146		named-only	docs/gbe.md#the-window-id-matching-key	The window-ID matching key
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101e9ff0	812	rrmEvent	dynsym	46ce9b7f0146		understood	docs/xsgi.md#resource-manager-records	Resource-manager records
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea320	256	getArray..MNB	dynsym	29ede523128d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea420	184	RecordFlushReplyBuffer..GIG	dynsym	ef10be17e6e7		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ea4e0	368	AccessCreatePixmap	dynsym	4b95de922602		undocumented		
@@ -4331,7 +4331,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ebf10	8	MITResetProc..PJE	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ebf20	556	ProcPanoramiXDispatch..CAD	dynsym	94a97234c9a3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec150	224	LbxProxyConnection	dynsym	739879018ca7		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec230	664	LbxGetModifierMapping	dynsym	ea5389506358		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec4d0	952	rrmInit	dynsym	1bfa8c0dfb43		named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec4d0	952	rrmInit	dynsym	1bfa8c0dfb43		understood	docs/xsgi.md#resource-manager-records	Resource-manager records
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec890	176	XkbDDXFakePointerMotion	dynsym	09b744a6f227		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ec940	1060	XkbVModMaskText	dynsym	d42de9a0a7bf		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ecd70	3912	ProcXineramaFillPoly	dynsym	aaca1141f81b		undocumented		
