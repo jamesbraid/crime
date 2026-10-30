@@ -6421,7 +6421,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933830	496	__glRenderSmo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933a20	560	__glRenderSmoothOneFaceTmesh	dynsym+mdebug	58c8f3b72eda		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933c50	444	__glValidateVertex2	dynsym+mdebug	d9d44a1eaec2		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933e0c	452	__glValidateVertex3	dynsym+mdebug	725e765d495f		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933fd0	460	__glValidateVertex4	dynsym+mdebug	132ce07930f8		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933fd0	460	__glValidateVertex4	dynsym+mdebug	132ce07930f8		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93419c	240	__glValidateLitVertex2	dynsym+mdebug	0222cb6a676b		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93428c	248	__glValidateLitVertex3	dynsym+mdebug	f8e9bdd5cef4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934384	264	__glValidateLitVertex4	dynsym+mdebug	b9e4f1159f51		in	undocumented		
@@ -10546,7 +10546,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93504c	500	__glRenderS
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935240	556	__glRenderSmoothOneFaceTmesh	dwarf+dynsym	df178d11f51b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935470	444	__glValidateVertex2	dwarf+dynsym	a6df55113988		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93562c	452	__glValidateVertex3	dwarf+dynsym	2f8d70da4b72		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9357f0	460	__glValidateVertex4	dwarf+dynsym	d82705ff4072		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9357f0	460	__glValidateVertex4	dwarf+dynsym	d82705ff4072		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9359bc	240	__glValidateLitVertex2	dwarf+dynsym	f3a6e4785390		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935aac	248	__glValidateLitVertex3	dwarf+dynsym	2cb155e51d30		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935ba4	264	__glValidateLitVertex4	dwarf+dynsym	2792223f9aca		in	undocumented		
@@ -13295,7 +13295,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35140	100	__glMultipl
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda351b0	124	SetDepthRange	dwarf+funcnames	a4620de7964a		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35230	60	__glUpdateDepthRange	dwarf+dynsym	799f7dd302df		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35270	76	__glEarlyInitTransformState	dwarf+dynsym	de1286a47bda		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda352c0	600	__glInitTransformState	dwarf+dynsym	4a69bc7b6b8c		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda352c0	600	__glInitTransformState	dwarf+dynsym	4a69bc7b6b8c		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35520	416	__glInvalidateSequenceNumbers	dwarf+dynsym	1337129b7e0e		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda356c0	164	__glim_MatrixMode	dwarf+dynsym	f6d0940947ef		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35770	124	__glim_LoadIdentity	dwarf+dynsym	c91718f51fbf		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -13327,7 +13327,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36cd0	96	__glComputeI
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36d30	280	__glPushProjectionMatrix	dwarf+dynsym	292f6f1bcc97		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36e50	160	__glPopProjectionMatrix	dwarf+dynsym	51d9329ce62d		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36ef0	192	__glLoadIdentityProjectionMatrix	dwarf+dynsym	158ae707d1d5		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36fb0	272	__glPushTextureMatrix	dwarf+dynsym	ed0e4db0ae58		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36fb0	272	__glPushTextureMatrix	dwarf+dynsym	ed0e4db0ae58		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda370c0	92	__glPopTextureMatrix	dwarf+dynsym	643ec3979188		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37120	84	__glLoadIdentityTextureMatrix	dwarf+dynsym	3e8c9788c6f2		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37180	272	__glPushColorMatrix	dwarf+dynsym	d09c43af452a		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
