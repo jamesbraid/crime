@@ -1607,4 +1607,40 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
   It reads no register: it passes level 0, the highest severity, and the text "CRIME/VICE error" from the read-only data to `cmn_err`, so the kernel panics. No instruction of `kernel.o` takes its address; `mlreset` installs `buserror_intr` for the error inputs instead.
 - `vice_err` in `kernel.o`: the VICE error hook, an 8-byte routine at offset 0x1d554. Established.
   It returns zero at once. Its one caller in this object, `print_buserr_rev0`, passes the saved VICE error address and the saved CPU error status, and takes the zero as "not a VICE fault".
+- `kpreemption` in `kernel.o`: the tail of the interrupt exit that switches threads when a kernel thread was preempted, a 100-byte routine at offset 0x19c. Established.
+  It calls `kpswtch`, rebuilds the status as bit 0 plus the bits 16 and 2 of the saved status, restores the saved level into the level word, stores that level's mask to the CRIME interrupt enable register at +0x18 and leaves through `exception_leave`. Its other path loads the kernel stack and reports an error through `cmn_err`.
+- `proc1` in `kernel.o`: drops to user mode for the first process, a 76-byte routine at offset 0x1b54. Established.
+  It stores the level-0 mask of the table at -23880 to the CRIME interrupt enable register at +0x18, zeroes the level word, writes the status 0x8713, clears the byte at -24513, sets the exception program counter to 0x10000000 and executes `eret`.
+- `bank_size` in `kernel.o`: the size of one memory bank from its control word, a 24-byte routine at offset 0x10f74. Established.
+  It returns 0x8000000 (128 MB) when bit 8 of the control word is set and 0x2000000 (32 MB) when it is clear.
+- `addr_to_ibank` in `kernel.o`: gives the internal memory bank of a physical address, a 32-byte routine at offset 0x11104. Established.
+  It calls the unnamed bank locator at 0x10f8c with a stack slot for the second result and returns that slot. The locator strips bits 31 and 30 of the address, walks the eight CRIME bank control registers from +0x208 (skipping a register equal to bank 0's), and returns the bank whose base and size cover the address, with `2 * bank` plus one when bit 26 (128 MB parts) or bit 24 (32 MB parts) of the address is set; for an address in no bank it returns -1. Source:
+- `szmem` in `kernel.o`: sizes main memory from the CRIME bank registers, a 324-byte routine at offset 0x8e18. Established.
+  Unless the size word is already set, it reads the eight bank control registers at +0x208 to +0x240 through the uncached window, adds `bank_size` of bank 0 and of each later bank whose register differs from bank 0's, and stores the total. It then splits the total into the part within the first 256 MB and the rest, converts both and the total to 4 KB pages, clamps them to the page limit in its second argument when that is non-zero, and stores them to the three memory-size words. It returns the total in pages. The first 256 MB are also mapped at 0x40000000, which is why the split is there.
+- `last_phys_pfn` in `kernel.o`: the page number just past the last physical page, a 180-byte routine at offset 0x8f5c. Established.
+  It sums the bank sizes exactly as `szmem` does, adds 0x40000000 when the sum exceeds 256 MB, adds 4095 and shifts right by 12 to give pages.
+- `mace_hwgraph_lookup` in `kernel.o`: finds the MACE device vertex of the hardware graph, an 88-byte routine at offset 0x926c. Established.
+  It formats the path "node/io/mace" from three read-only strings and a "%s/%s/%s" pattern, then walks it from the graph root, returning the vertex through its argument.
+- `hpc_hwgraph_lookup` in `kernel.o`: finds the HPC vertex, a 96-byte routine at offset 0x1aa08. Established.
+  It builds "node/io/gio/hpc" from four strings and walks it from the root the same way, returning the vertex through its argument.
+- `gio_hwgraph_lookup` in `kernel.o`: finds the vertex of a GIO slot from its bus address, a 168-byte routine at offset 0x1aa68. Established.
+  The address 0xbf000000 selects slot 2, 0xbf400000 slot 0 and 0xbf600000 slot 1, each walked as "node/io/gio/N"; any other address goes to the HPC lookup above.
+- `init_all_devices` in `kernel.o`: builds the hardware graph of the board and attaches the on-board devices, a 440-byte routine at offset 0x8a30. Established.
+  It adds the vertices "node", then "memory" and "io" below it and "mace" below "io", registers the processor with `add_cpu`, attaches the PCI host, the ISA DMA buffer, the 16550 serial ports and the PC keyboard and mouse under "io", and adds the root-level vertices "scsi", "scsi_ctlr" and "disk". Each failed addition reports "Hardware graph FAILURE" with the name through `cmn_err`. Source:
+- `us_delay` in `kernel.o`: busy-waits for a number of microseconds, a 192-byte routine at offset 0x13a68. Established.
+  Unless the early-delay flag is clear it uses the loop count from the word at -23992, else 7. It turns the argument into nanoseconds (times 1000) after halving it until it is at most 0x20c49b, and calls `delayloop` once more than the number of halvings.
+- `us_delaybus` in `kernel.o`: waits for the bus to drain and then delays, a 52-byte routine at offset 0x13b28. Established.
+  It calls `flushbus` first and, if its argument is non-zero, `us_delay` with the argument less one.
+- `wbflush` in `kernel.o`: flushes the write buffer, a 16-byte routine at offset 0x11cf8. Established.
+  It jumps to `__sysad_wbflush`, the SysAD write-buffer drain that the board's reset code also uses.
+- `pte_cachebits` in `kernel.o`: gives the cache attribute of a page-table entry, an 8-byte routine at offset 0x10df0. Established.
+  It returns 24, which puts 3 (cached, not coherent) in the three-bit cache field of a MIPS entry.
+- `get_cpu_irr` in `kernel.o`: reads the processor identification, a 28-byte routine at offset 0x13610. Established.
+  It returns the coprocessor 0 processor-revision register unchanged.
+- `flush_cache` in `kernel.o`: writes back and invalidates the primary data cache, a 96-byte routine at offset 0x7d70. Established.
+  It calls `__cache_wb_inval` with the base 0x80000000 and a size chosen from the word at -23888 when set, else the primary data cache size, replaced by the two-set cache size when that is non-zero and the other cache flag is clear.
+- `copyin` in `kernel.o`: copies from user space, a 88-byte routine at offset 0x3238. Established.
+  It fails when the length or the user address is negative or when address plus length passes 0x7fff8000. It sets the halfword at +194 of the current thread (pointed to by -24552) to 2, calls `bcopy`, clears the halfword and returns zero.
+- `copyout` in `kernel.o`: copies to user space, a 88-byte routine at offset 0x3290. Established.
+  It makes the same checks on the destination, sets and clears the same halfword around a call to `bcopy`, and returns zero.
 <!-- kernel.o:end -->
