@@ -55,6 +55,8 @@ Other public sources in this repository:
 - `linux/`: `drivers/video/fbdev/gbefb.c`, `include/video/gbe.h`, `arch/mips/sgi-ip32/` (`crime.c`, `ip32-memory.c`, `ip32-dma.c`), `arch/mips/include/asm/ip32/crime.h` and `mace.h`.
 - `netbsd/`: the `sgimips` port under `sys/arch/sgimips/`, in particular its CRIME and `crmfb` sources. Inferred: `crmfb` is the public driver that drives the rendering engine (copy, fill and text), so it is the main source for command encoding. Confirm the file names in the checkout.
 - `mame/`: `src/mame/sgi/o2.cpp` and `crime.cpp`; a skeleton with the CRIME base registers mapped and no renderer, so a lead for register names only.
+- `openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `netbsd/`, so it is weak independent support. `docs/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
+- `gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
 - `sgi-docs/`, `OpenGL-Registry/`, `ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
 - `irix-657m-src/`: a public link included for symmetry with gr4. Reading it exposes you to vendor source.
 
@@ -95,7 +97,7 @@ Install these on your workstation:
 - **`spimdisasm`**: the `spimdisasm` submodule, for object-file disassembly and symbol recovery.
 - **Python 3** with `pyelftools` (the scripts import `elftools`).
 
-Initialise only the submodules you need: `git submodule update --init m2c spimdisasm libdwarf-code`. `linux` and `netbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 linux netbsd`).
+Initialise only the submodules you need: `git submodule update --init m2c spimdisasm libdwarf-code`. `linux`, `netbsd` and `openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 linux netbsd openbsd`).
 
 Scripts (`scripts/`, run from the repository root):
 
