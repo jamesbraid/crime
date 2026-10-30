@@ -6433,11 +6433,11 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9345e8	452	__glFastCalcR
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9347ac	10608	vvec	mdebug	a965a469cc01	multi-unit	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934878	960	__glCalcRGBColor	dynsym+mdebug	d3eb2b594571		named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934c40	236	__glCrmFlatTriangle	dynsym+mdebug	753cfe20b694		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	668ba30e8bbe		located	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	668ba30e8bbe		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934ec8	316	__glCrmSmoothCITriangle	dynsym+mdebug	2c793ca95622		located	docs/libglcore.md#crm_astris	`crm_astri.s`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935004	508	__glCrmSmoothRGBTriangle	dynsym+mdebug	a87365eb212d		located	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935004	508	__glCrmSmoothRGBTriangle	dynsym+mdebug	a87365eb212d		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935200	600	__glCrmSmoothRGBATriangle	dynsym+mdebug	076d0d7a2212		located	docs/libglcore.md#crm_astris	`crm_astri.s`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935458	428	__glCrmSmoothCIZTriangle	dynsym+mdebug	c3cf7b35d82a		located	docs/libglcore.md#crm_astris	`crm_astri.s`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935458	428	__glCrmSmoothCIZTriangle	dynsym+mdebug	c3cf7b35d82a		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935604	596	__glCrmSmoothRGBZTriangle	dynsym+mdebug	01268124b2de		located	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935858	688	__glCrmSmoothRGBAZTriangle	dynsym+mdebug	ae4e6e2cae5b		located	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935b10	120	__glCalcEyeLinear	dynsym+mdebug	4f9e33ca726c		undocumented		
@@ -6446,9 +6446,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c00	24	__glCalcTextur
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd935c20	2816	__glCrmFillTriangle	dynsym+mdebug	e70f8eeccd59		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936720	52	__glCrmColorOptLine	dynsym+mdebug	b0f98c9a1c41		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippledColorOptLine	dynsym+mdebug	06eca960c81e		located	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	aaaab0e9cccc		named-only	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	252d4e54a3a5		located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	3dbe6ef4ccde		located	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	aaaab0e9cccc		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	252d4e54a3a5		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	3dbe6ef4ccde		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	c47cff28dbff		located	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93711c	1632	LongStippledLine	mdebug	d42faae94927		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937540	20	__glFirstLinesVertex	dynsym+mdebug	bb7cd4f3597e		undocumented		
@@ -10571,7 +10571,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937290	24	__glCalcText
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	3206965f799c		named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	e14b86504d24		understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	968f03819b61		understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	36edc975f37d		named-only	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	36edc975f37d		located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938028	268	__glCrmSmoothCILine	dwarf+dynsym	528176cd2ff1		understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938134	652	__glCrmFogRGBLine	dwarf+dynsym	a5863dd51739		understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDepthLine	dwarf+dynsym	c0cc705a5a91		understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
