@@ -12171,7 +12171,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4ea0	356	__glFreeAtt
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5010	532	__glim_EnableClientState	dwarf+dynsym	49160434f825		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5230	584	__glim_DisableClientState	dwarf+dynsym	f7aecbc0e0cc		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5480	692	__glim_PushClientAttrib	dwarf+dynsym	d8c2d19bdc09		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5740	684	__glim_PopClientAttrib	dwarf+dynsym	5cd2ff8b1c4e		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5740	684	__glim_PopClientAttrib	dwarf+dynsym	5cd2ff8b1c4e		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c59f0	268	__glDrawBitmap	dwarf+dynsym	ab03ecbf236b		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5b00	336	__glFastDrawBitmap	dwarf+dynsym	b7c412b0834d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5c50	788	__glRenderBitmap	dwarf+dynsym	9e5b85062377		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
