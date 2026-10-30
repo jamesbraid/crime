@@ -2564,7 +2564,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098280	536	AccessXSlowKeyExpi
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100984a0	36	XETSwInternAtom	dynsym	25c0dc7b80ee		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100984d0	1244	sgiCapFillPolygon..FCE	dynsym	3a19d9a11042		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100989b0	44	GetGlyphs	dynsym	539a3301c179		named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098a20	3008	dbcDelayedSwapBufferDone	dynsym	5c996286716f		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10098a20	3008	dbcDelayedSwapBufferDone	dynsym	5c996286716f		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100995e0	192	XETrapGetCurrent	dynsym	767f9e59339c		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100996a0	1656	ProcXineramaDbeSwapBuffers..EIC	dynsym	778ca7a28c18		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10099d20	96	sXETrapEvent..EFG	dynsym	523b3056f996		undocumented		
@@ -3312,7 +3312,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c430	228	XkbExtensionInit	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c520	8	ProcBadRequest	dynsym	a7e7ca11a6b8		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c530	144	SProcSGIvcQueryOutputSync..NGG	dynsym	dd9946c222c1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012c5c0	1440	ReadXkmCompatMap..PKF	dynsym	d7b9be32b17b		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012cb60	1612	ddxOpenScreens	dynsym	9b522a139670		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012cb60	1612	ddxOpenScreens	dynsym	9b522a139670		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d1b0	68	XETSwGrabKey	dynsym	07647160506a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d200	68	XETSwAllocNamedColor	dynsym	07647160506a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1012d250	188	SetDefaultFont	dynsym	e835130e1fef		undocumented		
@@ -3563,7 +3563,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015b9b0	16	XSGIProcessingSynth
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015b9c0	1824	CheckConnections	dynsym	684c79f259c1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c0e0	856	CopyDeviceBtnArgs..NMF	dynsym	5237522b341c		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c440	216	EnableDevice	dynsym	7eda3a731034		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c520	1092	dbcSetDrawBuffer	dynsym	0eb1fcaa04ce		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c520	1092	dbcSetDrawBuffer	dynsym	0eb1fcaa04ce		understood	docs/xsgi.md#double-buffer-tickets	Double-buffer tickets
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015c970	320	ProcDbeDeallocateBackBufferName..MHC	dynsym	2b82a5b3ef3f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cab0	228	DbeSetupBackgroundPainter..EJC	dynsym	a27c5b008f54		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1015cba0	572	AccessInitClientSocketAttrs	dynsym	f0999838b70e		undocumented		
@@ -3889,7 +3889,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101985b0	48	sp_begin_contour_2d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101985e0	252	SrvXkbFreeGeomDoodads	dynsym	19f9aa1d86a0		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101986e0	240	SProcSGIvcChannelInputRectangle..IHG	dynsym	bf45f79145b4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101987d0	320	ProcGetAtomName	dynsym	b4b0d259fd0a		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198910	1452	ddxPostOpenScreens	dynsym	b8bc19594d73		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198910	1452	ddxPostOpenScreens	dynsym	b8bc19594d73		understood	docs/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198ec0	216	XcpExtensionInit	dynsym	7dcf73e3df18		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10198fa0	672	AwareModeProcSGIXineramaGetFullInfo	dynsym	6ffd58e7b8ff		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10199240	164	CloseInputDevice	dynsym	73d765d22d22		undocumented		
