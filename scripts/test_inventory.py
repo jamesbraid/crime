@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Tests of the rules in inventory.py that do not need root/: the `computes` count, the scope filter, the
-per-build credit of the functions table and the template cap.
+per-build credit of the functions table, the template cap and the
+function boundaries of the register-access scan.
 
 Run from the repository root: python3 scripts/test_inventory.py
 """
@@ -174,6 +175,37 @@ class TemplateCap(unittest.TestCase):
     def test_short_cells_around_different_values_stay_apart(self):
         rows = ['| `DoReq%d` | 0x%x | writes register 0x%x | **Established** |' % (i, i, 0x2300 + i) for i in range(6)]
         self.assertEqual(self.capped(rows), [False] * 6)
+
+
+class SplitRuns(unittest.TestCase):
+    @staticmethod
+    def ins(*addrs):
+        return [[a, 'sw', ['$2', '0($3)'], None, None] for a in addrs]
+
+    def test_a_stripped_routine_leaves_the_exported_label_before_it(self):
+        # objdump labels only the 108-byte exported routine; the stores after it are another routine's
+        runs = [['__glCrmEnableDepthTest', self.ins(0x1000, 0x1068, 0x106c, 0x1070, 0x10a0)]]
+        table = {'__glCrmEnableDepthTest': ['.text', 0x1000, 108, {'dynsym'}, '']}
+        got = [(n, [i[0] for i in ii]) for n, ii in inv.split_runs(runs, table)]
+        self.assertEqual(got, [('__glCrmEnableDepthTest', [0x1000, 0x1068]),
+                               ('routine@0x106c', [0x106c, 0x1070, 0x10a0])])
+
+    def test_a_procedure_table_start_names_the_routine(self):
+        runs = [['f', self.ins(0x1000, 0x1004, 0x1010, 0x1014)]]
+        table = {'f': ['.text', 0x1000, 8, {'dynsym'}, ''], 'ClearDepth': ['.text', 0x1010, 0, {'mdebug'}, '']}
+        got = [(n, [i[0] for i in ii]) for n, ii in inv.split_runs(runs, table)]
+        self.assertEqual(got, [('f', [0x1000, 0x1004]), ('ClearDepth', [0x1010, 0x1014])])
+
+    def test_a_tail_reached_by_a_branch_stays_with_the_routine(self):
+        # a slow path the routine branches into keeps its live registers, so it is not cut off
+        runs = [['f', self.ins(0x1000) + [[0x1004, 'bc1f', ['1010'], None, None]] + self.ins(0x1008, 0x1010, 0x1014)]]
+        table = {'f': ['.text', 0x1000, 0x10, {'dynsym'}, ''], 'tail': ['.text', 0x1010, 8, {'dwarf'}, '']}
+        self.assertEqual([n for n, ii in inv.split_runs(runs, table)], ['f'])
+
+    def test_runs_that_match_the_table_are_kept(self):
+        runs = [['f', self.ins(0x1000, 0x1004)], ['g', self.ins(0x1008)]]
+        table = {'f': ['.text', 0x1000, 8, {'symtab'}, ''], 'g': ['.text', 0x1008, 4, {'symtab'}, '']}
+        self.assertEqual([n for n, ii in inv.split_runs(runs, table)], ['f', 'g'])
 
 
 if __name__ == '__main__':

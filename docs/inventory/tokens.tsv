@@ -15,7 +15,7 @@ word	0x40000104		0x2008		code	6	1	usr/lib/X11/dyDDX/crm.so:crmDestroyWindow	unde
 word	0x00000000		0x2010		code	22	2	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000800		0x2010		code	6	1	usr/lib/X11/dyDDX/crm.so:crmLineSD	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000c00		0x2010		code	6	1	usr/lib/X11/dyDDX/crm.so:crmLineSD	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2018		code	9	1	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmEnableDepthTest	understood	docs/opengl.md#draw-mode-words	Draw-mode words
+word	0x00000000		0x2018		code	9	1	usr/gfx/arch/IP32CRM/libGLcore.so:ClearCI	understood	docs/opengl.md#draw-mode-words	Draw-mode words
 word	0x000000f8		0x2018		code	1	1	usr/lib/X11/dyDDX/crm.so:crmValidateVisual	understood	docs/opengl.md#draw-mode-words	Draw-mode words
 word	0x00000278		0x2018		code	6	1	usr/lib/X11/dyDDX/crm.so:crmInitHW..HB	understood	docs/opengl.md#draw-mode-words	Draw-mode words
 word	0x000002f8		0x2018		code	12	1	usr/lib/X11/dyDDX/crm.so:crmDrawImage	understood	docs/opengl.md#draw-mode-words	Draw-mode words
@@ -24,12 +24,12 @@ word	0x000a02f8		0x2018		code	1	1	usr/lib/X11/dyDDX/crm.so:crmDrawOpaqueMonoImag
 word	0x00200078		0x2018		code	5	1	usr/lib/X11/dyDDX/crm.so:crmReadImage16	understood	docs/opengl.md#draw-mode-words	Draw-mode words
 word	0x00200278		0x2018		code	7	2	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x002002f8		0x2018		code	2	1	usr/lib/X11/dyDDX/crm.so:crmCopyRect	understood	docs/opengl.md#draw-mode-words	Draw-mode words
-word	0x00400007		0x2018		code	2	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmEnableDepthTest	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00400007		0x2018		code	2	1	usr/gfx/arch/IP32CRM32/libGLcore.so:FirstClearDepth	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00600040		0x2018		code	1	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmUpdatePolyStipple	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
 word	0x00600078		0x2018		code	1	1	usr/gfx/arch/IP32CRM32/libGLcore.so:crmReadPixelsXfer	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x2050		code	1	1	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x2058		code	7	2	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2060		code	19	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmEnableDepthTest	understood	docs/opengl.md#primitive-words	Primitive words
+word	0x00000000		0x2060		code	19	2	usr/gfx/arch/IP32CRM/libGLcore.so:ClearDepth	understood	docs/opengl.md#primitive-words	Primitive words
 word	0x01020000		0x2060		code	1	1	usr/lib/X11/dyDDX/crm.so:crmTiledFS	understood	docs/opengl.md#primitive-words	Primitive words
 word	0x01040020		0x2060		code	26	1	usr/lib/X11/dyDDX/crm.so:crmDrawMonoImage	understood	docs/opengl.md#primitive-words	Primitive words
 word	0x02000000		0x2060		code	2	1	usr/lib/X11/dyDDX/crm.so:crmFillHWTriangle..HD	understood	docs/opengl.md#primitive-words	Primitive words
@@ -53,19 +53,19 @@ word	0x00000000		0x2100		code	4	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiA
 word	0x00000000		0x2104		code	2	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmSmoothCILine	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x2108		code	6	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x210c		code	7	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmDepthLine	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2134		code	4	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmVertexPointFast	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2158		code	6	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmTexturedLine	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x215c		code	7	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmTexturedLine	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x2134		code	4	2	usr/gfx/arch/IP32CRM/libGLcore.so:RenderPointTextured	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x2158		code	6	2	usr/gfx/arch/IP32CRM/libGLcore.so:RenderPointTextured	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x215c		code	7	2	usr/gfx/arch/IP32CRM/libGLcore.so:RenderPointTextured	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x000ff000		0x2178		code	2	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmRenderCheapFogLine	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2180		code	34	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x2188		code	38	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x2180		code	34	2	usr/gfx/arch/IP32CRM/libGLcore.so:FillAASubTriangle	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x2188		code	38	2	usr/gfx/arch/IP32CRM/libGLcore.so:FillAASubTriangle	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000003		0x21b0		code	19	2	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crmSwapBufd	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00007fff		0x21b8		code	1	1	usr/lib/X11/dyDDX/crm.so:crmValidateVisual	understood	docs/opengl.md#transfer-step-colour-and-mask-words	Transfer-step, colour and mask words
 word	0xffffff00		0x21b8		code	1	1	usr/lib/X11/dyDDX/crm.so:crmValidateVisual	understood	docs/opengl.md#transfer-step-colour-and-mask-words	Transfer-step, colour and mask words
 word	0x00000000		0x21d0		code	8	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x21d8		code	10	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmAntiAliasLineRGB	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x00000000		0x21e8		code	19	2	usr/gfx/arch/IP32CRM/libGLcore.so:__glCrmBeginPoints	understood	docs/opengl.md#constant-words-by-register	Constant words by register
-word	0x000000ff		0x21e8		code	3	1	usr/gfx/arch/IP32CRM32/libGLcore.so:__glCrmEnableDepthTest	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x00000000		0x21e8		code	19	2	usr/gfx/arch/IP32CRM/libGLcore.so:crmDoDoubleStore_S	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+word	0x000000ff		0x21e8		code	3	1	usr/gfx/arch/IP32CRM32/libGLcore.so:Fix_zbuffer	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x21f0		code	39	4	usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o):crime_load_linear_tlb	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000000		0x21f8		code	49	4	usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o):crm_copy_swap_boxes	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 word	0x00000018		0x3000		code	2	1	usr/lib/X11/dyDDX/crm.so:crmDrawCID	understood	docs/opengl.md#transfer-engine-words	Transfer-engine words

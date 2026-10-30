@@ -1870,6 +1870,43 @@ def run_objdump(path):
     return funcs
 
 
+def split_runs(runs, table):
+    """objdump's runs cut at the function boundaries of the image's function table ({name: [section,
+    address, size, ...]}, from functions_of). objdump labels only the symbols it reads, so in a stripped
+    image a static routine's code runs on under the last exported label before it, and its register
+    accesses would be credited to that routine. A run is cut where a known function starts and where the
+    labelled function's size ends; code past the end that no table names becomes a run of its own, named
+    by its address (`routine@0x...`). A boundary that a branch of the run reaches is not cut: the code past
+    it is a tail the routine shares and enters with its registers live, as compilers emit for a common
+    slow path, so its accesses keep the routine's state."""
+    starts, ends = {}, {}
+    for name, e in sorted(table.items()):
+        if e[1]:
+            starts.setdefault(e[1], name)
+            if e[2]:
+                ends[name] = e[1] + e[2]
+    out = []
+    for name, insns in runs:
+        cur = [name, []]
+        end = ends.get(name) if insns and table.get(name, [None, None])[1] == insns[0][0] else None
+        reached = {branch_target(i) for i in insns if is_branch(i[1]) and i[1] not in CALLS}
+        for ins in insns:
+            a = ins[0]
+            if cur[1] and a in reached and (a in starts or (end is not None and a >= end)):
+                end = ends.get(starts[a]) if a in starts else None
+            elif cur[1] and a in starts and starts[a] != cur[0]:
+                out.append(cur)
+                cur = [starts[a], []]
+                end = ends.get(cur[0])
+            elif cur[1] and end is not None and a >= end:
+                out.append(cur)
+                cur = ['routine@0x%x' % a, []]
+                end = None
+            cur[1].append(ins)
+        out.append(cur)
+    return out
+
+
 def parse_reloc(rtype, target):
     m = re.match(r'^(.*?)(?:([+-])0x([0-9a-f]+))?$', target)
     name = m.group(1)
@@ -2073,8 +2110,12 @@ class Unit:
             if img['elf'] is None or img['group'].get('scan') is False:
                 continue
             info = ImageInfo(img['elf'])
-            funcs = run_objdump(img['tmp'])
+            funcs = split_runs(run_objdump(img['tmp']), img.get('functab', {}))
             self.code.append((img, info, funcs))
+        # the routine each run starts, by address: a call into a routine objdump did not label names the
+        # routine, not the label before it
+        self.entry_names = {id(img): {insns[0][0]: name for name, insns in funcs if name and insns}
+                            for img, info, funcs in self.code}
         defined = collections.defaultdict(list)
         for k, (img, info, funcs) in enumerate(self.code):
             for j, (name, insns) in enumerate(funcs):
@@ -2266,6 +2307,8 @@ class Unit:
                 return sym
             if t in self.info.stubs:
                 return self.info.stubs[t]
+            if t in self.entry_names.get(id(self.img), {}):
+                return self.entry_names[id(self.img)][t]
         if sym and not sym.startswith('.'):
             return sym
         return None
@@ -2872,6 +2915,7 @@ def analyse_unit(args):
             res['abi'][img['label']] = abi_of(elf) if elf else '-'
             res['kind'][img['label']] = kind_of(img['data'], elf)
             res['funcs'][img['label']], res['finfo'][img['label']] = functions_of(img, elf, path)
+            img['functab'] = res['funcs'][img['label']]
         u = Unit(model, cfg, imgs).run()
         # kernel dispatch tables
         for d in cfg.get('ioctls', {}).get('dispatchers', []):
