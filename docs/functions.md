@@ -1603,4 +1603,8 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `mte_fifo_wait` in `kernel.o`: waits until the engine's FIFO has room for a number of words, a 112-byte routine at offset 0x9e80. Inferred.
   It reads the FIFO level from bits 24:18 of the status at +0x4000 and polls with `us_delay` of 1 microsecond until 64 minus the level is at least the request.
   On a timeout it logs through `cmn_err` and counts one more stray event in a kernel word at gp-32632.
+- `crmerr_intr` in `kernel.o`: a panic handler for a CRIME or VICE error, a 36-byte routine at offset 0x9f54. Established.
+  It reads no register: it passes level 0, the highest severity, and the text "CRIME/VICE error" from the read-only data to `cmn_err`, so the kernel panics. No instruction of `kernel.o` takes its address; `mlreset` installs `buserror_intr` for the error inputs instead.
+- `vice_err` in `kernel.o`: the VICE error hook, an 8-byte routine at offset 0x1d554. Established.
+  It returns zero at once. Its one caller in this object, `print_buserr_rev0`, passes the saved VICE error address and the saved CPU error status, and takes the zero as "not a VICE fault".
 <!-- kernel.o:end -->

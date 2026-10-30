@@ -206,7 +206,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0015cf0	164	_tlbpid	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0015d94	1532	_tlbmap	symtab	6f9d5d509c5a		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016390	144	_cacheflush	symtab	c40fec64bee1		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016420	1864	_dbxdump	symtab	b4242526e6e1		undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016b68	36	clear	symtab	cf6d27baea58		named-only	docs/pixel-arithmetic.md#the-depth-buffer-and-the-test	The depth buffer and the test
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016b68	36	clear	symtab	cf6d27baea58		named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016b8c	492	_dump	symtab	c50884e4e544		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016d78	548	_c_tags	symtab	4d59d66890e3		undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0017fb0	84	dumpSecondaryLine	symtab	6289a831cd53		undocumented		
@@ -1475,7 +1475,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9cc8	84	mte_delay	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d1c	84	mte_spin	symtab	a241301469f8		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9d70	272	mte_set_tlb	symtab	5b9d8c0a4857		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9e80	112	mte_fifo_wait	symtab	e2ed07372b97		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f54	36	crmerr_intr	symtab	b1f452e5d4f9		undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f54	36	crmerr_intr	symtab	b1f452e5d4f9		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9f78	128	set_hwperf_intr	symtab	a1c1ca8f8334		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ff8	220	synthclock	symtab	1de465b95fe4		understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xa0d4	216	synthackkgclock	symtab	c2819ce19a11		understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
@@ -1879,7 +1879,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d310	368	dumptlb	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d480	148	checkAllTlbsDumped	symtab	896d0a78c5a7		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d514	56	flash_getenv	symtab	25a6b637c068		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d54c	8	flash_nvram_tab	funcnames+symtab	78aa5094d5ec		undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d554	8	vice_err	symtab	87506497337c		named-only	docs/functions.md#bus-error-probes	Bus-error probes
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d554	8	vice_err	symtab	87506497337c		understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d55c	20	VEC_nofault	symtab	14ce28ea91c9		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d570	900	VEC_cpfault	symtab	12e1caab9a18		undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1d8f4	264	hwperf_init	symtab	d7350d48960c		undocumented		
@@ -6449,7 +6449,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936754	336	__glCrmStippl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9368a4	388	__glCrmSmoothRGBLine	dynsym+mdebug	aaaab0e9cccc		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936a28	268	__glCrmSmoothCILine	dynsym+mdebug	252d4e54a3a5		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGBLine	dynsym+mdebug	3dbe6ef4ccde		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	c47cff28dbff		located	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	c47cff28dbff		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93711c	1632	LongStippledLine	mdebug	d42faae94927		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937540	20	__glFirstLinesVertex	dynsym+mdebug	bb7cd4f3597e		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937554	40	__glBeginLines	dynsym+mdebug	af28e624002b		located	docs/sample-implementation.md#so_linefinc	so_linefin.c
@@ -6620,7 +6620,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949da0	724	__glCrmRender
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a074	1664	__glCrmRenderAntiAliasLine	dynsym+mdebug	f277d4fdaf89		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a6f4	488	__glCrmRenderFrontBackLine	dynsym+mdebug	1a4c73a9b99a		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94a8dc	520	__glCrmRenderLeftRightLine	dynsym+mdebug	272b09ad403d		understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	3ceeeeac7bc2		located	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94aaf0	768	__glCrmFlatColorLine	dynsym+mdebug	3ceeeeac7bc2		understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94adf0	356	__glCrmFogCILine	dynsym+mdebug	4dcd439decf7		understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94af54	6492	__glCrmTexturedLine	dynsym+mdebug	c704d76b1af3		located	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94c8b0	132	__glCrmPolygonOffsetLine	dynsym+mdebug	0e2c2a1fe7a9		undocumented		

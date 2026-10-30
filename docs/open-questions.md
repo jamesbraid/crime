@@ -47,6 +47,22 @@ Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware dev
 
 ## Where work stopped
 
+30 October 2026, function backfill pass 2 (functions understood: 1,328 of 17,280, up from 1,314 at the start of the pass, both counted with the pinned sibling checkouts; distinct names 1,224, up from 1,215). Done in this pass:
+
+- [nfb-layer.md](nfb-layer.md): the twelve entries that were inferred because a branch or a recursive walk had not been followed are now read in full and established, with the whole decompiled body checked against the disassembly where the decompiler warned: `nfbGetLayerWindow`, `nfbSetStereoBuffer`, `nfbChangeWindowAttributes`, `nfbPutPlane..DG`, `nfbStereoDrawCID..II`, `nfbStereoCopyWindow..GI`, `nfbCheckSubSaveUnder..OF`, `nfbValidateGC..GJ`, `nfbSolidZeroSeg`, `nfbComputeUniverseSL..KI`, `nfbDoBitBltSP`. `nfbLineSD` stays inferred, with a reason: its draw calls are all counted but its sixteen repeated general-slope bodies were read at their loop heads only. Two earlier readings were wrong and are corrected: the word at +0x38 of the screen record is a pointer to a per-slot table, and the save-under check returns zero on every path.
+- The N32 entry that credited the store-procedure picker with the texture registers was a naming slip: the stores are in `crmSetTextureParam`, which has no export symbol and sits after the picker. [opengl.md](opengl.md) now names the right routine, and [libglcore.md](libglcore.md) has whole-body entries for both.
+- [xsgi.md](xsgi.md): `dbcDelayedSwapBufferDone`, `dbcSetDrawBuffer`, `ddxOpenScreens` and `ddxPostOpenScreens`, established from the whole decompilation.
+- [libglcore-o32.md](libglcore-o32.md): `__glCrmPassLogicOp`, `__glCrmPassStencilMode`, `__glCrmPassBlendFunc` (with a code table), `__glCrmUpdateHardwareState`, `__glCrmDepthLine` and `__glCrmFlatColorLine`, read from the whole disassembly.
+- [functions.md](functions.md): `crmerr_intr` and `vice_err` of `kernel.o`.
+
+Next, in order:
+
+- The 30 o32 `libGLcore.so` routines listed under the o32 item below, smallest first (`__glCrmSmoothRGBATriangle`, `__glCrmSmoothRGBZTriangle`, `__glCrmSmoothRGBAZTriangle`, `__glCrmFillTriangle`, `__glCrmAntiAliasLineRGB`, `__glCrmFastRect`).
+- `nfbLineSD`: read the sixteen repeated bodies, then promote it.
+- `Xsgi`: `ddxFindAvailableBoards..CGC`, `ddxRequestBoards`, `rrmUngrab`, `ddxMultiCursor` and the video-control screen routines.
+- Kernel: the remaining 811 `kernel.o` rows. Take the CRIME error decoder, the transfer-engine copy and zero routines (source `mte_copy.c`, `mte_zero.c`, `hw_copy.c`, `vice_copy.c` in the same directory) and the video-engine start-up in `IP32init.c` first.
+- Regenerate the inventory only with the sibling checkouts under `.cache/siblings/` at the pinned commits; an unpinned run changes the headline.
+
 30 October 2026, function backfill pass (the `nfb` layer, `crm.so` register routines, the X server, the o32 driver). Functions understood: 1,314 of 17,280 (7.6 %), up from 1,201 (7.0 %) at the start of the pass, counted with the same script and the same sibling workspaces. Done in this pass:
 
 - [nfb-layer.md](nfb-layer.md): all 32 routines that were only named now have an entry (20 established, 12 inferred where a branch or a recursive walk was followed in outline: the dashed line, the screen-to-pixmap copy, the plane writer, the context validator and the tree walks).
@@ -56,7 +72,7 @@ Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware dev
 
 Next, in order:
 
-- o32 `libGLcore.so`: the 33 routines still without an entry, of which 24 need the disassembly: `__glCrmFlatColorLine`, `__glCrmDepthLine`, `__glCrmSmoothRGBZTriangle`, `__glCrmSmoothRGBATriangle`, `__glCrmSmoothRGBAZTriangle`, `__glCrmSpanRenderDepth` and `..Depth2`, the `Dump*Span` routines, `__glCrmAntiAliasLineRGB`, `__glCrmFastRect`, `__glCrmStoreLine`, `__glCrmStoreStippledLine`, `__glCrmTexturedLine`, `__glCrmFillTriangle`, `__glCrmFillAATriangle`, `__glCrmPickAllProcs` and `__glCrmPickDrawPixels`. The decompilable ones left are `__glCrmFillCheapFogTriangle`, `__glCrmRenderLeftRightBitmap`, `__glCrmPassStencilMode`, `__glCrmUpdatePolyStipple`, `__glCrmRenderAntiAliasLine` and the four pixel-transfer routines `crmCopyPixelsXfer`, `crmDrawPixelsXfer`, `crmDrawPixelsXfer2` and `crmReadPixelsXfer`. The N32 build has 83 such routines and the same problem: its entries that name no build credit nothing where the two builds differ.
+- o32 `libGLcore.so`: 30 routines still without an entry that need the disassembly (`objdump -m mips:isa64`; Ghidra's decompilation of this build cuts routines short at the reciprocal and conditional-move forms): `__glCrmAntiAliasLineRGB`, `__glCrmSmoothRGBATriangle`, `__glCrmSmoothRGBZTriangle`, `__glCrmSmoothRGBAZTriangle`, `__glCrmFillTriangle`, `__glCrmRenderBitmap`, `__glCrmRenderLeftRightBitmap`, `__glCrmFillCheapFogTriangle`, `__glCrmRenderAntiAliasLine`, `__glCrmTexturedLine`, `__glCrmStoreLine`, `__glCrmStoreStippledLine`, `__glCrmPickAllProcs`, `__glCrmPickDrawPixels`, `__glCrmSetupPixelRenderOps`, the four pixel-transfer routines `crmDrawPixelsXfer`, `crmDrawPixelsXfer2`, `crmReadPixelsXfer` and `crmCopyPixelsXfer`, `__glCrmFillAATriangle`, `__glCrmSpanRenderDepth` and `..Depth2`, `__glCrmFastRect`, the `Dump*Span` routines and `__glCrmUpdatePolyStipple`. Read each from the whole disassembly, and give any blend-style code table its own table as the blend routine's does, because a long run of numbers in one entry grades it named-only. The N32 build has 83 such routines and the same problem: its entries that name no build credit nothing where the two builds differ.
 - Xsgi: `ddxFindAvailableBoards..CGC`, `ddxRequestBoards`, `rrmUngrab`, `ddxMultiCursor` and the video-control screen routines. Their decompilations are the ones to read first.
 - `crm.so`: the 51 register routines now all have a row with offsets; the inferred ones (`crmTiledFS`, `crmTileRects`, `crmFillTriangleMTE..FD`, `crmZeroPolyArc` and the line and segment routines) still need a read of the whole body.
 - The kernel's remaining graphics-relevant routines (the transfer-engine users listed in `docs/functions.md`): not started.
