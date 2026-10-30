@@ -13252,7 +13252,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33280	128	__glim_Vert
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33300	112	__glim_Vertex4s	dwarf+dynsym	ba3692e9f472		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33370	128	__glim_Vertex4sv	dwarf+dynsym	090d4672c910		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda333f0	136	__glInitVertexArrayState	dwarf+dynsym	de840b3e88c9		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33480	612	__glim_ArrayElementEXT	dwarf+dynsym	1944de5e2efe		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33480	612	__glim_ArrayElementEXT	dwarf+dynsym	1944de5e2efe		in	located	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda336f0	328	__glim_DrawArraysEXT	dwarf+dynsym	c5c493f6d26a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33840	52	glMultiTexCoord1svSGIS	dwarf+funcnames	f0a0a090dc06		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda33880	52	glMultiTexCoord2svSGIS	dwarf+funcnames	86f0a6993cc5		in	located	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
