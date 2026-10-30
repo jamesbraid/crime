@@ -8,3 +8,4 @@ tokens	2026-10-29	10	9	0	1	sample of understood rows at 36a7828
 mmio	2026-10-29	10	10	0	0	sample of understood rows at 36a7828
 spec-registers	2026-10-29	10	10	0	0	sample of understood rows at 36a7828
 functions	2026-10-29	15	10	5	0	sample of understood rows at 36a7828, before the stub rows stopped crediting the routines they reach
+functions	2026-10-29	20	12	3	5	sample of the 258 entries labelled established by the function backfill (crm.so, libGLcore, kernel.o) at 91edda1, seed 20261029; unsampled digest-style entries relabelled inferred

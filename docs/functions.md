@@ -1501,104 +1501,106 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 <!-- kernel.o:begin -->
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
-- `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Established.
+- `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.
   It stores 417 and 0x61bc1 (400321) in two small-data words, so one tick converts as 400321 over 417, and stores 0xfe500 (1041664) in `ust_freq`.
   The tick is the 1.04 MHz time register that `update_ust` reads.
-- `update_ust` in `kernel.o`: extends the hardware time register to a 64-bit time, a 64-byte routine at offset 0x4250. Established.
+- `update_ust` in `kernel.o`: extends the hardware time register to a 64-bit time, a 64-byte routine at offset 0x4250. Inferred.
   It reads the 64-bit register at the kernel address 0xbf340000, keeps its low 32 bits, and adds the change since the previous reading in `ust_val` (+0x8) to the 64-bit sum at +0x0.
   It carries into the upper word when the low word wraps.
-- `update_ust_i` in `kernel.o`: the interrupt-safe wrapper of `update_ust`, a 56-byte routine at offset 0x4088. Established.
+- `update_ust_i` in `kernel.o`: the interrupt-safe wrapper of `update_ust`, a 56-byte routine at offset 0x4088. Inferred.
   It raises the level with `spl7`, calls `update_ust` and restores the level with `splx`.
-- `get_ust` in `kernel.o`: returns the last 64-bit time without reading the hardware, a 12-byte routine at offset 0x411c. Established.
+- `get_ust` in `kernel.o`: returns the last 64-bit time without reading the hardware, a 12-byte routine at offset 0x411c. Inferred.
   It stores the 64-bit word `ust_val` at the address in its first argument.
-- `get_updated_ust_i` in `kernel.o`: returns a freshly updated 64-bit time, a 60-byte routine at offset 0x4128. Established.
+- `get_updated_ust_i` in `kernel.o`: returns a freshly updated 64-bit time, a 60-byte routine at offset 0x4128. Inferred.
   It raises the level with `spl7`, calls `update_ust`, reads the 64-bit `ust_val` and restores the level with `splx`.
-- `get_ust_nano` in `kernel.o`: returns the last time in nanoseconds, a 48-byte routine at offset 0x40c0. Established.
+- `get_ust_nano` in `kernel.o`: returns the last time in nanoseconds, a 48-byte routine at offset 0x40c0. Inferred.
   It multiplies `ust_val` by the numerator word at gp-32728 and divides by the denominator word at gp-32724, storing the 64-bit result through its argument.
   A zero denominator traps.
-- `ust_to_nano` in `kernel.o`: converts a tick count to nanoseconds, a 44-byte routine at offset 0x40f0. Established.
+- `ust_to_nano` in `kernel.o`: converts a tick count to nanoseconds, a 44-byte routine at offset 0x40f0. Inferred.
   It multiplies its first argument by the numerator word at gp-32728, divides by the denominator word at gp-32724 and stores the 64-bit result through its second argument.
-- `nano_to_ust` in `kernel.o`: converts nanoseconds to ticks, a 40-byte routine at offset 0x4164. Established.
+- `nano_to_ust` in `kernel.o`: converts nanoseconds to ticks, a 40-byte routine at offset 0x4164. Inferred.
   It multiplies its argument by the denominator word at gp-32724 and divides by the numerator word at gp-32728, returning the 64-bit result.
-- `fill_ust_highbits` in `kernel.o`: rebuilds the upper half of a 32-bit time stamp, a 160-byte routine at offset 0x41b0. Established.
+- `fill_ust_highbits` in `kernel.o`: rebuilds the upper half of a 32-bit time stamp, a 160-byte routine at offset 0x41b0. Inferred.
   It stores the 32-bit stamp as a 64-bit value and compares it with the low word of `ust_val`, read at the profile level (`splprof`, `splx`).
   A stamp more than 0x80000000 ahead or behind gets the upper word of the current time minus or plus one, otherwise the same upper word.
-- `isa_dma_buf_init` in `kernel.o`: allocates the audio DMA buffer once, a 116-byte routine at offset 0x9010. Established.
+- `isa_dma_buf_init` in `kernel.o`: allocates the audio DMA buffer once, a 116-byte routine at offset 0x9010. Inferred.
   It obtains 0x1800110 bytes of contiguous memory with `contig_memalloc` (eight pages, eight-page aligned), stores the physical address in `isa_dma_buf_addr` and panics when no memory is available.
   It clears the buffer with `scrub_memory` and writes the address, aligned to 32 KB, to the register at the kernel address 0xbf310000 after `flushbus`.
-- `get_isa_dma_buf_addr` in `kernel.o`: returns the audio DMA buffer address, a 68-byte routine at offset 0x117c8. Established.
+- `get_isa_dma_buf_addr` in `kernel.o`: returns the audio DMA buffer address, a 68-byte routine at offset 0x117c8. Inferred.
   It calls `isa_dma_buf_init` when `isa_dma_buf_addr` is still zero and reports through `cmn_err` when the allocation failed, then returns the word.
-- `crimestray` in `kernel.o`: the default handler of a CRIME interrupt input, a 52-byte routine at offset 0x9f20. Established.
+- `crimestray` in `kernel.o`: the default handler of a CRIME interrupt input, a 52-byte routine at offset 0x9f20. Inferred.
   It logs the input number through `cmn_err` at level 4 and adds one to the stray-interrupt counter at gp-32628.
-- `crime_intr` in `kernel.o`: the dispatcher of the CRIME interrupt inputs, a 684-byte routine at offset 0xa2cc. Established.
+- `crime_intr` in `kernel.o`: the dispatcher of the CRIME interrupt inputs, a 684-byte routine at offset 0xa2cc. Inferred.
   It reads the interrupt status at the kernel address 0xb4000010, masks it with the thread's enabled mask held at +0x138 of its argument, and builds the list of set bits in order.
   For each it calls the handler at +0x0 of the 48-byte vector entry with the argument at +0x4, bracketed by `splint`; a flag bit 4 at +0xe makes it clear the input from the mask while the handler runs.
-- `create_crimegang` in `kernel.o`: turns a vector entry into a gang of handlers, a 200-byte routine at offset 0xa934. Established.
+- `create_crimegang` in `kernel.o`: turns a vector entry into a gang of handlers, a 200-byte routine at offset 0xa934. Inferred.
   It sets the entry's handler to `crimegang`, allocates 768 bytes (16 members of 48) with `kmem_zalloc` the first time and stores the first member's function, argument, mask and flags.
   It returns 2 on success.
-- `join_crimegang` in `kernel.o`: adds a handler to an input's gang, a 144-byte routine at offset 0xa9fc. Established.
+- `join_crimegang` in `kernel.o`: adds a handler to an input's gang, a 144-byte routine at offset 0xa9fc. Inferred.
   It refuses with 1 when the new handler's mask (+0x8) differs from the gang's, scans the 16 member slots for an empty one and stores function, argument, mask and flags there.
   It returns 0 when added and 2 when the gang is full.
 - `bust_crimegang` in `kernel.o`: dissolves a gang with one member left, an 80-byte routine at offset 0xaf38. Established.
-  It copies the remaining member's function, argument, mask and flags back into the input's vector entry and clears the member and the gang pointer.
-- `leave_crimegang` in `kernel.o`: removes one handler from an input's gang, a 348-byte routine at offset 0xaf88. Established.
+  It copies the remaining member's function, argument, mask and flags back into the input's vector entry (48 bytes per input) and clears the member's record.
+- `leave_crimegang` in `kernel.o`: removes one handler from an input's gang, a 348-byte routine at offset 0xaf88. Inferred.
   Under `spl7` it finds the member with the handler address, closes the gap by moving the later members down, and clears the last slot.
   When one member is left it calls `bust_crimegang`; it returns 1 when the handler was found and 0 otherwise.
-- `crimevec_thread_setup` in `kernel.o`: creates the interrupt thread of a threaded handler, an 88-byte routine at offset 0xadf8. Established.
+- `crimevec_thread_setup` in `kernel.o`: creates the interrupt thread of a threaded handler, an 88-byte routine at offset 0xadf8. Inferred.
   It names the thread with `sprintf` from the input and creates it with `xthread_setup`, starting at `crimevec_intrd_init` with a record at +0x18 of the vector entry.
-- `crimevec_intrd_init` in `kernel.o`: the start-up of an interrupt thread, an 88-byte routine at offset 0xae50. Established.
+- `crimevec_intrd_init` in `kernel.o`: the start-up of an interrupt thread, an 88-byte routine at offset 0xae50. Inferred.
   It sets the thread function to `crimevec_intrd` with `xthread_set_func`, sets flag 0x400 in the thread's word at +0x18 and sleeps on the semaphore at +0x1c with `ipsema`.
-- `crimevec_intrd` in `kernel.o`: the body of a threaded interrupt handler, a 144-byte routine at offset 0xaea8. Established.
+- `crimevec_intrd` in `kernel.o`: the body of a threaded interrupt handler, a 144-byte routine at offset 0xaea8. Inferred.
   It calls the handler at +0x0 of the entry with the argument at +0x4 and, unless flag bit 4 at +0xe is set, ORs the input's 64-bit mask from +0x10 back into the level-mask table under `splhi`.
   It then sleeps on the semaphore at +0x1c with `ipsema` until the next interrupt.
-- `unsetcrimevector` in `kernel.o`: removes a handler from a CRIME input, a 196-byte routine at offset 0xb0e4. Established.
+- `unsetcrimevector` in `kernel.o`: removes a handler from a CRIME input, a 196-byte routine at offset 0xb0e4. Inferred.
   A gang input is handled by `leave_crimegang`; otherwise, under `spl7`, it restores the default handler `crimestray` with the input's default priority from `getcvpriority`.
   It then recomputes the level masks with `setsplmasks` and returns 1.
-- `mte_copy` in `kernel.o`: copies memory with the memory transfer engine, a 380-byte routine at offset 0x9a34. Established.
+- `mte_copy` in `kernel.o`: copies memory with the memory transfer engine, a 380-byte routine at offset 0x9a34. Inferred.
   It saves the engine's mode, source and destination registers (+0x3000, +0x3020, +0x3028, +0x3030 and +0x3038) with `crmSavePP`, and maps each chunk of source and destination into the engine's linear TLB with `mte_set_tlb`.
   Per chunk it waits with `mte_fifo_wait`, writes the source and destination start and end, sets the byte mask (+0x3008) to all ones and starts with the mode value 2199 (0x897) at +0x3800.
   It then restores the registers with `crimeRestore`.
-- `mte_zero` in `kernel.o`: clears memory with the memory transfer engine, a 280-byte routine at offset 0x9bb0. Established.
+- `mte_zero` in `kernel.o`: clears memory with the memory transfer engine, a 280-byte routine at offset 0x9bb0. Inferred.
   It saves the mode and destination registers with `crmSavePP`, maps each chunk with `mte_set_tlb` and waits with `mte_fifo_wait`.
   Per chunk it writes the destination start and end (+0x3030, +0x3038), the fill value (+0x3018) as zero and the byte mask (+0x3008) as all ones, and starts with mode 17 at +0x3800; `crimeRestore` undoes the saves.
-- `mte_delay` in `kernel.o`: estimates how long the engine needs to drain, an 84-byte routine at offset 0x9cc8. Established.
+- `mte_delay` in `kernel.o`: estimates how long the engine needs to drain, an 84-byte routine at offset 0x9cc8. Inferred.
   It calls `crimeLockOut` and returns 0xffffff when that reports the engine locked out.
   Otherwise it reads the status at +0x4000, returns 0 when bit 25 is clear and else the FIFO level (bits 24:18) times 256 plus 768.
-- `err_save_regs` in `kernel.o`: saves the CRIME error registers, a 72-byte routine at offset 0xff08. Established.
+- `err_save_regs` in `kernel.o`: saves the CRIME error registers, a 72-byte routine at offset 0xff08. Inferred.
   It copies the processor error status (+0x48) and address (+0x40), the memory error status (+0x250), address (+0x258), ECC check bits (+0x268) and syndrome (+0x260), and the VICE error address (+0x58) into kernel words.
   It then writes zero to the processor and memory error status registers.
-- `dobuserr_common` in `kernel.o`: the common bus-error handler, a 796-byte routine at offset 0x10754. Established.
+- `dobuserr_common` in `kernel.o`: the common bus-error handler, a 796-byte routine at offset 0x10754. Inferred.
   It disables the secondary cache on the 4600 module (`_r4600sc_disable_scache`) and decodes the saved CRIME status for the revision it finds with `get_crimerev` (`print_buserr_rev0` or `print_buserr_rev1`).
-  It reports the VICE error with `vice_err`, logs memory errors with `log_ecc_err` and corrects them with `ecc_error_correction`, and disables ECC with `ecc_disable` when the errors repeat.
-- `enable_ithreads` in `kernel.o`: switches CRIME inputs to threaded handlers, a 144-byte routine at offset 0xad68. Established.
+  It reports the VICE error with `vice_err`, logs memory errors with `log_ecc_err` and calls `ecc_error_correction`.
+  When that returns zero, unless a saved value equals 2 and a process is current, it calls `ecc_disable` and logs a tagged message; in the exception it logs a different tagged message naming the process. The secondary cache is re-enabled on the paths that disabled it.
+- `enable_ithreads` in `kernel.o`: switches CRIME inputs to threaded handlers, a 144-byte routine at offset 0xad68. Inferred.
   Under `spl7` it sets `ithreads_enabled` and, for each of the 32 vector entries whose flag word (+0x18) has bit 9 (0x200) set, calls `crimevec_thread_setup` with the level halfword at +0x28.
-- `ecc_meminit` in `kernel.o`: clears memory to set its ECC, a 304-byte routine at offset 0x90dc. Established.
-  It stops GBE first when the stop flag is set (`early_gbe_stop`) and does nothing when the PROM already initialised ECC (`prom_does_eccinit`).
-  On a CRIME revision above 0 with the engine allowed it clears the range with `early_mte_zero`, otherwise with `bzero`, then records the page count in `ecc_meminited`.
-- `add_cpuboard` in `kernel.o`: adds the CPU board to the hardware inventory, a 216-byte routine at offset 0x81e4. Established.
+- `ecc_meminit` in `kernel.o`: clears a range of memory pages to set its ECC, a 304-byte routine at offset 0x90dc. Established.
+  Its arguments are the first and the end page number. On a CRIME revision above 0 it stops GBE first with `early_gbe_stop` when the stop flag is set, and when the PROM already initialised ECC (`prom_does_eccinit`) it caps the end page at 16384.
+  With the engine allowed (`ecc_use_mte`) on a revision above 0 it clears the range with `early_mte_zero`, starting 0x40000000 higher when the end page is 0x50000 or more, and records the end page in `ecc_meminited`.
+  Otherwise it clears the range with `bzero` through the cached window only when the end page is below 0x50000, records it, and returns 1; it returns 0 when it cleared nothing.
+- `add_cpuboard` in `kernel.o`: adds the CPU board to the hardware inventory, a 216-byte routine at offset 0x81e4. Inferred.
   It adds the processor, floating-point and cache entries with `add_to_inventory`, with the clock rating from `cpu_mhz_rating` and the flash version from `flash_version`.
   It stores the CRIME revision from `get_crimerev` in `crime_rev` and the processor id from `get_cpu_irr` in `cpu_prid`, logging an unknown revision through `cmn_err`.
-- `prom_autoboot` in `kernel.o`: returns to the PROM for an automatic boot, a 140-byte routine at offset 0x2b4. Established.
+- `prom_autoboot` in `kernel.o`: returns to the PROM for an automatic boot, a 140-byte routine at offset 0x2b4. Inferred.
   It disables the 4600 secondary cache, writes the environment to flash (`flash_write_env`), turns ECC off with `ecc_disable` and stops GBE with `early_gbe_stop`.
   It then updates the flash version and jumps into the PROM at 0xbfc00000 (or +0x100 for a flash version of 2 or more) with reason 6.
-- `prom_reinit` in `kernel.o`: returns to the PROM for a reinitialisation, a 120-byte routine at offset 0x340. Established.
+- `prom_reinit` in `kernel.o`: returns to the PROM for a reinitialisation, a 120-byte routine at offset 0x340. Inferred.
   It writes the flash environment, sets the auto-power-on flag, powers down with `cpu_powerdown` when `power_off_flag` is set, and otherwise turns ECC off and stops GBE like `prom_autoboot`.
   It jumps into the PROM at 0xbfc00000 (or +0x100) with reason 5.
-- `onesec_maint` in `kernel.o`: the once-a-second housekeeping, a 184-byte routine at offset 0xb8ac. Established.
+- `onesec_maint` in `kernel.o`: the once-a-second housekeeping, a 184-byte routine at offset 0xb8ac. Inferred.
   It refreshes the 64-bit time with `update_ust_i`, runs the TLB's once-a-second actions with `tlb_onesec_actions` and writes the time of day back to the clock (`wtodc`).
   It then runs the drift check `chktimedrift`.
-- `fastick_maint` in `kernel.o`: the fast clock tick handler, a 392-byte routine at offset 0xb964. Established.
+- `fastick_maint` in `kernel.o`: the fast clock tick handler, a 392-byte routine at offset 0xb964. Inferred.
   It acknowledges the clock with `ackkgclock` and, under nested spinlocks, calls the fast profile and timer pokes (`fast_user_prof`, `prfintr`, `fast_timepoke`).
   It also calls the audio, MIDI and serial timer callbacks that drivers such as `kdsp` registered in the `*_timercallback_ptr` words.
-- `early_mte_zero` in `kernel.o`: clears memory with the transfer engine during early start-up, a 212-byte routine at offset 0x9960. Established.
+- `early_mte_zero` in `kernel.o`: clears memory with the transfer engine during early start-up, a 212-byte routine at offset 0x9960. Inferred.
   It works in chunks of at most 0x20000 bytes: each is mapped into the engine's linear TLB with `mte_set_tlb` and the FIFO is given room with `mte_fifo_wait`.
   Per chunk it writes destination start and end (+0x3030, +0x3038), the fill value (+0x3018) as zero and the byte mask (+0x3008) as all ones, starts with mode 17 at +0x3800 and waits with `mte_spin`.
-- `mte_spin` in `kernel.o`: waits for the engine to go idle, an 84-byte routine at offset 0x9d1c. Established.
+- `mte_spin` in `kernel.o`: waits for the engine to go idle, an 84-byte routine at offset 0x9d1c. Inferred.
   It reads the status word at +0x4000 of the engine and loops with `us_delay` of 1 microsecond while the idle bit, bit 25 of the status, is clear.
-- `mte_set_tlb` in `kernel.o`: loads the engine's linear TLB for a memory range, a 272-byte routine at offset 0x9d70. Established.
+- `mte_set_tlb` in `kernel.o`: loads the engine's linear TLB for a memory range, a 272-byte routine at offset 0x9d70. Inferred.
   It splits the range into 4 KB pages, waits for enough FIFO room with `mte_fifo_wait` and writes the page frame numbers, two to a 64-bit word with the valid bit 0x80000000 set, into the TLB at +0x1000 plus the base given in its third argument.
   It returns a bit mask of the TLB words it used and the covered length through its fourth argument.
-- `mte_fifo_wait` in `kernel.o`: waits until the engine's FIFO has room for a number of words, a 112-byte routine at offset 0x9e80. Established.
+- `mte_fifo_wait` in `kernel.o`: waits until the engine's FIFO has room for a number of words, a 112-byte routine at offset 0x9e80. Inferred.
   It reads the FIFO level from bits 24:18 of the status at +0x4000 and polls with `us_delay` of 1 microsecond until 64 minus the level is at least the request.
   On a timeout it logs through `cmn_err` and counts one more stray event in a kernel word at gp-32632.
 <!-- kernel.o:end -->
