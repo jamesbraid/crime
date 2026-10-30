@@ -12292,7 +12292,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9ca830	288	ClipBI
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9ca950	328	ClipCFT	dwarf+funcnames	977b0b6cfb02		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9caaa0	408	ClipBCFT	dwarf+funcnames	e740000844d0		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cac40	268	__glGenericPickParameterClipProcs	dwarf+dynsym	001a593c71fc		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cad50	2060	__glCheckColorTableArgs	dwarf+dynsym	76ca5c914eaf		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cad50	2060	__glCheckColorTableArgs	dwarf+dynsym	76ca5c914eaf		in	understood	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb560	816	__glCheckColorSubTableArgs	dwarf+dynsym	2b4bc34c023e		in	located	docs/sample-implementation.md#so_colortablec	so_colortable.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cb890	1184	__glLoadColorTableParams	dwarf+dynsym	f982afaff58f		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cbd30	900	__glColorTableSGI	dwarf+dynsym	0f21293a8b4a		in	undocumented		
