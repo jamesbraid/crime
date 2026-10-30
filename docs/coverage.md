@@ -30,7 +30,7 @@ The share of understood rows that an independent audit found real when it re-der
 | ioctls | 100.0% | 10 | 2026-10-29 |
 | spec-registers | 100.0% | 10 | 2026-10-29 |
 
-Cross-workspace role check: compared 873 entries with the entries of kona and odsy for the same function and capped 1 at located (the role text is the sibling's, at least 90% alike, and states no offset, immediate value or callee address of its own build).
+Cross-workspace role check: compared 874 entries with the entries of kona and odsy for the same function and capped 1 at located (the role text is the sibling's, at least 90% alike, and states no offset, immediate value or callee address of its own build).
 
 Function rows rejected as ambiguous, at most named-only: 62 whose name is defined in several compilation units, 351 whose address another name shares (a row can be in both).
 
