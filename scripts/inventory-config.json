@@ -1,5 +1,6 @@
 {
   "family": "O2 (CRIME and GBE)",
+  "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
     "prose": ["docs/*.md"],
     "headers": ["*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],

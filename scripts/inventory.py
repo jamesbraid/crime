@@ -31,6 +31,7 @@ deterministic: the same inputs give byte-identical tables.
 import argparse
 import bisect
 import collections
+import difflib
 import fnmatch
 import glob
 import hashlib
@@ -61,9 +62,9 @@ OLD_MARKS = (re.compile(r'<!-- inventory:start[^>]*-->'),)
 
 COLUMNS = {
     'binaries': ['binary', 'group', 'role', 'kind', 'abi', 'bytes', 'sha256', 'copies', 'functions',
-                 'access_sites', 'unresolved_sites', 'status', 'doc', 'section'],
+                 'address_source', 'access_sites', 'unresolved_sites', 'status', 'doc', 'section'],
     'functions': ['binary', 'role', 'abi', 'elf_section', 'address', 'size', 'name', 'source', 'code_sha',
-                  'status', 'doc', 'section'],
+                  'rejected', 'status', 'doc', 'section'],
     'mmio': ['window', 'offset', 'name', 'access', 'sites', 'binaries', 'functions', 'evidence', 'example',
              'status', 'doc', 'section'],
     'tokens': ['kind', 'value', 'name', 'register', 'detail', 'sources', 'sites', 'binaries', 'example',
@@ -76,7 +77,7 @@ COLUMNS = {
     'summary': ['table', 'rows', 'understood', 'understood_with_open', 'understood_distinct', 'templated', 'located', 'named_only',
                 'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
                 'pct_mentioned', 'pct_done', 'unresolved_sites', 'truncated', 'audited_real_pct',
-                'audited_sample', 'audited_date', 'computes'],
+                'audited_sample', 'audited_date', 'computes', 'reused', 'multi_unit', 'shared_address'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -189,7 +190,34 @@ HEDGE = re.compile(
 # caller, or a source file. A release or a binary name is shared by every item of the build.
 CITE_OFFSET = re.compile(r'\+0[xX]([0-9a-fA-F]+)|\b(?:[Oo]ffsets?|[Aa]ddress(?:es)?|[Aa]ddr|[Aa]t|[Ee]ntry|[Rr]ecord)\s*[:=]?\s*'
                          r'0[xX]([0-9a-fA-F]+)|@\s*0[xX]([0-9a-fA-F]+)')
-CITE_CALL = re.compile(r'\b(?:[Cc]alls?|[Cc]allees?|[Cc]allers?|called\s+(?:from|by)|reached\s+from)\b[^.|;`]{0,30}`([^`]+)`')
+# A call word, then every routine written in code in the list that follows it ("calls `a`, `b` and `c`").
+# Each name of the list is a callee or caller citation, and none counts against the items on the line.
+CALL_LIST = re.compile(r'\b(?:calls?|callees?|callers?|calling|called\s+(?:from|by)|reached\s+from)\b[^.|;`]{0,30}'
+                       r'((?:`[^`]+`)(?:\s*(?:,|;|/|\band\b|\bor\b)\s*(?:and\s+|or\s+)?`[^`]+`)*)', re.I)
+# A path written in an entry: at least two slashes, or one slash and a file extension. Its directory
+# names are where the file is, not items the entry states.
+PATHLIKE = re.compile(r'(?<![\w/.+@$-])(?:[\w.+@$-]+/){2,}[\w.+@$-]+(?:\([\w.+@$-]+\))?|'
+                      r'(?<![\w/.+@$-])[\w.+@$-]+/[\w+@$-]+\.[\w+@$-]+')
+# The words a derivation by body reading uses, and those of an identification by matching alone
+# (the same name, size or number of calls as a public routine).
+BODY_READ = re.compile(r'\bread\s+(?:in\s+full|end[- ]to[- ]end|against|from\s+(?:the|that|this)\s+(?:body|build)|'
+                       r'the\s+(?:whole|full|entire)\s+(?:body|routine))|\b(?:whole|entire)\s+body\b', re.I)
+MATCH_ONLY = re.compile(r'\bmatched\b[^.;|]{0,60}\b(?:names?|sizes?|calls?)\b|\bsame\s+number\s+of\s+calls\b|'
+                        r'\b(?:comparable|similar)\s+size\b|\bis\s+the\s+specification\s+this\s+routine\s+is\s+'
+                        r'generated\s+from\b', re.I)
+# What a match cannot supply: a datum read from this build. An offset, an immediate value, or the address
+# of a callee. The routine's own address and size are the row's identity, not such a datum.
+_HEXN = r'0[xX][0-9a-fA-F]+'
+BUILD_DATUM = re.compile(
+    r'\+' + _HEXN + r'|\boffsets?\s+(?:of\s+)?`?(?:' + _HEXN + r'|\d+)|'
+    r'\b(?:immediates?|constants?|literals?|opcodes?|masks?|values?)\s+(?:of\s+)?`?(?:' + _HEXN + r'|-?\d+(?:\.\d+)?)|'
+    r'\b(?:calls?|calling|callees?|jumps?\s+to)\b(?:(?!\bbuilds?\b)[^.;|]){0,80}?\b(?:at|address)\s+(?:address\s+)?' + _HEXN,
+    re.I)
+# The sentence of an entry that says how it was derived, as opposed to what the item does.
+EVIDENCE = re.compile(r'\bread\s+(?:in\s+full|against|from|end)\b|\bmatched\b|\bholds\s+the\s+same\b|'
+                      r'\bsame\s+number\s+of\s+calls\b|\b(?:compared|checked|derived)\s+(?:with|against|from)\b|'
+                      r'\bgenerated\s+from\b|\bdisassembl(?:y|ed)\b', re.I)
+SIMILAR = 0.9          # role texts at least this alike are the same text, for the cross-workspace check
 CITE_PATH = re.compile(r'\b[\w.+@-]+/[\w.+@-]+/[\w./+@-]+')
 CITE_SOURCE = re.compile(r'\b[\w+@-]+\.(?:c|h|cc|cpp|s|asm|u|lst|y|l)\b')
 CITE_BINARY = re.compile(r'[\w+@-]+\.(?:o|a|so|bin|elf|u)\b')
@@ -353,8 +381,8 @@ def item_cite(text, subj, own=frozenset()):
         h = int(next(g for g in m.groups() if g), 16)
         if ('hex', h) not in subj and h not in own and (h & 0xfffff) not in own:
             return True
-    for m in CITE_CALL.finditer(t):
-        if ('id', m.group(1).strip()) not in subj:
+    for m in CALL_LIST.finditer(t):
+        if any(('id', n.strip()) not in subj for n in re.findall(r'`([^`]+)`', m.group(1))):
             return True
     for m in CITE_PATH.finditer(t):
         if ('file', m.group(0)) not in subj:
@@ -448,11 +476,32 @@ def classify(text, subj=frozenset(), head=None):
         rest, dropped = open_split(t)
         if (not any(ROLE_UNKNOWN.search(d) for d in dropped) and item_cite(rest, subj, own)
                 and stated(rest, subj, own, head)):
-            return 'understood', True
+            return identified('understood', rest, t), True
         return ('located' if LOCATED.search(t) else 'named-only'), False
     if stated(t, subj, own, head):
-        return 'understood', False
+        return identified('understood', t, t), False
     return 'named-only', False
+
+
+def match_only(text):
+    """True when an entry identifies its item by a match alone (the public routine of the same name, size
+    or number of calls) and says nothing of reading the body."""
+    return bool(MATCH_ONLY.search(text)) and not BODY_READ.search(text)
+
+
+def build_datum(text):
+    """True when an entry states something read from the binary's own build: an offset, an immediate value
+    or the address of a callee."""
+    return bool(BUILD_DATUM.search(text))
+
+
+def identified(status, text, whole):
+    """The status of an entry that would be understood. One that identifies its item by a match alone
+    and states no datum of its own build is a claim about the public routine, not a reading of this one:
+    it locates the item."""
+    if status == 'understood' and match_only(whole) and not build_datum(whole):
+        return 'located'
+    return status
 
 
 def skeleton(text):
@@ -497,13 +546,13 @@ def sentence_cells(text):
 class Entry:
     """One table row, list item, paragraph or header comment, with what it earns."""
     __slots__ = ('text', 'level', 'skel', 'capped', 'nsd_capped', 'keys', 'subj', 'sents', 'nsd_sents',
-                 'open', 'computes', 'data')
+                 'open', 'computes', 'data', 'reused')
 
     def __init__(self, text, level, subj=frozenset(), open_=False, data=False):
         self.text, self.level, self.subj, self.open, self.data = text, level, subj, open_, data
         self.computes = level == 'understood' and computes(open_split(text)[0] if open_ else bare_text(text))
         self.skel = skeleton(text)
-        self.capped = self.nsd_capped = False
+        self.capped = self.nsd_capped = self.reused = False
         self.keys = None
         # (skeleton, role words) of each sentence long enough to state anything; the sentences that
         # say no software depends on a fact are counted apart, for the no-dependency status
@@ -515,7 +564,8 @@ class Entry:
                 continue                  # an open sub-fact is not one of the entry's role sentences
             elif plain_words(sent) >= 3:
                 # the short cells of a data-table row still give their role words, but no skeleton of theirs is counted
-                self.sents.append((None if data and short else skeleton(sent), len(role_words(sent, subj))))
+                self.sents.append((None if data and short else skeleton(sent), len(role_words(sent, subj)),
+                                   bool(EVIDENCE.search(sent))))
 
     def cap(self, count):
         """True when too much of the entry is a sentence that more than TEMPLATE_CAP entries share:
@@ -523,10 +573,14 @@ class Entry:
         a structured data table that states decoded values of its own, repeated words
         around different values are not one sentence repeated: a short cell of such a row is never a template,
         but its role words still count."""
-        over = [n for sk, n in self.sents if count[sk] > TEMPLATE_CAP]
+        over = [n for sk, n, ev in self.sents if count[sk] > TEMPLATE_CAP]
         if not over:
             return False
-        left = sum(n for sk, n in self.sents if count[sk] <= TEMPLATE_CAP)
+        # the sentence that says how the entry was derived is judged on its own: a unique role sentence
+        # beside a shared evidence sentence does not make the evidence the entry's own
+        if any(ev and count[sk] > TEMPLATE_CAP for sk, n, ev in self.sents if sk is not None):
+            return True
+        left = sum(n for sk, n, ev in self.sents if count[sk] <= TEMPLATE_CAP)
         return 2 * len(over) > len(self.sents) or left < MIN_ROLE_WORDS
 
     def tokens(self):
@@ -545,6 +599,10 @@ def line_items(text, subj=frozenset()):
     t = bare_text(text)
     if subj:
         t = FIELD_LIST.sub(' ', t)
+    # a callee or caller is a citation of the subject, and a path says where its file is: neither is
+    # another item the line documents
+    t = CALL_LIST.sub(lambda m: m.group(0)[:m.start(1) - m.start(0)], t)
+    t = PATHLIKE.sub(' ', t)
     items = set()
     for sp in re.findall(r'`([^`]*)`', t):
         sp = sp.strip()
@@ -595,6 +653,69 @@ def dec_contexts(text, head=None):
     return out
 
 
+def role_signature(text):
+    """The role clause of a list item or paragraph, masked for comparison across workspaces: the text
+    after its heading ("`name` in path:") up to the first semicolon or sentence end and before "and it
+    occupies"; code spans, numbers and case dropped. '' when it is too short to compare."""
+    t = re.sub(r'^\s*(?:[-*+]|\d+\.)\s*', '', bare_text(text).strip())
+    m = re.match(r'[^:;]{0,200}?:\s+', t)
+    if m:
+        t = t[m.end():]
+    t = re.split(r';|(?<=[a-z0-9)])\.\s', t, maxsplit=1)[0]
+    t = re.split(r',\s+and\s+(?:in\s+the\s+[^,;]*?\s+)?it\s+occupies', t, maxsplit=1)[0]
+    t = re.sub(r'`[^`]*`', ' ID ', t)
+    t = re.sub(r'\b(?:0[xX][0-9a-fA-F]+|\d+)\b', ' # ', t)
+    t = ' '.join(re.sub(r'[^a-z# ]+', ' ', t.lower()).split())
+    return t if len(t.split()) >= 4 else ''
+
+
+def similar(a, b, cache):
+    """True when two masked role texts are identical or at least SIMILAR alike."""
+    if a == b:
+        return True
+    key = (a, b) if a < b else (b, a)
+    if key not in cache:
+        sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+        cache[key] = (sm.real_quick_ratio() >= SIMILAR and sm.quick_ratio() >= SIMILAR
+                      and sm.ratio() >= SIMILAR)
+    return cache[key]
+
+
+def load_siblings(cfg, given):
+    """(roles, used, skipped): the role texts of the sibling workspaces' entries, {function name:
+    [masked role text]}, the names of the siblings that were read, and (name, why) of those that could not
+    be. A sibling is a checkout named in the config's `siblings` ({name: path from this repository}) or
+    by --sibling NAME=PATH, read with its own config and its documents as they are on disk. Its tables are
+    not read, so the result does not depend on the order the workspaces are regenerated in."""
+    global REPO
+    spec = dict(cfg.get('siblings', {}))
+    spec.update(given)
+    roles, used, skipped = collections.defaultdict(list), [], []
+    for name in sorted(spec):
+        root = os.path.normpath(os.path.join(REPO, spec[name]))
+        cpath = os.path.join(root, 'scripts', 'inventory-config.json')
+        if not os.path.isfile(cpath):
+            skipped.append((name, 'no checkout with scripts/inventory-config.json at %s' % spec[name]))
+            continue
+        old, REPO = REPO, root
+        try:
+            sib = DocIndex(json.load(open(cpath)), None)
+        finally:
+            REPO = old
+        for e in sib.entries:
+            if e.text.lstrip().startswith('|'):
+                continue
+            sig = role_signature(e.text)
+            if sig:
+                for k in e.subj:
+                    if k[0] == 'id':
+                        roles[k[1]].append(sig)
+        used.append(name)
+    if not spec:
+        skipped.append(('(none)', 'no sibling workspace configured'))
+    return roles, used, skipped
+
+
 def ambiguous(name):
     return len(name) <= 3 or re.fullmatch(r'[a-z]+', name) is not None
 
@@ -618,14 +739,20 @@ class Hit:
             return self.ent.nsd_capped
         return self.ent.capped and RANK[self.raw()] > RANK['located']
 
+    def reused(self):
+        """True when the entry's role text is the sibling workspace's text for the same function and the
+        entry states no datum of its own build."""
+        return (self.ent is not None and self.ent.reused and not self.nsd
+                and RANK[self.raw()] > RANK['located'])
+
     def status(self):
-        return 'located' if self.templated() else self.raw()
+        return 'located' if self.templated() or self.reused() else self.raw()
 
 
 class DocIndex:
     """Where the repository's own text mentions each name and number."""
 
-    def __init__(self, cfg):
+    def __init__(self, cfg, siblings=None):
         self.names = collections.defaultdict(list)
         self.files = collections.defaultdict(list)
         self.hexes = collections.defaultdict(list)     # value -> [(hit, plus)]
@@ -661,11 +788,36 @@ class DocIndex:
                     continue
                 seen.add(rel)
                 self.read_table(rel)
-        count = collections.Counter(sk for e in self.entries for sk in {sk for sk, n in e.sents if sk is not None})
+        count = collections.Counter(sk for e in self.entries for sk in {sk for sk, n, ev in e.sents if sk is not None})
         ncount = collections.Counter(sk for e in self.entries for sk in set(e.nsd_sents))
         for e in self.entries:
             e.capped = e.cap(count)
             e.nsd_capped = any(ncount[sk] > TEMPLATE_CAP for sk in e.nsd_sents)
+        self.sibling_report = self.check_siblings(siblings)
+
+    def check_siblings(self, siblings):
+        """Mark each understood entry whose role text is, or is at least SIMILAR to, the sibling workspace's
+        text for a function of the same name, when the entry states no datum of its own build: nobody
+        showed that the text was read from this binary. Returns what was checked, for the headline."""
+        roles, used, skipped = siblings if siblings is not None else ({}, [], [('(none)', 'no sibling workspace configured')])
+        report = {'siblings': used, 'skipped': skipped, 'compared': 0, 'reused': 0}
+        if not used:
+            return report
+        cache = {}
+        for e in self.entries:
+            if e.level != 'understood' or e.text.lstrip().startswith('|'):
+                continue
+            sig = role_signature(e.text)
+            if not sig:
+                continue
+            cands = [r for k in sorted(e.subj) if k[0] == 'id' for r in roles.get(k[1], ())]
+            if not cands:
+                continue
+            report['compared'] += 1
+            if not build_datum(e.text) and any(similar(sig, c, cache) for c in cands):
+                e.reused = True
+                report['reused'] += 1
+        return report
 
     @staticmethod
     def expand(pat):
@@ -952,10 +1104,10 @@ class DocIndex:
             if top.ent is not None and top.ent.open and clean:
                 top = min(clean, key=lambda h: h.order)
         if top is None:
-            return ('undocumented', '', '', '', False, False, False)
+            return ('undocumented', '', '', '', False, False, False, False)
         full = tst == 'understood' and top.ent is not None and top.level == 'understood'
         return (tst, top.ref, top.section, top.ent.skel if top.ent is not None else '', top.templated(),
-                full and top.ent.open, full and top.ent.computes)
+                full and top.ent.open, full and top.ent.computes, top.reused() and not top.templated())
 
     def name_hits(self, name):
         hits = self.names.get(name, [])
@@ -1238,14 +1390,24 @@ def dwarf_subprograms(path):
 
 
 def functions_of(img, elf, path):
-    """{name: [elf_section, address, size, sources, code_sha]} for one image. code_sha is the
-    first 12 hex digits of the hash of the function's bytes, empty when they are not known."""
+    """({name: [elf_section, address, size, sources, code_sha]}, info) for one image. code_sha is the
+    first 12 hex digits of the hash of the function's bytes, empty when they are not known.
+
+    A function's address comes from one source, chosen for the binary: the ELF symbol tables (.symtab,
+    .dynsym) first, then the .mdebug procedure table for names the symbol tables lack, and DWARF only for
+    names neither has, and only when DWARF can be trusted. DWARF is not trusted in a binary where any
+    function it names sits at an address the symbol tables do not give it (the library was relinked after
+    the debug information was written): its addresses are then dropped and its names kept without one.
+    info holds `address_source` (which sources gave this binary's addresses), `multi_unit` (names with
+    several definitions at different addresses, one per compilation unit) and `shared_address` (names
+    that share an address with another name)."""
     g = img['group']
     if g.get('string_names'):
         names = sorted({m.decode('latin1') for m in re.findall(g['string_names'].encode(), img['data'])})
-        return {n: ['', 0, 0, {'strings'}, ''] for n in names}
+        return {n: ['', 0, 0, {'strings'}, ''] for n in names}, {'address_source': 'strings', 'multi_unit': set(),
+                                                                 'shared_address': set()}
     if elf is None:
-        return {}
+        return {}, {'address_source': '', 'multi_unit': set(), 'shared_address': set()}
     funcs = {}
     execsec = {i for i, s in enumerate(elf.iter_sections()) if s['sh_flags'] & 4}
 
@@ -1254,17 +1416,8 @@ def functions_of(img, elf, path):
             return elf.get_section(idx).name
         return ''
 
-    def add(name, addr, size, sec, src):
-        e = funcs.get(name)
-        if e is None:
-            funcs[name] = [sec, addr, size, {src}]
-            return
-        e[3].add(src)
-        if (not e[1] and addr) or (addr and addr < e[1] and src != 'mdebug'):
-            e[0], e[1] = sec or e[0], addr
-        if not e[2] and size:
-            e[2] = size
-
+    # every definition each source gives: source -> name -> [(address, size, elf_section)]
+    defs = collections.defaultdict(lambda: collections.defaultdict(list))
     for sn, src in (('.symtab', 'symtab'), ('.dynsym', 'dynsym')):
         sec = elf.get_section_by_name(sn)
         if sec is None or not hasattr(sec, 'iter_symbols'):
@@ -1275,14 +1428,49 @@ def functions_of(img, elf, path):
                 continue
             if t == 'STT_FUNC' or (t == 'STT_NOTYPE' and s['st_shndx'] in execsec and
                                    s['st_info']['bind'] == 'STB_GLOBAL'):
-                add(s.name, s['st_value'], s['st_size'], secname(s['st_shndx']), src)
+                defs[src][s.name].append((s['st_value'], s['st_size'], secname(s['st_shndx'])))
     for name, addr in mdebug_procs(elf, img['data']):
-        add(name, addr, 0, '.text', 'mdebug')
+        defs['mdebug'][name].append((addr, 0, '.text'))
     for name in debug_funcnames(elf):
-        add(name, 0, 0, '', 'funcnames')
+        defs['funcnames'][name].append((0, 0, ''))
     if elf.get_section_by_name('.debug_info') is not None:
         for name, lo, hi in dwarf_subprograms(path):
-            add(name, lo, (hi - lo) if hi > lo else 0, '.text', 'dwarf')
+            defs['dwarf'][name].append((lo, (hi - lo) if hi > lo else 0, '.text'))
+    symbols = collections.defaultdict(list)
+    for src in ('symtab', 'dynsym'):
+        for name, ds in defs[src].items():
+            symbols[name] += ds
+    sym_addrs = {n: {a for a, _, _ in ds if a} for n, ds in symbols.items()}
+    stale = any(da and sym_addrs.get(n) and not da <= sym_addrs[n]
+                for n, da in ((n, {a for a, _, _ in ds if a}) for n, ds in defs['dwarf'].items()))
+    names = set()
+    for src in defs:
+        names |= set(defs[src])
+    used, multi = set(), set()
+    for name in names:
+        tiers = [('symtab' if name in defs['symtab'] else 'dynsym', symbols.get(name, [])),
+                 ('mdebug', defs['mdebug'].get(name, [])), ('dwarf', [] if stale else defs['dwarf'].get(name, []))]
+        src, ds = next(((sr, [d for d in dd if d[0]]) for sr, dd in tiers if any(d[0] for d in dd)), ('', []))
+        srcs = {sr for sr in defs if name in defs[sr] and not (stale and sr == 'dwarf' and ds)}
+        if ds:
+            used.add(src)
+            # the lowest definition, as the one row of the name; several at different addresses means
+            # the name is defined in more than one compilation unit
+            addr, size, sec = min(ds, key=lambda d: (d[0], d[1]))
+            size = size or next((d[1] for d in sorted(ds) if d[0] == addr and d[1]), 0)
+            if len({d[0] for d in ds}) > 1:
+                multi.add(name)
+        else:
+            addr, size, sec = 0, 0, ''
+        funcs[name] = [sec, addr, size, srcs]
+    at = collections.defaultdict(set)
+    for name, e in funcs.items():
+        if e[1]:
+            at[(e[0], e[1])].add(name)
+    shared = {n for ns in at.values() if len(ns) > 1 for n in ns}
+    label = '+'.join(x for x in ('symtab', 'dynsym', 'mdebug', 'dwarf') if x in used) or 'none'
+    if stale:
+        label += ' (dwarf addresses stale, dropped)'
     # a missing size runs to the next function of the same section
     by = collections.defaultdict(list)
     for name, e in funcs.items():
@@ -1320,7 +1508,7 @@ def functions_of(img, elf, path):
                     sha = hashlib.sha256(data[e[1] - va:e[1] - va + e[2]]).hexdigest()[:12]
                     break
         e.append(sha)
-    return funcs
+    return funcs, {'address_source': label, 'multi_unit': multi, 'shared_address': shared}
 
 
 # ===================================================================== disassembly
@@ -2342,7 +2530,7 @@ def analyse_unit(args):
     """Symbols, register accesses, tokens and ioctls of one file in scope."""
     cfg, imgs, tmpdir = args
     model = Model(cfg)
-    res = {'funcs': {}, 'abi': {}, 'kind': {}, 'tables': []}
+    res = {'funcs': {}, 'finfo': {}, 'abi': {}, 'kind': {}, 'tables': []}
     work = tempfile.mkdtemp(dir=tmpdir)
     try:
         for img in imgs:
@@ -2359,7 +2547,7 @@ def analyse_unit(args):
             img['tmp'] = path
             res['abi'][img['label']] = abi_of(elf) if elf else '-'
             res['kind'][img['label']] = kind_of(img['data'], elf)
-            res['funcs'][img['label']] = functions_of(img, elf, path)
+            res['funcs'][img['label']], res['finfo'][img['label']] = functions_of(img, elf, path)
         u = Unit(model, cfg, imgs).run()
         # kernel dispatch tables
         for d in cfg.get('ioctls', {}).get('dispatchers', []):
@@ -2469,9 +2657,9 @@ def image_keys(label):
 
 
 def put_status(row, st):
-    st = tuple(st) + (False,) * (7 - len(st))
+    st = tuple(st) + (False,) * (8 - len(st))
     row['status'], row['doc'], row['section'], row['_skel'], row['_templated'] = st[:5]
-    row['_open'], row['_computes'] = st[5], st[6]
+    row['_open'], row['_computes'], row['_reused'] = st[5], st[6], st[7]
 
 
 def window_files(cfg, win):
@@ -2531,8 +2719,11 @@ def main():
     ap.add_argument('--config', default=os.path.join(REPO, 'scripts', 'inventory-config.json'))
     ap.add_argument('--out', default=os.path.join(REPO, 'docs', 'inventory'))
     ap.add_argument('--no-coverage', action='store_true')
+    ap.add_argument('--sibling', action='append', default=[], metavar='NAME=PATH',
+                    help='read the sibling workspace NAME from PATH instead of the config\'s path')
     ap.add_argument('--jobs', type=int, default=min(16, os.cpu_count() or 1))
     a = ap.parse_args()
+    a.sibling = dict(x.split('=', 1) for x in a.sibling)
     os.chdir(REPO)
     cfg = json.load(open(a.config))
     os.makedirs(a.out, exist_ok=True)
@@ -2549,7 +2740,11 @@ def main():
 
 
 def build(cfg, a, tmp):
-    docs = DocIndex(cfg)
+    docs = DocIndex(cfg, load_siblings(cfg, a.sibling))
+    sibrep = docs.sibling_report
+    if sibrep['skipped']:
+        for name, why in sibrep['skipped']:
+            print('WARNING: cross-workspace role check skipped for %s: %s' % (name, why), file=sys.stderr)
     imgs = scope(cfg)
     print('%d distinct images in scope (%d byte-identical copies folded)' %
           (len(imgs), sum(len(i['copies']) for i in imgs)), file=sys.stderr)
@@ -2565,10 +2760,11 @@ def build(cfg, a, tmp):
     else:
         results = [analyse_unit(j) for j in jobs]
 
-    funcs, abi, kinds = {}, {}, {}
+    funcs, finfo, abi, kinds = {}, {}, {}, {}
     mmio, unresolved, sites, tokens_code, ioctl_code, tables = {}, collections.Counter(), collections.Counter(), {}, {}, []
     for r in results:
         funcs.update(r['funcs'])
+        finfo.update(r['finfo'])
         abi.update(r['abi'])
         kinds.update(r['kind'])
         for k, e in r['mmio'].items():
@@ -2915,6 +3111,14 @@ def build(cfg, a, tmp):
             else:
                 put_status(row, docs.by_name(name, demote=lambda h, name=name, grp=grp: (
                     h.ent is None or grp not in cited_groups(h.ent, name))))
+            # a name defined in several compilation units, or several names at one address, cannot be
+            # tied to one function by name: such a row is rejected, at most named-only
+            fi = finfo.get(lab, {})
+            row['_multi'] = name in fi.get('multi_unit', ())
+            row['_shared'] = name in fi.get('shared_address', ())
+            row['rejected'] = '+'.join(w for w, f in (('multi-unit', row['_multi']), ('shared-address', row['_shared'])) if f)
+            if (row['_multi'] or row['_shared']) and RANK[row['status']] > RANK['named-only']:
+                row['status'], row['_open'], row['_computes'] = 'named-only', False, False
             rows.append(row)
         base = os.path.basename(img['path'])
         mine = set()
@@ -2929,7 +3133,8 @@ def build(cfg, a, tmp):
         unr = sum(v for (b, w), v in unresolved.items() if b == lab)
         row = {'binary': lab, 'group': g['group'], 'role': g['role'], 'kind': kinds.get(lab, 'data'),
                'abi': abi.get(lab, '-'), 'bytes': meta[lab].get('size', ''), 'sha256': img['sha'][:16],
-               'copies': ';'.join(img['copies']), 'functions': len(fl), 'access_sites': sites.get(lab, 0),
+               'copies': ';'.join(img['copies']), 'functions': len(fl),
+               'address_source': finfo.get(lab, {}).get('address_source', ''), 'access_sites': sites.get(lab, 0),
                'unresolved_sites': unr}
         put_status(row, st)
         brows.append(row)
@@ -2954,6 +3159,7 @@ def build(cfg, a, tmp):
                 if r['name'] not in best or RANK[r['status']] > RANK[best[r['name']]['status']]:
                     best[r['name']] = r
             srows.append(summary_row('functions (distinct names)', list(best.values()), ''))
+            srows[-1]['multi_unit'] = srows[-1]['shared_address'] = ''
     for r in srows:
         au = audits.get(r['table'])
         if au:
@@ -2978,7 +3184,7 @@ def build(cfg, a, tmp):
     print('register access sites: %d resolved, %d unresolved (%s)' %
           (resolved_sites, total_unres, ', '.join('%s %d' % kv for kv in sorted(by_win.items()))), file=sys.stderr)
     if not a.no_coverage:
-        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win)
+        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win, sibrep)
 
 
 REG_CONTEXT = ('register', 'offset', 'pio', 'window', 'fifo', 'port', 'status', 'flag', 'store', 'load',
@@ -3085,7 +3291,11 @@ def summary_row(name, rows, unresolved):
         return '%.1f' % (100.0 * x / n) if n else '0.0'
     nsd = c['no-software-dependency']
     opened = sum(1 for r in rows if r['status'] == 'understood' and r.get('_open'))
-    return {'table': name, 'rows': n, 'understood': c['understood'], 'understood_with_open': opened,
+    flagged = any('_multi' in r for r in rows)
+    return {'reused': sum(1 for r in rows if r.get('_reused')),
+            'multi_unit': sum(1 for r in rows if r.get('_multi')) if flagged else '',
+            'shared_address': sum(1 for r in rows if r.get('_shared')) if flagged else '',
+            'table': name, 'rows': n, 'understood': c['understood'], 'understood_with_open': opened,
             'understood_distinct': distinct,
             'templated': templated, 'located': c['located'],
             'named_only': c['named-only'], 'undocumented': c['undocumented'], 'no_software_dependency': nsd,
@@ -3095,7 +3305,7 @@ def summary_row(name, rows, unresolved):
             'pct_done': pct(c['understood'] + nsd), 'unresolved_sites': unresolved}
 
 
-def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
+def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib):
     path = os.path.join(REPO, 'docs', 'coverage.md')
     if not os.path.exists(path):
         return
@@ -3131,6 +3341,19 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win):
         for r in audited:
             lines.append('| %s | %s%% | %s | %s |' % (r['table'], r['audited_real_pct'], r['audited_sample'],
                                                     r['audited_date']))
+    checks = ['Cross-workspace role check: ' + (
+        'compared %d entries with the entries of %s for the same function and capped %d at located (the role '
+        'text is the sibling\'s, at least %d%% alike, and states no offset, immediate value or callee address '
+        'of its own build).' % (sib['compared'], ' and '.join(sib['siblings']), sib['reused'], round(100 * SIMILAR))
+        if sib['siblings'] else 'skipped.')]
+    for name, why in sib['skipped']:
+        checks.append('Skipped: sibling %s (%s). Rows are graded without it.' % (name, why))
+    fr = next((r for r in srows if r['table'] == 'functions'), None)
+    if fr is not None and fr.get('multi_unit') != '':
+        checks.append('Function rows rejected as ambiguous, at most named-only: %s whose name is defined in several '
+                      'compilation units, %s whose address another name shares (a row can be in both).'
+                      % (fr['multi_unit'], fr['shared_address']))
+    lines += ['', '\n\n'.join(checks)]
     notes = [r for r in srows if r.get('truncated')]
     for r in notes:
         lines += ['', 'Read in part: %s (%s).' % (r['table'], r['truncated'])]

@@ -33,6 +33,7 @@ One row per distinct file content in scope. An archive contributes one row per m
 | `sha256` | first 16 hex digits of the content hash |
 | `copies` | the other paths with the same content |
 | `functions` | rows this binary has in `functions.tsv` |
+| `address_source` | which source gave the binary's function addresses: `symtab`, `dynsym`, `mdebug`, `dwarf`, joined by `+`, or `strings` (names only); see Function addresses |
 | `access_sites` | register access sites resolved to an offset |
 | `unresolved_sites` | register access sites whose offset could not be traced |
 
@@ -46,11 +47,12 @@ One row per (binary, function symbol). A function present in several distinct bi
 |---|---|
 | `binary`, `role`, `abi` | as in `binaries.tsv` |
 | `elf_section` | the section holding the code |
-| `address` | the symbol value (0 when only a name is known) |
+| `address` | the symbol value from the source `address_source` names for the binary (0 when only a name is known) |
 | `size` | the symbol size; when the symbol has none, the distance to the next function in the section |
 | `name` | the symbol |
 | `source` | where the name came from: `symtab`, `dynsym`, `mdebug` (o32 procedure table), `funcnames` (`.debug_funcnames`), `dwarf`, or `strings` (names found by pattern in a raw image) |
 | `code_sha` | first 12 hex digits of the hash of the function's bytes, empty when they could not be read. A name with the same `code_sha` in two binaries has the same code there |
+| `rejected` | `multi-unit` (the name is defined at several addresses in the binary), `shared-address` (another name has the row's address), both joined by `+`, or empty; a rejected row is at most `named-only` (see Function rows the generator rejects) |
 
 ### mmio.tsv
 
@@ -138,6 +140,8 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | `truncated` | for `ucode`: a table the config reads in part, as `program: N of M entries`; empty when every entry is read |
 | `audited_real_pct`, `audited_sample`, `audited_date` | the latest independent audit of the table: the share of the sampled understood rows that held up, the sample size and the date, read from `audits.tsv`; empty when the table was never audited |
 | `computes` | for `ucode` only: understood rows whose entry states what the routine computes (see What understood means). Empty for every other table |
+| `reused` | rows held at `located` because their entry's role text is a sibling workspace's (see Cross-workspace role check) |
+| `multi_unit`, `shared_address` | for `functions` and `functions in <binary>` rows: rows rejected for a name defined at several addresses, and for an address several names share; empty for other tables |
 
 ### audits.tsv
 
@@ -148,7 +152,7 @@ Committed by hand, not generated: one row per table per independent audit (an au
 A mention is not understanding. The status of an item is the best of the entries that mention it, and an entry earns its status only for its subject. An entry is one table row (its own cells only, never the header), one list item with its continuation lines, one paragraph, or one header comment paragraph with the definition it sits on. A fenced listing restates its subject and never earns more than `named-only`.
 
 - `undocumented`: no entry mentions it.
-- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members (the bit positions and fields of the entry's own subject are not counted, see Fields and bit positions); an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
+- `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members (the bit positions and fields of the entry's own subject, the callees it lists after a call word and the directory names of a path it writes are not counted: see Fields and bit positions and Citation); an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
 - `located`: the entry carries a citation of its own and says the item's role or effect is `unknown` or hedges it (below), and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this, and so is a pointer-table row whose entry holds 0.
 - `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address; in a data table, each value cell, see Data tables), a citation of its own, no hedge anywhere in it, and no `unknown` about its role or effect. An `unknown` about a sub-fact does not demote it (see Open sub-facts). The words are not read for meaning: check the cited section.
 - `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished. Like every other status it goes to the entry's subject only.
@@ -170,7 +174,7 @@ Every other identifier, number or file name in the entry is a mention and stays 
 A derivation citation must tie the entry to its own item. Each of these counts, and none counts when it is the subject itself:
 
 - an offset (`+0x1a4`, "offset 0x40"), or a hex address after "address", "at", "entry", "record" or `@`. A table row's own address, slot or index cell is its identity, not a derivation: a number that is the row's own cell (or its low 20 bits) does not count, only a different location does;
-- a callee or caller written in code (`calls` or `called from` followed by a backticked name);
+- a callee or caller written in code (`calls`, `calling`, `called from` or `called by` followed by a backticked name; every name of a list such as ``calls `a`, `b` and `c` `` counts, and none of them is an extra item on the line);
 - a source file or a path with at least two slashes (`odsy_init.c`, `libglcore/asm/ODYSSEY/x.s`);
 - a binary or object file name (`odsy.o`, `libGLcore.so`) together with a backticked routine of it other than the subject.
 
@@ -195,6 +199,8 @@ The entry is demoted to `located` when the `unknown` sentence is about the role 
 ### Templated entries
 
 Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. The cap applies to each sentence, not to the entry. An entry is split into its sentences (each table cell, then each sentence in it) and a sentence that has three plain words or more is masked the same way. When more than 5 entries (`TEMPLATE_CAP` in the script) contain a sentence with one skeleton, counting table rows, list items, paragraphs and header comments across every document read, that sentence is a template. An entry grades at most `located` when most of its sentences are templates, or when the role words of the sentences that are not templates are fewer than six: a shared sentence added to a unique one earns nothing for the entry. The sentence that says no software depends on a fact is counted separately, and caps only a no-software-dependency status. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
+
+The sentence that says how the entry was derived (what it was read against, matched to, compared with or generated from: `read in full`, `read against`, `matched`, `holds the same routine`, `same number of calls`, `generated from`, `compared with`, `derived from`, `disassembly`) is judged on its own. When its skeleton is a template the entry grades at most `located` whatever its other sentences say: a unique role sentence beside a shared evidence sentence does not make the evidence the entry's own, and the evidence is the part that has to come from this binary.
 
 ### Data tables
 
@@ -221,6 +227,24 @@ A row of `binaries.tsv` is credited by the path an entry writes, not by the file
 ### Builds of one function
 
 A function row exists once per binary. When a name is defined with different code in several binaries, an entry credits it only in the binary the entry names: by its path as `binaries.tsv` spells it, from any directory down (`usr/gfx/arch/IP32CRM/libGLcore.so`, or just `libGLcore.so` when no other binary has that name), or for an archive member by `gfxs.a(gfx_flow.o)` or the member alone. The name must pick out one binary: a path that matches several builds with different code names none of them. Builds with the same `code_sha` for that name have the same code and share the credit. Every other build is at most `located`. A name that has the same code wherever it is defined needs no citation of a binary. `summary.tsv` has one row, `functions in <binary>`, per binary with functions.
+
+### Identification by match alone
+
+An entry that identifies its item only by matching it to a public routine (matched by name, size or number of calls, a comparable or similar size, "the specification this routine is generated from") and does not say it read the body ("read in full", "read end to end", "read against", "read from the body", "the whole body") grades at most `located`, unless it states a datum of this build: an offset (`+0x1a4`, "offset 3756"), an immediate value ("constant 0x7f", "literal 1.0", "opcode 2") or the address of a callee ("calls `foo` at 0xd9bb240"). The routine's own address and size are the row's identity, not such a datum. A match shows that a public routine has the same name and shape; it does not show what the shipped body does. The words are `MATCH_ONLY`, `BODY_READ` and `BUILD_DATUM` in the script.
+
+### Cross-workspace role check
+
+The InfiniteReality, Odyssey and CRIME workspaces share much of the OpenGL sample-implementation code, so one role sentence can be copied from one workspace into another. An understood entry whose subject is a function with the same name as an entry in a sibling workspace, whose role clause is identical to the sibling's or at least 90% alike after identifiers, numbers and case are masked, and that states no datum of its own build (above), grades at most `located`: the text is the sibling's, and nothing shows it was checked against this binary. The role clause is the text after the heading (`` `name` in path: ``) up to the first semicolon or sentence end, before "and it occupies". The check is symmetric, so both workspaces lose the credit.
+
+The siblings are the config's `siblings` (`{name: path from the repository root}`); `--sibling NAME=PATH` selects another checkout. Only a sibling's documents are read, with its own config, never its tables, so the result does not depend on the order the workspaces are regenerated in, but it does depend on their documents as they are on disk. A sibling that cannot be found is reported as skipped on standard error and in the `coverage.md` headline, and its entries are not compared; tables from such a run are not comparable with a run that found it. `summary.tsv` counts the rows this capped in `reused`.
+
+### Function rows the generator rejects
+
+A function row stands for one function, so its name has to pick one out. A row is rejected, and is at most `named-only` whatever documents it, when its name is defined at more than one address in the binary (a name defined in several compilation units, such as a generic routine and a board's own copy of it) or when another name sits at its address (aliases and duplicates). `functions.tsv` says which in `rejected`: `multi-unit`, `shared-address` or both joined by `+`. `summary.tsv` counts them separately in `multi_unit` and `shared_address` for `functions` and the per-binary rows (a row can be in both), and `coverage.md` repeats the totals. A document can still be right about such a function, but the table cannot tell which row it means.
+
+### Function addresses
+
+A function's address comes from one source, chosen per binary and named in `address_source` of `binaries.tsv`. The ELF symbol tables come first (`symtab`, then `dynsym`); `mdebug` gives addresses to names they lack; `dwarf` only to names that neither has, and only when it can be trusted. DWARF is not trusted in a binary where any function it names sits at an address the symbol tables do not give it, which happens when a library was relinked after its debug information was written (a `libGL.so` whose `glXQueryVersion` is at 0xd833278 in `.dynsym` and at 0xd80f0a0 in DWARF). Its addresses are then dropped and the label says so (`dynsym (dwarf addresses stale, dropped)`); its names stay, with no address. A name defined at several addresses in the chosen source takes the lowest and is rejected (above).
 
 ### What understood means for each table
 
@@ -293,6 +317,19 @@ Percent understood before and after data-table values and path matching, from th
 | ioctls | 98.2 to 98.2 | 98.9 to 98.9 | 100.0 to 100.0 |
 | ucode | 47.7 to 47.7 | 100.0 to 100.0 | no rows |
 | spec-registers | 77.7 to 77.7 | no rows | 93.7 to 93.7 |
+
+Percent understood before and after the match-only, evidence-sentence, cross-workspace, generator and address rules of grader v7, from the same documents on 2026-10-29. No document was edited to win percentages back. Counting paths and listed callees out of the three-item limit raised a few rows; the `functions` falls come mainly from the match-only and evidence-sentence rules.
+
+| Table | InfiniteReality | Odyssey | CRIME |
+|---|---:|---:|---:|
+| binaries | 21.5 to 21.9 | 0.0 to 0.0 | 4.9 to 6.1 |
+| functions | 20.9 to 8.3 | 7.6 to 1.2 | 28.4 to 7.0 |
+| functions (distinct names) | 13.8 to 7.1 | 7.5 to 2.5 | 27.6 to 9.7 |
+| mmio | 92.5 to 92.5 | 86.6 to 86.6 | 100.0 to 100.0 |
+| tokens | 52.7 to 52.7 | 93.7 to 93.7 | 100.0 to 100.0 |
+| ioctls | 98.2 to 98.2 | 100.0 to 100.0 | 100.0 to 100.0 |
+| ucode | 59.1 to 58.9 | 100.0 to 100.0 | no rows |
+| spec-registers | 80.2 to 80.2 | no rows | 93.7 to 93.7 |
 
 How a mention is found:
 
