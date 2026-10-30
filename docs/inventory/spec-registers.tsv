@@ -112,10 +112,10 @@ CRIME 1.5	7-3	170	RE	0x21f8	PixPipeFlush	1	0	32	W	1	understood	docs/opengl.md#co
 CRIME 1.5	7-15	183	RE	0x3000	MTE.mode	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-15	183	RE	0x3008	MTE.byteMask	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-15	183	RE	0x3010	MTE.stippleMask	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-15	183	RE	0x3018	MTE.fgValue	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
+CRIME 1.5	7-15	183	RE	0x3018	MTE.fgValue	1	0	32	R/W	1	understood	docs/opengl.md#transfer-engine-words	Transfer-engine words
 CRIME 1.5	7-15	183	RE	0x3020	MTE.src0	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-15	183	RE	0x3028	MTE.src1	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-15	183	RE	0x3030	MTE.dst0	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
+CRIME 1.5	7-15	183	RE	0x3030	MTE.dst0	1	0	32	W	1	understood	docs/opengl.md#transfer-engine-words	Transfer-engine words
 CRIME 1.5	7-15	183	RE	0x3038	MTE.dst1	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-15	184	RE	0x3040	MTE.srcYStep	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-15	184	RE	0x3048	MTE.dstYStep	1	0	32	R/W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
