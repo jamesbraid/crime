@@ -1,7 +1,7 @@
 table	rows	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes
 binaries	82	4	0	4	0	0	77	1	0	4.9	4.9	98.8	4.9						
-functions	17280	3034	3	2884	32	625	2142	11479	0	17.6	21.2	33.6	17.6			60.0	20	2026-10-29	
-functions (distinct names)	11726	2382	2	2340	16	64	1092	8188	0	20.3	20.9	30.2	20.3						
+functions	17280	3408	3	3254	32	747	1988	11137	0	19.7	24.0	35.5	19.7			60.0	20	2026-10-29	
+functions (distinct names)	11726	2630	2	2588	16	64	1015	8017	0	22.4	23.0	31.6	22.4						
 mmio	145	145	0	139	0	0	0	0	0	100.0	100.0	100.0	100.0	40		100.0	10	2026-10-29	
 tokens	44	44	0	41	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	10	2026-10-29	
 ioctls	42	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29	
@@ -28,9 +28,9 @@ functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	24	0	24	0	0	0	0	0	100.0	100
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0						
 functions in usr/gfx/arch/GENERIC/Xsgi	2936	0	0	0	0	0	51	2885	0	0.0	0.0	1.7	0.0						
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	7	668	0	0.0	0.0	1.0	0.0						
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	594	0	570	16	529	857	1467	0	17.2	32.6	57.4	17.2						
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	720	0	696	16	651	780	1296	0	20.9	39.8	62.4	20.9						
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	8	669	0	0.0	0.0	1.2	0.0						
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	1059	0	1016	16	64	858	1467	0	30.7	32.6	57.5	30.7						
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	1307	0	1264	16	64	781	1296	0	37.9	39.8	62.4	37.9						
 functions in usr/gfx/gfxinit	227	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0						
 functions in usr/gfx/setmon	249	1	0	1	0	19	4	225	0	0.4	8.0	9.6	0.4						
 functions in usr/lib/X11/dyDDX/crm.so	840	808	0	801	0	0	32	0	0	96.2	96.2	100.0	96.2						
