@@ -2403,7 +2403,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007f230	368	pcfGetLSB32..PIB	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007f3a0	2484	FreeCo..AF	dynsym	8052c244a93f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007fd60	616	CloseFont	dynsym	ddb52ba81d8a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1007ffd0	172	sgiCapDestroyGC..HBE	dynsym	3f26c499871a		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10080080	124	ddxMakeDynamicModulePath	dynsym	f70c93216438		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10080080	124	ddxMakeDynamicModulePath	dynsym	f70c93216438		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10080100	168	ProcSyncSetPriority..LHE	dynsym	f21952a9ac24		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100801b0	640	t1_PathXform	dynsym	7a2526e9ab65		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10080430	172	AccessChangeCloseDownMode	dynsym	33a48694432b		undocumented		
@@ -2587,7 +2587,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009c670	440	CIDFillVals..KJB	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009c830	400	SecurityClientStateCallback..ODD	dynsym	ffc3ac5e223e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009c9c0	644	XETrapKeyboard	dynsym	4310f2937973		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009cc50	2008	ResizeChildrenWinSize	dynsym	3e5870140a93		named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009d430	360	ddxAddScreenRequest	dynsym	c3f4779ac0f1		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009d430	360	ddxAddScreenRequest	dynsym	c3f4779ac0f1		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009d5a0	536	SClientMessageEvent	dynsym	de7cb27718ce		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009d7c0	344	xdevLookupDevice	dynsym	15f552c5d25a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1009d920	296	BufFileRawSkip..MCB	dynsym	2b700d1c0728		undocumented		
@@ -2830,7 +2830,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8af0	628	DCStubExtensionIni
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8d70	208	_FontTransSocketReopenCLTSServer..DHB	dynsym	c9230f2f6e34		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c8e40	2412	ProcRotateProperties	dynsym	221a7a299ba4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c97b0	332	XkbInitCompatStructs..DBF	dynsym	7d77ef6058f6		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c9900	92	ddxMCCursorOn..FEC	dynsym	dc29d671b61a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c9900	92	ddxMCCursorOn..FEC	dynsym	dc29d671b61a		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c9960	292	ProcSyncChangeCounter..PHE	dynsym	abac2b04fcf6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c9a90	1300	ProcXineramaChangeGC	dynsym	d06534e5a8b6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100c9fb0	180	RegisterBlockAndWakeupHandlers	dynsym	1a7da758132d		undocumented		
@@ -2844,7 +2844,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cb540	252	XETrapDestroyEnv	d
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cb640	228	ProcKillClient	dynsym	60e058adc356		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cb730	1948	STRING..NPB	dynsym	efbe4af42e29		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cbed0	356	SendVisibilityNotify	dynsym	95302136a8a2		named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cc040	144	ddxSetLoadType	dynsym	efdf43fc0e66		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cc040	144	ddxSetLoadType	dynsym	efdf43fc0e66		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cc0d0	300	ProcXvSetPortAttribute..FLE	dynsym	be876c730636		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cc200	1088	pcfGetAccel..IJB	dynsym	0f53b8a50e99		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100cc700	2800	bdfPadToTerminal	dynsym	22c33e50f022		undocumented		
@@ -3105,7 +3105,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10102e20	1032	XineramaCollectEx
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10103240	11776	sp_end_char_screen	dynsym	e7bd2077505a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106040	968	glxMiFreeDeepWindow	dynsym	3e5432398f8a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106410	180	XETSwGetProperty	dynsym	6b18baac9ccf		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101064d0	520	ddxRequestBoards	dynsym	2a35da44e65c		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101064d0	520	ddxRequestBoards	dynsym	2a35da44e65c		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101066e0	32	AutoResetServer	dynsym	f88a58325b7a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106700	804	FreeClientNeverRetainResources	dynsym	e2f6b34488ec		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10106a30	108	TimerFree	dynsym	85d12de030cf		named-only	docs/xmodule.md#double-buffering-and-swaps	Double buffering and swaps
@@ -3342,7 +3342,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10132bf0	1192	ProcXkbPerClientF
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101330a0	108	SListHostsReply	dynsym	508e447c2827		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133110	608	ProcXSendExtensionEvent	dynsym	2c8773126fcb		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133370	836	sp_begin_char_screen	dynsym	ac350ea757a9		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101336c0	592	rrmUngrab	dynsym	520ef467115a		named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101336c0	592	rrmUngrab	dynsym	520ef467115a		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133910	228	_XkbFilterLockState..LGF	dynsym	3b3997b529b7		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133a00	100	glxMiCloseAllocator	dynsym	1c0aaf0234cb		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10133a70	580	ProcShapeCombine..KNC	dynsym	bc8f3478e048		undocumented		
@@ -3738,7 +3738,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10179e20	260	t1_ILoc	dynsym	7bf
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10179f30	92	SGetKeyboardMappingReply	dynsym	bfb5dd04215b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10179f90	828	AccessInitServerSocketAttrs	dynsym	d3b243ee7c85		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017a2d0	20	FXonly..EMB	dynsym	e49dcc05c09e		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017a2f0	164	ddxMCCloseScreen..EEC	dynsym	258c21ed1590		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017a2f0	164	ddxMCCloseScreen..EEC	dynsym	258c21ed1590		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017a3a0	4192	ComputeScaledProperties..BAB	dynsym	374cdf35f876		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017b400	172	ProcReadDisplayQueryVersion..DDE	dynsym	c382f25af462		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1017b4b0	52	NotImplemented	dynsym	09e5f901c870		undocumented		
@@ -3844,7 +3844,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1018fc10	1324	DeliverGrabbedEve
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190140	264	AccessAllocNamedColor	dynsym	1428c03758be		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190250	468	InitAndStartDevices	dynsym	d570de47bbb4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190430	288	t1_Snap	dynsym	5b85d1fe098f		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190550	200	ddxSetIDs	dynsym	07c6950461c5		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190550	200	ddxSetIDs	dynsym	07c6950461c5		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190620	248	XvdiGetStill	dynsym	e9f5228695e8		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190720	224	ProcGetWindowAttributes	dynsym	8a1bfb439345		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10190800	300	addmemory	dynsym	99932faa2489		undocumented		
@@ -3990,7 +3990,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac000	756	GetFontPath	dynsym
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac300	384	ddxMultiCursorShowHide	dynsym	6b53be22d84b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ac480	2872	inflate_codes	dynsym	63fcf9cba04d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101acfc0	664	miShmPutImage..MEE	dynsym	93181816bbb4		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad260	480	ddxSetColormapDflts	dynsym	e484bc0317f9		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad260	480	ddxSetColormapDflts	dynsym	e484bc0317f9		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad440	1212	DefaultApplyControls..EKF	dynsym	bc0e23997920		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad900	144	SProcResourceReq	dynsym	021902bfe25b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ad990	300	FlushClientCaches	dynsym	c70766e04509		undocumented		
@@ -4115,7 +4115,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c0970	160	SProcXkbSetNames..
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c0a10	3740	t1_Interior	dynsym	f7a623ea5ba3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c18b0	1008	TellClip..BJD	dynsym	bfe31f2efee6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c1ca0	112	GLX_FAKE_SwapDispatch..HMD	dynsym	c984a2119ecf		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c1d10	552	ddxSetVisualRequest	dynsym	829279c9c58c		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c1d10	552	ddxSetVisualRequest	dynsym	829279c9c58c		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c1f40	172	ProcSGICapWithdrawInterest..MOD	dynsym	e5310575bb12		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c1ff0	656	FreeCounter..GHE	dynsym	c409a1371c8a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101c2280	144	SProcXkbSetMap..INF	dynsym	e0456603000e		undocumented		
@@ -4419,7 +4419,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101fec10	296	AccessClipImage	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101fed40	240	AccessDeleteProperty	dynsym	5d86a0d99fd4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101fee30	636	glxInitWinPriv	dynsym	7e165811fb90		named-only	docs/xmodule.md#clip-tree-and-request-handling	Clip, tree and request handling
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ff0b0	376	ProcXineramaAllocNamedColor	dynsym	192718c19325		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ff230	860	ddxSetBoardsRequest	dynsym	7ac0bfb32ab7		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ff230	860	ddxSetBoardsRequest	dynsym	7ac0bfb32ab7		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ff590	1400	splitedge..LKB	dynsym	66958ffa737f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ffb10	744	AccessImageText16	dynsym	33930c42d5c5		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101ffe00	220	SQueryTextExtentsReply	dynsym	5b216974819e		undocumented		
@@ -4448,7 +4448,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10205d70	188	FreeCursor	dynsym	
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10205e30	276	TreeInsertLeft..LI	dynsym	74764ada317d		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10205f50	280	ProcShapeInputSelected..ONC	dynsym	9ebc2e0c9766		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10206070	404	_FontTransSocketINETCreateListener..HHB	dynsym	7180d9321653		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10206210	412	ddxChangeToScreen	dynsym	bc1f777d2dc7		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10206210	412	ddxChangeToScreen	dynsym	bc1f777d2dc7		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102063b0	172	recv_failed_msg..CL	dynsym	2a7628953397		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10206460	932	ProcXvPutStill..NKE	dynsym	8378594d854b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10206810	348	sgiInitIntDpyInfo..LFC	dynsym	ebda7fbe7106		undocumented		
@@ -4539,7 +4539,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102173f0	720	ProcShmAttach..JEE
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102176c0	244	snfReadxCharInfo..ADB	dynsym	2d6c62320cc6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102177c0	72	SProcLbxGetKeyboardMapping..OPF	dynsym	9a1c857d0a6b		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217810	272	ProcCreateGlyphCursor	dynsym	b54cdc4ab07d		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217920	344	ddxInitArguments	dynsym	154c49f92e93		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217920	344	ddxInitArguments	dynsym	154c49f92e93		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217a80	144	SrvXkbAllocIndicatorMaps	dynsym	b7b5cb9e80d1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217b10	444	XkbRF_ClearVarDescriptions..LJF	dynsym	21d4527cb260		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217cd0	376	AccessAllocColorCells	dynsym	b1c91cb221a4		undocumented		
@@ -4636,7 +4636,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10229d60	1360	DefaultFinish..FK
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022a2b0	392	MitResetCookie	dynsym	1df342b92061		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022a440	52	XETSwListFontsWithInfo	dynsym	ea824383a673		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022a480	60	_XSERVTransSocketBytesReadable..KH	dynsym	3e6e39c94c9d		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022a4c0	212	ddxSetCursorPosition	dynsym	2e991855247a		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022a4c0	212	ddxSetCursorPosition	dynsym	2e991855247a		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022ac50	148	XETSwGetImage	dynsym	846477c7c78f		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022acf0	3304	RecordRegisterClients..LJG	dynsym	475b8823c0a1		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022b9e0	256	TellNoMap..AE	dynsym	ed057015a323		undocumented		
@@ -4647,7 +4647,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022c840	376	recv_alive_msg..EL
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022c9c0	116	XETSwSetSelectionOwner	dynsym	1430b46753c3		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022ca40	240	XETSwChangeKeyboardMapping	dynsym	727441a232a9		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022cb30	1808	LbxSendConnSetup	dynsym	6298a5cb3030		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022d240	28	ddxGetScreenInfo	dynsym	50961f60fa5b		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022d240	28	ddxGetScreenInfo	dynsym	50961f60fa5b		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022d260	2116	ProcXineramaDisplayImageBuffers..LKC	dynsym	399800d9e829		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022dab0	144	SProcSyncCreateCounter..KIE	dynsym	18752b1476b4		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1022db40	100	XETSwAllocColor	dynsym	bcb0b9bcf6f9		undocumented		
@@ -4891,7 +4891,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10258af0	20	LookupKeyboardDevic
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10258b10	1060	ProcWarpPointer	dynsym	ec75e0322f3a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10258f40	68	XETSwLookupColor	dynsym	07647160506a		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10258fb0	232	_DeleteCallback..CF	dynsym	343ba9fde81d		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102590a0	172	rrmCloseScreen	dynsym	bdbc9158d812		named-only	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102590a0	172	rrmCloseScreen	dynsym	bdbc9158d812		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10259150	240	OpenInputDevice	dynsym	cad75fcf92d6		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10259240	460	_FontTransSocketCreateListener..GHB	dynsym	7957bcac0e98		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10259410	400	fs_close_conn..IDB	dynsym	78bf97a8eb4c		undocumented		
@@ -5158,7 +5158,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10288e10	2280	doOpenFont..HF	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289700	184	t1_JoinSegment	dynsym	901899c1d0ed		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102897c0	976	LbxReplyCallback..CBG	dynsym	fa70cb16aa8e		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289b90	400	sgiCapPolyText8..KCE	dynsym	a65999c4a550		undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289d20	324	ddxFindFirstTypedBoard	dynsym	717805ee56c6		undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289d20	324	ddxFindFirstTypedBoard	dynsym	717805ee56c6		understood	docs/xsgi.md#screen-requests-server-options-and-the-multi-screen-cursor-read-pass-4	Screen requests, server options and the multi-screen cursor (read pass 4)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289e70	608	ProcXGrabDevice	dynsym	99e65cd50a39		undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1028a0dc	4	__istart	dynsym	df3f619804a9		undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd80da60	1568	GetVisualConfigs	mdebug	0d49cc019504		undocumented		
