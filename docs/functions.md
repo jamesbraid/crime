@@ -1715,4 +1715,12 @@ These routines run on the R10000-class cache-error path and the idle loop of the
 - `idle_err` in `kernel.o`: reports an exception taken on the idle stack, a 164-byte routine at offset 0x10a70. Established.
   It masks the exception code of its second argument; for codes 6 and 7 (instruction and data bus error) it calls `dobuserre`, and for any other code with bit 20 of that argument set it calls `dobuserr`. It always reads the faulting address with `getbadvaddr` and then prints "exception on IDLE stack k1:0x%x epc:0x%x cause:0x%w32x sp:0x%x badvaddr: 0x%x" with `cmn_err` and returns.
 
+- `ecc_compute_sctag_ecc` in `kernel.o`: computes the check bits of a secondary-cache tag, a 120-byte routine at offset 0x5368. Established.
+  It walks seven eight-byte mask words from `.data+0x3b8`, ANDs each with the 64-bit tag, calls `ecc_bitcount` on the result and shifts the parity (low bit of the count) into the result, so the seven returned bits are the parities of the seven mask groups, first mask in the top bit.
+- `ecc_compute_scdata_ecc` in `kernel.o`: computes the nine check bits and the overall parity of a 128-bit secondary-cache data word, a 168-byte routine at offset 0x54f8. Established.
+  For each of nine 24-byte table entries at `.data+0x400` it ANDs the high word with the mask at +8 and the low word with the mask at +16, XORs the two, and shifts the parity of the bit count into the result. It then counts the nine bits and, when that count is odd, sets bit 9 (0x200) of the result.
+- `ecc_scache_bits_in_error` in `kernel.o`: classifies a secondary-cache syndrome as one bad bit or more, an 84-byte routine at offset 0x55e4. Established.
+  A syndrome of 0 returns 0; otherwise it counts the set bits and returns 1 when the count is 1, 3 or 5 and 2 for any other count.
+- `scache_data_bit_error` in `kernel.o`: finds which bit of a secondary-cache data word a syndrome points at, a 280-byte routine at offset 0x53e0. Established.
+  It masks the syndrome to nine bits (0x1ff), then tries each bit position 0 to 135 in turn (64 low data bits, 64 high data bits, eight further check bits): for each it builds the syndrome that a one-bit error there would give from the nine table entries at `.data+0x400` (masks at +16, +8 and +0 for the three ranges), returns the position on the first match, and returns -1 when none matches.
 <!-- kernel.o:end -->
