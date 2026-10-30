@@ -1357,7 +1357,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b24	32	ustore_word	s
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b44	36	ustore_half	symtab	fe42b79e5bd6		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b68	8	fixade_error	symtab	4429c69e8a79		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	1120	memcpy	symtab	83b6323707a8	shared-address	out:4	named-only	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	12	memmove	symtab	28a29cd9f9c9	shared-address	out:4	named-only	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	12	memmove	symtab	28a29cd9f9c9	shared-address	out:4	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	bcopy	symtab	34c8fcd5c3eb	shared-address	out:4	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	ovbcopy	symtab	34c8fcd5c3eb	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b88	1096	bcopy_cdx_entry	symtab	e6b14e3607aa		in	undocumented		
@@ -3171,7 +3171,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010fe30	144	SProcSGIvcMonitorC
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1010fec0	1936	SProcXineramaFreeColors	dynsym	a9f3bb57bc94		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10110650	228	SProcLbxCopyPlane..HAG	dynsym	4ad65d8e1ed8		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10110740	172	sgiCapChangeGC..FBE	dynsym	775d99f32c20		in	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101107f0	6252	dixChangeGC	dynsym	7d53c6c787e7		in	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101107f0	6252	dixChangeGC	dynsym	7d53c6c787e7		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10112060	276	RADIX_NUMBER..IPB	dynsym	7f43bcd226eb		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10112180	120	lazySpeedoGetInfoScalable..IAB	dynsym	1e665082cc92		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10112200	424	clean_aborted_blockrec..AEB	dynsym	8ba78feac03f		in	undocumented		
@@ -4069,7 +4069,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b7db0	912	FindDictValue..IOB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b8140	1476	xdevScreenChange	dynsym	d692bbdd328f		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b8710	3184	ProcXineramaDbeGetVisualInfo..FIC	dynsym	be767d6654c0		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9380	228	MakeFontNamesRecord	dynsym	a068056e7627		in	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9470	260	Xrealloc	dynsym	1fd2182ef44d		in	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9470	260	Xrealloc	dynsym	1fd2182ef44d		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9580	212	MitAddCookie	dynsym	308a262a29e5		out:15	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9660	480	ProcSyncChangeAlarm..EIE	dynsym	60043c28a49a		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101b9840	1316	add_range	dynsym	6ad5912bd5ea		in	undocumented		
@@ -13900,7 +13900,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42dce0	3776	crmDrawMonoImage	dyns
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42eba0	3044	crmImageGlyphBltP2C	dynsym	46212313343f		in	understood	docs/xmodule.md#mono-images-and-glyphs	Mono images and glyphs
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x42f790	4436	miFillArcSliceSetup	dynsym	4cbb38c3cb37		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4308f0	420	miEllipseAngleToSlope	dynsym	56984216b3dc		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x430aa0	4968	miZeroArcSetup	dynsym	c8deb379c261		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x430aa0	4968	miZeroArcSetup	dynsym	c8deb379c261		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x431e10	2084	cfb32BitBlt	dynsym	dff450c9f798		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x432640	156	cfb32CopyArea	dynsym	62c5261b05c5		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4326e0	2800	cfb32DoBitbltCopy	dynsym	4718121c13dc		in	understood	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
@@ -13983,7 +13983,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456240	1724	miHandleExposures	dyn
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456900	8	miChangeGC	dynsym	78aa5094d5ec		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456910	152	miPolySegment	dynsym	5cbd3d997b97		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4569b0	104	miModifyPixmapHeader	dynsym	bc3f67f28bbf		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456a20	6636	miWideLine	dynsym	875f1e020aff		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x456a20	6636	miWideLine	dynsym	875f1e020aff		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x458410	2916	nfbDoBitBltSP	dynsym	6d07a936fdc2		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x458f80	1684	nfbGetSpans	dynsym	f9e82c2fb9b6		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x459620	652	nfbCreateStereoGC	dynsym	d5dcf7f2c331		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
@@ -14379,12 +14379,12 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x53fe60	2484	mfbTEGlyphBltBlack	dy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x540820	2772	mfbTEGlyphBltWhite	dynsym	e22e683a77bb		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x541300	2144	mfbTileAreaPPWCopy	dynsym	4ba7e1f64c01		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x541b60	476	mfbZeroPolyArcSS	dynsym	b662b8a70159		in	understood	docs/sample-server.md#monochrome-frame-buffer-mfb	Monochrome frame buffer (mfb)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x541d40	7924	miPolyArc	dynsym	ab97b3c9ea61		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x541d40	7924	miPolyArc	dynsym	ab97b3c9ea61		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x543c40	136	miFreeArcCache	dynsym	2ee2470fa229		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x543cd0	332	realAllocSpan	dynsym	ef8f9e6724c7		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x543e20	4096	miCopyArea	dynsym	60b813f8401e		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x544e20	732	miGetImage	dynsym	8bb34694c3cd		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x545100	4536	miPolyFillArc	dynsym	ba4a593e19e4		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x545100	4536	miPolyFillArc	dynsym	ba4a593e19e4		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5462c0	2368	miFillSppPoly	dynsym	99ea95491c13		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546c00	8	miCopyGC	dynsym	78aa5094d5ec		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x546c10	244	miCopyClip	dynsym	cbaf3db3e8a4		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14399,7 +14399,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5478b0	336	miAppendSpans	dynsym	1
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x547a00	2540	miFillUniqueSpanGroup	dynsym	2892f5e3d30f		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5483f0	1540	miValidateTree	dynsym	dd69d2fa5d81		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x548a00	504	miShapedWindowIn	dynsym	d793b6adabd7		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x548c00	17764	miWideDash	dynsym	089922e5f85d		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x548c00	17764	miWideDash	dynsym	089922e5f85d		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54d170	280	miCleanupSpanData	dynsym	fe1a7c5d6acf		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54d290	8	miGetLayerWindow	dynsym	24a9a45803e9		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54d2a0	3032	miSlideAndSizeWindow	dynsym	4f8c1c10b567		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
@@ -14410,7 +14410,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e250	696	miMoveWindow	dynsym	0e
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e510	204	miChangeSaveUnder	dynsym	ecaf885837ec		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e5e0	124	miMarkUnrealizedWindow	dynsym	e8ea13131e86		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e660	504	miChangeBorderWidth	dynsym	8b011c11e2eb		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e860	7516	miZeroPolyArc	dynsym	719469ec3b08		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x54e860	7516	miZeroPolyArc	dynsym	719469ec3b08		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5505c0	80	nfbSaveAreas	dynsym	73bdd9c19235		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x550610	292	nfbRestoreAreas	dynsym	182713efeb18		in	understood	docs/nfb-layer.md#graphics-context-hooks	Graphics-context hooks
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x550740	2832	nfbSolidZeroSeg	dynsym	6dba722a1490		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
@@ -14526,7 +14526,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56ac80	200	nfb14RopLoop..CH	dynsy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56ad50	3172	crmFillTriangle..GD	dynsym	5611ecc08fcd		in	understood	docs/xmodule.md#polygons-triangles-and-arcs	Polygons, triangles and arcs
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56b9c0	456	crmBuildFmtList..GC	dynsym	983da8de494a		in	understood	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56bb90	400	sortLineTab..OC	dynsym	0379163b61ed		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56bd20	10244	miComputeArcs..IDB	dynsym	c083506ca01e		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56bd20	10244	miComputeArcs..IDB	dynsym	c083506ca01e		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56e530	672	miBSExposeCopy..BCB	dynsym	687dc4e54e85		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56e7d0	2652	nfbStereoCopyWindow..GI	dynsym	8f69a2f43bd0		in	understood	docs/nfb-layer.md#reads-of-the-remaining-routines	Reads of the remaining routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x56f230	880	arcSpan..IEB	dynsym	28bc836e7c89		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
@@ -14549,7 +14549,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x573b60	184	RecomputeExposures..PF
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x573c20	1860	tailX..HCB	dynsym	e8d4ffae1aff		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574370	420	miRoundCap..NCB	dynsym	f22ff2681f39		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574520	592	miBSPolylines..PP	dynsym	e3fe5d544586		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574770	6280	drawQuadrant..BFB	dynsym	97a95a4432fc		in	located	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x574770	6280	drawQuadrant..BFB	dynsym	97a95a4432fc		in	understood	docs/sample-server.md#arc-span-and-region-helpers	Arc, span and region helpers
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576000	308	miBSCheapValidateGC..PO	dynsym	33cf5efd938b		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x576140	1436	nfb10RopLoop..OG	dynsym	d1cb8f794588		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5766e0	440	nfbInfImageGlyphBlt..KK	dynsym	d25ae437e1b8		in	understood	docs/nfb-layer.md#including-inferiors-wrappers	Including-inferiors wrappers
@@ -14597,7 +14597,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57f4a0	156	miBSCreateGC..NO	dynsy
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57f540	2084	miBSGetSpans..LO	dynsym	294ebca3e598		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57fd70	116	miBSCopyGC..JBB	dynsym	2262bc8d018d		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57fdf0	240	miBSImageText8..IAB	dynsym	937a39edc170		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57fee0	5372	miRegionOp..MM	dynsym	eec5e9735ea7		in	located	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x57fee0	5372	miRegionOp..MM	dynsym	eec5e9735ea7		in	understood	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5813e0	264	nfb14MaskRopLoop..CI	dynsym	20e3280a6127		in	understood	docs/nfb-layer.md#raster-operation-loops	Raster-operation loops
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5814f0	448	nfbComputeDidFlag..MF	dynsym	da7fb4924397		in	understood	docs/nfb-layer.md#larger-routines	Larger routines
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x5816b0	116	miBSChangeGC..IBB	dynsym	4d4316a18642		in	understood	docs/sample-server.md#backing-store-mibs	Backing store (miBS)
