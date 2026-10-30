@@ -10483,9 +10483,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932dec	112	__glim_Mips
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932e5c	80	__glim_MipsVertex3fvFast	dwarf+dynsym	c812d84cfe9b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932eac	80	__glim_MipsVertex2fvFast	dwarf+dynsym	72c3f684d6e2		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932efc	80	__glim_MipsVertex4fvFast	dwarf+dynsym	94bdcacd7f4a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932f4c	88	__glim_MipsNoXFVertex3fv	dwarf+dynsym	cc128b8e29dc		in	understood	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932fa4	88	__glim_MipsNoXFVertex2fv	dwarf+dynsym	ea73b19e1560		in	understood	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932ffc	88	__glim_MipsNoXFVertex4fv	dwarf+dynsym	06d239019fdf		in	understood	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932f4c	88	__glim_MipsNoXFVertex3fv	dwarf+dynsym	cc128b8e29dc		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932fa4	88	__glim_MipsNoXFVertex2fv	dwarf+dynsym	ea73b19e1560		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932ffc	88	__glim_MipsNoXFVertex4fv	dwarf+dynsym	06d239019fdf		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933054	88	__glim_MipsNoXFVertex3fvFast	dwarf+dynsym	686904efc4c7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9330ac	88	__glim_MipsNoXFVertex4fvFast	dwarf+dynsym	10548a8d8ddc		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933104	248	__glim_MipsNoXFVertex2fvFast2D	dwarf+dynsym	4c10e32c3a61		in	undocumented		
