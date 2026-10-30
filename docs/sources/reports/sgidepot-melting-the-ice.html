@@ -1,0 +1,314 @@
+<HTML>
+
+<TITLE>Melting the ICE...</TITLE>
+
+<BODY BGCOLOR="#ffffff" TEXT="#000000">
+
+<CENTER><B>
+
+[<A HREF = "future.html">Future Technology Research Index</A>]
+[<A HREF = "sgi.html"><I>SGI Tech/Advice Index</I></A>]
+[<A HREF = "n64.html">Nintendo64 Tech Info Index</A>]
+
+</B><P>
+
+<HR>
+
+<FONT SIZE=2><B>
+
+[<A HREF = "whatsnew.html">WhatsNew</A>]
+[<A HREF = "pi/">P.I.</A>]
+[<A HREF = "indigo/">Indigo</A>]
+[<A HREF = "indy/">Indy</A>]
+[<A HREF = "o2/">O2</A>]
+[<A HREF = "indigo2/">Indigo2</A>]
+[<A HREF = "crimson/">Crimson</A>]
+[<A HREF = "challenge/">Challenge</A>]
+[<A HREF = "onyx/">Onyx</A>]
+[<A HREF = "octane/">Octane</A>]
+[<A HREF = "origin/">Origin</A>]
+[<A HREF = "onyx2/">Onyx2</A>]
+
+</B></FONT>
+
+<HR>
+
+<H3><A HREF = "http://www.sgidepot.co.uk/sgidepot/">Ian's SGI Depot: FOR SALE! SGI Systems,
+Parts, Spares and Upgrades</A></H3>
+
+<B><A HREF = "http://uk.four.ebid.net/perl/main.cgi?words=mapesdhs&mo=search&type=user">(check my current auctions!)</A></B>
+
+<HR>
+
+</CENTER>
+
+<CENTER><H1>Melting the ICE</H1></CENTER>
+
+ICE, which stands for 'Image Compression Engine', is the O2's
+dedicated processor for accelerating image and video operations; it
+could theoretically be used to accelerate audio processing too.<P>
+
+Here is a summary of those operations and actions which are
+accelerated by ICE (info supplied by Max Waterman of SGI):<P>
+
+<UL>
+
+<LI>Real-time PAL or NTSC sized video capture from screen, camera or
+video source to disk when encoded as MJPEG or H.261.<P>
+
+<LI>Selected image processing functions in <B>imgview</B>,
+<B>imgworks</B>, <B>Photoshop</B>, etc.<P>
+
+<LI>Real-time video playback in <B>mediaplayer</B> for MJPEG, MPEG,
+H.261, QuickTime, Cinepak or AVI format video files.<P>
+
+<LI>Real-time or accelerated video-editing functions in
+<B>moviemaker</B>; operations such as cut & paste are instantaneous
+with MJPEG, while frame-processing operations such as image-negation,
+find-edges, etc. are considerably faster compared to older systems
+which do not have an imaging accelerator.<P>
+
+<LI>certain aspects of <B>dmconvert</B> use ICE, though at present
+<B>dmconvert</B> does not use ICE to the fullest extent possible
+(future changes are probable in this area).<P>
+
+</UL><P>
+
+This naturally leads onto the question of which operations are
+currently <I>not</I> accelerated by ICE:<P>
+
+<UL>
+
+<LI>Generic any-size capture from screen/video/camera (only PAL and
+NTSC frame sizes use ICE).<P>
+
+<LI>Various image processing functions in <B>imgworks</B>, etc. (most
+of the new features available for imaging work in 6.5 have been
+incorporated into imgview).<P>
+
+<LI>None of the Graphics Library Image Tools or Graphics Library
+Tools.<P>
+
+</UL>
+
+<BR>
+
+The list given above is a general description of ICE support for
+different operations. But what about on a more practical level? What
+can one do that will be very fast because of ICE and what can one not
+do, or at least only do at traditional main-processor speeds because
+ICE support has not yet been included or been fully optimised? Here
+are some examples:<P>
+
+<UL>
+
+<LI>One can capture full-size full-frame-rate PAL or NTSC video from
+screen, camera or video source straight to disk as
+hardware-compressed MJPEG with compression ratios as low as 4:1 (at
+100% quality setting, I typically saw 5:1). Once recorded, the
+post-recording processing time is practically zero and the movie can
+be played back in real-time by <B>mediaplayer</B>.<P>
+
+Basic editing functions are also at real-time rates in
+<B>moviemaker</B>, such as crop, cut, copy & paste functions, saving
+loading files and various special effects. A <B>videoout</B> window
+can be used to send the contents of a <B>mediaplayer</B> window (or
+anything else on screen) to the video outputs, and in 6.5 one can
+send movie data straight to video-out.<P>
+
+<LI>Exporting data in <B>moviemaker</B> does not use <B>dmconvert</B>
+and so can sometimes be slower, though improvements are likely here
+in the near future that will probably make exporting of data from
+<B>moviemaker</B> faster than the equivalent operation in the current
+release of <B>dmconvert</B>.<P>
+
+<LI>If one wanted to capture a PAL or NTSC sized frame from a 3D
+Inventor or Performer application, ICE will accelerate the capture to
+real-time levels. But if one only wanted to capture a very small area
+(eg. because the movie had to be split into frames for
+post-processing) then ICE currently is not available to accelerate
+the operation in <B>dmrecord</B> or <B>mediarecorder</B>. One must
+use uncompressed capture or a software codec.<P>
+
+<LI>With 6.5, image manipulation functions such as brightness-adjust,
+contrast, saturation, etc. are accelerated to almost real-time levels
+in imgview, and the introduction of texture tiling (as used in the
+'roam' demo) offers real-time pan/roam/zoom operations. imgworks has
+not been changed since older OS versions, so use imgview instead for
+imaging work in 6.5 (or something like PhotoShop if you prefer).<P>
+
+<LI>ICE can be used to process a live video stream, with operations
+such as edge detection, image subtraction/addition, image inversion,
+psychedelic ghosting; combined with the graphics engine's
+zoom/roam/pan abilties (using texture tiling and hardware video
+mipmapping), O2 is capable of a wide range of effects. Since one can
+use 32bit colour, the results are suitable for cable broadcast and
+indeed many US cable stations use O2 for just this purpose.<P>
+
+</UL>
+
+<BR>
+
+When I first wrote this page, IRIX 6.5 had not yet been released.
+Much to my delight, 6.5 introduces major changes to the imgview
+program; many of the changes I had hoped for have indeed been
+incorporated into the new version of imgview:<P>
+
+<UL>
+
+<LI>6.5 imgview offers a much more intuitive facility for pan, roam
+and zoom operations. On systems with hardware acceleration, these
+operations are real-time and operate in much the same manner as the
+'<B>roam</B>' demo permits, although the roam demo appears to be
+somewhat more optimised at the moment.<P>
+
+</UL>
+
+Note that imgview uses texture tiling for these functions, not ICE,
+just like the 'roam' demo; but it's a major change to imgview and so
+must be mentioned.<P>
+
+On systems without hardware acceleration, the same interface controls
+are used, but one is not forced to wait for all of the image to be
+updated before making a further change in position, zoom, rotation,
+etc.; thus gives a good level of interactivity on systems that cannot
+hardware accelerate the texture mapping, eg. Indy, Indigo, etc. And
+if one does not like using the slider bars, then alternative controls
+are also available (rotational pointer, numeric zoom factor, etc.)<P>
+
+For enhanced image clarity, imgview offers a selection of filtering
+functions to prevent pixelisation. Though some methods are slower
+than others, simple bilinear filtering does not slow down the
+pan/roam/zoom functions at all, obviously because the texturing
+process can use the mipmapping aspects of the CRM graphics hardware.
+Of course, PCs could theoretically use this tecnique too, but they
+would not be able to offer the advantages O2 has due to its UMA
+architecture, ie. being able to manipulate large images.<P>
+
+Bicubic filtering gives better results, and one can choose from
+several bicubic algorithms (different types of image benefit from
+different filtering techniques). Of course, on very fast systems such
+as Onyx2, even the most complex functions will be performed in
+real-time.<P>
+
+In addition to the above, 6.5 imgview has a series of new control
+panels for manipulating image features such as brightness, contrast,
+sharpness, etc. ICE is used to accelerate these functions, with
+slider buttons as the means of manipulation - excellent! And again,
+for systems without hardware acceleration, one does not have to wait
+for all of the image to be updated before making further changes,
+giving a good level of interactive feedback.<P>
+
+If you're using a system which does have hardware acceleration, try
+turning it off (type CTRL+C in imgview and use the Edit menu to
+toggle hardware acceleration) and then use the various image
+manipulation features - you will see the way the image is altered
+using a tiling technique, which I suspect is ImageVision at work.<P>
+
+As I said on this page before 6.5 was released:<P>
+
+<UL>
+
+<LI>Improved interactivity reduces the amount of time needed to come
+to a decision about a suitable degree of image/video alteration.<P>
+
+</UL>
+
+imgview could still be improved, especially when one has altered an
+image but wishes to perform further roam/zoom/pan operations. I expect
+further improvements will be made in the future.<P><BR>
+
+Finally, here is a summary of the differing connections between the
+GUI-based tools and the low-level command line programs available to
+the user:<P>
+
+<UL>
+
+<LI><B>mediaconvert</B> uses <B>dmconvert</B>,<P>
+
+<LI><B>mediarecorder</B> doesn't use <B>dmrecord</B>,<P>
+
+<LI><B>mediaplayer</B> doesn't use <B>dmplay</B>,<P>
+
+<LI><B>moviemaker</B>'s 'Export As' does not use <B>dmconvert</B>.<P>
+
+</UL>
+
+<HR>
+
+<A NAME = "IWISH"><CENTER><H3>The Wish List</H3></CENTER></A>
+
+Ideally, ICE support should be added for the following operations:<P>
+
+<UL>
+
+<LI>Support for a RAM disk to carry out image/video operations in
+memory, only writing to disk when absolutely necessary or asked for
+by the user. At present, disk speed can prevent some operations from
+going at full speed. The ability to preload the data into a 'RAM
+disk' would improve some operations enormously. RAM disks are a
+concept popular with old 8bit computers (eg. Atari ST) but for image
+& video work I think they'd still be useful today. People may argue
+about the 'safety' of a RAM disk concept, but the benefits outweigh
+the risks IMO - one should at least have the option. Disk-caching
+techniques ensure that, most of the time, a RAM disk would not give
+much improvement, but I have observed many situations where such a
+facility would definitely help, eg. script-based batch processing of
+multiple movie frames.<P>
+
+<LI>Any-size video capture from screen or video at any relevant
+location in a manner that is <I>repeatable</I>. <B>mediarecorder</B>
+should also retain all settings when exited (just as <B>capture</B>
+used to do). This is possible, but difficult to do.<P>
+
+<LI><B>dmconvert</B> should use ICE to the highest possible extent
+(ie. whatever can be done, should be done). Some actions should
+become real-time if this was done properly. Again, this is possible,
+but difficult to do.<P>
+
+<LI>All Graphics Library Image Tools and Graphics Library Tools
+should be rewritten to use ICE if possible. It is highly unlikely
+that this will ever be done.<P><BR>
+
+</UL>
+
+<HR>
+
+<CENTER>
+
+<H3><A HREF = "http://www.sgidepot.co.uk/sgidepot/">Ian's SGI Depot: FOR SALE! SGI Systems,
+Parts, Spares and Upgrades</A></H3>
+
+<B><A HREF = "http://uk.four.ebid.net/perl/main.cgi?words=mapesdhs&mo=search&type=user">(check my current auctions!)</A></B>
+
+<HR>
+
+<FONT SIZE=2><B>
+
+[<A HREF = "whatsnew.html">WhatsNew</A>]
+[<A HREF = "pi/">P.I.</A>]
+[<A HREF = "indigo/">Indigo</A>]
+[<A HREF = "indy/">Indy</A>]
+[<A HREF = "o2/">O2</A>]
+[<A HREF = "indigo2/">Indigo2</A>]
+[<A HREF = "crimson/">Crimson</A>]
+[<A HREF = "challenge/">Challenge</A>]
+[<A HREF = "onyx/">Onyx</A>]
+[<A HREF = "octane/">Octane</A>]
+[<A HREF = "origin/">Origin</A>]
+[<A HREF = "onyx2/">Onyx2</A>]
+
+</B></FONT>
+
+<HR>
+
+<B>
+
+[<A HREF = "future.html">Future Technology Research Index</A>]
+[<A HREF = "sgi.html"><I>SGI Tech/Advice Index</I></A>]
+[<A HREF = "n64.html">Nintendo64 Tech Info Index</A>]
+
+</B></CENTER><P>
+
+</HTML>
+

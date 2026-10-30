@@ -1,0 +1,198 @@
+Path: archiver1.google.com!news1.google.com!newsfeed.stanford.edu!
+      news-spur1.maxwell.syr.edu!news.maxwell.syr.edu!fu-berlin.de!
+      uni-berlin.de!va1-ras-6-u-0086.du.onolab.COM!not-for-mail
+From: =?iso-8859-1?Q?C=E9sar?= Blecua =?iso-8859-1?Q?Ud=EDas?= 
+	<cesarble...@ono.com>
+Newsgroups: comp.sys.sgi.graphics
+Subject: Imaging techniques for O2 developers
+Date: Sat, 01 Jun 2002 04:30:40 +0200
+Organization: --
+Lines: 179
+Message-ID: <3CF831D0.71662444@ono.com>
+NNTP-Posting-Host: va1-ras-6-u-0086.du.onolab.com (62.42.57.87)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+X-Trace: fu-berlin.de 1022898635 32974446 62.42.57.87 (16 [107239])
+X-Mailer: Mozilla 4.75C-SGI [en] (X11; I; IRIX 6.3 IP32)
+X-Accept-Language: en
+
+
+Hi,
+
+I'm posting here a collection of techniques which may be helpful for
+image processing software developers on O2 workstations. Some of these
+hints come from technical papers. Others come from my own
+experimentation and benchmarking. Note that I've *no* access to
+unpublished SGI documentation, so it's perfectly possible that some of
+the items on this list be inaccurate or wrong. However, they worked for
+me, and I think other developers may benefit as well. Corrections
+welcome.
+
+These techniques are being used and tested in an O2-native image
+compositing application that I've been developing for the last months (a
+pre-announce was posted at comp.sys.sgi.apps about a month ago).
+
+
+Goals
+-----
+* Get hardware acceleration for as many image processing operations as
+possible. If your interest is about CPU-based processing, you can skip
+the whole message. Otherwise, keep on reading.
+
+* Try to keep the performance between 7M and 1M pixels per second. If
+you get less than 1M pix/sec, the interactive experience gets too poor
+(although it depends on window size, of course).
+
+
+Examples
+--------
+* Highest performances you can expect from the O2:
+
+ 7.8M pixels/sec for scale/bias with glCopyPixels
+ 7.7M pixels/sec for color matrix with glCopyPixels
+ 4.6M pixels/sec for 3x3 separable convolution with glCopyPixels
+ 4.3M pixels/sec for 3x3 non-separable convolution with glCopyPixels
+ 3.9M pixels/sec for 5x5 separable convolution with glCopyPixels
+ 2.1M pixels/sec for 5x5 non-separable convolution with glCopyPixels
+ 2.3M pixels/sec for 7x7 separable convolution with glCopyPixels
+ 1.2M pixels/sec for 7x7 non-separable convolution with glCopyPixels
+
+
+API
+---
+OpenGL with extensions (color matrix, convolution, histogram, and color
+table)
+ 
+
+How to process pixels
+---------------------
+OpenGL performs image processing only when you transfer pixels. So, you
+need to call one of glDrawPixels, glReadPixels, glCopyPixels,
+glTexImage2D or glGetTexImage. In the O2, the fastest is glCopyPixels.
+The next is glDrawPixels (in some situations their performance is
+similar).
+
+
+Preferred GLX visual
+--------------------
+If you don't need destination alpha, choose a GLX visual without it. The
+above performances were measured in a window without alpha. The numbers
+are a bit smaller if your window has alpha. However, since the
+performance penalty is not too noticeable, you may still prefer to have
+destination alpha, because it's often helpful in image processing
+rendering pipelines.
+
+
+Preferred image size
+--------------------
+You get slightly better performance if the image width is multiple of
+16. After benchmarking all OpenGL imaging extensions with GLperf, I
+noticed that 576x576 is usually the fastest square image size for all
+operations. There seems to be a size limit near 704x704 where
+performance can decrease down to a half (!), so it can be convenient to
+process the pixels in tiles rather than in just a big glCopyPixels.
+However, note that performance is also low for small image sizes. The
+most optimal sizes seem to be 480, 512, 576, and 640.
+
+
+The ICE
+-------
+The ICE is the "Imaging and Compression Engine", an O2 ASIC responsible
+both for image compression and image processing. Your goal is to
+"convince" the ICE to process your requested operation. If you can't
+"convince" it, the operation will be processed on the CPU, and the
+performance can easily drop from 7M down to 300K, 50K, or even less...
+
+
+How to "convince" the ICE
+-------------------------
+In general, all coefficients for a given operation must be either
+integer (greater than 1 or less than -1), or real in the [-1.0, 1.0]
+range. You can't mix integers and reals in the same operation, or the
+ICE will reject to process it. Note that '1' and '-1' are *not* integers
+for the ICE. '2' and '-2' are the first integers.
+
+
+Examples with scale/bias (useful for brightness-contrast)
+---------------------------------------------------------
+The GL_*_BIAS values of glPixelTransfer seem to be unaffected by this
+limitation (I think you can safely mix reals and integers for the
+GL_*_BIAS values)
+
+All the GL_*_SCALE values of glPixelTransfer must be either real in the
+[-1.0, 1.0] range, or integer greater than 2. And don't forget about
+GL_ALPHA_SCALE, which is 1.0 by default (so you *necessarily* must
+change GL_ALPHA_SCALE if you want to use integer values for the
+GL_*_SCALE parameters).
+
+You can implement non-integer GL_*_SCALEs outside the [-1.0, 1.0] range
+by decomposing the scale in two: one integer and the other in the [-1.0,
+1.0] range. This can be done in a single pass, because the OpenGL pixel
+transfer pipeline has several scale/bias stages. Another option that may
+be useful is to put the integer scale in glPixelTransfer, and the
+non-integer scale in the Color Matrix.
+
+
+Examples with Color Matrix
+--------------------------
+Purpose: you can use the color matrix for operations such as hue
+rotation, luminance conversion, tint, saturation tuning, and color model
+conversions. Take a look at Paul Haeberli's 'Grafica Obscura' for the
+details.
+
+All the color matrix elements must belong to the [-1.0, 1.0] range in
+order to be accelerated by the ICE. That's not a problem for hue
+rotation nor luminance conversion, but there's one case where you always
+need elements outside [-1.0, 1.0] and non-integer: The matrix for
+increasing saturation. Fortunately, there's an easy workaround: find the
+smallest integer greater than the largest matrix element (in absolute
+value) and divide the whole matrix by such integer. Then set all the
+GL_POST_COLOR_MATRIX_*_SCALE settings to that integer. With this
+approach, you can increase saturation with the ICE.
+
+In general, if you see that your color matrix performance is too low,
+dump it and see if any element is outside [-1.0, 1.0]. In such case,
+apply the previous integer divide technique.
+
+
+Examples with Convolution
+-------------------------
+All elements in the convolution kernel must belong to the [-1.0, 1.0]
+range. For blurring it's not a problem (all blur kernels are made from
+elements in the [0.0,1.0] range). For sharpening, embossing, and edge
+detect it *is* a problem, and it's very possible that you need to use
+the GL_POST_CONVOLUTION_*_SCALE for compensating for a downscaled
+kernel.
+
+
+Histogram
+---------
+Histogram is *slow* on O2, no matter whether done on the ICE or not.
+There's no performance enough for a per-frame histogram, so if possible
+you should compute it once and store it for later reuse.
+
+
+Bugs
+----
+The O2 OpenGL image processing pipeline is not 100% bug-free (at least
+not in the systems I've used), but it's easy to avoid the bugs if you
+follow these guidelines:
+
+-Large glCopyPixels can stop prematurely without finishing the work.
+It's safer to decompose it in smaller tiles (as said above,
+480,512,...640 are safe sizes, and also optimal for best performance).
+I've not found this limitation with glDrawPixels.
+
+-Never use convolution with GL_*_BIAS and GL_*_SCALE, because some
+combinations can distort the image. Use GL_POST_CONVOLUTION_*_BIAS and
+GL_POST_CONVOLUTION_*_SCALE instead.
+
+-Test, test, and test. If you get any image distortion, try to rearrange
+terms in the pixel transfer pipeline.
+
+
+Hope somebody finds all this stuff useful,
+
+César Blecua
+cesarble...@ono.com

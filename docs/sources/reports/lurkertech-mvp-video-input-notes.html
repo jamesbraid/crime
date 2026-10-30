@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML VERSION="2.0">
+<HEAD>
+<!-- WEBMAGIC VERSION NUMBER="2.0.2" -->
+<!-- WEBMAGIC TRANSLATION NAME="ServerRoot" SRC="/var/www/htdocs/" DST="/" -->
+<!-- WEBMAGIC TRANSLATION NAME="ProjectRoot" SRC="./" DST="" -->
+<TITLE>Notes on Video Input for O2 Systems (mvp)</TITLE>
+</HEAD>
+<BODY>
+<H2>Notes on Video Input for O2 Systems (mvp)</H2>
+<P>By Michael Portuesi. Thanks to Mike Travis for a great deal of the information
+herein.</P>
+<H3>Introduction</H3>
+<P>The built-in video for the O2 system (known to VL programmers as &quot;mvp&quot;,
+for &quot;MACE Video Ports&quot;) provides a new set of exciting challenges for the
+VL programmer.</P>
+<P>Though most code written for VINO and previous video-to-memory based machines
+should work with little or no porting effort, there are some subtle but
+important differences you must know in order to write an effective MVP program.</P>
+<P>A few of the most important enhancements (compared with VINO) are:</P>
+<UL>
+<LI><STRONG>A new VL implementation.</STRONG> This new video library implementation, called DVL for Direct Video Library,
+interacts directly with the MVP device driver. There is no intervening video
+daemon to introduce unnecessary latency or unreliability between the application
+and the video hardware. The new VL also includes a buffering API compatible
+with the dmBuffer and dmIC programming interfaces (see <A HREF="libs.html">What Are the SGI Video-Related
+Libraries?</A> for more info). The old buffering API
+is retained, and is very backwards compatible. 
+<LI><STRONG>Video output capability.</STRONG> You can output video with mvp, though the means to do so is beyond the
+scope of this document. 
+<LI><STRONG>Square/non-square pixel conversion.</STRONG> The hardware can convert a Rec. 601 format video stream to square pixels,
+or vice versa. This functionality is available to the user in the Video
+Control Panel. 
+<LI><STRONG>Auto detection of timing of incoming video signal.</STRONG> 
+<LI><STRONG>Support for linear or tiled video I/O.</STRONG> This allows you to load video into formats which you can directly pass
+to the O2 graphics or compression hardware. A discussion of how to do this
+appears elsewhere in the Lurker's Guide.
+</UL>
+<H3>MVP Input Nodes</H3>
+<P>MVP provides several video inputs, only some of which are accessible depending
+on how the hardware is configured. There are two versions of the A/V board
+available. The regular A/V board provides video input and output jacks,
+a digital camera connector, and analog audio I/O. The audio-only board,
+or &quot;A&quot; board, provides the audio connectors, but none of the video I/O connectors.</P>
+<P>Here's an excerpt from <TT>vlinfo</TT> listing all of the possible input nodes. This exhaustive list was produced
+by setting the environment variable <TT>DEBUG_MVP</TT> before invoking <TT>vlinfo</TT>:</P>
+<PRE>
+SVideo Input, type = Source, kind = Video, number = 3
+Composite Video Input, type = Source, kind = Video, number = 2
+Camera Video Input, type = Source, kind = Video, number = 1
+Digital Video Input, type = Source, kind = Video, number = 4
+Primary D1 Input, type = Source, kind = Video, number = 5
+Secondary D1 Input, type = Source, kind = Video, number = 6
+Loopback E Video Input, type = Source, kind = Video, number = 7
+Loopback F Video Input, type = Source, kind = Video, number = 8
+Screen Capture Input, type = Source, kind = Screen, number = 0
+</PRE>
+<UL>
+<LI>The <STRONG>SVideo</STRONG> and <STRONG>Composite</STRONG> inputs are the jacks on the system A/V card, which open out to the left
+hand side of the machine. 
+<LI>The <STRONG>Camera Input</STRONG> and the <STRONG>Digital Video Input</STRONG> are mutually exclusive. They both refer to the camera connector on the
+back of the system A/V card. Either a camera or a digital video dongle may
+be plugged into the camera connector, but not both at once. When the digital
+dongle is plugged into the camera port, it supports both digital input and
+output. 
+<LI>The <STRONG>Primary D1 </STRONG>and <STRONG>Secondary D1</STRONG> inputs are serial D1 connectors. They are available only on an extended
+version of the A/V board, which (as of this writing) has not been commercially
+produced. 
+<LI>The <STRONG>Loopback E</STRONG> input will allow you to read the video being sent through the Video Output
+source. You can use this to write a program which can record the video output
+by other applications. Only one output video stream is available, which
+is simultaneously available to the analog/digital jacks and the Loopback
+E input. This can be used, for instance, to load an output video stream
+directly into textures. 
+<LI>The <STRONG>Loopback F</STRONG> input can be used to read the alpha channel of a video image sent out the
+system Video Out jacks. To use this feature, the user must configure the
+video output appropriately, using the &quot;Output Enable:&quot; option on the Video
+Output dialog in Video Control Panel. 
+</UL>
+<H3>Programming the MVP input jacks</H3>
+<P>The biggest improvement regarding the input jacks on MVP, compared with
+other SGI video boards, is that you do not have to set any controls, such
+as <TT>VL_MUXSWITCH</TT>, in order to unambiguously specify an input jack. Every node number in
+the list returned by <TT>vlGetDeviceList()</TT> uniquely identifies a jack. All you have to do is provide the desired node
+number to <TT>vlGetNode()</TT>, and pass the returned node to <TT>vlCreatePath()</TT>.</P>
+<P>However, (and you knew there was a however), the MVP driver dynamically
+builds the list of active nodes at boot time. The driver leaves out nodes
+for inputs which are not present, such as an unplugged camera.</P>
+<P>In order to fully support video jacks, your application <EM>must</EM> check the node list at runtime. Furthermore, the driver does not guarantee
+that node numbers are constant from one invocation of your program to the
+next (though this does seem to be the case, looking at <TT>vlinfo</TT>'s output).</P>
+<P>Three node numbers - Camera, Composite Input, and SVideo - are predefined
+in the include file <TT>&lt;dmedia/vl_mvp.h&gt;</TT> as follows:</P>
+<PRE>
+#define VL_MVP_VIDEO_SOURCE_CAMERA 1
+#define VL_MVP_VIDEO_SOURCE_COMPOSITE 2
+#define VL_MVP_VIDEO_SOURCE_SVIDEO 3
+</PRE>
+<P>Furthermore, these node numbers will not change from one invocation of your
+program to the next. However, you still must query the device list to be
+certain the jacks actually exist. If the user unplugs the camera, or if
+the system contains an audio-only board, these jacks will not be accessible.</P>
+<P>Here is some example code to check the node list for the presence of the
+above jacks:</P>
+<PRE>
+static int validnodes[8];
+static int validnodecount = 0;
+static VLDev device = -1;
+
+void checkMVPNodes()
+{
+    //
+    // Open a connection to VL.
+    //
+    VLServer svr = vlOpenVideo(&quot;&quot;);
+    if (svr == NULL) goto cleanup;
+
+    //
+    // get the device list, and search for number of the MVP device.
+    //
+    // Note that the number we find is *not* the one you hand to
+    // vlCreatePath().  It is merely an array index into the device
+    // list returned by vlGetDeviceList().
+    //
+    VLDevList devlist;
+    if ( vlGetDeviceList(svr, &amp;devlist) &lt; 0)  goto cleanup;
+
+    int deviceID = -1;
+    for (i = 0; i &lt; devlist.numDevices; i++) {
+       if (strcmp(devlist.devices[i].name, &quot;mvp&quot;) == 0) {
+           deviceID = i;
+           break;
+       }
+    }
+    if (deviceID == -1) goto cleanup;  // MVP does not exist on this system
+
+    //
+    // The number you need to unambiguously specify the MVP device
+    // for vlCreatePath() may be accessed thus:
+    //
+    device = devlist.devices[deviceID].dev;
+    //
+
+    //
+    // Now, look through the nodelist for the MVP device and see
+    // if the node number for the camera is there.  If it is, make note
+    // of it.
+    //
+    // We need to know if the camera is present in advance, so that we
+    // can ignore the node number for the digital node if it (mistakenly)
+    // appears in the list.
+    //
+    for (i = 0; i &lt; devlist.devices[deviceID].numNodes; i++) {
+       if ((devlist.devices[deviceID].nodes[i].type == VL_SRC) &amp;&amp;
+           (devlist.devices[deviceID].nodes[i].kind == VL_VIDEO) &amp;&amp;
+           (devlist.devices[deviceID].nodes[i].number ==
+                   VL_MVP_VIDEO_SOURCE_CAMERA) ) {
+           cameraPresent = True;
+           // save the node number
+           validnodes[validnodecount++] =
+               devlist.devices[deviceID].nodes[i].number;
+           
+           // ... do whatever you might want to do here
+           
+           break;
+       }
+    }
+
+    //
+    // Now, proceed through the MVP node list a second time
+    // to handle the non-camera nodes.
+    //
+    for (i = 0; i &lt; devlist.devices[deviceID].numNodes; i++) {
+       if ((devlist.devices[deviceID].nodes[i].type == VL_SRC) &amp;&amp;
+           (devlist.devices[deviceID].nodes[i].kind == VL_VIDEO)) {
+
+           char* nodename = devlist.devices[deviceID].nodes[i].name;
+           int nodenumber = devlist.devices[deviceID].nodes[i].number;
+
+           if (nodenumber == VL_MVP_VIDEO_SOURCE_SVIDEO) {
+               //
+               // the SVideo jack exists on the machine.  Do something
+               // interesting with this info.  Here, we store the node
+               // number into an array.
+               //
+               validnodes[validnodecount++] = nodenumber;
+
+               // ...
+               //
+           } else
+           if (nodenumber == VL_MVP_VIDEO_SOURCE_COMPOSITE) {
+               validnodes[validnodecount++] = nodenumber;
+               // ...
+           } else
+           //
+           // For the paths which do not have #defines to describe them,
+           // we must look at the name of each jack.
+           //
+           if (strstr(nodename, &quot;Digital&quot;) != NULL) {
+               //
+               // the digital node is meaningful only if the
+               // camera is not present.  They use the same jack
+               // on the A/V board.
+               //
+               if (!cameraPresent) {
+                   validnodes[validnodecount++] = nodenumber;
+                   // ...
+               }
+           } else
+           if (strstr(nodename, &quot;Primary D1&quot;) != NULL) {
+               validnodes[validnodecount++] = nodenumber;
+               // ...
+           } else
+           if (strstr(nodename, &quot;Secondary D1&quot;) != NULL) {
+               validnodes[validnodecount++] = nodenumber;
+               // ...
+           } else
+           if (strstr(nodename, &quot;Loopback E&quot;) != NULL) {
+               // The loopback E node will always be present.
+               validnodes[validnodecount++] = nodenumber;
+               // ...
+           }
+           if (strstr(nodename, &quot;Loopback F&quot;) != NULL) {
+               // The loopback F node will always be present.
+               validnodes[validnodecount++] = nodenumber;
+               // ...
+           }
+       }
+    }
+
+    //
+    // Now, the validnodes array contains a list of all the valid
+    // video input nodes, and validnodecount contains the number
+    // of entries on the list.
+    //
+
+    vlCloseVideo(svr);
+}
+</PRE>
+<P>The loopback nodes are always present, even when system contains an audio-only
+board. Even on an audio-only system, it is possible to set up a loopback
+transfer from the video out. Though there is no physical video out jack,
+the loopback transfer will work.</P>
+<P>You can query the default input jack much the same way as on previous boards,
+by setting up a path on the device and querying the appropriate control.
+However, <TT>vcp</TT> can store a default input node which may not actually exist. For example,
+if you set the default input to the camera, unplug the camera, and reboot
+the system, a query for the default input jack will still return <TT>VL_MVP_VIDEO_SOURCE_CAMERA</TT> even though it is not in the node list.</P>
+<P>Unfortunately, you must deal with this fact if you query the default input
+node. Here's some code to do just that:</P>
+<PRE>
+int getDefaultInputSource()
+{
+    VLNode devNode;
+    VLPath controlPath;
+    VLControlValue val;
+    int errorVL = 0;
+    int defaultSrcNumber = 0;
+    
+    //
+    // we assume the a connection to the server has been opened,
+    // and the MVP device is known.
+    //
+    assert(svr != NULL);
+    assert(device &gt;= 0);
+    
+    //
+    // also, we assume that we have previously queried the list
+    // of valid input jacks.
+    //
+    assert(validnodescount &gt; 0);
+    
+    // note that these calls lack error checking.
+    
+    devNode = vlGetNode(svr, VL_DEVICE, 0, VL_ANY);
+    controlPath = vlCreatePath( svr, device, devNode, devNode );
+    vlSetupPaths(svr, &amp;controlPath, 1, VL_SHARE, VL_READ_ONLY);
+    val.intVal = 0;
+    vlGetControl(svr, controlPath, devNode, VL_DEFAULT_SOURCE, &amp;val );
+
+    defaultSrcNumber = val.intVal;
+
+    vlDestroyPath(svr, controlPath);
+       
+    //
+    // Match the default source node number against our table of
+    // valid nodes.  If it's not on the list, then choose the
+    // first entry on the list as the default.
+    //
+    // This works around a deficiency in the device driver.  The
+    // default node can be the camera, even if the camera is not
+    // present.  This is because the device driver dynamically
+    // updates the node table when it starts, but it neglects to
+    // update the other system defaults.
+    //
+    Boolean found = False;
+    for (int i = 0; i &lt; validnodescount; i++) {
+       if (defaultSrcNumber == validnodes[i]) {
+           found = True;
+       }
+    }
+    if (!found) {
+       defaultSrcNumber = validnodes[0];
+    }
+
+    return defaultSrcNumber;
+}
+</PRE>
+<H3>Programming Video To Memory Transfer with MVP</H3>
+<P>The native RGB color space supported by the MVP device is <TT>VL_PACKING_ABGR_8</TT> (which is actually packed in memory as RGBA). This is the same packing
+as that expected by OpenGL. This is all fine for screen display, but if
+you are porting older, IRIS GL-based VL code written for VINO, you might
+wish to take this into account.</P>
+<P>Also, if you are performing image file writes with the ImageVision Library
+or the Image File Library, you will need to swap the pixels into ABGR before
+writing them to the file. This is easily accomplished using the dmColor
+routines in libdmedia (see the man page for <EM>dmColor(3dm)</EM>.</P>
+<P>After your video signal has been pre-empted, you will receive a <TT>VLStreamAvailable</TT> event when a transfer path becomes available. You should simply be able
+to call <TT>vlSetupPaths()</TT> followed by <TT>vlBeginTransfer()</TT> to pick up where you left off.</P>
+<H3>Responding to Video Timing Changes</H3>
+<P>Unlike VINO, the MVP device will send you a <TT>VLControlChanged</TT> event of type <TT>VL_TIMING </TT>if the video timing changes on an input node which you have open for transfer.
+For example, if the user changes the timing with <TT>vcp</TT>, you will receive a <TT>VLControlChanged</TT> event. </P>
+<P>Unfortunately, it is difficult to simply end the transfer and restart it,
+because the transfer buffers need to be reconfigured to accept a possibly
+larger buffer size. In this case, it is probably best to end the transfer,
+create a new set of buffers, register the new buffers, and restart the transfer.
+Or do what I do, and simply tear down the entire path and the buffers, and
+create a new path and new buffer pool anew.</P>
+<H3>Dealing With the O2 Camera</H3>
+<P>The O2 camera plugs into the connector on the back of the A/V board. It
+has a built-in microphone. To access the camera microphone, you must use
+the Audio Library.</P>
+<P>The camera supports only NTSC sized video, at NTSC rates, with square pixels.
+Conversion to Rec. 601 pixel format is not available. The height of a full
+frame (field pair) captured from the camera is 480 pixels, as opposed to
+486 pixels from the other inputs. This has implications if you are writing
+code to manipulate or compress the data. In particular, you may wish to
+adjust the <TT>VL_SIZE</TT> and/or the <TT>VL_OFFSET</TT> controls to get data with the size and blanking area you desire.</P>
+<P>When you query the timing on a path from the camera, VL will return <TT>VL_TIMING_525_4FSC</TT>. It is unknown why the camera behaves this way. The <TT>4FSC</TT> timings are intended for a D2 composite signal, which is not supported
+by MVP and has a signal, sample rate, and pixel dimensions much different
+from what the camera provides. It is interesting to note, however, that
+the IndyCam on VINO-equipped systems behaves the same way, so this is apparently
+some nod to backwards compatibility on the part of MVP.</P>
+<H3>The O2 Camera Shutter Button</H3>
+<P>The camera also has a shutter button, which is accessed from VL as a GPI
+trigger. You get a <TT>VLDeviceEvent</TT> whenever the user presses it. You can determine only that the button was
+down-clicked; no event is sent on an up-click. Therefore, you cannot determine
+how long the button is held down.</P>
+<P>Here's some example code to make it work:</P>
+<PRE>
+void setupMyPath()
+{
+    // ... other path setup
+
+    vlSelectEvents(svr, displayPath,
+
+                  // ... the events you might be interested in will
+                  // undoubtedly vary from this example.
+
+                  VLDefaultSourceMask |
+                  VLStreamPreemptedMask |
+                  VLStreamAvailableMask |
+                  VLControlChangedMask |
+                  VLControlPreemptedMask |
+                  VLControlAvailableMask |
+                  VLDeviceEventMask |          // camera shutter button
+                  VLTransferFailedMask
+                  ) );
+}
+
+void dispatchVLEvent()
+{
+    VLEvent ev;
+
+    while (vlPending(obj-&gt;svr)) {
+       vlNextEvent(obj-&gt;svr, &amp;ev);
+
+       switch (ev.reason) {
+
+       // ...  process other VL events here
+       
+       case VLDeviceEvent:
+           // ... code to handle shutter button here
+           break;
+           
+       // ...
+       
+       }
+    }
+}
+</PRE>
+<P>Because the microphone is an integral part of the camera, you may want to
+use the shutter button as a trigger in audio-only applications. Unfortunately,
+you still need to program VL to access the button. Further, you must have
+a video path open in order to receive the <TT>VLDeviceEvent</TT>.</P>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"59590464031e4a02be85800f96f1774b","r":1,"spa":2}' crossorigin="anonymous"></script>
+</BODY>
+</HTML>
