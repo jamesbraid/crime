@@ -8330,8 +8330,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d9a78	92	__glFeedbackBi
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d9ad4	92	__glFeedbackPoint	dynsym+mdebug	b823e73856c1		in	located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d9b30	216	__glFeedbackLine	dynsym+mdebug	bb9c2a9f960c		in	understood	docs/sample-implementation.md#so_feedbackc	so_feedback.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d9c08	1456	__glFeedbackTriangle	dynsym+mdebug	7a194d4d2cd2		in	located	docs/sample-implementation.md#so_feedbackc	so_feedback.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da1c0	100	__glim_Finish	dynsym+mdebug	346a6780638f		in	located	docs/sample-implementation.md#so_finishc	so_finish.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da224	100	__glim_Flush	dynsym+mdebug	f08f02d78069		in	located	docs/sample-implementation.md#so_finishc	so_finish.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da1c0	100	__glim_Finish	dynsym+mdebug	346a6780638f		in	understood	docs/sample-implementation.md#so_finishc	so_finish.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da224	100	__glim_Flush	dynsym+mdebug	f08f02d78069		in	understood	docs/sample-implementation.md#so_finishc	so_finish.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da290	228	__glFogSpan	dynsym+mdebug	a860561df868		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da374	292	__glFogStippledSpan	dynsym+mdebug	74b73e2726d7		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9da498	524	__glFogSpanSlow	dynsym+mdebug	f1d68acc9876		in	located	docs/sample-implementation.md#so_fogc	so_fog.c
