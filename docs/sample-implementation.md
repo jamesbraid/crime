@@ -3099,50 +3099,506 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
 - `__glim_Vertex2fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: submits a two-component vertex from a float array, transforming it by the model-view matrix into the vertex slot and calling the context's vertex procedure, and it occupies 168 bytes at address 0xda32980; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making its calls through procedure pointers, the 23 source lines of the shipped routine being of comparable length to the public body's 20, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
 - `__glim_Vertex3fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: submits a three-component vertex from a float array, transforming it by the model-view matrix into the vertex slot and calling the context's vertex procedure, and it occupies 168 bytes at address 0xda32a30; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making its calls through procedure pointers, the 23 source lines of the shipped routine being of comparable length to the public body's 21, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
 - `__glim_Vertex4fv` in usr/gfx/arch/IP32CRM32/libGLcore.so: submits a four-component vertex from a float array, transforming it by the model-view matrix into the vertex slot and calling the context's vertex procedure, and it occupies 168 bytes at address 0xda32ae0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making its calls through procedure pointers, the 24 source lines of the shipped routine being of comparable length to the public body's 22, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2f` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as two float arguments by copying them unchanged into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 72 bytes at address 0xda32b90; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 12 source lines of the shipped routine being of comparable length to the public body's 11, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as two double arguments by narrowing each to single precision into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 80 bytes at address 0xda32be0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 12 source lines of the shipped routine being of comparable length to the public body's 11, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first two double values of an array by narrowing each to single precision into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 88 bytes at address 0xda32c30; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as two 32-bit integer arguments by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 88 bytes at address 0xda32c90; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 12 source lines of the shipped routine being of comparable length to the public body's 11, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first two 32-bit integer values of an array by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 96 bytes at address 0xda32cf0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as two 16-bit integer arguments by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 88 bytes at address 0xda32d50; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 12 source lines of the shipped routine being of comparable length to the public body's 11, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex2sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first two 16-bit integer values of an array by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and it occupies 96 bytes at address 0xda32db0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3f` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as three float arguments by copying them unchanged into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 76 bytes at address 0xda32e10; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 13 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as three double arguments by narrowing each to single precision into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 88 bytes at address 0xda32e60; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 13 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first three double values of an array by narrowing each to single precision into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 100 bytes at address 0xda32ec0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 16 source lines of the shipped routine being of comparable length to the public body's 15, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as three 32-bit integer arguments by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 100 bytes at address 0xda32f30; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 13 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first three 32-bit integer values of an array by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 112 bytes at address 0xda32fa0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 16 source lines of the shipped routine being of comparable length to the public body's 15, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as three 16-bit integer arguments by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 100 bytes at address 0xda33010; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 13 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first three 16-bit integer values of an array by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and it occupies 112 bytes at address 0xda33080; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 16 source lines of the shipped routine being of comparable length to the public body's 15, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4f` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as four float arguments by copying them unchanged into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 80 bytes at address 0xda330f0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as four double arguments by narrowing each to single precision into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 96 bytes at address 0xda33140; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first four double values of an array by narrowing each to single precision into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 112 bytes at address 0xda331a0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 18 source lines of the shipped routine being of comparable length to the public body's 17, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as four 32-bit integer arguments by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 112 bytes at address 0xda33210; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first four 32-bit integer values of an array by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 128 bytes at address 0xda33280; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 18 source lines of the shipped routine being of comparable length to the public body's 17, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as four 16-bit integer arguments by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 112 bytes at address 0xda33300; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 14 source lines of the shipped routine being of comparable length to the public body's 13, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
-- `__glim_Vertex4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sends a vertex given as the first four 16-bit integer values of an array by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and it occupies 128 bytes at address 0xda33370; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, matched by name, the shipped routine making one call through procedure pointers, the 18 source lines of the shipped routine being of comparable length to the public body's 17, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Inferred.
+- `__glim_Vertex2f` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  takes the per-context dispatch table at offset 0x17b8, indexes it at 0x534, the slot of the
+  2-float vector vertex call, and calls it with the address of the stack array as the only argument.
+  All geometry processing is left to the callee: transformation and clip classification are done by
+  the routine it calls, and none of those pointers is read in this body. This N32 routine takes a
+  stack frame of 0x20 bytes and parks `$ra` and `$gp` there, and takes its arguments already
+  extended, with no spill. Its extent is 72 bytes at offset 0xda32b90, counting 18 instructions,
+  summarised from the N32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Vertex2f` of ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Vertex2d` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  takes the per-context dispatch table at offset 0x17b8, takes the word at table offset 0x534, the
+  2-component float vertex entry, and calls it with the address of the stack array as the only
+  argument. All geometry processing is left to the callee: the matrix transform and the clip test
+  belong to the float-vector routine, and none of those pointers is read in this body. This N32
+  routine takes a stack frame of 0x20 bytes and keeps `$ra` and `$gp` in it, since arguments arrive
+  in registers that need no home area. Its extent is 80 bytes at offset 0xda32be0, with 20
+  instructions in all, summarised from the N32 listing by its stores, constant loads and call slot
+  and compared with `__glim_Vertex2d` of ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex2dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  reads the dispatch table pointer at context offset 0x17b8, reads slot 0x534, the 2-coordinate
+  vector vertex routine, and invokes it handing over the array address. The routine does none of the
+  vertex processing itself: the work of transforming and clipping falls to the float vector form, so
+  no matrix word is read here. The N32 body opens a 0x20-byte frame holding `$ra` and `$gp`, since
+  arguments arrive in registers that need no home area. The body spans 88 bytes starting at offset
+  0xda32c30, 22 instructions long, the N32 body having been matched to
+  `__glim_Vertex2dv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch
+  slot. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it takes the per-context dispatch table at offset 0x17b8, picks
+  the entry at table offset 0x534, which stands for the 2-float vector form, and jumps through it
+  with the stack array's address in the first argument register. All geometry processing is left to
+  the callee: the transform, clip check and vertex-output pointers are used only by the float-vector
+  routine, so this body touches none of those context words. The N32 body opens a 0x20-byte frame
+  holding `$ra` and `$gp`, so nothing is spilled and no extension shifts occur. Its extent is 88
+  bytes at offset 0xda32c90, made of 22 instructions, and its listing in the N32 build was reduced
+  to store offsets, constant loads and call slots and set beside `__glim_Vertex2i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it reads the dispatch table pointer at context offset 0x17b8,
+  indexes it at 0x534, the slot of the 2-float vector vertex call, and calls it with the address of
+  the stack array as the only argument. The routine does none of the vertex processing itself:
+  transformation and clip classification are done by the routine it calls, and none of those
+  pointers is read in this body. The N32 body opens a 0x20-byte frame saving `$ra` and `$gp` into
+  it, so nothing is spilled and no extension shifts occur. The body spans 96 bytes starting at
+  offset 0xda32cf0, counting 24 instructions, summarised from the N32 listing by its stores,
+  constant loads and call slot and compared with `__glim_Vertex2iv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it takes the per-context dispatch table at offset 0x17b8, picks
+  the entry at table offset 0x534, which stands for the 2-float vector form, and calls it with the
+  address of the stack array as the only argument. All geometry processing is left to the callee:
+  the transform, clip check and vertex-output pointers are used only by the float-vector routine,
+  and none of those pointers is read in this body. The N32 body opens a 0x20-byte frame holding
+  `$ra` and `$gp`, because the calling convention hands over extended values. Its extent is 88 bytes
+  at offset 0xda32d50, made of 22 instructions, summarised from the N32 listing by its stores,
+  constant loads and call slot and compared with `__glim_Vertex2s` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of two signed short
+  coordinates read through the pointer argument, where each short is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it reads the dispatch table pointer at context offset 0x17b8,
+  indexes it at 0x534, the slot of the 2-float vector vertex call, and makes the call, passing a
+  pointer to the stack array. The routine does none of the vertex processing itself: transformation
+  and clip classification are done by the routine it calls, which is why it reads no matrix or clip
+  word. The N32 body opens a 0x20-byte frame saving `$ra` and `$gp` into it, because the calling
+  convention hands over extended values. The body spans 96 bytes starting at offset 0xda32db0,
+  counting 24 instructions, with the N32 build checked through its stack layout, dispatch slot and
+  conversions against `__glim_Vertex2sv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex3f` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  takes the per-context dispatch table at offset 0x17b8, indexes it at 0x554, the slot of the
+  3-float vector vertex call, and jumps through it with the stack array's address in the first
+  argument register. All geometry processing is left to the callee: transformation and clip
+  classification are done by the routine it calls, so this body touches none of those context words.
+  This N32 routine takes a stack frame of 0x20 bytes and keeps `$ra` and `$gp` in it, because the
+  calling convention hands over extended values. Its extent is 76 bytes at offset 0xda32e10,
+  counting 19 instructions, and its listing in the N32 build was reduced to store offsets, constant
+  loads and call slots and set beside `__glim_Vertex3f` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  takes the per-context dispatch table at offset 0x17b8, picks the entry at table offset 0x554,
+  which stands for the 3-float vector form, and makes the call, passing a pointer to the stack
+  array. All geometry processing is left to the callee: the transform, clip check and vertex-output
+  pointers are used only by the float-vector routine, which is why it reads no matrix or clip word.
+  This N32 routine takes a stack frame of 0x20 bytes and keeps `$ra` and `$gp` in it, and takes its
+  arguments already extended, with no spill. Its extent is 88 bytes at offset 0xda32e60, made of 22
+  instructions, with the N32 build checked through its stack layout, dispatch slot and conversions
+  against `__glim_Vertex3d` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Vertex3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  reads the dispatch table pointer at context offset 0x17b8, takes the word at table offset 0x554,
+  the 3-component float vertex entry, and makes the call, passing a pointer to the stack array. The
+  routine does none of the vertex processing itself: the matrix transform and the clip test belong
+  to the float-vector routine, which is why it reads no matrix or clip word. The N32 body opens a
+  0x20-byte frame and parks `$ra` and `$gp` there, because the calling convention hands over
+  extended values. The body spans 100 bytes starting at offset 0xda32ec0, with 25 instructions in
+  all, with the N32 build checked through its stack layout, dispatch slot and conversions against
+  `__glim_Vertex3dv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Vertex3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it reads the dispatch table pointer at context offset 0x17b8,
+  takes the word at table offset 0x554, the 3-component float vertex entry, and invokes it handing
+  over the array address. The routine does none of the vertex processing itself: the matrix
+  transform and the clip test belong to the float-vector routine, so no matrix word is read here.
+  The N32 body opens a 0x20-byte frame saving `$ra` and `$gp` into it, and takes its arguments
+  already extended, with no spill. The body spans 100 bytes starting at offset 0xda32f30, with 25
+  instructions in all, the N32 body having been matched to `__glim_Vertex3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch slot. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, indexes it at 0x554, the slot of the 3-float vector vertex call, and invokes it handing
+  over the array address. No transform or clip work happens here: transformation and clip
+  classification are done by the routine it calls, so no matrix word is read here. The N32 body
+  opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, so nothing is spilled and no extension
+  shifts occur. It occupies 112 bytes at offset 0xda32fa0, counting 28 instructions, the N32 body
+  having been matched to `__glim_Vertex3iv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its
+  stack layout and dispatch slot. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, it reads the dispatch table pointer at context offset 0x17b8,
+  indexes it at 0x554, the slot of the 3-float vector vertex call, and jumps through it with the
+  stack array's address in the first argument register. The routine does none of the vertex
+  processing itself: transformation and clip classification are done by the routine it calls, so
+  this body touches none of those context words. The N32 body opens a 0x20-byte frame saving `$ra`
+  and `$gp` into it, since arguments arrive in registers that need no home area. The body spans 100
+  bytes starting at offset 0xda33010, counting 25 instructions, and its listing in the N32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Vertex3s` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of three signed
+  short coordinates read through the pointer argument, where each short is converted to float with
+  the plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, reads slot 0x554, the 3-coordinate vector vertex routine, and jumps through it with the
+  stack array's address in the first argument register. No transform or clip work happens here: the
+  work of transforming and clipping falls to the float vector form, so this body touches none of
+  those context words. The N32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, because
+  the calling convention hands over extended values. It occupies 112 bytes at offset 0xda33080, 28
+  instructions long, and its listing in the N32 build was reduced to store offsets, constant loads
+  and call slots and set beside `__glim_Vertex3sv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Vertex4f` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  takes the per-context dispatch table at offset 0x17b8, takes the word at table offset 0x574, the
+  4-component float vertex entry, and makes the call, passing a pointer to the stack array. All
+  geometry processing is left to the callee: the matrix transform and the clip test belong to the
+  float-vector routine, which is why it reads no matrix or clip word. This N32 routine takes a stack
+  frame of 0x20 bytes and keeps `$ra` and `$gp` in it, so nothing is spilled and no extension shifts
+  occur. Its extent is 80 bytes at offset 0xda330f0, with 20 instructions in all, with the N32 build
+  checked through its stack layout, dispatch slot and conversions against `__glim_Vertex4f` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4d` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, it
+  reads the dispatch table pointer at context offset 0x17b8, indexes it at 0x574, the slot of the
+  4-float vector vertex call, and invokes it handing over the array address. The routine does none
+  of the vertex processing itself: transformation and clip classification are done by the routine it
+  calls, so no matrix word is read here. The N32 body opens a 0x20-byte frame holding `$ra` and
+  `$gp`, and takes its arguments already extended, with no spill. The body spans 96 bytes starting
+  at offset 0xda33140, counting 24 instructions, the N32 body having been matched to
+  `__glim_Vertex4d` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch
+  slot. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and they are laid out as a small float vector on the stack. Having built the vector, the
+  routine loads the context dispatch table from context offset 0x17b8, reads slot 0x574, the
+  4-coordinate vector vertex routine, and calls it with the address of the stack array as the only
+  argument. No transform or clip work happens here: the work of transforming and clipping falls to
+  the float vector form, and none of those pointers is read in this body. The N32 body opens a
+  0x20-byte frame and parks `$ra` and `$gp` there, and takes its arguments already extended, with no
+  spill. It occupies 112 bytes at offset 0xda331a0, 28 instructions long, summarised from the N32
+  listing by its stores, constant loads and call slot and compared with `__glim_Vertex4dv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, reads slot 0x574, the 4-coordinate vector vertex routine, and makes the call, passing a
+  pointer to the stack array. No transform or clip work happens here: the work of transforming and
+  clipping falls to the float vector form, which is why it reads no matrix or clip word. The N32
+  body opens a 0x20-byte frame and parks `$ra` and `$gp` there, since arguments arrive in registers
+  that need no home area. It occupies 112 bytes at offset 0xda33210, 28 instructions long, with the
+  N32 build checked through its stack layout, dispatch slot and conversions against
+  `__glim_Vertex4i` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Vertex4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, takes the word at table offset 0x574, the 4-component float vertex entry, and jumps
+  through it with the stack array's address in the first argument register. No transform or clip
+  work happens here: the matrix transform and the clip test belong to the float-vector routine, so
+  this body touches none of those context words. The N32 body opens a 0x20-byte frame and keeps
+  `$ra` and `$gp` in it, and takes its arguments already extended, with no spill. It occupies 128
+  bytes at offset 0xda33280, with 32 instructions in all, and its listing in the N32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Vertex4iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, reads slot 0x574, the 4-coordinate vector vertex routine, and invokes it handing over the
+  array address. No transform or clip work happens here: the work of transforming and clipping falls
+  to the float vector form, so no matrix word is read here. The N32 body opens a 0x20-byte frame and
+  parks `$ra` and `$gp` there, so nothing is spilled and no extension shifts occur. It occupies 112
+  bytes at offset 0xda33300, 28 instructions long, the N32 body having been matched to
+  `__glim_Vertex4s` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch
+  slot. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Specifies a vertex of four signed short
+  coordinates read through the pointer argument, where each short is converted to float with the
+  plain integer convert, with no scaling, and they are laid out as a small float vector on the
+  stack. Having built the vector, the routine loads the context dispatch table from context offset
+  0x17b8, takes the word at table offset 0x574, the 4-component float vertex entry, and calls it
+  with the address of the stack array as the only argument. No transform or clip work happens here:
+  the matrix transform and the clip test belong to the float-vector routine, and none of those
+  pointers is read in this body. The N32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in
+  it, since arguments arrive in registers that need no home area. It occupies 128 bytes at offset
+  0xda33370, with 32 instructions in all, summarised from the N32 listing by its stores, constant
+  loads and call slot and compared with `__glim_Vertex4sv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
 - `__glim_EdgeFlag` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current edge flag by storing the argument byte in the context's edge-tag field, and in the older 32-bit build it occupies 16 bytes at address 0xda31c80; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
 - `__glim_EdgeFlagv` in usr/gfx/arch/IP32CRM/libGLcore.so: sets the current edge flag from the first byte of an array by storing it in the context's edge-tag field, and in the older 32-bit build it occupies 16 bytes at address 0xda31c90; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2f` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as two float arguments by copying them unchanged into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 76 bytes at address 0xda31ec4; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2d` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as two double arguments by narrowing each to single precision into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 84 bytes at address 0xda31f10; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first two double values of an array by narrowing each to single precision into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 92 bytes at address 0xda31f64; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2i` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as two 32-bit integer arguments by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 92 bytes at address 0xda31fc0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first two 32-bit integer values of an array by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 100 bytes at address 0xda3201c; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2s` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as two 16-bit integer arguments by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 116 bytes at address 0xda32080; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex2sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first two 16-bit integer values of an array by converting each to float into a local array of two floats and calling the 2-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 100 bytes at address 0xda320f4; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3f` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as three float arguments by copying them unchanged into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 84 bytes at address 0xda32158; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3d` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as three double arguments by narrowing each to single precision into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 92 bytes at address 0xda321ac; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first three double values of an array by narrowing each to single precision into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 100 bytes at address 0xda32208; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3i` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as three 32-bit integer arguments by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 108 bytes at address 0xda3226c; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first three 32-bit integer values of an array by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 116 bytes at address 0xda322d8; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3s` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as three 16-bit integer arguments by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 132 bytes at address 0xda3234c; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first three 16-bit integer values of an array by converting each to float into a local array of three floats and calling the 3-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 116 bytes at address 0xda323d0; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4f` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as four float arguments by copying them unchanged into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 100 bytes at address 0xda32444; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4d` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as four double arguments by narrowing each to single precision into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 108 bytes at address 0xda324a8; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4dv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first four double values of an array by narrowing each to single precision into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 116 bytes at address 0xda32514; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4i` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as four 32-bit integer arguments by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 124 bytes at address 0xda32588; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4iv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first four 32-bit integer values of an array by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 132 bytes at address 0xda32604; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4s` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as four 16-bit integer arguments by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 156 bytes at address 0xda32688; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
-- `__glim_Vertex4sv` in usr/gfx/arch/IP32CRM/libGLcore.so: sends a vertex given as the first four 16-bit integer values of an array by converting each to float into a local array of four floats and calling the 4-component float vertex entry of the current dispatch table, and in the older 32-bit build it occupies 132 bytes at address 0xda32724; the public sample-implementation source gfx/lib/opengl/glcore/s_vapi.c holds the same routine, and this build makes the same number of calls as the newer build and has a similar size, and its body holds no constant address of a board register window. Inferred.
+- `__glim_Vertex2f` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it takes the per-context dispatch table at offset 0x17b8, takes the word
+  at table offset 0x534, the 2-component float vertex entry, and invokes it handing over the array
+  address. All geometry processing is left to the callee: the matrix transform and the clip test
+  belong to the float-vector routine, so no matrix word is read here. The o32 body opens a 0x38-byte
+  frame holding `$ra` and `$gp`, since only the pointer arrives. Its extent is 76 bytes at offset
+  0xda31ec4, with 19 instructions in all, the o32 body having been matched to `__glim_Vertex2f` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch slot. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex2d` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it takes the per-context dispatch table at offset 0x17b8, picks the entry
+  at table offset 0x534, which stands for the 2-float vector form, and invokes it handing over the
+  array address. All geometry processing is left to the callee: the transform, clip check and
+  vertex-output pointers are used only by the float-vector routine, so no matrix word is read here.
+  The o32 body opens a 0x38-byte frame holding `$ra` and `$gp`, and receives its pointer argument
+  without a spill. Its extent is 84 bytes at offset 0xda31f10, made of 21 instructions, the o32 body
+  having been matched to `__glim_Vertex2d` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack
+  layout and dispatch slot. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it reads the dispatch table pointer at context offset 0x17b8, reads slot
+  0x534, the 2-coordinate vector vertex routine, and jumps through it with the stack array's address
+  in the first argument register. The routine does none of the vertex processing itself: the work of
+  transforming and clipping falls to the float vector form, so this body touches none of those
+  context words. The o32 body opens a 0x40-byte frame saving `$ra` and `$gp` into it, since only the
+  pointer arrives. The body spans 92 bytes starting at offset 0xda31f64, 23 instructions long, and
+  its listing in the o32 build was reduced to store offsets, constant loads and call slots and set
+  beside `__glim_Vertex2dv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Vertex2i` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, it reads the dispatch table pointer at
+  context offset 0x17b8, reads slot 0x534, the 2-coordinate vector vertex routine, and calls it with
+  the address of the stack array as the only argument. The routine does none of the vertex
+  processing itself: the work of transforming and clipping falls to the float vector form, and none
+  of those pointers is read in this body. The o32 body opens a 0x38-byte frame saving `$ra` and
+  `$gp` into it, as only one argument arrives. The body spans 92 bytes starting at offset 0xda31fc0,
+  23 instructions long, summarised from the o32 listing by its stores, constant loads and call slot
+  and compared with `__glim_Vertex2i` of ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex2iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, it reads the dispatch table pointer at
+  context offset 0x17b8, picks the entry at table offset 0x534, which stands for the 2-float vector
+  form, and makes the call, passing a pointer to the stack array. The routine does none of the
+  vertex processing itself: the transform, clip check and vertex-output pointers are used only by
+  the float-vector routine, which is why it reads no matrix or clip word. The o32 body opens a
+  0x40-byte frame and parks `$ra` and `$gp` there, as only one argument arrives. The body spans 100
+  bytes starting at offset 0xda3201c, made of 25 instructions, with the o32 build checked through
+  its stack layout, dispatch slot and conversions against `__glim_Vertex2iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex2s` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, takes the word at table offset 0x534, the 2-component float
+  vertex entry, and invokes it handing over the array address. No transform or clip work happens
+  here: the matrix transform and the clip test belong to the float-vector routine, so no matrix word
+  is read here. The o32 body opens a 0x38-byte frame and keeps `$ra` and `$gp` in it, and then
+  spilling 2 argument registers to the caller's home area. It occupies 116 bytes at offset
+  0xda32080, with 29 instructions in all, the o32 body having been matched to `__glim_Vertex2s` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch slot. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex2sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of two signed short
+  coordinates read through the pointer argument, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, it reads the dispatch table pointer at
+  context offset 0x17b8, picks the entry at table offset 0x534, which stands for the 2-float vector
+  form, and invokes it handing over the array address. The routine does none of the vertex
+  processing itself: the transform, clip check and vertex-output pointers are used only by the
+  float-vector routine, so no matrix word is read here. The o32 body opens a 0x40-byte frame and
+  parks `$ra` and `$gp` there, with nothing else to preserve. The body spans 100 bytes starting at
+  offset 0xda320f4, made of 25 instructions, the o32 body having been matched to `__glim_Vertex2sv`
+  in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch slot. It touches no
+  CRIME hardware. Inferred.
+- `__glim_Vertex3f` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it takes the per-context dispatch table at offset 0x17b8, takes the word
+  at table offset 0x554, the 3-component float vertex entry, and jumps through it with the stack
+  array's address in the first argument register. All geometry processing is left to the callee: the
+  matrix transform and the clip test belong to the float-vector routine, so this body touches none
+  of those context words. The o32 body opens a 0x38-byte frame and keeps `$ra` and `$gp` in it, and
+  then spilling 1 argument register to the caller's home area. Its extent is 84 bytes at offset
+  0xda32158, with 21 instructions in all, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_Vertex3f` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3d` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it reads the dispatch table pointer at context offset 0x17b8, reads slot
+  0x554, the 3-coordinate vector vertex routine, and makes the call, passing a pointer to the stack
+  array. The routine does none of the vertex processing itself: the work of transforming and
+  clipping falls to the float vector form, which is why it reads no matrix or clip word. The o32
+  body opens a 0x38-byte frame saving `$ra` and `$gp` into it, with nothing else to preserve. The
+  body spans 92 bytes starting at offset 0xda321ac, 23 instructions long, with the o32 build checked
+  through its stack layout, dispatch slot and conversions against `__glim_Vertex3d` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it reads the dispatch table pointer at context offset 0x17b8, takes the
+  word at table offset 0x554, the 3-component float vertex entry, and jumps through it with the
+  stack array's address in the first argument register. The routine does none of the vertex
+  processing itself: the matrix transform and the clip test belong to the float-vector routine, so
+  this body touches none of those context words. The o32 body opens a 0x48-byte frame saving `$ra`
+  and `$gp` into it, and receives its pointer argument without a spill. The body spans 100 bytes
+  starting at offset 0xda32208, with 25 instructions in all, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Vertex3dv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3i` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, it reads the dispatch table pointer at
+  context offset 0x17b8, picks the entry at table offset 0x554, which stands for the 3-float vector
+  form, and jumps through it with the stack array's address in the first argument register. The
+  routine does none of the vertex processing itself: the transform, clip check and vertex-output
+  pointers are used only by the float-vector routine, so this body touches none of those context
+  words. The o32 body opens a 0x38-byte frame and keeps `$ra` and `$gp` in it, with a spill of 1
+  argument register to the caller's home area. The body spans 108 bytes starting at offset
+  0xda3226c, made of 27 instructions, and its listing in the o32 build was reduced to store offsets,
+  constant loads and call slots and set beside `__glim_Vertex3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, indexes it at 0x554, the slot of the 3-float vector vertex call,
+  and jumps through it with the stack array's address in the first argument register. No transform
+  or clip work happens here: transformation and clip classification are done by the routine it
+  calls, so this body touches none of those context words. The o32 body opens a 0x48-byte frame and
+  keeps `$ra` and `$gp` in it, as only one argument arrives. It occupies 116 bytes at offset
+  0xda322d8, counting 29 instructions, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_Vertex3iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex3s` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, picks the entry at table offset 0x554, which stands for the
+  3-float vector form, and calls it with the address of the stack array as the only argument. No
+  transform or clip work happens here: the transform, clip check and vertex-output pointers are used
+  only by the float-vector routine, and none of those pointers is read in this body. The o32 body
+  opens a 0x38-byte frame and keeps `$ra` and `$gp` in it, with a spill of 3 argument registers to
+  the caller's home area. It occupies 132 bytes at offset 0xda3234c, made of 33 instructions,
+  summarised from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Vertex3s` of ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Vertex3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of three signed short
+  coordinates read through the pointer argument, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, indexes it at 0x554, the slot of the 3-float vector vertex call,
+  and calls it with the address of the stack array as the only argument. No transform or clip work
+  happens here: transformation and clip classification are done by the routine it calls, and none of
+  those pointers is read in this body. The o32 body opens a 0x48-byte frame and keeps `$ra` and
+  `$gp` in it, with nothing else to preserve. It occupies 116 bytes at offset 0xda323d0, counting 29
+  instructions, summarised from the o32 listing by its stores, constant loads and call slot and
+  compared with `__glim_Vertex3sv` of ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Vertex4f` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four float
+  coordinates taken from the argument registers, where each float is copied unchanged, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it reads the dispatch table pointer at context offset 0x17b8, takes the
+  word at table offset 0x574, the 4-component float vertex entry, and calls it with the address of
+  the stack array as the only argument. The routine does none of the vertex processing itself: the
+  matrix transform and the clip test belong to the float-vector routine, and none of those pointers
+  is read in this body. The o32 body opens a 0x40-byte frame and keeps `$ra` and `$gp` in it, where
+  it spills 2 argument registers to the caller's home area. The body spans 100 bytes starting at
+  offset 0xda32444, with 25 instructions in all, summarised from the o32 listing by its stores,
+  constant loads and call slot and compared with `__glim_Vertex4f` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4d` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four double
+  coordinates taken from the argument registers, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, it reads the dispatch table pointer at context offset 0x17b8, picks the
+  entry at table offset 0x574, which stands for the 4-float vector form, and calls it with the
+  address of the stack array as the only argument. The routine does none of the vertex processing
+  itself: the transform, clip check and vertex-output pointers are used only by the float-vector
+  routine, and none of those pointers is read in this body. The o32 body opens a 0x40-byte frame and
+  parks `$ra` and `$gp` there, since only the pointer arrives. The body spans 108 bytes starting at
+  offset 0xda324a8, made of 27 instructions, summarised from the o32 listing by its stores, constant
+  loads and call slot and compared with `__glim_Vertex4d` of
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four double
+  coordinates read through the pointer argument, where each double is narrowed to float, with no
+  scaling, and the converted floats are stored as a short array in the routine's own stack frame.
+  Having built the vector, the routine loads the context dispatch table from context offset 0x17b8,
+  indexes it at 0x574, the slot of the 4-float vector vertex call, and makes the call, passing a
+  pointer to the stack array. No transform or clip work happens here: transformation and clip
+  classification are done by the routine it calls, which is why it reads no matrix or clip word. The
+  o32 body opens a 0x50-byte frame and parks `$ra` and `$gp` there, and receives its pointer
+  argument without a spill. It occupies 116 bytes at offset 0xda32514, counting 29 instructions,
+  with the o32 build checked through its stack layout, dispatch slot and conversions against
+  `__glim_Vertex4dv` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Vertex4i` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four signed int
+  coordinates taken from the argument registers, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, takes the word at table offset 0x574, the 4-component float
+  vertex entry, and makes the call, passing a pointer to the stack array. No transform or clip work
+  happens here: the matrix transform and the clip test belong to the float-vector routine, which is
+  why it reads no matrix or clip word. The o32 body opens a 0x40-byte frame and keeps `$ra` and
+  `$gp` in it, and it spills 1 argument register to the caller's home area. It occupies 124 bytes at
+  offset 0xda32588, with 31 instructions in all, with the o32 build checked through its stack
+  layout, dispatch slot and conversions against `__glim_Vertex4i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four signed int
+  coordinates read through the pointer argument, where each integer is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, picks the entry at table offset 0x574, which stands for the
+  4-float vector form, and makes the call, passing a pointer to the stack array. No transform or
+  clip work happens here: the transform, clip check and vertex-output pointers are used only by the
+  float-vector routine, which is why it reads no matrix or clip word. The o32 body opens a 0x50-byte
+  frame and keeps `$ra` and `$gp` in it, and receives its pointer argument without a spill. It
+  occupies 132 bytes at offset 0xda32604, made of 33 instructions, with the o32 build checked
+  through its stack layout, dispatch slot and conversions against `__glim_Vertex4iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Vertex4s` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four signed short
+  coordinates taken from the argument registers, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, picks the entry at table offset 0x574, which stands for the
+  4-float vector form, and jumps through it with the stack array's address in the first argument
+  register. No transform or clip work happens here: the transform, clip check and vertex-output
+  pointers are used only by the float-vector routine, so this body touches none of those context
+  words. The o32 body opens a 0x40-byte frame and keeps `$ra` and `$gp` in it, and it spills 4
+  argument registers to the caller's home area. It occupies 156 bytes at offset 0xda32688, made of
+  39 instructions, and its listing in the o32 build was reduced to store offsets, constant loads and
+  call slots and set beside `__glim_Vertex4s` in ogl-sample/gfx/lib/opengl/glcore/s_vapi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Vertex4sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Specifies a vertex of four signed short
+  coordinates read through the pointer argument, where each short is converted to float with the
+  plain integer convert, with no scaling, and the converted floats are stored as a short array in
+  the routine's own stack frame. Having built the vector, the routine loads the context dispatch
+  table from context offset 0x17b8, picks the entry at table offset 0x574, which stands for the
+  4-float vector form, and invokes it handing over the array address. No transform or clip work
+  happens here: the transform, clip check and vertex-output pointers are used only by the
+  float-vector routine, so no matrix word is read here. The o32 body opens a 0x50-byte frame and
+  keeps `$ra` and `$gp` in it, since only the pointer arrives. It occupies 132 bytes at offset
+  0xda32724, made of 33 instructions, the o32 body having been matched to `__glim_Vertex4sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_vapi.c by its stack layout and dispatch slot. It touches no
+  CRIME hardware. Inferred.
 
 ### so_vertarray.c
 
