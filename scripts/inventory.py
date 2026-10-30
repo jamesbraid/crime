@@ -68,7 +68,7 @@ COLUMNS = {
     'binaries': ['binary', 'group', 'role', 'kind', 'abi', 'bytes', 'sha256', 'copies', 'functions',
                  'address_source', 'access_sites', 'unresolved_sites', 'status', 'doc', 'section'],
     'functions': ['binary', 'role', 'abi', 'elf_section', 'address', 'size', 'name', 'source', 'code_sha',
-                  'rejected', 'status', 'doc', 'section'],
+                  'rejected', 'scope', 'status', 'doc', 'section'],
     'mmio': ['window', 'offset', 'name', 'access', 'sites', 'binaries', 'functions', 'evidence', 'example',
              'status', 'doc', 'section'],
     'tokens': ['kind', 'value', 'name', 'register', 'detail', 'sources', 'sites', 'binaries', 'example',
@@ -78,7 +78,7 @@ COLUMNS = {
     'ucode': ['program', 'kind', 'address', 'name', 'detail', 'status', 'doc', 'section'],
     'spec-registers': ['spec', 'table', 'page', 'window', 'offset', 'name', 'count', 'stride', 'width', 'rw',
                        'reached_in_code', 'status', 'doc', 'section'],
-    'summary': ['table', 'rows', 'understood', 'understood_with_open', 'understood_distinct', 'templated', 'located', 'named_only',
+    'summary': ['table', 'rows', 'out_of_scope', 'understood', 'understood_with_open', 'understood_distinct', 'templated', 'located', 'named_only',
                 'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
                 'pct_mentioned', 'pct_done', 'unresolved_sites', 'truncated', 'audited_real_pct',
                 'audited_sample', 'audited_date', 'computes', 'reused', 'multi_unit', 'shared_address', 'input'],
@@ -176,13 +176,25 @@ UNKNOWN = re.compile(r'\bunknown\b', re.I)
 # says it about a sub-fact (which unit serves which source, the width of one field) does not.
 ROLE_UNKNOWN = re.compile(r'\b(?:role|effect|purpose|function|behaviou?r|meaning|semantics)\b|'
                           r'\bwhat\b[^.;]{0,40}\b(?:does|do|is\s+for|are\s+for|means|computes)\b|\bused\s+for\b', re.I)
-# An entry "computes" when it names the routine's inputs, its outputs and the transformation between them,
-# each with a word that says so. Reading, writing, storing and extent words are not enough: they locate.
+# An entry "computes" when it names the routine's inputs and outputs and describes an operation on data:
+# arithmetic, conversion, packing or a decision. The input and output words alone say nothing about what the
+# routine does, so the credit keys on the operation: the words below, read in the description and not in a
+# sentence that only restates inputs and outputs. A routine that only moves words (a copy, store, load or
+# dispatch) earns it only when it also describes two different operations of its own.
 COMPUTES_IN = re.compile(r'\b(?:inputs?|operands?|arguments?|takes|consumes)\b', re.I)
 COMPUTES_OUT = re.compile(r'\b(?:outputs?|results?|returns|produces|yields)\b', re.I)
-COMPUTES_OP = re.compile(r'\b(?:computes?|calculates?|evaluates?|transforms?|converts?|multiplies|divides|'
-                         r'subtracts|adds|accumulates|clamps|normali[sz]es|interpolates|rounds|scales|packs|'
-                         r'unpacks|shifts|combines|compares|selects|derives)\b', re.I)
+COMPUTES_OP = re.compile(r'\b(?:computes?|calculates?|evaluates?|converts?|converted|multipl(?:ies|y|ied)|'
+                         r'divides?|divided|subtracts?|subtracted|clamps?|clamped|normali[sz](?:es?|ed)|'
+                         r'interpolates?|rounds?|rounded|scales?|scaled|packs?|packed|unpacks?|unpacked|shifts?|'
+                         r'combines?|compares?|compared|derives?|accumulates?|negates?|sums?|squares?|truncates?|'
+                         r'reciprocals?|transforms?|adds)\b(?!\s+(?:of|at)\b)', re.I)
+# "does no arithmetic", "nothing converts": the entry says it performs no operation
+COMPUTES_NEG = re.compile(r'\b(?:does|performs|with|without|has)\s+(?:no|any)\s+(?:arithmetic|computation|conversion)\b|'
+                          r'\bnothing\s+(?:converts|is\s+computed)\b', re.I)
+# an entry that opens by saying the routine moves words
+COMPUTES_MOVE = re.compile(r'^\W*(?:an?\s+)?(?:[\w-]+\s+)?(?:copies|copy|moves?|stores?|loads?|forwards?|'
+                           r'dispatch\w*|clears?|fills?|writes?|reads?|passes|sets?|zeroes|splits|sends?|latches?)\b',
+                           re.I)
 # A hedge says the role was not derived from the item itself, so it demotes the entry as "unknown" does.
 HEDGE = re.compile(
     r"\bnot\s+(?:yet\s+)?(?:derived|shown|determined|known|established|decoded|identified|verified|"
@@ -455,8 +467,27 @@ def stated(text, subj, own, head=None):
                 and len(row_items(text, subj, own, head)) >= MIN_DATA)
 
 
+def computes_lead(text):
+    """The first clause that follows the entry's label (established or inferred), or its first clause."""
+    m = LABEL.search(text)
+    rest = text[m.end():] if m else text
+    return re.split(r'(?<=[.;:])\s', rest.strip(), maxsplit=1)[0]
+
+
 def computes(text):
-    return bool(COMPUTES_IN.search(text) and COMPUTES_OUT.search(text) and COMPUTES_OP.search(text))
+    """True when the entry names inputs and outputs and describes an operation on data. The input and output
+    words are no credit by themselves: the operation words decide, and an entry that opens as a copy, store,
+    load or dispatch needs two different ones, because one is usually address or counter bookkeeping."""
+    if not (COMPUTES_IN.search(text) and COMPUTES_OUT.search(text)):
+        return False
+    text = COMPUTES_NEG.sub('', text)
+    ops = {m.group(0).lower() for m in COMPUTES_OP.finditer(text)}
+    if not ops:
+        return False
+    lead = computes_lead(text)
+    if COMPUTES_MOVE.match(lead) and not COMPUTES_OP.search(lead):
+        return len(ops) >= 2
+    return True
 
 
 def classify(text, subj=frozenset(), head=None):
@@ -1288,7 +1319,7 @@ def config_strings(x, key=''):
         yield key, x
     elif isinstance(x, dict):
         for k, v in x.items():
-            if k != 'binaries':
+            if k not in ('binaries', 'scope'):
                 yield from config_strings(v, k)
     elif isinstance(x, list):
         for v in x:
@@ -1441,6 +1472,57 @@ def scope_files(cfg):
                     files.append((rel, c, g))
     files.sort(key=lambda x: x[0])
     return files
+
+
+def apply_scope(cfg, imgs, rows, touch):
+    """Mark each function row out of scope when a rule of the config's `scope` list names it.
+
+    A rule is {"binaries": [globs], "names": [exact names], "patterns": [regexes], "reason": "one line"}, and
+    `binaries` matches a binary's label, its path or the label of a byte-identical copy. Only the rule decides:
+    nothing is inferred from the documents. Every rule needs a reason and at least one name or pattern, and
+    every name and pattern has to match a function of its binaries, so a stale rule fails the run. A rule that
+    would exclude a function that reaches a register window, a token or an ioctl (the access sites the script
+    resolved, an access it could not resolve, an ioctl handler) fails the run too: such a function stays in
+    scope. Returns (rule report, problems); a row gets `scope` = `in` or `out:<rule number>`."""
+    rules = cfg.get('scope', [])
+    problems, report = [], []
+    names_of = {}
+    for img in imgs:
+        for lab in [img['label']] + img['copies']:
+            names_of[lab] = img
+    by_label = collections.defaultdict(list)
+    for r in rows:
+        by_label[r['binary']].append(r)
+    for r in rows:
+        r['scope'] = 'in'
+    for n, rule in enumerate(rules, 1):
+        where = 'scope rule %d' % n
+        if not str(rule.get('reason', '')).strip():
+            problems.append('%s has no reason' % where)
+        names, pats = set(rule.get('names', [])), rule.get('patterns', [])
+        if not names and not pats:
+            problems.append('%s lists no names and no patterns' % where)
+        if not rule.get('binaries'):
+            problems.append('%s names no binaries' % where)
+            continue
+        cands = [r for r in rows if r['scope'] == 'in' and any(
+            globs_match(x, rule['binaries']) for x in [r['binary'], names_of[r['binary']]['path']] +
+            names_of[r['binary']]['copies'])]
+        hit = [r for r in cands if r['name'] in names or any(re.fullmatch(p, r['name']) for p in pats)]
+        for nm in sorted(names - {r['name'] for r in hit}):
+            problems.append('%s: name %s matches no function of its binaries' % (where, nm))
+        for p in pats:
+            if not any(re.fullmatch(p, r['name']) for r in hit):
+                problems.append('%s: pattern %s matches no function of its binaries' % (where, p))
+        for r in hit:
+            if (r['binary'], r['name']) in touch:
+                problems.append('%s excludes %s in %s, which reaches a register window, a token or an ioctl' %
+                                (where, r['name'], r['binary']))
+            r['scope'] = 'out:%d' % n
+            r['_out'] = True
+        report.append({'rule': n, 'binaries': ', '.join(rule['binaries']), 'rows': len(hit),
+                       'reason': str(rule.get('reason', '')).strip()})
+    return report, problems
 
 
 def scope(cfg):
@@ -1947,6 +2029,7 @@ class Unit:
         self.sites = collections.Counter()
         self.tokens = {}
         self.ioctl = {}
+        self.touch = set()
         self.recording = False
         self.mode = 'record'
         self.shadow = {}
@@ -1992,7 +2075,7 @@ class Unit:
         return self
 
     def reset(self):
-        self.out_mmio, self.tokens, self.ioctl = {}, {}, {}
+        self.out_mmio, self.tokens, self.ioctl, self.touch = {}, {}, {}, set()
         self.unresolved, self.sites = collections.Counter(), collections.Counter()
 
     def derive_seeds(self):
@@ -2216,6 +2299,7 @@ class Unit:
             return
         e = self.ioctl.setdefault(v, {'roles': set(), 'funcs': set(), 'bins': set(), 'ex': None})
         e['roles'].add(role)
+        self.touch.add((self.img['label'], self.fname))
         e['funcs'].add(self.fname)
         e['bins'].add(self.img['label'])
         ex = '%s:%s' % (self.img['label'], self.fname)
@@ -2291,6 +2375,7 @@ class Unit:
     def unres(self, win):
         if self.mode != 'shadow':
             self.unresolved[(self.img['label'], win)] += 1
+            self.touch.add((self.img['label'], self.fname))
 
     def place(self, win, off, acc, width, addr, value, ev):
         w = self.m.windows.get(win)
@@ -2330,6 +2415,7 @@ class Unit:
                                       'ex': None}
         e['acc'].add('%s%d%s%s' % (acc, width, ' alias' if alias else '', ' ' + note if note else ''))
         e['sites'] += 1
+        self.touch.add((self.img['label'], self.fname))
         e['funcs'].add(self.fname)
         e['bins'].add(self.img['label'])
         e['ev'].add(ev)
@@ -2370,6 +2456,7 @@ class Unit:
                 e = self.tokens[key] = {'sites': 0, 'bins': set(), 'ex': None, 'src': set(), 'known_only':
                                         bool(s.get('known_only'))}
             e['sites'] += 1
+            self.touch.add((self.img['label'], self.fname))
             e['bins'].add(self.img['label'])
             e['src'].add(s.get('label', 'code'))
             ex = '%s:%s' % (self.img['label'], self.fname)
@@ -2780,11 +2867,14 @@ def analyse_unit(args):
                     rows = pointer_table(img, img['elf'], d)
                 for number, handler in rows:
                     res['tables'].append((d['name'], number, handler, img['label'], d.get('strip', '')))
+                    if handler:
+                        u.touch.add((img['label'], handler))
         res['mmio'] = u.out_mmio
         res['unresolved'] = dict(u.unresolved)
         res['sites'] = dict(u.sites)
         res['tokens'] = u.tokens
         res['ioctl'] = u.ioctl
+        res['touch'] = u.touch
     finally:
         shutil.rmtree(work, ignore_errors=True)
     for img in imgs:
@@ -3005,7 +3095,9 @@ def build(cfg, a, tmp):
 
     funcs, finfo, abi, kinds = {}, {}, {}, {}
     mmio, unresolved, sites, tokens_code, ioctl_code, tables = {}, collections.Counter(), collections.Counter(), {}, {}, []
+    touch = set()       # (binary, function) pairs that reach a register window, a token or an ioctl
     for r in results:
+        touch |= r['touch']
         funcs.update(r['funcs'])
         finfo.update(r['finfo'])
         abi.update(r['abi'])
@@ -3381,6 +3473,9 @@ def build(cfg, a, tmp):
                'unresolved_sites': unr}
         put_status(row, st)
         brows.append(row)
+    scope_report, scope_problems = apply_scope(cfg, imgs, rows, touch)
+    if scope_problems:
+        sys.exit('inventory: refusing to write tables, the scope rules are wrong:\n  ' + '\n  '.join(scope_problems))
     out['functions'] = rows
     out['binaries'] = brows
 
@@ -3392,16 +3487,20 @@ def build(cfg, a, tmp):
     audits = read_audits(os.path.join(a.out, 'audits.tsv'))
     srows = []
     for t in TABLES:
-        srows.append(summary_row(t, out[t], total_unres if t == 'mmio' else ''))
+        srows.append(summary_row(t, out[t], total_unres if t == 'mmio' else '',
+                                 sum(1 for r in out[t] if r.get('_out'))))
         if t == 'ucode':
             srows[-1]['truncated'] = '; '.join(truncated)
             srows[-1]['computes'] = sum(1 for r in out[t] if r['status'] == 'understood' and r.get('_computes'))
         if t == 'functions':
             best = {}
             for r in out['functions']:
+                if r.get('_out'):
+                    continue
                 if r['name'] not in best or RANK[r['status']] > RANK[best[r['name']]['status']]:
                     best[r['name']] = r
-            srows.append(summary_row('functions (distinct names)', list(best.values()), ''))
+            out_names = {r['name'] for r in out['functions'] if r.get('_out')} - set(best)
+            srows.append(summary_row('functions (distinct names)', list(best.values()), '', len(out_names)))
             srows[-1]['multi_unit'] = srows[-1]['shared_address'] = ''
     for r in srows:
         au = audits.get(r['table'])
@@ -3413,12 +3512,13 @@ def build(cfg, a, tmp):
     by_bin = collections.OrderedDict()
     for r in out['functions']:
         by_bin.setdefault(r['binary'], []).append(r)
-    bin_rows = [summary_row('functions in ' + b, rs, '') for b, rs in by_bin.items()]
+    bin_rows = [summary_row('functions in ' + b, rs, '', sum(1 for r in rs if r.get('_out')))
+                for b, rs in by_bin.items()]
     write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows + inputs + bin_rows)
     for r in srows:
-        print('%-28s %7s  understood %6s (%5s%%, %s with open, %s distinct, %s templated)  '
+        print('%-28s %7s  out-of-scope %5s  understood %6s (%5s%%, %s with open, %s distinct, %s templated)  '
               'located-or-better %5s%%  mentioned %5s%%  nsd %5s' %
-              (r['table'], r['rows'], r['understood'], r['pct_understood'], r['understood_with_open'],
+              (r['table'], r['rows'], r['out_of_scope'], r['understood'], r['pct_understood'], r['understood_with_open'],
                r['understood_distinct'], r['templated'], r['pct_located_or_better'], r['pct_mentioned'], r['no_software_dependency']),
               file=sys.stderr)
     by_win = collections.Counter()
@@ -3427,7 +3527,7 @@ def build(cfg, a, tmp):
     print('register access sites: %d resolved, %d unresolved (%s)' %
           (resolved_sites, total_unres, ', '.join('%s %d' % kv for kv in sorted(by_win.items()))), file=sys.stderr)
     if not a.no_coverage:
-        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win, sibrep, inputs)
+        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win, sibrep, inputs, scope_report)
 
 
 REG_CONTEXT = ('register', 'offset', 'pio', 'window', 'fifo', 'port', 'status', 'flag', 'store', 'load',
@@ -3524,7 +3624,10 @@ def read_audits(path):
     return got
 
 
-def summary_row(name, rows, unresolved):
+def summary_row(name, rows, unresolved, out_of_scope=0):
+    """The counts of one table. Rows a scope rule excluded (`_out`) are left out of every count and are
+    reported in `out_of_scope`, so the denominator never hides them."""
+    rows = [r for r in rows if not r.get('_out')]
     c = collections.Counter(r['status'] for r in rows)
     distinct = len({r.get('_skel', '') for r in rows if r['status'] == 'understood'})
     templated = sum(1 for r in rows if r.get('_templated'))
@@ -3538,7 +3641,7 @@ def summary_row(name, rows, unresolved):
     return {'reused': sum(1 for r in rows if r.get('_reused')),
             'multi_unit': sum(1 for r in rows if r.get('_multi')) if flagged else '',
             'shared_address': sum(1 for r in rows if r.get('_shared')) if flagged else '',
-            'table': name, 'rows': n, 'understood': c['understood'], 'understood_with_open': opened,
+            'table': name, 'rows': n, 'out_of_scope': out_of_scope, 'understood': c['understood'], 'understood_with_open': opened,
             'understood_distinct': distinct,
             'templated': templated, 'located': c['located'],
             'named_only': c['named-only'], 'undocumented': c['undocumented'], 'no_software_dependency': nsd,
@@ -3548,7 +3651,7 @@ def summary_row(name, rows, unresolved):
             'pct_done': pct(c['understood'] + nsd), 'unresolved_sites': unresolved}
 
 
-def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib, inputs):
+def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib, inputs, scope_report=()):
     path = os.path.join(REPO, 'docs', 'coverage.md')
     if not os.path.exists(path):
         return
@@ -3563,16 +3666,30 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib, inputs
              'is understood or labelled as having no software dependency. "Distinct" counts the differently '
              'worded entries behind the understood rows, so templated bulk shows.'
              % (len(imgs), elf), '',
-             '| Table | Rows | % understood | % located or better | % mentioned | Understood | With open | '
-             'Distinct | Located | No software dependency | Named only | Undocumented |',
-             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+             '| Table | Rows | Out of scope | % understood | % located or better | % mentioned | Understood | '
+             'With open | Distinct | Located | No software dependency | Named only | Undocumented |',
+             '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for r in srows:
         link = r['table'] if r['table'] in TABLES else None
         label = '[%s](inventory/%s.tsv)' % (link, link) if link else r['table']
-        lines.append('| %s | %d | %s | %s | %s | %d | %d | %d | %d | %d | %d | %d |' % (
-            label, r['rows'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
+        lines.append('| %s | %d | %d | %s | %s | %s | %d | %d | %d | %d | %d | %d | %d |' % (
+            label, r['rows'], r['out_of_scope'], r['pct_understood'], r['pct_located_or_better'], r['pct_mentioned'],
             r['understood'], r['understood_with_open'], r['understood_distinct'], r['located'], r['no_software_dependency'],
             r['named_only'], r['undocumented']))
+    if scope_report:
+        total = sum(x['rows'] for x in scope_report)
+        every = next((r['rows'] + r['out_of_scope'] for r in srows if r['table'] == 'functions'), 0)
+        lines += ['', '### Scope', '',
+                  '%d of the %d function rows (%.1f%%) are out of scope: the rules of the config\'s `scope` list '
+                  'name them, one reason each, and `functions.tsv` marks them `out:<rule>` in `scope`. The rows, '
+                  'percentages and counts of every other column leave them out; the `Out of scope` column and '
+                  'the table below keep the excluded rows in view. A function that reaches a register window, a '
+                  'token or an ioctl cannot be excluded: the run fails.' %
+                  (total, every, 100.0 * total / every if every else 0.0), '',
+                  '| Rule | Binaries | Rows | Reason |', '|---:|---|---:|---|']
+        for x in scope_report:
+            lines.append('| %d | %s | %d | %s |' % (x['rule'], x['binaries'].replace('|', '\\|'), x['rows'],
+                                                  x['reason'].replace('|', '\\|')))
     audited = [r for r in srows if r.get('audited_date')]
     if audited:
         lines += ['', '### Audited', '',

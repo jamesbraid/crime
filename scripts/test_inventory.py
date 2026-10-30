@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""Tests of the rules in inventory.py that do not need root/: the `computes` count and the scope filter.
+
+Run from the repository root: python3 scripts/test_inventory.py
+"""
+import importlib.util
+import os
+import unittest
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+spec = importlib.util.spec_from_file_location('inventory', os.path.join(HERE, 'inventory.py'))
+inv = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(inv)
+
+FILLER_ONLY = ('- `mCramToWram` (`memove.S` line 32, at 0xd4a2): **inferred**, copies a block from control memory '
+               'to working memory. It gives lanes 1 and 2 their own register-1 offsets (adds of 1 and 2 at 0xd4a3 '
+               'and 0xd4a7) and stores the loaded words through register 1 (0xd4ab, 0xd4ae). Its input is the '
+               'block at register 0 and its output the same words in working memory.')
+REAL = ('- `odsy_EdidCksum` (`odsy_ddc.o`, offset 0x1c58): **established.** Computes the EDID block checksum: it '
+        'adds the 128 bytes at its argument, keeps the sum modulo 256 and returns it, so a valid block gives 0.')
+CONVERTS = ('- `mgeb_LineStipple` (`line.S` line 1520, at 0x62a7): **inferred**, glLineStipple. Its operands are the '
+            'repeat factor (command word 0) and the pattern (word 1). It converts the factor to float (code 0x73), '
+            'computes its reciprocal with a seed and a Newton step and stores that result at engine word 0x25e.')
+NEGATED = ('- `mmo_DebugGE` (`debug.S` line 215, at 0x4a8d): **inferred**, a vertex-path stage that does no '
+           'arithmetic. It takes the successor word, passes the batch on and returns the batch unchanged.')
+MOVER_WITH_TWO_OPS = ('- `f` (`x.S` line 1, at 0x1): **inferred**, copies the input words to the output. It scales '
+                      'the first by 16.0 and clamps the second to 1.0, and the result is the block.')
+
+
+class Computes(unittest.TestCase):
+    def test_filler_closing_sentence_does_not_count(self):
+        self.assertFalse(inv.computes(FILLER_ONLY))
+
+    def test_input_output_words_alone_do_not_count(self):
+        self.assertFalse(inv.computes('Copies a block. Its input is the source, its output the target and the '
+                                      'result is the same words.'))
+
+    def test_an_operation_without_inputs_and_outputs_does_not_count(self):
+        self.assertFalse(inv.computes('**inferred**, converts the factor to float and scales it.'))
+
+    def test_described_operation_counts(self):
+        self.assertTrue(inv.computes(REAL))
+        self.assertTrue(inv.computes(CONVERTS))
+
+    def test_no_arithmetic_does_not_count(self):
+        self.assertFalse(inv.computes(NEGATED))
+
+    def test_a_mover_needs_two_operations(self):
+        self.assertTrue(inv.computes(MOVER_WITH_TWO_OPS))
+        self.assertFalse(inv.computes('**inferred**, copies the input words to the output. It scales the first by 16.0; the result is the block.'))
+
+
+def fake_images(*specs):
+    return [{'label': lab, 'path': lab.split('(')[0], 'copies': copies} for lab, copies in specs]
+
+
+def fake_rows(binary, *names):
+    return [{'binary': binary, 'name': n, 'status': 'undocumented'} for n in names]
+
+
+class Scope(unittest.TestCase):
+    def setUp(self):
+        self.imgs = fake_images(('usr/k/kernel.o', ['usr/k/kernel-copy.o']), ('usr/x/Xserver', []))
+        self.rows = (fake_rows('usr/k/kernel.o', 'bcopy', 'cpu_idle', 'crimeIoctl', 'vfs_open') +
+                     fake_rows('usr/x/Xserver', 'XDrawLine', 'xfs_read'))
+
+    def run_rules(self, rules, touch=()):
+        rows = [dict(r) for r in self.rows]
+        rep, problems = inv.apply_scope({'scope': rules}, self.imgs, rows, set(touch))
+        return rows, rep, problems
+
+    def test_no_rules_leaves_everything_in(self):
+        rows, rep, problems = self.run_rules([])
+        self.assertEqual(problems, [])
+        self.assertEqual({r['scope'] for r in rows}, {'in'})
+
+    def test_names_and_patterns_exclude(self):
+        rows, rep, problems = self.run_rules([
+            {'binaries': ['usr/k/kernel.o'], 'names': ['bcopy'], 'patterns': ['vfs_.*'], 'reason': 'generic kernel'}])
+        self.assertEqual(problems, [])
+        out = sorted(r['name'] for r in rows if r['scope'] == 'out:1')
+        self.assertEqual(out, ['bcopy', 'vfs_open'])
+        self.assertEqual(rep[0]['rows'], 2)
+
+    def test_a_rule_reaches_only_its_binaries(self):
+        rows, rep, problems = self.run_rules([
+            {'binaries': ['usr/x/Xserver'], 'patterns': ['x.*'], 'reason': 'generic'}])
+        self.assertEqual([r['name'] for r in rows if r['scope'] != 'in'], ['xfs_read'])
+
+    def test_a_copy_label_selects_the_binary(self):
+        rows, rep, problems = self.run_rules([
+            {'binaries': ['usr/k/kernel-copy.o'], 'names': ['bcopy'], 'reason': 'generic'}])
+        self.assertEqual(problems, [])
+        self.assertEqual(rep[0]['rows'], 1)
+
+    def test_refuses_to_exclude_a_function_that_touches_graphics(self):
+        rows, rep, problems = self.run_rules(
+            [{'binaries': ['usr/k/kernel.o'], 'patterns': ['.*Ioctl'], 'reason': 'generic'}],
+            touch=[('usr/k/kernel.o', 'crimeIoctl')])
+        self.assertEqual(len(problems), 1)
+        self.assertIn('crimeIoctl', problems[0])
+        self.assertIn('register window', problems[0])
+
+    def test_touch_in_another_binary_does_not_block(self):
+        rows, rep, problems = self.run_rules(
+            [{'binaries': ['usr/k/kernel.o'], 'names': ['bcopy'], 'reason': 'generic'}],
+            touch=[('usr/x/Xserver', 'bcopy')])
+        self.assertEqual(problems, [])
+
+    def test_a_rule_needs_a_reason_and_matches(self):
+        _, _, problems = self.run_rules([{'binaries': ['usr/k/kernel.o'], 'names': ['bcopy']}])
+        self.assertTrue(any('no reason' in p for p in problems))
+        _, _, problems = self.run_rules([{'binaries': ['usr/k/kernel.o'], 'names': ['gone', 'bcopy'],
+                                          'patterns': ['nomatch_.*'], 'reason': 'r'}])
+        self.assertTrue(any('name gone' in p for p in problems))
+        self.assertTrue(any('pattern nomatch_' in p for p in problems))
+        _, _, problems = self.run_rules([{'binaries': ['usr/k/kernel.o'], 'reason': 'r'}])
+        self.assertTrue(any('no names and no patterns' in p for p in problems))
+
+    def test_out_of_scope_rows_leave_the_counts_and_are_reported(self):
+        rows, _, _ = self.run_rules([{'binaries': ['usr/k/kernel.o'], 'patterns': ['.*'], 'reason': 'generic'}])
+        row = inv.summary_row('functions', rows, '', sum(1 for r in rows if r.get('_out')))
+        self.assertEqual((row['rows'], row['out_of_scope'], row['undocumented']), (2, 4, 2))
+        self.assertEqual(row['pct_understood'], '0.0')
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -72,6 +72,7 @@ One row per (binary, function symbol). A function present in several distinct bi
 | `source` | where the name came from: `symtab`, `dynsym`, `mdebug` (o32 procedure table), `funcnames` (`.debug_funcnames`), `dwarf`, or `strings` (names found by pattern in a raw image) |
 | `code_sha` | first 12 hex digits of the hash of the function's bytes, empty when they could not be read. A name with the same `code_sha` in two binaries has the same code there |
 | `rejected` | `multi-unit` (the name is defined at several addresses in the binary), `shared-address` (another name has the row's address), both joined by `+`, or empty; a rejected row is at most `named-only` (see Function rows the generator rejects) |
+| `scope` | `in`, or `out:N` when rule N of the config's `scope` list excludes the function (see Scope) |
 
 ### mmio.tsv
 
@@ -147,6 +148,7 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | Column | Meaning |
 |---|---|
 | `table`, `rows` | the table and its row count |
+| `out_of_scope` | rows a scope rule excluded; `rows` and every other count leave them out. For `functions (distinct names)`, the names all of whose rows are excluded (see Scope) |
 | `understood`, `located`, `named_only`, `undocumented`, `no_software_dependency` | rows at each status |
 | `understood_with_open` | understood rows whose entry also says a sub-fact is `unknown` (see Open sub-facts). They are counted in `understood` too, so the open facts stay visible |
 | `understood_distinct` | different sentence skeletons behind the understood rows |
@@ -158,7 +160,7 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | `unresolved_sites` | for `mmio`: register access sites whose offset could not be traced |
 | `truncated` | for `ucode`: a table the config reads in part, as `program: N of M entries`; empty when every entry is read |
 | `audited_real_pct`, `audited_sample`, `audited_date` | the latest independent audit of the table: the share of the sampled understood rows that held up, the sample size and the date, read from `audits.tsv`; empty when the table was never audited |
-| `computes` | for `ucode` only: understood rows whose entry states what the routine computes (see What understood means). Empty for every other table |
+| `computes` | for `ucode` only: understood rows whose entry describes an operation on data (see What understood means). Empty for every other table |
 | `reused` | rows held at `located` because their entry's role text is a sibling workspace's (see Cross-workspace role check) |
 | `input` | on the `input root manifest` and `input sibling <name>` rows only: the sha256 of the root manifest, or the sibling's commit (`skipped` when the check did not run). See Reproducible runs |
 | `multi_unit`, `shared_address` | for `functions` and `functions in <binary>` rows: rows rejected for a name defined at several addresses, and for an address several names share; empty for other tables |
@@ -278,7 +280,19 @@ Every table uses the same entry test above, so what a row's entry has to state d
 - `ucode`: usually the routine's extent (address, size, records) and how the host selects it (its entry point, dispatch slot or command). That is structure, not what the routine computes. The `computes` column of `summary.tsv` counts the understood ucode rows that say more.
 - `spec-registers`: the specification's register has a documented name and role.
 
-`computes` is the ucode-only count of understood, uncapped rows whose entry contains all three of: a word for the routine's inputs (`input`, `operand`, `argument`, `takes`, `consumes`), a word for its outputs (`output`, `result`, `returns`, `produces`, `yields`) and a verb for the transformation between them (`computes`, `calculates`, `converts`, `multiplies`, `adds`, `clamps`, `packs`, `selects` and similar; the list is `COMPUTES_OP` in the script). Reads, writes, stores and extent words do not count because they locate the routine without saying what it does. The test is deliberately narrow and reads words, not meaning; it can miss an entry that says the same thing differently, and an entry that uses all three words can still be wrong.
+`computes` is the ucode-only count of understood, uncapped rows whose entry describes an operation on data: arithmetic, conversion, packing or a decision (`computes`, `converts`, `multiplies`, `clamps`, `packs`, `compares` and similar; the list is `COMPUTES_OP` in the script). The words that restate the routine's inputs and outputs (`input`, `result`, `returns`) are not read at all, so a closing sentence that only says what goes in and comes out earns nothing. An entry must name inputs and outputs (`input`, `operand`, `argument`, `takes`, `consumes`; `output`, `result`, `returns`, `produces`, `yields`), but those words alone earn nothing. An entry that says it does no arithmetic or computes nothing is not counted, and an entry whose opening clause says it copies, moves, stores, loads or dispatches words needs two different operation words after that clause, because one is usually address or counter bookkeeping. The test still reads words, not meaning; it can miss an entry that says the same thing differently, and an entry that uses operation words can still be wrong. The audit in `audits.tsv` grades what the entries claim, not this count.
+
+### Scope
+
+A group such as a whole kernel object or the generic X server holds mostly code that has nothing to do with the graphics hardware, and counting it whole hides the graphics share. The config's optional `scope` list takes function rows out of the counts by explicit rule:
+
+    {"binaries": ["usr/x/Xserver"], "reason": "one line", "names": ["exact_name"], "patterns": ["regex.*"]}
+
+`binaries` are globs on a binary's path as `binaries.tsv` spells it, or on the path of a byte-identical copy. A function is out of scope only when its name is in `names` or fully matches a regex of `patterns` in a rule that names its binary, and the rule says why in `reason`. Nothing is inferred from what the documents say about a function. The first rule that matches takes the row.
+
+- The excluded rows stay in `functions.tsv`, graded as usual, with `scope` = `out:N`. `summary.tsv` reports them in `out_of_scope` and the `coverage.md` headline in its `Out of scope` column, with a table of the rules, their row counts and their reasons, so the excluded count is never hidden. `rows` and the percentages are over the in-scope rows only.
+- The run fails, and writes nothing, when a rule has no reason, no names and no patterns, or no binaries; when a name or pattern matches no function of its binaries (a stale rule); or when it would exclude a function that reaches a register window, a token or an ioctl. Reaching means a resolved access site in a configured window, an access whose offset could not be traced, a token store or an ioctl compare, send or dispatch-table handler found by the scan. Such a function stays in scope.
+- Exclude only code that is clearly not about the graphics hardware. A rule that lists what a subsystem is called is a claim by name, so keep it narrow and check what it matches.
 
 ### Distinct counts
 
@@ -387,6 +401,7 @@ A load or store through a window base is a site. When its offset is a constant i
 ## This workspace: O2
 
 - Scope: the `binaries` groups of the config, which follow the `files` and `members` blocks of `IRIX_FILES.md` (`os.a` is limited to `tile.o`).
+- Scope rules: the config's `scope` list takes `kernel.o` routines (CPU exception, TLB, cache, floating-point, string, atomic, clock, performance-counter, flash and firmware, context-switch and memory-map code) and `Xsgi` functions (protocol dispatch, keyboard, proxy and authorisation, font and extension code) out of the counts. Each rule has its reason in the config and the headline of `../coverage.md`; the run refuses any rule that would exclude a function reaching a register window, a token or an ioctl. The CRIME interrupt, MTE, ECC, PIO and DMA routines of `kernel.o`, and the device and cursor code of `Xsgi`, stay in scope. See Scope.
 - Windows by physical address: `CRIME` (0x14000000), `RE`, the rendering engine (0x15000000), `GBE` (0x16000000), `MACEV`, MACE video in and out (0x1f100000 to 0x1f280000), and `MACEAV`, the audio and video block (0x1f400000 to 0x1f800000). A constant in KSEG0, KSEG1 or XKPHYS counts, as does a raw physical address in standalone code, including a constant plus an untraced index.
 - Pointers: libGLcore's context +32184 (`RE`), board record +120 in `crime.a` (`RE`), `crimeBoards`+4 (`GBE`) and the first argument of `gbeProbe` (`GBE`). A store to offset + 0x800 in the pixel-pipe and transfer-engine groups (0x2800 to 0x3fff) is the start alias of offset: it is counted under offset and marked `alias`.
 - Tokens are (rendering-engine register 0x2000 to 0x3fff, constant word) pairs stored by the code.

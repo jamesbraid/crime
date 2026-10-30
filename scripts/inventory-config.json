@@ -25,6 +25,424 @@
     {"group": "firmware", "role": "board-firmware", "paths": ["usr/cpu/firmware/ip32prom.image"]}
   ],
   "exclude": [],
+  "scope": [
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "MIPS CPU exception vectors, TLB refill handlers and TLB maintenance: no graphics register, token or ioctl use",
+      "patterns": [
+        "utlbmiss.*",
+        "eutlbmiss.*",
+        "kmiss.*",
+        "kvmiss_hit",
+        "VEC_(?:addrerr|breakpoint|cpfault|fpe|ii|nofault|syscall|tlbmiss|tlbmod|trap|unexp)",
+        "_?_?j?_?(?:end)?exceptnorm.*",
+        "_j_.*exceptnorm.*",
+        "exception.*",
+        "ecommon.*",
+        "handle_(?:brkpt|ii|watch)",
+        "fixade_error",
+        "systrap",
+        "intrnorm",
+        "strayc0",
+        "tlb[a-z_]*",
+        "unmaptlb.*",
+        "invaltlb",
+        "dumptlb",
+        "checkAllTlbsDumped",
+        "set_tlbpid",
+        "flush_tlb",
+        "da_flush_tlb",
+        "check_delay_tlbflush",
+        "tfi_(?:restore|save)",
+        "err_save_regs"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "MIPS floating-point unit emulation and FPU state handling: no graphics register, token or ioctl use",
+      "patterns": [
+        "_(?:abs|add|comp|cvt\\w+|div|madd|msub|mul|neg|nmadd|nmsub|rsqrt|sqrt|sub)_sd",
+        "breakout_.*_sd",
+        "screen_nan_sd",
+        "fp_(?:find|init|init_glob|intr)",
+        "fp(?:unit_fp)?(?:load|store)_[a-z]+",
+        "round_[dlsw]",
+        "renorm_[ds]",
+        "maddrnd_[ds]",
+        "madd",
+        "checkfp",
+        "illfpinst",
+        "(?:get|set)_fpc_(?:csr|irr)",
+        "load_fpcsr",
+        "store_fpcsr",
+        "sendSIGFPE",
+        "strayfp_intr",
+        "tfp_special_int_exit",
+        "softfp_.*",
+        "get_fpc_irr"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU cache maintenance primitives: no graphics register, token or ioctl use",
+      "patterns": [
+        "__cache_wb_inval",
+        "__dcache_.*",
+        "__icache_inval",
+        "__vm_dcache_.*",
+        "__prefetch_.*",
+        "_c_(?:hinv|hwb|hwbinv|ilt|ilt_n_ecc|ist)",
+        "_r4600sc_.*",
+        "cacheOP",
+        "cache_(?:preempt_limit|sync|sync_bp_end|sync_bp_start|tag_ecc)",
+        "clean_[di]cache",
+        "d?cache_?wb(?:inval)?",
+        "dcache_wbinval",
+        "_dki_dcache_.*",
+        "dki_dcache_wb",
+        "flush_cache",
+        "getcachesz",
+        "size_2nd_cache",
+        "sw_cachesynch.*",
+        "config_cache",
+        "_read_tag",
+        "_write_tag",
+        "ecc_cacheOp",
+        "ecc_cacheop_get",
+        "ecc_cache_(?:block_mask|line_size)",
+        "do_sync_instruction",
+        "check_delay_iflush",
+        "pg_setcachable",
+        "pte_cachebits"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic C library, memory copy, user-access and checksum routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "bcmp",
+        "bcopy(?:[bdhnw])?",
+        "bcopy_end",
+        "ovbcopy",
+        "bzero(?:_end)?",
+        "bzerror",
+        "blkclr",
+        "mem(?:cmp|cpy|move|set)",
+        "copyin",
+        "copyout",
+        "swcopyin",
+        "swcopyout",
+        "swbcopy",
+        "[fs]u(?:i?byte|iword|word|long|half|ibyte)",
+        "su(?:error|ibyte|iword|byte)",
+        "uload_.*",
+        "ustore_.*",
+        "uzero",
+        "sfu32v?",
+        "spu32",
+        "strlen",
+        "string_sum",
+        "checksum",
+        "in_cksum_.*",
+        "gensum",
+        "bitcount",
+        "lowbitset",
+        "setjmp",
+        "longjmp",
+        "xlate_bit",
+        "syn_to_data_bit",
+        "etoh",
+        "mul64"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic kernel atomics, locks, semaphores and interrupt-priority-level helpers: no graphics register, token or ioctl use",
+      "patterns": [
+        "atomic[A-Z]\\w*",
+        "bitlock_.*",
+        "compare_and_.*",
+        "comparegt_and_swap_int",
+        "swap_(?:int|int64|long|ptr)",
+        "test_and_set_.*",
+        "(?:and|or)[bhw]_rmw",
+        "store_atomic",
+        "apcpsema",
+        "apcvsema",
+        "appsema",
+        "apsfail",
+        "apvsema",
+        "mutex_set_always",
+        "rtlock_ownerstamp",
+        "isspl0",
+        "issplhi",
+        "issplprof",
+        "spl[1356]",
+        "spl65",
+        "splecc",
+        "splgio[012]",
+        "splhi_relnet",
+        "splhintr",
+        "splimp",
+        "splnet",
+        "spltty",
+        "splvme",
+        "splxecc",
+        "setsplmasks"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU counter, kernel clock, time-of-day, timeout and delay routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "(?:ack|slow|start)kgclock(?:_r4000)?",
+        "(?:ack|start)rtclock(?:_r4000)?",
+        "_clock_func",
+        "clearbadclock",
+        "setbadclock",
+        "isbadclock",
+        "clkset",
+        "clr_r4kcount_intr",
+        "r4kcount_intr(?:_r4000)?",
+        "_get_r4k_counter",
+        "get_r4k_(?:compare|config|counter)",
+        "set_r4k_compare",
+        "set_timer_intr",
+        "_get_timestamp",
+        "get_(?:ust|updated_ust_i)",
+        "update_ust(?:_i)?",
+        "ust_init",
+        "ust_to_nano",
+        "nano_to_ust",
+        "nano(?:time|time_syscall)",
+        "timestamp_init",
+        "microtime",
+        "gettimetrim",
+        "settimetrim",
+        "settime",
+        "inittodr",
+        "resettodr",
+        "inithrestime",
+        "doadjtime",
+        "callout_time_to_hz",
+        "chktimedrift",
+        "chktimeout_tick",
+        "fast_time(?:out|out_nothrd|poke)",
+        "fastick_maint",
+        "timeout_get_queuehead",
+        "timein(?:_body)?",
+        "timepoke",
+        "tick_(?:actions|maint)",
+        "onesec_maint",
+        "migrate_timeouts",
+        "init_timer",
+        "stopclocks(?:_r4000)?",
+        "startprfclk",
+        "stopprfclk",
+        "enable_fastclock",
+        "query_(?:cyclecntr|cyclecntr_size|fasttimer)",
+        "findcpufreq(?:_raw)?",
+        "cpu_mhz_rating",
+        "get_dayof_week",
+        "us_delay(?:bus)?",
+        "delay_for_intr",
+        "delayloop"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU performance-counter and branch-prediction control: no graphics register, token or ioctl use",
+      "patterns": [
+        "hwperf_.*",
+        "r1nk\\w*",
+        "r10k_perf_overflow_intr",
+        "r12k_perf_overflow_intr",
+        "set_hwperf_intr",
+        "read_branch_diag",
+        "write_branch_diag",
+        "branch_prediction_.*",
+        "get_r10k_config",
+        "set_r10k_config",
+        "get_cpu_irr"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Flash ROM, NVRAM, firmware-call and environment-variable routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "flash_.*",
+        "get_flash_version",
+        "update_flash_version",
+        "init_flash_rom",
+        "find_named_flash_seg",
+        "valid_seg_hdr",
+        "set_env_var",
+        "set_nvram",
+        "load_nvram_tab",
+        "dump_nvram_vars",
+        "read_dallas_nvram",
+        "write_dallas_nvram",
+        "arcs_.*",
+        "prom_.*",
+        "call_prom_cached",
+        "devnamefromarcs",
+        "set_autopoweron",
+        "rtc_init",
+        "wtodc",
+        "btool_.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Context switch, thread start-up, signal delivery and debugger-trap routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "resume(?:idle|thread)?",
+        "save",
+        "sthread_launch",
+        "post_sig",
+        "p0_launch",
+        "toidlestk",
+        "loopxthread",
+        "restartxthread",
+        "other_prda",
+        "otherprda",
+        "getcvpriority",
+        "upath",
+        "uerror",
+        "backtouser",
+        "icode",
+        "eicode",
+        "is_thd",
+        "cpumon_alloc",
+        "engr_dvt_thread",
+        "stk(?:ovflw|scr1|scr2|undflw)",
+        "sstepbp",
+        "kernelbp",
+        "debug_stop_all_cpus",
+        "idbg_ecc_info"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Kernel memory-map bookkeeping and CPU hot-plug routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "extk0_.*",
+        "is_extk0_pfn",
+        "is_in_pfdat",
+        "pmem_getfirstclick",
+        "node_getfirstfree",
+        "node_getmaxclick",
+        "first_address",
+        "last_phys_pfn",
+        "next_seg",
+        "mlclosure",
+        "szmem",
+        "error_(?:mark|reclaim)_page",
+        "cpu_(?:godown|isvalid|powerdown|waitforreset)",
+        "add_cpu",
+        "add_cpuboard",
+        "cpuboard",
+        "allowboot",
+        "disallowboot",
+        "setupbadmem"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "X protocol request dispatch and byte-swapped dispatch of the generic server; none reaches CRIME or GBE registers or an ioctl",
+      "patterns": [
+        "(?:AwareMode)?S?Proc[A-Z].*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "X keyboard extension: keymap and keyboard state, not display hardware",
+      "patterns": [
+        "Xkb(?!DDX).*",
+        "Xkm.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Low-bandwidth X proxy extension, session-manager protocol, authorisation, security and record extensions, host access control: network and policy code",
+      "patterns": [
+        "Lbx.*",
+        "Xdmcp.*",
+        "Xau.*",
+        "Auth.*",
+        "AddAuthorization",
+        "Security.*",
+        "Record.*",
+        "Xag.*",
+        "Access.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Font loading, font-file formats, font-server client and decompression: no display hardware access",
+      "patterns": [
+        "Font.*",
+        "Bitmap.*",
+        "bitmap.*",
+        "bdf.*",
+        "pcf.*",
+        "snf.*",
+        "Speedo.*",
+        "_fs.*",
+        "fs_.*",
+        "inflate.*",
+        "deflate.*",
+        "Zlib.*",
+        "_tr_.*",
+        "Buf(?:File|Compressed).*",
+        "BitVector.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Synchronisation, multi-screen, double-buffer, multibuffer, printing, shared-memory and screen-saver extensions: software state, no register or ioctl access",
+      "patterns": [
+        "Sync.*",
+        "Xinerama.*",
+        "Panorami.*",
+        "Dbe.*",
+        "Multibuffer.*",
+        "Printer.*",
+        "Shm.*",
+        "Mit.*"
+      ]
+    }
+  ],
   "windows": [
     {"name": "CRIME", "size": "0x1000000", "physical": "0x14000000", "docs": ["CRIME.h", "docs/memory.md", "docs/reset.md"]},
     {"name": "RE", "size": "0x1000000", "physical": "0x15000000", "docs": ["CRIME_RE.h", "MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md", "docs/memory.md"]},
