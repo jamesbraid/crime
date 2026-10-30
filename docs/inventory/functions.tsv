@@ -8047,7 +8047,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6f4c	480	__glim_Enable
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c712c	536	__glim_DisableClientState	dynsym+mdebug	35b4ea63ffd4		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7344	436	__glim_PushClientAttrib	dynsym+mdebug	95af1f168dc6		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c74f8	356	__glim_PopClientAttrib	dynsym+mdebug	86dedadc0105		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7660	276	__glDrawBitmap	dynsym+mdebug	44ef4824dea2		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7660	276	__glDrawBitmap	dynsym+mdebug	44ef4824dea2		in	named-only	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7774	360	__glFastDrawBitmap	dynsym+mdebug	d5ada442b4d8		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c78dc	836	__glRenderBitmap	dynsym+mdebug	9bd131b2a12a		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7c20	316	__glim_Bitmap	dynsym+mdebug	1f9b7d91689b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
@@ -12172,7 +12172,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5010	532	__glim_Enab
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5230	584	__glim_DisableClientState	dwarf+dynsym	f7aecbc0e0cc		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5480	692	__glim_PushClientAttrib	dwarf+dynsym	d8c2d19bdc09		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5740	684	__glim_PopClientAttrib	dwarf+dynsym	5cd2ff8b1c4e		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c59f0	268	__glDrawBitmap	dwarf+dynsym	ab03ecbf236b		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c59f0	268	__glDrawBitmap	dwarf+dynsym	ab03ecbf236b		in	named-only	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5b00	336	__glFastDrawBitmap	dwarf+dynsym	b7c412b0834d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5c50	788	__glRenderBitmap	dwarf+dynsym	9e5b85062377		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5f70	280	__glim_Bitmap	dwarf+dynsym	2e60bfbf392f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
