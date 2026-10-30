@@ -188,34 +188,698 @@ Direct calls that the disassembly labels with the name of a neighbouring symbol 
 
 ### so_capi.c
 
-- `__glim_Color3ub` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three unsigned byte arguments, looking each up in the context's byte-to-float table, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 112 bytes at address 0xd9c8690; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3ubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three unsigned byte values of an array, looking each up in the context's byte-to-float table, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 124 bytes at address 0xd9c8700; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3b` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three signed byte arguments, converting each as twice the value plus one times one over 255, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 140 bytes at address 0xd9c8780; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three signed byte values of an array, converting each as twice the value plus one times one over 255, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 152 bytes at address 0xd9c8810; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three double arguments, narrowing each to single precision, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 88 bytes at address 0xd9c88b0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three double values of an array, narrowing each to single precision, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 100 bytes at address 0xd9c8910; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three signed 32-bit arguments, converting each as twice the value plus one times one over 4294965000, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 136 bytes at address 0xd9c8980; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three signed 32-bit values of an array, converting each as twice the value plus one times one over 4294965000, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 148 bytes at address 0xd9c8a10; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3ui` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three unsigned 32-bit arguments, scaling each by one over 4294965000, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 140 bytes at address 0xd9c8ab0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3uiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three unsigned 32-bit values of an array, scaling each by one over 4294965000, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 152 bytes at address 0xd9c8b40; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three signed 16-bit arguments, converting each as twice the value plus one times one over 65535, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 140 bytes at address 0xd9c8be0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three signed 16-bit values of an array, converting each as twice the value plus one times one over 65535, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 152 bytes at address 0xd9c8c70; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3us` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from three unsigned 16-bit arguments, scaling each by one over 65535, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 116 bytes at address 0xd9c8d10; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color3usv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first three unsigned 16-bit values of an array, scaling each by one over 65535, setting alpha to one, then calls the context's colour-apply procedure from the slot, and it occupies 128 bytes at address 0xd9c8d90; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4ub` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four unsigned byte arguments, looking each up in the context's byte-to-float table, then calls the context's colour-apply procedure from the slot, and it occupies 120 bytes at address 0xd9c8e10; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4ubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four unsigned byte values of an array, looking each up in the context's byte-to-float table, then calls the context's colour-apply procedure from the slot, and it occupies 136 bytes at address 0xd9c8e90; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4b` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four signed byte arguments, converting each as twice the value plus one times one over 255, then calls the context's colour-apply procedure from the slot, and it occupies 156 bytes at address 0xd9c8f20; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four signed byte values of an array, converting each as twice the value plus one times one over 255, then calls the context's colour-apply procedure from the slot, and it occupies 172 bytes at address 0xd9c8fc0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4d` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four double arguments, narrowing each to single precision, then calls the context's colour-apply procedure from the slot, and it occupies 88 bytes at address 0xd9c9070; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four double values of an array, narrowing each to single precision, then calls the context's colour-apply procedure from the slot, and it occupies 104 bytes at address 0xd9c90d0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four signed 32-bit arguments, converting each as twice the value plus one times one over 4294965000, then calls the context's colour-apply procedure from the slot, and it occupies 148 bytes at address 0xd9c9140; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four signed 32-bit values of an array, converting each as twice the value plus one times one over 4294965000, then calls the context's colour-apply procedure from the slot, and it occupies 164 bytes at address 0xd9c91e0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4ui` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four unsigned 32-bit arguments, scaling each by one over 4294965000, then calls the context's colour-apply procedure from the slot, and it occupies 156 bytes at address 0xd9c9290; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4uiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four unsigned 32-bit values of an array, scaling each by one over 4294965000, then calls the context's colour-apply procedure from the slot, and it occupies 172 bytes at address 0xd9c9330; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four signed 16-bit arguments, converting each as twice the value plus one times one over 65535, then calls the context's colour-apply procedure from the slot, and it occupies 156 bytes at address 0xd9c93e0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four signed 16-bit values of an array, converting each as twice the value plus one times one over 65535, then calls the context's colour-apply procedure from the slot, and it occupies 172 bytes at address 0xd9c9480; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4us` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from four unsigned 16-bit arguments, scaling each by one over 65535, then calls the context's colour-apply procedure from the slot, and it occupies 124 bytes at address 0xd9c9530; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
-- `__glim_Color4usv` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour from the first four unsigned 16-bit values of an array, scaling each by one over 65535, then calls the context's colour-apply procedure from the slot, and it occupies 140 bytes at address 0xd9c95b0; the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c holds the routine of the same name, the shipped routine making one call through procedure pointers, the 9 source lines of the shipped routine being of comparable length to the public body's 12, and its body holds no constant address of a board register window and calls no CRIME-specific routine; it does not store the vertex cache's colour-changed flag that the public body sets before the apply call. Inferred.
+- `__glim_Color3ub` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three unsigned byte colour values
+  taken from the argument registers; each unsigned byte is masked or loaded as 0 to 255 and used as
+  a word index into the float lookup table that starts at context offset 0xef0, so no arithmetic is
+  done. The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, one store per component, where the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  makes the call with only the context handed over, leaving out the colour-changed flag that the
+  public body sets. This N32 routine takes a stack frame of 0x10 bytes and stores `$ra` and `$gp` as
+  doublewords, because the calling convention hands over extended values. Its extent is 112 bytes at
+  offset 0xd9c8690 28 instructions long, the N32 body having been matched to `__glim_Color3ub` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3ub` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned byte components taken from the argument registers: each unsigned byte is masked or loaded
+  as 0 to 255 and used as a word index into the float lookup table that starts at context offset
+  0xef0, so no arithmetic is done. The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, taken in program order, and note that the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0
+  and invokes it passing the context, and no colour-changed flag is written, which the public body
+  does. The o32 body opens a 0x20-byte frame and parks `$ra` and `$gp` there, with a spill of 3
+  argument registers to the caller's home area. Its extent is 132 bytes at offset 0xd9ca140 counting
+  33 instructions, and its listing in the o32 build was reduced to store offsets, constant loads and
+  call slots and set beside `__glim_Color3ub` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Color3ubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three unsigned byte colour values
+  read through the pointer argument; each unsigned byte is masked or loaded as 0 to 255 and used as
+  a word index into the float lookup table that starts at context offset 0xef0, so no arithmetic is
+  done. The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, one store per component, while the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  invokes it passing the context, leaving out the colour-changed flag that the public body sets.
+  This N32 routine takes a stack frame of 0x10 bytes and saves `$ra` and `$gp` with 64-bit stores,
+  because the calling convention hands over extended values. Its extent is 124 bytes at offset
+  0xd9c8700 counting 31 instructions, the N32 body having been matched to `__glim_Color3ubv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3ubv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned byte components read through the pointer argument: each unsigned byte is masked or loaded
+  as 0 to 255 and used as a word index into the float lookup table that starts at context offset
+  0xef0, so no arithmetic is done. The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, one store per component, and the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  invokes it passing the context, without the flag store that the public body makes. The o32 body
+  opens a 0x20-byte frame holding `$ra` and `$gp`, since only the pointer arrives. Its extent is 124
+  bytes at offset 0xd9ca1c4 counting 31 instructions, with the o32 build checked through its stores,
+  constants and indirect call against `__glim_Color3ubv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3b` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed byte colour values
+  taken from the argument registers; each byte is sign-extended, doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde0, the 1/255 constant by
+  correspondence with the public byte-to-float rule. The results are written to context offsets
+  0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, with no store reordering, and note that the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0
+  and calls it with the context as the first argument, without the flag store that the public body
+  makes. The N32 body opens a 0x10-byte frame holding `$ra` and `$gp` in 8-byte slots, and takes its
+  arguments already extended, with no spill. Its extent is 140 bytes at offset 0xd9c8780 made of 35
+  instructions, with the N32 build checked through its stores, constants and indirect call against
+  `__glim_Color3b` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color3b` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  byte components taken from the argument registers: each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte-to-float rule. The results are written
+  to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, one store per component, and the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0 and makes the
+  call with only the context handed over, while the public body's colour-changed flag store is
+  absent. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, and then spilling 3
+  argument registers to the caller's home area, plus a shift pair that sign-extends each byte or
+  short argument. It occupies 172 bytes at offset 0xd9ca240 43 instructions long, summarised from
+  the o32 listing by its stores, constant loads and call slot and compared with `__glim_Color3b` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed byte colour values
+  read through the pointer argument; each byte is sign-extended, doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde0, the 1/255 constant by
+  correspondence with the public byte-to-float rule. The results are written to context offsets
+  0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, and note that the fourth word is copied from the
+  constant 1.0 at context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored
+  at context offset 0x2ee0 and invokes it passing the context, leaving out the colour-changed flag
+  that the public body sets. The N32 body opens a 0x10-byte frame and stores `$ra` and `$gp` as
+  doublewords, because the calling convention hands over extended values. The body spans 152 bytes
+  starting at offset 0xd9c8810 counting 38 instructions, the N32 body having been matched to
+  `__glim_Color3bv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and
+  call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color3bv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  byte components read through the pointer argument: each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte-to-float rule. The results are written
+  to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, one store per component, and note that the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context
+  offset 0x2ee0 and calls it with the context as the first argument, leaving out the colour-changed
+  flag that the public body sets. The o32 body opens a 0x20-byte frame saving `$ra` and `$gp` into
+  it, and receives its single pointer argument without a spill. The body spans 168 bytes starting at
+  offset 0xd9ca2ec made of 42 instructions, the o32 body having been matched to `__glim_Color3bv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3d` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three double colour values taken
+  from the argument registers; each double is narrowed to float with no scaling. The results are
+  written to the context at 0x1b8, 0x1b4, 0x1b0 and
+  0x1bc, in the order the code issues them, where the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and jumps there with the context pointer in the first argument register,
+  without the flag store that the public body makes. This N32 routine takes a stack frame of 0x10
+  bytes writing `$ra` and `$gp` with doubleword stores, so nothing is spilled and no extension
+  shifts occur. The routine sits at offset 0xd9c88b0 and is 88 bytes long with 22 instructions in
+  all, with the N32 build checked through its stores, constants and indirect call against
+  `__glim_Color3d` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color3d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three double
+  components taken from the argument registers: each double is narrowed to float with no scaling.
+  The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, and note that the fourth word is copied from the
+  constant 1.0 at context offset 0xdd8. Last of all, the code reaches for context offset 0x2ee0,
+  which holds the apply-colour routine and jumps there with the context pointer in the first
+  argument register, and no colour-changed flag is written, which the public body does. This o32
+  routine takes a stack frame of 0x20 bytes and keeps `$ra` and `$gp` in it, and receives its single
+  pointer argument without a spill. The routine sits at offset 0xd9ca394 and is 92 bytes long with
+  23 instructions in all, and its listing in the o32 build was reduced to store offsets, constant
+  loads and call slots and set beside `__glim_Color3d` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c.
+  It touches no CRIME hardware. Inferred.
+- `__glim_Color3dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three double colour values read
+  through the pointer argument; each double is narrowed to float with no scaling. The results are
+  written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, while the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and calls it with the context as the first argument, leaving out the
+  colour-changed flag that the public body sets. This N32 routine takes a stack frame of 0x10 bytes
+  writing `$ra` and `$gp` with doubleword stores, since arguments arrive in registers that need no
+  home area. The routine sits at offset 0xd9c8910 and is 100 bytes long made of 25 instructions, the
+  N32 body having been matched to `__glim_Color3dv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by
+  its stores, scale constants and call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color3dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three double
+  components read through the pointer argument: each double is narrowed to float with no scaling.
+  The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, and the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and calls it with the context as the first argument, without the flag store
+  that the public body makes. The o32 body opens a 0x20-byte frame holding `$ra` and `$gp`, with
+  nothing else to preserve. The routine sits at offset 0xd9ca3f0 and is 100 bytes long made of 25
+  instructions, with the o32 build checked through its stores, constants and indirect call against
+  `__glim_Color3dv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color3i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed int colour values
+  taken from the argument registers; each integer is converted to float, run through a fused
+  multiply-add that makes twice the value plus one, and multiplied by the scale word at context
+  offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are written to the
+  context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, taken in program order, while the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  jumps there with the context pointer in the first argument register, without the flag store that
+  the public body makes. This N32 routine takes a stack frame of 0x10 bytes and saves `$ra` and
+  `$gp` with 64-bit stores, and takes its arguments already extended, with no spill. Its extent is
+  136 bytes at offset 0xd9c8980 with 34 instructions in all, with the N32 build checked through its
+  stores, constants and indirect call against `__glim_Color3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  int components taken from the argument registers: each integer is converted to float, run through
+  a fused multiply-add that makes twice the value plus one, and multiplied by the scale word at
+  context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, while the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context
+  offset 0x2ee0 and invokes it passing the context, without the flag store that the public body
+  makes. The o32 body opens a 0x20-byte frame saving `$ra` and `$gp` into it, with nothing else to
+  preserve. The body spans 152 bytes starting at offset 0xd9ca454 counting 38 instructions, with the
+  o32 build checked through its stores, constants and indirect call against `__glim_Color3i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed int colour values
+  read through the pointer argument; each integer is converted to float, run through a fused
+  multiply-add that makes twice the value plus one, and multiplied by the scale word at context
+  offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are written to
+  context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, with no store reordering, while the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context offset
+  0x2ee0 and makes the call with only the context handed over, leaving out the colour-changed flag
+  that the public body sets. The N32 body opens a 0x10-byte frame writing `$ra` and `$gp` with
+  doubleword stores, so nothing is spilled and no extension shifts occur. The body spans 148 bytes
+  starting at offset 0xd9c8a10 37 instructions long, the N32 body having been matched to
+  `__glim_Color3iv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and
+  call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color3iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  int components read through the pointer argument: each integer is converted to float, run through
+  a fused multiply-add that makes twice the value plus one, and multiplied by the scale word at
+  context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, and the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context
+  offset 0x2ee0 and jumps there with the context pointer in the first argument register, while the
+  public body's colour-changed flag store is absent. The o32 body opens a 0x20-byte frame saving
+  `$ra` and `$gp` into it, as only one argument arrives. The body spans 164 bytes starting at offset
+  0xd9ca4ec with 41 instructions in all, summarised from the o32 listing by its stores, constant
+  loads and call slot and compared with `__glim_Color3iv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3ui` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from three
+  unsigned int components taken from the argument registers: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; the argument is first
+  zero-extended to 64 bits with a shift pair and converted with the long-integer form. The results
+  are written to context offsets 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, with no store reordering, where the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  calls it with the context as the first argument, leaving out the colour-changed flag that the
+  public body sets. The N32 body opens a 0x10-byte frame holding `$ra` and `$gp` in 8-byte slots,
+  since arguments arrive in registers that need no home area. Its extent is 140 bytes at offset
+  0xd9c8ab0 made of 35 instructions, the N32 body having been matched to `__glim_Color3ui` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3ui` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned int components taken from the argument registers: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; a sign test adds 2^32 (0x4f800000)
+  when the signed conversion came out negative. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1bc and 0x1b8, taken in program order, where the fourth word is copied from the constant
+  1.0 at context offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0
+  and invokes it passing the context, leaving out the colour-changed flag that the public body sets.
+  The o32 body opens a 0x20-byte frame and parks `$ra` and `$gp` there, as only one argument
+  arrives. It occupies 180 bytes at offset 0xd9ca590 counting 45 instructions, the o32 body having
+  been matched to `__glim_Color3ui` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores,
+  scale constants and call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color3uiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from three
+  unsigned int components read through the pointer argument: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; the argument is first
+  zero-extended to 64 bits with a shift pair and converted with the long-integer form. The results
+  are written to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, in the order the code issues them, where the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context
+  offset 0x2ee0 and makes the call with only the context handed over, and no colour-changed flag is
+  written, which the public body does. The N32 body opens a 0x10-byte frame writing `$ra` and `$gp`
+  with doubleword stores, and takes its arguments already extended, with no spill. The body spans
+  152 bytes starting at offset 0xd9c8b40 38 instructions long, and its listing in the N32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Color3uiv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3uiv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned int components read through the pointer argument: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; a sign test adds 2^32 (0x4f800000)
+  when the signed conversion came out negative. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1bc and 0x1b8, taken in program order, while the fourth word is copied from the constant
+  1.0 at context offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0
+  and jumps there with the context pointer in the first argument register, leaving out the
+  colour-changed flag that the public body sets. The o32 body opens a 0x20-byte frame and keeps
+  `$ra` and `$gp` in it, as only one argument arrives. It occupies 188 bytes at offset 0xd9ca644
+  with 47 instructions in all, the o32 body having been matched to `__glim_Color3uiv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed short colour values
+  taken from the argument registers; each short is doubled, incremented by one, converted to float
+  and multiplied by the scale word at context offset 0xde8, the 1/65535 constant by correspondence
+  with the public short rule. The results are written to the context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, taken in program order, and the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  jumps there with the context pointer in the first argument register, and no colour-changed flag is
+  written, which the public body does. The N32 body opens a 0x10-byte frame holding `$ra` and `$gp`
+  in 8-byte slots, so nothing is spilled and no extension shifts occur. Its extent is 140 bytes at
+  offset 0xd9c8be0 with 35 instructions in all, and its listing in the N32 build was reduced to
+  store offsets, constant loads and call slots and set beside `__glim_Color3s` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  short components taken from the argument registers: each short is doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535 constant
+  by correspondence with the public short rule. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1bc and 0x1b8, one store per component, while the fourth word is copied from the constant
+  1.0 at context offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0
+  and makes the call with only the context handed over, without the flag store that the public body
+  makes. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, where it spills 3
+  argument registers to the caller's home area, plus a shift pair that sign-extends each byte or
+  short argument. It occupies 172 bytes at offset 0xd9ca700 43 instructions long, with the o32 build
+  checked through its stores, constants and indirect call against `__glim_Color3s` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes three signed short colour values
+  read through the pointer argument; each short is doubled, incremented by one, converted to float
+  and multiplied by the scale word at context offset 0xde8, the 1/65535 constant by correspondence
+  with the public short rule. The results are written to context offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, with no store reordering, and the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at context offset
+  0x2ee0 and makes the call with only the context handed over, while the public body's
+  colour-changed flag store is absent. The N32 body opens a 0x10-byte frame writing `$ra` and `$gp`
+  with doubleword stores, since arguments arrive in registers that need no home area. The body spans
+  152 bytes starting at offset 0xd9c8c70 38 instructions long, summarised from the N32 listing by
+  its stores, constant loads and call slot and compared with `__glim_Color3sv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three signed
+  short components read through the pointer argument: each short is doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535 constant
+  by correspondence with the public short rule. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1bc and 0x1b8, one store per component, where the fourth word is copied from the constant
+  1.0 at context offset 0xdd8. Last of all, control goes to the apply-colour pointer stored at
+  context offset 0x2ee0 and jumps there with the context pointer in the first argument register, and
+  no colour-changed flag is written, which the public body does. The o32 body opens a 0x20-byte
+  frame saving `$ra` and `$gp` into it, since only the pointer arrives. The body spans 168 bytes
+  starting at offset 0xd9ca7ac with 42 instructions in all, and its listing in the o32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Color3sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3us` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from three
+  unsigned short components taken from the argument registers: each unsigned short is converted to
+  float and multiplied by the same 1/65535 scale word at context offset 0xde8, with no doubling or
+  increment. The results are written to the context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, one store per component, and note that the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0
+  and makes the call with only the context handed over, without the flag store that the public body
+  makes. This N32 routine takes a stack frame of 0x10 bytes and stores `$ra` and `$gp` as
+  doublewords, so nothing is spilled and no extension shifts occur. Its extent is 116 bytes at
+  offset 0xd9c8d10 29 instructions long, with the N32 build checked through its stores, constants
+  and indirect call against `__glim_Color3us` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Color3us` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned short components taken from the argument registers: each unsigned short is masked to 16
+  bits, converted to float and multiplied by the same 1/65535 scale word at context offset 0xde8,
+  with no doubling or increment, and the o32 code follows the conversion with a sign test that would
+  add 2^32 (0x4f800000), which a 16-bit value never triggers. The results are written to context
+  offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, taken in program order, and the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0 and jumps there
+  with the context pointer in the first argument register, and no colour-changed flag is written,
+  which the public body does. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it,
+  and then spilling 3 argument registers to the caller's home area. It occupies 196 bytes at offset
+  0xd9ca854 with 49 instructions in all, and its listing in the o32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_Color3us` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color3usv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from three
+  unsigned short components read through the pointer argument: each unsigned short is converted to
+  float and multiplied by the same 1/65535 scale word at context offset 0xde8, with no doubling or
+  increment. The results are written to the context at 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, taken in program order, where the fourth word is copied from the constant 1.0 at context
+  offset 0xdd8. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  invokes it passing the context, while the public body's colour-changed flag store is absent. This
+  N32 routine takes a stack frame of 0x10 bytes and saves `$ra` and `$gp` with 64-bit stores, so
+  nothing is spilled and no extension shifts occur. Its extent is 128 bytes at offset 0xd9c8d90
+  counting 32 instructions, summarised from the N32 listing by its stores, constant loads and call
+  slot and compared with `__glim_Color3usv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color3usv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from three
+  unsigned short components read through the pointer argument: each unsigned short is masked to 16
+  bits, converted to float and multiplied by the same 1/65535 scale word at context offset 0xde8,
+  with no doubling or increment, and the o32 code follows the conversion with a sign test that would
+  add 2^32 (0x4f800000), which a 16-bit value never triggers. The results are written to context
+  offsets 0x1b0, 0x1b4, 0x1bc and
+  0x1b8, taken in program order, and note that the fourth word is copied from the constant 1.0 at
+  context offset 0xdd8. Last of all, the routine loads the pointer at context offset 0x2ee0 and
+  invokes it passing the context, and no colour-changed flag is written, which the public body does.
+  The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, with nothing else to
+  preserve. It occupies 188 bytes at offset 0xd9ca918 counting 47 instructions, and its listing in
+  the o32 build was reduced to store offsets, constant loads and call slots and set beside
+  `__glim_Color3usv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4ub` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four unsigned byte colour values
+  taken from the argument registers; each unsigned byte is masked or loaded as 0 to 255 and used as
+  a word index into the float lookup table that starts at context offset 0xef0, so no arithmetic is
+  done. The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, one store per component, where the fourth component is converted exactly as the first three
+  are. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and makes the
+  call with only the context handed over, while the public body's colour-changed flag store is
+  absent. This N32 routine takes a stack frame of 0x10 bytes and stores `$ra` and `$gp` as
+  doublewords, since arguments arrive in registers that need no home area. Its extent is 120 bytes
+  at offset 0xd9c8e10 30 instructions long, summarised from the N32 listing by its stores, constant
+  loads and call slot and compared with `__glim_Color4ub` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4ub` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four unsigned
+  byte components taken from the argument registers: each unsigned byte is masked or loaded as 0 to
+  255 and used as a word index into the float lookup table that starts at context offset 0xef0, so
+  no arithmetic is done. The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, taken in program order, while the fourth component is converted exactly as the first three
+  are. Last of all, control goes to the apply-colour pointer stored at context offset 0x2ee0 and
+  makes the call with only the context handed over, without the flag store that the public body
+  makes. The o32 body opens a 0x20-byte frame and parks `$ra` and `$gp` there, and it spills 4
+  argument registers to the caller's home area. The body spans 148 bytes starting at offset
+  0xd9ca9d4 37 instructions long, with the o32 build checked through its stores, constants and
+  indirect call against `__glim_Color4ub` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color4ubv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four unsigned byte colour values
+  read through the pointer argument; each unsigned byte is masked or loaded as 0 to 255 and used as
+  a word index into the float lookup table that starts at context offset 0xef0, so no arithmetic is
+  done. The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, one store per component, while the fourth component is converted exactly as the first three
+  are. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and jumps there
+  with the context pointer in the first argument register, leaving out the colour-changed flag that
+  the public body sets. This N32 routine takes a stack frame of 0x10 bytes and saves `$ra` and `$gp`
+  with 64-bit stores, since arguments arrive in registers that need no home area. Its extent is 136
+  bytes at offset 0xd9c8e90 with 34 instructions in all, the N32 body having been matched to
+  `__glim_Color4ubv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and
+  call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color4ubv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four
+  unsigned byte components read through the pointer argument: each unsigned byte is masked or loaded
+  as 0 to 255 and used as a word index into the float lookup table that starts at context offset
+  0xef0, so no arithmetic is done. The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, taken in program order, where the fourth component is converted exactly as the first three
+  are. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and calls it with
+  the context as the first argument, while the public body's colour-changed flag store is absent.
+  The o32 body opens a 0x20-byte frame holding `$ra` and `$gp`, and receives its single pointer
+  argument without a spill. Its extent is 140 bytes at offset 0xd9caa68 made of 35 instructions,
+  summarised from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Color4ubv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4b` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed byte colour values
+  taken from the argument registers; each byte is sign-extended, doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde0, the 1/255 constant by
+  correspondence with the public byte-to-float rule. The results are written to context offsets
+  0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, with no store reordering, and note that the fourth component is converted exactly as the
+  first three are. Last of all, control goes to the apply-colour pointer stored at context offset
+  0x2ee0 and jumps there with the context pointer in the first argument register, leaving out the
+  colour-changed flag that the public body sets. The N32 body opens a 0x10-byte frame and stores
+  `$ra` and `$gp` as doublewords, and takes its arguments already extended, with no spill. The body
+  spans 156 bytes starting at offset 0xd9c8f20 with 39 instructions in all, the N32 body having been
+  matched to `__glim_Color4b` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale
+  constants and call slot. It touches no CRIME hardware. Inferred.
+- `__glim_Color4b` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  byte components taken from the argument registers: each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte-to-float rule. The results are written
+  to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, one store per component, and the fourth component is converted exactly as the first three
+  are. Last of all, the routine loads the pointer at context offset 0x2ee0 and jumps there with the
+  context pointer in the first argument register, while the public body's colour-changed flag store
+  is absent. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, and it spills 4
+  argument registers to the caller's home area, plus a shift pair that sign-extends each byte or
+  short argument. It occupies 196 bytes at offset 0xd9caaf4 with 49 instructions in all, summarised
+  from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Color4b` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4bv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed byte colour values
+  read through the pointer argument; each byte is sign-extended, doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde0, the 1/255 constant by
+  correspondence with the public byte-to-float rule. The results are written to context offsets
+  0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, and note that the fourth component is converted exactly
+  as the first three are. Last of all, control goes to the apply-colour pointer stored at context
+  offset 0x2ee0 and calls it with the context as the first argument, and no colour-changed flag is
+  written, which the public body does. The N32 body opens a 0x10-byte frame and saves `$ra` and
+  `$gp` with 64-bit stores, and takes its arguments already extended, with no spill. The body spans
+  172 bytes starting at offset 0xd9c8fc0 made of 43 instructions, and its listing in the N32 build
+  was reduced to store offsets, constant loads and call slots and set beside `__glim_Color4bv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4bv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  byte components read through the pointer argument: each byte is sign-extended, doubled,
+  incremented by one, converted to float and multiplied by the scale word at context offset 0xde0,
+  the 1/255 constant by correspondence with the public byte-to-float rule. The results are written
+  to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, one store per component, and note that the fourth component is converted exactly as the
+  first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and invokes
+  it passing the context, while the public body's colour-changed flag store is absent. The o32 body
+  opens a 0x20-byte frame and parks `$ra` and `$gp` there, and receives its single pointer argument
+  without a spill. It occupies 188 bytes at offset 0xd9cabb8 counting 47 instructions, summarised
+  from the o32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Color4bv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4d` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four double colour values taken
+  from the argument registers; each double is narrowed to float with no scaling. The results are
+  written to the context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, in the order the code issues them, where the fourth component is converted exactly as the
+  first three are. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and jumps there with the context pointer in the first argument register,
+  leaving out the colour-changed flag that the public body sets. This N32 routine takes a stack
+  frame of 0x10 bytes writing `$ra` and `$gp` with doubleword stores, because the calling convention
+  hands over extended values. The routine sits at offset 0xd9c9070 and is 88 bytes long with 22
+  instructions in all, the N32 body having been matched to `__glim_Color4d` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color4d` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four double
+  components taken from the argument registers: each double is narrowed to float with no scaling.
+  The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, and note that the fourth component is converted exactly
+  as the first three are. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and jumps there with the context pointer in the first argument register,
+  while the public body's colour-changed flag store is absent. This o32 routine takes a stack frame
+  of 0x20 bytes and keeps `$ra` and `$gp` in it, since only the pointer arrives. The routine sits at
+  offset 0xd9cac74 and is 92 bytes long with 23 instructions in all, summarised from the o32 listing
+  by its stores, constant loads and call slot and compared with `__glim_Color4d` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4dv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four double colour values read
+  through the pointer argument; each double is narrowed to float with no scaling. The results are
+  written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, while the fourth component is converted exactly as the
+  first three are. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and calls it with the context as the first argument, while the public body's
+  colour-changed flag store is absent. This N32 routine takes a stack frame of 0x10 bytes writing
+  `$ra` and `$gp` with doubleword stores, and takes its arguments already extended, with no spill.
+  The routine sits at offset 0xd9c90d0 and is 104 bytes long made of 26 instructions, summarised
+  from the N32 listing by its stores, constant loads and call slot and compared with
+  `__glim_Color4dv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4dv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four double
+  components read through the pointer argument: each double is narrowed to float with no scaling.
+  The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, and the fourth component is converted exactly as the
+  first three are. Last of all, the code reaches for context offset 0x2ee0, which holds the
+  apply-colour routine and calls it with the context as the first argument, and no colour-changed
+  flag is written, which the public body does. The o32 body opens a 0x20-byte frame holding `$ra`
+  and `$gp`, as only one argument arrives. The routine sits at offset 0xd9cacd0 and is 108 bytes
+  long made of 27 instructions, and its listing in the o32 build was reduced to store offsets,
+  constant loads and call slots and set beside `__glim_Color4dv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4i` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed int colour values taken
+  from the argument registers; each integer is converted to float, run through a fused multiply-add
+  that makes twice the value plus one, and multiplied by the scale word at context offset 0xdf0, the
+  1/4294965000 constant of the public integer rule. The results are written to the context at 0x1bc,
+  0x1b8, 0x1b4 and 0x1b0, taken in program order, and note that the fourth component is converted
+  exactly as the first three are. Last of all, it fetches the apply-colour routine from context
+  offset 0x2ee0 and calls it with the context as the first argument, and no colour-changed flag is
+  written, which the public body does. The N32 body opens a 0x10-byte frame writing `$ra` and `$gp`
+  with doubleword stores, because the calling convention hands over extended values. Its extent is
+  148 bytes at offset 0xd9c9140 made of 37 instructions, and its listing in the N32 build was
+  reduced to store offsets, constant loads and call slots and set beside `__glim_Color4i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4i` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  int components taken from the argument registers: each integer is converted to float, run through
+  a fused multiply-add that makes twice the value plus one, and multiplied by the scale word at
+  context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, while the fourth component is converted exactly as the
+  first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and makes the
+  call with only the context handed over, leaving out the colour-changed flag that the public body
+  sets. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, where it spills 1
+  argument registers to the caller's home area. It occupies 172 bytes at offset 0xd9cad3c 43
+  instructions long, the o32 body having been matched to `__glim_Color4i` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color4iv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed int colour values read
+  through the pointer argument; each integer is converted to float, run through a fused multiply-add
+  that makes twice the value plus one, and multiplied by the scale word at context offset 0xdf0, the
+  1/4294965000 constant of the public integer rule. The results are written to context offsets
+  0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, with no store reordering, while the fourth component is converted exactly as the first
+  three are. Last of all, control goes to the apply-colour pointer stored at context offset 0x2ee0
+  and jumps there with the context pointer in the first argument register, without the flag store
+  that the public body makes. The N32 body opens a 0x10-byte frame and saves `$ra` and `$gp` with
+  64-bit stores, because the calling convention hands over extended values. The body spans 164 bytes
+  starting at offset 0xd9c91e0 with 41 instructions in all, with the N32 build checked through its
+  stores, constants and indirect call against `__glim_Color4iv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4iv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  int components read through the pointer argument: each integer is converted to float, run through
+  a fused multiply-add that makes twice the value plus one, and multiplied by the scale word at
+  context offset 0xdf0, the 1/4294965000 constant of the public integer rule. The results are
+  written to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, and the fourth component is converted exactly as the
+  first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and makes the
+  call with only the context handed over, and no colour-changed flag is written, which the public
+  body does. The o32 body opens a 0x20-byte frame and parks `$ra` and `$gp` there, with nothing else
+  to preserve. It occupies 180 bytes at offset 0xd9cade8 45 instructions long, and its listing in
+  the o32 build was reduced to store offsets, constant loads and call slots and set beside
+  `__glim_Color4iv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4ui` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from four
+  unsigned int components taken from the argument registers: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; the argument is first
+  zero-extended to 64 bits with a shift pair and converted with the long-integer form. The results
+  are written to context offsets 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, with no store reordering, where the fourth component is converted exactly as the first
+  three are. Last of all, control goes to the apply-colour pointer stored at context offset 0x2ee0
+  and invokes it passing the context, and no colour-changed flag is written, which the public body
+  does. The N32 body opens a 0x10-byte frame and stores `$ra` and `$gp` as doublewords, since
+  arguments arrive in registers that need no home area. The body spans 156 bytes starting at offset
+  0xd9c9290 counting 39 instructions, and its listing in the N32 build was reduced to store offsets,
+  constant loads and call slots and set beside `__glim_Color4ui` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4ui` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four unsigned
+  int components taken from the argument registers: each unsigned integer is converted to float and
+  multiplied by the scale word at context offset 0xdf0; a sign test adds 2^32 (0x4f800000) when the
+  signed conversion came out negative. The results are written to context offsets 0x1b0, 0x1b4,
+  0x1b8 and 0x1bc, taken in program order, where the fourth component is converted exactly as the
+  first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and calls it
+  with the context as the first argument, leaving out the colour-changed flag that the public body
+  sets. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, with a spill of 1
+  argument registers to the caller's home area. It occupies 208 bytes at offset 0xd9cae9c made of 52
+  instructions, the o32 body having been matched to `__glim_Color4ui` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c by its stores, scale constants and call slot. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color4uiv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from four
+  unsigned int components read through the pointer argument: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; the argument is first
+  zero-extended to 64 bits with a shift pair and converted with the long-integer form. The results
+  are written to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, in the order the code issues them, where the fourth component is converted exactly as the
+  first three are. Last of all, control goes to the apply-colour pointer stored at context offset
+  0x2ee0 and calls it with the context as the first argument, while the public body's colour-changed
+  flag store is absent. The N32 body opens a 0x10-byte frame and saves `$ra` and `$gp` with 64-bit
+  stores, since arguments arrive in registers that need no home area. The body spans 172 bytes
+  starting at offset 0xd9c9330 made of 43 instructions, summarised from the N32 listing by its
+  stores, constant loads and call slot and compared with `__glim_Color4uiv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4uiv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four
+  unsigned int components read through the pointer argument: each unsigned integer is converted to
+  float and multiplied by the scale word at context offset 0xdf0; a sign test adds 2^32 (0x4f800000)
+  when the signed conversion came out negative. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1b8 and 0x1bc, taken in program order, while the fourth component is converted exactly as
+  the first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and calls
+  it with the context as the first argument, while the public body's colour-changed flag store is
+  absent. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, and receives its
+  single pointer argument without a spill. It occupies 220 bytes at offset 0xd9caf6c made of 55
+  instructions, summarised from the o32 listing by its stores, constant loads and call slot and
+  compared with `__glim_Color4uiv` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Color4s` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed short colour values
+  taken from the argument registers; each short is doubled, incremented by one, converted to float
+  and multiplied by the scale word at context offset 0xde8, the 1/65535 constant by correspondence
+  with the public short rule. The results are written to the context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, taken in program order, and the fourth component is converted exactly as the first three
+  are. Last of all, control goes to the apply-colour pointer stored at context offset 0x2ee0 and
+  invokes it passing the context, while the public body's colour-changed flag store is absent. The
+  N32 body opens a 0x10-byte frame and stores `$ra` and `$gp` as doublewords, so nothing is spilled
+  and no extension shifts occur. The body spans 156 bytes starting at offset 0xd9c93e0 counting 39
+  instructions, summarised from the N32 listing by its stores, constant loads and call slot and
+  compared with `__glim_Color4s` of ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME
+  hardware. Inferred.
+- `__glim_Color4s` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  short components taken from the argument registers: each short is doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535 constant
+  by correspondence with the public short rule. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1b8 and 0x1bc, one store per component, while the fourth component is converted exactly
+  as the first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and
+  jumps there with the context pointer in the first argument register, without the flag store that
+  the public body makes. The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, with
+  a spill of 4 argument registers to the caller's home area, plus a shift pair that sign-extends
+  each byte or short argument. It occupies 196 bytes at offset 0xd9cb048 with 49 instructions in
+  all, with the o32 build checked through its stores, constants and indirect call against
+  `__glim_Color4s` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware.
+  Inferred.
+- `__glim_Color4sv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Takes four signed short colour values
+  read through the pointer argument; each short is doubled, incremented by one, converted to float
+  and multiplied by the scale word at context offset 0xde8, the 1/65535 constant by correspondence
+  with the public short rule. The results are written to context offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, with no store reordering, and the fourth component is converted exactly as the first three
+  are. Last of all, control goes to the apply-colour pointer stored at context offset 0x2ee0 and
+  calls it with the context as the first argument, without the flag store that the public body
+  makes. The N32 body opens a 0x10-byte frame and saves `$ra` and `$gp` with 64-bit stores, so
+  nothing is spilled and no extension shifts occur. The body spans 172 bytes starting at offset
+  0xd9c9480 made of 43 instructions, with the N32 build checked through its stores, constants and
+  indirect call against `__glim_Color4sv` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches
+  no CRIME hardware. Inferred.
+- `__glim_Color4sv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four signed
+  short components read through the pointer argument: each short is doubled, incremented by one,
+  converted to float and multiplied by the scale word at context offset 0xde8, the 1/65535 constant
+  by correspondence with the public short rule. The results are written to context offsets 0x1b0,
+  0x1b4, 0x1b8 and 0x1bc, one store per component, where the fourth component is converted exactly
+  as the first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and
+  invokes it passing the context, without the flag store that the public body makes. The o32 body
+  opens a 0x20-byte frame and parks `$ra` and `$gp` there, since only the pointer arrives. It
+  occupies 188 bytes at offset 0xd9cb10c counting 47 instructions, with the o32 build checked
+  through its stores, constants and indirect call against `__glim_Color4sv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4us` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from four
+  unsigned short components taken from the argument registers: each unsigned short is converted to
+  float and multiplied by the same 1/65535 scale word at context offset 0xde8, with no doubling or
+  increment. The results are written to the context at 0x1bc, 0x1b8, 0x1b4 and
+  0x1b0, one store per component, and note that the fourth component is converted exactly as the
+  first three are. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and
+  makes the call with only the context handed over, and no colour-changed flag is written, which the
+  public body does. This N32 routine takes a stack frame of 0x10 bytes and stores `$ra` and `$gp` as
+  doublewords, and takes its arguments already extended, with no spill. Its extent is 124 bytes at
+  offset 0xd9c9530 31 instructions long, and its listing in the N32 build was reduced to store
+  offsets, constant loads and call slots and set beside `__glim_Color4us` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4us` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four unsigned
+  short components taken from the argument registers: each unsigned short is masked to 16 bits,
+  converted to float and multiplied by the same 1/65535 scale word at context offset 0xde8, with no
+  doubling or increment, and the o32 code follows the conversion with a sign test that would add
+  2^32 (0x4f800000), which a 16-bit value never triggers. The results are written to context offsets
+  0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, taken in program order, and the fourth component is converted exactly as the first three
+  are. Last of all, the routine loads the pointer at context offset 0x2ee0 and calls it with the
+  context as the first argument, and no colour-changed flag is written, which the public body does.
+  The o32 body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, and it spills 4 argument
+  registers to the caller's home area. It occupies 232 bytes at offset 0xd9cb1c8 made of 58
+  instructions, and its listing in the o32 build was reduced to store offsets, constant loads and
+  call slots and set beside `__glim_Color4us` in ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It
+  touches no CRIME hardware. Inferred.
+- `__glim_Color4usv` in usr/gfx/arch/IP32CRM32/libGLcore.so: Sets the current colour from four
+  unsigned short components read through the pointer argument: each unsigned short is converted to
+  float and multiplied by the same 1/65535 scale word at context offset 0xde8, with no doubling or
+  increment. The results are written to the context at 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, one store per component, and the fourth component is converted exactly as the first three
+  are. Last of all, it fetches the apply-colour routine from context offset 0x2ee0 and jumps there
+  with the context pointer in the first argument register, while the public body's colour-changed
+  flag store is absent. The N32 body opens a 0x10-byte frame holding `$ra` and `$gp` in 8-byte
+  slots, because the calling convention hands over extended values. Its extent is 140 bytes at
+  offset 0xd9c95b0 with 35 instructions in all, summarised from the N32 listing by its stores,
+  constant loads and call slot and compared with `__glim_Color4usv` of
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
+- `__glim_Color4usv` in usr/gfx/arch/IP32CRM/libGLcore.so: Sets the current colour from four
+  unsigned short components read through the pointer argument: each unsigned short is masked to 16
+  bits, converted to float and multiplied by the same 1/65535 scale word at context offset 0xde8,
+  with no doubling or increment, and the o32 code follows the conversion with a sign test that would
+  add 2^32 (0x4f800000), which a 16-bit value never triggers. The results are written to context
+  offsets 0x1b0, 0x1b4, 0x1b8 and
+  0x1bc, taken in program order, and note that the fourth component is converted exactly as the
+  first three are. Last of all, the routine loads the pointer at context offset 0x2ee0 and calls it
+  with the context as the first argument, without the flag store that the public body makes. The o32
+  body opens a 0x20-byte frame and keeps `$ra` and `$gp` in it, since only the pointer arrives. It
+  occupies 220 bytes at offset 0xd9cb2b0 made of 55 instructions, with the o32 build checked through
+  its stores, constants and indirect call against `__glim_Color4usv` in
+  ogl-sample/gfx/lib/opengl/glcore/s_capi.c. It touches no CRIME hardware. Inferred.
 - `__glim_Indexd` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from a double by narrowing it to single precision and storing it in the context's current-colour-index word, and it occupies 16 bytes at address 0xd9c9640; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine narrows and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_Indexf` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from a float by storing it in the context's current-colour-index word, and it occupies 12 bytes at address 0xd9c9650; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine makes the one store and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
 - `__glim_Indexi` in usr/gfx/arch/IP32CRM32/libGLcore.so: sets the current colour index from an integer by converting it to float and storing it in the context's current-colour-index word, and it occupies 20 bytes at address 0xd9c9660; read in full against the public sample-implementation source gfx/lib/opengl/glcore/s_capi.c, differs from the public body, which also marks the vertex cache's colour as changed: the shipped routine converts and stores and sets no flag, and its body holds no constant address of a board register window and calls no CRIME-specific routine. Established.
