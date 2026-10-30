@@ -1,12 +1,7 @@
 table	rows	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address
 binaries	82	5	0	5	0	0	76	1	0	6.1	6.1	98.8	6.1							0		
-<<<<<<< Updated upstream
-functions	17280	1241	3	1172	1523	4108	1946	9985	0	7.2	31.0	42.2	7.2			100.0	10	2026-10-30		0	62	351
-functions (distinct names)	11726	1177	2	1172	954	2131	977	7441	0	10.0	28.2	36.5	10.0							0		
-=======
-functions	17280	1233	3	1165	1523	4120	1942	9985	0	7.1	31.0	42.2	7.1			91.4	35	2026-10-29		0	62	351
-functions (distinct names)	11726	1169	2	1165	954	2141	975	7441	0	10.0	28.2	36.5	10.0							0		
->>>>>>> Stashed changes
+functions	17280	1241	3	1173	1523	4108	1946	9985	0	7.2	31.0	42.2	7.2			100.0	10	2026-10-30		0	62	351
+functions (distinct names)	11726	1177	2	1173	954	2131	977	7441	0	10.0	28.2	36.5	10.0							0		
 mmio	162	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0		
 tokens	83	44	0	41	0	0	0	39	0	53.0	53.0	53.0	53.0			90.0	10	2026-10-29		0		
 ioctls	42	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0		
