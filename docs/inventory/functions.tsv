@@ -6430,7 +6430,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9344d0	68	__glValidateVe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934514	68	__glValidateVertex4Clip	dynsym+mdebug	e670bc0e2b81		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934560	136	__glClampAndScaleColor	dynsym+mdebug	6756dcf65bb3		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9345e8	452	__glFastCalcRGBColor	dynsym+mdebug	84ede7a3f478		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9347ac	10608	vvec	mdebug	a965a469cc01	multi-unit	in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9347ac	10608	vvec	mdebug	a965a469cc01	multi-unit	in	named-only	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934878	960	__glCalcRGBColor	dynsym+mdebug	d3eb2b594571		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934c40	236	__glCrmFlatTriangle	dynsym+mdebug	753cfe20b694		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934d2c	412	__glCrmFlatZTriangle	dynsym+mdebug	668ba30e8bbe		in	understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
@@ -10555,7 +10555,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935cf0	68	__glValidate
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935d34	68	__glValidateVertex4Clip	dwarf+dynsym	fb0fbf677c84		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935d80	136	__glClampAndScaleColor	dwarf+dynsym	d41f69f16232		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935e08	420	__glFastCalcRGBColor	dwarf+dynsym	b738cd30f3d1		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd935fac	204	vvec	dwarf+funcnames	6f2be3b807b9	multi-unit	in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd935fac	204	vvec	dwarf+funcnames	6f2be3b807b9	multi-unit	in	named-only	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936078	912	__glCalcRGBColor	dwarf+dynsym	658e2f6c48e7		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936410	232	__glCrmFlatTriangle	dwarf+dynsym	441a1271a518		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9364f8	408	__glCrmFlatZTriangle	dwarf+dynsym	8824066e3a4e		in	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
@@ -12540,7 +12540,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4de0	424	__glFastCal
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4f90	88	__glFogCIColor	dwarf+dynsym	9edb27b6608d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e4ff0	156	__glFogLitCIColor	dwarf+dynsym	c96237de0cb2		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5090	148	__glChangeOneMaterialColor	dwarf+dynsym	cac905cd474c		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5130	168	__glChangeBothMaterialColors	dwarf+dynsym	1158000790d7		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e5130	168	__glChangeBothMaterialColors	dwarf+dynsym	1158000790d7		in	understood	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e51e0	348	ComputeMaterialState	dwarf+funcnames	c5010109aa0e		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5340	744	ComputeLightState	dwarf+funcnames	7236b6fa203e		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9e5630	296	ComputeLightProcs	dwarf+funcnames	af2ea57629a4		in	located	docs/sample-implementation.md#so_lightingc	so_lighting.c
