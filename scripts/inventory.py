@@ -208,6 +208,9 @@ FIELD_LIST = re.compile(r'\bbits?(?:\s+positions?)?\b\s*:?\s*\[?' + _RANGE + r'\
                         re.I)
 NUMLIST = re.compile(r'\b(?:0[xX][0-9a-fA-F]+|\d+)\b(?:\s*(?:,|;|\band\b|\bor\b)\s*\b(?:0[xX][0-9a-fA-F]+|\d+)\b)+')
 ADDRESS_HEAD = ('offset', 'address', 'addr', 'entry', 'record')
+IDENTITY_HEAD = ('address', 'addr', 'offset', 'slot', 'index', 'idx', 'entry', 'record', 'routine', 'ioctl',
+                 'request', 'row', 'number', 'no.', '#')   # a column of a data table that says where the row is
+DATA_CELL_WORDS = 5    # a cell of a data table holds a value, not a sentence: at most this many words
 NUMBER_HEAD = ('ioctl', 'entry', 'record', 'routine', 'slot', 'request')
 LEAD = re.compile(r'^\s*(?:(?:[-*+]|\d+\.)\s+)?[*_]*')
 
@@ -280,11 +283,60 @@ def row_subject(text, head):
     return ''
 
 
-def own_values(cells):
+def split_cells(text):
+    return [c.strip() for c in bare_text(text).strip().strip('|').split('|')]
+
+
+def value_cell(cell):
+    """The normalised text of a table cell that holds a decoded value: short, with a digit or a code
+    span in it (`60`, `0x2bdc`, `1280x1624`, `20 states`, `table at 0x2bdc`). '' for a cell that is
+    empty, a dash, or text."""
+    c = re.sub(r'[*_]+', '', cell.strip())
+    if not c or re.fullmatch(r'[-\u2013\u2014 ]*', c):
+        return ''
+    if len(c.split()) > DATA_CELL_WORDS or re.search(r'[.!?;:]\s', c):
+        return ''
+    if re.search(r'\d', c) or '`' in c:
+        return c.replace('`', '')
+    return ''
+
+
+def data_row(text, head, subj):
+    """The decoded values a row of a structured data table states, as {(column, value)}, or None when
+    the row is not one. A data table's rows are mostly values: at least MIN_DATA of the row's cells hold
+    one and they are at least half of its cells. The subject's cell and the columns headed address,
+    offset, slot or index say where the row is, not what it holds, so they give no value and do not count."""
+    cells = split_cells(text)
+    if not head or not text.strip().startswith('|') or all(re.fullmatch(r':?-{2,}:?|', c) for c in cells):
+        return None
+    sk = None
+    for k, c in enumerate(cells):
+        if cell_unit(c, head[k] if k < len(head) else ''):
+            sk = k
+            break
+    vals, other = set(), 0
+    for k, c in enumerate(cells):
+        h = head[k] if k < len(head) else ''
+        if k == sk or any(w in h for w in IDENTITY_HEAD) or not re.sub(r'[*_`\s]+', '', c):
+            continue
+        v = value_cell(c)
+        if v:
+            vals.add((k, v))
+        else:
+            other += 1
+    if len(vals) < MIN_DATA or 2 * len(vals) < len(vals) + other:
+        return None
+    return vals
+
+
+def own_values(cells, head=None, data=False):
     """The numbers a table row's own cells hold by themselves: its address, slot or index. They say
     where the row's subject is, so they are its identity, not a derivation of it."""
     own = set()
-    for c in cells or ():
+    for k, c in enumerate(cells or ()):
+        h = head[k] if head and k < len(head) else ''
+        if data and not any(w in h for w in IDENTITY_HEAD):
+            continue
         m = re.fullmatch(r'[*_`]*\+?(?:0[xX]([0-9a-fA-F]+)|(\d+))[*_`]*', c.strip())
         if m:
             v = int(m.group(1), 16) if m.group(1) else int(m.group(2))
@@ -353,9 +405,22 @@ def open_split(text):
     return '|'.join(cells), dropped
 
 
-def stated(text, subj, own):
+def row_items(text, subj, own, head):
+    """The items an entry states about its subject. A row of a structured data table gets one item per
+    cell that holds a decoded value (a pure integer included), unless the column says where the row is;
+    the rest of the row is read as before."""
+    vals = data_row(text, head, subj)
+    if vals is None:
+        return data_items(text, subj, own)
+    cells = split_cells(text)
+    keep = ['' if any(k == c for c, v in vals) else cells[k] for k in range(len(cells))]
+    own = own_values(cells, head, True)
+    return data_items('|'.join(' %s ' % c for c in keep), subj, own) | {('cell', k, v) for k, v in vals}
+
+
+def stated(text, subj, own, head=None):
     return bool(LABEL.search(text) and len(role_words(text, subj)) >= MIN_ROLE_WORDS
-                and len(data_items(text, subj, own)) >= MIN_DATA)
+                and len(row_items(text, subj, own, head)) >= MIN_DATA)
 
 
 def computes(text):
@@ -382,10 +447,10 @@ def classify(text, subj=frozenset(), head=None):
     if UNKNOWN.search(t):
         rest, dropped = open_split(t)
         if (not any(ROLE_UNKNOWN.search(d) for d in dropped) and item_cite(rest, subj, own)
-                and stated(rest, subj, own)):
+                and stated(rest, subj, own, head)):
             return 'understood', True
         return ('located' if LOCATED.search(t) else 'named-only'), False
-    if stated(t, subj, own):
+    if stated(t, subj, own, head):
         return 'understood', False
     return 'named-only', False
 
@@ -417,13 +482,25 @@ def sentences(text):
     return out
 
 
+def sentence_cells(text):
+    """(sentence, short) for each sentence of an entry: short is True for a sentence of a cell that is no
+    more than a label or value (DATA_CELL_WORDS words)."""
+    out = []
+    for cell in bare_text(text).split('|'):
+        short = len(re.sub(r'[*_`]+', '', cell).split()) <= DATA_CELL_WORDS
+        for sent in re.split(r'(?<=[.!?;])\s+', cell.strip()):
+            if sent.strip():
+                out.append((sent.strip(), short))
+    return out
+
+
 class Entry:
     """One table row, list item, paragraph or header comment, with what it earns."""
     __slots__ = ('text', 'level', 'skel', 'capped', 'nsd_capped', 'keys', 'subj', 'sents', 'nsd_sents',
-                 'open', 'computes')
+                 'open', 'computes', 'data')
 
-    def __init__(self, text, level, subj=frozenset(), open_=False):
-        self.text, self.level, self.subj, self.open = text, level, subj, open_
+    def __init__(self, text, level, subj=frozenset(), open_=False, data=False):
+        self.text, self.level, self.subj, self.open, self.data = text, level, subj, open_, data
         self.computes = level == 'understood' and computes(open_split(text)[0] if open_ else bare_text(text))
         self.skel = skeleton(text)
         self.capped = self.nsd_capped = False
@@ -431,17 +508,21 @@ class Entry:
         # (skeleton, role words) of each sentence long enough to state anything; the sentences that
         # say no software depends on a fact are counted apart, for the no-dependency status
         self.sents, self.nsd_sents = [], []
-        for sent in sentences(text):
+        for sent, short in sentence_cells(text):
             if NSD_PHRASE.search(sent):
                 self.nsd_sents.append(skeleton(sent))
             elif open_ and UNKNOWN.search(sent):
                 continue                  # an open sub-fact is not one of the entry's role sentences
             elif plain_words(sent) >= 3:
-                self.sents.append((skeleton(sent), len(role_words(sent, subj))))
+                # the short cells of a data-table row still give their role words, but no skeleton of theirs is counted
+                self.sents.append((None if data and short else skeleton(sent), len(role_words(sent, subj))))
 
     def cap(self, count):
         """True when too much of the entry is a sentence that more than TEMPLATE_CAP entries share:
-        most of its sentences are, or what is left of it has too few role words to state a role."""
+        most of its sentences are, or what is left of it has too few role words to state a role. In a row of
+        a structured data table that states decoded values of its own, repeated words
+        around different values are not one sentence repeated: a short cell of such a row is never a template,
+        but its role words still count."""
         over = [n for sk, n in self.sents if count[sk] > TEMPLATE_CAP]
         if not over:
             return False
@@ -519,9 +600,10 @@ def ambiguous(name):
 
 
 class Hit:
-    __slots__ = ('file', 'line', 'ref', 'section', 'level', 'nsd', 'code', 'ctx', 'order', 'ent')
+    __slots__ = ('file', 'line', 'ref', 'section', 'level', 'nsd', 'code', 'ctx', 'order', 'ent', 'path')
 
-    def __init__(self, file, line, ref, section, level, nsd, code, ctx, order, ent=None):
+    def __init__(self, file, line, ref, section, level, nsd, code, ctx, order, ent=None, path=''):
+        self.path = path
         self.file, self.line, self.ref, self.section = file, line, ref, section
         self.level, self.nsd, self.code, self.ctx, self.order, self.ent = level, nsd, code, ctx, order, ent
 
@@ -579,7 +661,7 @@ class DocIndex:
                     continue
                 seen.add(rel)
                 self.read_table(rel)
-        count = collections.Counter(sk for e in self.entries for sk in {sk for sk, n in e.sents})
+        count = collections.Counter(sk for e in self.entries for sk in {sk for sk, n in e.sents if sk is not None})
         ncount = collections.Counter(sk for e in self.entries for sk in set(e.nsd_sents))
         for e in self.entries:
             e.capped = e.cap(count)
@@ -593,9 +675,9 @@ class DocIndex:
                 out.append(os.path.relpath(p, REPO))
         return out
 
-    def hit(self, file, line, ref, section, level, nsd, code, ctx, ent=None):
+    def hit(self, file, line, ref, section, level, nsd, code, ctx, ent=None, path=''):
         self.order += 1
-        return Hit(file, line, ref, section, level, nsd, code, ctx, self.order, ent)
+        return Hit(file, line, ref, section, level, nsd, code, ctx, self.order, ent, path)
 
     def add_text(self, file, n, ref, section, text, level, nsd, code_spans, code_all, ctx, head=None,
                  subj=frozenset(), ent=None):
@@ -616,7 +698,11 @@ class DocIndex:
             if nm in seen:
                 continue
             seen.add(nm)
-            self.names[nm].append(hit(('id', nm), True))
+            h = hit(('id', nm), True)
+            if '/' in code_text[max(0, m.start() - 1):m.end() + 1]:
+                # a name written as the end of a path: remember the path, for file rows that match by it
+                h.path = next((t for t in PATHTOK.findall(code_text) if '/' in t and nm in t.split('/')[-1]), '')
+            self.names[nm].append(h)
         if not code_all:
             for m in IDENT.finditer(re.sub(r'`[^`]*`', ' ', text)):
                 nm = m.group(0).rstrip('.')
@@ -627,8 +713,14 @@ class DocIndex:
                     continue
                 seen.add(nm)
                 self.names[nm].append(hit(('id', nm), call))
-        for m in FILELIKE.finditer(code_text if not code_all else text):
-            self.files[m.group(0)].append(hit(('file', m.group(0)), True))
+        ftext = code_text if not code_all else text
+        paths = [(m.start(), m.end(), m.group(0)) for m in PATHTOK.finditer(ftext)]
+        for m in FILELIKE.finditer(ftext):
+            # the path the document wrote around the file name: a file row is matched by it, not by the name
+            wrote = next((t for a, b, t in paths if a <= m.start() and m.end() <= b), m.group(0))
+            h = hit(('file', m.group(0)), True)
+            h.path = wrote
+            self.files[m.group(0)].append(h)
         for plus, h in set(HEXLIT.findall(text)):
             v = int(h, 16)
             self.hexes[v].append((hit(('hex', v), True), bool(plus)))
@@ -717,7 +809,8 @@ class DocIndex:
                     keys = frozenset(unit_keys(unit)) if unit else frozenset()
                     lvl, opn = (('named-only', False) if is_head
                                 else classify(etext, keys, head if is_table else None))
-                    entry_obj[e] = (Entry(etext, lvl, keys, opn), keys)
+                    dvals = data_row(etext, head, keys) if is_table and not is_head else None
+                    entry_obj[e] = (Entry(etext, lvl, keys, opn, dvals is not None and len(dvals) >= MIN_DATA), keys)
                     if not is_head and not index:
                         self.entries.append(entry_obj[e][0])
                 if e in entry_obj:
@@ -877,15 +970,19 @@ class DocIndex:
                 hits += self.name_hits(n)
         return self.best(hits, demote)
 
-    def by_file(self, *names):
+    def by_file(self, names, accept):
+        """Hits for a file row. A mention counts by the path the document wrote, not by the file name:
+        accept(path) says whether that path names this file and no other. A mention that is a bare name
+        is the path of that name alone."""
         hits = []
         for n in names:
             if n:
-                hits += self.files.get(n, [])
+                cand = list(self.files.get(n, []))
                 if '.' not in n:
                     # an extensionless file name reads like any other name, with the same
                     # rules for names that are also English words
-                    hits += self.name_hits(n)
+                    cand += self.name_hits(n)
+                hits += [h for h in cand if accept(h.path or n)]
         return self.best(hits)
 
     def value_hits(self, values, files=None, context=None, plus_ok=True, bare=True, absolute=(), exclude=()):
@@ -2820,7 +2917,15 @@ def build(cfg, a, tmp):
                     h.ent is None or grp not in cited_groups(h.ent, name))))
             rows.append(row)
         base = os.path.basename(img['path'])
-        st = docs.by_file(img['member'] or base, *([base] if img['member'] else []))
+        mine = set()
+        for l in [lab] + img['copies']:
+            mine |= image_keys(l)
+
+        def accept(path, lab=lab, mine=mine):
+            path = re.sub(r'^(?:\./|/)+', '', path.strip('.,;:'))
+            path = path[5:] if path.startswith('root/') else path
+            return path in mine and token_images.get(path) == {lab}
+        st = docs.by_file([img['member'] or base] + ([base] if img['member'] else []), accept)
         unr = sum(v for (b, w), v in unresolved.items() if b == lab)
         row = {'binary': lab, 'group': g['group'], 'role': g['role'], 'kind': kinds.get(lab, 'data'),
                'abi': abi.get(lab, '-'), 'bytes': meta[lab].get('size', ''), 'sha256': img['sha'][:16],

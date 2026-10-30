@@ -150,7 +150,7 @@ A mention is not understanding. The status of an item is the best of the entries
 - `undocumented`: no entry mentions it.
 - `named-only`: mentioned, but the entry does not reach `located` for it. This covers a bare mention; an item the entry only mentions because its subject is another item; a mention on a line that names more than three items (distinct identifiers, plus numbers written as a list), because a list documents none of its members (the bit positions and fields of the entry's own subject are not counted, see Fields and bit positions); an entry with no citation of its own; an entry with a citation but no label; a row of a pointer table that no entry of its own describes; an index file (`AGENTS.md`, `README.md`, `IRIX_FILES.md`, `docs/coverage.md`, `docs/open-questions.md`); a committed table; and a fenced listing.
 - `located`: the entry carries a citation of its own and says the item's role or effect is `unknown` or hedges it (below), and gives where the item is (an address, offset or size, records, callers or sites). Identity and location are established, what it does is not. A subject whose entry is templated (below) is at most this, and so is a pointer-table row whose entry holds 0.
-- `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address), a citation of its own, no hedge anywhere in it, and no `unknown` about its role or effect. An `unknown` about a sub-fact does not demote it (see Open sub-facts). The words are not read for meaning: check the cited section.
+- `understood`: the entry has a label (`established` or `inferred`), at least six plain words that do not restate its subject's name, at least two items stated about the subject (numbers or code names other than its own and its row's address; in a data table, each value cell, see Data tables), a citation of its own, no hedge anywhere in it, and no `unknown` about its role or effect. An `unknown` about a sub-fact does not demote it (see Open sub-facts). The words are not read for meaning: check the cited section.
 - `no-software-dependency`: the paragraph says "no shipped software or published source" depends on the fact (`AGENTS.md` section 6) and names the routes tried (the word "routes" or "tried"). The row is finished. Like every other status it goes to the entry's subject only.
 
 A row is done when it is `understood` or `no-software-dependency`. The repository is finished when every row of every table is done.
@@ -196,6 +196,12 @@ The entry is demoted to `located` when the `unknown` sentence is about the role 
 
 Mask the identifiers, file names, numbers and punctuation of an entry and lower-case what is left: that is its sentence skeleton. The cap applies to each sentence, not to the entry. An entry is split into its sentences (each table cell, then each sentence in it) and a sentence that has three plain words or more is masked the same way. When more than 5 entries (`TEMPLATE_CAP` in the script) contain a sentence with one skeleton, counting table rows, list items, paragraphs and header comments across every document read, that sentence is a template. An entry grades at most `located` when most of its sentences are templates, or when the role words of the sentences that are not templates are fewer than six: a shared sentence added to a unique one earns nothing for the entry. The sentence that says no software depends on a fact is counted separately, and caps only a no-software-dependency status. One sentence pattern repeated over many names is bulk, not a separate derivation for each. `summary.tsv` counts the rows this capped in `templated`. Two entries that differ by a word of prose have different skeletons, so the cap catches mechanical repetition, not paraphrase; read the `understood_distinct` column for that.
 
+### Data tables
+
+A row of a structured data table is one whose cells are mostly values: at least two of its cells (`MIN_DATA`) hold a decoded value and they are at least half of the cells that are not empty. A cell is a value when it is short (at most five words) and holds a digit or a code span: a pure integer or hex number, `1280x1024`, `20 states`, `table at 0x2bdc`. Each value cell is one item stated about the row's subject, whether or not another cell holds the same number. Two kinds of cell give no item: the subject's own cell, and a column headed address, offset, slot, index, entry, record, routine, ioctl, request, row, number or `#`, which says where the row is. A row with a sentence of its own around the values is graded by the ordinary rules, except that its pure-integer cells are items.
+
+The template cap does not count the short cells of such a row (five words or fewer) as sentences: repeated labels around different values are not one sentence repeated. A row's long sentences are still counted, and its short cells still give their role words. Rows that legitimately share one value still count when the table states that value in every row: the 217 `ged1b.u` table B entries that each hold the null loop are credited when each row of a generated index-to-content table says so. A table that does not state a value per row is not a data table, so a prose column cannot borrow the rule. A pure integer in any other table is still the row's own address, slot or index, and gives no item.
+
 ### Pointer tables
 
 A row of a table that points at something (a dispatch entry that holds a handler address, a command that names a handler, an entry that holds a program address) says where the pointer is, not what its target computes. It is not credited by its target's entry. It earns a status only from an entry whose subject is the row's own number (the slot, entry or command number) and that names the table's program or the target; without one it is `named-only` when its target is mentioned and `undocumented` when it is not, except that an entry that holds 0 points nowhere and is `located`. The config marks such tables with `"pointer": true` (a `u16-table` is always one).
@@ -207,6 +213,10 @@ A bare number is matched only in the chapters of its own table. A register windo
 ### Truncated tables
 
 A `limit` in the config that reads fewer entries than the file holds is reported: `summary.tsv` has a `truncated` column on the table (`geif.u: 512 of 1024 entries`), the script prints a warning, and `docs/coverage.md` says the table was read in part. Prefer no `limit`.
+
+### Files matched by path
+
+A row of `binaries.tsv` is credited by the path an entry writes, not by the file name. An entry's path counts when it is the row's install path from any directory down (`usr/gfx/ucode/KONA/dg4/vfo/1280x1024_60.vfo`, or after `root/`), or for an archive member the member after the archive (`gfxs.a(gfx_flow.o)`) or alone, and when it names that file and no other. A bare name that two files with different content share (`1280x1024_60.vfo` in `usr/diags/IR/data/` and in `dg4/vfo/`, `gfx.o` in `IP27boot` and `IP35boot`) names neither, so write the directory. Byte-identical copies are one row and share the credit. Naming an archive does not credit its members.
 
 ### Builds of one function
 
@@ -269,6 +279,19 @@ Percent understood before and after the field-list and open-sub-fact rules, from
 | tokens | 52.7 to 52.7 | 79.2 to 93.3 | 100.0 to 100.0 |
 | ioctls | 98.2 to 98.2 | 98.9 to 98.9 | 100.0 to 100.0 |
 | ucode | 30.3 to 30.3 | 96.0 to 96.0 | no rows |
+| spec-registers | 77.7 to 77.7 | no rows | 93.7 to 93.7 |
+
+Percent understood before and after data-table values and path matching, from the same documents on 2026-10-29. No current table has rows that the data-table rule changes yet. Only `binaries` moved: bare names shared by files in different directories (`kona_ioctl.o` and `gfx.o` in `IP27boot` and `IP35boot`, the `.vfo` files that two directories both hold) and an archive's name written for its members no longer credit them.
+
+| Table | InfiniteReality | Odyssey | CRIME |
+|---|---:|---:|---:|
+| binaries | 25.9 to 21.5 | 0.0 to 0.0 | 7.3 to 4.9 |
+| functions | 8.1 to 8.1 | 0.1 to 0.1 | 5.0 to 5.0 |
+| functions (distinct names) | 7.0 to 7.0 | 0.3 to 0.3 | 6.8 to 6.8 |
+| mmio | 92.5 to 92.5 | 86.6 to 86.6 | 100.0 to 100.0 |
+| tokens | 52.7 to 52.7 | 93.3 to 93.3 | 100.0 to 100.0 |
+| ioctls | 98.2 to 98.2 | 98.9 to 98.9 | 100.0 to 100.0 |
+| ucode | 47.7 to 47.7 | 100.0 to 100.0 | no rows |
 | spec-registers | 77.7 to 77.7 | no rows | 93.7 to 93.7 |
 
 How a mention is found:
