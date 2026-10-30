@@ -1,7 +1,7 @@
 table	rows	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address
 binaries	82	5	0	5	0	0	76	1	0	6.1	6.1	98.8	6.1							0		
-functions	17280	1266	3	1198	1521	4094	1950	9970	0	7.3	31.0	42.3	7.3			100.0	10	2026-10-30		0	62	351
-functions (distinct names)	11726	1202	2	1198	953	2118	976	7430	0	10.3	28.3	36.6	10.3							0		
+functions	17280	1291	4	1223	1521	4091	1930	9968	0	7.5	31.1	42.3	7.5			100.0	10	2026-10-30		0	62	351
+functions (distinct names)	11726	1214	3	1210	953	2117	966	7429	0	10.4	28.4	36.6	10.4							0		
 mmio	162	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0		
 tokens	83	44	0	41	0	0	0	39	0	53.0	53.0	53.0	53.0			90.0	10	2026-10-29		0		
 ioctls	42	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0		
@@ -28,9 +28,9 @@ functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	24	0	24	0	0	0	0	0	100.0	100
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0
 functions in usr/gfx/arch/GENERIC/Xsgi	2936	13	0	13	0	0	46	2877	0	0.4	0.4	2.0	0.4							0	0	0
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	7	668	0	0.0	0.0	1.0	0.0							0	0	0
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	8	0	8	556	1947	775	717	0	0.2	56.7	79.2	0.2							0	31	68
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	33	1	33	556	1933	765	716	0	1.0	57.0	79.2	1.0							0	31	68
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	8	669	0	0.0	0.0	1.2	0.0							0	0	0
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	235	0	235	556	1720	776	717	0	6.8	56.7	79.2	6.8							0	31	68
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	235	0	235	556	1731	766	716	0	6.8	57.0	79.2	6.8							0	31	68
 functions in usr/gfx/gfxinit	227	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0							0	0	0
 functions in usr/gfx/setmon	249	0	0	0	12	20	4	225	0	0.0	8.0	9.6	0.0							0	0	0
 functions in usr/lib/X11/dyDDX/crm.so	840	443	0	439	397	397	0	0	0	52.7	100.0	100.0	52.7							0	0	0
