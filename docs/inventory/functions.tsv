@@ -7278,7 +7278,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a39c	60	__glle_Color4u
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a3d8	60	__glle_Color4uiv	dynsym+mdebug	11f4f0c5788e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a414	60	__glle_Color4usv	dynsym+mdebug	8f768ed74c8d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a450	60	__glle_EdgeFlagv	dynsym+mdebug	53d4cd0d22c3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a48c	56	__glle_End	dynsym+mdebug	ede75d19f473		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a48c	56	__glle_End	dynsym+mdebug	ede75d19f473		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a4c4	60	__glle_Indexdv	dynsym+mdebug	c50dc3433d11		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a500	60	__glle_Indexfv	dynsym+mdebug	c318dcb95a5f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a53c	60	__glle_Indexiv	dynsym+mdebug	041aa5ab9543		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7300,10 +7300,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a8c0	60	__glle_RasterP
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a8fc	60	__glle_RasterPos4fv	dynsym+mdebug	77dc92e1338f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a938	60	__glle_RasterPos4iv	dynsym+mdebug	d451dcc4cf9f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a974	60	__glle_RasterPos4sv	dynsym+mdebug	abab40748a0f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a9b0	64	__glle_Rectdv	dynsym+mdebug	8bbffcdb158a		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a9f0	64	__glle_Rectfv	dynsym+mdebug	f0175d42778c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aa30	64	__glle_Rectiv	dynsym+mdebug	8272f86b5794		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aa70	64	__glle_Rectsv	dynsym+mdebug	bd9abf8721af		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a9b0	64	__glle_Rectdv	dynsym+mdebug	8bbffcdb158a		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98a9f0	64	__glle_Rectfv	dynsym+mdebug	f0175d42778c		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aa30	64	__glle_Rectiv	dynsym+mdebug	8272f86b5794		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aa70	64	__glle_Rectsv	dynsym+mdebug	bd9abf8721af		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aab0	60	__glle_TexCoord1dv	dynsym+mdebug	037e0f5d1260		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98aaec	60	__glle_TexCoord1fv	dynsym+mdebug	a6f40b40034c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ab28	60	__glle_TexCoord1iv	dynsym+mdebug	00bcd46c7c07		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7336,34 +7336,34 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b140	68	__glle_ClipPla
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b184	72	__glle_ColorMaterial	dynsym+mdebug	36fea219d27e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b1cc	64	__glle_CullFace	dynsym+mdebug	038254d608b2		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b20c	72	__glle_Fogf	dynsym+mdebug	ee278a3eb874		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b254	104	__glle_Fogfv	dynsym+mdebug	7cfef230179c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b254	104	__glle_Fogfv	dynsym+mdebug	7cfef230179c		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b2bc	72	__glle_Fogi	dynsym+mdebug	ab4d7795cf9b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b304	104	__glle_Fogiv	dynsym+mdebug	2d7ef273daff		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b304	104	__glle_Fogiv	dynsym+mdebug	2d7ef273daff		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b36c	64	__glle_FrontFace	dynsym+mdebug	84edb46a7e74		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b3ac	72	__glle_Hint	dynsym+mdebug	758d6c3da534		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b3f4	108	__glle_Lightfv	dynsym+mdebug	1b982d2b6360		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b460	108	__glle_Lightiv	dynsym+mdebug	98718dbeddda		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b4cc	104	__glle_LightModelfv	dynsym+mdebug	2221acde2a9e		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b534	104	__glle_LightModeliv	dynsym+mdebug	421349f2e1ab		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b3f4	108	__glle_Lightfv	dynsym+mdebug	1b982d2b6360		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b460	108	__glle_Lightiv	dynsym+mdebug	98718dbeddda		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b4cc	104	__glle_LightModelfv	dynsym+mdebug	2221acde2a9e		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b534	104	__glle_LightModeliv	dynsym+mdebug	421349f2e1ab		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b59c	72	__glle_LineStipple	dynsym+mdebug	33c1beb2625c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b5e4	68	__glle_LineWidth	dynsym+mdebug	f56e3a4bdd41		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b628	108	__glle_Materialfv	dynsym+mdebug	7bdd544edd7f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b694	108	__glle_Materialiv	dynsym+mdebug	eb6a201c509f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b628	108	__glle_Materialfv	dynsym+mdebug	7bdd544edd7f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b694	108	__glle_Materialiv	dynsym+mdebug	eb6a201c509f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b700	68	__glle_PointSize	dynsym+mdebug	e88a1732e898		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b744	72	__glle_PolygonMode	dynsym+mdebug	d474a6006d2f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b78c	80	__glle_Scissor	dynsym+mdebug	a1a957850d5a		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b7dc	64	__glle_ShadeModel	dynsym+mdebug	aebf253c5083		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b81c	108	__glle_TexParameterfv	dynsym+mdebug	1a4c2d19de17		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b888	108	__glle_TexParameteriv	dynsym+mdebug	4021de4d4f80		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b8f4	108	__glle_TexEnvfv	dynsym+mdebug	2deb11dab975		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b960	108	__glle_TexEnviv	dynsym+mdebug	57b02cb6e132		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b9cc	108	__glle_TexGendv	dynsym+mdebug	16d56fffa46b		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ba38	108	__glle_TexGenfv	dynsym+mdebug	ed5d629141d4		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98baa4	108	__glle_TexGeniv	dynsym+mdebug	4e4921d039d5		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bb10	56	__glle_InitNames	dynsym+mdebug	935ce996a887		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b81c	108	__glle_TexParameterfv	dynsym+mdebug	1a4c2d19de17		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b888	108	__glle_TexParameteriv	dynsym+mdebug	4021de4d4f80		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b8f4	108	__glle_TexEnvfv	dynsym+mdebug	2deb11dab975		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b960	108	__glle_TexEnviv	dynsym+mdebug	57b02cb6e132		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98b9cc	108	__glle_TexGendv	dynsym+mdebug	16d56fffa46b		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ba38	108	__glle_TexGenfv	dynsym+mdebug	ed5d629141d4		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98baa4	108	__glle_TexGeniv	dynsym+mdebug	4e4921d039d5		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bb10	56	__glle_InitNames	dynsym+mdebug	935ce996a887		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bb48	64	__glle_LoadName	dynsym+mdebug	f51272f061a0		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bb88	68	__glle_PassThrough	dynsym+mdebug	b57d7f758d2b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bbcc	56	__glle_PopName	dynsym+mdebug	d706f25e9941		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bbcc	56	__glle_PopName	dynsym+mdebug	d706f25e9941		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bc04	64	__glle_PushName	dynsym+mdebug	b600d4cd480d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bc44	64	__glle_DrawBuffer	dynsym+mdebug	b254479a16c5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bc84	64	__glle_Clear	dynsym+mdebug	051a1c560239		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7377,7 +7377,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98be64	80	__glle_ColorMa
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98beb4	64	__glle_DepthMask	dynsym+mdebug	2eb66af44c7d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bef4	64	__glle_IndexMask	dynsym+mdebug	b5a701357370		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bf34	72	__glle_Accum	dynsym+mdebug	df710b8f9f09		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bf7c	56	__glle_PopAttrib	dynsym+mdebug	431236b32b6b		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bf7c	56	__glle_PopAttrib	dynsym+mdebug	431236b32b6b		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bfb4	64	__glle_PushAttrib	dynsym+mdebug	3d70fc05dd2a		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98bff4	92	__glle_MapGrid1d	dynsym+mdebug	ed7545b733fe		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c050	76	__glle_MapGrid1f	dynsym+mdebug	9770c8544ba3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7407,15 +7407,15 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c720	64	__glle_ReadBuf
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c760	88	__glle_CopyPixels	dynsym+mdebug	1b354159f37e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c7b8	68	__glle_DepthRange	dynsym+mdebug	f8e48040af49		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c7fc	100	__glle_Frustum	dynsym+mdebug	ecc93fea0277		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c860	56	__glle_LoadIdentity	dynsym+mdebug	ffe5225c780f		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c860	56	__glle_LoadIdentity	dynsym+mdebug	ffe5225c780f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c898	60	__glle_LoadMatrixf	dynsym+mdebug	626fa68e7b6f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c8d4	60	__glle_LoadMatrixd	dynsym+mdebug	07d1fdacacc6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c910	64	__glle_MatrixMode	dynsym+mdebug	5ec688e4bbcf		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c950	60	__glle_MultMatrixf	dynsym+mdebug	9c86e2e81492		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c98c	60	__glle_MultMatrixd	dynsym+mdebug	86ef6e4fd188		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98c9c8	100	__glle_Ortho	dynsym+mdebug	85efc471b0ec		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ca2c	56	__glle_PopMatrix	dynsym+mdebug	d32710eed55f		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ca64	56	__glle_PushMatrix	dynsym+mdebug	dc933648b586		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ca2c	56	__glle_PopMatrix	dynsym+mdebug	d32710eed55f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ca64	56	__glle_PushMatrix	dynsym+mdebug	dc933648b586		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ca9c	84	__glle_Rotated	dynsym+mdebug	27485284a6a5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98caf0	76	__glle_Rotatef	dynsym+mdebug	a2b135239751		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cb3c	76	__glle_Scaled	dynsym+mdebug	0c85d25b7de5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7427,9 +7427,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ccb4	76	__glle_BlendCo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cd00	64	__glle_BlendEquationEXT	dynsym+mdebug	99b43c977fc4		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cd40	68	__glle_PolygonOffsetEXT	dynsym+mdebug	ab3915f23049		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cd84	76	__glle_ConvolutionParameterfEXT	dynsym+mdebug	fcf1f2222af7		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cdd0	108	__glle_ConvolutionParameterfvEXT	dynsym+mdebug	ae5a9175fcb0		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cdd0	108	__glle_ConvolutionParameterfvEXT	dynsym+mdebug	ae5a9175fcb0		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ce3c	76	__glle_ConvolutionParameteriEXT	dynsym+mdebug	14e3e4816583		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ce88	108	__glle_ConvolutionParameterivEXT	dynsym+mdebug	1ee6d58c4dd0		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ce88	108	__glle_ConvolutionParameterivEXT	dynsym+mdebug	1ee6d58c4dd0		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cef4	88	__glle_CopyConvolutionFilter1DEXT	dynsym+mdebug	bccde895b3c5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cf4c	96	__glle_CopyConvolutionFilter2DEXT	dynsym+mdebug	36a64b4f139f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98cfac	80	__glle_HistogramEXT	dynsym+mdebug	34d3d16de57e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7447,23 +7447,23 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d39c	68	__glle_Polygon
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d3e0	60	__glle_Indexubv	dynsym+mdebug	bd4cd2622c8c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d41c	68	__glle_SampleMaskSGIS	dynsym+mdebug	35fc535a2ff1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d460	64	__glle_SamplePatternSGIS	dynsym+mdebug	12c0c6e873e4		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d4a0	56	__glle_TagSampleBufferSGIX	dynsym+mdebug	17d993887964		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d4a0	56	__glle_TagSampleBufferSGIX	dynsym+mdebug	17d993887964		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d4d8	88	__glle_DetailTexFuncSGIS	dynsym+mdebug	3c72bc6014cc		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d530	88	__glle_SharpenTexFuncSGIS	dynsym+mdebug	fdd332963b22		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d588	108	__glle_ColorTableParameterfvSGI	dynsym+mdebug	8b96d981491f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d5f4	108	__glle_ColorTableParameterivSGI	dynsym+mdebug	6fcba8a0c85b		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d588	108	__glle_ColorTableParameterfvSGI	dynsym+mdebug	8b96d981491f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d5f4	108	__glle_ColorTableParameterivSGI	dynsym+mdebug	6fcba8a0c85b		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d660	88	__glle_CopyColorTableSGI	dynsym+mdebug	0f21d60eaa5a		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d6b8	64	__glle_PixelTexGenSGIX	dynsym+mdebug	43c62c6c0864		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d6f8	72	__glle_SpriteParameterfSGIX	dynsym+mdebug	032eb8d6fedf		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d740	104	__glle_SpriteParameterfvSGIX	dynsym+mdebug	4f1a98f13e82		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d740	104	__glle_SpriteParameterfvSGIX	dynsym+mdebug	4f1a98f13e82		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d7a8	72	__glle_SpriteParameteriSGIX	dynsym+mdebug	e3f47dbb415c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d7f0	104	__glle_SpriteParameterivSGIX	dynsym+mdebug	92e0b201a786		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d7f0	104	__glle_SpriteParameterivSGIX	dynsym+mdebug	92e0b201a786		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d858	92	__glle_TexFilterFuncSGIS	dynsym+mdebug	2fd6002c2c3f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d8b4	72	__glle_PointParameterfSGIS	dynsym+mdebug	d62c77ec05b0		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d8fc	104	__glle_PointParameterfvSGIS	dynsym+mdebug	85cf10a68d1b		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d8fc	104	__glle_PointParameterfvSGIS	dynsym+mdebug	85cf10a68d1b		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d964	84	__glle_FogFuncSGIS	dynsym+mdebug	ba841083d78e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d9b8	64	__glle_ReadInstrumentsSGIX	dynsym+mdebug	074dc50efa79		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d9f8	56	__glle_StartInstrumentsSGIX	dynsym+mdebug	e9cbc1689c90		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98d9f8	56	__glle_StartInstrumentsSGIX	dynsym+mdebug	e9cbc1689c90		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98da30	64	__glle_StopInstrumentsSGIX	dynsym+mdebug	cdb3a6674189		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98da70	60	__glle_ReferencePlaneSGIX	dynsym+mdebug	f5ce91c1bc60		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98daac	64	__glle_FrameZoomSGIX	dynsym+mdebug	11cda5d69398		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -7471,23 +7471,23 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98daec	64	__glle_DeformS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98db2c	64	__glle_LoadIdentityDeformationMapSGIX	dynsym+mdebug	5c579ad612a6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98db6c	88	__glle_CopyColorSubTable	dynsym+mdebug	e72ac266db66		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dbc4	72	__glle_PixelTexGenParameteriSGIS	dynsym+mdebug	75c5e5e710a5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dc0c	104	__glle_PixelTexGenParameterivSGIS	dynsym+mdebug	40af868af05e		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dc0c	104	__glle_PixelTexGenParameterivSGIS	dynsym+mdebug	40af868af05e		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dc74	72	__glle_PixelTexGenParameterfSGIS	dynsym+mdebug	b1420ac58d12		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dcbc	104	__glle_PixelTexGenParameterfvSGIS	dynsym+mdebug	30972e446d5c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dcbc	104	__glle_PixelTexGenParameterfvSGIS	dynsym+mdebug	30972e446d5c		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dd24	64	__glle_AsyncMarkerSGIX	dynsym+mdebug	ba81a3c79b9b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dd64	72	__glle_FragmentColorMaterialSGIX	dynsym+mdebug	d0c2badee636		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ddac	76	__glle_FragmentLightfSGIX	dynsym+mdebug	423862f87420		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ddf8	108	__glle_FragmentLightfvSGIX	dynsym+mdebug	a6a523070f3f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98ddf8	108	__glle_FragmentLightfvSGIX	dynsym+mdebug	a6a523070f3f		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98de64	76	__glle_FragmentLightiSGIX	dynsym+mdebug	d5289c862008		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98deb0	108	__glle_FragmentLightivSGIX	dynsym+mdebug	d920ba4fc114		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98deb0	108	__glle_FragmentLightivSGIX	dynsym+mdebug	d920ba4fc114		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98df1c	72	__glle_FragmentLightModelfSGIX	dynsym+mdebug	6b4f34e9e4d0		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98df64	104	__glle_FragmentLightModelfvSGIX	dynsym+mdebug	b43ba67615d5		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98df64	104	__glle_FragmentLightModelfvSGIX	dynsym+mdebug	b43ba67615d5		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98dfcc	72	__glle_FragmentLightModeliSGIX	dynsym+mdebug	78ea3d0aa4af		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e014	104	__glle_FragmentLightModelivSGIX	dynsym+mdebug	50888cd61484		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e014	104	__glle_FragmentLightModelivSGIX	dynsym+mdebug	50888cd61484		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e07c	76	__glle_FragmentMaterialfSGIX	dynsym+mdebug	1709995dc3a1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e0c8	108	__glle_FragmentMaterialfvSGIX	dynsym+mdebug	40ab17754d88		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e0c8	108	__glle_FragmentMaterialfvSGIX	dynsym+mdebug	40ab17754d88		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e134	76	__glle_FragmentMaterialiSGIX	dynsym+mdebug	a294b35e369b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e180	108	__glle_FragmentMaterialivSGIX	dynsym+mdebug	c77ab5fa3852		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e180	108	__glle_FragmentMaterialivSGIX	dynsym+mdebug	c77ab5fa3852		in	understood	docs/glcore-immediate-entry-points.md#o32-build	o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e1ec	72	__glle_LightEnviSGIX	dynsym+mdebug	ad99dcd7fed8		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e234	80	__glle_TextureColorMaskSGIS	dynsym+mdebug	9e5e962d6db7		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd98e290	180	__glDrawArraysV	dynsym+mdebug	0aa5c82a9fdd		in	undocumented		
@@ -8107,44 +8107,44 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9fb4	64	__glLoseCurren
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9ff4	220	__glResizeBuffer	dynsym+mdebug	39fc2ad5734e		in	named-only	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca0d0	12	__glMoveBuffer	dynsym+mdebug	57003dd76485		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca0dc	88	__glFreeBuffer	dynsym+mdebug	0b16deac5bc6		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca140	132	__glim_Color3ub	dynsym+mdebug	b20437daa956		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca1c4	124	__glim_Color3ubv	dynsym+mdebug	07fe1b9aa489		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca240	172	__glim_Color3b	dynsym+mdebug	c39351569ee9		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca2ec	168	__glim_Color3bv	dynsym+mdebug	7187913eab2f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca394	92	__glim_Color3d	dynsym+mdebug	19e8d1585e72		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca3f0	100	__glim_Color3dv	dynsym+mdebug	b2f72bb01cc2		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca454	152	__glim_Color3i	dynsym+mdebug	d3f9101418b7		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca4ec	164	__glim_Color3iv	dynsym+mdebug	973b32ed1a6c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca590	180	__glim_Color3ui	dynsym+mdebug	a15f9567355f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca644	188	__glim_Color3uiv	dynsym+mdebug	806f95022a30		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca700	172	__glim_Color3s	dynsym+mdebug	756fb160b4c2		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca7ac	168	__glim_Color3sv	dynsym+mdebug	276cdb257a15		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca854	196	__glim_Color3us	dynsym+mdebug	31165d9e41dd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca918	188	__glim_Color3usv	dynsym+mdebug	13ab48fbfb8d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca9d4	148	__glim_Color4ub	dynsym+mdebug	b3a9dcf76a8e		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caa68	140	__glim_Color4ubv	dynsym+mdebug	920e52b2e89a		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caaf4	196	__glim_Color4b	dynsym+mdebug	3849c6b0dd98		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cabb8	188	__glim_Color4bv	dynsym+mdebug	8bcb5ad2efc3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cac74	92	__glim_Color4d	dynsym+mdebug	487290521192		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cacd0	108	__glim_Color4dv	dynsym+mdebug	c5c7e63c3231		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cad3c	172	__glim_Color4i	dynsym+mdebug	2575324348ed		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cade8	180	__glim_Color4iv	dynsym+mdebug	33a6b38b4425		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cae9c	208	__glim_Color4ui	dynsym+mdebug	1f52bd2877d3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caf6c	220	__glim_Color4uiv	dynsym+mdebug	bad10d42e471		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb048	196	__glim_Color4s	dynsym+mdebug	6ed9f3606946		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb10c	188	__glim_Color4sv	dynsym+mdebug	2fe2cfd22468		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb1c8	232	__glim_Color4us	dynsym+mdebug	58a6b4d6ffc3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb2b0	220	__glim_Color4usv	dynsym+mdebug	f38d531b82ca		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb38c	16	__glim_Indexd	dynsym+mdebug	8a569724dee9		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb39c	16	__glim_Indexf	dynsym+mdebug	9f1a1d0ea05f		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3ac	28	__glim_Indexi	dynsym+mdebug	41769db5f9d9		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3c8	32	__glim_Indexs	dynsym+mdebug	96d408160ae6		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3e8	24	__glim_Indexdv	dynsym+mdebug	e63f8acc2fb2		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb400	16	__glim_Indexfv	dynsym+mdebug	fd889ce92333		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb410	24	__glim_Indexiv	dynsym+mdebug	d645ff5d36bc		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb428	24	__glim_Indexsv	dynsym+mdebug	342e02038c7e		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb440	60	__glim_Indexub	dynsym+mdebug	944f349556e0		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb47c	56	__glim_Indexubv	dynsym+mdebug	dc1af7f5e95d		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca140	132	__glim_Color3ub	dynsym+mdebug	b20437daa956		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca1c4	124	__glim_Color3ubv	dynsym+mdebug	07fe1b9aa489		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca240	172	__glim_Color3b	dynsym+mdebug	c39351569ee9		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca2ec	168	__glim_Color3bv	dynsym+mdebug	7187913eab2f		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca394	92	__glim_Color3d	dynsym+mdebug	19e8d1585e72		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca3f0	100	__glim_Color3dv	dynsym+mdebug	b2f72bb01cc2		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca454	152	__glim_Color3i	dynsym+mdebug	d3f9101418b7		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca4ec	164	__glim_Color3iv	dynsym+mdebug	973b32ed1a6c		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca590	180	__glim_Color3ui	dynsym+mdebug	a15f9567355f		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca644	188	__glim_Color3uiv	dynsym+mdebug	806f95022a30		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca700	172	__glim_Color3s	dynsym+mdebug	756fb160b4c2		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca7ac	168	__glim_Color3sv	dynsym+mdebug	276cdb257a15		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca854	196	__glim_Color3us	dynsym+mdebug	31165d9e41dd		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca918	188	__glim_Color3usv	dynsym+mdebug	13ab48fbfb8d		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca9d4	148	__glim_Color4ub	dynsym+mdebug	b3a9dcf76a8e		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caa68	140	__glim_Color4ubv	dynsym+mdebug	920e52b2e89a		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caaf4	196	__glim_Color4b	dynsym+mdebug	3849c6b0dd98		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cabb8	188	__glim_Color4bv	dynsym+mdebug	8bcb5ad2efc3		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cac74	92	__glim_Color4d	dynsym+mdebug	487290521192		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cacd0	108	__glim_Color4dv	dynsym+mdebug	c5c7e63c3231		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cad3c	172	__glim_Color4i	dynsym+mdebug	2575324348ed		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cade8	180	__glim_Color4iv	dynsym+mdebug	33a6b38b4425		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cae9c	208	__glim_Color4ui	dynsym+mdebug	1f52bd2877d3		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9caf6c	220	__glim_Color4uiv	dynsym+mdebug	bad10d42e471		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb048	196	__glim_Color4s	dynsym+mdebug	6ed9f3606946		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb10c	188	__glim_Color4sv	dynsym+mdebug	2fe2cfd22468		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb1c8	232	__glim_Color4us	dynsym+mdebug	58a6b4d6ffc3		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb2b0	220	__glim_Color4usv	dynsym+mdebug	f38d531b82ca		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb38c	16	__glim_Indexd	dynsym+mdebug	8a569724dee9		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb39c	16	__glim_Indexf	dynsym+mdebug	9f1a1d0ea05f		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3ac	28	__glim_Indexi	dynsym+mdebug	41769db5f9d9		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3c8	32	__glim_Indexs	dynsym+mdebug	96d408160ae6		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb3e8	24	__glim_Indexdv	dynsym+mdebug	e63f8acc2fb2		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb400	16	__glim_Indexfv	dynsym+mdebug	fd889ce92333		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb410	24	__glim_Indexiv	dynsym+mdebug	d645ff5d36bc		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb428	24	__glim_Indexsv	dynsym+mdebug	342e02038c7e		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb440	60	__glim_Indexub	dynsym+mdebug	944f349556e0		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb47c	56	__glim_Indexubv	dynsym+mdebug	dc1af7f5e95d		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cb4c0	524	__glim_Clear	dynsym+mdebug	96e1cf8138ba		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cb6d0	124	Clip	mdebug	8688eda00dbb		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cb74c	204	ClipC	mdebug	39d9421abae7		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
@@ -8554,14 +8554,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f272c	1028	__glNamesDel
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b30	88	__glNamesIsName	dynsym+mdebug	e818a1601bb7		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b88	188	__glNamesGenNames	dynsym+mdebug	07c5acce3538		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2c44	208	__glNamesDeleteNames	dynsym+mdebug	de99d70cbf0a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d20	40	__glim_Normal3d	dynsym+mdebug	e753e2baa620		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d48	48	__glim_Normal3dv	dynsym+mdebug	8ee40e1adbcd		in	located	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d78	120	__glim_Normal3b	dynsym+mdebug	3c2266380581		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2df0	108	__glim_Normal3bv	dynsym+mdebug	6fafa8bb9afc		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2e5c	120	__glim_Normal3s	dynsym+mdebug	df0536c499ca		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2ed4	108	__glim_Normal3sv	dynsym+mdebug	1f9f312b628b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2f40	104	__glim_Normal3i	dynsym+mdebug	a4e769a5101d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2fa8	124	__glim_Normal3iv	dynsym+mdebug	95a53771ebf5		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d20	40	__glim_Normal3d	dynsym+mdebug	e753e2baa620		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d48	48	__glim_Normal3dv	dynsym+mdebug	8ee40e1adbcd		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d78	120	__glim_Normal3b	dynsym+mdebug	3c2266380581		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2df0	108	__glim_Normal3bv	dynsym+mdebug	6fafa8bb9afc		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2e5c	120	__glim_Normal3s	dynsym+mdebug	df0536c499ca		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2ed4	108	__glim_Normal3sv	dynsym+mdebug	1f9f312b628b		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2f40	104	__glim_Normal3i	dynsym+mdebug	a4e769a5101d		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2fa8	124	__glim_Normal3iv	dynsym+mdebug	95a53771ebf5		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3030	1912	__glGenericPickSpanProcs	dynsym+mdebug	92c93c0805cf		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f37a8	296	__glGenericPickPointProcs	dynsym+mdebug	b30391499465		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f38d0	1236	__glGenericPickLineProcs	dynsym+mdebug	3822f69ece1c		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
@@ -8723,19 +8723,19 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03c3c	132	__glMaterialf
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cc0	48	__glMaterialiv_size	dynsym+mdebug	80c139dd66fb		in	located	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cf0	36	__glColorTableParameterfvSGI_size	dynsym+mdebug	6ba082fe50cd		in	located	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d14	48	__glColorTableParameterivSGI_size	dynsym+mdebug	0ae02564b8d1		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d44	68	__glSpriteParameterfvSGIX_size	dynsym+mdebug	49ac83563a92		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d88	48	__glSpriteParameterivSGIX_size	dynsym+mdebug	90c0ba24ea83		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03db8	84	__glPointParameterfvSGIS_size	dynsym+mdebug	599d540bb401		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d44	68	__glSpriteParameterfvSGIX_size	dynsym+mdebug	49ac83563a92		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d88	48	__glSpriteParameterivSGIX_size	dynsym+mdebug	90c0ba24ea83		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03db8	84	__glPointParameterfvSGIS_size	dynsym+mdebug	599d540bb401		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03e0c	156	__glPixelTransformParameterfvSGI_size	dynsym+mdebug	e186b4698c9c		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03ea8	48	__glPixelTransformParameterivSGI_size	dynsym+mdebug	84ab70ea6dd9		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03ed8	52	__glPixelTexGenParameterivSGIS_size	dynsym+mdebug	e10aa634324d		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03f0c	48	__glPixelTexGenParameterfvSGIS_size	dynsym+mdebug	a5799ad0c62a		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03f3c	116	__glFragmentMaterialfvSGIX_size	dynsym+mdebug	7e81e188a506		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03fb0	48	__glFragmentMaterialivSGIX_size	dynsym+mdebug	50b88ae7c926		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03fe0	188	__glFragmentLightfvSGIX_size	dynsym+mdebug	b11f3e0c5a64		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0409c	48	__glFragmentLightivSGIX_size	dynsym+mdebug	f99d50a5af29		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda040cc	84	__glFragmentLightModelfvSGIX_size	dynsym+mdebug	bac689f4f11c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04120	48	__glFragmentLightModelivSGIX_size	dynsym+mdebug	bce6f3a8c3b1		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03ed8	52	__glPixelTexGenParameterivSGIS_size	dynsym+mdebug	e10aa634324d		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03f0c	48	__glPixelTexGenParameterfvSGIS_size	dynsym+mdebug	a5799ad0c62a		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03f3c	116	__glFragmentMaterialfvSGIX_size	dynsym+mdebug	7e81e188a506		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03fb0	48	__glFragmentMaterialivSGIX_size	dynsym+mdebug	50b88ae7c926		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03fe0	188	__glFragmentLightfvSGIX_size	dynsym+mdebug	b11f3e0c5a64		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0409c	48	__glFragmentLightivSGIX_size	dynsym+mdebug	f99d50a5af29		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda040cc	84	__glFragmentLightModelfvSGIX_size	dynsym+mdebug	bac689f4f11c		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04120	48	__glFragmentLightModelivSGIX_size	dynsym+mdebug	bce6f3a8c3b1		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04150	84	__glColorSubTable_size	dynsym+mdebug	c7f5242a71fd		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda041b0	160	__glReadSpan	dynsym+mdebug	980c55263d01		in	located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04250	492	__glReturnSpan	dynsym+mdebug	a6d0097cff1e		in	located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
@@ -8851,36 +8851,36 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda106d8	4316	DoNorma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda117b4	608	DoInterpolate	mdebug	d58cfecd2651		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda11a14	944	DoInterpolateNormal	mdebug	459cb0328f83		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda11dc4	46260	DoRender	mdebug	97f8578d07c8		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13210	52	__glim_TexCoord1d	dynsym+mdebug	bcb773c5eddc		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13244	44	__glim_TexCoord1f	dynsym+mdebug	d9f70dba3330		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13270	52	__glim_TexCoord1i	dynsym+mdebug	c56d51000f11		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132a4	68	__glim_TexCoord1s	dynsym+mdebug	a344b9583803		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132e8	52	__glim_TexCoord1dv	dynsym+mdebug	81d9cc50d4f5		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1331c	52	__glim_TexCoord1fv	dynsym+mdebug	c9dfd301adec		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13350	60	__glim_TexCoord1iv	dynsym+mdebug	5d2279c7ac3e		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1338c	60	__glim_TexCoord1sv	dynsym+mdebug	cdab484810cd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133c8	52	__glim_TexCoord2d	dynsym+mdebug	b37c3075626a		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133fc	60	__glim_TexCoord2i	dynsym+mdebug	185f6ac32b6f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13438	84	__glim_TexCoord2s	dynsym+mdebug	38f019e3dbce		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1348c	60	__glim_TexCoord2dv	dynsym+mdebug	8340bccd15be		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda134c8	68	__glim_TexCoord2iv	dynsym+mdebug	3ac2b67482d4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1350c	68	__glim_TexCoord2sv	dynsym+mdebug	b80c3e295b52		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13550	48	__glim_TexCoord3d	dynsym+mdebug	b541102aebf9		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13580	40	__glim_TexCoord3f	dynsym+mdebug	e567ee0df5e7		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135a8	56	__glim_TexCoord3i	dynsym+mdebug	1b5036808300		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135e0	88	__glim_TexCoord3s	dynsym+mdebug	b628848600ff		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13638	56	__glim_TexCoord3dv	dynsym+mdebug	12d012b6628b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13670	40	__glim_TexCoord3fv	dynsym+mdebug	cf6b63b840ac		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13698	72	__glim_TexCoord3iv	dynsym+mdebug	a58fc71eef3b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda136e0	72	__glim_TexCoord3sv	dynsym+mdebug	95079973d689		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13728	48	__glim_TexCoord4d	dynsym+mdebug	3aa5d25f6068		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13758	40	__glim_TexCoord4f	dynsym+mdebug	9fa6da093cf1		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13780	56	__glim_TexCoord4i	dynsym+mdebug	2f1327947666		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda137b8	104	__glim_TexCoord4s	dynsym+mdebug	21f0db75216f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13820	56	__glim_TexCoord4dv	dynsym+mdebug	a373cbaa7928		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13858	40	__glim_TexCoord4fv	dynsym+mdebug	bcc9f6388d6a		in	located	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13880	84	__glim_TexCoord4iv	dynsym+mdebug	d6269c0edc38		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda138d4	84	__glim_TexCoord4sv	dynsym+mdebug	a2ea35350dae		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13210	52	__glim_TexCoord1d	dynsym+mdebug	bcb773c5eddc		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13244	44	__glim_TexCoord1f	dynsym+mdebug	d9f70dba3330		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13270	52	__glim_TexCoord1i	dynsym+mdebug	c56d51000f11		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132a4	68	__glim_TexCoord1s	dynsym+mdebug	a344b9583803		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda132e8	52	__glim_TexCoord1dv	dynsym+mdebug	81d9cc50d4f5		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1331c	52	__glim_TexCoord1fv	dynsym+mdebug	c9dfd301adec		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13350	60	__glim_TexCoord1iv	dynsym+mdebug	5d2279c7ac3e		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1338c	60	__glim_TexCoord1sv	dynsym+mdebug	cdab484810cd		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133c8	52	__glim_TexCoord2d	dynsym+mdebug	b37c3075626a		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda133fc	60	__glim_TexCoord2i	dynsym+mdebug	185f6ac32b6f		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13438	84	__glim_TexCoord2s	dynsym+mdebug	38f019e3dbce		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1348c	60	__glim_TexCoord2dv	dynsym+mdebug	8340bccd15be		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda134c8	68	__glim_TexCoord2iv	dynsym+mdebug	3ac2b67482d4		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1350c	68	__glim_TexCoord2sv	dynsym+mdebug	b80c3e295b52		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13550	48	__glim_TexCoord3d	dynsym+mdebug	b541102aebf9		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13580	40	__glim_TexCoord3f	dynsym+mdebug	e567ee0df5e7		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135a8	56	__glim_TexCoord3i	dynsym+mdebug	1b5036808300		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda135e0	88	__glim_TexCoord3s	dynsym+mdebug	b628848600ff		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13638	56	__glim_TexCoord3dv	dynsym+mdebug	12d012b6628b		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13670	40	__glim_TexCoord3fv	dynsym+mdebug	cf6b63b840ac		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13698	72	__glim_TexCoord3iv	dynsym+mdebug	a58fc71eef3b		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda136e0	72	__glim_TexCoord3sv	dynsym+mdebug	95079973d689		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13728	48	__glim_TexCoord4d	dynsym+mdebug	3aa5d25f6068		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13758	40	__glim_TexCoord4f	dynsym+mdebug	9fa6da093cf1		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13780	56	__glim_TexCoord4i	dynsym+mdebug	2f1327947666		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda137b8	104	__glim_TexCoord4s	dynsym+mdebug	21f0db75216f		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13820	56	__glim_TexCoord4dv	dynsym+mdebug	a373cbaa7928		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13858	40	__glim_TexCoord4fv	dynsym+mdebug	bcc9f6388d6a		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13880	84	__glim_TexCoord4iv	dynsym+mdebug	d6269c0edc38		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda138d4	84	__glim_TexCoord4sv	dynsym+mdebug	a2ea35350dae		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda13930	3064	__glTextureRGB_F_F_Span	dynsym+mdebug	e553f88432c3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda14528	3280	__glTextureRGB_F_F_StippledSpan	dynsym+mdebug	9b0d5cd69fb9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda151f8	6608	__glTextureRGB_F_LML_Span	dynsym+mdebug	53dc651aa204		in	undocumented		
@@ -9105,27 +9105,27 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31c90	16	__glim_EdgeFla
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31ca0	184	__glim_Vertex2fv	dynsym+mdebug	f8affcff7bba		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31d58	184	__glim_Vertex3fv	dynsym+mdebug	796f325348de		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31e10	180	__glim_Vertex4fv	dynsym+mdebug	37f81326d5e8		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31ec4	76	__glim_Vertex2f	dynsym+mdebug	1570aca78e92		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31f10	84	__glim_Vertex2d	dynsym+mdebug	2e67668e0a5c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31f64	92	__glim_Vertex2dv	dynsym+mdebug	3c9368e8a627		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31fc0	92	__glim_Vertex2i	dynsym+mdebug	faa646aadede		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3201c	100	__glim_Vertex2iv	dynsym+mdebug	ef46dd0ba02d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32080	116	__glim_Vertex2s	dynsym+mdebug	836172c473ee		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda320f4	100	__glim_Vertex2sv	dynsym+mdebug	99bf34058ccc		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32158	84	__glim_Vertex3f	dynsym+mdebug	db8f23db21a7		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda321ac	92	__glim_Vertex3d	dynsym+mdebug	51dfaa7937d7		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32208	100	__glim_Vertex3dv	dynsym+mdebug	a80bf87bbfd6		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3226c	108	__glim_Vertex3i	dynsym+mdebug	58816a8ab1e0		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda322d8	116	__glim_Vertex3iv	dynsym+mdebug	c5cdc2981e79		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3234c	132	__glim_Vertex3s	dynsym+mdebug	4710bfa34995		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda323d0	116	__glim_Vertex3sv	dynsym+mdebug	bbecdfe8238f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32444	100	__glim_Vertex4f	dynsym+mdebug	0c834d12b82d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda324a8	108	__glim_Vertex4d	dynsym+mdebug	e1d4a332e524		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32514	116	__glim_Vertex4dv	dynsym+mdebug	c6ba5208d9d5		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32588	124	__glim_Vertex4i	dynsym+mdebug	1e0008ec1696		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32604	132	__glim_Vertex4iv	dynsym+mdebug	9b257f026aa7		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32688	156	__glim_Vertex4s	dynsym+mdebug	3d7c9d177c49		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32724	132	__glim_Vertex4sv	dynsym+mdebug	b57e6445703b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31ec4	76	__glim_Vertex2f	dynsym+mdebug	1570aca78e92		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31f10	84	__glim_Vertex2d	dynsym+mdebug	2e67668e0a5c		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31f64	92	__glim_Vertex2dv	dynsym+mdebug	3c9368e8a627		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31fc0	92	__glim_Vertex2i	dynsym+mdebug	faa646aadede		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3201c	100	__glim_Vertex2iv	dynsym+mdebug	ef46dd0ba02d		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32080	116	__glim_Vertex2s	dynsym+mdebug	836172c473ee		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda320f4	100	__glim_Vertex2sv	dynsym+mdebug	99bf34058ccc		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32158	84	__glim_Vertex3f	dynsym+mdebug	db8f23db21a7		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda321ac	92	__glim_Vertex3d	dynsym+mdebug	51dfaa7937d7		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32208	100	__glim_Vertex3dv	dynsym+mdebug	a80bf87bbfd6		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3226c	108	__glim_Vertex3i	dynsym+mdebug	58816a8ab1e0		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda322d8	116	__glim_Vertex3iv	dynsym+mdebug	c5cdc2981e79		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3234c	132	__glim_Vertex3s	dynsym+mdebug	4710bfa34995		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda323d0	116	__glim_Vertex3sv	dynsym+mdebug	bbecdfe8238f		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32444	100	__glim_Vertex4f	dynsym+mdebug	0c834d12b82d		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda324a8	108	__glim_Vertex4d	dynsym+mdebug	e1d4a332e524		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32514	116	__glim_Vertex4dv	dynsym+mdebug	c6ba5208d9d5		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32588	124	__glim_Vertex4i	dynsym+mdebug	1e0008ec1696		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32604	132	__glim_Vertex4iv	dynsym+mdebug	9b257f026aa7		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32688	156	__glim_Vertex4s	dynsym+mdebug	3d7c9d177c49		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32724	132	__glim_Vertex4sv	dynsym+mdebug	b57e6445703b		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda327b0	136	__glInitVertexArrayState	dynsym+mdebug	d3eeb019e12b		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32838	732	__glim_ArrayElementEXT	dynsym+mdebug	f4fe50275ec1		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda32b14	340	__glim_DrawArraysEXT	dynsym+mdebug	5925dce1f023		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
@@ -11403,7 +11403,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a060	68	__glle_Color
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a0b0	68	__glle_Color4uiv	dwarf+dynsym	5c0be770d0f1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a100	68	__glle_Color4usv	dwarf+dynsym	012d45a590f9		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a150	68	__glle_EdgeFlagv	dwarf+dynsym	fdec6f51f3b7		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a1a0	64	__glle_End	dwarf+dynsym	40023ea62706		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a1a0	64	__glle_End	dwarf+dynsym	40023ea62706		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a1e0	68	__glle_Indexdv	dwarf+dynsym	c407a63d8e0f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a230	68	__glle_Indexfv	dwarf+dynsym	24c4fac2e3f2		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a280	68	__glle_Indexiv	dwarf+dynsym	2c6fc2ce1ef1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11425,10 +11425,10 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a730	68	__glle_Raste
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a780	68	__glle_RasterPos4fv	dwarf+dynsym	d56045674dd1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a7d0	68	__glle_RasterPos4iv	dwarf+dynsym	97684775af7c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a820	68	__glle_RasterPos4sv	dwarf+dynsym	24e3d2109cdb		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a870	72	__glle_Rectdv	dwarf+dynsym	35eae14c8115		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a8c0	72	__glle_Rectfv	dwarf+dynsym	369a3daca738		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a910	72	__glle_Rectiv	dwarf+dynsym	9a3f71ccafae		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a960	72	__glle_Rectsv	dwarf+dynsym	64a9f461194e		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a870	72	__glle_Rectdv	dwarf+dynsym	35eae14c8115		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a8c0	72	__glle_Rectfv	dwarf+dynsym	369a3daca738		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a910	72	__glle_Rectiv	dwarf+dynsym	9a3f71ccafae		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a960	72	__glle_Rectsv	dwarf+dynsym	64a9f461194e		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98a9b0	68	__glle_TexCoord1dv	dwarf+dynsym	22e29c424bc6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98aa00	68	__glle_TexCoord1fv	dwarf+dynsym	7122b0f2be71		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98aa50	68	__glle_TexCoord1iv	dwarf+dynsym	9fa2e7f16122		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11461,34 +11461,34 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b270	72	__glle_ClipP
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b2c0	72	__glle_ColorMaterial	dwarf+dynsym	ac6d94c7485d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b310	68	__glle_CullFace	dwarf+dynsym	a573fc202d65		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b360	72	__glle_Fogf	dwarf+dynsym	384fdeeb0db7		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b3b0	92	__glle_Fogfv	dwarf+dynsym	35cb74e284b3		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b3b0	92	__glle_Fogfv	dwarf+dynsym	35cb74e284b3		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b410	72	__glle_Fogi	dwarf+dynsym	f268b1de0119		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b460	92	__glle_Fogiv	dwarf+dynsym	35210c80aa6e		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b460	92	__glle_Fogiv	dwarf+dynsym	35210c80aa6e		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b4c0	68	__glle_FrontFace	dwarf+dynsym	9b8639309987		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b510	72	__glle_Hint	dwarf+dynsym	1fe1ac955dfe		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b560	96	__glle_Lightfv	dwarf+dynsym	16aadb971a93		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b5c0	96	__glle_Lightiv	dwarf+dynsym	99a14ee7b20a		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b620	92	__glle_LightModelfv	dwarf+dynsym	db7a4d2e8c32		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b680	92	__glle_LightModeliv	dwarf+dynsym	a9aa509c630c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b560	96	__glle_Lightfv	dwarf+dynsym	16aadb971a93		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b5c0	96	__glle_Lightiv	dwarf+dynsym	99a14ee7b20a		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b620	92	__glle_LightModelfv	dwarf+dynsym	db7a4d2e8c32		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b680	92	__glle_LightModeliv	dwarf+dynsym	a9aa509c630c		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b6e0	72	__glle_LineStipple	dwarf+dynsym	868a4cdb0091		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b730	68	__glle_LineWidth	dwarf+dynsym	77484122515f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b780	96	__glle_Materialfv	dwarf+dynsym	d0579e7e059f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b7e0	96	__glle_Materialiv	dwarf+dynsym	1bf29ecd7eb7		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b780	96	__glle_Materialfv	dwarf+dynsym	d0579e7e059f		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b7e0	96	__glle_Materialiv	dwarf+dynsym	1bf29ecd7eb7		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b840	68	__glle_PointSize	dwarf+dynsym	f77fbe5dd9a6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b890	72	__glle_PolygonMode	dwarf+dynsym	5aa8427439cb		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b8e0	80	__glle_Scissor	dwarf+dynsym	cfd6afbc1cb3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b930	68	__glle_ShadeModel	dwarf+dynsym	d64c7070fdbc		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b980	96	__glle_TexParameterfv	dwarf+dynsym	79c22bb6aff1		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b9e0	96	__glle_TexParameteriv	dwarf+dynsym	6adefae0deeb		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ba40	96	__glle_TexEnvfv	dwarf+dynsym	a9fbf240cfea		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98baa0	96	__glle_TexEnviv	dwarf+dynsym	5624e34a425a		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bb00	96	__glle_TexGendv	dwarf+dynsym	608ecf426724		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bb60	96	__glle_TexGenfv	dwarf+dynsym	ba063563cbf7		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bbc0	96	__glle_TexGeniv	dwarf+dynsym	8b1b6eaed267		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bc20	64	__glle_InitNames	dwarf+dynsym	8cf6bed53f41		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b980	96	__glle_TexParameterfv	dwarf+dynsym	79c22bb6aff1		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98b9e0	96	__glle_TexParameteriv	dwarf+dynsym	6adefae0deeb		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ba40	96	__glle_TexEnvfv	dwarf+dynsym	a9fbf240cfea		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98baa0	96	__glle_TexEnviv	dwarf+dynsym	5624e34a425a		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bb00	96	__glle_TexGendv	dwarf+dynsym	608ecf426724		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bb60	96	__glle_TexGenfv	dwarf+dynsym	ba063563cbf7		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bbc0	96	__glle_TexGeniv	dwarf+dynsym	8b1b6eaed267		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bc20	64	__glle_InitNames	dwarf+dynsym	8cf6bed53f41		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bc60	68	__glle_LoadName	dwarf+dynsym	40eae37c1c69		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bcb0	68	__glle_PassThrough	dwarf+dynsym	754034c2410b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bd00	64	__glle_PopName	dwarf+dynsym	609e1a6f51c6		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bd00	64	__glle_PopName	dwarf+dynsym	609e1a6f51c6		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bd40	68	__glle_PushName	dwarf+dynsym	087f06f3d128		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bd90	68	__glle_DrawBuffer	dwarf+dynsym	6ab69a8d14d8		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98bde0	68	__glle_Clear	dwarf+dynsym	009bcfac98d3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11502,7 +11502,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c010	80	__glle_Color
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c060	68	__glle_DepthMask	dwarf+dynsym	eda58f036236		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c0b0	68	__glle_IndexMask	dwarf+dynsym	befedcf6f4ac		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c100	72	__glle_Accum	dwarf+dynsym	adb4ad7e1332		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c150	64	__glle_PopAttrib	dwarf+dynsym	174ae06ff635		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c150	64	__glle_PopAttrib	dwarf+dynsym	174ae06ff635		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c190	68	__glle_PushAttrib	dwarf+dynsym	fa28a47e0e89		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c1e0	76	__glle_MapGrid1d	dwarf+dynsym	34d79423bbf6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c230	76	__glle_MapGrid1f	dwarf+dynsym	8465b1c3c857		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11532,15 +11532,15 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98c9d0	68	__glle_ReadB
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ca20	84	__glle_CopyPixels	dwarf+dynsym	8d45169c1cb3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ca80	72	__glle_DepthRange	dwarf+dynsym	fa1748b14335		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cad0	88	__glle_Frustum	dwarf+dynsym	208a97acfdde		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cb30	64	__glle_LoadIdentity	dwarf+dynsym	846818fb70c1		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cb30	64	__glle_LoadIdentity	dwarf+dynsym	846818fb70c1		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cb70	68	__glle_LoadMatrixf	dwarf+dynsym	7aedefe9caf0		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cbc0	68	__glle_LoadMatrixd	dwarf+dynsym	04a390c667c2		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cc10	68	__glle_MatrixMode	dwarf+dynsym	7fefcb55b4ae		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cc60	68	__glle_MultMatrixf	dwarf+dynsym	f6d906e9f9e5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ccb0	68	__glle_MultMatrixd	dwarf+dynsym	1c47201c81df		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cd00	88	__glle_Ortho	dwarf+dynsym	fd7f4431fac5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cd60	64	__glle_PopMatrix	dwarf+dynsym	1100caea003c		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cda0	64	__glle_PushMatrix	dwarf+dynsym	8096554816b6		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cd60	64	__glle_PopMatrix	dwarf+dynsym	1100caea003c		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cda0	64	__glle_PushMatrix	dwarf+dynsym	8096554816b6		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98cde0	80	__glle_Rotated	dwarf+dynsym	de90a7e429f4		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ce30	80	__glle_Rotatef	dwarf+dynsym	fab059b98e9a		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98ce80	76	__glle_Scaled	dwarf+dynsym	858b225b4b74		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11552,9 +11552,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d010	80	__glle_Blend
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d060	68	__glle_BlendEquationEXT	dwarf+dynsym	e48be5f75bb3		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d0b0	72	__glle_PolygonOffsetEXT	dwarf+dynsym	7925e0ab3bd6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d100	76	__glle_ConvolutionParameterfEXT	dwarf+dynsym	252ad81f7a1b		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d150	96	__glle_ConvolutionParameterfvEXT	dwarf+dynsym	bf10828cc535		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d150	96	__glle_ConvolutionParameterfvEXT	dwarf+dynsym	bf10828cc535		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d1b0	76	__glle_ConvolutionParameteriEXT	dwarf+dynsym	f333da758d75		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d200	96	__glle_ConvolutionParameterivEXT	dwarf+dynsym	2cc87a35e92f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d200	96	__glle_ConvolutionParameterivEXT	dwarf+dynsym	2cc87a35e92f		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d260	84	__glle_CopyConvolutionFilter1DEXT	dwarf+dynsym	70f56cdc27d0		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d2c0	88	__glle_CopyConvolutionFilter2DEXT	dwarf+dynsym	178facfb50b8		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d320	80	__glle_HistogramEXT	dwarf+dynsym	1ba8184d80d1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11572,23 +11572,23 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d710	72	__glle_Polyg
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d760	68	__glle_Indexubv	dwarf+dynsym	b8f155c5c4d5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d7b0	72	__glle_SampleMaskSGIS	dwarf+dynsym	39cac6bf70ad		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d800	68	__glle_SamplePatternSGIS	dwarf+dynsym	b95e1a38d025		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d850	64	__glle_TagSampleBufferSGIX	dwarf+dynsym	b708012b049d		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d850	64	__glle_TagSampleBufferSGIX	dwarf+dynsym	b708012b049d		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d890	88	__glle_DetailTexFuncSGIS	dwarf+dynsym	795bfd9231e5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d8f0	88	__glle_SharpenTexFuncSGIS	dwarf+dynsym	4a0154f48b7e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d950	96	__glle_ColorTableParameterfvSGI	dwarf+dynsym	0104f3ccb663		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d9b0	96	__glle_ColorTableParameterivSGI	dwarf+dynsym	6a598ecd1251		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d950	96	__glle_ColorTableParameterfvSGI	dwarf+dynsym	0104f3ccb663		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98d9b0	96	__glle_ColorTableParameterivSGI	dwarf+dynsym	6a598ecd1251		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98da10	84	__glle_CopyColorTableSGI	dwarf+dynsym	b5dde758de78		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98da70	68	__glle_PixelTexGenSGIX	dwarf+dynsym	7e670ac150ef		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dac0	72	__glle_SpriteParameterfSGIX	dwarf+dynsym	523bc3d0f5e6		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98db10	92	__glle_SpriteParameterfvSGIX	dwarf+dynsym	d892a3899004		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98db10	92	__glle_SpriteParameterfvSGIX	dwarf+dynsym	d892a3899004		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98db70	72	__glle_SpriteParameteriSGIX	dwarf+dynsym	2e1eca53504d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dbc0	92	__glle_SpriteParameterivSGIX	dwarf+dynsym	61219ee6b768		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dbc0	92	__glle_SpriteParameterivSGIX	dwarf+dynsym	61219ee6b768		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dc20	92	__glle_TexFilterFuncSGIS	dwarf+dynsym	9572c22159a1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dc80	72	__glle_PointParameterfSGIS	dwarf+dynsym	9c096529a043		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dcd0	92	__glle_PointParameterfvSGIS	dwarf+dynsym	c90c313d918b		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dcd0	92	__glle_PointParameterfvSGIS	dwarf+dynsym	c90c313d918b		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dd30	84	__glle_FogFuncSGIS	dwarf+dynsym	f2c1637f4c58		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dd90	68	__glle_ReadInstrumentsSGIX	dwarf+dynsym	c2fa47e3da3d		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dde0	64	__glle_StartInstrumentsSGIX	dwarf+dynsym	cd1e64d4efbb		in	named-only	docs/sample-implementation.md#g_lexecc	g_lexec.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dde0	64	__glle_StartInstrumentsSGIX	dwarf+dynsym	cd1e64d4efbb		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98de20	68	__glle_StopInstrumentsSGIX	dwarf+dynsym	9a50f00e1086		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98de70	68	__glle_ReferencePlaneSGIX	dwarf+dynsym	42a74eb582ba		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dec0	68	__glle_FrameZoomSGIX	dwarf+dynsym	66eedec641dd		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
@@ -11596,23 +11596,23 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98df10	68	__glle_Defor
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98df60	68	__glle_LoadIdentityDeformationMapSGIX	dwarf+dynsym	1365124b13af		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98dfb0	84	__glle_CopyColorSubTable	dwarf+dynsym	1554512d8b14		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e010	72	__glle_PixelTexGenParameteriSGIS	dwarf+dynsym	5e9cd658b4d1		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e060	92	__glle_PixelTexGenParameterivSGIS	dwarf+dynsym	9fb9c4fb03d8		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e060	92	__glle_PixelTexGenParameterivSGIS	dwarf+dynsym	9fb9c4fb03d8		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e0c0	72	__glle_PixelTexGenParameterfSGIS	dwarf+dynsym	bfcd767175c5		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e110	92	__glle_PixelTexGenParameterfvSGIS	dwarf+dynsym	19226e2a32de		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e110	92	__glle_PixelTexGenParameterfvSGIS	dwarf+dynsym	19226e2a32de		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e170	68	__glle_AsyncMarkerSGIX	dwarf+dynsym	2031dace8ee9		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e1c0	72	__glle_FragmentColorMaterialSGIX	dwarf+dynsym	5191dd5cefad		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e210	76	__glle_FragmentLightfSGIX	dwarf+dynsym	148223f2463e		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e260	96	__glle_FragmentLightfvSGIX	dwarf+dynsym	71c994ce1376		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e260	96	__glle_FragmentLightfvSGIX	dwarf+dynsym	71c994ce1376		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e2c0	76	__glle_FragmentLightiSGIX	dwarf+dynsym	1a01194fcbfe		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e310	96	__glle_FragmentLightivSGIX	dwarf+dynsym	1f952bd1df1c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e310	96	__glle_FragmentLightivSGIX	dwarf+dynsym	1f952bd1df1c		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e370	72	__glle_FragmentLightModelfSGIX	dwarf+dynsym	12b9acae0681		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e3c0	92	__glle_FragmentLightModelfvSGIX	dwarf+dynsym	ec387aaa780c		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e3c0	92	__glle_FragmentLightModelfvSGIX	dwarf+dynsym	ec387aaa780c		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e420	72	__glle_FragmentLightModeliSGIX	dwarf+dynsym	8e65dde49ecc		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e470	92	__glle_FragmentLightModelivSGIX	dwarf+dynsym	f4f65e4e2e95		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e470	92	__glle_FragmentLightModelivSGIX	dwarf+dynsym	f4f65e4e2e95		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e4d0	76	__glle_FragmentMaterialfSGIX	dwarf+dynsym	64d0a7bde03c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e520	96	__glle_FragmentMaterialfvSGIX	dwarf+dynsym	49df6cf6a75f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e520	96	__glle_FragmentMaterialfvSGIX	dwarf+dynsym	49df6cf6a75f		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e580	76	__glle_FragmentMaterialiSGIX	dwarf+dynsym	c6794a56703f		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e5d0	96	__glle_FragmentMaterialivSGIX	dwarf+dynsym	2fc18a4dbb54		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e5d0	96	__glle_FragmentMaterialivSGIX	dwarf+dynsym	2fc18a4dbb54		in	understood	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e630	72	__glle_LightEnviSGIX	dwarf+dynsym	ca8b610e281c		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e680	80	__glle_TextureColorMaskSGIS	dwarf+dynsym	92f2bbb652ba		in	located	docs/sample-implementation.md#g_lexecc	g_lexec.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd98e6d0	168	__glDrawArraysV	dwarf+dynsym	e979a409c8a0		in	undocumented		
@@ -12232,44 +12232,44 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84f0	60	__glLoseCurr
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8530	252	__glResizeBuffer	dwarf+dynsym	1f788ceddef1		in	named-only	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8630	12	__glMoveBuffer	dwarf+dynsym	8688c1290edb		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8640	72	__glFreeBuffer	dwarf+dynsym	b84292d629d3		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8690	112	__glim_Color3ub	dwarf+dynsym	5debf3225762		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8700	124	__glim_Color3ubv	dwarf+dynsym	69230920058d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8780	140	__glim_Color3b	dwarf+dynsym	acf6fa8ec27b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8810	152	__glim_Color3bv	dwarf+dynsym	d18526b241e2		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c88b0	88	__glim_Color3d	dwarf+dynsym	b40f69377075		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8910	100	__glim_Color3dv	dwarf+dynsym	b1850df3b170		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8980	136	__glim_Color3i	dwarf+dynsym	46450b5f6c75		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8a10	148	__glim_Color3iv	dwarf+dynsym	3dee03831a68		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8ab0	140	__glim_Color3ui	dwarf+dynsym	1ea4653fa309		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8b40	152	__glim_Color3uiv	dwarf+dynsym	cf42bee16f6b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8be0	140	__glim_Color3s	dwarf+dynsym	b0bec073905c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8c70	152	__glim_Color3sv	dwarf+dynsym	6d76fb830ade		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8d10	116	__glim_Color3us	dwarf+dynsym	aae109a1edd3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8d90	128	__glim_Color3usv	dwarf+dynsym	dfa10c3ad9ce		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8e10	120	__glim_Color4ub	dwarf+dynsym	8e0ad9c0c5ef		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8e90	136	__glim_Color4ubv	dwarf+dynsym	14415278b744		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8f20	156	__glim_Color4b	dwarf+dynsym	fcca16d44abf		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8fc0	172	__glim_Color4bv	dwarf+dynsym	bf0d3d199160		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9070	88	__glim_Color4d	dwarf+dynsym	c92791b233a7		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c90d0	104	__glim_Color4dv	dwarf+dynsym	22d4c635fe37		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9140	148	__glim_Color4i	dwarf+dynsym	bb370e2a1cae		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c91e0	164	__glim_Color4iv	dwarf+dynsym	e66f894c2055		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9290	156	__glim_Color4ui	dwarf+dynsym	227f92de7d38		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9330	172	__glim_Color4uiv	dwarf+dynsym	ca0135284a31		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c93e0	156	__glim_Color4s	dwarf+dynsym	cf5967d88688		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9480	172	__glim_Color4sv	dwarf+dynsym	c0a1ddcf4195		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9530	124	__glim_Color4us	dwarf+dynsym	632075f024be		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c95b0	140	__glim_Color4usv	dwarf+dynsym	5e723bd50bee		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8690	112	__glim_Color3ub	dwarf+dynsym	5debf3225762		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8700	124	__glim_Color3ubv	dwarf+dynsym	69230920058d		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8780	140	__glim_Color3b	dwarf+dynsym	acf6fa8ec27b		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8810	152	__glim_Color3bv	dwarf+dynsym	d18526b241e2		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c88b0	88	__glim_Color3d	dwarf+dynsym	b40f69377075		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8910	100	__glim_Color3dv	dwarf+dynsym	b1850df3b170		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8980	136	__glim_Color3i	dwarf+dynsym	46450b5f6c75		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8a10	148	__glim_Color3iv	dwarf+dynsym	3dee03831a68		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8ab0	140	__glim_Color3ui	dwarf+dynsym	1ea4653fa309		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8b40	152	__glim_Color3uiv	dwarf+dynsym	cf42bee16f6b		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8be0	140	__glim_Color3s	dwarf+dynsym	b0bec073905c		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8c70	152	__glim_Color3sv	dwarf+dynsym	6d76fb830ade		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8d10	116	__glim_Color3us	dwarf+dynsym	aae109a1edd3		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8d90	128	__glim_Color3usv	dwarf+dynsym	dfa10c3ad9ce		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8e10	120	__glim_Color4ub	dwarf+dynsym	8e0ad9c0c5ef		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8e90	136	__glim_Color4ubv	dwarf+dynsym	14415278b744		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8f20	156	__glim_Color4b	dwarf+dynsym	fcca16d44abf		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8fc0	172	__glim_Color4bv	dwarf+dynsym	bf0d3d199160		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9070	88	__glim_Color4d	dwarf+dynsym	c92791b233a7		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c90d0	104	__glim_Color4dv	dwarf+dynsym	22d4c635fe37		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9140	148	__glim_Color4i	dwarf+dynsym	bb370e2a1cae		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c91e0	164	__glim_Color4iv	dwarf+dynsym	e66f894c2055		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9290	156	__glim_Color4ui	dwarf+dynsym	227f92de7d38		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9330	172	__glim_Color4uiv	dwarf+dynsym	ca0135284a31		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c93e0	156	__glim_Color4s	dwarf+dynsym	cf5967d88688		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9480	172	__glim_Color4sv	dwarf+dynsym	c0a1ddcf4195		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9530	124	__glim_Color4us	dwarf+dynsym	632075f024be		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c95b0	140	__glim_Color4usv	dwarf+dynsym	5e723bd50bee		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9640	16	__glim_Indexd	dwarf+dynsym	eea7c63db90a		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9650	12	__glim_Indexf	dwarf+dynsym	17e166caf76a		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9660	20	__glim_Indexi	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9680	20	__glim_Indexs	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9660	20	__glim_Indexi	dwarf+dynsym	0ca9f225ac63		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9680	20	__glim_Indexs	dwarf+dynsym	0ca9f225ac63		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96a0	20	__glim_Indexdv	dwarf+dynsym	b68372d692e7		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96c0	16	__glim_Indexfv	dwarf+dynsym	1f8fd20e6fbb		in	understood	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96d0	24	__glim_Indexiv	dwarf+dynsym	385423dd2149		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96f0	24	__glim_Indexsv	dwarf+dynsym	577c5a302811		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9710	20	__glim_Indexub	dwarf+dynsym	0ca9f225ac63		in	located	docs/sample-implementation.md#so_capic	so_capi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9730	24	__glim_Indexubv	dwarf+dynsym	0f4fd3442995		in	located	docs/sample-implementation.md#so_capic	so_capi.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96d0	24	__glim_Indexiv	dwarf+dynsym	385423dd2149		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c96f0	24	__glim_Indexsv	dwarf+dynsym	577c5a302811		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9710	20	__glim_Indexub	dwarf+dynsym	0ca9f225ac63		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9730	24	__glim_Indexubv	dwarf+dynsym	0f4fd3442995		in	understood	docs/glcore-immediate-entry-points.md#colour-index-entry-points	Colour index entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c9750	484	__glim_Clear	dwarf+dynsym	b515bfed7c78		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9c9940	108	Clip	dwarf+funcnames	d7c053267ce1		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9c99b0	188	ClipC	dwarf+funcnames	ac157246ece7		in	located	docs/sample-implementation.md#so_clipc	so_clip.c
@@ -12681,12 +12681,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f47b0	216	__glNamesGe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4890	320	__glNamesDeleteNames	dwarf+dynsym	95c13dd49477		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49d0	32	__glim_Normal3d	dwarf+dynsym	37e3f67df0d5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49f0	44	__glim_Normal3dv	dwarf+dynsym	6f624c5015b5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a80	96	__glim_Normal3bv	dwarf+dynsym	fee8b6a14594		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ae0	84	__glim_Normal3s	dwarf+dynsym	05ea6a363bb3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4b40	96	__glim_Normal3sv	dwarf+dynsym	796b4b697e69		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ba0	92	__glim_Normal3i	dwarf+dynsym	234aa9870c23		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c00	104	__glim_Normal3iv	dwarf+dynsym	3f7c0365fa70		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a80	96	__glim_Normal3bv	dwarf+dynsym	fee8b6a14594		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ae0	84	__glim_Normal3s	dwarf+dynsym	05ea6a363bb3		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4b40	96	__glim_Normal3sv	dwarf+dynsym	796b4b697e69		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4ba0	92	__glim_Normal3i	dwarf+dynsym	234aa9870c23		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c00	104	__glim_Normal3iv	dwarf+dynsym	3f7c0365fa70		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c70	1948	__glGenericPickSpanProcs	dwarf+dynsym	0b10a5753bc8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5410	272	__glGenericPickPointProcs	dwarf+dynsym	66612f74db84		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5520	1264	__glGenericPickLineProcs	dwarf+dynsym	e3706e89e811		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
@@ -12848,19 +12848,19 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04fa0	176	__glMateria
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05050	52	__glMaterialiv_size	dwarf+dynsym	4a92e3dcc2de		in	located	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05090	36	__glColorTableParameterfvSGI_size	dwarf+dynsym	f5d2aec7ca3e		in	located	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda050c0	52	__glColorTableParameterivSGI_size	dwarf+dynsym	211b4d2bf0ed		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05100	60	__glSpriteParameterfvSGIX_size	dwarf+dynsym	72cd151555f3		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05140	52	__glSpriteParameterivSGIX_size	dwarf+dynsym	ae6731bea3ee		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05180	80	__glPointParameterfvSGIS_size	dwarf+dynsym	c8c48e762afc		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05100	60	__glSpriteParameterfvSGIX_size	dwarf+dynsym	72cd151555f3		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05140	52	__glSpriteParameterivSGIX_size	dwarf+dynsym	ae6731bea3ee		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05180	80	__glPointParameterfvSGIS_size	dwarf+dynsym	c8c48e762afc		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda051d0	244	__glPixelTransformParameterfvSGI_size	dwarf+dynsym	65f7b7c1d76b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda052d0	52	__glPixelTransformParameterivSGI_size	dwarf+dynsym	4f2a4dc77c3a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05310	60	__glPixelTexGenParameterivSGIS_size	dwarf+dynsym	ec16bd7634a4		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05350	52	__glPixelTexGenParameterfvSGIS_size	dwarf+dynsym	3f3e2748ba85		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05390	120	__glFragmentMaterialfvSGIX_size	dwarf+dynsym	5f60a7384aa1		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05410	52	__glFragmentMaterialivSGIX_size	dwarf+dynsym	6c59906b662f		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05450	300	__glFragmentLightfvSGIX_size	dwarf+dynsym	3ad58be3f36d		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05580	52	__glFragmentLightivSGIX_size	dwarf+dynsym	915c687ffaba		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda055c0	80	__glFragmentLightModelfvSGIX_size	dwarf+dynsym	89276ed87f79		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05610	52	__glFragmentLightModelivSGIX_size	dwarf+dynsym	f7403799139e		in	named-only	docs/sample-implementation.md#g_lcompc	g_lcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05310	60	__glPixelTexGenParameterivSGIS_size	dwarf+dynsym	ec16bd7634a4		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05350	52	__glPixelTexGenParameterfvSGIS_size	dwarf+dynsym	3f3e2748ba85		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05390	120	__glFragmentMaterialfvSGIX_size	dwarf+dynsym	5f60a7384aa1		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05410	52	__glFragmentMaterialivSGIX_size	dwarf+dynsym	6c59906b662f		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05450	300	__glFragmentLightfvSGIX_size	dwarf+dynsym	3ad58be3f36d		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05580	52	__glFragmentLightivSGIX_size	dwarf+dynsym	915c687ffaba		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda055c0	80	__glFragmentLightModelfvSGIX_size	dwarf+dynsym	89276ed87f79		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05610	52	__glFragmentLightModelivSGIX_size	dwarf+dynsym	f7403799139e		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05650	80	__glColorSubTable_size	dwarf+dynsym	f125020d85a1		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda056a0	164	__glReadSpan	dwarf+dynsym	ad95f61ef035		in	located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05750	488	__glReturnSpan	dwarf+dynsym	26d55e5c2ef1		in	located	docs/sample-implementation.md#so_slowspanc	so_slowspan.c
@@ -12982,30 +12982,30 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13de0	40	__glim_TexCo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e10	40	__glim_TexCoord1s	dwarf+dynsym	44a6eba89f4b		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e40	40	__glim_TexCoord1dv	dwarf+dynsym	560c8d283906		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13e70	36	__glim_TexCoord1fv	dwarf+dynsym	721582d60731		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ea0	44	__glim_TexCoord1iv	dwarf+dynsym	9d18c58526de		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ed0	44	__glim_TexCoord1sv	dwarf+dynsym	dc39d76b5503		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ea0	44	__glim_TexCoord1iv	dwarf+dynsym	9d18c58526de		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13ed0	44	__glim_TexCoord1sv	dwarf+dynsym	dc39d76b5503		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f00	40	__glim_TexCoord2d	dwarf+dynsym	e4e222ff3ece		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f30	48	__glim_TexCoord2i	dwarf+dynsym	900800e2749b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f60	48	__glim_TexCoord2s	dwarf+dynsym	900800e2749b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f90	48	__glim_TexCoord2dv	dwarf+dynsym	8065e132b9c0		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13fc0	56	__glim_TexCoord2iv	dwarf+dynsym	9e6fdd224659		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14000	56	__glim_TexCoord2sv	dwarf+dynsym	b1672a18b4cb		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f30	48	__glim_TexCoord2i	dwarf+dynsym	900800e2749b		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f60	48	__glim_TexCoord2s	dwarf+dynsym	900800e2749b		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13f90	48	__glim_TexCoord2dv	dwarf+dynsym	8065e132b9c0		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda13fc0	56	__glim_TexCoord2iv	dwarf+dynsym	9e6fdd224659		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14000	56	__glim_TexCoord2sv	dwarf+dynsym	b1672a18b4cb		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14040	40	__glim_TexCoord3d	dwarf+dynsym	9689aaccc17d		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14070	28	__glim_TexCoord3f	dwarf+dynsym	a5b001f261a0		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14090	52	__glim_TexCoord3i	dwarf+dynsym	fa74a505eda4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda140d0	52	__glim_TexCoord3s	dwarf+dynsym	fa74a505eda4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14110	52	__glim_TexCoord3dv	dwarf+dynsym	74fd532383eb		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14090	52	__glim_TexCoord3i	dwarf+dynsym	fa74a505eda4		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda140d0	52	__glim_TexCoord3s	dwarf+dynsym	fa74a505eda4		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14110	52	__glim_TexCoord3dv	dwarf+dynsym	74fd532383eb		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14150	40	__glim_TexCoord3fv	dwarf+dynsym	e9a1eef46490		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14180	64	__glim_TexCoord3iv	dwarf+dynsym	b9145b308d51		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda141c0	64	__glim_TexCoord3sv	dwarf+dynsym	52a84ee917cd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14180	64	__glim_TexCoord3iv	dwarf+dynsym	b9145b308d51		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda141c0	64	__glim_TexCoord3sv	dwarf+dynsym	52a84ee917cd		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14200	40	__glim_TexCoord4d	dwarf+dynsym	2bc721af3e64		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14230	24	__glim_TexCoord4f	dwarf+dynsym	e736c1aa7ae2		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14250	56	__glim_TexCoord4i	dwarf+dynsym	5f5a0e80d8c3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14290	56	__glim_TexCoord4s	dwarf+dynsym	5f5a0e80d8c3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda142d0	56	__glim_TexCoord4dv	dwarf+dynsym	1cc3aaaf6b3f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14250	56	__glim_TexCoord4i	dwarf+dynsym	5f5a0e80d8c3		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14290	56	__glim_TexCoord4s	dwarf+dynsym	5f5a0e80d8c3		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda142d0	56	__glim_TexCoord4dv	dwarf+dynsym	1cc3aaaf6b3f		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14310	40	__glim_TexCoord4fv	dwarf+dynsym	128706ae4599		in	understood	docs/sample-implementation.md#so_tapic	so_tapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14340	72	__glim_TexCoord4iv	dwarf+dynsym	9313b2f8c191		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14390	72	__glim_TexCoord4sv	dwarf+dynsym	f8ba6e506fdd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14340	72	__glim_TexCoord4iv	dwarf+dynsym	9313b2f8c191		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda14390	72	__glim_TexCoord4sv	dwarf+dynsym	f8ba6e506fdd		in	understood	docs/glcore-immediate-entry-points.md#texture-coordinate-entry-points	Texture coordinate entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda143e0	3852	__glTextureRGB_F_F_Span	dwarf+dynsym	37e82c6c3f85		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda152f0	3848	__glTextureRGB_F_F_StippledSpan	dwarf+dynsym	3859718a9500		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda16200	7132	__glTextureRGB_F_LML_Span	dwarf+dynsym	b1ce38b244cb		in	undocumented		
@@ -13230,27 +13230,27 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32970	16	__glim_EdgeF
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32980	168	__glim_Vertex2fv	dwarf+dynsym	bc1f54268fef		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32a30	168	__glim_Vertex3fv	dwarf+dynsym	bca79224a5b3		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32ae0	168	__glim_Vertex4fv	dwarf+dynsym	5f99faa2a0da		in	located	docs/sample-implementation.md#so_vapic	so_vapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32b90	72	__glim_Vertex2f	dwarf+dynsym	301759d52c3b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32be0	80	__glim_Vertex2d	dwarf+dynsym	f7c003d2a734		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32c30	88	__glim_Vertex2dv	dwarf+dynsym	ccf724508724		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32c90	88	__glim_Vertex2i	dwarf+dynsym	f889fcb51b71		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32cf0	96	__glim_Vertex2iv	dwarf+dynsym	1d97e39118bb		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32d50	88	__glim_Vertex2s	dwarf+dynsym	dff768b0a759		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32db0	96	__glim_Vertex2sv	dwarf+dynsym	8b7931f43dd8		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32e10	76	__glim_Vertex3f	dwarf+dynsym	65fe0dce1206		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32e60	88	__glim_Vertex3d	dwarf+dynsym	a5cdf648a9d2		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32ec0	100	__glim_Vertex3dv	dwarf+dynsym	abe22b3c8f84		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32f30	100	__glim_Vertex3i	dwarf+dynsym	7c73aa6fa7a8		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32fa0	112	__glim_Vertex3iv	dwarf+dynsym	3891e86d1537		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33010	100	__glim_Vertex3s	dwarf+dynsym	c27c61b5ecbe		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33080	112	__glim_Vertex3sv	dwarf+dynsym	76852f70436a		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda330f0	80	__glim_Vertex4f	dwarf+dynsym	f2a4f61e7524		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33140	96	__glim_Vertex4d	dwarf+dynsym	82053fb5f901		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda331a0	112	__glim_Vertex4dv	dwarf+dynsym	7e537567dd4a		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33210	112	__glim_Vertex4i	dwarf+dynsym	ccf0ae070536		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33280	128	__glim_Vertex4iv	dwarf+dynsym	966ff6aab38c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33300	112	__glim_Vertex4s	dwarf+dynsym	ba3692e9f472		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33370	128	__glim_Vertex4sv	dwarf+dynsym	090d4672c910		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32b90	72	__glim_Vertex2f	dwarf+dynsym	301759d52c3b		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32be0	80	__glim_Vertex2d	dwarf+dynsym	f7c003d2a734		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32c30	88	__glim_Vertex2dv	dwarf+dynsym	ccf724508724		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32c90	88	__glim_Vertex2i	dwarf+dynsym	f889fcb51b71		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32cf0	96	__glim_Vertex2iv	dwarf+dynsym	1d97e39118bb		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32d50	88	__glim_Vertex2s	dwarf+dynsym	dff768b0a759		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32db0	96	__glim_Vertex2sv	dwarf+dynsym	8b7931f43dd8		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32e10	76	__glim_Vertex3f	dwarf+dynsym	65fe0dce1206		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32e60	88	__glim_Vertex3d	dwarf+dynsym	a5cdf648a9d2		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32ec0	100	__glim_Vertex3dv	dwarf+dynsym	abe22b3c8f84		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32f30	100	__glim_Vertex3i	dwarf+dynsym	7c73aa6fa7a8		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda32fa0	112	__glim_Vertex3iv	dwarf+dynsym	3891e86d1537		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33010	100	__glim_Vertex3s	dwarf+dynsym	c27c61b5ecbe		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33080	112	__glim_Vertex3sv	dwarf+dynsym	76852f70436a		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda330f0	80	__glim_Vertex4f	dwarf+dynsym	f2a4f61e7524		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33140	96	__glim_Vertex4d	dwarf+dynsym	82053fb5f901		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda331a0	112	__glim_Vertex4dv	dwarf+dynsym	7e537567dd4a		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33210	112	__glim_Vertex4i	dwarf+dynsym	ccf0ae070536		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33280	128	__glim_Vertex4iv	dwarf+dynsym	966ff6aab38c		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33300	112	__glim_Vertex4s	dwarf+dynsym	ba3692e9f472		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33370	128	__glim_Vertex4sv	dwarf+dynsym	090d4672c910		in	understood	docs/glcore-immediate-entry-points.md#vertex-entry-points	Vertex entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda333f0	136	__glInitVertexArrayState	dwarf+dynsym	de840b3e88c9		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda33480	612	__glim_ArrayElementEXT	dwarf+dynsym	1944de5e2efe		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda336f0	328	__glim_DrawArraysEXT	dwarf+dynsym	c5c493f6d26a		in	understood	docs/sample-implementation.md#so_vertarrayc	so_vertarray.c
