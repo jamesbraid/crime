@@ -1680,4 +1680,39 @@ The routines below are the kernel's programmed-I/O window layer, the one the dri
 - `pio_bcopyout` in `kernel.o`: copies from kernel memory to a bus window, 132 bytes at offset 0x5920. Established.
   It applies the same range test and count clip as `pio_bcopyin`, but passes the mapped bus address as the destination argument of the same width-switching helper, so the data flows the other way.
 
+## Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+
+These routines run on the R10000-class cache-error path and the idle loop of the board's CPU; they reach CRIME only through the shared error and interrupt registers noted in each entry. Read in full from the 6.5.30 object with relocations resolved.
+
+- `early_ecc_init` in `kernel.o`: records where the cache-error stack lives before the allocator runs, a 12-byte routine at offset 0x4a54. Established.
+  Its only action is to store its argument into the word at `.bss+0x940`, the slot 0 pointer that `ecc_init` overwrites later and that `ecc_log` reads.
+- `ecc_init` in `kernel.o`: sets up the save area for the cache-error handler, a 124-byte routine at offset 0x49d8. Established.
+  It allocates 4096 zeroed bytes (`kmem_zalloc(4096, 2304)`), cleans the buffer out of the caches with the local helper at offset 0x4988 (`ecc_cleanRegion` in `r10k_cacherr.c`, called there with the same length), stores the buffer's uncached alias (the address or-ed with 0xa0000000) into the table word at `.bss+0x940`, and cleans that word's 512-byte table as well. A failed allocation prints "Unable to allocate ECCF" through `cmn_err` and returns with the pointer unset.
+- `ecc_bitcount` in `kernel.o`: counts the one bits of a 64-bit value, a 68-byte routine at offset 0x55a0. Established.
+  It loops, each time clearing the lowest set bit with `x & (x - 1)` (a 64-bit `daddu` with -1) and adding one to the result, and returns 0 at once for a zero argument; the cache-error code uses the count to see whether a syndrome names one bit or several.
+- `ecc_same_cache_block` in `kernel.o`: tells whether two physical addresses lie in one cache block of a given cache, a 60-byte routine at offset 0xfb60. Established.
+  It calls the helper at offset 0xfaf4 for the block mask of the cache named by its first argument, ANDs both addresses with that mask and returns 1 when the two results are equal, otherwise 0.
+- `ecc_force_cache_line_invalid` in `kernel.o`: invalidates one line of the secondary cache, a 92-byte routine at offset 0x4a60. Established.
+  It builds a cache-operation record on its stack with the tag fields and check bits zero and the address or-ed with the way number, then calls `cacheOP` twice: first with the operation field set to the caller's type plus 8 and then with the type plus 28, the tag store and the data store of the same line.
+- `ecc_log` in `kernel.o`: prints the recoverable cache errors that the handler queued, a 184-byte routine at offset 0x51b4. Established.
+  It clears the pending-error byte of the per-CPU area at -23704, takes the frame pointer from `.bss+0x940`, and warns "Some recoverable cache errors may not have been logged" when the 16-entry ring is full (the put index plus 15, masked with 15, equals the trace index). It then walks the ring from the put index to the trace index, passing each 32-byte record to the display helper at offset 0x464c with the label "recoverable" and the flags 276, and stores the trace index back as the new put index.
+- `cer_to_hex` in `kernel.o`: formats a cache-error register value as text, a 148-byte routine at offset 0x4abc. Established.
+  It converts the value to hexadecimal digits from the table "0123456789abcdef" in `.rodata`, least significant digit first onto a 16-byte stack buffer, appends "x" and "0", and copies the buffer reversed into the caller's buffer, which therefore receives "0x" followed by the digits with no terminator.
+- `getecc` in `kernel.o`: reads the CPU's cache-error check-bit register, a 12-byte routine at offset 0x7bf4. Established.
+  The body is one `mfc0` from coprocessor-0 register 26 into the return value; `setecc` is its write twin.
+- `setecc` in `kernel.o`: writes the CPU's cache-error check-bit register, a 12-byte routine at offset 0x7c00. Established.
+  It moves its argument into coprocessor-0 register 26 with `mtc0` and returns; the cache-error code uses it when it injects or rewrites check bits.
+- `sendintr` in `kernel.o`: the cross-processor interrupt stub of this uniprocessor board, a 36-byte routine at offset 0xb1a8. Established.
+  It sends nothing: it calls `cmn_err` at level 0 with the string "sendintr" and returns. Other boards' versions write an interrupt register; this one has none to write.
+- `allowintrs` in `kernel.o`: the hook other boards use to re-enable interrupts after the first processor starts, an 8-byte routine at offset 0xb51c. Established.
+  The body is a bare return, so the call does nothing on this board.
+- `wait_for_interrupt` in `kernel.o`: idles the CPU until an interrupt arrives, a 160-byte routine at offset 0x1534. Established.
+  It reads the processor-revision register and masks the implementation byte; only the values 0x20, 0x21, 0x23, 0x27 and 0x28 take the wait path, and every other CPU returns at once. On those it saves the status register, clears it to disable interrupts, loads the idle flag byte at the address in its argument, and restores the status register and returns when the flag is set; when the flag is clear it continues at `wait_for_interrupt_fix_loc`.
+- `wait_for_interrupt_fix_loc` in `kernel.o`: the two instructions that end the idle wait, a 40-byte tail at offset 0x15ac. Established.
+  It writes the saved status register back and executes the processor's `wait` instruction in the next slot, so an interrupt cannot arrive between them and be lost.
+- `pci_error_intr` in `kernel.o`: the handler for a PCI error interrupt from MACE, a 112-byte routine at offset 0x10b48. Established.
+  It reads the 32-bit flag word at 0xbf080004 and the word at 0xbf080000 with `pciio_pio_read32`, and when any of the flag bits under 0x3d000000 is set prints "catastrophic error on PCI bus.flags = 0x%x addr 0x%x" with both words through `cmn_err`. In every case it then writes the register at 0xbf080004 back with `pciio_pio_write32`. That 0xbf080000 is the PCI error address and 0xbf080004 the flag word is inferred from the Linux `struct mace_pci`; the five bits are the data-parity, retry, illegal-command, system-error and parity flags of Linux `mace.h`, which leaves master and target abort out because the bus probes cause them on purpose.
+- `idle_err` in `kernel.o`: reports an exception taken on the idle stack, a 164-byte routine at offset 0x10a70. Established.
+  It masks the exception code of its second argument; for codes 6 and 7 (instruction and data bus error) it calls `dobuserre`, and for any other code with bit 20 of that argument set it calls `dobuserr`. It always reads the faulting address with `getbadvaddr` and then prints "exception on IDLE stack k1:0x%x epc:0x%x cause:0x%w32x sp:0x%x badvaddr: 0x%x" with `cmn_err` and returns.
+
 <!-- kernel.o:end -->

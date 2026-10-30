@@ -384,7 +384,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023dd8	28	dCacheSize	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023df4	96	iLine	symtab	36e896748524		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023e54	84	dLine	symtab	7a923891162e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023ea8	136	sLine	symtab	4aeddb703e9e		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023f30	340	cacheOP	symtab	816eadccac5e		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023f30	340	cacheOP	symtab	816eadccac5e		in	named-only	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024084	164	init_cfgtree	symtab	b3ecdabdc980		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024128	12	RegisterDriverStrategy	symtab	2e4e8dd91f62		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024134	140	RegisterInstall	symtab	6aed34cc46d1		in	undocumented		
@@ -1162,7 +1162,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_bad_ptag	dwarf+func
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_cacheOp	dwarf+funcnames			out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_cache_block_mask	dwarf+funcnames			out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_cache_line_size	dwarf+funcnames			out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_cleanRegion	dwarf+funcnames			in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_cleanRegion	dwarf+funcnames			in	named-only	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_display	dwarf+funcnames			in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_fixcache	dwarf+funcnames			in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		ecc_fixmem	dwarf+funcnames			in	undocumented		
@@ -1288,8 +1288,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f4	12	set_r4k_compa
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1500	28	_get_r4k_counter	symtab	3761bd8ddd9d		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x151c	12	get_r4k_counter	symtab	923a8ad58445		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1528	12	get_r4k_config	symtab	65d36b16835c		out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1534	160	wait_for_interrupt	symtab	ee26e74161f6		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ac	40	wait_for_interrupt_fix_loc	symtab	7c7a779ebf10		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1534	160	wait_for_interrupt	symtab	ee26e74161f6		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ac	40	wait_for_interrupt_fix_loc	symtab	7c7a779ebf10		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15d4	1072	in_cksum_sub	symtab	345c882c1b77		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x16e8	808	in_cksum_pref	symtab	1c188c509085		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1a10	400	start	symtab	d835e00ba776		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
@@ -1378,18 +1378,18 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4290	476	ecc_exceptio
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4468	4	eccword	symtab	df3f619804a9		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x446c	384	r10k_ecc_exception	symtab	6e2149c47267		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4620	44	ecc_cacheop_get	symtab	5c3d3228b2b2		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x49d8	124	ecc_init	symtab	ea9ab7120909		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a54	12	early_ecc_init	symtab	bc4cd3b53da1		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a60	92	ecc_force_cache_line_invalid	symtab	e4e130dec8cb		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4abc	148	cer_to_hex	symtab	d6f637fd4583		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x49d8	124	ecc_init	symtab	ea9ab7120909		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a54	12	early_ecc_init	symtab	bc4cd3b53da1		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a60	92	ecc_force_cache_line_invalid	symtab	e4e130dec8cb		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4abc	148	cer_to_hex	symtab	d6f637fd4583		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4b50	1544	r10k_ecc_handler	symtab	68573382918b		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5158	92	r10k_ecc_panic	symtab	94034872202d		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x51b4	184	ecc_log	symtab	a8777d2864ae		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x51b4	184	ecc_log	symtab	a8777d2864ae		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x526c	252	ecc_printPending	symtab	a07b0182223c		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5368	120	ecc_compute_sctag_ecc	symtab	11ac95d959b4		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x53e0	280	scache_data_bit_error	symtab	662729170602		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x54f8	168	ecc_compute_scdata_ecc	symtab	05b7e43febaa		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x55a0	68	ecc_bitcount	symtab	eea7087ed7ae		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x55a0	68	ecc_bitcount	symtab	eea7087ed7ae		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x55e4	84	ecc_scache_bits_in_error	symtab	12ba6c4f0a1b		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5638	76	warn	symtab	1117c130497d		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5684	44	engr_dvt_thread	symtab	9594e8273520		out:9	undocumented		
@@ -1425,15 +1425,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7a10	116	_c_hinv	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7a84	132	_c_ilt_n_ecc	symtab	ae28a93966fc		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7b08	112	_c_ilt	symtab	da8eb7364bd0		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7b78	124	_c_ist	symtab	911d7b2bc3f6		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7bf4	12	getecc	symtab	9cf35fe42ca9		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c00	12	setecc	symtab	45b59ce9270c		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7bf4	12	getecc	symtab	9cf35fe42ca9		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c00	12	setecc	symtab	45b59ce9270c		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c0c	16	runcached	symtab	8dfef12679d1		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c1c	16	uncached	symtab	c0e366b037b7		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7c2c	140	_munge_decc	symtab	dd3717c0cbc4		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7cb8	96	_read_tag	symtab	4039c6dd3cc2		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7d18	88	_write_tag	symtab	105d38c13535		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7d70	96	flush_cache	symtab	fda744f89ee1		out:3	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7dd0	364	cacheOP	symtab	43282be90d66		out:3	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7dd0	364	cacheOP	symtab	43282be90d66		out:3	named-only	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7f3c	44	__prefetch_store	symtab	a3988c73a033		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7f68	44	__prefetch_load	symtab	60f9cb1cdf7b		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x7f94	20	sw_cachesynch_patch_insts	symtab	f146dedab262		out:3	undocumented		
@@ -1494,7 +1494,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xadf8	88	crimevec_thre
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xae50	88	crimevec_intrd_init	symtab	a2adfedb9477		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaea8	144	crimevec_intrd	symtab	ffc2fdd4997c		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb0e4	196	unsetcrimevector	symtab	11c5f3fb207f		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1a8	36	sendintr	symtab	f9a9f6566807		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1a8	36	sendintr	symtab	f9a9f6566807		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb1cc	80	spl0	symtab	67fd70f20787		in	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl1	symtab	2204b057e629	shared-address	out:5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb21c	132	spl3	symtab	2204b057e629	shared-address	out:5	undocumented		
@@ -1521,7 +1521,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splx	symtab	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splxecc	symtab	36bfc546d0e2	shared-address	out:5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4b4	72	splint	symtab	8e2c388976a9		in	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4fc	32	isspl0	symtab	f82aa27804e6		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb51c	8	allowintrs	symtab	78aa5094d5ec		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb51c	8	allowintrs	symtab	78aa5094d5ec		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb524	8	delay_for_intr	symtab	6cc16abd70ee		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb594	48	startrtclock	symtab	9fc450e3d15a		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb5c4	48	stopclocks	symtab	a2de5146f77a		out:6	undocumented		
@@ -1630,7 +1630,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf924	36	error_mark_pa
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf948	40	error_reclaim_page	symtab	163ddd14da27		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf970	252	tlb_to_phys	symtab	9a441062e6e0		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfa6c	8	r_phys_word_erl	symtab	b893f60251e4		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb60	60	ecc_same_cache_block	symtab	e1684c3f46fe		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb60	60	ecc_same_cache_block	symtab	e1684c3f46fe		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfb9c	576	decode_inst	symtab	9cb250dd414d		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfddc	200	map_physaddr	symtab	1aa7ca9a289a		in	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xfea4	100	unmap_physaddr	symtab	7b1df8db27d9		in	understood	docs/functions.md#memory-and-ecc	Memory and ECC
@@ -1640,9 +1640,9 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1026c	68	dobuserre	sy
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102b0	60	dobuserr	symtab	1d07a08050ca		in	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x102ec	272	print_buserr_rev1	symtab	33600ca346a2		in	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x103fc	456	print_buserr_rev0	symtab	26bba8e26917		in	understood	docs/functions.md#bus-error-probes	Bus-error probes
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10a70	164	idle_err	symtab	32299afe00d7		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10a70	164	idle_err	symtab	32299afe00d7		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10b14	52	earlynofault	symtab	d03eb83da7bb		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10b48	112	pci_error_intr	symtab	64b901de2d5a		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10b48	112	pci_error_intr	symtab	64b901de2d5a		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10bb8	312	etoh	symtab	0023369f35f5		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10cf0	80	getsysid	symtab	1957f5faa702		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10d84	108	pg_setcachable	symtab	045ee0b674ca		out:3	undocumented		
@@ -1686,7 +1686,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b9c	12	getpcsp	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11ba8	8	getgp	symtab	4429c69e8a79		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bb0	12	getcause	symtab	974544a72c7c		in	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bbc	12	setcause	symtab	65b1fd11f742		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bc8	28	getbadvaddr	symtab	a441cce0f1d1		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11bc8	28	getbadvaddr	symtab	a441cce0f1d1		in	named-only	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11be4	28	get_sr	symtab	6392b7eb9124		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c00	28	set_sr	symtab	6bf7644355e6		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11c1c	12	get_lladdr	symtab	e63103fa6964		in	undocumented		
