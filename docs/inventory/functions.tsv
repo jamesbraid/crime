@@ -6373,7 +6373,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931fc0	76	__glMipsXForm3
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93200c	92	__glMipsXForm3_2DW	dynsym+mdebug	37a12e9dded3		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932068	124	__glMipsXForm3_W	dynsym+mdebug	d9eb39c0a74d		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9320e4	112	__glMipsXForm3AsmLink_W	dynsym+mdebug	b169470efe72		undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932154	148	__glMipsXForm3	dynsym+mdebug	9fa17c92b767		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932154	148	__glMipsXForm3	dynsym+mdebug	9fa17c92b767		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9321e8	136	__glMipsXForm3AsmLink	dynsym+mdebug	d9b4bee0700a		undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932270	88	__glMipsXForm4_2DNRW	dynsym+mdebug	e81927faa563		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9322c8	104	__glMipsXForm4_2DW	dynsym+mdebug	a7415d1735d8		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
@@ -9182,7 +9182,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda350a4	128	__glim_Rotate
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35124	136	__glim_Rotated	dynsym+mdebug	3bafe15d2f17		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda351ac	116	__glim_Scalef	dynsym+mdebug	d8e98e2ec42d		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35220	128	__glim_Scaled	dynsym+mdebug	fa4340b4e905		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda352a0	116	__glim_Translatef	dynsym+mdebug	58c8b4630cb2		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda352a0	116	__glim_Translatef	dynsym+mdebug	58c8b4630cb2		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35314	128	__glim_Translated	dynsym+mdebug	42f08b5f57c8		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35394	140	__glim_PushMatrix	dynsym+mdebug	931f9cebc354		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35420	140	__glim_PopMatrix	dynsym+mdebug	1dbd3bb54d3d		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -9192,7 +9192,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda358b4	184	__glUpdateVie
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3596c	172	__glUpdateViewportTransform	dynsym+mdebug	39176469f2af		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35a18	264	__glim_Viewport	dynsym+mdebug	fcb47b06ce64		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35b20	144	__glim_DepthRange	dynsym+mdebug	6ac499bb077a		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35bb0	160	__glReadjustZCounts	dynsym+mdebug	e14751474533		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35bb0	160	__glReadjustZCounts	dynsym+mdebug	e14751474533		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35c50	288	__glim_Scissor	dynsym+mdebug	08d144b701f0		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35d70	332	__glim_ClipPlane	dynsym+mdebug	43e663fa033e		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda35ebc	180	__glPushModelViewMatrix	dynsym+mdebug	7abe6094ecd3		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -9216,7 +9216,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36cf0	84	__glDoScale	dy
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36d44	208	__glTranslateMatrix	dynsym+mdebug	abe48f850faa		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36e14	84	__glDoTranslate	dynsym+mdebug	a9be6123f486		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36e68	284	__glComputeClipBox	dynsym+mdebug	4f0c9d12a1c4		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36f84	156	__glReCompute2DMatrix	dynsym+mdebug	36cd8112ecfe		undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda36f84	156	__glReCompute2DMatrix	dynsym+mdebug	36cd8112ecfe		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda37020	136	__glGenericPickMvpMatrixProcs	dynsym+mdebug	aa26999dfe61		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda370a8	200	__glGenericPickMatrixProcs	dynsym+mdebug	164fa00f7e85		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda37170	112	__glGenericPickInvTransposeProcs	dynsym+mdebug	7ea4ed5ef1cf		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -10498,7 +10498,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933810	76	__glMipsXFor
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93385c	92	__glMipsXForm3_2DW	dwarf+dynsym	b416f7f48e87		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9338b8	124	__glMipsXForm3_W	dwarf+dynsym	41235fe14ad0		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933934	112	__glMipsXForm3AsmLink_W	dwarf+dynsym	d839aa02b1f0		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9339a4	148	__glMipsXForm3	dwarf+dynsym	31199a22b610		undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9339a4	148	__glMipsXForm3	dwarf+dynsym	31199a22b610		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933a38	136	__glMipsXForm3AsmLink	dwarf+dynsym	fea297375b52		undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933ac0	88	__glMipsXForm4_2DNRW	dwarf+dynsym	7a1e52885f73		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933b18	104	__glMipsXForm4_2DW	dwarf+dynsym	0610c8fe20ed		named-only	docs/opengl.md#transform-variants-__glmipsxform234	Transform variants (`__glMipsXForm{2,3,4}*`)
@@ -13294,11 +13294,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35020	276	__glPickMat
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35140	100	__glMultiplyMatrix	dwarf+dynsym	b400acf758f3		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda351b0	124	SetDepthRange	dwarf+funcnames	a4620de7964a		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35230	60	__glUpdateDepthRange	dwarf+dynsym	799f7dd302df		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35270	76	__glEarlyInitTransformState	dwarf+dynsym	de1286a47bda		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35270	76	__glEarlyInitTransformState	dwarf+dynsym	de1286a47bda		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda352c0	600	__glInitTransformState	dwarf+dynsym	4a69bc7b6b8c		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35520	416	__glInvalidateSequenceNumbers	dwarf+dynsym	1337129b7e0e		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda356c0	164	__glim_MatrixMode	dwarf+dynsym	f6d0940947ef		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35770	124	__glim_LoadIdentity	dwarf+dynsym	c91718f51fbf		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda356c0	164	__glim_MatrixMode	dwarf+dynsym	f6d0940947ef		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35770	124	__glim_LoadIdentity	dwarf+dynsym	c91718f51fbf		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda357f0	228	__glim_LoadMatrixf	dwarf+dynsym	1513935661bb		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda358e0	292	__glim_LoadMatrixd	dwarf+dynsym	220f0436ecd3		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35a10	232	__glim_MultMatrixf	dwarf+dynsym	acd4cc0ee83b		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -13307,32 +13307,32 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35c30	108	__glim_Rota
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ca0	112	__glim_Rotated	dwarf+dynsym	6452e7d87cd0		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35d10	100	__glim_Scalef	dwarf+dynsym	07b8b5a55836		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35d80	104	__glim_Scaled	dwarf+dynsym	ef8ad9f5964a		understood	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35df0	100	__glim_Translatef	dwarf+dynsym	456ae197ba69		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35df0	100	__glim_Translatef	dwarf+dynsym	456ae197ba69		named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35e60	104	__glim_Translated	dwarf+dynsym	6519509fc2b3		understood	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ed0	124	__glim_PushMatrix	dwarf+dynsym	dc8ef1e468f7		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35f50	124	__glim_PopMatrix	dwarf+dynsym	6d28c9ec0c3d		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35ed0	124	__glim_PushMatrix	dwarf+dynsym	dc8ef1e468f7		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35f50	124	__glim_PopMatrix	dwarf+dynsym	6d28c9ec0c3d		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda35fd0	456	__glim_Frustum	dwarf+dynsym	f746c841345c		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda361a0	512	__glim_Ortho	dwarf+dynsym	17eb0475b79d		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda363a0	176	__glUpdateViewport	dwarf+dynsym	626df4fddde1		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36450	172	__glUpdateViewportTransform	dwarf+dynsym	b20677355e50		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36500	240	__glim_Viewport	dwarf+dynsym	bd8c225d4576		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda365f0	140	__glim_DepthRange	dwarf+dynsym	c20d7eb5d118		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36680	168	__glReadjustZCounts	dwarf+dynsym	09e93f310fa9		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36730	276	__glim_Scissor	dwarf+dynsym	fdf240fc9d23		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36680	168	__glReadjustZCounts	dwarf+dynsym	09e93f310fa9		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36730	276	__glim_Scissor	dwarf+dynsym	fdf240fc9d23		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36850	340	__glim_ClipPlane	dwarf+dynsym	9b8212e0f2ea		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda369b0	428	__glPushModelViewMatrix	dwarf+dynsym	9bcfde37c4b6		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36b60	164	__glPopModelViewMatrix	dwarf+dynsym	24eef93fabae		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36b60	164	__glPopModelViewMatrix	dwarf+dynsym	24eef93fabae		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36c10	184	__glLoadIdentityModelViewMatrix	dwarf+dynsym	7074c5fa1355		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36cd0	96	__glComputeInverseTranspose	dwarf+dynsym	0c44a81a327a		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36cd0	96	__glComputeInverseTranspose	dwarf+dynsym	0c44a81a327a		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36d30	280	__glPushProjectionMatrix	dwarf+dynsym	292f6f1bcc97		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36e50	160	__glPopProjectionMatrix	dwarf+dynsym	51d9329ce62d		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36ef0	192	__glLoadIdentityProjectionMatrix	dwarf+dynsym	158ae707d1d5		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda36fb0	272	__glPushTextureMatrix	dwarf+dynsym	ed0e4db0ae58		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda370c0	92	__glPopTextureMatrix	dwarf+dynsym	643ec3979188		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37120	84	__glLoadIdentityTextureMatrix	dwarf+dynsym	3e8c9788c6f2		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37120	84	__glLoadIdentityTextureMatrix	dwarf+dynsym	3e8c9788c6f2		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37180	272	__glPushColorMatrix	dwarf+dynsym	d09c43af452a		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37290	92	__glPopColorMatrix	dwarf+dynsym	0a1f98dd0523		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda372f0	108	__glLoadIdentityColorMatrix	dwarf+dynsym	83773bfbd558		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37290	92	__glPopColorMatrix	dwarf+dynsym	0a1f98dd0523		understood	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda372f0	108	__glLoadIdentityColorMatrix	dwarf+dynsym	83773bfbd558		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37360	464	__glDoLoadMatrix	dwarf+dynsym	20539ea741a2		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37530	484	__glDoMultMatrix	dwarf+dynsym	c6e3ec393fef		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37720	400	__glDoRotate	dwarf+dynsym	531dd8ae37bf		located	docs/sample-implementation.md#so_xformc	so_xform.c
@@ -13341,8 +13341,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37950	68	__glDoScale	
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda379a0	180	__glTranslateMatrix	dwarf+dynsym	a5bff0241816		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37a60	68	__glDoTranslate	dwarf+dynsym	98c7078c6905		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37ab0	248	__glComputeClipBox	dwarf+dynsym	df0b7e350d49		located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37bb0	156	__glReCompute2DMatrix	dwarf+dynsym	4891296dd9d4		undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37c50	128	__glGenericPickMvpMatrixProcs	dwarf+dynsym	fa8c522b3167		located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37bb0	156	__glReCompute2DMatrix	dwarf+dynsym	4891296dd9d4		named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37c50	128	__glGenericPickMvpMatrixProcs	dwarf+dynsym	fa8c522b3167		understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37cd0	208	__glGenericPickMatrixProcs	dwarf+dynsym	4d032b844f85		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37da0	132	__glGenericPickInvTransposeProcs	dwarf+dynsym	1deb7c27807b		located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda37e30	256	__viceLoadCMMCode	dwarf+dynsym	a5715266e1f0		undocumented		
