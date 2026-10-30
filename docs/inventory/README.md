@@ -323,12 +323,12 @@ Percent understood before and after the match-only, evidence-sentence, cross-wor
 | Table | InfiniteReality | Odyssey | CRIME |
 |---|---:|---:|---:|
 | binaries | 21.5 to 21.9 | 0.0 to 0.0 | 4.9 to 6.1 |
-| functions | 20.9 to 8.3 | 7.6 to 1.2 | 28.4 to 7.0 |
+| functions | 20.9 to 8.3 | 7.8 to 1.3 | 28.4 to 7.0 |
 | functions (distinct names) | 13.8 to 7.1 | 7.5 to 2.5 | 27.6 to 9.7 |
 | mmio | 92.5 to 92.5 | 86.6 to 86.6 | 100.0 to 100.0 |
 | tokens | 52.7 to 52.7 | 93.7 to 93.7 | 100.0 to 100.0 |
 | ioctls | 98.2 to 98.2 | 100.0 to 100.0 | 100.0 to 100.0 |
-| ucode | 59.1 to 58.9 | 100.0 to 100.0 | no rows |
+| ucode | 62.8 to 62.6 | 100.0 to 100.0 | no rows |
 | spec-registers | 80.2 to 80.2 | no rows | 93.7 to 93.7 |
 
 How a mention is found:
