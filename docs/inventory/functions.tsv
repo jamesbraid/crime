@@ -8084,7 +8084,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c8e34	136	__glDoBlendSo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c8ebc	196	__glDoBlendDestMCC	dynsym+mdebug	e23e0f5e3df4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c8f80	72	__glDoBlendSourceMCA	dynsym+mdebug	24e71431f230		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c8fc8	120	__glDoBlendDestMCA	dynsym+mdebug	a97d9a58cbcb		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9c9040	9872	Nop	mdebug	49d55eaca48b		in	located	docs/sample-implementation.md#so_blendc	so_blend.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9c9040	9872	Nop	mdebug	49d55eaca48b		in	understood	docs/sample-implementation.md#so_blendc	so_blend.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9054	64	__glDoNoFetchBlend	dynsym+mdebug	227df615b772		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9094	116	__glDoFetchBlend	dynsym+mdebug	e5105f404dda		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9108	204	__glDoBlend	dynsym+mdebug	dba51448113b		in	undocumented		
@@ -8308,7 +8308,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d69c4	3416	DoEvalC
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d71e4	328	__glDoEvalCoord2	dynsym+mdebug	3eed4572d24c		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d732c	504	__glEvalMesh1Line	dynsym+mdebug	f8ef30aa2b70		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d7524	504	__glEvalMesh1Point	dynsym+mdebug	205587d2c460		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d771c	3776	sendChange	mdebug	b4bae1fe3717		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d771c	3776	sendChange	mdebug	b4bae1fe3717		in	understood	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d7920	1032	__glEvalMesh2Fill	dynsym+mdebug	f45378ff2580		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d7d28	664	__glEvalMesh2Point	dynsym+mdebug	db0d757a3d17		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d7fc0	1564	__glEvalMesh2Line	dynsym+mdebug	8285a38c5cfd		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
@@ -8543,7 +8543,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0aa4	332	prevLeaf
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0bf0	96	firstLeaf	mdebug	685d4a5b27ca		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0c50	216	nextLeaf	mdebug	9446a78e925b		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0d28	988	mergeLeaves	mdebug	23bf304774a0		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f1104	37468	mergeLeaf	mdebug	e32df793be01		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f1104	37468	mergeLeaf	mdebug	e32df793be01		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f12dc	1372	__glNamesNewData	dynsym+mdebug	a249a7ce2541		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f1838	144	__glNamesLockData	dynsym+mdebug	3c9764e124ed		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f18c8	2620	__glNamesLockDataList	dynsym+mdebug	c13d51eefba8		in	located	docs/sample-implementation.md#so_namesc	so_names.c
@@ -8751,7 +8751,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04a28	68	FailOp	md
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04a6c	68	PassDepthFailOp	mdebug	caba38d5f1d8		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04ab0	616	DepthPassOp	mdebug	688e3820575b		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04d18	344	buildOpTable	mdebug	3aeeb4b4e858		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04e70	17816	FreeStencilBuf	mdebug	abdb5bae984f		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04e70	17816	FreeStencilBuf	mdebug	abdb5bae984f		in	understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04f0c	724	__glValidateStencil	dynsym+mdebug	4b3f278b9523		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda05228	176	__glInitStencil8	dynsym+mdebug	d30aacbc9307		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda052e0	344	__glDoStore_ASD	dynsym+mdebug	d8344c6299dc		in	located	docs/sample-implementation.md#so_storec	so_store.c
@@ -12433,7 +12433,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5650	2044	DoEva
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d5e50	260	__glDoEvalCoord2	dwarf+dynsym	ef13cefd92f0		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d5f60	456	__glEvalMesh1Line	dwarf+dynsym	2fea3e39a2ed		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d6130	456	__glEvalMesh1Point	dwarf+dynsym	9437397ee917		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d6300	416	sendChange	dwarf+funcnames	095e3e20ba5b		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d6300	416	sendChange	dwarf+funcnames	095e3e20ba5b		in	understood	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d64a0	896	__glEvalMesh2Fill	dwarf+dynsym	52bd293c563d		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d6820	632	__glEvalMesh2Point	dwarf+dynsym	68762f540031		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d6aa0	1464	__glEvalMesh2Line	dwarf+dynsym	9086100329e0		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
@@ -12668,7 +12668,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2780	272	prevLe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2890	60	firstLeaf	dwarf+funcnames	60e7c05aa141		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f28d0	152	nextLeaf	dwarf+funcnames	411ee726ed1b		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2970	896	mergeLeaves	dwarf+funcnames	8e5185057926		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2cf0	444	mergeLeaf	dwarf+funcnames	c452e450e8be		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2cf0	444	mergeLeaf	dwarf+funcnames	c452e450e8be		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f2eb0	1272	__glNamesNewData	dwarf+dynsym	09e1e380de6f		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f33b0	152	__glNamesLockData	dwarf+dynsym	7c7ddddfd8e3		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f3450	2564	__glNamesLockDataList	dwarf+dynsym	1393a456854e		in	located	docs/sample-implementation.md#so_namesc	so_names.c
