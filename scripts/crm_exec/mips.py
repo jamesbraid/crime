@@ -21,7 +21,7 @@ class CPU:
         s.sb=bytearray(0x100000); s.segs.append([0x7f700000,s.sb]); s.sp0=0x7f7ff000
         s.r=[0]*32; s.hi=0; s.lo=0; s.f=[0]*32; s.fcc=0
         s.dec={}; s.hooks={}; s.ninsn=0; s.trace=None
-        s.watch=None
+        s.watch=None; s.rwatch=None
     def alloc(s,n,al=16):
         s.heap=(s.heap+al-1)&~(al-1); a=s.heap; s.heap+=n; assert s.heap-0x10000000<len(s.hb); return a
     def seg(s,a):
@@ -29,6 +29,7 @@ class CPU:
             if b<=a<b+len(m): return b,m
         raise Halt('unmapped %x pc=%x'%(a,s.pc))
     def rd(s,a,n):
+        if s.rwatch: s.rwatch(a,n)
         b,m=s.seg(a); o=a-b
         if o+n>len(m): raise Halt('rd overrun %x'%a)
         return int.from_bytes(m[o:o+n],'big')
