@@ -8036,7 +8036,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c2f98	356	__glim_Stenci
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c30fc	2872	__glCopyContext	dynsym+mdebug	4814e39e308b		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c3c34	2068	__glim_PushAttrib	dynsym+mdebug	ac8be4a27585		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c4448	3412	__glim_PopAttrib	dynsym+mdebug	ff542dbd5c03		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c519c	2480	__glim_Enable	dynsym+mdebug	9a0f411691c6		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c519c	2480	__glim_Enable	dynsym+mdebug	9a0f411691c6		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c5b4c	2544	__glim_Disable	dynsym+mdebug	12426fe8f0e1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c653c	1688	__glim_IsEnabled	dynsym+mdebug	2b54c166d605		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c6bd4	268	__glim_BlendColorEXT	dynsym+mdebug	baf0bb38e823		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
@@ -12161,7 +12161,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c02e0	340	__glim_Sten
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c0440	3372	__glCopyContext	dwarf+dynsym	896d599eb410		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c1170	2564	__glim_PushAttrib	dwarf+dynsym	31e2c71421e9		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c1b80	3820	__glim_PopAttrib	dwarf+dynsym	564394d3eaa7		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c2a70	3244	__glim_Enable	dwarf+dynsym	199672700a38		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c2a70	3244	__glim_Enable	dwarf+dynsym	199672700a38		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c3720	3328	__glim_Disable	dwarf+dynsym	aade58963f06		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4420	2252	__glim_IsEnabled	dwarf+dynsym	20a7dd0ecab1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c4cf0	184	__glim_BlendColorEXT	dwarf+dynsym	4e2057f34246		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
