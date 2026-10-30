@@ -44,8 +44,12 @@ import shutil
 import struct
 import subprocess
 import sys
+import tarfile
 import tempfile
 
+# Child tools and every sort must not depend on the caller's locale: text is read and written as UTF-8
+# explicitly, and the tools run under the C locale.
+os.environ['LC_ALL'] = os.environ['LANG'] = 'C'
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, 'scripts'))
 
@@ -77,7 +81,7 @@ COLUMNS = {
     'summary': ['table', 'rows', 'understood', 'understood_with_open', 'understood_distinct', 'templated', 'located', 'named_only',
                 'undocumented', 'no_software_dependency', 'pct_understood', 'pct_located_or_better',
                 'pct_mentioned', 'pct_done', 'unresolved_sites', 'truncated', 'audited_real_pct',
-                'audited_sample', 'audited_date', 'computes', 'reused', 'multi_unit', 'shared_address'],
+                'audited_sample', 'audited_date', 'computes', 'reused', 'multi_unit', 'shared_address', 'input'],
 }
 TABLES = ('binaries', 'functions', 'mmio', 'tokens', 'ioctls', 'ucode', 'spec-registers')
 
@@ -681,25 +685,80 @@ def similar(a, b, cache):
     return cache[key]
 
 
-def load_siblings(cfg, given):
+def load_siblings(cfg, given, tmp, problems, new_pins, skip=False, update=False):
     """(roles, used, skipped): the role texts of the sibling workspaces' entries, {function name:
-    [masked role text]}, the names of the siblings that were read, and (name, why) of those that could not
-    be. A sibling is a checkout named in the config's `siblings` ({name: path from this repository}) or
-    by --sibling NAME=PATH, read with its own config and its documents as they are on disk. Its tables are
-    not read, so the result does not depend on the order the workspaces are regenerated in."""
+    [masked role text]}, {name: commit} of the siblings that were read, and (name, why) of those that were
+    not. A sibling is a checkout named in the config's `siblings` ({name: path from this repository}) or
+    by --sibling NAME=PATH; a clone at .cache/siblings/NAME is the fallback for a run where ../NAME is not
+    visible. What is read is the sibling's documents as of the commit recorded for it in SIBLING_PINS, taken
+    from the commit and not from the working tree, so the result does not depend on what the checkout holds,
+    where it is, or the order the workspaces are regenerated in. A sibling that is absent, lacks its commit,
+    or is of this family (it would grade every entry as a copy of itself) is a problem, not a skip: only
+    --skip-siblings skips, and it says so in the tables."""
     global REPO
     spec = dict(cfg.get('siblings', {}))
     spec.update(given)
-    roles, used, skipped = collections.defaultdict(list), [], []
+    roles, used, skipped = collections.defaultdict(list), {}, []
+    pins_path = os.path.join(REPO, SIBLING_PINS)
+    pins = json.load(open(pins_path, encoding='utf-8')) if os.path.isfile(pins_path) else {}
+    new_pins.update(pins)
     for name in sorted(spec):
-        root = os.path.normpath(os.path.join(REPO, spec[name]))
-        cpath = os.path.join(root, 'scripts', 'inventory-config.json')
-        if not os.path.isfile(cpath):
-            skipped.append((name, 'no checkout with scripts/inventory-config.json at %s' % spec[name]))
+        if skip:
+            skipped.append((name, 'skipped by --skip-siblings'))
             continue
-        old, REPO = REPO, root
+        cands = [spec[name], os.path.join('.cache', 'siblings', name)]
+        found = next((c for c in cands if os.path.exists(os.path.join(REPO, c, '.git'))), None)
+        if found is None:
+            problems.append('sibling %s: no git checkout at %s (clone it there, or pass --sibling %s=PATH; '
+                            '--skip-siblings runs without the cross-workspace check)' %
+                            (name, ' or '.join(cands), name))
+            continue
+        src = os.path.normpath(os.path.join(REPO, found))
+        if update:
+            head = git(src, 'rev-parse', 'HEAD')
+            if head.returncode:
+                problems.append('sibling %s at %s: cannot read HEAD: %s' % (name, found, head.stderr.strip()))
+                continue
+            new_pins[name] = head.stdout.strip()
+        commit = new_pins.get(name)
+        if not commit:
+            problems.append('sibling %s: no commit recorded in %s (run with --update-pins)' % (name, SIBLING_PINS))
+            continue
+        if git(src, 'cat-file', '-e', commit + '^{commit}').returncode:
+            problems.append('sibling %s at %s does not have commit %s recorded in %s (fetch it, or run with '
+                            '--update-pins)' % (name, found, commit[:12], SIBLING_PINS))
+            continue
+        cpath = 'scripts/inventory-config.json'
+        shown = git(src, 'show', '%s:%s' % (commit, cpath))
+        if shown.returncode:
+            problems.append('sibling %s at %s has no %s at commit %s' % (name, found, cpath, commit[:12]))
+            continue
+        scfg = json.loads(shown.stdout)
+        if scfg.get('family') == cfg.get('family'):
+            problems.append('sibling %s at %s is of this workspace\'s own family (%s): the role check would '
+                            'compare the workspace with itself' % (name, found, cfg.get('family')))
+            continue
+        dest = os.path.join(tmp, 'sibling-' + name)
+        os.makedirs(dest)
+        tar = subprocess.run(['git', '-c', 'safe.directory=*', '-C', src, 'archive', '--format=tar', commit, '--',
+                              ':(glob)**/*.md', ':(glob)**/*.h', ':(glob)**/*.tsv', cpath],
+                             capture_output=True)
+        if tar.returncode:
+            problems.append('sibling %s: git archive failed: %s' % (name, tar.stderr.decode('utf-8', 'replace').strip()))
+            continue
+        with tarfile.open(fileobj=io.BytesIO(tar.stdout)) as tf:
+            tf.extractall(dest, **({'filter': 'data'} if hasattr(tarfile, 'data_filter') else {}))
+        sdocs = scfg['docs']
+        bad = [p for k in ('prose', 'headers', 'tables', 'dumps') for p in sdocs.get(k, [])
+               if not p.endswith(('.md', '.h', '.tsv'))]
+        if bad:
+            problems.append('sibling %s reads %s, which a sibling export (*.md, *.h, *.tsv) does not carry' %
+                            (name, ', '.join(bad)))
+            continue
+        problems += conflict_problems(dest, doc_files(scfg, dest), 'sibling %s' % name)
+        old, REPO = REPO, dest
         try:
-            sib = DocIndex(json.load(open(cpath)), None)
+            sib = DocIndex(scfg, None)
         finally:
             REPO = old
         for e in sib.entries:
@@ -710,7 +769,7 @@ def load_siblings(cfg, given):
                 for k in e.subj:
                     if k[0] == 'id':
                         roles[k[1]].append(sig)
-        used.append(name)
+        used[name] = commit
     if not spec:
         skipped.append(('(none)', 'no sibling workspace configured'))
     return roles, used, skipped
@@ -799,8 +858,8 @@ class DocIndex:
         """Mark each understood entry whose role text is, or is at least SIMILAR to, the sibling workspace's
         text for a function of the same name, when the entry states no datum of its own build: nobody
         showed that the text was read from this binary. Returns what was checked, for the headline."""
-        roles, used, skipped = siblings if siblings is not None else ({}, [], [('(none)', 'no sibling workspace configured')])
-        report = {'siblings': used, 'skipped': skipped, 'compared': 0, 'reused': 0}
+        roles, used, skipped = siblings if siblings is not None else ({}, {}, [('(none)', 'no sibling workspace configured')])
+        report = {'siblings': sorted(used), 'commits': dict(used), 'skipped': skipped, 'compared': 0, 'reused': 0}
         if not used:
             return report
         cache = {}
@@ -1210,6 +1269,125 @@ def strip_generated(lines):
     return out
 
 
+# ===================================================================== inputs
+
+ROOT_MANIFEST = 'scripts/inventory-root.sha256'
+SIBLING_PINS = 'scripts/inventory-siblings.json'
+CONFLICT = re.compile(r'^(?:<{7}|>{7}|\|{7})(?: |$)', re.M)
+SHOWN = 20
+
+
+def git(path, *args):
+    return subprocess.run(['git', '-c', 'safe.directory=*', '-C', path] + list(args), capture_output=True,
+                          text=True, encoding='utf-8', errors='replace')
+
+
+def config_strings(x, key=''):
+    """(key, string) for every string of the config outside `binaries`, whose paths scope() resolves."""
+    if isinstance(x, str):
+        yield key, x
+    elif isinstance(x, dict):
+        for k, v in x.items():
+            if k != 'binaries':
+                yield from config_strings(v, k)
+    elif isinstance(x, list):
+        for v in x:
+            yield from config_strings(v, key)
+
+
+def doc_files(cfg, base):
+    """Paths under `base` of every file the documents index reads, the config and the hand-kept inputs
+    (the hand-written audits, the coverage page, the pinned manifests), and the repository files the config
+    names."""
+    d = cfg['docs']
+    out = {'scripts/inventory-config.json', ROOT_MANIFEST, SIBLING_PINS, 'docs/coverage.md',
+           'docs/inventory/audits.tsv'}
+    for k in ('prose', 'headers', 'tables', 'index', 'dumps'):
+        for pat in d.get(k, []):
+            out.update(os.path.relpath(p, base) for p in glob.glob(os.path.join(base, pat), recursive=True))
+    for key, s in config_strings(cfg):
+        if key in ('file', 'path') and '{tmp}' not in s:
+            out.add(s)
+    return sorted(p for p in out if os.path.isfile(os.path.join(base, p)))
+
+
+def generated_span(text):
+    """(start, end) of the generated block of the coverage page, first begin marker to last end marker."""
+    i, j = text.find(MARK_BEGIN), text.rfind(MARK_END)
+    if i < 0:
+        i = next((m.start() for m in (p.search(text) for p in OLD_MARKS) if m), -1)
+    return (i, j + len(MARK_END)) if i >= 0 and j > i else None
+
+
+def conflict_problems(base, rels, label):
+    """Problems for files with unresolved merge-conflict markers. The generated block of the coverage page
+    is rewritten whole, so markers inside it are not an input."""
+    out = []
+    for rel in rels:
+        text = open(os.path.join(base, rel), encoding='utf-8', errors='replace').read()
+        if rel == 'docs/coverage.md':
+            span = generated_span(text)
+            if span:
+                text = text[:span[0]] + text[span[1]:]
+        m = CONFLICT.search(text)
+        if m:
+            out.append('%s: %s has an unresolved merge conflict (line %d); resolve it first, and regenerate '
+                       'tables instead of merging them' % (label, rel, text.count('\n', 0, m.start()) + 1))
+    return out
+
+
+def file_sha256(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(1 << 20), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def root_check(cfg, docs, update, problems):
+    """Check every file the run reads from root/ against ROOT_MANIFEST (`sha256  path` lines, sorted): the
+    files of the configured binaries, the root files the config names, and any indexed document that is a
+    link into root/. Returns (manifest hash, new manifest text when updating, file count); with `update`
+    the manifest is the files as they are, and build() writes it only if nothing else is wrong. The manifest, not the checkout, then says what
+    the tables were made from, so a symlinked root/, a copy of it and a shared checkout agree, and a file
+    that is missing or differs fails the run."""
+    root = os.path.join(REPO, 'root')
+    real_root = os.path.realpath(root)
+    need = {rel: real for rel, real, g in scope_files(cfg)}
+    for key, s in config_strings(cfg):
+        s = s.replace('{root}/', 'root/')
+        if s.startswith('root/') and '{tmp}' not in s:
+            hits = [h for h in glob.glob(os.path.join(root, s[5:]), recursive=True) if os.path.isfile(h)]
+            if not hits:
+                problems.append('root/%s is named by the config and is missing (or a dangling link)' % s[5:])
+            for h in hits:
+                need[os.path.relpath(h, root)] = h
+    for rel in docs:
+        real = os.path.realpath(os.path.join(REPO, rel))
+        if real.startswith(real_root + os.sep) and os.path.isfile(real):
+            need[os.path.relpath(real, real_root)] = real
+    have = {rel: file_sha256(real) for rel, real in sorted(need.items())}
+    mpath = os.path.join(REPO, ROOT_MANIFEST)
+    if update:
+        return None, ''.join('%s  %s\n' % (h, rel) for rel, h in sorted(have.items())), len(have)
+    if not os.path.isfile(mpath):
+        problems.append('%s is missing (write it from a complete root/ with --update-root-manifest)' % ROOT_MANIFEST)
+        return '', None, 0
+    want = {}
+    for ln in open(mpath, encoding='utf-8').read().split('\n'):
+        if ln:
+            h, rel = ln.split('  ', 1)
+            want[rel] = h
+    def shown(label, items):
+        if items:
+            more = ' (and %d more)' % (len(items) - SHOWN) if len(items) > SHOWN else ''
+            problems.append('root/ %s: %s%s' % (label, ', '.join(items[:SHOWN]), more))
+    shown('lacks files the manifest lists', sorted(set(want) - set(have)))
+    shown('has files in scope that the manifest does not list', sorted(set(have) - set(want)))
+    shown('has files whose sha256 differs from the manifest', sorted(r for r in have if r in want and have[r] != want[r]))
+    return hashlib.sha256(open(mpath, 'rb').read()).hexdigest(), None, len(want)
+
+
 # ===================================================================== scope
 
 def unpack_ar(data):
@@ -1237,8 +1415,8 @@ def unpack_ar(data):
     return mem
 
 
-def scope(cfg):
-    """[(label, member, group, data)] for every file in scope, plus the copies map."""
+def scope_files(cfg):
+    """[(path under root/, real path, group)] for every file the config puts in scope, sorted by path."""
     root = os.path.join(REPO, 'root')
     excl = cfg.get('exclude', [])
     files = []
@@ -1262,6 +1440,12 @@ def scope(cfg):
                     claimed.add(rel)
                     files.append((rel, c, g))
     files.sort(key=lambda x: x[0])
+    return files
+
+
+def scope(cfg):
+    """[(label, member, group, data)] for every file in scope, plus the copies map."""
+    files = scope_files(cfg)
     images = []
     by_sha = {}
     for rel, real, g in files:
@@ -1365,7 +1549,7 @@ def dwarf_subprograms(path):
     dd = shutil.which(os.environ.get('DWARFDUMP', 'dwarfdump'))
     if not dd:
         return []
-    txt = subprocess.run([dd, '-i', path], capture_output=True, text=True, errors='replace').stdout
+    txt = subprocess.run([dd, '-i', path], capture_output=True, text=True, encoding='utf-8', errors='replace').stdout
     out, cur = [], None
     for line in txt.splitlines():
         if 'DW_TAG_' in line:
@@ -1543,7 +1727,7 @@ def run_objdump(path):
     """[(name, [(addr, mnemonic, [operands], reloc)])] in address order."""
     out = subprocess.run([toolchain_objdump(), '-d', '-r', '-w', '-M', 'no-aliases,gpr-names=numeric',
                           '--no-show-raw-insn', path],
-                         capture_output=True, text=True, errors='replace').stdout
+                         capture_output=True, text=True, encoding='utf-8', errors='replace').stdout
     funcs, cur = [], None
     last = None
     for ln in out.split('\n'):
@@ -2658,7 +2842,7 @@ def tsv_cell(x):
 
 
 def write_tsv(path, table, rows):
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\t'.join(COLUMNS[table]) + '\n')
         for r in rows:
             f.write('\t'.join(tsv_cell(r.get(c, '')) for c in COLUMNS[table]) + '\n')
@@ -2753,30 +2937,57 @@ def main():
     ap.add_argument('--no-coverage', action='store_true')
     ap.add_argument('--sibling', action='append', default=[], metavar='NAME=PATH',
                     help='read the sibling workspace NAME from PATH instead of the config\'s path')
+    ap.add_argument('--skip-siblings', action='store_true',
+                    help='run without the cross-workspace role check; the tables say it was skipped')
+    ap.add_argument('--update-pins', action='store_true',
+                    help='record the HEAD of each sibling checkout in %s' % SIBLING_PINS)
+    ap.add_argument('--update-root-manifest', action='store_true',
+                    help='rewrite %s from the files under root/' % ROOT_MANIFEST)
     ap.add_argument('--jobs', type=int, default=min(16, os.cpu_count() or 1))
     a = ap.parse_args()
     a.sibling = dict(x.split('=', 1) for x in a.sibling)
     os.chdir(REPO)
-    cfg = json.load(open(a.config))
+    cfg = json.load(open(a.config, encoding='utf-8'))
     os.makedirs(a.out, exist_ok=True)
     tmp = tempfile.mkdtemp(prefix='inventory-')
     try:
         for cmd in cfg.get('prepare', []):
             r = subprocess.run([sys.executable if c == 'python3' else fmt(c, tmp) for c in cmd],
-                               capture_output=True, text=True, cwd=REPO)
+                               capture_output=True, text=True, encoding='utf-8', errors='replace', cwd=REPO,
+                               env=dict(os.environ, PYTHONHASHSEED='0'))
             if r.returncode:
-                print('prepare %s failed: %s' % (' '.join(cmd), r.stderr.strip()[-500:]), file=sys.stderr)
+                sys.exit('inventory: prepare %s failed: %s' % (' '.join(cmd), r.stderr.strip()[-500:]))
         build(cfg, a, tmp)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
 def build(cfg, a, tmp):
-    docs = DocIndex(cfg, load_siblings(cfg, a.sibling))
+    problems = []
+    files = doc_files(cfg, REPO)
+    problems += conflict_problems(REPO, files, 'this workspace')
+    manifest, new_manifest, nroot = root_check(cfg, files, a.update_root_manifest, problems)
+    pins = {}
+    siblings = load_siblings(cfg, a.sibling, tmp, problems, pins, a.skip_siblings, a.update_pins)
+    if problems:
+        sys.exit('inventory: refusing to write tables from inputs that are not what they should be:\n  ' +
+                 '\n  '.join(problems))
+    if new_manifest is not None:
+        with open(os.path.join(REPO, ROOT_MANIFEST), 'w', encoding='utf-8', newline='\n') as f:
+            f.write(new_manifest)
+        manifest = hashlib.sha256(new_manifest.encode('utf-8')).hexdigest()
+    if a.update_pins:
+        with open(os.path.join(REPO, SIBLING_PINS), 'w', encoding='utf-8', newline='\n') as f:
+            json.dump(pins, f, indent=2, sort_keys=True)
+            f.write('\n')
+    docs = DocIndex(cfg, siblings)
     sibrep = docs.sibling_report
-    if sibrep['skipped']:
-        for name, why in sibrep['skipped']:
-            print('WARNING: cross-workspace role check skipped for %s: %s' % (name, why), file=sys.stderr)
+    inputs = [{'table': 'input root manifest', 'rows': nroot, 'input': manifest}]
+    inputs += [{'table': 'input sibling ' + n, 'input': c} for n, c in sorted(sibrep['commits'].items())]
+    inputs += [{'table': 'input sibling ' + n, 'input': 'skipped'} for n, why in sibrep['skipped']
+               if n != '(none)']
+    for name, why in sibrep['skipped']:
+        print('WARNING: cross-workspace role check skipped for %s: %s' % (name, why), file=sys.stderr)
     imgs = scope(cfg)
     print('%d distinct images in scope (%d byte-identical copies folded)' %
           (len(imgs), sum(len(i['copies']) for i in imgs)), file=sys.stderr)
@@ -3203,7 +3414,7 @@ def build(cfg, a, tmp):
     for r in out['functions']:
         by_bin.setdefault(r['binary'], []).append(r)
     bin_rows = [summary_row('functions in ' + b, rs, '') for b, rs in by_bin.items()]
-    write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows + bin_rows)
+    write_tsv(os.path.join(a.out, 'summary.tsv'), 'summary', srows + inputs + bin_rows)
     for r in srows:
         print('%-28s %7s  understood %6s (%5s%%, %s with open, %s distinct, %s templated)  '
               'located-or-better %5s%%  mentioned %5s%%  nsd %5s' %
@@ -3216,7 +3427,7 @@ def build(cfg, a, tmp):
     print('register access sites: %d resolved, %d unresolved (%s)' %
           (resolved_sites, total_unres, ', '.join('%s %d' % kv for kv in sorted(by_win.items()))), file=sys.stderr)
     if not a.no_coverage:
-        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win, sibrep)
+        update_coverage(cfg, srows, imgs, kinds, resolved_sites, total_unres, by_win, sibrep, inputs)
 
 
 REG_CONTEXT = ('register', 'offset', 'pio', 'window', 'fifo', 'port', 'status', 'flag', 'store', 'load',
@@ -3337,11 +3548,11 @@ def summary_row(name, rows, unresolved):
             'pct_done': pct(c['understood'] + nsd), 'unresolved_sites': unresolved}
 
 
-def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib):
+def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib, inputs):
     path = os.path.join(REPO, 'docs', 'coverage.md')
     if not os.path.exists(path):
         return
-    text = open(path).read()
+    text = open(path, encoding='utf-8').read()
     elf = sum(1 for i in imgs if kind.get(i['label'], 'data') != 'data')
     lines = [MARK_BEGIN, '## Measured coverage', '',
              'Generated by `scripts/inventory.py` from %d distinct files in scope, %d of them ELF images. '
@@ -3380,6 +3591,9 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib):
         if sib['siblings'] else 'skipped.')]
     for name, why in sib['skipped']:
         checks.append('Skipped: sibling %s (%s). Rows are graded without it.' % (name, why))
+    checks.append('Inputs (also in [summary.tsv](inventory/summary.tsv)): ' + '; '.join(
+        '%s %s' % (r['table'][6:], (r['input'][:16] + (', %d files' % r['rows'] if r.get('rows') else ''))
+                   if r['table'] == 'input root manifest' else r['input'][:12]) for r in inputs) + '.')
     fr = next((r for r in srows if r['table'] == 'functions'), None)
     if fr is not None and fr.get('multi_unit') != '':
         checks.append('Function rows rejected as ambiguous, at most named-only: %s whose name is defined in several '
@@ -3398,13 +3612,14 @@ def update_coverage(cfg, srows, imgs, kind, resolved, unres, by_win, sib):
                   if by_win else ''),
               '', MARK_END]
     block = '\n'.join(lines)
-    pat = re.compile(r'(<!-- inventory:(?:begin|start)[^>]*-->).*?(<!-- inventory:end -->)', re.S)
-    if pat.search(text):
-        text = pat.sub(lambda m: block, text, count=1)
+    span = generated_span(text)
+    if span:
+        text = text[:span[0]] + block + text[span[1]:]
     else:
         i = text.find('\n## ')
         text = (text[:i] + '\n\n' + block + '\n' + text[i:]) if i >= 0 else text + '\n' + block + '\n'
-    open(path, 'w').write(text)
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(text)
 
 
 if __name__ == '__main__':

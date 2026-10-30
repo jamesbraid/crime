@@ -8,6 +8,25 @@ Run it from the repository root with `root/` populated (`IRIX_FILES.md`), inside
 
 It also rewrites the block between the `inventory:begin` and `inventory:end` markers at the top of [../coverage.md](../coverage.md). Regenerate in the same commit as any doc or header change.
 
+## Reproducible runs
+
+The tables are a function of three inputs. The script checks each before it writes anything and, if a check fails, stops with every problem listed and leaves the tables alone.
+
+- **The binaries.** `scripts/inventory-root.sha256` has a `sha256  path` line for every file under `root/` that a run reads: the files of the configured binaries, the root files the config names, and any indexed document that is a link into `root/`. The run hashes them and fails when one is missing (a dangling link counts as missing), one is not listed, or a hash differs. Only content counts, so `root/` can be a real directory, a symlink to a shared copy or a mount. Write the manifest from a complete `root/` with `--update-root-manifest`.
+- **The sibling workspaces.** The cross-workspace role check reads each sibling's documents at the commit recorded in `scripts/inventory-siblings.json`, exported from that commit with `git archive`, not from the working tree. The checkout only has to contain the commit. The script looks for a clone at the config's path (`../odsy`) and then at `.cache/siblings/<name>`, which is the place for a run in a container that mounts only this workspace. A sibling that is missing, lacks its recorded commit or belongs to this workspace's own family (it would grade the workspace against itself) fails the run. `--update-pins` moves each pin to the sibling's HEAD; commit the file with the tables made from it. `--skip-siblings` runs without the check and writes `skipped` into the tables: use it to look, not to commit.
+- **Merge conflicts.** An input with a line that starts `<<<<<<<`, `>>>>>>>` or `|||||||` fails the run, naming the file and line. The generated block of `coverage.md` is rewritten whole, so markers inside it do not count.
+
+`summary.tsv` records them after the per-table rows: `input root manifest` (the file count in `rows`, the manifest's sha256 in `input`) and one `input sibling <name>` per sibling (its commit, or `skipped`). The `coverage.md` headline repeats them. Rows and files are sorted, text is read and written as UTF-8 and the tools run under the C locale, so the same commit, manifest and pins give byte-identical tables from any clone, with any `--jobs`.
+
+A setup that reproduces them:
+
+    mkdir -p .cache/siblings
+    git clone <sibling repository> .cache/siblings/<name>    # each sibling; ../<name> also works
+    ln -s <shared checkout>/root root                        # or a copy or a mount that matches the manifest
+    python3 scripts/inventory.py
+
+When a rebase or merge conflicts in `docs/inventory/*.tsv`, do not resolve it by hand. `.gitattributes` marks those tables `-merge`, so git never line-merges them and stops with this side's copy and no markers. Take either side, run the script, and `git add docs/inventory docs/coverage.md`. `audits.tsv` is kept by hand and merges normally.
+
 ## Tables
 
 Every table except `summary.tsv` ends with the same three columns:
@@ -123,7 +142,7 @@ One row per register a specification or a shipped register table lists.
 
 ### summary.tsv
 
-One row per table, plus `functions (distinct names)`, which counts each function name once at its best status, and then one row `functions in <binary>` per binary that has functions.
+One row per table, plus `functions (distinct names)`, which counts each function name once at its best status, then the `input` rows (see Reproducible runs), and then one row `functions in <binary>` per binary that has functions.
 
 | Column | Meaning |
 |---|---|
@@ -141,6 +160,7 @@ One row per table, plus `functions (distinct names)`, which counts each function
 | `audited_real_pct`, `audited_sample`, `audited_date` | the latest independent audit of the table: the share of the sampled understood rows that held up, the sample size and the date, read from `audits.tsv`; empty when the table was never audited |
 | `computes` | for `ucode` only: understood rows whose entry states what the routine computes (see What understood means). Empty for every other table |
 | `reused` | rows held at `located` because their entry's role text is a sibling workspace's (see Cross-workspace role check) |
+| `input` | on the `input root manifest` and `input sibling <name>` rows only: the sha256 of the root manifest, or the sibling's commit (`skipped` when the check did not run). See Reproducible runs |
 | `multi_unit`, `shared_address` | for `functions` and `functions in <binary>` rows: rows rejected for a name defined at several addresses, and for an address several names share; empty for other tables |
 
 ### audits.tsv
@@ -236,7 +256,7 @@ An entry that identifies its item only by matching it to a public routine (match
 
 The InfiniteReality, Odyssey and CRIME workspaces share much of the OpenGL sample-implementation code, so one role sentence can be copied from one workspace into another. An understood entry whose subject is a function with the same name as an entry in a sibling workspace, whose role clause is identical to the sibling's or at least 90% alike after identifiers, numbers and case are masked, and that states no datum of its own build (above), grades at most `located`: the text is the sibling's, and nothing shows it was checked against this binary. The role clause is the text after the heading (`` `name` in path: ``) up to the first semicolon or sentence end, before "and it occupies". The check is symmetric, so both workspaces lose the credit.
 
-The siblings are the config's `siblings` (`{name: path from the repository root}`); `--sibling NAME=PATH` selects another checkout. Only a sibling's documents are read, with its own config, never its tables, so the result does not depend on the order the workspaces are regenerated in, but it does depend on their documents as they are on disk. A sibling that cannot be found is reported as skipped on standard error and in the `coverage.md` headline, and its entries are not compared; tables from such a run are not comparable with a run that found it. `summary.tsv` counts the rows this capped in `reused`.
+The siblings are the config's `siblings` (`{name: path from the repository root}`); `--sibling NAME=PATH` selects another checkout. Only a sibling's documents are read, with its own config, never its tables, and as they were at the commit recorded in `scripts/inventory-siblings.json`, so the result does not depend on the order the workspaces are regenerated in or on what the sibling's checkout holds (see Reproducible runs). A sibling that cannot be found, or is of this workspace's own family, fails the run. `--skip-siblings` skips the check, says `skipped` in `summary.tsv` and the `coverage.md` headline, and gives tables that are not comparable with a run that found them. `summary.tsv` counts the rows this capped in `reused`.
 
 ### Function rows the generator rejects
 
