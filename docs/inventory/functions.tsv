@@ -12609,7 +12609,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ee830	256	__glle_Conv
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ee930	1328	__gllc_ConvolutionFilter1DEXT	dwarf+dynsym	8d8ba27762ac		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9eee60	264	__glle_ConvolutionFilter2DEXT	dwarf+dynsym	cd0717e1b531		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9eef70	1320	__gllc_ConvolutionFilter2DEXT	dwarf+dynsym	662083a3317e		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ef4a0	296	__glle_SeparableFilter2DEXT	dwarf+dynsym	fc4b06e7dd18		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ef4a0	296	__glle_SeparableFilter2DEXT	dwarf+dynsym	fc4b06e7dd18		in	understood	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ef5d0	1468	__gllc_SeparableFilter2DEXT	dwarf+dynsym	da5040697b14		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efb90	8	__glle_TexImage4DSGIS	dwarf+dynsym	f211f0c174df		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9efba0	12	__gllc_TexImage4DSGIS	dwarf+dynsym	3dbccf644b41		in	undocumented		
