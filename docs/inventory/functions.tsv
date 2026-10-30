@@ -11006,7 +11006,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a380	176	__glFreeDli
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a430	140	__glDoInterpret	dwarf+dynsym	917a847266ab		in	understood	docs/sample-implementation.md#dl_interps	dl_interp.s
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a4bc	24	__glle_Sentinel	dwarf+dynsym	2ab5073a9e5e		in	understood	docs/sample-implementation.md#dl_interps	dl_interp.s
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a4e0	364	__glim_NewList	dwarf+dynsym	a0d6aae5f891		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a650	60	__glce_EndList	dwarf+dynsym	bfeb31ffbe00		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a650	60	__glce_EndList	dwarf+dynsym	bfeb31ffbe00		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a690	312	__glim_EndList	dwarf+dynsym	47c75148abcb		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd97a7d0	160	DoCallList	dwarf+funcnames	256453281c83		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd97a870	140	__gllc_CallList	dwarf+dynsym	8029e8eb79f3		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
