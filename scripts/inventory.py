@@ -3405,10 +3405,7 @@ def build(cfg, a, tmp):
     # A name that several builds define with different code is understood in the build an entry
     # cites. Builds whose code is the same (equal code_sha) share the credit; any other build is
     # at most located. A name with one code in every build needs no citation.
-    name_rows = collections.defaultdict(dict)       # name -> {binary: code group}
-    for lab, fl in funcs.items():
-        for name, e in fl.items():
-            name_rows[name][lab] = e[4] or 'L:' + lab
+    name_rows = code_groups(funcs, out['ucode'])
     token_images = collections.defaultdict(set)     # path written in a document -> binaries it names
     for img in imgs:
         for lab in [img['label']] + img['copies']:
@@ -3534,6 +3531,21 @@ REG_CONTEXT = ('register', 'offset', 'pio', 'window', 'fifo', 'port', 'status', 
                'read', 'write', 'address', 'field', 'word', 'command', 'block', 'bit', 'mask', 'interrupt',
                'dma', 'reset', 'base', 'map', 'token')
 IOCTL_CONTEXT = ('ioctl',)
+
+
+def code_groups(funcs, ucode_rows):
+    """{name: {binary or program: code group}} for the per-build credit of the functions table. Builds with
+    equal code share a group. A microcode program that defines the same name (an arm1.u symbol and an
+    ELF function both called nic_setup) is a group of its own, so an entry about the microcode routine
+    does not credit the ELF function: the entry has to cite the binary, as for any other second build."""
+    groups = collections.defaultdict(dict)
+    for lab, fl in funcs.items():
+        for name, e in fl.items():
+            groups[name][lab] = e[4] or 'L:' + lab
+    for r in ucode_rows:
+        if r.get('name') and r['name'] in groups:
+            groups[r['name']].setdefault('U:' + r['program'], 'U:' + r['program'])
+    return groups
 
 
 def record_routines(src):

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Tests of the rules in inventory.py that do not need root/: the `computes` count and the scope filter.
+"""Tests of the rules in inventory.py that do not need root/: the `computes` count, the scope filter and the
+per-build credit of the functions table.
 
 Run from the repository root: python3 scripts/test_inventory.py
 """
@@ -122,6 +123,25 @@ class Scope(unittest.TestCase):
         row = inv.summary_row('functions', rows, '', sum(1 for r in rows if r.get('_out')))
         self.assertEqual((row['rows'], row['out_of_scope'], row['undocumented']), (2, 4, 2))
         self.assertEqual(row['pct_understood'], '0.0')
+
+
+class CodeGroups(unittest.TestCase):
+    FUNCS = {'usr/diags/irsaudit': {'nic_setup': ('.text', 0x1007af50, 72, {'dynsym'}, 'ec74f03d23e6'),
+                                    'only_here': ('.text', 0x1007b000, 8, {'dynsym'}, 'aaaa')},
+             'usr/lib/a.so': {'shared': ('.text', 0x100, 8, {'dynsym'}, 'bbbb')},
+             'usr/lib/b.so': {'shared': ('.text', 0x200, 8, {'dynsym'}, 'bbbb')}}
+
+    def test_a_microcode_symbol_of_the_same_name_is_a_second_build(self):
+        g = inv.code_groups(self.FUNCS, [{'program': 'arm1.u', 'kind': 'symbol', 'name': 'nic_setup'}])
+        # two different codes: an entry about the arm1.u routine no longer credits the ELF function by name
+        self.assertEqual(len(set(g['nic_setup'].values())), 2)
+        self.assertEqual(len(set(g['only_here'].values())), 1)
+
+    def test_equal_code_shares_a_group_and_nameless_rows_add_nothing(self):
+        g = inv.code_groups(self.FUNCS, [{'program': 'ge.u', 'kind': 'label', 'name': ''},
+                                         {'program': 'ge.u', 'kind': 'label', 'name': 'not_an_elf_name'}])
+        self.assertEqual(len(set(g['shared'].values())), 1)
+        self.assertNotIn('not_an_elf_name', g)
 
 
 if __name__ == '__main__':
