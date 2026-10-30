@@ -1645,4 +1645,39 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
   It makes the same checks on the destination, sets and clears the same halfword around a call to `bcopy`, and returns zero.
 - `stkscr3` in `kernel.o`: the kernel-stack overflow trap, a 148-byte routine at offset 0x1945c. Established.
   It stores the stack pointer in the overflow word, prints the exception program counter, the stack pointer and the saved frame register, switches to the kernel stack held at -24156 from register zero and prints the return address and the old byte at -24513, which it set to 3. It then selects level 24, stores that level's mask from the table at -23880 to the CRIME interrupt enable register at +0x18, sets bit 0 plus the bits 16 and 2 of the current status, calls `panic` with a fixed message and, if that returns, jumps to `_baduk`.
+## Programmed-I/O map routines (`kernel.o`)
+
+The routines below are the kernel's programmed-I/O window layer, the one the driver-writer's manual documents as the `pio_` family. Only the adapter type 10 is served in this build. Each routine was read in full from the 6.5.30 object; the access routines they call (`orb_rmw`, `badaddr`, `wbadaddr` and their siblings) are the bus probes of the section above.
+
+- `pio_mapalloc` in `kernel.o`: builds a window record for a bus address range, a 352-byte routine at offset 0x13710. Established.
+  It returns 0 unless its first argument is 10. It then takes a 60-byte zeroed record (`kern_calloc(1, 60)`) and fills it: the adapter type at +0 and the adapter number at +4, the space-kind byte of the caller's space descriptor at +8, the descriptor's base address at +12 and size at +16, the caller's flag word at +24, -1 at +28 and the first seven characters of the caller's name string at +32. A space kind other than 0 or 1 frees the record and returns 0. Otherwise it reserves `(size + 4095) >> 12` kernel pages with `kvalloc(pages, 16, 0)`, stores that address at +20, and writes one entry per page into the kernel page table `kptbl`, at the index of the mapped page (the mapped address plus 0x40000000, shifted right by 12). The entry is the window's bus address masked with -64 and advanced by 4096 per page, or-ed with the flag word `0x40000017`.
+- `pio_mapaddr` in `kernel.o`: translates a bus address inside a window to its kernel address, a 44-byte routine at offset 0x13870. Established.
+  It loads the window base from +12 and the size from +16 of the record, returns 0 when the address is above base plus size, and otherwise returns the mapped base from +20 plus the distance of the address from the window base. It does not test the address against the lower end of the window; `pio_bcopyin` and `pio_bcopyout` test that themselves, and the six read-modify-write wrappers do not.
+- `pio_mapfree` in `kernel.o`: releases a window record and its pages, a 68-byte routine at offset 0x1389c. Established.
+  A null record returns at once. Otherwise it frees `(size + 4095) >> 12` kernel pages at the mapped address from +20 with `kvfree` and then frees the record with `kern_free`; it does not clear the page-table entries that `pio_mapalloc` wrote.
+- `pio_orb_rmw` in `kernel.o`: the byte OR on a bus address through a window, a 48-byte routine at offset 0x59a4. Established.
+  It maps the address with `pio_mapaddr` and passes the result and the mask to `orb_rmw` (offset 0x138e0), which raises the interrupt level with `spl7`, loads the byte, ORs the mask in, and restores the level with `splx` after the store is issued.
+- `pio_orh_rmw` in `kernel.o`: the half-word form of the OR wrapper, 48 bytes at offset 0x59d4. Established.
+  The body is the same three steps as the byte form, with the half-word routine `orh_rmw` as the target, so the access is a 16-bit load, OR and store under `spl7`.
+- `pio_orw_rmw` in `kernel.o`: the word form of the OR wrapper, 48 bytes at offset 0x5a04. Established.
+  It differs from the other two OR wrappers only in calling `orw_rmw`, whose access is a 32-bit load, OR and store.
+- `pio_andb_rmw` in `kernel.o`: the byte AND on a bus address, 48 bytes at offset 0x5a34. Established.
+  After mapping the address it calls `andb_rmw`, which performs a byte load, an AND with the mask and a store inside an `spl7` and `splx` pair, clearing the bits that the mask has at 0.
+- `pio_andh_rmw` in `kernel.o`: the half-word AND, 48 bytes at offset 0x5a64. Established.
+  It maps the address, then calls `andh_rmw`, the 16-bit counterpart of the byte AND routine, so a half-word of the window is read, masked and written back.
+- `pio_andw_rmw` in `kernel.o`: the word AND, 48 bytes at offset 0x5a94. Established.
+  It maps the address and calls `andw_rmw` (offset 0x13a28), whose body loads a 32-bit word, ANDs the mask and stores it under `spl7`.
+- `pio_badaddr` in `kernel.o`: probes whether a bus address answers a read, 48 bytes at offset 0x5ac4. Established.
+  It maps the address through the window and calls `badaddr` with the access size, so the CRIME error status and the MACE error flags are cleared, the probe is read and the error state is checked, as in the bus-error probe section; the result is the probe's return value.
+- `pio_badaddr_val` in `kernel.o`: the probing read that also returns the value, 56 bytes at offset 0x5af4. Established.
+  It saves the fourth argument (the result pointer), maps the address, and calls `badaddr_val` with the size and that pointer, so the value read is stored through the caller's pointer when the access did not fault.
+- `pio_wbadaddr` in `kernel.o`: probes whether a bus address accepts a write of zero, 48 bytes at offset 0x5b2c. Established.
+  It maps the address and calls `wbadaddr`, which stores a zero of the given width inside the same error-clearing sequence as `badaddr`.
+- `pio_wbadaddr_val` in `kernel.o`: the probing write of a caller-chosen value, 64 bytes at offset 0x5b5c. Established.
+  It spills the value to the stack at +44, maps the address, and calls `wbadaddr_val` with a pointer to that copy adjusted by the size, so the routine writes the caller's value, not zero, to the mapped address; subtracting the size and adding 4 points at the low-order end of the stored word, which is where a big-endian value of that width sits.
+- `pio_bcopyin` in `kernel.o`: copies from a bus window to kernel memory, a 132-byte routine at offset 0x589c. Established.
+  It returns 0 when the bus address is below the window base or at or above base plus size, clips the count to the bytes left in the window, maps the address, and calls a local copy helper (offset 0x5814) that switches on the item size 1, 2, 4 or 8 to a loop of that width and returns -1 for any other size.
+- `pio_bcopyout` in `kernel.o`: copies from kernel memory to a bus window, 132 bytes at offset 0x5920. Established.
+  It applies the same range test and count clip as `pio_bcopyin`, but passes the mapped bus address as the destination argument of the same width-switching helper, so the data flows the other way.
+
 <!-- kernel.o:end -->

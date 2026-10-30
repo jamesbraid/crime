@@ -1393,18 +1393,18 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x55a0	68	ecc_bitcount	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x55e4	84	ecc_scache_bits_in_error	symtab	12ba6c4f0a1b		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5638	76	warn	symtab	1117c130497d		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5684	44	engr_dvt_thread	symtab	9594e8273520		out:9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x589c	132	pio_bcopyin	symtab	23d483008ae2		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5920	132	pio_bcopyout	symtab	70207e520f77		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x59a4	48	pio_orb_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x59d4	48	pio_orh_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a04	48	pio_orw_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a34	48	pio_andb_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a64	48	pio_andh_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a94	48	pio_andw_rmw	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5ac4	48	pio_badaddr	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5af4	56	pio_badaddr_val	symtab	114271ef4b05		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b2c	48	pio_wbadaddr	symtab	45034b7759d0		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b5c	64	pio_wbadaddr_val	symtab	50c1bb4149d7		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x589c	132	pio_bcopyin	symtab	23d483008ae2		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5920	132	pio_bcopyout	symtab	70207e520f77		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x59a4	48	pio_orb_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x59d4	48	pio_orh_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a04	48	pio_orw_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a34	48	pio_andb_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a64	48	pio_andh_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5a94	48	pio_andw_rmw	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5ac4	48	pio_badaddr	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5af4	56	pio_badaddr_val	symtab	114271ef4b05		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b2c	48	pio_wbadaddr	symtab	45034b7759d0		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b5c	64	pio_wbadaddr_val	symtab	50c1bb4149d7		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5b9c	160	_r4600sc_disable_scache	symtab	c8607602ef93		out:3	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5c3c	432	_r4600sc_enable_scache	symtab	c2e8bfebb5bd		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5dec	168	_r4600sc_vtop	symtab	f316b14ff121		out:3	undocumented		
@@ -1723,15 +1723,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13610	28	get_cpu_irr	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1362c	56	get_fpc_irr	symtab	23a4cd72aff2		out:2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13664	16	reviderror	symtab	d25ddacfc03a		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13674	156	VEC_fpe	symtab	9ef3c9151073		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13710	352	pio_mapalloc	symtab	156e7e225912		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13870	44	pio_mapaddr	symtab	e0763a1c39db		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1389c	68	pio_mapfree	symtab	4efaa82b8dfd		in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x138e0	64	orb_rmw	symtab	de1479f063f2		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13920	68	orh_rmw	symtab	ad51421dda59		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13964	64	orw_rmw	symtab	95161ee15c44		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x139a4	64	andb_rmw	symtab	4a1cca9689bc		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x139e4	68	andh_rmw	symtab	44a120cf0c61		out:5	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13a28	64	andw_rmw	symtab	dc2a06744728		out:5	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13710	352	pio_mapalloc	symtab	156e7e225912		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13870	44	pio_mapaddr	symtab	e0763a1c39db		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1389c	68	pio_mapfree	symtab	4efaa82b8dfd		in	understood	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x138e0	64	orb_rmw	symtab	de1479f063f2		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13920	68	orh_rmw	symtab	ad51421dda59		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13964	64	orw_rmw	symtab	95161ee15c44		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x139a4	64	andb_rmw	symtab	4a1cca9689bc		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x139e4	68	andh_rmw	symtab	44a120cf0c61		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13a28	64	andw_rmw	symtab	dc2a06744728		out:5	named-only	docs/functions.md#programmed-io-map-routines-kernelo	Programmed-I/O map routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13a68	192	us_delay	symtab	8c6ff9fa15ec		out:6	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b28	52	us_delaybus	symtab	02b81e9fe9b2		out:6	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13b5c	28	cache_preempt_limit	symtab	34d7a2e33b85		out:3	undocumented		
