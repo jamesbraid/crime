@@ -8695,15 +8695,15 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda026e8	240	__glim_Raster
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda027e0	392	__glRasterPos2	dynsym+mdebug	1bbba5e4a897		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02968	392	__glRasterPos3	dynsym+mdebug	884673c54d40		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02af0	392	__glRasterPos4	dynsym+mdebug	ecf05c739495		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02c80	196	__glim_Rectd	dynsym+mdebug	9a038df485bf		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02d44	208	__glim_Rectdv	dynsym+mdebug	f5f15fb68fed		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02e14	176	__glim_Rectf	dynsym+mdebug	f4f62377f125		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02ec4	180	__glim_Rectfv	dynsym+mdebug	4a52b14944be		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02f78	224	__glim_Recti	dynsym+mdebug	6c2a9a1cfec3		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03058	224	__glim_Rectiv	dynsym+mdebug	938e4de9bca9		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03138	224	__glim_Rects	dynsym+mdebug	66e025156a82		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03218	224	__glim_Rectsv	dynsym+mdebug	33727fbc1168		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda032f8	200	__glRect	dynsym+mdebug	171130c6c1d1		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02c80	196	__glim_Rectd	dynsym+mdebug	9a038df485bf		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02d44	208	__glim_Rectdv	dynsym+mdebug	f5f15fb68fed		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02e14	176	__glim_Rectf	dynsym+mdebug	f4f62377f125		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02ec4	180	__glim_Rectfv	dynsym+mdebug	4a52b14944be		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02f78	224	__glim_Recti	dynsym+mdebug	6c2a9a1cfec3		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03058	224	__glim_Rectiv	dynsym+mdebug	938e4de9bca9		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03138	224	__glim_Rects	dynsym+mdebug	66e025156a82		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03218	224	__glim_Rectsv	dynsym+mdebug	33727fbc1168		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda032f8	200	__glRect	dynsym+mdebug	171130c6c1d1		in	named-only	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda033c0	172	__glim_SelectBuffer	dynsym+mdebug	a11d15996858		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0346c	112	__glim_InitNames	dynsym+mdebug	bd1c8fe39035		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda034dc	148	__glim_LoadName	dynsym+mdebug	0418d4552487		in	located	docs/sample-implementation.md#so_selectc	so_select.c
@@ -12820,15 +12820,15 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03b90	204	__glim_Rast
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03c60	376	__glRasterPos2	dwarf+dynsym	0dbb1a8c58bb		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03de0	376	__glRasterPos3	dwarf+dynsym	327960f10b45		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03f60	376	__glRasterPos4	dwarf+dynsym	662e3eec1e7a		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda040e0	184	__glim_Rectd	dwarf+dynsym	4d83bd4bd07c		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda041a0	176	__glim_Rectdv	dwarf+dynsym	00abe324956b		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04250	184	__glim_Rectf	dwarf+dynsym	26d4a598dc2c		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04310	160	__glim_Rectfv	dwarf+dynsym	130d663cb68b		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda043b0	192	__glim_Recti	dwarf+dynsym	6790813f2cbe		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04470	192	__glim_Rectiv	dwarf+dynsym	737a05f7b975		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04530	192	__glim_Rects	dwarf+dynsym	41de60f8c9f1		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda045f0	192	__glim_Rectsv	dwarf+dynsym	5de44a1600e6		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda046b0	200	__glRect	dwarf+dynsym	0f9f425b9608		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda040e0	184	__glim_Rectd	dwarf+dynsym	4d83bd4bd07c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda041a0	176	__glim_Rectdv	dwarf+dynsym	00abe324956b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04250	184	__glim_Rectf	dwarf+dynsym	26d4a598dc2c		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04310	160	__glim_Rectfv	dwarf+dynsym	130d663cb68b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda043b0	192	__glim_Recti	dwarf+dynsym	6790813f2cbe		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04470	192	__glim_Rectiv	dwarf+dynsym	737a05f7b975		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04530	192	__glim_Rects	dwarf+dynsym	41de60f8c9f1		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda045f0	192	__glim_Rectsv	dwarf+dynsym	5de44a1600e6		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda046b0	200	__glRect	dwarf+dynsym	0f9f425b9608		in	named-only	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04780	160	__glim_SelectBuffer	dwarf+dynsym	da01017c5f21		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04820	108	__glim_InitNames	dwarf+dynsym	21e097fbab54		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04890	144	__glim_LoadName	dwarf+dynsym	f0103bbd4fa2		in	located	docs/sample-implementation.md#so_selectc	so_select.c
