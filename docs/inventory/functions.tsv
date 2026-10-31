@@ -8203,7 +8203,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0620	12	__glChangeRead
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d062c	236	__glFindWindowSize	dynsym+mdebug	d6b8ecf10ed7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d0718	7960	FillBufferInfo	mdebug	53e3a9e6471d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0784	348	__glMakeCurrentBuffers	dynsym+mdebug	60d382684c23		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d08e0	232	__glLoseCurrentBuffers	dynsym+mdebug	0f05dbd89530		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d08e0	232	__glLoseCurrentBuffers	dynsym+mdebug	0f05dbd89530		in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d09c8	192	__glFreeBufData	dynsym+mdebug	8fd85acf9973		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0a90	1056	__glCheckConvolutionFilterArgs	dynsym+mdebug	571d9b40b952		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0eb0	348	__glim_ConvolutionFilter1DEXT	dynsym+mdebug	bbc517cc8681		in	located	docs/sample-implementation.md#so_convolvec	so_convolve.c
@@ -12328,7 +12328,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1d0	12	__glChangeRe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1e0	212	__glFindWindowSize	dwarf+dynsym	cf09e449cc12		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cf2c0	80	FillBufferInfo	dwarf+funcnames	7ac5ad24ef9d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf310	332	__glMakeCurrentBuffers	dwarf+dynsym	69a4daa12f71		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf460	212	__glLoseCurrentBuffers	dwarf+dynsym	f9432a348f42		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf460	212	__glLoseCurrentBuffers	dwarf+dynsym	f9432a348f42		in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf540	172	__glFreeBufData	dwarf+dynsym	c8489f2d80b4		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf5f0	2104	__glCheckConvolutionFilterArgs	dwarf+dynsym	1255350c6f19		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cfe30	320	__glim_ConvolutionFilter1DEXT	dwarf+dynsym	e008422b3db0		in	located	docs/sample-implementation.md#so_convolvec	so_convolve.c
