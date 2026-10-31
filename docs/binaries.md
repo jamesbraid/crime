@@ -226,3 +226,55 @@ None of the seven N32 plug-ins has a `.mdebug` section (established, `readelf -S
   It calls `dmICRegisterConverter` once, through slot 0x404338, and does not call `dmSetError`.
   The descriptor base is the local GOT slot 0x4042d0 value plus 16976, and the call passes the same layout as the release build (established, loads in the body).
   A negative result stores -1 as the return value. Any other result stores 0 (established, branch order and stores).
+The X video-control client library and the VICE library, one entry per build.
+Export addresses and sizes are from `readelf --dyn-syms`, and imports are from the same table (established).
+Roles are inferred from the export names unless a routine is read in full.
+- `usr/lib/libXsgivc.so` (74804 bytes, o32): the X video-control client library.
+  Its soname is `libXsgivc.so`, and it needs `libXext.so`, `libX11.so.1` and `libc.so.1` (established, `readelf -d`).
+  It has a `.mdebug` section (established, `readelf -S`).
+  Its exports include `XSGIvcQueryVersion` at 0x0f4022d4 (480 bytes) and `XSGIvcLoadVideoFormat` at 0x0f4036e4 (688 bytes).
+  They also include `XSGIvcQueryChannelInfo` at 0x0f403f1c (1724 bytes) and `XSGIvcSetOutputGain` at 0x0f4049d8 (316 bytes).
+  Its imports are the Xlib and Xext transport only.
+  They are `XextCreateExtension`, `XextFindDisplay` and `_XSend`.
+  The others are `_XReply` and `_XRead`.
+  It imports no `open`, `ioctl`, `mmap` or other device call (established, dynamic symbols).
+  So it reaches the board only through the X server's extension requests, and the server's module does the device work (inferred from the imports and the export names).
+- `usr/lib32/libXsgivc.so` (76084 bytes, n32): the N32 build of the same client library.
+  It needs the same three libraries (established, `readelf -d`).
+  It has no `.mdebug` section, only `.debug_info` (established, `readelf -S`).
+  Its exports include `XSGIvcQueryChannelInfo` at 0x0f402b30 (1616 bytes) and `XSGIvcSendMonitorCommand` at 0x0f403b70 (440 bytes).
+  They also include `XSGIvcNVLoadVideoFormatCombination` at 0x0f403500 (748 bytes) and `XSGIvcStoreGammaColors16` at 0x0f404bb0 (452 bytes).
+  Its imports are the same Xlib and Xext transport set, with no device call (established, dynamic symbols).
+  Its role is inferred as for the o32 build, and no routine body is read here.
+- `usr/lib64/libXsgivc.so` (80696 bytes, n64): the 64-bit build of the same client library.
+  It needs the same three libraries (established, `readelf -d`).
+  It has `.debug_info` and no `.mdebug` (established, `readelf -S`).
+  Its exports include `XSGIvcQueryChannelInfo` at 0x2003250 (1712 bytes) and `XSGIvcSendMonitorCommand` at 0x2004350 (456 bytes).
+  They also include `XSGIvcListVideoFormats` at 0x20048f0 (908 bytes).
+  Its imports are the Xlib transport set plus `_XData32`, with no device call (established, dynamic symbols).
+  Its role is inferred as for the o32 build, and no routine body is read here.
+- `usr/lib/internal/libvice.so` (39368 bytes, o32): the user-space VICE access library.
+  It needs `libc.so.1` and `libdmedia.so` (established, `readelf -d`) and has a `.mdebug` section (established, `readelf -S`).
+  Its exports include `vice_open` at 0x0d00198c (668 bytes), `vice_mmap` at 0x0d002284 (184 bytes) and `vice_close` at 0x0d001c94 (228 bytes).
+  It imports `open`, `ioctl` and `close`.
+  It also imports `mmap`, `munmap` and `stat`.
+  Those are established from dynamic symbols, so it reaches the VICE device through a file descriptor and a mapping.
+  No routine body is read in this build, so the device sequence is not stated here; the N32 build's `vice_open` is read below.
+- `usr/lib32/internal/libvice.so` (35156 bytes, n32): the N32 build of the same library.
+  It has no `.mdebug` section (established, `readelf -S`).
+  Its exports include `vice_open` at 0x0d00198c (568 bytes) and `vice_mmap` at 0x0d002194 (144 bytes).
+  It imports `open`, `ioctl` and `mmap`.
+  It also imports `munmap`, `stat` and `creat`.
+  These are established from dynamic symbols.
+  `vice_open` is read in full with `objdump -d`, and its GOT callees are named by the slot formula (established).
+  It calls `getenv`, then `_vice_unit_find`, and stores the find result in the word that the `_vicenoise` slot names.
+  When the find result is -1 and that stored word is nonzero, it prints through `printf` and returns -1 (established, branch order).
+  Otherwise it calls `open` with `a0` as the device path and flags 2 (`O_RDWR`).
+  A negative descriptor is not closed. The routine calls `_vice_unit_unfind`, after a `printf` when the stored word is nonzero, and returns -1 (established, branch order).
+  A usable descriptor gets `ioctl` with request 0x7678001f and argument 0.
+  If bits 16 to 31 of the result are not 27514 (0x6b7a), it calls `_vice_unit_unfind`, closes the descriptor and returns -1.
+  If they are 27514 and the word that the `_viceid` slot names is nonzero, it goes on to `mmap` (established, branch order).
+  If that word is zero, it calls `ioctl` with request 0x76782000 and stores the result in `_viceid`, unless the result is -1, which closes the descriptor and returns -1 (established, branch order and stores).
+  The `mmap` call takes address 0, length 0x14000, protection 3, flags 1, the descriptor and offset 0 (established, constants).
+  A map result of -1 calls `_vice_unit_unfind`, closes the descriptor and returns -1.
+  Otherwise the routine stores the descriptor in `_vicefd` and the map address in `_vice_base`, each at 4 times the unit index, and returns the unit index (established, stores and the `move v0,s1` in a delay slot).

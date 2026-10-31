@@ -619,7 +619,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b8ec	80	delete_strnum	sy
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b9b8	108	_copystrings	symtab	c92789d14466		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ba24	28	setenv	symtab	05121efd0608		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ba40	28	syssetenv	symtab	0ccd53922acf		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ba5c	124	getenv	symtab	3e01315dc59f		in	named-only	docs/opengl.md#texture-format-selection-and-download-table-pass-5	Texture format selection and download table (pass 5)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ba5c	124	getenv	symtab	3e01315dc59f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bb94	68	initenv	symtab	1cf83d3a5479		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bbd8	192	initargv	symtab	2edc81cde36e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bc98	144	getargv	symtab	2b2cf62314da		in	undocumented		
@@ -660,7 +660,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d610	1856	edit_gets	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002dd50	32	gets	symtab	2a1c7902c7e4		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002dd70	356	putchar	symtab	25eb706164d1		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e4d4	232	puts	symtab	4c73b07713cb		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e620	348	printf	symtab	e67e365e0842		in	named-only	docs/libglcore.md#crm_texturec	`crm_texture.c`
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e620	348	printf	symtab	e67e365e0842		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e77c	324	vprintf	symtab	eb68dce6a00a		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e920	148	sprintf	symtab	11f1dbe0834a		in	named-only	docs/functions.md#boards	Boards
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e9b4	12	_init_ttyputc	symtab	de3a433ad528		in	undocumented		
@@ -16325,7 +16325,7 @@ usr/lib/dmedia/video/mvp.so	board-library	o32		0x41352c	388	mvpGetI2CData	dynsym
 usr/lib/internal/libvice.so	board-library	o32		0xd001980	12	vice_get_lib_rev	dynsym+mdebug	f8f63bf9babe		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd00198c	668	vice_open	dynsym+mdebug	b2e0648e6768		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd001c28	108	vice_open_and_setetc	dynsym+mdebug	e55cab4d38bf		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd001c94	228	vice_close	dynsym+mdebug	751921048c39		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd001c94	228	vice_close	dynsym+mdebug	751921048c39		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd001d78	132	vice_lock	dynsym+mdebug	c890393e97dc		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001dfc	196	vice_unlock	dynsym+mdebug	095c041d31e7		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001ec0	236	vice_piow	dynsym+mdebug	4351ca2e23eb		in	undocumented		
@@ -16353,8 +16353,8 @@ usr/lib/internal/libvice.so	board-library	o32		0xd002e9c	204	vice_load_msp_code	
 usr/lib/internal/libvice.so	board-library	o32		0xd002f68	136	vice_loadmspcode	dynsym+mdebug	dd7db89605bf		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002ff0	108	vice_load_bsp_code	dynsym+mdebug	c347abd270f4		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd00305c	104	vice_load_bsp_table	dynsym+mdebug	122d0e811a35		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib/internal/libvice.so	board-library	o32		0xd0030d0	128	_vice_unit_find	dynsym+mdebug	2d17ecc939c9		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd003150	32	_vice_unit_unfind	dynsym+mdebug	b4f4e9debcbd		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd0030d0	128	_vice_unit_find	dynsym+mdebug	2d17ecc939c9		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/internal/libvice.so	board-library	o32		0xd003150	32	_vice_unit_unfind	dynsym+mdebug	b4f4e9debcbd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd003170	40	vice_etc_dramp	dynsym+mdebug	b9c84ef8260a		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003198	80	vice_sequence	dynsym+mdebug	cf44ef90061a		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd0031e8	80	vice_put_vaddr	dynsym+mdebug	1847ecf95c1d		in	undocumented		
@@ -16376,22 +16376,22 @@ usr/lib/libXsgivc.so	board-library	o32	.text	0xf4019c0	204	find_display	mdebug	b
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf401a8c	72	close_display	mdebug	213ee9fd8d09		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf401ad4	188	error_string	mdebug	0e0dde44e0c1		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf401b90	2932	wire_to_event	mdebug	31cdfc6527ed		in	named-only	docs/xsgivc.md#helpers	Helpers
-usr/lib/libXsgivc.so	board-library	o32		0xf4022d4	480	XSGIvcQueryVersion	dynsym+mdebug	3d9aaeb4ab4b		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf4022d4	480	XSGIvcQueryVersion	dynsym+mdebug	3d9aaeb4ab4b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf4024b4	592	XSGIvcQueryVideoScreenInfo	dynsym+mdebug	ce4fade33ea4		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402704	396	GenerateVFList	mdebug	fd38522dcdbc		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402890	144	ReadFieldInfo	mdebug	050c73858a19		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402920	8012	ReadFormatInfo	mdebug	646dfcf563f7		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib/libXsgivc.so	board-library	o32		0xf402ab0	932	XSGIvcListVideoFormats	dynsym+mdebug	14f653011c57		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf402ab0	932	XSGIvcListVideoFormats	dynsym+mdebug	14f653011c57		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf402e54	388	matchWild	dynsym+mdebug	3a3cca2d71df		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32		0xf402fd8	872	XSGIvcListVideoFormatCombinations	dynsym+mdebug	d6e845af22dc		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf403340	932	XSGIvcListVideoFormatsInCombination	dynsym+mdebug	2faec7883238		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf4036e4	688	XSGIvcLoadVideoFormat	dynsym+mdebug	ad5bf00138b4		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
+usr/lib/libXsgivc.so	board-library	o32		0xf4036e4	688	XSGIvcLoadVideoFormat	dynsym+mdebug	ad5bf00138b4		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf403994	788	XSGIvcLoadVideoFormatCombination	dynsym+mdebug	56e8d7b92229		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf403ca8	628	XSGIvcDisableChannel	dynsym+mdebug	291ea2a7fb65		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf403f1c	1724	XSGIvcQueryChannelInfo	dynsym+mdebug	867bfb57fd0b		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf403f1c	1724	XSGIvcQueryChannelInfo	dynsym+mdebug	867bfb57fd0b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf4045d8	660	XSGIvcQueryMonitorName	dynsym+mdebug	9eb4e2bf79ce		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf40486c	1112	SetOneControl	mdebug	dbdc3b1d3962		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf4049d8	316	XSGIvcSetOutputGain	dynsym+mdebug	591f008cdba0		in	named-only	docs/xsgivc.md#output-controls	Output controls
+usr/lib/libXsgivc.so	board-library	o32		0xf4049d8	316	XSGIvcSetOutputGain	dynsym+mdebug	591f008cdba0		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf404b14	72	XSGIvcSetOutputPedestal	dynsym+mdebug	251af81f3601		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib/libXsgivc.so	board-library	o32		0xf404b5c	72	XSGIvcSetOutputPhaseH	dynsym+mdebug	cbb2635e73ac		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib/libXsgivc.so	board-library	o32		0xf404ba4	72	XSGIvcSetOutputPhaseSCH	dynsym+mdebug	f0ab8f915393		in	named-only	docs/xsgivc.md#output-controls	Output controls
@@ -16421,7 +16421,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf4066d0	344	XSGIvcSelectInput	dynsym+m
 usr/lib/libXsgivc.so	board-library	o32		0xf406828	60	XSGIvcFreeVideoFormatInfo	dynsym+mdebug	14d714d8d06f		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32		0xf406864	476	XSGIvcSetChannelInputRectangle	dynsym+mdebug	d900b2e147a7		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf406a40	724	XSGIvcQueryBestChannelRectangle	dynsym+mdebug	de3836a63b20		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf406d14	480	XSGIvcSendMonitorCommand	dynsym+mdebug	5e33ded9d936		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf406d14	480	XSGIvcSendMonitorCommand	dynsym+mdebug	5e33ded9d936		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf406ef4	728	XSGIvcSendMonitorQuery	dynsym+mdebug	873bea4e63ca		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf4071cc	456	XSGIvcQueryMonitorBaseProtocol	dynsym+mdebug	3dfed15cf61c		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf407394	344	XSGIvcInitMonitorBaseProtocol	dynsym+mdebug	3ab16e76e05f		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -16431,7 +16431,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf407810	660	XSGIvcQueryExternalSyncSou
 usr/lib/libXsgivc.so	board-library	o32		0xf407aa4	940	XSGIvcNVListVideoFormats	dynsym+mdebug	6e25c5ab5599		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf407e50	880	XSGIvcNVListVideoFormatCombinations	dynsym+mdebug	b1f0ca34dbfa		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf4081c0	708	XSGIvcNVLoadVideoFormat	dynsym+mdebug	7f7e762c5353		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf408484	788	XSGIvcNVLoadVideoFormatCombination	dynsym+mdebug	9c6a728a7640		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf408484	788	XSGIvcNVLoadVideoFormatCombination	dynsym+mdebug	9c6a728a7640		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32		0xf408798	804	XSGIvcLoadVideoFormatByName	dynsym+mdebug	5ad47915113e		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408abc	808	XSGIvcNVLoadVideoFormatByName	dynsym+mdebug	9b12b34ef1ee		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408de4	360	XSGIvcMultiCursorSetMode	dynsym+mdebug	4ea3a266b69d		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -17065,7 +17065,7 @@ usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0017a0	464	_stub	dwarf	
 usr/lib32/internal/libvice.so	board-library	n32		0xd001980	12	vice_get_lib_rev	dwarf+dynsym	f8f63bf9babe		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00198c	568	vice_open	dwarf+dynsym	5fa2fe1e215c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd001bc4	116	vice_open_and_setetc	dwarf+dynsym	0d9c7ae97c6e		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd001c38	208	vice_close	dwarf+dynsym	3eea6c76ea54		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd001c38	208	vice_close	dwarf+dynsym	3eea6c76ea54		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d08	136	vice_lock	dwarf+dynsym	a34443e5ca7d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d90	196	vice_unlock	dwarf+dynsym	ff0ad3bdb583		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001e54	196	vice_piow	dwarf+dynsym	bcb558f05e6c		in	undocumented		
@@ -17093,8 +17093,8 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd002c18	176	vice_load_msp_cod
 usr/lib32/internal/libvice.so	board-library	n32		0xd002cc8	120	vice_loadmspcode	dwarf+dynsym	2f59a4d7232e		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002d40	100	vice_load_bsp_code	dwarf+dynsym	454a1d64ff40		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002da4	96	vice_load_bsp_table	dwarf+dynsym	679ad190462c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib32/internal/libvice.so	board-library	n32		0xd002e04	68	_vice_unit_find	dwarf+dynsym	df001abf46f6		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002e48	32	_vice_unit_unfind	dwarf+dynsym	7b9cd1fa4c50		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002e04	68	_vice_unit_find	dwarf+dynsym	df001abf46f6		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/internal/libvice.so	board-library	n32		0xd002e48	32	_vice_unit_unfind	dwarf+dynsym	7b9cd1fa4c50		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002e68	40	vice_etc_dramp	dwarf+dynsym	def121c95c84		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002e90	76	vice_sequence	dwarf+dynsym	c87c1e8018ac		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002edc	76	vice_put_vaddr	dwarf+dynsym	8ac1f84df91a		in	undocumented		
@@ -17113,27 +17113,27 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd00372c	228	vice_dmbuf_send	d
 usr/lib32/internal/libvice.so	board-library	n32		0xd003810	268	vice_dmbuf_recv	dwarf+dynsym	136fb9bf4c99		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd00391c	276	vice_dmbuf_msend	dwarf+dynsym	ae3bbe40676e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf4029d0	344	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
-usr/lib32/libXsgivc.so	board-library	n32		0xf402b30	1616	XSGIvcQueryChannelInfo	dwarf+dynsym	f64ef10539c8		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf402b30	1616	XSGIvcQueryChannelInfo	dwarf+dynsym	f64ef10539c8		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf403180	60	XSGIvcQueryOutputBlanking	dwarf+dynsym	88baffde592e		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4031c0	60	XSGIvcSetOutputPedestal	dwarf+dynsym	c320c3f1d88e		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403200	308	XSGIvcSetScreenExternalSyncSource	dwarf+dynsym	32dc12956794		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf403340	448	XSGIvcSetPlatformParameter	dwarf+dynsym	fd3ef2b930f0		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib32/libXsgivc.so	board-library	n32		0xf403500	748	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	dc4ce5cefebe		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf403500	748	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	dc4ce5cefebe		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf4037f0	236	XSGIvcQueryOutputGain	dwarf+dynsym	2fc7c971ba7b		in	named-only	docs/xsgivc.md#output-controls	Output controls
-usr/lib32/libXsgivc.so	board-library	n32		0xf4038e0	644	XSGIvcLoadVideoFormat	dwarf+dynsym	93ab6cb572fc		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib32/libXsgivc.so	board-library	n32		0xf403b70	440	XSGIvcSendMonitorCommand	dwarf+dynsym	694f1be474e5		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf4038e0	644	XSGIvcLoadVideoFormat	dwarf+dynsym	93ab6cb572fc		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/libXsgivc.so	board-library	n32		0xf403b70	440	XSGIvcSendMonitorCommand	dwarf+dynsym	694f1be474e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf403d30	60	XSGIvcQueryOutputPhaseV	dwarf+dynsym	31e01b386478		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403d70	60	XSGIvcQueryOutputPhaseH	dwarf+dynsym	2987bd89d4bf		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403db0	748	XSGIvcLoadVideoFormatCombination	dwarf+dynsym	7164280e9653		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf4040a0	60	XSGIvcFreeVideoFormatInfo	dwarf+dynsym	ddf0cab8feec		in	named-only	docs/xsgivc.md#helpers	Helpers
-usr/lib32/libXsgivc.so	board-library	n32		0xf4040e0	872	XSGIvcListVideoFormats	dwarf+dynsym	d359d2ba2036		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf4040e0	872	XSGIvcListVideoFormats	dwarf+dynsym	d359d2ba2036		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf404450	580	XSGIvcDisableChannel	dwarf+dynsym	b7383a970572		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf4046a0	60	XSGIvcQueryOutputPhaseSCH	dwarf+dynsym	0f51df4bde62		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4046e0	60	XSGIvcQueryOutputPedestal	dwarf+dynsym	c1dd5bc6eb9d		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf404720	428	XSGIvcQueryScreenGammaMaps	dwarf+dynsym	1f8a37fee24a		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf4048d0	732	XSGIvcNVLoadVideoFormatByName	dwarf+dynsym	b0e0956e700b		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf404bb0	452	XSGIvcStoreGammaColors16	dwarf+dynsym	5915bace3a1a		in	named-only	docs/binaries.md#diagnostics	Diagnostics
-usr/lib32/libXsgivc.so	board-library	n32		0xf404d80	440	XSGIvcQueryVersion	dwarf+dynsym	35f2e1d1e633		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf404d80	440	XSGIvcQueryVersion	dwarf+dynsym	35f2e1d1e633		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf404f40	308	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	f149b0c9c069		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf405080	120	ReadFieldInfo	dwarf+funcnames	6ed549341ea1		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
 usr/lib32/libXsgivc.so	board-library	n32		0xf405100	764	XSGIvcLoadVideoFormatByName	dwarf+dynsym	f2bbfbfe0242		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -17175,29 +17175,29 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf409420	584	XSGIvcQueryExternalSyncS
 usr/lib32/libXsgivc.so	board-library	n32		0xf409670	60	XSGIvcSetOutputPhaseH	dwarf+dynsym	97033ceb6aab		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4096b0	60	XSGIvcSetOutputPhaseV	dwarf+dynsym	1bb2573551a0		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4096f0	308	XSGIvcSelectInput	dwarf+dynsym	407d525bb7cc		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib32/libXsgivc.so	board-library	n32		0xf409830	172	XSGIvcSetOutputGain	dwarf+dynsym	62cdee2beeaf		in	named-only	docs/xsgivc.md#output-controls	Output controls
+usr/lib32/libXsgivc.so	board-library	n32		0xf409830	172	XSGIvcSetOutputGain	dwarf+dynsym	62cdee2beeaf		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64	.text	0x2003120	292	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
-usr/lib64/libXsgivc.so	board-library	n64		0x2003250	1712	XSGIvcQueryChannelInfo	dwarf+dynsym	93d0d3af86bc		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x2003250	1712	XSGIvcQueryChannelInfo	dwarf+dynsym	93d0d3af86bc		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2003900	64	XSGIvcQueryOutputBlanking	dwarf+dynsym	cc25276e59ee		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2003940	64	XSGIvcSetOutputPedestal	dwarf+dynsym	ec8ed43b6f1d		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2003980	324	XSGIvcSetScreenExternalSyncSource	dwarf+dynsym	00205e93dff6		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2003ad0	464	XSGIvcSetPlatformParameter	dwarf+dynsym	21366bd2f336		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib64/libXsgivc.so	board-library	n64		0x2003ca0	780	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	098b198df721		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x2003ca0	780	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	098b198df721		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2003fb0	240	XSGIvcQueryOutputGain	dwarf+dynsym	c7a58d08639a		in	named-only	docs/xsgivc.md#output-controls	Output controls
-usr/lib64/libXsgivc.so	board-library	n64		0x20040a0	688	XSGIvcLoadVideoFormat	dwarf+dynsym	57c6d8ce0d14		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib64/libXsgivc.so	board-library	n64		0x2004350	456	XSGIvcSendMonitorCommand	dwarf+dynsym	2e3a087275ff		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x20040a0	688	XSGIvcLoadVideoFormat	dwarf+dynsym	57c6d8ce0d14		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib64/libXsgivc.so	board-library	n64		0x2004350	456	XSGIvcSendMonitorCommand	dwarf+dynsym	2e3a087275ff		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2004520	64	XSGIvcQueryOutputPhaseV	dwarf+dynsym	929f89e1da47		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2004560	64	XSGIvcQueryOutputPhaseH	dwarf+dynsym	4a6b039fca94		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x20045a0	780	XSGIvcLoadVideoFormatCombination	dwarf+dynsym	6c697687329a		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x20048b0	60	XSGIvcFreeVideoFormatInfo	dwarf+dynsym	77020042ef7b		in	named-only	docs/xsgivc.md#helpers	Helpers
-usr/lib64/libXsgivc.so	board-library	n64		0x20048f0	908	XSGIvcListVideoFormats	dwarf+dynsym	8891cb9e170e		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x20048f0	908	XSGIvcListVideoFormats	dwarf+dynsym	8891cb9e170e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2004c80	608	XSGIvcDisableChannel	dwarf+dynsym	5495cc60b541		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2004ee0	64	XSGIvcQueryOutputPhaseSCH	dwarf+dynsym	e10e897cedf8		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2004f20	64	XSGIvcQueryOutputPedestal	dwarf+dynsym	ba41c3ac87e8		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2004f60	444	XSGIvcQueryScreenGammaMaps	dwarf+dynsym	11cacc775f6c		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2005120	764	XSGIvcNVLoadVideoFormatByName	dwarf+dynsym	bdc0d90c0394		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2005420	472	XSGIvcStoreGammaColors16	dwarf+dynsym	30c931fe3998		in	named-only	docs/binaries.md#diagnostics	Diagnostics
-usr/lib64/libXsgivc.so	board-library	n64		0x2005600	456	XSGIvcQueryVersion	dwarf+dynsym	7760838bf93b		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x2005600	456	XSGIvcQueryVersion	dwarf+dynsym	7760838bf93b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x20057d0	324	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	1717cf3721a6		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64	.text	0x2005920	120	ReadFieldInfo	dwarf	b9e173449b79		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
 usr/lib64/libXsgivc.so	board-library	n64		0x20059a0	796	XSGIvcLoadVideoFormatByName	dwarf+dynsym	e06fee32d146		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -17239,7 +17239,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2009ea0	624	XSGIvcQueryExternalSyncS
 usr/lib64/libXsgivc.so	board-library	n64		0x200a110	64	XSGIvcSetOutputPhaseH	dwarf+dynsym	0411cd780428		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x200a150	64	XSGIvcSetOutputPhaseV	dwarf+dynsym	3f31a2181f8f		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x200a190	324	XSGIvcSelectInput	dwarf+dynsym	29176200ac1c		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib64/libXsgivc.so	board-library	n64		0x200a2e0	176	XSGIvcSetOutputGain	dwarf+dynsym	a44795eb5b1b		in	named-only	docs/xsgivc.md#output-controls	Output controls
+usr/lib64/libXsgivc.so	board-library	n64		0x200a2e0	176	XSGIvcSetOutputGain	dwarf+dynsym	a44795eb5b1b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4033e0	284	__start	dynsym	1dc32a5b03a8		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4034fc	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	9a5888649f51		in	named-only	AGENTS.md#picking-work	Picking work
