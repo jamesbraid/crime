@@ -7735,8 +7735,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5d3c	172	__glSpanReduc
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5de8	172	__glSpanReduceGreen	dynsym+mdebug	9833def2076a		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5e94	172	__glSpanReduceBlue	dynsym+mdebug	9923f02abf48		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5f40	172	__glSpanReduceAlpha	dynsym+mdebug	c5d33dbeafcd		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5fec	484	__glSpanReduceRGB	dynsym+mdebug	7ea83650a904		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a61d0	484	__glSpanReduceBGR	dynsym+mdebug	5f2fa219aa82		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5fec	484	__glSpanReduceRGB	dynsym+mdebug	7ea83650a904		in	located	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a61d0	484	__glSpanReduceBGR	dynsym+mdebug	5f2fa219aa82		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a63b4	352	__glSpanReorderABGR	dynsym+mdebug	04fb32e57a28		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6514	352	__glSpanReorderBGRA	dynsym+mdebug	dbaf5f478806		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a6674	340	__glSpanReduceLuminance	dynsym+mdebug	3597bb12cf2b		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
