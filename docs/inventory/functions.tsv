@@ -7870,7 +7870,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b68f8	360	__glBytesPerE
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6a60	260	__glSpecElementsPerGroup	dynsym+mdebug	cbda82f00cae		in	named-only	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6b64	256	__glSpecBytesPerElement	dynsym+mdebug	f9cd6fb09ea0		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6c64	532	__glInitUnpacker	dynsym+mdebug	5765271a53bf		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6e78	108	__glInitUnpacker3D	dynsym+mdebug	ce678f06000b		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6e78	108	__glInitUnpacker3D	dynsym+mdebug	ce678f06000b		in	named-only	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b6ee4	2872	__glSpanUnpackBitmap	dynsym+mdebug	cea06f13b6cd		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b7a1c	2056	__glSpanUnpackBitmap2	dynsym+mdebug	e0e08ee35fa6		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9b8224	100	__glSpanUnpackRGBubyte	dynsym+mdebug	92c1691afb95		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
@@ -11995,7 +11995,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4030	412	__glBytesPe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b41d0	452	__glSpecElementsPerGroup	dwarf+dynsym	eaa703687eff		in	named-only	docs/sample-implementation.md#so_imagec	so_image.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b43a0	452	__glSpecBytesPerElement	dwarf+dynsym	bf2a6a1b4619		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4570	484	__glInitUnpacker	dwarf+dynsym	3bee28dfda0d		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4760	112	__glInitUnpacker3D	dwarf+dynsym	b17f8a33b816		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b4760	112	__glInitUnpacker3D	dwarf+dynsym	b17f8a33b816		in	named-only	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b47d0	4540	__glSpanUnpackBitmap	dwarf+dynsym	acf7f95152ef		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b5990	2076	__glSpanUnpackBitmap2	dwarf+dynsym	214e7ad2b977		in	located	docs/sample-implementation.md#px_unpackc	px_unpack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9b61b0	100	__glSpanUnpackRGBubyte	dwarf+dynsym	5670803e6aa4		in	understood	docs/sample-implementation.md#px_unpackc	px_unpack.c
