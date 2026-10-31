@@ -45,6 +45,39 @@ Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware dev
 - **IRIX programming of MACE video framelock and genlock.** No binary in scope reaches the video window; see [mace-video.md](mace-video.md). Next: `mvp.o`, `mvp.so` and `libXsgivc.so`.
 - **VICE interrupt line.** [spec] says interrupt status bit 31 is a registered copy of a 100 MHz pin and [vice] gives the nine causes behind it; whether IRIX ever unmasks input 31 is not known. Routes tried: the kernel dispatcher in [memory.md](memory.md). Next: the VICE driver object in the kernel.
 
+## Recollections to test (2026-10-30)
+
+Each lead in [published-sources.md, section 14](published-sources.md#14-recollections-and-history-leads-unverified) is unverified. One line per lead names its testable item:
+
+- Texture unit has no 3D mode; a 3D texture falls back to software: the 1998 texture lead.
+- Texture unit fetches texels through the normal memory path, with no texture store or size limit: the 1999 texture lead.
+- Texture upload is a CPU write plus a base-pointer change; a resident texture-object bind writes only registers: the 1997 upload-cost lead.
+- Framebuffer configuration is per window (tile list), and 32+32 does not slow 4444 windows: the framebuffer-configuration lead.
+- GBE accepts 1600x1200 at 57 Hz (143.64 MHz, product form of the blanking formula) and flags higher dot clocks: the dot-clock lead.
+- gfxinfo reports CRM revision C and GBE revision B; each listed video format gives stable setmon timing: the output-format lead.
+- The CRIME optimisation claims (R5000 bias, R10000 latency per L2 miss near twice the R5000): the CRIME-optimisation lead.
+- CRIME CPU error status bit 2 set by speculative reads of DMA-owned lines: the R10000 error lead.
+- RAM above 256 MB is at CPU 0x40000000 + 256 MB; a write there reads back at DMA 0x10000000: the IP32 memory-map lead.
+- VICE register offsets, widths and descriptor fields match the VICE specification: the VICE driver lead.
+- NetBSD crmfb and Linux gbefb MTE copy with DST_ECC and TLB A at 8 bpp: the crmfb header lead.
+- gbefb: cmap FIFO times out while blanked; MACE PCI config read of an empty slot sets master abort: the gbefb history lead.
+- Accumulation-buffer read-modify-write on partial pixels: the ECC error lead.
+- Stress mix of pbuffer allocation, MTE copies and GBE scan-out does not wrap the frame: the wrap-symptom lead.
+- hinv and gfxinfo strings for VICE TRE or DX; microcode programs run without exceptions: the VICE capabilities lead.
+- TLB writes at 8, 16 and 32 bits and unaligned, with read-back; tile and linear TLB sizes: the NetBSD wiki lead.
+- GBE turn-off sequencing, colour-map FIFO full behaviour and revision-dependent PLL: the gbefb.c lead.
+- CRIME error registers: clear on write of 0, and source bits from each client: the crime.c lead.
+- glxinfo extension string against the EXT_texture3D claim: the OpenGL-on-O2 lead.
+- DMbuffer copy-by-reference: no CRIME traffic or base change on glCopyTexSubImage2DEXT: the video-as-texture lead.
+- Uncached and cached read and write ratios against the CRIME model's latency: the memory-speed lead.
+- VICE presence and function against the VICE specification: the Hacker News lead (DVD claim not testable).
+- PROM chime synthesis through the emulator's audio output: the Hackaday lead.
+- The three IRIX 6.5.22 R5000 observations (FIFO timeout, MTE copies and clip-ID test, no-ECC alias at 0x80000000): the peer-emulator lead.
+- Pixel format crmfb reports under NetBSD: the NetBSD X lead.
+- The OpenBSD gbe(4) register constants and engine sequences against the CRIME specification: the OpenBSD commit lead (diff not read).
+- Fill-rate micro-benchmarks in an IRIX guest against the 174 and 120 Mpixel/s figures: the sgidepot tables lead (not fetched).
+- The 2.1 GB/s bandwidth quote: the sgidepot architecture lead (not read; source 2 covers it).
+
 ## Where work stopped
 
 30 October 2026, second crm.so re-read pass (X module, [sample-server.md](sample-server.md)). 35 more entries are Established by execution, leaving about 259 Inferred `crm.so` entries (294 before the pass). Wrong-detail rate per batch, counting an entry when its old text stated something the run or the listing contradicted: six `FillPoly1Rect` and three previous-point `LineSS1RectPreviousCopy` routines, 7 of 9 (the 44 pixel stores that included 8 stack saves, fixed-point stepping that is double-precision division, 'indirect calls' that are tail jumps, a segment count that is an index, running-position arguments the absolute routine also has); twelve region blit routines (`DoBitblt` copy, general, or, xor, three pixel sizes), 7 of 12 (2 indirect calls in the 32-bit ones that make none, plane mask listed as an input of routines that ignore it, merge words said to be passed in when built from a table row, three jump tables that are four); eight stipple span and rectangle fillers, 1 of 8 stated something false and 3 more missed behaviour (width 1 wrong in the one-byte any-width routines, the transparent 32-wide routines reading the private record's xor word, a callee named only by instruction number); six `PolyPoint` and `GetSpans` routines, 2 of 6 (PolyPoint's foreground at offset 8, which is the clip pointer; the unused maximum width and the right-edge clamp unsettled). Overall 17 of 35 entries (49%) carried a wrong detail. Settled contracts: the previous-point line routines take the running position in `*x1p`, `*y1p`, ignore the first list entry, write no result pointer when every point fits (return -1) and otherwise return the index of the first point outside the box with the last inside point in `x1p`, `y1p` and the outside point in `x2p`, `y2p`; the `FillPoly1Rect` routines hand a polygon to `miFillPolygon` (0x4472f0) for the previous-point mode, any vertex outside the clip box and any non-convex shape whose outline does not reverse vertical direction exactly twice (the closing edge counts as downward when the end rows are equal). Not settled, so these stay Inferred: (1) `cfbSetSpans` (8-bit), `cfb16SetSpans`, `cfb32SetSpans`: random runs differ from the model in 5 to 20 percent of cases, always with a clip of several boxes; a 2-pixel span at x=16 on an 8-bit drawable also writes the two pad bytes of the source row into x=18 and x=19; the middle-of-span mismatches are not explained (harness: `scripts/crm_exec/ss1.py`, `ss2.py`; the width-padding table is an import the file leaves unrelocated and the harness supplies it from the usual 32-bit pad rule, which may be the cause). (2) The arc, `cfbCopyPlane`, `cfbTEGlyphBlt8`, `miWideDash`, `mfb` bitblt and tile routines were not reached; they need an arc-span reference built from the public arc algorithm and a font record harness. Route tried: reading prologues only; next: build the arc reference from `mi/mifillarc.c` of the public tree and drive `cfbPolyFillArcSolidCopy` span by span. (3) The width-padding table, the ffs-style import and the fatal-error import are unrelocated in the file (the slots at gp-relative -0x717c, -0x6f3c, -0x70f0); the harness stubs the first two from observed use, so a routine that reaches the third stops in the interpreter.
