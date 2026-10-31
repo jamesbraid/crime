@@ -8607,27 +8607,27 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcc80	140	__glMatValida
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcd0c	196	__glMatValidateV1V2V3	dynsym+mdebug	918f349d98e0		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcdd0	140	__glMatValidateV2V3	dynsym+mdebug	89181b338300		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fce5c	160	OtherTFanVertex	mdebug	5c87cb1578f6		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcefc	56	SecondTFanVertex	mdebug	5ad98ab7890c		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcf34	96	FirstTFanVertex	mdebug	f0951b120bff		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcefc	56	SecondTFanVertex	mdebug	5ad98ab7890c		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcf34	96	FirstTFanVertex	mdebug	f0951b120bff		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcf60	52	__glBeginTFan	dynsym+mdebug	c2a1fd799614		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcf94	52	SecondTStripVertex	mdebug	6108377d5cde		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcf94	52	SecondTStripVertex	mdebug	6108377d5cde		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fcfc8	100	FirstTStripVertex	mdebug	06a036f0744e		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fcff8	52	__glBeginTStrip	dynsym+mdebug	91a6140283e2		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd02c	172	ThirdTrianglesVertex	mdebug	b010f856cb2f		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd0d8	44	SecondTrianglesVertex	mdebug	e40a5e87d64f		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd104	88	FirstTrianglesVertex	mdebug	83ed2b794657		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd0d8	44	SecondTrianglesVertex	mdebug	e40a5e87d64f		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd104	88	FirstTrianglesVertex	mdebug	83ed2b794657		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd130	44	__glBeginTriangles	dynsym+mdebug	0894efdca242		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd15c	296	FourthQStripVertex	mdebug	978161d240bd		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd284	56	ThirdQStripVertex	mdebug	ab486d1d1916		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd2bc	48	SecondQStripVertex	mdebug	8a6aa8e748d6		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd2ec	100	FirstQStripVertex	mdebug	be2e21192b23		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd284	56	ThirdQStripVertex	mdebug	ab486d1d1916		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd2bc	48	SecondQStripVertex	mdebug	8a6aa8e748d6		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd2ec	100	FirstQStripVertex	mdebug	be2e21192b23		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd31c	52	__glBeginQStrip	dynsym+mdebug	ab752a52043a		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd350	40	ThirdQuadsVertex	mdebug	e6dc52eaeaaf		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd350	40	ThirdQuadsVertex	mdebug	e6dc52eaeaaf		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd378	128	SecondQuadsVertex	mdebug	c7f21581487c		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd3a4	44	__glFirstQuadsVertex	dynsym+mdebug	f17fdf213ac1		in	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd3d0	40	__glBeginQuads	dynsym+mdebug	84d64a493cad		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd3f8	29120	PolygonVertex	mdebug	b6c7ad327248		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd504	124	__glEndPolygon	dynsym+mdebug	1385906bbc08		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd504	124	__glEndPolygon	dynsym+mdebug	1385906bbc08		in	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd580	56	__glBeginPolygon	dynsym+mdebug	0633c54d4655		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd5c0	1192	__glRenderTriangle	dynsym+mdebug	0c2a4813b1ae		in	located	docs/sample-implementation.md#so_polymodec	so_polymode.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fda68	20	__glDontRenderTriangle	dynsym+mdebug	7008cedc7bc7		in	located	docs/sample-implementation.md#so_polymodec	so_polymode.c
@@ -12725,35 +12725,35 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc210	160	__glPolygon
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fc2b0	344	__glPolygonOffsetZ	dwarf+dynsym	6a2404bc7ebd		in	located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fcab0	2020	__glFillTriangle	dwarf+dynsym	3bb995da6a41		in	located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd2a0	276	__glFillFlatFogTriangle	dwarf+dynsym	71c35a24e0e2		in	located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd3c0	184	__glMatValidateVbuf0N	dwarf+dynsym	d41150bd40c0		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd3c0	184	__glMatValidateVbuf0N	dwarf+dynsym	d41150bd40c0		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd480	136	__glMatValidateVbuf0V1	dwarf+dynsym	374222300d78		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd510	76	__glMatValidateV1	dwarf+dynsym	9295a3528f6a		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd560	136	__glMatValidateV1V2	dwarf+dynsym	5c8121637f1c		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd5f0	176	__glMatValidateV1V2V3	dwarf+dynsym	b6f71845b38e		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd6a0	136	__glMatValidateV2V3	dwarf+dynsym	a08d873d20a1		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd730	144	OtherTFanVertex	dwarf+funcnames	e6140651d5b7		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd7c0	56	SecondTFanVertex	dwarf+funcnames	01acf2bd8f04		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd7c0	56	SecondTFanVertex	dwarf+funcnames	01acf2bd8f04		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd800	44	FirstTFanVertex	dwarf+funcnames	c97529f499f3		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd830	52	__glBeginTFan	dwarf+dynsym	2df49c555741		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd870	52	SecondTStripVertex	dwarf+funcnames	7b479ca3ab62		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd870	52	SecondTStripVertex	dwarf+funcnames	7b479ca3ab62		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd8b0	48	FirstTStripVertex	dwarf+funcnames	2d2a10cfe87e		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fd8e0	52	__glBeginTStrip	dwarf+dynsym	3a3c35b0e7e3		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd920	152	ThirdTrianglesVertex	dwarf+funcnames	652ebdd4a687		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9c0	44	SecondTrianglesVertex	dwarf+funcnames	a7faba1b1780		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fd9f0	44	FirstTrianglesVertex	dwarf+funcnames	b16f9ad055e4		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fda20	44	__glBeginTriangles	dwarf+dynsym	07e912ea3039		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fda20	44	__glBeginTriangles	dwarf+dynsym	07e912ea3039		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fda50	300	FourthQStripVertex	dwarf+funcnames	3df1a708e1c4		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdb80	56	ThirdQStripVertex	dwarf+funcnames	4f3c2d24f8f9		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbc0	48	SecondQStripVertex	dwarf+funcnames	dad39bea52b0		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbf0	48	FirstQStripVertex	dwarf+funcnames	e6113e48ba05		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdb80	56	ThirdQStripVertex	dwarf+funcnames	4f3c2d24f8f9		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbc0	48	SecondQStripVertex	dwarf+funcnames	dad39bea52b0		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdbf0	48	FirstQStripVertex	dwarf+funcnames	e6113e48ba05		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdc20	52	__glBeginQStrip	dwarf+dynsym	53e08d2317cc		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc60	40	ThirdQuadsVertex	dwarf+funcnames	40d815ec86bc		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdc90	44	SecondQuadsVertex	dwarf+funcnames	f748d4623117		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcc0	44	__glFirstQuadsVertex	dwarf+dynsym	a9fdd331a3d0		in	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdcf0	40	__glBeginQuads	dwarf+dynsym	291172f5287e		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9fdd20	652	PolygonVertex	dwarf+funcnames	1312b01a92e0		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdfb0	148	__glEndPolygon	dwarf+dynsym	b27c3c312319		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe050	56	__glBeginPolygon	dwarf+dynsym	cd2ba6c6c44d		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fdfb0	148	__glEndPolygon	dwarf+dynsym	b27c3c312319		in	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe050	56	__glBeginPolygon	dwarf+dynsym	cd2ba6c6c44d		in	understood	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe090	1144	__glRenderTriangle	dwarf+dynsym	ff9f0d05aed5		in	located	docs/sample-implementation.md#so_polymodec	so_polymode.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe510	8	__glDontRenderTriangle	dwarf+dynsym	78aa5094d5ec		in	understood	docs/sample-implementation.md#so_polymodec	so_polymode.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fe520	228	__glProcessSpan	dwarf+dynsym	7c2104160b9d		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
