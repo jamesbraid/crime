@@ -8577,7 +8577,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5448	268	__glGenericPi
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5554	52	__glGenericValidate	dynsym+mdebug	51276c160f0a		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5588	564	__glGenericModeFlags	dynsym+mdebug	ef57f1271936		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f57bc	1228	__glGenericPickAllProcs	dynsym+mdebug	2a7057dc0bb3		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5c90	88	__glBuildAntiAliasIndex	dynsym+mdebug	9bcf07656c3f		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5c90	88	__glBuildAntiAliasIndex	dynsym+mdebug	9bcf07656c3f		in	understood	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5dd4	788	__glRenderAntiAliasedRGBPoint	dynsym+mdebug	1482d8b4c662		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f60e8	688	__glRenderAntiAliasedCIPoint	dynsym+mdebug	bf98230792f0		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f63a0	288	__glRenderAliasedPoint1_NoTex	dynsym+mdebug	aca4c718b623		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
