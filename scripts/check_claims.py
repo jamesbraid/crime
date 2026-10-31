@@ -56,7 +56,7 @@ import facts  # noqa: E402
 # classes whose mismatches block a push (near-zero false positives on the Established entries)
 BLOCKING = ('address', 'size', 'got', 'duplicate', 'delay-slot', 'insn-address', 'addiu-word', 'branch-likely', 'offset')
 
-DEFAULT_DOCS = ['docs/*.md']
+DEFAULT_DOCS = ['docs/*.md', 'chips/*/README.md']
 STATUS_RE = re.compile(r'\b(Established|Inferred|Unverified)\b\.?\**\s*$', re.I)
 PATH_RE = re.compile(r'((?:builds/[\w.+-]+/)?(?:usr|sbin|stand|unix|var)(?:/[\w.+-]+)+(?:\([\w.+-]+\))?)')
 HEX = r'0x[0-9a-fA-F]+'
@@ -137,10 +137,10 @@ def read_entries(doc, text):
             i += 1
             continue
         head = None
-        if re.match(r'^- ', ln):
+        if re.match(r'^(?:- |\d+\. )', ln):
             j = i + 1
-            body = [ln[2:]]
-            while j < len(lines) and lines[j].strip() and not re.match(r'^(- |#|\|)', lines[j]):
+            body = [re.sub(r'^(?:- |\d+\. )', '', ln)]
+            while j < len(lines) and lines[j].strip() and not re.match(r'^(- |#|\||\d+\. )', lines[j]):
                 body.append(lines[j].strip())
                 j += 1
             out.append(Entry(doc, i + 1, ' '.join(body), heading))
@@ -165,6 +165,13 @@ class Binaries:
                 f.readline()
                 for ln in f:
                     self.keys.add(ln.split('\t', 1)[0])
+        if not self.keys:
+            top = os.path.join(REPO, 'root')
+            for d, dirs, files in os.walk(top):
+                dirs.sort()
+                for f in files:
+                    if f.endswith(('.o', '.so', '.a')) or f in ('unix',) or f.endswith(('.img', '.bin', '.image')):
+                        self.keys.add(os.path.relpath(os.path.join(d, f), top))
         self.by_base = collections.defaultdict(set)
         for k in self.keys:
             b = k.rsplit('/', 1)[-1]
@@ -503,6 +510,10 @@ class Ctx:
             if 'origin_offset' in a:
                 self.offsets_access[a['origin_offset']].append(a)
             self.raw_offsets[a['offset']].append(a)
+        for mm in fs['mmio']:
+            for cc in mm.get('physical_constant_part', []) + ([mm['physical']] if 'physical' in mm else []):
+                self.offsets_access[int(cc, 16) & ((1 << 33) - 1)].append(mm)
+                self.offsets_access[int(cc, 16) & 0xffffff].append(mm)
         self.offsets_addr = collections.defaultdict(list)
         for a in fs['addresses']:
             if not a.get('stack'):
@@ -1562,6 +1573,163 @@ def check_entry(args):
     return rep, None
 
 
+CHIP_DOC = re.compile(r'(?:^|/)chips/[^/]+/README\.md$')
+
+
+class ChipDoc:
+    """A chip page: register tables and prose that name routines of the objects the page cites."""
+
+    def __init__(self, doc, text, bins):
+        self.doc, self.bins = doc, bins
+        hints = re.findall(r'\b(IP\d\d)\b', text[:3000])
+        hints = list(dict.fromkeys(hints)) or ['IP35']
+        names = sorted(set(re.findall(r'`([\w.+-]+\.o)`', text)) | set(re.findall(r'\b([\w+-]+\.o)\b', text[:3000])))
+        self.binaries = []
+        for n in names:
+            b = bins.resolve(n, [h + 'boot' for h in hints] + hints)
+            if b and b not in self.binaries:
+                self.binaries.append(b)
+        self.F = _STATE.setdefault('facts', Facts())
+        self._where = {}
+
+    def locate(self, name):
+        """(binary, symbol) of a routine the page names, trying the accessor prefixes the pages drop."""
+        if name in self._where:
+            return self._where[name]
+        found = None
+        for cand in (name, 'pcireg_' + name, 'pcibr_' + name, 'pic_' + name):
+            for b in self.binaries:
+                img = self.F.image(b)
+                if img is not None and any(x[4] for x in img.byname.get(cand, [])):
+                    found = (b, cand)
+                    break
+            if found:
+                break
+        self._where[name] = found
+        return found
+
+    def sheet(self, name):
+        loc = self.locate(name)
+        if not loc:
+            return None, None
+        fs, err = self.F.get(loc[0], loc[1], None)
+        return loc, fs
+
+    @staticmethod
+    def reached(fs):
+        """{offset: [(width, kind)]} of the register offsets a routine reaches: instruction offsets, offsets from
+        a base's origin, and the low 33 bits of constant (window) addresses."""
+        out = collections.defaultdict(list)
+        for a in fs['accesses']:
+            if a.get('stack'):
+                continue
+            k = (a['width'], a['kind'])
+            out[a['offset']].append(k)
+            if 'origin_offset' in a:
+                out[a['origin_offset']].append(k)
+            if 'absolute' in a:
+                out[int(a['absolute'], 16) & ((1 << 33) - 1)].append(k)
+        for m in fs['mmio']:
+            k = (m['width'], m['kind'], 'window')
+            for c in m.get('physical_constant_part', []) + ([m['physical']] if 'physical' in m else []):
+                out[int(c, 16) & ((1 << 33) - 1)].append(k)
+                out[int(c, 16) & 0xffffff].append(k)
+        return out
+
+    def check_row(self, e, rep):
+        row = e.table
+        reg = row.get('register', '')
+        m = re.fullmatch(r'`?\+(0x[0-9a-f]+)`?', reg.strip())
+        if not m:
+            return
+        off = int(m.group(1), 16)
+        widths = {int(x) for x in re.findall(r'\d+', row.get('widths', ''))}
+        access = row.get('access', '').strip()
+        accs = re.findall(r'`([A-Za-z_][\w$.]*)`', row.get('accessors and callers (names from the binary)', ''))
+        base = {'entry': e.id, 'binary': None, 'class': 'register', 'status': ''}
+        kinds = set()
+        for nm in accs:
+            r = dict(base, routine=nm, claim='%s reaches +0x%x' % (nm, off))
+            if re.match(r'(?:prom|sub)_[0-9a-f]+$', nm):
+                rep.append(dict(r, verdict='unchecked', fact='', reason='a pseudo-function name with no symbol'))
+                continue
+            loc, fs = self.sheet(nm)
+            if fs is None:
+                rep.append(dict(r, verdict='unchecked', fact='', reason='not a routine of the objects the page cites'))
+                continue
+            r['binary'] = loc[0]
+            hit = self.reached(fs).get(off) or self.reached(fs).get(off & 0xffffff)
+            if hit:
+                kinds |= {h[1] for h in hit if len(h) > 2}
+                if widths and not any(h[0] in widths for h in hit):
+                    rep.append(dict(r, verdict='mismatch', fact='widths at +0x%x: %s' % (off, sorted({h[0] for h in hit})),
+                                    reason='no access of a stated width'))
+                else:
+                    rep.append(dict(r, verdict='ok', fact='', reason=''))
+            elif any(c['kind'] == 'register' for c in fs['calls']) or fs['unreached'] or \
+                    any(not c.get('callee') or c['callee'].startswith('.') for c in fs['calls']):
+                rep.append(dict(r, verdict='unchecked', fact='', reason='offset not found; the routine has unresolved calls or unreached code'))
+            else:
+                near = sorted(k for k in self.reached(fs) if isinstance(k, int) and abs(k - off) <= 0x40)[:6]
+                if any(c.get('callee') for c in fs['calls']):
+                    rep.append(dict(r, verdict='unchecked', fact='offsets near: %s' % ', '.join('+0x%x' % x for x in near),
+                                    reason='offset not reached in this routine itself (it may be a caller of the accessor)'))
+                else:
+                    rep.append(dict(r, verdict='mismatch', fact='offsets near: %s' % ', '.join('+0x%x' % x for x in near),
+                                    reason='the routine makes no access at that offset and calls nothing'))
+        if access and kinds:
+            want = {'r': {'load'}, 'w': {'store'}, 'rw': {'load', 'store'}}.get(access)
+            if want and not kinds <= want:
+                rep.append(dict(base, routine=', '.join(accs[:3]), verdict='mismatch', claim='access %s at +0x%x' % (access, off),
+                                fact='the named routines %s' % ' and '.join(sorted({'load': 'read', 'store': 'write'}[k] for k in kinds)),
+                                reason='access column misses a kind the routines perform'))
+
+    def prose(self, e, rep):
+        """Each routine named in a bullet gets the sentences that open with it (and their continuations)."""
+        names = []
+        for nm in re.findall(r'`([A-Za-z_][\w$.]*)`', e.text):
+            if nm not in names and self.locate(nm):
+                names.append(nm)
+        if not names:
+            return
+        sents = sentences(e.text)
+        for nm in names:
+            keep, on = [], False
+            for snt in sents:
+                pos = sorted((snt.find('`%s`' % x), x) for x in names if '`%s`' % x in snt)
+                if pos and pos[0][1] == nm and pos[0][0] <= 2:
+                    keep.append(snt)
+                    on = True
+                elif pos or not re.match(r'\s*(?:It|Its|This routine|The routine)\b', snt):
+                    on = False
+                elif on:
+                    keep.append(snt)
+            if not keep:
+                continue
+            loc, fs = self.sheet(nm)
+            if fs is None:
+                continue
+            sub = Entry(e.doc, e.line, ' '.join(keep), e.heading)
+            sub.name, sub.binary, sub.status = loc[1], loc[0], 'chips'
+            Checker(sub, Ctx(fs, self.F.image(loc[0])), rep, None, self.F).run()
+
+
+def check_chip_doc(doc, text, bins, only=None):
+    cd = ChipDoc(doc, text, bins)
+    entries, pre = read_entries(doc, text)
+    rep = []
+    cd.count = 0
+    for e in entries:
+        cd.count += 1
+        if e.table and 'register' in e.table:
+            if only is None or any(x in e.text for x in only):
+                cd.check_row(e, rep)
+        elif not e.table:
+            if only is None or any(x in e.text for x in only):
+                cd.prose(e, rep)
+    return rep, cd
+
+
 SUB_RE = re.compile(r'`([A-Za-z_][\w$.]*)` at (' + HEX + r') \((\d+) bytes\)')
 
 
@@ -1631,9 +1799,15 @@ def main(argv=None):
     work = []
     dups = []
     changed = changed_lines(a.changed) if a.changed else None
+    chip_results, chip_entries = [], 0
     for doc in expand_docs(a.docs):
         src = os.path.join(a.text_from, doc) if a.text_from else os.path.join(REPO, doc)
         text = open(src, encoding='utf-8').read()
+        if CHIP_DOC.search(doc):
+            r, cd = check_chip_doc(doc, text, bins, a.routine)
+            chip_results += r
+            chip_entries += cd.count
+            continue
         entries, pre = read_entries(doc, text)
         hints = hints_of(doc, pre)
         dflt = default_binary(pre, bins)
@@ -1664,7 +1838,7 @@ def main(argv=None):
                                  'reason': 'two entries for the same routine and address in one document',
                                  'status': e.status})
     ONLY.update(a.routine or ())
-    results, unresolved = list(dups), []
+    results, unresolved = list(dups) + chip_results, []
     if a.jobs > 1:
         with multiprocessing.Pool(a.jobs) as pool:
             outs = pool.map(check_entry, [(e,) for e in work], chunksize=8)
@@ -1690,7 +1864,7 @@ def main(argv=None):
     by = collections.Counter((r['class'], r['verdict']) for r in results)
     classes = sorted({r['class'] for r in results})
     print('summary: %d entries checked, %d unresolved; %d mismatches, %d unchecked claims, %d claims held' % (
-        len(work) - len(unresolved), len(unresolved), len(mism), len(unchk), by_total(by, 'ok')))
+        len(work) - len(unresolved) + chip_entries, len(unresolved), len(mism), len(unchk), by_total(by, 'ok')))
     for cl in classes:
         print('  %-15s ok %5d  mismatch %4d  unchecked %4d  omission %4d%s' % (
             cl, by[(cl, 'ok')], by[(cl, 'mismatch')], by[(cl, 'unchecked')], by[(cl, 'omission')],
