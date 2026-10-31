@@ -89,7 +89,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		next	dwarf+funcnames			in	undo
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		nextBaud	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		nvmatch	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		poke	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		pop	dwarf+funcnames			in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		pop	dwarf+funcnames			in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		prf	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		pri	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		printPrimaryDataCacheLine	dwarf+funcnames			in	undocumented		
@@ -6412,8 +6412,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932ff0	60	__glOtherLStri
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93302c	96	__glFastClipLine	dynsym+mdebug	ac953186621d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93308c	32	__glSecondLinesVertex	dynsym+mdebug	6cd9777d0500		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9330ac	56	__glSecondLLoopVertex	dynsym+mdebug	e7316aa338b3		in	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9330e4	76	__glPoint	dynsym+mdebug	f1e81364e421		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933130	28	__glPointFast	dynsym+mdebug	31dbf3374c97		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9330e4	76	__glPoint	dynsym+mdebug	f1e81364e421		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933130	28	__glPointFast	dynsym+mdebug	31dbf3374c97		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933150	608	__glRenderFlatTriangle	dynsym+mdebug	726cd7e52623		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9333b0	568	__glRenderFlatOneFaceTriangle	dynsym+mdebug	412dcc0ef7b3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9335e8	584	__glRenderSmoothTriangle	dynsym+mdebug	52b839bb097d		in	undocumented		
@@ -8048,7 +8048,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c712c	536	__glim_Disabl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7344	436	__glim_PushClientAttrib	dynsym+mdebug	95af1f168dc6		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c74f8	356	__glim_PopClientAttrib	dynsym+mdebug	86dedadc0105		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7660	276	__glDrawBitmap	dynsym+mdebug	44ef4824dea2		in	named-only	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7774	360	__glFastDrawBitmap	dynsym+mdebug	d5ada442b4d8		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7774	360	__glFastDrawBitmap	dynsym+mdebug	d5ada442b4d8		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c78dc	836	__glRenderBitmap	dynsym+mdebug	9bd131b2a12a		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7c20	316	__glim_Bitmap	dynsym+mdebug	1f9b7d91689b		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c7d60	80	__glDoBlendAdd	dynsym+mdebug	1f74639f1bc8		in	undocumented		
@@ -8565,26 +8565,26 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2fa8	124	__glim_Normal
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3030	1912	__glGenericPickSpanProcs	dynsym+mdebug	92c93c0805cf		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f37a8	296	__glGenericPickPointProcs	dynsym+mdebug	b30391499465		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f38d0	1236	__glGenericPickLineProcs	dynsym+mdebug	3822f69ece1c		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3da4	532	__glGenericPickTriangleProcs	dynsym+mdebug	b52304cdbeb4		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3fb8	92	__glGenericPickRenderBitmapProcs	dynsym+mdebug	c759ea13f7ad		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4014	60	__glGenericPickClipProcs	dynsym+mdebug	3e1be6034118		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3da4	532	__glGenericPickTriangleProcs	dynsym+mdebug	b52304cdbeb4		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f3fb8	92	__glGenericPickRenderBitmapProcs	dynsym+mdebug	c759ea13f7ad		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4014	60	__glGenericPickClipProcs	dynsym+mdebug	3e1be6034118		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4050	2832	__glGenericPickTextureProcs	dynsym+mdebug	2962e9de8ab8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4b60	120	__glGenericPickFogProcs	dynsym+mdebug	f4a6234d9636		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4bd8	136	__glGenericPickBufferProcs	dynsym+mdebug	b18758a0f59e		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4b60	120	__glGenericPickFogProcs	dynsym+mdebug	f4a6234d9636		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4bd8	136	__glGenericPickBufferProcs	dynsym+mdebug	b18758a0f59e		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f4c60	1848	__glGenericPickPixelProcs	dynsym+mdebug	e458745e87c6		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5398	176	__glGenericPickTransformProcs	dynsym+mdebug	78746ef16623		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5448	268	__glGenericPickDepthProcs	dynsym+mdebug	ab55168e7b51		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5554	52	__glGenericValidate	dynsym+mdebug	51276c160f0a		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5398	176	__glGenericPickTransformProcs	dynsym+mdebug	78746ef16623		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5448	268	__glGenericPickDepthProcs	dynsym+mdebug	ab55168e7b51		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5554	52	__glGenericValidate	dynsym+mdebug	51276c160f0a		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5588	564	__glGenericModeFlags	dynsym+mdebug	ef57f1271936		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f57bc	1228	__glGenericPickAllProcs	dynsym+mdebug	2a7057dc0bb3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5c90	88	__glBuildAntiAliasIndex	dynsym+mdebug	9bcf07656c3f		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f5dd4	788	__glRenderAntiAliasedRGBPoint	dynsym+mdebug	1482d8b4c662		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f60e8	688	__glRenderAntiAliasedCIPoint	dynsym+mdebug	bf98230792f0		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f63a0	288	__glRenderAliasedPoint1_NoTex	dynsym+mdebug	aca4c718b623		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f63a0	288	__glRenderAliasedPoint1_NoTex	dynsym+mdebug	aca4c718b623		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f64c0	384	__glRenderAliasedPoint1	dynsym+mdebug	6925863d0562		in	located	docs/sample-implementation.md#so_pntdrawc	so_pntdraw.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6640	128	__glRenderFlatFogPoint	dynsym+mdebug	06b560be01b5		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6640	128	__glRenderFlatFogPoint	dynsym+mdebug	06b560be01b5		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f66c0	576	__glRenderAliasedPointN	dynsym+mdebug	09c92d0ee9f2		in	located	docs/sample-implementation.md#so_pntdrawc	so_pntdraw.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6900	76	__glPolygonOffsetPoint	dynsym+mdebug	80716382024e		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6900	76	__glPolygonOffsetPoint	dynsym+mdebug	80716382024e		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6950	48	__glBeginPoints	dynsym+mdebug	452d173d31d4		in	located	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f6980	32	__glEndPoints	dynsym+mdebug	39825546150f		in	located	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f9420	3900	__glFillAntiAliasedTriangle	dynsym+mdebug	0b334b8a0683		in	located	docs/sample-implementation.md#so_polyaac	so_polyaa.c
@@ -10537,8 +10537,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9347e0	60	__glOtherLSt
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93481c	104	__glFastClipLine	dwarf+dynsym	eaea7431ca11		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934884	32	__glSecondLinesVertex	dwarf+dynsym	3537167e4533		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9348a4	72	__glSecondLLoopVertex	dwarf+dynsym	9ab02a1bf593		in	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9348ec	76	__glPoint	dwarf+dynsym	f1e81364e421		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934938	28	__glPointFast	dwarf+dynsym	31dbf3374c97		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9348ec	76	__glPoint	dwarf+dynsym	f1e81364e421		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934938	28	__glPointFast	dwarf+dynsym	31dbf3374c97		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934960	612	__glRenderFlatTriangle	dwarf+dynsym	d5d81eaec304		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934bc4	572	__glRenderFlatOneFaceTriangle	dwarf+dynsym	97d605b57f5a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934e00	588	__glRenderSmoothTriangle	dwarf+dynsym	df33266f3a85		in	undocumented		
@@ -12173,7 +12173,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5230	584	__glim_Disa
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5480	692	__glim_PushClientAttrib	dwarf+dynsym	d8c2d19bdc09		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5740	684	__glim_PopClientAttrib	dwarf+dynsym	5cd2ff8b1c4e		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c59f0	268	__glDrawBitmap	dwarf+dynsym	ab03ecbf236b		in	named-only	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5b00	336	__glFastDrawBitmap	dwarf+dynsym	b7c412b0834d		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5b00	336	__glFastDrawBitmap	dwarf+dynsym	b7c412b0834d		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5c50	788	__glRenderBitmap	dwarf+dynsym	9e5b85062377		in	located	docs/sample-implementation.md#so_bitdrawc	so_bitdraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c5f70	280	__glim_Bitmap	dwarf+dynsym	2e60bfbf392f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c6090	68	__glDoBlendAdd	dwarf+dynsym	13837debaa34		in	undocumented		
@@ -12690,26 +12690,26 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c00	104	__glim_Norm
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4c70	1948	__glGenericPickSpanProcs	dwarf+dynsym	0b10a5753bc8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5410	272	__glGenericPickPointProcs	dwarf+dynsym	66612f74db84		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5520	1264	__glGenericPickLineProcs	dwarf+dynsym	e3706e89e811		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5a10	500	__glGenericPickTriangleProcs	dwarf+dynsym	e320d4051eab		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c10	84	__glGenericPickRenderBitmapProcs	dwarf+dynsym	f8cdd5666882		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c70	64	__glGenericPickClipProcs	dwarf+dynsym	e730b24d3cb8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5a10	500	__glGenericPickTriangleProcs	dwarf+dynsym	e320d4051eab		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c10	84	__glGenericPickRenderBitmapProcs	dwarf+dynsym	f8cdd5666882		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5c70	64	__glGenericPickClipProcs	dwarf+dynsym	e730b24d3cb8		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f5cb0	2816	__glGenericPickTextureProcs	dwarf+dynsym	abbfe8cc8856		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f67b0	116	__glGenericPickFogProcs	dwarf+dynsym	83ef6b41e2d8		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6830	136	__glGenericPickBufferProcs	dwarf+dynsym	0f7be533be2e		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f67b0	116	__glGenericPickFogProcs	dwarf+dynsym	83ef6b41e2d8		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6830	136	__glGenericPickBufferProcs	dwarf+dynsym	0f7be533be2e		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f68c0	1612	__glGenericPickPixelProcs	dwarf+dynsym	28003cb1e5a9		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6f10	168	__glGenericPickTransformProcs	dwarf+dynsym	a84e2668bf9d		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6fc0	320	__glGenericPickDepthProcs	dwarf+dynsym	ca158137cdb3		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7100	52	__glGenericValidate	dwarf+dynsym	dd26f31675b4		in	located	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6f10	168	__glGenericPickTransformProcs	dwarf+dynsym	a84e2668bf9d		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f6fc0	320	__glGenericPickDepthProcs	dwarf+dynsym	ca158137cdb3		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7100	52	__glGenericValidate	dwarf+dynsym	dd26f31675b4		in	understood	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7140	560	__glGenericModeFlags	dwarf+dynsym	f8d17b326be8		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7370	1100	__glGenericPickAllProcs	dwarf+dynsym	b6727771aed2		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f77c0	64	__glBuildAntiAliasIndex	dwarf+dynsym	fa3d9e18825e		in	understood	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7950	652	__glRenderAntiAliasedRGBPoint	dwarf+dynsym	61d5fb243bbf		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7be0	564	__glRenderAntiAliasedCIPoint	dwarf+dynsym	f29ba421d7a7		in	located	docs/sample-implementation.md#so_pntaac	so_pntaa.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7e20	176	__glRenderAliasedPoint1_NoTex	dwarf+dynsym	5b3635b5ea1e		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7e20	176	__glRenderAliasedPoint1_NoTex	dwarf+dynsym	5b3635b5ea1e		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7ed0	248	__glRenderAliasedPoint1	dwarf+dynsym	b8d295aa6b10		in	located	docs/sample-implementation.md#so_pntdrawc	so_pntdraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7fd0	124	__glRenderFlatFogPoint	dwarf+dynsym	4003377081ec		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f7fd0	124	__glRenderFlatFogPoint	dwarf+dynsym	4003377081ec		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8050	460	__glRenderAliasedPointN	dwarf+dynsym	c49ef4a42f10		in	located	docs/sample-implementation.md#so_pntdrawc	so_pntdraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8220	76	__glPolygonOffsetPoint	dwarf+dynsym	bcf7b25134f4		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8220	76	__glPolygonOffsetPoint	dwarf+dynsym	bcf7b25134f4		in	named-only	docs/sample-implementation.md#so_pickc	so_pick.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f8270	48	__glBeginPoints	dwarf+dynsym	e0e4cc4defcf		in	understood	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f82a0	32	__glEndPoints	dwarf+dynsym	a721c36747a8		in	understood	docs/sample-implementation.md#so_pntfinc	so_pntfin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9fa2e0	3140	__glFillAntiAliasedTriangle	dwarf+dynsym	d6a21b76783b		in	located	docs/sample-implementation.md#so_polyaac	so_polyaa.c
