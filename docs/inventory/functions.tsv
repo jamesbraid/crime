@@ -5504,7 +5504,7 @@ usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd822d80	3204	EmptyBitmap
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd823058	1372	__glXFillImage3D4D	dynsym+mdebug	9bf993e143bb		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8235b4	1104	__glXFillImage	dynsym+mdebug	c094bb4b6329		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd823a04	2228	FillBitmap	mdebug	4cdd8d77a63a		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd823c4c	936	glXCreateGLXPbufferSGIX	dynsym+mdebug	d27f3bcf15dc		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd823c4c	936	glXCreateGLXPbufferSGIX	dynsym+mdebug	d27f3bcf15dc		in	named-only	docs/published-sources.md#14-recollections-and-history-leads-unverified	14. Recollections and history (leads, unverified)
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd823ff4	152	glXGetVideoSyncSGI	dynsym+mdebug	addac2ca6fc9		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd82408c	180	__glXEndDispatchOverride	dynsym+mdebug	e5964abc18b4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd824140	176	__glXBeginDispatchOverride	dynsym+mdebug	9499d463c89f		in	undocumented		
@@ -9662,7 +9662,7 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd824094	292	glXQueryGLXPbuf
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8241b8	1044	__glXGetDrawableAttributes	dynsym	8ad056210a5e		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8245cc	328	glXDestroyGLXPbufferSGIX	dynsym	97be9eb51b3f		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd824714	1796	__glx_PixelStoref	dynsym	29efa8ad1ff2		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd824e18	872	glXCreateGLXPbufferSGIX	dynsym	9040c16b6ee7		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd824e18	872	glXCreateGLXPbufferSGIX	dynsym	9040c16b6ee7		in	named-only	docs/published-sources.md#14-recollections-and-history-leads-unverified	14. Recollections and history (leads, unverified)
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd825180	140	glXGetVideoSyncSGI	dynsym	70f0f43aab6f		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd82520c	200	glXWaitVideoSyncSGI	dynsym	ca99930efd5b		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8252d4	320	glXDestroyGLXVideoSourceSGIX	dynsym	79817cdb5be0		in	undocumented		

@@ -110,6 +110,7 @@ Not in `root/`; read from the 6.5 base media directories `var/arch/vicedx/` and 
 
 ## Reported behaviour from software users
 
+- Established (published output, `hinv` dumps from O2 hosts): the inventory line is `Vice: TRE` (193 dumps) or `Vice: DX` (72), and the video line `Video: MVP unit 0 version 1.4` (187 dumps), `1.2` (65) or `1.3` (7). Every pairing of the two variants with the three versions occurs (TRE with 1.4 in 150 dumps, with 1.2 in 37, with 1.3 in 2; DX with 1.4 in 34, with 1.2 in 25, with 1.3 in 5). DX goes with the early CPU modules: R5000 at 180 MHz or less (60 dumps) and R10000 at 175 MHz or less (11, chip revision 2.5 in 10 of them); no DX dump has an R12000 (38 TRE dumps) or a faster clock, while TRE is on R5000 up to 300 MHz, R10000 and R12000. The graphics revision letters do not move with the Vice variant: all 56 `gfxinfo` dumps for the CRM board print CRM revision C and GBE revision B.
 - Inferred (secondhand: [a developer's 2002 post on imaging for O2](sources/reports/o2-imaging-techniques-usenet-2002.txt) and [a list from an SGI engineer reproduced on a hobbyist site](sources/reports/sgidepot-melting-the-ice.html)): the imaging extensions run on the chip only when every coefficient of an operation is either an integer of magnitude above one or a real in -1.0 to 1.0, never mixed; otherwise the CPU does it at a fraction of the speed. Capture is accelerated only for PAL and NTSC frame sizes. These describe what the IRIX driver does on top of the hardware, not the hardware itself.
 
 ## Conflicts and open points
