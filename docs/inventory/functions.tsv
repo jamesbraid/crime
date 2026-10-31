@@ -144,13 +144,13 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	symtab	5c
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010340	8	_quit	symtab	e6e69c7e1b9c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010348	8	db_printf	symtab	9edc8e153884		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010350	1608	symmon_brkhandler	symtab	9c11d17faac2		in	named-only	docs/binaries.md#diagnostics	Diagnostics
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010370	28	symmon_exceptnorm	symtab	007d1ddb7799		in	named-only	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010370	28	symmon_exceptnorm	symtab	007d1ddb7799		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001038c	28	symmon_exceptutlb	symtab	e406cf1cb922		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103a8	28	symmon_exceptxut	symtab	48a9efee03e4		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103c4	28	exceptecc	symtab	c546ff38d9b7	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103c4	28	symmon_exceptecc	symtab	c546ff38d9b7	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103e0	60	symmon_nmi	symtab	c179ea7390d0		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001041c	1404	exception	symtab	c4af56fed605		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001041c	1404	exception	symtab	c4af56fed605		in	named-only	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010998	780	_resume_brkpt	symtab	fd49e8e814d2		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010ca4	456	invoke	symtab	6960696be69a		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e6c	48	symmon_spl	symtab	2aed5ed2baa9		in	undocumented		
@@ -236,7 +236,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a5b8	264	_kpcheck	symtab
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a6c0	84	_is_kp_func	symtab	e9b244999f23		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a714	8	bp_try_stop_cpus	symtab	87506497337c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001ac7c	284	trykfix	symtab	6f9b3b336ae2		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001adc0	336	symtab	symtab	cc6bad91f83c		in	named-only	IRIX_FILES.md#5-debug-information-by-release	5. Debug information by release
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001adc0	336	symtab	symtab	cc6bad91f83c		in	named-only	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001af10	156	map_k2seg_addr	symtab	869fdb05a7ae		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001afac	136	begin_cell	symtab	142972a1f98c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b034	156	end_cell	symtab	09ea86f85ec1		in	undocumented		
@@ -338,7 +338,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0020c7c	8	ecc_error_decode	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0020c84	200	arcs_format_module_id	symtab	d69f305febb1		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0020d4c	116	get_memory	symtab	8548d276f038		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0020dc0	884	dump	symtab	3c1db4f08b98		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00215c4	36	mem_error	symtab	53fa47908292		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00215c4	36	mem_error	symtab	53fa47908292		in	named-only	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021600	156	_r4600sc_disable_scache	symtab	ef2a9777bba1		in	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002169c	420	_r4600sc_enable_scache	symtab	2aafc1b5d3a5		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021840	164	_r4600sc_vtop	symtab	8e88846e755a		in	undocumented		
@@ -462,7 +462,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002664c	324	_init_saio	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00269f8	308	init_consenv	symtab	99edfe49fa0e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b50	52	_get_iobbuf	symtab	609d5b9d980d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b84	28	_free_iobbuf	symtab	5267bf581932		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	symtab	7894ec50e051		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	symtab	7894ec50e051		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026cd8	216	_scandevs	symtab	426b464d004d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026db0	152	new_eiob	symtab	47788eb8a659		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026e48	48	get_eiob	symtab	6db7eb5109f5		in	undocumented		
@@ -492,7 +492,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027690	236	cpu_get_freq	sy
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002782c	76	CRCengine	symtab	437156968b8a		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027b68	92	cpu_makecfgroot	symtab	c97aaa0f3d12		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027bc4	628	cpu_install	symtab	8ebf413efff0		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027e40	108	cpu_get_memsize	symtab	f9f927de86a7		in	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027e40	108	cpu_get_memsize	symtab	f9f927de86a7		in	named-only	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027eac	216	cpu_mem_init	symtab	c41c9c632028		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027f84	68	showException	symtab	efbeef11a812		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027fc8	60	__assert	symtab	587740a132cf		in	undocumented		
@@ -1234,7 +1234,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd44	160	tlbgetent	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde4	12	getrand	symtab	2208fdd6285f	shared-address	out:17	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde4	12	tlbgetrand	symtab	2208fdd6285f	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xdf0	224	tlb_probe	symtab	398b66d93a81		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xed0	60	save	symtab	240f2a2817bc		out:9	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xed0	60	save	symtab	240f2a2817bc		out:9	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf0c	344	resume	symtab	abe227b4bea3		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1064	140	resumethread	symtab	2603f8b4b9b9		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f0	92	restartxthread	symtab	85b8ef499a4f		out:9	undocumented		
@@ -1700,7 +1700,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	8	ip26_enable_u
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip26_return_ucmem	symtab	d7276fd812c6	shared-address	in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip28_enable_ucmem	symtab	d7276fd812c6	shared-address	in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d08	120	ip28_return_ucmem	symtab	d7276fd812c6	shared-address	in	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d80	312	exception	symtab	259042a94083		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11d80	312	exception	symtab	259042a94083		out:1	named-only	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11e08	136	exception_endfast	symtab	ba55f6ae00fa	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11e08	136	handle_brkpt	symtab	ba55f6ae00fa	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11e90	40	handle_watch	symtab	b0b926f14f7a		out:1	undocumented		
@@ -4545,7 +4545,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217b10	444	XkbRF_ClearVarDesc
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217cd0	376	AccessAllocColorCells	dynsym	b1c91cb221a4		out:13	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217e60	552	SProcXineramaSGICapDispatch..DAE	dynsym	5ada37d3ddfe		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218090	468	SProcSGIDispatch..PBD	dynsym	be42464dc8d2		out:11	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218270	5600	main	dynsym	89ee22ffad44		in	named-only	AGENTS.md#picking-work	Picking work
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218270	5600	main	dynsym	89ee22ffad44		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219850	484	DbeResetProc..HJC	dynsym	7cc69224a467		out:15	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219a40	332	ProcSGIQueryStereoMode..NLD	dynsym	19b481e1e0f3		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219b90	332	ProcXkbUseExtension	dynsym	a326df8ddc15		out:11	undocumented		
@@ -13410,7 +13410,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda41230	932	viceSetIter
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda415e0	588	viceLateLumaConvert	dwarf+dynsym	388d5372f768		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10005770	268	__start	dynsym	354bd274e9c2		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000587c	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10005888	2192	main	dynsym	2d27950426ee		in	named-only	AGENTS.md#picking-work	Picking work
+usr/gfx/gfxinit	shared-tool	n32		0x10005888	2192	main	dynsym	2d27950426ee		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/gfxinit	shared-tool	n32		0x1000693c	848	lg1_info	dynsym	a882b266a68a		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10006c8c	2628	loadfile	dynsym	0ad174b7798e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10007a18	8	ev1_init	dynsym	87506497337c		in	undocumented		
@@ -13638,7 +13638,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x1001e33c	4	__istart	dynsym	df3f619804a9		in	u
 usr/gfx/setmon	shared-tool	n32		0x10008d20	268	__start	dynsym	2c0ec17aee41		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10008e2c	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10008e38	64	Usage	dynsym	751005097950		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10008e8c	4216	main	dynsym	34b5ba5e4a50		in	named-only	AGENTS.md#picking-work	Picking work
+usr/gfx/setmon	shared-tool	n32		0x10008e8c	4216	main	dynsym	34b5ba5e4a50		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/setmon	shared-tool	n32		0x10009f04	308	getvofpath	dynsym	78b8d8b6975b		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a038	56	vTimeoutOpenDisplay	dynsym	0b854b7056ad		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a070	208	timeoutXOpenDisplay	dynsym	4fb9fe7741c6		in	undocumented		
@@ -16381,11 +16381,11 @@ usr/lib/libXsgivc.so	board-library	o32		0xf4024b4	592	XSGIvcQueryVideoScreenInfo
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402704	396	GenerateVFList	mdebug	fd38522dcdbc		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402890	144	ReadFieldInfo	mdebug	050c73858a19		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf402920	8012	ReadFormatInfo	mdebug	646dfcf563f7		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib/libXsgivc.so	board-library	o32		0xf402ab0	932	XSGIvcListVideoFormats	dynsym+mdebug	14f653011c57		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/libXsgivc.so	board-library	o32		0xf402ab0	932	XSGIvcListVideoFormats	dynsym+mdebug	14f653011c57		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib/libXsgivc.so	board-library	o32		0xf402e54	388	matchWild	dynsym+mdebug	3a3cca2d71df		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32		0xf402fd8	872	XSGIvcListVideoFormatCombinations	dynsym+mdebug	d6e845af22dc		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf403340	932	XSGIvcListVideoFormatsInCombination	dynsym+mdebug	2faec7883238		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf4036e4	688	XSGIvcLoadVideoFormat	dynsym+mdebug	ad5bf00138b4		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/libXsgivc.so	board-library	o32		0xf4036e4	688	XSGIvcLoadVideoFormat	dynsym+mdebug	ad5bf00138b4		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib/libXsgivc.so	board-library	o32		0xf403994	788	XSGIvcLoadVideoFormatCombination	dynsym+mdebug	56e8d7b92229		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf403ca8	628	XSGIvcDisableChannel	dynsym+mdebug	291ea2a7fb65		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf403f1c	1724	XSGIvcQueryChannelInfo	dynsym+mdebug	867bfb57fd0b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -17120,13 +17120,13 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf403200	308	XSGIvcSetScreenExternalS
 usr/lib32/libXsgivc.so	board-library	n32		0xf403340	448	XSGIvcSetPlatformParameter	dwarf+dynsym	fd3ef2b930f0		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf403500	748	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	dc4ce5cefebe		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf4037f0	236	XSGIvcQueryOutputGain	dwarf+dynsym	2fc7c971ba7b		in	named-only	docs/xsgivc.md#output-controls	Output controls
-usr/lib32/libXsgivc.so	board-library	n32		0xf4038e0	644	XSGIvcLoadVideoFormat	dwarf+dynsym	93ab6cb572fc		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/libXsgivc.so	board-library	n32		0xf4038e0	644	XSGIvcLoadVideoFormat	dwarf+dynsym	93ab6cb572fc		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib32/libXsgivc.so	board-library	n32		0xf403b70	440	XSGIvcSendMonitorCommand	dwarf+dynsym	694f1be474e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf403d30	60	XSGIvcQueryOutputPhaseV	dwarf+dynsym	31e01b386478		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403d70	60	XSGIvcQueryOutputPhaseH	dwarf+dynsym	2987bd89d4bf		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403db0	748	XSGIvcLoadVideoFormatCombination	dwarf+dynsym	7164280e9653		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf4040a0	60	XSGIvcFreeVideoFormatInfo	dwarf+dynsym	ddf0cab8feec		in	named-only	docs/xsgivc.md#helpers	Helpers
-usr/lib32/libXsgivc.so	board-library	n32		0xf4040e0	872	XSGIvcListVideoFormats	dwarf+dynsym	d359d2ba2036		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/libXsgivc.so	board-library	n32		0xf4040e0	872	XSGIvcListVideoFormats	dwarf+dynsym	d359d2ba2036		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib32/libXsgivc.so	board-library	n32		0xf404450	580	XSGIvcDisableChannel	dwarf+dynsym	b7383a970572		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf4046a0	60	XSGIvcQueryOutputPhaseSCH	dwarf+dynsym	0f51df4bde62		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4046e0	60	XSGIvcQueryOutputPedestal	dwarf+dynsym	c1dd5bc6eb9d		in	named-only	docs/xsgivc.md#output-controls	Output controls
@@ -17184,13 +17184,13 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2003980	324	XSGIvcSetScreenExternalS
 usr/lib64/libXsgivc.so	board-library	n64		0x2003ad0	464	XSGIvcSetPlatformParameter	dwarf+dynsym	21366bd2f336		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2003ca0	780	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	098b198df721		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2003fb0	240	XSGIvcQueryOutputGain	dwarf+dynsym	c7a58d08639a		in	named-only	docs/xsgivc.md#output-controls	Output controls
-usr/lib64/libXsgivc.so	board-library	n64		0x20040a0	688	XSGIvcLoadVideoFormat	dwarf+dynsym	57c6d8ce0d14		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib64/libXsgivc.so	board-library	n64		0x20040a0	688	XSGIvcLoadVideoFormat	dwarf+dynsym	57c6d8ce0d14		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib64/libXsgivc.so	board-library	n64		0x2004350	456	XSGIvcSendMonitorCommand	dwarf+dynsym	2e3a087275ff		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2004520	64	XSGIvcQueryOutputPhaseV	dwarf+dynsym	929f89e1da47		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2004560	64	XSGIvcQueryOutputPhaseH	dwarf+dynsym	4a6b039fca94		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x20045a0	780	XSGIvcLoadVideoFormatCombination	dwarf+dynsym	6c697687329a		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x20048b0	60	XSGIvcFreeVideoFormatInfo	dwarf+dynsym	77020042ef7b		in	named-only	docs/xsgivc.md#helpers	Helpers
-usr/lib64/libXsgivc.so	board-library	n64		0x20048f0	908	XSGIvcListVideoFormats	dwarf+dynsym	8891cb9e170e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib64/libXsgivc.so	board-library	n64		0x20048f0	908	XSGIvcListVideoFormats	dwarf+dynsym	8891cb9e170e		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/lib64/libXsgivc.so	board-library	n64		0x2004c80	608	XSGIvcDisableChannel	dwarf+dynsym	5495cc60b541		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2004ee0	64	XSGIvcQueryOutputPhaseSCH	dwarf+dynsym	e10e897cedf8		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2004f20	64	XSGIvcQueryOutputPedestal	dwarf+dynsym	ba41c3ac87e8		in	named-only	docs/xsgivc.md#output-controls	Output controls
@@ -17242,7 +17242,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x200a190	324	XSGIvcSelectInput	dwarf+
 usr/lib64/libXsgivc.so	board-library	n64		0x200a2e0	176	XSGIvcSetOutputGain	dwarf+dynsym	a44795eb5b1b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4033e0	284	__start	dynsym	1dc32a5b03a8		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4034fc	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	9a5888649f51		in	named-only	AGENTS.md#picking-work	Picking work
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	9a5888649f51		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404370	232	reshape	dynsym	2eabaa3ee89d		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404458	624	runDiagnostic	dynsym	310bec9df295		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4046c8	184	clean_up	dynsym	738301461086		in	undocumented		

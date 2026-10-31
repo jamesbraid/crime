@@ -90,7 +90,26 @@ The members of `crime.a`, `gfxs.a` and the single object `mace.o` have their own
 - `gfxinit`: run at start-up to configure the graphics. It opens the graphics device, queries every video-control property of the screen through `libXsgivc.so` (output gain, sync, pedestal, blanking, phase, gamma maps, monitor name) and holds the paths of the per-channel timing table files (`Crm_TimingTableFiles`, `/usr/gfx/ucode/`); established from its imports and strings. It holds no format-file conversion code ([gbe.md](gbe.md)).
 - `gfxinfo`: on the 6.5.30 media a link to `gfxinit`, which picks its behaviour from its name. For this board its `crime_info` routine (`usr/gfx/gfxinit`, 0x1000ddd4, 412 bytes) prints the frame-buffer depth (`%d + %d bitplanes` when the board's byte at +0x2b is non-zero, otherwise `%d bitplanes`), then `board revision %d, CRM revision %c, GBE revision %c`, the dual-channel option line and the timing-table flags (full-screen stereo, quad-buffer stereo, sync on green), and the monitor names (established, disassembly). The board number is the byte at +0x28 of the board information structure, the CRM letter is 'A' plus the byte at +0x29, the GBE letter is 'A' plus the byte at +0x2a. The kernel's `crimeInitInfo` fills them: +0x28 from the four strap bits read from the GBE pin pairs, +0x29 from the low nibble of the CRIME identity word at 0xb4000000 plus one when bit 0 of the word at +0x400 of the register block passed to it is set, +0x2a from the GBE control register's revision nibble (established; what the +0x400 bit means is unknown).
   - Established (published output, 56 `gfxinfo` dumps for the CRM board): the depth line is `32 bitplanes` (35 dumps), `32 + 32 bitplanes` (17), `16 bitplanes` (2) or `16 + 16 bitplanes` (1), so all four forms are printed by real boards; the revision line is `board revision 2, CRM revision C, GBE revision B` in 53 dumps and, in three posts from the IRIX 6.3 era, `Board version 2, CRM revision C, GBE revision B`; no other revision combination is printed. The smallest main memory among the 283 O2 `hinv` dumps is 64 MB, and `32 + 32` and plain `32` both occur at 64, 128, 256, 512 and 1024 MB.
-- `setmon`: the monitor-format selection tool. One routine per board family; `crm_setmon` is the O2 path ([gbe.md](gbe.md)); `ng1_setmon` and the others serve other families ([ioctls.md](ioctls.md)).
+- `usr/gfx/setmon`: the monitor-format selection tool, an N32 executable of 289580 bytes (established, `readelf -h`).
+  Its `DT_NEEDED` entries are `libXsgivc.so`, `libX11.so.1`, `libgl.so`, `libXext.so`, `libm.so` and `libc.so.1` (established, `readelf -d`).
+  `main` at 0x10008e8c, 4216 bytes long, hands the request to one routine per board family (established, symbol table and branches).
+  The O2 routine is `crm_setmon` at 0x1000e40c, 3160 bytes long (established, symbol table).
+  The routine `ng1_setmon` is at 0x1000f064, 1676 bytes long (established, symbol table).
+  `main` reaches `crm_setmon` by the `jal` at 0x10009ca8, in the branch entered at 0x10009c98 (established, instructions).
+  The compare that selects that branch is in code before 0x10009c98, and this entry does not read it.
+  Direct path. `crm_setmon` opens the string `/dev/graphics` at 0x100399d0 with flags 0x802 at 0x1000e444 (established, call arguments).
+  It sends ioctl request 102 at 0x1000e4a4 and request 103 at 0x1000e534, both on that descriptor (established, `a1` at each `ioctl`).
+  Requests 102 and 103 are the generic board requests of the public header, as [xmodule.md](xmodule.md) records them; the data they return is not read here.
+  It sends the timing-table request 0x55f6 at 0x1000e5cc, with the 0x30-byte record on the stack and `syncNone` as the last argument (established, call arguments).
+  The kernel handler for 0x55f6 is `crimeLoadTimingTable`, described in [ioctls.md](ioctls.md) and [gbe.md](gbe.md) (established, [ioctls.md](ioctls.md)).
+  X server path. `crm_setmon` calls `XSGIvcListVideoFormats` at 0x1000ecc0 and `XSGIvcLoadVideoFormat` at 0x1000ee60 (established, call sites).
+  It also calls `XSGISetStereoMode` at 0x1000eff8 and 0x1000f01c (established, call sites).
+  Those calls take the display and screen handles from `dssdpy` and `dssscreen` (established, call arguments).
+  These calls reach the X module, described in [xmodule.md](xmodule.md), not the kernel.
+  Timing files. `crm_setmon` builds each timing-table name from `Crm_TimingTableFiles` and the pipe number (established, call arguments).
+  It opens the names with `fopen` at 0x1000e8d8 and 0x1000e934, and calls `stat` on them at 0x1000e818 (established, call sites).
+  It calls `creat` with mode 0x1a4 at 0x1000eb3c on a name built the same way (established, call arguments).
+  The message `setmon: root privileges needed to save timing` at 0x10039900 is printed by the `fprintf` at 0x1000e62c, after the `getuid` call at 0x1000e60c (established, call sequence).
 - `libXsgivc.so` (o32 `usr/lib/`, N32 `usr/lib32/`, 64-bit `usr/lib64/`): the client side of the X video-control extension; [gbe.md](gbe.md) (established: it imports only the Xlib transport).
 - The video format files under `usr/gfx/ucode/CRM/vof/`: compiled formats in the container described in [gbe.md](gbe.md). Each file names its output as `O2_GBE` and carries a format title (established, file strings). The X module reads their timing scalars and PLL values and turns them into the kernel timing record ([gbe.md](gbe.md)).
 
@@ -193,7 +212,44 @@ One entry per format file, in table order. Each gives the clock word at its offs
 
 ## Diagnostics
 
-- `ide.IP32`, `symmon.IP32` and the PROM image `ip32prom.image`: the stand-alone diagnostics, the stand-alone kernel debugger (`symmon_brkhandler`, `symmon_exceptnorm`, the exception and breakpoint entries) and the boot firmware. `ide.IP32` carries the graphics and memory tests read in [gbe.md](gbe.md) and [memory.md](memory.md).
+- `sbin/stand/ide.IP32`: the stand-alone IDE diagnostic set, an o32 executable (established, `readelf -h`).
+  It is stripped: its section list has no `.symtab` and no `.mdebug` (established, `readelf -S`), so its routines are named by address only.
+  Entry point 0xa00e9a10, with text from 0xa00a0180, in kseg1 (established, `readelf -h` and `-S`).
+  The CRIME, GBE and RE sites below are direct kseg1 loads and stores (established, `mmio.tsv`).
+  CRIME is reached through the window at 0xb4000000, first by `lui t6,0xb400` at 0xa00c4ba8 (established, disassembly).
+  Its CRIME sites are the ID register at +0x4, the CPU interface control at +0x8, the interrupt status at +0x10 and the timer at +0x38 (established, `mmio.tsv`).
+  They also cover the memory controller status at +0x200 and the bank controls from +0x208 to +0x244 (established, `mmio.tsv`).
+  Its RE window sites are the host interface buffer control at +0x400, six sites (established, `mmio.tsv`; the register is described in [context.md](context.md)).
+  It reads GBE `CTRLSTAT` once and waits on the colour-map FIFO at 0xa00d2674 to 0xa00d2788, and at 0xa00e2c54 (established, [gbe.md](gbe.md), pass 7).
+  It sizes memory at 0xa00f0228 to 0xa00f0300 and builds the frame-buffer TLB entries at 0xa00e3450 to 0xa00e34a0 (established, [memory.md](memory.md)).
+  Its 32-byte 640 by 480 record at file offset 0xb1824 is the same 32 bytes as the record in `ip32prom.image` at offset 0x5e814 (established, byte comparison).
+- `sbin/stand/symmon.IP32`: the stand-alone kernel debugger, with its breakpoint code, exception vectors and memory and ECC error reports (inferred from the symbol names and the exception path below).
+  Entry point 0xa0010200, with text from 0xa0010200 and a symbol table of 755 routines (established, `readelf` and the inventory).
+  It has no graphics role: no GBE or RE site is in it (established, `mmio.tsv`).
+  Its CRIME sites are error, ECC and bank registers, 19 in all, and all of them are in `exception` at 0xa001041c, 1404 bytes long (established, `mmio.tsv`).
+  The CPU error address is at +0x40, and the registers at +0x48 and +0x58 are read beside it (established, `mmio.tsv`; [memory.md](memory.md)).
+  The memory error status is at +0x250 and the memory error address at +0x258 (established, `mmio.tsv`).
+  The ECC syndrome bits are at +0x260, the generated check bits at +0x268 and the replacement check bits at +0x270 (established, `mmio.tsv`).
+  The exception frame saves the CPU error address at 0xa00104c8 and loads the replacement check bits at 0xa0010538 (established, [memory.md](memory.md)).
+  The bank-control sizing loop of `cpu_get_memsize` reads the bank controls at 0xa0027e78 (established, [memory.md](memory.md)).
+  The routines `symmon_brkhandler` at 0xa0010350 and `mem_error` at 0xa00215c4 are named from the symbol table only (inferred from names).
+- `usr/cpu/firmware/ip32prom.image`: the IP32 boot PROM, a flat image of 431872 bytes whose first four bytes are the ASCII `PROM` (established, first bytes of the file).
+  It holds the command monitor and the power-on diagnostics (established, strings).
+  The video monitor command `videostatus` is at 0x52748 and `videotiming` at 0x52754 (established, strings).
+  The video monitor command `videoinput` is at 0x52760 (established, strings).
+  The video monitor command `videooutput` is at 0x5276c (established, strings).
+  The video monitor command `videogenlock` is at 0x52778 (established, strings).
+  The video monitor command `videovhw_cfg` is at 0x52954 (established, strings).
+  The video monitor command `colorbars` is at 0x527f8 (established, strings).
+  The video monitor command `initvideo` is at 0x528f0 (established, strings).
+  Their names match the video window described in [mace-video.md](mace-video.md) (inferred from the command names).
+  A `video()` entry is at 0x58bb0 (established, strings).
+  The board name `SGI-CRM, Rev B` is at 0x5acf0 (established, strings).
+  The board name `SGI-CRM, Rev C` is at 0x5ad00 (established, strings).
+  The string `crime_i2cFpProbe` at 0x54458 names a CRIME I2C routine (established, strings).
+  The string `crime_i2c` at 0x5459c names the same CRIME I2C family (established, strings).
+  The inventory resolves no register access site in the image (established, `mmio.tsv`, zero sites), and its code is not disassembled in this entry.
+  The 640 by 480 record at 0x5e814 is the same 32 bytes that `ide.IP32` holds at offset 0xb1824 (established, byte comparison).
 - `dualchannel` (`usr/sbin/Confidence/`): the confidence test for the dual-channel display option. It opens the X display, checks the extension version and reads and writes the channel gamma maps through `libXsgivc.so` (`XSGIvcQueryChannelGammaMap`, `XSGIvcStoreGammaColors16`), and refuses to run unless the frame buffer is 32 bits deep (established, imports and strings). Its messages report a DRAM test of the option board.
 
 ## Video and image-conversion libraries

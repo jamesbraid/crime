@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
-binaries	82	0	55	3	51	12	16	11	0	0	67.1	86.6	100.0	67.1			93.3	15	2026-10-31		0			
-functions	15177	2103	2117	6	2025	1341	3220	2152	7688	0	13.9	35.2	49.3	13.9			66.7	3	2026-10-31		88	62	233	
-functions (distinct names)	9682	2044	1677	5	1670	668	1647	1087	5271	0	17.3	34.3	45.6	17.3							43			
+binaries	82	0	59	3	55	12	16	7	0	0	72.0	91.5	100.0	72.0			93.3	15	2026-10-31		0			
+functions	15177	2103	2117	6	2025	1341	3220	2153	7687	0	13.9	35.2	49.4	13.9			66.7	3	2026-10-31		88	62	233	
+functions (distinct names)	9682	2044	1677	5	1670	668	1647	1088	5270	0	17.3	34.3	45.6	17.3							43			
 mmio	162	0	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -10,7 +10,7 @@ spec-registers	260	0	249	1	238	0	0	0	0	11	95.8	100.0	100.0	100.0			100.0	10	2026
 input root manifest	71																							37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
 input sibling kona																								99f969a532ffe26d56cb1248c523b72bb363858a
 input sibling odsy																								cf7842fb49c83696d273ffc9655e581c7bc1fc7f
-functions in sbin/stand/symmon.IP32	755	0	0	0	0	0	5	61	689	0	0.0	0.7	8.7	0.0							0	0	72	
+functions in sbin/stand/symmon.IP32	755	0	0	0	0	0	5	62	688	0	0.0	0.7	8.9	0.0							0	0	72	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	6	0	6	0	6	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	

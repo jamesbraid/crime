@@ -1,7 +1,7 @@
 binary	group	role	kind	abi	bytes	sha256	copies	functions	address_source	access_sites	unresolved_sites	status	doc	section
-sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	none	31	0	named-only	docs/binaries.md#diagnostics	Diagnostics
-sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	symtab (dwarf addresses stale, dropped)	19	0	named-only	docs/binaries.md#diagnostics	Diagnostics
-usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0		0	0	named-only	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	none	31	0	understood	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	symtab (dwarf addresses stale, dropped)	19	0	understood	docs/binaries.md#diagnostics	Diagnostics
+usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0		0	0	understood	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	symtab	111	3	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	symtab	19	3	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
@@ -28,7 +28,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360
 usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	dynsym (dwarf addresses stale, dropped)	0	0	named-only	IRIX_FILES.md#1-irix-6530-primary	1. IRIX 6.5.30 (primary)
 usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	dynsym+dwarf	1173	7	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	dynsym	0	0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
-usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	dynsym	0	0	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	dynsym	0	0	understood	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/ucode/CRM/vof/1024x768_60.vfo	video-formats	board-data	data	-	12424	45d9f5371ac77067		0		0	0	located	docs/binaries.md#format-file-entries-usrgfxucodecrmvof	Format file entries (`usr/gfx/ucode/CRM/vof/`)
 usr/gfx/ucode/CRM/vof/1024x768_60p.vfo	video-formats	board-data	data	-	12436	9249d599f9467622		0		0	0	located	docs/binaries.md#format-file-entries-usrgfxucodecrmvof	Format file entries (`usr/gfx/ucode/CRM/vof/`)
 usr/gfx/ucode/CRM/vof/1024x768_70.vfo	video-formats	board-data	data	-	12424	1eb5fb546f8e7ff4		0		0	0	located	docs/binaries.md#format-file-entries-usrgfxucodecrmvof	Format file entries (`usr/gfx/ucode/CRM/vof/`)
