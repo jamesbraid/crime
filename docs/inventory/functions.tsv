@@ -737,7 +737,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	splx	symtab	78aa5
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spsema	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svpsema	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	svsema	symtab	78aa5094d5ec	shared-address	in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	timeout	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	timeout	symtab	78aa5094d5ec	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	untimeout	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#retrace-and-swap-scheduling-crime_retraceo	Retrace and swap scheduling (`crime_retrace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	vsema	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a8	8	suser	symtab	a7e7ca11a6b8		in	undocumented		
