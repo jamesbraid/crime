@@ -23,7 +23,42 @@ What each file in the inventory is and why it is read, for the IRIX 6.5.30 O2 co
   `crime_intr_enable` ORs in bit (argument & 31), and `crime_intr_disable` clears that bit (established, `sllv` on the argument, `or` at 0xa26c and `nor` and `and` at 0xa2ac and 0xa2b0).
   Neither routine reads or writes a board register window: the only memory they touch are the stack and that doubleword (established, the instructions of both routines). The use of the doubleword at 0xffffa2b8 elsewhere is not read here.
   `us_delay` at 0x13a68 (192 bytes), `intr` at 0xa578 (588 bytes) and `get_cpu_irr` at 0x13610 (28 bytes) are also imported and are not read in this entry.
-- `mvp.o`: the O2 video kernel driver. It is in scope because it couples to the graphics driver: it imports `crime_getustmsc`, `crime_retrace_callback` and `crime_video_info` from `crime.a`, `dms_block_get_tile_list` and the tile pool, and installs CRIME interrupt handlers through `setcrimevector` and `unsetcrimevector` (established, `nm -u`). Its own routines manage the video transfer paths (`mvptransfer_*`).
+- `mvp.o`: the O2 video kernel driver for the video input processor, 53412 bytes of `.text` with 169 routines (inferred from its routine names).
+  Its strings name the video input processor: `Video Input Processor` and `MVP %s: input %d %s timing %d.` (established, `strings`).
+  It is in scope because it couples to the graphics driver. It imports `crime_getustmsc`, `crime_retrace_callback` and `crime_video_info` from `crime.a` (established, `nm -u`).
+  It also imports `dms_block_get_tile_list` and the tile pool functions, and installs CRIME interrupt handlers through `setcrimevector` and `unsetcrimevector` (established, `nm -u`).
+  Its own routines manage the video transfer paths (`mvptransfer_*`).
+  How it reaches the board: the object defines `pciio_pio_read64` itself, as a weak symbol at 0xc9b4 (established, `nm`, type `W`).
+  Fifteen call sites in nine routines call that name for register reads. Each line gives a routine and the address of the call's address-load relocation (LO16) (established, `objdump -dr`).
+  `mvptransfer_enablechannel`: 0x18c4 and 0x19c0.
+  `mvptransfer_screen_interrupt`: 0x22e4.
+  `mvptransfer_interrupt`: 0x2574.
+  `mvptransfer_interrupt`: 0x2c68.
+  `mvptransfer_interrupt`: 0x35a4.
+  `mvpprobe`: 0x734c.
+  `mvpcontrol_resetustmsc`: 0x7d28.
+  `mvpi2c_config`: 0x857c.
+  `mvpi2c_read_config`: 0x863c.
+  `mvpi2c_check`: 0x8800 and 0x8854.
+  `mvpi2c_check`: 0x8974 and 0x8b00.
+  `mvpi2c_read_reg`: 0x8ea8 (its `jalr` is at 0x8eac).
+  No call to a 64-bit write helper is among the relocations, so how the object writes its registers is not read here.
+  `mvp_pio_read64` at 0xc9b4 (128 bytes) is that weak routine, read in full (established, instructions and relocations).
+  It calls `spl7` at 0xc9cc and keeps the level it returns in a stack word (`sd v0,0(sp)` at 0xc9e0).
+  It calls `us_delay` at 0xc9e8, with the word at `.data` offset 5472 as its argument.
+  It loads the doubleword at the address in its first argument at 0xc9fc (`ld s0,0(s3)`).
+  It calls `us_delay` at 0xca04, with the word at `.data` offset 5476 as its argument.
+  It calls `splx` at 0xca18 with the saved level, and returns the doubleword in v0 (`move v0,s0` at 0xca24).
+  The two data words are not set in this routine, and their values are not read here.
+  `mvpopen` at 0x9b0c (124 bytes) is read in full (established, instructions at 0x9b0c to 0x9b84).
+  It takes a pointer to a 32-bit word in its first argument (`lw v0,0(a0)` at 0x9b0c).
+  It returns 19 when the low 18 bits of that word are nonzero (`beqz` at 0x9b28, with `li v0,19` in its delay slot at 0x9b2c).
+  Otherwise it calls the routine at 0xa240 at 0x9b44, with 0 and the address of a stack word.
+  That routine is `mvpgetpath` in the symbol table, reached by a `lui`/`addiu` pair at 0x9b38 and 0x9b3c. Its body is not read in this entry.
+  It returns the call's result when that result is nonzero (`bnez` at 0x9b4c).
+  On success it takes bits 18 to 26 of the old word, as `(old >> 18) & 0x1ff`, and shifts them back up by 18 (instructions at 0x9b68 to 0x9b7c).
+  It ORs them with the stack word's low 18 bits, stores the result at the pointer (`sw a0,0(a1)` at 0x9b84) and returns 0.
+  The other routines are listed by name and address in [functions.md](functions.md). Their bodies are not read in this entry.
 - `a3_dd.o`: the O2 audio driver, 53544 bytes with 55 routines (inferred).
   The audio role is inferred from its codec routine `a3_init_codec` at 0xef4. Its imports tie it to the CRIME interrupt only: it imports `setcrimevector` and `unsetcrimevector` and nothing else from the graphics objects (established, `nm -u`). Its own symbols include an I2C helper set, `mvpi2c_read_reg` at 0x3688 and `a3_mvp_probe` at 0x3878 (established, symbol table); their bodies are not read here, and whether `a3_check_for_video` at 0x38e0 uses that path is unknown until that routine is read in full.
 

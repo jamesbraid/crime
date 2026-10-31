@@ -1981,14 +1981,14 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x1150	340	mvptransfer_post
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x12a4	792	mvptransfer_bufferdone	dwarf+funcnames	52b2578c1e79		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x15bc	484	mvptransfer_sendbuff	dwarf+funcnames	d5d4585c59d7		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x17a0	56	mvptransfer_continuing	dwarf+funcnames	d05f9d984537		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x17d8	172	mvptransfer_enablechannel	dwarf+symtab	83a1f5789e9a		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x17d8	172	mvptransfer_enablechannel	dwarf+symtab	83a1f5789e9a		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x1884	348	mvptransfer_getustmsc	dwarf+funcnames	1a48f534e248		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x19e0	2028	mvptransfer_screen_interrupt	dwarf+symtab	5c87e3afdb96		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x19e0	2028	mvptransfer_screen_interrupt	dwarf+symtab	5c87e3afdb96		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x21cc	160	mvptransfer_fix_output	dwarf+funcnames	bc0048dd677d		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x226c	164	mvptransfer_cleardma	dwarf+funcnames	69901722aa58		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x2310	340	mvptransfer_startup	dwarf+funcnames	b18c919ab6dd		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x2464	168	mvptransfer_timeout	dwarf+symtab	f96a4c27cf9f		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x250c	4464	mvptransfer_interrupt	dwarf+symtab	4f6c13a05ae8		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x250c	4464	mvptransfer_interrupt	dwarf+symtab	4f6c13a05ae8		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x367c	8	mvptransfer_set_callbacks	dwarf+funcnames	78aa5094d5ec		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3684	1072	mvptransfer_setup_controls	dwarf+funcnames	0e882439d485		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3ab4	164	mvptransfer_dummy_dma	dwarf+funcnames	96ad7700f02a		in	undocumented		
@@ -2056,12 +2056,12 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6fc8	36	mvpbuffer_init	dw
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6fec	296	mvpbuffer_clear	dwarf+symtab	161b5f58d43b		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7114	328	mvpbuffer_register	dwarf+symtab	2644a86074d0		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x725c	236	mvpbuffer_ioctl	dwarf+symtab	c735ad7a8084		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7348	48	mvpprobe	dwarf+symtab	0f7219042fe4		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7348	48	mvpprobe	dwarf+symtab	0f7219042fe4		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7378	120	mvpcontrol_init	dwarf+symtab	bf5a13575dd9		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x73f0	68	mvpcontrol_unload	dwarf+symtab	537e555ad029		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7434	412	mvpcontrol_setup_output	dwarf+funcnames	46796d1e1a21		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x75d0	188	mvpcontrol_check_output	dwarf+symtab	8502cbe97a2a		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x768c	8	mvpcontrol_resetustmsc	dwarf+symtab	78aa5094d5ec		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x768c	8	mvpcontrol_resetustmsc	dwarf+symtab	78aa5094d5ec		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7694	400	mvpcontrol_send_changed	dwarf+funcnames	91af9b6662f5		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7824	940	mvpcontrol_item_set	dwarf+funcnames	e0907a4fcf5a		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7bd0	396	mvpcontrol_item_get	dwarf+funcnames	a2a376c67444		in	undocumented		
@@ -2078,11 +2078,11 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x848c	88	mvpdebug_init	dwa
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x84e4	8	mvpdebug_unload	dwarf+symtab	78aa5094d5ec		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x84ec	52	mvpi2c_printerror	dwarf+symtab	9cd18d002f24		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8520	76	mvpi2c_register_av	dwarf+symtab	a2f2c1825181		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x856c	204	mvpi2c_config	dwarf+symtab	7b0f998f058a		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8638	40	mvpi2c_read_config	dwarf+symtab	6e339ff2d43a		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x856c	204	mvpi2c_config	dwarf+symtab	7b0f998f058a		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8638	40	mvpi2c_read_config	dwarf+symtab	6e339ff2d43a		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8660	184	mvpi2c_reset	dwarf+symtab	fc6ed6259da6		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8718	88	mvpi2c_fastmode	dwarf+symtab	1500ccda3e8f		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8770	164	mvpi2c_check	dwarf+symtab	13ca95b146ea		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8770	164	mvpi2c_check	dwarf+symtab	13ca95b146ea		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8814	328	_mvpi2c_wait_for_xfer_done	dwarf+funcnames	6768a0c0a7f0		in	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x895c	388	_mvpi2c_wait_for_ack	dwarf+funcnames	79fba20bb175		in	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8ae0	476	_mvpi2c_force_bus_idle	dwarf+funcnames	6a473e90578e		in	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
@@ -2098,13 +2098,13 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x982c	248	mvpinterrupt_set
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9924	240	mvpinterrupt_init	dwarf+symtab	39eade0ed08b		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9a14	184	mvpinterrupt_unload	dwarf+symtab	98ca76f2ef84		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9acc	64	mvpinit	dwarf+symtab	cf38c3d24f5c		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b0c	124	mvpopen	dwarf+symtab	b7af579b8e31		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b0c	124	mvpopen	dwarf+symtab	b7af579b8e31		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b88	216	mvpclose	dwarf+symtab	d8481687f6bb		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9c60	504	mvpioctl	dwarf+symtab	54e1d9eb4936		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9e58	172	mvpaddtoinvent	dwarf+symtab	aada7560a365		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9f04	744	mvpdriverinit	dwarf+funcnames	d46e0d4c2480		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa1ec	84	mvpcopyin	dwarf+symtab	583eeb612bf1		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa240	248	mvpgetpath	dwarf+funcnames	6df24e1ced35		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa240	248	mvpgetpath	dwarf+funcnames	6df24e1ced35		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa338	72	mvpreleasepath	dwarf+funcnames	1c06048fd833		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa380	208	mvpiostatus	dwarf+funcnames	07f98bcba36a		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa450	308	mvpunload	dwarf+symtab	471e1ccb85f8		in	undocumented		
@@ -2126,7 +2126,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe6c	8	mvpreg_unload	dwar
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe74	1776	mvpreg_syncpath_controls	dwarf+symtab	dc242cbe7e80		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc564	144	mvpreg_gettiming	dwarf+funcnames	800bc84e48a1		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc5f4	960	mvpreg_syncdevice_controls	dwarf+symtab	353a98a0402c		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	mvp_pio_read64	dwarf+symtab	1b82094aa278	shared-address	in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	mvp_pio_read64	dwarf+symtab	1b82094aa278	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64	symtab	1b82094aa278	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xca34	348	mvpsystem_ioctl	dwarf+symtab	8f1f5b63b37f		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xcb90	668	move_mipmap	dwarf+funcnames	af2564518518		in	undocumented		
