@@ -12834,7 +12834,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04820	108	__glim_Init
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04890	144	__glim_LoadName	dwarf+dynsym	f0103bbd4fa2		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04920	148	__glim_PopName	dwarf+dynsym	53953698bc8f		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda049c0	172	__glim_PushName	dwarf+dynsym	15cdf26b66bb		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04a70	320	__glSelectHit	dwarf+dynsym	e983a79d0a32		in	understood	docs/sample-implementation.md#so_selectc	so_select.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04a70	320	__glSelectHit	dwarf+dynsym	e983a79d0a32		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04bb0	296	__glSelectTriangle	dwarf+dynsym	72f9b9deac72		in	named-only	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04ce0	92	__glSelectLine	dwarf+dynsym	4f028a316b8d		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04d40	52	__glSelectPoint	dwarf+dynsym	28028663d7c1		in	located	docs/sample-implementation.md#so_selectc	so_select.c
