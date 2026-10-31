@@ -8536,10 +8536,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0068	236	deleteCh
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0154	244	addChild	mdebug	aeaebcbaf6a0		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0248	384	splitParent	mdebug	4a6baa6fe5f6		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f03c8	192	buildParent	mdebug	20d5733af106		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0488	652	insertLeaf	mdebug	821b7d0b1f86		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0714	532	deleteLeaf	mdebug	4c9d64ebd2a7		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0488	652	insertLeaf	mdebug	821b7d0b1f86		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0714	532	deleteLeaf	mdebug	4c9d64ebd2a7		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0928	380	resizeLeaf	mdebug	914b66408f96		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0aa4	332	prevLeaf	mdebug	cd33353a7e9a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0aa4	332	prevLeaf	mdebug	cd33353a7e9a		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0bf0	96	firstLeaf	mdebug	685d4a5b27ca		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0c50	216	nextLeaf	mdebug	9446a78e925b		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9f0d28	988	mergeLeaves	mdebug	23bf304774a0		in	located	docs/sample-implementation.md#so_namesc	so_names.c
@@ -12661,8 +12661,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1cd0	240	delete
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1dc0	228	addChild	dwarf+funcnames	4dc2c54c7444		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1eb0	428	splitParent	dwarf+funcnames	2d430b858033		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2060	192	buildParent	dwarf+funcnames	f39cb1fdf46c		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2120	680	insertLeaf	dwarf+funcnames	2422cf55a819		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f23d0	568	deleteLeaf	dwarf+funcnames	dec49e8f2909		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2120	680	insertLeaf	dwarf+funcnames	2422cf55a819		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f23d0	568	deleteLeaf	dwarf+funcnames	dec49e8f2909		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2610	368	resizeLeaf	dwarf+funcnames	68f27150699a		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2780	272	prevLeaf	dwarf+funcnames	4bc7ea746b4a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f2890	60	firstLeaf	dwarf+funcnames	60e7c05aa141		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
