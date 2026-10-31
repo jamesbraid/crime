@@ -29,18 +29,20 @@ What each file in the inventory is and why it is read, for the IRIX 6.5.30 O2 co
   It also imports `dms_block_get_tile_list` and the tile pool functions, and installs CRIME interrupt handlers through `setcrimevector` and `unsetcrimevector` (established, `nm -u`).
   Its own routines manage the video transfer paths (`mvptransfer_*`).
   How it reaches the board: the object defines `pciio_pio_read64` itself, as a weak symbol at 0xc9b4 (established, `nm`, type `W`).
-  Fifteen call sites in nine routines call that name for register reads. Each line gives a routine and the address of the call's address-load relocation (LO16) (established, `objdump -dr`).
-  `mvptransfer_enablechannel`: 0x18c4 and 0x19c0.
-  `mvptransfer_screen_interrupt`: 0x22e4.
+  Fifteen call sites in twelve routines call that name for register reads. Each line gives a routine and the address of the call's address-load relocation (LO16) (established, `objdump -dr`). The symbol table holds only the exported routines, so the static routines are placed by the DWARF-derived routine table and each start was confirmed by its stack-frame prologue after a return; the nearest earlier exported symbol is not the owner (established, `functions.tsv` and instructions).
+  `mvptransfer_getustmsc` (0x1884, 348 bytes): 0x18c4 and 0x19c0.
+  `mvptransfer_cleardma` (0x226c, 164 bytes): 0x22e4.
   `mvptransfer_interrupt`: 0x2574.
   `mvptransfer_interrupt`: 0x2c68.
   `mvptransfer_interrupt`: 0x35a4.
   `mvpprobe`: 0x734c.
-  `mvpcontrol_resetustmsc`: 0x7d28.
+  `mvpcontrol_item_get` (0x7bd0, 396 bytes): 0x7d28.
   `mvpi2c_config`: 0x857c.
   `mvpi2c_read_config`: 0x863c.
-  `mvpi2c_check`: 0x8800 and 0x8854.
-  `mvpi2c_check`: 0x8974 and 0x8b00.
+  `mvpi2c_check`: 0x8800.
+  `_mvpi2c_wait_for_xfer_done` (0x8814, 328 bytes): 0x8854.
+  `_mvpi2c_wait_for_ack` (0x895c, 388 bytes): 0x8974.
+  `_mvpi2c_force_bus_idle` (0x8ae0, 476 bytes): 0x8b00.
   `mvpi2c_read_reg`: 0x8ea8 (its `jalr` is at 0x8eac).
   No call to a 64-bit write helper is among the relocations, so how the object writes its registers is not read here.
   `mvp_pio_read64` at 0xc9b4 (128 bytes) is that weak routine, read in full (established, instructions and relocations).
@@ -166,7 +168,7 @@ The members of `crime.a`, `gfxs.a` and the single object `mace.o` have their own
   Direct path. `crm_setmon` opens the string `/dev/graphics` at 0x100399d0 with flags 0x802 at 0x1000e444 (established, call arguments).
   It sends ioctl request 102 at 0x1000e4a4 and request 103 at 0x1000e534, both on that descriptor (established, `a1` at each `ioctl`).
   Requests 102 and 103 are the generic board requests of the public header, as [xmodule.md](xmodule.md) records them; the data they return is not read here.
-  It sends the timing-table request 0x55f6 at 0x1000e5cc, with the 0x30-byte record on the stack and `syncNone` as the last argument (established, call arguments).
+  It sends the timing-table request 0x55f6 at 0x1000e5cc, with the 0x30-byte record on the stack as its third argument (established, call arguments). Before the call it tests the global flag `syncNone` and, when set, ORs 0x8 into the record's second word (established, instructions at 0x1000e5a4 to 0x1000e5bc).
   The kernel handler for 0x55f6 is `crimeLoadTimingTable`, described in [ioctls.md](ioctls.md) and [gbe.md](gbe.md) (established, [ioctls.md](ioctls.md)).
   X server path. `crm_setmon` calls `XSGIvcListVideoFormats` at 0x1000ecc0 and `XSGIvcLoadVideoFormat` at 0x1000ee60 (established, call sites).
   It also calls `XSGISetStereoMode` at 0x1000eb10, 0x1000eff8 and 0x1000f01c (established, call sites).
@@ -286,14 +288,14 @@ One entry per format file, in table order. Each gives the clock word at its offs
   CRIME is reached through the window at 0xb4000000, first by `lui t6,0xb400` at 0xa00c4ba8 (established, disassembly).
   Its CRIME sites are the ID register at +0x4, the CPU interface control at +0x8, the interrupt status at +0x10 and the timer at +0x38 (established, `mmio.tsv`).
   They also cover the memory controller status at +0x200 and the bank controls from +0x208 to +0x244 (established, `mmio.tsv`).
-  Its RE window sites are the host interface buffer control at +0x400, six sites (established, `mmio.tsv`; the register is described in [context.md](context.md)).
+  Its RE window sites are the host interface buffer control at +0x400: two reads through a constant 0xb5000000 base, at 0xa00e2c94 and 0xa010c834 (established, disassembly; the register is described in [context.md](context.md)). The six sites of that `mmio.tsv` row are shared with the CRIME kernel object, and the base also sits in a data word stored at 0xa00e2bb8, so other sites in this image may reach it by that pointer and are not counted here.
   It reads GBE `CTRLSTAT` once and waits on the colour-map FIFO at 0xa00d2674 to 0xa00d2788, and at 0xa00e2c54 (established, [gbe.md](gbe.md), pass 7).
   It sizes memory at 0xa00f0228 to 0xa00f0300 and builds the frame-buffer TLB entries at 0xa00e3450 to 0xa00e34a0 (established, [memory.md](memory.md)).
   Its 32-byte 640 by 480 record at file offset 0xb1824 is the same 32 bytes as the record in `ip32prom.image` at offset 0x5e814 (established, byte comparison).
 - `sbin/stand/symmon.IP32`: the stand-alone kernel debugger, with its breakpoint code, exception vectors and memory and ECC error reports (inferred from the symbol names and the exception path below).
   Entry point 0xa0010200, with text from 0xa0010200 and a symbol table of 755 routines (established, `readelf` and the inventory).
   It has no graphics role: no GBE or RE site is in it (established, `mmio.tsv`).
-  Its CRIME sites are error, ECC and bank registers, 19 in all, and all of them are in `exception` at 0xa001041c, 1404 bytes long (established, `mmio.tsv`).
+  Its CRIME sites are error, ECC and bank registers, 19 in all (established, `binaries.tsv`). Most are in `exception` at 0xa001041c, 1404 bytes long, which the symbol table gives size 0 and the inventory sizes by the next symbol; the rows also name the vector, bus-error, ECC and address-probe routines (established, `mmio.tsv`).
   The CPU error address is at +0x40, and the registers at +0x48 and +0x58 are read beside it (established, `mmio.tsv`; [memory.md](memory.md)).
   The memory error status is at +0x250 and the memory error address at +0x258 (established, `mmio.tsv`).
   The ECC syndrome bits are at +0x260, the generated check bits at +0x268 and the replacement check bits at +0x270 (established, `mmio.tsv`).
