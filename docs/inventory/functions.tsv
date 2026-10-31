@@ -637,7 +637,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c3d0	156	atohex_L	symtab
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c46c	28	atohex_ptr	symtab	817c9990c674		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c488	880	strtoull	symtab	57fdee28ca46		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca18	40	iscloseonexec	symtab	98ee9db0fea3		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca40	1384	bcopy	symtab	5413997fd8fa		in	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca40	1384	bcopy	symtab	5413997fd8fa		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002cfa8	216	bzero	symtab	51c5b0063af5		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d080	288	bcmp	symtab	2ed143ac8973		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d1a0	120	_cksum1	symtab	fa1ae93e2997		in	undocumented		
@@ -1358,7 +1358,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b44	36	ustore_half	s
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b68	8	fixade_error	symtab	4429c69e8a79		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	1120	memcpy	symtab	83b6323707a8	shared-address	out:4	named-only	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	12	memmove	symtab	28a29cd9f9c9	shared-address	out:4	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	bcopy	symtab	34c8fcd5c3eb	shared-address	out:4	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	bcopy	symtab	34c8fcd5c3eb	shared-address	out:4	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	ovbcopy	symtab	34c8fcd5c3eb	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b88	1096	bcopy_cdx_entry	symtab	e6b14e3607aa		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3fd0	56	bcopy_end	symtab	7b8004182b30	shared-address	out:4	undocumented		
@@ -16099,11 +16099,11 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodePr
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	a9b8910fe4bb		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	0cb6fb34f32e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	d5a5f3443196		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	8620755f6e6a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403b64	224	mvpCloseVideo	dynsym+mdebug	a30e6749bc21		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	ca6b78a9f036		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16116,7 +16116,7 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4042d4	300	mvpGetDefaultN
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x404fc8	1216	_mvpRealizeNode	mdebug	aaad66a28578		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40512c	572	mvpSetupPaths	dynsym+mdebug	3da14abf60f3		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x405368	288	mvpBufferInfo	dynsym+mdebug	162dcc4706c2		in	undocumented		
@@ -16134,12 +16134,12 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406738	392	mvpCharSt
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4067c0	160	mvpShowStatus	dynsym+mdebug	bf68a64afd67		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4068c0	720	mvpfromvltiming	mdebug	ab00d53b285c		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406b90	188	mvpSetFields	mdebug	6437eae4aa7d		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406d34	100	mvpGetCFI	mdebug	25c2a72a7696		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406d98	1804	mvpSetTiming	mdebug	055cbf66aebd		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4070a4	808	mvpSetScale	dynsym+mdebug	819a28f47b2f		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4074a4	2900	mvpSendPathEvent	mdebug	b6a5f2ab39a3		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4075a0	380	mvpFromVLControlValue	dynsym+mdebug	bced48984355		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40771c	480	mvpSendPathControls	dynsym+mdebug	80690ab001d2		in	undocumented		
@@ -16213,11 +16213,11 @@ usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodeProtoByI
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	a9b8910fe4bb		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	0cb6fb34f32e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	d5a5f3443196		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	8620755f6e6a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403b64	224	mvpCloseVideo	dynsym+mdebug	a30e6749bc21		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403c44	1016	mvpCreatePath	dynsym+mdebug	ca6b78a9f036		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16230,7 +16230,7 @@ usr/lib/dmedia/video/mvp.so	board-library	o32		0x4042d4	300	mvpGetDefaultNumber	
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x404fc8	1216	_mvpRealizeNode	mdebug	aaad66a28578		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40512c	572	mvpSetupPaths	dynsym+mdebug	3da14abf60f3		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x405368	288	mvpBufferInfo	dynsym+mdebug	162dcc4706c2		in	undocumented		
@@ -16248,12 +16248,12 @@ usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406738	392	mvpCharStatus	m
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4067c0	160	mvpShowStatus	dynsym+mdebug	bf68a64afd67		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4068c0	720	mvpfromvltiming	mdebug	ab00d53b285c		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406b90	188	mvpSetFields	mdebug	6437eae4aa7d		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406d34	100	mvpGetCFI	mdebug	25c2a72a7696		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406d98	1804	mvpSetTiming	mdebug	055cbf66aebd		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4070a4	808	mvpSetScale	dynsym+mdebug	819a28f47b2f		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4074a4	2900	mvpSendPathEvent	mdebug	b6a5f2ab39a3		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4075a0	380	mvpFromVLControlValue	dynsym+mdebug	bced48984355		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40771c	480	mvpSendPathControls	dynsym+mdebug	80690ab001d2		in	undocumented		
@@ -16837,11 +16837,11 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNode
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	97b837e63140		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	f171fde88dcd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	edb8315ce1e2		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	128a4785aa58		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404410	256	mvpCloseVideo	dwarf+dynsym	010ae54ec580		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	a1f4a8f707f5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16854,7 +16854,7 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404bb0	308	mvpGetDefaul
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x405a60	368	_mvpRealizeNode	dwarf+funcnames	52b6a30b496a		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x405bd0	608	mvpSetupPaths	dwarf+dynsym	a1a3ef9a507e		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x405e30	284	mvpBufferInfo	dwarf+dynsym	fa294129cab8		in	undocumented		
@@ -16872,12 +16872,12 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4072a0	180	mvpChar
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407360	140	mvpShowStatus	dwarf+dynsym	76151c1041a4		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4073f0	1064	mvpfromvltiming	dwarf+funcnames	7b3784f2389e		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x407820	176	mvpSetFields	dwarf+funcnames	a93b9651cf42		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4079c0	72	mvpGetCFI	dwarf+funcnames	5b858ebb54db		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x407a10	696	mvpSetTiming	dwarf+funcnames	528ed58e4c3b		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407d90	824	mvpSetScale	dwarf+dynsym	d23d0bc4083b		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4081b0	232	mvpSendPathEvent	dwarf+funcnames	ce609666492f		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4082a0	440	mvpFromVLControlValue	dwarf+dynsym	5806ea2024d1		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x408460	472	mvpSendPathControls	dwarf+dynsym	933c8cbfc592		in	undocumented		
@@ -16952,11 +16952,11 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoB
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	97b837e63140		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	f171fde88dcd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	edb8315ce1e2		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	128a4785aa58		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404410	256	mvpCloseVideo	dwarf+dynsym	010ae54ec580		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404510	1060	mvpCreatePath	dwarf+dynsym	a1f4a8f707f5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16969,7 +16969,7 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404bb0	308	mvpGetDefaultNumbe
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x405a60	368	_mvpRealizeNode	dwarf+funcnames	52b6a30b496a		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x405bd0	608	mvpSetupPaths	dwarf+dynsym	a1a3ef9a507e		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x405e30	284	mvpBufferInfo	dwarf+dynsym	fa294129cab8		in	undocumented		
@@ -16987,12 +16987,12 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4072a0	180	mvpCharStatus
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407360	140	mvpShowStatus	dwarf+dynsym	76151c1041a4		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4073f0	1064	mvpfromvltiming	dwarf+funcnames	7b3784f2389e		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x407820	176	mvpSetFields	dwarf+funcnames	a93b9651cf42		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4079c0	72	mvpGetCFI	dwarf+funcnames	5b858ebb54db		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x407a10	696	mvpSetTiming	dwarf+funcnames	528ed58e4c3b		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407d90	824	mvpSetScale	dwarf+dynsym	d23d0bc4083b		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4081b0	232	mvpSendPathEvent	dwarf+funcnames	ce609666492f		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4082a0	440	mvpFromVLControlValue	dwarf+dynsym	5806ea2024d1		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x408460	472	mvpSendPathControls	dwarf+dynsym	933c8cbfc592		in	undocumented		
