@@ -114,10 +114,41 @@ The members of `crime.a`, `gfxs.a` and the single object `mace.o` have their own
 
 ## OpenGL and the X server
 
-- `libGLcore.so` (N32 under `usr/gfx/arch/IP32CRM32/`, o32 under `usr/gfx/arch/IP32CRM/`): the OpenGL renderer that drives the rendering engine; [opengl.md](opengl.md), [gl-entry-points.md](gl-entry-points.md).
-- `libGL.so`, in the same two directories: the client OpenGL library and its GLX window-system layer. It needs `libGLcore.so`, `libXsgivc.so`, `libXext.so` and `libX11` (established, `DT_NEEDED`), and it owns the render node: it sends resource-manager commands 1000 to 1003, 1006, 1022 to 1024 ([ioctls.md](ioctls.md), established from its call sites).
-- `Xsgi`: the board-independent X server. It loads the board module and holds the resource-manager client side (`rrmSetReservedDID`, `rrmInit`), the input-device streams of [ioctls.md](ioctls.md) and the generic overlay-visual code ([gbe.md](gbe.md)).
-- `crm.so`: the O2 X server module; [xmodule.md](xmodule.md).
+- `usr/gfx/arch/IP32CRM/libGLcore.so` (o32, 2360688 bytes): the OpenGL core of the o32 build, the renderer that the client library `libGL.so` in the same directory calls (inferred from the export names).
+  Its `glBegin` is at 0x0d92fd44 and its `glEnd` at 0x0d92fef4, each 12 bytes long in the dynamic symbol table (established, `readelf --dyn-syms`).
+  Its `glClear` is at 0x0d930674 and its `glFlush` at 0x0d93071c, each 12 bytes long (established, `readelf --dyn-syms`).
+  It needs the VICE and dmedia libraries, `libvice.so` and `libdmedia.so`, and also `libm.so` and `libc.so.1` (established, `readelf -d`).
+  Its imports are `ioctl`, `open`, `mmap`, `munmap` and `close` (established, `readelf --dyn-syms`). The window-system methods that return the mapped rendering-engine register page are described in [ioctls.md](ioctls.md) and are not read in this entry.
+- `usr/gfx/arch/IP32CRM32/libGLcore.so` (n32, 2572500 bytes): the n32 build of the renderer (inferred from the export names).
+  It needs the same four libraries as the o32 build (established, `readelf -d`).
+  Its `glBegin` is at 0x0d931594 and its `glEnd` at 0x0d931744, each 12 bytes long (established, `readelf --dyn-syms`).
+  Its `glClear` is at 0x0d931ec4 and its `glFlush` at 0x0d931f6c, each 12 bytes long (established, `readelf --dyn-syms`).
+  Its dynamic symbol table imports the same `ioctl`, `open`, `mmap`, `munmap` and `close` as the o32 build, and also `mpin` (established, `readelf --dyn-syms`). Its register-page path is not read in this entry.
+- `usr/gfx/arch/IP32CRM/libGL.so` (o32, 487952 bytes): the client OpenGL library and its GLX window-system layer, o32 build (inferred from the export names).
+  Its `glXSwapBuffers` is at 0x0d811bd8 (400 bytes) and its `glXMakeCurrent` at 0x0d812a74 (68 bytes) (established, `readelf --dyn-syms`).
+  Its `glXCreateContext` is at 0x0d81291c (96 bytes) and its `glXChooseVisual` at 0x0d80e770 (2736 bytes) (established, `readelf --dyn-syms`).
+  Its `__glXHWAttach` is at 0x0d811658 (280 bytes) and its `__glXOpenGraphicsDevice` at 0x0d8105e4 (388 bytes) (established, `readelf --dyn-syms`).
+  Its `__glXAllocHWContext` is at 0x0d811b10 and its `__glXFreeHWContext` at 0x0d8207b4, and the table gives both size 0 (established, `readelf --dyn-syms`).
+  It needs `libGLcore.so`, `libXsgivc.so`, `libXext.so`, `libX11.so.1` and `libc.so.1` (established, `readelf -d`).
+  It imports `open`, `mmap`, `munmap`, `close`, `ioctl`, `dlopen` and `dlsym` (established, `readelf --dyn-syms`). The request numbers this build sends are not read here.
+- `usr/gfx/arch/IP32CRM32/libGL.so` (n32, 518648 bytes): the same client library and GLX layer, N32 build (inferred from the export names).
+  Its `__glXOpenGraphicsDevice` is at 0x0d80e6c4 (396 bytes) and its `__glXHWAttach` at 0x0d80e850 (264 bytes) (established, `readelf --dyn-syms`).
+  Its `__glXAllocHWContext` is at 0x0d80e9d4 (204 bytes) and its `__glXFreeHWContext` at 0x0d80edd0 (132 bytes) (established, `readelf --dyn-syms`).
+  Its `__glXBindHWContextToWindow` is at 0x0d80eb1c (692 bytes) and its `glXSwapBuffers` at 0x0d833f4c (356 bytes) (established, `readelf --dyn-syms`).
+  It needs the same five libraries as the o32 build (established, `readelf -d`), and imports the same `open`, `mmap`, `munmap`, `close` and `ioctl` (established, `readelf --dyn-syms`).
+  Its resource-manager commands are listed by routine in [ioctls.md](ioctls.md) and are not re-read in this entry.
+- `usr/gfx/arch/GENERIC/Xsgi` (n32 executable, 3120928 bytes): the board-independent X server, which loads the board module (inferred from its `dlopen` and `dlsym` imports).
+  Its `main` is at 0x10218270 (5600 bytes) and its `InitOutput` at 0x10233520 (1880 bytes) (established, `readelf --dyn-syms`).
+  Its `rrmInit` is at 0x101ec4d0 (952 bytes) and its `rrmSetReservedDID` at 0x1015ce50 (84 bytes) (established, `readelf --dyn-syms`).
+  It needs `libm.so` and `libc.so.1` (established, `readelf -d`).
+  It imports `open`, `ioctl`, `mmap`, `munmap`, `shmat` and `getuid` (established, `readelf --dyn-syms`). Its ioctl senders are listed in [ioctls.md](ioctls.md) and are not re-read here.
+  The pages [ioctls.md](ioctls.md) and [gbe.md](gbe.md) say it holds the resource-manager client side, the input-device streams and the generic overlay-visual code; those pages are cited here, not re-read.
+- `usr/lib/X11/dyDDX/crm.so` (n32, 1861396 bytes): the O2 X server module, indexed in [xmodule.md](xmodule.md) (inferred from the export names).
+  Its `crmInit` is at 0x0048a250 (5112 bytes) and its `crmLoadTimingTable` at 0x0048c5d0 (1676 bytes) (established, `readelf --dyn-syms`).
+  Its `crmKernInit` is at 0x0048a090 (436 bytes) and its `crmUnmapGbe` at 0x00489a50 (188 bytes) (established, `readelf --dyn-syms`). The bodies of these routines, and so their return values, are not read in this entry.
+  Its `crmInitiateBufferSwap` is at 0x00475500 (4408 bytes) (established, `readelf --dyn-syms`).
+  It needs `libm.so` and `libaudio.so` (established, `readelf -d`).
+  It imports `ioctl`, `open`, `creat`, `stat` and `fopen`, and no `mmap` or `shmat` (established, `readelf --dyn-syms`). `crmUnmapGbe` sends an ioctl during screen tear-down ([ioctls.md](ioctls.md)).
 - `glx.so`: the X server's GLX extension, which renders indirect GLX contexts inside the server. It needs `libGLcore.so` (established, `DT_NEEDED`), so indirect rendering on the O2 uses the same renderer as direct rendering.
 
 ## Display configuration tools

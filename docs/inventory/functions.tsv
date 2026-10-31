@@ -462,7 +462,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002664c	324	_init_saio	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00269f8	308	init_consenv	symtab	99edfe49fa0e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b50	52	_get_iobbuf	symtab	609d5b9d980d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026b84	28	_free_iobbuf	symtab	5267bf581932		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	symtab	7894ec50e051		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026ba0	312	ioctl	symtab	7894ec50e051		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026cd8	216	_scandevs	symtab	426b464d004d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026db0	152	new_eiob	symtab	47788eb8a659		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026e48	48	get_eiob	symtab	6db7eb5109f5		in	undocumented		
@@ -4545,7 +4545,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217b10	444	XkbRF_ClearVarDesc
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217cd0	376	AccessAllocColorCells	dynsym	b1c91cb221a4		out:13	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10217e60	552	SProcXineramaSGICapDispatch..DAE	dynsym	5ada37d3ddfe		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218090	468	SProcSGIDispatch..PBD	dynsym	be42464dc8d2		out:11	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218270	5600	main	dynsym	89ee22ffad44		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10218270	5600	main	dynsym	89ee22ffad44		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219850	484	DbeResetProc..HJC	dynsym	7cc69224a467		out:15	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219a40	332	ProcSGIQueryStereoMode..NLD	dynsym	19b481e1e0f3		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10219b90	332	ProcXkbUseExtension	dynsym	a326df8ddc15		out:11	undocumented		
@@ -4679,7 +4679,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10232f70	188	T1Getc	dynsym	09b8
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233030	884	ProcSGIvcLoadVideoFormat	dynsym	23ab3dd9e5fd		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102333b0	236	SAlarmNotifyEvent..IJE	dynsym	783ddff68917		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x102334a0	124	ConstrainedCursorLimits..AEC	dynsym	918532b737d1		in	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233520	1880	InitOutput	dynsym	5b64ae4a3af4		in	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233520	1880	InitOutput	dynsym	5b64ae4a3af4		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233c80	576	XETrapCreateEnv	dynsym	ec3bb64819c0		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233ec0	60	SGenericReply	dynsym	5a3313a69dd2		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10233f20	436	_fs_unload_font	dynsym	cef1d0c3b4cd		out:14	undocumented		
@@ -5163,7 +5163,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10289e70	608	ProcXGrabDevice	dy
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x1028a0dc	4	__istart	dynsym	df3f619804a9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd80da60	1568	GetVisualConfigs	mdebug	0d49cc019504		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd80e080	5836	GetFBConfigs	mdebug	7e7b15a99d48		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd80e770	2736	glXChooseVisual	dynsym+mdebug	c3b61bc6b38f		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd80e770	2736	glXChooseVisual	dynsym+mdebug	c3b61bc6b38f		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd80f220	76	__glXMalloc	dynsym+mdebug	12a32d8cc297		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd80f26c	200	__glXFindVisualConfig	dynsym+mdebug	774bf98b1880		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd80f334	88	__glXCalloc	dynsym+mdebug	aa543e5f0f06		in	undocumented		
@@ -5176,8 +5176,8 @@ usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810094	448	__glXInitThread	d
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810254	192	__glXFindDisplay	dynsym+mdebug	3d2c573d6722		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810314	676	__glXCreateDirectContext	dynsym+mdebug	9a2f2695c91f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd8105b8	1616	SampleScore	mdebug	6f00cd3b15b7		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8105e4	388	__glXOpenGraphicsDevice	dynsym+mdebug	09b83e5fde43		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810768	748	__glXBindHWContextToWindow	dynsym+mdebug	5eaa50f9bd0f		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8105e4	388	__glXOpenGraphicsDevice	dynsym+mdebug	09b83e5fde43		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810768	748	__glXBindHWContextToWindow	dynsym+mdebug	5eaa50f9bd0f		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd810a54	436	__glXQueryServerString	dynsym+mdebug	41e84d2b8342		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd810c08	496	__glXSendMakeCurrent	mdebug	3d21e655aff7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd810df8	1808	AllocAndFetchScreenConfigs	mdebug	f50fda84aa9b		in	undocumented		
@@ -5186,23 +5186,23 @@ usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811230	532	__glXGetDrawableS
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811444	196	__glXSetupForCommand	dynsym+mdebug	dfe22e819128		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd811508	68	Ioctl	mdebug	9088a98f2834		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd81154c	548	GetBoardNumber	mdebug	45b746dad689		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811658	280	__glXHWAttach	dynsym+mdebug	32b8f1934716		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811658	280	__glXHWAttach	dynsym+mdebug	32b8f1934716		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd811770	28	DepthScore	mdebug	edeb9e22b279		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd81178c	1500	QueryVersion	mdebug	eb7a503eb790		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811900	268	__glXInitVertexArrayState	dynsym+mdebug	866946ddd25c		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811a0c	260	__glXAddDrawableInterest	dynsym+mdebug	6c8127ccea36		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811b10	200	__glXAllocHWContext	dynsym+mdebug	e19cbae5e101		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811bd8	400	glXSwapBuffers	dynsym+mdebug	8b635c224391		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811b10	200	__glXAllocHWContext	dynsym+mdebug	e19cbae5e101		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd811bd8	400	glXSwapBuffers	dynsym+mdebug	8b635c224391		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd811d68	2464	OverrideVisuals	mdebug	5c04cb963af0		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd812708	8	AuxScore	mdebug	c748c35b2239		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd812710	8	StencilScore	mdebug	c748c35b2239		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd812718	132	sampleBuffersScore	mdebug	dd2967ad114a		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812720	508	__glXOpenGraphics	dynsym+mdebug	40bfbc185abe		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32	.text	0xd81279c	51392	isLocal	mdebug	67be7bf89492		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd81291c	96	glXCreateContext	dynsym+mdebug	d51de1af7e26		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd81291c	96	glXCreateContext	dynsym+mdebug	d51de1af7e26		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd81297c	160	__glXGetModes	dynsym+mdebug	d85e3241f49d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812a1c	88	__glXInitDummyContext	dynsym+mdebug	f129fd363285		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812a74	68	glXMakeCurrent	dynsym+mdebug	273680b19ea2		in	undocumented		
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812a74	68	glXMakeCurrent	dynsym+mdebug	273680b19ea2		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812ab8	52	__glXPixmapMemory	dynsym+mdebug	17a335a38e8e		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812aec	12	__glXGetBoardNumber	dynsym+mdebug	de496463b7c1		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd812af8	144	__glx_Vertex4sv	dynsym+mdebug	9537ea1151f7		in	undocumented		
@@ -5484,7 +5484,7 @@ usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd820680	24	__glXGetXPrivates	
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd820698	108	__glXPostHiddenError	dynsym+mdebug	885cf41d844a		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd820704	164	__glXPostError	dynsym+mdebug	92f79c2c19ee		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8207a8	12	__glXError	dynsym+mdebug	691e766163b1		in	undocumented		
-usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8207b4	128	__glXFreeHWContext	dynsym+mdebug	253dcb7dd7bc		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8207b4	128	__glXFreeHWContext	dynsym+mdebug	253dcb7dd7bc		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd820834	124	__glXUnbindHWContextFromThread	dynsym+mdebug	00fc69e575f7		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8208b0	8	__glXGetPipeAddress	dynsym+mdebug	fb71f7aa6384		in	undocumented		
 usr/gfx/arch/IP32CRM/libGL.so	board-library	o32		0xd8208b8	48	__glXPixmapBackdoor	dynsym+mdebug	36034507b780		in	undocumented		
@@ -5843,7 +5843,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd14	12	glCallLists	dy
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd20	12	glDeleteLists	dynsym+mdebug	7b5c2904d6b4		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd2c	12	glGenLists	dynsym+mdebug	994317eb404b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd38	12	glListBase	dynsym+mdebug	3c277e72178b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd44	12	glBegin	dynsym+mdebug	eecb5fd38d02		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd44	12	glBegin	dynsym+mdebug	eecb5fd38d02		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd50	12	glBitmap	dynsym+mdebug	34c71de73842		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd5c	12	glColor3b	dynsym+mdebug	9d762ba92451		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fd68	12	glColor3bv	dynsym+mdebug	35763acdf9e8		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -5879,7 +5879,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fec4	12	glColor4us	dyn
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fed0	12	glColor4usv	dynsym+mdebug	6689a278da3a		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fedc	12	glEdgeFlag	dynsym+mdebug	d69149afb813		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fee8	12	glEdgeFlagv	dynsym+mdebug	58a611cd8aa7		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fef4	12	glEnd	dynsym+mdebug	33cbb2dbb23f		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92fef4	12	glEnd	dynsym+mdebug	33cbb2dbb23f		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92ff00	12	glIndexd	dynsym+mdebug	9f62eb8c4db5		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92ff0c	12	glIndexdv	dynsym+mdebug	360c751f40d8		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd92ff18	12	glIndexf	dynsym+mdebug	43fdabed272b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -6039,7 +6039,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930644	12	glPassThrough	
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930650	12	glPopName	dynsym+mdebug	5b249b83329b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93065c	12	glPushName	dynsym+mdebug	42e30589e2bc		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930668	12	glDrawBuffer	dynsym+mdebug	25f1281a84bd		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930674	12	glClear	dynsym+mdebug	c69e6cb01ca9		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930674	12	glClear	dynsym+mdebug	c69e6cb01ca9		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930680	12	glClearAccum	dynsym+mdebug	1753593df535		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93068c	12	glClearIndex	dynsym+mdebug	848abece7ea0		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930698	12	glClearColor	dynsym+mdebug	69d3d8ea069d		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -6053,7 +6053,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9306ec	12	glAccum	dynsym
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9306f8	12	glDisable	dynsym+mdebug	ceaa3192a540		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930704	12	glEnable	dynsym+mdebug	9d7c75a01100		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930710	12	glFinish	dynsym+mdebug	a57311008f8e		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93071c	12	glFlush	dynsym+mdebug	8baeda61b9d1		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93071c	12	glFlush	dynsym+mdebug	8baeda61b9d1		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930728	12	glPopAttrib	dynsym+mdebug	505bef217ac6		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930734	12	glPushAttrib	dynsym+mdebug	a3e88dcd3e4f		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd930740	12	glMap1d	dynsym+mdebug	1b8c77b9173c		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -9348,13 +9348,13 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e3cc	80	__glXCalloc	dyns
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e41c	188	__glXFindDisplay	dynsym	c6a8c1d232cd		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e4d8	460	__glXGetDrawableSize	dynsym	a3f4fefb41ee		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e6bc	8	__glXGetPipeAddress	dynsym	fb71f7aa6384		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e6c4	396	__glXOpenGraphicsDevice	dynsym	008dcf67aea3		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e850	264	__glXHWAttach	dynsym	b63fd38c4c29		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e6c4	396	__glXOpenGraphicsDevice	dynsym	008dcf67aea3		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e850	264	__glXHWAttach	dynsym	b63fd38c4c29		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e958	124	__glXOpenGraphics	dynsym	7c230da85ed0		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e9d4	204	__glXAllocHWContext	dynsym	69775a502c19		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80e9d4	204	__glXAllocHWContext	dynsym	69775a502c19		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80eaa0	124	__glXUnbindHWContextFromThread	dynsym	46300af4d33a		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80eb1c	692	__glXBindHWContextToWindow	dynsym	e39b721bfa5e		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80edd0	132	__glXFreeHWContext	dynsym	6584925f85de		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80eb1c	692	__glXBindHWContextToWindow	dynsym	e39b721bfa5e		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80edd0	132	__glXFreeHWContext	dynsym	6584925f85de		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80ee54	8	__glXError	dynsym	78aa5094d5ec		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80ee5c	168	__glXPostError	dynsym	aa64a0d7e394		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd80ef04	88	__glXPostHiddenError	dynsym	38eaf2b9ed0c		in	undocumented		
@@ -9631,7 +9631,7 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81db7c	340	__glXFlushRende
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81dcd0	872	__glXSendLargeCommand	dynsym	ad8a2f5cd2c9		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81e844	4144	__glXMakeContextCurrent	dynsym	d7af860c5338		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f874	52	glXMakeCurrentReadSGI	dynsym	1b1c0e78d74a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f8a8	60	glXMakeCurrent	dynsym	52a9eab8d3e9		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f8a8	60	glXMakeCurrent	dynsym	52a9eab8d3e9		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f8e4	52	glXMakeContextCurrent	dynsym	49cc8b206c5b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f918	64	glXGetCurrentReadDrawableSGI	dynsym	25f47aca22f0		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd81f958	64	glXGetCurrentReadDrawable	dynsym	ad197db9acd0		in	undocumented		
@@ -9822,7 +9822,7 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd831dac	548	__glx_ReadPixel
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd831fd0	304	__glx_GetPointervEXT	dynsym	3ba459205618		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd832100	500	__glx_IsEnabled	dynsym	6c837330ec3b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8322f4	740	__glx_GetString	dynsym	9f298dd998ab		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833140	76	glXCreateContext	dynsym	cdf80273fa59		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833140	76	glXCreateContext	dynsym	cdf80273fa59		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd83318c	412	__glXFreeContext	dynsym	f78e652b3df8		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd83345c	56	glXDestroyContext	dynsym	8e31e88400a0		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833494	148	glXQueryVersion	dynsym	a377db17f368		in	undocumented		
@@ -9835,11 +9835,11 @@ usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833b80	320	__glXIsDirect	d
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833cc0	76	glXIsDirect	dynsym	0a47ede7d196		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833d0c	324	glXCreateGLXPixmap	dynsym	57771c726eb6		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833e50	252	glXDestroyGLXPixmap	dynsym	5b579f0893c4		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833f4c	356	glXSwapBuffers	dynsym	e99d540ae772		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd833f4c	356	glXSwapBuffers	dynsym	e99d540ae772		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8340b0	176	__glXGetModes	dynsym	07f5362ace27		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd834160	244	__glXFindVisualConfig	dynsym	25e75115d1d1		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd834414	1292	glXGetConfig	dynsym	55380c2a193c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8349a0	6512	glXChooseVisual	dynsym	5758d0cf1f78		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd8349a0	6512	glXChooseVisual	dynsym	5758d0cf1f78		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd83650c	276	glXQueryExtensionsString	dynsym	dc13bead8b7e		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd836620	80	glXGetClientString	dynsym	aecbb83b1777		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGL.so	board-library	n32		0xd836670	444	glXQueryServerString	dynsym	29735c990237		in	undocumented		
@@ -9968,7 +9968,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931564	12	glCallLists	
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931570	12	glDeleteLists	dwarf+dynsym	7b5c2904d6b4		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93157c	12	glGenLists	dwarf+dynsym	994317eb404b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931588	12	glListBase	dwarf+dynsym	3c277e72178b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931594	12	glBegin	dwarf+dynsym	eecb5fd38d02		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931594	12	glBegin	dwarf+dynsym	eecb5fd38d02		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9315a0	12	glBitmap	dwarf+dynsym	34c71de73842		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9315ac	12	glColor3b	dwarf+dynsym	9d762ba92451		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9315b8	12	glColor3bv	dwarf+dynsym	35763acdf9e8		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -10004,7 +10004,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931714	12	glColor4us	d
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931720	12	glColor4usv	dwarf+dynsym	6689a278da3a		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93172c	12	glEdgeFlag	dwarf+dynsym	d69149afb813		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931738	12	glEdgeFlagv	dwarf+dynsym	58a611cd8aa7		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931744	12	glEnd	dwarf+dynsym	33cbb2dbb23f		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931744	12	glEnd	dwarf+dynsym	33cbb2dbb23f		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931750	12	glIndexd	dwarf+dynsym	9f62eb8c4db5		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93175c	12	glIndexdv	dwarf+dynsym	360c751f40d8		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931768	12	glIndexf	dwarf+dynsym	43fdabed272b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -10164,7 +10164,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931e94	12	glPassThroug
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931ea0	12	glPopName	dwarf+dynsym	5b249b83329b		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931eac	12	glPushName	dwarf+dynsym	42e30589e2bc		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931eb8	12	glDrawBuffer	dwarf+dynsym	25f1281a84bd		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931ec4	12	glClear	dwarf+dynsym	c69e6cb01ca9		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931ec4	12	glClear	dwarf+dynsym	c69e6cb01ca9		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931ed0	12	glClearAccum	dwarf+dynsym	1753593df535		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931edc	12	glClearIndex	dwarf+dynsym	848abece7ea0		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931ee8	12	glClearColor	dwarf+dynsym	69d3d8ea069d		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -10178,7 +10178,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f3c	12	glAccum	dwar
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f48	12	glDisable	dwarf+dynsym	ceaa3192a540		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f54	12	glEnable	dwarf+dynsym	9d7c75a01100		in	named-only	docs/coverage.md#libglcore-to-crime-command-stream	libGLcore to CRIME command stream
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f60	12	glFinish	dwarf+dynsym	a57311008f8e		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f6c	12	glFlush	dwarf+dynsym	8baeda61b9d1		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f6c	12	glFlush	dwarf+dynsym	8baeda61b9d1		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f78	12	glPopAttrib	dwarf+dynsym	505bef217ac6		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f84	12	glPushAttrib	dwarf+dynsym	a3e88dcd3e4f		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd931f90	12	glMap1d	dwarf+dynsym	1b8c77b9173c		in	named-only	docs/gl-entry-points.md#libglcore-the-opengl-entry-points	libGLcore: the OpenGL entry points
@@ -13410,7 +13410,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda41230	932	viceSetIter
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda415e0	588	viceLateLumaConvert	dwarf+dynsym	388d5372f768		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10005770	268	__start	dynsym	354bd274e9c2		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000587c	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10005888	2192	main	dynsym	2d27950426ee		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/gfxinit	shared-tool	n32		0x10005888	2192	main	dynsym	2d27950426ee		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/gfxinit	shared-tool	n32		0x1000693c	848	lg1_info	dynsym	a882b266a68a		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10006c8c	2628	loadfile	dynsym	0ad174b7798e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10007a18	8	ev1_init	dynsym	87506497337c		in	undocumented		
@@ -13638,7 +13638,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x1001e33c	4	__istart	dynsym	df3f619804a9		in	u
 usr/gfx/setmon	shared-tool	n32		0x10008d20	268	__start	dynsym	2c0ec17aee41		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10008e2c	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10008e38	64	Usage	dynsym	751005097950		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10008e8c	4216	main	dynsym	34b5ba5e4a50		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/setmon	shared-tool	n32		0x10008e8c	4216	main	dynsym	34b5ba5e4a50		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/setmon	shared-tool	n32		0x10009f04	308	getvofpath	dynsym	78b8d8b6975b		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a038	56	vTimeoutOpenDisplay	dynsym	0b854b7056ad		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a070	208	timeoutXOpenDisplay	dynsym	4fb9fe7741c6		in	undocumented		
@@ -17242,7 +17242,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x200a190	324	XSGIvcSelectInput	dwarf+
 usr/lib64/libXsgivc.so	board-library	n64		0x200a2e0	176	XSGIvcSetOutputGain	dwarf+dynsym	a44795eb5b1b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4033e0	284	__start	dynsym	1dc32a5b03a8		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4034fc	12	_mcount	dynsym	1c53f0b255e3		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	9a5888649f51		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	9a5888649f51		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404370	232	reshape	dynsym	2eabaa3ee89d		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404458	624	runDiagnostic	dynsym	310bec9df295		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4046c8	184	clean_up	dynsym	738301461086		in	undocumented		
