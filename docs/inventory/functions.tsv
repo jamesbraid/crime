@@ -8552,8 +8552,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2350	144	__glNamesUnlo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f23e0	844	__glNamesGenRange	dynsym+mdebug	1ff34de4579a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f272c	1028	__glNamesDeleteRange	dynsym+mdebug	85f1cb7940ba		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b30	88	__glNamesIsName	dynsym+mdebug	e818a1601bb7		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b88	188	__glNamesGenNames	dynsym+mdebug	07c5acce3538		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2c44	208	__glNamesDeleteNames	dynsym+mdebug	de99d70cbf0a		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2b88	188	__glNamesGenNames	dynsym+mdebug	07c5acce3538		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2c44	208	__glNamesDeleteNames	dynsym+mdebug	de99d70cbf0a		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d20	40	__glim_Normal3d	dynsym+mdebug	e753e2baa620		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d48	48	__glim_Normal3dv	dynsym+mdebug	8ee40e1adbcd		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9f2d78	120	__glim_Normal3b	dynsym+mdebug	3c2266380581		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
@@ -12677,8 +12677,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f3eb0	260	__glNamesUn
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f3fc0	876	__glNamesGenRange	dwarf+dynsym	7a974939dade		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4330	1068	__glNamesDeleteRange	dwarf+dynsym	3ca9ec3c63f2		in	located	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4760	80	__glNamesIsName	dwarf+dynsym	ff5eea43af6e		in	understood	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f47b0	216	__glNamesGenNames	dwarf+dynsym	eccc96b19d3b		in	located	docs/sample-implementation.md#so_namesc	so_names.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4890	320	__glNamesDeleteNames	dwarf+dynsym	95c13dd49477		in	located	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f47b0	216	__glNamesGenNames	dwarf+dynsym	eccc96b19d3b		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4890	320	__glNamesDeleteNames	dwarf+dynsym	95c13dd49477		in	named-only	docs/sample-implementation.md#so_namesc	so_names.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49d0	32	__glim_Normal3d	dwarf+dynsym	37e3f67df0d5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f49f0	44	__glim_Normal3dv	dwarf+dynsym	6f624c5015b5		in	understood	docs/sample-implementation.md#so_napic	so_napi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f4a20	84	__glim_Normal3b	dwarf+dynsym	0bdc4c79e1d6		in	understood	docs/glcore-immediate-entry-points.md#normal-entry-points	Normal entry points
