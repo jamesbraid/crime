@@ -2127,7 +2127,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe74	1776	mvpreg_syncpath
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc564	144	mvpreg_gettiming	dwarf+funcnames	800bc84e48a1		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc5f4	960	mvpreg_syncdevice_controls	dwarf+symtab	353a98a0402c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	mvp_pio_read64	dwarf+symtab	1b82094aa278	shared-address	in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64	symtab	1b82094aa278	shared-address	in	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64	symtab	1b82094aa278	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xca34	348	mvpsystem_ioctl	dwarf+symtab	8f1f5b63b37f		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xcb90	668	move_mipmap	dwarf+funcnames	af2564518518		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xce2c	632	mvpmipmap_move_mipmap	dwarf+symtab	2402b7553212		in	undocumented		
