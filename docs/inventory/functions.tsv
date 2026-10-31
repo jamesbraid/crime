@@ -12472,8 +12472,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9500	364	__glim_GetT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9670	304	__glim_GetTexGeniv	dwarf+dynsym	9508d63e133a		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d97a0	784	__glim_GetTexParameterfv	dwarf+dynsym	38b1452feebd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9ab0	732	__glim_GetTexParameteriv	dwarf+dynsym	845d64699cf5		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9d90	820	__glim_GetTexLevelParameterfv	dwarf+dynsym	deaa9e76677e		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da0d0	716	__glim_GetTexLevelParameteriv	dwarf+dynsym	b69a8c2b7f8e		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9d90	820	__glim_GetTexLevelParameterfv	dwarf+dynsym	deaa9e76677e		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da0d0	716	__glim_GetTexLevelParameteriv	dwarf+dynsym	b69a8c2b7f8e		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da3a0	236	__glim_GetTexFilterFuncSGIS	dwarf+dynsym	1a3896fd1cc1		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da490	236	__glim_GetClipPlane	dwarf+dynsym	e6fd7c772abd		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da580	148	__glInitImagePack	dwarf+dynsym	e45aeb8c9ba5		in	understood	docs/sample-implementation.md#so_getc	so_get.c
