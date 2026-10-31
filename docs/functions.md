@@ -813,7 +813,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 ## Start-up and revision
 
 - `mlreset` in `kernel.o`: the machine-level reset run at start-up, a 672-byte routine at offset 0x8738. Established.
-  It rewrites the CPU interface control word at +0x8 with the watchdog enable cleared and, for processor implementations from 0x23, the two SysAD bits set.
+  It rewrites the CPU interface control register, a doubleword at +0x8, with the watchdog enable cleared and, for processor implementations from 0x23, the two SysAD bits set.
   It zeroes the interrupt status, enable and error registers and the watchdog at +0x30, and registers the handlers for inputs 28, 29, 21 and 20 with `setcrimevector`.
 - `get_crimerev` in `kernel.o`: derives a revision code from the CRIME identity doubleword, a 96-byte routine at offset 0x11838. Established.
   A non-zero low nibble gives 17, an upper word of 1 gives 19 and any other non-zero upper word gives 20, cached in a kernel word after the first read.
@@ -853,8 +853,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `print_buserr_rev1` in `kernel.o`: prints the CPU and memory error registers of revision 1 and later parts, a 272-byte routine at offset 0x102ec. Established.
   Its only call is `cmn_err`, with the status bits of tables 5-17 and 6-16 of the CRIME specification.
 - `print_buserr_rev0` in `kernel.o`: prints the ten error bits of the revision-0 part, a 456-byte routine at offset 0x103fc. Established.
-  It tests bits 0 to 9 of the status word and reaches `vice_err`, `log_ecc_err` and `ecc_error_correction`.
-  It also calls `print_buserr_rev1` for the memory error part.
+  It tests bits 0 to 9 of the status word and calls `cmn_err` at 0x104d0 and 0x10538; it does not call `vice_err`, `log_ecc_err`, `ecc_error_correction` or `print_buserr_rev1`.
 ## Memory and ECC
 
 - `ecc_enable` in `kernel.o`: turns on ECC checking, a 84-byte routine at offset 0x920c. Established.
@@ -882,8 +881,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `crime_intr_enable` in `kernel.o`: enables one CRIME interrupt input, a 64-byte routine at offset 0xa248. Established.
   It raises the level with `spl7` and sets bit n of the level-0 mask in the table at -23880($zero), so the hardware mask changes on the next level change.
 - `crime_intr_disable` in `kernel.o`: disables one CRIME interrupt input, a 68-byte routine at offset 0xa288. Established.
-  It clears bit n of the level-0 mask under `spl7` and reads the interrupt status at +0x10.
-  It also calls `splint` and `vsema` in its 198 instructions.
+  It calls `spl7` to raise the level, clears bit n of the level-0 mask at address -23880, then calls `splx` with the level that `spl7` returned. It is 17 instructions.
 - `synthclock` in `kernel.o`: raises the synthesised clock interrupt, a 220-byte routine at offset 0x9ff8. Inferred from its register use and calls.
   It reads and writes the software interrupt register at +0x20 under `spl7` and runs `clock` and `hwperf_intr`.
 - `synthackkgclock` in `kernel.o`: acknowledges the synthesised clock interrupt, a 216-byte routine at offset 0xa0d4. Inferred from its register use.
