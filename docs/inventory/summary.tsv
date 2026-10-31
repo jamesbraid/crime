@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	5	0	5	0	0	76	1	0	6.1	6.1	98.8	6.1							0			
-functions	15177	2103	1996	6	1905	1348	3426	1975	7780	0	13.2	35.7	48.7	13.2			95.8	24	2026-10-30		73	62	233	
-functions (distinct names)	9682	2044	1617	5	1610	675	1749	1009	5307	0	16.7	34.8	45.2	16.7							36			
+functions	15177	2103	1996	6	1905	1348	3420	1985	7776	0	13.2	35.7	48.8	13.2			95.8	24	2026-10-30		73	62	233	
+functions (distinct names)	9682	2044	1617	5	1610	675	1746	1014	5305	0	16.7	34.7	45.2	16.7							36			
 mmio	162	0	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -31,9 +31,9 @@ functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	1
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	0	54	1378	0	2.9	2.9	6.6	2.9							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	7	668	0	0.0	0.0	1.0	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	363	2	360	667	1608	775	701	0	10.5	57.2	79.7	10.5							36	31	68	
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	363	2	360	667	1605	780	699	0	10.5	57.1	79.7	10.5							36	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	8	669	0	0.0	0.0	1.2	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	454	0	451	673	1521	772	701	0	13.2	57.3	79.7	13.2							37	31	68	
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	454	0	451	673	1518	777	699	0	13.2	57.2	79.7	13.2							37	31	68	
 functions in usr/gfx/gfxinit	227	0	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0							0	0	0	
 functions in usr/gfx/setmon	249	0	1	0	1	0	19	4	225	0	0.4	8.0	9.6	0.4							0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	548	0	544	8	267	25	0	0	65.2	97.0	100.0	65.2							0	0	0	

@@ -6419,9 +6419,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9333b0	568	__glRenderFla
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9335e8	584	__glRenderSmoothTriangle	dynsym+mdebug	52b839bb097d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933830	496	__glRenderSmoothOneFaceTriangle	dynsym+mdebug	ae36ef5eb7b7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933a20	560	__glRenderSmoothOneFaceTmesh	dynsym+mdebug	58c8f3b72eda		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933c50	444	__glValidateVertex2	dynsym+mdebug	d9d44a1eaec2		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933e0c	452	__glValidateVertex3	dynsym+mdebug	725e765d495f		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933fd0	460	__glValidateVertex4	dynsym+mdebug	132ce07930f8		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933c50	444	__glValidateVertex2	dynsym+mdebug	d9d44a1eaec2		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933e0c	452	__glValidateVertex3	dynsym+mdebug	725e765d495f		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd933fd0	460	__glValidateVertex4	dynsym+mdebug	132ce07930f8		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93419c	240	__glValidateLitVertex2	dynsym+mdebug	0222cb6a676b		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93428c	248	__glValidateLitVertex3	dynsym+mdebug	f8e9bdd5cef4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd934384	264	__glValidateLitVertex4	dynsym+mdebug	b9e4f1159f51		in	undocumented		
@@ -8692,9 +8692,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02430	228	__glim_Raster
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02514	240	__glim_RasterPos4iv	dynsym+mdebug	0da7d71292bc		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02604	228	__glim_RasterPos4s	dynsym+mdebug	3096285f5d1a		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda026e8	240	__glim_RasterPos4sv	dynsym+mdebug	22255aad91d1		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda027e0	392	__glRasterPos2	dynsym+mdebug	1bbba5e4a897		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02968	392	__glRasterPos3	dynsym+mdebug	884673c54d40		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02af0	392	__glRasterPos4	dynsym+mdebug	ecf05c739495		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda027e0	392	__glRasterPos2	dynsym+mdebug	1bbba5e4a897		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02968	392	__glRasterPos3	dynsym+mdebug	884673c54d40		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02af0	392	__glRasterPos4	dynsym+mdebug	ecf05c739495		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02c80	196	__glim_Rectd	dynsym+mdebug	9a038df485bf		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02d44	208	__glim_Rectdv	dynsym+mdebug	f5f15fb68fed		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda02e14	176	__glim_Rectf	dynsym+mdebug	f4f62377f125		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
@@ -10544,9 +10544,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934bc4	572	__glRenderF
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934e00	588	__glRenderSmoothTriangle	dwarf+dynsym	df33266f3a85		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93504c	500	__glRenderSmoothOneFaceTriangle	dwarf+dynsym	8f6529f837bf		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935240	556	__glRenderSmoothOneFaceTmesh	dwarf+dynsym	df178d11f51b		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935470	444	__glValidateVertex2	dwarf+dynsym	a6df55113988		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93562c	452	__glValidateVertex3	dwarf+dynsym	2f8d70da4b72		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9357f0	460	__glValidateVertex4	dwarf+dynsym	d82705ff4072		in	named-only	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935470	444	__glValidateVertex2	dwarf+dynsym	a6df55113988		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93562c	452	__glValidateVertex3	dwarf+dynsym	2f8d70da4b72		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9357f0	460	__glValidateVertex4	dwarf+dynsym	d82705ff4072		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9359bc	240	__glValidateLitVertex2	dwarf+dynsym	f3a6e4785390		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935aac	248	__glValidateLitVertex3	dwarf+dynsym	2cb155e51d30		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935ba4	264	__glValidateLitVertex4	dwarf+dynsym	2792223f9aca		in	undocumented		
@@ -12817,9 +12817,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03900	216	__glim_Rast
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda039e0	204	__glim_RasterPos4iv	dwarf+dynsym	550e26c491df		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03ab0	216	__glim_RasterPos4s	dwarf+dynsym	3283b9f8fdd8		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03b90	204	__glim_RasterPos4sv	dwarf+dynsym	b21b83c776b3		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03c60	376	__glRasterPos2	dwarf+dynsym	0dbb1a8c58bb		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03de0	376	__glRasterPos3	dwarf+dynsym	327960f10b45		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03f60	376	__glRasterPos4	dwarf+dynsym	662e3eec1e7a		in	located	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03c60	376	__glRasterPos2	dwarf+dynsym	0dbb1a8c58bb		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03de0	376	__glRasterPos3	dwarf+dynsym	327960f10b45		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda03f60	376	__glRasterPos4	dwarf+dynsym	662e3eec1e7a		in	named-only	docs/sample-implementation.md#so_rasterposc	so_rasterpos.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda040e0	184	__glim_Rectd	dwarf+dynsym	4d83bd4bd07c		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda041a0	176	__glim_Rectdv	dwarf+dynsym	00abe324956b		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04250	184	__glim_Rectf	dwarf+dynsym	26d4a598dc2c		in	located	docs/sample-implementation.md#so_rectc	so_rect.c
