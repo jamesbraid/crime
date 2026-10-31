@@ -13432,7 +13432,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000ca5c	532	kona_loaducode	dynsym	06a8883d0d
 usr/gfx/gfxinit	shared-tool	n32		0x1000cd5c	736	nic_report	dynsym	eed1b23c3c23		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000d03c	568	printXvcInfo	dynsym	9569cf4b28aa		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000dcfc	216	crime_monitor_info	dynsym	a48030e62b06		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000ddd4	412	crime_info	dynsym	0a40c6b700f9		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1000ddd4	412	crime_info	dynsym	0a40c6b700f9		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/gfxinit	shared-tool	n32		0x1000df70	204	odsy_monitor_info	dynsym	5d4cf5ab8e92		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e03c	648	_odsy_info	dynsym	9b827a844437		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e2c4	584	odsy_init	dynsym	674d83ba4289		in	undocumented		

@@ -101,6 +101,23 @@ Established by replaying the module's code with the chain above followed by hand
 | `crmPowerSaver..O` | GBE `+0x10018` (`VT_FLAGS`, read and written) |
 
 The two routines read by hand keep the rendering pointer in a frame-pointer spill slot (`crmZeroPolyArc`, `-656($30)`) or reach their store loop through a block the replay cannot enter with known values (`crmBitBltSS..M`, private pointer in `$17`, rendering pointer loaded at `0x598b98`); the replay misses them. Both were checked instruction by instruction. The colour-map store loops reach `+0x50000 + 4n` with a computed index and are left as unresolved GBE sites (three in the replay); their layout is in [gbe.md](gbe.md). The mapping does not cover the CRIME CPU-interface window at `0x14000000`, so the module cannot reach it.
+## Visual and depth tables (crm.so)
+
+Source: `usr/lib/X11/dyDDX/crm.so` (6.5.30), the `.data` objects `crmVisuals16` (0x5b38b8, 432 bytes), `crmVisuals16db` (0x5b2bf0, 576), `crmVisuals24` (0x5b3e78, 936) and `crmVisuals24db` (0x5b32c0, 1044) with `crmDepths16` (0x5aaf90), `crmDepths16db` (0x5aafb0), `crmDepths24` (0x5aafd0) and `crmDepths24db` (0x5aaff8), read as big-endian words.
+
+- Established (sizes and arithmetic): a visual record is 36 bytes in the X server's layout (visual ID, class, bits per RGB, colour-map entries, planes, three channel masks, three channel offsets); the four tables hold 12, 16, 26 and 29 records. The IDs are zero in the data, so they are assigned at run time. A depth record is two words: the depth in the top byte of the first and the visual count in its low half, then a pointer to the ID array. Each depth table's counts add up to its visual table's record count.
+- Established: the four sets are the frame-buffer configurations of the X module: a 16-bit or 32-bit frame buffer (the `16` and `24` names; `24` is the 32-bit buffer with 24 colour planes), each with and without software double buffering (the `db` sets). `crmInit` prints `requested framebuffer configuration (%d bits deep, with%s software double buffering` and, if the kernel refuses, `not allowed by kernel, falling back to %d bits`. Inferred: `db` marks the double-buffered set, from that message and the larger visual counts.
+- Established, the visuals by set (depth in planes: count; class and layout):
+
+| Set | Depths and visual counts | Visuals |
+|---|---|---|
+| `16` | 1: 0, 8: 6, 12: 2, 15: 4 | 8 planes: PseudoColor (256), StaticColor and TrueColor with 3-3-2 masks `0xe0`, `0x1c`, `0x03`; 12 planes: PseudoColor with 4096 entries; 15 planes: TrueColor with 5-5-5 masks `0x7c00`, `0x03e0`, `0x001f` |
+| `16db` | 1: 0, 8: 6, 12: 4, 15: 6 | the same kinds with more 12- and 15-plane entries |
+| `24` | 1: 0, 8: 6, 12: 6, 15: 8, 24: 6 | adds 24 planes: TrueColor with masks `0xff0000`, `0x00ff00`, `0x0000ff` (four) and the reversed byte order `0x0000ff`, `0x00ff00`, `0xff0000` (one), and one DirectColor |
+| `24db` | 1: 0, 8: 6, 12: 6, 15: 6, 24: 11 | 24 planes: ten TrueColor (two byte orders) and one DirectColor |
+
+- Unknown: which record is the root visual and how the server picks it from the table (the server prints `Requested root visual ID not available, checking other visual parameters`; the selection code was not read here), and the decoded layout of the GLX capability tables next to them (`crmNonVisualCapabilityInfo16` 704 bytes, `crmNonVisualCapabilityInfo24` 336 bytes, `crmNonVisualPbufConfInfo`, `crmNonVisualPbufConfInfo16`, `crmNonVisualPbufConfInfo24`).
+
 ## Derivations from the code
 
 How each hardware and resource-manager routine's role was derived. Source: a full disassembly of the IRIX 6.5.30 `crm.so`, with each call site resolved through the module's global offset table (`$gp` `0x5b0ea0`; local and global entries split at `DT_MIPS_LOCAL_GOTNO` 893). Each row of the tables below is one routine: its address, its role, and what in the code establishes it.

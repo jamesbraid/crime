@@ -360,6 +360,34 @@ Sources: the shipped IRIX 6.5.30 stand-alone diagnostics `ide.IP32` (`diags/ide.
 - Inferred: the frame period is exactly the programmed total in both directions, with `vt_y` passing through the value equal to the total at the wrap (a comparison against the total must match, or blanking would never end). The specification's VHDL sketch, which it calls partial, shows a counter that holds the maximum for a full line and would give total + 1. The software's expectation, its own rate table and the blank comparisons all need period = total, so a model should use that. Whether silicon is one line or one clock longer is unknown: no shipped software or published source depends on it; software reads `VT_XY` only to test whether the beam is inside a blanking range. Routes tried: [gbe-spec] p. 19, `ide.IP32`, the 6.5.30 kernel, Linux, NetBSD, MAME; published refresh rates name the nominal rate only.
 - The interrupt lines fire on a `vt_y` match ([gbe-spec] p. 20), so IRIX's lines `F20 - 32` and `F20 + 4` (above) fire at those line numbers counted from the top of the active area; established as specification plus kernel, nothing more to settle.
 
+## Dot-clock coefficients of the shipped formats
+
+Each `.vfo` file carries the three PLL scalars `DacPll_M`, `DacPll_N` and `DacPll_P` next to its nominal pixel clock (established: the schema lists the three names with a file offset each, and the values at those offsets were read as 32-bit big-endian words; the `p` and `2@` variants repeat the values of their base format). The output frequency is `M x f_ref / (N x 2^P)` with `f_ref` = 20 MHz ([gbe-spec] pp. 30-31, section 2.13, a 20 MHz crystal; rev 1.1). Established by arithmetic: with 20 MHz every shipped format lands within 1.3 percent of its nominal clock, and with 27 MHz none does (`640x480_60` would run at 33.75 MHz). Inferred: IRIX 6.5.30 assumes the 20 MHz reference on every board it supports, since neither `crmLoadTimingTable` nor `crmInvalidVideoTiming` selects a crystal by GBE revision (the kernel only range-checks the fields, see above); the 27 MHz reference that the Linux driver uses for revision 2 and later has no counterpart in the shipped IRIX code.
+
+| File | M | N | P | VCO MHz (M x 20 / N) | Output MHz | Nominal MHz | Difference |
+|---|---|---|---|---|---|---|---|
+| `640x480_60` | 5 | 1 | 2 | 100.0 | 25.000 | 25.175 | -0.69 % |
+| `800x600_60` | 8 | 1 | 2 | 160.0 | 40.000 | 40.000 | 0.00 % |
+| `800x600_72` | 5 | 1 | 1 | 100.0 | 50.000 | 50.000 | 0.00 % |
+| `1024x768_60` | 13 | 2 | 1 | 130.0 | 65.000 | 65.000 | 0.00 % |
+| `1024x768_70` | 15 | 2 | 1 | 150.0 | 75.000 | 75.000 | 0.00 % |
+| `1024x768_75` | 39 | 5 | 1 | 156.0 | 78.000 | 78.750 | -0.95 % |
+| `1024x768_96s` | 31 | 3 | 1 | 206.7 | 103.333 | 103.503 | -0.16 % |
+| `1280x1024_48` | 30 | 7 | 0 | 85.7 | 85.714 | 85.882 | -0.19 % |
+| `1280x1024_50` | 9 | 1 | 1 | 180.0 | 90.000 | 89.460 | +0.60 % |
+| `1280x1024_60` | 16 | 3 | 0 | 106.7 | 106.667 | 107.245 | -0.54 % |
+| `1280x1024_72` | 13 | 2 | 0 | 130.0 | 130.000 | 129.468 | +0.41 % |
+| `1280x1024_75` | 27 | 4 | 0 | 135.0 | 135.000 | 135.001 | 0.00 % |
+| `1280x492_120s` | 16 | 3 | 0 | 106.7 | 106.667 | 107.144 | -0.45 % |
+| `1600x1024_48p` | 34 | 7 | 0 | 97.1 | 97.143 | 97.219 | -0.08 % |
+| `1600x1024_50p` | 5 | 1 | 0 | 100.0 | 100.000 | 101.270 | -1.25 % |
+| `1600x1024_60p` | 38 | 7 | 0 | 108.6 | 108.571 | 108.732 | -0.15 % |
+
+- Established: the 15 built-in kernel records (`crime_init.o` `.data` from file offset 0x22e8, 0x30 bytes each) carry the same M, N and P as the matching files at offsets 0x28, 0x2a and 0x2c (for example id 1, 640 by 480, M=5, N=1, P=2), so the kernel's own table has the same 0.7 percent offset from 25.175 MHz.
+- Established: the specification's own example coefficients are different and closer to nominal (25.175 MHz is M=146, N=29, P=4 with output 25.172 MHz; 135.000 MHz is M=216, N=32, P=1), and IRIX uses neither those nor a fixed set: it uses small integer M and N chosen once per format. A model that accepts any M, N and P in range and derives the pixel clock from them reproduces both.
+- Established: the specification's ceiling is a 140 MHz dot clock and it lists 1600 by 1200 at 60 Hz (162 MHz) as not supported by the current GBE ([gbe-spec] pp. 1 and 32); the fastest shipped format is `1280x1024_75` at 135.0 MHz, and the largest VCO frequency is 206.7 MHz (`1024x768_96s`), so every shipped VCO frequency lies from 85.7 to 206.7 MHz. Unknown: whether silicon locks above 140 MHz; no shipped software or published source depends on it. Routes tried: [gbe-spec], the 26 format files, the kernel table, `crmInvalidVideoTiming`.
+- Established (public Linux `gbefb.c`, read at its current revision): for the flat panel it hardcodes M=4, N=1, P=0 (80 MHz at 20 MHz), whereas the shipped `1600x1024` formats run at 97.1, 100.0 and 108.6 MHz and Linux's own default panel mode has a 9353 ps pixel clock (106.9 MHz). Unknown which value the panel needs; the panel formats here are the only IRIX evidence and are consistent with each other.
+
 ## Dot clock bit 20
 
 Established: the kernel clears bit 20 before loading a new PLL value, writes the value with bit 20 set, and waits 11 ms (timing section above); Linux sets the same bit with the PLL value. The rev 1.1 specification leaves bit 20 undefined. Inferred: bit 20 runs the pixel-clock PLL (or enables its output); with it clear the clock stops. Anything finer is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], the 6.5.30 kernel and X module, `ide.IP32`, Linux, NetBSD, MAME.

@@ -101,6 +101,13 @@ Each channel has four descriptor sets of eight 16-bit registers, stored at a str
 
 DMA restrictions ([vice] PDF 33): fill does not work in Y/C split mode; split, luma-only and chroma-only modes need quadword width and start; the 4:2:2 to 4:2:0 split overwrites the chroma of the first line with the second, which is wrong for transfers that start on an odd line and was to be corrected in the next chip revision. Established.
 
+## Microcode shipped with the IRIX installation media
+
+Not in `root/`; read from the 6.5 base media directories `var/arch/vicedx/` and `var/arch/vicetre/` (file names and sizes only, content not read). `usr/lib/internal/libvice.so` names three directories, `/var/arch/vice/`, `/var/arch/vicedx/` and `/var/arch/vicetre/`, and the media have the last two (established).
+
+- Established: both sets hold the same 32 file names: JPEG (`cjpeg`, `cjpeg_luma`, `cjfif`, `djpeg`, `dfjpeg`, `djfif`, with `cjpeg-mcoef.bin`, `djpeg-mcoef.bin`, `cjpeg.btbl`, `djpeg.btbl`), DV (`dvcntsc`, `dvcpal`, `dvcpal411`, `dvcpal420`, `dvencodentsc`, `dvencodepal411`, `dvencodepal420`, `dvcVLC.bin`), MPEG decode (`mpeg1dec`, `mpeg2dec`, `mpeg2dec_fld`, `m1tabs.btbl`, `m2tabs.btbl`) and a resize program (`rs.mex`). Compared byte for byte, every `.bex`, `.bin` and `.btbl` file and the six DV `.mex` files are identical in the two sets; ten `.mex` files differ in size, DX larger than TRE (for example `mpeg1dec.mex` 4048 and 3492 bytes, `djpeg.mex` 3424 and 3056, `rs.mex` 3452 and 2976). So the two chip variants differ in the programs of one processor, for the JPEG, MPEG and resize work, and not for DV (inferred: `.mex` as the media signal processor's programs and `.bex` as the bitstream processor's, from the extensions; content not read).
+- Established: `sbin/hinv` of the 6.5.30 media prints `Vice: %s` and `Vice: %x` and `Video: MVP unit %d version %d.%d`; the kernel adds the VICE inventory entry only when bit 31 of the CRIME interrupt status is set ([functions.md](functions.md), `add_ioboard`).
+
 ## Reported behaviour from software users
 
 - Inferred (secondhand: [a developer's 2002 post on imaging for O2](sources/reports/o2-imaging-techniques-usenet-2002.txt) and [a list from an SGI engineer reproduced on a hobbyist site](sources/reports/sgidepot-melting-the-ice.html)): the imaging extensions run on the chip only when every coefficient of an operation is either an integer of magnitude above one or a real in -1.0 to 1.0, never mixed; otherwise the CPU does it at a fraction of the speed. Capture is accelerated only for PAL and NTSC frame sizes. These describe what the IRIX driver does on top of the hardware, not the hardware itself.
