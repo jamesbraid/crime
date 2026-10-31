@@ -255,3 +255,5 @@ Next, in order (list from the earlier pass; the `crm.so` item is superseded by t
 - `kernel.o`: 694 undocumented rows remain, mostly outside graphics (ECC and cache handlers, system calls); the graphics-relevant ones left are the transfer-engine users listed in `docs/functions.md`.
 - `libGL.so`, `symmon.IP32`, `setmon`, `gfxinit`, `mvp.o` and the video libraries, as before: read call lists and bodies; a role inferred from a name alone does not count.
 - The binaries table and `libXsgivc.so` request rows, as listed in the previous pass.
+
+30 October 2026, crime binaries table, batch 2. The seven N32 image-converter plug-ins and the five X video-control and VICE library builds (`libXsgivc.so` x3, `libvice.so` x2) are understood, in [binaries.md](binaries.md). Still named-only: 26 `.vfo` format files, the four `mvp.so` builds, `mvp.o`, `rrm.o`, `kernel.o`, `crm.so`, `Xsgi`, the four `libGL`/`libGLcore` builds, `setmon`, `ide.IP32`, `symmon.IP32`, `ip32prom.image` and `crime.a(crime.o)`. The o32 `libvice.so` routine bodies are not read.
