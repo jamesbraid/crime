@@ -8297,11 +8297,11 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d55bc	324	__glSetUpMap1
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d5700	404	__glSetUpMap2	dynsym+mdebug	191b108d11a4		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d5894	456	PreEvaluate	mdebug	2f906432cb41		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d5a5c	948	PreEvaluateWithDeriv	mdebug	0e5b949e26cc		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d5e10	304	DoDomain1	mdebug	92f81c5f5af6		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d5e10	304	DoDomain1	mdebug	92f81c5f5af6		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d5f40	1264	DoEvalCoord1	mdebug	1078d4885ad4		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d62f4	316	__glDoEvalCoord1	dynsym+mdebug	f2f676b016cc		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d6430	160	ComputeFirstPartials	mdebug	47b52efa15c2		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d64d0	148	ComputeNormal2	mdebug	0fe10f67ac6f		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d6430	160	ComputeFirstPartials	mdebug	47b52efa15c2		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d64d0	148	ComputeNormal2	mdebug	0fe10f67ac6f		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d6564	504	DoDomain2	mdebug	07b298ee61c2		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d675c	616	DoDomain2WithDerivs	mdebug	f1eb206be10f		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d69c4	3416	DoEvalCoord2	mdebug	a8e39e22961a		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
@@ -12422,11 +12422,11 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4380	288	__glSetUpMa
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d44a0	332	__glSetUpMap2	dwarf+dynsym	f1777f7337a3		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d45f0	284	PreEvaluate	dwarf+funcnames	d0a6ec998d3f		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d4710	676	PreEvaluateWithDeriv	dwarf+funcnames	1550ff7324ba		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d49c0	312	DoDomain1	dwarf+funcnames	bc9f6059eb42		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d49c0	312	DoDomain1	dwarf+funcnames	bc9f6059eb42		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d4b00	1000	DoEvalCoord1	dwarf+funcnames	c0819566a6dc		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d4ef0	256	__glDoEvalCoord1	dwarf+dynsym	7e08e0259439		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d4ff0	156	ComputeFirstPartials	dwarf+funcnames	6652c635ac34		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5090	100	ComputeNormal2	dwarf+funcnames	4213d5c7482e		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d4ff0	156	ComputeFirstPartials	dwarf+funcnames	6652c635ac34		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5090	100	ComputeNormal2	dwarf+funcnames	4213d5c7482e		in	named-only	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5100	620	DoDomain2	dwarf+funcnames	c8788e057b03		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5370	732	DoDomain2WithDerivs	dwarf+funcnames	d5a7214970d6		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9d5650	2044	DoEvalCoord2	dwarf+funcnames	670fe0582e23		in	located	docs/sample-implementation.md#so_evalc	so_eval.c
