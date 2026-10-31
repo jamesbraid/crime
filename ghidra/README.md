@@ -22,11 +22,11 @@ Run a component's `tests/run-ghidra.sh` in the Ghidra image, then its
 `tests/check.py` on the dump directory it writes:
 
 ```sh
-re-run --workspace . --ghidra -- ghidra/processors/NAME/tests/run-ghidra.sh .cache/NAME
-re-run --workspace . -- python3 ghidra/processors/NAME/tests/check.py .cache/NAME
+tools/re-run --ghidra ghidra/processors/NAME/tests/run-ghidra.sh .cache/NAME
+tools/re-run python3 ghidra/processors/NAME/tests/check.py .cache/NAME
 ```
 
-(`re-run` mounts the workspace at `/work`, the Ghidra image with `--ghidra` and
+(`tools/re-run` mounts the workspace at `/work`, the Ghidra image with `--ghidra` and
 the toolchain image without.)
 
 ## Components
@@ -37,22 +37,25 @@ the toolchain image without.)
 
 ## Decompiled C as JSON, typed structures and function similarity
 
-`re-run --ghidra-export OBJECT` runs Ghidra over one object under `root/` and
-writes the result outside the workspace, printing where. It writes nothing into
-the repository, so there is nothing to commit by accident.
+`tools/re-run --ghidra-export OBJECT` runs Ghidra over one ELF object under `root/` (a linked
+library or kernel, or a relocatable driver object) and prints the path of the JSON it wrote under
+`.cache/ghidra-export/`, which git ignores, so there is nothing to commit by accident. It builds the
+Ghidra image on first use. A relocatable object has no load address: name its functions, do not give
+addresses (Ghidra places such an object itself, so the addresses in its JSON are Ghidra's, not section offsets). The options are listed at the top of [tools/ghidra-export.py](../tools/ghidra-export.py);
+function-similarity databases live in `.cache/ghidra-bsim/`.
 
 ```sh
 # decompiled C per function, as JSON with the decompiler's warnings
-re-run --workspace . --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
+tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
     --decompile-symbol NAME --decompile-symbol 'prefix_*' --decompile-symbol @0xADDRESS
 # the same, with named structure fields
-re-run --workspace . --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
+tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
     --decompile-symbol NAME --types ghidra/types/context.types.json
 # every function, or a list file (one name, glob or @address per line)
-re-run --workspace . --ghidra-export OBJECT --decompile-all
-re-run --workspace . --ghidra-export OBJECT --decompile-list names.txt
+tools/re-run --ghidra-export OBJECT --decompile-all
+tools/re-run --ghidra-export OBJECT --decompile-list names.txt
 # function similarity: one object per run, each matched against those before it
-re-run --workspace . --ghidra-export OBJECT --bsim-db libglcore --bsim-label family-host-abi
+tools/re-run --ghidra-export OBJECT --bsim-db libglcore --bsim-label family-host-abi
 ```
 
 `--types` takes a JSON file kept in the repository, with `structs`

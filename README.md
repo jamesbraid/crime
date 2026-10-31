@@ -36,7 +36,8 @@ To reproduce a cited result:
   `tools/re-run python3 scripts/NAME.py ...`.
 - `tools/check-shared` verifies that the toolchain files (`tools/`) are byte-identical to the copies in
   the sibling repositories. The optional Ghidra image is built from `tools/Containerfile.ghidra` by
-  `tools/re-run --ghidra COMMAND`; nothing else needs it.
+  `tools/re-run --ghidra COMMAND`, and `tools/re-run --ghidra-export OBJECT` writes decompiled C and
+  function-similarity output as JSON (see `ghidra/README.md`); nothing else needs it.
 
 Licence: BSD-3-Clause, see [LICENSE](LICENSE). The scripts descend from gr4's
 and keep its notice in [scripts/LICENSE-gr4](scripts/LICENSE-gr4).
