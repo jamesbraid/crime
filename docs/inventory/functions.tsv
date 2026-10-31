@@ -6453,7 +6453,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthL
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93711c	1632	LongStippledLine	mdebug	d42faae94927		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937540	20	__glFirstLinesVertex	dynsym+mdebug	bb7cd4f3597e		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937554	40	__glBeginLines	dynsym+mdebug	af28e624002b		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93757c	168	__glOtherLStripVertex	dynsym+mdebug	f0cfd948da5d		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93757c	168	__glOtherLStripVertex	dynsym+mdebug	f0cfd948da5d		in	understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937624	184	__glSecondLStripVertex	dynsym+mdebug	11374babe086		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9376dc	116	__glFirstLStripVertex	dynsym+mdebug	8bf198be4cbb		in	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937750	44	__glBeginLStrip	dynsym+mdebug	c7ef24549dc0		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
@@ -10578,7 +10578,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDept
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd93871c	1048	LongStippledLine	dwarf+funcnames	ab1ba067a561		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b40	20	__glFirstLinesVertex	dwarf+dynsym	cf0cb34e01d7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b60	40	__glBeginLines	dwarf+dynsym	37916e3db1dc		in	understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b90	172	__glOtherLStripVertex	dwarf+dynsym	52902ec061f2		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938b90	172	__glOtherLStripVertex	dwarf+dynsym	52902ec061f2		in	understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938c40	188	__glSecondLStripVertex	dwarf+dynsym	59ed8cf5c3d6		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938d00	112	__glFirstLStripVertex	dwarf+dynsym	15a2bc01d53e		in	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938d70	44	__glBeginLStrip	dwarf+dynsym	d5db3b3826b3		in	understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
