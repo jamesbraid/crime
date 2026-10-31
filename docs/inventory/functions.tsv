@@ -8647,8 +8647,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda001bc	76	__glDepthPassS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00208	140	__glDepthPassStippledSpan	dynsym+mdebug	f75bc1ac7936		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00294	72	__glShadeCISpan	dynsym+mdebug	63412a8f5736		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda002dc	144	__glShadeRGBASpan	dynsym+mdebug	c43d07d3d02b		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0036c	64	__glFlatCISpan	dynsym+mdebug	f2662d91d305		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda003ac	88	__glFlatRGBASpan	dynsym+mdebug	cd46d4fc41c7		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0036c	64	__glFlatCISpan	dynsym+mdebug	f2662d91d305		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda003ac	88	__glFlatRGBASpan	dynsym+mdebug	cd46d4fc41c7		in	named-only	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00404	272	__glTextureSpan	dynsym+mdebug	6d592b41228a		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00514	364	__glTextureStippledSpan	dynsym+mdebug	353f50241348		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00680	184	__glDitherCISpan	dynsym+mdebug	2b14230aacac		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
@@ -12773,7 +12773,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01230	224	__glDepthPa
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01310	164	__glShadeCISpan	dwarf+dynsym	814586ea1fe4		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda013c0	196	__glShadeRGBASpan	dwarf+dynsym	bbbe4bfecdca		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01490	100	__glFlatCISpan	dwarf+dynsym	2557ffc94368		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01500	84	__glFlatRGBASpan	dwarf+dynsym	3e9150e48f5a		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01500	84	__glFlatRGBASpan	dwarf+dynsym	3e9150e48f5a		in	named-only	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01560	260	__glTextureSpan	dwarf+dynsym	9dc13098ff91		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda01670	384	__glTextureStippledSpan	dwarf+dynsym	b4d504f54d8b		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda017f0	468	__glDitherCISpan	dwarf+dynsym	aba15b3602f6		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
