@@ -8661,8 +8661,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00cdc	280	__glRoundRGBA
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00df4	364	__glRoundRGBAStippledSpan	dynsym+mdebug	af6f8df1c352		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00f60	292	__glLogicOpSpan	dynsym+mdebug	96c8cddfeff6		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01084	360	__glLogicOpStippledSpan	dynsym+mdebug	8ef417491aaa		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda011ec	196	__glMaskRGBASpan	dynsym+mdebug	500ba69624de		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda012b0	232	__glMaskCISpan	dynsym+mdebug	ee7cbb91e1f3		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda011ec	196	__glMaskRGBASpan	dynsym+mdebug	500ba69624de		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda012b0	232	__glMaskCISpan	dynsym+mdebug	ee7cbb91e1f3		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda013a0	228	__glim_Begin	dynsym+mdebug	39b09bf4186a		in	named-only	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01484	112	__glim_End	dynsym+mdebug	d451ea1390ab		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014f4	8	__glNop	dynsym+mdebug	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
@@ -12786,8 +12786,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02160	228	__glRoundRG
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02250	320	__glRoundRGBAStippledSpan	dwarf+dynsym	58d639993c23		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02390	292	__glLogicOpSpan	dwarf+dynsym	b90d89d5d4ba		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda024c0	392	__glLogicOpStippledSpan	dwarf+dynsym	5417198f8da3		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02650	336	__glMaskRGBASpan	dwarf+dynsym	615a73bb705c		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCISpan	dwarf+dynsym	14f5cb44f02f		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02650	336	__glMaskRGBASpan	dwarf+dynsym	615a73bb705c		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCISpan	dwarf+dynsym	14f5cb44f02f		in	understood	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	f967241bd51e		in	named-only	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
