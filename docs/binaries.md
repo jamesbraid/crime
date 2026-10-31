@@ -103,8 +103,9 @@ The members of `crime.a`, `gfxs.a` and the single object `mace.o` have their own
   It sends the timing-table request 0x55f6 at 0x1000e5cc, with the 0x30-byte record on the stack and `syncNone` as the last argument (established, call arguments).
   The kernel handler for 0x55f6 is `crimeLoadTimingTable`, described in [ioctls.md](ioctls.md) and [gbe.md](gbe.md) (established, [ioctls.md](ioctls.md)).
   X server path. `crm_setmon` calls `XSGIvcListVideoFormats` at 0x1000ecc0 and `XSGIvcLoadVideoFormat` at 0x1000ee60 (established, call sites).
-  It also calls `XSGISetStereoMode` at 0x1000eff8 and 0x1000f01c (established, call sites).
-  Those calls take the display and screen handles from `dssdpy` and `dssscreen` (established, call arguments).
+  It also calls `XSGISetStereoMode` at 0x1000eb10, 0x1000eff8 and 0x1000f01c (established, call sites).
+  Each of those calls passes `dssdpy` and `dssroot` as its first two arguments (established, call arguments).
+  The `XSGIvcListVideoFormats` call takes `dssdpy` and `dssscreen` (established, call arguments).
   These calls reach the X module, described in [xmodule.md](xmodule.md), not the kernel.
   Timing files. `crm_setmon` builds each timing-table name from `Crm_TimingTableFiles` and the pipe number (established, call arguments).
   It opens the names with `fopen` at 0x1000e8d8 and 0x1000e934, and calls `stat` on them at 0x1000e818 (established, call sites).
