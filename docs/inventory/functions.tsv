@@ -8630,7 +8630,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fd3f8	29120	Polygo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd504	124	__glEndPolygon	dynsym+mdebug	1385906bbc08		in	named-only	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd580	56	__glBeginPolygon	dynsym+mdebug	0633c54d4655		in	located	docs/sample-implementation.md#so_polyfinc	so_polyfin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fd5c0	1192	__glRenderTriangle	dynsym+mdebug	0c2a4813b1ae		in	located	docs/sample-implementation.md#so_polymodec	so_polymode.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fda68	20	__glDontRenderTriangle	dynsym+mdebug	7008cedc7bc7		in	located	docs/sample-implementation.md#so_polymodec	so_polymode.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fda68	20	__glDontRenderTriangle	dynsym+mdebug	7008cedc7bc7		in	understood	docs/sample-implementation.md#so_polymodec	so_polymode.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fda80	216	__glProcessSpan	dynsym+mdebug	0609809ca3cb		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fdb58	1968	__glProcessReplicateSpan	dynsym+mdebug	82285bbc9041		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fe308	248	__glClipSpan	dynsym+mdebug	1d5386ff4f9e		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
@@ -8663,11 +8663,11 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda00f60	292	__glLogicOpSp
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01084	360	__glLogicOpStippledSpan	dynsym+mdebug	8ef417491aaa		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda011ec	196	__glMaskRGBASpan	dynsym+mdebug	500ba69624de		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda012b0	232	__glMaskCISpan	dynsym+mdebug	ee7cbb91e1f3		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda013a0	228	__glim_Begin	dynsym+mdebug	39b09bf4186a		in	located	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01484	112	__glim_End	dynsym+mdebug	d451ea1390ab		in	located	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda013a0	228	__glim_Begin	dynsym+mdebug	39b09bf4186a		in	named-only	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01484	112	__glim_End	dynsym+mdebug	d451ea1390ab		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014f4	8	__glNop	dynsym+mdebug	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014fc	32	__glEndPrim	dynsym+mdebug	fde50aa23826		in	located	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0151c	52	__glim_UnimplementedExtension	dynsym+mdebug	ae238d08046e		in	located	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda014fc	32	__glEndPrim	dynsym+mdebug	fde50aa23826		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0151c	52	__glim_UnimplementedExtension	dynsym+mdebug	ae238d08046e		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda01550	188	__glim_RasterPos2dv	dynsym+mdebug	e1bf3a6b6e7f		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0160c	152	__glim_RasterPos2fv	dynsym+mdebug	08023bd4823b		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda016a4	176	__glim_RasterPos2d	dynsym+mdebug	17398f53a78a		in	located	docs/sample-implementation.md#so_rapic	so_rapi.c
@@ -12788,8 +12788,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02390	292	__glLogicOp
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda024c0	392	__glLogicOpStippledSpan	dwarf+dynsym	5417198f8da3		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02650	336	__glMaskRGBASpan	dwarf+dynsym	615a73bb705c		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda027a0	420	__glMaskCISpan	dwarf+dynsym	14f5cb44f02f		in	located	docs/sample-implementation.md#so_polyspanc	so_polyspan.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	f967241bd51e		in	located	docs/sample-implementation.md#so_primc	so_prim.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02950	204	__glim_Begin	dwarf+dynsym	f967241bd51e		in	named-only	docs/sample-implementation.md#so_primc	so_prim.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a20	112	__glim_End	dwarf+dynsym	f258c413edfe		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02a90	8	__glNop	dwarf+dynsym	78aa5094d5ec		in	named-only	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02aa0	32	__glEndPrim	dwarf+dynsym	a4856082e021		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda02ac0	52	__glim_UnimplementedExtension	dwarf+dynsym	c653b390bc58		in	understood	docs/sample-implementation.md#so_primc	so_prim.c
