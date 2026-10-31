@@ -8508,9 +8508,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ee804	384	__gllc_DrawEl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ee984	108	__gllc_DrawRangeElements	dynsym+mdebug	7f9b253cb9da		in	located	docs/sample-implementation.md#so_listcompc	so_listcomp.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ee9f0	144	__glCopyMatrix	dynsym+mdebug	c37cb2dd88d0		in	understood	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eea80	100	__glMakeIdentity	dynsym+mdebug	fc898a7c8c3b		in	located	docs/sample-implementation.md#so_mathc	so_math.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eeae4	544	__glMultMatrix	dynsym+mdebug	de14a74f4744		in	located	docs/sample-implementation.md#so_mathc	so_math.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eeae4	544	__glMultMatrix	dynsym+mdebug	de14a74f4744		in	understood	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eed04	1424	__glInvertTransposeMatrix	dynsym+mdebug	a4881b35d6ac		in	located	docs/sample-implementation.md#so_mathc	so_math.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef294	52	__glFloorLog2	dynsym+mdebug	a5b9dd36eb97		in	located	docs/sample-implementation.md#so_mathc	so_math.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef294	52	__glFloorLog2	dynsym+mdebug	a5b9dd36eb97		in	understood	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef2d0	172	NewBlock	mdebug	f6bc4590527c		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef37c	1044	DeleteBlock	mdebug	36e07a88eb9c		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef3d4	168	__glNewArena	dynsym+mdebug	dbda2f9074ad		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
@@ -9165,10 +9165,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34070	68	__glClipCheckA
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda340b4	60	__glClipCheckAll3	dynsym+mdebug	ef7115b744f8		in	understood	docs/sample-implementation.md#so_vertexc	so_vertex.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda340f0	420	__glClipCheckAll	dynsym+mdebug	a160200d692d		in	located	docs/sample-implementation.md#so_vertexc	so_vertex.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34294	652	__glGenericPickVertexProcs	dynsym+mdebug	7d5a78c175f8		in	located	docs/sample-implementation.md#so_vertexc	so_vertex.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34520	276	__glPickMatrixType	dynsym+mdebug	fbf8e9216161		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34520	276	__glPickMatrixType	dynsym+mdebug	fbf8e9216161		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34634	104	__glMultiplyMatrix	dynsym+mdebug	3b7cac2c3ea6		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda3469c	20372	SetDepthRange	mdebug	3a277c0b16a4		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3475c	76	__glUpdateDepthRange	dynsym+mdebug	504059281e68		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3475c	76	__glUpdateDepthRange	dynsym+mdebug	504059281e68		in	understood	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda347a8	76	__glEarlyInitTransformState	dynsym+mdebug	d6a6dc0a38b3		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda347f4	688	__glInitTransformState	dynsym+mdebug	13722b194956		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda34aa4	108	__glInvalidateSequenceNumbers	dynsym+mdebug	88d473693891		in	located	docs/sample-implementation.md#so_xformc	so_xform.c
