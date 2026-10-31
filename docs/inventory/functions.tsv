@@ -6396,7 +6396,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932aec	68	__glMipsClipCh
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b30	24	__glSaveN	dynsym+mdebug	e6df26f8e1f3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b48	20	__glSaveCI	dynsym+mdebug	9e2fa4165942		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b5c	24	__glSaveC	dynsym+mdebug	194b496f59a3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b74	24	__glSaveT	dynsym+mdebug	1b59438a8e9f		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b74	24	__glSaveT	dynsym+mdebug	1b59438a8e9f		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b8c	40	__glSaveCT	dynsym+mdebug	cb4acaef6ea8		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bb4	40	__glSaveNT	dynsym+mdebug	9a0bb05aec7a		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bdc	56	__glSaveCAll	dynsym+mdebug	c50be1ae45ee		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
