@@ -7997,23 +7997,23 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c06f0	360	__glim_DepthF
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0858	196	__glim_DepthMask	dynsym+mdebug	d9b386f68863		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c091c	324	__glim_DrawBuffer	dynsym+mdebug	9f60dc35b23d		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0a60	552	__glim_Fogfv	dynsym+mdebug	661f369e8eee		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0c88	132	__glim_Fogf	dynsym+mdebug	451b5cdf130c		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0d0c	512	__glim_Fogiv	dynsym+mdebug	8d626836b5de		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0f0c	132	__glim_Fogi	dynsym+mdebug	ac46ced09f93		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0c88	132	__glim_Fogf	dynsym+mdebug	451b5cdf130c		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0d0c	512	__glim_Fogiv	dynsym+mdebug	8d626836b5de		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0f0c	132	__glim_Fogi	dynsym+mdebug	ac46ced09f93		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c0f90	152	__glim_FrontFace	dynsym+mdebug	3f51211d7fb6		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1028	404	__glim_Hint	dynsym+mdebug	684599789d10		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c11bc	116	__glim_IndexMask	dynsym+mdebug	e4e7febb8346		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1230	296	__glTransformLightDirection	dynsym+mdebug	65ab223e1dbb		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1358	704	__glim_Lightfv	dynsym+mdebug	d8f8c24f0a76		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1618	132	__glim_Lightf	dynsym+mdebug	689eba0fb8f1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1618	132	__glim_Lightf	dynsym+mdebug	689eba0fb8f1		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c169c	744	__glim_Lightiv	dynsym+mdebug	523d99064034		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1984	132	__glim_Lighti	dynsym+mdebug	eac1faa0cdcd		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1984	132	__glim_Lighti	dynsym+mdebug	eac1faa0cdcd		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1a08	396	__glim_LightModelfv	dynsym+mdebug	36744bef8d92		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1b94	116	__glim_LightModelf	dynsym+mdebug	5e5c59a28686		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1c08	300	__glim_LightModeliv	dynsym+mdebug	0338fd9ea8a2		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1d34	116	__glim_LightModeli	dynsym+mdebug	378386d0dfa1		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1da8	144	__glim_LineStipple	dynsym+mdebug	404bdd3d797d		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9c1e38	76	RoundWidth	mdebug	94cb8ad0f9e3		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9c1e38	76	RoundWidth	mdebug	94cb8ad0f9e3		in	understood	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9c1e84	484	ClampWidth	mdebug	4624ffde5979		in	named-only	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1efc	216	__glim_LineWidth	dynsym+mdebug	d33580f2845b		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c1fd4	148	__glim_LogicOp	dynsym+mdebug	fe038e2bbda2		in	located	docs/sample-implementation.md#so_attribc	so_attrib.c
