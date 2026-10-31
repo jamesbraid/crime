@@ -407,7 +407,7 @@ Tile-address registers of the capture block, in order (established, [gbe-spec] p
 - `VC_7` at `+0x8001c`: tile addresses 7 and 8.
 - `VC_8` at `+0x80020`: tile addresses 9 and 10, write only.
 
-Established as absence: no shipped graphics or video software drives the block. The O2 video kernel driver `mvp.o` imports only `crime_getustmsc`, `crime_retrace_callback`, `crime_video_info` and the interrupt-vector calls (`nm`), and its only GBE register access is a read of the timing counter `VT_0` at the start of its text; `libXsgivc` has no GBE access; the 6.5.30 graphics objects and X module never reach `+0x80000`. So the capture behaviour beyond the register layout is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], `mvp.o`, `libXsgivc`, the 6.5.30 kernel and X module, Linux, NetBSD, MAME.
+Established (the instructions of `mvp.o`, see [mace-video.md](mace-video.md#driver-access)): the O2 video kernel driver programs this block. `mvpreg_initmace` clears `VC_0` to `VC_8`, `mvptransfer_stop_dma` clears `VC_0` to `VC_3`, and `mvptransfer_start_dma` writes `VC_3`, optionally copies five tile-address words into `VC_4` to `VC_8` and sets the DMA enable in `VC_2`; `mvptransfer_screen_interrupt` reads `VC_3`. The pointer the driver uses is the controller record word at `+204`, `0xb6080000`. The X module and the 6.5.30 graphics objects never reach `+0x80000`; `libXsgivc` has no GBE access. What the block does to the picture beyond the register layout is unknown: no shipped software or published source depends on it. Routes tried: [gbe-spec], `mvp.o`, `libXsgivc`, the 6.5.30 kernel and X module, Linux, NetBSD, MAME.
 
 ## Format-file state tables
 
@@ -579,32 +579,32 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
   `crime_tpinit` in `crime_tp.o` copies the first 32 words from a table in its data section in a counted loop to `+0x78000` onward.
   It then clears words 32 to 63 from `+0x78080`, three stores to `+0x78080`, `+0x78084` and `+0x78088` per loop pass.
 - `VC_0` at `+0x80000`: the capture region's horizontal bounds, the left edge in bits 11:0 and the right edge in bits 23:12 (page 47). Established.
-  No shipped software or published source depends on this register: the inventory scan reaches no access at this offset.
-  Routes tried: the 6.5.30 kernel objects, the X module, `libXsgivc`, the video libraries and the specification.
+  `mvpreg_initmace` (`mvp.o`, case 3) stores zero here at `0xb7cc`, and `mvptransfer_stop_dma` stores zero at `0x920` for a capture path. Established (the instructions). No routine of `mvp.o` stores a nonzero value here; a nonzero capture window is not written by any shipped software read so far.
+  Routes tried: the 6.5.30 kernel objects, the X module, `libXsgivc`, `mvp.o` and the specification.
 - `VC_1` at `+0x80004`: the capture region's vertical bounds, top line in bits 11:0 and bottom line in bits 23:12 (page 47). Established.
-  Neither a shipped binary nor a published driver programs the vertical window, and no in-scope binary has a site here.
-  No shipped software or published source needs its value to run. Routes tried: `mvp.o`, `libXsgivc`, `crm.so` and the specification table.
+  `mvpreg_initmace` stores zero here at `0xb7d4` and `mvptransfer_stop_dma` at `0x928`. Established (the instructions). No routine of `mvp.o` stores a nonzero value here.
+  Routes tried: `mvp.o`, `libXsgivc`, `crm.so` and the specification table.
 - `VC_2` at `+0x80008`: the capture mode word, DMA enable in bit 0, flicker filter in bit 1, automatic field advance in bit 2, full-screen output in bit 3 and colour-space bypass in bit 4 (page 47). Established.
-  The reset value 3 comes from the flicker filter and automatic field advance bits.
-  No shipped software or published source depends on the capture enable. Routes tried: every graphics kernel object, `crm.so` and the video drivers.
+  `mvpreg_initmace` stores zero here at `0xb7dc` and `mvptransfer_stop_dma` at `0x930`; `mvptransfer_start_dma` sets bit 0, the capture DMA enable, at `0x7fc`, keeping its copy of the word at controller record `+800` and writing the register only when the bit was clear. Established (the instructions).
+  The reset value 3 comes from the flicker filter and automatic field advance bits. Routes tried: every graphics kernel object, `crm.so` and the video drivers.
 - `VC_3` at `+0x8000c`: the capture sequencing word, field select in bit 0 and the descriptor-list DMA enable in bit 1, which the specification marks as not working on revision 1.1 (page 47). Established.
-  Bits 31:5 point at the descriptor list, and bits 4:2 report field-corrupt, end-of-field and the current field.
-  No shipped software or published source depends on these status bits. Routes tried: the 6.5.30 kernel and X module and the specification.
+  `mvpreg_initmace` stores zero here at `0xb7e4` and `mvptransfer_stop_dma` at `0x93c`; `mvptransfer_start_dma` stores a word at `0x7e4` made of a flag byte from the path and, unless the driver's copy mode is on, the physical address of the path's descriptor block; `mvptransfer_screen_interrupt` loads the word at `0x1a4c`. Established (the instructions); the meaning of the flag byte is inferred.
+  Bits 31:5 point at the descriptor list, and bits 4:2 report field-corrupt, end-of-field and the current field. Routes tried: the 6.5.30 kernel and X module, `mvp.o` and the specification.
 - `VC_4` at `+0x80010`: the first pair of capture tile addresses, tile 1 in bits 31:16 and tile 2 in bits 15:0 (page 47). Established.
-  The five tile registers `+0x80010` to `+0x80020` together hold the ten tiles of one captured field.
-  No shipped software or published source depends on the tile addresses of this pair. Routes tried: the inventory scan, `mvp.o` and `libXsgivc`.
+  `mvpreg_initmace` stores zero here at `0xb7ec`; `mvptransfer_start_dma` stores a word read from the physical descriptor block at `0x7bc` when the driver's copy mode (the word at data `+8`) is on. Established (the instructions).
+  The five tile registers `+0x80010` to `+0x80020` together hold the ten tiles of one captured field. Routes tried: the inventory scan, `mvp.o` and `libXsgivc`.
 - `VC_5` at `+0x80014`: the second pair of capture tile addresses, tiles 3 and 4, the earlier one in the upper half (page 48). Established.
+  `mvpreg_initmace` stores zero here at `0xb7f4`; `mvptransfer_start_dma` copies the second word of the descriptor block here at `0x7c4` in copy mode. Established (the instructions).
   It follows `+0x80010` at a four-byte step, as each register holds two 16-bit entries.
-  No shipped software or published source uses a value written here. Routes tried: every in-scope binary's resolved sites and the specification.
 - `VC_6` at `+0x80018`: the third pair of capture tile addresses, tiles 5 and 6 (page 48). Established.
+  `mvpreg_initmace` stores zero here at `0xb7fc`; `mvptransfer_start_dma` copies the third word here at `0x7cc` in copy mode. Established (the instructions).
   The middle register of the five, it sits between `+0x80014` and `+0x8001c`.
-  No shipped software or published source reads or writes it. Routes tried: the video kernel driver, the X module and the diagnostics.
 - `VC_7` at `+0x8001c`: the fourth pair of capture tile addresses, tiles 7 and 8 (page 48). Established.
+  `mvpreg_initmace` stores zero here at `0xb804`; `mvptransfer_start_dma` copies the fourth word here at `0x7d4` in copy mode. Established (the instructions).
   Only tiles 9 and 10 in `+0x80020` follow it in the descriptor list.
-  No shipped software or published source touches it. Routes tried: the in-scope disassembly and the specification.
 - `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established.
-  A read returns no defined value because the register has no read path.
-  No shipped software or published source accesses it. Routes tried: the kernel objects, the X module and the video libraries.
+  `mvpreg_initmace` stores zero here at `0xb810`; `mvptransfer_start_dma` copies the fifth word here at `0x7e0` in copy mode. Established (the instructions).
+  A read returns no defined value because the register has no read path; the driver never reads it.
 - `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established.
   `crimeRetraceHandler` in `crime_retrace.o` walks the 32 swap slots of 24 bytes each and advances its table pointer by 4 bytes per slot.
   For a slot whose swap is due it rewrites the buffer bits of that slot's entry, the pair of low bits of the word.

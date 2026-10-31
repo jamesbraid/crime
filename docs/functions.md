@@ -1497,6 +1497,37 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 <!-- a3_dd.o:end -->
 
 <!-- kernel.o:begin -->
+# Kernel routines, one entry each (`mvp.o`, register routines)
+
+Routines of the video kernel driver that touch MACE video or GBE capture registers, read from the 6.5.30 object. Register meanings, the controller record and the `MACEVCH` window are in [mace-video.md](mace-video.md#driver-access). Callee names come from the object's relocations; the driver's static routines have no symbol, so they are named by the routine table.
+
+- `mvpreg_init` in `mvp.o`: publishes the register pointers of the video hardware and sets its defaults, a 188-byte routine at offset 0xbdb0. Established.
+  It stores five pointers into the controller record it is given: `0xbf100000`, `0xbf180000`, `0xbf200000`, `0xb6080000` and `0xbf330000` at record `+192`, `+196`, `+200`, `+204` and `+208` (stores at `0xbdb4`, `0xbdbc`, `0xbdc4`, `0xbdcc`, `0xbdd8`).
+  It then calls `mvpavio_preset_status` with the record. A result other than -1 goes straight to the last step; a result of -1 first calls `mvpreg_initmace` for cases 0, 1, 2 and 3 in that order, with the byte at record `+98` as the third argument and 0 as the fourth.
+  The last step is `mvpreg_setpassthru` with the record, 1 and 1, and its result is the routine's result.
+- `mvpreg_initmace` in `mvp.o`: writes default timing and format constants to one video channel or clears the GBE capture block, a 536-byte routine at offset 0xb6a8. Established.
+  The second argument chooses the case (0 or 1 an input channel, 2 the output channel, 3 the capture block, anything else nothing); bit 0 of the third chooses one of two constant sets in `.data`; a nonzero fourth skips the configuration register. It runs at the raised interrupt level (`splhi`, restored with `splx` on every path).
+  The input case stores nine doublewords in the order `+0x30`, `+0x48`, `+0x38`, `+0x50`, `+0x28`, `+0x40`, `+0x58`, `+0x20`, `+0x10`; the output case stores `+0x30`, `+0x40`, `+0x38`, `+0x48`, `+0x28`, `+0x20`, `+0x50`, `+0x10`; case 3 stores nine zero words to GBE `+0x80000` to `+0x80020`, each preceded by a zero word of the controller record. The values and sites are in [mace-video.md](mace-video.md#defaults-written-by-mvpreg_initmace).
+- `mvpreg_setup_timing` in `mvp.o`: sets a channel's timing without touching its configuration register, a 36-byte routine at offset 0xb8c0. Established.
+  It calls `mvpreg_initmace` with its own first three arguments and a fourth of 1.
+- `mvpreg_cdto_wait` in `mvp.o`: waits for the hardware to settle, a 44-byte routine at offset 0xb8e4. Established.
+  It calls `delay` with the word `mvpcdto_wait_time` (loaded at `0xb8fc` in the call's delay slot) and returns 1.
+- `mvpprobe` in `mvp.o`: reads the MACE chip revision, a 48-byte routine at offset 0x7348. Established.
+  It reads the doubleword at `0xbf200058`, `VOUT.VHW_CFG`, with `pciio_pio_read64` and returns bits 35:32 of it, the shift by 32 (`dsrl32`) and the mask `0xf` being in the return sequence.
+- `mvpinterrupt_clear` in `mvp.o`: silences one video channel, a 60-byte routine at offset 0x95c4. Established.
+  The argument is the channel number. It reads the channel's `+0x8` status doubleword and discards it, clears the low nine bits of the shadow at record `+216 + 192n` and writes that value to the channel's `+0x0` control register in the return's delay slot.
+- `mvptransfer_enablechannel` in `mvp.o`: sets or leaves a channel's interrupt and DMA enables, a 172-byte routine at offset 0x17d8. Established.
+  A path whose type byte (`+1192`) is 2 does nothing. Otherwise, under `splhi`, it takes the channel from the byte at path `+1132` and replaces the low nine bits of the control shadow with the low nine bits of the second argument, or keeps the shadow when the argument is -1. It stores the new value to the shadow and to the register (`0x185c`, `0x1860`) only when it differs.
+- `mvptransfer_fix_output` in `mvp.o`: restarts the output channel's descriptor chain, a 160-byte routine at offset 0x21cc. Established.
+  Under `splhi` it clears bit 0 of the output control shadow and register when set (`0x2214`, `0x2218`), writes zero to the output `+0x18` (`0x221c`), sets bit 0 again (`0x2230`, `0x2234`) and finally writes the word at path `+1160`, zero-extended, to `+0x18` (`0x2254`).
+- `mvptransfer_cleardma` in `mvp.o`: resets the output channel's DMA, a 164-byte routine at offset 0x226c. Established.
+  It returns at once for a path whose type byte (`+1192`) is not 0. Otherwise, under `splhi`, it zeroes the output `+0x20` register and its shadow when the shadow is nonzero (`0x22bc`, `0x22c0`), then writes the output control register with bit 0 cleared (`0x22d0`), zero to `+0x18` (`0x22d4`), bit 0 set (`0x22e0`) and bit 0 cleared again (`0x22f4`, in the delay slot of the call that reads the status doubleword, `0x22f0`). The shadow ends with bit 0 clear.
+- `mvptransfer_stop_dma` in `mvp.o`: stops the transfer of a path, a 196-byte routine at offset 0x87c. Established.
+  Under `splhi` it does nothing when the state byte at path `+1127` is below 3. Otherwise it sets the byte to 3 and, for a path of type 2, writes zero to `VC_0` to `VC_3` of the capture block (`0x920`, `0x928`, `0x930`, `0x93c`) and to four words of the controller record from `+792`; for any other path it clears the low nine bits of the channel's control shadow and writes the result to the control register (`0x8ec`, `0x8f0`). The state byte is 2 on every path when the routine restores the level, and the return value is 0.
+- `mvptransfer_start_dma` in `mvp.o`: starts a transfer on a path, an 856-byte routine at offset 0x524. Inferred.
+  Read in full, but the routines it calls are not: `mvptransfer_nextiep` (`0x250`, called at `0x564`), `mvptransfer_nextcep` (`0x3b8`, `0x734`), `mvptransfer_stop` (`0x57c`, `0x74c`), `mvptransfer_too_many_errors` (`0x34`, at `0x65c` when the low bit of the doubleword at `+208` of the transfer record differs from the third argument, and at `0x834`) and `gbe_too_late` (offset 0, `0x808`, after the capture registers are written).
+  For a path of type 2 it writes `VC_3` (`0x7e4`), optionally copies five words into `VC_4` to `VC_8`, and sets bit 0 of `VC_2` (`0x7fc`); for any other path it writes the channel's `+0x20` (`0x6f8`) and `+0x18` (`0x70c`) doublewords.
+
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
 - `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.

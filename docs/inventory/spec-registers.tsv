@@ -164,40 +164,40 @@ GBE rev 1.1	3.2	46	GBE	0x70000	CRS_0	1	0	32	R/W	1	understood	docs/gbe.md#gbe-reg
 GBE rev 1.1	3.2	46	GBE	0x70004	CRS_1	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	46	GBE	0x70008	CRS_CM[3]	3	4	32	R/W	3	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	46	GBE	0x78000	CRS_GLY[64]	64	4	32	R/W	5	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x80004	VC_1	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x80008	VC_2	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x8000c	VC_3	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x80010	VC_4	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	48	GBE	0x80014	VC_5	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	48	GBE	0x80018	VC_6	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	48	GBE	0x8001c	VC_7	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	48	GBE	0x80020	VC_8	1	0	32	R/W	0	no-software-dependency	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x80004	VC_1	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x80008	VC_2	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x8000c	VC_3	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x80010	VC_4	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	48	GBE	0x80014	VC_5	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	48	GBE	0x80018	VC_6	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	48	GBE	0x8001c	VC_7	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	48	GBE	0x80020	VC_8	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 MACE 2.0 video	5	33	MACEV	0x0	VIN.CONTROL	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x8	VIN.STATUS	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x10	VIN.CONFIG	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x18	VIN.NEXT_DESC	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x20	VIN.FLD_OFFSET	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x28	VIN.LINE_WIDTH	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x30	VIN.HCLIP_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x38	VIN.VCLIP_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x40	VIN.ALPHA_ODD	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x48	VIN.HCLIP_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x50	VIN.VCLIP_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x58	VIN.ALPHA_EVEN	2	524288	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x8	VIN.STATUS	2	524288	64	R/W	1	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x10	VIN.CONFIG	2	524288	64	R/W	2	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x18	VIN.NEXT_DESC	2	524288	64	R/W	3	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x20	VIN.FLD_OFFSET	2	524288	64	R/W	4	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x28	VIN.LINE_WIDTH	2	524288	64	R/W	5	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x30	VIN.HCLIP_ODD	2	524288	64	R/W	6	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x38	VIN.VCLIP_ODD	2	524288	64	R/W	7	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x40	VIN.ALPHA_ODD	2	524288	64	R/W	8	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x48	VIN.HCLIP_EVEN	2	524288	64	R/W	9	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x50	VIN.VCLIP_EVEN	2	524288	64	R/W	10	understood	docs/mace-video.md#input-channel	Input channel
+MACE 2.0 video	5	33	MACEV	0x58	VIN.ALPHA_EVEN	2	524288	64	R/W	11	understood	docs/mace-video.md#input-channel	Input channel
 MACE 2.0 video	5	33	MACEV	0x80	VIN.DMA_DESC	8	8	64	R/W	0	understood	docs/mace-video.md#input-channel	Input channel
-MACE 2.0 video	5	33	MACEV	0x100000	VOUT.CONTROL	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100008	VOUT.STATUS	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100010	VOUT.CONFIG	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100018	VOUT.NEXT_DESC	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100020	VOUT.FLD_OFFSET	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100028	VOUT.FIELD_SIZE	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100030	VOUT.HPAD_ODD	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100038	VOUT.VPAD_ODD	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100040	VOUT.HPAD_EVEN	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100048	VOUT.VPAD_EVEN	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100050	VOUT.GEN_DLY	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
-MACE 2.0 video	5	33	MACEV	0x100058	VOUT.VHW_CFG	1	0	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100000	VOUT.CONTROL	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100008	VOUT.STATUS	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100010	VOUT.CONFIG	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100018	VOUT.NEXT_DESC	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100020	VOUT.FLD_OFFSET	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100028	VOUT.FIELD_SIZE	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100030	VOUT.HPAD_ODD	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100038	VOUT.VPAD_ODD	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100040	VOUT.HPAD_EVEN	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100048	VOUT.VPAD_EVEN	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100050	VOUT.GEN_DLY	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
+MACE 2.0 video	5	33	MACEV	0x100058	VOUT.VHW_CFG	1	0	64	R/W	1	understood	docs/mace-video.md#output-channel	Output channel
 MACE 2.0 video	5	33	MACEV	0x100080	VOUT.DMA_DESC	8	8	64	R/W	0	understood	docs/mace-video.md#output-channel	Output channel
 VICE 1.0	6	40	VICE	0x8	VICE_ID	1	0	8	R	0	understood	docs/vice.md#chip	Chip
 VICE 1.0	6	40	VICE	0x28	HST_BSP_IN_BOX	1	0	16	R	0	understood	docs/vice.md#bitstream-processor-and-mailboxes	Bitstream processor and mailboxes
