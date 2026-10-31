@@ -8713,16 +8713,16 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda036b8	452	__glSelectHit
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda0387c	324	__glSelectTriangle	dynsym+mdebug	c179542b4515		in	named-only	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda039c0	84	__glSelectLine	dynsym+mdebug	af07250d8718		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03a14	52	__glSelectPoint	dynsym+mdebug	6ba2512b4b45		in	located	docs/sample-implementation.md#so_selectc	so_select.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03a50	116	__glFogiv_size	dynsym+mdebug	625356949262		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03ac4	48	__glFogfv_size	dynsym+mdebug	cea0ac4655d3		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03af4	148	__glLightfv_size	dynsym+mdebug	69e124be83b2		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03b88	48	__glLightiv_size	dynsym+mdebug	60795a4acb4b		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03bb8	84	__glLightModelfv_size	dynsym+mdebug	9cdcd9d941c7		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03c0c	48	__glLightModeliv_size	dynsym+mdebug	1bb58580b2ac		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03c3c	132	__glMaterialfv_size	dynsym+mdebug	c70a65791484		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cc0	48	__glMaterialiv_size	dynsym+mdebug	80c139dd66fb		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cf0	36	__glColorTableParameterfvSGI_size	dynsym+mdebug	6ba082fe50cd		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d14	48	__glColorTableParameterivSGI_size	dynsym+mdebug	0ae02564b8d1		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03a50	116	__glFogiv_size	dynsym+mdebug	625356949262		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03ac4	48	__glFogfv_size	dynsym+mdebug	cea0ac4655d3		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03af4	148	__glLightfv_size	dynsym+mdebug	69e124be83b2		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03b88	48	__glLightiv_size	dynsym+mdebug	60795a4acb4b		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03bb8	84	__glLightModelfv_size	dynsym+mdebug	9cdcd9d941c7		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03c0c	48	__glLightModeliv_size	dynsym+mdebug	1bb58580b2ac		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03c3c	132	__glMaterialfv_size	dynsym+mdebug	c70a65791484		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cc0	48	__glMaterialiv_size	dynsym+mdebug	80c139dd66fb		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03cf0	36	__glColorTableParameterfvSGI_size	dynsym+mdebug	6ba082fe50cd		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d14	48	__glColorTableParameterivSGI_size	dynsym+mdebug	0ae02564b8d1		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d44	68	__glSpriteParameterfvSGIX_size	dynsym+mdebug	49ac83563a92		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03d88	48	__glSpriteParameterivSGIX_size	dynsym+mdebug	90c0ba24ea83		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda03db8	84	__glPointParameterfvSGIS_size	dynsym+mdebug	599d540bb401		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
@@ -12838,16 +12838,16 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04a70	320	__glSelectH
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04bb0	296	__glSelectTriangle	dwarf+dynsym	72f9b9deac72		in	named-only	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04ce0	92	__glSelectLine	dwarf+dynsym	4f028a316b8d		in	located	docs/sample-implementation.md#so_selectc	so_select.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04d40	52	__glSelectPoint	dwarf+dynsym	28028663d7c1		in	located	docs/sample-implementation.md#so_selectc	so_select.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04d80	120	__glFogiv_size	dwarf+dynsym	9600d27f98f8		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04d80	120	__glFogiv_size	dwarf+dynsym	9600d27f98f8		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04e00	52	__glFogfv_size	dwarf+dynsym	f1aabc7433c5		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04e40	136	__glLightfv_size	dwarf+dynsym	a125d45263a1		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04e40	136	__glLightfv_size	dwarf+dynsym	a125d45263a1		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04ed0	52	__glLightiv_size	dwarf+dynsym	90f8570e7805		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04f10	80	__glLightModelfv_size	dwarf+dynsym	d743de29d247		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04f10	80	__glLightModelfv_size	dwarf+dynsym	d743de29d247		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04f60	52	__glLightModeliv_size	dwarf+dynsym	2a0945e8372d		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04fa0	176	__glMaterialfv_size	dwarf+dynsym	b6846ca55cc7		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda04fa0	176	__glMaterialfv_size	dwarf+dynsym	b6846ca55cc7		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05050	52	__glMaterialiv_size	dwarf+dynsym	4a92e3dcc2de		in	located	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05090	36	__glColorTableParameterfvSGI_size	dwarf+dynsym	f5d2aec7ca3e		in	located	docs/sample-implementation.md#so_sizec	so_size.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda050c0	52	__glColorTableParameterivSGI_size	dwarf+dynsym	211b4d2bf0ed		in	located	docs/sample-implementation.md#so_sizec	so_size.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda050c0	52	__glColorTableParameterivSGI_size	dwarf+dynsym	211b4d2bf0ed		in	understood	docs/sample-implementation.md#so_sizec	so_size.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05100	60	__glSpriteParameterfvSGIX_size	dwarf+dynsym	72cd151555f3		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05140	52	__glSpriteParameterivSGIX_size	dwarf+dynsym	ae6731bea3ee		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05180	80	__glPointParameterfvSGIS_size	dwarf+dynsym	c8c48e762afc		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
