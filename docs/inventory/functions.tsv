@@ -8356,14 +8356,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc0b4	992	__glim_GetTex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc494	240	__glim_GetPolygonStipple	dynsym+mdebug	28000fce2162		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc584	484	__glim_GetLightfv	dynsym+mdebug	9703ba8d8353		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc768	644	__glim_GetLightiv	dynsym+mdebug	dd9cc0f3f63d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc9ec	436	__glim_GetMaterialfv	dynsym+mdebug	202fb60f869e		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dcba0	984	__glim_GetMaterialiv	dynsym+mdebug	271371691fca		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dc9ec	436	__glim_GetMaterialfv	dynsym+mdebug	202fb60f869e		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dcba0	984	__glim_GetMaterialiv	dynsym+mdebug	271371691fca		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dcf78	920	__glim_GetMapfv	dynsym+mdebug	0d6b13705697		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dd310	1048	__glim_GetMapdv	dynsym+mdebug	b4ae946d63e2		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dd728	752	__glim_GetMapiv	dynsym+mdebug	961d3f50164f		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dda18	332	__glim_GetPixelMapfv	dynsym+mdebug	3da64fbc757a		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ddb64	388	__glim_GetPixelMapuiv	dynsym+mdebug	7f4d3de30fdf		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ddce8	388	__glim_GetPixelMapusv	dynsym+mdebug	52fd6e0e0e07		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dda18	332	__glim_GetPixelMapfv	dynsym+mdebug	3da64fbc757a		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ddb64	388	__glim_GetPixelMapuiv	dynsym+mdebug	7f4d3de30fdf		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ddce8	388	__glim_GetPixelMapusv	dynsym+mdebug	52fd6e0e0e07		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dde6c	4816	__glConvertResult	dynsym+mdebug	d0a9065efed4		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9df13c	6200	__glDoGet	dynsym+mdebug	98915bc1cd9b		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e0974	60	__glim_GetDoublev	dynsym+mdebug	92b88f3834f7		in	located	docs/sample-implementation.md#so_getc	so_get.c
@@ -12481,14 +12481,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da620	1292	__glim_Get
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dab30	188	__glim_GetPolygonStipple	dwarf+dynsym	0baa3d89f802		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dabf0	452	__glim_GetLightfv	dwarf+dynsym	6c8e6449123d		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dadc0	548	__glim_GetLightiv	dwarf+dynsym	6a508991dd1e		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9daff0	404	__glim_GetMaterialfv	dwarf+dynsym	1180ff9660f1		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db190	912	__glim_GetMaterialiv	dwarf+dynsym	a171cf7d6896		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db520	776	__glim_GetMapfv	dwarf+dynsym	0b596cf0867b		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db830	888	__glim_GetMapdv	dwarf+dynsym	02da89c9d920		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbbb0	620	__glim_GetMapiv	dwarf+dynsym	1c0c8501719b		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbe20	464	__glim_GetPixelMapfv	dwarf+dynsym	e8df263410a6		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbff0	512	__glim_GetPixelMapuiv	dwarf+dynsym	7cb99c8405a9		in	located	docs/sample-implementation.md#so_getc	so_get.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dc1f0	512	__glim_GetPixelMapusv	dwarf+dynsym	d7cedb727a92		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9daff0	404	__glim_GetMaterialfv	dwarf+dynsym	1180ff9660f1		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db190	912	__glim_GetMaterialiv	dwarf+dynsym	a171cf7d6896		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db520	776	__glim_GetMapfv	dwarf+dynsym	0b596cf0867b		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9db830	888	__glim_GetMapdv	dwarf+dynsym	02da89c9d920		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbbb0	620	__glim_GetMapiv	dwarf+dynsym	1c0c8501719b		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbe20	464	__glim_GetPixelMapfv	dwarf+dynsym	e8df263410a6		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dbff0	512	__glim_GetPixelMapuiv	dwarf+dynsym	7cb99c8405a9		in	understood	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dc1f0	512	__glim_GetPixelMapusv	dwarf+dynsym	d7cedb727a92		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dc3f0	3088	__glConvertResult	dwarf+dynsym	a0fe028b425f		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9dd000	14836	__glDoGet	dwarf+dynsym	5ecc2db5dd25		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e0a00	60	__glim_GetDoublev	dwarf+dynsym	835b52de9a9b		in	located	docs/sample-implementation.md#so_getc	so_get.c
