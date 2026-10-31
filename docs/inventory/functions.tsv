@@ -1978,7 +1978,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xd80	468	mvptransfer_nextn
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xf54	232	mvptransfer_nextust	dwarf+funcnames	3f2a914d09ac		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x103c	276	mvptransfer_send_events	dwarf+funcnames	ea5b840c29ea		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x1150	340	mvptransfer_post_event	dwarf+funcnames	c36f77762fa2		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x12a4	792	mvptransfer_bufferdone	dwarf+funcnames	52b2578c1e79		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x12a4	792	mvptransfer_bufferdone	dwarf+funcnames	52b2578c1e79		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x15bc	484	mvptransfer_sendbuff	dwarf+funcnames	d5d4585c59d7		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x17a0	56	mvptransfer_continuing	dwarf+funcnames	d05f9d984537		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x17d8	172	mvptransfer_enablechannel	dwarf+symtab	83a1f5789e9a		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
@@ -1992,7 +1992,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x250c	4464	mvptransfer_int
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x367c	8	mvptransfer_set_callbacks	dwarf+funcnames	78aa5094d5ec		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3684	1072	mvptransfer_setup_controls	dwarf+funcnames	0e882439d485		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3ab4	164	mvptransfer_dummy_dma	dwarf+funcnames	96ad7700f02a		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3b58	816	mvptransfer_setup	dwarf+symtab	f26834bf6dbd		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3b58	816	mvptransfer_setup	dwarf+symtab	f26834bf6dbd		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3e88	200	mvptransfer_stop	dwarf+symtab	3de9f8801eff		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x3f50	200	mvptransfer_shutdown_timeout	dwarf+symtab	457f6efe2315		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4018	400	mvptransfer_shutdown	dwarf+symtab	47a1caaeb4c3		in	undocumented		
@@ -2070,7 +2070,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7e5c	52	mvpcontrol_video_
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7e90	384	mvpcontrol_i2c_set	dwarf+funcnames	dfcadda4ff30		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8010	132	mvpcontrol_i2c_get	dwarf+funcnames	742dca66e09d		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8094	52	mvpcontrol_path_set	dwarf+symtab	f7f26e9182fa		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x80c8	676	mvpcontrol_ioctl	dwarf+symtab	c1b8d5478fc5		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x80c8	676	mvpcontrol_ioctl	dwarf+symtab	c1b8d5478fc5		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x836c	204	mvperrprintf	dwarf+symtab	7438fcf7a280		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8438	8	mvpass_break	dwarf+symtab	78aa5094d5ec		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8440	76	mvpass_fail	dwarf+symtab	4df5e6d86d7a		in	undocumented		
@@ -2093,14 +2093,14 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x92ec	712	mvpi2c_init_regs
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x95b4	8	mvpdummy_spl	dwarf+symtab	87506497337c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x95bc	8	mvpdummy_splx	dwarf+symtab	78aa5094d5ec		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x95c4	60	mvpinterrupt_clear	dwarf+funcnames	f2916131c20d		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9600	556	mvpinterrupt	dwarf+symtab	d89cb4f7cf98		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9600	556	mvpinterrupt	dwarf+symtab	d89cb4f7cf98		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x982c	248	mvpinterrupt_setup	dwarf+symtab	00362d0380b6		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9924	240	mvpinterrupt_init	dwarf+symtab	39eade0ed08b		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9a14	184	mvpinterrupt_unload	dwarf+symtab	98ca76f2ef84		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9acc	64	mvpinit	dwarf+symtab	cf38c3d24f5c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b0c	124	mvpopen	dwarf+symtab	b7af579b8e31		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b88	216	mvpclose	dwarf+symtab	d8481687f6bb		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9c60	504	mvpioctl	dwarf+symtab	54e1d9eb4936		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9b88	216	mvpclose	dwarf+symtab	d8481687f6bb		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9c60	504	mvpioctl	dwarf+symtab	54e1d9eb4936		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9e58	172	mvpaddtoinvent	dwarf+symtab	aada7560a365		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9f04	744	mvpdriverinit	dwarf+funcnames	d46e0d4c2480		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa1ec	84	mvpcopyin	dwarf+symtab	583eeb612bf1		in	undocumented		
@@ -2116,7 +2116,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xaba8	100	mvppath_add_pree
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xac0c	1040	mvppath_free_memnode	dwarf+funcnames	f6422842a14e		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb01c	588	mvppath_check_conflicts	dwarf+funcnames	b290c9e38dbb		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb268	660	mvppath_setup	dwarf+funcnames	f3d3e712407b		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb4fc	428	mvppath_ioctl	dwarf+symtab	2ab9ea54d3f0		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb4fc	428	mvppath_ioctl	dwarf+symtab	2ab9ea54d3f0		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb6a8	536	mvpreg_initmace	dwarf+funcnames	808b4b4afc6a		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb8c0	36	mvpreg_setup_timing	dwarf+symtab	e722b5dacacb		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb8e4	44	mvpreg_cdto_wait	dwarf+funcnames	5423dfdb56f8		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
