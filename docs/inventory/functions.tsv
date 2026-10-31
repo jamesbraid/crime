@@ -8428,7 +8428,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5af4	188	__glFastClipS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5bb0	192	__glFastClipFlatLine	dynsym+mdebug	6d95d4cf492a		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5c70	1348	__glInitLineData	dynsym+mdebug	2c4b82693a7f		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e61b4	1132	__glRenderAliasLine	dynsym+mdebug	90edcb4ff980		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6620	192	__glRenderFlatFogLine	dynsym+mdebug	85f8c7c4f063		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6620	192	__glRenderFlatFogLine	dynsym+mdebug	85f8c7c4f063		in	understood	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e66e0	1424	__glInitAALineData	dynsym+mdebug	da163ba8f721		in	named-only	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6c70	1804	__glRenderAntiAliasLine	dynsym+mdebug	0128b403bccc		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e737c	76	__glPolygonOffsetLine	dynsym+mdebug	bb23ded6073b		in	undocumented		
@@ -12553,7 +12553,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e61b0	180	__glFastCli
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6270	188	__glFastClipFlatLine	dwarf+dynsym	b66da997b2fd		in	understood	docs/sample-implementation.md#so_lineclipc	so_lineclip.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6330	1196	__glInitLineData	dwarf+dynsym	4e96a3265376		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e67e0	920	__glRenderAliasLine	dwarf+dynsym	1d5acf02c35c		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6b80	188	__glRenderFlatFogLine	dwarf+dynsym	1ec2669e8156		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6b80	188	__glRenderFlatFogLine	dwarf+dynsym	1ec2669e8156		in	understood	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6c40	1260	__glInitAALineData	dwarf+dynsym	56fa6f476dfc		in	named-only	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7130	1816	__glRenderAntiAliasLine	dwarf+dynsym	ee27a0804b51		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7850	76	__glPolygonOffsetLine	dwarf+dynsym	9b2c9ad70e74		in	undocumented		
