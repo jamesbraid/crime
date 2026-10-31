@@ -7730,7 +7730,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a4630	2456	__glSpanModi
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a4fc8	676	__glSpanModifyCI	dynsym+mdebug	7e6affb2baaf		in	located	docs/sample-implementation.md#px_modifyc	px_modify.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a526c	2128	__glSpanApplyRGBAColorTable	dynsym+mdebug	ec5815f62b34		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5ac0	528	__glInitPacker	dynsym+mdebug	5211fc4df6cb		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5cd0	108	__glInitPacker3D	dynsym+mdebug	1040fff0169c		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5cd0	108	__glInitPacker3D	dynsym+mdebug	1040fff0169c		in	named-only	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5d3c	172	__glSpanReduceRed	dynsym+mdebug	0c8d02fb4fb2		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5de8	172	__glSpanReduceGreen	dynsym+mdebug	9833def2076a		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a5e94	172	__glSpanReduceBlue	dynsym+mdebug	9923f02abf48		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
@@ -11855,7 +11855,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a32d0	1252	__glSpanMo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a37c0	1156	__glSpanModifyCI	dwarf+dynsym	7f9b836907a9		in	located	docs/sample-implementation.md#px_modifyc	px_modify.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a3c50	1732	__glSpanApplyRGBAColorTable	dwarf+dynsym	b9f403739954		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4320	480	__glInitPacker	dwarf+dynsym	bde80a96932a		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4500	112	__glInitPacker3D	dwarf+dynsym	052c7de5c664		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4500	112	__glInitPacker3D	dwarf+dynsym	052c7de5c664		in	named-only	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4570	152	__glSpanReduceRed	dwarf+dynsym	ebd07632d843		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a4610	152	__glSpanReduceGreen	dwarf+dynsym	af8e9a6c4f64		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a46b0	152	__glSpanReduceBlue	dwarf+dynsym	6afb805d0bce		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
