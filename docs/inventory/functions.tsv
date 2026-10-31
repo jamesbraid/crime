@@ -85,7 +85,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		n16c550Poll	dwarf+funcnames			
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		n16c550ReadStat	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		n16c550Strategy	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		n16c550_strat	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		next	dwarf+funcnames			in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		next	dwarf+funcnames			in	named-only	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		nextBaud	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		nvmatch	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		poke	dwarf+funcnames			in	undocumented		
@@ -8512,7 +8512,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eeae4	544	__glMultMatri
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eed04	1424	__glInvertTransposeMatrix	dynsym+mdebug	a4881b35d6ac		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef294	52	__glFloorLog2	dynsym+mdebug	a5b9dd36eb97		in	understood	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef2d0	172	NewBlock	mdebug	f6bc4590527c		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef37c	1044	DeleteBlock	mdebug	36e07a88eb9c		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef37c	1044	DeleteBlock	mdebug	36e07a88eb9c		in	named-only	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef3d4	168	__glNewArena	dynsym+mdebug	dbda2f9074ad		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef47c	136	__glDeleteArena	dynsym+mdebug	e580c711a7e6		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef504	196	__glArenaAlloc	dynsym+mdebug	b279954826dd		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
@@ -8747,9 +8747,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04640	700	__glCreateSpe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda048fc	88	__glFreeSpecLUT	dynsym+mdebug	8a4e8a8082ba		in	understood	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04960	52	Fetch	mdebug	8ea5277e77f9		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04994	148	Store	mdebug	b9fb21799f19		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04a28	68	FailOp	mdebug	3f33ed7c9cba		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04a28	68	FailOp	mdebug	3f33ed7c9cba		in	named-only	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04a6c	68	PassDepthFailOp	mdebug	caba38d5f1d8		in	understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04ab0	616	DepthPassOp	mdebug	688e3820575b		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04ab0	616	DepthPassOp	mdebug	688e3820575b		in	named-only	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04d18	344	buildOpTable	mdebug	3aeeb4b4e858		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda04e70	17816	FreeStencilBuf	mdebug	abdb5bae984f		in	understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda04f0c	724	__glValidateStencil	dynsym+mdebug	4b3f278b9523		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
@@ -8970,7 +8970,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2195c	368	__glInitTexIm
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21acc	368	__glInitTexImageGet	dynsym+mdebug	dcd0cd7b1c41		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21c3c	136	__glInitTexSourceUnpack	dynsym+mdebug	5405631d1540		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21cc4	116	__glInitTexDestPack	dynsym+mdebug	494616c211dd		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda21d38	4960	IsLegalRange	mdebug	760058596b39		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda21d38	4960	IsLegalRange	mdebug	760058596b39		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21dac	176	__glCheckTexImage1DArgs	dynsym+mdebug	6d86218288d8		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21e5c	256	__glCheckTexImage2DArgs	dynsym+mdebug	d09113fc083a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21f5c	292	__glCheckTexImage3DArgs	dynsym+mdebug	e013300d9b2e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -9072,7 +9072,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f02c	872	__glCalcMixed
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f394	120	__glCalcSphereMap	dynsym+mdebug	2310a1c0ef4a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda2f40c	832	CheckTexSubImageArgs	mdebug	055c2923ce1f		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f69c	176	__glInitTexSubImageStore	dynsym+mdebug	f30055d018d4		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda2f74c	5960	CheckTexSubImageRange	mdebug	7af4a0ab971d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda2f74c	5960	CheckTexSubImageRange	mdebug	7af4a0ab971d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f7c0	224	__glCheckTexSubImage1DArgs	dynsym+mdebug	23ad4680266d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f8a0	268	__glCheckTexSubImage2DArgs	dynsym+mdebug	bf19101b126c		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2f9ac	320	__glCheckTexSubImage3DArgs	dynsym+mdebug	2a9572a7a33a		in	undocumented		
@@ -12637,7 +12637,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0ab0	240	__glMultMat
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0ba0	964	__glInvertTransposeMatrix	dwarf+dynsym	c2fb31d0fb3d		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0f70	64	__glFloorLog2	dwarf+dynsym	d5ec2525de99		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f0fb0	164	NewBlock	dwarf+funcnames	5b16702154b1		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1060	60	DeleteBlock	dwarf+funcnames	f186f9ff0bc0		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1060	60	DeleteBlock	dwarf+funcnames	f186f9ff0bc0		in	named-only	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f10a0	188	__glNewArena	dwarf+dynsym	c898f544e5b4		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1160	136	__glDeleteArena	dwarf+dynsym	0c969a0d6dd6		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f11f0	208	__glArenaAlloc	dwarf+dynsym	67521813d004		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
@@ -12872,9 +12872,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05bc0	744	__glCreateS
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda05eb0	80	__glFreeSpecLUT	dwarf+dynsym	b703b05a7349		in	understood	docs/sample-implementation.md#so_speccachec	so_speccache.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05f00	52	Fetch	dwarf+funcnames	01f08e9dbc32		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05f40	76	Store	dwarf+funcnames	77d493fdc792		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05fe0	68	FailOp	dwarf+funcnames	924d2eace67d		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda05fe0	68	FailOp	dwarf+funcnames	924d2eace67d		in	named-only	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06030	68	PassDepthFailOp	dwarf+funcnames	db2fd0714dd6		in	understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06080	68	DepthPassOp	dwarf+funcnames	ce3a549407ec		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda06080	68	DepthPassOp	dwarf+funcnames	ce3a549407ec		in	named-only	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda064a0	260	buildOpTable	dwarf+funcnames	299507cdb36d		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda065b0	144	FreeStencilBuf	dwarf+funcnames	d39e90a357cf		in	understood	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda06640	656	__glValidateStencil	dwarf+dynsym	03e05c8475f3		in	located	docs/sample-implementation.md#so_stencilopc	so_stencilop.c
@@ -13095,7 +13095,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda23160	320	__glInitTex
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda232a0	320	__glInitTexImageGet	dwarf+dynsym	b4ab7997bae1		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda233e0	104	__glInitTexSourceUnpack	dwarf+dynsym	39f0550e21ff		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda23450	100	__glInitTexDestPack	dwarf+dynsym	2ca72f594318		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda234c0	92	IsLegalRange	dwarf+funcnames	218e8a358c63		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda234c0	92	IsLegalRange	dwarf+funcnames	218e8a358c63		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda23520	200	__glCheckTexImage1DArgs	dwarf+dynsym	8b9fa8e0aab7		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda235f0	304	__glCheckTexImage2DArgs	dwarf+dynsym	a69e8b416286		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda23720	364	__glCheckTexImage3DArgs	dwarf+dynsym	23f3e5ece09e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13197,7 +13197,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f930	1000	__glCalcMi
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2fd20	116	__glCalcSphereMap	dwarf+dynsym	7f1329ee829d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda2fda0	1064	CheckTexSubImageArgs	dwarf+funcnames	f390beafc3b2		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda301d0	188	__glInitTexSubImageStore	dwarf+dynsym	d5f5407e722d		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda30290	92	CheckTexSubImageRange	dwarf+funcnames	10d31f6a0b1d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda30290	92	CheckTexSubImageRange	dwarf+funcnames	10d31f6a0b1d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda302f0	244	__glCheckTexSubImage1DArgs	dwarf+dynsym	dda308b4cf28		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda303f0	312	__glCheckTexSubImage2DArgs	dwarf+dynsym	2b4ff2fe535f		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda30530	368	__glCheckTexSubImage3DArgs	dwarf+dynsym	ac5f1cdb8173		in	undocumented		
