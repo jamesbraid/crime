@@ -638,7 +638,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c46c	28	atohex_ptr	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c488	880	strtoull	symtab	57fdee28ca46		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca18	40	iscloseonexec	symtab	98ee9db0fea3		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ca40	1384	bcopy	symtab	5413997fd8fa		in	named-only	docs/functions.md#tile-allocation-crime_tileso	Tile allocation (`crime_tiles.o`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002cfa8	216	bzero	symtab	51c5b0063af5		in	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002cfa8	216	bzero	symtab	51c5b0063af5		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d080	288	bcmp	symtab	2ed143ac8973		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d1a0	120	_cksum1	symtab	fa1ae93e2997		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d218	24	nuxi_s	symtab	334808083dd0		in	undocumented		
@@ -1321,7 +1321,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3398	88	uzero	symtab	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x33f0	20	cerror	symtab	2c420a423a29		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3404	276	memset	symtab	36fbd346ab81		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	4	blkclr	symtab	7625eea86b52	shared-address	out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	180	bzero	symtab	8ebec24cc32f	shared-address	out:4	named-only	docs/functions.md#kernel-tile-pool-tileo	Kernel tile pool (`tile.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	180	bzero	symtab	8ebec24cc32f	shared-address	out:4	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x351c	176	bzero_cdx_entry	symtab	d0e4d16db57c		in	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzero_end	symtab	78aa5094d5ec	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzerror	symtab	78aa5094d5ec	shared-address	out:4	undocumented		
