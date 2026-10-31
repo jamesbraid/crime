@@ -108,6 +108,43 @@ The members of `crime.a`, `gfxs.a` and the single object `mace.o` have their own
 
 The `2@` files are the formats of the dual-channel display option (established, title strings); the `s` files are the two stereo formats ([gbe.md](gbe.md)). The `@` letter after some titles and the `p` suffix are not decoded: no O2 reader parses the title (inferred from the readers named in [gbe.md](gbe.md), which read named scalars only).
 
+### Format file entries (`usr/gfx/ucode/CRM/vof/`)
+
+The 26 format files have no entry points of their own. The X module reads each one: `crmReadVideoFormat..FC` at 0x593e70 in `crm.so` opens it with `SDBreadOpenDatabase` (inferred from the routine's name and calls, [xmodule.md](xmodule.md)); `crmLoadTimingTable` builds a 0x30-byte timing record from the format, and ioctl 0x55f6 sends that record to `crimeLoadTimingTable` in the kernel, which programs the GBE timing registers (established from the disassembly, [gbe.md](gbe.md) and [ioctls.md](ioctls.md)). No format file reaches a register directly.
+
+Each row gives one file, read from its own bytes (established by reading the words at the offsets shown; offsets are hexadecimal file offsets). The clock is the 32-bit big-endian word that [gbe.md](gbe.md) reads as the pixel clock. The PLL scalars `M`, `N` and `P` are the three words 20 bytes before the three words 5, 5, 1, which occur once in every file; for the 16 files that gbe.md lists, these are the values it gives (established by comparison). VCO is 20 MHz times `M` divided by `N`; output is the VCO divided by 2 to the `P` (established by arithmetic, the formula gbe.md uses). The last column is the output minus the clock word, in parts per million.
+
+| File | Bytes | Title | Clock, Hz (offset) | M, N, P (offset) | VCO, MHz | Output, MHz | Output minus clock word, ppm |
+|---|---|---|---|---|---|---|---|
+| `usr/gfx/ucode/CRM/vof/640x480_60.vfo` | 12416 | none | 25174800 (0x1b70) | 5, 1, 2 (0x2bc) | 100.000 | 25.000 | -6943.5 |
+| `usr/gfx/ucode/CRM/vof/800x600_60.vfo` | 12424 | `800x600_60` | 40000304 (0x1b78) | 8, 1, 2 (0x2c4) | 160.000 | 40.000 | -7.6 |
+| `usr/gfx/ucode/CRM/vof/800x600_72.vfo` | 12424 | `800x600_72` | 50000296 (0x1b78) | 5, 1, 1 (0x2c4) | 100.000 | 50.000 | -5.9 |
+| `usr/gfx/ucode/CRM/vof/1024x768_60.vfo` | 12424 | `1024x768_60` | 65000173 (0x1b78) | 13, 2, 1 (0x2c4) | 130.000 | 65.000 | -2.7 |
+| `usr/gfx/ucode/CRM/vof/1024x768_60p.vfo` | 12436 | `1024x768_60p@N` | 65000173 (0x1b84) | 13, 2, 1 (0x2d0) | 130.000 | 65.000 | -2.7 |
+| `usr/gfx/ucode/CRM/vof/1024x768_70.vfo` | 12424 | `1024x768_70` | 74999615 (0x1b78) | 15, 2, 1 (0x2c4) | 150.000 | 75.000 | +5.1 |
+| `usr/gfx/ucode/CRM/vof/1024x768_75.vfo` | 12424 | `1024x768_75` | 78750438 (0x1b78) | 39, 5, 1 (0x2c4) | 156.000 | 78.000 | -9529.3 |
+| `usr/gfx/ucode/CRM/vof/1024x768_96s.vfo` | 12748 | `1024x768_96 Stereo Window` | 103502592 (0x1ba0) | 31, 3, 1 (0x2ec) | 206.667 | 103.333 | -1635.3 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_48.vfo` | 12424 | `1280x1024_48@H` | 85881600 (0x1b78) | 30, 7, 0 (0x2c4) | 85.714 | 85.714 | -1948.2 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_50.vfo` | 12424 | `1280x1024_50@I` | 89460000 (0x1b78) | 9, 1, 1 (0x2c4) | 180.000 | 90.000 | +6036.2 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_60.vfo` | 12424 | `1280x1024_60@M` | 107244648 (0x1b78) | 16, 3, 0 (0x2c4) | 106.667 | 106.667 | -5389.4 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_60p.vfo` | 12440 | `1280x1024_60p` | 107244648 (0x1b88) | 16, 3, 0 (0x2d4) | 106.667 | 106.667 | -5389.4 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_72.vfo` | 12424 | `1280x1024_72@R` | 129467520 (0x1b78) | 13, 2, 0 (0x2c4) | 130.000 | 130.000 | +4112.8 |
+| `usr/gfx/ucode/CRM/vof/1280x1024_75.vfo` | 12424 | `1280x1024_75@R` | 135000585 (0x1b78) | 27, 4, 0 (0x2c4) | 135.000 | 135.000 | -4.3 |
+| `usr/gfx/ucode/CRM/vof/1280x492_120s.vfo` | 12740 | `1280x492_120 Stereo` | 107143949 (0x1b98) | 16, 3, 0 (0x2e4) | 106.667 | 106.667 | -4454.6 |
+| `usr/gfx/ucode/CRM/vof/1600x1024_48p.vfo` | 12440 | `1600x1024_48p` | 97219200 (0x1b88) | 34, 7, 0 (0x2d4) | 97.143 | 97.143 | -785.3 |
+| `usr/gfx/ucode/CRM/vof/1600x1024_50p.vfo` | 12440 | `1600x1024_50p` | 101270000 (0x1b88) | 5, 1, 0 (0x2d4) | 100.000 | 100.000 | -12540.7 |
+| `usr/gfx/ucode/CRM/vof/1600x1024_60p.vfo` | 12440 | `1600x1024_60p` | 108732000 (0x1b88) | 38, 7, 0 (0x2d4) | 108.571 | 108.571 | -1476.8 |
+| `usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo` | 12440 | `1024x768_60 Dual Channel@N` | 65000173 (0x1b88) | 13, 2, 1 (0x2d4) | 130.000 | 65.000 | -2.7 |
+| `usr/gfx/ucode/CRM/vof/2@1024x768_70.vfo` | 12440 | `1024x768_70 Dual Channel@Q` | 74999615 (0x1b88) | 15, 2, 1 (0x2d4) | 150.000 | 75.000 | +5.1 |
+| `usr/gfx/ucode/CRM/vof/2@1024x768_75.vfo` | 12440 | `1024x768_75 Dual Channel@R` | 78750438 (0x1b88) | 39, 5, 1 (0x2d4) | 156.000 | 78.000 | -9529.3 |
+| `usr/gfx/ucode/CRM/vof/2@1280x1024_48.vfo` | 12444 | `1280x1024_48 Dual Channel` | 85881600 (0x1b8c) | 30, 7, 0 (0x2d8) | 85.714 | 85.714 | -1948.2 |
+| `usr/gfx/ucode/CRM/vof/2@1280x1024_50.vfo` | 12444 | `1280x1024_50 Dual Channel` | 89460000 (0x1b8c) | 9, 1, 1 (0x2d8) | 180.000 | 90.000 | +6036.2 |
+| `usr/gfx/ucode/CRM/vof/2@1280x1024_60.vfo` | 12444 | `1280x1024_60 Dual Channel` | 107244648 (0x1b8c) | 16, 3, 0 (0x2d8) | 106.667 | 106.667 | -5389.4 |
+| `usr/gfx/ucode/CRM/vof/2@1280x1024_72.vfo` | 12444 | `1280x1024_72 Dual Channel` | 129467520 (0x1b8c) | 13, 2, 0 (0x2d8) | 130.000 | 130.000 | +4112.8 |
+| `usr/gfx/ucode/CRM/vof/2@1280x1024_75.vfo` | 12444 | `1280x1024_75 Dual Channel` | 135000585 (0x1b8c) | 27, 4, 0 (0x2d8) | 135.000 | 135.000 | -4.3 |
+
+Notes on the table (established from the same reads). `640x480_60.vfo` is the only file with a `VGA` string. The `1024x768_96s` and `1280x492_120s` files are the stereo formats, whose layout is in [gbe.md](gbe.md). The `1024x768_60p` and `1280x1024_60p` files repeat the clock and PLL values of their single-channel bases, and each `2@` file repeats those of its single-channel format; they differ from the base in offset and length only, and their extra leading words are not decoded. The `1600x1024` `p` files have no single-channel base in the set.
+
 ## Diagnostics
 
 - `ide.IP32`, `symmon.IP32` and the PROM image `ip32prom.image`: the stand-alone diagnostics, the stand-alone kernel debugger (`symmon_brkhandler`, `symmon_exceptnorm`, the exception and breakpoint entries) and the boot firmware. `ide.IP32` carries the graphics and memory tests read in [gbe.md](gbe.md) and [memory.md](memory.md).
