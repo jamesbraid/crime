@@ -8592,7 +8592,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fa360	612	clipToPl
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fa5c4	4028	clipToPlaneEye	mdebug	d9ca2ac1dd23		in	located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fa8d0	1000	__glDoPolygonClip	dynsym+mdebug	f0da7121aadb		in	located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9facb8	136	__glClipPolygon	dynsym+mdebug	fc719f6ecced		in	located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fad40	84	__glClipTriangle	dynsym+mdebug	00c8540ca81e		in	located	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fad40	84	__glClipTriangle	dynsym+mdebug	00c8540ca81e		in	understood	docs/sample-implementation.md#so_polyclipc	so_polyclip.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fb2d8	396	__glSnapXLeft	dynsym+mdebug	20adeb43c59d		in	located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9fb464	284	__glSnapXRight	dynsym+mdebug	032dc6112619		in	located	docs/sample-implementation.md#so_polydrawc	so_polydraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9fb580	6364	__glComputePolygonOffset	mdebug	dbf606e07a85		in	undocumented		
