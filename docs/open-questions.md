@@ -77,6 +77,56 @@ Each lead in [published-sources.md, section 14](published-sources.md#14-recollec
 - The OpenBSD gbe(4) register constants and engine sequences against the CRIME specification: the OpenBSD commit lead (diff not read).
 - Fill-rate micro-benchmarks in an IRIX guest against the 174 and 120 Mpixel/s figures: the sgidepot tables lead (not fetched).
 - The 2.1 GB/s bandwidth quote: the sgidepot architecture lead (not read; source 2 covers it).
+- A rendering-engine FIFO overflow raises the fifo-full interrupt and logs "level 111, ctl 0x280098b": the 2003 overflow panic lead.
+- `/usr/gfx/ucode/CRM/vof` holds 14 formats including 1280x1024_72 and 800x600_72, and the `h` and `l` monitor variables select the text-port timing: the 1996 to 2002 vof listing lead.
+- `gfxinfo` on a dual-channel O2 prints channel 1 at origin (0,1024) and "2@1280x1024_75": the dual-channel gfxinfo lead.
+- CRM and VICE ID registers give the TRE and DX strings, and frame capture is refused on CRM 1.3 with TRE: the CRM and VICE revision lead.
+- Stereo needs setmon, no visual advertises stereo, and a stereo-mode band appears only with the old wrong-pixel defect: the CRIME stereo and band lead.
+- `glxinfo` reports GL_RENDERER "CRIME" and GL_VERSION 1.1 with 1.2-era extensions: the OpenGL renderer string lead.
+- A DM pbuffer copied with glCopyTexSubImage2D into a matching texture shows later DMbuffer changes without a re-upload: the live-video texture lead.
+- `xscreen` 32+32 changes free memory by about the framebuffer delta, and 1600x1024 is refused at CRT refresh: the UMA and xscreen lead.
+- Triangle rates by mode keep the ratios of the 1996 measurements (flat, lit smooth depth, textured): the triangle-rate lead.
+- glReadPixels from a pbuffer costs about the same as from the visible framebuffer, and 24-bit access is slow: the readback lead.
+- STR_RECT and STR_TOP pass only in the 16 and 32 framebuffers; quad-buffer stereo passes only in 16+16 and 32+32: the str_rect lead.
+- 16+16 is the default, xscreen 32+32 takes a few MB, and the kernel is 32-bit only: the 16+16 default lead.
+- Each framebuffer mode lists the visuals the post gives (32 and 32+32 double-buffered and stereo, 16 and 16+16 without them): the framebuffer depth lead.
+- `findvis` lists the same visuals in the 16, 32, 16+16 and 32+32 configurations as the 1998 post: the CRM visual list lead.
+- The VICE "TRE" and "DX" hinv strings follow the revision, and the two silicon revisions differ in behaviour: the VICE DX and TRE lead.
+- `GLX_LARGEST_PBUFFER_SGIX` gives 1280x1024 on O2 and a 2048x2048 pbuffer fails on Octane with BadAlloc: the pbuffer size lead.
+- `VL_MVP_ZOOMSIZE` refuses scale-up, and live video as texture runs at 45 fps for a 1024x512 texture: the MVP zoom lead.
+- The MVP 10-bit packings carry no data in the low bits, and dmIC rejects a 10-bit source: the 10-bit packing lead.
+- A constant-bit-rate MJPEG capture drops no frames in ICE, and IRIX 6.5.16 and later drop frames on capture: the ICE JPEG capture lead.
+- A cached DMA ring breaks the MACE audio driver and an uncached one works: the MACE audio DMA lead.
+- R12000 has a bit that disables speculative writes, and R10000 reads through speculation: the R10000 speculation lead.
+- The CRIME ID register reads "a" revision 1, and the four 128 MiB banks decode to 0x0, 0x08000000, 0x50000000 and 0x58000000: the CRIME bank map lead.
+- `/proc/interrupts` on a Linux guest shows IRQ 28 and 29 for CRIME and 11 to 22 for MACE: the interrupt numbering lead.
+- CRIME error status latched during PROM execution reads as new until the kernel clears it: the CRIME error latch lead.
+- The DMbuffer frame buffer layout is non-linear and chunked, and a pbuffer DMbuffer needs glFinish before a CPU map: the DMbuffer layout lead.
+- Scan-out and video out at 1280x1024x60 reduce fill rate by a measurable amount: the memory bandwidth contention lead.
+- MPEG-1 decode leaves VICE state needing a reset after a few plays: the MPEG-1 pink video lead.
+- The O2 dual-head option is a PCI card that reports one CRIME display; display (0:1) is not supported: the second head lead.
+- `gfxinfo` monitor type changes with the attached display's EDID, and an unsupported-timing EDID leaves the server up: the EDID monitor type lead.
+- Quad-buffer stereo needs four colour buffers and refresh sync holds under load: the quad-buffer stereo lead.
+- STR_RECT offsets fields by 512 lines on O2, and STR_TOP breaks under patches 1979 and 2447: the STR_TOP and STR_RECT lead.
+- The IRIX 6.3 vof set matches the file list and sizes, and a custom 1600x1200_57 format is accepted or flagged by the GBE model: the vof listing lead.
+- The MACE PCI bus is 64 bits wide at 256 MB/s peak: the PCI width lead (a discrepancy to check).
+- `MACE I2C register failure` appears in IDE with an unmodelled I2C register, and passes after a cold reset: the MACE I2C diagnostic lead.
+- The IDE MACE I2C failure appears after a warm entry from IRIX and not after a cold power-on: the IDE warm and cold lead.
+- CRIME does not read the module PROM, and the R5000 PROM reads Config[21:20] for the secondary cache size: the IRIXNet module PROM lead.
+- VICE is a DMA engine, a bitstream processor and an MSP core, and the shipped microcode has no MPEG-2 entry point: the Nekonomicon VICE lead.
+- `hinv -vm` prints "Vice: TRE" and `gfxinfo -vv` prints CRM revision C and GBE revision B on an R12000 O2+: the Nekonomicon hinv lead.
+- Cfifo wait timeouts of 0xf4240 us and 0x1000 us, MTE buffer-to-buffer copies, clip-ID primitives and unaligned glReadPixels behave as the emulator reports: the emulator issue lead.
+- Speculative stores and DMA overlap on an R10000 guest show the cache barrier workaround is needed: the Linux-MIPS IP32 wiki lead.
+- The OpenBSD gbe.c constants (tile pointer shift 9, 16x16 TLB geometry, GBE revision in the low 4 bits) match the GBE specification: the OpenBSD gbe.c lead.
+- The R10000 "Juice" ASIC is the memory interface and early boards differ from late ones in revision registers: the Slashdot Juice lead.
+- R10000 and R12000 O2 are restricted to n32 addressing and 1 GB memory, and a GL texture or blend test refutes the Z-buffer-only claim: the Slashdot 32-bit lead.
+- A DMbuffer or framebuffer tile is not cleared when an X session starts after a previous one: the Hacker News display-memory lead.
+- IRIX 6.5 has MPEG-2 decode microcode or routines in the shipped libraries: the Hacker News DVD lead.
+- The "Cfifo wait timeout" and "crime fifo timeout after 0xf4240 us" messages and the SavePP reset appear in the driver, and a starved FIFO prints them in order after 1 s: the CRIME FIFO messages lead.
+- The O2 screen shift at 1280x1024_72 in 32+32 comes from a GBE FIFO under memory-transfer load: the screen shift lead.
+- An audio-only O2 has no video device in hinv or the video library: the audio-only board lead.
+- Patch 1795 changes the libGL and kernel graphics objects on the texture-load path between base 6.3 and the patch: the early patch lead.
+- The dual-channel option refreshes each head at 30 Hz and reuses one scan-out with an alternate-field timing: the dual-channel option lead.
 
 ## Where work stopped
 
