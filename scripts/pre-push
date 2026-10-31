@@ -12,12 +12,17 @@
 # The report is printed for every class; the push is refused only for a
 # mismatch in a class with near-zero false positives (BLOCKING in
 # scripts/check_claims.py) on an entry the push changes. CHECK_CLAIMS=off
-# skips the check.
-[ "${CHECK_CLAIMS:-on}" = off ] && exit 0
+# skips the claim check. A repository's scripts/check-leaks.sh, when present,
+# runs as well and its failure also refuses the push.
 top=$(git rev-parse --show-toplevel) || exit 0
 cd "$top" || exit 0
-z=0000000000000000000000000000000000000000
 status=0
+# a repository's own leak check, where it has one, runs first and always
+if [ -x scripts/check-leaks.sh ]; then
+    scripts/check-leaks.sh >&2 || status=1
+fi
+[ "${CHECK_CLAIMS:-on}" = off ] && exit $status
+z=0000000000000000000000000000000000000000
 while read -r lref lsha rref rsha; do
     [ "$lsha" = "$z" ] && continue
     if [ "$rsha" = "$z" ]; then
