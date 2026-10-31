@@ -6,7 +6,7 @@ for row in csv.reader(open('../../docs/inventory/functions.tsv'),delimiter='\t')
     if row and row[0].endswith('crm.so') and row[4].startswith('0x'): syms[int(row[4],16)]=row[6]
 import sys
 for fn,name,sites in [(0x4c2590,'cfb8Stipple32FS',[0x4c2854]),(0x4c4d20,'cfb8OpaqueStipple32FS',[0x4c4db8,0x4c4ea4]),(0x4c5c10,'cfbUnnaturalStippleFS',[0x4c5ca4,0x4c5db4,0x4c61a4]),(0x4e6f20,'cfb8FillRectOpaqueStippled32',[0x4e6fac])]:
-    out=subprocess.run(['uv','run','-q','--with','pyelftools','--with','capstone','python3','crmdis.py',name],capture_output=True,text=True).stdout.split('\n')
+    out=subprocess.run([sys.executable,'crmdis.py',name],capture_output=True,text=True).stdout.split('\n')
     for site in sites:
         k=[i for i,l in enumerate(out) if l.startswith('%x:'%site)][0]
         # nearest preceding 'lw $t9, off($gp)' or ($at)

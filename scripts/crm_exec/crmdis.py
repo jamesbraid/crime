@@ -1,5 +1,5 @@
 """Addressed disassembly of crm.so routines, callees named by target address.
-  uv run -q --with pyelftools --with capstone python3 scripts/crm_exec/crmdis.py cfbFillPoly1RectCopy
+  tools/re-run python3 scripts/crm_exec/crmdis.py cfbFillPoly1RectCopy
 The symbol table comes from docs/inventory/functions.tsv (address, size, name); a jal or a
 PIC call through t9 is resolved from the address, so a wrong label in the generated listings shows.
 """

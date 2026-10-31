@@ -1,7 +1,7 @@
 #!/bin/sh
 # Run one verification driver against ddx/crm.so in the MIPS interpreter (mips.py).
-#   scripts/crm_exec/run.sh t6.py
-# Needs pyelftools (uv run --with pyelftools). The drivers chain with exec(), so run from this directory.
+#   tools/re-run scripts/crm_exec/run.sh t6.py
+# Needs pyelftools, which the tools/re-run image has. The drivers chain with exec(), so run from this directory.
 #
 # driver  checks
 #   t6      cfbLineSS, cfb16LineSS, cfb32LineSS against the thin-line reference (ref.py, ref2.py)
@@ -14,4 +14,4 @@
 #   mt3     mfbLineSS, mfbSegmentSS; mt4 mfbLineSD, mfbSegmentSD; mt5 the dashed end-point
 #           truth table; mt7 when mfbLineSS calls mfbBresS
 cd "$(dirname "$0")" || exit 1
-exec uv run -q --with pyelftools python3 -c "import sys;sys.path.insert(0,'.');exec(open(sys.argv[1]).read())" "$@"
+exec python3 -c "import sys;sys.path.insert(0,'.');exec(open(sys.argv[1]).read())" "$@"
