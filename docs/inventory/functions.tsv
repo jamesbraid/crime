@@ -708,7 +708,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030ca4	188	token	symtab	dd
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030d60	80	strncmp	symtab	3fec96eeb2ec		in	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030db0	96	strncpy	symtab	4a439ff1f0b5		in	named-only	docs/functions.md#chip-probe-and-display-start-crime_inito	Chip probe and display start (`crime_init.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030e10	96	strncat	symtab	587b5177e7f0		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030e70	36	index	symtab	f33858367dfc		in	named-only	docs/context.md#saving-and-replaying-uncommitted-writes	Saving and replaying uncommitted writes
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030e70	36	index	symtab	f33858367dfc		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030e94	36	rindex	symtab	574ccb33b9d9		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030eb8	68	kl_inv_find	symtab	b7f5257a80c8		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030efc	68	kl_hinv	symtab	697cb5e474cb		in	undocumented		

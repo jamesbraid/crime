@@ -154,3 +154,75 @@ Per-file entries for the o32 image-converter plug-ins under `usr/lib/dmedia/imag
 - `usr/lib/dmedia/imageconverters/debug/vicers.so` (64972 bytes): the debug build of `vicers.so`, with the same single export.
   Its `dmICInitDso` at 0x401928 (156 bytes) calls `dmICRegisterConverter` once, at 0x40198c, and does not call `dmSetError` (established, `objdump -d`).
   Its VICE imports are the release build's, from `vice_open` through `vice_dmbuf_recv` (established, dynamic symbols).
+
+The N32 plug-ins under `usr/lib32/dmedia/imageconverters/` are separate builds, at other addresses and with their own code.
+Each `dmICInitDso` below was read in full with `objdump -d`.
+Callees are named through the GOT. A global callee's slot is `PLTGOT + 4 × (MIPS_LOCAL_GOTNO + dynsym index − MIPS_GOTSYM)` (established, `readelf -d` and `readelf --dyn-syms`).
+Each file's `gp` is the value its prologue computes with `addu gp,t9,…` (established).
+A local GOT pointer's value is not read, so descriptor entries are given by their offset from that pointer.
+None of the seven N32 plug-ins has a `.mdebug` section (established, `readelf -S`).
+- `usr/lib32/dmedia/imageconverters/vicedv.so` (559968 bytes): the N32 DV converter plug-in.
+  It exports `dmICInitDso` at 0x403ac0 and the DV coding routines named in the o32 entry above (established, `readelf --dyn-syms`). The roles of the DV routines are inferred from their export names.
+  `dmICInitDso` is 224 bytes at 0x403ac0 with gp 0x483b74 (established, `objdump -d`).
+  It calls `dmICRegisterConverter` twice, through slot 0x47bc40 (dynsym index 63).
+  It calls `dmSetError` through slot 0x47bc1c (index 54) on failure (established, slot formula).
+  The descriptor pointer is the local GOT slot 0x47bbbc plus 1880.
+  The first call passes the doublewords at +80 to +136 in `a0` to `a7`.
+  The ninth argument is the doubleword at +144, and the tenth is the word at +152 (established, loads in the body).
+  The second call passes +0 to +56 in `a0` to `a7`, the doubleword at +64 as the ninth argument and the word at +72 as the tenth (established).
+  A negative result from either call takes the path at 0x403b74. That path calls `dmSetError` with code 6004 (0x1774) and returns -1.
+  Otherwise the function returns 0 (established, branch order).
+- `usr/lib32/dmedia/imageconverters/vicejpeg.so` (69880 bytes): the N32 JPEG converter plug-in.
+  It exports `dmICInitDso` at 0x4022b4 (232 bytes) and `vjpeg_qfmt` at 0x405670 (104 bytes).
+  It also exports `jhead_make` at 0x405410 (336 bytes) and `jhead_luma_make` at 0x405560 (272 bytes).
+  It exports the table `Qtab` (15360 bytes) and `qtoi` (101 bytes) (established, `readelf --dyn-syms`; the roles of the table builders are inferred from their export names).
+  `dmICInitDso` runs with gp 0x4148d0 (established, `objdump -d`).
+  It calls `dmICRegisterConverter` twice, through slot 0x40c974.
+  It calls `dmSetError` through slot 0x40c994 on failure (established, slot formula).
+  The descriptor base is the local GOT slot 0x40c918 value minus 14376.
+  The first call passes +0 to +56 in `a0` to `a7`, the doubleword at +64 as the ninth argument and the word at +72 as the tenth (established, loads in the body).
+  The second call passes +80 to +136 in `a0` to `a7`, the doubleword at +144 as the ninth argument and the word at +152 as the tenth (established).
+  On failure the function builds two addresses from the same slot, at offsets −32664 and −32424, calls `dmSetError` with 6004, and returns -1.
+  Success returns 0 (established, branch order).
+- `usr/lib32/dmedia/imageconverters/vicempeg.so` (23764 bytes): the N32 MPEG converter plug-in and its only export, `dmICInitDso` at 0x401020 (344 bytes).
+  It imports the VICE routines of `libvice.so`, among them `vice_open`, `vice_file` and `vice_dmbuf_msend` (established, dynamic symbols).
+  It also imports the buffer routines `dmBufferGetUSTMSCpair` and `dmBufferSetUSTMSCpair` (established, dynamic symbols).
+  `dmICInitDso` runs with gp 0x40c17c and a 112-byte frame (established, `objdump -d`).
+  It calls `dmICRegisterConverter` once, through slot 0x404208. It does not call `dmSetError`.
+  Before the call it stores 18 words, one at each 4-byte offset from 16(sp) through 84(sp).
+  Each is a local GOT slot value plus a constant (established, `sw` instructions).
+  The call takes the doublewords at 16(sp) through 72(sp) in `a0` to `a7`.
+  The ninth argument is the doubleword at 80(sp), and the tenth is loaded from 88(sp) (established, loads in the body).
+  No store in this routine writes 88(sp) (established, store list), so the tenth argument is whatever the frame held.
+  A negative result returns -1 through 0x401164. Otherwise the function returns 0.
+- `usr/lib32/dmedia/imageconverters/vicers.so` (24656 bytes): the N32 resampling converter plug-in and its only export, `dmICInitDso` at 0x401894 (132 bytes).
+  It imports the VICE open, load and transfer routines, among them `vice_open`, `vice_dmbuf_send` and `vice_dms_geterrs` (established, dynamic symbols).
+  The resampling reading is inferred from the export name.
+  `dmICInitDso` runs with gp 0x40c28c and a 32-byte frame (established, `objdump -d`).
+  It calls `dmICRegisterConverter` once, through slot 0x404340, and does not call `dmSetError`.
+  The descriptor base is the local GOT slot 0x4042d0 value plus 16976.
+  The call passes +0 to +56 in `a0` to `a7`, the doubleword at +64 as the ninth argument and the word at +72 as the tenth (established, loads in the body).
+  A negative result returns -1. Any other result returns 0.
+- `usr/lib32/dmedia/imageconverters/debug/vicedv.so` (595700 bytes): the debug build of `vicedv.so`, with the same DV exports.
+  `dmICInitDso` at 0x403e60 is 260 bytes with gp 0x487bac (established, `objdump -d`).
+  It calls `dmICRegisterConverter` twice, through slot 0x47fc7c.
+  It calls `dmSetError` through slot 0x47fc58 on failure (established, slot formula).
+  Both descriptors come from the local GOT slot 0x47fbf4: the first call uses that slot plus 18400, the second that slot plus 18320.
+  Each call passes +0 to +56 in `a0` to `a7`, the doubleword at +64 as the ninth argument and the word at +72 as the tenth (established, loads in the body).
+  The first descriptor is therefore 80 bytes past the second.
+  A failure from either call goes to 0x403f18. That path calls `dmSetError` with 6004 and stores -1 as the return value.
+  Success stores 0 (established, branch order and stores).
+- `usr/lib32/dmedia/imageconverters/debug/vicejpeg.so` (97368 bytes): the debug build of `vicejpeg.so`, with the same JPEG exports.
+  `dmICInitDso` at 0x4027c0 is 264 bytes with gp 0x4188d0 (established, `objdump -d`).
+  It calls `dmICRegisterConverter` twice, through slot 0x410988.
+  It calls `dmSetError` through slot 0x410960 on failure (established, slot formula).
+  The descriptor base is the local GOT slot 0x410918 plus 2008.
+  The first call passes +0 to +56 in `a0` to `a7`, the doubleword at +64 as the ninth argument and the word at +72 as the tenth.
+  The second call uses the same layout at that slot plus 2088, which is 80 bytes further on (established, loads in the body).
+  A failure from either call goes to 0x402878. That path calls `dmSetError` with 6004 and stores -1 as the return value.
+  Success stores 0 (established, branch order).
+- `usr/lib32/dmedia/imageconverters/debug/vicers.so` (31332 bytes): the debug build of `vicers.so`, with the same single export.
+  Its `dmICInitDso` is 152 bytes at 0x401b80 with gp 0x40c28c (established, `objdump -d`).
+  It calls `dmICRegisterConverter` once, through slot 0x404338, and does not call `dmSetError`.
+  The descriptor base is the local GOT slot 0x4042d0 value plus 16976, and the call passes the same layout as the release build (established, loads in the body).
+  A negative result stores -1 as the return value. Any other result stores 0 (established, branch order and stores).
