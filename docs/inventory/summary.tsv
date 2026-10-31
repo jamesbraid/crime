@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
-binaries	82	0	15	1	15	0	0	67	0	0	18.3	18.3	100.0	18.3							0			
-functions	15177	2103	2091	6	2000	1351	3275	2041	7770	0	13.8	35.4	48.8	13.8			75.0	8	2026-10-30		74	62	233	
-functions (distinct names)	9682	2044	1662	5	1655	673	1676	1042	5302	0	17.2	34.5	45.2	17.2							36			
+binaries	82	0	22	1	22	0	0	60	0	0	26.8	26.8	100.0	26.8							0			
+functions	15177	2103	2091	6	2000	1351	3276	2082	7728	0	13.8	35.4	49.1	13.8			75.0	8	2026-10-30		74	62	233	
+functions (distinct names)	9682	2044	1662	5	1655	673	1677	1057	5286	0	17.2	34.5	45.4	17.2							36			
 mmio	162	0	162	0	154	0	0	0	0	0	100.0	100.0	100.0	100.0	51		100.0	10	2026-10-29		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -24,7 +24,7 @@ functions in usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	2	0	2	0	2	0	0	0	0	0	100
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100.0	98.2							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100.0	98.2							0	0	0	
-functions in usr/cpu/sysgen/IP32boot/kernel.o	169	642	98	0	98	0	0	29	42	0	58.0	58.0	75.1	58.0							0	0	23	
+functions in usr/cpu/sysgen/IP32boot/kernel.o	169	642	98	0	98	0	1	28	42	0	58.0	58.6	75.1	58.0							0	0	23	
 functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	0	0	0	0	4	1	164	0	0.0	2.4	3.0	0.0							0	0	2	
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
@@ -38,27 +38,27 @@ functions in usr/gfx/gfxinit	227	0	0	0	0	0	0	1	226	0	0.0	0.0	0.4	0.0							0	0	0
 functions in usr/gfx/setmon	249	0	1	0	1	0	19	4	225	0	0.4	8.0	9.6	0.4							0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	548	0	544	8	267	25	0	0	65.2	97.0	100.0	65.2							0	0	0	
 functions in usr/lib/X11/dyDDX/glx.so	981	0	0	0	0	0	0	0	981	0	0.0	0.0	0.0	0.0							0	0	0	
-functions in usr/lib/dmedia/imageconverters/debug/vicedv.so	95	0	0	0	0	0	0	1	94	0	0.0	0.0	1.1	0.0							0	0	0	
-functions in usr/lib/dmedia/imageconverters/debug/vicejpeg.so	64	0	0	0	0	0	0	1	63	0	0.0	0.0	1.6	0.0							0	0	0	
+functions in usr/lib/dmedia/imageconverters/debug/vicedv.so	95	0	0	0	0	0	0	3	92	0	0.0	0.0	3.2	0.0							0	0	0	
+functions in usr/lib/dmedia/imageconverters/debug/vicejpeg.so	64	0	0	0	0	0	0	4	60	0	0.0	0.0	6.2	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/debug/vicers.so	26	0	0	0	0	0	0	1	25	0	0.0	0.0	3.8	0.0							0	0	0	
-functions in usr/lib/dmedia/imageconverters/vicedv.so	95	0	0	0	0	0	0	1	94	0	0.0	0.0	1.1	0.0							0	0	0	
-functions in usr/lib/dmedia/imageconverters/vicejpeg.so	64	0	0	0	0	0	0	1	63	0	0.0	0.0	1.6	0.0							0	0	0	
+functions in usr/lib/dmedia/imageconverters/vicedv.so	95	0	0	0	0	0	0	3	92	0	0.0	0.0	3.2	0.0							0	0	0	
+functions in usr/lib/dmedia/imageconverters/vicejpeg.so	64	0	0	0	0	0	0	4	60	0	0.0	0.0	6.2	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicempeg.so	19	0	0	0	0	0	0	2	17	0	0.0	0.0	10.5	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicers.so	26	0	0	0	0	0	0	1	25	0	0.0	0.0	3.8	0.0							0	0	0	
 functions in usr/lib/dmedia/video/debug/mvp.so	114	0	0	0	0	0	0	3	111	0	0.0	0.0	2.6	0.0							0	0	0	
 functions in usr/lib/dmedia/video/mvp.so	114	0	0	0	0	0	0	3	111	0	0.0	0.0	2.6	0.0							0	0	0	
-functions in usr/lib/internal/libvice.so	50	0	0	0	0	0	0	4	46	0	0.0	0.0	8.0	0.0							0	0	0	
+functions in usr/lib/internal/libvice.so	50	0	0	0	0	0	0	15	35	0	0.0	0.0	30.0	0.0							0	0	0	
 functions in usr/lib/libXsgivc.so	63	0	0	0	0	0	0	63	0	0	0.0	0.0	100.0	0.0							0	0	0	
-functions in usr/lib32/dmedia/imageconverters/debug/vicedv.so	96	0	0	0	0	0	0	2	94	0	0.0	0.0	2.1	0.0							0	0	0	
-functions in usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	65	0	0	0	0	0	0	2	63	0	0.0	0.0	3.1	0.0							0	0	0	
+functions in usr/lib32/dmedia/imageconverters/debug/vicedv.so	96	0	0	0	0	0	0	4	92	0	0.0	0.0	4.2	0.0							0	0	0	
+functions in usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	65	0	0	0	0	0	0	5	60	0	0.0	0.0	7.7	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/debug/vicers.so	27	0	0	0	0	0	0	2	25	0	0.0	0.0	7.4	0.0							0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicedv.so	96	0	0	0	0	0	0	2	94	0	0.0	0.0	2.1	0.0							0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicejpeg.so	65	0	0	0	0	0	0	2	63	0	0.0	0.0	3.1	0.0							0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicedv.so	96	0	0	0	0	0	0	4	92	0	0.0	0.0	4.2	0.0							0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicejpeg.so	65	0	0	0	0	0	0	5	60	0	0.0	0.0	7.7	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/vicempeg.so	20	0	0	0	0	0	0	3	17	0	0.0	0.0	15.0	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/vicers.so	27	0	0	0	0	0	0	2	25	0	0.0	0.0	7.4	0.0							0	0	0	
 functions in usr/lib32/dmedia/video/debug/mvp.so	115	0	0	0	0	0	0	4	111	0	0.0	0.0	3.5	0.0							0	0	0	
 functions in usr/lib32/dmedia/video/mvp.so	115	0	0	0	0	0	0	4	111	0	0.0	0.0	3.5	0.0							0	0	0	
-functions in usr/lib32/internal/libvice.so	51	0	0	0	0	0	0	5	46	0	0.0	0.0	9.8	0.0							0	0	0	
+functions in usr/lib32/internal/libvice.so	51	0	0	0	0	0	0	16	35	0	0.0	0.0	31.4	0.0							0	0	0	
 functions in usr/lib32/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/lib64/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/sbin/Confidence/dualchannel	39	0	0	0	0	0	0	1	38	0	0.0	0.0	2.6	0.0							0	0	0	

@@ -1752,7 +1752,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x149a8	100	baerror	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a0c	88	earlybaerror	symtab	f697dc69ced7		in	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a64	12	VEC_breakpoint	symtab	3614e4802762		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a6c	4	kernelbp	symtab	cd09e81bee54		out:9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	symtab	dcffcaf7af27		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	symtab	dcffcaf7af27		in	located	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ab8	4	sstepbp	symtab	0df244da6067		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14abc	1004	intrnorm	symtab	1c5abbf32d0d		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	ad0c94b16a45		in	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
@@ -15755,7 +15755,7 @@ usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x40752c	152	q
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4075c4	152	qScaleShft	dynsym+mdebug	388e12acda9d		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x40765c	116	scaleBlockInit	dynsym+mdebug	f742aa4d18cd		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4076d0	220	scaleBlock	dynsym+mdebug	018143292065		in	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4077ac	640	buildQM	dynsym+mdebug	42bff8ffea6e		in	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4077ac	640	buildQM	dynsym+mdebug	42bff8ffea6e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x407a2c	624	buildQMShft	dynsym+mdebug	c03ad8dc2bea		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x407c9c	332	loadMSPEncode	dynsym+mdebug	280c6b3c90dd		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x407de8	272	difference	dynsym+mdebug	2f7ca78bcdab		in	undocumented		
@@ -15763,7 +15763,7 @@ usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32	.text	0x407ef8	
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x407f7c	1624	loadMSPDecode	dynsym+mdebug	ada822c3309f		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4085d4	80	dmic_dram_init_decode	dynsym+mdebug	0bece009dc80		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x408624	80	dmic_dram_init_encode	dynsym+mdebug	7b52ae924a32		in	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x408680	2160	codeBuffer	dynsym+mdebug	83092c6c4b67		in	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x408680	2160	codeBuffer	dynsym+mdebug	83092c6c4b67		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x408ef0	132	initCvLength	dynsym+mdebug	16986f942534		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x408f74	340	initVLC16fromVLC	dynsym+mdebug	d311ba55cf8c		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicedv.so	board-library	o32		0x4090c8	384	prnEntry	dynsym+mdebug	1bab9db230de		in	undocumented		
@@ -15861,9 +15861,9 @@ usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x40756
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x4077c0	508	put_app2_colspc	mdebug	46a1110cf5bd		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x4079bc	652	put_com_vice	mdebug	a946fdcd090d		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32	.text	0x407c48	1688	put_com_vice_luma	mdebug	d485cc5fc8e9		in	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x407eb0	456	jhead_make	dynsym+mdebug	cf9fc2143792		in	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x408078	388	jhead_luma_make	dynsym+mdebug	2ce01f3c56a5		in	undocumented		
-usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x408200	224	vjpeg_qfmt	dynsym+mdebug	b962d61eb6ea		in	undocumented		
+usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x407eb0	456	jhead_make	dynsym+mdebug	cf9fc2143792		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x408078	388	jhead_luma_make	dynsym+mdebug	2ce01f3c56a5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/imageconverters/debug/vicejpeg.so	board-library	o32		0x408200	224	vjpeg_qfmt	dynsym+mdebug	b962d61eb6ea		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401270	80	_poolneeds	mdebug	0df9c26d514e		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x4012c0	180	init_formats	mdebug	9b20af31ae3b		in	undocumented		
 usr/lib/dmedia/imageconverters/debug/vicers.so	board-library	o32	.text	0x401374	148	free_formats	mdebug	e3b909b5f277		in	undocumented		
@@ -15940,7 +15940,7 @@ usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x40718c	136	qScale	
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x407214	136	qScaleShft	dynsym+mdebug	c22df6fbda66		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x40729c	104	scaleBlockInit	dynsym+mdebug	99e74e803d74		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x407304	204	scaleBlock	dynsym+mdebug	232a1c292a2b		in	undocumented		
-usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x4073d0	628	buildQM	dynsym+mdebug	54ca90acc3de		in	undocumented		
+usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x4073d0	628	buildQM	dynsym+mdebug	54ca90acc3de		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x407644	612	buildQMShft	dynsym+mdebug	409f46b6cf81		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x4078a8	296	loadMSPEncode	dynsym+mdebug	dcf7b92b1a44		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x4079d0	264	difference	dynsym+mdebug	941cb9143724		in	undocumented		
@@ -15948,7 +15948,7 @@ usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32	.text	0x407ad8	14968	
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x407b50	1564	loadMSPDecode	dynsym+mdebug	44da26b866b5		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x40816c	68	dmic_dram_init_decode	dynsym+mdebug	38477d3395c5		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x4081b0	68	dmic_dram_init_encode	dynsym+mdebug	94783ff8f761		in	undocumented		
-usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x408200	2096	codeBuffer	dynsym+mdebug	81eaff40e951		in	undocumented		
+usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x408200	2096	codeBuffer	dynsym+mdebug	81eaff40e951		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x408a30	124	initCvLength	dynsym+mdebug	156aa4c7043b		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x408aac	320	initVLC16fromVLC	dynsym+mdebug	212612b1fe74		in	undocumented		
 usr/lib/dmedia/imageconverters/vicedv.so	board-library	o32		0x408bec	364	prnEntry	dynsym+mdebug	16fae6178af7		in	undocumented		
@@ -16046,9 +16046,9 @@ usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4065c0	348	
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x40671c	292	put_app2_colspc	mdebug	a46c787d1294		in	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x406840	356	put_com_vice	mdebug	b877131c5149		in	undocumented		
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32	.text	0x4069a4	1468	put_com_vice_luma	mdebug	170db00747e0		in	undocumented		
-usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406af8	420	jhead_make	dynsym+mdebug	a92558118292		in	undocumented		
-usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406c9c	348	jhead_luma_make	dynsym+mdebug	17095c8121dd		in	undocumented		
-usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406e00	340	vjpeg_qfmt	dynsym+mdebug	5e9af7ebb3e5		in	undocumented		
+usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406af8	420	jhead_make	dynsym+mdebug	a92558118292		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406c9c	348	jhead_luma_make	dynsym+mdebug	17095c8121dd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406e00	340	vjpeg_qfmt	dynsym+mdebug	5e9af7ebb3e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32		0x401020	356	dmICInitDso	dynsym+mdebug	ae81a06a3047		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401184	236	Open	mdebug	12ca4f94bfd5		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401270	116	Close	mdebug	179c978dc039		in	undocumented		
@@ -16323,36 +16323,36 @@ usr/lib/dmedia/video/mvp.so	board-library	o32		0x413304	448	mvpSendI2CData	dynsy
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4134c4	104	mvpSendI2C	dynsym+mdebug	11e8d96b277a		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x41352c	388	mvpGetI2CData	dynsym+mdebug	18df0bb29762		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001980	12	vice_get_lib_rev	dynsym+mdebug	f8f63bf9babe		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd00198c	668	vice_open	dynsym+mdebug	b2e0648e6768		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd00198c	668	vice_open	dynsym+mdebug	b2e0648e6768		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd001c28	108	vice_open_and_setetc	dynsym+mdebug	e55cab4d38bf		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001c94	228	vice_close	dynsym+mdebug	751921048c39		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001d78	132	vice_lock	dynsym+mdebug	c890393e97dc		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001dfc	196	vice_unlock	dynsym+mdebug	095c041d31e7		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001ec0	236	vice_piow	dynsym+mdebug	4351ca2e23eb		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001fac	268	vice_pior	dynsym+mdebug	3f1d5e9e0b3e		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd0020b8	140	vice_alloc	dynsym+mdebug	59fb78b33fb8		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd0020b8	140	vice_alloc	dynsym+mdebug	59fb78b33fb8		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002144	184	vice_settlb	dynsym+mdebug	42f92af0187c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd0021fc	136	vice_updatetlb	dynsym+mdebug	98da0eda295d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib/internal/libvice.so	board-library	o32		0xd002284	184	vice_mmap	dynsym+mdebug	a52644b9aeda		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002284	184	vice_mmap	dynsym+mdebug	a52644b9aeda		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd00233c	116	vice_munmap	dynsym+mdebug	1f4025c6856a		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd0023b0	168	vice_bcopyhto	dynsym+mdebug	af64410320b1		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002458	168	vice_bcopywto	dynsym+mdebug	2131324e9b8e		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002500	8	vice_chip_init	dynsym+mdebug	78aa5094d5ec		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd002510	560	vice_file	dynsym+mdebug	8b959abab773		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002510	560	vice_file	dynsym+mdebug	8b959abab773		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32	.text	0xd002740	228	dms_fifo_input	mdebug	f9d43990dbc9		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32	.text	0xd002824	5612	dms_fifo_output	mdebug	722a56d5d51b		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002928	112	vice_event_init	dynsym+mdebug	9de8c5dc1777		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002998	156	vice_event_uninit	dynsym+mdebug	0f95a48702d2		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002a34	132	vice_event_start	dynsym+mdebug	0f4cedba2c02		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd002ab8	80	vice_dms_geterrs	dynsym+mdebug	a07c80b225c8		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002ab8	80	vice_dms_geterrs	dynsym+mdebug	a07c80b225c8		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002b10	316	vice_setetc	dynsym+mdebug	734106d0c9af		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002c4c	256	vice_msp_code_to_etc	dynsym+mdebug	5c8aa0324520		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002d4c	156	vice_msp_sym_to_etc	dynsym+mdebug	d02bddfafecb		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd002de8	180	vice_mload_msp_code	dynsym+mdebug	cb4acbd5c8cb		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd002e9c	204	vice_load_msp_code	dynsym+mdebug	b22e18a03932		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002e9c	204	vice_load_msp_code	dynsym+mdebug	b22e18a03932		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002f68	136	vice_loadmspcode	dynsym+mdebug	dd7db89605bf		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd002ff0	108	vice_load_bsp_code	dynsym+mdebug	c347abd270f4		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd00305c	104	vice_load_bsp_table	dynsym+mdebug	122d0e811a35		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd002ff0	108	vice_load_bsp_code	dynsym+mdebug	c347abd270f4		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/internal/libvice.so	board-library	o32		0xd00305c	104	vice_load_bsp_table	dynsym+mdebug	122d0e811a35		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd0030d0	128	_vice_unit_find	dynsym+mdebug	2d17ecc939c9		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003150	32	_vice_unit_unfind	dynsym+mdebug	b4f4e9debcbd		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003170	40	vice_etc_dramp	dynsym+mdebug	b9c84ef8260a		in	undocumented		
@@ -16369,9 +16369,9 @@ usr/lib/internal/libvice.so	board-library	o32		0xd0037a8	328	__vu_mapfile	dynsym
 usr/lib/internal/libvice.so	board-library	o32		0xd0038f0	200	vice_dmbuf_settlb	dynsym+mdebug	a72ce389b5c9		in	named-only	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/lib/internal/libvice.so	board-library	o32		0xd0039b8	164	vice_dmbuf_requirements	dynsym+mdebug	f038f508ea02		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd003a5c	124	vice_dmbuf_outpool	dynsym+mdebug	618a2f018bc6		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd003ad8	216	vice_dmbuf_send	dynsym+mdebug	09317986e89f		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd003bb0	328	vice_dmbuf_recv	dynsym+mdebug	796f792157ac		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd003cf8	280	vice_dmbuf_msend	dynsym+mdebug	f14323619a26		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd003ad8	216	vice_dmbuf_send	dynsym+mdebug	09317986e89f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/internal/libvice.so	board-library	o32		0xd003bb0	328	vice_dmbuf_recv	dynsym+mdebug	796f792157ac		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib/internal/libvice.so	board-library	o32		0xd003cf8	280	vice_dmbuf_msend	dynsym+mdebug	f14323619a26		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf4019c0	204	find_display	mdebug	b309e3ba6cfb		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf401a8c	72	close_display	mdebug	213ee9fd8d09		in	named-only	docs/xsgivc.md#helpers	Helpers
 usr/lib/libXsgivc.so	board-library	o32	.text	0xf401ad4	188	error_string	mdebug	0e0dde44e0c1		in	named-only	docs/xsgivc.md#helpers	Helpers
@@ -16486,7 +16486,7 @@ usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407a20	152
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407ac0	152	qScaleShft	dwarf+dynsym	28873ebf9acd		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407b60	156	scaleBlockInit	dwarf+dynsym	e9bad1cbbef5		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407c00	332	scaleBlock	dwarf+dynsym	60987dbc9c31		in	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407d50	860	buildQM	dwarf+dynsym	895a58d5c1d3		in	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x407d50	860	buildQM	dwarf+dynsym	895a58d5c1d3		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x4080b0	844	buildQMShft	dwarf+dynsym	bbab98c61d75		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x408400	492	loadMSPEncode	dwarf+dynsym	90b572139141		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x4085f0	448	difference	dwarf+dynsym	b6428cbc940d		in	undocumented		
@@ -16494,7 +16494,7 @@ usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x4087b
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x408860	1984	loadMSPDecode	dwarf+dynsym	b399105d953a		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x409020	68	dmic_dram_init_decode	dwarf+dynsym	4b57c96e923d		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x409070	68	dmic_dram_init_encode	dwarf+dynsym	806e2575d0ff		in	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x4090c0	2612	codeBuffer	dwarf+dynsym	4919eb0c380f		in	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x4090c0	2612	codeBuffer	dwarf+dynsym	4919eb0c380f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x409b00	184	initCvLength	dwarf+dynsym	5e8b6b95bf07		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x409bc0	468	initVLC16fromVLC	dwarf+dynsym	61e1aa1ca640		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32		0x409da0	432	prnEntry	dwarf+dynsym	8116a20b74ba		in	undocumented		
@@ -16593,9 +16593,9 @@ usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x407
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x40797c	360	put_app2_colspc	dwarf+funcnames	0396c7ba377e		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x407ae4	448	put_com_vice	dwarf+funcnames	b07d2165bcd5		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32	.text	0x407ca4	424	put_com_vice_luma	dwarf+funcnames	a43e19e88af2		in	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407e4c	388	jhead_make	dwarf+dynsym	f0ceed727eb7		in	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407fd0	328	jhead_luma_make	dwarf+dynsym	89d843704fe8		in	undocumented		
-usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x408118	240	vjpeg_qfmt	dwarf+dynsym	ccb36c18ebaa		in	undocumented		
+usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407e4c	388	jhead_make	dwarf+dynsym	f0ceed727eb7		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x407fd0	328	jhead_luma_make	dwarf+dynsym	89d843704fe8		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	board-library	n32		0x408118	240	vjpeg_qfmt	dwarf+dynsym	ccb36c18ebaa		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401170	764	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x401470	68	_poolneeds	dwarf+funcnames	58616ba73ff7		in	undocumented		
 usr/lib32/dmedia/imageconverters/debug/vicers.so	board-library	n32	.text	0x4014b4	204	init_formats	dwarf+funcnames	3a9fea4816dc		in	undocumented		
@@ -16674,7 +16674,7 @@ usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x4065b0	104	qScal
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406620	104	qScaleShft	dwarf+dynsym	577cd7c24c6f		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406690	228	scaleBlockInit	dwarf+dynsym	34a5719137ad		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406780	236	scaleBlock	dwarf+dynsym	89df964da667		in	undocumented		
-usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406870	608	buildQM	dwarf+dynsym	b948294ec3ce		in	undocumented		
+usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406870	608	buildQM	dwarf+dynsym	b948294ec3ce		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406ad0	588	buildQMShft	dwarf+dynsym	be9e7b591bf3		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406d20	324	loadMSPEncode	dwarf+dynsym	2c2f03046a57		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x406e70	292	difference	dwarf+dynsym	702e1ecfb187		in	undocumented		
@@ -16682,7 +16682,7 @@ usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32	.text	0x406fa0	112	
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407010	1256	loadMSPDecode	dwarf+dynsym	1ff48b90ef27		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407500	52	dmic_dram_init_decode	dwarf+dynsym	ac3d290a3eeb		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407540	52	dmic_dram_init_encode	dwarf+dynsym	e3e1a65cfc1e		in	undocumented		
-usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407580	1440	codeBuffer	dwarf+dynsym	aedf9d91b094		in	undocumented		
+usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407580	1440	codeBuffer	dwarf+dynsym	aedf9d91b094		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407b20	128	initCvLength	dwarf+dynsym	53071de6bf65		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407ba0	416	initVLC16fromVLC	dwarf+dynsym	3fe8526df70d		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicedv.so	board-library	n32		0x407d40	324	prnEntry	dwarf+dynsym	87352eb51069		in	undocumented		
@@ -16781,9 +16781,9 @@ usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x405220	12
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x405298	124	put_app2_colspc	dwarf+funcnames	5652ee290f91		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x405314	128	put_com_vice	dwarf+funcnames	00a98afa1b4e		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32	.text	0x405394	124	put_com_vice_luma	dwarf+funcnames	61a1f550c39e		in	undocumented		
-usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405410	336	jhead_make	dwarf+dynsym	0a09badf2fe5		in	undocumented		
-usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405560	272	jhead_luma_make	dwarf+dynsym	994049a9faa7		in	undocumented		
-usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405670	104	vjpeg_qfmt	dwarf+dynsym	cba87e1cfa45		in	undocumented		
+usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405410	336	jhead_make	dwarf+dynsym	0a09badf2fe5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405560	272	jhead_luma_make	dwarf+dynsym	994049a9faa7		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405670	104	vjpeg_qfmt	dwarf+dynsym	cba87e1cfa45		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x400e10	524	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32		0x401020	344	dmICInitDso	dwarf+dynsym	b29fb7a98c25		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401178	212	Open	dwarf+funcnames	9ee6eb4a161c		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
@@ -17063,36 +17063,36 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415430	96	mvpSendI2C	dwarf+dy
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415490	368	mvpGetI2CData	dwarf+dynsym	776861cdd79d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0017a0	464	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/internal/libvice.so	board-library	n32		0xd001980	12	vice_get_lib_rev	dwarf+dynsym	f8f63bf9babe		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd00198c	568	vice_open	dwarf+dynsym	5fa2fe1e215c		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd00198c	568	vice_open	dwarf+dynsym	5fa2fe1e215c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd001bc4	116	vice_open_and_setetc	dwarf+dynsym	0d9c7ae97c6e		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001c38	208	vice_close	dwarf+dynsym	3eea6c76ea54		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d08	136	vice_lock	dwarf+dynsym	a34443e5ca7d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d90	196	vice_unlock	dwarf+dynsym	ff0ad3bdb583		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001e54	196	vice_piow	dwarf+dynsym	bcb558f05e6c		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001f18	216	vice_pior	dwarf+dynsym	72e74940073d		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd001ff0	120	vice_alloc	dwarf+dynsym	17646119d1ed		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd001ff0	120	vice_alloc	dwarf+dynsym	17646119d1ed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002068	160	vice_settlb	dwarf+dynsym	31130d99430b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002108	140	vice_updatetlb	dwarf+dynsym	b4a887c01862		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib32/internal/libvice.so	board-library	n32		0xd002194	144	vice_mmap	dwarf+dynsym	ee184bf7aede		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002194	144	vice_mmap	dwarf+dynsym	ee184bf7aede		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002224	112	vice_munmap	dwarf+dynsym	f0719475610c		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002294	180	vice_bcopyhto	dwarf+dynsym	4eae41d6ffd9		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002348	180	vice_bcopywto	dwarf+dynsym	b10b394b3c9d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd0023fc	8	vice_chip_init	dwarf+dynsym	78aa5094d5ec		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002404	412	vice_file	dwarf+dynsym	cd0e10709c79		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002404	412	vice_file	dwarf+dynsym	cd0e10709c79		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0025a0	196	dms_fifo_input	dwarf+funcnames	88088f1f5542		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32	.text	0xd002664	216	dms_fifo_output	dwarf+funcnames	4ee8e3654e23		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd00273c	112	vice_event_init	dwarf+dynsym	7e191530170d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd0027ac	156	vice_event_uninit	dwarf+dynsym	ff1659d8f375		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002848	132	vice_event_start	dwarf+dynsym	cf9914e26b48		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd0028cc	76	vice_dms_geterrs	dwarf+dynsym	bfc623c3c2ed		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd0028cc	76	vice_dms_geterrs	dwarf+dynsym	bfc623c3c2ed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002918	240	vice_setetc	dwarf+dynsym	ebf60c6cacc9		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002a08	272	vice_msp_code_to_etc	dwarf+dynsym	3561fd079746		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002b18	88	vice_msp_sym_to_etc	dwarf+dynsym	0c9aa297f6ed		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002b70	168	vice_mload_msp_code	dwarf+dynsym	46525bb01e9f		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002c18	176	vice_load_msp_code	dwarf+dynsym	4252f0b4b352		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002c18	176	vice_load_msp_code	dwarf+dynsym	4252f0b4b352		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002cc8	120	vice_loadmspcode	dwarf+dynsym	2f59a4d7232e		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002d40	100	vice_load_bsp_code	dwarf+dynsym	454a1d64ff40		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd002da4	96	vice_load_bsp_table	dwarf+dynsym	679ad190462c		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd002d40	100	vice_load_bsp_code	dwarf+dynsym	454a1d64ff40		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/internal/libvice.so	board-library	n32		0xd002da4	96	vice_load_bsp_table	dwarf+dynsym	679ad190462c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002e04	68	_vice_unit_find	dwarf+dynsym	df001abf46f6		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002e48	32	_vice_unit_unfind	dwarf+dynsym	7b9cd1fa4c50		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd002e68	40	vice_etc_dramp	dwarf+dynsym	def121c95c84		in	undocumented		
@@ -17109,9 +17109,9 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd00342c	296	__vu_mapfile	dwar
 usr/lib32/internal/libvice.so	board-library	n32		0xd003554	180	vice_dmbuf_settlb	dwarf+dynsym	ac85abf2b703		in	named-only	docs/libglcore.md#so_accumopc	`so_accumop.c`
 usr/lib32/internal/libvice.so	board-library	n32		0xd003608	168	vice_dmbuf_requirements	dwarf+dynsym	77ea7c5fffe2		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd0036b0	124	vice_dmbuf_outpool	dwarf+dynsym	eef531f9ad47		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd00372c	228	vice_dmbuf_send	dwarf+dynsym	6d13cd5dfbda		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd003810	268	vice_dmbuf_recv	dwarf+dynsym	136fb9bf4c99		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd00391c	276	vice_dmbuf_msend	dwarf+dynsym	ae3bbe40676e		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd00372c	228	vice_dmbuf_send	dwarf+dynsym	6d13cd5dfbda		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/internal/libvice.so	board-library	n32		0xd003810	268	vice_dmbuf_recv	dwarf+dynsym	136fb9bf4c99		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/lib32/internal/libvice.so	board-library	n32		0xd00391c	276	vice_dmbuf_msend	dwarf+dynsym	ae3bbe40676e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf4029d0	344	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/libXsgivc.so	board-library	n32		0xf402b30	1616	XSGIvcQueryChannelInfo	dwarf+dynsym	f64ef10539c8		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf403180	60	XSGIvcQueryOutputBlanking	dwarf+dynsym	88baffde592e		in	named-only	docs/xsgivc.md#output-controls	Output controls

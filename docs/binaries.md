@@ -91,5 +91,39 @@ The `2@` files are the formats of the dual-channel display option (established, 
 These serve the O2's VICE media coprocessor and video, not CRIME rendering. They are in scope because VICE and the video paths address frame buffer tiles ([functions.md](functions.md), `crime_tileaddr_for_vice`).
 
 - `libvice.so` (`usr/lib/internal/`, `usr/lib32/internal/`): the user-space VICE access library. It opens the device, maps it and drives it with `ioctl` (established imports), with routines to open, lock, program the VICE TLB (`vice_settlb`, `vice_updatetlb`) and copy host data (`vice_bcopyhto`).
-- `vicedv.so`, `vicejpeg.so`, `vicempeg.so`, `vicers.so` (each under `dmedia/imageconverters/` of `usr/lib` and `usr/lib32`, with debug builds of the first, second and fourth under `debug/`): digital-media image converters for DV, JPEG, MPEG and a resampling converter, each a plug-in exporting `dmICInitDso` and built on `libvice.so` and `libdmedia.so` (established, exports and `DT_NEEDED`; the reading of `rs` as resampling is inferred from the name).
+- `vicedv.so`, `vicejpeg.so`, `vicempeg.so`, `vicers.so` (each under `dmedia/imageconverters/` of `usr/lib` and `usr/lib32`, with debug builds of the first, second and fourth under `debug/`): digital-media image converters for DV, JPEG, MPEG and a resampling converter, each a plug-in exporting `dmICInitDso` and built on `libvice.so` and `libdmedia.so` (established, exports and `DT_NEEDED`; the reading of `rs` as resampling is inferred from the export names).
 - `mvp.so` (`dmedia/video/` and `dmedia/video/debug/` of `usr/lib` and `usr/lib32`): the user-space video library module for the O2 video hardware, with routines that open video, build and decode paths (`mvpOpenVideo`, `mvpCreatePath`, `mvpDecodePath`); established, exports.
+
+Per-file entries for the o32 image-converter plug-ins under `usr/lib/dmedia/imageconverters/`. Each file's `dmICInitDso` routine was read in full with `objdump -d` through the MIPS toolchain, with callees named from the PIC GOT slots. Imports are from `readelf --dyn-syms`.
+
+- `usr/lib/dmedia/imageconverters/vicedv.so` (566344 bytes): the DV converter plug-in.
+  `dmICInitDso` at 0x403bd0 (268 bytes) copies a converter descriptor from `.data` to its frame in 12-byte steps.
+  It calls `dmICRegisterConverter` at 0x403c34 and 0x403c90, and `dmSetError` at 0x403cb4 (established, `objdump -d`).
+  Its DV coding routines include `buildQM` at 0x4073d0 and `codeBuffer` at 0x408200 (inferred from the export names).
+  It reaches the VICE media processor only through `libvice.so`: it imports `vice_open`, `vice_load_msp_code` and `vice_load_bsp_code` (established, dynamic symbols).
+  It also imports `vice_load_bsp_table`, `vice_dmbuf_send` and `vice_dmbuf_recv` from `libvice.so` (established, dynamic symbols).
+- `usr/lib/dmedia/imageconverters/vicejpeg.so` (78576 bytes): the JPEG converter plug-in.
+  `dmICInitDso` at 0x40248c (268 bytes) calls `dmICRegisterConverter` at 0x4024f0 and 0x40254c, and `dmSetError` at 0x402570 (established, `objdump -d`).
+  Its table builders are `jhead_make` at 0x406af8 (420 bytes), `jhead_luma_make` at 0x406c9c (348 bytes) and `vjpeg_qfmt` at 0x406e00 (340 bytes) (established, dynamic symbols; the roles are inferred from the export names).
+  It maps VICE memory and programs the VICE TLB: it imports `vice_alloc`, `vice_mmap` and `vice_settlb` from `libvice.so` (established, dynamic symbols).
+  It loads microcode with `vice_load_msp_code`, `vice_load_bsp_code` and `vice_load_bsp_table` (established, dynamic symbols).
+- `usr/lib/dmedia/imageconverters/vicempeg.so` (29696 bytes): the MPEG converter plug-in and its only export, `dmICInitDso` at 0x401020 (356 bytes).
+  The routine has a 176-byte frame and calls `dmICRegisterConverter` once, at 0x401158 (established, `objdump -d`).
+  It sends and receives buffers with `vice_dmbuf_msend` and `vice_dmbuf_recv` from `libvice.so` (established, dynamic symbols).
+  It loads microcode with `vice_load_msp_code`, `vice_load_bsp_code` and `vice_load_bsp_table` (established, dynamic symbols).
+- `usr/lib/dmedia/imageconverters/vicers.so` (31008 bytes): the resampling converter plug-in, and its only export is `dmICInitDso` at 0x40187c (144 bytes).
+  The routine copies a 76-byte descriptor from `.data` onto its frame, in six 12-byte steps and one word.
+  It passes the first four words to `dmICRegisterConverter` at 0x4018e0 and returns -1 when that call returns a negative value, otherwise 0 (established, `objdump -d`).
+  The reading of `rs` as resampling is inferred from the export names.
+  It imports the VICE open and load routines of `libvice.so`: `vice_open`, `vice_file` and `vice_load_msp_code` (established, dynamic symbols).
+  It transfers buffers with `vice_dmbuf_send`, `vice_dmbuf_recv` and `vice_dms_geterrs` (established, dynamic symbols).
+- `usr/lib/dmedia/imageconverters/debug/vicedv.so` (643984 bytes): the debug build of `vicedv.so`, with the same DV exports and VICE imports.
+  Its `dmICInitDso` at 0x403c88 (280 bytes) calls `dmICRegisterConverter` at 0x403cec and 0x403d48, and `dmSetError` at 0x403d6c (established, `objdump -d`).
+  It has the `.mdebug` section the release build lacks (established, `readelf -S`).
+  Its string table holds `dvNoiseMode` (established, `strings`).
+- `usr/lib/dmedia/imageconverters/debug/vicejpeg.so` (136276 bytes): the debug build of `vicejpeg.so`, with the same JPEG exports.
+  Its `dmICInitDso` at 0x4025a8 (280 bytes) calls `dmICRegisterConverter` at 0x40260c and 0x402668, and `dmSetError` at 0x40268c (established, `objdump -d`).
+  Its imports are the release build's VICE imports, `vice_mmap` and `vice_settlb` included (established, dynamic symbols).
+- `usr/lib/dmedia/imageconverters/debug/vicers.so` (64972 bytes): the debug build of `vicers.so`, with the same single export.
+  Its `dmICInitDso` at 0x401928 (156 bytes) calls `dmICRegisterConverter` once, at 0x40198c, and does not call `dmSetError` (established, `objdump -d`).
+  Its VICE imports are the release build's, from `vice_open` through `vice_dmbuf_recv` (established, dynamic symbols).
