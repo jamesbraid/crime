@@ -6881,18 +6881,18 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97b7c4	200	__glFreeDlist
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97b890	140	__glDoInterpret	dynsym+mdebug	ed9b8dff823c		in	located	docs/sample-implementation.md#dl_interps	dl_interp.s
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97b91c	20	__glle_Sentinel	dynsym+mdebug	8eca3e158d32		in	located	docs/sample-implementation.md#dl_interps	dl_interp.s
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97b930	496	__glim_NewList	dynsym+mdebug	2de890eda8c5		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bb20	60	__glce_EndList	dynsym+mdebug	38c34904f9fe		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bb5c	372	__glim_EndList	dynsym+mdebug	7958ce14113c		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bb20	60	__glce_EndList	dynsym+mdebug	38c34904f9fe		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bb5c	372	__glim_EndList	dynsym+mdebug	7958ce14113c		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97bcd0	1052	DoCallList	mdebug	7e4b3d519fab		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bd8c	148	__gllc_CallList	dynsym+mdebug	eeb477e2821b		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97be20	68	__glle_CallList	dynsym+mdebug	6032fd949261		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97be20	68	__glle_CallList	dynsym+mdebug	6032fd949261		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97be64	264	__glce_CallList	dynsym+mdebug	9c1d378895e1		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97bf6c	280	__glce_CallLists	dynsym+mdebug	558ff19ca1db		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c084	104	__glim_CallList	dynsym+mdebug	f2779f6c7e3a		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c084	104	__glim_CallList	dynsym+mdebug	f2779f6c7e3a		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97c0ec	2564	DoCallLists	mdebug	e6401250ea5a		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c278	288	__gllc_CallLists	dynsym+mdebug	9fb6d572752c		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c398	152	__glle_CallLists	dynsym+mdebug	8bd0c9bef247		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c430	180	__glim_CallLists	dynsym+mdebug	1bd6a4e6dc0e		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c398	152	__glle_CallLists	dynsym+mdebug	8bd0c9bef247		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c430	180	__glim_CallLists	dynsym+mdebug	1bd6a4e6dc0e		in	understood	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c4e4	280	__glce_DrawArraysEXT	dynsym+mdebug	b1da259164a1		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c5fc	292	__glce_DrawElements	dynsym+mdebug	560012481c37		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd97c720	324	__glce_DrawRangeElements	dynsym+mdebug	c4311c9ef564		in	located	docs/sample-implementation.md#dl_listc	dl_list.c
