@@ -6,7 +6,11 @@ switch into a tree of unsigned compares and branches on a0. This script walks th
 the disassembly: for each candidate value of a0 it runs the integer instructions of the
 routine (constants and the compares of a0 are concrete, memory loads are symbolic), follows
 every branch it can decide, forks on the ones it cannot (those that test loaded words), and
-records the stores, calls and return value of each path. One row per enum value comes out,
+records the stores, calls and return value of each path. A branch-likely test on a loaded word
+forks like any other, running its delay slot only on the taken path. A jr through a register
+other than ra is a jump table: the register is worked out from the image (GOT slot, table word,
+gp) and the path continues at that case; if the index is not a known number every distinct
+target of the table in the fact sheet is followed, and with no table the run stops. One row per enum value comes out,
 with the address of the first store or call on the path (the leaf), and the effect there.
 Paths shared by every value (for example the begin-mode error) are listed once above the table.
 
@@ -29,10 +33,11 @@ import facts  # noqa: E402
 
 M64 = (1 << 64) - 1
 STACK = 0x70000000        # the stack pointer is concrete so spills and reloads can be followed
-REGS = ('zero at v0 v1 a0 a1 a2 a3 a4 a5 a6 a7 t0 t1 t2 t3 s0 s1 s2 s3 s4 s5 s6 s7 t8 t9 '
-        'k0 k1 gp sp fp ra').split()
-BRANCHES = {'beq', 'bne', 'beqz', 'bnez', 'blez', 'bgtz', 'bltz', 'bgez', 'beql', 'bnel', 'b'}
-LIKELY = {'beql', 'bnel'}
+REGS = ('zero at v0 v1 a0 a1 a2 a3 a4 a5 a6 a7 t0 t1 t2 t3 t4 t5 t6 t7 s0 s1 s2 s3 s4 s5 s6 s7 t8 t9 '
+        'k0 k1 gp sp fp ra').split()     # t4 to t7 are the o32 names of registers 12 to 15
+# a branch-likely runs its delay slot only when the branch is taken
+LIKELY = {'beql', 'bnel', 'beqzl', 'bnezl', 'blezl', 'bgtzl', 'bltzl', 'bgezl'}
+BRANCHES = {'beq', 'bne', 'beqz', 'bnez', 'blez', 'bgtz', 'bltz', 'bgez', 'b'} | LIKELY
 
 
 def s32(v):
@@ -117,7 +122,13 @@ def binop(name, a, b):
 
 
 class Walker:
-    def __init__(self, sheet):
+    def __init__(self, sheet, img=None):
+        # img supplies read(addr, width) -> big-endian bytes or None, gp and gsz (the width of a
+        # GOT slot); it is needed only to resolve jumps through a table
+        self.img = img
+        self.entry = int(sheet['routine']['address'], 16) if sheet.get('routine', {}).get('address') else None
+        self.tables = {int(t['jump'], 16): t for t in sheet.get('jump_tables', [])}
+        self.ldw = {}       # the load mnemonic that produced each ('ld', base, off) value
         self.ins = {}
         self.order = []
         for a, t in sheet['insns']:
@@ -219,8 +230,14 @@ class Walker:
             base, off = fold(base, off)
             if is_int(base) and base >= STACK - 0x10000 and ((base + off) & M64) in regs['@mem']:
                 put(o[0], regs['@mem'][(base + off) & M64])
+            elif is_int(base) and base and base < STACK - 0x10000:
+                # a page address formed in a register (o32 adds the offset after addiu v0,zero,4096):
+                # the same absolute word as a load with a zero base
+                put(o[0], ('ld', 0, (base + off) & M64))
+                self.ldw[('ld', 0, (base + off) & M64)] = mn
             else:
                 put(o[0], ('ld', base, off))
+                self.ldw[('ld', base, off)] = mn
         elif mn in ('sw', 'sd', 'sh', 'sb'):
             m = re.match(r'(-?\w+)\((\w+)\)', o[1])
             off, bname = imm(m.group(1)), m.group(2)
@@ -242,13 +259,15 @@ class Walker:
     # --- branch condition -----------------------------------------------
     def cond(self, regs, mn, o):
         g = lambda n: self.val(regs, n)
+        if mn in LIKELY:
+            mn = mn[:-1]
         if mn == 'b':
             return True, 'always'
-        if mn in ('beq', 'bne', 'beql', 'bnel'):
+        if mn in ('beq', 'bne'):
             a, b = g(o[0]), g(o[1])
-            rel = '==' if mn.startswith('beq') else '!='
+            rel = '==' if mn == 'beq' else '!='
             if o[0] == o[1]:
-                return (mn.startswith('beq')), None
+                return mn == 'beq', None
         elif mn in ('beqz', 'bnez'):
             a, b = g(o[0]), 0
             rel = '==' if mn == 'beqz' else '!='
@@ -260,6 +279,57 @@ class Walker:
             res = {'==': a == b, '!=': a != b, '<=': sa <= sb, '>': sa > sb, '<': sa < sb, '>=': sa >= sb}[rel]
             return res, None
         return None, '%s %s %s' % (render(a), rel, render(b))
+
+    # --- jumps through a table ---------------------------------------------
+    WIDTH = {'lw': 4, 'lwu': 4, 'ld': 8, 'lh': 2, 'lhu': 2, 'lb': 1, 'lbu': 1}
+
+    def resolve(self, v):
+        """The number a value works out to, reading loads from the image; Unsupported if it needs more."""
+        if is_int(v):
+            return v
+        k = v[0]
+        if k == 'sym' and v[1] == 'gp' and self.img is not None and self.img.gp:
+            return self.img.gp
+        if k == 'sym' and v[1] == 't9' and self.entry is not None:
+            return self.entry           # a PIC routine is entered with its own address in t9
+        if k == 'op' and v[1] == '+':
+            return self.fit(self.resolve(v[2]) + self.resolve(v[3]))
+        if k == 'ld' and self.img is not None:
+            mn = self.ldw.get(v, 'lw')
+            addr = self.fit(self.resolve(v[1]) + v[2])
+            raw = self.img.read(addr, self.WIDTH[mn])
+            if raw is None:
+                raise Unsupported('load from 0x%x is not in the image' % addr)
+            n = int.from_bytes(raw, 'big')
+            if mn in ('lw', 'lh', 'lb'):        # sign-extending loads
+                n -= (1 << (8 * len(raw))) if n >> (8 * len(raw) - 1) else 0
+            return n & M64
+        raise Unsupported('cannot resolve %s' % render(v))
+
+    def fit(self, n):
+        return n & (0xffffffff if self.img is not None and self.img.gsz == 4 else M64)
+
+    def jump_targets(self, pc, reg):
+        """The addresses a `jr reg` at pc can reach: the one its register works out to, else every
+        target of the table the fact sheet found for that jump. Unsupported when neither exists."""
+        table = self.tables.get(pc)
+        try:
+            t = self.resolve(reg)
+        except Unsupported:
+            t = None
+        if t is not None:
+            t &= 0xffffffff
+            if table is not None and '0x%x' % t not in table['targets']:
+                raise Unsupported('jump at 0x%x resolves to 0x%x, which is not in its table' % (pc, t))
+            if t not in self.ins:
+                raise Unsupported('jump at 0x%x resolves to 0x%x, outside the routine' % (pc, t))
+            return [t]
+        if table is None:
+            raise Unsupported('jr %s at 0x%x: no jump table resolved' % (render(reg), pc))
+        ts = sorted({int(x, 16) for x in table['targets']})
+        if not ts or any(x not in self.ins for x in ts):
+            raise Unsupported('jump table at 0x%x leaves the routine' % pc)
+        return ts
 
     # --- one value of a0 ---------------------------------------------------
     def run(self, a0, a1=None, limit=600):
@@ -284,6 +354,20 @@ class Walker:
                 if mn in BRANCHES or mn in ('jr', 'jalr', 'j', 'jal', 'bal', 'bgezal', 'bgezall'):
                     dpc = pc + 4
                     dtext = self.ins[dpc]
+                    if mn == 'jr' and o[0] != 'ra':
+                        regs2 = dict(regs)
+                        regs2['@mem'] = dict(regs['@mem'])
+                        self.step(regs2, dtext, dpc, events)
+                        tg = self.jump_targets(pc, regs[o[0]])
+                        label = 'jump table at %s' % hex(pc)
+                        for t in tg[1:]:
+                            r3 = dict(regs2); r3['@mem'] = dict(regs2['@mem'])
+                            work.append((t, r3, list(events), conds + [(pc, '%s selects %s' % (label, hex(t)), True)], n))
+                        regs = regs2
+                        if len(tg) > 1:
+                            conds = conds + [(pc, '%s selects %s' % (label, hex(tg[0])), True)]
+                        pc = tg[0]
+                        continue
                     if mn == 'jr':
                         regs2 = dict(regs)
                         self.step(regs2, dtext, dpc, events)
@@ -318,8 +402,13 @@ class Walker:
                     tgt = int(o[-1], 16)
                     res, text = self.cond(regs, mn, o[:-1] if mn != 'b' else o)
                     if mn in LIKELY:
-                        if res is None:
-                            raise Unsupported('branch-likely on a loaded value at 0x%x' % pc)
+                        if res is None:     # fork: the taken path runs the delay slot, the other skips it
+                            r2 = dict(regs); r2['@mem'] = dict(regs['@mem']); e2 = list(events)
+                            self.step(r2, dtext, dpc, e2)
+                            work.append((tgt, r2, e2, conds + [(pc, text, True)], n))
+                            conds = conds + [(pc, text, False)]
+                            pc = dpc + 4
+                            continue
                         if res:
                             self.step(regs, dtext, dpc, events); pc = tgt
                         else:
@@ -371,7 +460,9 @@ def describe(ev, final, returns=False):
         elif e[0] in ('call', 'tail'):
             parts.append('%s %s(%s)' % ('tail call' if e[0] == 'tail' else 'call', e[2], ', '.join(e[3])))
     if final[0] == 'ret' and returns:
-        parts.append('return %s' % re.sub(r'^\(0 <u (.*)\)$', r'1 if \1 is nonzero, else 0', final[1]))
+        # a truth value masked to a byte (andi v0,v0,0xff) is the same truth value
+        ret = re.sub(r'^\((\(0 <u .*\)) & 0xff\)$', r'\1', final[1])
+        parts.append('return %s' % re.sub(r'^\(0 <u (.*)\)$', r'1 if \1 is nonzero, else 0', ret))
     elif final[0] == 'ret':
         parts.append('return')
     return '; '.join(parts)
@@ -390,7 +481,7 @@ def paths(w, v, returns=False):
 
 def table(binary, routine, lo, hi, member=None, returns=False):
     sheet = facts.fact_sheet(binary, routine, member=member)
-    w = Walker(sheet)
+    w = Walker(sheet, facts.image(binary, member))
     rows = {}
     for v in range(lo, hi):
         rows[v] = paths(w, v, returns)
