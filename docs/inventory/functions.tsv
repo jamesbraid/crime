@@ -8346,7 +8346,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dae84	360	__glim_GetTex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dafec	388	__glim_GetTexGendv	dynsym+mdebug	e5aa57fa3cb4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9db170	356	__glim_GetTexGeniv	dynsym+mdebug	347cd20072d7		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9db2d4	800	__glim_GetTexParameterfv	dynsym+mdebug	f7152c28c963		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9db5f4	716	__glim_GetTexParameteriv	dynsym+mdebug	8dcafebb6de9		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9db5f4	716	__glim_GetTexParameteriv	dynsym+mdebug	8dcafebb6de9		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9db8c0	780	__glim_GetTexLevelParameterfv	dynsym+mdebug	f8cfd46f7e1a		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dbbcc	584	__glim_GetTexLevelParameteriv	dynsym+mdebug	a9e7a56c294a		in	located	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9dbe14	284	__glim_GetTexFilterFuncSGIS	dynsym+mdebug	52fe12311e8e		in	undocumented		
@@ -12471,7 +12471,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d93b0	332	__glim_GetT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9500	364	__glim_GetTexGendv	dwarf+dynsym	bd75cf386541		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9670	304	__glim_GetTexGeniv	dwarf+dynsym	9508d63e133a		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d97a0	784	__glim_GetTexParameterfv	dwarf+dynsym	38b1452feebd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9ab0	732	__glim_GetTexParameteriv	dwarf+dynsym	845d64699cf5		in	located	docs/sample-implementation.md#so_getc	so_get.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9ab0	732	__glim_GetTexParameteriv	dwarf+dynsym	845d64699cf5		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9d9d90	820	__glim_GetTexLevelParameterfv	dwarf+dynsym	deaa9e76677e		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da0d0	716	__glim_GetTexLevelParameteriv	dwarf+dynsym	b69a8c2b7f8e		in	understood	docs/sample-implementation.md#so_getc	so_get.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9da3a0	236	__glim_GetTexFilterFuncSGIS	dwarf+dynsym	1a3896fd1cc1		in	undocumented		
