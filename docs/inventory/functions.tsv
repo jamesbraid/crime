@@ -10557,7 +10557,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935d80	136	__glClampAn
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd935e08	420	__glFastCalcRGBColor	dwarf+dynsym	b738cd30f3d1		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd935fac	204	vvec	dwarf+funcnames	6f2be3b807b9	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936078	912	__glCalcRGBColor	dwarf+dynsym	658e2f6c48e7		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936410	232	__glCrmFlatTriangle	dwarf+dynsym	441a1271a518		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936410	232	__glCrmFlatTriangle	dwarf+dynsym	441a1271a518		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9364f8	408	__glCrmFlatZTriangle	dwarf+dynsym	8824066e3a4e		in	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936690	296	__glCrmSmoothCITriangle	dwarf+dynsym	ff2bb01a3b81		in	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9367b8	448	__glCrmSmoothRGBTriangle	dwarf+dynsym	5c7897094ff1		in	understood	docs/libglcore.md#crm_astris	`crm_astri.s`
@@ -10628,7 +10628,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93d430	3932	__glcrmim_
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93e390	3716	__glcrmim_Enable	dwarf+dynsym	bf31fb66f631		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93f220	4052	__glcrmim_Disable	dwarf+dynsym	0bbf723982e4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940200	160	__glCrmEnableAlphaTest	dwarf+dynsym	36b720a574d0		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9402a0	116	__glCrmPassAlphaFunc	dwarf+dynsym	3b4f7d8c92c7		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9402a0	116	__glCrmPassAlphaFunc	dwarf+dynsym	3b4f7d8c92c7		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940320	256	__glCrmEnableBlend	dwarf+dynsym	0890594e5f51		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940420	856	__glCrmPassBlendFunc	dwarf+dynsym	70fd232be10c		in	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940780	144	__glCrmPassBlendColor	dwarf+dynsym	0234ef5932ad		in	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
@@ -10636,7 +10636,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940810	108	__glCrmEnab
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940880	120	__glCrmEnableLogicOp	dwarf+dynsym	07fd7112f638		in	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940900	436	__glCrmPassLogicOp	dwarf+dynsym	bf9fa1281598		in	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940ac0	152	__glCrmEnableFogTest	dwarf+dynsym	dc77445dac66		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940b60	96	__glCrmPassFog	dwarf+dynsym	eab9131c30a5		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940b60	96	__glCrmPassFog	dwarf+dynsym	eab9131c30a5		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940bc0	648	__glCrmPassColorMask	dwarf+dynsym	30ad38c35be6		in	understood	docs/libglcore.md#crm_attribc	`crm_attrib.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e50	52	__glCrmShadeModel	dwarf+dynsym	49a7e8520e94		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd940e90	3156	__glCrmRenderBitmap	dwarf+dynsym	afbbf636d5a1		in	understood	docs/libglcore.md#crm_bitmapc	`crm_bitmap.c`
@@ -10693,7 +10693,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9449c0	84	__glCrmSetSt
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944a20	360	PickBufferProcs	dwarf+funcnames	5f9ea12af79f		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944b90	248	SwapBuffers	dwarf+funcnames	7a8494216f73	multi-unit	in	understood	docs/libglcore.md#pix_cxc	`pix_cx.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944c90	240	DecoupleSwapBuffers	dwarf+funcnames	0a93b9770a3f		in	understood	docs/libglcore.md#crm_contextc	`crm_context.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944d80	60	__glCrmFlushAndConfirm	dwarf+dynsym	ca5e8c27e05e		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944d80	60	__glCrmFlushAndConfirm	dwarf+dynsym	ca5e8c27e05e		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944dc0	68	Finish	dwarf+funcnames	9d9699d34009	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e10	8	Flush	dwarf+funcnames	78aa5094d5ec	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd944e20	140	DestroyHWContext	dwarf+funcnames	921495114088		in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
@@ -10717,7 +10717,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948810	1412	FillS
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd948da0	1512	SetInitialParameters	dwarf+funcnames	af3a373ac4c1	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd949390	3252	__glCrmFillSlowTriangle	dwarf+dynsym	0753f64bba9e		in	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a050	124	__glCrmPassDepthMask	dwarf+dynsym	055dd7dc3bef		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a0d0	372	__glCrmPassDepthFunc	dwarf+dynsym	8cc6f959bc71		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a0d0	372	__glCrmPassDepthFunc	dwarf+dynsym	8cc6f959bc71		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a250	112	__glCrmEnableDepthTest	dwarf+dynsym	6ec689fe341f		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDepth	dwarf+funcnames	78aa5094d5ec		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
@@ -10933,9 +10933,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dfc0	136	crmDoD
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e050	296	crmDoDoubleStore_D	dwarf+funcnames	6d6ce6806e36		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e180	336	crmDoDoubleStore_SD	dwarf+funcnames	777ca1fde501		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96e2d0	224	__glCrmGenericPickStoreProcs	dwarf+dynsym	4f4e5ecf5671		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	5d231abb2964		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	5d231abb2964		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e500	64	texFastBind	dwarf+funcnames	7dbff97882b1		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	370591f469ad		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	370591f469ad		in	understood	docs/libglcore.md#routines-read-in-full-from-the-disassembly	Routines read in full from the disassembly
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUpdateSharedTiles	dwarf+funcnames	d04d201fbe65		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	d5fe460278b7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	21705aa8efc4		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends

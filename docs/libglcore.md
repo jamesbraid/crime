@@ -13,7 +13,6 @@ Routines whose code shows no register store, request or procedure-table use are 
 
 The role of a routine is its unit's role below, narrowed by its name and the evidence in its row. Where the evidence column shows the routine's calls, writes or table use, the role is established to that extent; otherwise it is inferred.
 
-
 ## CRIME driver units
 
 The units that drive CRIME. Their routines load the register base from the context (`gc+0x7db8`, [context.md](context.md)) and store through it, send graphics requests, or sit between the two (validation, picking of span and store routines).
@@ -29,7 +28,6 @@ Assembly antialiased line drawer. Established: 1 routines in the unit, 1 listed 
 ### `crm_accum.c`
 
 Accumulation buffer, through the VICE media library and digital-media buffers. Established: 16 routines in the unit, 16 listed here; no routine stores through the register base.
-
 
 ### `crm_attrib.c`
 
@@ -157,16 +155,13 @@ Stippled line stored as spans. Established: 2 routines in the unit, 2 listed her
 
 Display-list compile and execute for the texture-image commands. Established: 17 routines in the unit, 17 listed here; no routine stores through the register base.
 
-
 ### `crm_listexecasm.ma`
 
 Assembly display-list executors for vertex, normal, colour and texture coordinate. Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
-
 ### `crm_pick.c`
 
 Selection of the primitive and lighting procedures for the current state. Established: 11 routines in the unit, 4 listed here; 1 routine stores through the register base.
-
 
 ### `crm_pixel.c`
 
@@ -208,7 +203,6 @@ Assembly RGBA point renderer. Established: 2 routines in the unit, 2 listed here
 ### `crm_polyaa.c`
 
 Plane-equation helpers for antialiased polygons. Established: 3 routines in the unit, 2 listed here; no routine stores through the register base.
-
 
 ### `crm_prim.c`
 
@@ -285,47 +279,39 @@ Store-procedure selection and double-buffer and depth stores. Established: 6 rou
 
 ### `crm_texture.c`
 
-Texture objects: allocation, definition and binding; writes the texture mode, border and environment colour and sends the texture-set request (see [memory.md](memory.md)). Established: 54 routines in the unit, 40 listed here; `crmSetTextureParam` stores through the register base.
+Texture objects: allocation, definition and binding; writes the texture mode, border and environment colour and sends the texture-set request (see [memory.md](memory.md)). Established: 54 routines in the unit, 39 listed here and two more in [Routines read in full](#routines-read-in-full-from-the-disassembly); `crmSetTextureParam` stores through the register base.
 
 | Routine | Address | Role and derivation |
 |---|---|---|
 | `crmSetTextureParam` | 0xd96efc0 | Established ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30, 1964 bytes, whole body read from the disassembly and the DWARF-named unit `crm_texture.s`): the only routine of the unit that writes the texture registers `+0x2110`, `+0x2118`, `+0x2160` and `+0x2168`; the earlier credit given to the store-procedure picker was a naming slip, because this routine sits after the picker in the file and has no symbol of its own in the export table. It marks bit 15 of the draw-mode cache word at +0x7d58, and with no current texture object (word at +0x6e30) clears the bit again and returns. Otherwise it builds the mode word from the object: texel type and depth from its first level record, the subtiled flag, the minification filter (the two basic and four mipmap forms) in bits 7 to 9, the magnification filter in bit 6, the two wrap modes in bits 4 to 5 and 2 to 3, the environment mode in bits 0 to 1, and the base and top level numbers in bits 10 to 13 and 14 to 17. It packs the 64-bit format word from the level sizes. For the wrap modes that use a border it truncates the four border floats times the context's colour scales, packs them as bytes and stores the colour to `+0x2160` of both register views at +0x7db8 and +0x7dbc; for the blend environment mode it does the same for the environment colour at `+0x2168`. It then calls the shared-tile routine and, with the object, the texture-definition routine, and on a zero result drops the current texture object. The mode word goes to `+0x2110` when the cache at +0x7e68 differs or the bit was clear on entry, and the format word to `+0x2118` when either cache word at +0x7e6c or +0x7e70 differs. |
-| `texIoctlBind` | 0xd96e540 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): binds a texture through the driver, 30 instructions. It sends ioctl 0x5650 and, on failure, prints a message with `printf` and the system error text with `perror`; it stores no engine register. |
 
 ### `crm_vapi.ma`
 
 Assembly in-line vertex entry points. Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `vice_colormatrix.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
-
 
 ### `vice_colortable.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
-
 ### `vice_convolve.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
-
 
 ### `vice_histogram.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-
 ### `vice_pbuffer.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-
 ### `vice_pixel.c`
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 26 routines in the unit, 26 listed here; no routine stores through the register base.
-
 
 ## Assembly units built for this target
 
@@ -349,41 +335,33 @@ Assembly triangle renderers that write the rendering registers directly. Establi
 
 Established: 3 routines in the unit, 2 listed here; no routine stores through the register base.
 
-
 ### `mips4_poly.s`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
-
 
 ### `mips4_vclip.s`
 
 Established: 13 routines in the unit, 11 listed here; no routine stores through the register base.
 
-
 ### `mips4_xform.s`
 
 Established: 15 routines in the unit, 15 listed here; no routine stores through the register base.
-
 
 ### `mips_fastapi.s`
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
 
-
 ### `mips_polyfin.s`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
-
 
 ### `mips_prim.s`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-
 ### `mips_vertex.s`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
-
 
 ## Pixmap back end
 
@@ -392,7 +370,6 @@ The software back end for rendering into X pixmaps. No routine stores through th
 ### `pix_ci.c`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
-
 
 ### `pix_cx.c`
 
@@ -406,11 +383,9 @@ Pixmap context set-up; sends resource-manager command 1005. Established: 10 rout
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-
 ### `pix_rgb.c`
 
 Established: 11 routines in the unit, 11 listed here; no routine stores through the register base.
-
 
 ## Shared software implementation
 
@@ -428,71 +403,57 @@ Established: 7 routines in the unit, 7 listed here; 1 routine stores through the
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-
 ### `so_async.c`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
-
 
 ### `so_attrib.c`
 
 Established: 65 routines in the unit, 58 listed here; no routine stores through the register base.
 
-
 ### `so_bitdraw.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
-
 
 ### `so_bitmap.c`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-
 ### `so_blend.c`
 
 Established: 50 routines in the unit, 49 listed here; no routine stores through the register base.
-
 
 ### `so_buffers.c`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-
 ### `so_capi.c`
 
 Established: 38 routines in the unit, 38 listed here; no routine stores through the register base.
-
 
 ### `so_clear.c`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-
 ### `so_clip.c`
 
 Established: 21 routines in the unit, 21 listed here; no routine stores through the register base.
-
 
 ### `so_colortable.c`
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-
 ### `so_context.c`
 
 Established: 18 routines in the unit, 17 listed here; no routine stores through the register base.
-
 
 ### `so_convolve.c`
 
 Established: 19 routines in the unit, 19 listed here; no routine stores through the register base.
 
-
 ### `so_deform.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
-
 
 ### `so_depthop.c`
 
@@ -506,231 +467,185 @@ Established: 32 routines in the unit, 31 listed here; 1 routine stores through t
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-
 ### `so_eval.c`
 
 Established: 56 routines in the unit, 56 listed here; no routine stores through the register base.
-
 
 ### `so_feedback.c`
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
-
 ### `so_finish.c`
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
-
 
 ### `so_fog.c`
 
 Established: 8 routines in the unit, 7 listed here; no routine stores through the register base.
 
-
 ### `so_get.c`
 
 Established: 33 routines in the unit, 33 listed here; no routine stores through the register base.
-
 
 ### `so_histogram.c`
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-
 ### `so_image.c`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
-
 
 ### `so_lighting.c`
 
 Established: 25 routines in the unit, 24 listed here; no routine stores through the register base.
 
-
 ### `so_lineclip.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
-
 
 ### `so_linedraw.c`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-
 ### `so_linefin.c`
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
-
 
 ### `so_linespan.c`
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-
 ### `so_listcomp.c`
 
 Established: 54 routines in the unit, 54 listed here; no routine stores through the register base.
-
 
 ### `so_math.c`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-
 ### `so_memmgr.c`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
-
 
 ### `so_names.c`
 
 Established: 37 routines in the unit, 37 listed here; no routine stores through the register base.
 
-
 ### `so_napi.c`
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
-
 
 ### `so_pick.c`
 
 Established: 15 routines in the unit, 13 listed here; no routine stores through the register base.
 
-
 ### `so_pntaa.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
-
 
 ### `so_pntdraw.c`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-
 ### `so_pntfin.c`
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
-
 
 ### `so_polyaa.c`
 
 Established: 7 routines in the unit, 5 listed here; 1 routine stores through the register base.
 
-
 ### `so_polyclip.c`
 
 Established: 5 routines in the unit, 4 listed here; no routine stores through the register base.
-
 
 ### `so_polydraw.c`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-
 ### `so_polyfin.c`
 
 Established: 29 routines in the unit, 29 listed here; no routine stores through the register base.
-
 
 ### `so_polymode.c`
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-
 ### `so_polyspan.c`
 
 Established: 32 routines in the unit, 32 listed here; no routine stores through the register base.
-
 
 ### `so_prim.c`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-
 ### `so_rapi.c`
 
 Established: 24 routines in the unit, 24 listed here; no routine stores through the register base.
-
 
 ### `so_rasterpos.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `so_rect.c`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
-
 
 ### `so_select.c`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-
 ### `so_size.c`
 
 Established: 24 routines in the unit, 24 listed here; no routine stores through the register base.
-
 
 ### `so_slowspan.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `so_speccache.c`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
-
 
 ### `so_stencilop.c`
 
 Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-
 ### `so_store.c`
 
 Established: 11 routines in the unit, 11 listed here; no routine stores through the register base.
-
 
 ### `so_subdiv.c`
 
 Established: 29 routines in the unit, 29 listed here; no routine stores through the register base.
 
-
 ### `so_tapi.c`
 
 Established: 30 routines in the unit, 30 listed here; no routine stores through the register base.
-
 
 ### `so_texoptspan.c`
 
 Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-
 ### `so_texture.c`
 
 Established: 207 routines in the unit, 207 listed here; no routine stores through the register base.
-
 
 ### `so_vapi.c`
 
 Established: 26 routines in the unit, 26 listed here; no routine stores through the register base.
 
-
 ### `so_vertarray.c`
 
 Established: 35 routines in the unit, 19 listed here; no routine stores through the register base.
-
 
 ### `so_vertex.c`
 
 Established: 4 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `so_xform.c`
 
 Established: 55 routines in the unit, 53 listed here; no routine stores through the register base.
-
 
 ## Pixel paths
 
@@ -740,51 +655,41 @@ Pixel packing, unpacking, conversion and the imaging subset (convolution, histog
 
 Established: 18 routines in the unit, 18 listed here; no routine stores through the register base.
 
-
 ### `px_colormatrix.c`
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
-
 
 ### `px_convolve.c`
 
 Established: 35 routines in the unit, 35 listed here; no routine stores through the register base.
 
-
 ### `px_histogram.c`
 
 Established: 21 routines in the unit, 21 listed here; no routine stores through the register base.
-
 
 ### `px_modify.c`
 
 Established: 19 routines in the unit, 19 listed here; no routine stores through the register base.
 
-
 ### `px_pack.c`
 
 Established: 56 routines in the unit, 56 listed here; no routine stores through the register base.
-
 
 ### `px_paths.c`
 
 Established: 43 routines in the unit, 43 listed here; no routine stores through the register base.
 
-
 ### `px_read.c`
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
-
 
 ### `px_render.c`
 
 Established: 27 routines in the unit, 27 listed here; no routine stores through the register base.
 
-
 ### `px_unpack.c`
 
 Established: 101 routines in the unit, 101 listed here; no routine stores through the register base.
-
 
 ## Display-list storage
 
@@ -794,41 +699,33 @@ Display-list memory, block and page management and the list optimiser.
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
-
 ### `dl_init.c`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
-
 
 ### `dl_interp.s`
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-
 ### `dl_list.c`
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
-
 
 ### `dl_matopt.c`
 
 Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
-
 ### `dl_opt.c`
 
 Established: 23 routines in the unit, 23 listed here; no routine stores through the register base.
-
 
 ### `dl_page.c`
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-
 ### `dl_table.c`
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
-
 
 ## Display-list compile and execute
 
@@ -838,16 +735,13 @@ Generated display-list code. Each compile routine (`__gllc_` prefix) allocates a
 
 Established: 318 routines in the unit, 318 listed here; no routine stores through the register base.
 
-
 ### `g_lexec.c`
 
 Established: 230 routines in the unit, 230 listed here; no routine stores through the register base.
 
-
 ### `g_vertarray.c`
 
 Established: 33 routines in the unit, 33 listed here; no routine stores through the register base.
-
 
 ## MIPS helpers
 
@@ -857,56 +751,45 @@ Assembly helpers: the per-function depth tests (`__glDT_` prefix), vertex API st
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-
 ### `mips4_matrix.ma`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
-
 
 ### `mips4_texture.ma`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `mips_copydisp.s`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
-
 
 ### `mips_sspan.ma`
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-
 ### `mips_texutil.s`
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
-
 
 ### `mips_vapi.ma`
 
 Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-
 ### `mips_vsave.ma`
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
-
 
 ### `mips_zfuncs.ma`
 
 Established: 23 routines in the unit, 23 listed here; no routine stores through the register base.
 
-
 ### `mips_zline.ma`
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-
 ### `mips_zspan.ma`
 
 Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
-
 
 ## Entry labels and lazy-binding stubs
 
@@ -1089,3 +972,70 @@ Each entry below was written from the whole body in `usr/gfx/arch/IP32CRM32/libG
   Arguments are the context and the two vertex records. It stores the first vertex's doubleword at record +128 to `+0x2080` of the first view, takes the absolute differences of the x and y floats at +128 and +132 and picks the longer axis (x when the y difference is not greater). An x-major line with a zero x difference returns there, with only `+0x2080` stored; otherwise the delay slot forms the reciprocal of the longer difference with `recip.s`.
   It stores the second vertex's doubleword to `+0x2088`, and the primitive word at +32116 to `+0x2060` of both views when it differs from +32096. When enable-word bit 8 (0x100) is set it stores the stipple pattern at +32108 to `+0x20c4` of both views and the word at +32112 to `+0x20c0` of the first view the first time (the byte at +29848 is then set); in that case an x-major line whose x difference is 127.0 or more continues in the code at 0xd93871c instead.
   The start colour is each float of the first vertex's colour record plus the float at +32020, stored as raw bits to `+0x20e8`, `+0x20ec` and then red and green together to `+0x20e0`. The slopes are the colour differences times the reciprocal times the float at +32016, truncated to integers. Two doublewords are zeroed first. For x-major lines the stores are `+0x20f0`, `+0x20f4` and `+0x2100` and, last, the alpha slope through the alias `+0x2904`, with `+0x20f8` and `+0x2108` zeroed; for y-major lines `+0x20f8`, `+0x20fc`, `+0x2108` and the alias `+0x290c`, with `+0x20f0` and `+0x2100` zeroed. It returns no value.
+
+## Routines read in full from the disassembly
+
+One entry each, for routines of the N32 build that were read from first instruction to last. An argument is named by its position (first argument first). The two register views of the context at +32184 and +32188 are the pair every driver routine writes, in that order.
+
+- `__glCrmPassDepthFunc` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: writes the depth function register +0x21c0, and in one case the stencil registers, a 372-byte routine at 0xd94a0d0. Established.
+  It takes the context as its only argument, calls nothing and returns no value.
+  The function field is bits 27:25, from the low three bits of the context word at +1632.
+  The clear value is bits 23:0, from the unsigned word at +31304 converted to a double and multiplied by the double at +1640.
+  The product is cut with `trunc.w.d`, shifted right by 6 and masked to 24 bits.
+  Bits 31:28 are not computed: they come from the stack word at offset 0, loaded at 0xd94a0fc before any store to it.
+  If the byte at +31324 is zero and bit 2 of the draw-mode word at +32088 is set, it builds a stencil word.
+  That word is the top byte of the context word at +31308, with bits 23:16 set, bits 15:12 set to 5 and bit 1 set; bits 11:0 and bit 0 are cleared.
+  Each of those constants is formed by an instruction between 0xd94a120 and 0xd94a1c8.
+  In this case it also stores the draw-mode word back with bit 0 set, sets bit 24 of the depth word, and writes the stencil word to +0x21e0.
+  It then writes +0x21e8 as 255 when bit 1 of the new draw-mode word is set and 0 when clear.
+  In every other case it clears bit 24 of the depth word, and when the word at +31328 is nonzero it clears bit 0 of the draw-mode word.
+  All paths end by writing the depth word to +0x21c0, through the first view and then, in the delay slot of the return, the second.
+- `__glCrmFlatTriangle` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: draws one flat-coloured triangle, a 232-byte routine at 0xd936410. Established.
+  The arguments are the context, three vertex records and a flag; it calls nothing and returns no value.
+  The primitive word depends on the sign of the context word at +30180 and on the flag, chosen with `movn`.
+  A negative sign gives 0x02020000 for a nonzero flag and 0x02010000 for zero; a non-negative sign gives 0x02000000 and 0x02030000.
+  It saves its return address at +32096 and writes the primitive word to +0x2060 through the first view only.
+  The doubles at +128 of the three vertex records go to +0x2080, +0x2088 and +0x2090, the third on every path.
+  When bit 1 of the context word at +32892 is set it then writes zero to +0x29f0, the start alias of +0x21f0, and returns with no colour written.
+  Otherwise it reads the colour record whose pointer is at +28072, and its float array through the pointer at record +8.
+  It clears the word at +32896.
+  When bit 0 of the word at +30436 is set it truncates four floats and ORs them, shifted left by 24, 16, 8 and 0, into one word.
+  When clear it writes the first float, truncated, as one word.
+  Either word goes to +0x28d0, the start alias of the foreground colour +0x20d0, and that write starts the triangle.
+- `__glCrmPassAlphaFunc` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: writes the alpha test register +0x2198, a 116-byte routine at 0xd9402a0. Established.
+  It takes the context, calls nothing, has no early exit and returns no value.
+  The test function is the context word at +1820 minus 512, masked with 15 and placed in bits 11:8.
+  The reference is the float at +1824 times 255.0 (the literal at 0xda4b77c), cut with `trunc.w.s` and masked to bits 7:0.
+  Bits 31:12 are not computed: they come from the stack word at offset 0, loaded at 0xd9402c0 before any store.
+  The word is written through the first view and then, in the delay slot of the return, the second.
+- `__glCrmPassFog` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: writes the fog colour register +0x2170, a 96-byte routine at 0xd940b60. Established.
+  It takes the context, calls nothing and returns no value.
+  A nonzero byte at +3221 returns at once with nothing written.
+  Otherwise it truncates the floats at +1592, +1596 and +1600 to 64-bit integers with `trunc.l.s`.
+  The word is the first shifted left by 24, the second by 16 and the third by 8, ORed together, so the low byte is zero.
+  There is no clamp, so a value outside 0 to 255 spills into the next field.
+  It is written through the first view and then, in the delay slot of the return, the second.
+- `__glCrmFlushAndConfirm` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: flushes the engine and waits until it is idle, a 60-byte routine at 0xd944d80. Established.
+  It takes the context, calls nothing and returns no value.
+  It writes zero (through a stack slot) to the flush register +0x21f8 of the first view only.
+  It then reads the status word at +0x4000 of the same view until bit 28 is set, testing the word shifted left by 3 for a negative sign.
+  The loop has no count and no timeout.
+- `__glCrmTexIoctl` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: sends one texture request to the driver and can print it, a 324-byte routine at 0xd96e3b0. Established.
+  The arguments are the descriptor, the request number and the request argument; the first two go to `ioctl` unchanged.
+  Two global words steer it, both set by the texture reset routine from `getenv`.
+  The word at gp-22412 (0xda4b600) holds the result for `GLCRMTEXNODEALLOC`, and the word at gp-21560 (0xda4b954) holds the result for `GLCRMTEXDUMP`.
+  With the first word nonzero and request 22018 (0x5602, free) it returns 0 without calling `ioctl`.
+  Otherwise it calls `ioctl` and keeps the result.
+  A nonzero result with the dump word nonzero calls `perror` with `__glCrmTexIoctl Error`; with the dump word zero it returns -1 at once.
+  With the dump word nonzero it prints one line after success or failure, chosen by the request.
+  Request 22017 (0x5601) prints `CRIME_TEX_ALLOC` with the argument words at +4, +8, +0 and +12.
+  Request 22018 prints `CRIME_TEX_DEALLOC` with the argument itself.
+  Request 22019 (0x5603) prints `CRIME_TEX_DEFINE` with the words at +0, +4 and +8, then a second line with the six words at +12, +16, +20, +24, +28 and +32.
+  Other requests print nothing.
+  It returns 0 when the `ioctl` result was zero and -1 otherwise, chosen by `movz` in the return's delay slot.
+- `texIoctlBind` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: binds a texture slot through the driver, a 120-byte routine at 0xd96e540. Established.
+  The arguments are the context and the slot number, which it keeps on the stack.
+  With the dump word at gp-21560 nonzero it first prints `CRIME_TEX_IOCTL_BIND: slotId %d`.
+  It calls `ioctl` with the descriptor at context +31504, request 22096 (0x5650) and the address of the saved slot number.
+  A nonzero result calls `perror` with `GL Error : texIoctlBind ` whatever the dump word is, and returns -1.
+  A zero result returns 0. It writes no engine register.
