@@ -451,7 +451,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00259f0	28	GetEnvironmentVa
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025a0c	156	GetFileInformation	symtab	a308b6c9dd1b		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025aa8	32	SetFileInformation	symtab	922304d033fc		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025ac8	260	parseargs	symtab	1e50270d837f		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025fe8	96	GetComponent	symtab	43347e09059f		in	located	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025fe8	96	GetComponent	symtab	43347e09059f		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026048	756	parse_path	symtab	e8fb8409219e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002633c	76	fs_init	symtab	9ffec557fe05		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026388	152	fs_register	symtab	6897301b0036		in	undocumented		
