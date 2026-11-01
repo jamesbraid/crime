@@ -8998,26 +8998,26 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda24e00	644	__glNMLFilter
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda25084	644	__glLMLFilter	dynsym+mdebug	ba27504f214e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda25308	3912	__glFilter4Func2	dynsym+mdebug	14eb6d4d75d9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26250	1344	__glFilter4Func1	dynsym+mdebug	1f3ebe874b98		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26790	56	__glTextureModulateL	dynsym+mdebug	8165582faac2		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda267c8	72	__glTextureModulateLA	dynsym+mdebug	1a741aaab6dd		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26810	56	__glTextureModulateRGB	dynsym+mdebug	044ee3c68757		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26848	72	__glTextureModulateRGBA	dynsym+mdebug	df5dd507af0a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26890	24	__glTextureModulateA	dynsym+mdebug	20c43523e8c6		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda268a8	72	__glTextureModulateI	dynsym+mdebug	0ebf1226efd1		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda268f0	56	__glTextureDecalRGB	dynsym+mdebug	5e077087eb3f		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26928	104	__glTextureDecalRGBA	dynsym+mdebug	b807b553204e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26990	88	__glTextureBlendL	dynsym+mdebug	b1bfb8d35253		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda269e8	104	__glTextureBlendLA	dynsym+mdebug	06dd6e04f3cf		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26a50	112	__glTextureBlendRGB	dynsym+mdebug	15f829df9448		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26ac0	128	__glTextureBlendRGBA	dynsym+mdebug	5f2622f5c606		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26b40	24	__glTextureBlendA	dynsym+mdebug	20c43523e8c6		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26b58	104	__glTextureBlendI	dynsym+mdebug	f33e37b5df77		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26bc0	56	__glTextureReplaceL	dynsym+mdebug	2fb4e6a26a59		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26bf8	72	__glTextureReplaceLA	dynsym+mdebug	866007a6a557		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26c40	56	__glTextureReplaceRGB	dynsym+mdebug	5e077087eb3f		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26c78	72	__glTextureReplaceRGBA	dynsym+mdebug	1c7fedd9e012		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26cc0	24	__glTextureReplaceA	dynsym+mdebug	cbceab6d7d38		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26cd8	72	__glTextureReplaceI	dynsym+mdebug	191aee0a0c66		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26790	56	__glTextureModulateL	dynsym+mdebug	8165582faac2		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda267c8	72	__glTextureModulateLA	dynsym+mdebug	1a741aaab6dd		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26810	56	__glTextureModulateRGB	dynsym+mdebug	044ee3c68757		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26848	72	__glTextureModulateRGBA	dynsym+mdebug	df5dd507af0a		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26890	24	__glTextureModulateA	dynsym+mdebug	20c43523e8c6		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda268a8	72	__glTextureModulateI	dynsym+mdebug	0ebf1226efd1		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda268f0	56	__glTextureDecalRGB	dynsym+mdebug	5e077087eb3f		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26928	104	__glTextureDecalRGBA	dynsym+mdebug	b807b553204e		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26990	88	__glTextureBlendL	dynsym+mdebug	b1bfb8d35253		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda269e8	104	__glTextureBlendLA	dynsym+mdebug	06dd6e04f3cf		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26a50	112	__glTextureBlendRGB	dynsym+mdebug	15f829df9448		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26ac0	128	__glTextureBlendRGBA	dynsym+mdebug	5f2622f5c606		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26b40	24	__glTextureBlendA	dynsym+mdebug	20c43523e8c6		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26b58	104	__glTextureBlendI	dynsym+mdebug	f33e37b5df77		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26bc0	56	__glTextureReplaceL	dynsym+mdebug	2fb4e6a26a59		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26bf8	72	__glTextureReplaceLA	dynsym+mdebug	866007a6a557		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26c40	56	__glTextureReplaceRGB	dynsym+mdebug	5e077087eb3f		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26c78	72	__glTextureReplaceRGBA	dynsym+mdebug	1c7fedd9e012		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26cc0	24	__glTextureReplaceA	dynsym+mdebug	cbceab6d7d38		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26cd8	72	__glTextureReplaceI	dynsym+mdebug	191aee0a0c66		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26d20	60	__GL_TEXENV_CLAMP	dynsym+mdebug	aac5c291adb5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26d5c	268	__glTextureSBModulateL	dynsym+mdebug	39b1ad24f203		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda26e68	328	__glTextureSBModulateLA	dynsym+mdebug	9ef8fb2538c5		in	undocumented		
@@ -13123,26 +13123,26 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda260b0	600	__glNMLFilt
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda26310	600	__glLMLFilter	dwarf+dynsym	2a4bd36db8f1		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda26570	3400	__glFilter4Func2	dwarf+dynsym	b3031919d254		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda272c0	1264	__glFilter4Func1	dwarf+dynsym	7d3a8485e5d6		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277b0	52	__glTextureModulateL	dwarf+dynsym	ec51ed734943		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277f0	68	__glTextureModulateLA	dwarf+dynsym	c0ed17f7c0f8		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27840	52	__glTextureModulateRGB	dwarf+dynsym	d7f9d11fe05d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27880	68	__glTextureModulateRGBA	dwarf+dynsym	fd9ea9630b2b		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278d0	20	__glTextureModulateA	dwarf+dynsym	e32947060236		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278f0	68	__glTextureModulateI	dwarf+dynsym	1618256b58d4		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27940	52	__glTextureDecalRGB	dwarf+dynsym	8b7fb754b780		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27980	100	__glTextureDecalRGBA	dwarf+dynsym	3b7870087cc7		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda279f0	80	__glTextureBlendL	dwarf+dynsym	383d7906647b		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27a40	96	__glTextureBlendLA	dwarf+dynsym	994465f28300		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27aa0	104	__glTextureBlendRGB	dwarf+dynsym	a1b3916a0c1d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b10	120	__glTextureBlendRGBA	dwarf+dynsym	e863d53326cd		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b90	20	__glTextureBlendA	dwarf+dynsym	e32947060236		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27bb0	100	__glTextureBlendI	dwarf+dynsym	40e81eba5a7a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c20	52	__glTextureReplaceL	dwarf+dynsym	b23f73331aac		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c60	68	__glTextureReplaceLA	dwarf+dynsym	498746e6de00		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cb0	52	__glTextureReplaceRGB	dwarf+dynsym	8b7fb754b780		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cf0	68	__glTextureReplaceRGBA	dwarf+dynsym	2ffcb4dae815		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d40	20	__glTextureReplaceA	dwarf+dynsym	4d5bdf315d6c		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d60	68	__glTextureReplaceI	dwarf+dynsym	5d39bd863d26		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277b0	52	__glTextureModulateL	dwarf+dynsym	ec51ed734943		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda277f0	68	__glTextureModulateLA	dwarf+dynsym	c0ed17f7c0f8		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27840	52	__glTextureModulateRGB	dwarf+dynsym	d7f9d11fe05d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27880	68	__glTextureModulateRGBA	dwarf+dynsym	fd9ea9630b2b		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278d0	20	__glTextureModulateA	dwarf+dynsym	e32947060236		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda278f0	68	__glTextureModulateI	dwarf+dynsym	1618256b58d4		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27940	52	__glTextureDecalRGB	dwarf+dynsym	8b7fb754b780		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27980	100	__glTextureDecalRGBA	dwarf+dynsym	3b7870087cc7		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda279f0	80	__glTextureBlendL	dwarf+dynsym	383d7906647b		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27a40	96	__glTextureBlendLA	dwarf+dynsym	994465f28300		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27aa0	104	__glTextureBlendRGB	dwarf+dynsym	a1b3916a0c1d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b10	120	__glTextureBlendRGBA	dwarf+dynsym	e863d53326cd		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27b90	20	__glTextureBlendA	dwarf+dynsym	e32947060236		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27bb0	100	__glTextureBlendI	dwarf+dynsym	40e81eba5a7a		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c20	52	__glTextureReplaceL	dwarf+dynsym	b23f73331aac		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27c60	68	__glTextureReplaceLA	dwarf+dynsym	498746e6de00		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cb0	52	__glTextureReplaceRGB	dwarf+dynsym	8b7fb754b780		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27cf0	68	__glTextureReplaceRGBA	dwarf+dynsym	2ffcb4dae815		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d40	20	__glTextureReplaceA	dwarf+dynsym	4d5bdf315d6c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27d60	68	__glTextureReplaceI	dwarf+dynsym	5d39bd863d26		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27db0	36	__GL_TEXENV_CLAMP	dwarf+dynsym	ccc805ae7669		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27de0	272	__glTextureSBModulateL	dwarf+dynsym	d8ee2377de68		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda27ef0	324	__glTextureSBModulateLA	dwarf+dynsym	13dc15ddca49		in	undocumented		
