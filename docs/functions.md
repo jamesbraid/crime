@@ -1737,6 +1737,11 @@ Routines of the video driver that the transfer, path and control layers call. Re
 - `mvpcontrol_setup_output` in `mvp.o`: selects the video input and output routes for the current mode, a 412-byte routine at offset 0x7434. Established.
   It reads the byte at `+156` and, when it is 17, stores 1 there and uses 1 in its place. The byte at `+108` then picks the route. A value of 2 calls `mvpavio_select_output` with 2 and keeps zero. A value of 1 calls `mvpavio_select_input` with the byte at `+97`, then `mvpavio_select_output` with 1, and keeps one. A value of 0 calls `mvpavio_select_output` with 1 and keeps zero. Any larger value calls nothing and keeps a stack word that this routine never writes. If the byte at `+12` is zero it calls `mvpreg_setup_timing` with 2 and the byte at `+156`, then `mvpreg_setpassthru` with the kept value and 0, and returns what that leaves. Otherwise it takes `splhi` and reads the doubleword at `+616`. With the kept value non-zero it clears bits 1, 2, 3 and 4 and sets bits 1 and 3 (0x02 and 0x08); with it zero it clears the same bits and sets bits 2 and 4 (0x04 and 0x10). A changed value is stored at `+616` and at offset 16 from the address held in the word at `+200`. It then restores the level, calls `mvpavio_select_genlock` with 0 and 2 and returns what that leaves. `mvpcontrol_check_output` calls it.
 
+- `mvpcontrol_i2c_set` in `mvp.o`: writes up to five bus register fields and then announces the change, a 384-byte routine at offset 0x7e90. Established.
+  The arguments are a path record, the controller record and a request. A signed word below 3 at path `+1188` returns 13. Entries are 8 bytes apart from request `+40`: a halfword key, a register halfword, a mask halfword and a value halfword. Up to five entries are taken, stopping at the first zero key. For each it calls `mvpavio_i2c_get` with the board at controller `+20`, the key, the register and 0; a result whose low halfword is negative is returned (sign-extended). Otherwise it ors the entry's value with the read result masked by the complement of the entry's mask and calls `mvpavio_i2c_put` with the board, the key, the register, that halfword and 0, and again returns a negative halfword result. After the loop a compare of the request byte at `+36` with -1 follows; a byte load cannot equal that, so the branch to the return is never taken. It stores the halfword 20 at path `+1712` and the request words at `+4`, `+8` and `+12` at path `+1720`, `+1724` and `+1728`, in that order, calls the routine at 0x7694 (`mvpcontrol_send_changed`) with the path, the address path `+1712`, the request byte at `+37` and 1024, and returns 0. `mvpcontrol_ioctl` calls it.
+- `mvppath_attach` in `mvp.o`: opens the path's two buffer queues and records their settings, a 372-byte routine at offset 0xa584. Established.
+  The arguments are a path record and a request. Bit 1 of the byte at path `+1126` set already returns 71. Otherwise it calls `dms_open` with the address path `+1400` and the request, and returns a non-zero result. It then calls `dms_fifo_attach` with the handle at `+1400` and the request word at `+8`; on a non-zero result it calls `dms_close` on `+1400` and returns that result. It stores the request word at `+8` at path `+1416` (in the delay slot of the next call), calls `dms_open` with the address path `+1404`, and on a non-zero result calls `dms_fifo_detach` and `dms_close` on the handle at `+1400` and returns the result. It then calls `dms_fifo_attach` with the handle at `+1404` and the request word at `+4`; on failure it calls `dms_close` on `+1404`, then `dms_fifo_detach` and `dms_close` on `+1400`, and returns the result. On success it calls `dms_fifo_cache_policy` with the handle at `+1404`, the request word at `+4`, 2 and 0, storing that word at path `+1412` in the delay slot. It sets bit 1 of the byte at `+1126`, stores the request word at `+0` at path `+1408` and returns 0. `mvppath_ioctl` calls it.
+
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
 - `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.
@@ -1997,3 +2002,28 @@ These routines run on the R10000-class cache-error path and the idle loop of the
   It tail-calls `xdr_u_long` with its own arguments.
 - `xdr_SDBfileOffset` in `usr/gfx/setmon`: the XDR codec of a file offset, a 52-byte routine at 0x100242e8. Established.
   It tail-calls `xdr_u_long` with its own arguments.
+
+# Routines of `gfxinit`, one entry each (stubs and revision fields)
+
+Short routines of the board set-up program, read from the 6.5.30 executable `usr/gfx/gfxinit`; addresses are its virtual addresses. These belong to other boards' code that the one program carries, not to CRIME or GBE. A "direct call" means a `jal` or `j` to the routine's address.
+
+- `venice_pgrev` in `usr/gfx/gfxinit`: returns 0 as one field of a board revision word, an 8-byte routine at address 0x10010310. Established.
+  It returns 0 in the delay slot of its return and reads no argument. `venice_rm_rev` (0x10010360) calls it with its own argument and shifts the result left by 16 before oring it into the word it returns.
+- `venice_tarev` in `usr/gfx/gfxinit`: returns 0 as the next field of that word, an 8-byte routine at address 0x10010320. Established.
+  It returns 0 and reads no argument. `venice_rm_rev` calls it at 0x10010370 and shifts the result left by 12.
+- `venice_tdrev` in `usr/gfx/gfxinit`: returns the constant 1 as the field below that, an 8-byte routine at address 0x10010318. Established.
+  It returns 1 in the delay slot of its return and reads no argument. `venice_rm_rev` calls it at 0x10010380 and shifts the result left by 8; the same routine also takes `venice_bdrev` (shift 20), `venice_ibrev` (shift 4) and `venice_imprev` (no shift) into the word.
+- `venice_gefrev` in `usr/gfx/gfxinit`: returns the constant 1 as the geometry-engine field of a revision word, an 8-byte routine at address 0x10010598. Established.
+  It returns 1 in the delay slot of its return. `venice_ge_rev` calls it at 0x100105d4 and shifts the result left by 4, with `venice_ifrev` shifted by 8 and `venice_cprev` unshifted.
+- `ev1_init` in `usr/gfx/gfxinit`: a board initialiser that does nothing and reports success, an 8-byte routine at address 0x10007a18. Established.
+  It returns 0 in the delay slot of its return. `gr2_init` calls it at 0x10007c28 only when the byte at offset 56 of its fourth argument is positive; the call after a non-zero result (loaded through the global pointer at -32496, with 2 and a string) is therefore never reached with this routine.
+- `ng1_init` in `usr/gfx/gfxinit`: the same do-nothing initialiser for a second board family, an 8-byte routine at address 0x10009164. Established.
+  It returns 0 and touches nothing. No direct call in the executable names it.
+- `fcg_jt_init` in `usr/gfx/gfxinit`: the scan-chain interface's initialiser, a stub, an 8-byte routine at address 0x10010778. Established.
+  It returns 0 and reads no argument. No direct call in the executable names it, so any use goes through a pointer.
+- `fcg_jt_hard_reset` in `usr/gfx/gfxinit`: the scan-chain interface's hard reset, which is not implemented, an 8-byte routine at address 0x10010818. Established.
+  It returns -1 in the delay slot of its return and does nothing else, unlike `fcg_jt_soft_reset`, which is a separate 152-byte routine. No direct call names it.
+- `internal_fifo_flow_control` in `usr/gfx/gfxinit`: an empty routine, an 8-byte routine at address 0x100120d8. Established.
+  It returns at once with a `nop` in the delay slot and sets no return value. No direct call names it.
+- `venice_check_vof_frame_status` in `usr/gfx/gfxinit`: a check that always reports ready, an 8-byte routine at address 0x100151f0. Established.
+  It returns 1 in the delay slot of its return and reads no argument. No direct call names it.

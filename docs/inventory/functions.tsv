@@ -2067,7 +2067,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7824	940	mvpcontrol_item_
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7bd0	396	mvpcontrol_item_get	dwarf+funcnames	a2a376c67444		in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7d5c	256	mvpcontrol_video_set	dwarf+funcnames	98ce5caa6f46		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7e5c	52	mvpcontrol_video_get	dwarf+funcnames	7fda526948cc		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7e90	384	mvpcontrol_i2c_set	dwarf+funcnames	dfcadda4ff30		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x7e90	384	mvpcontrol_i2c_set	dwarf+funcnames	dfcadda4ff30		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8010	132	mvpcontrol_i2c_get	dwarf+funcnames	742dca66e09d		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8094	52	mvpcontrol_path_set	dwarf+symtab	f7f26e9182fa		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x80c8	676	mvpcontrol_ioctl	dwarf+symtab	c1b8d5478fc5		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
@@ -2108,7 +2108,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa240	248	mvpgetpath	dwarf
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa338	72	mvpreleasepath	dwarf+funcnames	1c06048fd833		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa380	208	mvpiostatus	dwarf+funcnames	07f98bcba36a		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa450	308	mvpunload	dwarf+symtab	471e1ccb85f8		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-control-records-user-copies-and-housekeeping	Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa584	372	mvppath_attach	dwarf+symtab	781a4826aec2		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa584	372	mvppath_attach	dwarf+symtab	781a4826aec2		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa6f8	356	mvppath_close	dwarf+symtab	1f9322426133		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa85c	188	mvppath_send_events	dwarf+symtab	349351b250d1		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xa918	656	mvppath_send_available	dwarf+symtab	0397bcf65978		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
@@ -13413,14 +13413,14 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000587c	12	_mcount	dynsym	1c53f0b255e3		in	n
 usr/gfx/gfxinit	shared-tool	n32		0x10005888	2192	main	dynsym	2d27950426ee		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/gfxinit	shared-tool	n32		0x1000693c	848	lg1_info	dynsym	a882b266a68a		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10006c8c	2628	loadfile	dynsym	0ad174b7798e		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10007a18	8	ev1_init	dynsym	87506497337c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10007a20	860	gr2_init	dynsym	47ab036133e1		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10007a18	8	ev1_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10007a20	860	gr2_init	dynsym	47ab036133e1		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10007d7c	1152	gr2_info	dynsym	7dafed2e67db		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100081fc	868	gr2ev_info	dynsym	4915d12ca0f9		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10008970	1248	ven_info	dynsym	977f5853a8a4		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10008e50	144	ven_init	dynsym	d8b3273b46e4		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10008ee0	644	ng1_info	dynsym	6231262d0eb8		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10009164	8	ng1_init	dynsym	87506497337c		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10009164	8	ng1_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x1000916c	40	ng2_kludge_info	dynsym	943894c64a85		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10009290	2396	mgras_init	dynsym	b153192016ed		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10009bec	1044	_mgras_info	dynsym	5770d175438d		in	undocumented		
@@ -13460,26 +13460,26 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000fcb4	52	venice_get_vcreg	dynsym	83a44f095
 usr/gfx/gfxinit	shared-tool	n32		0x1000fce8	52	venice_set_vcreg	dynsym	652e23bd4d23		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000fd1c	220	venice_fifo_hack	dynsym	578590a3327e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000fdf8	340	venice_rmfifo	dynsym	1865307a21d3		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000ffbc	288	venice_imprev	dynsym	d9116e8680c7		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1000ffbc	288	venice_imprev	dynsym	d9116e8680c7		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x100100dc	184	venice_rm_imprev	dynsym	514f6740ae9b		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010194	256	venice_ibrev	dynsym	cfd1f0568cba		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10010194	256	venice_ibrev	dynsym	cfd1f0568cba		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010294	124	venice_rm_ibrev	dynsym	71d870c53ae5		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010310	8	venice_pgrev	dynsym	87506497337c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010318	8	venice_tdrev	dynsym	a7e7ca11a6b8		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010320	8	venice_tarev	dynsym	87506497337c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010328	208	venice_rm_rev	dynsym	e664be334fe0		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100103f8	80	venice_ifrev	dynsym	dc7dbb0e4fee		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010448	336	venice_cprev	dynsym	b0ae284f4d02		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010598	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100105a0	100	venice_ge_rev	dynsym	f65e8014b781		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010604	168	venice_bdrev	dynsym	a07aa6516eda		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10010310	8	venice_pgrev	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010318	8	venice_tdrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010320	8	venice_tarev	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010328	208	venice_rm_rev	dynsym	e664be334fe0		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x100103f8	80	venice_ifrev	dynsym	dc7dbb0e4fee		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010448	336	venice_cprev	dynsym	b0ae284f4d02		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010598	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x100105a0	100	venice_ge_rev	dynsym	f65e8014b781		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010604	168	venice_bdrev	dynsym	a07aa6516eda		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x100106ac	52	_jt_select_chain	dynsym	8eb272c08dc7		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100106e0	52	_jt_send_instruction	dynsym	c3b984d4b4b4		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10010714	52	_jt_send_data	dynsym	ebd5a551583b		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10010748	48	vector_to_int	dynsym	95a22d7cb7bc		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010778	8	fcg_jt_init	dynsym	87506497337c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010780	152	fcg_jt_soft_reset	dynsym	268b898d8365		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010818	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10010778	8	fcg_jt_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010780	152	fcg_jt_soft_reset	dynsym	268b898d8365		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/gfxinit	shared-tool	n32		0x10010818	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010820	952	fcg_jt_test_thyself	dynsym	9e1bf75a82da		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10010bd8	188	fcg_jt_select_chain	dynsym	2236868701d4		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10010c94	600	fcg_jt_send_instruction	dynsym	747e676aed32		in	undocumented		
@@ -13489,7 +13489,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x10011478	716	venice_load_cpge	dynsym	7f3d7e75
 usr/gfx/gfxinit	shared-tool	n32		0x10011744	292	venice_loadsection_cp2	dynsym	9558713ec60e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1001199c	540	venice_loadfile_ge8	dynsym	ee28436743dd		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10011bb8	1312	venice_loaducode	dynsym	cb4e389a7296		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100120d8	8	internal_fifo_flow_control	dynsym	78aa5094d5ec		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x100120d8	8	internal_fifo_flow_control	dynsym	78aa5094d5ec		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x100120ec	240	set_edgeMem_for_edge	dynsym	2a369035fc29		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10012518	220	venice_loadsection_dg2	dynsym	846b929eef12		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100125f4	484	venice_load_clockDivider	dynsym	77594873f5d4		in	undocumented		
@@ -13513,7 +13513,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x10014fb0	76	venice_write_vdrc_doneProg	dynsym
 usr/gfx/gfxinit	shared-tool	n32		0x10014ffc	88	venice_read_vdrc_doneProg	dynsym	e39cdf8d45f2		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10015054	348	venice_load_vdrc_xilinx	dynsym	83304259ba28		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100151b0	64	venice_write_vof_program	dynsym	dc4badd3d5b0		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100151f0	8	venice_check_vof_frame_status	dynsym	a7e7ca11a6b8		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x100151f0	8	venice_check_vof_frame_status	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x100151f8	88	venice_read_vof_done	dynsym	f64efffd629f		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10015250	348	venice_load_vof_xilinx	dynsym	b65fbef8aa88		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100153ac	64	venice_write_vif_program	dynsym	6edb68d1a484		in	undocumented		
@@ -13681,26 +13681,26 @@ usr/gfx/setmon	shared-tool	n32		0x100110d4	52	fcg_venice_get_vcreg	dynsym	2cfff3
 usr/gfx/setmon	shared-tool	n32		0x10011108	52	fcg_venice_set_vcreg	dynsym	1c7e7f7ac7ee		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1001113c	220	venice_fifo_hack	dynsym	b999ff8f56d3		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011218	340	venice_rmfifo	dynsym	18fe09879a70		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100113dc	288	venice_imprev	dynsym	7eb43d78580d		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x100113dc	288	venice_imprev	dynsym	7eb43d78580d		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x100114fc	184	venice_rm_imprev	dynsym	50a36637dd50		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100115b4	256	venice_ibrev	dynsym	594ad46810fd		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x100115b4	256	venice_ibrev	dynsym	594ad46810fd		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x100116b4	124	venice_rm_ibrev	dynsym	dc47cda866bc		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011730	8	venice_pgrev	dynsym	87506497337c		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011738	8	venice_tdrev	dynsym	a7e7ca11a6b8		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011740	8	venice_tarev	dynsym	87506497337c		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011748	208	venice_rm_rev	dynsym	577352b82057		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011818	80	venice_ifrev	dynsym	ba27af04e7ba		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011868	336	venice_cprev	dynsym	dc7bffdd6617		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100119b8	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100119c0	100	venice_ge_rev	dynsym	6c6a97fdb1e1		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011a24	168	venice_bdrev	dynsym	4ff9580cd8bc		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10011730	8	venice_pgrev	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011738	8	venice_tdrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011740	8	venice_tarev	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011748	208	venice_rm_rev	dynsym	577352b82057		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011818	80	venice_ifrev	dynsym	ba27af04e7ba		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011868	336	venice_cprev	dynsym	dc7bffdd6617		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x100119b8	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x100119c0	100	venice_ge_rev	dynsym	6c6a97fdb1e1		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011a24	168	venice_bdrev	dynsym	4ff9580cd8bc		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011acc	52	_jt_select_chain	dynsym	e0bdb701a6db		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011b00	52	_jt_send_instruction	dynsym	a95a2b40a5c2		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011b34	52	_jt_send_data	dynsym	62f27868000d		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011b68	48	vector_to_int	dynsym	95a22d7cb7bc		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011b98	8	fcg_jt_init	dynsym	87506497337c		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011ba0	152	fcg_jt_soft_reset	dynsym	48427abd0373		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011c38	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10011b98	8	fcg_jt_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011ba0	152	fcg_jt_soft_reset	dynsym	48427abd0373		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
+usr/gfx/setmon	shared-tool	n32		0x10011c38	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011c40	952	fcg_jt_test_thyself	dynsym	8d1a256be83f		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011ff8	188	fcg_jt_select_chain	dynsym	ad6d8f118bc9		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x100120b4	600	fcg_jt_send_instruction	dynsym	75e23a05a33a		in	undocumented		
