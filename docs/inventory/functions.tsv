@@ -669,7 +669,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002eb28	336	vttyprintf	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f510	128	sprintL	symtab	90c0f31bea47		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f590	124	sprintn	symtab	d3b7b10d4c27		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f730	268	showchar	symtab	9f7d5445b81d		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f83c	180	vsprintf	symtab	2dc73bd2e255		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f83c	180	vsprintf	symtab	2dc73bd2e255		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f8f0	24	_min	symtab	16b482861dba		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f908	24	_max	symtab	2f6f63a62e9c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f920	40	setscalable	symtab	46b9ee814701		in	undocumented		
@@ -689,17 +689,17 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030118	68	getpath	symtab	0
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa003015c	40	tolower	symtab	9f9f2ade877e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030184	160	strcasecmp	symtab	4c7d77920fa0		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-video-input-and-output-selection	Kernel routines, one entry each (`mvp.o`, video input and output selection)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030224	184	strncasecmp	symtab	c827e1b228b3		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00302dc	60	setjmp	symtab	0fc26dde1b61		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030318	72	longjmp	symtab	8527b0f47735		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00302dc	60	setjmp	symtab	0fc26dde1b61		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030318	72	longjmp	symtab	8527b0f47735		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030360	120	inv_findcpu	symtab	640f9c318d35		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00303d8	240	fixupname	symtab	7c47d8e36c58		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00304c8	568	inv_findtape	symtab	322e44ef7068		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00307c8	156	find_type	symtab	cf29a7f5a8e2		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030864	140	count_type	symtab	846304fc6e3e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00308f0	72	strcat	symtab	f46ca4cbfc8d		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030938	64	strcmp	symtab	e0f6a9699283		in	named-only	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030978	52	strcpy	symtab	88bdc666d069		in	named-only	docs/xmodule.md#video-formats-and-monitor	Video formats and monitor
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00309ac	44	strlen	symtab	463e9df08df1		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030938	64	strcmp	symtab	e0f6a9699283		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030978	52	strcpy	symtab	88bdc666d069		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00309ac	44	strlen	symtab	463e9df08df1		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00309d8	76	strdup	symtab	d6f6c394096f		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030a24	172	strstr	symtab	43ea2e25cb04		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030ad0	48	strchr	symtab	cc7b44f771e0		in	undocumented		
@@ -1243,8 +1243,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1154	36	sthread_launc
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1178	24	p0_launch	symtab	07dd9bac3171		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1190	108	resumeidle	symtab	0ec70e44a30e		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11fc	100	toidlestk	symtab	eae38d23e63e		out:9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1260	76	setjmp	symtab	d9b1f20f51f9		out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12ac	76	longjmp	symtab	4a688b5faecf		out:4	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1260	76	setjmp	symtab	d9b1f20f51f9		out:4	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12ac	76	longjmp	symtab	4a688b5faecf		out:4	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12f8	8	apsfail	symtab	78aa5094d5ec	shared-address	out:5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12f8	8	check_delay_iflush	symtab	78aa5094d5ec	shared-address	out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x12f8	8	check_delay_tlbflush	symtab	78aa5094d5ec	shared-address	out:1	undocumented		
@@ -1346,7 +1346,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x39b8	32	suword	symtab
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x39d8	32	suhalf	symtab	f5c66e0d80d2		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x39f8	24	fkiword	symtab	5ebca625c98a		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a10	8	uerror	symtab	6319e0118090		out:9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a18	32	strlen	symtab	66d6174f27b4		out:4	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a18	32	strlen	symtab	66d6174f27b4		out:4	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a38	36	uload_word	symtab	b9442bd14131		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a5c	44	uload_half	symtab	4ea3a69d2514		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3a88	44	uload_uhalf	symtab	1ce749dbb20d		out:4	undocumented		
@@ -2537,7 +2537,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094860	352	AccessWarpPointer	
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x100949c0	92	SProcDCStubDispatch	dynsym	1b1740811b73		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094a20	600	AppendFakeRequest	dynsym	75f44a88eba5		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094c80	572	ProcSGIvcListVideoFormatCombinations	dynsym	a946cdfa0728		out:11	undocumented		
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094ec0	88	ErrorF	dynsym	30da713a7fc9		in	named-only	docs/gbe.md#window-id-type-and-colour-map-codes	Window ID type and colour-map codes
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094ec0	88	ErrorF	dynsym	30da713a7fc9		in	located	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094f20	148	FatalError	dynsym	f363aae2c5ca		in	named-only	docs/xmodule.md#derivations-from-the-code	Derivations from the code
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10094fd0	68	SClobberNotifyEvent..IAF	dynsym	772cead3cb30		in	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10095020	212	LbxWriteGetpropReply..PCG	dynsym	b261febd07f4		out:13	undocumented		
@@ -13637,26 +13637,26 @@ usr/gfx/gfxinit	shared-tool	n32		0x1001e298	152	read_xilinx_file	dynsym	d71e0008
 usr/gfx/gfxinit	shared-tool	n32		0x1001e33c	4	__istart	dynsym	df3f619804a9		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/setmon	shared-tool	n32		0x10008d20	268	__start	dynsym	2c0ec17aee41		out:19	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/setmon	shared-tool	n32		0x10008e2c	12	_mcount	dynsym	1c53f0b255e3		out:19	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
-usr/gfx/setmon	shared-tool	n32		0x10008e38	64	Usage	dynsym	751005097950		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10008e38	64	Usage	dynsym	751005097950		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10008e8c	4216	main	dynsym	34b5ba5e4a50		in	named-only	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/setmon	shared-tool	n32		0x10009f04	308	getvofpath	dynsym	78b8d8b6975b		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000a038	56	vTimeoutOpenDisplay	dynsym	0b854b7056ad		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000a070	208	timeoutXOpenDisplay	dynsym	4fb9fe7741c6		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000a140	184	ErrorF	dynsym	a15c8fdf6d64		in	named-only	docs/gbe.md#window-id-type-and-colour-map-codes	Window ID type and colour-map codes
+usr/gfx/setmon	shared-tool	n32		0x10009f04	308	getvofpath	dynsym	78b8d8b6975b		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000a038	56	vTimeoutOpenDisplay	dynsym	0b854b7056ad		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000a070	208	timeoutXOpenDisplay	dynsym	4fb9fe7741c6		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000a140	184	ErrorF	dynsym	a15c8fdf6d64		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000a278	280	fglrxDoFramelock	dynsym	3545cab228e9		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a390	1588	fglrxsetmon	dynsym	fa71f07d84fd		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a9c4	1244	konasetmon	dynsym	0b8b74dabed0		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000aea0	3112	vensetmon	dynsym	f5131d53ddd4		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1000aea0	3112	vensetmon	dynsym	f5131d53ddd4		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000bac8	748	vs2setmon	dynsym	49dcb2459e90		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000bdb4	144	pipenumToString	dynsym	ac67e0375a42		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000bec0	704	xgsetmon	dynsym	d49d2c83acc5		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1000bdb4	144	pipenumToString	dynsym	ac67e0375a42		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000bec0	704	xgsetmon	dynsym	d49d2c83acc5		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000ce90	252	mgGetVOFpath	dynsym	e5fa9a8d0422		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000cf8c	1360	mgsetmon	dynsym	65e4df5f6da3		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000d4dc	164	odyGetVOFpath	dynsym	05748c0d2ee4		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000d580	740	odyDoFramelock	dynsym	1fba2ecd279b		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000d864	2252	odysetmon	dynsym	bbd7604aa716		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000e130	732	npsetmon	dynsym	ba1eeea60a5e		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	970d30b7d895		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/setmon	shared-tool	n32		0x1000e130	732	npsetmon	dynsym	ba1eeea60a5e		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	970d30b7d895		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	2ec81e45b71a		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/gfx/setmon	shared-tool	n32		0x1000fa18	268	venice_get_dg2_eeprom	dynsym	c08795730712		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fb24	416	venice_set_dg2_eeprom	dynsym	f69ca1487b42		in	undocumented		
@@ -13819,21 +13819,21 @@ usr/gfx/setmon	shared-tool	n32		0x10023a54	104	SDBgetSymbolDataAddress	dynsym	0f
 usr/gfx/setmon	shared-tool	n32		0x10023abc	88	SDBgetSymbolDatatype	dynsym	e5babb9edbf2		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x10023b14	92	SDBgetSymbolElementCount	dynsym	4cc6b092ec58		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x10023b70	56	SDBgetSymbolValueArray	dynsym	b4fdc507c323		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x10023ba8	56	SDBgetSymbolValueScalar	dynsym	7758986827c3		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x10023be0	184	SDBcloseReadDatabase	dynsym	b5929f42c35a		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x10023c98	424	SDBreadOpenDatabase	dynsym	a8e07a92b84d		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/gfx/setmon	shared-tool	n32		0x10023ba8	56	SDBgetSymbolValueScalar	dynsym	7758986827c3		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10023be0	184	SDBcloseReadDatabase	dynsym	b5929f42c35a		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10023c98	424	SDBreadOpenDatabase	dynsym	a8e07a92b84d		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10023e98	420	SDBprocessOneUserMethod	dynsym	a72ac1312681		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x1002403c	56	compareSTEName	dynsym	5cc35f1442f2		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x10024074	524	mapTypeToXDRPROC	dynsym	7fa230a612d2		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x10024280	52	SDBinitializeSymbolTableEntries	dynsym	3ed45d9db855		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x100242b4	52	xdr_SDBelementIndex	dynsym	ca294bea62cb		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x100242e8	52	xdr_SDBfileOffset	dynsym	8b36dbd30a08		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/gfx/setmon	shared-tool	n32		0x100242b4	52	xdr_SDBelementIndex	dynsym	ca294bea62cb		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x100242e8	52	xdr_SDBfileOffset	dynsym	8b36dbd30a08		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1002431c	340	xdr_typedData	dynsym	e4949ffb9419		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x10024470	320	xdr_SDBfileHeader	dynsym	f5491d823e0b		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/gfx/setmon	shared-tool	n32		0x10024470	320	xdr_SDBfileHeader	dynsym	f5491d823e0b		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x100245b0	52	xdr_SDBdataType	dynsym	a651d642ccba		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x100245e4	112	xdr_SDBsymbolName	dynsym	836a908844d9		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x10024654	200	xdr_SDBsymbolTableEntry	dynsym	4c14fe9861bf		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/gfx/setmon	shared-tool	n32		0x1002471c	104	xdr_SDBversionNumber	dynsym	9182ecc53548		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/gfx/setmon	shared-tool	n32		0x1002471c	104	xdr_SDBversionNumber	dynsym	9182ecc53548		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10024784	36	SDBsetupMemoryInterface	dynsym	b553068abdcb		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/gfx/setmon	shared-tool	n32		0x100247b0	96	saXSGIvcQueryOutputSync	dynsym	d931c794292c		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10024970	172	saXSGIvcQueryGammaMap	dynsym	c16d07e8778e		in	undocumented		
@@ -14131,7 +14131,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491c8c	52	SDBinitializeSymbolTabl
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491cc0	52	xdr_SDBelementIndex	dynsym	96c9f3414aeb		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491cf4	52	xdr_SDBfileOffset	dynsym	c9cae2dc432b		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491d28	340	xdr_typedData	dynsym	df291d6b9c78		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491e7c	320	xdr_SDBfileHeader	dynsym	6aff19eda332		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491e7c	320	xdr_SDBfileHeader	dynsym	6aff19eda332		in	located	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491fbc	52	xdr_SDBdataType	dynsym	251ea3d7d7e9		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x491ff0	112	xdr_SDBsymbolName	dynsym	d427ab10d4fd		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x492060	200	xdr_SDBsymbolTableEntry	dynsym	4175c623328e		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
@@ -14142,7 +14142,7 @@ usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x492408	92	SDBgetSymbolElementCoun
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x492464	56	SDBgetSymbolValueArray	dynsym	66619ae62d0a		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49249c	56	SDBgetSymbolValueScalar	dynsym	00c63fe089f9		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x4924d4	184	SDBcloseReadDatabase	dynsym	9ae55941cf9e		in	understood	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
-usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49258c	424	SDBreadOpenDatabase	dynsym	b22aed77315f		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
+usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49258c	424	SDBreadOpenDatabase	dynsym	b22aed77315f		in	located	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x49278c	420	SDBprocessOneUserMethod	dynsym	02d0dc4c3515		in	located	docs/sample-server.md#symbol-database-and-conversion-sdb-xdr	Symbol database and conversion (SDB, xdr)
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x492930	8	crmProbe	dynsym	a7e7ca11a6b8		in	understood	docs/xmodule.md#screen-set-up-and-tear-down	Screen set-up and tear-down
 usr/lib/X11/dyDDX/crm.so	board-x-module	n32		0x492940	7080	cfbCopyPlane8to1	dynsym	8558412a85bf		in	located	docs/sample-server.md#colour-frame-buffer-cfb-cfb16-cfb32	Colour frame buffer (cfb, cfb16, cfb32)
