@@ -2,6 +2,44 @@
 
 Facts no source read so far settles. No hardware is available, so every question is settled from software and published material. Each entry gives the owning file, the routes already tried and the next route to try. Answered questions move into the owning header or chapter and are deleted from here. A fact that every route leaves open is labelled "unknown: no shipped software or published source depends on it" in its owning file, with the routes listed, and leaves this file.
 
+## Triage (2026-11-01)
+
+Each item below carries a tag at its end: `software now` (a concrete software read or search exists), `missing release or binary` (the answer lies in a release, binary or document not in this clone), `hardware only` (only a real machine or a timing model can settle it; recorded, not scheduled), or `settled by existing result` (a Result line in [published-sources.md, section 14](published-sources.md#14-recollections-and-history-leads-unverified) or a tested line already answers it; confirm and remove the item).
+
+Counts, 104 items: software now 69; missing release or binary 7; hardware only 13; settled by existing result 15.
+
+Method and limits: each item was read with its cited evidence, meaning the lead's Result line in section 14 and the chapter it cites, and each cited binary and source tree was checked for presence in this clone. The binaries were not reopened item by item, so the tags rest on the cited evidence. Nothing listed as a software step has been run.
+
+### Software now, in priority order
+
+1. **VICE MPEG-2 entry point** (the Nekonomicon VICE lead). [vice.md](vice.md) lists `mpeg2dec` and `mpeg2dec_fld` program names, which conflicts with the "no MPEG-2 entry point" premise. Read the MPEG-2 entry point in the microcode image.
+2. **Colour-map FIFO polarity.** The public drivers read the field the other way from the specification. Read the IRIX colour-map writer and record its assumption.
+3. **OpenBSD frame-size remainder at 16 bits.** Disassemble the 6.5.30 writer of `FRM_SIZE_TILE` at 16 bits and compare its count with both formulas.
+4. **Tile entry bit 15.** Find the caller of `crmAllocTiles` and the attribute it passes.
+5. **VICE interrupt input 31.** Read the VICE driver object in the 6.5.30 kernel for whether input 31 is unmasked.
+6. The Result's "untestable" label does not fit a code question.
+7. **`dmBufferAllocate` slot leak.** Read the slot-free path on the failure route in the media library. The Result also calls it untestable.
+8. **Default framebuffer double-buffer byte (`+0x2b`).** Read its initial value in the kernel's CRIME init. This settles the `16+16` default lead.
+9. **VICE descriptor layout and RAM window extent.** Read the 6.5.30 VICE driver objects against the descriptor fields in [vice.md](vice.md).
+10. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
+11. **Video driver routines.** The `mvptransfer_*` family, the probe families and the routine at `0xc564` (see the last four items).
+12. **o32 `DrawMode` and `Primitive` words, and the third argument of `crmInitHW..HB`** (global `0x48ad10`).
+13. **Stereo, four-buffer and framebuffer-depth gating.** Decode the GLX capability tables in the X module. One decode settles three leads.
+14. **MVP zoom limit and 10-bit packing.** Read the `VL_MVP_ZOOMSIZE` handler and the 10-bit converter in `mvp.so`.
+15. **Chime routine in the PROM image.** Locate it in the flat image by its audio register writes.
+16. **CRIME error status bit 2 and narrow TLB stores.** Grep the shipped code for any test or write. If none, record each as having no shipped dependency, with the routes listed.
+
+The other 53 software-now items follow in file order, each with its step inline.
+
+### Found while triaging
+
+- Every recollection lead in section 14 has a Result line. Of the 79 recollection items here, 27 (from the 3D texture lead through the fill-rate lead) carry "Tested" lines from 30 October; the other 52 carry only section 14's Result. The list and section 14 need reconciling, and 15 items are tagged settled by an existing result.
+- Several Results call a question untestable where a software read exists: the NetBSD crmfb pixel format (the public driver source), the MACE audio DMA ring (IRIX source), the `dmBufferAllocate` leak (media library code) and the tile clearing on X session start (kernel allocator).
+- In this clone the submodules for NetBSD, Linux, OpenBSD, GXemul, MAME and the SGI documents are empty; readings that cite them need a checkout that holds those trees.
+- `xscreen` and `findvis` are not under the shipped `root/` tree, so the two items that name them are missing-binary items.
+- The intro and two items name "the Library" as a route. The RE rules keep Library references out of the repo; flagged here, not edited.
+- The "Where work stopped" scope bullet repeats the rule-19 sentence in full. Flagged, not edited.
+
 Route key, used in the tables:
 
 - **K**: the IRIX 6.5.30 kernel graphics objects (`crime*.o`, `gfx.o`, `rrm.o`, `mace.o`), read.
