@@ -2498,6 +2498,26 @@ These entries cover the small routines of `sbin/stand/symmon.IP32` (6.5.30, N32)
   It is an immediate return with a `nop` delay slot, so no buffer pool is built. `_init_saio` (0xa002664c) calls it at 0xa0026744, right after `fs_init` (0xa002633c) and before `_init_sockets`. It is the only caller.
 - `_init_sockets` in `sbin/stand/symmon.IP32`: the socket-table set-up hook, an 8-byte routine at 0xa001becc. Established for the code; the role is inferred from the symbol alone.
   Its whole body is `jr ra` over a `nop`. It has one caller, the `jal` at 0xa002674c in `_init_saio` (0xa002664c), between `_init_mbufs` and `_init_bootenv` (0xa0026fa8), so the debugger starts with no sockets.
+- `_init_mouse` in `sbin/stand/symmon.IP32`: the pointing-device set-up hook, an 8-byte routine at 0xa001df28. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and reads no hardware. `_init_saio` calls it at 0xa0026764 and discards the result; the call at 0xa002676c that follows goes to `_init_systemid` (0xa00257e0). `vh_checksum` (0xa001df30) follows it in the text.
+- `_m_get` in `sbin/stand/symmon.IP32`: the network-buffer allocator slot, an 8-byte routine at 0xa001bf1c. Established for the code; the role is inferred from the symbol alone.
+  It hands back 0, a null buffer, for any request. It sits between `logoOff` (0xa001bf14) and `_m_freem` (0xa001bf24) in a run of stubs, and nothing in the image calls it or stores its address.
+- `_m_freem` in `sbin/stand/symmon.IP32`: the network-buffer release slot, an 8-byte routine at 0xa001bf24. Established for the code; the role is inferred from the symbol alone.
+  The body is `jr ra` and a `nop`: it frees nothing and returns no value. It is unreferenced, with `_m_get` before it and `ether_sprintf` (0xa001bf2c) after.
+- `ether_sprintf` in `sbin/stand/symmon.IP32`: the Ethernet-address formatter slot, an 8-byte routine at 0xa001bf2c. Established for the code; the role is inferred from the symbol alone.
+  It writes no text and returns 0, so a caller would receive a null string pointer. It has no caller and no table entry. Its neighbours are `_m_freem` (0xa001bf24) and `_so_append` (0xa001bf34).
+- `_so_append` in `sbin/stand/symmon.IP32`: the socket-queue append slot, an 8-byte routine at 0xa001bf34. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 with `move v0,zero` in the delay slot and has no side effects. No `jal`, `j` or table word reaches it. `ether_sprintf` precedes it and `_find_socket` (0xa001bf3c) follows.
+- `_find_socket` in `sbin/stand/symmon.IP32`: the socket lookup slot, an 8-byte routine at 0xa001bf3c. Established for the code; the role is inferred from the symbol alone.
+  Every lookup would return 0, meaning no socket found. The routine is never called, and the next routine in the text is `load_init` (0xa001bf44), then `Load` (0xa001bf4c), the first vector slot.
+- `_null_strat` in `sbin/stand/symmon.IP32`: the strategy routine of the null device, an 8-byte routine at 0xa001bf7c. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 without looking at the request. Between `exec_abs` (0xa001bf74) and `nullsetup` (0xa001bf84), it is called by nothing and no table holds its address.
+- `_mem_strat` in `sbin/stand/symmon.IP32`: the strategy routine of the memory device, an 8-byte routine at 0xa001bf8c. Established for the code; the role is inferred from the symbol alone.
+  It returns 0, so a transfer request to it moves no data and reports no error code. `nullsetup` precedes it and `memsetup` (0xa001bf94) follows. It has no caller and no table word.
+- `_tpscopen` in `sbin/stand/symmon.IP32`: the open routine of the SCSI tape driver slot, an 8-byte routine at 0xa001def0. Established for the code; the role is inferred from the symbol alone.
+  It returns 0, so an open of that device reports success without touching a controller. `_tpscclose` (0xa001def8) is the next routine. Nothing calls it or stores its address.
+- `_tpscclose` in `sbin/stand/symmon.IP32`: the close routine of the SCSI tape driver slot, an 8-byte routine at 0xa001def8. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and does nothing else. It lies between `_tpscopen` and `dksc_strat` (0xa001df00) and has no references.
 
 # Routines of `symmon.IP32`, one entry each
 
