@@ -582,6 +582,17 @@
         "powerintr",
         "init_sysid"
       ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/setmon"
+      ],
+      "reason": "C start-up, profiling hook and empty initialiser stub of the executable: no graphics register, token or ioctl use",
+      "names": [
+        "__start",
+        "_mcount",
+        "__istart"
+      ]
     }
   ],
   "windows": [
