@@ -6452,13 +6452,13 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936b34	652	__glCrmFogRGB
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd936dc0	860	__glCrmDepthLine	dynsym+mdebug	c47cff28dbff		in	understood	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93711c	1632	LongStippledLine	mdebug	d42faae94927		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937540	20	__glFirstLinesVertex	dynsym+mdebug	bb7cd4f3597e		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937554	40	__glBeginLines	dynsym+mdebug	af28e624002b		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937554	40	__glBeginLines	dynsym+mdebug	af28e624002b		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93757c	168	__glOtherLStripVertex	dynsym+mdebug	f0cfd948da5d		in	understood	docs/sample-implementation.md#so_linefinc	so_linefin.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937624	184	__glSecondLStripVertex	dynsym+mdebug	11374babe086		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9376dc	116	__glFirstLStripVertex	dynsym+mdebug	8bf198be4cbb		in	named-only	docs/sample-implementation.md#so_linefinc	so_linefin.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937750	44	__glBeginLStrip	dynsym+mdebug	c7ef24549dc0		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937750	44	__glBeginLStrip	dynsym+mdebug	c7ef24549dc0		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd93777c	212	FirstLLoopVertex	mdebug	31fb7e2e17e9	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93779c	120	__glEndLLoop	dynsym+mdebug	38d522e009cb		in	located	docs/sample-implementation.md#so_linefinc	so_linefin.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93779c	120	__glEndLLoop	dynsym+mdebug	38d522e009cb		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd937814	56	__glBeginLLoop	dynsym+mdebug	f4c7aad40d9d		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd937850	296	InitVICE	mdebug	65035bbde703		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd937978	128	AccumMakeCurrent	mdebug	b248b9dbeaa5		in	undocumented		
@@ -7533,18 +7533,18 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9911b0	256	__glMipsCopyD
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9912b0	1344	__glStencilTestSpan_asm	dynsym+mdebug	29bde3361854		in	located	docs/sample-implementation.md#mips_sspanma	mips_sspan.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9917f0	16	__glFrac	dynsym+mdebug	88785899ab6e		in	named-only	docs/pixel-arithmetic.md#filter-weights	Filter weights
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991800	12	__glFloor	dynsym+mdebug	e9457641112e		in	named-only	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991810	8	__glDT_NEVER	dynsym+mdebug	88258808bcbf		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991818	32	__glDT_LEQUAL	dynsym+mdebug	369de178efa7		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991810	8	__glDT_NEVER	dynsym+mdebug	88258808bcbf		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991818	32	__glDT_LEQUAL	dynsym+mdebug	369de178efa7		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991838	32	__glDT_LEQUAL_s	dynsym+mdebug	cbdbdff09d11		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991858	32	__glDT_LESS	dynsym+mdebug	103b1df40f10		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991878	32	__glDT_LESS_s	dynsym+mdebug	654f6068a34b		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991898	28	__glDT_EQUAL	dynsym+mdebug	fdb4bec7893e		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991898	28	__glDT_EQUAL	dynsym+mdebug	fdb4bec7893e		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918b4	32	__glDT_GREATER	dynsym+mdebug	f7f6e892ef39		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918d4	32	__glDT_GREATER_s	dynsym+mdebug	f7a89a777739		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9918f4	28	__glDT_NOTEQUAL	dynsym+mdebug	1faf3acf2bbb		in	understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991910	32	__glDT_GEQUAL	dynsym+mdebug	8e6383ff89e2		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991910	32	__glDT_GEQUAL	dynsym+mdebug	8e6383ff89e2		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991930	32	__glDT_GEQUAL_s	dynsym+mdebug	4443adb0ca2f		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991950	12	__glDT_ALWAYS	dynsym+mdebug	634ccb8317f8		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991950	12	__glDT_ALWAYS	dynsym+mdebug	634ccb8317f8		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd99195c	12	__glDT_LEQUAL_M	dynsym+mdebug	038653dcc1f4		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991968	12	__glDT_LEQUAL_M_s	dynsym+mdebug	64ae599b3327		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd991974	8	__glDT_LESS_M	dynsym+mdebug	66c55aa6331c		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
@@ -11658,18 +11658,18 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991670	256	__glMipsCop
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991770	1472	__glStencilTestSpan_asm	dwarf+dynsym	661692e1fda6		in	located	docs/sample-implementation.md#mips_sspanma	mips_sspan.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d30	16	__glFrac	dwarf+dynsym	88785899ab6e		in	named-only	docs/pixel-arithmetic.md#filter-weights	Filter weights
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d40	12	__glFloor	dwarf+dynsym	e9457641112e		in	named-only	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d50	8	__glDT_NEVER	dwarf+dynsym	88258808bcbf		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d58	32	__glDT_LEQUAL	dwarf+dynsym	369de178efa7		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d50	8	__glDT_NEVER	dwarf+dynsym	88258808bcbf		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d58	32	__glDT_LEQUAL	dwarf+dynsym	369de178efa7		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d78	32	__glDT_LEQUAL_s	dwarf+dynsym	cbdbdff09d11		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991d98	32	__glDT_LESS	dwarf+dynsym	103b1df40f10		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991db8	32	__glDT_LESS_s	dwarf+dynsym	654f6068a34b		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991dd8	28	__glDT_EQUAL	dwarf+dynsym	fdb4bec7893e		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991dd8	28	__glDT_EQUAL	dwarf+dynsym	fdb4bec7893e		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991df4	32	__glDT_GREATER	dwarf+dynsym	f7f6e892ef39		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e14	32	__glDT_GREATER_s	dwarf+dynsym	f7a89a777739		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e34	28	__glDT_NOTEQUAL	dwarf+dynsym	1faf3acf2bbb		in	understood	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e50	32	__glDT_GEQUAL	dwarf+dynsym	8e6383ff89e2		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e50	32	__glDT_GEQUAL	dwarf+dynsym	8e6383ff89e2		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e70	32	__glDT_GEQUAL_s	dwarf+dynsym	4443adb0ca2f		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e90	12	__glDT_ALWAYS	dwarf+dynsym	634ccb8317f8		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e90	12	__glDT_ALWAYS	dwarf+dynsym	634ccb8317f8		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991e9c	12	__glDT_LEQUAL_M	dwarf+dynsym	038653dcc1f4		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991ea8	12	__glDT_LEQUAL_M_s	dwarf+dynsym	64ae599b3327		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd991eb4	8	__glDT_LESS_M	dwarf+dynsym	66c55aa6331c		in	located	docs/sample-implementation.md#mips_zfuncsma	mips_zfuncs.ma
