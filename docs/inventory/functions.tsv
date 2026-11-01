@@ -6521,7 +6521,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	3b119cbde5f3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940350	1180	ReadCISpan	mdebug	33a633c4ef60		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9407ec	60	ReadCI	mdebug	42f365b4b5fe		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	b641ce7ea7b4		in	located	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	b641ce7ea7b4		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940db0	48	MakeCurrentCI	mdebug	81ac8a3ac3d8		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940de0	16	ResizeCI	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940df0	1956	PickCI	mdebug	911236345e22		in	undocumented		
@@ -6557,7 +6557,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941c68	68	__glCrmAllocAc
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941cac	464	CheckViewport	mdebug	20e7d58a81ab		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941e7c	272	FindWindowSize	mdebug	0805af301f56		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941f8c	220	ApplyViewport	mdebug	b346f7ccf4be	multi-unit	in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942068	636	ApplyScissor	mdebug	062ea1a1d1c2	multi-unit	in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd942068	636	ApplyScissor	mdebug	062ea1a1d1c2	multi-unit	in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9422e4	2808	crmGetBufMode	mdebug	e80ebcda74d7		in	named-only	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94281c	68	__glCrmGetSrcBufMode	dynsym+mdebug	4db7732ba39a		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd942860	68	__glCrmGetDstBufMode	dynsym+mdebug	1465e5be5157		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
@@ -6598,10 +6598,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481b8	16	PickDepth
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481c8	20	FetchDepth	mdebug	53b85bae1eb2		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481dc	24	StoreDepth	mdebug	75810d932729		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481f4	24	StoreDepthAlways	mdebug	75810d932729		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	8232766cf581		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	981dc86c5ec7		in	located	docs/libglcore.md#crm_depthc	`crm_depth.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	8232766cf581		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	981dc86c5ec7		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c6c	16	ResizeSz	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	73f69b166c83	multi-unit	in	named-only	docs/opengl.md#draw-mode-words	Draw-mode words
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	73f69b166c83	multi-unit	in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd948fc4	132	__glCrmForceNonTagClear	dynsym+mdebug	d85c9b9a2b72		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949048	356	__glCrmInitDepth	dynsym+mdebug	e9f7417b5fa6		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9491b0	124	crmIglooSwaptmesh	mdebug	20a8116c3443		in	undocumented		
@@ -6697,15 +6697,15 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DP
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	b9cd08efa11e		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	f3b4e9868222		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	7f05794a59ae		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	3a5b53c44685		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	3a5b53c44685		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b3f4	444	RenderPointFog	mdebug	037da31c1f10		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b5b0	1832	RenderPointTextured	mdebug	b6c8a86b5502		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95bcd8	1064	RenderPointN	mdebug	c2a312b38df8		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b5b0	1832	RenderPointTextured	mdebug	b6c8a86b5502		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95bcd8	1064	RenderPointN	mdebug	c2a312b38df8		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95c0a4	92	__glCrmPolygonOffsetPoint	dynsym+mdebug	2344205d8be6		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95c100	236	Coverage	mdebug	c5c629b0f476	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95c1ec	2400	RenderAntiAliasedPoint	mdebug	28903abfdf87		in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95c1ec	2400	RenderAntiAliasedPoint	mdebug	28903abfdf87		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cb4c	476	RenderFrontBackPoint	mdebug	60188fb91086		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderLeftRightPoint	mdebug	bc1d6b1fc12b		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderLeftRightPoint	mdebug	bc1d6b1fc12b		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95cf2c	640	__glCrmPickPointProcs	dynsym+mdebug	d2e96b50f242		in	located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRenderPointRGBA	dynsym+mdebug	0d1189322ee9		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	4668b0c53e5b		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
@@ -6713,9 +6713,9 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLine
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	73753387a867	multi-unit	in	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	cbaa7672f060		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d5dc	40	FindP	mdebug	92489508a175	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d604	48	FindP2	mdebug	6bf844833ddf		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d604	48	FindP2	mdebug	6bf844833ddf		in	named-only	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d634	1464	ComputeCoverageStuff	mdebug	9808c3c9ef60	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95dbec	22132	FillAASubTriangle	mdebug	7b4d12e76507	multi-unit	in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95dbec	22132	FillAASubTriangle	mdebug	7b4d12e76507	multi-unit	in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd961760	6908	__glCrmFillAATriangle	dynsym+mdebug	2ca33edfd9c4		in	understood	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963260	160	RemoveHalfPixelAdjust	mdebug	4e15a1a3a526		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd963300	1016	RestoreHalfPixelAdjust	mdebug	8c4951abe1a8		in	undocumented		
@@ -6762,7 +6762,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGB
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967878	1340	ReturnRGBASpan	mdebug	eef9de2e160a		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967db4	1140	ReadRGBASpan	mdebug	0261b187d7b5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968228	60	ReadRGBA	mdebug	c83b430af8c3		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968264	2228	ClearRGBA	mdebug	9f0eea34e060		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968264	2228	ClearRGBA	mdebug	9f0eea34e060		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd968ae8	48	MakeCurrentRGBA	dynsym+mdebug	390b8ff27b04		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b18	16	ResizeRGBA	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b28	29868	FreeRGBA	mdebug	c540ad590337		in	undocumented		
@@ -6797,7 +6797,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffd4	12	PickStenc
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96ffe0	20	FetchStencil	mdebug	53b85bae1eb2		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd96fff4	304	StoreStencil	mdebug	a3e52df2f708		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970124	20	TestFunc	mdebug	712a515b4c0a	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970138	828	ClearStencil	mdebug	72bb43d7121e		in	located	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970138	828	ClearStencil	mdebug	72bb43d7121e		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970474	296	crmPickPolyStippleMode	mdebug	6581f3a2b697		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970524	120	MakeCurrentStencil	dynsym+mdebug	9879bfc33250		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97059c	388	ResizeStencil	mdebug	79ee6ecfbad9		in	undocumented		
@@ -6808,13 +6808,13 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97084c	160	crmDoDou
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9708ec	384	crmDoDoubleStore_D	mdebug	be8729aa3113		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970a6c	660	crmDoDoubleStore_SD	mdebug	b0ac88b82c6f		in	located	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970c20	220	__glCrmGenericPickStoreProcs	dynsym+mdebug	b8dc54072343		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970d00	376	__glCrmTexIoctl	mdebug	5afdee34dfe6		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970d00	376	__glCrmTexIoctl	mdebug	5afdee34dfe6		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970e78	92	texFastBind	mdebug	18aa1f4e0f3d		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctlBind	mdebug	3c55bee7c1bd		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970ed4	144	texIoctlBind	mdebug	3c55bee7c1bd		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970f64	988	crmUpdateSharedTiles	mdebug	bba7ae087451		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd971340	92	crmCalcDMTexture	mdebug	06cafa791193		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97139c	1092	crmDefineTexture	mdebug	012486f6788d		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	d2ebfd5cca80		in	located	docs/libglcore.md#crm_texturec	`crm_texture.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9717e0	2672	crmSetTextureParam	mdebug	d2ebfd5cca80		in	understood	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9720e4	364	__glCrmResetTextureState	dynsym+mdebug	ce17ebe7e579		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd972250	360	crmFreeTexImage	mdebug	eaab2d84f80d		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9723b8	2388	crmFreeTexObj	mdebug	65603cb5b28a		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
@@ -10682,7 +10682,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9438b0	64	__glCrmAlloc
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9438f0	452	CheckViewport	dwarf+funcnames	d4c97f88e92d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943ac0	236	FindWindowSize	dwarf+funcnames	bafbb139d64f		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943bb0	208	ApplyViewport	dwarf+funcnames	3b0a0546a91f	multi-unit	in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943c80	656	ApplyScissor	dwarf+funcnames	52f284716983	multi-unit	in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943c80	656	ApplyScissor	dwarf+funcnames	52f284716983	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943f10	1276	crmGetBufMode	dwarf+funcnames	fdbb4ef2f4d4		in	named-only	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944410	68	__glCrmGetSrcBufMode	dwarf+dynsym	cf8cf9501521		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944460	68	__glCrmGetDstBufMode	dwarf+dynsym	c2f72b90abe3		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
@@ -10723,7 +10723,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDept
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2f0	8	StoreDepthAlways	dwarf+funcnames	87506497337c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	a0f1994f1b24		in	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	6996258fbb54		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	b265ca773e31	multi-unit	in	understood	docs/libglcore.md#so_depthopc	`so_depthop.c`
@@ -10828,7 +10828,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95ca60	1500	Rende
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d040	880	RenderPointN	dwarf+funcnames	b7a1337eb660		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95d3b0	92	__glCrmPolygonOffsetPoint	dwarf+dynsym	981aab283ea6		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d410	336	Coverage	dwarf+funcnames	f5a63f729e90	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d560	1828	RenderAntiAliasedPoint	dwarf+funcnames	a62a777c4dd6		in	named-only	docs/context.md#the-libglcore-side-pass-6	The libGLcore side (pass 6)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d560	1828	RenderAntiAliasedPoint	dwarf+funcnames	a62a777c4dd6		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95dc90	404	RenderFrontBackPoint	dwarf+funcnames	26d3d0c138d0		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95de30	464	RenderLeftRightPoint	dwarf+funcnames	610acf91aabd		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e000	584	__glCrmPickPointProcs	dwarf+dynsym	a80a0e1c62b9		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
@@ -10838,7 +10838,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e380	280	FindLi
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e4a0	124	FindPlaneEquation	dwarf+funcnames	ab9597b9ae6d	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e520	152	FindPlaneEquation2	dwarf+funcnames	900705015455		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5c0	32	FindP	dwarf+funcnames	4909d0b5e0f3	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5e0	40	FindP2	dwarf+funcnames	34c225db4557		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5e0	40	FindP2	dwarf+funcnames	34c225db4557		in	named-only	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e610	92	ComputeCoverageStuff	dwarf+funcnames	83a6a9a2f28c	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e920	9836	FillAASubTriangle	dwarf+funcnames	8be7bc1d4c11	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd961680	5688	__glCrmFillAATriangle	dwarf+dynsym	d3d694473d9f		in	located	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
@@ -10933,9 +10933,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96dfc0	136	crmDoD
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e050	296	crmDoDoubleStore_D	dwarf+funcnames	6d6ce6806e36		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e180	336	crmDoDoubleStore_SD	dwarf+funcnames	777ca1fde501		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96e2d0	224	__glCrmGenericPickStoreProcs	dwarf+dynsym	4f4e5ecf5671		in	understood	docs/libglcore.md#crm_storec	`crm_store.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	5d231abb2964		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e3b0	324	__glCrmTexIoctl	dwarf+funcnames	5d231abb2964		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e500	64	texFastBind	dwarf+funcnames	7dbff97882b1		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	370591f469ad		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e540	120	texIoctlBind	dwarf+funcnames	370591f469ad		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96e5c0	1352	crmUpdateSharedTiles	dwarf+funcnames	d04d201fbe65		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb10	84	crmCalcDMTexture	dwarf+funcnames	d5fe460278b7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96eb70	1096	crmDefineTexture	dwarf+funcnames	21705aa8efc4		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
