@@ -8934,7 +8934,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f8bc	152	__glExtractTe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f954	160	__glExtractTexelRGBA	dynsym+mdebug	90c3c991646f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f9f4	112	__glExtractTexelA	dynsym+mdebug	f09f6ff843b4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fa64	112	__glExtractTexelI	dynsym+mdebug	91bff7318144		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fad4	268	__glExtractTexelRGB8	dynsym+mdebug	1ff66b2edf38		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fad4	268	__glExtractTexelRGB8	dynsym+mdebug	1ff66b2edf38		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fbe0	320	__glExtractTexelRGBA8	dynsym+mdebug	018761f5bda6		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fd20	64	__glExtractTexelL_B	dynsym+mdebug	0eb3a6dc59e4		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1fd60	72	__glExtractTexelLA_B	dynsym+mdebug	6ecd5efd450a		in	undocumented		
@@ -8961,7 +8961,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20944	88	__glExtractTex
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2099c	236	__glExtractTexel3RGB8_B	dynsym+mdebug	9deb3045b4c3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20a88	284	__glExtractTexel3RGBA8_B	dynsym+mdebug	13e5cbddbc44		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda20ba4	436	IsTextureConsistent	mdebug	86946514fdd8		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20d08	80	__glIsTextureConsistent	dynsym+mdebug	4b7f82dcb78c		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda20d08	80	__glIsTextureConsistent	dynsym+mdebug	4b7f82dcb78c		in	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda20d58	828	CheckTexImageArgs	mdebug	d2116d203cdd		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda21094	3236	ComputeTexLevelSize	mdebug	a6cc3e1ccb0a		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda21518	336	__glTexCreateProxyLevel	dynsym+mdebug	6328a7daeb19		in	undocumented		
@@ -9063,7 +9063,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2e868	36	__glNopPolygon
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2e88c	456	__glComputePolygonRho	dynsym+mdebug	53b22a51d101		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2ea54	36	__glNopLineRho	dynsym+mdebug	de9ee496c508		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2ea78	480	__glComputeLineRho	dynsym+mdebug	ec16485e41a3		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2ec58	132	__glFastTextureFragment	dynsym+mdebug	adcaafa805ad		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2ec58	132	__glFastTextureFragment	dynsym+mdebug	adcaafa805ad		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2ecdc	196	__glTextureFragment	dynsym+mdebug	5ee96baf8adb		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda2eda0	316	__glMipMapFragment	dynsym+mdebug	1f8fdacb6517		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda2eedc	40	Dot	mdebug	df19085b5a2a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -9093,7 +9093,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30bec	276	__glim_BindTe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30d00	404	__glim_PrioritizeTexturesEXT	dynsym+mdebug	fcf86739910e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda30e94	7636	IsTextureResident	mdebug	1488cd7dbc67		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30f10	440	__glim_AreTexturesResidentEXT	dynsym+mdebug	a0b58615b7bb		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda310c8	164	__glim_IsTextureEXT	dynsym+mdebug	79d1153a0ca1		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda310c8	164	__glim_IsTextureEXT	dynsym+mdebug	79d1153a0ca1		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3116c	604	__glim_CopyTexImage1DEXT	dynsym+mdebug	1a1ef51586c3		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda313c8	636	__glim_CopyTexImage2DEXT	dynsym+mdebug	ffbee9161764		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda31644	476	__glim_CopyTexSubImage1DEXT	dynsym+mdebug	4be72bab7685		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13086,7 +13086,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21ad0	72	__glExtractT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21b20	140	__glExtractTexel3RGB8_B	dwarf+dynsym	ccaafec6164b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21bb0	164	__glExtractTexel3RGBA8_B	dwarf+dynsym	2279659c87a7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21c60	324	IsTextureConsistent	dwarf+funcnames	4f9f7b2ff91d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	5951bddc3d25		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	5951bddc3d25		in	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21e10	2076	CheckTexImageArgs	dwarf+funcnames	30a5446ba699		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda22630	1768	ComputeTexLevelSize	dwarf+funcnames	917a8fa40263		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda22d20	352	__glTexCreateProxyLevel	dwarf+dynsym	7f25da382db3		in	undocumented		
@@ -13188,7 +13188,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f350	8	__glNopPolygo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f360	324	__glComputePolygonRho	dwarf+dynsym	be16cfbcd101		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f4b0	8	__glNopLineRho	dwarf+dynsym	c56f035b0568		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f4c0	296	__glComputeLineRho	dwarf+dynsym	5d089c7313a7		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f5f0	108	__glFastTextureFragment	dwarf+dynsym	80636963e343		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f5f0	108	__glFastTextureFragment	dwarf+dynsym	80636963e343		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f660	136	__glTextureFragment	dwarf+dynsym	9e551eaf4c73		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda2f6f0	268	__glMipMapFragment	dwarf+dynsym	091d072bb64e		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda2f800	40	Dot	dwarf+funcnames	ef4b8255b093		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
