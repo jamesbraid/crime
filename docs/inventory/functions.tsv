@@ -13086,7 +13086,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21ad0	72	__glExtractT
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21b20	140	__glExtractTexel3RGB8_B	dwarf+dynsym	ccaafec6164b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21bb0	164	__glExtractTexel3RGBA8_B	dwarf+dynsym	2279659c87a7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21c60	324	IsTextureConsistent	dwarf+funcnames	4f9f7b2ff91d		in	named-only	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	5951bddc3d25		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda21db0	84	__glIsTextureConsistent	dwarf+dynsym	5951bddc3d25		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda21e10	2076	CheckTexImageArgs	dwarf+funcnames	30a5446ba699		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda22630	1768	ComputeTexLevelSize	dwarf+funcnames	917a8fa40263		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda22d20	352	__glTexCreateProxyLevel	dwarf+dynsym	7f25da382db3		in	undocumented		
