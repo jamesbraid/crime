@@ -7781,7 +7781,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8d90	136	__glSpanPackN
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8e18	124	__glSpanPackNonCompShort	dynsym+mdebug	80b514e27e7c		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8e94	136	__glSpanPackNonCompUint	dynsym+mdebug	37601f39461c		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8f1c	124	__glSpanPackNonCompInt	dynsym+mdebug	7a0d43458233		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8f98	108	__glSpanCopy	dynsym+mdebug	76c4f1c6f476		in	understood	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a8f98	108	__glSpanCopy	dynsym+mdebug	76c4f1c6f476		in	named-only	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a9004	2620	__glSpanPackBitmap	dynsym+mdebug	d03496fff549		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a9a40	644	__glSpanRGBAScaleBias	dynsym+mdebug	545773896959		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9a9cc4	1456	__glSpanRGBAScaleBiasReduce	dynsym+mdebug	f062e796f11b		in	named-only	docs/sample-implementation.md#px_pathsc	px_paths.c
@@ -11906,7 +11906,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a77d0	184	__glSpanPac
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7890	184	__glSpanPackNonCompShort	dwarf+dynsym	9669c4657a6f		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7950	184	__glSpanPackNonCompUint	dwarf+dynsym	e5c3e237acab		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7a10	168	__glSpanPackNonCompInt	dwarf+dynsym	cff27eaf0d5a		in	located	docs/sample-implementation.md#px_packc	px_pack.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7ac0	92	__glSpanCopy	dwarf+dynsym	4aa7d6bc1e46		in	located	docs/sample-implementation.md#px_packc	px_pack.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7ac0	92	__glSpanCopy	dwarf+dynsym	4aa7d6bc1e46		in	named-only	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a7b20	1836	__glSpanPackBitmap	dwarf+dynsym	7556d8a1685d		in	located	docs/sample-implementation.md#px_packc	px_pack.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a8250	360	__glSpanRGBAScaleBias	dwarf+dynsym	79c7a1bd91c9		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9a83c0	1008	__glSpanRGBAScaleBiasReduce	dwarf+dynsym	9b99fdf179cf		in	named-only	docs/sample-implementation.md#px_pathsc	px_paths.c
