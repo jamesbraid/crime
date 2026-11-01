@@ -2024,19 +2024,19 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5678	8	av2_get_control	dw
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5680	12	mvpav2_probe	dwarf+symtab	d8672933973d		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x568c	972	av2_setup	dwarf+funcnames	dd1807725796		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5a58	56	mvpavio_setup	dwarf+symtab	df6887a6cbf0		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5a90	60	mvpavio_select_input	dwarf+symtab	f5c0ed5bc543		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5acc	60	mvpavio_select_genlock	dwarf+symtab	8f92e0057f07		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5b08	60	mvpavio_select_output	dwarf+symtab	eac29fd62f41		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5a90	60	mvpavio_select_input	dwarf+symtab	f5c0ed5bc543		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5acc	60	mvpavio_select_genlock	dwarf+symtab	8f92e0057f07		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5b08	60	mvpavio_select_output	dwarf+symtab	eac29fd62f41		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5b44	60	mvpavio_sense_timing	dwarf+symtab	1871246ba920		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5b80	60	mvpavio_change_timing	dwarf+symtab	9680d89f234a		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5b80	60	mvpavio_change_timing	dwarf+symtab	9680d89f234a		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5bbc	240	showvalue	dwarf+funcnames	5f53d80800aa		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5cac	132	mvpavio_i2c_chip	dwarf+symtab	a8e0d3716d9a		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5d30	256	mvpavio_setupoutput	dwarf+symtab	dd58e7b0602b		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5e30	172	mvpavio_preset_status	dwarf+symtab	7353db9394ac		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5edc	204	mvpavio_preset_timing	dwarf+symtab	51f977e40a73		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5fa8	324	mvpavio_preset_input	dwarf+symtab	c6d1f031994e		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x60ec	228	mvpavio_preset_output	dwarf+symtab	ec471be241d9		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x61d0	300	mvpavio_preset_genlock	dwarf+symtab	1701784b2b6b		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x60ec	228	mvpavio_preset_output	dwarf+symtab	ec471be241d9		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x61d0	300	mvpavio_preset_genlock	dwarf+symtab	1701784b2b6b		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x62fc	140	mvpavio_setnoav	dwarf+funcnames	06b61cea9c9c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6388	116	mvpavio_i2c_reg	dwarf+symtab	4ceba5dac3f8		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x63fc	68	mvpavio_unki2c_chipreg	dwarf+funcnames	d2341313cd80		in	undocumented		
@@ -2120,12 +2120,12 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb4fc	428	mvppath_ioctl	dw
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb6a8	536	mvpreg_initmace	dwarf+funcnames	808b4b4afc6a		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb8c0	36	mvpreg_setup_timing	dwarf+symtab	e722b5dacacb		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb8e4	44	mvpreg_cdto_wait	dwarf+funcnames	5423dfdb56f8		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb910	1184	mvpreg_setpassthru	dwarf+symtab	4ea98e31c63c		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xb910	1184	mvpreg_setpassthru	dwarf+symtab	4ea98e31c63c		in	located	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbdb0	188	mvpreg_init	dwarf+symtab	ecd36a9c2148		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe6c	8	mvpreg_unload	dwarf+symtab	78aa5094d5ec		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe74	1776	mvpreg_syncpath_controls	dwarf+symtab	dc242cbe7e80		in	named-only	docs/mace-video.md#gbe-framelock-and-capture-from-the-gbe-side	GBE framelock and capture, from the GBE side
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xbe74	1776	mvpreg_syncpath_controls	dwarf+symtab	dc242cbe7e80		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc564	144	mvpreg_gettiming	dwarf+funcnames	800bc84e48a1		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc5f4	960	mvpreg_syncdevice_controls	dwarf+symtab	353a98a0402c		in	named-only	docs/mace-video.md#gbe-framelock-and-capture-from-the-gbe-side	GBE framelock and capture, from the GBE side
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc5f4	960	mvpreg_syncdevice_controls	dwarf+symtab	353a98a0402c		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-register-routines	Kernel routines, one entry each (`mvp.o`, register routines)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	mvp_pio_read64	dwarf+symtab	1b82094aa278	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xc9b4	128	pciio_pio_read64	symtab	1b82094aa278	shared-address	in	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0xca34	348	mvpsystem_ioctl	dwarf+symtab	8f1f5b63b37f		in	undocumented		
