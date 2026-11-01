@@ -170,8 +170,8 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00114b8	32	init_brkpt_lock	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00114d8	156	_autostop	symtab	df920dbc077c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011574	432	_brk	symtab	7650cb8f5448		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011724	412	check_overlap_brkpt	symtab	e50250c6996b		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00118c0	252	generate_continue_brkpts	symtab	66cb4b17e5f6		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00119bc	260	_go_to	symtab	64de50df00d2		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00118c0	252	generate_continue_brkpts	symtab	66cb4b17e5f6		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00119bc	260	_go_to	symtab	64de50df00d2		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011ac0	348	_unbrk	symtab	08b8a03f91a6		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011c1c	196	_step	symtab	e80b56f68ce8		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011eac	40	single_step	symtab	ce15e0820886		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -185,7 +185,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00127f4	152	validate_brkpts
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0012918	28	getinst	symtab	e435d0f301b9		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0012984	120	old_brkpt	symtab	8c02d3585f02		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00129fc	1152	_bp_fault	symtab	b77333ab1f13		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0012e7c	132	is_branch	symtab	82b03f84f0fb		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0012e7c	132	is_branch	symtab	82b03f84f0fb		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0012f00	140	is_jal	symtab	1d8471f2bd3f		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001335c	192	_check_bp	symtab	633dcda5feef		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00134f8	784	_wpt	symtab	447191bdd259		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -232,7 +232,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a174	84	idbg_cleanup	sym
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a1c8	92	idbg_interrupted	symtab	4c7862a630e3		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a3e4	144	do_it2	symtab	63dcb2f91c8d		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a474	324	_kp	symtab	d4d0890b09d3		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a5b8	264	_kpcheck	symtab	1c55bb9d382c		in	named-only	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a5b8	264	_kpcheck	symtab	1c55bb9d382c		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a6c0	84	_is_kp_func	symtab	e9b244999f23		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a714	8	bp_try_stop_cpus	symtab	87506497337c		in	understood	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001ac7c	284	trykfix	symtab	6f9b3b336ae2		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -288,7 +288,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001bf94	8	memsetup	symtab	8
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001bf9c	240	fetch_kaddr	symtab	cca164b15a20		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c08c	420	fetch_kname	symtab	8e2570846681		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c298	156	nmtohx	symtab	03fa0d5823f1		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c334	244	hxtonm	symtab	edb7d3fee8d3		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c334	244	hxtonm	symtab	edb7d3fee8d3		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c428	768	parse_sym_range	symtab	95ee86f85b2b		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c728	32	parse_sym	symtab	e7c96d3100e1		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c748	432	lkaddr	symtab	17be95a3abf6		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -393,7 +393,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00241c8	28	GetChild	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00241e4	8	GetParent	symtab	24a9a45803e9		in	understood	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00241ec	60	GetConfigurationData	symtab	aba6de19fe21		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024228	604	AddChild	symtab	a704e26cd435		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024484	244	DeleteComponent	symtab	3d7dccad686b		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024484	244	DeleteComponent	symtab	3d7dccad686b		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024578	28	SaveConfiguration	symtab	4418ec96f611		in	named-only	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024670	72	get_tlblo	symtab	1598c09435c9	shared-address	in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024670	72	get_tlblo0	symtab	1598c09435c9	shared-address	in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -450,13 +450,13 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00259d4	28	SetEnvironmentVa
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00259f0	28	GetEnvironmentVariable	symtab	d28f86b82171		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025a0c	156	GetFileInformation	symtab	a308b6c9dd1b		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025aa8	32	SetFileInformation	symtab	922304d033fc		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025ac8	260	parseargs	symtab	1e50270d837f		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025ac8	260	parseargs	symtab	1e50270d837f		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0025fe8	96	GetComponent	symtab	43347e09059f		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026048	756	parse_path	symtab	e8fb8409219e		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002633c	76	fs_init	symtab	9ffec557fe05		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026388	152	fs_register	symtab	6897301b0036		in	named-only	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0026420	168	fs_unregister	symtab	5b8ee486f083		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00264c8	244	fs_search	symtab	76ea8f144b32		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00264c8	244	fs_search	symtab	76ea8f144b32		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00265bc	144	fs_match	symtab	8412a72ce4b9		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002664c	324	_init_saio	symtab	04fef98cdda2		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00269f8	308	init_consenv	symtab	99edfe49fa0e		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -486,7 +486,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027410	40	cpu_hardreset	sy
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027438	40	cpu_softreset	symtab	3c6e0f585374		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027460	8	cpu_reset	symtab	78aa5094d5ec		in	understood	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027468	128	cpu_rtcinit	symtab	e3dd9f771d4f		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00274e8	260	cpu_powerdown	symtab	2cb8b4a7d500		in	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00274e8	260	cpu_powerdown	symtab	2cb8b4a7d500		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00275ec	164	cpu_scandevs	symtab	791dfc1041ad		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0027690	236	cpu_get_freq	symtab	53ac7e48aebd		in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002782c	76	CRCengine	symtab	437156968b8a		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -612,7 +612,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b39c	20	init_str	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b3b0	88	replace_str	symtab	191fe6a2a72d		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b408	28	delete_str	symtab	efe7223dc929		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b528	180	find_str	symtab	02b6e7c20b9c		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b5dc	248	new_str1	symtab	33750bfe2d12		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b5dc	248	new_str1	symtab	33750bfe2d12		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b6d4	308	new_str2	symtab	3a44d2186cbb		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b808	228	set_str	symtab	35b448f1cbe0		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b8ec	80	delete_strnum	symtab	c245b603a36f		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -629,7 +629,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bd78	40	Restart	symtab	5
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bda0	40	Reboot	symtab	508d73a962ce		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bdc8	80	_digit	symtab	34ab474a0566		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002bea0	540	atob	symtab	bf6371a4cbbe		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c0bc	28	atob_ptr	symtab	21c63cd0c56e		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c0bc	28	atob_ptr	symtab	21c63cd0c56e		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c0d8	564	atob_L	symtab	5476042deba5		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c30c	32	atoi	symtab	58de481c016a		in	named-only	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002c32c	164	atohex	symtab	d67fb4892c7d		in	undocumented		
@@ -668,7 +668,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002e9c0	360	ttyprintf	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002eb28	336	vttyprintf	symtab	a7dbd50a273e		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f510	128	sprintL	symtab	90c0f31bea47		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f590	124	sprintn	symtab	d3b7b10d4c27		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f730	268	showchar	symtab	9f7d5445b81d		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f730	268	showchar	symtab	9f7d5445b81d		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f83c	180	vsprintf	symtab	2dc73bd2e255		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f8f0	24	_min	symtab	16b482861dba		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002f908	24	_max	symtab	2f6f63a62e9c		in	undocumented		
@@ -1660,7 +1660,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f48	44	node_getmaxc
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f74	24	bank_size	symtab	154fd4d14583		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x110e8	28	addr_to_bank	symtab	01dd5ac1768e		out:18	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11104	32	addr_to_ibank	symtab	4b4d324dfb91		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	symtab	aab8996edc9d		out:10	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	symtab	aab8996edc9d		out:10	located	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1121c	196	cpu_waitforreset	symtab	5b600a705233		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x112e0	304	power_dump	symtab	8d7b85384552		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11410	472	powerintr	symtab	297613ad0922		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
