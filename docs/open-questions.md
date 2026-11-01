@@ -99,15 +99,16 @@ Each lead in [published-sources.md, section 14](published-sources.md#14-recollec
 - A cached DMA ring breaks the MACE audio driver and an uncached one works: the MACE audio DMA lead. Triage: software now.
 - R12000 has a bit that disables speculative writes, and R10000 reads through speculation: the R10000 speculation lead. Triage: software now.
 - The CRIME ID register reads "a" revision 1, and the four 128 MiB banks decode to 0x0, 0x08000000, 0x50000000 and 0x58000000: the CRIME bank map lead. Triage: settled by existing result. Step: the decode matches the identity layout in the Linux driver and the memory map; confirm and drop the line.
-- `/proc/interrupts` on a Linux guest shows IRQ 28 and 29 for CRIME and 11 to 22 for MACE: the interrupt numbering lead.
-- CRIME error status latched during PROM execution reads as new until the kernel clears it: the CRIME error latch lead.
-- The DMbuffer frame buffer layout is non-linear and chunked, and a pbuffer DMbuffer needs glFinish before a CPU map: the DMbuffer layout lead.
-- Scan-out and video out at 1280x1024x60 reduce fill rate by a measurable amount: the memory bandwidth contention lead.
-- MPEG-1 decode leaves VICE state needing a reset after a few plays: the MPEG-1 pink video lead.
-- The O2 dual-head option is a PCI card that reports one CRIME display; display (0:1) is not supported: the second head lead.
-- `gfxinfo` monitor type changes with the attached display's EDID, and an unsupported-timing EDID leaves the server up: the EDID monitor type lead.
-- Quad-buffer stereo needs four colour buffers and refresh sync holds under load: the quad-buffer stereo lead.
-- STR_RECT offsets fields by 512 lines on O2, and STR_TOP breaks under patches 1979 and 2447: the STR_TOP and STR_RECT lead.
+- `/proc/interrupts` on a Linux guest shows IRQ 28 and 29 for CRIME and 11 to 22 for MACE: the interrupt numbering lead. Triage: software now. Step: read the MACE interrupt table in the IRIX kernel source; the Linux numbering itself is not an O2 fact.
+- CRIME error status latched during PROM execution reads as new until the kernel clears it: the CRIME error latch lead. Triage: settled by existing result. Step: the IRIX clears in mlreset and badaddr settle the IRIX half; drop the IRIX half and leave the Linux ARC part as Linux-only.
+- The DMbuffer frame buffer layout is non-linear and chunked, and a pbuffer DMbuffer needs glFinish before a CPU map: the DMbuffer layout lead. Triage: software now. Step: read the DMbuffer map path in the media library for a cache flush before CPU access, which is the glFinish caveat.
+- Triage: software now. Step: read the dmBufferAllocate slot-free path in the media library for the failure-path leak; the Result calls it untestable, but a slot leak is a code question.
+- Scan-out and video out at 1280x1024x60 reduce fill rate by a measurable amount: the memory bandwidth contention lead. Triage: hardware only. Step: the contention needs a timed run; recorded, not scheduled.
+- MPEG-1 decode leaves VICE state needing a reset after a few plays: the MPEG-1 pink video lead. Triage: software now. Step: read the reset calls that libvice and mvp make between decodes; the decoder-state fault itself is hardware only.
+- The O2 dual-head option is a PCI card that reports one CRIME display; display (0:1) is not supported: the second head lead. Triage: software now. Step: read the dual-channel detection (the dualchannel confidence test) and the X module's multi-screen path for display 0:1.
+- `gfxinfo` monitor type changes with the attached display's EDID, and an unsupported-timing EDID leaves the server up: the EDID monitor type lead. Triage: software now. Step: read the EDID timing check in the kernel's monitor path for the unsupported-timing branch.
+- Quad-buffer stereo needs four colour buffers and refresh sync holds under load: the quad-buffer stereo lead. Triage: software now. Step: decode the GLX capability tables for the four-buffer visual; the refresh-under-load part is timing and stays hardware only.
+- STR_RECT offsets fields by 512 lines on O2, and STR_TOP breaks under patches 1979 and 2447: the STR_TOP and STR_RECT lead. Triage: software now. Step: read the STR_RECT offset in setmon or gfxinit; the patch 1979 and 2447 parts need patch binaries, which are not in the set.
 - The IRIX 6.3 vof set matches the file list and sizes, and a custom 1600x1200_57 format is accepted or flagged by the GBE model: the vof listing lead.
 - The MACE PCI bus is 64 bits wide at 256 MB/s peak: the PCI width lead (a discrepancy to check).
 - `MACE I2C register failure` appears in IDE with an unmodelled I2C register, and passes after a cold reset: the MACE I2C diagnostic lead.
