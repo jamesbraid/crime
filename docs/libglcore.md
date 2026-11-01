@@ -980,3 +980,58 @@ Routines of the CRIME driver units that the unit tables above call: buffer selec
 | `__glCrmForceNonTagClear` | 0xd94aca0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): forces the next clear to use untagged planes, 32 instructions. It calls the context hook at +0x6c with the stored depth word, zeroes the fields at +0x50 and +0x64, sets the flag byte at +0x60, replaces the hook with a no-op and re-runs `__glCrmPassDepthFunc` and `__glCrmPassStencilMode`. |
 | `__glCrmSetDrawBuffer` | 0xd9444b0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): selects the buffer drawing goes to, 104 instructions. It stores the destination buffer mode register +0x2008 in two stores, once for each addressing path, and calls the hook at +0x14 of the context's buffer table, which sends the TLB selection request. |
 | `crmDrawPixelsXfer` | 0xd956ea0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): writes host pixels to the framebuffer with the transfer path, 623 instructions. It sets draw mode +0x2018, the source buffer mode (+0x2000), the primitive (+0x2060), the rectangle (+0x2080 to +0x208c), the transfer source address and steps (+0x20a0 to +0x20ac, +0x28a0) and the stipple registers (+0x20c0, +0x20c4), selects buffers with `__glCrmSetDrawBuffer` and confirms with `__glCrmFlushAndConfirm`. |
+
+## Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+
+Offsets are numeric. "View 1" and "view 2" mean the two engine register windows whose addresses the context keeps at +32184 and +32188. Every entry in this section was read through a decompilation checked against the routine's fact sheet (calls, stores, exits), not instruction by instruction, and is marked Inferred.
+
+- `FillAASubTriangle` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  steps one half of an antialiased triangle from one scan line to the next, 9836 bytes at address 0xd95e920.
+  The first argument is the context, the second and third are the first and one-past-last scan line, the fourth is a record whose word at +376 points to the set-up state the routine reads and advances, and the fifth and sixth are 64-bit step values.
+  The routine is written out four times, so it calls `FindP` 44 times, `FindP2` 12 times, `powf` 8 times and `__glBuildAntiAliasIndex` 4 times, and makes nine calls through pointers: four to the span method held at state +376 and five to the coverage routine.
+  A span call follows the storing of the run's start column, line and length to state +30196, +30200 and +30248. It loads the edge accumulators from state +30148, +30152, +30168 and +30172 and writes them back before its single return at 0xd960e40.
+  The stores to view 1 are the primitive word `+0x2060` (also to view 2, behind a cache test on +32096), the position words `+0x2080` to `+0x208c`, the colour, depth, fog and texture steppers `+0x21c8`, `+0x2178` and `+0x2120` to `+0x2134`, and the pixel word `+0x28d0`; exponential fog uses `powf`.
+  The o32 build's routine of the same name, at 0xd95dbec in its own library, has the same call counts.
+  Inferred: the four copies were not compared with one another instruction by instruction.
+- `__glCrmFillAATriangle` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  draws one antialiased triangle in software, 5688 bytes at address 0xd961680. The first argument is the context and the next three are the vertex records.
+  It snaps each vertex's x and y (the floats at +128 and +132) to a grid of 2 to the power of the word at +3736, forms the signed area, and returns at once when it is zero (exit 0xd961c54).
+  Otherwise it builds three edge equations with `FindLineEquation` (three call sites, the vertices rotated each time), the coverage tables with `ComputeCoverageStuff` (one call, argument 4, or 8 when the word at +1912 equals 0x1102) and the plane equations for colour, depth, fog and texture with `FindPlaneEquation` (13 call sites) and `FindPlaneEquation2` (three).
+  It calls `__glSnapXLeft` and `__glSnapXRight` three times each, the routine at 0xd960f90 three times, context methods at +12520 and +12536 three times each, and draws the sub-triangles with `FillAASubTriangle` (0xd95e920, four call sites).
+  With texturing it calls `__glFloor` three times (two with the repeat wrap 0x2901), and when the environment word is 0x1e01 or 0x8062 it forces the low two bits of the cached texture mode word at +32360 to 1 and stores it to `+0x2110` of both views.
+  The normal end is at 0xd962908. Inferred: how the calls divide among the cases was read from the decompilation only.
+- `crmDrawPixelsXfer2` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  writes a block of host pixels to the frame buffer through the engine's pixel-transfer path, 4888 bytes at address 0xd957870. The arguments are the context and the draw-pixels record.
+  A zero source pointer returns 0 (exit 0xd95864c) and a zero width or height returns 1. When the byte at +32211 is set it first calls `crmFastDoubleStore` and returns 0 if that fails.
+  The record's format word chooses the draw mode (0x1901 and 0x1902 take their own cases; 0x600078
+  and 0x600000 are the pixel-transfer words the routine writes), the pixel size is 1 shifted left by bits 9:8 of the word at +32292, and the x and y replication goes into bits 31:28 of the source steps.
+  It then chooses among pinning the user buffer (`pinBuffer`, released by `unpinBuffer`), mapping a scratch area (`mapScratch`, rows copied
+  with `bcopy`) and loading the linear translation table (`LoadLinearTlb`, three call sites).
+  For each strip it stores the rectangle `+0x2080` to `+0x208c`, the source address and steps `+0x20a0`, `+0x20a8` and `+0x20ac` to both views, calls `__glCrmSetupPixelRenderOps` when the byte at +32202 is set, scales spans with `__GL_CRM_SCALE_PIXEL_SPAN` and ends with `__glCrmFlushAndConfirm`, `__glCrmSetReadBuffer`
+  and two `__glCrmSetDrawBuffer` calls.
+  Of its six exits, 0xd9585d0, 0xd95864c and 0xd95882c return 0,
+  0xd958670 and 0xd958ac0 return 1, and 0xd958568 leaves a register value that is not a constant.
+  Inferred: the strip arithmetic and the choice among the three transfer methods were read from the decompilation.
+- `crmReadPixelsXfer` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  reads a block of frame-buffer pixels back to host memory, 3100 bytes at address 0xd958b90.
+  The arguments are the context and the read-pixels record.
+  A zero width or height returns 1 (exit 0xd959470) and a zero destination returns 0 (exit 0xd958d20).
+  It calls `__glCrmSetReadBuffer` when the cached read-buffer word differs, takes the pixel size as 1 shifted left by bits 9:8 of the word at +32292 and widens the row until its byte count is a multiple of 8. Unless the user buffer is already usable, the method at +32324 supplies a bounce buffer (it is called again with 0 at the end to release it), and the method at +32344, or `memcpy` when that word is zero, copies each row from it into the user buffer.
+  It writes draw mode 0x600078 through the cache at +32092 and the buffer mode word from +32292 to `+0x2008` of both views.
+  Per strip of at most 0x1f000 bytes (0x20000 when the buffer starts on a 4096-byte boundary) it writes the primitive word through the cache at +32096 and `+0x2080` and `+0x2088` to both views, `+0x2084` and `+0x208c` to view 1, source steps to `+0x20a8` and `+0x20ac`, the destination step to `+0x20b4`, the source position to `+0x20a0` and the host offset to `+0x28b0` (or to `+0x20b0` after a `LoadLinearTlb` call when the buffer was pinned).
+  It ends with `__glCrmFlushAndConfirm`, restores draw mode, the read buffer (`__glCrmSetReadBuffer`) and the draw buffer (`__glCrmSetDrawBuffer`); for a read of format 0x1901 it first clears the destination
+  with `bzero`.
+  A successful read returns 1 (exits 0xd959378 and 0xd959470) and a failed buffer or TLB load 0 (0xd9596a4).
+  Inferred: the strip arithmetic and the bounce-buffer choice rest on the decompilation.
+- `__glCrmFillTriangle` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  sets the engine up for one general (possibly shaded, textured, fogged or depth-tested) triangle, 2668 bytes at address 0xd9372b0.
+  The first argument is the context, the next three are the vertex records and the fifth selects the winding.
+  It chooses the primitive word by the sign of the word at +30180: 0x2010000 or 0x2020000 for negative and 0x2030000
+  or 0x2000000 otherwise, with the vertex taken as origin chosen alongside it, and writes it to `+0x2060` of view 1 through the cache at +32096. According to the enable word at +30436 it then writes a flat colour to `+0x20d0` or the colour steppers `+0x20e0` to `+0x210c`, depth steppers `+0x21c8`, `+0x21d0` and `+0x21d8` as 64-bit integers (with a polygon-offset case for bit 18), fog steppers `+0x2178`, `+0x2180` and `+0x2188`, and, for bit 3, the texture set-up: s, t and q divided by q, with q clamped to a magnitude of 7.6293945e-06, a range flag per coordinate stored to `+0x2134`, steppers `+0x2138` to `+0x215c` scaled by 2^43 or 2^39 and start values with 0x800 added at `+0x2120`, `+0x2128` and `+0x2930`.
+  Its exit at 0xd937d08 returns nothing; the exit at 0xd937d14, taken when texturing is off, leaves the word at +28208 in the result register as a side effect.
+  Inferred: the sign test, the winding choice and the per-feature store lists come from the decompilation.
+- `__glCrmPickAllProcs` in `libGLcore.so` ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so)):
+  re-validates the context after a state change, 2008 bytes at address 0xd9527a0.
+  It takes the context and reads the enable word at +1792 and the dirty word at +11756. It rebuilds the pick-state word at +30436 from the enable bits (the byte flags at +3220 and +3221, fog when the word at +1912 equals 0x1102, polygon offset, stipple, alpha test, logic operations) and derives the mask words at +28076 to +28088 and the flags at +32192. It then calls the context's validation methods in a fixed order under the dirty bits (+11796, +11864, +11836, +11840, +11804, `__glCrmValidateLighting`, +11792, +11788, +11800, +11832, +11828, +12656, `__glCrmUpdatePolyStipple`, +11808, +11812, +11844, +11816, +11824, +11820, `__glValidateAlphaTest`, +11916, +11848,
+  `crmSetupPrimAdjustment` and +11840 again), clears the dirty words at +11752 and +11756, rewrites the draw mode to `+0x2018` of both views when the cache differs and the word at +3204 is 0x1c00, and stores a new flush word to `+0x21f0` of view 2. Its single exit at 0xd952d9c returns nothing.
+  Inferred: the bit assignments of the pick-state word were read from the decompilation and not re-derived here.

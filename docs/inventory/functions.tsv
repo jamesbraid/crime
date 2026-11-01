@@ -6650,14 +6650,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9508c0	1356	__glCrmPickL
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950e0c	212	__glCrmPickRenderBitmapProcs	dynsym+mdebug	bd45346ca8be		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd950ee0	800	__glCrmPickVertexProcs	dynsym+mdebug	2998b5382022		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd951200	524	__glCrmPickStoreProcs	dynsym+mdebug	701576c0ff05		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95140c	576	crmSetupPrimAdjustment	mdebug	bccb90de32a7		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95140c	576	crmSetupPrimAdjustment	mdebug	bccb90de32a7		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9515f0	92	__glCrmValidate	dynsym+mdebug	83639fb6d526		in	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95164c	2500	__glCrmValidateLighting	mdebug	820ca2feb772		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95164c	2500	__glCrmValidateLighting	mdebug	820ca2feb772		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95172c	2268	__glCrmPickAllProcs	dynsym+mdebug	c983a86971f0		in	understood	docs/libglcore-o32.md#dispatch-routines	Dispatch routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952010	260	LoadLinearTlb	mdebug	d0e4599e43be		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952114	140	pinBuffer	mdebug	80e84937ab55		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521a0	92	unpinBuffer	mdebug	f7785c338216		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521fc	224	mapScratch	mdebug	b3c8b7388523		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952114	140	pinBuffer	mdebug	80e84937ab55		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521a0	92	unpinBuffer	mdebug	f7785c338216		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9521fc	224	mapScratch	mdebug	b3c8b7388523		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9522dc	68	unmapScratch	mdebug	d6177463834f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd952320	14932	reallocScratch	mdebug	09b7691eec90		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95275c	2288	__glCrmPickPixelProcs	dynsym+mdebug	618500314abd		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
@@ -6692,7 +6692,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a6f8	164	convertS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a79c	164	convertStencilUintToSZ	mdebug	07ae86b14feb		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a840	280	convertRGBA5551To1555	mdebug	123320b03800		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a958	1716	convertRGBA1555To5551	mdebug	96c7837fbb35		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	9b201adf08fb		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	9b201adf08fb		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	bc764cd0611a		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	b9cd08efa11e		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	f3b4e9868222		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
@@ -6711,7 +6711,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRender
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	4668b0c53e5b		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLineEquation	mdebug	07472f1af46e	multi-unit	in	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	73753387a867	multi-unit	in	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	cbaa7672f060		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	cbaa7672f060		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d5dc	40	FindP	mdebug	92489508a175	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d604	48	FindP2	mdebug	6bf844833ddf		in	named-only	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d634	1464	ComputeCoverageStuff	mdebug	9808c3c9ef60	multi-unit	in	named-only		
@@ -7972,7 +7972,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9be9bc	1008	Mult	md
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9bedac	12428	Add	mdebug	c2887764b32d		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf3a8	288	__glInitAccum64	dynsym+mdebug	8ea3796516cf		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf4c8	416	__glim_Accum	dynsym+mdebug	c80b94f0313f		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf670	356	__glValidateAlphaTest	dynsym+mdebug	509a1022b046		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf670	356	__glValidateAlphaTest	dynsym+mdebug	509a1022b046		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf7e0	200	__glInitAsyncState	dynsym+mdebug	994c5b3d7be5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf8a8	52	__glFreeAsyncState	dynsym+mdebug	8f46a03ad711		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9bf8dc	156	__glim_GenAsyncMarkersSGIX	dynsym+mdebug	4cc4428f0b57		in	undocumented		
@@ -10568,7 +10568,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd936f2c	628	__glCrmSmoo
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9371a0	120	__glCalcEyeLinear	dwarf+dynsym	f973eb5526df		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937218	120	__glCalcObjectLinear	dwarf+dynsym	372f4eb9ed97		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937290	24	__glCalcTexture	dwarf+dynsym	9d38f6a1425a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	3206965f799c		in	located	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	3206965f799c		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	e14b86504d24		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	968f03819b61		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	36edc975f37d		in	located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
@@ -10775,14 +10775,14 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951800	1400	__glCrmPic
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951d80	184	__glCrmPickRenderBitmapProcs	dwarf+dynsym	7a4b19e9932d		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd951e40	964	__glCrmPickVertexProcs	dwarf+dynsym	fbb854a76659		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd952210	540	__glCrmPickStoreProcs	dwarf+dynsym	6f61212f3451		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952430	540	crmSetupPrimAdjustment	dwarf+funcnames	4fe02b4f101e		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952430	540	crmSetupPrimAdjustment	dwarf+funcnames	4fe02b4f101e		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd952650	88	__glCrmValidate	dwarf+dynsym	03a3116f5ce0		in	named-only	docs/opengl.md#how-the-state-word-m-gc30436-is-built-__glcrmpickallprocs	How the state word `m` (gc+30436) is built (`__glCrmPickAllProcs`)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9526b0	240	__glCrmValidateLighting	dwarf+funcnames	2c8bb7f5f634		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9527a0	2008	__glCrmPickAllProcs	dwarf+dynsym	e9c8e2d372e7		in	located	docs/libglcore-o32.md#dispatch-routines	Dispatch routines
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9526b0	240	__glCrmValidateLighting	dwarf+funcnames	2c8bb7f5f634		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9527a0	2008	__glCrmPickAllProcs	dwarf+dynsym	e9c8e2d372e7		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd952f80	236	LoadLinearTlb	dwarf+funcnames	a22cbaba89b9		in	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953070	132	pinBuffer	dwarf+funcnames	37a896a18eb8		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953100	60	unpinBuffer	dwarf+funcnames	966b37f9c91a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953140	224	mapScratch	dwarf+funcnames	0e1f17b1f813		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953070	132	pinBuffer	dwarf+funcnames	37a896a18eb8		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953100	60	unpinBuffer	dwarf+funcnames	966b37f9c91a		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953140	224	mapScratch	dwarf+funcnames	0e1f17b1f813		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953220	40	unmapScratch	dwarf+funcnames	a4306d1ca2da		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd953250	936	reallocScratch	dwarf+funcnames	ecef90035cc7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd953600	2020	__glCrmPickPixelProcs	dwarf+dynsym	a7e935dcfd7a		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
@@ -10795,8 +10795,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd955d40	3012	__glCrmPic
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956910	964	__glCrmSetupPixelRenderOps	dwarf+dynsym	23f20a8a47cf		in	located	docs/libglcore-o32.md#triangle-and-bitmap-routines-of-the-o32-driver	Triangle and bitmap routines of the o32 driver
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd956ce0	436	crmFastDoubleStore	dwarf+funcnames	a0bd1b7ddeb7		in	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd956ea0	2508	crmDrawPixelsXfer	dwarf+dynsym	1542bc359efd		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	67d1736e3d52		in	located	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd958b90	3100	crmReadPixelsXfer	dwarf+dynsym	87ea423cb06d		in	located	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd957870	4888	crmDrawPixelsXfer2	dwarf+dynsym	67d1736e3d52		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd958b90	3100	crmReadPixelsXfer	dwarf+dynsym	87ea423cb06d		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9597b0	1472	crmCopyPixelsXfer	dwarf+dynsym	77c988c307ee		in	understood	docs/libglcore.md#crm_pixelc	`crm_pixel.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd959d70	500	crmCopyPixelsXferRW	dwarf+dynsym	f50803ebf618		in	located	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd959f70	836	convertRGBXToRGBA	dwarf+funcnames	61f31c207284		in	undocumented		
@@ -10817,7 +10817,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95b700	552	conver
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95b930	552	convertStencilUintToSZ	dwarf+funcnames	93f5c24e59d5		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bb60	456	convertRGBA5551To1555	dwarf+funcnames	d161b690f17a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95bd30	456	convertRGBA1555To5551	dwarf+funcnames	da53ec60b219		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95bf00	1080	__GL_CRM_SCALE_PIXEL_SPAN	dwarf+dynsym	11a31e0f1472		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95bf00	1080	__GL_CRM_SCALE_PIXEL_SPAN	dwarf+dynsym	11a31e0f1472		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c340	304	__glcrmim_2DPointVertex2fv	dwarf+dynsym	6ee3dc50fa31		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95c470	200	__glCrmVertexPointFast	dwarf+dynsym	0b056bb836ed		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c540	184	RenderPoint	dwarf+funcnames	d029e453e53b		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
@@ -10836,12 +10836,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e250	136	__glCrmRend
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e2d8	168	__glCrmRenderPointDepthRGBA	dwarf+dynsym	434bc1c51168		in	understood	docs/libglcore.md#crm_pointasmma	`crm_pointasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e380	280	FindLineEquation	dwarf+funcnames	312fa3f0c5e9	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e4a0	124	FindPlaneEquation	dwarf+funcnames	ab9597b9ae6d	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e520	152	FindPlaneEquation2	dwarf+funcnames	900705015455		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e520	152	FindPlaneEquation2	dwarf+funcnames	900705015455		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5c0	32	FindP	dwarf+funcnames	4909d0b5e0f3	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e5e0	40	FindP2	dwarf+funcnames	34c225db4557		in	named-only	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e610	92	ComputeCoverageStuff	dwarf+funcnames	83a6a9a2f28c	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e920	9836	FillAASubTriangle	dwarf+funcnames	8be7bc1d4c11	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd961680	5688	__glCrmFillAATriangle	dwarf+dynsym	d3d694473d9f		in	located	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95e920	9836	FillAASubTriangle	dwarf+funcnames	8be7bc1d4c11	multi-unit	in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd961680	5688	__glCrmFillAATriangle	dwarf+dynsym	d3d694473d9f		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd962cc0	144	RemoveHalfPixelAdjust	dwarf+funcnames	a85b2c2e5a8d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd962d50	148	RestoreHalfPixelAdjust	dwarf+funcnames	c4b8273a1212		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd962df0	304	__glcrmim_Begin	dwarf+dynsym	600e05c1d799		in	named-only	docs/gl-entry-points.md#derivations-from-the-code	Derivations from the code
@@ -12097,7 +12097,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9bbc50	1092	Mult	
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9bc0a0	556	Add	dwarf+funcnames	ddbcbd0d05de		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bc7a0	280	__glInitAccum64	dwarf+dynsym	5553d0eb66d2		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bc8c0	400	__glim_Accum	dwarf+dynsym	1ed975bd8cef		in	located	docs/sample-implementation.md#so_accumopc	so_accumop.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bca50	360	__glValidateAlphaTest	dwarf+dynsym	02fd0c8934e8		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bca50	360	__glValidateAlphaTest	dwarf+dynsym	02fd0c8934e8		in	named-only	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bcbc0	188	__glInitAsyncState	dwarf+dynsym	318889c10296		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bcc80	52	__glFreeAsyncState	dwarf+dynsym	72c2e46f494d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9bccc0	164	__glim_GenAsyncMarkersSGIX	dwarf+dynsym	deb6b20a9ec5		in	undocumented		
