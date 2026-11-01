@@ -2559,6 +2559,31 @@ These entries cover the small routines of `sbin/stand/symmon.IP32` (6.5.30, N32)
 - `freesplock` in `sbin/stand/symmon.IP32`: the spin-lock release hook, an 8-byte routine at 0xa002a75c. Established for the code; the role is inferred from the symbol alone.
   It returns immediately and releases nothing, and no `jal`, `j` or data word names it. `initnlock` (0xa002a754) precedes it and `splockspl` (0xa002a764) follows.
 
+# Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+
+These entries cover more of the small routines of `sbin/stand/symmon.IP32` (6.5.30, N32). Most are `jr ra` with one delay-slot instruction. Each says which table word, `jal` or other reference reaches it, from a search of the whole image for `jal`, `j`, an address built with `lui` and `addiu` or `ori`, and a word of `.data`, `.rodata` or `.sdata` holding the address. The private vector is the 72-byte table at 0xa003bfb8 that `_init_spb` (0xa00271fc) copies to 0xa0001c00; slot n lands at 0xa0001c00 plus 4n.
+
+- `run_cached` in `sbin/stand/symmon.IP32`: the hook that moves execution to the cached address window, an 8-byte routine at 0xa00114b0. Established for the code; the role is inferred from the symbol alone.
+  It is `jr ra` and a `nop`, so no switch to cached execution happens. Its one caller is the `jal` at 0xa0027340 in `cpu_get_eaddr` (0xa0027314), which the `beqz` at 0xa0027324 reaches when the word at 0xa005a3e0 is zero; the routine then branches back to 0xa002732c and goes on to `ds2502_get_eaddr` (0xa0028de4).
+- `setenv_nvram` in `sbin/stand/symmon.IP32`: the non-volatile RAM variable writer, an 8-byte routine at 0xa001bee4 (6.5.30, N32). Established.
+  It returns 0 (`move v0,zero` in the delay slot of `jr ra`) and reads neither of its two string arguments, so no variable is stored and the caller is told it succeeded. No `jal`, `j`, address pair or data word in the image reaches it.
+- `get_nvram_tab` in `sbin/stand/symmon.IP32`: the vector slot for copying out the non-volatile RAM variable table, an 8-byte routine at 0xa001beec. Established.
+  It returns 0 (`move v0,zero` in the delay slot) and reads neither argument, so nothing is copied. The only reference is the word at 0xa003bfbc, the second slot of the private vector that `_init_spb` (0xa00271fc) copies to 0xa0001c00 (so it lands at 0xa0001c04); `ioctl` (0xa0026ba0) is the slot before it and `load_abs` (0xa001bf64) the slot after.
+- `scsiinit` in `sbin/stand/symmon.IP32`: the machine-dependent SCSI set-up hook, an 8-byte routine at 0xa001befc. Established.
+  The body is `jr ra` over a `nop`, with no arguments and no result. No `jal`, `j`, address pair or data word in the image reaches it. The debugger's board has no such call.
+- `guiCheckMouse` in `sbin/stand/symmon.IP32`: the graphics-console mouse callback, an 8-byte routine at 0xa001bf04. Established.
+  It is `jr ra` and a `nop`: it ignores its three arguments and returns. No `jal`, `j`, address pair or data word in the image reaches it, so nothing installs it as a callback.
+- `initGfxGui` in `sbin/stand/symmon.IP32`: the graphics-console start-up hook, an 8-byte routine at 0xa001bf0c. Established.
+  It is `jr ra` and a `nop`: it sets no register and ignores its argument. Its one caller is `_init_htp` (0xa002aa10), whose `jal` at 0xa002aa3c passes the word at `htp` (0xa003aa98, the word `gethtp` returns) in its delay slot. `_init_htp` reaches that call when the word at 0xa0058d1c is non-zero on entry. Otherwise it calls the routine at 0xa002a898 with 0, stores 1 in 0xa0058d1c unless that routine returned -1 (then 0), has `htp_init` (0xa001fda0) run when the result was not -1, and reloads the word and enters this routine if it is now non-zero. It returns the word at 0xa0058d1c on both paths.
+- `logoOff` in `sbin/stand/symmon.IP32`: the hook that turns the start-up logo off, an 8-byte routine at 0xa001bf14. Established.
+  The body is `jr ra` and a `nop` with no argument or result. No `jal`, `j`, address pair or data word reaches it.
+- `load_init` in `sbin/stand/symmon.IP32`: the program-loader start-up hook, an 8-byte routine at 0xa001bf44. Established.
+  It is `jr ra` and a `nop` and takes no arguments. The only caller is the `jal` at 0xa0026714 in `_init_saio` (0xa002664c), after `md_init` (0xa00292c8) and before `_init_alarm` (0xa0024d80).
+- `load_abs` in `sbin/stand/symmon.IP32`: the vector slot for loading an image to an absolute address, an 8-byte routine at 0xa001bf64. Established.
+  It returns 0 (delay-slot `move v0,zero`) and leaves its output untouched. The word at 0xa003bfc0 is the third slot of the private vector (0xa0001c08 after the copy), between `get_nvram_tab` (0xa001beec) and `invoke_abs` (0xa001bf6c).
+- `invoke_abs` in `sbin/stand/symmon.IP32`: the vector slot for starting an image at an absolute address, an 8-byte routine at 0xa001bf6c. Established.
+  Its delay-slot `move v0,zero` makes it return 0 without reading any of its five arguments, so nothing is started. The word at 0xa003bfc4 holds its address (the fourth slot of the private vector, landing at 0xa0001c0c), after `load_abs` (0xa001bf64) and before `exec_abs` (0xa001bf74).
+
 # Routines of `symmon.IP32`, one entry each
 
 `symmon.IP32` (`sbin/stand/symmon.IP32`, N32, IRIX 6.5.30) is the stand-alone kernel debugger and monitor. It is not stripped; names and sizes come from its symbol table and addresses are its load addresses. Each routine below was read in full from `objdump -d`, with its strings and globals taken from `.rodata`, `.data`, `.sdata` and `.bss` and its call targets resolved by address. A name followed by an address with no symbol is an unnamed static routine.
