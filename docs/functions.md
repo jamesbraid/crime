@@ -3647,3 +3647,23 @@ The debugger links against library code that expects kernel and firmware service
   v0 is cleared in the delay slot (0xa001df2c) of the `jr ra`. The single caller is `_init_saio` at 0xa0026764, which calls it after the routine at 0xa002686c and before `_init_systemid`; the result is not used there.
 - `_m_freem` in `sbin/stand/symmon.IP32`: releases a network buffer chain, but here frees nothing, an 8-byte routine at address 0xa001bf24. Established.
   The delay slot of the `jr ra` is a `nop` (0xa001bf28), so it takes its argument and returns without a value. It has no caller and no table slot.
+- `_m_get` in `sbin/stand/symmon.IP32`: allocates a network buffer, but here always answers with a null pointer, an 8-byte routine at address 0xa001bf1c. Established.
+  `move v0,zero` in the delay slot (0xa001bf20) of the `jr ra`. The two arguments are not read. No instruction in the image calls it or stores its address. The matching free routine sits 8 bytes later at 0xa001bf24.
+- `_mem_strat` in `sbin/stand/symmon.IP32`: the I/O strategy entry of a memory-backed device, replaced by a success return, an 8-byte routine at address 0xa001bf8c. Established.
+  It returns 0 through the delay slot at 0xa001bf90 without touching either argument (the device node and the I/O block). Nothing in the debugger calls it or lists it in a table.
+- `_mspoll` in `sbin/stand/symmon.IP32`: mouse polling hook, answering 0 in place of the driver, an 8-byte routine at address 0xa001df20. Established.
+  The `jr ra` delay slot at 0xa001df24 clears v0. It is called once, from the text-port configuration routine `txConfig` (0xa001e4bc), at the call site 0xa001ec5c; the next three instructions after the call (0xa001ec64 to 0xa001ec6c) load from s0 and do not read v0.
+- `_null_strat` in `sbin/stand/symmon.IP32`: the I/O strategy entry of the null device, reduced to a success return, an 8-byte routine at address 0xa001bf7c. Established.
+  v0 is zeroed in the delay slot (0xa001bf80) of the `jr ra`; the component and I/O-block arguments go unread. The image has no reference to this address.
+- `_quit` in `sbin/stand/symmon.IP32`: the debugger's `quit` command, which calls the firmware's enter-interactive-mode service and has no return of its own, an 8-byte routine at address 0xa0010340. Established.
+  The first instruction is `jal` to `EnterInteractiveMode` (0xa0031758), which loads the word at 0xa0001020, then the word 28 bytes into the table it names, and calls that. The `jal` leaves 0xa0010348 in ra, and that address is the entry of `db_printf` (a `j` to `printf`), so when the firmware routine returns control falls into `db_printf`, not to the caller of `_quit`. The command table holds the address at 0xa00390a8, next to the string `quit` (0xa0035838) and its help line; `start` jumps to it at 0xa0010338 and `_rdebug` calls it at 0xa001d468 with a0 = 1.
+- `_setenv` in `sbin/stand/symmon.IP32`: the nonvolatile environment writer, stubbed to report success without storing, an 8-byte routine at address 0xa001bef4. Established.
+  `jr ra` with `move v0,zero` in the delay slot (0xa001bef8). Three routines call it and return its result unchanged: `SetEnvironmentVariable` (0xa00259dc, third argument 0), `setenv` (0xa002ba2c, third argument 0) and `syssetenv` (0xa002ba48, third argument 1).
+- `_so_append` in `sbin/stand/symmon.IP32`: appends data to a socket's queue, replaced by a call that stores nothing, an 8-byte routine at address 0xa001bf34. Established.
+  The delay slot (0xa001bf38) loads zero into v0 and the three arguments are left alone. No call or pointer in the image reaches it.
+- `_tpscclose` in `sbin/stand/symmon.IP32`: the tape-driver close entry, stubbed to return 0, an 8-byte routine at address 0xa001def8. Established.
+  It is `jr ra` with the delay slot at 0xa001defc clearing v0. Nothing calls it or holds its address, and the open entry `_tpscopen` is the routine just before it at 0xa001def0. `skpick.h` emits these two when the tape driver is configured out while the SCSI layer stays in.
+- `_tpscopen` in `sbin/stand/symmon.IP32`: the tape-driver open entry, stubbed to return 0, an 8-byte routine at address 0xa001def0. Established.
+  The delay slot at 0xa001def4 sets v0 to zero, so an open of a tape unit would report success without touching a device. The image has no caller and no table word for it.
+- `bell` in `sbin/stand/symmon.IP32`: the keyboard beep, silenced to a zero return, an 8-byte routine at address 0xa0020c30. Established.
+  v0 is cleared in the delay slot at 0xa0020c34. The only call is inside `txConfig` (0xa001e4bc), at 0xa001fcbc, whose next instruction is a jump back into the common exit at 0xa001fc20.
