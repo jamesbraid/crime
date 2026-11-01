@@ -13218,7 +13218,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda319a0	244	__glim_Bind
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda31aa0	376	__glim_PrioritizeTexturesEXT	dwarf+dynsym	6dc4e62c1bd2		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda31c20	152	IsTextureResident	dwarf+funcnames	01088aa9270d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda31cc0	492	__glim_AreTexturesResidentEXT	dwarf+dynsym	6bc08b609882		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda31eb0	196	__glim_IsTextureEXT	dwarf+dynsym	b7578f4bb7e9		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda31eb0	196	__glim_IsTextureEXT	dwarf+dynsym	b7578f4bb7e9		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda31f80	544	__glim_CopyTexImage1DEXT	dwarf+dynsym	96219f960f78		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda321a0	580	__glim_CopyTexImage2DEXT	dwarf+dynsym	8ed05e43330a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda323f0	396	__glim_CopyTexSubImage1DEXT	dwarf+dynsym	e2fe54ed4810		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
