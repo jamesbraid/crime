@@ -2518,6 +2518,26 @@ These entries cover the small routines of `sbin/stand/symmon.IP32` (6.5.30, N32)
   It returns 0, so an open of that device reports success without touching a controller. `_tpscclose` (0xa001def8) is the next routine. Nothing calls it or stores its address.
 - `_tpscclose` in `sbin/stand/symmon.IP32`: the close routine of the SCSI tape driver slot, an 8-byte routine at 0xa001def8. Established for the code; the role is inferred from the symbol alone.
   It returns 0 and does nothing else. It lies between `_tpscopen` and `dksc_strat` (0xa001df00) and has no references.
+- `dksc_strat` in `sbin/stand/symmon.IP32`: the strategy routine of the SCSI disk driver slot, an 8-byte routine at 0xa001df00. Established for the code; the role is inferred from the symbol alone.
+  The delay-slot `move v0,zero` makes it return 0 for every request, so it queues nothing. It is followed by `ms_config` (0xa001df08). No caller and no table word refers to it.
+- `_mspoll` in `sbin/stand/symmon.IP32`: the mouse polling hook, an 8-byte routine at 0xa001df20. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and polls no device. Its one caller is the `jal` at 0xa001ec5c, in the unlabelled code that follows `txConfig` (0xa001e4bc, 0x178 bytes), which makes the call with the argument it loaded from sp+40 and does not use the result.
+- `bell` in `sbin/stand/symmon.IP32`: the audible-alert hook, an 8-byte routine at 0xa0020c30. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and sounds nothing. The only call is the `jal` at 0xa001fcbc in the unlabelled code after `txConfig` (0xa001e4bc), made with no argument and followed by a branch to the common exit at 0xa001fc20. `cpu_savecfg` (0xa0020c38) is the next routine.
+- `cpu_show_fault` in `sbin/stand/symmon.IP32`: the processor-fault display hook, an 8-byte routine at 0xa0020c54. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 without printing anything. It sits between `cpu_savecfg` and `cpuid` (0xa0020c5c), and nothing calls it.
+- `eerom_read` in `sbin/stand/symmon.IP32`: the serial-EEPROM read hook, an 8-byte routine at 0xa0020c64. Established for the code; the role is inferred from the symbol alone.
+  It reads no EEPROM and returns 0, which a caller would take as a zero value. It has no caller. `cpu_nv_lock` (0xa0020c6c) follows it.
+- `cpu_nv_lock` in `sbin/stand/symmon.IP32`: the non-volatile-memory lock hook, an 8-byte routine at 0xa0020c6c. Established for the code; the role is inferred from the symbol alone.
+  The body returns 0 and takes no lock. It is unreferenced, between `eerom_read` and `cpu_set_nvram` (0xa0020c74).
+- `cpu_set_nvram` in `sbin/stand/symmon.IP32`: the non-volatile-memory write hook, an 8-byte routine at 0xa0020c74. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and writes no byte. Neither a call nor a table word reaches it, and `ecc_error_decode` (0xa0020c7c) follows.
+- `ecc_error_decode` in `sbin/stand/symmon.IP32`: the memory-error decode hook, an 8-byte routine at 0xa0020c7c. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 and decodes nothing. It is the last of the eight-byte routines in this run and the next routine in the text is the 200-byte `arcs_format_module_id`. No one calls it.
+- `cpu_probe` in `sbin/stand/symmon.IP32`: the processor-detection hook, an 8-byte routine at 0xa0011404. Established for the code; the role is inferred from the symbol alone.
+  It returns 0 with the `move` in its delay slot. `mpsetup` (0xa001be20) calls it first, at 0xa001be28, and ignores the result. The same routine then goes on to `init_symmon_gpda` (0xa001b394), `_hook_exceptions` (0xa0029a60) and `_save_exceptions` (0xa00297d4). It sits immediately before `_ip32_disable_serial_dma` (0xa001140c), and nothing else references it.
+- `cpu_reset` in `sbin/stand/symmon.IP32`: the processor-reset hook of start-up, an 8-byte routine at 0xa0027460. Established for the code; the role is inferred from the symbol alone.
+  It returns at once over a `nop` and resets nothing. `_init_saio` (0xa002664c) calls it at 0xa0026688, after `_init_spb` (0xa00271fc) and before its `initlock` call (0xa002a74c) on the record at 0xa003c770.
 
 # Routines of `symmon.IP32`, one entry each
 
