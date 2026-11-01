@@ -2294,3 +2294,32 @@ Short routines of the 6.5.30 `usr/gfx/setmon` executable that belong to other gr
 
 - `cpu_makecfgroot` in `sbin/stand/symmon.IP32`: creates the root of the machine configuration tree, a 92-byte routine at address 0xa0027b68. Established.
   It calls `AddChild` (0xa0024228) with a null parent, the static component record at 0xa003c100 and a null third argument, and returns the new node. When the node is null it first calls `__assert` (0xa0027fc8) with the strings "root" (0xa0037468) and "IP32.c" (0xa0037470) and the line number 919.
+- `idbg_interrupted` in `sbin/stand/symmon.IP32`: handles a keyboard interrupt of the debugger by dropping back to its prompt, a 92-byte routine at address 0xa001a1c8. Established.
+  It calls `symmon_spl` (0xa0010e6c), loads the pointer at 0xa0001010, calls the routine at 0xa001ad98 with the words at 0xa0058e4c and 0xa0058e00, stores zero at offset 12 of the pointed-to record, prints "Interrupted" (0xa00350a8) with `printf` (0xa002e620), stores zero at 0xa0058e04 and calls `_restart` (0xa00184a0), whose result it returns.
+
+- `probe_tlb` in `sbin/stand/symmon.IP32`: asks the TLB whether it holds a translation for an address and address-space number, a 92-byte routine at address 0xa00247dc. Established.
+  It clears bit 0 of CP0 Status, forms EntryHi from the first argument with its low 13 bits cleared and the low 8 bits of the second argument, issues `tlbp`, reads CP0 Index into `v0`, then restores EntryHi and Status. The caller receives Index, whose top bit the probe sets when nothing matched.
+
+- `proto_enable` in `sbin/stand/symmon.IP32`: turns on the debugger's serial protocol on a descriptor, a 92-byte routine at address 0xa001d170. Established.
+  It calls `isatty` (0xa0026ec0) on its argument. For a terminal it calls `ioctl` (0xa0026ba0) with requests 29697 (0x7401) and an argument of 1, then 29698 (0x7402) with 0, and returns the second result. For anything else it prints "not a character device" (0xa0035de8) with `printf` and returns its result.
+
+- `_set_register` in `sbin/stand/symmon.IP32`: stores a value in a saved register slot of the debugger, an 88-byte routine at address 0xa001b218. Established.
+  The first argument is the register number and the second the 64-bit value. A number of 93 or more calls `_dbg_error` (0xa0018428) with "invalid register number" (0xa0035308); if that returns, the code continues, so the store below still happens (the test is signed, so a negative number passes it without the call). The value goes to the doubleword at the pointer held in 0xa0058e00 plus 8 times the number.
+
+- `close_noncons` in `sbin/stand/symmon.IP32`: closes every open descriptor that is not a terminal, an 88-byte routine at address 0xa002b0ac. Established.
+  For descriptors 0 to 19 it calls `isatty` (0xa0026ec0) and, for each that answers 0, `Close` (0xa00255a0). It takes no arguments and returns nothing.
+
+- `dumpPrimaryDataLineAddr` in `sbin/stand/symmon.IP32`: dumps the primary data-cache line that holds an address, an 88-byte routine at address 0xa00181a8. Established.
+  Its arguments are an address, an offset added to the aligned address, and a flag passed on. It sets bit 31 of the address, clears the low 5 bits and keeps the result at stack offset 64, calls `dLine` (0xa0023e54) with the aligned address plus the offset and a stack buffer, then calls the routine at 0xa0017d70 with the buffer, the aligned address and the flag, and returns 0.
+
+- `dumpPrimaryInstLineAddr` in `sbin/stand/symmon.IP32`: the instruction-cache twin of the data-line dump, an 88-byte routine at address 0xa00180d4. Established.
+  The alignment is 64 bytes (the low 6 bits cleared) instead of 32, the line is read with `iLine` (0xa0023df4) into a buffer on the stack, and the printing routine is the one at 0xa0017c44. The arguments and the zero return are as for the data-line routine.
+
+- `findFlashSegment` in `sbin/stand/symmon.IP32`: finds the first flash segment with a valid body, an 88-byte routine at address 0xa0029d84. Established.
+  It calls `findFlashSegmentHdr` (0xa0029cf4) with its two arguments, then loops: a zero header ends the loop, a header for which `validBody` (0xa0029ea4) answers non-zero ends it, and otherwise it asks `findFlashSegmentHdr` for the next header with the current one as third argument. It returns the last header, or 0.
+
+- `get_watchlo` in `sbin/stand/symmon.IP32`: reads the CPU's low watchpoint register where one exists, an 88-byte routine at address 0xa0024b40. Established.
+  It reads the implementation field of CP0 PRId (bits 15:8) and returns 0 without touching WatchLo when it is 0x20, 0x21, 0x23 or 0x28. For any other value it returns CP0 WatchLo.
+
+- `get_watchhi` in `sbin/stand/symmon.IP32`: the high-word twin of the low watchpoint reader, an 88-byte routine at address 0xa0024b98. Established.
+  The same implementation numbers (0x20, 0x21, 0x23 and 0x28) return 0; every other part returns CP0 WatchHi.

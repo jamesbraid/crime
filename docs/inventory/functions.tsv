@@ -153,7 +153,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00103e0	60	symmon_nmi	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001041c	1404	exception	symtab	c4af56fed605		in	named-only	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010998	780	_resume_brkpt	symtab	fd49e8e814d2		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010ca4	456	invoke	symtab	6960696be69a		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e6c	48	symmon_spl	symtab	2aed5ed2baa9		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e6c	48	symmon_spl	symtab	2aed5ed2baa9		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e9c	360	_do_it	symtab	b397229debda		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011004	24	_kernel_bp	symtab	e8e7348622d6		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001101c	68	kpprintf	symtab	3d78b91e70c0		in	undocumented		
@@ -212,24 +212,24 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0016d78	548	_c_tags	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0017fb0	84	dumpSecondaryLine	symtab	6289a831cd53		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018004	84	dumpSecondaryLineAddr	symtab	8e6b7c426bfe		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018058	124	dumpPrimaryInstLine	symtab	56547bf1efbd		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00180d4	88	dumpPrimaryInstLineAddr	symtab	577cbd4cb608		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00180d4	88	dumpPrimaryInstLineAddr	symtab	577cbd4cb608		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001812c	124	dumpPrimaryDataLine	symtab	698501e56c7d		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00181a8	88	dumpPrimaryDataLineAddr	symtab	c2aca7e4bbe6		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00181a8	88	dumpPrimaryDataLineAddr	symtab	c2aca7e4bbe6		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018200	100	dumpPrimaryCache	symtab	aa98f438026e		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018264	100	dumpSecondaryCache	symtab	205990fcf492		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00182c8	100	_dump_sline	symtab	f7b0fc2a6236		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001832c	100	_dump_dline	symtab	574d4d9e800d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018390	100	_dump_iline	symtab	07643228d768		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00183f4	52	_fatal_error	symtab	87c8b31ac6c7		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018428	120	_dbg_error	symtab	dbbccaed171f		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00184a0	64	_restart	symtab	a2690ea6c521		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018428	120	_dbg_error	symtab	dbbccaed171f		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00184a0	64	_restart	symtab	a2690ea6c521		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00184e0	48	close_on_exception	symtab	7c78a2598343		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018608	72	_show_inst	symtab	ca71066c06bb		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0018650	6272	_PrintInstruction	symtab	84c759711417		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0019f3c	272	symmon_exchandler	symtab	1157ffcc141e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a04c	64	clear_nofault	symtab	bc37d1501f39		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a174	84	idbg_cleanup	symtab	584caaaf3ebc		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a1c8	92	idbg_interrupted	symtab	4c7862a630e3		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a1c8	92	idbg_interrupted	symtab	4c7862a630e3		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a3e4	144	do_it2	symtab	63dcb2f91c8d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a474	324	_kp	symtab	d4d0890b09d3		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001a5b8	264	_kpcheck	symtab	1c55bb9d382c		in	undocumented		
@@ -243,7 +243,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b034	156	end_cell	symtab
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b0d0	112	_get_memory	symtab	aa3c09a34c7b		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b140	136	_set_memory	symtab	adb40b4c809a		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b1c8	80	_get_register	symtab	ad71008fdaf0		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b218	88	_set_register	symtab	f4d41bc3668f		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b218	88	_set_register	symtab	f4d41bc3668f		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b394	116	init_symmon_gpda	symtab	a66874e18c11		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b408	524	command_parser	symtab	17311d40c57d		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b614	132	_argvize	symtab	edf85b43be7d		in	undocumented		
@@ -296,7 +296,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001c8f8	276	lkup	symtab	025
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001ca0c	36	init_proto	symtab	ea6c0157f345		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001ca30	664	getpkt	symtab	dd6cf8bd9271		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001cdf0	564	putpkt	symtab	1d101409c96f		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001d170	92	proto_enable	symtab	9f5e03037b16		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001d170	92	proto_enable	symtab	9f5e03037b16		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001d1cc	60	proto_disable	symtab	ca5a3d4bb116		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001d208	88	putc	symtab	28b887705c17		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001d260	1664	_rdebug	symtab	5385a8ca9ce8		in	undocumented		
@@ -382,7 +382,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023d7c	64	sCacheSize	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023dbc	28	iCacheSize	symtab	7ca1a97f2f24		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023dd8	28	dCacheSize	symtab	ca1b2a90995e		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023df4	96	iLine	symtab	36e896748524		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023e54	84	dLine	symtab	7a923891162e		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023e54	84	dLine	symtab	7a923891162e		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023ea8	136	sLine	symtab	4aeddb703e9e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0023f30	340	cacheOP	symtab	816eadccac5e		in	named-only	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024084	164	init_cfgtree	symtab	b3ecdabdc980		in	undocumented		
@@ -404,7 +404,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002475c	12	set_pgmask	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024768	72	get_tlbhi	symtab	258f387ac8e0		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247b0	24	get_tlbpid	symtab	12f40a0bdd52		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247c8	20	set_tlbpid	symtab	ff08d6ec019a		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247dc	92	probe_tlb	symtab	dfbca83c121d		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247dc	92	probe_tlb	symtab	dfbca83c121d		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024838	76	invaltlb	symtab	f1608bcdc565		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024884	84	tlbwired	symtab	f26ff28c0c81		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00248d8	76	tlbwired_sc	symtab	5a1e2d89e83e		in	undocumented		
@@ -424,8 +424,8 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b24	20	get_fpc_irr	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b24	20	r4k_get_fpirr	symtab	52081b282666	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b38	8	load_double	symtab	12e1753b4086	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b38	8	load_double_nowar	symtab	12e1753b4086	shared-address	in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b40	88	get_watchlo	symtab	e0b82830cb5d		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b98	88	get_watchhi	symtab	dcc814cc7af6		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b40	88	get_watchlo	symtab	e0b82830cb5d		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024b98	88	get_watchhi	symtab	dcc814cc7af6		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024bf0	128	set_watchlo	symtab	1d42ef940e15		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024c70	116	set_watchhi	symtab	ef951c06b45e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024ce4	156	atomicAddInt	symtab	b8f20c930f8d	shared-address	in	undocumented		
@@ -438,7 +438,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024dfc	84	check_alarm	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024e50	924	Open	symtab	a1ff87bdecff		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00251ec	624	Read	symtab	e662a1f58904		in	named-only	docs/sample-implementation.md#px_unpackc	px_unpack.c
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002545c	324	Write	symtab	5285cf3869fd		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00255a0	172	Close	symtab	981a2e1d9505		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00255a0	172	Close	symtab	981a2e1d9505		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002564c	176	Seek	symtab	0b519515affc		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00256fc	180	GetDirectoryEntry	symtab	11bee23e41f7		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00257b0	48	GetTime	symtab	ba1e621c3aa0		in	undocumented		
@@ -549,10 +549,10 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00297d4	340	_save_exception
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029928	312	_restore_exceptions	symtab	fdb874baac29		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029a60	316	_hook_exceptions	symtab	1086fd119f4e		in	located	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029b9c	344	_inst_vec	symtab	cb25dd9e4207		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029cf4	144	findFlashSegmentHdr	symtab	52c648bfb3b6		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029d84	88	findFlashSegment	symtab	28431e1f63a5		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029cf4	144	findFlashSegmentHdr	symtab	52c648bfb3b6		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029d84	88	findFlashSegment	symtab	28431e1f63a5		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029ddc	200	nextSegment	symtab	7eb8020a8ed3		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029ea4	68	validBody	symtab	f9001db00b45		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029ea4	68	validBody	symtab	f9001db00b45		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029ee8	108	validHdr	symtab	93152cd348be		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029f54	64	usecwait	symtab	78b038f2780e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029f94	300	cpu_set_tod	symtab	061bc91199d5		in	undocumented		
@@ -603,7 +603,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002aec0	60	__close_fds	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002aefc	144	getack_andexit	symtab	b26d63adb925		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002af8c	156	panic	symtab	ee7fe730ca2e		in	named-only	docs/functions.md#mace-interrupt-mask-maceo	MACE interrupt mask (`mace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b028	132	isgraphic	symtab	95a07d99583d		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b0ac	88	close_noncons	symtab	7a27341396f2		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b0ac	88	close_noncons	symtab	7a27341396f2		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b104	76	close_closeonexec	symtab	dd9dfdc191bd		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b150	292	get_tod	symtab	e5ef80b9699e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b274	236	getcpuid	symtab	e8eb7f7e5b4d		in	undocumented		
@@ -16051,7 +16051,7 @@ usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406c9c	348	jhead
 usr/lib/dmedia/imageconverters/vicejpeg.so	board-library	o32		0x406e00	340	vjpeg_qfmt	dynsym+mdebug	5e9af7ebb3e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32		0x401020	356	dmICInitDso	dynsym+mdebug	ae81a06a3047		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401184	236	Open	mdebug	12ca4f94bfd5		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
-usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401270	116	Close	mdebug	179c978dc039		in	undocumented		
+usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401270	116	Close	mdebug	179c978dc039		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x4012e4	300	GetDescription	mdebug	2dce81f9016b		in	undocumented		
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x401410	60	SetSrcPoolParams	mdebug	4e1c0d87f80d		in	undocumented		
 usr/lib/dmedia/imageconverters/vicempeg.so	board-library	o32	.text	0x40144c	60	SetDstPoolParams	mdebug	7980bf4f8163		in	undocumented		
@@ -16787,7 +16787,7 @@ usr/lib32/dmedia/imageconverters/vicejpeg.so	board-library	n32		0x405670	104	vjp
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x400e10	524	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32		0x401020	344	dmICInitDso	dwarf+dynsym	b29fb7a98c25		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x401178	212	Open	dwarf+funcnames	9ee6eb4a161c		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
-usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x40124c	96	Close	dwarf+funcnames	3341d938c356		in	undocumented		
+usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x40124c	96	Close	dwarf+funcnames	3341d938c356		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x4012ac	276	GetDescription	dwarf+funcnames	1ae742441eac		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x4013c0	56	SetSrcPoolParams	dwarf+funcnames	492527564e1f		in	undocumented		
 usr/lib32/dmedia/imageconverters/vicempeg.so	board-library	n32	.text	0x4013f8	56	SetDstPoolParams	dwarf+funcnames	8bc8c9fc35d1		in	undocumented		
