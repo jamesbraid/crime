@@ -6352,15 +6352,15 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931420	40	__glcrmle_Vert
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931448	40	__glcrmle_Normal3fv	dynsym+mdebug	3e66dd3f90ed		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931470	40	__glcrmle_Color3fv	dynsym+mdebug	c1709a7737e6		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931498	40	__glcrmle_TexCoord2fv	dynsym+mdebug	f13a0e114a7b		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9314c0	112	__glim_MipsVertex3fv	dynsym+mdebug	92be1b2cf8ac		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931530	108	__glim_MipsVertex2fv	dynsym+mdebug	195659b8f015		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93159c	112	__glim_MipsVertex4fv	dynsym+mdebug	a2daf445d3fa		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9314c0	112	__glim_MipsVertex3fv	dynsym+mdebug	92be1b2cf8ac		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931530	108	__glim_MipsVertex2fv	dynsym+mdebug	195659b8f015		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93159c	112	__glim_MipsVertex4fv	dynsym+mdebug	a2daf445d3fa		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93160c	80	__glim_MipsVertex3fvFast	dynsym+mdebug	e89fc8697f3d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93165c	80	__glim_MipsVertex2fvFast	dynsym+mdebug	4c24739cbfe8		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9316ac	80	__glim_MipsVertex4fvFast	dynsym+mdebug	d66ece880721		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9316fc	88	__glim_MipsNoXFVertex3fv	dynsym+mdebug	04a8d1d9baf5		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931754	88	__glim_MipsNoXFVertex2fv	dynsym+mdebug	b4ccb4f40b26		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9317ac	88	__glim_MipsNoXFVertex4fv	dynsym+mdebug	744e33a71c72		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9316fc	88	__glim_MipsNoXFVertex3fv	dynsym+mdebug	04a8d1d9baf5		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931754	88	__glim_MipsNoXFVertex2fv	dynsym+mdebug	b4ccb4f40b26		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9317ac	88	__glim_MipsNoXFVertex4fv	dynsym+mdebug	744e33a71c72		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd931804	88	__glim_MipsNoXFVertex3fvFast	dynsym+mdebug	58d6102a0fee		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93185c	88	__glim_MipsNoXFVertex4fvFast	dynsym+mdebug	39840d13270d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9318b4	248	__glim_MipsNoXFVertex2fvFast2D	dynsym+mdebug	da8662b2adc7		in	undocumented		
@@ -6393,14 +6393,14 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93295c	108	__glMipsClipC
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9329c8	140	__glMipsClipCheck2D_3	dynsym+mdebug	b03054c2891f		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932a54	152	__glMipsClipCheck2D_3_vtx	dynsym+mdebug	7f39d9ea437e		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932aec	68	__glMipsClipCheck2D_4	dynsym+mdebug	fcf8c7c389c5		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b30	24	__glSaveN	dynsym+mdebug	e6df26f8e1f3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b30	24	__glSaveN	dynsym+mdebug	e6df26f8e1f3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b48	20	__glSaveCI	dynsym+mdebug	9e2fa4165942		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b5c	24	__glSaveC	dynsym+mdebug	194b496f59a3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b5c	24	__glSaveC	dynsym+mdebug	194b496f59a3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b74	24	__glSaveT	dynsym+mdebug	1b59438a8e9f		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b8c	40	__glSaveCT	dynsym+mdebug	cb4acaef6ea8		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bb4	40	__glSaveNT	dynsym+mdebug	9a0bb05aec7a		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bdc	56	__glSaveCAll	dynsym+mdebug	c50be1ae45ee		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932c14	52	__glSaveCIAll	dynsym+mdebug	be0e8c037e67		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932b8c	40	__glSaveCT	dynsym+mdebug	cb4acaef6ea8		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bb4	40	__glSaveNT	dynsym+mdebug	9a0bb05aec7a		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932bdc	56	__glSaveCAll	dynsym+mdebug	c50be1ae45ee		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932c14	52	__glSaveCIAll	dynsym+mdebug	be0e8c037e67		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932c48	72	__glSaveCN	dynsym+mdebug	4e0fff7775e2		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932c90	104	__glSaveCNT	dynsym+mdebug	ffd3c98053d9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd932d00	136	__glEvenTStripVertex	dynsym+mdebug	7d04554e8198		in	named-only	docs/opengl.md#software-transform-lighting-clipping-and-dispatch-pass-3	Software transform, lighting, clipping and dispatch (pass 3)
@@ -10483,9 +10483,9 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932dec	112	__glim_Mips
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932e5c	80	__glim_MipsVertex3fvFast	dwarf+dynsym	c812d84cfe9b		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932eac	80	__glim_MipsVertex2fvFast	dwarf+dynsym	72c3f684d6e2		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932efc	80	__glim_MipsVertex4fvFast	dwarf+dynsym	94bdcacd7f4a		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932f4c	88	__glim_MipsNoXFVertex3fv	dwarf+dynsym	cc128b8e29dc		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932fa4	88	__glim_MipsNoXFVertex2fv	dwarf+dynsym	ea73b19e1560		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932ffc	88	__glim_MipsNoXFVertex4fv	dwarf+dynsym	06d239019fdf		in	located	docs/sample-implementation.md#mips_vapima	mips_vapi.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932f4c	88	__glim_MipsNoXFVertex3fv	dwarf+dynsym	cc128b8e29dc		in	located	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932fa4	88	__glim_MipsNoXFVertex2fv	dwarf+dynsym	ea73b19e1560		in	located	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd932ffc	88	__glim_MipsNoXFVertex4fv	dwarf+dynsym	06d239019fdf		in	located	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933054	88	__glim_MipsNoXFVertex3fvFast	dwarf+dynsym	686904efc4c7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9330ac	88	__glim_MipsNoXFVertex4fvFast	dwarf+dynsym	10548a8d8ddc		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd933104	248	__glim_MipsNoXFVertex2fvFast2D	dwarf+dynsym	4c10e32c3a61		in	undocumented		
@@ -10518,13 +10518,13 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93413c	108	__glMipsCli
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9341a8	140	__glMipsClipCheck2D_3	dwarf+dynsym	dfeaf00a37ca		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934234	152	__glMipsClipCheck2D_3_vtx	dwarf+dynsym	1c4056562d23		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9342cc	76	__glMipsClipCheck2D_4	dwarf+dynsym	a3087f8745a3		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934320	24	__glSaveN	dwarf+dynsym	e6df26f8e1f3		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934320	24	__glSaveN	dwarf+dynsym	e6df26f8e1f3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934338	20	__glSaveCI	dwarf+dynsym	9e2fa4165942		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93434c	24	__glSaveC	dwarf+dynsym	eb5db073c316		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93434c	24	__glSaveC	dwarf+dynsym	eb5db073c316		in	located	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934364	24	__glSaveT	dwarf+dynsym	27d3c2335562		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93437c	40	__glSaveCT	dwarf+dynsym	c677d6d83058		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343a4	40	__glSaveNT	dwarf+dynsym	57413f705dcc		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343cc	56	__glSaveCAll	dwarf+dynsym	86554ea92537		in	located	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9343cc	56	__glSaveCAll	dwarf+dynsym	86554ea92537		in	located	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934404	52	__glSaveCIAll	dwarf+dynsym	52777e01d5cf		in	understood	docs/sample-implementation.md#mips_vsavema	mips_vsave.ma
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd934438	68	__glSaveCN	dwarf+dynsym	0c066b11c58a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd93447c	100	__glSaveCNT	dwarf+dynsym	f17d73997332		in	undocumented		
