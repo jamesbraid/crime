@@ -2140,7 +2140,7 @@ It clears `vce_avoidance` again when `four_set_pcaches` is non-zero and below 40
 
 <!-- kernel.o:end -->
 
-# Routines of `symmon.IP32`, one entry each
+# Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 
 Routines of the stand-alone debugger `sbin/stand/symmon.IP32` (6.5.30, N32, text from 0xa0010200), read from its disassembly. Register windows are CRIME at KSEG1 `0xb4000000` ([memory.md](memory.md)) and the MACE peripheral controller at `0xbf310000` ([functions.md](functions.md#mace-interrupt-mask-maceo)). Several symbols share one address in this image, so an entry names its own symbol and says which others sit there.
 
