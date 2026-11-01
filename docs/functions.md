@@ -2260,3 +2260,37 @@ Short routines of the 6.5.30 `usr/gfx/setmon` executable that belong to other gr
 - `crime_i2c_rcvbytes` in `usr/sbin/Confidence/dualchannel`: reads bytes from the I2C bus through the driver and reports how many came back, a 228-byte routine at address 0x404db4. Established.
   Its arguments are the number of bytes wanted, the buffer address and the address of an integer that receives the count. The record on the stack has byte 0 zero, byte 1 equal to 3, the halfword at offset 4 holding the wanted count and the word at offset 12 holding the buffer address; `ioctl` (call at 0x404dfc) sends it with request 22027 on the descriptor in `i2cfd`.
   A negative result prints "I2C_RCVBYTES failed, rval = %d" (0x10000398) with that result to the stream at `__iob` plus 32 (`fprintf`, call at 0x404e20) and goes on. The routine then reads the halfword at offset 4 back as the number received, stores it through the third argument, and when it is smaller than the number wanted prints "I2C_RCVBYTES failed, reply len = %d, " (0x100003b8) with it (`fprintf`, call at 0x404e60) and calls `perror` with the empty string at 0x100003e0. It returns the number received on every path; the comparison is a branch-likely `beql`, whose delay slot loads the saved return address.
+
+# Routines of `symmon.IP32`, one entry each
+
+`symmon.IP32` (`sbin/stand/symmon.IP32`, N32, IRIX 6.5.30) is the stand-alone kernel debugger and monitor. It is not stripped; names and sizes come from its symbol table and addresses are its load addresses. Each routine below was read in full from `objdump -d`, with its strings and globals taken from `.rodata`, `.data`, `.sdata` and `.bss` and its call targets resolved by address. A name followed by an address with no symbol is an unnamed static routine.
+
+- `_ip32_disable_serial_dma` in `sbin/stand/symmon.IP32`: clears bit 9 in four 64-bit registers and keeps their old values, a 100-byte routine at address 0xa001140c. Established for the code; that the registers belong to the serial ports' DMA is inferred from the routine's name alone.
+  It takes no arguments. It loads the doublewords at 0xbf318000, 0xbf318020, 0xbf31c000 and 0xbf31c020 in that order, stores them as four consecutive doublewords from 0xa003c920 (the start of `.bss`), then writes each back with every bit set except bit 9 (the constant -513), in the same address order. The last write is in the delay slot of the return and `v0` is left holding 0xbf31c020.
+
+- `dumpPrimaryCache` in `sbin/stand/symmon.IP32`: walks every index of the primary data cache and dumps it, a 100-byte routine at address 0xa0018200. Established.
+  It calls `dCacheSize` (0xa0023dd8), shifts the size right by 6 and, for each value from 0 up to that count (a count of zero or less skips the loop), calls `dumpPrimaryDataLine` (0xa001812c) twice: with the second argument 0 and then 1, the third argument being 1 both times. It returns 0.
+
+- `dumpSecondaryCache` in `sbin/stand/symmon.IP32`: the same walk over the secondary cache, a 100-byte routine at address 0xa0018264. Established.
+  The count is the result of `sCacheSize` (0xa0023d7c) shifted right by 7. Each index goes to `dumpSecondaryLine` (0xa0017fb0) twice, with the second argument 0 then 1 and the third argument 1. The routine returns 0, including for an empty count.
+
+- `isatty` in `sbin/stand/symmon.IP32`: decides whether a descriptor is a terminal-like device, a 100-byte routine at address 0xa0026ec0. Established; reading the five type numbers as console devices is inferred.
+  It passes its argument unchanged to `get_eiob` (0xa0026e48) and returns 0 when that finds nothing. Otherwise it follows the pointer at descriptor offset 52 to a record, reads the word at record offset 4 and returns 1 when it equals 18, 35, 20, 33 or 32 (tested in that order) and 0 for any other value.
+
+- `_read_tag` in `sbin/stand/symmon.IP32`: reads the cache tag at an index with the CPU's tag-load operation, a 96-byte routine at address 0xa00238dc. Established.
+  Its first argument selects the cache (0 instruction, 1 primary data, any other value secondary), its second the address operand and its third the place to store the result. After a `sync` it issues `cache` with operation 0x4, 0x5 or 0x7 respectively (the three index-load-tag encodings), reads CP0 TagLo and stores that one 32-bit word through the third argument. TagHi is not read. It returns 0.
+
+- `_write_tag` in `sbin/stand/symmon.IP32`: writes a cache tag at an index, an 88-byte routine at address 0xa002393c. Established.
+  It loads the word at the third argument into CP0 TagLo, then, after a `sync`, issues `cache` with operation 0x8 for first argument 0, 0x9 for 1 and 0xb for any other value (the index-store-tag encodings of the instruction, data and secondary caches) on the address in the second argument. TagHi is left as it was. It returns nothing.
+
+- `iLine` in `sbin/stand/symmon.IP32`: copies one primary instruction-cache line and its tag into a buffer, a 96-byte routine at address 0xa0023df4. Established; the data-read meaning of operation 0x18 is inferred.
+  The first argument is the line's address and the second the buffer. It issues `cache` 0x4 (index load tag), joins TagHi above TagLo and stores that doubleword at buffer offset 0. It then makes sixteen passes, advancing the address by 4 each time until it has moved 64 bytes: each issues `cache` 0x18 on the address, stores TagHi above TagLo as a doubleword from buffer offset 8 in steps of 8, and stores the CP0 ECC byte from offset 136 in steps of 1.
+
+- `_cont` in `sbin/stand/symmon.IP32`: resumes the program that is being debugged, a 92-byte routine at address 0xa0012364. Established.
+  With any first argument but 1 it returns 1 at once. With 1 it calls `setjmp` (0xa00302dc) on the buffer whose address is the word at 0xa0058e50. A non-zero return from `setjmp` makes `_cont` return 0. On the direct return it stores 1 at 0xa0058e54 (in the delay slot of the next call), calls the routine at 0xa00123c0 that follows `_cont` with 0 and 1 as arguments and returns what that routine returns.
+
+- `_init_libsc_private` in `sbin/stand/symmon.IP32`: makes sure the library's per-processor area exists, a 92-byte routine at address 0xa00316fc. Established.
+  It calls `_get_numcpus` (0xa00316b0). With two or more processors it calls `malloc` for that count times 128 bytes and stores the result in `_libsc_private` (0xa003c910, which starts out holding the address 0xa005a558 in `.bss`). With fewer it leaves that word alone. In both cases a zero word afterwards calls `panic` with "libsc private area neither init'd nor malloc'd." (0xa0037df8); the routine otherwise returns nothing.
+
+- `cpu_makecfgroot` in `sbin/stand/symmon.IP32`: creates the root of the machine configuration tree, a 92-byte routine at address 0xa0027b68. Established.
+  It calls `AddChild` (0xa0024228) with a null parent, the static component record at 0xa003c100 and a null third argument, and returns the new node. When the node is null it first calls `__assert` (0xa0027fc8) with the strings "root" (0xa0037468) and "IP32.c" (0xa0037470) and the line number 919.
