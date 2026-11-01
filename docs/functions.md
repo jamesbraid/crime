@@ -2538,6 +2538,26 @@ These entries cover the small routines of `sbin/stand/symmon.IP32` (6.5.30, N32)
   It returns 0 with the `move` in its delay slot. `mpsetup` (0xa001be20) calls it first, at 0xa001be28, and ignores the result. The same routine then goes on to `init_symmon_gpda` (0xa001b394), `_hook_exceptions` (0xa0029a60) and `_save_exceptions` (0xa00297d4). It sits immediately before `_ip32_disable_serial_dma` (0xa001140c), and nothing else references it.
 - `cpu_reset` in `sbin/stand/symmon.IP32`: the processor-reset hook of start-up, an 8-byte routine at 0xa0027460. Established for the code; the role is inferred from the symbol alone.
   It returns at once over a `nop` and resets nothing. `_init_saio` (0xa002664c) calls it at 0xa0026688, after `_init_spb` (0xa00271fc) and before its `initlock` call (0xa002a74c) on the record at 0xa003c770.
+- `bp_try_stop_cpus` in `sbin/stand/symmon.IP32`: the multiprocessor stop request for a breakpoint, an 8-byte routine at 0xa001a714. Established for the code; the role is inferred from the symbol alone.
+  It reports 0, which both callers hand straight back: `_kp` (0xa001a474) at 0xa001a570 moves it into `v0` through the branch to 0xa001a514, and `_kpcheck` (0xa001a5b8) does the same through 0xa001a674 from the `jal` at 0xa001a698. No other processor is signalled. The unlabelled routine at 0xa001a71c follows it.
+- `dump_gpda` in `sbin/stand/symmon.IP32`: the per-processor data dump hook, an 8-byte routine at 0xa0029004. Established for the code; the role is inferred from the symbol alone.
+  It returns immediately and prints nothing. The next routine, at 0xa002900c, opens a 16-byte stack frame and reaches `_ticksper1024inst` (0xa0029174). Nothing refers to `dump_gpda`.
+- `checksum_rb` in `sbin/stand/symmon.IP32`: the restart-block checksum routine, an 8-byte routine at 0xa0031310. Established.
+  It returns 0 whatever block it is given. Both callers store that result in the word at offset 32 of the 552-byte block: `init_rb` (0xa00311b8) at 0xa0031244 after it fills offset 0 with 0x42545352 and offsets 4, 8 and 10 with 552, 1 and 10, and `rbsetbs` (0xa0031294) in the delay slot at 0xa00312d8. The stored checksum is therefore always 0.
+- `cvsema` in `sbin/stand/symmon.IP32`: the condition-variable semaphore slot, an 8-byte routine at 0xa00311b0. Established for the code; the role is inferred from the symbol alone.
+  It returns 0, unlike the `suser` stub (0xa00311a8) before it, which returns 1. It is a separate address from the 22-symbol stub at 0xa00311a0 and has no callers.
+- `exceptutlb` in `sbin/stand/symmon.IP32`: the user-TLB-miss entry published to the firmware, an 8-byte routine at 0xa001bed4. Established.
+  It returns at once, over a `nop`. `_init_spb` forms its address with `lui` and `addiu` (-16684) at 0xa0027264 and stores it at 0xa0001018, and `_hook_exceptions` (0xa0029a60) stores it at 0x80001018 in the delay slot of its second `__cache_wb_inval` call at 0xa0029b8c. It follows `_init_sockets` and precedes `exceptnorm`.
+- `exceptnorm` in `sbin/stand/symmon.IP32`: the general-exception entry published to the firmware, an 8-byte routine at 0xa001bedc. Established.
+  Its body is `jr ra` with a `nop`. `_init_spb` stores its address (0xa0020000 minus 16676) at 0xa0001014 with the `sw` at 0xa0027288, and `_hook_exceptions` stores it at 0x80001014 with the `sw` at 0xa0029b84. The debugger's real exception entry is `exception` (0xa001041c), so this slot only fills the table.
+- `_setenv` in `sbin/stand/symmon.IP32`: the common back end of the environment-variable setters, an 8-byte routine at 0xa001bef4. Established.
+  It stores nothing and returns 0. Three one-line wrappers call it, each passing its own arguments through and setting the third in the delay slot: `SetEnvironmentVariable` (0xa00259dc) and `setenv` (0xa002ba2c) with 0, and `syssetenv` (0xa002ba48) with 1. All three return its 0, so the firmware interface reports success while no variable changes.
+- `db_printf` in `sbin/stand/symmon.IP32`: the debugger's print entry that forwards to the C library, an 8-byte routine at 0xa0010348. Established.
+  The `j` at 0xa0010348 tail-jumps to `printf` (0xa002e620) with a `nop` delay slot, leaving every argument register as it arrived. Nothing calls it or holds its address.
+- `_quit` in `sbin/stand/symmon.IP32`: the debugger's quit command, an 8-byte routine at 0xa0010340. Established.
+  Its single `jal` at 0xa0010340 calls `EnterInteractiveMode` (0xa0031758), which calls through the word at offset 28 of the vector that 0xa0001020 points to. There is no `jr ra` after the call, so a return would run on into `db_printf`. It is the handler word of the command-table record at 0xa00390a4 (name "quit" at 0xa0035838, help text at 0xa0035840). `start` reaches it with the `j` at 0xa0010338, to the next word, after `_dbgmon` (0xa001bb68) returns, and `_rdebug` calls it at 0xa001d468 after closing its descriptor.
+- `freesplock` in `sbin/stand/symmon.IP32`: the spin-lock release hook, an 8-byte routine at 0xa002a75c. Established for the code; the role is inferred from the symbol alone.
+  It returns immediately and releases nothing, and no `jal`, `j` or data word names it. `initnlock` (0xa002a754) precedes it and `splockspl` (0xa002a764) follows.
 
 # Routines of `symmon.IP32`, one entry each
 
