@@ -2583,6 +2583,26 @@ These entries cover more of the small routines of `sbin/stand/symmon.IP32` (6.5.
   It returns 0 (delay-slot `move v0,zero`) and leaves its output untouched. The word at 0xa003bfc0 is the third slot of the private vector (0xa0001c08 after the copy), between `get_nvram_tab` (0xa001beec) and `invoke_abs` (0xa001bf6c).
 - `invoke_abs` in `sbin/stand/symmon.IP32`: the vector slot for starting an image at an absolute address, an 8-byte routine at 0xa001bf6c. Established.
   Its delay-slot `move v0,zero` makes it return 0 without reading any of its five arguments, so nothing is started. The word at 0xa003bfc4 holds its address (the fourth slot of the private vector, landing at 0xa0001c0c), after `load_abs` (0xa001bf64) and before `exec_abs` (0xa001bf74).
+- `nullsetup` in `sbin/stand/symmon.IP32`: the set-up routine of the `null` pseudo-device, an 8-byte routine at 0xa001bf84. Established.
+  Its delay-slot `move v0,zero` returns 0 with the three arguments unread. Its address is the third word of the record at 0xa003bec4 in `config_desc` (name pointer 0xa0036ec0, the string `null`, the number 4, then this routine), the record after `memsetup`'s at 0xa003beb8 and before the zero word at 0xa003bed0 that ends the table walk of `checkpseudo` (0xa0025d98).
+- `memsetup` in `sbin/stand/symmon.IP32`: the set-up routine of the `mem` pseudo-device, an 8-byte routine at 0xa001bf94. Established.
+  It returns 0 (`move v0,zero`) and ignores its three arguments, so no node is built. Its address is the third word of the 12-byte record at 0xa003beb8 in `config_desc`: the name pointer 0xa0036eb8 (the string `mem`), the number 3, then this routine. The record is read by the unlabelled routine at 0xa0025d98 (`checkpseudo` in the debug information) on a path that has found a '(' in the device string: it takes the name length as the distance to the '(', walks the 12-byte records until a zero name word, skips records whose length word differs, and for a record whose name matches by `strncmp` calls the third word with its third argument, its second argument and a pointer to the '(' text, returning the result.
+- `tpsc_strat` in `sbin/stand/symmon.IP32`: the tape driver's strategy entry, an 8-byte routine at 0xa001ded8. Established.
+  It returns 0 (delay-slot `move v0,zero`) for any request and reads neither argument. No `jal`, `j`, address pair or data word reaches it, so no node is registered with it.
+- `tpsctapetype` in `sbin/stand/symmon.IP32`: the tape-model lookup, an 8-byte routine at 0xa001dee0. Established.
+  It returns 0 (delay-slot `move v0,zero`) and does not read the inquiry-data buffer it is given, so every drive would be type 0. It is the second of the five tape stubs listed under `tpsc_strat` (0xa001ded8). Nothing in the image calls it.
+- `tpsc_tapeid` in `sbin/stand/symmon.IP32`: the tape identification routine, an 8-byte routine at 0xa001dee8. Established.
+  The body returns 0 (delay-slot `move v0,zero`) and uses no argument.
+- `ms_config` in `sbin/stand/symmon.IP32`: the mouse driver's configuration hook, an 8-byte routine at 0xa001df08. Established.
+  It returns 20 (`addiu v0,zero,20` in the delay slot) and never reads its argument, so it adds no mouse node. The value is the no-such-device error of the firmware's error list. No `jal`, `j`, address pair or data word reaches it.
+- `ms_install` in `sbin/stand/symmon.IP32`: the mouse driver's reset hook, an 8-byte routine at 0xa001df10. Established.
+  It returns 0 (delay-slot `move v0,zero`) and has no arguments or side effects. No `jal`, `j`, address pair or data word reaches it.
+- `ms_input` in `sbin/stand/symmon.IP32`: the mouse driver's input-byte hook, an 8-byte routine at 0xa001df18. Established.
+  It returns 0 (delay-slot `move v0,zero`) without reading the byte it is given. Nothing in the image calls it or stores its address.
+- `vh_checksum` in `sbin/stand/symmon.IP32`: the volume-header checksum, an 8-byte routine at 0xa001df30. Established.
+  It returns 0 (delay-slot `move v0,zero`) and reads no header, so no sum of the volume header is computed. Nothing in the image calls it.
+- `is_vh` in `sbin/stand/symmon.IP32`: the volume-header check, an 8-byte routine at 0xa001df38. Established.
+  It returns 0 (delay-slot `move v0,zero`), so every header is rejected, and it reads no argument. The unlabelled routine `txhexcolor` of the debug information starts at 0xa001df40. Nothing in the image calls it.
 
 # Routines of `symmon.IP32`, one entry each
 
