@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2431	10	2323	1369	3106	2270	7315	0	16.1	36.6	51.6	16.1			95.0	20	2026-11-01		86	62	214	
-functions (distinct names)	9633	2093	1917	9	1910	679	1589	1150	4977	0	19.9	36.4	48.3	19.9							42			
+functions	15122	2158	2441	10	2333	1369	3100	2270	7311	0	16.1	36.6	51.7	16.1			95.0	20	2026-11-01		86	62	214	
+functions (distinct names)	9633	2093	1920	9	1913	679	1589	1151	4973	0	19.9	36.4	48.4	19.9							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	64		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -33,7 +33,7 @@ functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	1	57	1374	0	2.9	3.0	6
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	14	661	0	0.0	0.0	2.1	0.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	530	2	527	671	1388	855	674	0	15.4	55.6	80.4	15.4							42	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	15	662	0	0.0	0.0	2.2	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	508	0	505	690	1412	854	674	0	14.7	55.7	80.5	14.7							44	31	68	
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	515	0	512	690	1406	853	674	0	14.9	55.7	80.5	14.9							44	31	68	
 functions in usr/gfx/gfxinit	227	0	14	0	14	0	16	22	175	0	6.2	13.2	22.9	6.2							0	0	0	
 functions in usr/gfx/setmon	246	3	41	0	41	0	12	20	173	0	16.7	21.5	29.7	16.7							0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	548	0	544	8	267	25	0	0	65.2	97.0	100.0	65.2							0	0	0	
@@ -61,4 +61,4 @@ functions in usr/lib32/dmedia/video/mvp.so	115	0	0	0	0	0	0	10	105	0	0.0	0.0	8.7	
 functions in usr/lib32/internal/libvice.so	51	0	0	0	0	0	0	20	31	0	0.0	0.0	39.2	0.0							0	0	0	
 functions in usr/lib32/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/lib64/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
-functions in usr/sbin/Confidence/dualchannel	39	0	0	0	0	0	0	4	35	0	0.0	0.0	10.3	0.0							0	0	0	
+functions in usr/sbin/Confidence/dualchannel	39	0	3	0	3	0	0	5	31	0	7.7	7.7	20.5	7.7							0	0	0	

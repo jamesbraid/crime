@@ -8429,7 +8429,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5bb0	192	__glFastClipF
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e5c70	1348	__glInitLineData	dynsym+mdebug	2c4b82693a7f		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e61b4	1132	__glRenderAliasLine	dynsym+mdebug	90edcb4ff980		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6620	192	__glRenderFlatFogLine	dynsym+mdebug	85f8c7c4f063		in	understood	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e66e0	1424	__glInitAALineData	dynsym+mdebug	da163ba8f721		in	named-only	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e66e0	1424	__glInitAALineData	dynsym+mdebug	da163ba8f721		in	named-only	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e6c70	1804	__glRenderAntiAliasLine	dynsym+mdebug	0128b403bccc		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e737c	76	__glPolygonOffsetLine	dynsym+mdebug	bb23ded6073b		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9e73d0	300	__glProcessLine	dynsym+mdebug	5d2e5b1fc6c7		in	located	docs/sample-implementation.md#so_linespanc	so_linespan.c
@@ -10571,7 +10571,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937290	24	__glCalcText
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9372b0	2668	__glCrmFillTriangle	dwarf+dynsym	3206965f799c		in	understood	docs/libglcore.md#triangle-pixel-transfer-and-pick-routines-of-the-n32-driver-reading-pass	Triangle, pixel-transfer and pick routines of the N32 driver (reading pass)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d20	52	__glCrmColorOptLine	dwarf+dynsym	e14b86504d24		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937d54	336	__glCrmStippledColorOptLine	dwarf+dynsym	968f03819b61		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	36edc975f37d		in	located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd937ea4	388	__glCrmSmoothRGBLine	dwarf+dynsym	36edc975f37d		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938028	268	__glCrmSmoothCILine	dwarf+dynsym	528176cd2ff1		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd938134	652	__glCrmFogRGBLine	dwarf+dynsym	a5863dd51739		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9383c0	860	__glCrmDepthLine	dwarf+dynsym	c0cc705a5a91		in	understood	docs/libglcore.md#crm_linedrawasmma	`crm_linedrawasm.ma`
@@ -10682,7 +10682,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9438b0	64	__glCrmAlloc
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9438f0	452	CheckViewport	dwarf+funcnames	d4c97f88e92d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943ac0	236	FindWindowSize	dwarf+funcnames	bafbb139d64f		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943bb0	208	ApplyViewport	dwarf+funcnames	3b0a0546a91f	multi-unit	in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943c80	656	ApplyScissor	dwarf+funcnames	52f284716983	multi-unit	in	named-only		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943c80	656	ApplyScissor	dwarf+funcnames	52f284716983	multi-unit	in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd943f10	1276	crmGetBufMode	dwarf+funcnames	fdbb4ef2f4d4		in	named-only	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944410	68	__glCrmGetSrcBufMode	dwarf+dynsym	cf8cf9501521		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd944460	68	__glCrmGetDstBufMode	dwarf+dynsym	c2f72b90abe3		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
@@ -10723,7 +10723,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDept
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2f0	8	StoreDepthAlways	dwarf+funcnames	87506497337c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	a0f1994f1b24		in	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	6996258fbb54		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	b265ca773e31	multi-unit	in	understood	docs/libglcore.md#so_depthopc	`so_depthop.c`
@@ -10742,7 +10742,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b610	776	__glCrmScis
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94b920	900	__glCrmScissorStippledLine	dwarf+dynsym	bf2ec4ee9b1a		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bcb0	260	__glCrmRenderCheapFogLine	dwarf+dynsym	c4c728e97d21		in	understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94bdc0	644	__glCrmRenderAliasLine	dwarf+dynsym	b33ca5962213		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	6d4e8553d066		in	located	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c050	1780	__glCrmRenderAntiAliasLine	dwarf+dynsym	6d4e8553d066		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c750	424	__glCrmRenderFrontBackLine	dwarf+dynsym	b17071552c7a		in	understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94c900	476	__glCrmRenderLeftRightLine	dwarf+dynsym	5fe660080ec0		in	understood	docs/libglcore.md#crm_linec	`crm_line.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94cae0	720	__glCrmFlatColorLine	dwarf+dynsym	6a8769466dd7		in	understood	docs/libglcore.md#crm_linedrawc	`crm_linedraw.c`
@@ -10827,8 +10827,8 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95c8b0	432	Render
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95ca60	1500	RenderPointTextured	dwarf+funcnames	db080a9376f8		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d040	880	RenderPointN	dwarf+funcnames	b7a1337eb660		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95d3b0	92	__glCrmPolygonOffsetPoint	dwarf+dynsym	981aab283ea6		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d410	336	Coverage	dwarf+funcnames	f5a63f729e90	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d560	1828	RenderAntiAliasedPoint	dwarf+funcnames	a62a777c4dd6		in	located	docs/libglcore-o32.md#clear-point-scissor-and-texture-routines-of-the-o32-driver-reading-pass	Clear, point, scissor and texture routines of the o32 driver (reading pass)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d410	336	Coverage	dwarf+funcnames	f5a63f729e90	multi-unit	in	named-only	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95d560	1828	RenderAntiAliasedPoint	dwarf+funcnames	a62a777c4dd6		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95dc90	404	RenderFrontBackPoint	dwarf+funcnames	26d3d0c138d0		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd95de30	464	RenderLeftRightPoint	dwarf+funcnames	610acf91aabd		in	understood	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd95e000	584	__glCrmPickPointProcs	dwarf+dynsym	a80a0e1c62b9		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
@@ -10908,7 +10908,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9696e0	840	__glCrmOffs
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969a30	1404	__glCrmOffsetStippledSpan	dwarf+dynsym	c172aaae3955		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd969fb0	2576	__glCrmDumpPerPixelSpan	dwarf+dynsym	24322a166ff7		in	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96a9c0	2820	__glCrmDumpPerPixelStippledSpan	dwarf+dynsym	4c8bf47748da		in	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96b4d0	1612	__glCrmDumpSpan	dwarf+dynsym	c15cbf84c602		in	located	docs/libglcore-o32.md#span-writers	Span writers
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96b4d0	1612	__glCrmDumpSpan	dwarf+dynsym	c15cbf84c602		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96bb20	2632	__glCrmDumpStippledSpan	dwarf+dynsym	f0e34cc43d76		in	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c570	864	__glCrmDumpStippledFlatSpan	dwarf+dynsym	1e544e7e32b4		in	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96c8d0	916	__glCrmDumpStippledSmoothSpan	dwarf+dynsym	991c6a6cda10		in	understood	docs/libglcore.md#crm_spanc	`crm_span.c`
@@ -10916,7 +10916,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cc70	640	__glCrmDump
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96cef0	536	__glCrmDumpSPBuffSpanRed	dwarf+dynsym	172075032b92		in	located	docs/libglcore-o32.md#triangle-and-bitmap-routines-of-the-o32-driver	Triangle and bitmap routines of the o32 driver
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d110	76	__glCrmPassStencilMask	dwarf+dynsym	34bf8831efe5		in	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d160	228	__glCrmEnableStencilTest	dwarf+dynsym	259eef69d07e		in	named-only	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d250	500	__glCrmPassStencilMode	dwarf+dynsym	241da12cdad4		in	located	docs/libglcore-o32.md#routines-the-decompiler-cannot-read	Routines the decompiler cannot read
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d250	500	__glCrmPassStencilMode	dwarf+dynsym	241da12cdad4		in	understood	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd96d450	964	__glCrmUpdatePolyStipple	dwarf+dynsym	b1675f2e9496		in	understood	docs/libglcore.md#crm_stencilc	`crm_stencil.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d820	8	PickStencil	dwarf+funcnames	78aa5094d5ec		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd96d830	8	FetchStencil	dwarf+funcnames	87506497337c		in	undocumented		
@@ -12554,7 +12554,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6270	188	__glFastCli
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6330	1196	__glInitLineData	dwarf+dynsym	4e96a3265376		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e67e0	920	__glRenderAliasLine	dwarf+dynsym	1d5acf02c35c		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6b80	188	__glRenderFlatFogLine	dwarf+dynsym	1ec2669e8156		in	understood	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6c40	1260	__glInitAALineData	dwarf+dynsym	56fa6f476dfc		in	named-only	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e6c40	1260	__glInitAALineData	dwarf+dynsym	56fa6f476dfc		in	named-only	docs/libglcore.md#routines-read-in-full-from-the-n32-disassembly-point-line-span-clear-and-scissor	Routines read in full from the N32 disassembly (point, line, span, clear and scissor)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7130	1816	__glRenderAntiAliasLine	dwarf+dynsym	ee27a0804b51		in	located	docs/sample-implementation.md#so_linedrawc	so_linedraw.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e7850	76	__glPolygonOffsetLine	dwarf+dynsym	9b2c9ad70e74		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9e78a0	400	__glProcessLine	dwarf+dynsym	f66ddc0a6123		in	located	docs/sample-implementation.md#so_linespanc	so_linespan.c
@@ -17246,15 +17246,15 @@ usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x403520	3664	main	dynsym	
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404370	232	reshape	dynsym	2eabaa3ee89d		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404458	624	runDiagnostic	dynsym	310bec9df295		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4046c8	184	clean_up	dynsym	738301461086		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404780	188	crime_i2c_reset	dynsym	306372236290		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404780	188	crime_i2c_reset	dynsym	306372236290		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40483c	208	odsy_i2c_reset	dynsym	ed4f9efef1bb		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40490c	184	crime_i2c_start	dynsym	3d595af6d98d		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4049c4	212	odsy_i2c_start	dynsym	366d2ad1e8f4		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404a98	188	crime_i2c_stop	dynsym	0e868ae45234		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404b54	228	odsy_i2c_stop	dynsym	fd90ca389174		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404c38	172	crime_i2c_sendbyte	dynsym	f14e75c03f62		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404c38	172	crime_i2c_sendbyte	dynsym	f14e75c03f62		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404ce4	208	odsy_i2c_sendbyte	dynsym	ca9005dc5f8c		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404db4	228	crime_i2c_rcvbytes	dynsym	7b817c0d47fa		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404db4	228	crime_i2c_rcvbytes	dynsym	7b817c0d47fa		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404e98	276	odsy_i2c_rcvbytes	dynsym	0b080c894c2a		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404fac	332	crime_i2c_test	dynsym	53fa7597ce2e		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4050f8	420	odsy_i2c_test	dynsym	406fce4a113f		in	undocumented		
@@ -17272,7 +17272,7 @@ usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4070f8	356	checkDRAM	dyn
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40725c	788	runBusCheck	dynsym	90832e9e568a		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407570	504	check_bus	dynsym	6adf639fe24f		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407768	288	probe_dcd	dynsym	6b4e656ead20		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407888	536	set_timing	dynsym	039c839824f7		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407888	536	set_timing	dynsym	039c839824f7		in	named-only	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407aa0	8	diagnose_bus	dynsym	78aa5094d5ec		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407aa8	8	diagnose_eosel	dynsym	78aa5094d5ec		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x407ab0	8	diagnose_dram	dynsym	aab9a3b4a314		in	undocumented		
