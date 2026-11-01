@@ -3687,3 +3687,24 @@ The debugger links against library code that expects kernel and firmware service
   `move v0,zero` sits in the delay slot (0xa0020c60) of the `jr ra`. It is the most-called of these stubs: 75 `jal` sites, among them `_bp_fault` (0xa0012de4), `symmon_exchandler`, `init_symmon_gpda` (0xa001b39c), `fetch_kname`, `setup_gpdas` and the formatted-output routines `printf` and `putchar`. The word at 0xa003bfe0 in the private function table also holds it.
 - `cvsema` in `sbin/stand/symmon.IP32`: tests a condition semaphore, answering 0 because one thread runs, an 8-byte routine at address 0xa00311b0. Established.
   The delay slot (0xa00311b4) of the `jr ra` clears v0. It follows the shared no-op block at 0xa00311a0 and precedes `init_rb` (0xa00311b8); no call or table word reaches it.
+- `db_printf` in `sbin/stand/symmon.IP32`: the kernel debugger's print hook, a tail jump to `printf`, an 8-byte routine at address 0xa0010348. Established.
+  `j` to `printf` (0xa002e620) with a `nop` in the delay slot (0xa001034c), so the caller's registers and ra reach `printf` untouched. Nothing calls it by name, but control falls into it from the end of `_quit` at 0xa0010344.
+- `dksc_strat` in `sbin/stand/symmon.IP32`: the SCSI disk strategy entry, stubbed to return 0, an 8-byte routine at address 0xa001df00. Established.
+  `jr ra` with v0 cleared in the delay slot (0xa001df04). No reference to it exists in the image.
+- `dump_gpda` in `sbin/stand/symmon.IP32`: prints the per-processor block of a virtual processor, an empty routine, an 8-byte routine at address 0xa0029004. Established.
+  `jr ra` and a `nop` (0xa0029008), with the processor-number argument unread. It is not called and not in any table. The next code, at 0xa002900c, belongs to a separate routine.
+- `ecc_error_decode` in `sbin/stand/symmon.IP32`: decodes a memory error register, stubbed to return 0, an 8-byte routine at address 0xa0020c7c. Established.
+  v0 is cleared in the delay slot at 0xa0020c80, and the register value argument is ignored. The image has no call.
+- `eerom_read` in `sbin/stand/symmon.IP32`: reads a serial-EEPROM register for the cache code, which here reads nothing and returns 0, an 8-byte routine at address 0xa0020c64. Established.
+  The delay slot at 0xa0020c68 clears v0.
+- `ether_sprintf` in `sbin/stand/symmon.IP32`: formats an Ethernet address as text, replaced by a function that returns a null string pointer, an 8-byte routine at address 0xa001bf2c. Established.
+  `move v0,zero` in the delay slot (0xa001bf30) and the address argument is unread, so a caller printing the result would receive no string. Nothing calls it.
+- `exceptnorm` in `sbin/stand/symmon.IP32`: a handler address that start-up code writes into the word at 0xa0001014, an empty routine, an 8-byte routine at address 0xa001bedc. Established.
+  `jr ra` with a `nop` in the delay slot (0xa001bee0). Its address is built with `lui`/`addiu` at 0xa002726c and stored by `_init_spb` at 0xa0027288 into the word at 0xa0001014, and built again by `_hook_exceptions` at 0xa0029b7c/0xa0029b80 and stored at 0xa0029b84 to 0x80001014. `exceptutlb`, the companion at 0xa001bed4, is stored beside it.
+- `exceptutlb` in `sbin/stand/symmon.IP32`: the companion handler address written into the word at 0xa0001018, an empty routine, an 8-byte routine at address 0xa001bed4. Established.
+  A `jr ra` and a `nop` (0xa001bed8). `_init_spb` builds its address at 0xa0027270 and stores it at 0xa0027284 to the word at 0xa0001018;
+- `exec_abs` in `sbin/stand/symmon.IP32`: loads and runs an absolute-address program for the private firmware table, a stub returning 0, an 8-byte routine at address 0xa001bf74. Established.
+  Its `jr ra` delay slot (0xa001bf78) clears v0, ignoring the path, count, argument and environment vectors. The word at 0xa003bfc8 holds its address, next to the two words just before it, at 0xa003bfc0 and 0xa003bfc4, that hold `load_abs` and `invoke_abs`.
+- `freesplock` in `sbin/stand/symmon.IP32`: releases a spin lock, empty because there is one processor, an 8-byte routine at address 0xa002a75c. Established.
+  `jr ra` with a `nop` in the delay slot (0xa002a760). No caller refers to it. It is the third of four adjacent no-op lock routines (`initlock` 0xa002a74c, `initnlock` 0xa002a754, `freesplock`, then `splockspl` at 0xa002a764, which does call its function argument).
+
