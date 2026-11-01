@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2546	13	2437	1369	3089	2336	7151	0	16.8	37.3	52.7	16.8			95.0	20	2026-11-01		86	62	214	
-functions (distinct names)	9633	2093	2015	12	2007	679	1588	1215	4815	0	20.9	37.4	50.0	20.9							42			
+functions	15122	2158	2558	14	2449	1369	3089	2345	7130	0	16.9	37.3	52.9	16.9			95.0	20	2026-11-01		86	62	214	
+functions (distinct names)	9633	2093	2027	13	2019	679	1588	1224	4794	0	21.0	37.5	50.2	21.0							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -10,7 +10,7 @@ spec-registers	260	0	258	1	247	0	0	0	0	2	99.2	100.0	100.0	100.0			100.0	10	2026-
 input root manifest	71																							37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
 input sibling kona																								99f969a532ffe26d56cb1248c523b72bb363858a
 input sibling odsy																								d26e4eb50277be0cf3bb1ee4f8585f466fdff647
-functions in sbin/stand/symmon.IP32	755	0	86	2	85	0	3	145	521	0	11.4	11.8	31.0	11.4							0	0	72	
+functions in sbin/stand/symmon.IP32	755	0	98	3	97	0	3	154	500	0	13.0	13.4	33.8	13.0							0	0	72	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	6	0	6	0	6	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
