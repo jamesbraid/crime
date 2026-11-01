@@ -6523,7 +6523,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940350	1180	ReadCIS
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9407ec	60	ReadCI	mdebug	42f365b4b5fe		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	b641ce7ea7b4		in	located	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940db0	48	MakeCurrentCI	mdebug	81ac8a3ac3d8		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940de0	16	ResizeCI	mdebug	adf5923bc0c3		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940de0	16	ResizeCI	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940df0	1956	PickCI	mdebug	911236345e22		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940e2c	444	__glCrmInitCI	dynsym+mdebug	ce50119dc41c		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd940ff0	212	__glCrmDownloadCurrentColor	dynsym+mdebug	c101987576fd		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
@@ -6595,12 +6595,12 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947f30	120	__glCrmPassDe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd947fa8	420	__glCrmPassDepthFunc	dynsym+mdebug	7e193e6b7064		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd94814c	108	__glCrmEnableDepthTest	dynsym+mdebug	8db32c4b6a8b		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481b8	16	PickDepth	mdebug	f9e77de3221d		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481c8	20	FetchDepth	mdebug	53b85bae1eb2		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481dc	24	StoreDepth	mdebug	75810d932729		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481c8	20	FetchDepth	mdebug	53b85bae1eb2		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481dc	24	StoreDepth	mdebug	75810d932729		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9481f4	24	StoreDepthAlways	mdebug	75810d932729		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94820c	1724	ClearDepth	mdebug	8232766cf581		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9488c8	932	FirstClearDepth	mdebug	981dc86c5ec7		in	located	docs/libglcore.md#crm_depthc	`crm_depth.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c6c	16	ResizeSz	mdebug	adf5923bc0c3		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c6c	16	ResizeSz	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbuffer	mdebug	73f69b166c83	multi-unit	in	named-only	docs/opengl.md#draw-mode-words	Draw-mode words
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd948fc4	132	__glCrmForceNonTagClear	dynsym+mdebug	d85c9b9a2b72		in	located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949048	356	__glCrmInitDepth	dynsym+mdebug	e9f7417b5fa6		in	undocumented		
@@ -6764,7 +6764,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967db4	1140	ReadRGB
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968228	60	ReadRGBA	mdebug	c83b430af8c3		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968264	2228	ClearRGBA	mdebug	9f0eea34e060		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd968ae8	48	MakeCurrentRGBA	dynsym+mdebug	390b8ff27b04		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b18	16	ResizeRGBA	mdebug	adf5923bc0c3		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b18	16	ResizeRGBA	mdebug	adf5923bc0c3		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968b28	29868	FreeRGBA	mdebug	c540ad590337		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd968ba8	544	StoreSPBuffRGBA	dynsym+mdebug	e5b1c1acfb40		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd968dc8	340	StoreSPBuffRed	dynsym+mdebug	bd0b152d333f		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
@@ -8105,7 +8105,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9f40	56	__glInitBuffer
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9f78	60	__glMakeCurrentBuffer	dynsym+mdebug	9599553520cb		in	located	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9fb4	64	__glLoseCurrentBuffer	dynsym+mdebug	e7b2b56aed15		in	located	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9c9ff4	220	__glResizeBuffer	dynsym+mdebug	39fc2ad5734e		in	named-only	docs/sample-implementation.md#so_buffersc	so_buffers.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca0d0	12	__glMoveBuffer	dynsym+mdebug	57003dd76485		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca0d0	12	__glMoveBuffer	dynsym+mdebug	57003dd76485		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca0dc	88	__glFreeBuffer	dynsym+mdebug	0b16deac5bc6		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca140	132	__glim_Color3ub	dynsym+mdebug	b20437daa956		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ca1c4	124	__glim_Color3ubv	dynsym+mdebug	07fe1b9aa489		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-o32-build	Colour entry points, o32 build
@@ -8187,7 +8187,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ce738	804	__glim_CopyCo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cea5c	288	__glInitColorTables	dynsym+mdebug	663b3970ce45		in	named-only	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ceb7c	128	__glFreeColorTables	dynsym+mdebug	d2d102324514		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cebfc	520	__glCopyColorTableScaleBias	dynsym+mdebug	ff75454aecab		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee10	8	__glDispatchExec	mdebug	5a43f471c1b7		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee10	8	__glDispatchExec	mdebug	5a43f471c1b7		in	named-only	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee18	92	__glBeginDispatchOverride	mdebug	affb911cf8c9		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9cee74	6308	__glEndDispatchOverride	mdebug	5ae25d237946		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9cee90	428	__glEarlyInitContext	dynsym+mdebug	a3f2379157c9		in	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
@@ -8199,7 +8199,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d01b8	236	__glFreePriva
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d02a4	188	__glSetError	dynsym+mdebug	a1d50f0be706		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0360	424	__glim_RenderMode	dynsym+mdebug	44555c6f2efb		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0508	280	__glChangeWindowSize	dynsym+mdebug	9d30ec5ee56f		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0620	12	__glChangeReadWindowSize	dynsym+mdebug	3bb3620b5646		in	undocumented		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0620	12	__glChangeReadWindowSize	dynsym+mdebug	3bb3620b5646		in	understood	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d062c	236	__glFindWindowSize	dynsym+mdebug	d6b8ecf10ed7		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9d0718	7960	FillBufferInfo	mdebug	53e3a9e6471d		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9d0784	348	__glMakeCurrentBuffers	dynsym+mdebug	60d382684c23		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
@@ -10648,7 +10648,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942050	848	ReadCI
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9423a0	28	ReadCI	dwarf+funcnames	22bd7535d0d7		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9423c0	1156	ClearCI	dwarf+funcnames	86bbc506f93b		in	understood	docs/libglcore.md#crm_cic	`crm_ci.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942850	52	MakeCurrentCI	dwarf+funcnames	c8e83aa50c83		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942890	16	ResizeCI	dwarf+funcnames	6996258fbb54		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd942890	16	ResizeCI	dwarf+funcnames	6996258fbb54		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9428a0	52	PickCI	dwarf+funcnames	6984d200c8dd		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9428e0	440	__glCrmInitCI	dwarf+dynsym	8619f3cd14a1		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd942aa0	176	__glCrmDownloadCurrentColor	dwarf+dynsym	1e75525b794f		in	understood	docs/libglcore.md#crm_coloroptc	`crm_coloropt.c`
@@ -10720,12 +10720,12 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a050	124	__glCrmPass
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a0d0	372	__glCrmPassDepthFunc	dwarf+dynsym	8cc6f959bc71		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94a250	112	__glCrmEnableDepthTest	dwarf+dynsym	6ec689fe341f		in	located	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2c0	8	PickDepth	dwarf+funcnames	78aa5094d5ec		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	87506497337c		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2d0	8	FetchDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2e0	8	StoreDepth	dwarf+funcnames	87506497337c		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a2f0	8	StoreDepthAlways	dwarf+funcnames	87506497337c		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a300	1180	ClearDepth	dwarf+funcnames	07d3ed1602a5		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94a7a0	692	FirstClearDepth	dwarf+funcnames	a0f1994f1b24		in	understood	docs/libglcore.md#crm_depthc	`crm_depth.c`
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	6996258fbb54		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa60	16	ResizeSz	dwarf+funcnames	6996258fbb54		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd94aa70	552	Fix_zbuffer	dwarf+funcnames	b265ca773e31	multi-unit	in	understood	docs/libglcore.md#so_depthopc	`so_depthop.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94aca0	128	__glCrmForceNonTagClear	dwarf+dynsym	60da999dd14a		in	understood	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd94ad20	344	__glCrmInitDepth	dwarf+dynsym	cbf221a10846		in	undocumented		
@@ -10889,7 +10889,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9672f0	1644	ReadR
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd967960	28	ReadRGBA	dwarf+funcnames	192556688f95		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd967980	1752	ClearRGBA	dwarf+funcnames	d69f75a8f940		in	understood	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd968060	52	MakeCurrentRGBA	dwarf+dynsym	17f1923f7b85		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9680a0	16	ResizeRGBA	dwarf+funcnames	6996258fbb54		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9680a0	16	ResizeRGBA	dwarf+funcnames	6996258fbb54		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9680b0	116	FreeRGBA	dwarf+funcnames	107074253727		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd968130	348	StoreSPBuffRGBA	dwarf+dynsym	2cf2e749d257		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd968290	276	StoreSPBuffRed	dwarf+dynsym	8239517f4354		in	named-only	docs/opengl.md#validation-call-outs-of-__glcrmpickallprocs-pass-5	Validation call-outs of `__glCrmPickAllProcs` (pass 5)
@@ -12230,7 +12230,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8470	52	__glInitBuff
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84b0	60	__glMakeCurrentBuffer	dwarf+dynsym	2aa34bb12da0		in	understood	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c84f0	60	__glLoseCurrentBuffer	dwarf+dynsym	5ffb619c732f		in	understood	docs/sample-implementation.md#so_buffersc	so_buffers.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8530	252	__glResizeBuffer	dwarf+dynsym	1f788ceddef1		in	named-only	docs/sample-implementation.md#so_buffersc	so_buffers.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8630	12	__glMoveBuffer	dwarf+dynsym	8688c1290edb		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8630	12	__glMoveBuffer	dwarf+dynsym	8688c1290edb		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8640	72	__glFreeBuffer	dwarf+dynsym	b84292d629d3		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8690	112	__glim_Color3ub	dwarf+dynsym	5debf3225762		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9c8700	124	__glim_Color3ubv	dwarf+dynsym	69230920058d		in	understood	docs/glcore-immediate-entry-points.md#colour-entry-points-n32-build	Colour entry points, N32 build
@@ -12312,7 +12312,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd1f0	760	__glim_Copy
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd4f0	236	__glInitColorTables	dwarf+dynsym	5d8839a31c44		in	named-only	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd5e0	116	__glFreeColorTables	dwarf+dynsym	6219f4332238		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cd660	516	__glCopyColorTableScaleBias	dwarf+dynsym	2b85206a790c		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cd870	8	__glDispatchExec	dwarf+funcnames	5a43f471c1b7		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cd870	8	__glDispatchExec	dwarf+funcnames	5a43f471c1b7		in	named-only	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cd880	372	__glBeginDispatchOverride	dwarf+funcnames	8b47d073630e		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cda00	28	__glEndDispatchOverride	dwarf+funcnames	bb29d4a65f00		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cda20	388	__glEarlyInitContext	dwarf+dynsym	40c3db14466f		in	named-only	docs/opengl.md#clip-check-variants-__glmipsclipcheck	Clip-check variants (`__glMipsClipCheck*`)
@@ -12324,7 +12324,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9ced80	208	__glFreePri
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cee50	184	__glSetError	dwarf+dynsym	c0f1b2c3e37d		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cef10	420	__glim_RenderMode	dwarf+dynsym	a13380a9c394		in	located	docs/sample-implementation.md#so_contextc	so_context.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf0c0	260	__glChangeWindowSize	dwarf+dynsym	e421cd29b337		in	undocumented		
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1d0	12	__glChangeReadWindowSize	dwarf+dynsym	f8321c20ad29		in	undocumented		
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1d0	12	__glChangeReadWindowSize	dwarf+dynsym	f8321c20ad29		in	located	docs/libglcore-o32.md#tiny-driver-routines-read-in-full-backfill	Tiny driver routines read in full (backfill)
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf1e0	212	__glFindWindowSize	dwarf+dynsym	cf09e449cc12		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9cf2c0	80	FillBufferInfo	dwarf+funcnames	7ac5ad24ef9d		in	undocumented		
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9cf310	332	__glMakeCurrentBuffers	dwarf+dynsym	69a4daa12f71		in	understood	docs/sample-implementation.md#so_contextc	so_context.c
