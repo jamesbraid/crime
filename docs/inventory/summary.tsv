@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2383	10	2275	1375	3131	2272	7336	0	15.8	36.5	51.5	15.8			95.0	20	2026-11-01		86	62	214	
-functions (distinct names)	9633	2093	1890	9	1883	685	1597	1157	4989	0	19.6	36.2	48.2	19.6							42			
+functions	15122	2158	2389	10	2281	1369	3125	2272	7336	0	15.8	36.5	51.5	15.8			95.0	20	2026-11-01		86	62	214	
+functions (distinct names)	9633	2093	1896	9	1889	679	1591	1157	4989	0	19.7	36.2	48.2	19.7							42			
 mmio	198	0	198	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	64		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -31,7 +31,7 @@ functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	1
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	1	57	1374	0	2.9	3.0	6.8	2.9							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	14	661	0	0.0	0.0	2.1	0.0							0	0	0	
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	507	2	504	677	1406	851	683	0	14.7	55.5	80.2	14.7							42	31	68	
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	513	2	510	671	1400	851	683	0	14.9	55.5	80.2	14.9							42	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	15	662	0	0.0	0.0	2.2	0.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	502	0	499	690	1415	848	683	0	14.6	55.6	80.2	14.6							44	31	68	
 functions in usr/gfx/gfxinit	227	0	14	0	14	0	16	22	175	0	6.2	13.2	22.9	6.2							0	0	0	
