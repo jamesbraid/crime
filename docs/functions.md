@@ -1585,6 +1585,31 @@ The video driver takes the three MACE video interrupts through CRIME inputs 0, 1
   For CRIME inputs 0, 1 and 2 it calls `unsetcrimevector` with `mvpinterrupt`, reads the CRIME doubleword at `+0x18` in the loop's delay slot with the value discarded, destroys the driver mutex and clears the nesting count.
 
 
+# Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+
+The video driver keeps two tables of eight routine addresses in its data section, one per A/V board type: the words at data offset `0x28` to `0x44` (the `av1_ routines) and at data offset `0x938` to `0x954` (the `av2_` routines). In both, the stored addresses run in the same order: setup, input select, output select, genlock select, timing sense, timing change, control set, control get. The slot roles come from the routine names; the order is read from the addresses in the data section. Read from the 6.5.30 object; offsets are bytes.
+
+- `av1_select_input` in `mvp.o`: chooses the input of the first board type, a 92-byte routine at offset 0x4b70. Established.
+  It is the second word of the first table (data offset `0x2c`). Its arguments are the board record and the input number. Input 1 returns 0 without calling anything. Inputs 2 and 3 call `av1_select_analog_input` (0x4a24) with both arguments unchanged and return its result. Any other number returns -1.
+- `av1_select_output` in `mvp.o`: chooses the output of the first board type, a 228-byte routine at offset 0x4bcc. Established.
+  It is the third word of the first table (data offset `0x30`). The arguments are the board record and the output number. When the number equals the byte at data offset `0x6bf` it returns 0 at once. Otherwise it calls `mvpavio_i2c_reg` for register 58 (0x3a) of the chip record at data offset `0x6a8`, reads that register with `mvpi2c_read_reg` over the bus handle at board record `+16` and discards the value, then picks the byte to write: output 1 writes 31, output 2 writes 128, and any other number returns -2 after the read with nothing written. A valid number writes the byte with `mvpi2c_write_reg`, calls `mvpav1_wiggle_ccen` with the board record and 1, stores the number into the byte at data offset `0x6bf` in the delay slot of that call, and returns 0.
+- `av1_sense_sdi` in `mvp.o`: reads two status registers of the first board type and reduces them to a small code, a 204-byte routine at offset 0x46f0. Established.
+  It is not in the first table's slots. It looks up register 2 of the chip record at data offset `0x8a8` with `mvpavio_i2c_reg` and reads it with `mvpi2c_read_reg` over the bus handle at board record `+16`. When the read does not fail (not -1) and bit 1 of the value is set, it returns 1 if bit 0 is set and 0 if not. Otherwise it looks up register 0 of the chip record at data offset `0x8d8`, reads it, and returns -1 if that read failed and 2 if it did not.
+- `av1_get_control` in `mvp.o`: the control-get slot of the first board type, an 8-byte routine at offset 0x4fe8. Established.
+  It is the last word of the first table (data offset `0x44`). It ignores its arguments and returns 0, the value set by the instruction in the return's delay slot.
+- `av1_set_control` in `mvp.o`: the control-set slot of the first board type, an 8-byte routine at offset 0x4fe0. Established.
+  It sits at data offset `0x40` in the first table, next to `av1_get_control`. Like that slot it reads no argument and returns 0.
+- `av2_select_input` in `mvp.o`: chooses the input of the second board type, a 44-byte routine at offset 0x561c. Established.
+  It is the second word of the second table (data offset `0x93c`). It compares the second argument with 5 and 6 and returns 0 for either; any other value returns -1. It touches no hardware and does not read the board record.
+- `av2_select_output` in `mvp.o`: chooses the output of the second board type, a 24-byte routine at offset 0x5648. Established.
+  It is the third word of the second table (data offset `0x940`). The second argument 1 returns 0 and any other value returns -2; no hardware is touched. The first board type's output select, `av1_select_output`, is the routine that writes a chip register for the same job.
+- `av2_select_genlock` in `mvp.o`: the genlock slot of the second board type, an 8-byte routine at offset 0x5660. Established.
+  It is the fourth word of the second table (data offset `0x944`) and returns 0 for any arguments, where the first board type's `av1_select_genlock` is a 400-byte routine.
+- `av2_change_timing` in `mvp.o`: the timing-change slot of the second board type, an 8-byte routine at offset 0x5668. Established.
+  It is at data offset `0x94c` and returns 0 for any arguments without reading them.
+- `av2_sense_timing` in `mvp.o`: tests two status bits of one register for the chosen input, a 160-byte routine at offset 0x557c. Established.
+  It is the fifth word of the second table (data offset `0x948`). It reads the register of the chip record at data offset `0x968` with `mvpi2c_read_reg` over the bus handle at board record `+16`, passing the constant -2 as the third argument, and keeps bits 0, 1, 2 and 3 of the value. For input 5 it returns -1 when bit 0 is set and otherwise 1 if bit 1 is clear and 0 if bit 1 is set; for input 6 it does the same with bits 2 and 3. Any other input returns -1. It does not test for a failed read, whose value -1 has every bit set and so also returns -1 for inputs 5 and 6.
+
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
 - `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.

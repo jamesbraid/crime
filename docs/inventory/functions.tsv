@@ -2002,23 +2002,23 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x43a4	204	mvptransfer_get_
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4470	436	mvptransfer_get_frontier_msc	dwarf+symtab	c2e744fc010f		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4624	168	mvptransfer_get_ustmsc_pair	dwarf+symtab	5f9075bad225		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x46cc	36	mvp_delay_bus	dwarf+funcnames	9b047605601b		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x46f0	204	av1_sense_sdi	dwarf+funcnames	ccea0e364abb		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x46f0	204	av1_sense_sdi	dwarf+funcnames	ccea0e364abb		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x47bc	304	av1_sense_timing	dwarf+funcnames	2d0d8bd85e91		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x48ec	312	mvpav1_wiggle_ccen	dwarf+symtab	2133cc81b3e5		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4a24	332	av1_select_analog_input	dwarf+funcnames	4b73e10be130		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4b70	92	av1_select_input	dwarf+funcnames	7721dfdfefb1		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4bcc	228	av1_select_output	dwarf+funcnames	c355b15b195f		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4cb0	400	av1_select_genlock	dwarf+funcnames	77cf9dbdabf6		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x48ec	312	mvpav1_wiggle_ccen	dwarf+symtab	2133cc81b3e5		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4a24	332	av1_select_analog_input	dwarf+funcnames	4b73e10be130		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4b70	92	av1_select_input	dwarf+funcnames	7721dfdfefb1		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4bcc	228	av1_select_output	dwarf+funcnames	c355b15b195f		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4cb0	400	av1_select_genlock	dwarf+funcnames	77cf9dbdabf6		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4e40	416	av1_change_timing	dwarf+funcnames	4f83bae12a52		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4fe0	8	av1_set_control	dwarf+funcnames	87506497337c		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4fe8	8	av1_get_control	dwarf+funcnames	87506497337c		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4fe0	8	av1_set_control	dwarf+funcnames	87506497337c		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4fe8	8	av1_get_control	dwarf+funcnames	87506497337c		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x4ff0	72	mvpav1_probe	dwarf+symtab	d2da3bb60a64		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5038	1348	av1_setup	dwarf+funcnames	729b4d2a027a		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x557c	160	av2_sense_timing	dwarf+funcnames	453762500566		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x561c	44	av2_select_input	dwarf+funcnames	54b65749ac69		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5648	24	av2_select_output	dwarf+funcnames	f644d0f85c39		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5660	8	av2_select_genlock	dwarf+funcnames	87506497337c		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5668	8	av2_change_timing	dwarf+funcnames	87506497337c		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x557c	160	av2_sense_timing	dwarf+funcnames	453762500566		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x561c	44	av2_select_input	dwarf+funcnames	54b65749ac69		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5648	24	av2_select_output	dwarf+funcnames	f644d0f85c39		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5660	8	av2_select_genlock	dwarf+funcnames	87506497337c		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5668	8	av2_change_timing	dwarf+funcnames	87506497337c		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5670	8	av2_set_control	dwarf+funcnames	87506497337c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5678	8	av2_get_control	dwarf+funcnames	87506497337c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5680	12	mvpav2_probe	dwarf+symtab	d8672933973d		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
@@ -2038,7 +2038,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x5fa8	324	mvpavio_preset_i
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x60ec	228	mvpavio_preset_output	dwarf+symtab	ec471be241d9		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-video-input-and-output-selection	Kernel routines, one entry each (`mvp.o`, video input and output selection)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x61d0	300	mvpavio_preset_genlock	dwarf+symtab	1701784b2b6b		in	understood	docs/functions.md#kernel-routines-one-entry-each-mvpo-video-input-and-output-selection	Kernel routines, one entry each (`mvp.o`, video input and output selection)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x62fc	140	mvpavio_setnoav	dwarf+funcnames	06b61cea9c9c		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6388	116	mvpavio_i2c_reg	dwarf+symtab	4ceba5dac3f8		in	undocumented		
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6388	116	mvpavio_i2c_reg	dwarf+symtab	4ceba5dac3f8		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x63fc	68	mvpavio_unki2c_chipreg	dwarf+funcnames	d2341313cd80		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x6440	376	mvpavio_i2c_get	dwarf+symtab	2448a4e78df0		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x65b8	248	mvpavio_i2c_put	dwarf+symtab	bee8c086c51b		in	undocumented		
@@ -2088,7 +2088,7 @@ usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x895c	388	_mvpi2c_wait_for
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8ae0	476	_mvpi2c_force_bus_idle	dwarf+funcnames	6a473e90578e		in	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8cbc	724	mvpi2c_read_reg	dwarf+symtab	be3a65057bbb		in	located	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x8f90	264	_mvpi2c_write_adrs	dwarf+funcnames	c5486bee3958		in	undocumented		
-usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9098	596	mvpi2c_write_reg	dwarf+symtab	85e1c3f65273		in	named-only	docs/mace-video.md#two-wire-bus-interface	Two-wire bus interface
+usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x9098	596	mvpi2c_write_reg	dwarf+symtab	85e1c3f65273		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-av-board-routine-tables	Kernel routines, one entry each (`mvp.o`, A/V board routine tables)
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x92ec	712	mvpi2c_init_regs	dwarf+symtab	bfffcc088b53		in	named-only	docs/mace-video.md#two-wire-bus-interface	Two-wire bus interface
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x95b4	8	mvpdummy_spl	dwarf+symtab	87506497337c		in	undocumented		
 usr/cpu/sysgen/IP32boot/mvp.o	board-kernel	n32	.text	0x95bc	8	mvpdummy_splx	dwarf+symtab	78aa5094d5ec		in	undocumented		
