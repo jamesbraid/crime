@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2418	10	2310	1369	3112	2261	7331	0	16.0	36.6	51.5	16.0			95.0	20	2026-11-01		86	62	214	
-functions (distinct names)	9633	2093	1910	9	1903	679	1590	1147	4986	0	19.8	36.3	48.2	19.8							42			
+functions	15122	2158	2422	10	2314	1369	3112	2259	7329	0	16.0	36.6	51.5	16.0			95.0	20	2026-11-01		86	62	214	
+functions (distinct names)	9633	2093	1914	9	1907	679	1590	1145	4984	0	19.9	36.4	48.3	19.9							42			
 mmio	198	0	198	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	64		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -26,7 +26,7 @@ functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100
 functions in usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100.0	98.2							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/kernel.o	117	694	112	1	112	0	0	3	2	0	95.7	95.7	98.3	95.7							0	0	4	
 functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
-functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	139	3	139	0	2	23	5	0	82.2	83.4	97.0	82.2							0	0	2	
+functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	143	3	143	0	2	21	3	0	84.6	85.8	98.2	84.6							0	0	2	
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	1	57	1374	0	2.9	3.0	6.8	2.9							0	0	0	
