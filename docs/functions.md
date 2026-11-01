@@ -1637,6 +1637,49 @@ An A/V board is described by a record that `mvpavio_probe` (0x6c74) obtains from
 - `av2_get_control` in `mvp.o`: the control-get slot of the second board type, an 8-byte routine at offset 0x5678. Established.
   It is the last word of the second table (data offset `0x954`) and returns 0 without reading its arguments, as the first board type's `av1_get_control` does.
 
+# Kernel routines, one entry each (`mvp.o`, control records, user copies and housekeeping)
+
+Short routines of the video driver that the ioctl, load and unload paths call. Read from the 6.5.30 object; offsets are bytes. The callers named come from the object's relocations.
+
+- `mvpcopyin` in `mvp.o`: copies a request record in from the caller and checks its stored length, an 84-byte routine at offset 0xa1ec. Established.
+  The arguments pass straight to `copyin` as source, destination and length. A non-zero result returns 14. Otherwise it compares the halfword at offset 2 of the destination with the length argument: equal returns 0 and different returns 7. The record's own size field therefore has to match what the ioctl layer asked for. `mvptransfer_ioctl`, `mvpbuffer_ioctl`, `mvpcontrol_ioctl`, `mvpiostatus`, `mvppath_ioctl` and `mvpsystem_ioctl` call it.
+- `mvpreleasepath` in `mvp.o`: frees the memory of one path slot, a 72-byte routine at offset 0xa338. Established.
+  Its argument indexes the word array `mvppath_table` (bss offset `0x120`). It calls `kmem_contig_free` with the stored pointer and the size 12192 (0x2fa0), then clears the slot and returns 0. `mvpclose` and `mvpunload` call it.
+- `mvpbuffer_attach` in `mvp.o`: attaches a buffer pool to a buffer record and applies a cache policy, a 100-byte routine at offset 0x6f64. Established.
+  It passes the pool pointer at record `+1400` and a stack scratch address to `dms_pool_attach` and returns that result when it is non-zero. Otherwise it calls `dms_pool_cache_policy` with the pool, its own second argument, 0 and 1, and stores the second argument at record `+1420` in that call's delay slot, so the word is written before the callee runs. It returns 0 whatever the policy call returns. `mvpbuffer_ioctl` calls it.
+- `mvpcontrol_init` in `mvp.o`: initialises the video controller's parts in order, a 120-byte routine at offset 0x7378. Established.
+  It loads the controller record from `mvpcontroller_table`, calls `mvpavio_init` and `mvpreg_init` with it, sets the byte at controller `+109` to 1 in the delay slot of the `mvpinterrupt_init` call (which takes the routine's own argument), then calls `mvptransfer_init` with that argument. It sets no return value of its own: the register holds what is left after `mvptransfer_init`, which does not set it. `mvpdriverinit` calls it twice.
+- `mvpcontrol_unload` in `mvp.o`: undoes the controller setup, a 68-byte routine at offset 0x73f0. Established.
+  It calls `mvpreg_unload` with the controller record from `mvpcontroller_table`, then `mvpinterrupt_unload` with its own argument, and returns what the second call leaves. `mvpunload` calls it.
+- `mvpcontrol_video_get` in `mvp.o`: copies one byte of a controller table into a request record, a 52-byte routine at offset 0x7e5c. Established.
+  Its second argument is the controller record and the third a request record. The word at request `+24` must be 0xc3b7 or the routine returns 71 and writes nothing. Otherwise it takes the byte at request `+36`, indexes the controller by four times that value plus 116, loads the byte there and stores it as a word at request `+28` in the return's delay slot, and returns 0. `mvpcontrol_ioctl` calls it.
+- `mvpcontrol_path_set` in `mvp.o`: copies a 120-byte block from a request into a path record, a 52-byte routine at offset 0x8094. Established.
+  It calls `bcopy` to copy 120 bytes from request `+24` to path `+2984` (0xba8), where the first argument is the path and the second the request, and returns 0. The byte at path `+2985` is one that `mvptransfer_continuing` reads. `mvpcontrol_ioctl` calls it.
+- `mvptransfer_continuing` in `mvp.o`: tests a count against a limit held in the path record, a 56-byte routine at offset 0x17a0. Established.
+  It takes the path record and a count. It returns 1 when the word at path `+1432` is zero. Otherwise it subtracts 1 from the count when the byte at path `+2985` is zero, adds the word at `+1436`, and returns 1 when that sum is below the word at `+1432` as an unsigned compare, else 0. Reading `+1432` as a limit and `+1436` as a running total is inferred from this arithmetic alone. `mvptransfer_screen_interrupt` calls it with 1 and `mvptransfer_interrupt` with 2.
+- `mvpass_fail` in `mvp.o`: reports a failed assertion, a 76-byte routine at offset 0x8440. Established.
+  It calls `mvperrprintf` with level 6, a format that prints two strings and a line number, and its three arguments in that order, then calls `mvpass_break` and returns what that call leaves.
+- `mvpass_break` in `mvp.o`: an empty routine that `mvpass_fail` calls after printing, an 8-byte routine at offset 0x8438. Established.
+  It returns at once (`jr ra` with a nop in the delay slot), so it changes nothing and sets no return value.
+- `mvpdebug_init` in `mvp.o`: sets the driver's debug flags from a boot argument, an 88-byte routine at offset 0x848c. Established.
+  It asks `is_specified` about the address of `arg_showconfig`; when it is specified it calls `atoi` on the same address and ors the result into the word `mvpdebugflags` (data offset `0x9d8`). It returns 0 on both paths. `mvpdriverinit` calls it.
+- `mvpdebug_unload` in `mvp.o`: the empty counterpart of `mvpdebug_init`, an 8-byte routine at offset 0x84e4. Established.
+  It returns at once with a nop in the delay slot. No relocation or data word in the object refers to it.
+- `mvpi2c_printerror` in `mvp.o`: prints the last two-wire bus error, a 52-byte routine at offset 0x84ec. Established.
+  It loads the word at bss offset `0xf8` and passes it twice to `qprintf` with a format that prints it as a decimal and as a hexadecimal number, then returns what `qprintf` leaves.
+- `mvpi2c_register_av` in `mvp.o`: limits how many A/V boards register, a 76-byte routine at offset 0x8520. Established.
+  It reads the word at data offset `0xa18`. A value below 2 returns 0. Any other value calls `mvperrprintf` with level 5 and a message that there are too many A/V boards, giving that value plus 1, and returns -1. It does not increment the word.
+- `mvpreg_unload` in `mvp.o`: the register layer's unload hook, an 8-byte routine at offset 0xbe6c. Established.
+  It returns at once with a nop in the delay slot and touches no register. `mvpcontrol_unload` calls it with the controller record.
+- `mvptransfer_set_callbacks` in `mvp.o`: a hook that does nothing, an 8-byte routine at offset 0x367c. Established.
+  It returns at once with a nop in the delay slot. `mvptransfer_setup` calls it with the transfer record and 1, and `mvptransfer_stop` with the record and 0, so the second argument is a set-or-clear flag that this build ignores.
+- `mvpcontrol_resetustmsc` in `mvp.o`: an empty routine, an 8-byte routine at offset 0x768c. Established.
+  It returns at once with a nop in the delay slot. No call, relocation or data word in the object names it.
+- `mvpdummy_spl` in `mvp.o`: a routine that returns 0 and whose address is handed to `itimeout`, an 8-byte routine at offset 0x95b4. Established.
+  It returns 0 in the delay slot of its return and reads no argument. Its address is the fourth argument of the `itimeout` call that arms `mvptransfer_timeout`, in both `mvptransfer_interrupt` (at 0x25e0) and `mvptransfer_setup` (at 0x3e60).
+- `mvpdummy_splx` in `mvp.o`: an empty routine named as the counterpart of `mvpdummy_spl`, an 8-byte routine at offset 0x95bc. Established.
+  It returns at once with a nop in the delay slot. Unlike `mvpdummy_spl`, nothing in the object's relocations or data words refers to it.
+
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
 - `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.
