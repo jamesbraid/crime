@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2615	15	2495	1369	3121	2360	7026	0	17.3	37.9	53.5	17.3			95.0	20	2026-11-01		86	62	214	
-functions (distinct names)	9633	2093	2073	14	2065	679	1590	1232	4738	0	21.5	38.0	50.8	21.5							42			
+functions	15122	2158	2637	15	2506	1369	3147	2360	6978	0	17.4	38.2	53.9	17.4			95.0	20	2026-11-01		86	62	214	
+functions (distinct names)	9633	2093	2084	14	2076	679	1591	1232	4726	0	21.6	38.2	50.9	21.6							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -45,8 +45,8 @@ functions in usr/lib/dmedia/imageconverters/vicedv.so	95	0	0	0	0	0	0	3	92	0	0.0	
 functions in usr/lib/dmedia/imageconverters/vicejpeg.so	64	0	0	0	0	0	0	4	60	0	0.0	0.0	6.2	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicempeg.so	19	0	0	0	0	0	1	2	16	0	0.0	5.3	15.8	0.0							0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicers.so	26	0	0	0	0	0	0	1	25	0	0.0	0.0	3.8	0.0							0	0	0	
-functions in usr/lib/dmedia/video/debug/mvp.so	114	0	0	0	0	0	13	12	89	0	0.0	11.4	21.9	0.0							0	0	0	
-functions in usr/lib/dmedia/video/mvp.so	114	0	0	0	0	0	13	12	89	0	0.0	11.4	21.9	0.0							0	0	0	
+functions in usr/lib/dmedia/video/debug/mvp.so	114	0	0	0	0	0	25	12	77	0	0.0	21.9	32.5	0.0							0	0	0	
+functions in usr/lib/dmedia/video/mvp.so	114	0	0	0	0	0	25	12	77	0	0.0	21.9	32.5	0.0							0	0	0	
 functions in usr/lib/internal/libvice.so	50	0	0	0	0	0	0	19	31	0	0.0	0.0	38.0	0.0							0	0	0	
 functions in usr/lib/libXsgivc.so	63	0	0	0	0	0	0	63	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/debug/vicedv.so	96	0	0	0	0	0	0	4	92	0	0.0	0.0	4.2	0.0							0	0	0	
@@ -56,8 +56,8 @@ functions in usr/lib32/dmedia/imageconverters/vicedv.so	96	0	0	0	0	0	0	4	92	0	0.
 functions in usr/lib32/dmedia/imageconverters/vicejpeg.so	65	0	0	0	0	0	0	5	60	0	0.0	0.0	7.7	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/vicempeg.so	20	0	0	0	0	0	1	3	16	0	0.0	5.0	20.0	0.0							0	0	0	
 functions in usr/lib32/dmedia/imageconverters/vicers.so	27	0	0	0	0	0	0	2	25	0	0.0	0.0	7.4	0.0							0	0	0	
-functions in usr/lib32/dmedia/video/debug/mvp.so	115	0	11	0	11	0	2	13	89	0	9.6	11.3	22.6	9.6							0	0	0	
-functions in usr/lib32/dmedia/video/mvp.so	115	0	11	0	11	0	2	13	89	0	9.6	11.3	22.6	9.6							0	0	0	
+functions in usr/lib32/dmedia/video/debug/mvp.so	115	0	22	0	22	0	3	13	77	0	19.1	21.7	33.0	19.1							0	0	0	
+functions in usr/lib32/dmedia/video/mvp.so	115	0	22	0	22	0	3	13	77	0	19.1	21.7	33.0	19.1							0	0	0	
 functions in usr/lib32/internal/libvice.so	51	0	0	0	0	0	0	20	31	0	0.0	0.0	39.2	0.0							0	0	0	
 functions in usr/lib32/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/lib64/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
