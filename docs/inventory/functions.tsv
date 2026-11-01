@@ -13643,7 +13643,7 @@ usr/gfx/setmon	shared-tool	n32		0x10009f04	308	getvofpath	dynsym	78b8d8b6975b		i
 usr/gfx/setmon	shared-tool	n32		0x1000a038	56	vTimeoutOpenDisplay	dynsym	0b854b7056ad		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000a070	208	timeoutXOpenDisplay	dynsym	4fb9fe7741c6		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000a140	184	ErrorF	dynsym	a15c8fdf6d64		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
-usr/gfx/setmon	shared-tool	n32		0x1000a278	280	fglrxDoFramelock	dynsym	3545cab228e9		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1000a278	280	fglrxDoFramelock	dynsym	3545cab228e9		in	named-only	docs/release-6522-compare.md#symbol-names	Symbol names
 usr/gfx/setmon	shared-tool	n32		0x1000a390	1588	fglrxsetmon	dynsym	fa71f07d84fd		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000a9c4	1244	konasetmon	dynsym	0b8b74dabed0		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000aea0	3112	vensetmon	dynsym	f5131d53ddd4		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
@@ -13803,7 +13803,7 @@ usr/gfx/setmon	shared-tool	n32		0x1001cd00	592	vfmtFindFormatFile	dynsym	2c98152
 usr/gfx/setmon	shared-tool	n32		0x1001cf50	76	vfmtFindKonaFormatFile	dynsym	572357e90cb4		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1001cfa0	156	vfmtFindCmpFormatFile	dynsym	6f2661a35091		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1001d040	76	vfmtFindOdyFormatFile	dynsym	27189b4d88cc		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1001d090	76	vfmtFindSG2FormatFile	dynsym	cbf593255f6c		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1001d090	76	vfmtFindSG2FormatFile	dynsym	cbf593255f6c		in	named-only	docs/release-6522-compare.md#symbol-names	Symbol names
 usr/gfx/setmon	shared-tool	n32		0x1001d0e0	308	vfmtFindKonaCombinationFile	dynsym	fa61df65fc76		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1001d220	616	vfmtFindCmpCombinationFile	dynsym	484725113ca8		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1001d490	132	vfmtGetLastKonaFileStat	dynsym	3c80a7c6b43c		in	undocumented		
