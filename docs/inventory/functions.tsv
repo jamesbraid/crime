@@ -1,18 +1,18 @@
 binary	role	abi	elf_section	address	size	name	source	code_sha	rejected	scope	status	doc	section
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		DispTag	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		__dprintf	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_caddr	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_cecc	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_cidx	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_clear_cache	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_count_CPUs	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_delete_str	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxReopen	dwarf+funcnames			in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		DispTag	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		__dprintf	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_caddr	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_cecc	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_cidx	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_clear_cache	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_count_CPUs	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_delete_str	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxReopen	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxclose	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxinit	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxioctl	dwarf+funcnames			in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxioctl	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxopen	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxwrite	dwarf+funcnames			in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_gfxwrite	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_init_devices	dwarf+funcnames			in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_init_eiob	dwarf+funcnames			in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		_init_stdio	dwarf+funcnames			in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -37,7 +37,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		configurePort	dwarf+funcnames	
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		copyregs	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		cpu_get_membase	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		create_rb	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		csum_getc	dwarf+funcnames			in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		csum_getc	dwarf+funcnames			in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		csum_putc	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		deassert	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		delay_calibrate	dwarf+funcnames			in	understood	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
@@ -67,7 +67,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		getblock	dwarf+funcnames			in	
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		getcomponent	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		getinst_nolock	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		handle_wp	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		htp_gfx_init	dwarf+funcnames			in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		htp_gfx_init	dwarf+funcnames			in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		init_walk	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		is_brkpt	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		is_conditional	dwarf+funcnames			in	undocumented		
@@ -241,7 +241,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001af10	156	map_k2seg_addr	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001afac	136	begin_cell	symtab	142972a1f98c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b034	156	end_cell	symtab	09ea86f85ec1		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b0d0	112	_get_memory	symtab	aa3c09a34c7b		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b140	136	_set_memory	symtab	adb40b4c809a		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b140	136	_set_memory	symtab	adb40b4c809a		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b1c8	80	_get_register	symtab	ad71008fdaf0		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b218	88	_set_register	symtab	f4d41bc3668f		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001b394	116	init_symmon_gpda	symtab	a66874e18c11		in	named-only	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
@@ -576,7 +576,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	SetCause	symtab	
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	set_CAUSE	symtab	1acd403f9290	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	set_cause	symtab	1acd403f9290	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6b8	24	setcause	symtab	1acd403f9290	shared-address	in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6d0	48	get_prid	symtab	f5353f004cc1		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a6d0	48	get_prid	symtab	f5353f004cc1		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a700	12	GetFPSR	symtab	c06660694acc	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a700	12	get_FPSR	symtab	c06660694acc	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a700	12	get_fpsr	symtab	c06660694acc	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
@@ -595,7 +595,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a79c	184	_errputs	symtab
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a854	60	_errputc	symtab	715558207522		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002a890	8	_errgetc	symtab	6319e0118090		in	understood	docs/functions.md#routines-of-symmonip32-firmware-vector-slots-empty-stubs-and-the-debuggers-own-helpers	Routines of `symmon.IP32`: firmware-vector slots, empty stubs and the debugger's own helpers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002aa10	128	_init_htp	symtab	bc20ff46d2ce		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002aa90	44	txPrint	symtab	a12ab04dd9c6		in	named-only	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002aa90	44	txPrint	symtab	a12ab04dd9c6		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ad30	152	_gfx_strat	symtab	7d84f467149f		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002adc8	188	GetRelativeTime	symtab	650c080fe872		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ae84	60	set_watch	symtab	0c423826aa87		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
@@ -610,7 +610,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b274	236	getcpuid	symtab
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b360	60	prcuroff	symtab	a22a642d35a2		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b39c	20	init_str	symtab	77b8d8f64dfd		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b3b0	88	replace_str	symtab	191fe6a2a72d		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b408	28	delete_str	symtab	efe7223dc929		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b408	28	delete_str	symtab	efe7223dc929		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b528	180	find_str	symtab	02b6e7c20b9c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b5dc	248	new_str1	symtab	33750bfe2d12		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002b6d4	308	new_str2	symtab	3a44d2186cbb		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -688,7 +688,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002ffe8	28	dmabuf_free	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030118	68	getpath	symtab	05c2832ae011		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa003015c	40	tolower	symtab	9f9f2ade877e		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030184	160	strcasecmp	symtab	4c7d77920fa0		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-video-input-and-output-selection	Kernel routines, one entry each (`mvp.o`, video input and output selection)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030224	184	strncasecmp	symtab	c827e1b228b3		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030224	184	strncasecmp	symtab	c827e1b228b3		in	named-only	docs/functions.md#routines-of-symmonip32-empty-library-replacements-and-vector-slots-second-group	Routines of `symmon.IP32`: empty library replacements and vector slots, second group
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00302dc	60	setjmp	symtab	0fc26dde1b61		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030318	72	longjmp	symtab	8527b0f47735		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030360	120	inv_findcpu	symtab	640f9c318d35		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
