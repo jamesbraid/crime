@@ -655,7 +655,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d2ec	20	quiet_debug	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d300	16	memcpy	symtab	899afbfe5b5c		in	named-only	docs/libglcore-o32.md#pixel-transfers	Pixel transfers
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d310	88	getchar	symtab	585ca5524aa9		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d368	84	getc	symtab	e458f365a591		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d3bc	596	fgets	symtab	4e34da0b5fd6		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d3bc	596	fgets	symtab	4e34da0b5fd6		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002d610	1856	edit_gets	symtab	3adab1df2a5a		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002dd50	32	gets	symtab	2a1c7902c7e4		in	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002dd70	356	putchar	symtab	25eb706164d1		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -696,13 +696,13 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00303d8	240	fixupname	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00304c8	568	inv_findtape	symtab	322e44ef7068		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00307c8	156	find_type	symtab	cf29a7f5a8e2		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030864	140	count_type	symtab	846304fc6e3e		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00308f0	72	strcat	symtab	f46ca4cbfc8d		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00308f0	72	strcat	symtab	f46ca4cbfc8d		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030938	64	strcmp	symtab	e0f6a9699283		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030978	52	strcpy	symtab	88bdc666d069		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00309ac	44	strlen	symtab	463e9df08df1		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00309d8	76	strdup	symtab	d6f6c394096f		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030a24	172	strstr	symtab	43ea2e25cb04		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030ad0	48	strchr	symtab	cc7b44f771e0		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030a24	172	strstr	symtab	43ea2e25cb04		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030ad0	48	strchr	symtab	cc7b44f771e0		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030b00	420	sa_get_response	symtab	bf34ac395516		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030ca4	188	token	symtab	dd6c53a8c043		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0030d60	80	strncmp	symtab	3fec96eeb2ec		in	named-only	docs/functions.md#monitor-and-flat-panel-bus-crime_i2co	Monitor and flat-panel bus (`crime_i2c.o`)
@@ -13657,7 +13657,7 @@ usr/gfx/setmon	shared-tool	n32		0x1000d580	740	odyDoFramelock	dynsym	1fba2ecd279
 usr/gfx/setmon	shared-tool	n32		0x1000d864	2252	odysetmon	dynsym	bbd7604aa716		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000e130	732	npsetmon	dynsym	ba1eeea60a5e		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000e40c	3160	crm_setmon	dynsym	970d30b7d895		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
-usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	2ec81e45b71a		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	2ec81e45b71a		in	understood	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000fa18	268	venice_get_dg2_eeprom	dynsym	c08795730712		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fb24	416	venice_set_dg2_eeprom	dynsym	f69ca1487b42		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fcc4	236	venice_grok_dg2_eeprom_error	dynsym	b0b0377bf0ce		in	undocumented		
@@ -16410,7 +16410,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf405130	364	XSGIvcSetOutputSync	dynsym
 usr/lib/libXsgivc.so	board-library	o32		0xf40529c	480	XSGIvcQueryOutputSync	dynsym+mdebug	2108bc1479ae		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf40547c	356	XSGIvcSetScreenInputSyncSource	dynsym+mdebug	5d2d0d985d2c		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf4055e0	488	XSGIvcQueryScreenInputSyncSource	dynsym+mdebug	ad41d668f641		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib/libXsgivc.so	board-library	o32		0xf4057c8	484	XSGIvcSetPlatformParameter	dynsym+mdebug	e544279afcde		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf4057c8	484	XSGIvcSetPlatformParameter	dynsym+mdebug	e544279afcde		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib/libXsgivc.so	board-library	o32		0xf4059ac	640	XSGIvcQueryPlatformParameter	dynsym+mdebug	c546c440520d		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf405c2c	460	XSGIvcQueryScreenGammaMaps	dynsym+mdebug	bac39b804698		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf405df8	496	XSGIvcQueryGammaMap	dynsym+mdebug	f1ed6993f16e		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -16432,7 +16432,7 @@ usr/lib/libXsgivc.so	board-library	o32		0xf407aa4	940	XSGIvcNVListVideoFormats	d
 usr/lib/libXsgivc.so	board-library	o32		0xf407e50	880	XSGIvcNVListVideoFormatCombinations	dynsym+mdebug	b1f0ca34dbfa		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf4081c0	708	XSGIvcNVLoadVideoFormat	dynsym+mdebug	7f7e762c5353		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408484	788	XSGIvcNVLoadVideoFormatCombination	dynsym+mdebug	9c6a728a7640		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib/libXsgivc.so	board-library	o32		0xf408798	804	XSGIvcLoadVideoFormatByName	dynsym+mdebug	5ad47915113e		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib/libXsgivc.so	board-library	o32		0xf408798	804	XSGIvcLoadVideoFormatByName	dynsym+mdebug	5ad47915113e		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib/libXsgivc.so	board-library	o32		0xf408abc	808	XSGIvcNVLoadVideoFormatByName	dynsym+mdebug	9b12b34ef1ee		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib/libXsgivc.so	board-library	o32		0xf408de4	360	XSGIvcMultiCursorSetMode	dynsym+mdebug	4ea3a266b69d		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/dmedia/imageconverters/debug/vicedv.so	board-library	n32	.text	0x402b60	1524	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
@@ -17117,7 +17117,7 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf402b30	1616	XSGIvcQueryChannelInfo	
 usr/lib32/libXsgivc.so	board-library	n32		0xf403180	60	XSGIvcQueryOutputBlanking	dwarf+dynsym	88baffde592e		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4031c0	60	XSGIvcSetOutputPedestal	dwarf+dynsym	c320c3f1d88e		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf403200	308	XSGIvcSetScreenExternalSyncSource	dwarf+dynsym	32dc12956794		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib32/libXsgivc.so	board-library	n32		0xf403340	448	XSGIvcSetPlatformParameter	dwarf+dynsym	fd3ef2b930f0		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf403340	448	XSGIvcSetPlatformParameter	dwarf+dynsym	fd3ef2b930f0		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib32/libXsgivc.so	board-library	n32		0xf403500	748	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	dc4ce5cefebe		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf4037f0	236	XSGIvcQueryOutputGain	dwarf+dynsym	2fc7c971ba7b		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4038e0	644	XSGIvcLoadVideoFormat	dwarf+dynsym	93ab6cb572fc		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
@@ -17136,7 +17136,7 @@ usr/lib32/libXsgivc.so	board-library	n32		0xf404bb0	452	XSGIvcStoreGammaColors16
 usr/lib32/libXsgivc.so	board-library	n32		0xf404d80	440	XSGIvcQueryVersion	dwarf+dynsym	35f2e1d1e633		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/libXsgivc.so	board-library	n32		0xf404f40	308	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	f149b0c9c069		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32	.text	0xf405080	120	ReadFieldInfo	dwarf+funcnames	6ed549341ea1		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib32/libXsgivc.so	board-library	n32		0xf405100	764	XSGIvcLoadVideoFormatByName	dwarf+dynsym	f2bbfbfe0242		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib32/libXsgivc.so	board-library	n32		0xf405100	764	XSGIvcLoadVideoFormatByName	dwarf+dynsym	f2bbfbfe0242		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib32/libXsgivc.so	board-library	n32		0xf405400	864	XSGIvcNVListVideoFormats	dwarf+dynsym	f67e4f499e37		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib32/libXsgivc.so	board-library	n32		0xf405760	60	XSGIvcSetChannelGammaMap	dwarf+dynsym	3c671c4d24c4		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib32/libXsgivc.so	board-library	n32		0xf4057a0	448	XSGIvcQueryOutputSync	dwarf+dynsym	fa815b261949		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
@@ -17181,7 +17181,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2003250	1712	XSGIvcQueryChannelInfo	
 usr/lib64/libXsgivc.so	board-library	n64		0x2003900	64	XSGIvcQueryOutputBlanking	dwarf+dynsym	cc25276e59ee		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2003940	64	XSGIvcSetOutputPedestal	dwarf+dynsym	ec8ed43b6f1d		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2003980	324	XSGIvcSetScreenExternalSyncSource	dwarf+dynsym	00205e93dff6		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
-usr/lib64/libXsgivc.so	board-library	n64		0x2003ad0	464	XSGIvcSetPlatformParameter	dwarf+dynsym	21366bd2f336		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x2003ad0	464	XSGIvcSetPlatformParameter	dwarf+dynsym	21366bd2f336		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib64/libXsgivc.so	board-library	n64		0x2003ca0	780	XSGIvcNVLoadVideoFormatCombination	dwarf+dynsym	098b198df721		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x2003fb0	240	XSGIvcQueryOutputGain	dwarf+dynsym	c7a58d08639a		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x20040a0	688	XSGIvcLoadVideoFormat	dwarf+dynsym	57c6d8ce0d14		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
@@ -17200,7 +17200,7 @@ usr/lib64/libXsgivc.so	board-library	n64		0x2005420	472	XSGIvcStoreGammaColors16
 usr/lib64/libXsgivc.so	board-library	n64		0x2005600	456	XSGIvcQueryVersion	dwarf+dynsym	7760838bf93b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib64/libXsgivc.so	board-library	n64		0x20057d0	324	XSGIvcInitMonitorBaseProtocol	dwarf+dynsym	1717cf3721a6		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64	.text	0x2005920	120	ReadFieldInfo	dwarf	b9e173449b79		in	named-only	docs/gbe.md#libxsgivc-ddxlibxsgivc_n32so	libXsgivc (`ddx/libXsgivc_n32.so`)
-usr/lib64/libXsgivc.so	board-library	n64		0x20059a0	796	XSGIvcLoadVideoFormatByName	dwarf+dynsym	e06fee32d146		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
+usr/lib64/libXsgivc.so	board-library	n64		0x20059a0	796	XSGIvcLoadVideoFormatByName	dwarf+dynsym	e06fee32d146		in	named-only	docs/functions.md#routines-of-setmon-one-entry-each	Routines of `setmon`, one entry each
 usr/lib64/libXsgivc.so	board-library	n64		0x2005cc0	900	XSGIvcNVListVideoFormats	dwarf+dynsym	cf43703f8e0d		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
 usr/lib64/libXsgivc.so	board-library	n64		0x2006050	64	XSGIvcSetChannelGammaMap	dwarf+dynsym	a0da1e9bcaa0		in	named-only	docs/xsgivc.md#output-controls	Output controls
 usr/lib64/libXsgivc.so	board-library	n64		0x2006090	464	XSGIvcQueryOutputSync	dwarf+dynsym	39ff348c4870		in	named-only	docs/xsgivc.md#request-encoding	Request encoding
