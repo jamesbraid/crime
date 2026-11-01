@@ -13430,9 +13430,9 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000b0e0	68	kona_init	dynsym	df15e4ca1e17		in
 usr/gfx/gfxinit	shared-tool	n32		0x1000b1f8	540	kona_diagnose	dynsym	a67ac91e3773		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000ca5c	532	kona_loaducode	dynsym	06a8883d0d64		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000cd5c	736	nic_report	dynsym	eed1b23c3c23		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000d03c	568	printXvcInfo	dynsym	9569cf4b28aa		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000dcfc	216	crime_monitor_info	dynsym	a48030e62b06		in	named-only	docs/published-sources.md#14-recollections-and-history-leads-unverified	14. Recollections and history (leads, unverified)
-usr/gfx/gfxinit	shared-tool	n32		0x1000ddd4	412	crime_info	dynsym	0a40c6b700f9		in	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
+usr/gfx/gfxinit	shared-tool	n32		0x1000d03c	568	printXvcInfo	dynsym	9569cf4b28aa		in	named-only	docs/functions.md#routines-of-gfxinit-crime-board-report	Routines of `gfxinit`, CRIME board report
+usr/gfx/gfxinit	shared-tool	n32		0x1000dcfc	216	crime_monitor_info	dynsym	a48030e62b06		in	understood	docs/functions.md#routines-of-gfxinit-crime-board-report	Routines of `gfxinit`, CRIME board report
+usr/gfx/gfxinit	shared-tool	n32		0x1000ddd4	412	crime_info	dynsym	0a40c6b700f9		in	understood	docs/functions.md#routines-of-gfxinit-crime-board-report	Routines of `gfxinit`, CRIME board report
 usr/gfx/gfxinit	shared-tool	n32		0x1000df70	204	odsy_monitor_info	dynsym	5d4cf5ab8e92		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e03c	648	_odsy_info	dynsym	9b827a844437		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e2c4	584	odsy_init	dynsym	674d83ba4289		in	undocumented		
@@ -17248,15 +17248,15 @@ usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404458	624	runDiagnostic
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4046c8	184	clean_up	dynsym	738301461086		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404780	188	crime_i2c_reset	dynsym	306372236290		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40483c	208	odsy_i2c_reset	dynsym	ed4f9efef1bb		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40490c	184	crime_i2c_start	dynsym	3d595af6d98d		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40490c	184	crime_i2c_start	dynsym	3d595af6d98d		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4049c4	212	odsy_i2c_start	dynsym	366d2ad1e8f4		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404a98	188	crime_i2c_stop	dynsym	0e868ae45234		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404a98	188	crime_i2c_stop	dynsym	0e868ae45234		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404b54	228	odsy_i2c_stop	dynsym	fd90ca389174		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404c38	172	crime_i2c_sendbyte	dynsym	f14e75c03f62		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404ce4	208	odsy_i2c_sendbyte	dynsym	ca9005dc5f8c		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404db4	228	crime_i2c_rcvbytes	dynsym	7b817c0d47fa		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404e98	276	odsy_i2c_rcvbytes	dynsym	0b080c894c2a		in	undocumented		
-usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404fac	332	crime_i2c_test	dynsym	53fa7597ce2e		in	undocumented		
+usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x404fac	332	crime_i2c_test	dynsym	53fa7597ce2e		in	understood	docs/functions.md#routines-of-dualchannel-one-entry-each	Routines of `dualchannel`, one entry each
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x4050f8	420	odsy_i2c_test	dynsym	406fce4a113f		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x40529c	2224	runPattern	dynsym	2f9da55bd57d		in	undocumented		
 usr/sbin/Confidence/dualchannel	board-diagnostic	o32		0x405b4c	236	dc_read	dynsym	00d1beebb8be		in	undocumented		
