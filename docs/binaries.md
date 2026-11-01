@@ -298,12 +298,29 @@ One entry per format file, in table order. Each gives the clock word at its offs
   The clock word is at 0x1b88 and the PLL scalars at 0x2d4, with M 16, N 3 and P 0 (established by comparison with the base file).
   Option value Presenter_1280 is at 0x174, which gbe.md's flags rule maps to 0x200 (established, from gbe.md).
   That name is one of the five option names the X module compares against (inferred, from xmodule.md).
-- `usr/gfx/ucode/CRM/vof/1280x1024_72.vfo` (12424 bytes), title `1280x1024_72@R`: the 1280x1024 at 72 Hz. Clock word 129467520 Hz at 0x1b78. It is 4112.8 ppm below the 130.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1280x1024_75.vfo` (12424 bytes), title `1280x1024_75@R`: the 1280x1024 at 75 Hz. Clock word 135000585 Hz at 0x1b78. It is 4.3 ppm above the 135.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1280x492_120s.vfo` (12740 bytes), title `1280x492_120 Stereo`: the second stereo format. Clock word 107143949 Hz at 0x1b98. It is 4454.6 ppm above the 106.667 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1600x1024_48p.vfo` (12440 bytes), title `1600x1024_48p`: no single-channel base in the set. Clock word 97219200 Hz at 0x1b88. It is 785.3 ppm above the 97.143 MHz output (established).
+- `usr/gfx/ucode/CRM/vof/1280x1024_72.vfo` (12424 bytes), title `1280x1024_72@R`: the 1280x1024 mode, titled for 72 Hz.
+  Its clock word 129467520 Hz at 0x1b78 sits 4112.8 ppm below the 130.000 MHz output (established by arithmetic).
+  The PLL scalars M 13, N 2 and P 0 at 0x2c4 give a 130.000 MHz VCO that is the output, since P is 0 (established by arithmetic).
+  Option value None at 0x170, and built-in record 10 carries the same M, N and P (established, from the table at 0x22e8 in crime_init.o).
+- `usr/gfx/ucode/CRM/vof/1280x1024_75.vfo` (12424 bytes), title `1280x1024_75@R`: the 1280x1024 mode, titled for 75 Hz.
+  Its clock word 135000585 Hz at 0x1b78 is 4.3 ppm above the 135.000 MHz output (established by arithmetic).
+  The PLL scalars M 27, N 4 and P 0 at 0x2c4 give a 135.000 MHz VCO that is the output (established by arithmetic).
+  Option value None at 0x170, and built-in record 11 carries the same M, N and P (established, from the table at 0x22e8 in crime_init.o).
+- `usr/gfx/ucode/CRM/vof/1280x492_120s.vfo` (12740 bytes), title `1280x492_120 Stereo`: the second stereo format, with its clock word and PLL scalars 32 bytes later than the mono files (stereo layout in [gbe.md](gbe.md)).
+  Its clock word 107143949 Hz at 0x1b98 sits 4454.6 ppm above the 106.667 MHz output (established by arithmetic).
+  The PLL scalars M 16, N 3 and P 0 at 0x2e4 give a 106.667 MHz VCO that is the output (established by arithmetic).
+  Option value None at 0x190. Built-in record 13 is the same timing but carries M 27, N 5 and P 0, a 108.000 MHz output, and a pixel clock of 107072 kHz, so the kernel's PLL numbers are not the file's (established, from the table at 0x22e8 in crime_init.o).
+- `usr/gfx/ucode/CRM/vof/1600x1024_48p.vfo` (12440 bytes), title `1600x1024_48p`: a flat-panel format with no single-channel base in the set.
+  Its clock word 97219200 Hz at 0x1b88 sits 785.3 ppm above the 97.143 MHz output (established by arithmetic).
+  The PLL scalars M 34, N 7 and P 0 at 0x2d4 give a 97.143 MHz VCO that is the output (established by arithmetic).
+  Option value Flatpanel_1600SW at 0x174, which gbe.md's flags rule maps to 0x400 (established, from gbe.md).
+  Built-in record 15 shares this file's timing totals (from gbe.md) but carries M 5, N 1 and P 0, which is the 1600x1024_50p file's PLL, so the kernel has no record of this PLL (established, from the table at 0x22e8 in crime_init.o).
 - `usr/gfx/ucode/CRM/vof/1600x1024_50p.vfo` (12440 bytes), title `1600x1024_50p`: no single-channel base in the set. Clock word 101270000 Hz at 0x1b88, and the 100.000 MHz output is 12540.7 ppm lower, about 1.25 percent (established). Which of the two the board uses is unknown.
-- `usr/gfx/ucode/CRM/vof/1600x1024_60p.vfo` (12440 bytes), title `1600x1024_60p`: no single-channel base in the set. Clock word 108732000 Hz at 0x1b88. It is 1476.8 ppm above the 108.571 MHz output (established).
+- `usr/gfx/ucode/CRM/vof/1600x1024_60p.vfo` (12440 bytes), title `1600x1024_60p`: a flat-panel format with no single-channel base in the set.
+  Its clock word 108732000 Hz at 0x1b88 sits 1476.8 ppm above the 108.571 MHz output (established by arithmetic).
+  The PLL scalars M 38, N 7 and P 0 at 0x2d4 give a 108.571 MHz VCO that is the output (established by arithmetic).
+  Option value Flatpanel_1600SW at 0x174, which gbe.md's flags rule maps to 0x400 (established, from gbe.md).
+  No built-in record matches it: record 15 is the 50 Hz panel with M 5, N 1 and P 0 (established, from the table at 0x22e8 in crime_init.o and gbe.md).
 - `usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo` (12440 bytes), title `1024x768_60 Dual Channel@N`: the dual-channel 1024x768 timing.
   Its clock word, 65000173 Hz at 0x1b88, sits 2.7 ppm above the 65.000 MHz output.
   Its PLL scalars M 13, N 2 and P 1 at 0x2d4 are the same values as the single-channel file's (established by comparison).
