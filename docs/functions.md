@@ -2603,6 +2603,26 @@ These entries cover more of the small routines of `sbin/stand/symmon.IP32` (6.5.
   It returns 0 (delay-slot `move v0,zero`) and reads no header, so no sum of the volume header is computed. Nothing in the image calls it.
 - `is_vh` in `sbin/stand/symmon.IP32`: the volume-header check, an 8-byte routine at 0xa001df38. Established.
   It returns 0 (delay-slot `move v0,zero`), so every header is rejected, and it reads no argument. The unlabelled routine `txhexcolor` of the debug information starts at 0xa001df40. Nothing in the image calls it.
+- `txSetJumpbuf` in `sbin/stand/symmon.IP32`: stores the jump buffer for the graphics console's button handler, an 8-byte routine at 0xa0020030. Established.
+  It is `jr ra` over a `nop` and stores nothing. Its one caller is the `jal` at 0xa002ad10 in the graphics ioctl routine at 0xa002ac94 (`_gfxioctl`), taken when the request word at offset 12 of the I/O block equals 0x6701; the delay slot passes the word at offset 16 of the block. `txSetString` (0xa0020038) follows it and `gethtp` (0xa0020040) comes after that.
+- `txSetString` in `sbin/stand/symmon.IP32`: stores the button-press string for the graphics console, an 8-byte routine at 0xa0020038. Established.
+  The body is `jr ra` and a `nop`; the argument is ignored. Its one caller is the `jal` at 0xa002acf4 in the graphics ioctl routine at 0xa002ac94 (`_gfxioctl`), taken when the request word at offset 12 of the I/O block equals 0x6702, with the word at offset 16 of the block as its argument.
+- `sgivers` in `sbin/stand/symmon.IP32`: the vector slot that reports the private-interface version, an 8-byte routine at 0xa00271a4. Established.
+  It returns 3 (`addiu v0,zero,3` in the delay slot). The word at 0xa003bfdc holds its address as the tenth slot of the private vector (0xa0001c24 after the copy), between `gethtp` (0xa0020040) and `cpuid` (0xa0020c5c). The code after it, from 0xa00271ac, is the unlabelled routine `_setup_spb` of the debug information.
+- `_delayend` in `sbin/stand/symmon.IP32`: a one-word marker, a 4-byte routine at 0xa0029140. Established.
+  The word is a `nop` (all zeros) and there is no return, so execution would run into `_timerticksper1024inst` (0xa0029144) after it; zero words precede it from the code that ends at 0xa0029108. No `jal`, `j`, address pair or data word in the image reaches it. Here `_ticksper1024inst` (0xa0029174) lies after `_delayend` and is reached by a plain `jal` at 0xa0029014, and nothing takes the address of `_delayend`, so no such copy exists in this image.
+- `initlock` in `sbin/stand/symmon.IP32`: the spin-lock initialiser, an 8-byte routine at 0xa002a74c. Established.
+  It is `jr ra` over a `nop` and touches neither the lock it is given nor any register. Two `jal` sites call it: 0xa00114c4 in `init_brkpt_lock` (0xa00114b8), whose delay slot builds 0xa003cc28 (`lui` 0xa004 and `addiu` -13272) as the argument, and 0xa0026694 in `_init_saio` (0xa002664c), whose delay slot builds 0xa003c770 (`addiu` -14480), and `init_cfgtree` (0xa0024084) runs next.
+- `initnlock` in `sbin/stand/symmon.IP32`: the named spin-lock initialiser, an 8-byte routine at 0xa002a754. Established.
+  The body is `jr ra` and a `nop`; it does not call the empty `initlock` (0xa002a74c) beside it. No `jal`, `j`, address pair or data word reaches it.
+- `suser` in `sbin/stand/symmon.IP32`: the privilege test, an 8-byte routine at 0xa00311a8. Established.
+  It returns 1 (`addiu v0,zero,1` in the delay slot), so every caller is treated as privileged. It follows the 22-name stub at 0xa00311a0 and precedes `cvsema` (0xa00311b0), which returns 0.
+- `_gfxinit` in `sbin/stand/symmon.IP32`: resets the graphics console's open count on a soft reset, a 16-byte static routine at 0xa002aabc (the range of `_gfxinit` in the debug information). Established.
+  It stores zero in the word at 0xa0059720 (the open count, `lui` 0xa006 and offset -26848, stored in the delay slot of the return) and returns 0 (`move v0,zero` before the `lui`).
+- `_gfxopen` in `sbin/stand/symmon.IP32`: opens the graphics console, an 84-byte static routine at 0xa002aacc. Established.
+  The argument is the I/O record. It loads the flag word at offset 44 and, when bit 0x1000 is set (the extended-console flag, which `_gfxReopen` also uses), stores 7 at offset 32 of the record and returns 7. Otherwise it saves the record in `s0`, calls `_init_htp` (0xa002aa10) with no arguments, then calls `_gfxReopen` (0xa002ab20) with the record and a second argument of 0, and returns that call's result. Its one caller is the `jal` at 0xa002ad98 in `_gfx_strat`, taken for function code 1. The shipped body has the colour-console test compiled in.
+- `_gfxclose` in `sbin/stand/symmon.IP32`: closes the graphics console, a 36-byte static routine at 0xa002ac18. Established.
+  It loads the open count at 0xa0059720 and, only when it equals 1, stores zero there (the store is in the delay slot of the `b` at 0xa002ac34). It returns 0 on both paths and never reads its argument, so a close with the count above 1 leaves the count as it was. Its one caller is the `jal` at 0xa002adb8 in `_gfx_strat` (0xa002ad30), taken for function code 2.
 
 # Routines of `symmon.IP32`, one entry each
 
