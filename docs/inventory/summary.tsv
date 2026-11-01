@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			75.0	8	2026-11-01		0			
-functions	15122	2158	2830	15	2698	1369	3146	2391	6755	0	18.7	39.5	55.3	18.7			95.0	20	2026-11-02		86	62	214	
-functions (distinct names)	9633	2093	2274	14	2266	679	1591	1265	4503	0	23.6	40.1	53.3	23.6							42			
+functions	15122	2158	2832	15	2699	1369	3144	2391	6755	0	18.7	39.5	55.3	18.7			95.0	20	2026-11-02		86	62	214	
+functions (distinct names)	9633	2093	2275	14	2267	679	1590	1265	4503	0	23.6	40.1	53.3	23.6							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -22,8 +22,8 @@ functions in usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	33	0	33	0	33	0	0	0	0
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	52	0	52	0	52	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
-functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100.0	98.2							0	0	0	
-functions in usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	57	0	56	1	56	0	1	0	0	0	98.2	100.0	100.0	98.2							0	0	0	
+functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	57	1	57	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
+functions in usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	57	0	57	1	57	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/kernel.o	117	694	112	1	112	0	0	3	2	0	95.7	95.7	98.3	95.7							0	0	4	
 functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	157	4	157	0	1	10	1	0	92.9	93.5	99.4	92.9							0	0	2	
