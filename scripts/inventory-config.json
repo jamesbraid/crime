@@ -530,7 +530,7 @@
       "binaries": [
         "usr/cpu/sysgen/IP32boot/kernel.o"
       ],
-      "reason": "Generic kernel and board-support leaf routines (empty stubs and constant returns, software-interrupt and processor-state helpers, block fill and copy, fault-recovery and memory-probe helpers, front-panel LED and system-identity routines, diagnostic printing, assertion failure, power button, profiling tick): each body read in full, with no CRIME or GBE register, token or ioctl use",
+      "reason": "Generic kernel and board-support leaf routines (empty stubs and constant returns, software-interrupt and processor-state helpers, block fill and copy, fault-recovery and memory-probe helpers, front-panel LED and system-identity routines, diagnostic printing, assertion failure, power button, profiling tick, the zero-fill and copy entry points of the block routines and the software trap vector alias): each body read in full, with no CRIME or GBE register, token or ioctl use",
       "names": [
         "dummy_func",
         "dummyret0_func",
@@ -580,7 +580,10 @@
         "assfail",
         "power_dump",
         "powerintr",
-        "init_sysid"
+        "init_sysid",
+        "bzero_cdx_entry",
+        "bcopy_cdx_entry",
+        "soft_trap"
       ]
     },
     {

@@ -140,7 +140,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		txtsrch	dwarf+funcnames			in	u
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		vprf	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		walk	dwarf+funcnames			in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32		0x0		walk_path	dwarf+funcnames			in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	symtab	5c941b5fa6f4		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010200	320	start	symtab	5c941b5fa6f4		in	located	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010340	8	_quit	symtab	e6e69c7e1b9c		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010348	8	db_printf	symtab	9edc8e153884		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010350	1608	symmon_brkhandler	symtab	9c11d17faac2		in	named-only	docs/binaries.md#diagnostics	Diagnostics
@@ -157,7 +157,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e6c	48	symmon_spl	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0010e9c	360	_do_it	symtab	b397229debda		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011004	24	_kernel_bp	symtab	e8e7348622d6		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001101c	68	kpprintf	symtab	3d78b91e70c0		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011060	28	_j_exceptnorm	symtab	17e0e827a4d8		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011060	28	_j_exceptnorm	symtab	17e0e827a4d8		in	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa001107c	28	_j_exceptutlb	symtab	63bf8c461abc		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0011098	28	_j_exceptxut	symtab	0e0ba4b3cfbe		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00110b4	28	_j_exceptecc	symtab	51fdfb507bf6		in	undocumented		
@@ -347,10 +347,10 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021900	216	_r4600sc_cache_
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00219d8	52	_r4600sc_limit	symtab	6b4a588c7168		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021a0c	352	_r4600sc_inval_cache	symtab	595c146acd82		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021b6c	736	_r4600sc_index_inval	symtab	68059d767c3a		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021e4c	892	__dcache_inval	symtab	9f1529a55f0f		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0021e4c	892	__dcache_inval	symtab	9f1529a55f0f		in	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00221c8	684	__dcache_wb	symtab	8f0155449e7f		in	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022474	688	__dcache_wb_inval	symtab	1bf1fbec4b3e		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022724	1148	__icache_inval	symtab	cf014a91df62		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022474	688	__dcache_wb_inval	symtab	1bf1fbec4b3e		in	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022724	1148	__icache_inval	symtab	cf014a91df62		in	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022ba0	840	__cache_wb_inval	symtab	ff102c5333cc	shared-address	in	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022ba0	840	clear_cache	symtab	ff102c5333cc	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0022ee8	1392	config_cache	symtab	c713881bdc17		in	undocumented		
@@ -547,7 +547,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002951c	288	md_dealloc	symt
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002963c	408	md_add	symtab	9f73ecd733ef		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00297d4	340	_save_exceptions	symtab	18ada72dd351		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029928	312	_restore_exceptions	symtab	fdb874baac29		in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029a60	316	_hook_exceptions	symtab	1086fd119f4e		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029a60	316	_hook_exceptions	symtab	1086fd119f4e		in	located	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029b9c	344	_inst_vec	symtab	cb25dd9e4207		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029cf4	144	findFlashSegmentHdr	symtab	52c648bfb3b6		in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0029d84	88	findFlashSegment	symtab	28431e1f63a5		in	undocumented		
@@ -1140,9 +1140,9 @@ usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x32d8	192	gfx_sha
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x3398	44	gfx_shfree	dwarf+symtab	222df23ffa66		in	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	shared-kernel	n32	.text	0x33c4	12	gfx_frs_valid_pipenum	dwarf+symtab	0dfe9c172af6		in	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		VEC_int	dwarf+symtab			in	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		_addr_to_ibank	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		_addr_to_ibank	dwarf+funcnames			in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		_clock_func	dwarf+funcnames			out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		add_vice	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		add_vice	dwarf+funcnames			in	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		arcs_to_dsk	dwarf+funcnames			out:8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		bcopyb	dwarf+funcnames			out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		bcopyd	dwarf+funcnames			out:4	undocumented		
@@ -1192,16 +1192,16 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		is_thd	dwarf+funcnames	
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		isbadclock	dwarf+funcnames			out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		leave_crimegang	dwarf+funcnames			in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		lowbitset	dwarf+funcnames			out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		mapflush	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		mapflush	dwarf+funcnames			in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		next_seg	dwarf+funcnames			out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		print_ecctype	dwarf+funcnames			out:16	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		print_memerr	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		print_memerr	dwarf+funcnames			in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		rtc_init	dwarf+funcnames			out:8	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		scrub_memory_block	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		scrub_memory_block	dwarf+funcnames			in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		sendSIGFPE	dwarf+funcnames			out:2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		set_env_var	dwarf+funcnames			out:8	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		setbadclock	dwarf+funcnames			out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		setup_ip32_flags	dwarf+funcnames			in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		setup_ip32_flags	dwarf+funcnames			in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		softfp_dispatch	dwarf+funcnames			out:2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		strayc0	dwarf+funcnames			out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32		0x0		strayfp_intr	dwarf+funcnames			out:2	undocumented		
@@ -1280,8 +1280,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1400	8	_get_timestamp
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1408	12	scrub_memory	symtab	6abcfdf068c2		out:18	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1414	128	tlbgetlo	symtab	53e69b52af9c		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1494	32	getcachesz	symtab	8d2d001b2026		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b4	12	get_r10k_config	symtab	65d36b16835c		out:7	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14c0	12	set_r10k_config	symtab	702d110d5a68		out:7	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b4	12	get_r10k_config	symtab	65d36b16835c		out:7	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14c0	12	set_r10k_config	symtab	702d110d5a68		out:7	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14cc	12	clr_r4kcount_intr	symtab	056798826859		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14d8	28	get_r4k_compare	symtab	a3ceaed14d61		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f4	12	set_r4k_compare	symtab	36d5b735ab25		out:6	undocumented		
@@ -1291,8 +1291,8 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1528	12	get_r4k_confi
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1534	160	wait_for_interrupt	symtab	ee26e74161f6		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ac	40	wait_for_interrupt_fix_loc	symtab	7c7a779ebf10		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15d4	1072	in_cksum_sub	symtab	345c882c1b77		out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x16e8	808	in_cksum_pref	symtab	1c188c509085		out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1a10	400	start	symtab	d835e00ba776		in	named-only	docs/coverage.md#crime-memory-tlb-and-interrupts	CRIME memory, TLB and interrupts
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x16e8	808	in_cksum_pref	symtab	1c188c509085		out:4	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1a10	400	start	symtab	d835e00ba776		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1b54	76	proc1	symtab	eee0406b0ed6		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1ba0	72	mlclosure	symtab	a294fea60df5		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1be8	8	silence_all_audio	symtab	78aa5094d5ec	shared-address	out:18	undocumented		
@@ -1322,7 +1322,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x33f0	20	cerror	symtab
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3404	276	memset	symtab	36fbd346ab81		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	4	blkclr	symtab	7625eea86b52	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3518	180	bzero	symtab	8ebec24cc32f	shared-address	out:4	named-only	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x351c	176	bzero_cdx_entry	symtab	d0e4d16db57c		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x351c	176	bzero_cdx_entry	symtab	d0e4d16db57c		out:18	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzero_end	symtab	78aa5094d5ec	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35cc	8	bzerror	symtab	78aa5094d5ec	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x35d4	444	bcmp	symtab	37969f754235	shared-address	out:4	undocumented		
@@ -1360,7 +1360,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	1120	memcpy	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b70	12	memmove	symtab	28a29cd9f9c9	shared-address	out:4	named-only	docs/sample-server.md#machine-independent-layer-mi	Machine-independent layer (mi)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	bcopy	symtab	34c8fcd5c3eb	shared-address	out:4	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b7c	12	ovbcopy	symtab	34c8fcd5c3eb	shared-address	out:4	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b88	1096	bcopy_cdx_entry	symtab	e6b14e3607aa		in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3b88	1096	bcopy_cdx_entry	symtab	e6b14e3607aa		out:18	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3fd0	56	bcopy_end	symtab	7b8004182b30	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x3fd0	56	swbcopy	symtab	7b8004182b30	shared-address	out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4008	48	rtlock_ownerstamp	symtab	bb1686541a64		out:5	undocumented		
@@ -1412,10 +1412,10 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5e94	28	_r4600sc_cach
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5eb0	60	_r4600sc_limit	symtab	50fa52ea9abe		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x5eec	340	_r4600sc_inval_cache	symtab	158c844a26a5		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6040	724	_r4600sc_index_inval	symtab	daf0d5de0c6a		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6314	884	__dcache_inval	symtab	7eddeede4478		out:3	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6314	884	__dcache_inval	symtab	7eddeede4478		out:3	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6688	672	__dcache_wb	symtab	ae711d51c9b6		out:3	named-only	docs/functions.md#kernel-routines-one-entry-each-mvpo-transfer-path-and-controller-helpers	Kernel routines, one entry each (`mvp.o`, transfer, path and controller helpers)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6928	672	__dcache_wb_inval	symtab	842f29aae226		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6bc8	1140	__icache_inval	symtab	51bf6a88af56		out:3	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6928	672	__dcache_wb_inval	symtab	842f29aae226		out:3	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x6bc8	1140	__icache_inval	symtab	51bf6a88af56		out:3	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x703c	832	__cache_wb_inval	symtab	640368f1ae79		out:3	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x737c	1144	config_cache	symtab	c654f92f8d37		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x77f4	284	size_2nd_cache	symtab	a759419dcd76		out:3	undocumented		
@@ -1446,7 +1446,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x803c	60	sw_cachesynch
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8078	52	sw_cachesynch_op3	symtab	cc773be909ed		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x80ac	96	cache_tag_ecc	symtab	1615e2a780f6		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	VEC_trap	symtab	ffdd7d585250	shared-address	out:1	named-only	docs/functions.md#bus-error-probes	Bus-error probes
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	soft_trap	symtab	ffdd7d585250	shared-address	in	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x810c	84	soft_trap	symtab	ffdd7d585250	shared-address	out:18	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8160	8	add_ioboard	symtab	78aa5094d5ec		in	understood	docs/functions.md#start-up-and-revision	Start-up and revision
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x81e4	216	add_cpuboard	symtab	9b2b408e83de		out:10	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x82bc	268	init_sysid	symtab	2a61486e82df		out:18	named-only	docs/memory.md#crime-registers-by-access-site-6530	CRIME registers by access site (6.5.30)
@@ -1618,14 +1618,14 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd894	1368	ecc_handler
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe09c	136	ecc_find_bad_cline	symtab	591ea919a261		out:16	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe124	1016	ecc_fixctag	symtab	e1d2bbe3849f		out:16	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xe51c	916	ecc_fixcdata	symtab	ebe349c5060d		out:16	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xeb28	572	calc_err_info	symtab	cc6c411f3de5		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xed64	172	ecc_swap_s_tag	symtab	91a8db58b23d		out:16	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xeb28	572	calc_err_info	symtab	cc6c411f3de5		in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xed64	172	ecc_swap_s_tag	symtab	91a8db58b23d		out:16	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xee10	40	xlate_bit	symtab	ccaf4a3325de		out:4	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xee38	1252	print_ecc_info	symtab	5cab30dce70b		out:16	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf31c	128	idbg_ecc_info	symtab	c64a9bd3d6fd		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf5f8	40	softfp_adderr	symtab	c4b77d81c1b2		out:2	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf620	40	softfp_insterr	symtab	5c722cc4be09		out:2	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf648	732	ioerror_dump	symtab	b7266570923d		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf648	732	ioerror_dump	symtab	b7266570923d		in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf924	36	error_mark_page	symtab	a5bc0e65bddc		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf948	40	error_reclaim_page	symtab	163ddd14da27		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf970	252	tlb_to_phys	symtab	9a441062e6e0		out:1	undocumented		
@@ -1658,7 +1658,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f38	8	pmem_getfirst
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f40	8	node_getfirstfree	symtab	87506497337c		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f48	44	node_getmaxclick	symtab	17acff0d5a03		out:10	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x10f74	24	bank_size	symtab	154fd4d14583		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x110e8	28	addr_to_bank	symtab	01dd5ac1768e		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x110e8	28	addr_to_bank	symtab	01dd5ac1768e		out:18	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11104	32	addr_to_ibank	symtab	4b4d324dfb91		in	understood	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11124	188	cpu_powerdown	symtab	aab8996edc9d		out:10	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1121c	196	cpu_waitforreset	symtab	5b600a705233		out:10	undocumented		
@@ -1677,7 +1677,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11898	92	unmaptlb_ran
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x118f4	56	tfi_save	symtab	e1201bb656c5		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1192c	56	tfi_restore	symtab	61268ef6fa4e		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11964	4	assbuffer	symtab	df3f619804a9		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11968	500	assfail	symtab	b186e6a728a6		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11968	500	assfail	symtab	b186e6a728a6		out:18	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b5c	12	getsr	symtab	2ea7fc1f266e		out:17	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b68	36	setsr	symtab	9755de041b23		out:17	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11b8c	8	getpc	symtab	c343413c267a		out:17	undocumented		
@@ -1752,19 +1752,19 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x149a8	100	baerror	sym
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a0c	88	earlybaerror	symtab	f697dc69ced7		in	understood	docs/functions.md#bus-error-probes	Bus-error probes
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a64	12	VEC_breakpoint	symtab	3614e4802762		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a6c	4	kernelbp	symtab	cd09e81bee54		out:9	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	symtab	dcffcaf7af27		in	located	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14a70	72	debug	symtab	dcffcaf7af27		in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ab8	4	sstepbp	symtab	0df244da6067		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14abc	1004	intrnorm	symtab	1c5abbf32d0d		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	ad0c94b16a45		in	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b74	820	_baduk	symtab	ad0c94b16a45		in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ea8	184	ecommon	symtab	6208f2b74d23		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14ef8	104	ecommon_allsaved	symtab	0a92d5116a83		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f60	1308	_hook_exceptions	symtab	ddbe165da9d6		in	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f60	1308	_hook_exceptions	symtab	ddbe165da9d6		in	understood	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1547c	116	sw_cachesynch_patch	symtab	c05aa0dd66d1		out:3	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15500	12	utlbmiss_prolog_up	symtab	5f40a62a50cc		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15500	12	utlbmiss_prolog_up	symtab	5f40a62a50cc		out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1550c	116	eutlbmiss_prolog_up	symtab	5b517952cbe9		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15580	48	utlbmiss	symtab	121d77ecf940	shared-address	out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15580	48	utlbmiss	symtab	121d77ecf940	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15580	48	utlbmiss_not_large_page	symtab	121d77ecf940	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x155b0	80	eutlbmiss	symtab	5b6fb58e61fa		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x155b0	80	eutlbmiss	symtab	5b6fb58e61fa		out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15600	76	utlbmiss2	symtab	ad5a4f52914f	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15600	76	utlbmiss2_not_large_page	symtab	ad5a4f52914f	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1564c	104	eutlbmiss2	symtab	22242bd98488	shared-address	out:1	undocumented		
@@ -1775,13 +1775,13 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x156e0	44	utlbmiss1	sy
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1570c	44	eutlbmiss1	symtab	4e667e99af04	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1570c	44	utlbmiss3	symtab	4e667e99af04	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15738	8	eutlbmiss3	symtab	d4fa65ed74bc	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15738	8	utlbmiss_prolog_r4600	symtab	d4fa65ed74bc	shared-address	out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15738	8	utlbmiss_prolog_r4600	symtab	d4fa65ed74bc	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15740	52	eutlbmiss_prolog_r4600	symtab	3ad8044621a8	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15740	52	utlbmiss_r4600	symtab	3ad8044621a8	shared-address	out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15740	52	utlbmiss_r4600	symtab	3ad8044621a8	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15774	16	eutlbmiss_r4600	symtab	ab9b2bb1a8e8	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15774	16	utlbmiss_r4600_1	symtab	ab9b2bb1a8e8	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15784	80	eutlbmiss_r4600_1	symtab	b13d314d23f9	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15784	80	utlbmiss_r5000	symtab	b13d314d23f9	shared-address	out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15784	80	utlbmiss_r5000	symtab	b13d314d23f9	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x157d4	104	eutlbmiss_r5000	symtab	777569c522c6	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x157d4	104	utlbmiss2_r5000	symtab	777569c522c6	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1583c	76	eutlbmiss2_r5000	symtab	e3bddcf9754d	shared-address	out:1	undocumented		
@@ -1792,20 +1792,20 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158d0	16	utlbmiss1_r5
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158e0	16	eutlbmiss1_r5000	symtab	ab9b2bb1a8e8	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158e0	16	utlbmiss3_r5000	symtab	ab9b2bb1a8e8	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158f0	4	eutlbmiss3_r5000	symtab	02f57941ce27	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158f0	4	utlbmiss_prolog_patch	symtab	02f57941ce27	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158f4	32	utlbmissj	symtab	59e7addb5e06		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15914	16	_j_exceptnorm	symtab	9361df19a7db	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15914	16	_j_exceptnorm_nosymmon	symtab	9361df19a7db	shared-address	out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158f0	4	utlbmiss_prolog_patch	symtab	02f57941ce27	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x158f4	32	utlbmissj	symtab	59e7addb5e06		out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15914	16	_j_exceptnorm	symtab	9361df19a7db	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15914	16	_j_exceptnorm_nosymmon	symtab	9361df19a7db	shared-address	out:1	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15914	16	eutlbmissj	symtab	9361df19a7db	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15924	16	_exceptnorm_prolog	symtab	374708fff771	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15924	16	_j_endexceptnorm	symtab	374708fff771	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15924	16	_j_endexceptnorm_nosymmon	symtab	374708fff771	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15934	48	_ecc_errorvec	symtab	029756763faa	shared-address	out:16	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15934	48	_ecc_errorvec	symtab	029756763faa	shared-address	out:16	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15934	24	_endexceptnorm_prolog	symtab	ba1c3ba6bd47	shared-address	out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1594c	24	_ecc_end	symtab	ba1c3ba6bd47	shared-address	out:16	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1594c	24	_r10k_ecc_errorvec	symtab	ba1c3ba6bd47	shared-address	out:16	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1594c	24	_r10k_ecc_errorvec	symtab	ba1c3ba6bd47	shared-address	out:16	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	892	_r10k_ecc_end	symtab	17330d2fd81a	shared-address	out:16	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	96	is_in_pfdat	symtab	9914d4307cfb	shared-address	out:10	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15964	96	is_in_pfdat	symtab	9914d4307cfb	shared-address	out:10	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ce0	384	clean_icache	symtab	04bb19d8632e		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15e60	508	clean_dcache	symtab	b85fb8a42723		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1605c	104	__vm_dcache_inval	symtab	50c60352ae10		out:3	undocumented		

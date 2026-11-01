@@ -208,7 +208,7 @@ One row per register offset the shipped code reaches, from the disassembly under
   `ide.IP32` stores 0x400 (bit 10, soft reset) at 0xa00e47a8 and 0x800 (bit 11, cold reset) at 0xa00e47c4, each in a loop that repeats until the machine resets.
 - `+0x10` Interrupt Status: the read-only OR of the hardware and software interrupt registers (table 5-10). Established.
   `crimeFifoFullHandler` in `crime.o` shifts bit 26, the rendering-engine FIFO-full level, to the sign position to test it.
-  `add_ioboard` in `kernel.o` masks bit 31, the VICE line, to decide whether it registers a video-engine board through `add_to_inventory`.
+  `add_vice` in `kernel.o` masks bit 31, the VICE line, to decide whether it registers a video-engine board through `add_to_inventory`.
   `intr` in `kernel.o` reads it to find the pending sources.
   The routine at 0xa00c4ba8 in `ide.IP32` prints its low 16 bits, the MACE sources.
 - `+0x18` Interrupt Enable: the interrupt priority mask, written by IRIX as its only interrupt-level control. Established.
