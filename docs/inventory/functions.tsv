@@ -6517,8 +6517,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f320	56	__glCrmShadeMo
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93f360	2548	__glCrmRenderBitmap	dynsym+mdebug	caceec64cc8a		in	understood	docs/libglcore-o32.md#triangles-lines-and-bitmaps	Triangles, lines and bitmaps
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93fd54	524	__glCrmRenderFrontBackBitmap	dynsym+mdebug	ef3f263ee0ac		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd93ff60	600	__glCrmRenderLeftRightBitmap	dynsym+mdebug	c5b48149bd9c		in	understood	docs/libglcore-o32.md#triangle-and-bitmap-routines-of-the-o32-driver	Triangle and bitmap routines of the o32 driver
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	mdebug	e3624b9a5f36		in	located	docs/libglcore.md#crm_cic	`crm_ci.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	3b119cbde5f3		in	located	docs/libglcore.md#crm_cic	`crm_ci.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9401c0	156	StoreCI	mdebug	e3624b9a5f36		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94025c	244	StoreCI2	mdebug	3b119cbde5f3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940350	1180	ReadCISpan	mdebug	33a633c4ef60		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9407ec	60	ReadCI	mdebug	42f365b4b5fe		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd940828	1416	ClearCI	mdebug	b641ce7ea7b4		in	located	docs/libglcore.md#crm_cic	`crm_ci.c`
@@ -6552,7 +6552,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941ad8	72	__glcrmim_Fast
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941b20	40	__glCrmCalcAlphaColor	dynsym+mdebug	40421638a97a		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941b50	48	__glCrmIoctl	dynsym+mdebug	db9386fb22a9		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941b80	56	crmScanVice	mdebug	dfd65e2a4c76		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941bb8	244	GetBoardInfo	mdebug	f3efada69e17		in	located	docs/libglcore.md#crm_contextc	`crm_context.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941bb8	244	GetBoardInfo	mdebug	f3efada69e17		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd941c68	68	__glCrmAllocAccum	dynsym+mdebug	495a260f235e		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941cac	464	CheckViewport	mdebug	20e7d58a81ab		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd941e7c	272	FindWindowSize	mdebug	0805af301f56		in	undocumented		
@@ -6605,7 +6605,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd948c7c	1332	Fix_zbu
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd948fc4	132	__glCrmForceNonTagClear	dynsym+mdebug	d85c9b9a2b72		in	located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd949048	356	__glCrmInitDepth	dynsym+mdebug	e9f7417b5fa6		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9491b0	124	crmIglooSwaptmesh	mdebug	20a8116c3443		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94922c	240	crmIglooFullScreen	mdebug	8878c13d85b3		in	located	docs/libglcore.md#crm_iglooc	`crm_igloo.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94922c	240	crmIglooFullScreen	mdebug	8878c13d85b3		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9492e0	60	__glcrmim_n3f	dynsym+mdebug	5a9db71e29d8		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd94931c	88	crmIgloolmcolor	mdebug	c13f8b53f3e2		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd949374	80	crmIglooApplyColor	mdebug	667ecacaa912		in	undocumented		
@@ -6695,8 +6695,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95a958	1716	convert
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95aa70	832	__GL_CRM_SCALE_PIXEL_SPAN	dynsym+mdebug	9b201adf08fb		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95adb0	392	__glcrmim_2DPointVertex2fv	dynsym+mdebug	bc764cd0611a		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95af38	212	__glCrmVertexPointFast	dynsym+mdebug	b9cd08efa11e		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	f3b4e9868222		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	7f05794a59ae		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b00c	204	RenderPoint	mdebug	f3b4e9868222		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b0d8	128	RenderPointCI	mdebug	7f05794a59ae		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b158	668	RenderPointDepth	mdebug	3a5b53c44685		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b3f4	444	RenderPointFog	mdebug	037da31c1f10		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95b5b0	1832	RenderPointTextured	mdebug	b6c8a86b5502		in	located	docs/libglcore.md#crm_pointc	`crm_point.c`
@@ -6757,8 +6757,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966b94	452	__glCrmSpanRe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd966d60	1248	__glCrmFastRect	dynsym+mdebug	1de63b1344b4		in	understood	docs/libglcore-o32.md#triangle-and-bitmap-routines-of-the-o32-driver	Triangle and bitmap routines of the o32 driver
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967240	512	__glCrmFrontBackRect	dynsym+mdebug	471f97a34aae		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd967440	548	__glCrmLeftRightRect	dynsym+mdebug	b67222b98b66		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967670	216	StoreRGBA	mdebug	2b6872a066ce		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGBA2	mdebug	411f52acf184		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967670	216	StoreRGBA	mdebug	2b6872a066ce		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967748	304	StoreRGBA2	mdebug	411f52acf184		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967878	1340	ReturnRGBASpan	mdebug	eef9de2e160a		in	located	docs/libglcore.md#crm_rgbc	`crm_rgb.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd967db4	1140	ReadRGBASpan	mdebug	0261b187d7b5		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd968228	60	ReadRGBA	mdebug	c83b430af8c3		in	undocumented		
@@ -6804,8 +6804,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97059c	388	ResizeSt
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970634	224	__glCrmInitStencil	dynsym+mdebug	d23dea15af47		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970720	204	crmDoDepthStore	mdebug	adbde87a4c45		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9707ec	96	crmDoDoubleStore	mdebug	78cab9fcacd6		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97084c	160	crmDoDoubleStore_S	mdebug	46b61b6b309a		in	located	docs/libglcore.md#crm_storec	`crm_store.c`
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9708ec	384	crmDoDoubleStore_D	mdebug	be8729aa3113		in	located	docs/libglcore.md#crm_storec	`crm_store.c`
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd97084c	160	crmDoDoubleStore_S	mdebug	46b61b6b309a		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9708ec	384	crmDoDoubleStore_D	mdebug	be8729aa3113		in	understood	docs/libglcore-o32.md#point-store-and-buffer-selection-routines-of-the-o32-driver-second-backfill	Point, store and buffer-selection routines of the o32 driver (second backfill)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970a6c	660	crmDoDoubleStore_SD	mdebug	b0ac88b82c6f		in	located	docs/libglcore.md#crm_storec	`crm_store.c`
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd970c20	220	__glCrmGenericPickStoreProcs	dynsym+mdebug	b8dc54072343		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd970d00	376	__glCrmTexIoctl	mdebug	5afdee34dfe6		in	named-only	docs/ioctls.md#what-libglcore-sends	What libGLcore sends
