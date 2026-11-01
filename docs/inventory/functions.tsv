@@ -6709,8 +6709,8 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95cd28	1464	RenderL
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95cf2c	640	__glCrmPickPointProcs	dynsym+mdebug	d2e96b50f242		in	located	docs/libglcore.md#buffer-and-pixel-helpers-of-the-crime-driver-read-by-hand	Buffer and pixel helpers of the CRIME driver (read by hand)
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d1b0	136	__glCrmRenderPointRGBA	dynsym+mdebug	0d1189322ee9		in	understood	docs/libglcore-o32.md#small-state-and-flush-routines	Small state and flush routines
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd95d238	168	__glCrmRenderPointDepthRGBA	dynsym+mdebug	4668b0c53e5b		in	understood	docs/libglcore-o32.md#colour-point-and-vertex-routines	Colour, point and vertex routines
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLineEquation	mdebug	07472f1af46e	multi-unit	in	named-only		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	73753387a867	multi-unit	in	named-only		
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d2e0	300	FindLineEquation	mdebug	07472f1af46e	multi-unit	in	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d40c	212	FindPlaneEquation	mdebug	73753387a867	multi-unit	in	named-only	docs/sample-implementation.md#so_polyaac	so_polyaa.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d4e0	252	FindPlaneEquation2	mdebug	cbaa7672f060		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d5dc	40	FindP	mdebug	92489508a175	multi-unit	in	named-only		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd95d604	48	FindP2	mdebug	6bf844833ddf		in	undocumented		
@@ -8512,7 +8512,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eeae4	544	__glMultMatri
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9eed04	1424	__glInvertTransposeMatrix	dynsym+mdebug	a4881b35d6ac		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef294	52	__glFloorLog2	dynsym+mdebug	a5b9dd36eb97		in	understood	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef2d0	172	NewBlock	mdebug	f6bc4590527c		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef37c	1044	DeleteBlock	mdebug	36e07a88eb9c		in	named-only	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xd9ef37c	1044	DeleteBlock	mdebug	36e07a88eb9c		in	understood	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef3d4	168	__glNewArena	dynsym+mdebug	dbda2f9074ad		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef47c	136	__glDeleteArena	dynsym+mdebug	e580c711a7e6		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xd9ef504	196	__glArenaAlloc	dynsym+mdebug	b279954826dd		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
@@ -12637,7 +12637,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0ab0	240	__glMultMat
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0ba0	964	__glInvertTransposeMatrix	dwarf+dynsym	c2fb31d0fb3d		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f0f70	64	__glFloorLog2	dwarf+dynsym	d5ec2525de99		in	located	docs/sample-implementation.md#so_mathc	so_math.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f0fb0	164	NewBlock	dwarf+funcnames	5b16702154b1		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1060	60	DeleteBlock	dwarf+funcnames	f186f9ff0bc0		in	named-only	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xd9f1060	60	DeleteBlock	dwarf+funcnames	f186f9ff0bc0		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f10a0	188	__glNewArena	dwarf+dynsym	c898f544e5b4		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f1160	136	__glDeleteArena	dwarf+dynsym	0c969a0d6dd6		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xd9f11f0	208	__glArenaAlloc	dwarf+dynsym	67521813d004		in	located	docs/sample-implementation.md#so_memmgrc	so_memmgr.c
