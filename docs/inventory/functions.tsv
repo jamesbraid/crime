@@ -16329,7 +16329,7 @@ usr/lib/internal/libvice.so	board-library	o32		0xd001c94	228	vice_close	dynsym+m
 usr/lib/internal/libvice.so	board-library	o32		0xd001d78	132	vice_lock	dynsym+mdebug	c890393e97dc		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001dfc	196	vice_unlock	dynsym+mdebug	095c041d31e7		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001ec0	236	vice_piow	dynsym+mdebug	4351ca2e23eb		in	undocumented		
-usr/lib/internal/libvice.so	board-library	o32		0xd001fac	268	vice_pior	dynsym+mdebug	3f1d5e9e0b3e		in	undocumented		
+usr/lib/internal/libvice.so	board-library	o32		0xd001fac	268	vice_pior	dynsym+mdebug	3f1d5e9e0b3e		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/lib/internal/libvice.so	board-library	o32		0xd0020b8	140	vice_alloc	dynsym+mdebug	59fb78b33fb8		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd002144	184	vice_settlb	dynsym+mdebug	42f92af0187c		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/internal/libvice.so	board-library	o32		0xd0021fc	136	vice_updatetlb	dynsym+mdebug	98da0eda295d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -17069,7 +17069,7 @@ usr/lib32/internal/libvice.so	board-library	n32		0xd001c38	208	vice_close	dwarf+
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d08	136	vice_lock	dwarf+dynsym	a34443e5ca7d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001d90	196	vice_unlock	dwarf+dynsym	ff0ad3bdb583		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32		0xd001e54	196	vice_piow	dwarf+dynsym	bcb558f05e6c		in	undocumented		
-usr/lib32/internal/libvice.so	board-library	n32		0xd001f18	216	vice_pior	dwarf+dynsym	72e74940073d		in	undocumented		
+usr/lib32/internal/libvice.so	board-library	n32		0xd001f18	216	vice_pior	dwarf+dynsym	72e74940073d		in	named-only	docs/open-questions.md#video-driver-routines-not-yet-read-2026-10-31	Video driver routines not yet read (2026-10-31)
 usr/lib32/internal/libvice.so	board-library	n32		0xd001ff0	120	vice_alloc	dwarf+dynsym	17646119d1ed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002068	160	vice_settlb	dwarf+dynsym	31130d99430b		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/internal/libvice.so	board-library	n32		0xd002108	140	vice_updatetlb	dwarf+dynsym	b4a887c01862		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
