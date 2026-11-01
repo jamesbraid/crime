@@ -252,25 +252,62 @@ Notes on the table (established from the same reads). `640x480_60.vfo` is the on
 
 One entry per format file, in table order. Each gives the clock word at its offset and the table's output against it. Each ppm figure is the difference between the two divided by the clock word, as in the table above, so "above" and "below" name the clock word's side of the output. A script read all 26 files' sizes, clock words and 5-5-1 anchors at the table's offsets, and every file matched (established). The PLL words are in the table.
 
-- `usr/gfx/ucode/CRM/vof/640x480_60.vfo` (12416 bytes): the 640x480 format, the only one with a `VGA` string and no plain title string (established, `strings`). Its clock word 25174800 Hz at 0x1b70 is 6943.5 ppm above its 25.000 MHz output (established by arithmetic); the 60 Hz rate is from the name (inferred).
-- `usr/gfx/ucode/CRM/vof/800x600_60.vfo` (12424 bytes), title `800x600_60`: the 800x600 at 60 Hz. Clock word 40000304 Hz at 0x1b78. It is 7.6 ppm above the 40.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/800x600_72.vfo` (12424 bytes), title `800x600_72`: the 800x600 at 72 Hz. Clock word 50000296 Hz at 0x1b78. It is 5.9 ppm above the 50.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1024x768_60.vfo` (12424 bytes), title `1024x768_60`: the 1024x768 at 60 Hz. Clock word 65000173 Hz at 0x1b78. It is 2.7 ppm above the 65.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1024x768_60p.vfo` (12436 bytes), title `1024x768_60p@N`: the 1024x768_60 values, 12 bytes later, with clock word 65000173 Hz at 0x1b84. The `p` and `@N` parts of the title are not decoded.
-- `usr/gfx/ucode/CRM/vof/1024x768_70.vfo` (12424 bytes), title `1024x768_70`: the 1024x768 at 70 Hz. Clock word 74999615 Hz at 0x1b78. It is 5.1 ppm below the 75.000 MHz output (established).
+- `usr/gfx/ucode/CRM/vof/640x480_60.vfo` (12416 bytes): the 640x480 format, and the only file in the set with a VGA string (established, from the strings).
+  Its clock word is 25174800 Hz at 0x1b70.
+  The PLL scalars are M 5, N 1 and P 2 at 0x2bc, which give a 100.000 MHz VCO and a 25.000 MHz output (established by arithmetic).
+  That output sits 6943.5 ppm under the clock word (established by arithmetic).
+  The file has no title string, so the 60 Hz rate survives only in the file name (established, from the strings).
+  Option value None is at 0x168, and kernel built-in record 1 is this timing (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/800x600_60.vfo` (12424 bytes), title `800x600_60`: the 800x600 mode, titled for 60 Hz.
+  Its clock word, 40000304 Hz at 0x1b78, is 7.6 ppm over 40.000 MHz.
+  The PLL scalars M 8, N 1 and P 2 at 0x2c4 make a 160.000 MHz VCO, and dividing by four gives exactly 40.000 MHz (established by arithmetic).
+  The PLL therefore lands on nominal, and the excess sits in the clock word (established by arithmetic).
+  Option value None sits at 0x170, and the kernel's built-in table gives this timing id 2 (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/800x600_72.vfo` (12424 bytes), title `800x600_72`: the 800x600 mode, titled for 72 Hz.
+  Its clock word at 0x1b78 reads 50000296 Hz, which is 5.9 ppm above the output.
+  The PLL scalars M 5, N 1 and P 1 at 0x2c4 make a 100.000 MHz VCO, and halving it once gives the 50.000 MHz output (established by arithmetic).
+  Option value None sits at 0x170, and built-in id 3 is this timing's place in the kernel table (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/1024x768_60.vfo` (12424 bytes), title `1024x768_60`: the 1024x768 mode, titled for 60 Hz, with clock word 65000173 Hz at 0x1b78.
+  Its PLL scalars M 13, N 2 and P 1 at 0x2c4 run a 130.000 MHz VCO and halve it once to 65.000 MHz (established by arithmetic).
+  The clock word is therefore 2.7 ppm high against that output (established by arithmetic).
+  Option value None sits at 0x170, and the built-in table's entry for this mode is id 4 (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/1024x768_60p.vfo` (12436 bytes), title `1024x768_60p@N`: the 60 Hz timing of the base file, moved 12 bytes later.
+  Its clock word, 65000173 Hz, is at 0x1b84, and its PLL scalars M 13, N 2 and P 1 are at 0x2d0.
+  Those are the base file's values, each moved by the same 12 bytes (established by comparison with the base file).
+  Option value Presenter_1024 is at 0x170, and gbe.md's flags rule maps that name to 0x100 in the record word at 0x04 (established, from gbe.md).
+  The X module's loader checks option names against a fixed list that includes this one (inferred, from xmodule.md).
+- `usr/gfx/ucode/CRM/vof/1024x768_70.vfo` (12424 bytes), title `1024x768_70`: the 1024x768 mode, titled for 70 Hz.
+  Its clock word 74999615 Hz at 0x1b78 falls 5.1 ppm short of the 75.000 MHz output.
+  The PLL scalars M 15, N 2 and P 1 at 0x2c4 produce that output from a 150.000 MHz VCO (established by arithmetic).
+  Option value None at 0x170, and built-in record 5 of the kernel table matches it (established, from gbe.md).
 - `usr/gfx/ucode/CRM/vof/1024x768_75.vfo` (12424 bytes), title `1024x768_75`: the 1024x768 at 75 Hz. Clock word 78750438 Hz at 0x1b78, and the output is 78.000 MHz, 9529.3 ppm lower, about 0.95 percent (established). Which of the two the board uses is unknown.
 - `usr/gfx/ucode/CRM/vof/1024x768_96s.vfo` (12748 bytes), title `1024x768_96 Stereo Window`: a stereo format. Clock word 103502592 Hz at 0x1ba0, and the 103.333 MHz output is 1635.3 ppm lower (established). The stereo layout is in [gbe.md](gbe.md).
-- `usr/gfx/ucode/CRM/vof/1280x1024_48.vfo` (12424 bytes), title `1280x1024_48@H`: the 1280x1024 at 48 Hz. Clock word 85881600 Hz at 0x1b78. It is 1948.2 ppm above the 85.714 MHz output, which equals the VCO because P is 0 (established).
-- `usr/gfx/ucode/CRM/vof/1280x1024_50.vfo` (12424 bytes), title `1280x1024_50@I`: the 1280x1024 at 50 Hz. Clock word 89460000 Hz at 0x1b78. It is 6036.2 ppm below the 90.000 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1280x1024_60.vfo` (12424 bytes), title `1280x1024_60@M`: the 1280x1024 at 60 Hz. Clock word 107244648 Hz at 0x1b78. It is 5389.4 ppm above the 106.667 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/1280x1024_60p.vfo` (12440 bytes), title `1280x1024_60p`: the 1280x1024_60 values, 16 bytes later, with clock word 107244648 Hz at 0x1b88. Its extra leading words are not decoded.
+- `usr/gfx/ucode/CRM/vof/1280x1024_48.vfo` (12424 bytes), title `1280x1024_48@H`: the 1280x1024 mode, titled for 48 Hz.
+  Its clock word 85881600 Hz at 0x1b78 runs 1948.2 ppm above the output.
+  The PLL scalars M 30, N 7 and P 0 at 0x2c4 give an 85.714 MHz VCO, and a P of 0 means that VCO is the output (established by arithmetic).
+  Option value None at 0x170 leaves the flags at 0, and the kernel's built-in record 7 matches this timing (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/1280x1024_50.vfo` (12424 bytes), title `1280x1024_50@I`: the 1280x1024 mode, titled for 50 Hz.
+  Its clock word 89460000 Hz at 0x1b78 is 6036.2 ppm short of the 90.000 MHz output.
+  The PLL scalars M 9, N 1 and P 1 at 0x2c4 produce that output through a 180.000 MHz VCO (established by arithmetic).
+  Option value None at 0x170. The kernel's built-in table has record 8 for this mode with the same M, N and P, but its clock word is 89544 kHz, not 89460 kHz (established, from the table at 0x22e8 in crime_init.o).
+- `usr/gfx/ucode/CRM/vof/1280x1024_60.vfo` (12424 bytes), title `1280x1024_60@M`: the 1280x1024 mode, titled for 60 Hz.
+  PLL scalars M 16, N 3 and P 0 at 0x2c4 give 106.667 MHz, which is 320/3 MHz with no post-division (established by arithmetic).
+  The clock word 107244648 Hz at 0x1b78 sits 5389.4 ppm above that output.
+  Option value None at 0x170; built-in record 9 is this timing (established, from gbe.md).
+- `usr/gfx/ucode/CRM/vof/1280x1024_60p.vfo` (12440 bytes), title `1280x1024_60p`: the 1280x1024_60 values again, 16 bytes later.
+  The clock word is at 0x1b88 and the PLL scalars at 0x2d4, with M 16, N 3 and P 0 (established by comparison with the base file).
+  Option value Presenter_1280 is at 0x174, which gbe.md's flags rule maps to 0x200 (established, from gbe.md).
+  That name is one of the five option names the X module compares against (inferred, from xmodule.md).
 - `usr/gfx/ucode/CRM/vof/1280x1024_72.vfo` (12424 bytes), title `1280x1024_72@R`: the 1280x1024 at 72 Hz. Clock word 129467520 Hz at 0x1b78. It is 4112.8 ppm below the 130.000 MHz output (established).
 - `usr/gfx/ucode/CRM/vof/1280x1024_75.vfo` (12424 bytes), title `1280x1024_75@R`: the 1280x1024 at 75 Hz. Clock word 135000585 Hz at 0x1b78. It is 4.3 ppm above the 135.000 MHz output (established).
 - `usr/gfx/ucode/CRM/vof/1280x492_120s.vfo` (12740 bytes), title `1280x492_120 Stereo`: the second stereo format. Clock word 107143949 Hz at 0x1b98. It is 4454.6 ppm above the 106.667 MHz output (established).
 - `usr/gfx/ucode/CRM/vof/1600x1024_48p.vfo` (12440 bytes), title `1600x1024_48p`: no single-channel base in the set. Clock word 97219200 Hz at 0x1b88. It is 785.3 ppm above the 97.143 MHz output (established).
 - `usr/gfx/ucode/CRM/vof/1600x1024_50p.vfo` (12440 bytes), title `1600x1024_50p`: no single-channel base in the set. Clock word 101270000 Hz at 0x1b88, and the 100.000 MHz output is 12540.7 ppm lower, about 1.25 percent (established). Which of the two the board uses is unknown.
 - `usr/gfx/ucode/CRM/vof/1600x1024_60p.vfo` (12440 bytes), title `1600x1024_60p`: no single-channel base in the set. Clock word 108732000 Hz at 0x1b88. It is 1476.8 ppm above the 108.571 MHz output (established).
-- `usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo` (12440 bytes), title `1024x768_60 Dual Channel@N`: the dual-channel 1024x768 at 60 Hz. Clock word 65000173 Hz at 0x1b88, the base file's value 16 bytes later (established). The `@N` suffix is not decoded.
+- `usr/gfx/ucode/CRM/vof/2@1024x768_60.vfo` (12440 bytes), title `1024x768_60 Dual Channel@N`: the dual-channel 1024x768 timing.
+  Its clock word, 65000173 Hz at 0x1b88, sits 2.7 ppm above the 65.000 MHz output.
+  Its PLL scalars M 13, N 2 and P 1 at 0x2d4 are the same values as the single-channel file's (established by comparison).
+  The option value O2_DCD at 0x17c is the name that gbe.md maps to flags 0x800 (established, from gbe.md).
 - `usr/gfx/ucode/CRM/vof/2@1024x768_70.vfo` (12440 bytes), title `1024x768_70 Dual Channel@Q`: the dual-channel 1024x768 at 70 Hz. Clock word 74999615 Hz at 0x1b88, the base file's value (established).
 - `usr/gfx/ucode/CRM/vof/2@1024x768_75.vfo` (12440 bytes), title `1024x768_75 Dual Channel@R`: the dual-channel 1024x768 at 75 Hz. Clock word 78750438 Hz at 0x1b88, with the same 9529.3 ppm gap to its output as the base file (established).
 - `usr/gfx/ucode/CRM/vof/2@1280x1024_48.vfo` (12444 bytes), title `1280x1024_48 Dual Channel`: the dual-channel 1280x1024 at 48 Hz. Clock word 85881600 Hz at 0x1b8c, the base file's value 20 bytes later (established).
