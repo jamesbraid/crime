@@ -89,16 +89,16 @@ Each lead in [published-sources.md, section 14](published-sources.md#14-recollec
 - glReadPixels from a pbuffer costs about the same as from the visible framebuffer, and 24-bit access is slow: the readback lead. Triage: hardware only. Step: timing claims; the readback path is known from the pixel-transfer chapter, but no rate is.
 - STR_RECT and STR_TOP pass only in the 16 and 32 framebuffers; quad-buffer stereo passes only in 16+16 and 32+32: the str_rect lead. Triage: software now. Step: read the stereo-form gating by framebuffer depth in setmon or the X module's visual flags, using the same decode as the GLX tables.
 - 16+16 is the default, xscreen 32+32 takes a few MB, and the kernel is 32-bit only: the 16+16 default lead. Triage: software now. Step: read the initial value of the board byte at +0x2b in the kernel's crime init, which sets the double-buffer state; the 32-bit default is already settled.
-- Each framebuffer mode lists the visuals the post gives (32 and 32+32 double-buffered and stereo, 16 and 16+16 without them): the framebuffer depth lead.
-- `findvis` lists the same visuals in the 16, 32, 16+16 and 32+32 configurations as the 1998 post: the CRM visual list lead.
-- The VICE "TRE" and "DX" hinv strings follow the revision, and the two silicon revisions differ in behaviour: the VICE DX and TRE lead.
-- `GLX_LARGEST_PBUFFER_SGIX` gives 1280x1024 on O2 and a 2048x2048 pbuffer fails on Octane with BadAlloc: the pbuffer size lead.
-- `VL_MVP_ZOOMSIZE` refuses scale-up, and live video as texture runs at 45 fps for a 1024x512 texture: the MVP zoom lead.
-- The MVP 10-bit packings carry no data in the low bits, and dmIC rejects a 10-bit source: the 10-bit packing lead.
-- A constant-bit-rate MJPEG capture drops no frames in ICE, and IRIX 6.5.16 and later drop frames on capture: the ICE JPEG capture lead.
-- A cached DMA ring breaks the MACE audio driver and an uncached one works: the MACE audio DMA lead.
-- R12000 has a bit that disables speculative writes, and R10000 reads through speculation: the R10000 speculation lead.
-- The CRIME ID register reads "a" revision 1, and the four 128 MiB banks decode to 0x0, 0x08000000, 0x50000000 and 0x58000000: the CRIME bank map lead.
+- Each framebuffer mode lists the visuals the post gives (32 and 32+32 double-buffered and stereo, 16 and 16+16 without them): the framebuffer depth lead. Triage: software now. Step: decode the GLX capability tables for the double-buffer and stereo flags per configuration, as in the stereo item.
+- `findvis` lists the same visuals in the 16, 32, 16+16 and 32+32 configurations as the 1998 post: the CRM visual list lead. Triage: missing release or binary. Step: findvis is not in the 6.5.30 set; find it in another release or source, or use the X module's visual tables already in the X module chapter.
+- The VICE "TRE" and "DX" hinv strings follow the revision, and the two silicon revisions differ in behaviour: the VICE DX and TRE lead. Triage: hardware only. Step: the pairing and the behaviour difference need silicon or published captures; the strings are settled.
+- `GLX_LARGEST_PBUFFER_SGIX` gives 1280x1024 on O2 and a 2048x2048 pbuffer fails on Octane with BadAlloc: the pbuffer size lead. Triage: software now. Step: read the largest-pbuffer computation in the X module and glx.so; the Octane half belongs to another family and is out of scope here.
+- `VL_MVP_ZOOMSIZE` refuses scale-up, and live video as texture runs at 45 fps for a 1024x512 texture: the MVP zoom lead. Triage: software now. Step: read the VL_MVP_ZOOMSIZE handler in mvp.so for its scale limit; the 45 fps figure is a timing claim.
+- The MVP 10-bit packings carry no data in the low bits, and dmIC rejects a 10-bit source: the 10-bit packing lead. Triage: software now. Step: read the DM_IMAGE_PACKING_CbYCrY_10_in_16_L converter in mvp.so and the 10-bit source check in the media library.
+- A constant-bit-rate MJPEG capture drops no frames in ICE, and IRIX 6.5.16 and later drop frames on capture: the ICE JPEG capture lead. Triage: missing release or binary. Step: the 6.5.16 drop claim needs that release, which is not in the set; the rate claim needs a JPEG microcode run, which needs the chip or a model.
+- A cached DMA ring breaks the MACE audio driver and an uncached one works: the MACE audio DMA lead. Triage: software now.
+- R12000 has a bit that disables speculative writes, and R10000 reads through speculation: the R10000 speculation lead. Triage: software now.
+- The CRIME ID register reads "a" revision 1, and the four 128 MiB banks decode to 0x0, 0x08000000, 0x50000000 and 0x58000000: the CRIME bank map lead. Triage: settled by existing result. Step: the decode matches the identity layout in the Linux driver and the memory map; confirm and drop the line.
 - `/proc/interrupts` on a Linux guest shows IRQ 28 and 29 for CRIME and 11 to 22 for MACE: the interrupt numbering lead.
 - CRIME error status latched during PROM execution reads as new until the kernel clears it: the CRIME error latch lead.
 - The DMbuffer frame buffer layout is non-linear and chunked, and a pbuffer DMbuffer needs glFinish before a CPU map: the DMbuffer layout lead.
