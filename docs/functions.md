@@ -1543,6 +1543,48 @@ Routines of the video kernel driver that touch MACE video or GBE capture registe
   For a path of type 2 it updates the GBE capture words through the pointer at record `+204`: `VC_0` from the word at `+3048`, `VC_1` from `+3052` and `VC_2` from `+3056` with its bit 0 kept from the shadow at `+800`. For type 0, the output channel, it uses the pointer at `+200` and the output shadows at `+600`: `+0x28` from `+3056`, `+0x30` from `+3064` and `+0x38` from `+3072` (the pair skipped in mode 1), `+0x40` from `+3064` and `+0x48` from `+3080` (mode 1 and 2 only), then `+0x10`, rebuilt from `+3048` with the port, notch and genlock fields taken from the settings record at `+88`. Mode 2 on the output zeroes `+0x20` with its shadow, calls `mvpavio_select_output` with 1 and `mvpavio_change_timing` with 10, and ends with the same genlock calls as the two routines above.
 
 
+# Kernel routines, one entry each (`mvp.o`, video input and output selection)
+
+Routines of the video driver's `mvpavio_*` layer, which chooses the video source, genlock and output and hands the work to the chip driver of the attached video-port chip. Read from the 6.5.30 object. Five of them turn a driver argument string into a number; the other six forward a call to the chip driver. None of them touches a MACE register itself. Callee and variable names come from the object's relocations.
+
+- `mvpavio_preset_status` in `mvp.o`: reports whether the firmware says the video hardware is already set up, a 172-byte routine at offset 0x5e30. Established.
+  It tests with `is_specified` whether the string `arg_videostatus` was given; when it was not it returns -1. Otherwise it reports the argument through `mvperrprintf` and compares it, ignoring case (`strcasecmp`), with `inited` and `initialized`; either returns 1, anything else -1. `mvpreg_init` skips its register defaults when the result is not -1.
+- `mvpavio_preset_timing` in `mvp.o`: turns the video-timing argument into a standard number, a 204-byte routine at offset 0x5edc. Established.
+  An absent `arg_videotiming` gives -1; `ntsc` gives 2 and `pal` gives 3 (compared without case); any other text is reported through `cmn_err` at level 6 as an unknown video-timing argument and gives -1.
+- `mvpavio_preset_input` in `mvp.o`: turns the video-input argument into an input index, a 324-byte routine at offset 0x5fa8. Established.
+  An absent `arg_videoinput` gives -1. The text, compared without case, maps to `camera` 1, `composite` 2, `svideo` 3, `digital` 4, `primary` 5, `secondary` 6 and `loopback` 7; anything else is reported through `cmn_err` at level 6 and gives -1. The numbers are the indexes that `mvpreg_setpassthru` switches on through the byte at controller `+97`, so camera is port CD, composite and svideo are port AB, digital and secondary are port CD, primary is port AB and loopback has no genlock source.
+- `mvpavio_preset_output` in `mvp.o`: turns the video-output argument into an output mode, a 228-byte routine at offset 0x60ec. Established.
+  An absent `arg_videooutput` gives -1; `black` gives 0, `image` 1 and `colorbars` 2; any other text is reported through `cmn_err` at level 6 and gives -1. `mvpreg_setpassthru` takes 1 to mean "pass the input through" and the other two to mean the generated YUV stream.
+- `mvpavio_preset_genlock` in `mvp.o`: turns the genlock argument into the two-bit genlock source, a 300-byte routine at offset 0x61d0. Established.
+  An absent `arg_videogenlock` gives -1. `internal` gives 0, `external` 1, `analog` 2, `digital` 3, `primary` 2 and `secondary` 3; anything else is reported through `cmn_err` at level 6 and gives -1. The numbers are the values of the genlock source field of the output configuration (bits 7:6): none, external sync, port AB and port CD.
+- `mvpavio_setup` in `mvp.o`: forwards the set-up request to the chip driver, a 56-byte routine at offset 0x5a58. Established.
+  It returns -1 when its second argument is zero; otherwise it reads that object's word at `+20`, takes the first word of the table that points to and calls it with its own arguments unchanged.
+- `mvpavio_select_input` in `mvp.o`: forwards an input selection to the chip driver, a 60-byte routine at offset 0x5a90. Established.
+  It reads the object at controller `+20`; with none it returns -1. Otherwise it takes the table at that object's `+20` and calls its second word with the object as first argument and the others unchanged, returning the result.
+- `mvpavio_select_output` in `mvp.o`: forwards an output selection to the chip driver, a 60-byte routine at offset 0x5b08. Established.
+  The same as `mvpavio_select_input` but through the third word of the table, with -1 when there is no object.
+- `mvpavio_select_genlock` in `mvp.o`: forwards a genlock selection to the chip driver, a 60-byte routine at offset 0x5acc. Established.
+  The same through the fourth word of the table, with -1 when there is no object.
+- `mvpavio_sense_timing` in `mvp.o`: asks the chip driver which timing the incoming signal has, a 60-byte routine at offset 0x5b44. Established.
+  The same through the fifth word of the table; with no object it returns 0.
+- `mvpavio_change_timing` in `mvp.o`: tells the chip driver the timing changed, a 60-byte routine at offset 0x5b80. Established.
+  The same through the sixth word of the table, with -1 when there is no object.
+
+
+# Kernel routines, one entry each (`mvp.o`, video interrupts)
+
+The video driver takes the three MACE video interrupts through CRIME inputs 0, 1 and 2 (video input 1, video input 2 and video output) and calls a registered routine per channel. It reads CRIME's interrupt status through a pointer held in its data section: the word at data `+0xa20` is `0xb4000000`, the KSEG1 address of the CRIME registers. Read from the 6.5.30 object; offsets are bytes, and the controller record is the one in [mace-video.md](mace-video.md#driver-access).
+
+- `mvpinterrupt` in `mvp.o`: the CRIME vector handler of the three video channels, a 556-byte routine at offset 0x9600. Established.
+  Its second argument is the vector number it was registered with. It takes the driver mutex and loops: it reads the doubleword at CRIME `+0x10` (the interrupt status) at `0x96a0`, keeps bits 2:0 and leaves the loop when they are zero. For each set bit, in the order bit 2 (video output), bit 0 (video input 1) and bit 1 (video input 2), it calls the routine registered for that channel, whose word is at controller `+176 + 4n` with its argument from `+160 + 4n` and the channel number as the second argument. A channel with no routine registered is silenced with `mvpinterrupt_clear`. After each pass the status is read again. It adds the number of interrupts handled to a running total and, when the channel whose vector fired was not among those handled, adds one to that channel's counter in `mvptransfer_stats` (or to a global counter when the vector number is outside 0 to 3).
+- `mvpinterrupt_setup` in `mvp.o`: registers or removes the routine of one video channel, a 248-byte routine at offset 0x982c. Established.
+  The arguments are the routine's argument, the channel (0 to 3), an enable flag and the routine. Under `splhi` it stores the argument at controller `+160 + 4n` and the routine at `+176 + 4n` when enabled; when disabled it clears the argument word only if it still holds the same argument. For channel 3 it also passes the routine and argument to `crime_retrace_callback` (with zeros when disabled), which is how the driver hooks the display retrace. It returns 0.
+- `mvpinterrupt_init` in `mvp.o`: installs the video interrupt handler, a 240-byte routine at offset 0x9924. Established.
+  It initialises the driver mutex and, for CRIME inputs 0, 1 and 2, clears the channel's registered routine with `mvpinterrupt_setup`, installs `mvpinterrupt` for the input with `setcrimevector`, and reads the CRIME doubleword at `+0x18` (the interrupt mask) at the loop's branch delay slot, discarding the value. It clears the nesting count.
+- `mvpinterrupt_unload` in `mvp.o`: removes the video interrupt handler, a 184-byte routine at offset 0x9a14. Established.
+  For CRIME inputs 0, 1 and 2 it calls `unsetcrimevector` with `mvpinterrupt`, reads the CRIME doubleword at `+0x18` in the loop's delay slot with the value discarded, destroys the driver mutex and clears the nesting count.
+
+
 # Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 
 - `ust_init` in `kernel.o`: sets the constants that convert the unadjusted system time, a 36-byte routine at offset 0x418c. Inferred.
