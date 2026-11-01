@@ -8907,7 +8907,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32	.text	0xda1d588	13852	InitTe
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1d78c	872	__glInitTextureState	dynsym+mdebug	c09d7c2b025f		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1daf4	444	__glFreeTextureState	dynsym+mdebug	ebcc377053b5		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1dcb0	636	__glim_TexGenfv	dynsym+mdebug	13bc3c4ef0e3		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1df2c	96	__glim_TexGenf	dynsym+mdebug	4e590405a934		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1df2c	96	__glim_TexGenf	dynsym+mdebug	4e590405a934		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1df8c	668	__glim_TexGendv	dynsym+mdebug	366d6b82b333		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1e228	100	__glim_TexGend	dynsym+mdebug	632db85b0de7		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1e28c	668	__glim_TexGeniv	dynsym+mdebug	b581fbc7b2cc		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -8922,10 +8922,10 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f134	188	__glim_TexPar
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f1f0	332	__glTexParameterfv_size	dynsym+mdebug	39b4703eb911		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f33c	48	__glTexParameteriv_size	dynsym+mdebug	c2a7bbfaee85		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f36c	364	__glim_TexEnvfv	dynsym+mdebug	33862ce2635c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f4d8	96	__glim_TexEnvf	dynsym+mdebug	402cd68aabf1		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f4d8	96	__glim_TexEnvf	dynsym+mdebug	402cd68aabf1		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f538	312	__glim_TexEnviv	dynsym+mdebug	8fe89e464102		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f670	96	__glim_TexEnvi	dynsym+mdebug	5c0cd870a941		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f6d0	52	__glTexEnvfv_size	dynsym+mdebug	c7cb0e58e059		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f6d0	52	__glTexEnvfv_size	dynsym+mdebug	c7cb0e58e059		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f704	48	__glTexEnviv_size	dynsym+mdebug	ef506e27ccea		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f734	152	__glim_TextureColorMaskSGIS	dynsym+mdebug	aca33bfadee4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda1f7cc	112	__glExtractTexelL	dynsym+mdebug	f3770882eef1		in	undocumented		
@@ -9085,7 +9085,7 @@ usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30244	424	__glim_TexSub
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda303ec	416	__gllei_TexSubImage3DEXT	dynsym+mdebug	0ea5912c0b1f		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3058c	12	__glEmptyFreeTexObj	dynsym+mdebug	691e766163b1		in	undocumented		
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30598	208	__glFreeTexObj	dynsym+mdebug	5c857ac686be		in	undocumented		
-usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30668	76	__glDisposeTexObj	dynsym+mdebug	736195c93f8d		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda30668	76	__glDisposeTexObj	dynsym+mdebug	736195c93f8d		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda306b4	168	__glim_GenTexturesEXT	dynsym+mdebug	7b0acfb719db		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda3075c	592	__glim_DeleteTexturesEXT	dynsym+mdebug	625fbcf305ad		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM/libGLcore.so	board-library	o32		0xda309ac	576	__glBindTexture	dynsym+mdebug	83e58aeeb200		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13032,7 +13032,7 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32	.text	0xda1e890	472	InitTe
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1ea70	1328	__glInitTextureState	dwarf+dynsym	ea093878bdce		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1efa0	436	__glFreeTextureState	dwarf+dynsym	9a3ebd6b3937		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f160	528	__glim_TexGenfv	dwarf+dynsym	0e86d6c9ff26		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f370	84	__glim_TexGenf	dwarf+dynsym	0b6d6fb622f4		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f370	84	__glim_TexGenf	dwarf+dynsym	0b6d6fb622f4		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f3d0	560	__glim_TexGendv	dwarf+dynsym	f6a4b476a9e5		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f600	84	__glim_TexGend	dwarf+dynsym	01c43a1b6473		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda1f660	580	__glim_TexGeniv	dwarf+dynsym	905683f8c53c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
@@ -13047,10 +13047,10 @@ usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20560	264	__glim_TexP
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20670	480	__glTexParameterfv_size	dwarf+dynsym	e6d751b7022a		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20850	52	__glTexParameteriv_size	dwarf+dynsym	82d8afff9266		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20890	328	__glim_TexEnvfv	dwarf+dynsym	6259348b349c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda209e0	84	__glim_TexEnvf	dwarf+dynsym	f8c549b763ca		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda209e0	84	__glim_TexEnvf	dwarf+dynsym	f8c549b763ca		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20a40	316	__glim_TexEnviv	dwarf+dynsym	23d97a431c6c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20b80	84	__glim_TexEnvi	dwarf+dynsym	0b2d465bd1d4		in	understood	docs/sample-implementation.md#so_texturec	so_texture.c
-usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20be0	44	__glTexEnvfv_size	dwarf+dynsym	9d52cc8de8c7		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
+usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20be0	44	__glTexEnvfv_size	dwarf+dynsym	9d52cc8de8c7		in	named-only	docs/glcore-immediate-entry-points.md#n32-build	N32 build
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20c10	52	__glTexEnviv_size	dwarf+dynsym	a6a99eb21a8c		in	located	docs/sample-implementation.md#so_texturec	so_texture.c
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20c50	120	__glim_TextureColorMaskSGIS	dwarf+dynsym	5cad327804dd		in	named-only	docs/gl-entry-points.md#routines-the-stubs-reach	Routines the stubs reach
 usr/gfx/arch/IP32CRM32/libGLcore.so	board-library	n32		0xda20cd0	92	__glExtractTexelL	dwarf+dynsym	30c1958b0824		in	undocumented		
