@@ -177,6 +177,48 @@ The word at `.data` +0 of `mvp.o` is `0xbf340000`, the KSEG1 address of the MACE
 - `+0x0` (`MACETIMER`, universal system time): established (`mvp.o`, `mvptransfer_getustmsc` at `0x1884`, call at `0x19c8`). It is the fall-back read of the routine's channel-3 path when `crime_getustmsc` fails: one doubleword read, whose low word and the high word one greater than the stored word at `+84` of the controller table entry go through the same wrap handling as a channel snapshot. Register name from [mace] PDF 148, table 75; the use as a fall-back is read from the instructions.
 - `+0x38`, `+0x40` and `+0x48` (`MACETIMER`, video input 1, video input 2 and video output snapshots): established (`mvptransfer_getustmsc`, call at `0x18cc`). The address is the timer base plus 8 times the channel number (the byte at transfer record `+1132`, 0 to 2) plus 56, a doubleword read whose high word the routine takes as the time stamp and whose low word it takes as the field count, as the table of [mace] PDF 148 lists the snapshot pair at those offsets (UST at the first word, MSC at the second). The inventory counts these sites as unresolved because the offset depends on the channel.
 
+### Register field table of the user-space library
+
+Established (`mvpreg_trace_fields`, N32 `usr/lib32/dmedia/video/mvp.so`, [functions.md](functions.md)): the library carries a table at `0x41f4e0` of 34 register names, each with a list of named bit fields (name, shift and width). The routine that prints a traced register value breaks it up with this table. Field positions are bit numbers of the doubleword value, written `high:low`; a single number is one bit. Where a name is listed twice (the odd and even copies) the layout is the same. The names are the library's own; that they describe the MACE video registers is inferred from the names, from the register names (`iconfig`, `oconfig`, `vhw_cfg`, `i2c_config`) and from the agreements below.
+
+  - `control`: Enable CRIME Memory Error interrupt 8, Enable FIFO Underflow/Overflow interrupt 7, Enable Vertical Overflow interrupt 6, Enable Horizontal Overflow interrupt 5, Enable Buffer Field Overflow interrupt 4, Enable Lost Sync interrupt 3, Enable DMA complete interrupt 2, Enable Vertical Sync interrupt 1, Enable DMA 0
+  - `status`: Sync Present status 10, GPI interrupt 9, CRIME Memory Error interrupt 8, FIFO Underflow/Overflow interrupt 7, Vertical Overflow interrupt 6, Horizontal Overflow interrupt 5, Buffer Field Overflow interrupt 4, Lost Sync interrupt 3, DMA complete interrupt 2, Vertical Sync interrupt 1, DMA active status 0
+  - `ostatus`: CRIME Memory Error interrupt 8, FIFO Underflow/Overflow interrupt 7, Vertical Overflow interrupt 6, Horizontal Overflow interrupt 5, Buffer Field Overflow interrupt 4, Lost Sync interrupt 3, DMA complete interrupt 2, Vertical Sync interrupt 1, DMA active status 0
+  - `iconfig`: interleaved 16, mem_mode 15:14, dither 13, format 12:10, sof_count 9:6, ecc 5, precision 4, vin_source 3:2, d1_enable 1, channel_enable 0
+  - `oconfig`: mem_mode 22:21, interleaved 20, clamp 19:18, notch_filter 17, format 16:14, genlock_sof_count_even 25:22, sof_count_odd 13:10, ecc 9, precision 8, source 7:6, enable 5, port_f_source 4:3, port_e_source 2:1, channel_enable 0
+  - `next_desc`: valid 2, capture 1:0
+  - `field_offset`: offset 15:0
+  - `line_width`: width 11:0
+  - `field_size`: lines 21:12, width 11:0
+  - `alpha_odd`: alpha 7:0
+  - `alpha_even`: alpha 7:0
+  - `h_clip_odd`: scaling_on 38, scaling_ratio 37:30, filter_mode 40:39, filter_count 29:20, start 9:0, end 19:10
+  - `h_clip_even`: scaling_on 38, scaling_ratio 37:30, filter_mode 40:39, filter_count 29:20, start 9:0, end 19:10
+  - `v_clip_odd`: scaling_on 38, scaling_ratio 37:30, start 9:0, blkend 19:10, end 29:20
+  - `v_clip_even`: scaling_on 38, scaling_ratio 37:30, start 9:0, blkend 19:10, end 29:20
+  - `h_pad_odd`: filter_mode 41:40, filter_count 39:30, eav_sav 9:0, eav_image 29:20, eav_eav 19:10
+  - `h_pad_even`: filter_mode 41:40, filter_count 39:30, eav_sav 9:0, eav_image 29:20, eav_eav 19:10
+  - `v_pad_odd`: sof_end_vblank 9:0, sof_start_image 39:30, sof_start_vblank 19:10, sof_eof 29:20
+  - `v_pad_even`: sof_end_vblank 9:0, sof_start_image 39:30, sof_start_vblank 19:10, sof_eof 29:20
+  - `vhw_cfg`: revision 35:32, AB_port 1, AB_enable 0, CD_port 3, CD_enable 2, GPI_output 18, GBE_framelock_sof_count_even 22:19, sof_count_odd 17:14, ecc 13, precision 12, source 11:10, enable 9, AUDIO_sync_ecc 8, precision 7, source 6:5, enable 4
+  - `i2c_config`: clock_input 5, clock_override 3, fast_mode 1, data_input 4, data_override 2, reset 0
+  - `i2c_control`: bus_error 7, ack_not_recvd 5, transfer_busy 4, hold_bus 2, read_data 1, not_idle 0
+  - `hwintstat`: vout_int 2, vin2_int 1, vin1_int 0
+  - `intstat`: vout_int 2, vin2_int 1, vin1_int 0
+  - `intmask`: enable vout_int 2, enable vin2_int 1, enable vin1_int 0
+  - `vc_0`: left 11:0, right 23:12
+  - `vc_1`: top 11:0, bottom 23:12
+  - `vc_2`: dmavideo 0, flick 1, autofield 2, fullscreen 3, cscbypass 4
+  - `vc_3`: field 0, enable_dmadesc 1, field_corrupt 2, end_of_field 3, odd_even 4, descr_ptr 21:5
+  - `vc_4`: tile 1 31:16, tile 2 15:0
+  - `vc_5`: tile 3 31:16, tile 4 15:0
+  - `vc_6`: tile 5 31:16, tile 6 15:0
+  - `vc_7`: tile 7 31:16, tile 8 15:0
+  - `vc_8`: tile 9 31:16, tile 10 15:0
+
+Established agreement with the specification entries above and with the driver: `vhw_cfg` has the chip revision at bits 35:32 (as `mvpprobe` reads it) and the general-purpose output at bit 18; `field_size` has the line count at bits 21:12 and the width in the low 12 bits; `oconfig` has the genlock source at bits 7:6 and the reset-release bit at bit 5 (as `mvpreg_setpassthru` writes them); and `mvpreg_initmace`'s output default words `0x980e35` and `0x980a35` give the odd count 3 at bits 13:10 and the even count 2 at bits 25:22, as the table lays them out.
+Inferred: the table gives the output `mem_mode` two bits (22:21), which overlap bit 22 of `genlock_sof_count_even`; the output channel has only linear and tiled memory modes, so the library probably reuses the two-bit input field, and the overlap is a quirk of the library's table, not a second register field. Unknown: no code read here tests that bit.
+
 ## Agreement and conflicts with what this repository already holds
 
 - Agreement: the window addresses and sizes in the inventory configuration match [mace] table 4 once the base is `0x1f000000` (above). The video interrupt inputs match [spec] table 5-5.

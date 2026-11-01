@@ -16098,10 +16098,10 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403280	36	mvpRead	dynsym+
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodeProtoById	mdebug	d7747da40716		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	a9b8910fe4bb		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	0cb6fb34f32e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	d5a5f3443196		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	8620755f6e6a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16113,9 +16113,9 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4041f0	124	mvpRemoveNode	
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40426c	52	mvpGetConnection	dynsym+mdebug	6d16046598cf		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4042a0	52	mvpSetConnection	dynsym+mdebug	57687a5f8d1b		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4042d4	300	mvpGetDefaultNumber	dynsym+mdebug	05cd5c03b2c7		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x404fc8	1216	_mvpRealizeNode	mdebug	aaad66a28578		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40512c	572	mvpSetupPaths	dynsym+mdebug	3da14abf60f3		in	undocumented		
@@ -16137,7 +16137,7 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406b90	188	mvpSetFie
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406d34	100	mvpGetCFI	mdebug	25c2a72a7696		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x406d98	1804	mvpSetTiming	mdebug	055cbf66aebd		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4070a4	808	mvpSetScale	dynsym+mdebug	819a28f47b2f		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x4074a4	2900	mvpSendPathEvent	mdebug	b6a5f2ab39a3		in	undocumented		
@@ -16185,16 +16185,16 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40e8a0	628	mvpFromVLEvent
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40eb14	2524	mvptovlreason	mdebug	e4dabb630190		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40ed58	312	mvpSetEventMask	dynsym+mdebug	1c0a21ceb745		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40ee90	1632	mvpTranslateEvent	dynsym+mdebug	4fd864665a8f		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40f4f0	132	myprint_leader	mdebug	b0ad205248ec		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40f574	1516	mvpreg_trace_fields	mdebug	f786c2230a23		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40f9d4	200	mvpreg_trace	dynsym+mdebug	229463ace576		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40fa9c	196	mvpreg_gbetrace	dynsym+mdebug	cf69c8c11437		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40fb60	9988	mvpCalcMitch	mdebug	9fe661a7d737		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40f4f0	132	myprint_leader	mdebug	b0ad205248ec		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40f574	1516	mvpreg_trace_fields	mdebug	f786c2230a23		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40f9d4	200	mvpreg_trace	dynsym+mdebug	229463ace576		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40fa9c	196	mvpreg_gbetrace	dynsym+mdebug	cf69c8c11437		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x40fb60	9988	mvpCalcMitch	mdebug	9fe661a7d737		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x40fdd4	7740	mvpUpdateRegs	dynsym+mdebug	eace3e6ca6be		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411c10	136	mvpGetUSTPerMSC	dynsym+mdebug	8dd9d0c6c048		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411c98	456	mvpGetFrontierMSC	dynsym+mdebug	bd13a9d41c88		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411e60	396	mvpGetUSTMSCPair	dynsym+mdebug	f5182bdec0dc		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411fec	52	mvpGetPathDelay	dynsym+mdebug	e2d5e135e94d		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411c10	136	mvpGetUSTPerMSC	dynsym+mdebug	8dd9d0c6c048		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411c98	456	mvpGetFrontierMSC	dynsym+mdebug	bd13a9d41c88		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411e60	396	mvpGetUSTMSCPair	dynsym+mdebug	f5182bdec0dc		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x411fec	52	mvpGetPathDelay	dynsym+mdebug	e2d5e135e94d		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x412020	348	mvpFromVLValue	dynsym+mdebug	2c3c00157494		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x41217c	232	mvpToVLValue	dynsym+mdebug	6fa8b4defcda		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x412264	116	mvpgeti2ccontrolindex	mdebug	39196ddeda5b		in	undocumented		
@@ -16205,17 +16205,17 @@ usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x412a3c	1116	mvpvalue
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32	.text	0x412e98	2072	mvpothercontrol	mdebug	d154a4aed53d		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x412f5c	540	mvpGetVideoPortControl	dynsym+mdebug	ad18dfb581ac		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x413178	396	mvpSetVideoPortControl	dynsym+mdebug	25594387d170		in	undocumented		
-usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x413304	448	mvpSendI2CData	dynsym+mdebug	e12e0c477cda		in	undocumented		
+usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x413304	448	mvpSendI2CData	dynsym+mdebug	e12e0c477cda		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x4134c4	104	mvpSendI2C	dynsym+mdebug	11e8d96b277a		in	undocumented		
 usr/lib/dmedia/video/debug/mvp.so	board-library	o32		0x41352c	388	mvpGetI2CData	dynsym+mdebug	18df0bb29762		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403280	36	mvpRead	dynsym+mdebug	933af9714d66		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4032a4	120	mvpNodeProtoById	mdebug	d7747da40716		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40331c	144	mvpGetNodeProto	mdebug	a9b8910fe4bb		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4033ac	1176	mvpDecodePath	mdebug	0cb6fb34f32e		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x40351c	228	mvpErrPrintf	dynsym+mdebug	fa80f2e95607		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403600	580	mvpPrintf	dynsym+mdebug	fd384b056296		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x403844	6020	mvpPerror	mdebug	d5a5f3443196		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x4038e4	116	mvpAssertFail	dynsym+mdebug	d592413cdeed		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403958	120	mvpPanic	dynsym+mdebug	9c3d75fa9ef2		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4039d0	68	mvpRevisionError	dynsym+mdebug	cd2c4999fd84		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x403a14	336	mvpOpenVideo	dynsym+mdebug	8620755f6e6a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16227,9 +16227,9 @@ usr/lib/dmedia/video/mvp.so	board-library	o32		0x4041f0	124	mvpRemoveNode	dynsym
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40426c	52	mvpGetConnection	dynsym+mdebug	6d16046598cf		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4042a0	52	mvpSetConnection	dynsym+mdebug	57687a5f8d1b		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4042d4	300	mvpGetDefaultNumber	dynsym+mdebug	05cd5c03b2c7		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x404400	232	mvpUtilityRoutine	dynsym+mdebug	24afbf9d89a7		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x4044e8	128	mvpProxy	dynsym+mdebug	36240923b691		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x404568	84	mvpCDev	dynsym+mdebug	943a4626f45d		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4045bc	2572	mvpSetupPath	dynsym+mdebug	ac069ee80596		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x404fc8	1216	_mvpRealizeNode	mdebug	aaad66a28578		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40512c	572	mvpSetupPaths	dynsym+mdebug	3da14abf60f3		in	undocumented		
@@ -16251,7 +16251,7 @@ usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406b90	188	mvpSetFields	md
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406c4c	232	mvpControlIOCTL	mdebug	28118384d90f		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406d34	100	mvpGetCFI	mdebug	25c2a72a7696		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x406d98	1804	mvpSetTiming	mdebug	055cbf66aebd		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x407044	96	mvpPixSize	dynsym+mdebug	091b1f8b7704		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4070a4	808	mvpSetScale	dynsym+mdebug	819a28f47b2f		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4073cc	216	mvpGetDeviceControls	dynsym+mdebug	0a453f22919a		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x4074a4	2900	mvpSendPathEvent	mdebug	b6a5f2ab39a3		in	undocumented		
@@ -16299,16 +16299,16 @@ usr/lib/dmedia/video/mvp.so	board-library	o32		0x40e8a0	628	mvpFromVLEventMask	d
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40eb14	2524	mvptovlreason	mdebug	e4dabb630190		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40ed58	312	mvpSetEventMask	dynsym+mdebug	1c0a21ceb745		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40ee90	1632	mvpTranslateEvent	dynsym+mdebug	4fd864665a8f		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40f4f0	132	myprint_leader	mdebug	b0ad205248ec		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40f574	1516	mvpreg_trace_fields	mdebug	f786c2230a23		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x40f9d4	200	mvpreg_trace	dynsym+mdebug	229463ace576		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x40fa9c	196	mvpreg_gbetrace	dynsym+mdebug	cf69c8c11437		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40fb60	9988	mvpCalcMitch	mdebug	9fe661a7d737		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40f4f0	132	myprint_leader	mdebug	b0ad205248ec		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40f574	1516	mvpreg_trace_fields	mdebug	f786c2230a23		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x40f9d4	200	mvpreg_trace	dynsym+mdebug	229463ace576		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x40fa9c	196	mvpreg_gbetrace	dynsym+mdebug	cf69c8c11437		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x40fb60	9988	mvpCalcMitch	mdebug	9fe661a7d737		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x40fdd4	7740	mvpUpdateRegs	dynsym+mdebug	eace3e6ca6be		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x411c10	136	mvpGetUSTPerMSC	dynsym+mdebug	8dd9d0c6c048		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x411c98	456	mvpGetFrontierMSC	dynsym+mdebug	bd13a9d41c88		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x411e60	396	mvpGetUSTMSCPair	dynsym+mdebug	f5182bdec0dc		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x411fec	52	mvpGetPathDelay	dynsym+mdebug	e2d5e135e94d		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x411c10	136	mvpGetUSTPerMSC	dynsym+mdebug	8dd9d0c6c048		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x411c98	456	mvpGetFrontierMSC	dynsym+mdebug	bd13a9d41c88		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x411e60	396	mvpGetUSTMSCPair	dynsym+mdebug	f5182bdec0dc		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x411fec	52	mvpGetPathDelay	dynsym+mdebug	e2d5e135e94d		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x412020	348	mvpFromVLValue	dynsym+mdebug	2c3c00157494		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x41217c	232	mvpToVLValue	dynsym+mdebug	6fa8b4defcda		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x412264	116	mvpgeti2ccontrolindex	mdebug	39196ddeda5b		in	undocumented		
@@ -16319,7 +16319,7 @@ usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x412a3c	1116	mvpvaluetransl
 usr/lib/dmedia/video/mvp.so	board-library	o32	.text	0x412e98	2072	mvpothercontrol	mdebug	d154a4aed53d		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x412f5c	540	mvpGetVideoPortControl	dynsym+mdebug	ad18dfb581ac		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x413178	396	mvpSetVideoPortControl	dynsym+mdebug	25594387d170		in	undocumented		
-usr/lib/dmedia/video/mvp.so	board-library	o32		0x413304	448	mvpSendI2CData	dynsym+mdebug	e12e0c477cda		in	undocumented		
+usr/lib/dmedia/video/mvp.so	board-library	o32		0x413304	448	mvpSendI2CData	dynsym+mdebug	e12e0c477cda		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x4134c4	104	mvpSendI2C	dynsym+mdebug	11e8d96b277a		in	undocumented		
 usr/lib/dmedia/video/mvp.so	board-library	o32		0x41352c	388	mvpGetI2CData	dynsym+mdebug	18df0bb29762		in	undocumented		
 usr/lib/internal/libvice.so	board-library	o32		0xd001980	12	vice_get_lib_rev	dynsym+mdebug	f8f63bf9babe		in	undocumented		
@@ -16836,10 +16836,10 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	23f530de50f2		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	97b837e63140		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	f171fde88dcd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	edb8315ce1e2		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	128a4785aa58		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16851,9 +16851,9 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404ae0	104	mvpRemoveNod
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404b50	48	mvpGetConnection	dwarf+dynsym	4cb32e07cd0f		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404b80	48	mvpSetConnection	dwarf+dynsym	4cb32e07cd0f		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404bb0	308	mvpGetDefaultNumber	dwarf+dynsym	f115cac56235		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x405a60	368	_mvpRealizeNode	dwarf+funcnames	52b6a30b496a		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x405bd0	608	mvpSetupPaths	dwarf+dynsym	a1a3ef9a507e		in	undocumented		
@@ -16875,7 +16875,7 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x407820	176	mvpSetF
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4079c0	72	mvpGetCFI	dwarf+funcnames	5b858ebb54db		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x407a10	696	mvpSetTiming	dwarf+funcnames	528ed58e4c3b		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x407d90	824	mvpSetScale	dwarf+dynsym	d23d0bc4083b		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x4081b0	232	mvpSendPathEvent	dwarf+funcnames	ce609666492f		in	undocumented		
@@ -16923,16 +16923,16 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4108d0	708	mvpFromVLEve
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x410ba0	1252	mvptovlreason	dwarf+funcnames	9a7342f7ee56		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411090	328	mvpSetEventMask	dwarf+dynsym	5b0a512d4809		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4111e0	1584	mvpTranslateEvent	dwarf+dynsym	c9b098a1c547		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411810	104	myprint_leader	dwarf+funcnames	3e2a57eb55ea		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411880	948	mvpreg_trace_fields	dwarf+funcnames	6903bec9bb70		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411c40	176	mvpreg_trace	dwarf+dynsym	658e0a603bcc		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411cf0	176	mvpreg_gbetrace	dwarf+dynsym	b9ac3cc19c78		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411da0	572	mvpCalcMitch	dwarf+funcnames	dfcc084606de		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411810	104	myprint_leader	dwarf+funcnames	3e2a57eb55ea		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411880	948	mvpreg_trace_fields	dwarf+funcnames	6903bec9bb70		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411c40	176	mvpreg_trace	dwarf+dynsym	658e0a603bcc		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411cf0	176	mvpreg_gbetrace	dwarf+dynsym	b9ac3cc19c78		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x411da0	572	mvpCalcMitch	dwarf+funcnames	dfcc084606de		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x411fe0	6476	mvpUpdateRegs	dwarf+dynsym	e314c74b2020		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413930	128	mvpGetUSTPerMSC	dwarf+dynsym	0f35a7c57dd5		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4139b0	440	mvpGetFrontierMSC	dwarf+dynsym	756ac93dcbcb		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413b70	404	mvpGetUSTMSCPair	dwarf+dynsym	bc694c656534		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413d10	48	mvpGetPathDelay	dwarf+dynsym	01681d309e9d		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413930	128	mvpGetUSTPerMSC	dwarf+dynsym	0f35a7c57dd5		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4139b0	440	mvpGetFrontierMSC	dwarf+dynsym	756ac93dcbcb		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413b70	404	mvpGetUSTMSCPair	dwarf+dynsym	bc694c656534		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413d10	48	mvpGetPathDelay	dwarf+dynsym	01681d309e9d		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413d40	388	mvpFromVLValue	dwarf+dynsym	272d537d5438		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x413ed0	292	mvpToVLValue	dwarf+dynsym	9d2573f5f63c		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x414000	160	mvpgeti2ccontrolindex	dwarf+funcnames	dc930b3719a7		in	undocumented		
@@ -16943,7 +16943,7 @@ usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x414930	1120	mvpval
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32	.text	0x414d90	296	mvpothercontrol	dwarf+funcnames	f5ae270d962e		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x414ec0	524	mvpGetVideoPortControl	dwarf+dynsym	67ae6f628434		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x4150d0	424	mvpSetVideoPortControl	dwarf+dynsym	945a3e50c00d		in	undocumented		
-usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	7bf3b18a19bf		in	undocumented		
+usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	7bf3b18a19bf		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415430	96	mvpSendI2C	dwarf+dynsym	d5fe294622e4		in	undocumented		
 usr/lib32/dmedia/video/debug/mvp.so	board-library	n32		0x415490	368	mvpGetI2CData	dwarf+dynsym	776861cdd79d		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403830	544	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
@@ -16951,10 +16951,10 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403a80	28	mvpRead	dwarf+dynsy
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403aa0	160	mvpNodeProtoById	dwarf+funcnames	23f530de50f2		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403b40	208	mvpGetNodeProto	dwarf+funcnames	97b837e63140		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x403c10	388	mvpDecodePath	dwarf+funcnames	f171fde88dcd		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403da0	236	mvpErrPrintf	dwarf+dynsym	a6b97cf075d5		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x403e90	592	mvpPrintf	dwarf+dynsym	2f23fb39eb51		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4040e0	100	mvpPerror	dwarf+funcnames	edb8315ce1e2		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404150	104	mvpAssertFail	dwarf+dynsym	226fcd9781cc		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4041c0	124	mvpPanic	dwarf+dynsym	867dbbb0a79d		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404240	64	mvpRevisionError	dwarf+dynsym	26817a874aed		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404280	396	mvpOpenVideo	dwarf+dynsym	128a4785aa58		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
@@ -16966,9 +16966,9 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404ae0	104	mvpRemoveNode	dwar
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404b50	48	mvpGetConnection	dwarf+dynsym	4cb32e07cd0f		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404b80	48	mvpSetConnection	dwarf+dynsym	4cb32e07cd0f		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404bb0	308	mvpGetDefaultNumber	dwarf+dynsym	f115cac56235		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404cf0	272	mvpUtilityRoutine	dwarf+dynsym	4f53c174a49d		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404e00	248	mvpProxy	dwarf+dynsym	f56eda73ac5e		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f00	104	mvpCDev	dwarf+dynsym	9231411b7a6f		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x404f70	2788	mvpSetupPath	dwarf+dynsym	6fa11a9068e5		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x405a60	368	_mvpRealizeNode	dwarf+funcnames	52b6a30b496a		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x405bd0	608	mvpSetupPaths	dwarf+dynsym	a1a3ef9a507e		in	undocumented		
@@ -16990,7 +16990,7 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x407820	176	mvpSetFields	
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4078d0	228	mvpControlIOCTL	dwarf+funcnames	e5d46d81b827		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4079c0	72	mvpGetCFI	dwarf+funcnames	5b858ebb54db		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x407a10	696	mvpSetTiming	dwarf+funcnames	528ed58e4c3b		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407cd0	184	mvpPixSize	dwarf+dynsym	f6972d7bf7a9		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x407d90	824	mvpSetScale	dwarf+dynsym	d23d0bc4083b		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4080d0	216	mvpGetDeviceControls	dwarf+dynsym	27851f8aa141		in	named-only	docs/binaries.md#video-and-image-conversion-libraries	Video and image-conversion libraries
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x4081b0	232	mvpSendPathEvent	dwarf+funcnames	ce609666492f		in	undocumented		
@@ -17038,16 +17038,16 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4108d0	708	mvpFromVLEventMask
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x410ba0	1252	mvptovlreason	dwarf+funcnames	9a7342f7ee56		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411090	328	mvpSetEventMask	dwarf+dynsym	5b0a512d4809		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4111e0	1584	mvpTranslateEvent	dwarf+dynsym	c9b098a1c547		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411810	104	myprint_leader	dwarf+funcnames	3e2a57eb55ea		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411880	948	mvpreg_trace_fields	dwarf+funcnames	6903bec9bb70		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411c40	176	mvpreg_trace	dwarf+dynsym	658e0a603bcc		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411cf0	176	mvpreg_gbetrace	dwarf+dynsym	b9ac3cc19c78		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411da0	572	mvpCalcMitch	dwarf+funcnames	dfcc084606de		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411810	104	myprint_leader	dwarf+funcnames	3e2a57eb55ea		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411880	948	mvpreg_trace_fields	dwarf+funcnames	6903bec9bb70		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411c40	176	mvpreg_trace	dwarf+dynsym	658e0a603bcc		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411cf0	176	mvpreg_gbetrace	dwarf+dynsym	b9ac3cc19c78		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x411da0	572	mvpCalcMitch	dwarf+funcnames	dfcc084606de		in	located	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x411fe0	6476	mvpUpdateRegs	dwarf+dynsym	e314c74b2020		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413930	128	mvpGetUSTPerMSC	dwarf+dynsym	0f35a7c57dd5		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4139b0	440	mvpGetFrontierMSC	dwarf+dynsym	756ac93dcbcb		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413b70	404	mvpGetUSTMSCPair	dwarf+dynsym	bc694c656534		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413d10	48	mvpGetPathDelay	dwarf+dynsym	01681d309e9d		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413930	128	mvpGetUSTPerMSC	dwarf+dynsym	0f35a7c57dd5		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4139b0	440	mvpGetFrontierMSC	dwarf+dynsym	756ac93dcbcb		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413b70	404	mvpGetUSTMSCPair	dwarf+dynsym	bc694c656534		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413d10	48	mvpGetPathDelay	dwarf+dynsym	01681d309e9d		in	understood	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413d40	388	mvpFromVLValue	dwarf+dynsym	272d537d5438		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x413ed0	292	mvpToVLValue	dwarf+dynsym	9d2573f5f63c		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x414000	160	mvpgeti2ccontrolindex	dwarf+funcnames	dc930b3719a7		in	undocumented		
@@ -17058,7 +17058,7 @@ usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x414930	1120	mvpvaluetran
 usr/lib32/dmedia/video/mvp.so	board-library	n32	.text	0x414d90	296	mvpothercontrol	dwarf+funcnames	f5ae270d962e		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x414ec0	524	mvpGetVideoPortControl	dwarf+dynsym	67ae6f628434		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x4150d0	424	mvpSetVideoPortControl	dwarf+dynsym	945a3e50c00d		in	undocumented		
-usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	7bf3b18a19bf		in	undocumented		
+usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415280	420	mvpSendI2CData	dwarf+dynsym	7bf3b18a19bf		in	named-only	docs/functions.md#routines-of-mvpso-n32-build-one-entry-each	Routines of `mvp.so` (N32 build), one entry each
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415430	96	mvpSendI2C	dwarf+dynsym	d5fe294622e4		in	undocumented		
 usr/lib32/dmedia/video/mvp.so	board-library	n32		0x415490	368	mvpGetI2CData	dwarf+dynsym	776861cdd79d		in	undocumented		
 usr/lib32/internal/libvice.so	board-library	n32	.text	0xd0017a0	464	_stub	dwarf			in	named-only	docs/libglcore.md#entry-labels-and-lazy-binding-stubs	Entry labels and lazy-binding stubs
