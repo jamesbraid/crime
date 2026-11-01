@@ -2323,3 +2323,32 @@ Short routines of the 6.5.30 `usr/gfx/setmon` executable that belong to other gr
 
 - `get_watchhi` in `sbin/stand/symmon.IP32`: the high-word twin of the low watchpoint reader, an 88-byte routine at address 0xa0024b98. Established.
   The same implementation numbers (0x20, 0x21, 0x23 and 0x28) return 0; every other part returns CP0 WatchHi.
+- `getchar` in `sbin/stand/symmon.IP32`: reads one character from the console, an 88-byte routine at address 0xa002d310. Established.
+  It calls `Read` (0xa00251ec) on descriptor 0 for one byte with a count variable on the stack. When `Read` returns 0 and the count is 1 it returns the byte. In every other case it returns the result of `_errgetc` (0xa002a890).
+
+- `putc` in `sbin/stand/symmon.IP32`: writes one character to a stream, an 88-byte routine at address 0xa001d208. Established.
+  The first argument is the character and the second the descriptor. It stores the byte on the stack and calls `Write` (0xa002545c) for one byte. When `Write` returns 0 and reports a count of 1 it returns the character; otherwise it returns -1.
+
+- `replace_str` in `sbin/stand/symmon.IP32`: replaces a string in a buffer, an 88-byte routine at address 0xa002b3b0. Established.
+  It clears the first byte of a scratch buffer on the stack and calls the routine at 0xa002b424 with the first argument, the third argument and that buffer. It then calls `new_str2` (0xa002b6d4) with the second and third arguments unchanged and, as its first, the scratch buffer when the routine left it non-empty and the original first argument when it is still empty. It returns the result of `new_str2`.
+
+- `Signal` in `sbin/stand/symmon.IP32`: installs a handler for a signal number, a 96-byte routine at address 0xa002495c. Established.
+  A number of 0 or less, or 20 or more, returns 7. Otherwise it returns the old entry of the table at 0xa0058c90 (four bytes per number) and stores a new one: a second argument of 0 installs the routine at 0xa00249bc (which calls `EnterInteractiveMode`, 0xa0031758), 1 installs the routine at 0xa00249d8 (a bare return), and any other value is stored as given; the last case is the branch-likely `bnel`.
+
+- `lookup_cmd` in `sbin/stand/symmon.IP32`: finds a command by name in a table, a 96-byte routine at address 0xa001b864. Established.
+  The first argument is a table of 12-byte entries whose first word points to the entry's name, ending at an entry with a zero name pointer; the second is the name sought. It compares each name with `strcmp` (0xa0030938) and returns the address of the first entry that matches, or 0 at the end of the table.
+
+- `strncat` in `sbin/stand/symmon.IP32`: appends at most a given number of bytes of one string to another, a 96-byte routine at address 0xa0030e10. Established.
+  It finds the end of the first string, then copies bytes of the second string, stopping after it has copied a terminating zero; if the count runs out first it stores a zero after the last byte. The first byte is copied before the count is looked at, and a zero count then overwrites it with a zero. It returns the first argument.
+
+- `strncpy` in `sbin/stand/symmon.IP32`: copies a string and pads it with zeros to a fixed length, a 96-byte routine at address 0xa0030db0. Established.
+  A count of zero or less returns the destination at once. Otherwise it copies bytes one at a time up to the count; after a zero byte is stored it fills the remaining positions with zero bytes. A string that fills the count exactly gets no terminator. It returns the destination.
+
+- `_circ_getc` in `sbin/stand/symmon.IP32`: takes one byte from a circular buffer, a 96-byte routine at address 0xa002840c. Established.
+  The argument is the buffer record: the word at offset 4 is the write pointer, the word at offset 8 the read pointer, and the bytes run from offset 12 to offset 1036. When the pointers are equal it calls `panic` (0xa002af8c) with "console getc error" (0xa00375b8). It then returns the byte at the read pointer and advances that pointer, wrapping to offset 12 at offset 1036.
+
+- `_circ_putc` in `sbin/stand/symmon.IP32`: puts one byte into a circular buffer, an 88-byte routine at address 0xa002846c. Established.
+  Its first argument is the byte and the second the same buffer record. It forms the next write position (wrapping at offset 1036 to offset 12); when that equals the read pointer the buffer is full, the byte is dropped and, only if the word `Verbose` (0xa0059744) is non-zero, it calls `_errputs` (0xa002a79c) with "dropped char" (0xa00375d0). Otherwise it stores the byte at the old write position in the delay slot of the branch-likely `bnel` and then updates the write pointer. It returns nothing.
+
+- `GetComponent` in `sbin/stand/symmon.IP32`: looks a component up by path in the configuration tree, a 96-byte routine at address 0xa0025fe8. Established for the calls; the lookup role is inferred from the name.
+  It passes its argument and the address of a flag word (cleared first) to the routine at 0xa0025bcc, calls `GetChild` (0xa00241c8) with 0, and then calls the routine at 0xa0025e60 with that child, the constant 43, 0 and the first routine's result. When the flag word is set it calls `free` (0xa002fd18) on the first routine's result. It returns the result of the routine at 0xa0025e60.
