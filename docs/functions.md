@@ -2073,3 +2073,48 @@ Short routines of the board set-up program, read from the 6.5.30 executable `usr
   It returns at once with a `nop` in the delay slot and sets no return value. No direct call names it.
 - `venice_check_vof_frame_status` in `usr/gfx/gfxinit`: a check that always reports ready, an 8-byte routine at address 0x100151f0. Established.
   It returns 1 in the delay slot of its return and reads no argument. No direct call names it.
+
+# Venice and VS2 helpers of `setmon`, one entry each
+
+Short routines of the 6.5.30 `usr/gfx/setmon` executable that belong to other graphics boards' code, not to CRIME or GBE; the one program carries every family's monitor routine. Addresses are its virtual addresses. Each was read in full from `objdump -d` with the strings taken from the file's data segments. A "direct call" means a `jal` to the routine's address.
+
+- `generateFilename` in `usr/gfx/setmon`: joins two strings into a caller's buffer, a 68-byte routine at address 0x10012564. Established.
+  Its third argument is the destination: the code moves it to the first argument of `sprintf`, moves the first two arguments to the third and fourth, and supplies the format "%s%s" from `.srdata` at 0x10042120. It returns what `sprintf` returns.
+- `pipeCountOfSystem` in `usr/gfx/setmon`: asks the kernel how many graphics boards the system has, a 200-byte routine at address 0x100125a8. Established.
+  It opens "/dev/graphics" with flags 0x802 (string at 0x1003a018). When the open fails it writes "ERROR: couldn't open /dev/graphics." to standard error (`__iob` plus 32) and returns 0. Otherwise it sends request 0x65 with a zero argument (`ioctl`, 0x100125ec) and, when that fails, writes "ERROR: couldn't get number of boards." and returns 0 without closing the descriptor. On success it closes the descriptor and returns the result of the request.
+- `vs2Installed` in `usr/gfx/setmon`: tells whether the VS2 board passes its consistency check, a 56-byte routine at address 0x100129b4. Established.
+  It calls `vs2ConsistencyCheck` (0x100126d8) with the argument it was given and returns 1 when that call returned 0 (`sltiu v0,v0,1`), otherwise 0.
+- `vs2ReadByte` in `usr/gfx/setmon`: reads one byte of a VS2 board's register window, a 20-byte routine at address 0x10012bf0. Established.
+  Its first argument is a record whose word at +4 holds the window's base address. The routine adds its second argument to that base and returns the unsigned byte loaded from the sum.
+- `vs2WriteByte` in `usr/gfx/setmon`: writes one byte into the same register window, a 20-byte routine at address 0x10013108. Established.
+  It adds its second argument to the base address in the word at +4 of its first argument and stores the low byte of its third argument there. It returns no value.
+- `vs2WriteXilinxReg` in `usr/gfx/setmon`: writes one byte into the window at a two-part offset, a 24-byte routine at address 0x1001316c. Established.
+  The address is the base in the word at +4 of the first argument plus the second argument plus the third; the stored byte is the low byte of the fourth argument. It returns no value.
+- `vs2ToggleSerialClock` in `usr/gfx/setmon`: pulses the board's serial clock and reads back its state, an 88-byte routine at address 0x10013020. Established.
+  It calls `vs2WriteByte` with its own first argument, offset 0x4280 and the value 1, then `vs2ReadByte` with the same record and offset 0x41a0, and returns the byte that read gave.
+- `vs2WriteProgClock` in `usr/gfx/setmon`: writes a value to one of two programmable-clock offsets, an 80-byte routine at address 0x1001311c. Established.
+  It passes its first and third arguments unchanged to `vs2WriteByte`. The offset is 0x41c0 when the second argument is 0x4200 and 0x41d0 for any other value.
+- `getRMCount` in `usr/gfx/setmon`: reports how many raster-manager boards a Venice pipe has, a 56-byte routine at address 0x100133b4. Established.
+  It reserves a 960-byte area on its stack, fills it by calling `getVeniceInfo` (0x10013184) with its argument and that area, and returns the word at +44 of the area.
+- `get_ven_iptype` in `usr/gfx/setmon`: returns the Venice board type, probing it on first use, a 92-byte routine at address 0x1000fea0. Established.
+  It returns the word `ven_iptype` when that is not -1. When it is -1 it calls `get_ven_type` (0x1000fdb0) and returns the word `ven_iptype` as `get_ven_type` left it.
+- `venice_set_pipeaddr` in `usr/gfx/setmon`: records that the pipe is mapped and passes the pipe address on, a 60-byte routine at address 0x1000fefc. Established.
+  It stores 1 in the global `ven_pipeMapped` in the delay slot of its call and then calls `fcg_venice_set_pipeaddr` (0x10010f84) without changing the arguments, returning that call's result.
+- `venice_get_vcreg` in `usr/gfx/setmon`: reads a Venice register by index, a 52-byte routine at address 0x1000ff38. Established.
+  It hands its argument to `fcg_venice_get_vcreg` (0x100110d4) and returns the value that routine read.
+- `venice_set_vcreg` in `usr/gfx/setmon`: writes a Venice register by index, a 52-byte routine at address 0x1000ff6c. Established.
+  It forwards both arguments to `fcg_venice_set_vcreg` (0x10011108) and returns what that routine returned.
+- `fcg_venice_get_vcreg` in `usr/gfx/setmon`: loads one word of the graphics window, a 52-byte routine at address 0x100110d4. Established.
+  The address is the word `ven_gfxvaddr` plus eight times the argument plus 0xfc000, and the word loaded there is the result.
+- `fcg_venice_set_vcreg` in `usr/gfx/setmon`: stores one word into the graphics window, a 52-byte routine at address 0x10011108. Established.
+  It uses the address of the read routine, `ven_gfxvaddr` plus eight times the first argument plus 0xfc000, and stores the second argument there. It returns no value.
+- `fcg_get_gfx_fifo_count` in `usr/gfx/setmon`: computes the occupancy of the graphics command ring from two indices, a 64-byte routine at address 0x1001015c. Inferred.
+  The base is the word `ven_pipeaddr` plus 0x10000. It loads the word at base minus 24536 and the word at base minus 24544, subtracts the second from the first and, when the first is the smaller as an unsigned number, adds 8192 to the difference before returning it. That the two words are a producer and a consumer index of an 8192-entry ring is inferred from the wrap.
+- `_jt_select_chain` in `usr/gfx/setmon`: the scan-chain selector entry point that leads to the Venice implementation, a 52-byte routine at address 0x10011acc. Established.
+  It calls `fcg_jt_select_chain` (0x10011ff8) with the arguments it received and returns that call's value.
+- `_jt_send_instruction` in `usr/gfx/setmon`: the scan-chain instruction entry point, a 52-byte routine at address 0x10011b00. Established.
+  Its only action is a direct call to `fcg_jt_send_instruction` (0x100120b4), whose result it returns.
+- `_jt_send_data` in `usr/gfx/setmon`: the scan-chain data entry point, a 52-byte routine at address 0x10011b34. Established.
+  Its only action is a direct call to `fcg_jt_send_data` (0x1001230c), whose result it returns.
+- `vector_to_int` in `usr/gfx/setmon`: assembles four bytes into a word, a 48-byte routine at address 0x10011b68. Established.
+  It reads the bytes at offsets 0 to 3 of its second argument and stores byte 0 as the lowest and byte 3 as the highest byte of the word that it writes through its first argument, so the result is the little-endian reading of the four bytes. It returns no value.

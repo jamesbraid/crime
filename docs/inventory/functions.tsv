@@ -13439,7 +13439,7 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000e2c4	584	odsy_init	dynsym	674d83ba4289		i
 usr/gfx/gfxinit	shared-tool	n32		0x1000e50c	236	sg2_info	dynsym	d306cb09c1c7		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e5f8	176	fcg_get_ge_cnt	dynsym	303788d6d2f4		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e6a8	268	venice_loadsection_fcg	dynsym	bc16a72ddd03		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000e7b4	64	fcg_get_gfx_fifo_count	dynsym	fd509759a9b1		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1000e7b4	64	fcg_get_gfx_fifo_count	dynsym	fd509759a9b1		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x1000e7f4	340	fcg_init_cp	dynsym	8c281f805eec		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000e948	576	fcg_init_ge	dynsym	2259a22e3476		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000ec4c	388	wg_flush	dynsym	c8b83e90d781		in	undocumented		
@@ -13447,17 +13447,17 @@ usr/gfx/gfxinit	shared-tool	n32		0x1000edd0	628	fcg_cp_loaducode	dynsym	55a83f09
 usr/gfx/gfxinit	shared-tool	n32		0x1000f044	712	fcg_cp_ge_load	dynsym	3b3593cb81b3		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000f30c	508	fcg_cp_ge_bootstrap	dynsym	30076c28649e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000f508	212	fcg_cp_ge_goto	dynsym	34f9c3bc0c6e		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000f5dc	336	fcg_venice_set_pipeaddr	dynsym	6c35f5d973f6		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000f72c	52	fcg_venice_get_vcreg	dynsym	475f787881cd		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000f760	52	fcg_venice_set_vcreg	dynsym	56534c7fe850		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1000f5dc	336	fcg_venice_set_pipeaddr	dynsym	6c35f5d973f6		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000f72c	52	fcg_venice_get_vcreg	dynsym	475f787881cd		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000f760	52	fcg_venice_set_vcreg	dynsym	56534c7fe850		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x1000f794	268	venice_get_dg2_eeprom	dynsym	cb48f2fa319f		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000f8a0	416	venice_set_dg2_eeprom	dynsym	0b0fa8f11970		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000fa40	236	venice_grok_dg2_eeprom_error	dynsym	30a34fa9d0b9		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000fb2c	240	get_ven_type	dynsym	8922ee557225		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000fc1c	92	get_ven_iptype	dynsym	625d80b9f319		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000fc78	60	venice_set_pipeaddr	dynsym	c8a1dedc3891		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000fcb4	52	venice_get_vcreg	dynsym	83a44f09505a		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1000fce8	52	venice_set_vcreg	dynsym	652e23bd4d23		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1000fb2c	240	get_ven_type	dynsym	8922ee557225		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000fc1c	92	get_ven_iptype	dynsym	625d80b9f319		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000fc78	60	venice_set_pipeaddr	dynsym	c8a1dedc3891		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000fcb4	52	venice_get_vcreg	dynsym	83a44f09505a		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x1000fce8	52	venice_set_vcreg	dynsym	652e23bd4d23		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x1000fd1c	220	venice_fifo_hack	dynsym	578590a3327e		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000fdf8	340	venice_rmfifo	dynsym	1865307a21d3		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1000ffbc	288	venice_imprev	dynsym	d9116e8680c7		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
@@ -13473,17 +13473,17 @@ usr/gfx/gfxinit	shared-tool	n32		0x10010448	336	venice_cprev	dynsym	b0ae284f4d02
 usr/gfx/gfxinit	shared-tool	n32		0x10010598	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x100105a0	100	venice_ge_rev	dynsym	f65e8014b781		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010604	168	venice_bdrev	dynsym	a07aa6516eda		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
-usr/gfx/gfxinit	shared-tool	n32		0x100106ac	52	_jt_select_chain	dynsym	8eb272c08dc7		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100106e0	52	_jt_send_instruction	dynsym	c3b984d4b4b4		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010714	52	_jt_send_data	dynsym	ebd5a551583b		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010748	48	vector_to_int	dynsym	95a22d7cb7bc		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x100106ac	52	_jt_select_chain	dynsym	8eb272c08dc7		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x100106e0	52	_jt_send_instruction	dynsym	c3b984d4b4b4		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10010714	52	_jt_send_data	dynsym	ebd5a551583b		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10010748	48	vector_to_int	dynsym	95a22d7cb7bc		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10010778	8	fcg_jt_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010780	152	fcg_jt_soft_reset	dynsym	268b898d8365		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010818	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/gfxinit	shared-tool	n32		0x10010820	952	fcg_jt_test_thyself	dynsym	9e1bf75a82da		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010bd8	188	fcg_jt_select_chain	dynsym	2236868701d4		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010c94	600	fcg_jt_send_instruction	dynsym	747e676aed32		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10010eec	600	fcg_jt_send_data	dynsym	73055f8e52ea		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10010bd8	188	fcg_jt_select_chain	dynsym	2236868701d4		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10010c94	600	fcg_jt_send_instruction	dynsym	747e676aed32		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10010eec	600	fcg_jt_send_data	dynsym	73055f8e52ea		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x100111ec	652	venice_init	dynsym	22f34b6de603		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10011478	716	venice_load_cpge	dynsym	7f3d7e752fc8		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10011744	292	venice_loadsection_cp2	dynsym	9558713ec60e		in	undocumented		
@@ -13548,28 +13548,28 @@ usr/gfx/gfxinit	shared-tool	n32		0x100174b4	188	init_luts	dynsym	d2eca2630d8c		i
 usr/gfx/gfxinit	shared-tool	n32		0x10017570	1104	venice_dg2initEncoder	dynsym	cac5426ffe74		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100179c0	460	venice_dg2initVof	dynsym	09c85def6fdf		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10017b8c	308	venice_load_vof	dynsym	1ec404e35443		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10017cc0	68	generateFilename	dynsym	20686213ddf8		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10017d04	200	pipeCountOfSystem	dynsym	f1d3daea1156		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10017cc0	68	generateFilename	dynsym	20686213ddf8		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10017d04	200	pipeCountOfSystem	dynsym	f1d3daea1156		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10017dcc	104	vs2GeneratePath	dynsym	156822fd72ab		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10017e34	372	vs2ConsistencyCheck	dynsym	3cb224d1e156		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10017e34	372	vs2ConsistencyCheck	dynsym	3cb224d1e156		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10017fa8	268	vs2GetHeadInfo	dynsym	d45fddb7c526		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100180b4	92	vs2Initialize	dynsym	980a6c83b966		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10018110	56	vs2Installed	dynsym	0c8d69a001da		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10018110	56	vs2Installed	dynsym	0c8d69a001da		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10018148	256	vs2LoadVdrc	dynsym	d1c3ce316689		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10018248	116	vs2ManagedArea	dynsym	22f5662ed7de		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100182bc	144	vs2ReadRegisterBlock	dynsym	ba1a1a78ffe7		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1001834c	20	vs2ReadByte	dynsym	2816784740aa		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1001834c	20	vs2ReadByte	dynsym	2816784740aa		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10018360	104	vs2RegisterClearBit	dynsym	bd906a702d7a		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100183c8	100	vs2RegisterSetBit	dynsym	173cb0c76c58		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x1001842c	136	vs2ReadStatus	dynsym	dd3f36790035		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x100184b4	712	vs2Setmon	dynsym	29d63642477d		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x1001877c	88	vs2ToggleSerialClock	dynsym	d0c16c8e5221		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x1001877c	88	vs2ToggleSerialClock	dynsym	d0c16c8e5221		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x100187d4	144	vs2WriteRegisterBlock	dynsym	07ca2ec22031		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10018864	20	vs2WriteByte	dynsym	7165e55c5a1b		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10018878	80	vs2WriteProgClock	dynsym	1528135ec6c1		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100188c8	24	vs2WriteXilinxReg	dynsym	8b4367d5f35c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x100188e0	560	getVeniceInfo	dynsym	4dedb387fa1c		in	undocumented		
-usr/gfx/gfxinit	shared-tool	n32		0x10018b10	56	getRMCount	dynsym	a27ca6c048c3		in	undocumented		
+usr/gfx/gfxinit	shared-tool	n32		0x10018864	20	vs2WriteByte	dynsym	7165e55c5a1b		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10018878	80	vs2WriteProgClock	dynsym	1528135ec6c1		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x100188c8	24	vs2WriteXilinxReg	dynsym	8b4367d5f35c		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x100188e0	560	getVeniceInfo	dynsym	4dedb387fa1c		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/gfxinit	shared-tool	n32		0x10018b10	56	getRMCount	dynsym	a27ca6c048c3		in	located	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/gfxinit	shared-tool	n32		0x10018d64	88	vs2Close	dynsym	0e7557c61831		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10018dbc	168	vs2Delay	dynsym	0d3dec16e561		in	undocumented		
 usr/gfx/gfxinit	shared-tool	n32		0x10018e64	140	vs2Open	dynsym	edad9c686672		in	undocumented		
@@ -13661,14 +13661,14 @@ usr/gfx/setmon	shared-tool	n32		0x1000f064	1676	ng1_setmon	dynsym	2ec81e45b71a		
 usr/gfx/setmon	shared-tool	n32		0x1000fa18	268	venice_get_dg2_eeprom	dynsym	c08795730712		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fb24	416	venice_set_dg2_eeprom	dynsym	f69ca1487b42		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x1000fcc4	236	venice_grok_dg2_eeprom_error	dynsym	b0b0377bf0ce		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000fdb0	240	get_ven_type	dynsym	83e61e2d40a4		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000fea0	92	get_ven_iptype	dynsym	f06221146ff2		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000fefc	60	venice_set_pipeaddr	dynsym	302eb8e6d988		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000ff38	52	venice_get_vcreg	dynsym	9c05a147be3a		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1000ff6c	52	venice_set_vcreg	dynsym	e785790b68de		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1000fdb0	240	get_ven_type	dynsym	83e61e2d40a4		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000fea0	92	get_ven_iptype	dynsym	f06221146ff2		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000fefc	60	venice_set_pipeaddr	dynsym	302eb8e6d988		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000ff38	52	venice_get_vcreg	dynsym	9c05a147be3a		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1000ff6c	52	venice_set_vcreg	dynsym	e785790b68de		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1000ffa0	176	fcg_get_ge_cnt	dynsym	7423d50a9451		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10010050	268	venice_loadsection_fcg	dynsym	21e792283cc9		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1001015c	64	fcg_get_gfx_fifo_count	dynsym	264ca0003f59		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x1001015c	64	fcg_get_gfx_fifo_count	dynsym	264ca0003f59		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1001019c	340	fcg_init_cp	dynsym	46cf2f763dce		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x100102f0	576	fcg_init_ge	dynsym	b913fc447aef		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x100105f4	388	wg_flush	dynsym	ef9e7e2c139d		in	undocumented		
@@ -13676,9 +13676,9 @@ usr/gfx/setmon	shared-tool	n32		0x10010778	628	fcg_cp_loaducode	dynsym	2a9a39b8c
 usr/gfx/setmon	shared-tool	n32		0x100109ec	712	fcg_cp_ge_load	dynsym	8719761560a9		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10010cb4	508	fcg_cp_ge_bootstrap	dynsym	528c2a694ceb		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10010eb0	212	fcg_cp_ge_goto	dynsym	03e0f654065c		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10010f84	336	fcg_venice_set_pipeaddr	dynsym	8834454f2bc9		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100110d4	52	fcg_venice_get_vcreg	dynsym	2cfff321d8a2		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011108	52	fcg_venice_set_vcreg	dynsym	1c7e7f7ac7ee		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10010f84	336	fcg_venice_set_pipeaddr	dynsym	8834454f2bc9		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x100110d4	52	fcg_venice_get_vcreg	dynsym	2cfff321d8a2		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10011108	52	fcg_venice_set_vcreg	dynsym	1c7e7f7ac7ee		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1001113c	220	venice_fifo_hack	dynsym	b999ff8f56d3		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10011218	340	venice_rmfifo	dynsym	18fe09879a70		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x100113dc	288	venice_imprev	dynsym	7eb43d78580d		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
@@ -13694,39 +13694,39 @@ usr/gfx/setmon	shared-tool	n32		0x10011868	336	venice_cprev	dynsym	dc7bffdd6617	
 usr/gfx/setmon	shared-tool	n32		0x100119b8	8	venice_gefrev	dynsym	a7e7ca11a6b8		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x100119c0	100	venice_ge_rev	dynsym	6c6a97fdb1e1		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011a24	168	venice_bdrev	dynsym	4ff9580cd8bc		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
-usr/gfx/setmon	shared-tool	n32		0x10011acc	52	_jt_select_chain	dynsym	e0bdb701a6db		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011b00	52	_jt_send_instruction	dynsym	a95a2b40a5c2		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011b34	52	_jt_send_data	dynsym	62f27868000d		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011b68	48	vector_to_int	dynsym	95a22d7cb7bc		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10011acc	52	_jt_select_chain	dynsym	e0bdb701a6db		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10011b00	52	_jt_send_instruction	dynsym	a95a2b40a5c2		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10011b34	52	_jt_send_data	dynsym	62f27868000d		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10011b68	48	vector_to_int	dynsym	95a22d7cb7bc		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10011b98	8	fcg_jt_init	dynsym	87506497337c		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011ba0	152	fcg_jt_soft_reset	dynsym	48427abd0373		in	named-only	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011c38	8	fcg_jt_hard_reset	dynsym	6319e0118090		in	understood	docs/functions.md#routines-of-gfxinit-one-entry-each-stubs-and-revision-fields	Routines of `gfxinit`, one entry each (stubs and revision fields)
 usr/gfx/setmon	shared-tool	n32		0x10011c40	952	fcg_jt_test_thyself	dynsym	8d1a256be83f		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10011ff8	188	fcg_jt_select_chain	dynsym	ad6d8f118bc9		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100120b4	600	fcg_jt_send_instruction	dynsym	75e23a05a33a		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1001230c	600	fcg_jt_send_data	dynsym	f875b2620c49		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10012564	68	generateFilename	dynsym	909f3ada5266		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100125a8	200	pipeCountOfSystem	dynsym	276be793206a		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10011ff8	188	fcg_jt_select_chain	dynsym	ad6d8f118bc9		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x100120b4	600	fcg_jt_send_instruction	dynsym	75e23a05a33a		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1001230c	600	fcg_jt_send_data	dynsym	f875b2620c49		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10012564	68	generateFilename	dynsym	909f3ada5266		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x100125a8	200	pipeCountOfSystem	dynsym	276be793206a		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10012670	104	vs2GeneratePath	dynsym	e26c14b22e23		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100126d8	372	vs2ConsistencyCheck	dynsym	103df8e00324		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x100126d8	372	vs2ConsistencyCheck	dynsym	103df8e00324		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x1001284c	268	vs2GetHeadInfo	dynsym	0d0a9eae2fa1		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012958	92	vs2Initialize	dynsym	59645fe37ecb		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100129b4	56	vs2Installed	dynsym	822f5d6591ea		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x100129b4	56	vs2Installed	dynsym	822f5d6591ea		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x100129ec	256	vs2LoadVdrc	dynsym	38e7a0ccfb59		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012aec	116	vs2ManagedArea	dynsym	36ea32a2345d		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012b60	144	vs2ReadRegisterBlock	dynsym	0074ff5e5a8a		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10012bf0	20	vs2ReadByte	dynsym	2816784740aa		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10012bf0	20	vs2ReadByte	dynsym	2816784740aa		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10012c04	104	vs2RegisterClearBit	dynsym	10d3fa4ffbe8		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012c6c	100	vs2RegisterSetBit	dynsym	7699df6babb6		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012cd0	136	vs2ReadStatus	dynsym	f5e31ea09a8e		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10012d58	712	vs2Setmon	dynsym	3aa511947685		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10013020	88	vs2ToggleSerialClock	dynsym	e0db993cfac5		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10013020	88	vs2ToggleSerialClock	dynsym	e0db993cfac5		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10013078	144	vs2WriteRegisterBlock	dynsym	13acddd0a90f		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10013108	20	vs2WriteByte	dynsym	7165e55c5a1b		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1001311c	80	vs2WriteProgClock	dynsym	0a275d165831		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x1001316c	24	vs2WriteXilinxReg	dynsym	8b4367d5f35c		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x10013184	560	getVeniceInfo	dynsym	1a56b8130803		in	undocumented		
-usr/gfx/setmon	shared-tool	n32		0x100133b4	56	getRMCount	dynsym	d140a5ac55cc		in	undocumented		
+usr/gfx/setmon	shared-tool	n32		0x10013108	20	vs2WriteByte	dynsym	7165e55c5a1b		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1001311c	80	vs2WriteProgClock	dynsym	0a275d165831		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x1001316c	24	vs2WriteXilinxReg	dynsym	8b4367d5f35c		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x10013184	560	getVeniceInfo	dynsym	1a56b8130803		in	named-only	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
+usr/gfx/setmon	shared-tool	n32		0x100133b4	56	getRMCount	dynsym	d140a5ac55cc		in	understood	docs/functions.md#venice-and-vs2-helpers-of-setmon-one-entry-each	Venice and VS2 helpers of `setmon`, one entry each
 usr/gfx/setmon	shared-tool	n32		0x10013608	88	vs2Close	dynsym	d161999ab022		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10013660	168	vs2Delay	dynsym	7c1cd3a3ce20		in	undocumented		
 usr/gfx/setmon	shared-tool	n32		0x10013708	140	vs2Open	dynsym	757ed25c104b		in	undocumented		
