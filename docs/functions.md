@@ -3667,3 +3667,23 @@ The debugger links against library code that expects kernel and firmware service
   The delay slot at 0xa001def4 sets v0 to zero, so an open of a tape unit would report success without touching a device. The image has no caller and no table word for it.
 - `bell` in `sbin/stand/symmon.IP32`: the keyboard beep, silenced to a zero return, an 8-byte routine at address 0xa0020c30. Established.
   v0 is cleared in the delay slot at 0xa0020c34. The only call is inside `txConfig` (0xa001e4bc), at 0xa001fcbc, whose next instruction is a jump back into the common exit at 0xa001fc20.
+- `bp_try_stop_cpus` in `sbin/stand/symmon.IP32`: tries to halt the other processors at a breakpoint, which on this single-processor image just reports 0, an 8-byte routine at address 0xa001a714. Established.
+  The delay slot (0xa001a718) of the `jr ra` clears v0; it takes no arguments. `_kp` calls it at 0xa001a570 and `_kpcheck` at 0xa001a698, and each moves the result into a0 in the next delay slot (0xa001a57c, 0xa001a6a4).
+- `businfo` in `sbin/stand/symmon.IP32`: prints the bus layout for the firmware's private table, left empty, an 8-byte routine at address 0xa00284ec. Established.
+  `jr ra` with a `nop` in the delay slot (0xa00284f0); v0 is unchanged and the verbosity argument unread. The address appears in the private function table at 0xa003bfe4, next to `cpuid` and `cpufreq`.
+- `checksum_rb` in `sbin/stand/symmon.IP32`: sums a restart block, but here returns 0 for every block, an 8-byte routine at address 0xa0031310. Established.
+  The delay slot (0xa0031314) clears v0; the block pointer in a0 is not read. `init_rb` calls it at 0xa003123c and stores the result in the word 32 bytes into the block (0xa0031244); `rbsetbs` does the same at 0xa00312c8 and 0xa00312d8. So every restart block this image builds carries a zero checksum word.
+- `cpu_nv_lock` in `sbin/stand/symmon.IP32`: locks the nonvolatile RAM against writes, stubbed to do nothing, an 8-byte routine at address 0xa0020c6c. Established.
+  `jr ra` plus `move v0,zero` in the delay slot (0xa0020c70).
+- `cpu_probe` in `sbin/stand/symmon.IP32`: counts or probes extra processors, which on this board answers 0, an 8-byte routine at address 0xa0011404. Established.
+  The delay slot (0xa0011408) clears v0.
+- `cpu_reset` in `sbin/stand/symmon.IP32`: board start-up hook meant for the multiprocessor spin-lock set-up, an empty routine, an 8-byte routine at address 0xa0027460. Established.
+  Two instructions, `jr ra` and a `nop` (0xa0027464). `_init_saio` calls it at 0xa0026688, right after `_init_spb` and before `initlock` (0xa002a74c).
+- `cpu_set_nvram` in `sbin/stand/symmon.IP32`: writes one named string into the nonvolatile store, replaced by a return of 0, an 8-byte routine at address 0xa0020c74. Established.
+  v0 is cleared in the delay slot at 0xa0020c78; the name and value pointers are unread. Nothing calls it.
+- `cpu_show_fault` in `sbin/stand/symmon.IP32`: decodes the saved cause word for a fault report, replaced by a zero return, an 8-byte routine at address 0xa0020c54. Established.
+  The delay slot (0xa0020c58) sets v0 to zero and the saved cause argument is left alone. No instruction in the image calls it.
+- `cpuid` in `sbin/stand/symmon.IP32`: the processor-number service, which always names processor 0, an 8-byte routine at address 0xa0020c5c. Established.
+  `move v0,zero` sits in the delay slot (0xa0020c60) of the `jr ra`. It is the most-called of these stubs: 75 `jal` sites, among them `_bp_fault` (0xa0012de4), `symmon_exchandler`, `init_symmon_gpda` (0xa001b39c), `fetch_kname`, `setup_gpdas` and the formatted-output routines `printf` and `putchar`. The word at 0xa003bfe0 in the private function table also holds it.
+- `cvsema` in `sbin/stand/symmon.IP32`: tests a condition semaphore, answering 0 because one thread runs, an 8-byte routine at address 0xa00311b0. Established.
+  The delay slot (0xa00311b4) of the `jr ra` clears v0. It follows the shared no-op block at 0xa00311a0 and precedes `init_rb` (0xa00311b8); no call or table word reaches it.
