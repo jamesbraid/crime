@@ -2160,6 +2160,31 @@ These routines run on the R10000-class cache-error path and the idle loop of the
   A syndrome of 0 returns 0; otherwise it counts the set bits and returns 1 when the count is 1, 3 or 5 and 2 for any other count.
 - `scache_data_bit_error` in `kernel.o`: finds which bit of a secondary-cache data word a syndrome points at, a 280-byte routine at offset 0x53e0. Established.
   It masks the syndrome to nine bits (0x1ff), then tries each bit position 0 to 135 in turn (64 low data bits, 64 high data bits, eight further check bits): for each it builds the syndrome that a one-bit error there would give from the nine table entries at `.data+0x400` (masks at +16, +8 and +0 for the three ranges), returns the position on the first match, and returns -1 when none matches.
+## TLB, timer and cache-operation helpers (`kernel.o`)
+
+These short routines were read in full from the 6.5.30 `kernel.o` object. Their offsets are byte offsets in that object; the coprocessor-0 register numbers are identified by the instructions themselves.
+
+- `tlbgetpid` in `kernel.o`: reads the current TLB process identifier, a 12-byte routine at offset 0xd38. Established.
+  It reads coprocessor-0 register 10, masks the result to its low byte and returns that byte. It makes no memory access or call.
+- `tlbgetrand` in `kernel.o`: reads the random TLB index, a 12-byte routine at offset 0xde4. Established.
+  It returns coprocessor-0 register 1 unchanged and does not alter any state.
+- `tlbgetent` in `kernel.o`: reads one indexed TLB entry into caller buffers, a 160-byte routine at offset 0xd44. Established.
+  It saves coprocessor-0 register 10, clears register 4, reads register 10 as the current process identifier, writes the caller's index to register 0, executes `tlbr`, and stores register 10 as a doubleword at the first output pointer, register 2 as a word at the second, and register 3 as a word at the third. It restores register 10 and clears register 5 before returning.
+- `clr_r4kcount_intr` in `kernel.o`: clears the processor counter interrupt comparison, a 12-byte routine at offset 0x14cc. Established.
+  It writes zero to coprocessor-0 register 11 and returns without reading its argument.
+- `get_r4k_compare` in `kernel.o`: reads the processor counter comparison value, a 28-byte routine at offset 0x14d8. Established.
+  It reads coprocessor-0 register 11 after three instruction-delay slots and returns the value unchanged.
+- `set_r4k_compare` in `kernel.o`: writes the processor counter comparison value, a 12-byte routine at offset 0x14f4. Established.
+  It writes its first argument to coprocessor-0 register 11 and returns without further memory or register operations.
+- `get_r4k_counter` in `kernel.o`: reads the processor cycle counter, a 12-byte routine at offset 0x151c. Established.
+  It reads coprocessor-0 register 9 and returns the value without modification.
+- `query_fasttimer` in `kernel.o`: converts the fixed fast-timer rate through a kernel divisor, a 28-byte routine at offset 0xc6dc. Established.
+  It loads the constant `0x3b9aca00` (one billion), divides it by the word reached through the global pointer, returns the quotient and traps on a zero divisor. The routine performs no other memory write.
+- `delay_for_intr` in `kernel.o`: an interrupt-delay placeholder, an 8-byte routine at offset 0xb524. Established.
+  It jumps through its relocation target and has a nop in the delay slot; it does not inspect its arguments or set a return value in its own instructions.
+- `ecc_cacheop_get` in `kernel.o`: packages a cache-operation value before dispatch, a 44-byte routine at offset 0x4620. Established.
+  It stores its first argument at offset +8 of the third argument record, keeps the low 32 bits of its second argument at offset +0 of that record, calls the relocated cache-operation helper with the record and returns that helper's value.
+
 ## Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 
 These routines were read in full from the 6.5.30 `kernel.o` with relocations resolved (`objdump -dr`, `scripts/facts.py`).
