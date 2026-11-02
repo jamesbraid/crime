@@ -3694,7 +3694,7 @@ The debugger links against library code that expects kernel and firmware service
 - `dump_gpda` in `sbin/stand/symmon.IP32`: prints the per-processor block of a virtual processor, an empty routine, an 8-byte routine at address 0xa0029004. Established.
   `jr ra` and a `nop` (0xa0029008), with the processor-number argument unread. It is not called and not in any table. The next code, at 0xa002900c, belongs to a separate routine.
 - `ecc_error_decode` in `sbin/stand/symmon.IP32`: decodes a memory error register, stubbed to return 0, an 8-byte routine at address 0xa0020c7c. Established.
-  v0 is cleared in the delay slot at 0xa0020c80, and the register value argument is ignored. The image has no call.
+  v0 is cleared in the delay slot at 0xa0020c80, and the register value argument is ignored. The image has no call. 
 - `eerom_read` in `sbin/stand/symmon.IP32`: reads a serial-EEPROM register for the cache code, which here reads nothing and returns 0, an 8-byte routine at address 0xa0020c64. Established.
   The delay slot at 0xa0020c68 clears v0.
 - `ether_sprintf` in `sbin/stand/symmon.IP32`: formats an Ethernet address as text, replaced by a function that returns a null string pointer, an 8-byte routine at address 0xa001bf2c. Established.
