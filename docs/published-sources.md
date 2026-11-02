@@ -33,7 +33,7 @@ Reviewed and set aside: US 6,342,892 and its relatives (the Nintendo 64 signal p
 ## 1. O2 Technical Report, version 1.0
 
 - Identity: SGI, "O2 Technical Report", version 1.0, October 1997, 63 pages. Copy read: https://bukosek.si/hardware/collection/sgi-o2/o2-tech-report.pdf (SHA-256 `c0fad6ac1e1c982454c3b867c719bd6e62ef171cd0caa46f04ff2afc42c714ee`).
-- Stored copy: [docs/sources/reports/o2-technical-report-1.0.pdf](sources/reports/o2-technical-report-1.0.pdf), SHA-256 `c0fad6ac1e1c982454c3b867c719bd6e62ef171cd0caa46f04ff2afc42c714ee`, library path `graphics/o2/o2-technical-report-1.0.pdf`.
+- Stored copy: [docs/sources/reports/o2-technical-report-1.0.pdf](sources/reports/o2-technical-report-1.0.pdf), SHA-256 `c0fad6ac1e1c982454c3b867c719bd6e62ef171cd0caa46f04ff2afc42c714ee`.
 - Covers: the whole machine. Chapter 3 memory, chapter 4 graphics (the rendering engine), chapter 7 imaging (ICE). The report calls CRIME the "MRE".
 - Match: exact; product level, so no register or width below what is quoted.
 
@@ -56,7 +56,7 @@ Open questions moved: the dither format list; the 6-bit fraction (to established
 ## 2. Unified Memory Architecture summary
 
 - Identity: SGI, "Unified Memory Architecture", white paper, 6 pages. https://www.sgidepot.co.uk/o2/1352.pdf (SHA-256 `984d35ab1ae7c3d74823bc90776d71541d177ce42f76eef13c35d750964ed395`).
-- Stored copy: [docs/sources/reports/o2-unified-memory-architecture.pdf](sources/reports/o2-unified-memory-architecture.pdf), SHA-256 `984d35ab1ae7c3d74823bc90776d71541d177ce42f76eef13c35d750964ed395`, library path `graphics/o2/o2-unified-memory-architecture-1352.pdf`.
+- Stored copy: [docs/sources/reports/o2-unified-memory-architecture.pdf](sources/reports/o2-unified-memory-architecture.pdf), SHA-256 `984d35ab1ae7c3d74823bc90776d71541d177ce42f76eef13c35d750964ed395`.
 - Covers: the memory system at product level. Match: exact, but with no chip detail.
 
 Facts (established, published): a four-bank multiplexed SDRAM subsystem delivering a sustained 2.1 GB/s; every subsystem reaches memory through its own port; no local buffers for video, graphics, imaging or compression; a texture is used "by passing a pointer", with no copy. No arbitration order or widths beyond source 1. Bearing: none on an open entry; it states the design intent behind the rendering TLB.
@@ -64,7 +64,7 @@ Facts (established, published): a four-bank multiplexed SDRAM subsystem deliveri
 ## 3. O2 Digital Media white paper
 
 - Identity: SGI, "Silicon Graphics O2 Workstation Digital Media White Paper". https://www.sgidepot.co.uk/o2/o2dm.pdf (SHA-256 `53aeaa0f9578b9dea07189b973fc2c97363a15ddbf6b483bad1405eac523d18a`).
-- Stored copy: [docs/sources/reports/o2-digital-media-whitepaper.pdf](sources/reports/o2-digital-media-whitepaper.pdf), SHA-256 `53aeaa0f9578b9dea07189b973fc2c97363a15ddbf6b483bad1405eac523d18a`, library path `graphics/o2/o2-digital-media-whitepaper.pdf`.
+- Stored copy: [docs/sources/reports/o2-digital-media-whitepaper.pdf](sources/reports/o2-digital-media-whitepaper.pdf), SHA-256 `53aeaa0f9578b9dea07189b973fc2c97363a15ddbf6b483bad1405eac523d18a`.
 - Covers: imaging, video and compression at product level. Match: exact.
 
 Facts (established, published): "the O2 graphics engine processes data in 8-bit per component RGBA colour space" while video is 4:2:2 YCrCb of 8 or 10 bits, so the video path converts on entry; ICE does JPEG compression and decompression of video streams and texture images and accelerates the OpenGL imaging extensions; MPEG-1, H.261, Cinepak and Indeo are software. The 8-bit-per-component statement settles the blend operand width: the destination colour the blender reads is 8 bits per component, which [pixel-arithmetic.md](pixel-arithmetic.md) already derived from the frame formats. The product of an 8-bit colour and an 8-bit factor, and its rounding, are in no published source.
@@ -72,7 +72,7 @@ Facts (established, published): "the O2 graphics engine processes data in 8-bit 
 ## 4. OpenGL implementations paper (Graphics Hardware 1997)
 
 - Identity: "Realizing OpenGL: Two Implementations of One Architecture", Graphics Hardware workshop, 1997, 11 pages. Copy read: the proceedings PDF (SHA-256 `c568a0eaabffc399c548c18f9a768a4d3156def7a6ab548cbae1cccdfffa26c3`). Its second half is the O2.
-- Stored copy: [docs/sources/papers/kilgard97-realizing-opengl.pdf](sources/papers/kilgard97-realizing-opengl.pdf), SHA-256 `c568a0eaabffc399c548c18f9a768a4d3156def7a6ab548cbae1cccdfffa26c3`, library path `graphics/onyx/kilgard97-realizing-opengl.pdf`.
+- Stored copy: [docs/sources/papers/kilgard97-realizing-opengl.pdf](sources/papers/kilgard97-realizing-opengl.pdf), SHA-256 `c568a0eaabffc399c548c18f9a768a4d3156def7a6ab548cbae1cccdfffa26c3`.
 - Match: exact.
 
 Facts (established, published):
@@ -88,7 +88,7 @@ Open questions moved: none closed.
 ## 5. US 6,104,417, unified memory with dynamic graphics memory allocation
 
 - Identity: US 6,104,417, "Unified memory computer architecture with dynamic graphics memory allocation", filed 1996-09-13, granted 2000-08-15, assigned to SGI by its inventors (a continuation application is US 2001/0019331; European family EP 0 829 820). https://patents.google.com/patent/US6104417A/en
-- Stored copy: [docs/sources/patents/US6104417.pdf](sources/patents/US6104417.pdf), SHA-256 `4765de14ef12d18e9e4774060db4281f0e64932f7bc381f4bcaf32d002f6d874`, library path `patents/US6104417-o2-unified-memory-dynamic-graphics.pdf`.
+- Stored copy: [docs/sources/patents/US6104417.pdf](sources/patents/US6104417.pdf), SHA-256 `4765de14ef12d18e9e4774060db4281f0e64932f7bc381f4bcaf32d002f6d874`.
 - Covers: a memory controller and rendering engine on one IC (the text's "graphics rendering and memory controller IC"), a graphics back end, an I/O IC and an image processor and compression device (which a table names VICE, with MACE and GBE for the other clients), all sharing one SDRAM memory. The text does not use the product names; the match to CRIME, MACE, GBE and VICE rests on the table's labels, the 66 MHz clock and the 64 KB tile, and is high but **inferred**.
 - Match: high. Facts **inferred**.
 
@@ -103,27 +103,27 @@ Facts:
 ## 6. RealityEngine Graphics (SIGGRAPH 1993)
 
 - Identity: "RealityEngine Graphics", SIGGRAPH 93 proceedings, pages 109-116. Copy read: https://cseweb.ucsd.edu/~ravir/6160-fall04/papers/p109-akeley.pdf (SHA-256 `76b3bf10b66d0e8ee4f03971a7ecfa6540bfc919c58afce8e37062e5d3b08e71`).
-- Stored copy: [docs/sources/papers/akeley93-realityengine-graphics.pdf](sources/papers/akeley93-realityengine-graphics.pdf), SHA-256 `76b3bf10b66d0e8ee4f03971a7ecfa6540bfc919c58afce8e37062e5d3b08e71`, library path `papers/akeley93-realityengine-graphics.pdf`.
+- Stored copy: [docs/sources/papers/akeley93-realityengine-graphics.pdf](sources/papers/akeley93-realityengine-graphics.pdf), SHA-256 `76b3bf10b66d0e8ee4f03971a7ecfa6540bfc919c58afce8e37062e5d3b08e71`.
 - Covers: a high-end predecessor, not the O2. Match: lineage only; everything below is **inferred** for CRIME.
 - Facts: set-up treats each parameter as a plane equation with a signed slope in the positive X and Y directions, on the geometry side, which is the arrangement the O2 report describes with the host as the set-up engine ([pixel-arithmetic.md](pixel-arithmetic.md): slopes A and B from the three vertices); perspective correction by interpolating S/W, T/W, R/W and 1/W and dividing per pixel; level of detail from "the worst-case of the four pixel-to-texel X and Y ratios"; trilinear blend from the sub-texel and level fractions; colour components of 12 bits in the buffers and 12-to-10-bit dither before gamma. The first three agree in outline with the specification's steppers and the `rho = max(...)` level of detail ([pixel-arithmetic.md](pixel-arithmetic.md), [spec] PDF 204). The 12-bit and dither items do not carry to the 8-bit O2.
 
 ## 7. US 5,490,240, three-dimensional textures
 
 - Identity: US 5,490,240, "System and method of generating interactive computer graphic images incorporating three dimensional textures", filed 1993-07-09, granted 1996-02-06, assigned to SGI. https://patents.google.com/patent/US5490240A/en
-- Stored copy: [docs/sources/patents/US5490240.pdf](sources/patents/US5490240.pdf), SHA-256 `5a458b3d356fdde064a1cd1a323a0b8aa1ec17be2f8986df59073bad199fa3cf`, library path `patents/US5490240-three-dimensional-textures.pdf`.
+- Stored copy: [docs/sources/patents/US5490240.pdf](sources/patents/US5490240.pdf), SHA-256 `5a458b3d356fdde064a1cd1a323a0b8aa1ec17be2f8986df59073bad199fa3cf`.
 - Match: lineage only. The page names no product.
 - Facts (**inferred** for CRIME): the level of detail of a 2 x 2 quad (or per pixel) is the maximum of absolute differences of the texture coordinates across a step in x and in y; the fine level is `max(0, int(log2(LOD)))`, the coarse level is fine + 1, and the level fraction is `(LOD >> fine) - 1.0`, that is the LOD divided by 2^fine minus one, linear in LOD, not in log2 LOD; eight neighbouring texels are addressed from the integer parts, a trilinear lookup reads 16, and two 8-way interpolations are blended by the level fraction. **Bearing:** this is the candidate for the two entries in [pixel-arithmetic.md](pixel-arithmetic.md) that are "unknown: no shipped software or published source depends on it", the precision of the level of detail and how its fraction weights the two levels. The specification takes `LOD = log2(rho)` with rho a maximum; the patent's maximum matches. The linear fraction is a design of the generation before; whether CRIME keeps it is unknown. A discriminating reading: the diagnostic's texture tests, if any lists a level fraction (the O2 diagnostics were not read for this).
 
 ## 8. US 5,528,738 and US 5,581,680, line antialiasing
 
 - Identity: US 5,528,738, "Method and apparatus for antialiasing raster scanned, polygonal shaped images", and US 5,581,680, "Method and apparatus for antialiasing raster scanned images", both filed 1993-10-06, granted 1996-06-18 and 1996-12-03, assigned to SGI. https://patents.google.com/patent/US5528738A/en and https://patents.google.com/patent/US5581680A/en
-- Stored copy: [docs/sources/patents/US5528738.pdf](sources/patents/US5528738.pdf), SHA-256 `cb47d3ef58cce10ba21f6dff92fad75aaa5f2e227efd5dc26441acfc71774145`, library path `patents/US5528738-antialiasing-polygonal-images.pdf`; [docs/sources/patents/US5581680.pdf](sources/patents/US5581680.pdf), SHA-256 `e5e877440c75a70d7867cf9e8f76df553548703e5123d59aabbf2b51056b4c26`, library path `patents/US5581680-antialiasing-raster-images.pdf`.
+- Stored copy: [docs/sources/patents/US5528738.pdf](sources/patents/US5528738.pdf), SHA-256 `cb47d3ef58cce10ba21f6dff92fad75aaa5f2e227efd5dc26441acfc71774145`; [docs/sources/patents/US5581680.pdf](sources/patents/US5581680.pdf), SHA-256 `e5e877440c75a70d7867cf9e8f76df553548703e5123d59aabbf2b51056b4c26`.
 - Covers: an extension of Bresenham's algorithm that writes two pixels per step with coverage from a table, for a desktop workstation (the text names the Indy). Match: lineage only.
 - Facts (**inferred** for CRIME's antialiased lines): coordinates 16.4, deltas 17.4, the decision value and a sign term 18.8; the vertical distance to the pixel centre carried with 4 fraction bits and an accumulated error under 2^-5 over a 2^16 range; coverage from eight tables, one per octant, of 4-bit entries (16 entries to a 64-bit table), addressed by the distance and its one's complement together to give both pixels' coverage; a circular cone filter; endpoint coverage the table entry scaled by the end point's fractional coordinate (or its complement at the start point); for fractional end points a corrected first decision value; two pixels per iteration; blending `alpha x colour + (1 - alpha) x buffer`. **Bearing:** the O2 report's "two-pixel-wide lines", "slope- and distance-based coverage tables in ROM" and "filtered line endpoints" read like this design, and the specification's 2.14 slope field ([context.md](context.md)) plays the part of the patent's slope term. The widths differ (the O2 has 6 fraction bits, the patent 4), so the patent is not the CRIME circuit. It names the design's ingredients and nothing else: the table contents and widths of the O2 stay unknown. Route: the specification's antialiased-line step, with the patent's decision terms as the vocabulary to look for.
 
 ## 9. Hardware Developer's Handbook, release 2.0
 
-- Identity: SGI, "Hardware Developers Handbook", release 2.0, May 1997, 339 PDF pages. Stored copy: [docs/sources/manuals/hardware-developers-handbook-2.0.pdf](sources/manuals/hardware-developers-handbook-2.0.pdf), SHA-256 `3da04c67414ac5794a1f04cb4a207e68919db25d10f518c9b599adb7a3805d8d`, library path `sgi-hw/hardware-developer-handbook-2.0.pdf`. Page numbers below are PDF pages.
+- Identity: SGI, "Hardware Developers Handbook", release 2.0, May 1997, 339 PDF pages. Stored copy: [docs/sources/manuals/hardware-developers-handbook-2.0.pdf](sources/manuals/hardware-developers-handbook-2.0.pdf), SHA-256 `3da04c67414ac5794a1f04cb4a207e68919db25d10f518c9b599adb7a3805d8d`. Page numbers below are PDF pages.
 - Covers: bus, connector and board facts for every SGI desktop and server of the day; the O2 appears in the system table, the chassis chapter, the memory, monitor, video and PCI sections. It has no register information.
 - Match: exact, product level.
 
@@ -136,7 +136,7 @@ Facts (established, published):
 
 ## 10. O2 Workstation Hardware Reference Guide (007-3275)
 
-- Identity: SGI, "O2 Workstation Hardware Reference Guide", document 007-3275, revision 002 (234 pages) and revision 003 (1998, 250 pages), a setup, option-installation and connector manual. Stored copies: [manuals/007-3275-002.pdf](sources/manuals/007-3275-002.pdf), SHA-256 `835ef14519a633274439fe8531f3ce97162c00426366fb9153586ecfb3d531ae`, and [manuals/007-3275-003.pdf](sources/manuals/007-3275-003.pdf), SHA-256 `65e260baa1657f1278624cc9abbfa96fca4e739f1c4151bb79e31e398e3648bc`; library paths `3000/007-3275-002/pdf/007-3275-002.pdf` and `3000/007-3275-003/pdf/007-3275-003.pdf` in the technical publications set. The text names no chip: it never mentions CRIME, MACE, GBE or VICE.
+- Identity: SGI, "O2 Workstation Hardware Reference Guide", document 007-3275, revision 002 (234 pages) and revision 003 (1998, 250 pages), a setup, option-installation and connector manual. Stored copies: [manuals/007-3275-002.pdf](sources/manuals/007-3275-002.pdf), SHA-256 `835ef14519a633274439fe8531f3ce97162c00426366fb9153586ecfb3d531ae`, and [manuals/007-3275-003.pdf](sources/manuals/007-3275-003.pdf), SHA-256 `65e260baa1657f1278624cc9abbfa96fca4e739f1c4151bb79e31e398e3648bc`; The text names no chip: it never mentions CRIME, MACE, GBE or VICE.
 - Match: exact, product level. Page numbers are PDF pages; revision 003 is cited, revision 002 carries the same tables two to ten pages earlier (digital video port table at PDF 204-207).
 
 Facts (established, published):
@@ -148,7 +148,7 @@ Facts (established, published):
 
 ## 11. O2 Desktop Workstation product guide (1067)
 
-- Identity: SGI, "O2 Desktop Workstation", product guide with technical specifications, January 1997, six pages. Stored copy: [reports/o2-product-guide-1067.pdf](sources/reports/o2-product-guide-1067.pdf), SHA-256 `7cefac3d991f4b81280de3133d91388595a5e82bb7bc2bb932d0d37b881cef80`, library path `branding/sgi-1997-o2-1067-product-guide.pdf`.
+- Identity: SGI, "O2 Desktop Workstation", product guide with technical specifications, January 1997, six pages. Stored copy: [reports/o2-product-guide-1067.pdf](sources/reports/o2-product-guide-1067.pdf), SHA-256 `7cefac3d991f4b81280de3133d91388595a5e82bb7bc2bb932d0d37b881cef80`.
 - Match: exact, for the first R5000 and R10000 models; marketing figures, not measurements.
 
 Facts (established, published; PDF 1):
@@ -159,7 +159,7 @@ Facts (established, published; PDF 1):
 
 ## 12. O2 Digital Video Option and O2 Dual Display Option data sheets
 
-- Identity: SGI data sheets, sheet numbers 1570 (August 1999) and 2019; stored as [reports/o2-digital-video-option-1570.pdf](sources/reports/o2-digital-video-option-1570.pdf), SHA-256 `9d38a5ae4e412369e70d1c4ce3602ad51af887960769b2ee9f77fa431e874bef`, and [reports/o2-dual-display-option-2019.pdf](sources/reports/o2-dual-display-option-2019.pdf), SHA-256 `b34172e37ae5478f5a68e72a858cef978508a5e9d472781878f88c4e1416fcfd`. Library paths `graphics/o2/sgidepot-o2-digital-video-option-1570.pdf` and `graphics/o2/sgidepot-o2-dual-channel-display-2019.pdf`.
+- Identity: SGI data sheets, sheet numbers 1570 (August 1999) and 2019; stored as [reports/o2-digital-video-option-1570.pdf](sources/reports/o2-digital-video-option-1570.pdf), SHA-256 `9d38a5ae4e412369e70d1c4ce3602ad51af887960769b2ee9f77fa431e874bef`, and [reports/o2-dual-display-option-2019.pdf](sources/reports/o2-dual-display-option-2019.pdf), SHA-256 `b34172e37ae5478f5a68e72a858cef978508a5e9d472781878f88c4e1416fcfd`.
 
 Facts (established, published):
 
@@ -171,7 +171,7 @@ Facts (established, published):
 - Identity: a list of what the imaging engine accelerates, attributed to an SGI engineer, on a hobbyist site ([reports/sgidepot-melting-the-ice.html](sources/reports/sgidepot-melting-the-ice.html), SHA-256 `681568fe8c57fe117e309051ab170b83e6b01f8b5a8c785716a7e93cc2c07ad9`), and a 2002 developer post on imaging techniques for the O2 ([reports/o2-imaging-techniques-usenet-2002.txt](sources/reports/o2-imaging-techniques-usenet-2002.txt), SHA-256 `1bc0f9592e99d05b732c81776364c2bf4c01e5c8dbabe64d130333ff1ad7e3a6`). Both are secondhand and the second says it has no SGI documentation.
 - Facts (inferred): capture is accelerated only at PAL or NTSC frame sizes, compression ratios near 4:1 to 5:1 for hardware motion JPEG, and OpenGL imaging operations reach about 7.8 million pixels a second for scale and bias and fall to about 1.2 million for a 7 by 7 non-separable convolution; the imaging engine accepts an operation only when all coefficients are integers above one in magnitude or all are reals within -1 to 1. See [vice.md](vice.md).
 
-Reviewed and not stored: the O2+ Hardware Reference Guide (007-4486-001) and the IRIX 6.3 for O2 Device Driver Programming Guide (007-3443-002), found in the library and read for the chip names. The first never names a chip and the second names only MACE, for the PCI error bits its PCI error handler receives. Several O2 option and upgrade sheets (memory, CPU upgrades, dual channel display installation, DVLink, flat panel adapter, audio-visual module) are in the library and carry no chip-level facts; no fact here rests on them.
+Reviewed and not stored: the O2+ Hardware Reference Guide (007-4486-001) and the IRIX 6.3 for O2 Device Driver Programming Guide (007-3443-002), read for the chip names. The first never names a chip and the second names only MACE, for the PCI error bits its PCI error handler receives. Several O2 option and upgrade sheets (memory, CPU upgrades, dual channel display installation, DVLink, flat panel adapter, audio-visual module) carry no chip-level facts; no fact here rests on them.
 
 ## 14. Recollections and history (leads, unverified)
 
@@ -289,7 +289,7 @@ Retest of 2026-10-31: the leads that turned on `hinv` or `gfxinfo` text, a revis
   - Test from software: a qtest or guest run that injects an ECC or invalid-address access from each client, then reads mem_error_stat and cpu_error_stat, and checks clear-on-write-0.
   - Result (corroborated against the current source and the specification): the public `crime.c` reads the identity word as revision in bits 3:0 and identity in 7:4, only logs them, and decodes the memory error status as the lead says (invalid address, ECC with syndrome and check bits, multiple and hard errors fatal, soft, and the CPU, VICE, GBE, rendering-engine (ID in bits 14:8) and MACE (ID in bits 6:0) sources), shifts the CPU error address left 2 and clears both status registers by writing 0. The layouts agree with [CRIME.h](../CRIME.h) and specification tables 5-16 and 5-17 (status "set by hardware and cleared by software", address bits 33:2). The "no revision workaround" statement holds for Linux only: IRIX reads the revision code and selects a different decoder per revision (`get_crimerev`, `print_buserr_rev0`; [memory.md](memory.md), [functions.md](functions.md)). Error injection per client and the clear-on-zero behaviour on silicon need a guest and are untestable here.
 - **comp.graphics.api.opengl: OpenGL on 'oldish' SGI machines.**
-  - Identity: Usenet, comp.graphics.api.opengl, https://groups.google.com/g/comp.graphics.api.opengl/c/IZYhbLT6oSw/m/bC6-hslGXD4J, 2006-01-23 to 2006-01-26.
+  - Identity: Usenet, newsgroup comp.graphics.api.opengl, posted 2006-01-23, thread to 2006-01-26, author as published "John Tsiombikas (Nuclear / Mindlapse)", subject "OpenGL on 'oldish' SGI machines". Message-ID: not recovered; replies cite it only truncated, as news:slrndtat5k...@nuclear.dnsalias.com. Locator: https://groups.google.com/g/comp.graphics.api.opengl/c/IZYhbLT6oSw/m/bC6-hslGXD4J.
   - Who: hobbyists and developers who owned O2s; one poster cites SGI's OpenGL documentation.
   - Claims (all unverified): the O2 reports OpenGL 1.1, and newer features come through EXT, SGIS and SGIX extensions, including the O2-only SGIS_generate_mipmap and SGIS_texture_scale_bias. There is one hardware texture unit and no real multitexture; a GL_MAX_TEXTURE_UNITS query does nothing. Native texture formats need no conversion: L8 and I8, LA 8:8, RGBA 5:5:5:1, 4:4:4:4 and 8:8:8:8. The extension list includes SGIX_dm_pbuffer, EXT_texture3D, EXT_convolution, EXT_histogram, SGI_color_table and SGIX_video_source. Texturing works but is not fast. UMA allows textures far beyond the 4 to 16 MB of other SGI systems (secondhand, hedged).
   - Test from software: run glxinfo and a small GL program under IRIX 6.5 in the emulator. Compare the extension string, the texture-format conversion speed and the 3D texture support with these claims. The extension list should be checked against an O2 extension string from the repo's captures, if one exists. The EXT_texture3D entry conflicts with the 1998 post above; the string settles it.
@@ -538,7 +538,7 @@ Retest of 2026-10-31: the leads that turned on `hinv` or `gfxinfo` text, a revis
   - Identity: Usenet, comp.sys.sgi.hardware and comp.graphics.api.opengl, message IDs `3546632C.7D3A86FD@brussels.sgi.com` (1998-04-29), with `5cs94g$22i@fido.asd.sgi.com` (1997-01-31) and `60ihcg$1qmg@fido.asd.sgi.com` (1997-09-27) in the entries above.
   - Who: an SGI systems engineer (Belgium); an SGI OpenGL/GLUT engineer.
   - Claims (all unverified): the stereo goggles port on O2 needs a daughter card, which was standard on Indy. The original O2 release supports full-screen stereo, not OpenGL quad-buffered stereo. There are two stereo forms: STR_TOP and STR_BOT with X extensions, and STR_RECT, where the app draws one buffer with a vertical offset between fields of 512 lines on O2 (532 on other machines). Quad-buffered stereo works only in the 32+32 framebuffer configuration. STR_TOP and STR_RECT need the 32 configuration. Patches 1979 and 2447 (needed for quad-buffer) break STR_TOP but not STR_RECT, and STR_TOP users can fall back from 1979 to 1795. Patch 2405 adds driver, library and timing-table support for stereo, and 2083 or later add stereo visuals to the X server. The patch also fixes full-screen stereo refresh going out of sync under system load.
-  - Test from software: patches 1795, 1979 and 2083 are in the Library (IRIX 6.3 and 6.4 current patches, September 1997). Read their release notes and compare the shipped GBE timing tables for the stereo formats. In a guest, set a stereo format with setmon and check the 512-line field offset against the model's GBE stereo and field logic. Check that 32+32 and 32 give different tile layouts for CRIME.
+  - Test from software: read the release notes of patches 1795, 1979 and 2083 (IRIX 6.3 and 6.4 current patches, September 1997) and compare the shipped GBE timing tables for the stereo formats. In a guest, set a stereo format with setmon and check the 512-line field offset against the model's GBE stereo and field logic. Check that 32+32 and 32 give different tile layouts for CRIME.
   - Result (partly corroborated): the 1280x492_120s file has 532 lines per field (492 active), so a 512-line offset between fields is not the file's field length ([gbe.md](gbe.md)); which framebuffer configurations allow which stereo form is not in a file read here (unknown).
 - **CRM shipped vof directory listing with file sizes (IRIX 6.3 default set).**
   - Identity: Usenet, comp.sys.sgi.hardware and comp.sys.sgi.graphics, message IDs `32AE330B.15FB@sgi.com` (1996-12-10) and `37F47A7A.8D9D8AA7@brussels.sgi.com` (1999-10-01). The 1996-12-12 listing, `58pki3$am3@fido.asd.sgi.com`, is in the CRM directory entry above.
@@ -650,10 +650,10 @@ Retest of 2026-10-31: the leads that turned on `hinv` or `gfxinfo` text, a revis
   - Test from software: hinv and the video library in an audio-only configuration should report no video device. The model can expose a flag (no VICE or video input), and the IRIX video-device probe path should then show the expected absence. This would confirm that video presence is a board-population fact, not a firmware setting.
   - Result (untestable from software): a board-assembly remark.
 - **O2 early graphics patches (1795, 1719 and 1728) as behaviour changes for CRIME and the texture path.**
-  - Identity: Usenet, comp.sys.sgi.hardware, message ID `33241BAE.102F@brussels.sgi.com`, 1997-03-10 (patch notes from the 1997-09 CD). The patches are held in the Library.
+  - Identity: Usenet, comp.sys.sgi.hardware, message ID `33241BAE.102F@brussels.sgi.com`, 1997-03-10 (patch notes from the 1997-09 CD). The patch titles are not recorded here.
   - Who: an SGI sales-support engineer (Belgium).
   - Claims (all unverified): O2 "crashes" on factory IRIX needed at least patch 1719 (1728 preferred; 1719 shipped factory-installed). The errors in the report occurred only when reading from the serial or keyboard and mouse ports. They could be DIMM or IP32 module faults when all errors fall in one bank. An application vendor, a non-SGI reader of the same period, says patch 1795 speeds most of OpenGL on O2 and glTexImage2D "by a whole lot".
-  - Test from software: compare libGL and libGLcore, and the kernel graphics objects, between base 6.3 and patch 1795 in the Library trees. The diff shows which CRIME texture-load path changed. The serial-port read observation tests the model's MACE-to-CRIME memory-error reporting on ISA-style reads from the MACE peripheral window.
+  - Test from software: compare libGL and libGLcore, and the kernel graphics objects, between base 6.3 and patch 1795 installs. The diff shows which CRIME texture-load path changed. The serial-port read observation tests the model's MACE-to-CRIME memory-error reporting on ISA-style reads from the MACE peripheral window.
   - Result (untestable from software): patch contents are not among the binaries; the 6.5.30 files already include whatever the patches changed.
 - **O2 dual-channel option: 60 Hz only, 1280x1024 only, each screen updated every other retrace.**
   - Identity: Usenet, comp.sys.sgi.hardware, message IDs `slrnb9t728.2e9.ivanr@omen.melbourne.sgi.com` (2003-04-17, quoting an SGI employee's description), `3DC65405.6040109@brussels.sgi.com` (2002-11-04) and `3E9EA02C.2FA2928D@larc.nasa.gov`.

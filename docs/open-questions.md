@@ -33,7 +33,7 @@ The other 51 software-now items follow in file order, each with its step inline.
 - Several Results call a question untestable where a software read exists: the NetBSD crmfb pixel format (the public driver source), the MACE audio DMA ring (IRIX source), the `dmBufferAllocate` leak (media library code) and the tile clearing on X session start (kernel allocator).
 - In this clone the submodules for NetBSD, Linux, OpenBSD, GXemul, MAME and the SGI documents are empty; readings that cite them need a checkout that holds those trees.
 - `xscreen` and `findvis` are not under the shipped `root/` tree, so the two items that name them are missing-binary items.
-- The intro and two items name "the Library" as a route. The RE rules keep Library references out of the repo; flagged here, not edited.
+- The intro and two items name a route the repo does not hold; they need rewording.
 
 Route key, used in the tables:
 
@@ -44,7 +44,7 @@ Route key, used in the tables:
 - **L**: Linux (`arch/mips/sgi-ip32`, `gbefb`), NetBSD `sgimips` (`crime`, `crmfb`) and MAME (`o2`, `crime`), read.
 - **D**: the diagnostics shipped for the O2: `ide.IP32` (stand-alone IDE with graphics and memory tests), the IP32 PROM image and `symmon.IP32`. Not yet read for these questions; their tests carry expected register values and error-bit decoders.
 - **R**: other IRIX releases (6.3 for O2, the 6.5.x overlays, and any release whose objects keep more debug information).
-- **P**: published output from real O2s: `hinv`, `gfxinfo`, kernel and X server messages in newsgroup and mailing-list posts, through the Library's public roots.
+- **P**: published output from real O2s: `hinv`, `gfxinfo`, kernel and X server messages in newsgroup and mailing-list posts, found through public search.
 - **E**: running the shipped software under an emulator to record what it writes and expects back; it shows the driver's expectation, not the hardware's behaviour.
 
 ## Public driver differences
@@ -67,9 +67,9 @@ Patents, SGI technical reports, white papers and conference papers were searched
 
 ## O2 video and imaging documents (2026-10-30)
 
-Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware developer's handbook, the O2 hardware reference guide (revisions 002 and 003), the O2+ reference guide, the 1997 product guide, the option data sheets, the sgidepot.co.uk pages, the Lurker's Guide notes on O2 video input, sgistuff.net pages and the Usenet archive via the library. Three public copies of each chip specification (bukosek.si, a NetBSD mirror, erikarn.github.io) are byte-identical, so a copy with the missing VICE appendix is not among them.
+Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware developer's handbook, the O2 hardware reference guide (revisions 002 and 003), the O2+ reference guide, the 1997 product guide, the option data sheets, the sgidepot.co.uk pages, the Lurker's Guide notes on O2 video input, sgistuff.net pages and the Usenet archive. Three public copies of each chip specification (bukosek.si, a NetBSD mirror, erikarn.github.io) are byte-identical, so a copy with the missing VICE appendix is not among them.
 
-- **VICE instruction sets and table formats.** The specification copy lacks printed pages 250 to 391. Routes tried: the library, the three mirrors above (same file), the web (nothing else public). Next: disassemble the code images `libvice.so` and the `vice*.so` converters load, and read the `crime_tileaddr_for_vice` caller chain in `kernel.o`. Triage: software now. Step: disassemble the code images that libvice.so and the VICE converters load, and read the caller chain of crime_tileaddr_for_vice in the kernel object.
+- **VICE instruction sets and table formats.** The specification copy lacks printed pages 250 to 391. Routes tried: the three mirrors above (same file), the web (nothing else public). Next: disassemble the code images `libvice.so` and the `vice*.so` converters load, and read the `crime_tileaddr_for_vice` caller chain in `kernel.o`. Triage: software now. Step: disassemble the code images that libvice.so and the VICE converters load, and read the caller chain of crime_tileaddr_for_vice in the kernel object.
 - **Bitstream processor clock.** The O2 Technical Report entry in [published-sources.md](published-sources.md) says the bitstream processor is rated 60 MHz. The VICE specification (PDF 199) gives the whole chip one 66 MHz clock and names no separate rate. Possible reading: the report quotes a per-block figure the specification does not repeat. Routes tried: both documents, the converters' export lists. Next: the report's figure again, and the BSP chapter of the specification. Triage: software now. Step: re-read the report's 60 MHz figure and the bitstream-processor chapter of the specification; this is a document question.
 - **Memory clock wording.** The 1997 product guide says "100 MHz" synchronous DRAM; the technical report and the CRIME specification clock the memory interface at 66 MHz with 133 MHz data pins. Inferred: 100 MHz is the part grade. Routes tried: both. Next: the memory chapter of the CRIME specification for the refresh and CAS timing assumptions. Triage: software now. Step: read the memory chapter of the CRIME specification for the refresh and CAS timing assumptions.
 - **PAL filter ratio in the MACE clip register text.** The register text (PDF 46) says "7868/720" where the overview and output register say 786 pixels, 12/11. Inferred: a misprint. No second source; the shipped video library is the next route (`mvp.o`). Triage: software now. Step: read the PAL format files and the clip-register code in the video library (mvp.o) for the filter ratio field.
