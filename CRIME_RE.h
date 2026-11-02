@@ -8,7 +8,6 @@
  *   [hdr]    IRIX register layout headers: 6.5.5 root/usr/include/sys/
  *            crimereg.h and crimedef.h (shipped with the release). Field
  *            names cited, layout restated in our own words.
- *            restated in our own words.
  *   [k:FILE:FUNC+OFF] IRIX 6.5.30 IP32boot crime.a member, function, byte
  *            offset in the relocated objdump listing.
  *   [gl:UNIT:FUNC] IRIX 6.5.30 N32 libGLcore (usr/gfx/arch/IP32CRM32), the
@@ -57,6 +56,12 @@
  * k:crime:crmFifoWait+0x124 (mask 0xffe03fff), crimeFifoFullHandler+0xfc
  * (mask ~0x0fe00000)]. Field meanings follow the kernel's variable names
  * (ib_count, ib_stall, ib_empty, ib_full) and the interrupts they raise [I].
+ * Field widths are seven bits each (inferred from the two masks above). A
+ * kernel panic message quoted in a public report (IRIX 6.5.11, R12000 O2)
+ * prints ctl 0x280098b, which splits as count 11, stall 19, empty 0, full 20
+ * [I, from this layout]; one start-up path in the 6.5.30 kernel stores 0 to
+ * ib_empty and the word r10kfifohigh to ib_full (crimeInitHW+0x174 to +0x178),
+ * the same shape as that report.
  */
 #define IB_CTL_COUNT_SHIFT  0   /* 7 bits: stall length in 66 MHz cycles [I, spec "stallCycle"] */
 #define IB_CTL_STALL_SHIFT  7   /* 7 bits: stall host writes above this level [I, "stallLevel"] */
