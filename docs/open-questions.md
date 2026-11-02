@@ -6,26 +6,24 @@ Facts no source read so far settles. No hardware is available, so every question
 
 Each item below carries a tag at its end: `software now` (a concrete software read or search exists), `missing release or binary` (the answer lies in a release, binary or document not in this clone), `hardware only` (only a real machine or a timing model can settle it; recorded, not scheduled), or `settled by existing result` (a Result line in [published-sources.md, section 14](published-sources.md#14-recollections-and-history-leads-unverified) or a tested line already answers it; confirm and remove the item).
 
-Counts, 104 items: software now 65; missing release or binary 8; hardware only 13; settled by existing result 18.
+Counts, 102 items: software now 63; missing release or binary 8; hardware only 13; settled by existing result 18.
 
 Method and limits: each item was read with its cited evidence, meaning the lead's Result line in section 14 and the chapter it cites, and each cited binary and source tree was checked for presence in this clone. The binaries were not reopened item by item, so the tags rest on the cited evidence. Nothing listed as a software step has been run.
 
 ### Software now, in priority order
 
 1. **VICE MPEG-2 entry point** (the Nekonomicon VICE lead). [vice.md](vice.md) lists `mpeg2dec` and `mpeg2dec_fld` program names, which conflicts with the "no MPEG-2 entry point" premise. Read the MPEG-2 entry point in the microcode image.
-2. **Colour-map FIFO polarity.** The public drivers read the field the other way from the specification. Read the IRIX colour-map writer and record its assumption.
-3. **OpenBSD frame-size remainder at 16 bits.** Disassemble the 6.5.30 writer of `FRM_SIZE_TILE` at 16 bits and compare its count with both formulas.
-4. **Tile entry bit 15.** Find the caller of `crmAllocTiles` and the attribute it passes.
-5. The Result's "untestable" label does not fit a code question.
-6. **`dmBufferAllocate` slot leak.** Read the slot-free path on the failure route in the media library. The Result also calls it untestable.
-7. **Default framebuffer double-buffer byte (`+0x2b`).** Read its initial value in the kernel's CRIME init. This settles the `16+16` default lead.
-8. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
-9. **Video driver routines.** `mvptransfer_interrupt`, `av1_setup` and `av2_setup`, the three `mvp.o` routines still named only (see the last items).
-10. **o32 `DrawMode` and `Primitive` words** in `ClearCI`, `ClearRGBA`, `ClearStencil` and `crmCopyPixelsXfer`.
-11. **Stereo, four-buffer and framebuffer-depth gating.** Decode the GLX capability tables in the X module. One decode settles three leads.
-12. **MVP zoom limit and 10-bit packing.** Read the `VL_MVP_ZOOMSIZE` handler and the 10-bit converter in `mvp.so`.
-13. **Chime routine in the PROM image.** Locate it in the flat image by its audio register writes.
-14. **CRIME error status bit 2 and narrow TLB stores.** Grep the shipped code for any test or write. If none, record each as having no shipped dependency, with the routes listed.
+2. **Tile entry bit 15.** The callers and attribute are read; find where the kernel sets the page-record flag `0x100000` that makes the tile allocator return no-ECC alias frames.
+3. The Result's "untestable" label does not fit a code question.
+4. **`dmBufferAllocate` slot leak.** Read the slot-free path on the failure route in the media library. The Result also calls it untestable.
+5. **Default framebuffer double-buffer byte (`+0x2b`).** Read its initial value in the kernel's CRIME init. This settles the `16+16` default lead.
+6. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
+7. **Video driver routines.** `mvptransfer_interrupt`, `av1_setup` and `av2_setup`, the three `mvp.o` routines still named only (see the last items).
+8. **o32 `DrawMode` and `Primitive` words** in `ClearCI`, `ClearRGBA`, `ClearStencil` and `crmCopyPixelsXfer`.
+9. **Stereo, four-buffer and framebuffer-depth gating.** Decode the GLX capability tables in the X module. One decode settles three leads.
+10. **MVP zoom limit and 10-bit packing.** Read the `VL_MVP_ZOOMSIZE` handler and the 10-bit converter in `mvp.so`.
+11. **Chime routine in the PROM image.** Locate it in the flat image by its audio register writes.
+12. **CRIME error status bit 2 and narrow TLB stores.** Grep the shipped code for any test or write. If none, record each as having no shipped dependency, with the routes listed.
 
 The other 51 software-now items follow in file order, each with its step inline.
 
@@ -53,9 +51,7 @@ Route key, used in the tables:
 
 Found by comparing the OpenBSD sgi driver and the GXemul O2 models with the entries (`docs/gbe.md`, "Public driver cross-check").
 
-- **Colour-map FIFO polarity.** The specification and IRIX read the `0x58000` field as free entries (`GBE.h`). Linux waits while it reads 63 or more, and the OpenBSD driver (`openbsd/sys/arch/sgi/dev/gbe.c:1011-1017`) also continues only when the field reads below 63, which treats it as occupancy. Two public drivers use the opposite reading to the specification. Routes tried: S, K, X, L, and the OpenBSD driver; the diagnostics routes in `docs/gbe.md` pass 7 side with the specification. Next: the IRIX source for the colour-map write routine, and any NetBSD behaviour the model run records (route E). Triage: software now.
-- **OpenBSD frame-size remainder.** The OpenBSD driver builds the 4:0 field of `FRM_SIZE_TILE` as the remainder in pixels shifted right by depth over 16, divided by 32 (`gbe.c:749-754`). At 8 bits that is 32-byte units, as `docs/gbe.md` records. At 16 and 32 bits it gives a different count from the entry's reading (remainder pixels times bytes per pixel over 32), and GXemul decodes the field in 32-byte units at every depth (`gxemul/src/devices/dev_sgi_gbe.c:583-594`). The driver only ever runs at 8 bits (`gbe.c:294`), so a defect that never showed is the likely reason. Routes tried: the OpenBSD and GXemul sources and the entry. Next: the IRIX kernel writer of this field at 16 bits (`crimeInitInfo` with a 16-bit frame buffer) against both formulas. Triage: software now. Step: disassemble the 6.5.30 writer of the FRM_SIZE_TILE field at 16 bits (crimeInitInfo) and compare its count with both formulas.
-- **Tile entry bit 15 in the model.** GXemul requires bit 15 of a frame-buffer tile entry to be set and then clears it, so tiles are addressed without the no-ECC alias (`gxemul/src/devices/dev_sgi_re.c:122-151`). `docs/memory.md` infers that the same bit is also physical address bit 31. The model works for the public guests with low memory, which cannot tell the two readings apart. Routes tried: the model and `docs/memory.md`. Next: the attribute `crmAllocTiles` receives, as listed in `docs/memory.md`. Triage: software now. Step: find the kernel caller of crmAllocTiles and the attribute value it passes, and check whether any tile address uses physical bit 31.
+- **Tile entry bit 15 in the model.** GXemul requires bit 15 of a frame-buffer tile entry to be set and then clears it, so tiles are addressed without the no-ECC alias (`gxemul/src/devices/dev_sgi_re.c:122-151`). `docs/memory.md` infers that the same bit is also physical address bit 31. The model works for the public guests with low memory, which cannot tell the two readings apart. Routes tried: the model, `docs/memory.md`, and the kernel callers of `crmAllocTiles` (`crmAllocChunk`, `crmAddBackTiles`, `crmResizeFb`, `crmAddZ`): the frame buffer passes attribute 12 and the allocator sets bit 15 only for pages whose record has flag `0x100000`. Next: the stores to that page-record flag in the kernel's page allocator and memory-size set-up, to see which pages carry it. Triage: software now. Step: find where the kernel sets flag `0x100000` in a page record and whether it covers pages below 256 MiB.
 
 ## Published sources, route tried (2026-10-29)
 
