@@ -1449,7 +1449,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `do_write_codec_reg` in `a3_dd.o`: writes one codec register, a 96-byte routine at offset 0x2888. Established.
   It writes the register number and the 16-bit value (masked with 0xffff) to the control word with `pciio_pio_write64`, flushes with `wbflush` and waits with `us_delay`.
 - `a3_start_dma` in `a3_dd.o`: starts a device's audio DMA, a 464-byte routine at offset 0x28e8. Established.
-  It writes the codec's format register with `write_codec_reg`, zeroes the ring buffer with `bzero` and writes it back with `dki_dcache_wb`.
+  It writes the codec's format register with `write_codec_reg`. When the running flag (byte +432) is clear and bit 0 of the device word at +420 is set (0x2a64 to 0x2a6c), it zeroes the ring buffer with `bzero` (0x29b0) and writes it back with `dki_dcache_wb` (0x29bc).
   It programs the ring-buffer registers with `pciio_pio_write64`, starts the DMA and arms `a3_timewrap_watchdog` with `itimeout`.
 - `a3_stop_dma` in `a3_dd.o`: stops a device's audio DMA, a 48-byte routine at offset 0x2ab8. Established.
   It writes zero to the device's DMA control register, whose handle is kept at +0x1e0 of the device record, with `pciio_pio_write64`.
@@ -1465,7 +1465,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
 - `a3_update_subsys` in `a3_dd.o`: refreshes the subsystem's counters, a 116-byte routine at offset 0x2df8. Established.
   It reads the hardware timer with `pciio_pio_read64` and updates the three devices' counter words in the subsystem record.
 - `a3_update_dev` in `a3_dd.o`: refreshes one device's ring-buffer view, a 224-byte routine at offset 0x2e6c. Established.
-  It invalidates the data cache over the ring-buffer area with `dki_dcache_inval` and updates the read and write positions at +0x118 and +0x130 of the device.
+  It invalidates the data cache over the span between the old and new positions of the ring-buffer area with `dki_dcache_inval` (0x2efc; two calls at 0x2f1c and 0x2f3c when the span wraps), and only when bit 0 of the device word at +420 is clear (0x2e98 to 0x2ea0); with the bit set it only updates the stored position. Either way it then adds the distance moved (new minus old, plus the ring length at +348 when negative), shifted right by the count at +376, to the 64-bit running total at +0x118 (0x2ed4). The ring buffer's address is the word at +0x130; the stored positions are words of the record that +296 points to (word 0 on the bit-set path, word 1 on the other). The previous entry named +0x130 as a position, which it is not.
 - `a3_writeback_rb` in `a3_dd.o`: writes a ring buffer back for the hardware, an 88-byte routine at offset 0x2f4c. Established.
   It calls `kdsp_writeback_rb` and then writes the new tail position with `pciio_pio_write64`.
 - `a3_get_rb_mscust` in `a3_dd.o`: returns a ring buffer's media-stream timestamp, a 156-byte routine at offset 0x2fa4. Established.
