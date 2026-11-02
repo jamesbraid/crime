@@ -403,7 +403,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002474c	16	get_pgmask	symta
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa002475c	12	set_pgmask	symtab	095845101822		in	understood	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024768	72	get_tlbhi	symtab	258f387ac8e0		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247b0	24	get_tlbpid	symtab	12f40a0bdd52		in	named-only	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247c8	20	set_tlbpid	symtab	ff08d6ec019a		in	undocumented		
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247c8	20	set_tlbpid	symtab	ff08d6ec019a		in	located	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00247dc	92	probe_tlb	symtab	dfbca83c121d		in	understood	docs/functions.md#routines-of-symmonip32-one-entry-each	Routines of `symmon.IP32`, one entry each
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024838	76	invaltlb	symtab	f1608bcdc565		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa0024884	84	tlbwired	symtab	f26ff28c0c81		in	understood	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
@@ -1225,15 +1225,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x800	172	unmaptlb	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x8ac	96	invaltlb	symtab	77c8882b31cb		out:1	located	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x90c	160	tlbwired	symtab	45075db6b023		out:1	located	docs/functions.md#stand-alone-debugger-sbinstandsymmonip32	Stand-alone debugger (`sbin/stand/symmon.IP32`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x9ac	324	tlbdropin	symtab	54e7c4896037		out:1	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf0	176	tlbdrop2in	symtab	4f7a3ddc5add		out:17	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xba0	92	flush_tlb	symtab	8a4125e37d2b		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xbfc	136	set_tlbpid	symtab	a86ca2c3d806		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xaf0	176	tlbdrop2in	symtab	4f7a3ddc5add		out:17	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xba0	92	flush_tlb	symtab	8a4125e37d2b		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xbfc	136	set_tlbpid	symtab	a86ca2c3d806		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc84	180	tlbfind	symtab	6e003f4c2c6d		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd38	12	tlbgetpid	symtab	5522d9383584		out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd44	160	tlbgetent	symtab	a10b65c90a8e		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd38	12	tlbgetpid	symtab	5522d9383584		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xd44	160	tlbgetent	symtab	a10b65c90a8e		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde4	12	getrand	symtab	2208fdd6285f	shared-address	out:17	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde4	12	tlbgetrand	symtab	2208fdd6285f	shared-address	out:1	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xdf0	224	tlb_probe	symtab	398b66d93a81		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xde4	12	tlbgetrand	symtab	2208fdd6285f	shared-address	out:1	named-only	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xdf0	224	tlb_probe	symtab	398b66d93a81		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xed0	60	save	symtab	240f2a2817bc		out:9	named-only	docs/binaries.md#display-configuration-tools	Display configuration tools
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xf0c	344	resume	symtab	abe227b4bea3		out:9	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1064	140	resumethread	symtab	2603f8b4b9b9		out:9	undocumented		
@@ -1278,15 +1278,15 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f8	8	apcpsema	symta
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x13f8	8	dummyret1_func	symtab	a7e7ca11a6b8	shared-address	out:18	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1400	8	_get_timestamp	symtab	6cc16abd70ee		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1408	12	scrub_memory	symtab	6abcfdf068c2		out:18	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1414	128	tlbgetlo	symtab	53e69b52af9c		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1414	128	tlbgetlo	symtab	53e69b52af9c		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1494	32	getcachesz	symtab	8d2d001b2026		out:3	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14b4	12	get_r10k_config	symtab	65d36b16835c		out:7	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14c0	12	set_r10k_config	symtab	702d110d5a68		out:7	named-only	docs/functions.md#memory-error-exception-vector-and-start-up-routines-without-a-symbol-kernelo	Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14cc	12	clr_r4kcount_intr	symtab	056798826859		out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14d8	28	get_r4k_compare	symtab	a3ceaed14d61		out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f4	12	set_r4k_compare	symtab	36d5b735ab25		out:6	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14cc	12	clr_r4kcount_intr	symtab	056798826859		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14d8	28	get_r4k_compare	symtab	a3ceaed14d61		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x14f4	12	set_r4k_compare	symtab	36d5b735ab25		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1500	28	_get_r4k_counter	symtab	3761bd8ddd9d		out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x151c	12	get_r4k_counter	symtab	923a8ad58445		out:6	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x151c	12	get_r4k_counter	symtab	923a8ad58445		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1528	12	get_r4k_config	symtab	65d36b16835c		out:6	named-only	docs/functions.md#memory-and-ecc	Memory and ECC
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1534	160	wait_for_interrupt	symtab	ee26e74161f6		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x15ac	40	wait_for_interrupt_fix_loc	symtab	7c7a779ebf10		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
@@ -1377,7 +1377,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4250	64	update_ust	sy
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4290	476	ecc_exception	symtab	9a76902eb8ad		out:16	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4468	4	eccword	symtab	df3f619804a9		out:16	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x446c	384	r10k_ecc_exception	symtab	6e2149c47267		out:16	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4620	44	ecc_cacheop_get	symtab	5c3d3228b2b2		out:3	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4620	44	ecc_cacheop_get	symtab	5c3d3228b2b2		out:3	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x49d8	124	ecc_init	symtab	ea9ab7120909		out:16	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a54	12	early_ecc_init	symtab	bc4cd3b53da1		out:16	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x4a60	92	ecc_force_cache_line_invalid	symtab	e4e130dec8cb		out:16	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
@@ -1522,7 +1522,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb450	100	splxecc	symt
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4b4	72	splint	symtab	8e2c388976a9		in	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb4fc	32	isspl0	symtab	f82aa27804e6		out:5	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb51c	8	allowintrs	symtab	78aa5094d5ec		in	understood	docs/functions.md#cache-error-idle-wait-and-pci-error-routines-kernelo	Cache-error, idle-wait and PCI-error routines (`kernel.o`)
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb524	8	delay_for_intr	symtab	6cc16abd70ee		out:6	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb524	8	delay_for_intr	symtab	6cc16abd70ee		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb594	48	startrtclock	symtab	9fc450e3d15a		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb5c4	48	stopclocks	symtab	a2de5146f77a		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xb5f4	48	startkgclock	symtab	61bd7ed18399		out:6	undocumented		
@@ -1554,7 +1554,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc5cc	92	startprfclk	s
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc628	88	stopprfclk	symtab	05bc3d96f805		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc680	84	enable_fastclock	symtab	428db8976d18		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6d4	8	query_cyclecntr_size	symtab	6d182be018f1		out:6	undocumented		
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6dc	28	query_fasttimer	symtab	fd467ca0ef47		out:6	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6dc	28	query_fasttimer	symtab	fd467ca0ef47		out:6	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc6f8	40	timepoke	symtab	475cf51a1052		out:6	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc720	40	fast_timepoke	symtab	4602b92b8a4b		out:6	named-only	docs/functions.md#kernel-routines-one-entry-each-kernelo-graphics-and-timing-support	Kernel routines, one entry each (`kernel.o`, graphics and timing support)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0xc748	88	inithrestime	symtab	3da6838eade0		out:6	undocumented		
@@ -1673,7 +1673,7 @@ usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x117c8	68	get_isa_dma_
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1180c	20	query_cyclecntr	symtab	8bdd40067301		out:6	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11820	24	absolute_rtc_current_time	symtab	3f79b5b25c5c		in	understood	docs/functions.md#interrupts-and-timers	Interrupts and timers
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11838	96	get_crimerev	symtab	7094f825e2b4		in	understood	docs/functions.md#start-up-and-revision	Start-up and revision
-usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11898	92	unmaptlb_range	symtab	b2c6132d54d6		out:1	undocumented		
+usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11898	92	unmaptlb_range	symtab	b2c6132d54d6		out:1	understood	docs/functions.md#tlb-timer-and-cache-operation-helpers-kernelo	TLB, timer and cache-operation helpers (`kernel.o`)
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x118f4	56	tfi_save	symtab	e1201bb656c5		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x1192c	56	tfi_restore	symtab	61268ef6fa4e		out:1	undocumented		
 usr/cpu/sysgen/IP32boot/kernel.o	shared-kernel	n32	.text	0x11964	4	assbuffer	symtab	df3f619804a9		out:18	named-only	docs/open-questions.md#where-work-stopped	Where work stopped
