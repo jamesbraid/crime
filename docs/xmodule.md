@@ -304,6 +304,25 @@ Negative result, established over the same disassembly: none of the 165 `mi`, 16
 | `crmInitMonitorProtocol..MC` | 0x592800 | Established (crm.so, 6.5.30): starts the monitor control protocol on a channel. It sends the command record (channel number in byte +0x0, protocol id 6 in byte +0x1) in ioctl 0x560b, and on success sets the channel's protocol-ready word at +0x1ec of its 504-byte record, clears it again on a negative reply. |
 | `crmCanLoadOptionHW..DC` | 0x594800 | Established (crm.so, 6.5.30): decides whether an option board can drive the format being loaded. It switches on the option-board type byte (+0x2e of the board record, four known values), compares the board's name (+0x2c) and the requested option name with `strcmp` against the strings of that type, returns 1 for a match and 0 otherwise, and prints an unrecognised type through `ErrorF`; called from `crmReadVideoFormat..FC`. |
 
+- `crmDefaultTTExists` in `crm.so`: reads the per-screen timing-table text file before any format file, in the routine at 0x48da90. Established.
+  Its first four stores (0x48da90 to 0x48da9c) zero the words that its fifth to eighth arguments point at.
+  It opens a timing-table file with `fopen` (0x48db10), chosen by the word its first argument points at.
+  The two file names end `Crm0_TimingTable` and `Crm1_TimingTable`.
+  It reads two lines with `fgets` (0x48db34, 0x48db80) and skips any line that starts with `#`, a newline, a space or a tab.
+  The first kept line is the format name: the routine appends `.vfo` unless the line starts with `/` and copies it into its third argument (0x48dcb0, 0x48ddd8).
+  The second kept line has its newline cut (0x48dbc4).
+  It is compared at four sites (0x48dbe4 to 0x48dc30) with four spellings.
+  They are `32x32`, `16x16`, `32` and `16`, in that order.
+  A match of `32x32` or `16x16` stores 1 through the eighth argument, a match of `32` or `16` stores 0, and the matched number (32 or 16) goes through the seventh.
+  A missing or unmatched second line leaves both words zero.
+  When the file does not open, every branch of the built-in format-name choice (0x48dd60 to 0x48ddc8) ends at 0x48ddcc, which stores 0 through the eighth argument (0x48dde0) and 32 through the seventh (0x48ddf8).
+  `crmInit` passes the addresses of two module words as the seventh and eighth arguments (0x48a408, 0x48a41c).
+  It copies them to bytes +0x2f and +0x2b of the board record (0x48a45c, 0x48a468) only when this routine returns non-zero.
+  So byte +0x2b is 1 exactly when the second line reads `32x32` or `16x16`; reading that as the double-buffer request is inferred.
+  The kernel leaves the byte zero, so with no file the default is a single-buffered 32-bit framebuffer.
+  Of `setmon`, `gfxinit` and `crm.so`, only `crm.so` contains the `32x32` and `16x16` strings, so the other two do not write those spellings.
+  The routine's return value on the paths past the second `fgets` was read only in part.
+
 ### Video formats and monitor
 
 | Routine | Address | Role and derivation |
