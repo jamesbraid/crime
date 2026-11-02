@@ -279,7 +279,7 @@ Established, rev 1.1 ([gbe-spec] p. 18, p. 45): the colour map is single-ported,
 
 Inferred: a six-bit field cannot hold 64, so an empty FIFO on rev 1.1 reads 0 (64 wrapped); this explains the X server's extra "accept 0" test for revisions below 2 and the spec's reset value 0. Settled in pass 7 from the shipped diagnostics: an empty FIFO reads 63 on revision 2 and 0 on revision 1; revision 2 is inferred to queue at most 63, so its 0 means full, while revision 1's 0 means empty or full.
 
-Established: the standalone colour-map write routine reads the field as free entries. On the newer chip it waits until the masked field reads 63, and its comment says the FIFO there holds at most 63 entries, so 0 is the binary read that would settle it; the loop's compare value and its handling of revisions 1 and 2 were not re-read for this note.
+Unknown: whether revision 2 queues at most 63 entries (so that its 0 means full) rests only on inference above. The shipped diagnostics' wait loop on this field is the binary read that would settle it; the loop's compare value and its handling of revisions 1 and 2 were not re-read for this note.
 
 ## Overlay, cursor and display-mode compositing (settles earlier unknowns)
 
