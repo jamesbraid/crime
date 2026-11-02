@@ -1,6 +1,6 @@
 # Stored published sources
 
-Full copies of the published patents, papers, technical reports, manuals and white papers that [../published-sources.md](../published-sources.md) cites for the O2 graphics and media chips. They are third-party documents kept here so a reader does not depend on a link that may vanish. Each entry in published-sources.md gives the in-repo path, the SHA-256 and the library path of its copy.
+Full copies of the published patents, papers, technical reports, manuals and white papers that [../published-sources.md](../published-sources.md) cites for the O2 graphics and media chips. They are third-party documents kept here so a reader does not depend on a link that may vanish. Each entry in published-sources.md gives the in-repo path and the SHA-256 of its copy.
 
 Layout: `specs/` for the chip specifications (CRIME, GBE, MACE, VICE); `patents/` by US patent number; `papers/` for conference and journal papers and slide decks; `reports/` for SGI technical reports, white papers, product guides and option data sheets, plus the web pages and posts cited beside them; `manuals/` for SGI manuals, named by document number.
 
