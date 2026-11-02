@@ -3680,9 +3680,9 @@ The debugger links against library code that expects kernel and firmware service
 - `cpu_reset` in `sbin/stand/symmon.IP32`: board start-up hook meant for the multiprocessor spin-lock set-up, an empty routine, an 8-byte routine at address 0xa0027460. Established.
   Two instructions, `jr ra` and a `nop` (0xa0027464). `_init_saio` calls it at 0xa0026688, right after `_init_spb` and before `initlock` (0xa002a74c).
 - `cpu_set_nvram` in `sbin/stand/symmon.IP32`: writes one named string into the nonvolatile store, replaced by a return of 0, an 8-byte routine at address 0xa0020c74. Established.
-  v0 is cleared in the delay slot at 0xa0020c78; the name and value pointers are unread. Nothing calls it.
+  v0 is cleared in the delay slot at 0xa0020c78; the name and value pointers are unread. Nothing calls it. 
 - `cpu_show_fault` in `sbin/stand/symmon.IP32`: decodes the saved cause word for a fault report, replaced by a zero return, an 8-byte routine at address 0xa0020c54. Established.
-  The delay slot (0xa0020c58) sets v0 to zero and the saved cause argument is left alone. No instruction in the image calls it.
+  The delay slot (0xa0020c58) sets v0 to zero and the saved cause argument is left alone. No instruction in the image calls it. 
 - `cpuid` in `sbin/stand/symmon.IP32`: the processor-number service, which always names processor 0, an 8-byte routine at address 0xa0020c5c. Established.
   `move v0,zero` sits in the delay slot (0xa0020c60) of the `jr ra`. It is the most-called of these stubs: 75 `jal` sites, among them `_bp_fault` (0xa0012de4), `symmon_exchandler`, `init_symmon_gpda` (0xa001b39c), `fetch_kname`, `setup_gpdas` and the formatted-output routines `printf` and `putchar`. The word at 0xa003bfe0 in the private function table also holds it.
 - `cvsema` in `sbin/stand/symmon.IP32`: tests a condition semaphore, answering 0 because one thread runs, an 8-byte routine at address 0xa00311b0. Established.
