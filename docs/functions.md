@@ -2184,6 +2184,18 @@ These short routines were read in full from the 6.5.30 `kernel.o` object. Their 
   It jumps through its relocation target and has a nop in the delay slot; it does not inspect its arguments or set a return value in its own instructions.
 - `ecc_cacheop_get` in `kernel.o`: packages a cache-operation value before dispatch, a 44-byte routine at offset 0x4620. Established.
   It stores its first argument at offset +8 of the third argument record, keeps the low 32 bits of its second argument at offset +0 of that record, calls the relocated cache-operation helper with the record and returns that helper's value.
+- `tlbdrop2in` in `kernel.o`: installs a two-entry TLB mapping, a 176-byte routine at offset 0xaf0. Established.
+  It masks both page values to 40 bits, combines the supplied address with its page-aligned portion, writes the pair to coprocessor-0 registers 2 and 3, probes for an existing entry and uses indexed or random write depending on the probe result. It restores the previous process identifier and entry-high register before returning zero.
+- `flush_tlb` in `kernel.o`: invalidates every software-managed TLB slot, a 92-byte routine at offset 0xba0. Established.
+  It saves entry-high and the current process identifier, clears the entry-high, entry-low-0 and entry-low-1 registers, writes index values from its first argument through the loop with `tlbwi`, and stops at the global TLB-slot count. It restores the saved process identifier and entry-high values before returning.
+- `set_tlbpid` in `kernel.o`: rewrites the process identifier in wired TLB entries, a 136-byte routine at offset 0xbfc. Established.
+  It saves entry-high, clears it, reads entries 9 down through 3 with `tlbr`, replaces the low byte of each entry-high with its argument, writes each entry back with `tlbwi`, and restores entry-high. The loop therefore updates seven fixed wired slots and leaves the entry payloads unchanged.
+- `tlb_probe` in `kernel.o`: probes a virtual address and returns its matching TLB index, a 224-byte routine at offset 0xdf0. Established.
+  It preserves entry-high, combines the supplied address with the supplied process identifier after clearing address bits 13:0, executes `tlbp`, and returns -1 when the index register is negative. On a hit it reads the entry, stores entry-low-1 through the caller's output pointer, returns entry-low-0 when the page-mask test accepts it, clears page-mask and restores entry-high before returning.
+- `tlbgetlo` in `kernel.o`: reads one TLB low word selected by an address and process identifier, a 128-byte routine at offset 0x1414. Established.
+  It combines the arguments after clearing the address's low 13 bits, probes and returns -1 on a miss. On a hit it reads the entry and returns entry-low-1 when the caller's third argument has bit 12 set, otherwise entry-low-0, then restores the previous entry-high.
+- `unmaptlb_range` in `kernel.o`: removes the TLB entries covering an address range, a 92-byte routine at offset 0x11898. Established.
+  It rounds the first argument down to a page number, rounds the first argument plus the length up to a page count, and calls the relocated unmap helper once per page with the process-specific value loaded from the kernel record at offset +0x368. It increments the page number for each call and does nothing for a non-positive count.
 
 ## Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 
