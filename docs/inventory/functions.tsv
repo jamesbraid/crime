@@ -727,7 +727,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_spinlock	sym
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	initnsema	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	makesname	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	preemptchk	symtab	78aa5094d5ec	shared-address	in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	78aa5094d5ec	shared-address	in	named-only	docs/diagnostic-messages.md#kernel-driver-messages-crimea-maceo	Kernel driver messages (`crime.a`, `mace.o`)
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	78aa5094d5ec	shared-address	in	named-only	docs/diagnostic-messages.md#kernel-driver-messages	Kernel driver messages
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl0	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl5	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl7	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
@@ -809,7 +809,7 @@ usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3688	400	mvpi2c_read_re
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3818	96	mvp_i2c_reg	dwarf+funcnames+symtab	42e019252f95		in	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x3878	104	a3_mvp_probe	dwarf+funcnames+symtab	448a124bc568		in	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
 usr/cpu/sysgen/IP32boot/a3_dd.o	board-kernel	n32	.text	0x38e0	72	a3_check_for_video	dwarf+funcnames+symtab	6c29a6d067e9		in	understood	docs/functions.md#kernel-routines-one-entry-each-a3_ddo	Kernel routines, one entry each (`a3_dd.o`)
-usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x0	288	crimeFifoEmptyHandler	dwarf+symtab	bce085c7d1a1		in	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
+usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x0	288	crimeFifoEmptyHandler	dwarf+symtab	bce085c7d1a1		in	understood	docs/diagnostic-messages.md#kernel-driver-messages	Kernel driver messages
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x120	136	crimeEmptyWaitTimeout	dwarf+symtab	4a7208f5ffb4		in	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x1a8	476	crimeFifoFullHandler	dwarf+symtab	4a4dd54765f5		in	understood	docs/functions.md#interrupt-and-fifo-handlers	Interrupt and FIFO handlers
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	board-kernel	n32	.text	0x384	88	crimeInfo	dwarf+funcnames+symtab	0a6fa520383e		in	understood	docs/functions.md#board-entry-points-and-start-up	Board entry points and start-up
