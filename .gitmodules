@@ -35,3 +35,6 @@
 [submodule "gxemul"]
 	path = gxemul
 	url = https://github.com/retroprom/gxemul.git
+[submodule "retools"]
+	path = retools
+	url = ../sgi-retools.git
