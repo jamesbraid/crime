@@ -1,6 +1,6 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	20	2026-11-02		0			
-functions	15122	2158	2872	15	2739	1369	3144	2383	6723	0	19.0	39.8	55.5	19.0			95.0	20	2026-11-02		86	62	214	
+functions	15122	2158	2888	15	2753	1369	3128	2383	6723	0	19.1	39.8	55.5	19.1			95.0	20	2026-11-02		86	62	214	
 functions (distinct names)	9633	2093	2315	14	2307	679	1589	1258	4471	0	24.0	40.5	53.6	24.0							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		100.0	3	2026-11-01		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
@@ -34,7 +34,7 @@ functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	14	661	0	0.0	0.0	2.1	
 functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	531	2	528	671	1388	854	674	0	15.4	55.7	80.4	15.4							42	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	15	662	0	0.0	0.0	2.2	0.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	523	0	520	690	1399	852	674	0	15.2	55.7	80.5	15.2							44	31	68	
-functions in usr/gfx/gfxinit	227	0	16	1	16	0	16	21	174	0	7.0	14.1	23.3	7.0							0	0	0	
+functions in usr/gfx/gfxinit	227	0	32	1	32	0	0	21	174	0	14.1	14.1	23.3	14.1							0	0	0	
 functions in usr/gfx/setmon	246	3	42	0	42	0	12	21	171	0	17.1	22.0	30.5	17.1							0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	548	0	544	8	267	25	0	0	65.2	97.0	100.0	65.2							0	0	0	
 functions in usr/lib/X11/dyDDX/glx.so	981	0	0	0	0	0	0	0	981	0	0.0	0.0	0.0	0.0							0	0	0	

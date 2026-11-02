@@ -2338,6 +2338,43 @@ The two routines that print this board's section of the board report (the progra
   A non-zero word at `+56` prints "\tTiming table flags:" (0x10022808), then "  Fullscreen Stereo" (0x10022820) when bit 1 is set, "  Quadbuffer Stereo" (0x10022838) when bit 4 is set and "  Sync on green" (0x10022850) when bit 3 is set, in that order, and a newline. A zero word skips all of it.
   It then calls `crime_monitor_info` (0x1000dcfc) with 0 and the address `+100`, and, only when the byte at `+45` is non-zero, again with 1 and the address `+234`. It ends with a newline print whose result it returns. The record's bytes at `+40`, `+41`, `+42` and `+47` are only read here; their sources are in [binaries.md](binaries.md#display-configuration-tools).
 
+# Venice and VS2 helpers of `gfxinit`, one entry each
+
+Copies of the routines of the same names that `usr/gfx/setmon` carries, found in the 6.5.30 `usr/gfx/gfxinit` executable. Each was read in full and compared with its `setmon` copy. The instructions, calls, stack use and return paths match; the differences are link-time constants that build a GOT offset or a data address. Addresses are that executable's virtual addresses.
+
+- `fcg_get_gfx_fifo_count` in `usr/gfx/gfxinit`: returns the word at offset 41000 minus the word at offset 40992 from the pointer in `ven_pipeaddr`, adding 8192 when the first word is the smaller, a 64-byte routine at address 0x1000e7b4. Established.
+  The window base is that pointer plus 65536, and the routine reaches `ven_pipeaddr` through the GOT slot loaded at 0x1000e7c0. Its 16 instructions match the `setmon` copy at 0x1001015c except the two constants at 0x1000e7b4 and 0x1000e7b8 that build the GOT offset.
+- `get_ven_iptype` in `usr/gfx/gfxinit`: returns the Venice board type cached in `ven_iptype`, calling `get_ven_type` first when that word holds -1, a 92-byte routine at address 0x1000fc1c. Established.
+  The cached word is compared with -1 at 0x1000fc40. The `jal` to `get_ven_type` (0x1000fb2c) is at 0x1000fc58, and the return at 0x1000fc70 reloads `ven_iptype` after that call.
+- `venice_set_pipeaddr` in `usr/gfx/gfxinit`: stores 1 into `ven_pipeMapped`, then returns what `fcg_venice_set_pipeaddr` returns, a 60-byte routine at address 0x1000fc78. Established.
+  The store is in the delay slot of the `jal` at 0x1000fc9c, so it happens before the call to `fcg_venice_set_pipeaddr` (0x1000f5dc). The first argument reaches the callee unchanged.
+- `venice_get_vcreg` in `usr/gfx/gfxinit`: forwards its argument to `fcg_venice_get_vcreg` (0x1000f72c) and returns the word that call leaves in v0, a 52-byte routine at address 0x1000fcb4. Established.
+  The one call is the `jal` at 0x1000fcd0, with its callee loaded through the GOT slot at 0x1000fcc8 and an empty delay slot.
+- `venice_set_vcreg` in `usr/gfx/gfxinit`: hands both of its arguments to `fcg_venice_set_vcreg` (0x1000f760) and returns whatever that callee leaves in v0, a 52-byte routine at address 0x1000fce8. Established.
+  The call is the `jal` at 0x1000fd04, reached through the GOT slot loaded at 0x1000fcfc. The frame is restored at 0x1000fd0c.
+- `fcg_venice_get_vcreg` in `usr/gfx/gfxinit`: reads the Venice graphics-window word at index a0, a 52-byte routine at address 0x1000f72c. Established.
+  The address is the base held in `ven_gfxvaddr` plus eight times the index plus 0xfc000. The base is read through the GOT slot loaded at 0x1000f738, and the word is loaded in the return's delay slot at 0x1000f75c.
+- `fcg_venice_set_vcreg` in `usr/gfx/gfxinit`: writes its second argument to the word that `fcg_venice_get_vcreg` reads, a 52-byte routine at address 0x1000f760. Established.
+  The store `sw a1,0(v0)` at 0x1000f790 sits in the delay slot of the return, so it completes before the caller resumes. The index in a0 is scaled as in the read path, eight bytes per index, by the `sll` at 0x1000f77c.
+- `_jt_select_chain` in `usr/gfx/gfxinit`: a thin wrapper that forwards to the scan-chain selector `fcg_jt_select_chain` (0x10010bd8) and returns its result, a 52-byte routine at address 0x100106ac. Established.
+  Its only call is the `jal` at 0x100106c8, reached through the GOT slot loaded at 0x100106c0.
+- `_jt_send_instruction` in `usr/gfx/gfxinit`: passes its arguments to the scan-chain instruction sender `fcg_jt_send_instruction` (0x10010c94) and returns that result, a 52-byte routine at address 0x100106e0. Established.
+  The only call is the `jal` at 0x100106fc, with the GOT slot loaded at 0x100106f4.
+- `_jt_send_data` in `usr/gfx/gfxinit`: passes its arguments to the scan-chain data sender `fcg_jt_send_data` (0x10010eec) and returns that result, a 52-byte routine at address 0x10010714. Established.
+  The only call is the `jal` at 0x10010730, with the GOT slot loaded at 0x10010728.
+- `vs2Installed` in `usr/gfx/gfxinit`: reports the board's consistency check as a boolean, a 56-byte routine at address 0x10018110. Established.
+  It calls `vs2ConsistencyCheck` by the `jal` at 0x1001812c. The `sltiu v0,v0,1` at 0x10018138 turns that result into the flag: it is set only when the callee returns zero.
+- `vs2ToggleSerialClock` in `usr/gfx/gfxinit`: writes 1 at argument 17024 (0x4280) through `vs2WriteByte`, then returns the byte that `vs2ReadByte` reads at argument 16800 (0x41a0), an 88-byte routine at address 0x1001877c. Established.
+  The first argument is saved in `s8` by the delay slot of the `jal` at 0x100187a8 and passed to both calls, the second through the `move` at 0x100187b4.
+- `vs2WriteProgClock` in `usr/gfx/gfxinit`: chooses offset 16832 (0x4180) when its second argument is 16896 (0x4200) and offset 16848 (0x4190) otherwise, then calls `vs2WriteByte`, an 80-byte routine at address 0x10018878. Established.
+  The compare is the `beq` at 0x10018890. The two `jal`s to `vs2WriteByte` (0x10018864) are at 0x1001889c and 0x100188b8, and the routine returns the value that call gives back.
+- `getRMCount` in `usr/gfx/gfxinit`: returns the word at offset 44 of a stack buffer that `getVeniceInfo` fills, a 56-byte routine at address 0x10018b10. Established.
+  The buffer is `sp+0`, passed in a1 by the delay slot of the `jal` at 0x10018b2c. The word is read at 0x10018b38, after the call.
+- `generateFilename` in `usr/gfx/gfxinit`: writes its first two string arguments into the buffer it is given as `%s%s`, a 68-byte routine at address 0x10017cc0. Established.
+  It calls `sprintf` through its GOT slot with `jalr` at 0x10017cec. The format is the string at 0x10027eb0 in `.srdata`. The buffer becomes the first argument, and the two inputs keep their order in the third and fourth.
+- `pipeCountOfSystem` in `usr/gfx/gfxinit`: asks the kernel how many graphics boards there are, a 200-byte routine at address 0x10017d04. Inferred.
+  It opens a device path with flags 2050 (the `jalr` at 0x10017d2c), sends ioctl request 101 with a zero third argument (0x10017d48), closes the descriptor (0x10017d5c) and returns the ioctl reply saved at sp+0. Either failure prints a message with `fprintf` (0x10017d90 or 0x10017dbc) and returns 0. The path string is loaded through a GOT slot and was not read for this build. The counting reading of request 101 is taken from the `setmon` copy's role, which is why the label stays Inferred.
+
 # Routines of `mvp.so` (N32 build), one entry each
 
 The N32 video library `usr/lib32/dmedia/video/mvp.so` (6.5.30) keeps DWARF names, so each routine below is named by its debug-information name and addressed at its virtual address in this build; the o32 builds have other addresses and are not covered. The library reaches the video hardware only through `ioctl` on a video descriptor, with request words that start `0x6d76` (the kernel driver's `mvpioctl` splits them by their low byte, [functions.md](functions.md)). Every routine was read in full from `objdump -d`, with strings taken from `.rodata`, `.srdata` and `.sdata`, double and float constants from `.lit8` and `.lit4`, and GOT callees named by the formula PLTGOT 0x41ff18 plus 4 times local_gotno 27 plus the dynamic symbol index minus the first global symbol 37. Many of the routines share the error ladder the first of them shows. In what follows "the path" is the library's path object; its word at `+104` is the pointer that the library's own assertion text calls `path->ddPriv`, and each entry says where the descriptor for `ioctl` comes from.
