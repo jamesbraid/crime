@@ -727,7 +727,7 @@ sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	init_spinlock	sym
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	initnsema	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	makesname	symtab	78aa5094d5ec	shared-address	in	undocumented		
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	preemptchk	symtab	78aa5094d5ec	shared-address	in	undocumented		
-sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#process-hooks	Process hooks
+sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	psema	symtab	78aa5094d5ec	shared-address	in	named-only	docs/diagnostic-messages.md#kernel-driver-messages-crimea-maceo	Kernel driver messages (`crime.a`, `mace.o`)
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl0	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl5	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#routines-of-symmonip32-exception-entry-timing-reset-and-accessors	Routines of `symmon.IP32`: exception entry, timing, reset and accessors
 sbin/stand/symmon.IP32	board-diagnostic	n32	.text	0xa00311a0	8	spl7	symtab	78aa5094d5ec	shared-address	in	named-only	docs/functions.md#interrupts-and-timers	Interrupts and timers
