@@ -3644,7 +3644,7 @@ The debugger links against library code that expects kernel and firmware service
 - `_init_sockets` in `sbin/stand/symmon.IP32`: network socket table set-up, an empty stub, an 8-byte routine at address 0xa001becc. Established.
   Two instructions, `jr ra` and a `nop` (0xa001bed0). `_init_saio` calls it at 0xa002674c straight after `_init_mbufs` (0xa0026744) and before `_init_bootenv` (0xa0026754), so the start-up order is kept while no socket state is built.
 - `_init_mouse` in `sbin/stand/symmon.IP32`: mouse driver start-up, stubbed to return 0, an 8-byte routine at address 0xa001df28. Established.
-  v0 is cleared in the delay slot (0xa001df2c) of the `jr ra`. The single caller is `_init_saio` at 0xa0026764, which calls it after the routine at 0xa002686c and before `_init_systemid`; the result is not used there.
+  v0 is cleared in the delay slot (0xa001df2c) of the `jr ra`. The single caller is `_init_saio` at 0xa0026764, which calls it after the routine at 0xa002686c and before `_init_systemid`; the result is not used there. 
 - `_m_freem` in `sbin/stand/symmon.IP32`: releases a network buffer chain, but here frees nothing, an 8-byte routine at address 0xa001bf24. Established.
   The delay slot of the `jr ra` is a `nop` (0xa001bf28), so it takes its argument and returns without a value. It has no caller and no table slot.
 - `_m_get` in `sbin/stand/symmon.IP32`: allocates a network buffer, but here always answers with a null pointer, an 8-byte routine at address 0xa001bf1c. Established.
@@ -3664,9 +3664,9 @@ The debugger links against library code that expects kernel and firmware service
 - `_tpscclose` in `sbin/stand/symmon.IP32`: the tape-driver close entry, stubbed to return 0, an 8-byte routine at address 0xa001def8. Established.
   It is `jr ra` with the delay slot at 0xa001defc clearing v0. Nothing calls it or holds its address, and the open entry `_tpscopen` is the routine just before it at 0xa001def0. `skpick.h` emits these two when the tape driver is configured out while the SCSI layer stays in.
 - `_tpscopen` in `sbin/stand/symmon.IP32`: the tape-driver open entry, stubbed to return 0, an 8-byte routine at address 0xa001def0. Established.
-  The delay slot at 0xa001def4 sets v0 to zero, so an open of a tape unit would report success without touching a device. The image has no caller and no table word for it.
+  The delay slot at 0xa001def4 sets v0 to zero, so an open of a tape unit would report success without touching a device. The image has no caller and no table word for it. 
 - `bell` in `sbin/stand/symmon.IP32`: the keyboard beep, silenced to a zero return, an 8-byte routine at address 0xa0020c30. Established.
-  v0 is cleared in the delay slot at 0xa0020c34. The only call is inside `txConfig` (0xa001e4bc), at 0xa001fcbc, whose next instruction is a jump back into the common exit at 0xa001fc20.
+  v0 is cleared in the delay slot at 0xa0020c34. The only call is inside `txConfig` (0xa001e4bc), at 0xa001fcbc, whose next instruction is a jump back into the common exit at 0xa001fc20. 
 - `bp_try_stop_cpus` in `sbin/stand/symmon.IP32`: tries to halt the other processors at a breakpoint, which on this single-processor image just reports 0, an 8-byte routine at address 0xa001a714. Established.
   The delay slot (0xa001a718) of the `jr ra` clears v0; it takes no arguments. `_kp` calls it at 0xa001a570 and `_kpcheck` at 0xa001a698, and each moves the result into a0 in the next delay slot (0xa001a57c, 0xa001a6a4).
 - `businfo` in `sbin/stand/symmon.IP32`: prints the bus layout for the firmware's private table, left empty, an 8-byte routine at address 0xa00284ec. Established.
@@ -3690,7 +3690,7 @@ The debugger links against library code that expects kernel and firmware service
 - `db_printf` in `sbin/stand/symmon.IP32`: the kernel debugger's print hook, a tail jump to `printf`, an 8-byte routine at address 0xa0010348. Established.
   `j` to `printf` (0xa002e620) with a `nop` in the delay slot (0xa001034c), so the caller's registers and ra reach `printf` untouched. Nothing calls it by name, but control falls into it from the end of `_quit` at 0xa0010344.
 - `dksc_strat` in `sbin/stand/symmon.IP32`: the SCSI disk strategy entry, stubbed to return 0, an 8-byte routine at address 0xa001df00. Established.
-  `jr ra` with v0 cleared in the delay slot (0xa001df04). No reference to it exists in the image.
+  `jr ra` with v0 cleared in the delay slot (0xa001df04). No reference to it exists in the image. 
 - `dump_gpda` in `sbin/stand/symmon.IP32`: prints the per-processor block of a virtual processor, an empty routine, an 8-byte routine at address 0xa0029004. Established.
   `jr ra` and a `nop` (0xa0029008), with the processor-number argument unread. It is not called and not in any table. The next code, at 0xa002900c, belongs to a separate routine.
 - `ecc_error_decode` in `sbin/stand/symmon.IP32`: decodes a memory error register, stubbed to return 0, an 8-byte routine at address 0xa0020c7c. Established.
