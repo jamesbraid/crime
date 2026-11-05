@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	input
 binaries	82	0	82	3	78	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	20	2026-11-02		0			
-functions	15122	2158	2925	15	2761	1369	3129	2355	6713	0	19.3	40.0	55.6	19.3			75.0	16	2026-11-02		86	62	214	
-functions (distinct names)	9633	2093	2346	14	2310	679	1590	1236	4461	0	24.4	40.9	53.7	24.4							42			
+functions	15122	2158	2926	16	2762	1403	3165	2347	6684	0	19.3	40.3	55.8	19.3			75.0	16	2026-11-02		86	62	214	
+functions (distinct names)	9633	2093	2347	15	2311	711	1622	1232	4432	0	24.4	41.2	54.0	24.4							42			
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		75.0	20	2026-11-02		0			
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0			
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0			
@@ -10,7 +10,7 @@ spec-registers	260	0	258	1	247	0	0	0	0	2	99.2	100.0	100.0	100.0			100.0	10	2026-
 input root manifest	71																							37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
 input sibling kona																								99f969a532ffe26d56cb1248c523b72bb363858a
 input sibling odsy																								d26e4eb50277be0cf3bb1ee4f8585f466fdff647
-functions in sbin/stand/symmon.IP32	755	0	391	3	363	0	1	161	202	0	51.8	51.9	73.2	51.8							0	0	72	
+functions in sbin/stand/symmon.IP32	755	0	391	3	363	17	18	160	186	0	51.8	54.2	75.4	51.8							0	0	72	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	6	0	6	0	6	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
@@ -26,15 +26,15 @@ functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	57	1	57	0	0	0	0	0	100.0	100.0	10
 functions in usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	57	0	57	1	57	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/kernel.o	117	694	116	1	115	0	0	0	1	0	99.1	99.1	99.1	99.1							0	0	4	
 functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
-functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	159	4	158	0	1	8	1	0	94.1	94.7	99.4	94.1							0	0	2	
+functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	159	4	158	9	10	0	0	0	94.1	100.0	100.0	94.1							0	0	2	
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	
-functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	43	2	43	0	3	55	1374	0	2.9	3.1	6.8	2.9							0	0	0	
+functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	44	3	44	6	9	60	1362	0	3.0	3.6	7.7	3.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	0	0	14	661	0	0.0	0.0	2.1	0.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	531	2	528	671	1388	854	674	0	15.4	55.7	80.4	15.4							42	31	68	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	0	0	15	662	0	0.0	0.0	2.2	0.0							0	0	0	
 functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	523	0	520	690	1399	852	674	0	15.2	55.7	80.5	15.2							44	31	68	
-functions in usr/gfx/gfxinit	227	0	32	1	32	0	0	21	174	0	14.1	14.1	23.3	14.1							0	0	0	
+functions in usr/gfx/gfxinit	227	0	32	1	32	1	2	19	174	0	14.1	15.0	23.3	14.1							0	0	0	
 functions in usr/gfx/setmon	246	3	42	0	42	0	12	21	171	0	17.1	22.0	30.5	17.1							0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	547	0	543	8	267	26	0	0	65.1	96.9	100.0	65.1							0	0	0	
 functions in usr/lib/X11/dyDDX/glx.so	981	0	0	0	0	0	0	0	981	0	0.0	0.0	0.0	0.0							0	0	0	
@@ -61,4 +61,4 @@ functions in usr/lib32/dmedia/video/mvp.so	115	0	22	0	22	0	3	13	77	0	19.1	21.7	3
 functions in usr/lib32/internal/libvice.so	51	0	0	0	0	0	0	20	31	0	0.0	0.0	39.2	0.0							0	0	0	
 functions in usr/lib32/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
 functions in usr/lib64/libXsgivc.so	64	0	0	0	0	0	0	64	0	0	0.0	0.0	100.0	0.0							0	0	0	
-functions in usr/sbin/Confidence/dualchannel	39	0	6	0	6	0	0	5	28	0	15.4	15.4	28.2	15.4							0	0	0	
+functions in usr/sbin/Confidence/dualchannel	39	0	6	0	6	1	2	3	28	0	15.4	20.5	28.2	15.4							0	0	0	
