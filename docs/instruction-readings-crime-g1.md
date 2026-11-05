@@ -930,7 +930,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x3810 targets 0x381c, is taken when (v0(?) & 0x2) != 0, and falls through when (v0(?) & 0x2) == 0.
   The `beq` branch at 0x3828 targets 0x381c, is taken when v1(?) == 0, and falls through when v1(?) != 0.
   The `beq` branch at 0x3830 targets 0x3874 and is always taken.
-  The `beq` branch at 0x3840 targets 0x3880, is taken when v0(?) >= v1(=[a1+4]) (unsigned), and falls through when v0(?) < v1(=[a1+4]) (unsigned).
+  The `beq` branch at 0x3840 targets 0x3880, is taken when v0(?) >= v1(?) (unsigned), and falls through when v0(?) < v1(?) (unsigned).
   The `bltz` branch at 0x384c targets 0x3888, is taken when v0(?) < 0 (signed), and falls through when v0(?) >= 0 (signed).
   The `beq` branch at 0x386c targets 0x3860, is taken when v1(?) == 0, and falls through when v1(?) != 0.
   The return at 0x3878 has v0 = 0x0.
@@ -3769,7 +3769,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x11580 targets 0x11454 and is always taken.
   The `beq` branch at 0x115b4 targets 0x114fc and is always taken.
   The `beq` branch at 0x115e0 targets 0x114fc and is always taken.
-  The return at 0x11500 has v0 = one of [sym(lbolt)], [sym(power_button_changed_to_crash_dump)], ret(set_autopoweron), ret(cmn_err), ret(cpu_powerdown).
+  The return at 0x11500 has v0 = one of [sym(lbolt)], ?, ret(set_autopoweron), ret(cmn_err), ret(cpu_powerdown).
 - `readadapters` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x115e8 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
@@ -4029,7 +4029,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sd` at 0x121d0 stores 8 bytes to sym(_assregs) +0x28.
   Calls longway via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x1208c).
   Calls assfail via direct with a0=sym(.data)+20760, a1=sym(.data)+20798, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x121e8).
-  Calls longway via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x121ec).
+  Calls longway via direct with a0=?, a1=?, a2=?, a3=a3 at entry (arg3) (`j` at 0x121ec).
   The `bne` branch at 0x11ec4 targets 0x121ec, is taken when k0(?) < at(=0xffffffffff600000) (unsigned), and falls through when k0(?) >= at(=0xffffffffff600000) (unsigned).
   The `bltz` branch at 0x11ed8 targets 0x12028, is taken when k0(?) < 0 (signed), and falls through when k0(?) >= 0 (signed).
   The `beq` branch at 0x11ee4 targets 0x12094, is taken when k0(?) >= at(=0x200000) (unsigned), and falls through when k0(?) < at(=0x200000) (unsigned).
@@ -4474,7 +4474,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x13c50 loads 4 bytes from sym(.data) +0x51d0.
   The `lw` at 0x13c8c loads 4 bytes from sym(.data) +0x51d4.
   The `lw` at 0x13cf4 loads 4 bytes from table(sym(.data)+20944) +0x0.
-  6 such `lw` accesses load 4 bytes from sym(.data) +0x5268, including `lw` at 0x13d10, `lw` at 0x13d10, `lw` at 0x13d60.
+  5 such `lw` accesses load 4 bytes from sym(.data) +0x5268, including `lw` at 0x13d10, `lw` at 0x13d60, `lw` at 0x13d84.
   The `jal` at 0x13b80 calls get_cpu_irr with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x13b8c calls _cpuclkper100ticks with a0=sp-96, a1=?, a2=?, a3=?.
   The `beq` branch at 0x13c1c targets 0x13c50 and is always taken.

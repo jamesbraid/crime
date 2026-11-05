@@ -622,7 +622,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x1017764c targets 0x101776a8, is taken when a2(?) == 0, and falls through when a2(?) != 0.
   The `bne` branch at 0x10177694 targets 0x10177528, is taken when (a3(?) & a5(?)) != 0, and falls through when (a3(?) & a5(?)) == 0.
   The `bne` branch at 0x101776a0 targets 0x10177674, is taken when a2(?) != 0, and falls through when a2(?) == 0.
-  The return at 0x101776c4 has v0 = one of ?, [0x102cc090].
+  The return at 0x101776c4 has v0 = ?.
 
 - `SGetKeyboardMappingReply` in `usr/gfx/arch/GENERIC/Xsgi` at 0x10179f30 (n32).
   Evidence grade: inferred.
@@ -19303,7 +19303,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9403ec targets 0xd94036c and is always taken.
   The `beq` branch at 0xd940400 targets 0xd940364 and is always taken.
   The `beq` branch at 0xd940418 targets 0xd940364 and is always taken.
-  The return at 0xd940388 has v0 = one of ?, ret(__glCrmPassBlendColor).
+  The return at 0xd940388 has v0 = ?.
   The return at 0xd940398 has v0 = [a0+3220]:1.
 
 - `__glCrmEnableFogTest` in `usr/gfx/arch/IP32CRM32/libGLcore.so` at 0xd940ac0 (n32).
@@ -19324,6 +19324,6 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd940b28 targets 0xd940ae8, is taken when (a5(=[a0+1792]) & 0x20) == 0, and falls through when (a5(=[a0+1792]) & 0x20) != 0.
   The `beq` branch at 0xd940b38 targets 0xd940af4 and is always taken.
   The `beq` branch at 0xd940b50 targets 0xd940afc and is always taken.
-  The return at 0xd940b18 has v0 = one of [a0+3221]:1, ret(__glCrmPassFog).
+  The return at 0xd940b18 has v0 = one of [a0+3221]:1, ?.
 
 Skipped routines: 2 (2 facts: no function symbol at 0x0; give --size to read it anyway).
