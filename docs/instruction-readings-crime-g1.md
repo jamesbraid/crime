@@ -110,9 +110,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x3b8-0x404 (76 bytes).
   It occupies 76 bytes.
-  The `jal` at 0x3c4 calls kopt_find with a0=sym(.rodata)+96, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x3c4 calls kopt_find with a0=sym(.rodata)+48, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x3d8 calls arcs_to_dsk [0x4cc] with a0=ret(kopt_find), a1=sp-32, a2=?, a3=?.
-  The `jal` at 0x3f0 calls kopt_set with a0=sym(.rodata)+128, a1=sp-32, a2=?, a3=?.
+  The `jal` at 0x3f0 calls kopt_set with a0=sym(.rodata)+64, a1=sp-32, a2=?, a3=?.
   The `beq` branch at 0x3cc targets 0x3fc, is taken when v0(=ret(kopt_find)) == 0, and falls through when v0(=ret(kopt_find)) != 0.
   The `beq` branch at 0x3e0 targets 0x3fc, is taken when v0(=ret(arcs_to_dsk)) == 0, and falls through when v0(=ret(arcs_to_dsk)) != 0.
   The return at 0x3fc has v0 = one of ret(kopt_find), ret(arcs_to_dsk), ret(kopt_set).
@@ -595,8 +595,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x2600 calls pciio_pio_read8 with a0=a0+255, a1=?, a2=?, a3=?.
   The `jal` at 0x2618 calls us_delay with a0=0x3e8, a1=?, a2=?, a3=?.
   The `jal` at 0x2628 calls pciio_pio_read8 with a0=a0+255, a1=?, a2=?, a3=?.
-  The `jal` at 0x2668 calls cmn_err with a0=0x4, a1=sym(.rodata)+1104, a2=a0 at entry (arg0), a3=?.
-  The `jal` at 0x2684 calls cmn_err with a0=0x4, a1=sym(.rodata)+1024, a2=a0 at entry (arg0), a3=a3 at entry (arg3).
+  The `jal` at 0x2668 calls cmn_err with a0=0x4, a1=sym(.rodata)+552, a2=a0 at entry (arg0), a3=?.
+  The `jal` at 0x2684 calls cmn_err with a0=0x4, a1=sym(.rodata)+512, a2=a0 at entry (arg0), a3=a3 at entry (arg3).
   The `bne` branch at 0x2594 targets 0x2678, is taken when (a0 & 0xff) != 0, and falls through when (a0 & 0xff) == 0.
   The `bne` branch at 0x25d4 targets 0x25bc, is taken when s2(?) < 0x100 (signed), and falls through when s2(?) >= 0x100 (signed).
   The `beq` branch at 0x2610 targets 0x2640, is taken when v1(=[a1+255]:1) == a0(?), and falls through when v1(=[a1+255]:1) != a0(?).
@@ -623,20 +623,20 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 412 bytes.
   The `lw` at 0x2a30 loads 4 bytes from sym(.bss) +0x934.
   2 such `lw` accesses load 4 bytes from sym(.bss) +0x928, including `lw` at 0x2a48, `lw` at 0x2a6c.
-  2 such `lw` accesses load 4 bytes from sym(.data) +0x1d0, including `lw` at 0x2a88, `lw` at 0x2aa8.
+  2 such `lw` accesses load 4 bytes from sym(.data) +0xe8, including `lw` at 0x2a88, `lw` at 0x2aa8.
   The `lw` at 0x2b08 loads 4 bytes from sym(.bss) +0x20.
   The `sw` at 0x2b80 stores 4 bytes to sym(.bss) +0x934.
-  The `jal` at 0x2a08 calls strcmp with a0=a0 at entry (arg0), a1=sym(.rodata)+240, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x2a08 calls strcmp with a0=a0 at entry (arg0), a1=sym(.rodata)+120, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x2a3c calls checksum [0x1e7c] with a0=sym(.bss), a1=sym(.rodata)+120, a2=?, a3=[sym(.bss)+2356].
   The `jal` at 0x2a60 calls strcmp with a0=sym(.bss), a1=a0 at entry (arg0), a2=?, a3=?.
-  The `jal` at 0x2a98 calls strcmp with a0=[sym(cache_desc+16)], a1=a0 at entry (arg0), a2=?, a3=?.
+  The `jal` at 0x2a98 calls strcmp with a0=sym(.rodata)+1200, a1=a0 at entry (arg0), a2=?, a3=?.
   The `jal` at 0x2ab8 calls kopt_find with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jal` at 0x2acc calls set_env_var [0x2700] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
   The `jal` at 0x2b0c calls strcmp with a0=[sym(.bss)+32], a1=a1 at entry (arg1), a2=?, a3=?.
   The `jal` at 0x2b24 calls strlen with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jal` at 0x2b3c calls .text with a0=?, a1=?, a2=[sym(.sdata)+12], a3=?.
   The `jal` at 0x2b54 calls kopt_set with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jal` at 0x2b70 calls cmn_err with a0=0x1, a1=sym(.rodata)+240, a2=?, a3=?.
+  The `jal` at 0x2b70 calls cmn_err with a0=0x1, a1=sym(.rodata)+120, a2=?, a3=?.
   The `beq` branch at 0x2a18 targets 0x2b24, is taken when v0(=ret(strcmp)) == 0, and falls through when v0(=ret(strcmp)) != 0.
   The `beq` branch at 0x2a24 targets 0x2b3c, is taken when a2(=[sym(.sdata)+12]) == 0, and falls through when a2(=[sym(.sdata)+12]) != 0.
   The `beq` branch at 0x2a34 targets 0x2b68, is taken when a3(=[sym(.bss)+2356]) == 0, and falls through when a3(=[sym(.bss)+2356]) != 0.
@@ -644,9 +644,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `blez` branch at 0x2a4c targets 0x2a84, is taken when t8(=[sym(.bss)+2344]) <= 0 (signed), and falls through when t8(=[sym(.bss)+2344]) > 0 (signed).
   The `beq` branch at 0x2a68 targets 0x2b08, is taken when v0(=ret(strcmp)) == 0, and falls through when v0(=ret(strcmp)) != 0.
   The `bne` branch at 0x2a78 targets 0x2a5c, is taken when s3(?) < t9(=[sym(.bss)+2344]) (signed), and falls through when s3(?) >= t9(=[sym(.bss)+2344]) (signed).
-  The `beq` branch at 0x2a8c targets 0x2ab8, is taken when ra(=[sym(cache_desc+16)]) == 0, and falls through when ra(=[sym(cache_desc+16)]) != 0.
+  The `beq` branch at 0x2a8c targets 0x2ab8, is taken when ra(=sym(.rodata)+1200) == 0, and falls through when ra(=sym(.rodata)+1200) != 0.
   The `beq` branch at 0x2aa0 targets 0x2acc, is taken when v0(=ret(strcmp)) == 0, and falls through when v0(=ret(strcmp)) != 0.
-  The `bne` branch at 0x2ab0 targets 0x2a98, is taken when at(=[sym(cache_desc+16)]) != 0, and falls through when at(=[sym(cache_desc+16)]) == 0.
+  The `bne` branch at 0x2ab0 targets 0x2a98, is taken when at(=sym(.rodata)+1200) != 0, and falls through when at(=sym(.rodata)+1200) == 0.
   The `beq` branch at 0x2ac0 targets 0x2b00, is taken when v0(=ret(kopt_find)) == 0, and falls through when v0(=ret(kopt_find)) != 0.
   The `beq` branch at 0x2ad4 targets 0x2b54, is taken when v0(=ret(set_env_var)) == 0, and falls through when v0(=ret(set_env_var)) != 0.
   The `beq` branch at 0x2b00 targets 0x2ae0 and is always taken.
@@ -696,12 +696,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x2f24 calls kmem_free with a0=ret(kmem_alloc), a1=?, a2=?, a3=?.
   The `jal` at 0x2f5c calls flash_write_sector with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x2f7c calls kmem_free with a0=ret(kmem_alloc), a1=?, a2=?, a3=?.
-  The `jal` at 0x2f90 calls cmn_err with a0=0x1, a1=sym(.rodata)+1856, a2=?, a3=?.
+  The `jal` at 0x2f90 calls cmn_err with a0=0x1, a1=sym(.rodata)+928, a2=?, a3=?.
   The `jal` at 0x2f9c calls kmem_free with a0=ret(kmem_alloc), a1=?, a2=?, a3=?.
-  The `jal` at 0x2fb4 calls cmn_err with a0=0x1, a1=sym(.rodata)+1968, a2=?, a3=?.
-  The `jal` at 0x2fd0 calls cmn_err with a0=0x1, a1=sym(.rodata)+240, a2=?, a3=?.
-  The `jal` at 0x3000 calls cmn_err with a0=0x1, a1=sym(.rodata)+1664, a2=?, a3=?.
-  The `jal` at 0x3014 calls cmn_err with a0=0x1, a1=sym(.rodata)+240, a2=?, a3=?.
+  The `jal` at 0x2fb4 calls cmn_err with a0=0x1, a1=sym(.rodata)+984, a2=?, a3=?.
+  The `jal` at 0x2fd0 calls cmn_err with a0=0x1, a1=sym(.rodata)+120, a2=?, a3=?.
+  The `jal` at 0x3000 calls cmn_err with a0=0x1, a1=sym(.rodata)+832, a2=?, a3=?.
+  The `jal` at 0x3014 calls cmn_err with a0=0x1, a1=sym(.rodata)+120, a2=?, a3=?.
   The `jal` at 0x3020 calls kmem_free with a0=ret(kmem_alloc), a1=?, a2=?, a3=?.
   The `beq` branch at 0x2d94 targets 0x2f2c, is taken when at(=[sym(.sdata)+12]) == 0, and falls through when at(=[sym(.sdata)+12]) != 0.
   The `beq` branch at 0x2da8 targets 0x2f2c, is taken when v0(=[sym(.bss)+2360]) == 0, and falls through when v0(=[sym(.bss)+2360]) != 0.
@@ -729,7 +729,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x3030-0x3070 (64 bytes).
   It occupies 64 bytes.
-  The `sw` at 0x3040 stores 4 bytes to sym(.bss) +0x1270.
+  The `sw` at 0x3040 stores 4 bytes to sym(.bss) +0x938.
   The `jal` at 0x3054 calls .text with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `beq` branch at 0x3044 targets 0x3054, is taken when at(=[sym(.sdata)+12]) == 0, and falls through when at(=[sym(.sdata)+12]) != 0.
   The `beq` branch at 0x3068 targets 0x304c and is always taken.
@@ -749,7 +749,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x30a0-0x3198 (248 bytes).
   It occupies 248 bytes.
   The `lw` at 0x30c0 loads 4 bytes from ret(find_named_flash_seg) +0xc.
-  The `jal` at 0x30ac calls find_named_flash_seg [0x2120] with a0=sym(.rodata)+1648, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x30ac calls find_named_flash_seg [0x2120] with a0=sym(.rodata)+824, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x30d8 calls update_flash_version with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x30fc calls find_inventory with a0=0x0, a1=0x3, a2=0x15, a3=-0x1, a4=-0x1, a5=0x0.
   The `jal` at 0x310c calls flash_version with a0=0x0, a1=?, a2=?, a3=?.
@@ -758,7 +758,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x3148 calls flash_version with a0=0x0, a1=?, a2=?, a3=?.
   The `jal` at 0x3154 calls flash_version with a0=0x1, a1=?, a2=?, a3=?.
   The `jal` at 0x316c calls add_to_inventory with a0=0x3, a1=0x15, a2=ret(flash_version), a3=ret(flash_version), a4=0x0.
-  The `jal` at 0x3184 calls cmn_err with a0=0x1, a1=sym(.rodata)+2208, a2=ret(find_named_flash_seg)+64, a3=?.
+  The `jal` at 0x3184 calls cmn_err with a0=0x1, a1=sym(.rodata)+1104, a2=ret(find_named_flash_seg)+64, a3=?.
   The `beq` branch at 0x30b8 targets 0x317c, is taken when v0(=ret(find_named_flash_seg)) == 0, and falls through when v0(=ret(find_named_flash_seg)) != 0.
   The `beq` branch at 0x30e4 targets 0x313c, is taken when a2(=[sym(.sdata)+12]) == 0, and falls through when a2(=[sym(.sdata)+12]) != 0.
   The `beq` branch at 0x3104 targets 0x3148, is taken when v0(=ret(find_inventory)) == 0, and falls through when v0(=ret(find_inventory)) != 0.
@@ -772,8 +772,8 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 160 bytes.
   3 such `lw` accesses load 4 bytes from sym(.bss) +0x928, including `lw` at 0x31c0, `lw` at 0x31c4, `lw` at 0x3210.
   The `lw` at 0x3208 loads 4 bytes from sym(.bss) +0x20.
-  The `jal` at 0x31bc calls cmn_err with a0=0x6, a1=sym(.rodata)+240, a2=[sym(.bss)+2344], a3=a3 at entry (arg3).
-  The `jal` at 0x3204 calls cmn_err with a0=0x6, a1=sym(.rodata)+240, a2=?, a3=sym(.bss), a4=[sym(.bss)+32].
+  The `jal` at 0x31bc calls cmn_err with a0=0x6, a1=sym(.rodata)+120, a2=[sym(.bss)+2344], a3=a3 at entry (arg3).
+  The `jal` at 0x3204 calls cmn_err with a0=0x6, a1=sym(.rodata)+120, a2=?, a3=sym(.bss), a4=[sym(.bss)+32].
   The `bgtz` branch at 0x31c8 targets 0x31e0, is taken when a2(=[sym(.bss)+2344]) > 0 (signed), and falls through when a2(=[sym(.bss)+2344]) <= 0 (signed).
   The `bne` branch at 0x3228 targets 0x31e8, is taken when a2(?) < a3(=[sym(.bss)+2344]) (signed), and falls through when a2(?) >= a3(=[sym(.bss)+2344]) (signed).
   The `beq` branch at 0x3230 targets 0x31d0 and is always taken.
@@ -1408,7 +1408,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x4368 calls ecc_handler with a0=0xe98, a1=0xe68, a2=?, a3=?.
   The `jal` at 0x4390 calls tfi_restore with a0=?, a1=[0xe68]:8, a2=[0xe70]:8, a3=?.
   The `jal` at 0x4450 calls ecc_panic with a0=[0xe68]:8, a1=[0xe80]:8, a2=0xe68, a3=?.
-  The `jal` at 0x4460 calls cmn_err with a0=0x0, a1=sym(cache_desc+272), a2=?, a3=?.
+  The `jal` at 0x4460 calls cmn_err with a0=0x0, a1=sym(.data)+360, a2=?, a3=?.
   The `bne` branch at 0x4370 targets 0x4424, is taken when v0(=ret(ecc_handler)) != 0, and falls through when v0(=ret(ecc_handler)) == 0.
 - `eccword` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x4468 (n32).
   Evidence grade: inferred.
@@ -1463,7 +1463,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x4f98 stores 4 bytes to a1 (arg1 at entry) +0x30.
   The `lw` at 0x4fa4 loads 4 bytes from a1 (arg1 at entry) +0x34.
   The `sw` at 0x4fb8 stores 4 bytes to a1 (arg1 at entry) +0x34.
-  The `jal` at 0x4b90 calls cer_to_hex with a0=sym(.rodata)+3184, a1=([a1+24] << 0x0), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x4b90 calls cer_to_hex with a0=sym(.rodata)+1592, a1=([a1+24] << 0x0), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x4ce8 calls ecc_cacheOp [0x45ec] with a0=0x13, a1=?, a2=?, a3=?.
   The `jal` at 0x4d70 calls ecc_cacheOp [0x45ec] with a0=0x4, a1=?, a2=?, a3=?.
   The `jal` at 0x4dc8 calls ecc_cacheOp [0x45ec] with a0=0x0, a1=table(0x80000000), a2=?, a3=?.
@@ -1541,7 +1541,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bltz` branch at 0x5140 targets 0x504c, is taken when t8(=([a1+24] << 0x24)) < 0 (signed), and falls through when t8(=([a1+24] << 0x24)) >= 0 (signed).
   The `beq` branch at 0x5148 targets 0x4c40 and is always taken.
   The `beq` branch at 0x5150 targets 0x4c40 and is always taken.
-  The return at 0x4d20 has v0 = one of sym(.rodata)+3184, ?.
+  The return at 0x4d20 has v0 = one of sym(.rodata)+1592, ?.
   The instructions from 0x4e98 to 0x4e98 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x506c to 0x506c are not reached by any path from the entry, and their branches are not listed.
 - `r10k_ecc_panic` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x5158 (n32).
@@ -1552,29 +1552,29 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x515c loads 4 bytes from a2 (arg2 at entry) +0x18.
   The `ld` at 0x5160 loads 8 bytes from a2 (arg2 at entry) +0x0.
   The `jal` at 0x5180 calls ecc_display [0x464c] with a0=0x14, a1=a0 at entry (arg0), a2=[a2+24], a3=[a2]:8, a4=a2+8.
-  The `jal` at 0x519c calls cmn_err with a0=0x10, a1=sym(.rodata)+4208, a2=a0 at entry (arg0), a3=a1+952.
+  The `jal` at 0x519c calls cmn_err with a0=0x10, a1=sym(.rodata)+2104, a2=a0 at entry (arg0), a3=a1+952.
   The return at 0x51ac has v0 = ret(cmn_err).
 - `ecc_printPending` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x526c (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x526c-0x5368 (252 bytes).
   It occupies 252 bytes.
-  The `lw` at 0x52b8 loads 4 bytes from sym(.bss) +0x1280.
-  The `lw` at 0x52c4 loads 4 bytes from [sym(default_aux+80)] +0x19c.
-  The `lw` at 0x52c8 loads 4 bytes from [sym(default_aux+80)] +0x198.
-  The `lw` at 0x52cc loads 4 bytes from [sym(default_aux+80)] +0x194.
-  The `lw` at 0x52d8 loads 4 bytes from [sym(default_aux+80)] +0x190.
-  2 such `lw` accesses load 4 bytes from [sym(default_aux+80)] +0x3a0, including `lw` at 0x52e4, `lw` at 0x5328.
-  The `lw` at 0x52e8 loads 4 bytes from [sym(default_aux+80)] +0x3a4.
+  The `lw` at 0x52b8 loads 4 bytes from sym(.bss) +0x940.
+  The `lw` at 0x52c4 loads 4 bytes from [sym(cacheErr_frames)] +0x19c.
+  The `lw` at 0x52c8 loads 4 bytes from [sym(cacheErr_frames)] +0x198.
+  The `lw` at 0x52cc loads 4 bytes from [sym(cacheErr_frames)] +0x194.
+  The `lw` at 0x52d8 loads 4 bytes from [sym(cacheErr_frames)] +0x190.
+  2 such `lw` accesses load 4 bytes from [sym(cacheErr_frames)] +0x3a0, including `lw` at 0x52e4, `lw` at 0x5328.
+  The `lw` at 0x52e8 loads 4 bytes from [sym(cacheErr_frames)] +0x3a4.
   3 such `ld` accesses load 8 bytes from ?, including `ld` at 0x52fc, `ld` at 0x5300, `ld` at 0x5304.
   The `lwu` at 0x5310 loads 4 bytes from ?.
-  The `jalr` at 0x52dc calls (unknown callee) with a0=sym(.rodata)+3184, a1=?, a2=[[sym(default_aux+80)]+400], a3=[[sym(default_aux+80)]+404], a4=[[sym(default_aux+80)]+408], a5=[[sym(default_aux+80)]+412], a7=[sym(default_aux+80)].
-  The `jalr` at 0x530c calls (unknown callee) with a0=sym(.rodata)+3184, a1=?, a2=?, a3=?.
+  The `jalr` at 0x52dc calls (unknown callee) with a0=sym(.rodata)+1592, a1=?, a2=[[sym(cacheErr_frames)]+400], a3=[[sym(cacheErr_frames)]+404], a4=[[sym(cacheErr_frames)]+408], a5=[[sym(cacheErr_frames)]+412], a7=[sym(cacheErr_frames)].
+  The `jalr` at 0x530c calls (unknown callee) with a0=sym(.rodata)+1592, a1=?, a2=?, a3=?.
   The `beq` branch at 0x52a0 targets 0x52b8 and is always taken.
   The `beq` branch at 0x52b0 targets 0x5344, is taken when s5(?) >= 0x80 (signed), and falls through when s5(?) < 0x80 (signed).
-  The `beq` branch at 0x52bc targets 0x52a8, is taken when a7(=[sym(default_aux+80)]) == 0, and falls through when a7(=[sym(default_aux+80)]) != 0.
-  The `beq` branch at 0x52ec targets 0x52a8, is taken when s0(=[[sym(default_aux+80)]+932]) == t9(=[[sym(default_aux+80)]+928]), and falls through when s0(=[[sym(default_aux+80)]+932]) != t9(=[[sym(default_aux+80)]+928]).
-  The `bne` branch at 0x5334 targets 0x52f8, is taken when s0(?) != a2(=[[sym(default_aux+80)]+928]), and falls through when s0(?) == a2(=[[sym(default_aux+80)]+928]).
+  The `beq` branch at 0x52bc targets 0x52a8, is taken when a7(=[sym(cacheErr_frames)]) == 0, and falls through when a7(=[sym(cacheErr_frames)]) != 0.
+  The `beq` branch at 0x52ec targets 0x52a8, is taken when s0(=[[sym(cacheErr_frames)]+932]) == t9(=[[sym(cacheErr_frames)]+928]), and falls through when s0(=[[sym(cacheErr_frames)]+932]) != t9(=[[sym(cacheErr_frames)]+928]).
+  The `bne` branch at 0x5334 targets 0x52f8, is taken when s0(?) != a2(=[[sym(cacheErr_frames)]+928]), and falls through when s0(?) == a2(=[[sym(cacheErr_frames)]+928]).
   The `beq` branch at 0x533c targets 0x52ac and is always taken.
   The return at 0x5360 has v0 = ?.
 - `warn` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x5638 (n32).
@@ -1589,7 +1589,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x5684-0x56b0 (44 bytes).
   It occupies 44 bytes.
-  The `jal` at 0x5694 calls cmn_err with a0=0x5, a1=sym(.rodata)+4624, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x5694 calls cmn_err with a0=0x5, a1=sym(.rodata)+2312, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x569c calls sthread_exit with a0=?, a1=?, a2=?, a3=?.
   The return at 0x56a8 has v0 = ret(sthread_exit).
 - `_r4600sc_disable_scache` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x5b9c (n32).
@@ -1804,10 +1804,10 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x80ac-0x810c (96 bytes).
   It occupies 96 bytes.
-  The `ld` at 0x80b4 loads 8 bytes from sym(.rodata) +0x1410.
-  The `ld` at 0x80bc loads 8 bytes from sym(.rodata) +0x1420.
-  The `lwu` at 0x80cc loads 4 bytes from ?.
-  The `beq` branch at 0x80c0 targets 0x8104, is taken when a1(?) == a2(=0x736f667466705f61), and falls through when a1(?) != a2(=0x736f667466705f61).
+  The `ld` at 0x80b4 loads 8 bytes from sym(.rodata) +0xa08.
+  The `ld` at 0x80bc loads 8 bytes from sym(.rodata) +0xa10.
+  The `lwu` at 0x80cc loads 4 bytes from sym(.data) +0x528.
+  The `beq` branch at 0x80c0 targets 0x8104, is taken when a1(=sym(.data)+1320) == a2(=sym(mte_engine)), and falls through when a1(=sym(.data)+1320) != a2(=sym(mte_engine)).
   The `beq` branch at 0x80d4 targets 0x80ec, is taken when a2(?) == 0, and falls through when a2(?) != 0.
   The `beq` branch at 0x80e4 targets 0x80d4 and is always taken.
   The `beq` branch at 0x80fc targets 0x80b8 and is always taken.
@@ -1824,9 +1824,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x82bc-0x83c8 (268 bytes).
   It occupies 268 bytes.
-  The `jal` at 0x82c8 calls kopt_find with a0=sym(.rodata)+5312, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x82c8 calls kopt_find with a0=sym(.rodata)+2656, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x82d4 calls etoh with a0=ret(kopt_find), a1=?, a2=?, a3=?.
-  The `jal` at 0x8368 calls sprintf with a0=sym(arg_eaddr), a1=sym(.rodata)+5248, a2=0x0, a3=0x8, a4=0x0, a5=0x0, a6=0xa, a7=0xa.
+  The `jal` at 0x8368 calls sprintf with a0=sym(arg_eaddr), a1=sym(.rodata)+2624, a2=0x0, a3=0x8, a4=0x0, a5=0x0, a6=0xa, a7=0xa.
   The `jal` at 0x8378 calls etoh with a0=ret(kopt_find), a1=?, a2=?, a3=?.
   The `jal` at 0x8388 calls bcopy with a0=ret(etoh), a1=sym(eaddr), a2=0x6, a3=?.
   The `bne` branch at 0x82dc targets 0x8378, is taken when v0(=ret(etoh)) != 0, and falls through when v0(=ret(etoh)) == 0.
@@ -1868,15 +1868,15 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x8cb0-0x8e18 (360 bytes).
   It occupies 360 bytes.
-  3 such `lw` accesses load 4 bytes from sym(.bss) +0x1684, including `lw` at 0x8cf0, `lw` at 0x8d20, `lw` at 0x8d38.
+  3 such `lw` accesses load 4 bytes from sym(.bss) +0xb44, including `lw` at 0x8cf0, `lw` at 0x8d20, `lw` at 0x8d38.
   6 such `sh` accesses store 2 bytes to ?, including `sh` at 0x8d1c, `sh` at 0x8d34, `sh` at 0x8db0.
   The `jal` at 0x8cd4 calls flush_tlb with a0=0x1, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x8ce0 calls flush_tlb with a0=0x2, a1=?, a2=?, a3=?.
-  The `jal` at 0x8d50 calls extk0_avail_alloc with a0=a1 at entry (arg1), a1=[sym(pfdat)], a2=?, a3=?, a5=sym(.bss)+5760, a7=[sym(.bss)+5764].
-  The `beq` branch at 0x8d04 targets 0x8e08, is taken when a7(=[sym(.bss)+5764]) == 0, and falls through when a7(=[sym(.bss)+5764]) != 0.
+  The `jal` at 0x8d50 calls extk0_avail_alloc with a0=a1 at entry (arg1), a1=[sym(pfdat)], a2=?, a3=?, a5=sym(.bss)+2880, a7=[sym(.bss)+2884].
+  The `beq` branch at 0x8d04 targets 0x8e08, is taken when a7(=[sym(.bss)+2884]) == 0, and falls through when a7(=[sym(.bss)+2884]) != 0.
   The `bne` branch at 0x8d14 targets 0x8e00, is taken when a0(?) != 0, and falls through when a0(?) == 0.
-  The `beq` branch at 0x8d2c targets 0x8d4c, is taken when a4(?) >= a7(=[sym(.bss)+5764]) (signed), and falls through when a4(?) < a7(=[sym(.bss)+5764]) (signed).
-  The `bne` branch at 0x8d44 targets 0x8d1c, is taken when a4(?) < a7(=[sym(.bss)+5764]) (signed), and falls through when a4(?) >= a7(=[sym(.bss)+5764]) (signed).
+  The `beq` branch at 0x8d2c targets 0x8d4c, is taken when a4(?) >= a7(=[sym(.bss)+2884]) (signed), and falls through when a4(?) < a7(=[sym(.bss)+2884]) (signed).
+  The `bne` branch at 0x8d44 targets 0x8d1c, is taken when a4(?) < a7(=[sym(.bss)+2884]) (signed), and falls through when a4(?) >= a7(=[sym(.bss)+2884]) (signed).
   The `beq` branch at 0x8d8c targets 0x8e10, is taken when t2(=[sym(seg1_maxmem)]) == 0, and falls through when t2(=[sym(seg1_maxmem)]) != 0.
   The `beq` branch at 0x8da4 targets 0x8dd4, is taken when t1(=[sym(seg0_maxmem)]) == t2(=0x50000), and falls through when t1(=[sym(seg0_maxmem)]) != t2(=0x50000).
   The `beq` branch at 0x8db4 targets 0x8dd4, is taken when a4(?) == 0, and falls through when a4(?) != 0.
@@ -1891,7 +1891,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x92c4-0x9324 (96 bytes).
   It occupies 96 bytes.
-  The `lw` at 0x92e0 loads 4 bytes from sym(.bss) +0x1688.
+  The `lw` at 0x92e0 loads 4 bytes from sym(.bss) +0xb44.
   The `jal` at 0x92d0 calls get_cpu_irr with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `beq` branch at 0x92f4 targets 0x9318, is taken when at(?) >= 0x23 (signed), and falls through when at(?) < 0x23 (signed).
   The `bne` branch at 0x92fc targets 0x9318, is taken when a0(?) != 0, and falls through when a0(?) == 0.
@@ -1903,7 +1903,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x9324-0x9438 (276 bytes).
   It occupies 276 bytes.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1680, including `lw` at 0x9328, `lw` at 0x93f8.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xb40, including `lw` at 0x9328, `lw` at 0x93f8.
   The `lw` at 0x93a4 loads 4 bytes from table(0xffffffffffd00000) +0x0.
   The `jal` at 0x93b4 calls bad_vfn with a0=?, a1=?, a2=table(0xffffffffffd00000), a3=0xc0000, a4=0xffffffffffd00000, a6=[sym(kptbl)].
   The `jal` at 0x93dc calls get_cpu_irr with a0=?, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -1925,12 +1925,12 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x9438-0x950c (212 bytes).
   It occupies 212 bytes.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x168c, including `lw` at 0x9480, `lw` at 0x94ac.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1690, including `lw` at 0x9494, `lw` at 0x94a8.
-  The `lw` at 0x9498 loads 4 bytes from sym(.bss) +0x169c.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xb4c, including `lw` at 0x9480, `lw` at 0x94ac.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xb50, including `lw` at 0x9494, `lw` at 0x94a8.
+  The `lw` at 0x9498 loads 4 bytes from sym(.bss) +0xb5c.
   The `jal` at 0x9458 calls flush_tlb with a0=0x3, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0x94a0 calls tlbwired with a0=?, a1=0x0, a2=?, a3=([sym(.bss)+5772] << 0x20), a4=([sym(.bss)+5776] << 0x20), a5=[sym(.bss)+5788], a7=[sym(.bss)+5772].
-  The `beq` branch at 0x9484 targets 0x94e8, is taken when a7(=[sym(.bss)+5772]) == 0, and falls through when a7(=[sym(.bss)+5772]) != 0.
+  The `jal` at 0x94a0 calls tlbwired with a0=?, a1=0x0, a2=?, a3=([sym(.bss)+2892] << 0x20), a4=([sym(.bss)+2896] << 0x20), a5=[sym(.bss)+2908], a7=[sym(.bss)+2892].
+  The `beq` branch at 0x9484 targets 0x94e8, is taken when a7(=[sym(.bss)+2892]) == 0, and falls through when a7(=[sym(.bss)+2892]) != 0.
   The `bne` branch at 0x94e0 targets 0x9480, is taken when s4(?) < 0x2 (unsigned), and falls through when s4(?) >= 0x2 (unsigned).
   The return at 0x9504 has v0 = one of ?, ret(tlbwired).
 - `extk0_mem_alloc` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x950c (n32).
@@ -1938,40 +1938,40 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x950c-0x9630 (292 bytes).
   It occupies 292 bytes.
-  3 such `lw` accesses load 4 bytes from sym(.bss) +0x1680, including `lw` at 0x9514, `lw` at 0x95c8, `lw` at 0x95dc.
-  The `lw` at 0x951c loads 4 bytes from sym(sptbitmap) +0x10.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1688, including `lw` at 0x9558, `lw` at 0x95a4.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x1684, including `sw` at 0x9564, `sw` at 0x9580.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x1680, including `sw` at 0x9568, `sw` at 0x95ec.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1684, including `lw` at 0x958c, `lw` at 0x95d8.
+  3 such `lw` accesses load 4 bytes from sym(.bss) +0xb40, including `lw` at 0x9514, `lw` at 0x95c8, `lw` at 0x95dc.
+  The `lw` at 0x951c loads 4 bytes from sym(sptbitmap) +0x8.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xb48, including `lw` at 0x9558, `lw` at 0x95a4.
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xb44, including `sw` at 0x9564, `sw` at 0x9580.
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xb40, including `sw` at 0x9568, `sw` at 0x95ec.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xb44, including `lw` at 0x958c, `lw` at 0x95d8.
   The `sw` at 0x95a0 stores 4 bytes to ?.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x1688, including `sw` at 0x95ac, `sw` at 0x95e4.
-  The `jal` at 0x9584 calls pte_cachebits with a0=?, a1=?, a2=?, a3=?, a6=[sym(.bss)+5760].
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xb48, including `sw` at 0x95ac, `sw` at 0x95e4.
+  The `jal` at 0x9584 calls pte_cachebits with a0=?, a1=?, a2=?, a3=?, a6=[sym(.bss)+2880].
   The `jal` at 0x95c0 calls kvalloc with a0=0x1, a1=0x0, a2=0x0, a3=?.
-  The `jal` at 0x9620 calls kvalloc with a0=0x1800, a1=0x0, a2=0x0, a3=[sym(.bss)+5760], a4=sym(.bss)+2880.
+  The `jal` at 0x9620 calls kvalloc with a0=0x1800, a1=0x0, a2=0x0, a3=[sym(.bss)+2880], a4=sym(.bss)+2880.
   The `beq` branch at 0x9540 targets 0x9610, is taken when at(=[sym(kptbl)]) == 0, and falls through when at(=[sym(kptbl)]) != 0.
-  The `beq` branch at 0x9548 targets 0x9610, is taken when v0(=[sym(sptbitmap)+16]) == 0, and falls through when v0(=[sym(sptbitmap)+16]) != 0.
-  The `beq` branch at 0x9550 targets 0x9618, is taken when a3(=[sym(.bss)+5760]) == 0, and falls through when a3(=[sym(.bss)+5760]) != 0.
+  The `beq` branch at 0x9548 targets 0x9610, is taken when v0(=[sym(sptbitmap)+8]) == 0, and falls through when v0(=[sym(sptbitmap)+8]) != 0.
+  The `beq` branch at 0x9550 targets 0x9618, is taken when a3(=[sym(.bss)+2880]) == 0, and falls through when a3(=[sym(.bss)+2880]) != 0.
   The `beq` branch at 0x955c targets 0x95b0 and is always taken.
   The `bne` branch at 0x95b4 targets 0x95dc, is taken when s1(=a0) < a3(?) (signed), and falls through when s1(=a0) >= a3(?) (signed).
-  The `beq` branch at 0x95cc targets 0x9564, is taken when a6(=[sym(.bss)+5760]) == 0, and falls through when a6(=[sym(.bss)+5760]) != 0.
+  The `beq` branch at 0x95cc targets 0x9564, is taken when a6(=[sym(.bss)+2880]) == 0, and falls through when a6(=[sym(.bss)+2880]) != 0.
   The `beq` branch at 0x95d4 targets 0x956c and is always taken.
   The `beq` branch at 0x9610 targets 0x95f0 and is always taken.
   The `beq` branch at 0x9628 targets 0x9558 and is always taken.
-  The return at 0x9608 has v0 = one of [sym(.bss)+5760], 0x0.
+  The return at 0x9608 has v0 = one of [sym(.bss)+2880], 0x0.
 - `extk0_avail_alloc` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x9630 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x9630-0x9960 (816 bytes).
   It occupies 816 bytes.
-  The `lw` at 0x9640 loads 4 bytes from sym(.bss) +0x1680.
-  8 such `lw` accesses load 4 bytes from sym(.bss) +0x1684, including `lw` at 0x9660, `lw` at 0x96d0, `lw` at 0x96e0.
-  The `sw` at 0x96b4 stores 4 bytes to sym(.bss) +0x1680.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x1684, including `sw` at 0x96dc, `sw` at 0x9848.
+  The `lw` at 0x9640 loads 4 bytes from sym(.bss) +0xb40.
+  8 such `lw` accesses load 4 bytes from sym(.bss) +0xb44, including `lw` at 0x9660, `lw` at 0x96d0, `lw` at 0x96e0.
+  The `sw` at 0x96b4 stores 4 bytes to sym(.bss) +0xb40.
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xb44, including `sw` at 0x96dc, `sw` at 0x9848.
   2 such `sw` accesses store 4 bytes to ?, including `sw` at 0x9700, `sw` at 0x9860.
-  The `sw` at 0x9758 stores 4 bytes to sym(.bss) +0x169c.
-  The `sw` at 0x9770 stores 4 bytes to sym(.bss) +0x1678.
-  The `sw` at 0x97a4 stores 4 bytes to sym(.bss) +0x167c.
+  The `sw` at 0x9758 stores 4 bytes to sym(.bss) +0xb5c.
+  The `sw` at 0x9770 stores 4 bytes to sym(.bss) +0xb38.
+  The `sw` at 0x97a4 stores 4 bytes to sym(.bss) +0xb3c.
   The `jal` at 0x96c8 calls kvalloc with a0=0x1, a1=0x0, a2=0x0, a3=?.
   The `jal` at 0x96d8 calls pte_cachebits with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x9754 calls pte_cachebits with a0=?, a1=?, a2=?, a3=one of 0x400000, 0x1000000.
@@ -1983,7 +1983,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x969c targets 0x96a8, is taken when a3(=(([sym(nproc)] + [sym(nproc)]) + a0)-2048) < v1(?) (signed), and falls through when a3(=(([sym(nproc)] + [sym(nproc)]) + a0)-2048) >= v1(?) (signed).
   The `blez` branch at 0x96b8 targets 0x9708, is taken when a3(?) <= 0 (signed), and falls through when a3(?) > 0 (signed).
   The `bgtz` branch at 0x96fc targets 0x96c0, is taken when s3(?) > 0 (signed), and falls through when s3(?) <= 0 (signed).
-  The `blez` branch at 0x9728 targets 0x9948, is taken when a0(=([sym(.bss)+5764]-2048 << 0xc)) <= 0 (signed), and falls through when a0(=([sym(.bss)+5764]-2048 << 0xc)) > 0 (signed).
+  The `blez` branch at 0x9728 targets 0x9948, is taken when a0(=([sym(.bss)+2884]-2048 << 0xc)) <= 0 (signed), and falls through when a0(=([sym(.bss)+2884]-2048 << 0xc)) > 0 (signed).
   The `beq` branch at 0x9738 targets 0x97ac and is always taken.
   The `beq` branch at 0x9744 targets 0x9918, is taken when s5(?) == a1(=0x1), and falls through when s5(?) != a1(=0x1).
   The `beq` branch at 0x97a0 targets 0x980c, is taken when s5(?) >= 0x2 (signed), and falls through when s5(?) < 0x2 (signed).
@@ -1996,15 +1996,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x97ec targets 0x98fc, is taken when a2(?) >= s2(?) (signed), and falls through when a2(?) < s2(?) (signed).
   The `bne` branch at 0x97fc targets 0x97e4, is taken when a3(=one of 0x400000, 0x1000000) != a2(?), and falls through when a3(=one of 0x400000, 0x1000000) == a2(?).
   The `beq` branch at 0x9804 targets 0x9754 and is always taken.
-  The `beq` branch at 0x9814 targets 0x9874, is taken when a2(=[sym(.bss)+5764]) >= s3(?) (signed), and falls through when a2(=[sym(.bss)+5764]) < s3(?) (signed).
-  The `bne` branch at 0x986c targets 0x982c, is taken when a2(=[sym(.bss)+5764]) < s3(?) (signed), and falls through when a2(=[sym(.bss)+5764]) >= s3(?) (signed).
+  The `beq` branch at 0x9814 targets 0x9874, is taken when a2(=[sym(.bss)+2884]) >= s3(?) (signed), and falls through when a2(=[sym(.bss)+2884]) < s3(?) (signed).
+  The `bne` branch at 0x986c targets 0x982c, is taken when a2(=[sym(.bss)+2884]) < s3(?) (signed), and falls through when a2(=[sym(.bss)+2884]) >= s3(?) (signed).
   The `bne` branch at 0x98fc targets 0x9750, is taken when s5(?) != a5(=0x1), and falls through when s5(?) == a5(=0x1).
   The `beq` branch at 0x9908 targets 0x9750, is taken when a6(?) >= s2(?) (signed), and falls through when a6(?) < s2(?) (signed).
   The `beq` branch at 0x9910 targets 0x9934 and is always taken.
   The `bne` branch at 0x9924 targets 0x9940, is taken when s2(?) < 0x2001 (signed), and falls through when s2(?) >= 0x2001 (signed).
   The `beq` branch at 0x9938 targets 0x9750 and is always taken.
   The `beq` branch at 0x9940 targets 0x9754 and is always taken.
-  The `beq` branch at 0x9950 targets 0x9878, is taken when a2(=[sym(.bss)+5764]) >= 0x800 (signed), and falls through when a2(=[sym(.bss)+5764]) < 0x800 (signed).
+  The `beq` branch at 0x9950 targets 0x9878, is taken when a2(=[sym(.bss)+2884]) >= 0x800 (signed), and falls through when a2(=[sym(.bss)+2884]) < 0x800 (signed).
   The `beq` branch at 0x9958 targets 0x981c and is always taken.
   The return at 0x98f4 has v0 = ret(kvfree).
   The instructions from 0x9740 to 0x9740 are not reached by any path from the entry, and their branches are not listed.
@@ -2028,11 +2028,11 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xa7cc-0xa934 (360 bytes).
   It occupies 360 bytes.
-  2 such `lh` accesses load 2 bytes from sym(.data) +0xb0c, including `lh` at 0xa7f4, `lh` at 0xa820.
+  2 such `lh` accesses load 2 bytes from sym(.data) +0x58c, including `lh` at 0xa7f4, `lh` at 0xa820.
   6 such `sw` accesses store 4 bytes to ?, including `sw` at 0xa810, `sw` at 0xa83c, `sw` at 0xa8a8.
   10 such `lw` accesses load 4 bytes from ?, including `lw` at 0xa88c, `lw` at 0xa890, `lw` at 0xa894.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0xa8fc, `sh` at 0xa914.
-  The `lh` at 0xa928 loads 2 bytes from table(sym(.data)+2816) +0x9c.
+  The `lh` at 0xa928 loads 2 bytes from table(sym(.data)+1408) +0x9c.
   The `beq` branch at 0xa818 targets 0xa848, is taken when a3(?) >= 0x20 (signed), and falls through when a3(?) < 0x20 (signed).
   The `bne` branch at 0xa840 targets 0xa7f4, is taken when a3(?) < 0x20 (signed), and falls through when a3(?) >= 0x20 (signed).
   The `beq` branch at 0xa848 targets 0xa864 and is always taken.
@@ -2047,7 +2047,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xa8e0 targets 0xa880 and is always taken.
   The `bltz` branch at 0xa904 targets 0xa920, is taken when t2(?) < 0 (signed), and falls through when t2(?) >= 0 (signed).
   The `bgez` branch at 0xa918 targets 0xa8f4, is taken when t2(?) >= 0 (signed), and falls through when t2(?) < 0 (signed).
-  The return at 0xa92c has v0 = [table(sym(.data)+2816)+156]:2.
+  The return at 0xa92c has v0 = [table(sym(.data)+1408)+156]:2.
   The instructions from 0xa8e8 to 0xa8e8 are not reached by any path from the entry, and their branches are not listed.
 - `setsplmasks` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xaa8c (n32).
   Evidence grade: inferred.
@@ -2176,15 +2176,15 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xb778-0xb8ac (308 bytes).
   It occupies 308 bytes.
-  The `sw` at 0xb794 stores 4 bytes to sym(.bss) +0x17e4.
-  3 such `lw` accesses load 4 bytes from sym(.bss) +0x17d4, including `lw` at 0xb798, `lw` at 0xb7a8, `lw` at 0xb7cc.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x17d4, including `sw` at 0xb7a0, `sw` at 0xb7dc.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x17d0, including `lw` at 0xb7c0, `lw` at 0xb7e0.
-  The `sw` at 0xb7c8 stores 4 bytes to sym(.bss) +0x17d0.
-  The `lw` at 0xb854 loads 4 bytes from sym(.bss) +0x17e4.
-  The `sw` at 0xb860 stores 4 bytes to sym(.bss) +0x17e0.
+  The `sw` at 0xb794 stores 4 bytes to sym(.bss) +0xbfc.
+  3 such `lw` accesses load 4 bytes from sym(.bss) +0xbec, including `lw` at 0xb798, `lw` at 0xb7a8, `lw` at 0xb7cc.
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xbec, including `sw` at 0xb7a0, `sw` at 0xb7dc.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xbe8, including `lw` at 0xb7c0, `lw` at 0xb7e0.
+  The `sw` at 0xb7c8 stores 4 bytes to sym(.bss) +0xbe8.
+  The `lw` at 0xb854 loads 4 bytes from sym(.bss) +0xbfc.
+  The `sw` at 0xb860 stores 4 bytes to sym(.bss) +0xbf8.
   The `jal` at 0xb780 calls _get_timestamp with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `bne` branch at 0xb7b8 targets 0xb7e8, is taken when at(=[sym(.bss)+6100]) < v0(=0x3b9aca00) (signed), and falls through when at(=[sym(.bss)+6100]) >= v0(=0x3b9aca00) (signed).
+  The `bne` branch at 0xb7b8 targets 0xb7e8, is taken when at(=[sym(.bss)+3052]) < v0(=0x3b9aca00) (signed), and falls through when at(=[sym(.bss)+3052]) >= v0(=0x3b9aca00) (signed).
   The `beq` branch at 0xb7ec targets 0xb850, is taken when a1(=[sym(.sdata)+132]) == 0, and falls through when a1(=[sym(.sdata)+132]) != 0.
   The `bne` branch at 0xb7f4 targets 0xb84c, is taken when a1(=[sym(.sdata)+132]-1) != 0, and falls through when a1(=[sym(.sdata)+132]-1) == 0.
   The `beq` branch at 0xb838 targets 0xb864, is taken when a1(=[sym(timetrim)]) >= a4(?) (signed), and falls through when a1(=[sym(timetrim)]) < a4(?) (signed).
@@ -2256,7 +2256,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0xbd3c calls callout_get_pri with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0xbd5c calls dotimeout with a0=0x0, a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2), a4=ret(callout_get_pri), a5=0x1, a6=sp-40.
   The `jal` at 0xbd78 calls enable_fastclock with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xbd90 calls cmn_err with a0=0x0, a1=sym(.rodata)+6400, a2=?, a3=?.
+  The `jal` at 0xbd90 calls cmn_err with a0=0x0, a1=sym(.rodata)+3200, a2=?, a3=?.
   The `beq` branch at 0xbd34 targets 0xbd78, is taken when at(=[sym(fastclock)]) == 0, and falls through when at(=[sym(fastclock)]) != 0.
   The `beq` branch at 0xbd64 targets 0xbd88, is taken when v0(=ret(dotimeout)) == 0, and falls through when v0(=ret(dotimeout)) != 0.
   The `beq` branch at 0xbd80 targets 0xbd3c and is always taken.
@@ -2269,7 +2269,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 160 bytes.
   The `jal` at 0xbdf4 calls dotimeout with a0=0x0, a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2), a4=0x0, a5=0x4, a6=sp-40.
   The `jal` at 0xbe10 calls enable_fastclock with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xbe30 calls cmn_err with a0=0x0, a1=sym(.rodata)+6400, a2=?, a3=?.
+  The `jal` at 0xbe30 calls cmn_err with a0=0x0, a1=sym(.rodata)+3200, a2=?, a3=?.
   The `beq` branch at 0xbdd4 targets 0xbe10, is taken when at(=[sym(fastclock)]) == 0, and falls through when at(=[sym(fastclock)]) != 0.
   The `beq` branch at 0xbdfc targets 0xbe28, is taken when v0(=ret(dotimeout)) == 0, and falls through when v0(=ret(dotimeout)) != 0.
   The `beq` branch at 0xbe20 targets 0xbddc and is always taken.
@@ -2407,27 +2407,27 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xc2dc-0xc470 (404 bytes).
   It occupies 404 bytes.
-  The `lw` at 0xc310 loads 4 bytes from sym(.bss) +0x17e0.
-  The `lw` at 0xc314 loads 4 bytes from sym(.bss) +0x17d0.
-  The `lw` at 0xc318 loads 4 bytes from sym(.bss) +0x17d4.
-  The `lw` at 0xc31c loads 4 bytes from sym(.bss) +0x17e4.
-  3 such `lw` accesses load 4 bytes from sym(.bss) +0x17d8, including `lw` at 0xc3c8, `lw` at 0xc3f0, `lw` at 0xc40c.
+  The `lw` at 0xc310 loads 4 bytes from sym(.bss) +0xbf8.
+  The `lw` at 0xc314 loads 4 bytes from sym(.bss) +0xbe8.
+  The `lw` at 0xc318 loads 4 bytes from sym(.bss) +0xbec.
+  The `lw` at 0xc31c loads 4 bytes from sym(.bss) +0xbfc.
+  3 such `lw` accesses load 4 bytes from sym(.bss) +0xbf0, including `lw` at 0xc3c8, `lw` at 0xc3f0, `lw` at 0xc40c.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x4, including `sw` at 0xc3d8, `sw` at 0xc414.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x0, including `sw` at 0xc3e0, `sw` at 0xc418.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x17dc, including `lw` at 0xc3fc, `lw` at 0xc410.
-  The `sw` at 0xc42c stores 4 bytes to sym(.bss) +0x17d8.
-  The `sw` at 0xc430 stores 4 bytes to sym(.bss) +0x17dc.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xbf4, including `lw` at 0xc3fc, `lw` at 0xc410.
+  The `sw` at 0xc42c stores 4 bytes to sym(.bss) +0xbf0.
+  The `sw` at 0xc430 stores 4 bytes to sym(.bss) +0xbf4.
   The `lw` at 0xc464 loads 4 bytes from a0 (arg0 at entry) +0x4.
   The `lw` at 0xc46c loads 4 bytes from a0 (arg0 at entry) +0x0.
   The `jal` at 0xc2f0 calls spl7 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0xc328 calls _get_timestamp with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0xc334 calls nested_spinlock with a0=sym(timelock), a1=?, a2=?, a3=?.
   The `jal` at 0xc434 calls splx with a0=ret(spl7), a1=?, a2=?, a3=?.
-  The `bne` branch at 0xc320 targets 0xc310, is taken when t8(=[sym(.bss)+6116]) != s2(=[sym(.bss)+6112]), and falls through when t8(=[sym(.bss)+6116]) == s2(=[sym(.bss)+6112]).
+  The `bne` branch at 0xc320 targets 0xc310, is taken when t8(=[sym(.bss)+3068]) != s2(=[sym(.bss)+3064]), and falls through when t8(=[sym(.bss)+3068]) == s2(=[sym(.bss)+3064]).
   The `beq` branch at 0xc370 targets 0xc3b0, is taken when t9(=[sym(.sdata)+132]) == 0, and falls through when t9(=[sym(.sdata)+132]) != 0.
-  The `bne` branch at 0xc3e8 targets 0xc40c, is taken when a7(?) < t0(=[sym(.bss)+6104]) (signed), and falls through when a7(?) >= t0(=[sym(.bss)+6104]) (signed).
-  The `bne` branch at 0xc3f4 targets 0xc458, is taken when t2(=[sym(.bss)+6104]) != a7(?), and falls through when t2(=[sym(.bss)+6104]) == a7(?).
-  The `beq` branch at 0xc404 targets 0xc458, is taken when a5(?) >= t3(=[sym(.bss)+6108]) (signed), and falls through when a5(?) < t3(=[sym(.bss)+6108]) (signed).
+  The `bne` branch at 0xc3e8 targets 0xc40c, is taken when a7(?) < t0(=[sym(.bss)+3056]) (signed), and falls through when a7(?) >= t0(=[sym(.bss)+3056]) (signed).
+  The `bne` branch at 0xc3f4 targets 0xc458, is taken when t2(=[sym(.bss)+3056]) != a7(?), and falls through when t2(=[sym(.bss)+3056]) == a7(?).
+  The `beq` branch at 0xc404 targets 0xc458, is taken when a5(?) >= t3(=[sym(.bss)+3060]) (signed), and falls through when a5(?) < t3(=[sym(.bss)+3060]) (signed).
   The `beq` branch at 0xc458 targets 0xc420, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0xc468 targets 0xc41c and is always taken.
   The return at 0xc44c has v0 = ret(splx).
@@ -2437,15 +2437,15 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xc470-0xc4d8 (104 bytes).
   It occupies 104 bytes.
-  The `lw` at 0xc498 loads 4 bytes from sym(.bss) +0x17e0.
-  The `lw` at 0xc49c loads 4 bytes from sym(.bss) +0x17d0.
-  The `lw` at 0xc4a0 loads 4 bytes from sym(.bss) +0x17d4.
-  The `lw` at 0xc4a4 loads 4 bytes from sym(.bss) +0x17e4.
+  The `lw` at 0xc498 loads 4 bytes from sym(.bss) +0xbf8.
+  The `lw` at 0xc49c loads 4 bytes from sym(.bss) +0xbe8.
+  The `lw` at 0xc4a0 loads 4 bytes from sym(.bss) +0xbec.
+  The `lw` at 0xc4a4 loads 4 bytes from sym(.bss) +0xbfc.
   The `sw` at 0xc4b8 stores 4 bytes to a0 (arg0 at entry) +0x0.
   The `sw` at 0xc4c4 stores 4 bytes to a0 (arg0 at entry) +0x4.
   The `jal` at 0xc484 calls spl7 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xc4b0 calls splx with a0=ret(spl7), a1=?, a2=?, a3=sym(.bss)+6096, a4=[sym(.bss)+6116], a5=[sym(.bss)+6112].
-  The `bne` branch at 0xc4a8 targets 0xc498, is taken when a4(=[sym(.bss)+6116]) != a5(=[sym(.bss)+6112]), and falls through when a4(=[sym(.bss)+6116]) == a5(=[sym(.bss)+6112]).
+  The `jal` at 0xc4b0 calls splx with a0=ret(spl7), a1=?, a2=?, a3=sym(.bss)+3048, a4=[sym(.bss)+3068], a5=[sym(.bss)+3064].
+  The `bne` branch at 0xc4a8 targets 0xc498, is taken when a4(=[sym(.bss)+3068]) != a5(=[sym(.bss)+3064]), and falls through when a4(=[sym(.bss)+3068]) == a5(=[sym(.bss)+3064]).
   The return at 0xc4d0 has v0 = ret(splx).
 - `microtime` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xc4d8 (n32).
   Evidence grade: inferred.
@@ -2461,18 +2461,18 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xc51c-0xc5b0 (148 bytes).
   It occupies 148 bytes.
-  The `sw` at 0xc568 stores 4 bytes to sym(.bss) +0x17e4.
-  The `sw` at 0xc574 stores 4 bytes to sym(.bss) +0x17d4.
-  The `sw` at 0xc578 stores 4 bytes to sym(.bss) +0x17d0.
-  The `lw` at 0xc57c loads 4 bytes from sym(.bss) +0x17d0.
-  The `sw` at 0xc580 stores 4 bytes to sym(.bss) +0x17d8.
-  The `lw` at 0xc584 loads 4 bytes from sym(.bss) +0x17d4.
-  The `sw` at 0xc588 stores 4 bytes to sym(.bss) +0x17dc.
-  The `lw` at 0xc590 loads 4 bytes from sym(.bss) +0x17e4.
-  The `sw` at 0xc598 stores 4 bytes to sym(.bss) +0x17e0.
+  The `sw` at 0xc568 stores 4 bytes to sym(.bss) +0xbfc.
+  The `sw` at 0xc574 stores 4 bytes to sym(.bss) +0xbec.
+  The `sw` at 0xc578 stores 4 bytes to sym(.bss) +0xbe8.
+  The `lw` at 0xc57c loads 4 bytes from sym(.bss) +0xbe8.
+  The `sw` at 0xc580 stores 4 bytes to sym(.bss) +0xbf0.
+  The `lw` at 0xc584 loads 4 bytes from sym(.bss) +0xbec.
+  The `sw` at 0xc588 stores 4 bytes to sym(.bss) +0xbf4.
+  The `lw` at 0xc590 loads 4 bytes from sym(.bss) +0xbfc.
+  The `sw` at 0xc598 stores 4 bytes to sym(.bss) +0xbf8.
   The `jal` at 0xc530 calls splhi with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0xc53c calls _get_timestamp with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xc594 calls splx with a0=ret(splhi), a1=[sym(.bss)+6096], a2=?, a3=?.
+  The `jal` at 0xc594 calls splx with a0=ret(splhi), a1=[sym(.bss)+3048], a2=?, a3=?.
   The return at 0xc5a8 has v0 = ret(splx).
 - `clkset` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xc5b0 (n32).
   Evidence grade: inferred.
@@ -2554,9 +2554,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xc748-0xc7a0 (88 bytes).
   It occupies 88 bytes.
-  The `sw` at 0xc768 stores 4 bytes to sym(.bss) +0x17e4.
-  The `lw` at 0xc76c loads 4 bytes from sym(.bss) +0x17e4.
-  The `sw` at 0xc774 stores 4 bytes to sym(.bss) +0x17e0.
+  The `sw` at 0xc768 stores 4 bytes to sym(.bss) +0xbfc.
+  The `lw` at 0xc76c loads 4 bytes from sym(.bss) +0xbfc.
+  The `sw` at 0xc774 stores 4 bytes to sym(.bss) +0xbf8.
   The `jal` at 0xc750 calls _get_timestamp with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `beq` branch at 0xc770 targets 0xc780, is taken when a0(=[sym(fastick)]) == 0, and falls through when a0(=[sym(fastick)]) != 0.
   The `beq` branch at 0xc798 targets 0xc778 and is always taken.
@@ -2892,12 +2892,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0xcd78 calls splx with a0=ret(spl7), a1=?, a2=?, a3=?.
   The `jal` at 0xcdb0 calls get_r4k_counter with a0=[sym(t0timer)], a1=?, a2=?, a3=?, a6=[sym(t0interval)], a7=[sym(fasthz)].
   The `jal` at 0xcdc4 calls set_r4k_compare with a0=([sym(t1interval)] + ret(get_r4k_counter)), a1=?, a2=?, a3=?.
-  The `jal` at 0xcde0 calls cmn_err with a0=0x4, a1=sym(.rodata)+6528, a2=[sym(fasthz)], a3=a3 at entry (arg3).
-  The `jal` at 0xcdfc calls cmn_err with a0=0x6, a1=sym(.rodata)+6528, a2=0x1f4, a3=?.
-  The `jal` at 0xce18 calls cmn_err with a0=0x4, a1=sym(.rodata)+6528, a2=[sym(fasthz)], a3=a3 at entry (arg3).
-  The `jal` at 0xce34 calls cmn_err with a0=0x6, a1=sym(.rodata)+6528, a2=0x9c4, a3=?.
-  The `jal` at 0xce54 calls cmn_err with a0=0x4, a1=sym(.rodata)+6528, a2=[sym(fasthz)], a3=a3 at entry (arg3).
-  The `jal` at 0xce70 calls cmn_err with a0=0x6, a1=sym(.rodata)+6528, a2=0x3e8, a3=?.
+  The `jal` at 0xcde0 calls cmn_err with a0=0x4, a1=sym(.rodata)+3264, a2=[sym(fasthz)], a3=a3 at entry (arg3).
+  The `jal` at 0xcdfc calls cmn_err with a0=0x6, a1=sym(.rodata)+3264, a2=0x1f4, a3=?.
+  The `jal` at 0xce18 calls cmn_err with a0=0x4, a1=sym(.rodata)+3264, a2=[sym(fasthz)], a3=a3 at entry (arg3).
+  The `jal` at 0xce34 calls cmn_err with a0=0x6, a1=sym(.rodata)+3264, a2=0x9c4, a3=?.
+  The `jal` at 0xce54 calls cmn_err with a0=0x4, a1=sym(.rodata)+3264, a2=[sym(fasthz)], a3=a3 at entry (arg3).
+  The `jal` at 0xce70 calls cmn_err with a0=0x6, a1=sym(.rodata)+3264, a2=0x3e8, a3=?.
   The `beq` branch at 0xccc8 targets 0xcd8c, is taken when s0(=[sym(fasthz)]) == 0, and falls through when s0(=[sym(fasthz)]) != 0.
   The `bne` branch at 0xccd0 targets 0xcdd4, is taken when v0(?) != 0, and falls through when v0(?) == 0.
   The `beq` branch at 0xccd8 targets 0xce0c, is taken when a0(?) == 0, and falls through when a0(?) != 0.
@@ -2982,77 +2982,77 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xd0f4-0xd430 (828 bytes).
   It occupies 828 bytes.
-  2 such `sw` accesses store 4 bytes to sym(.bss) +0x1804, including `sw` at 0xd134, `sw` at 0xd210.
-  5 such `lw` accesses load 4 bytes from sym(.bss) +0x1804, including `lw` at 0xd138, `lw` at 0xd1e0, `lw` at 0xd1f4.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x180c, including `lw` at 0xd13c, `lw` at 0xd2d8.
-  The `sw` at 0xd14c stores 4 bytes to sym(.bss) +0x180c.
-  4 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x98, including `lw` at 0xd168, `lw` at 0xd1b0, `lw` at 0xd1c8.
-  3 such `lh` accesses load 2 bytes from table(sym(.bss)+6144) +0xa4, including `lh` at 0xd17c, `lh` at 0xd1a4, `lh` at 0xd30c.
-  The `lw` at 0xd194 loads 4 bytes from table(sym(.bss)+6144) +0x60.
-  The `lw` at 0xd198 loads 4 bytes from table(sym(.bss)+6144) +0x64.
-  The `lw` at 0xd19c loads 4 bytes from table(sym(.bss)+6144) +0x8c.
-  2 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x68, including `ld` at 0xd1a0, `ld` at 0xd410.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1800, including `lw` at 0xd1dc, `lw` at 0xd2e4.
-  The `ld` at 0xd214 loads 8 bytes from sym(.bss) +0x1818.
-  3 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x58, including `ld` at 0xd218, `ld` at 0xd334, `ld` at 0xd3b0.
-  3 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0xa0, including `lw` at 0xd22c, `lw` at 0xd248, `lw` at 0xd2bc.
+  2 such `sw` accesses store 4 bytes to sym(.bss) +0xc04, including `sw` at 0xd134, `sw` at 0xd210.
+  5 such `lw` accesses load 4 bytes from sym(.bss) +0xc04, including `lw` at 0xd138, `lw` at 0xd1e0, `lw` at 0xd1f4.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xc0c, including `lw` at 0xd13c, `lw` at 0xd2d8.
+  The `sw` at 0xd14c stores 4 bytes to sym(.bss) +0xc0c.
+  4 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x98, including `lw` at 0xd168, `lw` at 0xd1b0, `lw` at 0xd1c8.
+  3 such `lh` accesses load 2 bytes from table(sym(ecc_info)) +0xa4, including `lh` at 0xd17c, `lh` at 0xd1a4, `lh` at 0xd30c.
+  The `lw` at 0xd194 loads 4 bytes from table(sym(ecc_info)) +0x60.
+  The `lw` at 0xd198 loads 4 bytes from table(sym(ecc_info)) +0x64.
+  The `lw` at 0xd19c loads 4 bytes from table(sym(ecc_info)) +0x8c.
+  2 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x68, including `ld` at 0xd1a0, `ld` at 0xd410.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xc00, including `lw` at 0xd1dc, `lw` at 0xd2e4.
+  The `ld` at 0xd214 loads 8 bytes from sym(.bss) +0xc18.
+  3 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x58, including `ld` at 0xd218, `ld` at 0xd334, `ld` at 0xd3b0.
+  3 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0xa0, including `lw` at 0xd22c, `lw` at 0xd248, `lw` at 0xd2bc.
   2 such `lw` accesses load 4 bytes from abs 0xffffffffffffa014, including `lw` at 0xd260, `lw` at 0xd2d4.
   The `lw` at 0xd264 loads 4 bytes from [-0x5fec] +0x280.
   The `sw` at 0xd268 stores 4 bytes to [[-0x5fec]+640] +0x0.
-  The `sw` at 0xd26c stores 4 bytes to table(sym(.bss)+6144) +0x98.
-  The `sw` at 0xd274 stores 4 bytes to table(sym(.bss)+6144) +0xa0.
-  The `lw` at 0xd328 loads 4 bytes from table(sym(.bss)+6144) +0x50.
-  2 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x78, including `lw` at 0xd388, `lw` at 0xd3a4.
-  The `lw` at 0xd3ac loads 4 bytes from table(sym(.bss)+6144) +0x80.
-  The `lw` at 0xd3bc loads 4 bytes from table(sym(.bss)+6144) +0x84.
-  The `lw` at 0xd3c0 loads 4 bytes from table(sym(.bss)+6144) +0x88.
-  The `lw` at 0xd3c4 loads 4 bytes from table(sym(.bss)+6144) +0xa8.
-  The `lw` at 0xd3cc loads 4 bytes from table(sym(.bss)+6144) +0xac.
-  2 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x48, including `ld` at 0xd3f4, `ld` at 0xd408.
-  The `ld` at 0xd414 loads 8 bytes from table(sym(.bss)+6144) +0x70.
+  The `sw` at 0xd26c stores 4 bytes to table(sym(ecc_info)) +0x98.
+  The `sw` at 0xd274 stores 4 bytes to table(sym(ecc_info)) +0xa0.
+  The `lw` at 0xd328 loads 4 bytes from table(sym(ecc_info)) +0x50.
+  2 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x78, including `lw` at 0xd388, `lw` at 0xd3a4.
+  The `lw` at 0xd3ac loads 4 bytes from table(sym(ecc_info)) +0x80.
+  The `lw` at 0xd3bc loads 4 bytes from table(sym(ecc_info)) +0x84.
+  The `lw` at 0xd3c0 loads 4 bytes from table(sym(ecc_info)) +0x88.
+  The `lw` at 0xd3c4 loads 4 bytes from table(sym(ecc_info)) +0xa8.
+  The `lw` at 0xd3cc loads 4 bytes from table(sym(ecc_info)) +0xac.
+  2 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x48, including `ld` at 0xd3f4, `ld` at 0xd408.
+  The `ld` at 0xd414 loads 8 bytes from table(sym(ecc_info)) +0x70.
   The `jal` at 0xd148 calls splxecc with a0=ret(splecc), a1=?, a2=?, a3=?.
-  The `jal` at 0xd180 calls ecc_print_msg [0xe930] with a0=0x2, a1=[sym(.bss)+6148], a2=0x1, a3=0x1, a4=[table(sym(.bss)+6144)+164]:2.
-  The `jal` at 0xd1a8 calls print_ecctype [0xf39c] with a0=[table(sym(.bss)+6144)+96], a1=[table(sym(.bss)+6144)+100], a2=[table(sym(.bss)+6144)+140], a3=[table(sym(.bss)+6144)+104]:8, a4=0x1, a5=[table(sym(.bss)+6144)+164]:2.
+  The `jal` at 0xd180 calls ecc_print_msg [0xe930] with a0=0x2, a1=[sym(ecc_info+4)], a2=0x1, a3=0x1, a4=[table(sym(ecc_info))+164]:2.
+  The `jal` at 0xd1a8 calls print_ecctype [0xf39c] with a0=[table(sym(ecc_info))+96], a1=[table(sym(ecc_info))+100], a2=[table(sym(ecc_info))+140], a3=[table(sym(ecc_info))+104]:8, a4=0x1, a5=[table(sym(ecc_info))+164]:2.
   The `jal` at 0xd1d4 calls splecc with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xd224 calls dobuserr with a0=([sym(.bss)+6168]:8 << 0x0), a1=([table(sym(.bss)+6144)+88]:8 << 0x0), a2=0x2, a3=?.
-  The `jal` at 0xd24c calls sigtopid with a0=[table(sym(.bss)+6144)+160], a1=0xa, a2=0x12, a3=0x0, a4=0x0, a5=0x0.
+  The `jal` at 0xd224 calls dobuserr with a0=([sym(ecc_info+24)]:8 << 0x0), a1=([table(sym(ecc_info))+88]:8 << 0x0), a2=0x2, a3=?.
+  The `jal` at 0xd24c calls sigtopid with a0=[table(sym(ecc_info))+160], a1=0xa, a2=0x12, a3=0x0, a4=0x0, a5=0x0.
   The `jal` at 0xd27c calls splxecc with a0=ret(splecc), a1=?, a2=?, a3=?.
-  The `jal` at 0xd2c0 calls sigtopid with a0=[table(sym(.bss)+6144)+160], a1=0xa, a2=0x12, a3=0x0, a4=0x0, a5=0x0.
-  The `jal` at 0xd2e8 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[sym(.bss)+6156], a3=[sym(.bss)+6148], a4=[sym(.bss)+6144].
-  The `jal` at 0xd310 calls ecc_print_msg [0xe930] with a0=?, a1=[sym(.bss)+6148], a2=0x1, a3=0x1, a4=[table(sym(.bss)+6144)+164]:2.
-  The `jal` at 0xd338 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+80], a3=sym(real_data_eccsyns+312), a4=[table(sym(.bss)+6144)+88]:8.
-  The `jal` at 0xd358 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?, a7=[table(sym(.bss)+6144)+152].
-  The `jal` at 0xd378 calls cmn_err with a0=0x4, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+160], a3=?.
-  The `jal` at 0xd3b4 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+120], a3=sym(real_data_eccsyns+312), a5=[table(sym(.bss)+6144)+128], a6=[table(sym(.bss)+6144)+88]:8.
-  The `jal` at 0xd3d0 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+132], a3=[table(sym(.bss)+6144)+136], a4=[table(sym(.bss)+6144)+168], a5=[table(sym(.bss)+6144)+172].
+  The `jal` at 0xd2c0 calls sigtopid with a0=[table(sym(ecc_info))+160], a1=0xa, a2=0x12, a3=0x0, a4=0x0, a5=0x0.
+  The `jal` at 0xd2e8 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[sym(ecc_info+12)], a3=[sym(ecc_info+4)], a4=[sym(ecc_info)].
+  The `jal` at 0xd310 calls ecc_print_msg [0xe930] with a0=?, a1=[sym(ecc_info+4)], a2=0x1, a3=0x1, a4=[table(sym(ecc_info))+164]:2.
+  The `jal` at 0xd338 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+80], a3=sym(imask_values), a4=[table(sym(ecc_info))+88]:8.
+  The `jal` at 0xd358 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?, a7=[table(sym(ecc_info))+152].
+  The `jal` at 0xd378 calls cmn_err with a0=0x4, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+160], a3=?.
+  The `jal` at 0xd3b4 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+120], a3=sym(imask_values), a5=[table(sym(ecc_info))+128], a6=[table(sym(ecc_info))+88]:8.
+  The `jal` at 0xd3d0 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+132], a3=[table(sym(ecc_info))+136], a4=[table(sym(ecc_info))+168], a5=[table(sym(ecc_info))+172].
   The `jal` at 0xd3d8 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xd418 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+72]:8, a3=sym(real_data_eccsyns+312), a5=[table(sym(.bss)+6144)+104]:8, a6=[table(sym(.bss)+6144)+112]:8.
+  The `jal` at 0xd418 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+72]:8, a3=sym(imask_values), a5=[table(sym(ecc_info))+104]:8, a6=[table(sym(ecc_info))+112]:8.
   The `beq` branch at 0xd12c targets 0xd1d4 and is always taken.
   The `bne` branch at 0xd160 targets 0xd2d8, is taken when t8(=[sym(verbose_ecc)]) != 0, and falls through when t8(=[sym(verbose_ecc)]) == 0.
-  The `bne` branch at 0xd16c targets 0xd2d8, is taken when t8(=[table(sym(.bss)+6144)+152]) != 0, and falls through when t8(=[table(sym(.bss)+6144)+152]) == 0.
+  The `bne` branch at 0xd16c targets 0xd2d8, is taken when t8(=[table(sym(ecc_info))+152]) != 0, and falls through when t8(=[table(sym(ecc_info))+152]) == 0.
   The `beq` branch at 0xd18c targets 0xd1b0, is taken when t9(=[sym(syslog_ecctype)]) == 0, and falls through when t9(=[sym(syslog_ecctype)]) != 0.
-  The `bne` branch at 0xd1b4 targets 0xd2fc, is taken when ra(=[table(sym(.bss)+6144)+152]) != 0, and falls through when ra(=[table(sym(.bss)+6144)+152]) == 0.
+  The `bne` branch at 0xd1b4 targets 0xd2fc, is taken when ra(=[table(sym(ecc_info))+152]) != 0, and falls through when ra(=[table(sym(ecc_info))+152]) == 0.
   The `bne` branch at 0xd1c0 targets 0xd2fc, is taken when at(=[sym(verbose_ecc)]) != 0, and falls through when at(=[sym(verbose_ecc)]) == 0.
-  The `bne` branch at 0xd1cc targets 0xd214, is taken when v0(=[table(sym(.bss)+6144)+152]) != 0, and falls through when v0(=[table(sym(.bss)+6144)+152]) == 0.
-  The `beq` branch at 0xd1e4 targets 0xd278, is taken when v1(=[sym(.bss)+6144]) == a0(=[sym(.bss)+6148]), and falls through when v1(=[sym(.bss)+6144]) != a0(=[sym(.bss)+6148]).
-  The `beq` branch at 0xd1fc targets 0xd134, is taken when a1(=[sym(.bss)+6148]) >= 0x9 (signed), and falls through when a1(=[sym(.bss)+6148]) < 0x9 (signed).
+  The `bne` branch at 0xd1cc targets 0xd214, is taken when v0(=[table(sym(ecc_info))+152]) != 0, and falls through when v0(=[table(sym(ecc_info))+152]) == 0.
+  The `beq` branch at 0xd1e4 targets 0xd278, is taken when v1(=[sym(ecc_info)]) == a0(=[sym(ecc_info+4)]), and falls through when v1(=[sym(ecc_info)]) != a0(=[sym(ecc_info+4)]).
+  The `beq` branch at 0xd1fc targets 0xd134, is taken when a1(=[sym(ecc_info+4)]) >= 0x9 (signed), and falls through when a1(=[sym(ecc_info+4)]) < 0x9 (signed).
   The `beq` branch at 0xd20c targets 0xd138 and is always taken.
-  The `beq` branch at 0xd230 targets 0xd378, is taken when a2(=[table(sym(.bss)+6144)+160]) == 0, and falls through when a2(=[table(sym(.bss)+6144)+160]) != 0.
+  The `beq` branch at 0xd230 targets 0xd378, is taken when a2(=[table(sym(ecc_info))+160]) == 0, and falls through when a2(=[table(sym(ecc_info))+160]) != 0.
   The `beq` branch at 0xd258 targets 0xd2a8, is taken when v0(=ret(sigtopid)) == a3(=0xb), and falls through when v0(=ret(sigtopid)) != a3(=0xb).
   The `beq` branch at 0xd270 targets 0xd1d4 and is always taken.
   The `beq` branch at 0xd2c8 targets 0xd2ac, is taken when v0(=ret(sigtopid)) == s2(=0xb), and falls through when v0(=ret(sigtopid)) != s2(=0xb).
   The `beq` branch at 0xd2d0 targets 0xd264 and is always taken.
   The `beq` branch at 0xd2f0 targets 0xd174 and is always taken.
   The `bgez` branch at 0xd320 targets 0xd300, is taken when a6(?) >= 0 (signed), and falls through when a6(?) < 0 (signed).
-  The `bne` branch at 0xd344 targets 0xd358, is taken when a7(=[table(sym(.bss)+6144)+152]) != 0, and falls through when a7(=[table(sym(.bss)+6144)+152]) == 0.
+  The `bne` branch at 0xd344 targets 0xd358, is taken when a7(=[table(sym(ecc_info))+152]) != 0, and falls through when a7(=[table(sym(ecc_info))+152]) == 0.
   The `beq` branch at 0xd350 targets 0xd1c8, is taken when t0(=[sym(verbose_ecc)]) == 0, and falls through when t0(=[sym(verbose_ecc)]) != 0.
   The `beq` branch at 0xd368 targets 0xd388, is taken when t1(?) >= 0x23 (signed), and falls through when t1(?) < 0x23 (signed).
   The `beq` branch at 0xd370 targets 0xd388 and is always taken.
   The `beq` branch at 0xd380 targets 0xd26c and is always taken.
-  The `beq` branch at 0xd38c targets 0xd3a0, is taken when t2(=[table(sym(.bss)+6144)+120]) == 0, and falls through when t2(=[table(sym(.bss)+6144)+120]) != 0.
+  The `beq` branch at 0xd38c targets 0xd3a0, is taken when t2(=[table(sym(ecc_info))+120]) == 0, and falls through when t2(=[table(sym(ecc_info))+120]) != 0.
   The `beq` branch at 0xd398 targets 0xd3a4 and is always taken.
   The `beq` branch at 0xd3e8 targets 0xd3f4, is taken when a5(?) >= 0x23 (signed), and falls through when a5(?) < 0x23 (signed).
-  The `beq` branch at 0xd3f8 targets 0xd428, is taken when a6(=[table(sym(.bss)+6144)+72]:8) == 0, and falls through when a6(=[table(sym(.bss)+6144)+72]:8) != 0.
+  The `beq` branch at 0xd3f8 targets 0xd428, is taken when a6(=[table(sym(ecc_info))+72]:8) == 0, and falls through when a6(=[table(sym(ecc_info))+72]:8) != 0.
   The `beq` branch at 0xd420 targets 0xd1c8 and is always taken.
   The `beq` branch at 0xd428 targets 0xd408 and is always taken.
   The return at 0xd2a0 has v0 = ret(splxecc).
@@ -3062,51 +3062,51 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xd430-0xd668 (568 bytes).
   It occupies 568 bytes.
-  The `lw` at 0xd440 loads 4 bytes from sym(.bss) +0x1800.
-  3 such `lw` accesses load 4 bytes from sym(.bss) +0x1810, including `lw` at 0xd444, `lw` at 0xd494, `lw` at 0xd4bc.
-  2 such `lh` accesses load 2 bytes from table(sym(.bss)+6144) +0xa4, including `lh` at 0xd50c, `lh` at 0xd538.
-  3 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x60, including `lw` at 0xd510, `lw` at 0xd51c, `lw` at 0xd528.
-  The `lw` at 0xd52c loads 4 bytes from table(sym(.bss)+6144) +0x64.
-  The `lw` at 0xd530 loads 4 bytes from table(sym(.bss)+6144) +0x8c.
-  2 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x68, including `ld` at 0xd534, `ld` at 0xd5a0.
-  The `lw` at 0xd54c loads 4 bytes from table(sym(.bss)+6144) +0x50.
-  The `ld` at 0xd580 loads 8 bytes from table(sym(.bss)+6144) +0x48.
-  The `ld` at 0xd584 loads 8 bytes from table(sym(.bss)+6144) +0x58.
-  The `ld` at 0xd58c loads 8 bytes from sym(.bss) +0x1818.
-  The `ld` at 0xd590 loads 8 bytes from sym(.bss) +0x1820.
-  The `ld` at 0xd5a4 loads 8 bytes from table(sym(.bss)+6144) +0x70.
-  The `lw` at 0xd5b0 loads 4 bytes from table(sym(.bss)+6144) +0x80.
-  The `lw` at 0xd5b8 loads 4 bytes from table(sym(.bss)+6144) +0x84.
-  The `lw` at 0xd5bc loads 4 bytes from table(sym(.bss)+6144) +0x88.
-  The `lw` at 0xd5cc loads 4 bytes from table(sym(.bss)+6144) +0xa8.
-  The `lw` at 0xd5d0 loads 4 bytes from table(sym(.bss)+6144) +0xac.
-  2 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x78, including `lw` at 0xd5dc, `lw` at 0xd5f8.
-  2 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x90, including `lw` at 0xd604, `lw` at 0xd610.
-  The `jal` at 0xd46c calls cmn_err with a0=0xe, a1=sym(.rodata)+6896, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xd48c calls cmn_err with a0=0xe, a1=sym(.rodata)+6896, a2=0x0, a3=a3 at entry (arg3).
-  The `jal` at 0xd4d4 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=sym(real_data_eccsyns+312), a3=sym(real_data_eccsyns+312), a4=sym(real_data_eccsyns+312).
-  The `jal` at 0xd508 calls ecc_print_msg [0xe930] with a0=-0x1, a1=[sym(.bss)+6144], a2=0x0, a3=0x1, a4=[table(sym(.bss)+6144)+164]:2.
-  The `jal` at 0xd53c calls print_ecctype [0xf39c] with a0=[table(sym(.bss)+6144)+96], a1=[table(sym(.bss)+6144)+100], a2=[table(sym(.bss)+6144)+140], a3=[table(sym(.bss)+6144)+104]:8, a4=0x1, a5=[table(sym(.bss)+6144)+164]:2.
-  The `jal` at 0xd550 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+80], a3=sym(real_data_eccsyns+312).
+  The `lw` at 0xd440 loads 4 bytes from sym(.bss) +0xc00.
+  3 such `lw` accesses load 4 bytes from sym(.bss) +0xc10, including `lw` at 0xd444, `lw` at 0xd494, `lw` at 0xd4bc.
+  2 such `lh` accesses load 2 bytes from table(sym(ecc_info)) +0xa4, including `lh` at 0xd50c, `lh` at 0xd538.
+  3 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x60, including `lw` at 0xd510, `lw` at 0xd51c, `lw` at 0xd528.
+  The `lw` at 0xd52c loads 4 bytes from table(sym(ecc_info)) +0x64.
+  The `lw` at 0xd530 loads 4 bytes from table(sym(ecc_info)) +0x8c.
+  2 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x68, including `ld` at 0xd534, `ld` at 0xd5a0.
+  The `lw` at 0xd54c loads 4 bytes from table(sym(ecc_info)) +0x50.
+  The `ld` at 0xd580 loads 8 bytes from table(sym(ecc_info)) +0x48.
+  The `ld` at 0xd584 loads 8 bytes from table(sym(ecc_info)) +0x58.
+  The `ld` at 0xd58c loads 8 bytes from sym(.bss) +0xc18.
+  The `ld` at 0xd590 loads 8 bytes from sym(.bss) +0xc20.
+  The `ld` at 0xd5a4 loads 8 bytes from table(sym(ecc_info)) +0x70.
+  The `lw` at 0xd5b0 loads 4 bytes from table(sym(ecc_info)) +0x80.
+  The `lw` at 0xd5b8 loads 4 bytes from table(sym(ecc_info)) +0x84.
+  The `lw` at 0xd5bc loads 4 bytes from table(sym(ecc_info)) +0x88.
+  The `lw` at 0xd5cc loads 4 bytes from table(sym(ecc_info)) +0xa8.
+  The `lw` at 0xd5d0 loads 4 bytes from table(sym(ecc_info)) +0xac.
+  2 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x78, including `lw` at 0xd5dc, `lw` at 0xd5f8.
+  2 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x90, including `lw` at 0xd604, `lw` at 0xd610.
+  The `jal` at 0xd46c calls cmn_err with a0=0xe, a1=sym(.rodata)+3448, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xd48c calls cmn_err with a0=0xe, a1=sym(.rodata)+3448, a2=0x0, a3=a3 at entry (arg3).
+  The `jal` at 0xd4d4 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=sym(imask_values), a3=sym(imask_values), a4=sym(imask_values).
+  The `jal` at 0xd508 calls ecc_print_msg [0xe930] with a0=-0x1, a1=[sym(ecc_info)], a2=0x0, a3=0x1, a4=[table(sym(ecc_info))+164]:2.
+  The `jal` at 0xd53c calls print_ecctype [0xf39c] with a0=[table(sym(ecc_info))+96], a1=[table(sym(ecc_info))+100], a2=[table(sym(ecc_info))+140], a3=[table(sym(ecc_info))+104]:8, a4=0x1, a5=[table(sym(ecc_info))+164]:2.
+  The `jal` at 0xd550 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+80], a3=sym(imask_values).
   The `jal` at 0xd558 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xd57c calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+72]:8, a3=sym(real_data_eccsyns+312).
-  The `jal` at 0xd594 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+88]:8, a3=[sym(.bss)+6168]:8, a4=[sym(.bss)+6176]:8.
-  The `jal` at 0xd5a8 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+104]:8, a3=[table(sym(.bss)+6144)+112]:8.
-  The `jal` at 0xd5c0 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+128], a3=[table(sym(.bss)+6144)+132], a4=[table(sym(.bss)+6144)+136].
-  The `jal` at 0xd5d4 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+168], a3=[table(sym(.bss)+6144)+172].
-  The `jal` at 0xd5fc calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+120], a3=sym(real_data_eccsyns+312).
-  The `jal` at 0xd614 calls cmn_err with a0=0x6, a1=sym(.rodata)+6896, a2=[table(sym(.bss)+6144)+144], a3=?, a5=[table(sym(.bss)+6144)+144].
-  The `jal` at 0xd62c calls cmn_err with a0=0x6, a1=sym(.rodata)+8336, a2=?, a3=?, a5=[table(sym(.bss)+6144)+144].
-  The `jal` at 0xd648 calls cmn_err_tag with a0=0x49, a1=0x0, a2=sym(.rodata)+6896, a3=?.
-  The `beq` branch at 0xd458 targets 0xd47c, is taken when (at(=[sym(.bss)+6160]) & 0x2) == 0, and falls through when (at(=[sym(.bss)+6160]) & 0x2) != 0.
+  The `jal` at 0xd57c calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+72]:8, a3=sym(imask_values).
+  The `jal` at 0xd594 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+88]:8, a3=[sym(ecc_info+24)]:8, a4=[sym(ecc_info+32)]:8.
+  The `jal` at 0xd5a8 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+104]:8, a3=[table(sym(ecc_info))+112]:8.
+  The `jal` at 0xd5c0 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+128], a3=[table(sym(ecc_info))+132], a4=[table(sym(ecc_info))+136].
+  The `jal` at 0xd5d4 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+168], a3=[table(sym(ecc_info))+172].
+  The `jal` at 0xd5fc calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+120], a3=sym(imask_values).
+  The `jal` at 0xd614 calls cmn_err with a0=0x6, a1=sym(.rodata)+3448, a2=[table(sym(ecc_info))+144], a3=?, a5=[table(sym(ecc_info))+144].
+  The `jal` at 0xd62c calls cmn_err with a0=0x6, a1=sym(.rodata)+4168, a2=?, a3=?, a5=[table(sym(ecc_info))+144].
+  The `jal` at 0xd648 calls cmn_err_tag with a0=0x49, a1=0x0, a2=sym(.rodata)+3448, a3=?.
+  The `beq` branch at 0xd458 targets 0xd47c, is taken when (at(=[sym(ecc_info+16)]) & 0x2) == 0, and falls through when (at(=[sym(ecc_info+16)]) & 0x2) != 0.
   The `beq` branch at 0xd474 targets 0xd494 and is always taken.
-  The `beq` branch at 0xd4b4 targets 0xd4dc, is taken when (t8(=[sym(.bss)+6160]) & 0x3) == 0, and falls through when (t8(=[sym(.bss)+6160]) & 0x3) != 0.
-  The `beq` branch at 0xd4c4 targets 0xd4d0, is taken when (a5(=[sym(.bss)+6160]) & 0x1) == 0, and falls through when (a5(=[sym(.bss)+6160]) & 0x1) != 0.
-  The `beq` branch at 0xd514 targets 0xd544, is taken when t8(=[table(sym(.bss)+6144)+96]) == 0, and falls through when t8(=[table(sym(.bss)+6144)+96]) != 0.
-  The `beq` branch at 0xd520 targets 0xd548, is taken when t9(=[table(sym(.bss)+6144)+96]) == ra(=0x1), and falls through when t9(=[table(sym(.bss)+6144)+96]) != ra(=0x1).
+  The `beq` branch at 0xd4b4 targets 0xd4dc, is taken when (t8(=[sym(ecc_info+16)]) & 0x3) == 0, and falls through when (t8(=[sym(ecc_info+16)]) & 0x3) != 0.
+  The `beq` branch at 0xd4c4 targets 0xd4d0, is taken when (a5(=[sym(ecc_info+16)]) & 0x1) == 0, and falls through when (a5(=[sym(ecc_info+16)]) & 0x1) != 0.
+  The `beq` branch at 0xd514 targets 0xd544, is taken when t8(=[table(sym(ecc_info))+96]) == 0, and falls through when t8(=[table(sym(ecc_info))+96]) != 0.
+  The `beq` branch at 0xd520 targets 0xd548, is taken when t9(=[table(sym(ecc_info))+96]) == ra(=0x1), and falls through when t9(=[table(sym(ecc_info))+96]) != ra(=0x1).
   The `bne` branch at 0xd568 targets 0xd574, is taken when at(?) < 0x23 (signed), and falls through when at(?) >= 0x23 (signed).
-  The `beq` branch at 0xd5e8 targets 0xd660, is taken when v0(=[table(sym(.bss)+6144)+120]) == 0, and falls through when v0(=[table(sym(.bss)+6144)+120]) != 0.
-  The `beq` branch at 0xd608 targets 0xd624, is taken when a5(=[table(sym(.bss)+6144)+144]) == 0, and falls through when a5(=[table(sym(.bss)+6144)+144]) != 0.
+  The `beq` branch at 0xd5e8 targets 0xd660, is taken when v0(=[table(sym(ecc_info))+120]) == 0, and falls through when v0(=[table(sym(ecc_info))+120]) != 0.
+  The `beq` branch at 0xd608 targets 0xd624, is taken when a5(=[table(sym(ecc_info))+144]) == 0, and falls through when a5(=[table(sym(ecc_info))+144]) != 0.
   The `beq` branch at 0xd61c targets 0xd634 and is always taken.
   The `beq` branch at 0xd660 targets 0xd5f0 and is always taken.
   The return at 0xd658 has v0 = ret(cmn_err_tag).
@@ -3131,49 +3131,49 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0xe124-0xe51c (1016 bytes).
   It occupies 1016 bytes.
   2 such `lw` accesses load 4 bytes from abs 0xffffffffffffa2b0, including `lw` at 0xe150, `lw` at 0xe3f8.
-  The `lw` at 0xe158 loads 4 bytes from table(sym(.bss)+6144) +0x7c.
-  3 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x78, including `lw` at 0xe15c, `lw` at 0xe3c4, `lw` at 0xe444.
-  2 such `lw` accesses load 4 bytes from table(sym(.bss)+6144) +0x50, including `lw` at 0xe160, `lw` at 0xe248.
-  2 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x68, including `ld` at 0xe16c, `ld` at 0xe3f0.
-  3 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x70, including `ld` at 0xe178, `ld` at 0xe344, `ld` at 0xe40c.
-  The `lw` at 0xe2f8 loads 4 bytes from table(sym(.bss)+6144) +0x80.
-  The `sw` at 0xe2fc stores 4 bytes to table(sym(.bss)+6144) +0x9c.
-  The `sw` at 0xe300 stores 4 bytes to table(sym(.bss)+6144) +0x80.
-  The `sw` at 0xe30c stores 4 bytes to table(sym(.bss)+6144) +0x8c.
-  The `sw` at 0xe3c0 stores 4 bytes to table(sym(.bss)+6144) +0x78.
-  The `sd` at 0xe3ec stores 8 bytes to table(sym(.bss)+6144) +0x68.
-  The `sd` at 0xe400 stores 8 bytes to table(sym(.bss)+6144) +0x70.
-  The `sw` at 0xe434 stores 4 bytes to table(sym(.bss)+6144) +0x7c.
-  The `jal` at 0xe1d0 calls ecc_find_bad_cline with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-112, a3=a3 at entry (arg3), a4=[table(sym(.bss)+6144)+120].
+  The `lw` at 0xe158 loads 4 bytes from table(sym(ecc_info)) +0x7c.
+  3 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x78, including `lw` at 0xe15c, `lw` at 0xe3c4, `lw` at 0xe444.
+  2 such `lw` accesses load 4 bytes from table(sym(ecc_info)) +0x50, including `lw` at 0xe160, `lw` at 0xe248.
+  2 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x68, including `ld` at 0xe16c, `ld` at 0xe3f0.
+  3 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x70, including `ld` at 0xe178, `ld` at 0xe344, `ld` at 0xe40c.
+  The `lw` at 0xe2f8 loads 4 bytes from table(sym(ecc_info)) +0x80.
+  The `sw` at 0xe2fc stores 4 bytes to table(sym(ecc_info)) +0x9c.
+  The `sw` at 0xe300 stores 4 bytes to table(sym(ecc_info)) +0x80.
+  The `sw` at 0xe30c stores 4 bytes to table(sym(ecc_info)) +0x8c.
+  The `sw` at 0xe3c0 stores 4 bytes to table(sym(ecc_info)) +0x78.
+  The `sd` at 0xe3ec stores 8 bytes to table(sym(ecc_info)) +0x68.
+  The `sd` at 0xe400 stores 8 bytes to table(sym(ecc_info)) +0x70.
+  The `sw` at 0xe434 stores 4 bytes to table(sym(ecc_info)) +0x7c.
+  The `jal` at 0xe1d0 calls ecc_find_bad_cline with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-112, a3=a3 at entry (arg3), a4=[table(sym(ecc_info))+120].
   The `jal` at 0xe1e4 calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?.
-  The `jal` at 0xe1f8 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19088, a3=?.
-  The `jal` at 0xe22c calls _c_ist with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-104, a3=a3 at entry (arg3), a4=[table(sym(.bss)+6144)+120].
+  The `jal` at 0xe1f8 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9544, a3=?.
+  The `jal` at 0xe22c calls _c_ist with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-104, a3=a3 at entry (arg3), a4=[table(sym(ecc_info))+120].
   The `jal` at 0xe240 calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?.
-  The `jal` at 0xe26c calls _read_tag with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-72, a3=?.
+  The `jal` at 0xe26c calls _read_tag with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-72, a3=?.
   The `jal` at 0xe294 calls _read_tag with a0=a0 at entry (arg0), a1=?, a2=sp-72, a3=?.
-  The `jal` at 0xe2d0 calls _c_ilt with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=a3 at entry (arg3), a4=[table(sym(.bss)+6144)+120].
+  The `jal` at 0xe2d0 calls _c_ilt with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=a3 at entry (arg3), a4=[table(sym(ecc_info))+120].
   The `jal` at 0xe2ec calls calc_err_info with a0=0x2, a1=sp-96, a2=?, a3=?, a4=0x80.
-  The `jal` at 0xe330 calls ecc_bad_ptag [0xea4c] with a0=[table(sym(.bss)+6144)+124], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[table(sym(.bss)+6144)+120].
-  The `jal` at 0xe374 calls _c_ist with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-104, a3=?.
-  The `jal` at 0xe384 calls _c_ilt with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-104, a3=?.
+  The `jal` at 0xe330 calls ecc_bad_ptag [0xea4c] with a0=[table(sym(ecc_info))+124], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[table(sym(ecc_info))+120].
+  The `jal` at 0xe374 calls _c_ist with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-104, a3=?.
+  The `jal` at 0xe384 calls _c_ilt with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-104, a3=?.
   The `jal` at 0xe38c calls ecc_bad_ptag [0xea4c] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xe3ac calls xlate_bit with a0=?, a1=?, a2=?, a3=?, a4=0x2, a6=[table(sym(.bss)+6144)+128], a7=0x2.
-  The `jal` at 0xe428 calls _c_ilt with a0=0x0, a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-104, a3=[sym(picache_size)]-1, a5=-0x2000.
-  The `jal` at 0xe44c calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?, a7=[table(sym(.bss)+6144)+120].
+  The `jal` at 0xe3ac calls xlate_bit with a0=?, a1=?, a2=?, a3=?, a4=0x2, a6=[table(sym(ecc_info))+128], a7=0x2.
+  The `jal` at 0xe428 calls _c_ilt with a0=0x0, a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-104, a3=[sym(picache_size)]-1, a5=-0x2000.
+  The `jal` at 0xe44c calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?, a7=[table(sym(ecc_info))+120].
   The `jal` at 0xe45c calls _c_ilt with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?.
   The `jal` at 0xe470 calls calc_err_info with a0=0x2, a1=sp-96, a2=?, a3=?.
-  The `jal` at 0xe488 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19168, a3=?.
+  The `jal` at 0xe488 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9584, a3=?.
   The `jal` at 0xe4a0 calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?, a4=0x80.
   The `jal` at 0xe4b4 calls _c_ist with a0=a0 at entry (arg0), a1=?, a2=sp-104, a3=?.
-  The `jal` at 0xe4d8 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+18992, a3=?, a4=0x2, a6=[table(sym(.bss)+6144)+128].
+  The `jal` at 0xe4d8 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+9496, a3=?, a4=0x2, a6=[table(sym(ecc_info))+128].
   The `jal` at 0xe4e4 calls ecc_log_error [0xeac0] with a0=0x7, a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jal` at 0xe500 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+18896, a3=?.
+  The `jal` at 0xe500 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+9448, a3=?.
   The `jal` at 0xe50c calls ecc_log_error [0xeac0] with a0=0x7, a1=a1 at entry (arg1), a2=?, a3=?.
   The `beq` branch at 0xe1a8 targets 0xe2c4, is taken when a0 == at(=0x3), and falls through when a0 != at(=0x3).
   The `bgez` branch at 0xe1c0 targets 0xe330, is taken when t8(=([sym(r4000_config)] << 0x2e)) >= 0 (signed), and falls through when t8(=([sym(r4000_config)] << 0x2e)) < 0 (signed).
   The `beq` branch at 0xe1c8 targets 0xe228, is taken when a0 == 0, and falls through when a0 != 0.
   The `beq` branch at 0xe1d8 targets 0xe264, is taken when v0(=ret(ecc_find_bad_cline)) == 0, and falls through when v0(=ret(ecc_find_bad_cline)) != 0.
-  The `bne` branch at 0xe254 targets 0xe1f0, is taken when (a2(=[table(sym(.bss)+6144)+80]) & a3(=0xffffffff82000000)) != 0, and falls through when (a2(=[table(sym(.bss)+6144)+80]) & a3(=0xffffffff82000000)) == 0.
+  The `bne` branch at 0xe254 targets 0xe1f0, is taken when (a2(=[table(sym(ecc_info))+80]) & a3(=0xffffffff82000000)) != 0, and falls through when (a2(=[table(sym(ecc_info))+80]) & a3(=0xffffffff82000000)) == 0.
   The `beq` branch at 0xe25c targets 0xe204 and is always taken.
   The `beq` branch at 0xe280 targets 0xe498, is taken when a4(=0x80) == a5(?), and falls through when a4(=0x80) != a5(?).
   The `beq` branch at 0xe2a8 targets 0xe4b0, is taken when a2(=0x80) == a3(?), and falls through when a2(=0x80) != a3(?).
@@ -3202,42 +3202,42 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0xe51c-0xe8b0 (916 bytes).
   It occupies 916 bytes.
   The `lw` at 0xe540 loads 4 bytes from abs 0xffffffffffffa2b0.
-  3 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x70, including `ld` at 0xe558, `ld` at 0xe5d4, `ld` at 0xe5ec.
-  3 such `ld` accesses load 8 bytes from table(sym(.bss)+6144) +0x68, including `ld` at 0xe564, `ld` at 0xe610, `ld` at 0xe70c.
-  The `sd` at 0xe5e8 stores 8 bytes to table(sym(.bss)+6144) +0x70.
-  3 such `lw` accesses load 4 bytes from (0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)) +0x0, including `lw` at 0xe66c, `lw` at 0xe734, `lw` at 0xe7ec.
-  3 such `lw` accesses load 4 bytes from (0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)) +0x4, including `lw` at 0xe67c, `lw` at 0xe748, `lw` at 0xe800.
-  The `sw` at 0xe698 stores 4 bytes to table(sym(.bss)+6144) +0x78.
-  The `lw` at 0xe69c loads 4 bytes from table(sym(.bss)+6144) +0x80.
-  3 such `sw` accesses store 4 bytes to table(sym(.bss)+6144) +0x9c, including `sw` at 0xe6a4, `sw` at 0xe78c, `sw` at 0xe844.
-  The `sw` at 0xe6b0 stores 4 bytes to table(sym(.bss)+6144) +0x80.
-  The `sw` at 0xe6b4 stores 4 bytes to table(sym(.bss)+6144) +0x8c.
-  The `sw` at 0xe6c0 stores 4 bytes to table(sym(.bss)+6144) +0x84.
-  The `sw` at 0xe6c4 stores 4 bytes to table(sym(.bss)+6144) +0x88.
-  The `sw` at 0xe6c8 stores 4 bytes to table(sym(.bss)+6144) +0xac.
-  The `sw` at 0xe6d0 stores 4 bytes to table(sym(.bss)+6144) +0xa8.
+  3 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x70, including `ld` at 0xe558, `ld` at 0xe5d4, `ld` at 0xe5ec.
+  3 such `ld` accesses load 8 bytes from table(sym(ecc_info)) +0x68, including `ld` at 0xe564, `ld` at 0xe610, `ld` at 0xe70c.
+  The `sd` at 0xe5e8 stores 8 bytes to table(sym(ecc_info)) +0x70.
+  3 such `lw` accesses load 4 bytes from (0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)) +0x0, including `lw` at 0xe66c, `lw` at 0xe734, `lw` at 0xe7ec.
+  3 such `lw` accesses load 4 bytes from (0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)) +0x4, including `lw` at 0xe67c, `lw` at 0xe748, `lw` at 0xe800.
+  The `sw` at 0xe698 stores 4 bytes to table(sym(ecc_info)) +0x78.
+  The `lw` at 0xe69c loads 4 bytes from table(sym(ecc_info)) +0x80.
+  3 such `sw` accesses store 4 bytes to table(sym(ecc_info)) +0x9c, including `sw` at 0xe6a4, `sw` at 0xe78c, `sw` at 0xe844.
+  The `sw` at 0xe6b0 stores 4 bytes to table(sym(ecc_info)) +0x80.
+  The `sw` at 0xe6b4 stores 4 bytes to table(sym(ecc_info)) +0x8c.
+  The `sw` at 0xe6c0 stores 4 bytes to table(sym(ecc_info)) +0x84.
+  The `sw` at 0xe6c4 stores 4 bytes to table(sym(ecc_info)) +0x88.
+  The `sw` at 0xe6c8 stores 4 bytes to table(sym(ecc_info)) +0xac.
+  The `sw` at 0xe6d0 stores 4 bytes to table(sym(ecc_info)) +0xa8.
   The `sd` at 0xe71c stores 8 bytes to a2 (arg2 at entry) +0x28.
-  2 such `sw` accesses store 4 bytes to table(sym(.bss)+6144) +0x90, including `sw` at 0xe798, `sw` at 0xe850.
-  The `jal` at 0xe5fc calls _c_ilt with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0)), a2=sp-112, a3=?.
-  The `jal` at 0xe648 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+19264, a3=?.
+  2 such `sw` accesses store 4 bytes to table(sym(ecc_info)) +0x90, including `sw` at 0xe798, `sw` at 0xe850.
+  The `jal` at 0xe5fc calls _c_ilt with a0=a0 at entry (arg0), a1=(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0)), a2=sp-112, a3=?.
+  The `jal` at 0xe648 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+9632, a3=?.
   The `jal` at 0xe654 calls ecc_log_error [0xeac0] with a0=0x7, a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jal` at 0xe684 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))].
-  The `jal` at 0xe6ac calls calc_err_info with a0=0x1, a1=sp-104, a2=?, a3=?, a7=[table(sym(.bss)+6144)+128].
-  The `jal` at 0xe718 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19872, a3=?.
+  The `jal` at 0xe684 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))].
+  The `jal` at 0xe6ac calls calc_err_info with a0=0x1, a1=sp-104, a2=?, a3=?, a7=[table(sym(ecc_info))+128].
+  The `jal` at 0xe718 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9936, a3=?.
   The `jal` at 0xe72c calls _c_hwbinv with a0=0x3, a1=?, a2=?, a3=?.
-  The `jal` at 0xe750 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))].
+  The `jal` at 0xe750 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))].
   The `jal` at 0xe764 calls calc_err_info with a0=0x1, a1=sp-104, a2=?, a3=?.
-  The `jal` at 0xe780 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19664, a3=?.
-  The `jal` at 0xe7b0 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19968, a3=?.
-  The `jal` at 0xe7cc calls ecc_assign_msg [0xe8fc] with a0=0x1, a1=a1 at entry (arg1), a2=sym(.data)+19776, a3=?.
+  The `jal` at 0xe780 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9832, a3=?.
+  The `jal` at 0xe7b0 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9984, a3=?.
+  The `jal` at 0xe7cc calls ecc_assign_msg [0xe8fc] with a0=0x1, a1=a1 at entry (arg1), a2=sym(.data)+9888, a3=?.
   The `jal` at 0xe7dc calls _c_hinv with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jal` at 0xe808 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(.bss)+6144)+112]:8 << 0x0))].
+  The `jal` at 0xe808 calls _c_ilt_n_ecc with a0=a0 at entry (arg0), a1=?, a2=sp-112, a3=sp-80, a4=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))+4], a5=[(0xffffffff80000000 | ([table(sym(ecc_info))+112]:8 << 0x0))].
   The `jal` at 0xe81c calls calc_err_info with a0=0x1, a1=sp-104, a2=?, a3=?.
-  The `jal` at 0xe838 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+19456, a3=?.
-  The `jal` at 0xe860 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+19360, a3=?.
+  The `jal` at 0xe838 calls ecc_assign_msg [0xe8fc] with a0=0x0, a1=a1 at entry (arg1), a2=sym(.data)+9728, a3=?.
+  The `jal` at 0xe860 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+9680, a3=?.
   The `jal` at 0xe86c calls ecc_log_error [0xeac0] with a0=0x7, a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jal` at 0xe888 calls ecc_assign_msg [0xe8fc] with a0=0x1, a1=a1 at entry (arg1), a2=sym(.data)+19568, a3=?.
-  The `jal` at 0xe8a0 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+20224, a3=?.
+  The `jal` at 0xe888 calls ecc_assign_msg [0xe8fc] with a0=0x1, a1=a1 at entry (arg1), a2=sym(.data)+9784, a3=?.
+  The `jal` at 0xe8a0 calls ecc_assign_msg [0xe8fc] with a0=0x2, a1=a1 at entry (arg1), a2=sym(.data)+10112, a3=?.
   The `bgez` branch at 0xe584 targets 0xe5b0, is taken when at(=([sym(r4000_config)] << 0x2e)) >= 0 (signed), and falls through when at(=([sym(r4000_config)] << 0x2e)) < 0 (signed).
   The `beq` branch at 0xe5b0 targets 0xe79c, is taken when a0 == 0, and falls through when a0 != 0.
   The `bne` branch at 0xe5b8 targets 0xe664, is taken when t8(=0x1) != a0, and falls through when t8(=0x1) == a0.
@@ -3271,7 +3271,7 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to a1 (arg1 at entry) +0xc, including `sw` at 0xedbc, `sw` at 0xedec.
   2 such `sw` accesses store 4 bytes to a1 (arg1 at entry) +0x4, including `sw` at 0xedd0, `sw` at 0xee0c.
   The `sw` at 0xedfc stores 4 bytes to a1 (arg1 at entry) +0x8.
-  The `jal` at 0xed9c calls printf with a0=sym(.rodata)+8400, a1=a0 at entry (arg0), a2=?, a3=?, a4=[a1], a5=0x2.
+  The `jal` at 0xed9c calls printf with a0=sym(.rodata)+4200, a1=a0 at entry (arg0), a2=?, a3=?, a4=[a1], a5=0x2.
   The `beq` branch at 0xed74 targets 0xedd4, is taken when a0 == at(=0x1), and falls through when a0 != at(=0x1).
   The `beq` branch at 0xed8c targets 0xedb4, is taken when v0(=a0) == a5(=0x2), and falls through when v0(=a0) != a5(=0x2).
   The `beq` branch at 0xedcc targets 0xedac and is always taken.
@@ -3282,51 +3282,51 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xee10-0xee38 (40 bytes).
   It occupies 40 bytes.
-  The `lw` at 0xee2c loads 4 bytes from (sym(.data)+20480 + (a1 << 0x2)) +0x0.
+  The `lw` at 0xee2c loads 4 bytes from (sym(tag_dbpos) + (a1 << 0x2)) +0x0.
   The `beq` branch at 0xee20 targets 0xee30, is taken when a0 == a6(=0x2), and falls through when a0 != a6(=0x2).
-  The return at 0xee30 has v0 = one of a1, [(sym(.data)+20480 + (a1 << 0x2))].
+  The return at 0xee30 has v0 = one of a1, [(sym(tag_dbpos) + (a1 << 0x2))].
 - `print_ecc_info` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xee38 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xee38-0xf31c (1252 bytes).
   It occupies 1252 bytes.
-  The `ld` at 0xeea4 loads 8 bytes from sym(.bss) +0x1818.
-  The `ld` at 0xeea8 loads 8 bytes from sym(.bss) +0x1820.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1800, including `lw` at 0xeeb4, `lw` at 0xf214.
-  2 such `lw` accesses load 4 bytes from sym(.bss) +0x1804, including `lw` at 0xeeb8, `lw` at 0xf20c.
-  The `lw` at 0xeebc loads 4 bytes from sym(.bss) +0x1808.
-  The `lw` at 0xeec0 loads 4 bytes from sym(.bss) +0x180c.
-  The `lw` at 0xeec4 loads 4 bytes from sym(.bss) +0x1810.
-  The `lw` at 0xeefc loads 4 bytes from sym(.bss) +0x1828.
-  The `lw` at 0xef04 loads 4 bytes from sym(.data) +0x18c0.
+  The `ld` at 0xeea4 loads 8 bytes from sym(.bss) +0xc18.
+  The `ld` at 0xeea8 loads 8 bytes from sym(.bss) +0xc20.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xc00, including `lw` at 0xeeb4, `lw` at 0xf214.
+  2 such `lw` accesses load 4 bytes from sym(.bss) +0xc04, including `lw` at 0xeeb8, `lw` at 0xf20c.
+  The `lw` at 0xeebc loads 4 bytes from sym(.bss) +0xc08.
+  The `lw` at 0xeec0 loads 4 bytes from sym(.bss) +0xc0c.
+  The `lw` at 0xeec4 loads 4 bytes from sym(.bss) +0xc10.
+  The `lw` at 0xeefc loads 4 bytes from sym(.bss) +0xc28.
+  The `lw` at 0xef04 loads 4 bytes from sym(.data) +0xc60.
   34 such `lw` accesses load 4 bytes from ?, including `lw` at 0xef58, `lw` at 0xef68, `lw` at 0xef6c.
   8 such `ld` accesses load 8 bytes from ?, including `ld` at 0xef78, `ld` at 0xef7c, `ld` at 0xf074.
   2 such `lh` accesses load 2 bytes from ?, including `lh` at 0xf020, `lh` at 0xf064.
-  The `jal` at 0xee9c calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=a3 at entry (arg3).
-  The `jal` at 0xeeac calls qprintf with a0=sym(.rodata)+6896, a1=[sym(.bss)+6168]:8, a2=[sym(.bss)+6176]:8, a3=?.
-  The `jal` at 0xeec8 calls qprintf with a0=sym(.rodata)+6896, a1=[sym(.bss)+6144], a2=[sym(.bss)+6148], a3=[sym(.bss)+6152], a4=[sym(.bss)+6156], a5=[sym(.bss)+6160].
-  The `jal` at 0xeed0 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
-  The `jal` at 0xef08 calls qprintf with a0=sym(.rodata)+9552, a1=[sym(real_data_eccsyns+312)], a2=[sym(.bss)+6184], a3=?.
-  The `jal` at 0xef28 calls qprintf with a0=sym(.rodata)+9568, a1=?, a2=?, a3=?.
-  The `jal` at 0xef70 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=sym(real_data_eccsyns+312), a3=?, a5=sym(real_data_eccsyns+312).
-  The `jal` at 0xef8c calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
-  The `jal` at 0xefa4 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
-  The `jal` at 0xefbc calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
+  The `jal` at 0xee9c calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=a3 at entry (arg3).
+  The `jal` at 0xeeac calls qprintf with a0=sym(.rodata)+3448, a1=[sym(ecc_info+24)]:8, a2=[sym(ecc_info+32)]:8, a3=?.
+  The `jal` at 0xeec8 calls qprintf with a0=sym(.rodata)+3448, a1=[sym(ecc_info)], a2=[sym(ecc_info+4)], a3=[sym(ecc_info+8)], a4=[sym(ecc_info+12)], a5=[sym(ecc_info+16)].
+  The `jal` at 0xeed0 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
+  The `jal` at 0xef08 calls qprintf with a0=sym(.rodata)+4776, a1=[sym(imask_values)], a2=[sym(ecc_info+40)], a3=?.
+  The `jal` at 0xef28 calls qprintf with a0=sym(.rodata)+4784, a1=?, a2=?, a3=?.
+  The `jal` at 0xef70 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=sym(imask_values), a3=?, a5=sym(imask_values).
+  The `jal` at 0xef8c calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
+  The `jal` at 0xefa4 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
+  The `jal` at 0xefbc calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
   The `jal` at 0xf024 calls print_ecctype [0xf39c] with a0=?, a1=?, a2=?, a3=?, a4=0x1.
-  The `jal` at 0xf04c calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
+  The `jal` at 0xf04c calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
   The `jal` at 0xf068 calls ecc_print_msg [0xe930] with a0=-0x1, a1=?, a2=0x0, a3=0x1.
-  The `jal` at 0xf0bc calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
+  The `jal` at 0xf0bc calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
   The `jal` at 0xf0c4 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xf0e4 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=sym(real_data_eccsyns+312), a3=?.
-  The `jal` at 0xf0f8 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=sym(real_data_eccsyns+312), a3=?.
+  The `jal` at 0xf0e4 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=sym(imask_values), a3=?.
+  The `jal` at 0xf0f8 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=sym(imask_values), a3=?.
   The `jal` at 0xf100 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xf134 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
-  The `jal` at 0xf17c calls qprintf with a0=sym(.rodata)+8336, a1=?, a2=?, a3=?.
-  The `jal` at 0xf198 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=sym(real_data_eccsyns+312), a3=?.
-  The `jal` at 0xf1b8 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=?.
+  The `jal` at 0xf134 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
+  The `jal` at 0xf17c calls qprintf with a0=sym(.rodata)+4168, a1=?, a2=?, a3=?.
+  The `jal` at 0xf198 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=sym(imask_values), a3=?.
+  The `jal` at 0xf1b8 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=?.
   The `jal` at 0xf1c8 calls get_cpu_irr with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0xf1f4 calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=sym(real_data_eccsyns+312), a3=?.
-  The `jal` at 0xf24c calls qprintf with a0=sym(.rodata)+6896, a1=?, a2=?, a3=a3 at entry (arg3).
+  The `jal` at 0xf1f4 calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=sym(imask_values), a3=?.
+  The `jal` at 0xf24c calls qprintf with a0=sym(.rodata)+3448, a1=?, a2=?, a3=a3 at entry (arg3).
   The `beq` branch at 0xee58 targets 0xf204, is taken when a0 == at(=-0x1), and falls through when a0 != at(=-0x1).
   The `bltz` branch at 0xee64 targets 0xf218, is taken when s3(?) < 0 (signed), and falls through when s3(?) >= 0 (signed).
   The `bltz` branch at 0xee70 targets 0xf25c, is taken when s5(?) < 0 (signed), and falls through when s5(?) >= 0 (signed).
@@ -3395,11 +3395,11 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xf31c-0xf39c (128 bytes).
   It occupies 128 bytes.
-  The `lw` at 0xf350 loads 4 bytes from sym(.bss) +0x1828.
-  The `lw` at 0xf358 loads 4 bytes from sym(.data) +0x4740.
-  The `jal` at 0xf334 calls qprintf with a0=sym(.rodata)+9616, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xf35c calls qprintf with a0=sym(.rodata)+9552, a1=[sym(.data)+18240], a2=[sym(.bss)+6184], a3=?.
-  The `jal` at 0xf37c calls qprintf with a0=sym(.rodata)+9568, a1=?, a2=?, a3=?.
+  The `lw` at 0xf350 loads 4 bytes from sym(.bss) +0xc28.
+  The `lw` at 0xf358 loads 4 bytes from sym(.data) +0x23a0.
+  The `jal` at 0xf334 calls qprintf with a0=sym(.rodata)+4808, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xf35c calls qprintf with a0=sym(.rodata)+4776, a1=sym(.rodata)+6192, a2=[sym(ecc_info+40)], a3=?.
+  The `jal` at 0xf37c calls qprintf with a0=sym(.rodata)+4784, a1=?, a2=?, a3=?.
   The `bne` branch at 0xf370 targets 0xf350, is taken when s2(?) < 0x8 (signed), and falls through when s2(?) >= 0x8 (signed).
   The return at 0xf394 has v0 = ret(qprintf).
 - `softfp_adderr` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xf5f8 (n32).
@@ -3407,28 +3407,28 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xf5f8-0xf620 (40 bytes).
   It occupies 40 bytes.
-  The `jal` at 0xf608 calls cmn_err with a0=0x0, a1=sym(.rodata)+10304, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xf608 calls cmn_err with a0=0x0, a1=sym(.rodata)+5152, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The return at 0xf618 has v0 = 0x0.
 - `softfp_insterr` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xf620 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xf620-0xf648 (40 bytes).
   It occupies 40 bytes.
-  The `jal` at 0xf630 calls cmn_err with a0=0x0, a1=sym(.rodata)+10368, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xf630 calls cmn_err with a0=0x0, a1=sym(.rodata)+5184, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The return at 0xf640 has v0 = 0x0.
 - `error_mark_page` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xf924 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xf924-0xf948 (36 bytes).
   It occupies 36 bytes.
-  The `jal` at 0xf934 calls cmn_err with a0=0x5, a1=sym(.rodata)+10960, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xf934 calls cmn_err with a0=0x5, a1=sym(.rodata)+5480, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The return at 0xf940 has v0 = ret(cmn_err).
 - `error_reclaim_page` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xf948 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xf948-0xf970 (40 bytes).
   It occupies 40 bytes.
-  The `jal` at 0xf958 calls cmn_err with a0=0x5, a1=sym(.rodata)+11024, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0xf958 calls cmn_err with a0=0x5, a1=sym(.rodata)+5512, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The return at 0xf968 has v0 = 0x0.
 - `tlb_to_phys` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0xf970 (n32).
   Evidence grade: inferred.
@@ -3465,7 +3465,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 576 bytes.
   The `ld` at 0xfbb4 loads 8 bytes from ?.
   The `sd` at 0xfbdc stores 8 bytes to a3 (arg3 at entry) +0x0.
-  The `lw` at 0xfbe8 loads 4 bytes from table(sym(.rodata)+12720) +0x0.
+  The `lw` at 0xfbe8 loads 4 bytes from table(sym(.rodata)+6360) +0x0.
   The `beq` branch at 0xfba4 targets 0xfbb8, is taken when (v0(?) & 0x1f) == 0, and falls through when (v0(?) & 0x1f) != 0.
   The `beq` branch at 0xfbe0 targets 0xfbf4, is taken when a5(?) >= 0x26 (unsigned), and falls through when a5(?) < 0x26 (unsigned).
   The return at 0xfbf8 has v0 = 0x0.
@@ -3476,25 +3476,25 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x100a0-0x1026c (460 bytes).
   It occupies 460 bytes.
-  The `lw` at 0x100f0 loads 4 bytes from sym(.rodata) +0x33c0.
-  The `sw` at 0x100f4 stores 4 bytes to sym(.bss) +0x2240.
-  The `lbu` at 0x10100 loads 1 byte from sym(.rodata) +0x33c6.
-  The `sb` at 0x10104 stores 1 byte to sym(.bss) +0x2246.
-  The `lhu` at 0x1010c loads 2 bytes from sym(.rodata) +0x33c4.
-  The `sh` at 0x10114 stores 2 bytes to sym(.bss) +0x2244.
-  The `sb` at 0x10120 stores 1 byte to sym(.bss) +0x2245.
-  The `lw` at 0x10224 loads 4 bytes from sym(.rodata) +0x3210.
-  The `lbu` at 0x10228 loads 1 byte from sym(.rodata) +0x3214.
-  The `ld` at 0x10230 loads 8 bytes from sym(.rodata) +0x3208.
-  The `sd` at 0x10238 stores 8 bytes to sym(.bss) +0x2240.
-  The `sb` at 0x1023c stores 1 byte to sym(.bss) +0x224c.
-  The `sw` at 0x10244 stores 4 bytes to sym(.bss) +0x2248.
+  The `lw` at 0x100f0 loads 4 bytes from sym(.rodata) +0x19e0.
+  The `sw` at 0x100f4 stores 4 bytes to sym(.bss) +0x1120.
+  The `lbu` at 0x10100 loads 1 byte from sym(.rodata) +0x19e6.
+  The `sb` at 0x10104 stores 1 byte to sym(.bss) +0x1126.
+  The `lhu` at 0x1010c loads 2 bytes from sym(.rodata) +0x19e4.
+  The `sh` at 0x10114 stores 2 bytes to sym(.bss) +0x1124.
+  The `sb` at 0x10120 stores 1 byte to sym(.bss) +0x1125.
+  The `lw` at 0x10224 loads 4 bytes from sym(.rodata) +0x1978.
+  The `lbu` at 0x10228 loads 1 byte from sym(.rodata) +0x197c.
+  The `ld` at 0x10230 loads 8 bytes from sym(.rodata) +0x1970.
+  The `sd` at 0x10238 stores 8 bytes to sym(.bss) +0x1120.
+  The `sb` at 0x1023c stores 1 byte to sym(.bss) +0x112c.
+  The `sw` at 0x10244 stores 4 bytes to sym(.bss) +0x1128.
   The `jal` at 0x100c0 calls addr_to_bank with a0=?, a1=-0x20, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x1017c calls bitcount [0x10024] with a0=?, a1=sym(.rodata)+6640, a2=?, a3=?, a5=sym(bad_slot_string).
   The `jal` at 0x10190 calls syn_to_data_bit [0xfff0] with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x101ac calls lowbitset [0x1004c] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x101d4 calls cmn_err_tag with a0=0x37, a1=0x1, a2=sym(.rodata)+12592, a3=?, a4=sym(.bss)+8768.
-  The `jal` at 0x101f0 calls cmn_err_tag with a0=0x38, a1=0x1, a2=sym(.rodata)+12592, a3=?, a4=sym(.bss)+8768, a5=sym(bad_slot_string).
+  The `jal` at 0x101d4 calls cmn_err_tag with a0=0x37, a1=0x1, a2=sym(.rodata)+6296, a3=?, a4=sym(bad_slot_string).
+  The `jal` at 0x101f0 calls cmn_err_tag with a0=0x38, a1=0x1, a2=sym(.rodata)+6296, a3=?, a4=sym(bad_slot_string), a5=sym(bad_slot_string).
   The `bltz` branch at 0x100e4 targets 0x1021c, is taken when v0(=ret(addr_to_bank)) < 0 (signed), and falls through when v0(=ret(addr_to_bank)) >= 0 (signed).
   The `beq` branch at 0x10130 targets 0x10248, is taken when (v0(=ret(addr_to_bank)) & 0x1) == 0, and falls through when (v0(=ret(addr_to_bank)) & 0x1) != 0.
   The `bne` branch at 0x1013c targets 0x101e4, is taken when s1(=a2) != 0, and falls through when s1(=a2) == 0.
@@ -3700,7 +3700,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1128c calls cpu_powerdown with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x112a0 calls splx with a0=ret(spl7), a1=?, a2=?, a3=?.
   The `jal` at 0x112a8 calls spl7 with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x112d0 calls cmn_err with a0=0x4, a1=sym(.rodata)+15792, a2=?, a3=?.
+  The `jal` at 0x112d0 calls cmn_err with a0=0x4, a1=sym(.rodata)+7896, a2=?, a3=?.
   The `beq` branch at 0x11264 targets 0x112a8 and is always taken.
   The `beq` branch at 0x11284 targets 0x11294, is taken when (t9(=[0xffffffffbf3a4a07]:1) & 0x1) == 0, and falls through when (t9(=[0xffffffffbf3a4a07]:1) & 0x1) != 0.
   The `beq` branch at 0x112b8 targets 0x112a0, is taken when (at(=[0xffffffffbf310010]:8) & 0x100) == 0, and falls through when (at(=[0xffffffffbf310010]:8) & 0x100) != 0.
@@ -3723,7 +3723,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x11388 calls pciio_pio_read8 with a0=0xffffffffbf3a0a07, a1=?, a2=?, a3=?.
   The `jal` at 0x1139c calls pciio_pio_write8 with a0=?, a1=0xffffffffbf3a0a07, a2=?, a3=?.
   The `jal` at 0x113a4 calls flushbus with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x113c8 calls cmn_err_tag with a0=0x3d, a1=0x0, a2=sym(.rodata)+15792, a3=sym(.rodata)+15792.
+  The `jal` at 0x113c8 calls cmn_err_tag with a0=0x3d, a1=0x0, a2=sym(.rodata)+7896, a3=sym(.rodata)+7896.
   The `jal` at 0x113d0 calls splx with a0=ret(splprof), a1=?, a2=?, a3=?.
   The `jal` at 0x11400 calls splx with a0=ret(splprof), a1=?, a2=?, a3=?.
   The `beq` branch at 0x11304 targets 0x11318, is taken when s2(=a0) == 0, and falls through when s2(=a0) != 0.
@@ -3751,13 +3751,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x114cc calls flushbus with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x11508 calls flash_led [0x10d40] with a0=0x3, a1=0x1, a2=?, a3=?.
   The `jal` at 0x11524 calls sigtopid with a0=0x1, a1=0x2, a2=0x12, a3=0x0, a4=0x0, a5=0x0.
-  The `jal` at 0x1154c calls timeout with a0=sym(inittodr+268), a1=0x0, a2=?, a3=[sym(clean_shutdown_time)].
+  The `jal` at 0x1154c calls timeout with a0=sym(cpu_godown), a1=0x0, a2=?, a3=[sym(clean_shutdown_time)].
   The `jal` at 0x1155c calls set_autopoweron with a0=?, a1=?, a2=?, a3=[sym(lbolt)]+100.
-  The `jal` at 0x11578 calls cmn_err with a0=0x4, a1=sym(.rodata)+15792, a2=?, a3=?.
-  The `jal` at 0x11594 calls cmn_err with a0=0x4, a1=sym(.rodata)+15792, a2=?, a3=?.
-  The `jal` at 0x115ac calls cmn_err with a0=0x4, a1=sym(.rodata)+15792, a2=ret(pciio_pio_read8), a3=?.
+  The `jal` at 0x11578 calls cmn_err with a0=0x4, a1=sym(.rodata)+7896, a2=?, a3=?.
+  The `jal` at 0x11594 calls cmn_err with a0=0x4, a1=sym(.rodata)+7896, a2=?, a3=?.
+  The `jal` at 0x115ac calls cmn_err with a0=0x4, a1=sym(.rodata)+7896, a2=ret(pciio_pio_read8), a3=?.
   The `jal` at 0x115bc calls us_delay with a0=0x2710, a1=0x1, a2=?, a3=?.
-  The `jal` at 0x115d0 calls cmn_err with a0=0x5, a1=sym(.rodata)+15792, a2=?, a3=?.
+  The `jal` at 0x115d0 calls cmn_err with a0=0x5, a1=sym(.rodata)+7896, a2=?, a3=?.
   The `jal` at 0x115d8 calls cpu_powerdown with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0x11428 targets 0x114f8, is taken when (at(=[0xffffffffbf310010]:8) & 0x100) == 0, and falls through when (at(=[0xffffffffbf310010]:8) & 0x100) != 0.
   The `beq` branch at 0x11430 targets 0x11444, is taken when v0(=[sym(power_button_changed_to_crash_dump)]) == 0, and falls through when v0(=[sym(power_button_changed_to_crash_dump)]) != 0.
@@ -4028,7 +4028,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sd` at 0x121c4 stores 8 bytes to sym(_assregs) +0x20.
   The `sd` at 0x121d0 stores 8 bytes to sym(_assregs) +0x28.
   Calls longway via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x1208c).
-  Calls assfail via direct with a0=sym(.data)+20760, a1=sym(.data)+20798, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x121e8).
+  Calls assfail via direct with a0=sym(.data)+10380, a1=sym(.data)+10399, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x121e8).
   Calls longway via direct with a0=?, a1=?, a2=?, a3=a3 at entry (arg3) (`j` at 0x121ec).
   The `bne` branch at 0x11ec4 targets 0x121ec, is taken when k0(?) < at(=0xffffffffff600000) (unsigned), and falls through when k0(?) >= at(=0xffffffffff600000) (unsigned).
   The `bltz` branch at 0x11ed8 targets 0x12028, is taken when k0(?) < 0 (signed), and falls through when k0(?) >= 0 (signed).
@@ -4088,7 +4088,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sd` at 0x121b8 stores 8 bytes to sym(_assregs) +0x18.
   The `sd` at 0x121c4 stores 8 bytes to sym(_assregs) +0x20.
   The `sd` at 0x121d0 stores 8 bytes to sym(_assregs) +0x28.
-  Calls assfail via direct with a0=sym(.data)+20760, a1=sym(.data)+20798, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x121e8).
+  Calls assfail via direct with a0=sym(.data)+10380, a1=sym(.data)+10399, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x121e8).
   The `beq` branch at 0x121a4 targets 0x121ac and is always taken.
   The instructions from 0x121f0 to 0x122b0 are not reached by any path from the entry, and their branches are not listed.
 - `inittodr` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x122b4 (n32).
@@ -4103,19 +4103,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x122f0 calls settime with a0=ret(rtodc), a1=0x0, a2=?, a3=?.
   The `jal` at 0x12304 calls nested_spinunlock with a0=sym(timelock), a1=?, a2=?, a3=?.
   The `jal` at 0x1230c calls splx with a0=ret(splprof), a1=?, a2=?, a3=?.
-  The `jal` at 0x12338 calls cmn_err_tag with a0=0x42, a1=0x4, a2=sym(.rodata)+16592, a3=?, a5=sym(.rodata)+8512.
+  The `jal` at 0x12338 calls cmn_err_tag with a0=0x42, a1=0x4, a2=sym(.rodata)+8296, a3=?, a5=sym(.rodata)+8512.
   The `jal` at 0x12340 calls isbadclock [0x12ebc] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x12354 calls cmn_err_tag with a0=0x43, a1=0x4, a2=sym(.rodata)+16592, a3=?.
+  The `jal` at 0x12354 calls cmn_err_tag with a0=0x43, a1=0x4, a2=sym(.rodata)+8296, a3=?.
   The `jal` at 0x12360 calls nested_spinunlock with a0=sym(timelock), a1=?, a2=?, a3=?.
   The `jal` at 0x12368 calls splx with a0=ret(splprof), a1=?, a2=?, a3=?.
   The `jal` at 0x12388 calls get_dayof_week [0x131d8] with a0=ret(rtodc), a1=?, a2=?, a3=?.
   The `jal` at 0x12398 calls _clock_func [0x129e8] with a0=0x0, a1=sp-64, a2=?, a3=?.
-  The `jal` at 0x123e0 calls cmn_err_tag with a0=0x3f, a1=0x4, a2=sym(.rodata)+16592, a3=?.
-  The `jal` at 0x12400 calls cmn_err_tag with a0=0x41, a1=0x4, a2=sym(.rodata)+16592, a3=?, a5=0x20000.
+  The `jal` at 0x123e0 calls cmn_err_tag with a0=0x3f, a1=0x4, a2=sym(.rodata)+8296, a3=?.
+  The `jal` at 0x12400 calls cmn_err_tag with a0=0x41, a1=0x4, a2=sym(.rodata)+8296, a3=?, a5=0x20000.
   The `jal` at 0x1240c calls settime with a0=a0 at entry (arg0), a1=0x0, a2=?, a3=?.
   The `jal` at 0x12414 calls resettodr with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x1241c calls setbadclock [0x12dd8] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x12474 calls cmn_err_tag with a0=0x40, a1=0x4, a2=sym(.rodata)+16592, a3=?.
+  The `jal` at 0x12474 calls cmn_err_tag with a0=0x40, a1=0x4, a2=sym(.rodata)+8296, a3=?.
   The `jal` at 0x1247c calls setbadclock [0x12dd8] with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x12494 calls _clock_func [0x129e8] with a0=0x1, a1=sp-64, a2=?, a3=?.
   The `beq` branch at 0x122fc targets 0x12388, is taken when at(=[sym(miniroot)]:1) == 0, and falls through when at(=[sym(miniroot)]:1) != 0.
@@ -4146,9 +4146,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x124c8-0x126dc (532 bytes).
   It occupies 532 bytes.
-  The `lw` at 0x12630 loads 4 bytes from sym(.data) +0x5150.
-  2 such `lw` accesses load 4 bytes from sym(.data) +0x5154, including `lw` at 0x12654, `lw` at 0x126c0.
-  2 such `sw` accesses store 4 bytes to sym(.data) +0x5154, including `sw` at 0x126cc, `sw` at 0x126d8.
+  The `lw` at 0x12630 loads 4 bytes from sym(.data) +0x28a8.
+  2 such `lw` accesses load 4 bytes from sym(.data) +0x28ac, including `lw` at 0x12654, `lw` at 0x126c0.
+  2 such `sw` accesses store 4 bytes to sym(.data) +0x28ac, including `sw` at 0x126cc, `sw` at 0x126d8.
   The `jal` at 0x124d4 calls _clock_func [0x129e8] with a0=0x0, a1=sp-16, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `beq` branch at 0x125f4 targets 0x126b8, is taken when (t1(?) & 0x3) == 0, and falls through when (t1(?) & 0x3) != 0.
   The `beq` branch at 0x12628 targets 0x12650, is taken when t2(?) == 0, and falls through when t2(?) != 0.
@@ -4170,9 +4170,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x126dc-0x129e8 (780 bytes).
   It occupies 780 bytes.
-  2 such `lw` accesses load 4 bytes from sym(.data) +0x5150, including `lw` at 0x1275c, `lw` at 0x12784.
-  3 such `lw` accesses load 4 bytes from sym(.data) +0x5154, including `lw` at 0x1278c, `lw` at 0x127bc, `lw` at 0x129cc.
-  2 such `sw` accesses store 4 bytes to sym(.data) +0x5154, including `sw` at 0x129d8, `sw` at 0x129e4.
+  2 such `lw` accesses load 4 bytes from sym(.data) +0x28a8, including `lw` at 0x1275c, `lw` at 0x12784.
+  3 such `lw` accesses load 4 bytes from sym(.data) +0x28ac, including `lw` at 0x1278c, `lw` at 0x127bc, `lw` at 0x129cc.
+  2 such `sw` accesses store 4 bytes to sym(.data) +0x28ac, including `sw` at 0x129d8, `sw` at 0x129e4.
   The `jal` at 0x126ec calls get_dayof_week [0x131d8] with a0=[sym(time)], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x12990 calls _clock_func [0x129e8] with a0=0x1, a1=sp-32, a2=?, a3=?, a7=0x64.
   The `jal` at 0x12998 calls clearbadclock [0x12e48] with a0=?, a1=?, a2=?, a3=?.
@@ -4236,9 +4236,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x12f20-0x131d8 (696 bytes).
   It occupies 696 bytes.
-  2 such `lw` accesses load 4 bytes from sym(.data) +0x5150, including `lw` at 0x12fa0, `lw` at 0x12fc0.
-  3 such `lw` accesses load 4 bytes from sym(.data) +0x5154, including `lw` at 0x12fc8, `lw` at 0x12ff4, `lw` at 0x130f4.
-  2 such `sw` accesses store 4 bytes to sym(.data) +0x5154, including `sw` at 0x13100, `sw` at 0x1310c.
+  2 such `lw` accesses load 4 bytes from sym(.data) +0x28a8, including `lw` at 0x12fa0, `lw` at 0x12fc0.
+  3 such `lw` accesses load 4 bytes from sym(.data) +0x28ac, including `lw` at 0x12fc8, `lw` at 0x12ff4, `lw` at 0x130f4.
+  2 such `sw` accesses store 4 bytes to sym(.data) +0x28ac, including `sw` at 0x13100, `sw` at 0x1310c.
   The `jal` at 0x12f44 calls get_dayof_week [0x131d8] with a0=[sym(autopoweron_alarm)], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x1312c calls pciio_pio_write8 with a0=?, a1=0xffffffffbf3a0307, a2=?, a3=?.
   The `jal` at 0x13150 calls pciio_pio_write8 with a0=?, a1=0xffffffffbf3a0507, a2=?, a3=?.
@@ -4358,7 +4358,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x13598-0x135a8 (16 bytes).
   It occupies 16 bytes.
-  The `jal` at 0x135a0 calls cmn_err with a0=0x0, a1=sym(.data)+20912, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x135a0 calls cmn_err with a0=0x0, a1=sym(.data)+10456, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
 - `get_fpc_csr` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x135a8 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
@@ -4471,21 +4471,21 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x13b78-0x13e08 (656 bytes).
   It occupies 656 bytes.
-  The `lw` at 0x13c50 loads 4 bytes from sym(.data) +0x51d0.
-  The `lw` at 0x13c8c loads 4 bytes from sym(.data) +0x51d4.
-  The `lw` at 0x13cf4 loads 4 bytes from table(sym(.data)+20944) +0x0.
-  5 such `lw` accesses load 4 bytes from sym(.data) +0x5268, including `lw` at 0x13d10, `lw` at 0x13d60, `lw` at 0x13d84.
+  The `lw` at 0x13c50 loads 4 bytes from sym(.data) +0x28e8.
+  The `lw` at 0x13c8c loads 4 bytes from sym(.data) +0x28ec.
+  The `lw` at 0x13cf4 loads 4 bytes from table(sym(.data)+10472) +0x0.
+  5 such `lw` accesses load 4 bytes from sym(.data) +0x2980, including `lw` at 0x13d10, `lw` at 0x13d60, `lw` at 0x13d84.
   The `jal` at 0x13b80 calls get_cpu_irr with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x13b8c calls _cpuclkper100ticks with a0=sp-96, a1=?, a2=?, a3=?.
   The `beq` branch at 0x13c1c targets 0x13c50 and is always taken.
   The `beq` branch at 0x13c24 targets 0x13cc4, is taken when a4(?) == t0(=-0x1), and falls through when a4(?) != t0(=-0x1).
   The `beq` branch at 0x13c30 targets 0x13c40, is taken when a7(?) == 0, and falls through when a7(?) != 0.
   The `beq` branch at 0x13c48 targets 0x13cd0, is taken when a3(?) >= 0x27 (unsigned), and falls through when a3(?) < 0x27 (unsigned).
-  The `beq` branch at 0x13c58 targets 0x13ca8, is taken when a7(=[sym(.data)+20944]) >= a6(?) (signed), and falls through when a7(=[sym(.data)+20944]) < a6(?) (signed).
+  The `beq` branch at 0x13c58 targets 0x13ca8, is taken when a7(=[sym(.data)+10472]) >= a6(?) (signed), and falls through when a7(=[sym(.data)+10472]) < a6(?) (signed).
   The `beq` branch at 0x13c60 targets 0x13cb0, is taken when a4(?) == t0(=-0x1), and falls through when a4(?) != t0(=-0x1).
   The `beq` branch at 0x13c6c targets 0x13c7c, is taken when v1(?) == 0, and falls through when v1(?) != 0.
   The `beq` branch at 0x13c84 targets 0x13cd0, is taken when a3(?) >= 0x27 (unsigned), and falls through when a3(?) < 0x27 (unsigned).
-  The `beq` branch at 0x13c98 targets 0x13cbc, is taken when a7(=[sym(.data)+20948]) >= a6(?) (signed), and falls through when a7(=[sym(.data)+20948]) < a6(?) (signed).
+  The `beq` branch at 0x13c98 targets 0x13cbc, is taken when a7(=[sym(.data)+10476]) >= a6(?) (signed), and falls through when a7(=[sym(.data)+10476]) < a6(?) (signed).
   The `beq` branch at 0x13ca0 targets 0x13c24 and is always taken.
   The `bne` branch at 0x13ca8 targets 0x13c6c, is taken when a4(?) != t0(=-0x1), and falls through when a4(?) == t0(=-0x1).
   The `beq` branch at 0x13cb4 targets 0x13c7c and is always taken.
@@ -4495,23 +4495,23 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x13cf8 targets 0x13d44, is taken when a2(?) == t3(=0xe), and falls through when a2(?) != t3(=0xe).
   The `beq` branch at 0x13d00 targets 0x13d44, is taken when a2(?) == t9(=0xf), and falls through when a2(?) != t9(=0xf).
   The `beq` branch at 0x13d0c targets 0x13d88, is taken when a2(?) == v1(=0x23), and falls through when a2(?) != v1(=0x23).
-  The `beq` branch at 0x13d18 targets 0x13d34, is taken when a2(=[sym(.data)+21096]) >= a6(?) (signed), and falls through when a2(=[sym(.data)+21096]) < a6(?) (signed).
+  The `beq` branch at 0x13d18 targets 0x13d34, is taken when a2(=[sym(.data)+10624]) >= a6(?) (signed), and falls through when a2(=[sym(.data)+10624]) < a6(?) (signed).
   The `beq` branch at 0x13d28 targets 0x13d38, is taken when a4(=0x3d0900) >= a2(?) (signed), and falls through when a4(=0x3d0900) < a2(?) (signed).
-  The `bne` branch at 0x13d48 targets 0x13d64, is taken when v0(=entry(sym(.data)+20944)) != a5(=0x55d4a80), and falls through when v0(=entry(sym(.data)+20944)) == a5(=0x55d4a80).
+  The `bne` branch at 0x13d48 targets 0x13d64, is taken when v0(=entry(sym(.data)+10472)) != a5(=0x55d4a80), and falls through when v0(=entry(sym(.data)+10472)) == a5(=0x55d4a80).
   The `beq` branch at 0x13d54 targets 0x13db8, is taken when a2(?) == a4(=0x23), and falls through when a2(?) != a4(=0x23).
   The `beq` branch at 0x13d5c targets 0x13d14 and is always taken.
-  The `bne` branch at 0x13d6c targets 0x13dc4, is taken when v0(=entry(sym(.data)+20944)) != a3(=0x5f957b8), and falls through when v0(=entry(sym(.data)+20944)) == a3(=0x5f957b8).
+  The `bne` branch at 0x13d6c targets 0x13dc4, is taken when v0(=entry(sym(.data)+10472)) != a3(=0x5f957b8), and falls through when v0(=entry(sym(.data)+10472)) == a3(=0x5f957b8).
   The `beq` branch at 0x13d78 targets 0x13de8, is taken when a2(?) == a5(=0x23), and falls through when a2(?) != a5(=0x23).
   The `beq` branch at 0x13d80 targets 0x13d14 and is always taken.
-  The `beq` branch at 0x13da8 targets 0x13ddc, is taken when a7(=0x52f83c0) >= v0(=entry(sym(.data)+20944)) (signed), and falls through when a7(=0x52f83c0) < v0(=entry(sym(.data)+20944)) (signed).
+  The `beq` branch at 0x13da8 targets 0x13ddc, is taken when a7(=0x52f83c0) >= v0(=entry(sym(.data)+10472)) (signed), and falls through when a7(=0x52f83c0) < v0(=entry(sym(.data)+10472)) (signed).
   The `beq` branch at 0x13db0 targets 0x13de0, is taken when a3(?) == 0, and falls through when a3(?) != 0.
   The `beq` branch at 0x13dbc targets 0x13d10 and is always taken.
-  The `bne` branch at 0x13dc4 targets 0x13d08, is taken when v0(=entry(sym(.data)+20944)) != a4(=0x8f5fdb8), and falls through when v0(=entry(sym(.data)+20944)) == a4(=0x8f5fdb8).
+  The `bne` branch at 0x13dc4 targets 0x13d08, is taken when v0(=entry(sym(.data)+10472)) != a4(=0x8f5fdb8), and falls through when v0(=entry(sym(.data)+10472)) == a4(=0x8f5fdb8).
   The `beq` branch at 0x13dcc targets 0x13dfc, is taken when a2(?) == v1(=0x23), and falls through when a2(?) != v1(=0x23).
   The `beq` branch at 0x13dd4 targets 0x13d14 and is always taken.
-  The `bne` branch at 0x13de0 targets 0x13df4, is taken when v0(=entry(sym(.data)+20944)) != a0(=0x5d6a4e8), and falls through when v0(=entry(sym(.data)+20944)) == a0(=0x5d6a4e8).
+  The `bne` branch at 0x13de0 targets 0x13df4, is taken when v0(=entry(sym(.data)+10472)) != a0(=0x5d6a4e8), and falls through when v0(=entry(sym(.data)+10472)) == a0(=0x5d6a4e8).
   The `beq` branch at 0x13dec targets 0x13d10 and is always taken.
-  The `bne` branch at 0x13df4 targets 0x13d14, is taken when v0(=entry(sym(.data)+20944)) != a4(=0x8f61528), and falls through when v0(=entry(sym(.data)+20944)) == a4(=0x8f61528).
+  The `bne` branch at 0x13df4 targets 0x13d14, is taken when v0(=entry(sym(.data)+10472)) != a4(=0x8f61528), and falls through when v0(=entry(sym(.data)+10472)) == a4(=0x8f61528).
   The `beq` branch at 0x13e00 targets 0x13d10 and is always taken.
   The return at 0x13d38 has v0 = ?.
 - `findcpufreq` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x13e08 (n32).
@@ -4629,7 +4629,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x14e90 loads 4 bytes from abs 0xffffffffffffa394.
   The `sw` at 0x14e9c stores 4 bytes to abs 0xffffffffffffa394.
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x14b6c).
-  Calls assfail via direct with a0=sym(.data)+21392, a1=sym(.data)+21418, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x14b88).
+  Calls assfail via direct with a0=sym(.data)+10696, a1=sym(.data)+10709, a2=0x0, a3=a3 at entry (arg3) (`j` at 0x14b88).
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x14bb4).
   Calls ecommon_allsaved via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x14be4).
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x14bec).
@@ -4710,19 +4710,19 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1547c-0x154f0 (116 bytes).
   It occupies 116 bytes.
-  The `lw` at 0x154a8 loads 4 bytes from sym(.data) +0x53c0.
+  The `lw` at 0x154a8 loads 4 bytes from sym(.data) +0x29e0.
   The `lw` at 0x154bc loads 4 bytes from sym(sw_cachesynch_patch_insts) +0x0.
   The `sw` at 0x154c0 stores 4 bytes to ?.
-  The `lw` at 0x154c4 loads 4 bytes from sym(.data) +0x53c4.
+  The `lw` at 0x154c4 loads 4 bytes from sym(.data) +0x29e4.
   The `lw` at 0x154d0 loads 4 bytes from sym(sw_cachesynch_patch_insts) +0x4.
-  The `sw` at 0x154d4 stores 4 bytes to [sym(.data)+21444] +0x0.
-  The `lw` at 0x154d8 loads 4 bytes from sym(.data) +0x53c8.
+  The `sw` at 0x154d4 stores 4 bytes to sym(sw_cachesynch_op2) +0x0.
+  The `lw` at 0x154d8 loads 4 bytes from sym(.data) +0x29e8.
   The `jal` at 0x15484 calls get_cpu_irr with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `bne` branch at 0x15498 targets 0x154e8, is taken when at(?) != v0(=0x4), and falls through when at(?) == v0(=0x4).
-  The `beq` branch at 0x154b4 targets 0x154e8, is taken when v0(=[sym(.data)+21440]) == 0, and falls through when v0(=[sym(.data)+21440]) != 0.
-  The `beq` branch at 0x154c8 targets 0x154e8, is taken when a1(=[sym(.data)+21444]) == 0, and falls through when a1(=[sym(.data)+21444]) != 0.
-  The `bne` branch at 0x154e0 targets 0x154bc, is taken when a1(=[sym(.data)+21448]) != 0, and falls through when a1(=[sym(.data)+21448]) == 0.
-  The return at 0x154e8 has v0 = one of 0x4, [sym(.data)+21440].
+  The `beq` branch at 0x154b4 targets 0x154e8, is taken when v0(=sym(sw_cachesynch_op1)) == 0, and falls through when v0(=sym(sw_cachesynch_op1)) != 0.
+  The `beq` branch at 0x154c8 targets 0x154e8, is taken when a1(=sym(sw_cachesynch_op2)) == 0, and falls through when a1(=sym(sw_cachesynch_op2)) != 0.
+  The `bne` branch at 0x154e0 targets 0x154bc, is taken when a1(=sym(sw_cachesynch_op3)) != 0, and falls through when a1(=sym(sw_cachesynch_op3)) == 0.
+  The return at 0x154e8 has v0 = one of 0x4, sym(sw_cachesynch_op1).
 - `utlbmiss_prolog_up` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x15500 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
@@ -5908,9 +5908,9 @@ Each entry records selected software behavior from its exact binary range. The r
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x19324).
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x193ac).
   Calls ecommon via direct with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x19424).
-  The `jal` at 0x19490 calls printf with a0=sym(.data)+21504, a1=?, a2=sp, a3=?.
-  The `jal` at 0x194a4 calls printf with a0=sym(.data)+22120, a1=ra at entry, a2=[-0x5fc1]:1, a3=?.
-  The `jal` at 0x194e0 calls panic with a0=sym(.data)+22160, a1=?, a2=?, a3=?.
+  The `jal` at 0x19490 calls printf with a0=sym(.data)+10752, a1=?, a2=sp, a3=?.
+  The `jal` at 0x194a4 calls printf with a0=sym(.data)+11060, a1=ra at entry, a2=[-0x5fc1]:1, a3=?.
+  The `jal` at 0x194e0 calls panic with a0=sym(.data)+11080, a1=?, a2=?, a3=?.
   Calls _baduk via direct with a0=?, a1=?, a2=?, a3=? (`j` at 0x194e8).
   The `beq` branch at 0x192c8 targets 0x193b4, is taken when k0(=[-0x5fc1]:1) == 0, and falls through when k0(=[-0x5fc1]:1) != 0.
   The `beq` branch at 0x192d0 targets 0x1935c, is taken when k0(=[-0x5fc1]:1-1) == 0, and falls through when k0(=[-0x5fc1]:1-1) != 0.
@@ -6026,7 +6026,7 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lbu` accesses load 1 byte from [-0x5fec] +0x35a, including `lbu` at 0x199bc, `lbu` at 0x19b04, `lbu` at 0x19c3c.
   3 such `lw` accesses load 4 bytes from [-0x5fec] +0x280, including `lw` at 0x199d4, `lw` at 0x19c4c, `lw` at 0x19d5c.
   3 such `sd` accesses store 8 bytes to [[-0x5fec]+640] +0x128, including `sd` at 0x199e0, `sd` at 0x19c50, `sd` at 0x19d60.
-  The `lwu` at 0x19bfc loads 4 bytes from (sym(.data)+22240 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2)) +0x0.
+  The `lwu` at 0x19bfc loads 4 bytes from (sym(.data)+11120 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2)) +0x0.
   The `lb` at 0x19d90 loads 1 byte from (sym(round_bit) + ((a0 << 0x3) + ([[-0x5fec]+856]:1 << 0x4))) +0x1.
   The `jal` at 0x19904 calls post_sig with a0=0x8, a1=?, a2=([[-0x5fec]+844] | 0x2008), a3=?, a5=[-0x5fec].
   The `jal` at 0x199c0 calls fpstore_s with a0=?, a1=[[-0x5fec]+858]:1, a2=?, a3=?, a5=[-0x5fec], a7=(a1 + one of 0xc0, 0xc1).
@@ -6043,7 +6043,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x19dec calls fpstore_s with a0=?, a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
   The `jal` at 0x19df4 calls store_fpcsr with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x19e20 calls post_sig with a0=0x8, a1=[[-0x5fec]+856]:1, a2=?, a3=?, a5=[-0x5fec], a6=sym(round_bit).
-  The `jal` at 0x19e4c calls fpstore_s with a0=[(sym(.data)+22240 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2))], a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
+  The `jal` at 0x19e4c calls fpstore_s with a0=[(sym(.data)+11120 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2))], a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
   The `jal` at 0x19e54 calls store_fpcsr with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x19fcc calls post_sig with a0=0x8, a1=?, a2=?, a3=?, a5=[-0x5fec], a6=sym(round_bit).
   The `beq` branch at 0x19838 targets 0x19858, is taken when (a6(=0x7fffffffffffffff) & a3) == 0, and falls through when (a6(=0x7fffffffffffffff) & a3) != 0.
@@ -6143,7 +6143,7 @@ Each entry records selected software behavior from its exact binary range. The r
   15 such `lw` accesses load 4 bytes from [-0x5fec] +0x34c, including `lw` at 0x1a1d8, `lw` at 0x1a1e8, `lw` at 0x1a378.
   10 such `sw` accesses store 4 bytes to [-0x5fec] +0x34c, including `sw` at 0x1a1e0, `sw` at 0x1a380, `sw` at 0x1a3d8.
   5 such `lb` accesses load 1 byte from ?, including `lb` at 0x1a2b4, `lb` at 0x1a338, `lb` at 0x1a5b8.
-  The `lwu` at 0x1a3ac loads 4 bytes from (sym(.data)+22240 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2)) +0x0.
+  The `lwu` at 0x1a3ac loads 4 bytes from (sym(.data)+11120 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2)) +0x0.
   3 such `sb` accesses store 1 byte to [-0x5fec] +0x359, including `sb` at 0x1a3c8, `sb` at 0x1a420, `sb` at 0x1a450.
   The `lb` at 0x1a4c0 loads 1 byte from ((([[-0x5fec]+856]:1 << 0x4) + (a0 << 0x3)) + sym(round_bit)) +0x1.
   The `jal` at 0x1a1f8 calls post_sig with a0=0x8, a1=?, a2=[-0x5fec], a3=?, a5=([[-0x5fec]+844] | 0x1004).
@@ -6227,18 +6227,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x1a77c targets 0x1a434 and is always taken.
   The `beq` branch at 0x1a788 targets 0x1a604 and is always taken.
   The `beq` branch at 0x1a790 targets 0x1a684 and is always taken.
-  The return at 0x1a22c has v0 = one of ?, [(sym(.data)+22240 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2))].
+  The return at 0x1a22c has v0 = one of ?, [(sym(.data)+11120 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x2))].
   The instructions from 0x1a48c to 0x1a48c are not reached by any path from the entry, and their branches are not listed.
 - `add_cpu` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1ab10 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1ab10-0x1ab90 (128 bytes).
   It occupies 128 bytes.
-  The `jal` at 0x1ab28 calls hwgraph_path_add with a0=a0 at entry (arg0), a1=sym(.rodata)+19600, a2=sp-32, a3=a3 at entry (arg3).
-  The `jal` at 0x1ab40 calls hwgraph_path_add with a0=?, a1=sym(.rodata)+19608, a2=sp-28, a3=?.
+  The `jal` at 0x1ab28 calls hwgraph_path_add with a0=a0 at entry (arg0), a1=sym(.rodata)+9800, a2=sp-32, a3=a3 at entry (arg3).
+  The `jal` at 0x1ab40 calls hwgraph_path_add with a0=?, a1=sym(.rodata)+9804, a2=sp-28, a3=?.
   The `jal` at 0x1ab4c calls mark_cpuvertex_as_cpu with a0=?, a1=0x0, a2=?, a3=?.
   The `jal` at 0x1ab58 calls device_master_set with a0=?, a1=a0 at entry (arg0), a2=?, a3=?.
-  The `jal` at 0x1ab80 calls cmn_err with a0=0x0, a1=sym(.rodata)+19296, a2=sym(.rodata)+19600, a3=?.
+  The `jal` at 0x1ab80 calls cmn_err with a0=0x0, a1=sym(.rodata)+9648, a2=sym(.rodata)+9800, a3=?.
   The `bne` branch at 0x1ab30 targets 0x1ab70, is taken when v0(=ret(hwgraph_path_add)) != 0, and falls through when v0(=ret(hwgraph_path_add)) == 0.
   The `beq` branch at 0x1ab88 targets 0x1ab38 and is always taken.
   The return at 0x1ab68 has v0 = ret(device_master_set).
@@ -6247,30 +6247,30 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1ab90-0x1ad34 (420 bytes).
   It occupies 420 bytes.
-  The `lbu` at 0x1abcc loads 1 byte from sym(.rodata) +0x4c34.
-  The `lbu` at 0x1abd0 loads 1 byte from sym(.rodata) +0x4c18.
-  The `lbu` at 0x1abd4 loads 1 byte from sym(.rodata) +0x4c35.
-  The `ld` at 0x1abd8 loads 8 bytes from sym(.rodata) +0x4c28.
-  The `ld` at 0x1abdc loads 8 bytes from sym(.rodata) +0x4c20.
-  The `ld` at 0x1abe0 loads 8 bytes from sym(.rodata) +0x4c00.
-  The `lw` at 0x1abe4 loads 4 bytes from sym(.rodata) +0x4c08.
-  The `lhu` at 0x1abe8 loads 2 bytes from sym(.rodata) +0x4c0c.
-  The `lbu` at 0x1abec loads 1 byte from sym(.rodata) +0x4c0e.
+  The `lbu` at 0x1abcc loads 1 byte from sym(.rodata) +0x2684.
+  The `lbu` at 0x1abd0 loads 1 byte from sym(.rodata) +0x2668.
+  The `lbu` at 0x1abd4 loads 1 byte from sym(.rodata) +0x2685.
+  The `ld` at 0x1abd8 loads 8 bytes from sym(.rodata) +0x2678.
+  The `ld` at 0x1abdc loads 8 bytes from sym(.rodata) +0x2670.
+  The `ld` at 0x1abe0 loads 8 bytes from sym(.rodata) +0x2650.
+  The `lw` at 0x1abe4 loads 4 bytes from sym(.rodata) +0x2658.
+  The `lhu` at 0x1abe8 loads 2 bytes from sym(.rodata) +0x265c.
+  The `lbu` at 0x1abec loads 1 byte from sym(.rodata) +0x265e.
   The `lbu` at 0x1ac00 loads 1 byte from a0 (arg0 at entry) +0x3.
-  The `ld` at 0x1ac08 loads 8 bytes from sym(.rodata) +0x4c10.
-  The `lbu` at 0x1ac10 loads 1 byte from sym(.rodata) +0x4c36.
-  The `lw` at 0x1ac1c loads 4 bytes from sym(.rodata) +0x4c30.
+  The `ld` at 0x1ac08 loads 8 bytes from sym(.rodata) +0x2660.
+  The `lbu` at 0x1ac10 loads 1 byte from sym(.rodata) +0x2686.
+  The `lw` at 0x1ac1c loads 4 bytes from sym(.rodata) +0x2680.
   9 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x1ac20, `lbu` at 0x1ac34, `lbu` at 0x1ac4c.
   13 such `sb` accesses store 1 byte to ?, including `sb` at 0x1ac30, `sb` at 0x1ac48, `sb` at 0x1ac70.
   3 such `sdl` accesses store 8 bytes to ?, including `sdl` at 0x1ac40, `sdl` at 0x1ac80, `sdl` at 0x1ac88.
   3 such `sdr` accesses store 8 bytes to ?, including `sdr` at 0x1ac44, `sdr` at 0x1ac84, `sdr` at 0x1ac8c.
   2 such `swl` accesses store 4 bytes to ?, including `swl` at 0x1ac90, `swl` at 0x1ad08.
   2 such `swr` accesses store 4 bytes to ?, including `swr` at 0x1ac94, `swr` at 0x1ad0c.
-  The `lw` at 0x1ad04 loads 4 bytes from sym(.rodata) +0x4d20.
-  The `lbu` at 0x1ad10 loads 1 byte from sym(.rodata) +0x4d25.
-  The `lbu` at 0x1ad14 loads 1 byte from sym(.rodata) +0x4d24.
-  The `jal` at 0x1aba8 calls strncmp with a0=a0 at entry (arg0), a1=sym(.rodata)+19728, a2=0x3, a3=a3 at entry (arg3).
-  The `jal` at 0x1ad24 calls strcpy with a0=a0 at entry (arg0), a1=sp-272, a2=?, a3=?, a6=[sym(.rodata)+19748]:1, a7=[sym(.rodata)+19749]:1.
+  The `lw` at 0x1ad04 loads 4 bytes from sym(.rodata) +0x2690.
+  The `lbu` at 0x1ad10 loads 1 byte from sym(.rodata) +0x2695.
+  The `lbu` at 0x1ad14 loads 1 byte from sym(.rodata) +0x2694.
+  The `jal` at 0x1aba8 calls strncmp with a0=a0 at entry (arg0), a1=sym(.rodata)+9864, a2=0x3, a3=a3 at entry (arg3).
+  The `jal` at 0x1ad24 calls strcpy with a0=a0 at entry (arg0), a1=sp-272, a2=?, a3=?, a6=0x6b, a7=0x0.
   The `beq` branch at 0x1abb0 targets 0x1abc4, is taken when v0(=ret(strncmp)) == 0, and falls through when v0(=ret(strncmp)) != 0.
   The `beq` branch at 0x1ac18 targets 0x1ac40, is taken when a0(=0x64) == a6(=[a0+3]:1), and falls through when a0(=0x64) != a6(=[a0+3]:1).
   The `beq` branch at 0x1ac2c targets 0x1abb4, is taken when t9(?) == 0, and falls through when t9(?) != 0.
@@ -6319,7 +6319,7 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lbu` accesses load 1 byte from [-0x5fec] +0x35a, including `lbu` at 0x1afb0, `lbu` at 0x1b0fc, `lbu` at 0x1b234.
   3 such `lw` accesses load 4 bytes from [-0x5fec] +0x280, including `lw` at 0x1afc0, `lw` at 0x1b244, `lw` at 0x1b354.
   3 such `sd` accesses store 8 bytes to [[-0x5fec]+640] +0x128, including `sd` at 0x1afc8, `sd` at 0x1b248, `sd` at 0x1b358.
-  The `ld` at 0x1b1fc loads 8 bytes from (sym(.data)+22304 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3)) +0x0.
+  The `ld` at 0x1b1fc loads 8 bytes from (sym(.data)+11152 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3)) +0x0.
   The `lb` at 0x1b38c loads 1 byte from (sym(round_bit) + ((a0 << 0x3) + ([[-0x5fec]+856]:1 << 0x4))) +0x1.
   The `jal` at 0x1aef8 calls post_sig with a0=0x8, a1=[[-0x5fec]+856]:1, a2=?, a3=?, a5=[-0x5fec].
   The `jal` at 0x1afb4 calls fpstore_d with a0=?, a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec], a7=(a1 + one of 0x600, 0x601).
@@ -6336,7 +6336,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1b3f0 calls fpstore_d with a0=?, a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
   The `jal` at 0x1b3f8 calls store_fpcsr with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x1b424 calls post_sig with a0=0x8, a1=[[-0x5fec]+856]:1, a2=?, a3=?, a5=[-0x5fec], a6=sym(round_bit).
-  The `jal` at 0x1b450 calls fpstore_d with a0=[(sym(.data)+22304 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3))]:8, a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
+  The `jal` at 0x1b450 calls fpstore_d with a0=[(sym(.data)+11152 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3))]:8, a1=[[-0x5fec]+858]:1, a2=?, a3=[[-0x5fec]+857]:1, a5=[-0x5fec].
   The `jal` at 0x1b458 calls store_fpcsr with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x1b5d4 calls post_sig with a0=0x8, a1=?, a2=?, a3=?, a5=[-0x5fec], a6=sym(round_bit).
   The `beq` branch at 0x1ae54 targets 0x1ae74, is taken when (a6(=0x7fffffffffffffff) & a3) == 0, and falls through when (a6(=0x7fffffffffffffff) & a3) != 0.
@@ -6436,7 +6436,7 @@ Each entry records selected software behavior from its exact binary range. The r
   15 such `lw` accesses load 4 bytes from [-0x5fec] +0x34c, including `lw` at 0x1b7b0, `lw` at 0x1b7c0, `lw` at 0x1b954.
   10 such `sw` accesses store 4 bytes to [-0x5fec] +0x34c, including `sw` at 0x1b7b8, `sw` at 0x1b95c, `sw` at 0x1b9b4.
   5 such `lb` accesses load 1 byte from ?, including `lb` at 0x1b884, `lb` at 0x1b90c, `lb` at 0x1bb90.
-  The `ld` at 0x1b988 loads 8 bytes from (sym(.data)+22304 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3)) +0x0.
+  The `ld` at 0x1b988 loads 8 bytes from (sym(.data)+11152 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3)) +0x0.
   3 such `sb` accesses store 1 byte to [-0x5fec] +0x359, including `sb` at 0x1b9a4, `sb` at 0x1b9fc, `sb` at 0x1ba2c.
   The `lb` at 0x1ba8c loads 1 byte from ((([[-0x5fec]+856]:1 << 0x4) + (a0 << 0x3)) + sym(round_bit)) +0x1.
   The `jal` at 0x1b7d0 calls post_sig with a0=0x8, a1=?, a2=[-0x5fec], a3=?.
@@ -6519,13 +6519,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x1bd5c targets 0x1ba10 and is always taken.
   The `beq` branch at 0x1bd6c targets 0x1bbe4 and is always taken.
   The `beq` branch at 0x1bd74 targets 0x1bc64 and is always taken.
-  The return at 0x1b800 has v0 = one of (one of 0x0, 0x10000000000000 | (a0 << 0x3f)), [(sym(.data)+22304 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3))]:8, ?.
+  The return at 0x1b800 has v0 = one of (one of 0x0, 0x10000000000000 | (a0 << 0x3f)), [(sym(.data)+11152 + ((a0 + ([[-0x5fec]+856]:1 + [[-0x5fec]+856]:1)) << 0x3))]:8, ?.
 - `VEC_unexp` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1bd7c (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1bd7c-0x1bd8c (16 bytes).
   It occupies 16 bytes.
-  The `jal` at 0x1bd84 calls cmn_err with a0=0x0, a1=sym(.data)+22432, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x1bd84 calls cmn_err with a0=0x0, a1=sym(.data)+11216, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
 - `backtouser` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1bd8c (n32).
   Evidence grade: inferred.
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
@@ -6562,7 +6562,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 284 bytes.
   The `ld` at 0x1c1b8 loads 8 bytes from a0 (arg0 at entry) +0x0.
   7 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x0, including `sd` at 0x1c218, `sd` at 0x1c230, `sd` at 0x1c24c.
-  The `lb` at 0x1c2b8 loads 1 byte from table(sym(.data)+22480) +0x0.
+  The `lb` at 0x1c2b8 loads 1 byte from table(sym(.data)+11240) +0x0.
   The `beq` branch at 0x1c1d0 targets 0x1c2cc, is taken when (a3(=[a0]:8) & v1(=0x1fffffffffffff)) == 0, and falls through when (a3(=[a0]:8) & v1(=0x1fffffffffffff)) != 0.
   The `beq` branch at 0x1c1d8 targets 0x1c1ec, is taken when v0(?) == 0, and falls through when v0(?) != 0.
   The `bne` branch at 0x1c200 targets 0x1c258, is taken when (a5(=0xfff0000000000) & a3(=[a0]:8)) != 0, and falls through when (a5(=0xfff0000000000) & a3(=[a0]:8)) == 0.
@@ -6584,7 +6584,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 208 bytes.
   The `ld` at 0x1c358 loads 8 bytes from a0 (arg0 at entry) +0x0.
   5 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x0, including `sd` at 0x1c3a4, `sd` at 0x1c3bc, `sd` at 0x1c3d8.
-  The `lb` at 0x1c3fc loads 1 byte from table(sym(.data)+22512) +0x0.
+  The `lb` at 0x1c3fc loads 1 byte from table(sym(.data)+11256) +0x0.
   The `beq` branch at 0x1c368 targets 0x1c420, is taken when (a3(=[a0]:8) & at(=0xffffff)) == 0, and falls through when (a3(=[a0]:8) & at(=0xffffff)) != 0.
   The `bgez` branch at 0x1c370 targets 0x1c384, is taken when a4(=([a0]:8 << 0x28)) >= 0 (signed), and falls through when a4(=([a0]:8 << 0x28)) < 0 (signed).
   The `bne` branch at 0x1c38c targets 0x1c3e4, is taken when v1(?) != 0, and falls through when v1(?) == 0.
@@ -6817,7 +6817,7 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `ld` accesses load 8 bytes from ?, including `ld` at 0x1d3e0, `ld` at 0x1d420.
   The `ld` at 0x1d47c loads 8 bytes from ([sym(tlbdumptbl)] + (((a0 << 0x7) + a0) << 0x3)) +0x8.
   The `jal` at 0x1d370 calls tlbgetent with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x1d458 calls printf with a0=sym(.rodata)+20400, a1=a0 at entry (arg0), a2=?, a3=?, a5=0xffffffff80000000.
+  The `jal` at 0x1d458 calls printf with a0=sym(.rodata)+10200, a1=a0 at entry (arg0), a2=?, a3=?, a5=0xffffffff80000000.
   The `beq` branch at 0x1d338 targets 0x1d460, is taken when a3(=[sym(tlbdumptbl)]) == 0, and falls through when a3(=[sym(tlbdumptbl)]) != 0.
   The `blez` branch at 0x1d354 targets 0x1d394, is taken when a1(=[sym(ntlbentries)]) <= 0 (signed), and falls through when a1(=[sym(ntlbentries)]) > 0 (signed).
   The `bne` branch at 0x1d38c targets 0x1d364, is taken when s0(?) < a3(=[sym(ntlbentries)]) (signed), and falls through when s0(?) >= a3(=[sym(ntlbentries)]) (signed).
@@ -6838,7 +6838,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x1d480-0x1d514 (148 bytes).
   It occupies 148 bytes.
   The `lw` at 0x1d4b0 loads 4 bytes from ?.
-  The `jal` at 0x1d4f0 calls printf with a0=sym(.rodata)+20400, a1=?, a2=?, a3=[sym(maxcpus)].
+  The `jal` at 0x1d4f0 calls printf with a0=sym(.rodata)+10200, a1=?, a2=?, a3=[sym(maxcpus)].
   The `beq` branch at 0x1d494 targets 0x1d4d0, is taken when at(=[sym(tlbdumptbl)]) == 0, and falls through when at(=[sym(tlbdumptbl)]) != 0.
   The `blez` branch at 0x1d4a0 targets 0x1d4d0, is taken when a3(=[sym(maxcpus)]) <= 0 (signed), and falls through when a3(=[sym(maxcpus)]) > 0 (signed).
   The `beq` branch at 0x1d4bc targets 0x1d4e4, is taken when a4(?) == 0, and falls through when a4(?) != 0.
@@ -6851,7 +6851,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1d514-0x1d54c (56 bytes).
   It occupies 56 bytes.
-  The `jal` at 0x1d528 calls strncmp with a0=sym(.rodata)+20608, a1=a0 at entry (arg0), a2=0x5, a3=a3 at entry (arg3).
+  The `jal` at 0x1d528 calls strncmp with a0=sym(.rodata)+10304, a1=a0 at entry (arg0), a2=0x5, a3=a3 at entry (arg3).
   The `beq` branch at 0x1d530 targets 0x1d544, is taken when v0(=ret(strncmp)) == 0, and falls through when v0(=ret(strncmp)) != 0.
   The `beq` branch at 0x1d544 targets 0x1d53c and is always taken.
   The return at 0x1d53c has v0 = one of 0x0, sym(.rodata)+10312.
@@ -7018,7 +7018,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Calls exception_exit via direct with a0=a0 at entry (arg0), a1=?, a2=?, a3=[-0x5fec] (`j` at 0x1d8c4).
   Calls exception_exit via direct with a0=a0 at entry (arg0), a1=[-0x5fec], a2=[-0x5df8], a3=a3 at entry (arg3) (`j` at 0x1d8cc).
   Calls VEC_trap via direct with a0=a0 at entry (arg0), a1=0x8c, a2=a2 at entry (arg2), a3=a3 at entry (arg3) (`j` at 0x1d8d4).
-  The `jal` at 0x1d8ec calls cmn_err with a0=0x0, a1=sym(.data)+22544, a2=?, a3=?.
+  The `jal` at 0x1d8ec calls cmn_err with a0=0x0, a1=sym(.data)+11272, a2=?, a3=?.
   The `beq` branch at 0x1d574 targets 0x1d8dc, is taken when (s0 & 0x18) == 0, and falls through when (s0 & 0x18) != 0.
   The `bne` branch at 0x1d58c targets 0x1d8d4, is taken when a1(?) != at(=0x1), and falls through when a1(?) == at(=0x1).
   The `beq` branch at 0x1d5b4 targets 0x1d8cc, is taken when a2(=[-0x5df8]) == a1(=[-0x5fec]), and falls through when a2(=[-0x5df8]) != a1(=[-0x5fec]).
@@ -7034,20 +7034,20 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1d8f4-0x1d9fc (264 bytes).
   It occupies 264 bytes.
-  The `sw` at 0x1d944 stores 4 bytes to sym(.bss) +0x2440.
-  The `sh` at 0x1d950 stores 2 bytes to sym(.bss) +0x2448.
-  The `sh` at 0x1d95c stores 2 bytes to sym(.bss) +0x244a.
-  The `sw` at 0x1d968 stores 4 bytes to sym(.bss) +0x244c.
+  The `sw` at 0x1d944 stores 4 bytes to sym(.bss) +0x1220.
+  The `sh` at 0x1d950 stores 2 bytes to sym(.bss) +0x1228.
+  The `sh` at 0x1d95c stores 2 bytes to sym(.bss) +0x122a.
+  The `sw` at 0x1d968 stores 4 bytes to sym(.bss) +0x122c.
   3 such `lw` accesses load 4 bytes from sym(pdaindr) +0x4, including `lw` at 0x1d974, `lw` at 0x1d980, `lw` at 0x1d9e4.
   The `sw` at 0x1d97c stores 4 bytes to [sym(pdaindr)+4] +0x360.
   The `lw` at 0x1d988 loads 4 bytes from [sym(pdaindr)+4] +0x360.
   The `jal` at 0x1d8fc calls get_cpu_irr with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0x1d92c calls spinlock_init with a0=sym(.bss)+9280, a1=sym(.rodata)+20672, a2=?, a3=?.
+  The `jal` at 0x1d92c calls spinlock_init with a0=sym(.bss)+4640, a1=sym(.rodata)+10336, a2=?, a3=?.
   The `jal` at 0x1d96c calls hwperf_cpu_monitor_info_alloc [0x1efc0] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x1d994 calls init_mutex with a0=[[sym(pdaindr)+4]+864]+28, a1=0x0, a2=sym(.rodata)+20672, a3=?.
+  The `jal` at 0x1d994 calls init_mutex with a0=[[sym(pdaindr)+4]+864]+28, a1=0x0, a2=sym(.rodata)+10336, a3=?.
   The `jal` at 0x1d9b4 calls hwperf_cpu_monitor_info_alloc [0x1efc0] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x1d9d8 calls cmn_err with a0=0x0, a1=sym(.rodata)+20672, a2=?, a3=?.
-  The `jal` at 0x1d9ec calls cmn_err with a0=0x0, a1=sym(.rodata)+20672, a2=?, a3=?.
+  The `jal` at 0x1d9d8 calls cmn_err with a0=0x0, a1=sym(.rodata)+10336, a2=?, a3=?.
+  The `jal` at 0x1d9ec calls cmn_err with a0=0x0, a1=sym(.rodata)+10336, a2=?, a3=?.
   The `beq` branch at 0x1d90c targets 0x1d9c4, is taken when at(?) >= 0x23 (signed), and falls through when at(?) < 0x23 (signed).
   The `blez` branch at 0x1d964 targets 0x1d9b0, is taken when a1(=[sym(maxcpus)]) <= 0 (signed), and falls through when a1(=[sym(maxcpus)]) > 0 (signed).
   The `beq` branch at 0x1d978 targets 0x1d9d4, is taken when v0(=ret(hwperf_cpu_monitor_info_alloc)) == 0, and falls through when v0(=ret(hwperf_cpu_monitor_info_alloc)) != 0.
@@ -7195,7 +7195,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1de70 calls splx with a0=ret(splhi), a1=[a0+508], a2=([ret(hwperf_cpu_monitor_info_alloc)+4] | 0x2), a3=([ret(hwperf_cpu_monitor_info_alloc)]:2 | 0x10).
   The `jal` at 0x1de80 calls splx with a0=ret(splhi), a1=?, a2=?, a3=?.
   The `jal` at 0x1de90 calls hwperf_cpu_monitor_info_free with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x1dec0 calls cmn_err with a0=0x0, a1=sym(.rodata)+20672, a2=?, a3=?.
+  The `jal` at 0x1dec0 calls cmn_err with a0=0x0, a1=sym(.rodata)+10336, a2=?, a3=?.
   The `beq` branch at 0x1ddb8 targets 0x1ddcc, is taken when v0(=[a0+724]) == 0, and falls through when v0(=[a0+724]) != 0.
   The `beq` branch at 0x1dde8 targets 0x1de00 and is always taken.
   The `beq` branch at 0x1ddfc targets 0x1de80, is taken when s0(=one of 0x0, 0x1) == 0, and falls through when s0(=one of 0x0, 0x1) != 0.
@@ -7266,11 +7266,11 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1e0bc-0x1e120 (100 bytes).
   It occupies 100 bytes.
-  The `lhu` at 0x1e0c0 loads 2 bytes from sym(.bss) +0x2450.
+  The `lhu` at 0x1e0c0 loads 2 bytes from sym(.bss) +0x1228.
   The `lw` at 0x1e0e0 loads 4 bytes from (sym(pdaindr) + (a0 << 0x3)) +0x4.
   The `lw` at 0x1e0e4 loads 4 bytes from [(sym(pdaindr) + (a0 << 0x3))+4] +0x360.
   The `jal` at 0x1e10c calls hwperf_get_counters with a0=[[(sym(pdaindr) + (a0 << 0x3))+4]+864], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3), a5=0x16.
-  The `bne` branch at 0x1e0c8 targets 0x1e0fc, is taken when at(=[sym(.bss)+9296]:2) != v0(=0x8), and falls through when at(=[sym(.bss)+9296]:2) == v0(=0x8).
+  The `bne` branch at 0x1e0c8 targets 0x1e0fc, is taken when at(=[sym(.bss)+4648]:2) != v0(=0x8), and falls through when at(=[sym(.bss)+4648]:2) == v0(=0x8).
   The `bne` branch at 0x1e0ec targets 0x1e10c, is taken when v0(=[[(sym(pdaindr) + (a0 << 0x3))+4]+864]) != 0, and falls through when v0(=[[(sym(pdaindr) + (a0 << 0x3))+4]+864]) == 0.
   The `beq` branch at 0x1e0f4 targets 0x1e104 and is always taken.
   The `beq` branch at 0x1e118 targets 0x1e100 and is always taken.
@@ -7343,14 +7343,14 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1e378-0x1e3c8 (80 bytes).
   It occupies 80 bytes.
-  The `lhu` at 0x1e37c loads 2 bytes from sym(.bss) +0x2450.
+  The `lhu` at 0x1e37c loads 2 bytes from sym(.bss) +0x1228.
   The `lw` at 0x1e390 loads 4 bytes from a0 (arg0 at entry) +0x18.
   The `lh` at 0x1e394 loads 2 bytes from a0 (arg0 at entry) +0x0.
   The `sw` at 0x1e39c stores 4 bytes to a0 (arg0 at entry) +0x18.
   The `sh` at 0x1e3ac stores 2 bytes to a0 (arg0 at entry) +0x0.
   The `sw` at 0x1e3bc stores 4 bytes to abs 0xffffffffffffa364.
   The `jal` at 0x1e3b8 calls r1nk_perf_start_counters with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `beq` branch at 0x1e388 targets 0x1e3b8, is taken when at(=[sym(.bss)+9296]:2) == v0(=0x4), and falls through when at(=[sym(.bss)+9296]:2) != v0(=0x4).
+  The `beq` branch at 0x1e388 targets 0x1e3b8, is taken when at(=[sym(.bss)+4648]:2) == v0(=0x4), and falls through when at(=[sym(.bss)+4648]:2) != v0(=0x4).
   The `beq` branch at 0x1e3c0 targets 0x1e3b0 and is always taken.
   The return at 0x1e3b0 has v0 = one of ?, ret(r1nk_perf_start_counters).
 - `hwperf_multiplex_events` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1e3c8 (n32).
@@ -7399,8 +7399,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lh` at 0x1e55c loads 2 bytes from ret(cpumon_alloc) +0x0.
   The `sh` at 0x1e568 stores 2 bytes to ret(cpumon_alloc) +0x16.
   The `sh` at 0x1e570 stores 2 bytes to ret(cpumon_alloc) +0x0.
-  The `ll` at 0x1e588 loads 4 bytes from sym(.bss) +0x2458.
-  The `sc` at 0x1e594 stores 4 bytes to sym(.bss) +0x2458.
+  The `ll` at 0x1e588 loads 4 bytes from sym(.bss) +0x122c.
+  The `sc` at 0x1e594 stores 4 bytes to sym(.bss) +0x122c.
   The `jal` at 0x1e528 calls mutex_lock with a0=[a0+724]+28, a1=0x19, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x1e540 calls cpumon_alloc with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jal` at 0x1e550 calls hwperf_copy_cmp with a0=[a0+724], a1=ret(cpumon_alloc), a2=?, a3=?.
@@ -7408,7 +7408,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1e5b4 calls mutex_unlock with a0=[a0+724]+28, a1=?, a2=?, a3=?.
   The `beq` branch at 0x1e518 targets 0x1e5a0, is taken when s0(=[a0+724]) == 0, and falls through when s0(=[a0+724]) != 0.
   The `beq` branch at 0x1e538 targets 0x1e5b4, is taken when (at(=[[a0+724]]:2) & 0xf) == 0, and falls through when (at(=[[a0+724]]:2) & 0xf) != 0.
-  The `beql` branch at 0x1e598 targets 0x1e588, is taken when a5(=[sym(.bss)+9304]+1) == 0, and falls through when a5(=[sym(.bss)+9304]+1) != 0; its branch-likely delay slot `nop` at 0x1e59c runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0x1e598 targets 0x1e588, is taken when a5(=[sym(.bss)+4652]+1) == 0, and falls through when a5(=[sym(.bss)+4652]+1) != 0; its branch-likely delay slot `nop` at 0x1e59c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0x1e5bc targets 0x1e5a4 and is always taken.
   The return at 0x1e5ac has v0 = one of ?, ret(mutex_unlock).
 - `hwperf_intr` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1e5c4 (n32).
@@ -7449,24 +7449,24 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1e69c-0x1e77c (224 bytes).
   It occupies 224 bytes.
-  The `lw` at 0x1e6c8 loads 4 bytes from sym(.bss) +0x2440.
-  The `lhu` at 0x1e6d8 loads 2 bytes from sym(.bss) +0x2448.
-  2 such `sh` accesses store 2 bytes to sym(.bss) +0x2448, including `sh` at 0x1e73c, `sh` at 0x1e754.
-  The `sw` at 0x1e74c stores 4 bytes to sym(.bss) +0x2440.
-  The `ll` at 0x1e75c loads 4 bytes from sym(.bss) +0x2440.
-  The `sc` at 0x1e768 stores 4 bytes to sym(.bss) +0x2440.
+  The `lw` at 0x1e6c8 loads 4 bytes from sym(.bss) +0x1220.
+  The `lhu` at 0x1e6d8 loads 2 bytes from sym(.bss) +0x1228.
+  2 such `sh` accesses store 2 bytes to sym(.bss) +0x1228, including `sh` at 0x1e73c, `sh` at 0x1e754.
+  The `sw` at 0x1e74c stores 4 bytes to sym(.bss) +0x1220.
+  The `ll` at 0x1e75c loads 4 bytes from sym(.bss) +0x1220.
+  The `sc` at 0x1e768 stores 4 bytes to sym(.bss) +0x1220.
   The `jal` at 0x1e6ac calls splhi with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0x1e6f4 calls splx with a0=ret(splhi), a1=?, a2=?, a3=?, a6=sym(.bss)+9280.
+  The `jal` at 0x1e6f4 calls splx with a0=ret(splhi), a1=?, a2=?, a3=?, a6=sym(.bss)+4640.
   The `beq` branch at 0x1e6d4 targets 0x1e710, is taken when (s0(=a1) & 0x8) == 0, and falls through when (s0(=a1) & 0x8) != 0.
-  The `beq` branch at 0x1e6e0 targets 0x1e728, is taken when a4(=[sym(.bss)+9288]:2) == v0(=0x2), and falls through when a4(=[sym(.bss)+9288]:2) != v0(=0x2).
-  The `beq` branch at 0x1e6ec targets 0x1e738, is taken when a4(=[sym(.bss)+9288]:2) == v1(=0x1), and falls through when a4(=[sym(.bss)+9288]:2) != v1(=0x1).
-  The `beq` branch at 0x1e710 targets 0x1e754, is taken when a4(=[sym(.bss)+9288]:2) == a1(=0x1), and falls through when a4(=[sym(.bss)+9288]:2) != a1(=0x1).
-  The `bne` branch at 0x1e718 targets 0x1e6f4, is taken when t0(=0x4) != a4(=[sym(.bss)+9288]:2), and falls through when t0(=0x4) == a4(=[sym(.bss)+9288]:2).
+  The `beq` branch at 0x1e6e0 targets 0x1e728, is taken when a4(=[sym(.bss)+4648]:2) == v0(=0x2), and falls through when a4(=[sym(.bss)+4648]:2) != v0(=0x2).
+  The `beq` branch at 0x1e6ec targets 0x1e738, is taken when a4(=[sym(.bss)+4648]:2) == v1(=0x1), and falls through when a4(=[sym(.bss)+4648]:2) != v1(=0x1).
+  The `beq` branch at 0x1e710 targets 0x1e754, is taken when a4(=[sym(.bss)+4648]:2) == a1(=0x1), and falls through when a4(=[sym(.bss)+4648]:2) != a1(=0x1).
+  The `bne` branch at 0x1e718 targets 0x1e6f4, is taken when t0(=0x4) != a4(=[sym(.bss)+4648]:2), and falls through when t0(=0x4) == a4(=[sym(.bss)+4648]:2).
   The `beq` branch at 0x1e720 targets 0x1e750 and is always taken.
-  The `bne` branch at 0x1e728 targets 0x1e6f4, is taken when a5(=[sym(.bss)+9280]) != a1(=a0), and falls through when a5(=[sym(.bss)+9280]) == a1(=a0).
+  The `bne` branch at 0x1e728 targets 0x1e6f4, is taken when a5(=[sym(.bss)+4640]) != a1(=a0), and falls through when a5(=[sym(.bss)+4640]) == a1(=a0).
   The `beq` branch at 0x1e730 targets 0x1e73c and is always taken.
   The `beq` branch at 0x1e748 targets 0x1e6f4 and is always taken.
-  The `beql` branch at 0x1e76c targets 0x1e75c, is taken when t1(=[sym(.bss)+9280]+1) == 0, and falls through when t1(=[sym(.bss)+9280]+1) != 0; its branch-likely delay slot `nop` at 0x1e770 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0x1e76c targets 0x1e75c, is taken when t1(=[sym(.bss)+4640]+1) == 0, and falls through when t1(=[sym(.bss)+4640]+1) != 0; its branch-likely delay slot `nop` at 0x1e770 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0x1e774 targets 0x1e6f4 and is always taken.
   The return at 0x1e708 has v0 = one of 0x0, 0x10.
 - `hwperf_check_release` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1e77c (n32).
@@ -7481,9 +7481,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lh` at 0x1e858 loads 2 bytes from [[sym(pdaindr)+4]+864] +0x16.
   The `jal` at 0x1e7c4 calls nano_delay with a0=sp-64, a1=a1 at entry (arg1), a2=[a0]:2, a3=a3 at entry (arg3).
   The `jal` at 0x1e86c calls nano_delay with a0=sp-64, a1=[[[sym(pdaindr)+4]+864]+22]:2, a2=[sym(maxcpus)], a3=?.
-  The `jal` at 0x1e8a4 calls assfail with a0=sym(.rodata)+20672, a1=sym(.rodata)+20672, a2=0x384, a3=?.
-  The `jal` at 0x1e8c0 calls assfail with a0=sym(.rodata)+20672, a1=sym(.rodata)+20672, a2=0x378, a3=?.
-  The `jal` at 0x1e8d8 calls assfail with a0=sym(.rodata)+20672, a1=sym(.rodata)+20672, a2=0x389, a3=?, a4=sym(pdaindr).
+  The `jal` at 0x1e8a4 calls assfail with a0=sym(.rodata)+10336, a1=sym(.rodata)+10336, a2=0x384, a3=?.
+  The `jal` at 0x1e8c0 calls assfail with a0=sym(.rodata)+10336, a1=sym(.rodata)+10336, a2=0x378, a3=?.
+  The `jal` at 0x1e8d8 calls assfail with a0=sym(.rodata)+10336, a1=sym(.rodata)+10336, a2=0x389, a3=?, a4=sym(pdaindr).
   The `beq` branch at 0x1e7b0 targets 0x1e7f4, is taken when (a2(=[a0]:2) & 0x1) == 0, and falls through when (a2(=[a0]:2) & 0x1) != 0.
   The `beq` branch at 0x1e7bc targets 0x1e7d8, is taken when v1(=[a0+22]:2) == s3(=-0x1), and falls through when v1(=[a0+22]:2) != s3(=-0x1).
   The `bne` branch at 0x1e7d0 targets 0x1e8b4, is taken when a0(=[a0+22]:2) != s3(=-0x1), and falls through when a0(=[a0+22]:2) == s3(=-0x1).
@@ -7509,23 +7509,23 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x1e8e8-0x1e9b4 (204 bytes).
   It occupies 204 bytes.
   3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x0, including `lh` at 0x1e8fc, `lh` at 0x1e92c, `lh` at 0x1e98c.
-  The `lw` at 0x1e918 loads 4 bytes from sym(.bss) +0x244c.
-  3 such `sh` accesses store 2 bytes to sym(.bss) +0x2448, including `sh` at 0x1e928, `sh` at 0x1e9a0, `sh` at 0x1e9b0.
+  The `lw` at 0x1e918 loads 4 bytes from sym(.bss) +0x122c.
+  3 such `sh` accesses store 2 bytes to sym(.bss) +0x1228, including `sh` at 0x1e928, `sh` at 0x1e9a0, `sh` at 0x1e9b0.
   2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x0, including `sh` at 0x1e934, `sh` at 0x1e998.
-  The `sw` at 0x1e938 stores 4 bytes to sym(.bss) +0x2440.
-  The `ll` at 0x1e964 loads 4 bytes from sym(.bss) +0x2440.
-  The `sc` at 0x1e970 stores 4 bytes to sym(.bss) +0x2440.
-  The `lhu` at 0x1e988 loads 2 bytes from sym(.bss) +0x2448.
+  The `sw` at 0x1e938 stores 4 bytes to sym(.bss) +0x1220.
+  The `ll` at 0x1e964 loads 4 bytes from sym(.bss) +0x1220.
+  The `sc` at 0x1e970 stores 4 bytes to sym(.bss) +0x1220.
+  The `lhu` at 0x1e988 loads 2 bytes from sym(.bss) +0x1228.
   The `jal` at 0x1e8f4 calls splhi with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0x1e93c calls splx with a0=ret(splhi), a1=?, a2=?, a3=sym(.bss)+9280, a6=one of -0x1, 0x4.
+  The `jal` at 0x1e93c calls splx with a0=ret(splhi), a1=?, a2=?, a3=sym(.bss)+4640, a6=one of -0x1, 0x4.
   The `beq` branch at 0x1e90c targets 0x1e950, is taken when (a5(=[a0]:2) & 0x2) == 0, and falls through when (a5(=[a0]:2) & 0x2) != 0.
-  The `beq` branch at 0x1e920 targets 0x1e99c, is taken when v0(=[sym(.bss)+9292]) == 0, and falls through when v0(=[sym(.bss)+9292]) != 0.
+  The `beq` branch at 0x1e920 targets 0x1e99c, is taken when v0(=[sym(.bss)+4652]) == 0, and falls through when v0(=[sym(.bss)+4652]) != 0.
   The `beq` branch at 0x1e95c targets 0x1e93c, is taken when (a5(=[a0]:2) & 0x1) == 0, and falls through when (a5(=[a0]:2) & 0x1) != 0.
-  The `beql` branch at 0x1e974 targets 0x1e964, is taken when t0(=[sym(.bss)+9280]-1) == 0, and falls through when t0(=[sym(.bss)+9280]-1) != 0; its branch-likely delay slot `nop` at 0x1e978 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0x1e984 targets 0x1e9a4, is taken when a7(=[sym(.bss)+9280]-1) == 0, and falls through when a7(=[sym(.bss)+9280]-1) != 0.
+  The `beql` branch at 0x1e974 targets 0x1e964, is taken when t0(=[sym(.bss)+4640]-1) == 0, and falls through when t0(=[sym(.bss)+4640]-1) != 0; its branch-likely delay slot `nop` at 0x1e978 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0x1e984 targets 0x1e9a4, is taken when a7(=[sym(.bss)+4640]-1) == 0, and falls through when a7(=[sym(.bss)+4640]-1) != 0.
   The `beq` branch at 0x1e994 targets 0x1e93c and is always taken.
   The `beq` branch at 0x1e99c targets 0x1e92c and is always taken.
-  The `bne` branch at 0x1e9a4 targets 0x1e98c, is taken when a4(=[sym(.bss)+9288]:2) != a5(=0x4), and falls through when a4(=[sym(.bss)+9288]:2) == a5(=0x4).
+  The `bne` branch at 0x1e9a4 targets 0x1e98c, is taken when a4(=[sym(.bss)+4648]:2) != a5(=0x4), and falls through when a4(=[sym(.bss)+4648]:2) == a5(=0x4).
   The `beq` branch at 0x1e9ac targets 0x1e98c and is always taken.
   The return at 0x1e948 has v0 = ret(splx).
 - `hwperf_find_cpu` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1e9b4 (n32).
@@ -7701,7 +7701,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0x1ef9c-0x1efc0 (36 bytes).
   It occupies 36 bytes.
-  The `jal` at 0x1efac calls cmn_err with a0=0x0, a1=sym(.rodata)+21088, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
+  The `jal` at 0x1efac calls cmn_err with a0=0x0, a1=sym(.rodata)+10544, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The return at 0x1efb8 has v0 = ret(cmn_err).
 - `hwperf_cpu_monitor_info_free` in `usr/cpu/sysgen/IP32boot/kernel.o` at 0x1f094 (n32).
   Evidence grade: inferred.
@@ -7729,7 +7729,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1f228 calls r1nkperf_data_register_set with a0=0x2, a1=?, a2=?, a3=?.
   The `jal` at 0x1f320 calls r1nk_perf_intr_action with a0=a0 at entry (arg0), a1=[-0x5c9c], a2=one of 0x0, 0x1, a3=?.
   The `jal` at 0x1f32c calls r1nk_perf_start_counters with a0=[-0x5c9c], a1=?, a2=?, a3=?.
-  The `jal` at 0x1f354 calls assfail with a0=sym(.rodata)+21200, a1=sym(.rodata)+21200, a2=0x65, a3=a3 at entry (arg3).
+  The `jal` at 0x1f354 calls assfail with a0=sym(.rodata)+10600, a1=sym(.rodata)+10600, a2=0x65, a3=a3 at entry (arg3).
   The `beq` branch at 0x1f1b0 targets 0x1f334, is taken when s1(=[-0x5c9c]) == 0, and falls through when s1(=[-0x5c9c]) != 0.
   The `beq` branch at 0x1f1c0 targets 0x1f348, is taken when a1(=[[-0x5c9c]+36]:2) >= 0x4 (signed), and falls through when a1(=[[-0x5c9c]+36]:2) < 0x4 (signed).
   The `blez` branch at 0x1f1cc targets 0x1f204, is taken when a1(=[[-0x5c9c]+36]:2) <= 0 (signed), and falls through when a1(=[[-0x5c9c]+36]:2) > 0 (signed).
@@ -7837,7 +7837,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1f604 calls r1nk_perf_check_architecture with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jal` at 0x1f634 calls r1nkperf_control_register_set with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0x1f654 calls r1nkperf_data_register_set with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x1f730 calls assfail with a0=sym(.rodata)+21200, a1=sym(.rodata)+21200, a2=0x119, a3=?.
+  The `jal` at 0x1f730 calls assfail with a0=sym(.rodata)+10600, a1=sym(.rodata)+10600, a2=0x119, a3=?.
   The `beq` branch at 0x1f5ec targets 0x1f720, is taken when v0(=ret(issplhi)) == 0, and falls through when v0(=ret(issplhi)) != 0.
   The `beq` branch at 0x1f5fc targets 0x1f6fc, is taken when (at(=[a0]:2) & 0x8) == 0, and falls through when (at(=[a0]:2) & 0x8) != 0.
   The `blez` branch at 0x1f620 targets 0x1f6f8, is taken when a0(=[a0+36]:2) <= 0 (signed), and falls through when a0(=[a0+36]:2) > 0 (signed).
@@ -7864,7 +7864,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0x1f754 calls issplhi with a0=ret(getsr), a1=?, a2=?, a3=?.
   The `jal` at 0x1f764 calls r1nk_perf_check_architecture with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jal` at 0x1f788 calls r1nkperf_control_register_set with a0=?, a1=0x0, a2=?, a3=?.
-  The `jal` at 0x1f7cc calls assfail with a0=sym(.rodata)+21200, a1=sym(.rodata)+21200, a2=0x15e, a3=?.
+  The `jal` at 0x1f7cc calls assfail with a0=sym(.rodata)+10600, a1=sym(.rodata)+10600, a2=0x15e, a3=?.
   The `beq` branch at 0x1f75c targets 0x1f7c0, is taken when v0(=ret(issplhi)) == 0, and falls through when v0(=ret(issplhi)) != 0.
   The `blez` branch at 0x1f778 targets 0x1f7ac, is taken when at(=[a0+36]:2) <= 0 (signed), and falls through when at(=[a0+36]:2) > 0 (signed).
   The `bne` branch at 0x1f7a4 targets 0x1f788, is taken when s0(?) < v1(=[a0+36]:2) (signed), and falls through when s0(?) >= v1(=[a0+36]:2) (signed).
@@ -7917,7 +7917,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x1fa34-0x1fab0 (124 bytes).
   It occupies 124 bytes.
   The `lw` at 0x1fa34 loads 4 bytes from abs 0xffffffffffffa1d0.
-  The `jal` at 0x1faa0 calls cmn_err with a0=0x0, a1=sym(.rodata)+21344, a2=0x0, a3=[-0x5e30], a4=0x9.
+  The `jal` at 0x1faa0 calls cmn_err with a0=0x0, a1=sym(.rodata)+10672, a2=0x0, a3=[-0x5e30], a4=0x9.
   The `beq` branch at 0x1fa54 targets 0x1fa8c, is taken when v0(?) == at(=0xe), and falls through when v0(?) != at(=0xe).
   The `beq` branch at 0x1fa5c targets 0x1fa8c, is taken when v0(?) == a2(=0xf), and falls through when v0(?) != a2(=0xf).
   The `bne` branch at 0x1fa64 targets 0x1fa94, is taken when v0(?) != a4(=0x9), and falls through when v0(?) == a4(=0x9).
@@ -7938,7 +7938,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x1fb08 stores 4 bytes to a0 (arg0 at entry) +0x4.
   The `jal` at 0x1fabc calls r1nk_perf_architecture with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0x1faf8 calls signal with a0=[a0+16], a1=[a0+20]:2, a2=[a0+20]:2, a3=?.
-  The `jal` at 0x1fb24 calls cmn_err with a0=0x5, a1=sym(.rodata)+21472, a2=[a0+20]:2, a3=[a0+16].
+  The `jal` at 0x1fb24 calls cmn_err with a0=0x5, a1=sym(.rodata)+10736, a2=[a0+20]:2, a3=[a0+16].
   The `beq` branch at 0x1fac8 targets 0x1fb0c, is taken when at(=[a0+8]) == v0(=ret(r1nk_perf_architecture)), and falls through when at(=[a0+8]) != v0(=ret(r1nk_perf_architecture)).
   The `beq` branch at 0x1fad4 targets 0x1fb10, is taken when a2(=[a0+20]:2) == 0, and falls through when a2(=[a0+20]:2) != 0.
   The `bne` branch at 0x1fae4 targets 0x1fb10, is taken when (v0(=[a0+4]) & 0x1) != 0, and falls through when (v0(=[a0+4]) & 0x1) == 0.
@@ -8390,7 +8390,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `ld` accesses load 8 bytes from [sym(mvpcontroller_table)] +0x258, including `ld` at 0x2a94, `ld` at 0x2c14, `ld` at 0x2c3c.
   The `lw` at 0x2ac8 loads 4 bytes from table(sym(mvptransfer_stats)) +0x8.
   The `sw` at 0x2ad0 stores 4 bytes to table(sym(mvptransfer_stats)) +0x8.
-  The `lw` at 0x2b18 loads 4 bytes from (sym(.rodata)+192 + ([a0+1127]:1 << 0x2)) +0x0.
+  The `lw` at 0x2b18 loads 4 bytes from (sym(.rodata)+96 + ([a0+1127]:1 << 0x2)) +0x0.
   The `lbu` at 0x2b2c loads 1 byte from a0 (arg0 at entry) +0xba9.
   The `sd` at 0x2b54 stores 8 bytes to ([sym(mvpcontroller_table)] + (a1 << 0x4)) +0x20.
   The `lw` at 0x2b58 loads 4 bytes from sym(mvp_umba) +0x0.
@@ -8404,9 +8404,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x2588 calls pciio_pio_read64 with a0=[([sym(mvpcontroller_table)] + (a1 << 0x2))+192]+8, a1=(a1 << 0x2), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x25c8 calls untimeout with a0=[a0+1552], a1=0x3, a2=[a0+1127]:1, a3=sym(untimeout).
   The `jalr` at 0x2600 calls itimeout with a0=sym(mvptransfer_timeout), a1=a0 at entry (arg0), a2=[sym(mvptransfer_timeout_len)], a3=sym(mvpdummy_spl), a4=sym(itimeout).
-  The `jalr` at 0x2624 calls .text+12552 with a0=a0 at entry (arg0), a1=sp-248, a2=?, a3=?.
-  The `jalr` at 0x2794 calls .text+104 with a0=a0 at entry (arg0), a1=sym(mvptransfer_too_many_errors+52), a2=([a0+1164] | 0x800000), a3=0x800000.
-  The `jalr` at 0x27d4 calls .text+8312 with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?, a5=sym(mvptransfer_screen_interrupt+1688).
+  The `jalr` at 0x2624 calls .text+6276 with a0=a0 at entry (arg0), a1=sp-248, a2=?, a3=?.
+  The `jalr` at 0x2794 calls .text+52 with a0=a0 at entry (arg0), a1=sym(mvptransfer_too_many_errors), a2=([a0+1164] | 0x800000), a3=0x800000.
+  The `jalr` at 0x27d4 calls .text+4156 with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?, a5=sym(mvptransfer_send_events).
   The `jalr` at 0x2868 calls mvppath_send_available with a0=a0 at entry (arg0), a1=0x10000, a2=([a0+1164] | 0x10000), a3=sym(mvppath_send_available), a4=0x10000, a5=[a0+1120].
   The `jalr` at 0x28dc calls mvptransfer_stop with a0=a0 at entry (arg0), a1=0x3, a2=[a0+1127]:1, a3=?.
   The `jalr` at 0x2900 calls sv_signal with a0=[a0+1564], a1=([a0+1164] | 0x100), a2=sym(sv_signal), a3=?.
@@ -8414,7 +8414,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x2a70 calls splhi with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x2aa4 calls splx with a0=ret(splhi), a1=[sym(mvpcontroller_table)]+600, a2=[[sym(mvpcontroller_table)]+600]:8, a3=?, a5=[a0+1120], a6=[[sym(mvpcontroller_table)]+200], a7=[[a0+1120]+9]:1.
   The `jalr` at 0x2af4 calls mvptransfer_enablechannel with a0=a0 at entry (arg0), a1=0x3, a2=?, a3=?, a4=sym(mvptransfer_enablechannel), a5=[a0+1148]:1, a6=(ret(pciio_pio_read64) << 0x3d).
-  Calls (unknown callee) via register with a0=(sym(.rodata)+192 + ([a0+1127]:1 << 0x2)), a1=([a0+1127]:1 << 0x2), a2=?, a3=[(sym(.rodata)+192 + ([a0+1127]:1 << 0x2))], a4=(ret(pciio_pio_read64) << 0x3d) (`jr` at 0x2b1c).
+  Calls (unknown callee) via register with a0=(sym(.rodata)+96 + ([a0+1127]:1 << 0x2)), a1=([a0+1127]:1 << 0x2), a2=?, a3=[(sym(.rodata)+96 + ([a0+1127]:1 << 0x2))], a4=(ret(pciio_pio_read64) << 0x3d) (`jr` at 0x2b1c).
   The `jalr` at 0x2b9c calls mvptransfer_enablechannel with a0=a0 at entry (arg0), a1=0x2, a2=[a0+1127]:1, a3=sym(mvptransfer_enablechannel).
   The `jalr` at 0x2c70 calls pciio_pio_read64 with a0=[[sym(mvpcontroller_table)]+192]+8, a1=sym(pciio_pio_read64), a2=?, a3=?, a5=[a0+1120], a6=([a0+1156] << 0x2f), a7=[a0+1192]:1.
   The `beq` branch at 0x25b0 targets 0x28c0, is taken when a1(=0x3) == a2(=[a0+1127]:1), and falls through when a1(=0x3) != a2(=[a0+1127]:1).
@@ -8440,7 +8440,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bltz` branch at 0x2760 targets 0x29c4, is taken when at(=(ret(pciio_pio_read64) << 0x3a)) < 0 (signed), and falls through when at(=(ret(pciio_pio_read64) << 0x3a)) >= 0 (signed).
   The `bltz` branch at 0x276c targets 0x29f4, is taken when v0(=(ret(pciio_pio_read64) << 0x3b)) < 0 (signed), and falls through when v0(=(ret(pciio_pio_read64) << 0x3b)) >= 0 (signed).
   The `beq` branch at 0x2778 targets 0x280c, is taken when v1(=[a0+1150]:1) == 0, and falls through when v1(=[a0+1150]:1) != 0.
-  The `beq` branch at 0x279c targets 0x280c, is taken when v0(=ret(.text+104)) == 0, and falls through when v0(=ret(.text+104)) != 0.
+  The `beq` branch at 0x279c targets 0x280c, is taken when v0(=ret(.text+52)) == 0, and falls through when v0(=ret(.text+52)) != 0.
   The `beq` branch at 0x27c0 targets 0x27dc, is taken when (a1(?) & a3(=[a0+1156])) == 0, and falls through when (a1(?) & a3(=[a0+1156])) != 0.
   The `bgez` branch at 0x2814 targets 0x2a34, is taken when a6(=([a0+1156] << 0x2f)) >= 0 (signed), and falls through when a6(=([a0+1156] << 0x2f)) < 0 (signed).
   The `beq` branch at 0x2820 targets 0x2a20, is taken when a7(=[a0+1192]:1) == 0, and falls through when a7(=[a0+1192]:1) != 0.
@@ -8492,7 +8492,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2c48 targets 0x2c58, is taken when at(=[[sym(mvpcontroller_table)]+600]:8) == v0(?), and falls through when at(=[[sym(mvpcontroller_table)]+600]:8) != v0(?).
   The `beq` branch at 0x2c5c targets 0x2a9c and is always taken.
   The `beq` branch at 0x2c84 targets 0x2838 and is always taken.
-  The return at 0x2804 has v0 = one of ?, ret(.text+8312).
+  The return at 0x2804 has v0 = one of ?, ret(.text+4156).
   The instructions from 0x2bc0 to 0x2c0c are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x2c8c to 0x3678 are not reached by any path from the entry, and their branches are not listed.
   The indirect jump at 0x2b1c uses a jump table whose successors are unresolved.
@@ -8535,19 +8535,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0x54b8 loads 1 byte from a0 (arg0 at entry) +0x83.
   The `lbu` at 0x550c loads 1 byte from a0 (arg0 at entry) +0x7f.
   The `lbu` at 0x5538 loads 1 byte from a0 (arg0 at entry) +0x7b.
-  The `jalr` at 0x506c calls mvpi2c_read_reg with a0=[a1+16], a1=sym(.data)+3408, a2=-0x2, a3=a3 at entry (arg3).
+  The `jalr` at 0x506c calls mvpi2c_read_reg with a0=[a1+16], a1=sym(.data)+1704, a2=-0x2, a3=a3 at entry (arg3).
   The `jalr` at 0x50b0 calls mvpavio_preset_timing with a0=0x80, a1=?, a2=sym(mvpavio_preset_timing), a3=?.
   The `jalr` at 0x50cc calls mvpavio_preset_input with a0=?, a1=?, a2=?, a3=sym(mvpavio_preset_input).
   The `jalr` at 0x50e8 calls mvpavio_preset_output with a0=?, a1=?, a2=?, a3=?, a5=sym(mvpavio_preset_output).
   The `jalr` at 0x5104 calls mvpavio_preset_genlock with a0=?, a1=?, a2=?, a3=?, a7=sym(mvpavio_preset_genlock).
-  The `jalr` at 0x516c calls mvperrprintf with a0=0x7, a1=sym(.rodata)+320, a2=[a1+4], a3=?, a4=sym(.rodata)+320.
-  The `jalr` at 0x5204 calls .text+38624 with a0=a1 at entry (arg1), a1=?, a2=sym(mvpinterrupt+224), a3=?.
-  The `jalr` at 0x5228 calls .text+36248 with a0=0xf4240, a1=?, a2=sym(av1_sense_timing), a3=sym(mvpi2c_read_reg+220).
-  The `jalr` at 0x523c calls .text+36728 with a0=a1 at entry (arg1), a1=?, a2=sym(mvpi2c_read_reg+700), a3=?.
-  The `jalr` at 0x5334 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+320, a2=[a1+4], a3=[a0+97]:1, a4=[a0+98]:1, a6=one of 0x1, 0x2.
+  The `jalr` at 0x516c calls mvperrprintf with a0=0x7, a1=sym(.rodata)+160, a2=[a1+4], a3=?, a4=sym(.rodata)+160.
+  The `jalr` at 0x5204 calls .text+19312 with a0=a1 at entry (arg1), a1=?, a2=sym(av1_select_input), a3=?.
+  The `jalr` at 0x5228 calls .text+18124 with a0=0xf4240, a1=?, a2=sym(av1_sense_timing), a3=sym(mvp_delay_bus).
+  The `jalr` at 0x523c calls .text+18364 with a0=a1 at entry (arg1), a1=?, a2=sym(av1_sense_timing), a3=?.
+  The `jalr` at 0x5334 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+160, a2=[a1+4], a3=[a0+97]:1, a4=[a0+98]:1, a6=one of 0x1, 0x2.
   The `jalr` at 0x5344 calls mvpavio_setupoutput with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x5358 calls mvpav1_wiggle_ccen with a0=a1 at entry (arg1), a1=0x1, a2=?, a3=?.
-  The `jalr` at 0x5488 calls .text+36320 with a0=a1 at entry (arg1), a1=0x1, a2=?, a3=?.
+  The `jalr` at 0x5488 calls .text+18160 with a0=a1 at entry (arg1), a1=0x1, a2=?, a3=?.
   The `beq` branch at 0x5084 targets 0x54ac, is taken when v0(=ret(mvpi2c_read_reg)) == s0(=-0x1), and falls through when v0(=ret(mvpi2c_read_reg)) != s0(=-0x1).
   The `beq` branch at 0x5094 targets 0x5448, is taken when v1(?) == a0(=0x80), and falls through when v1(?) != a0(=0x80).
   The `beq` branch at 0x50b8 targets 0x5454, is taken when v0(=ret(mvpavio_preset_timing)) == s0(=-0x1), and falls through when v0(=ret(mvpavio_preset_timing)) != s0(=-0x1).
@@ -8567,9 +8567,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bltz` branch at 0x51d8 targets 0x51f8, is taken when s4(?) < 0 (signed), and falls through when s4(?) >= 0 (signed).
   The `beq` branch at 0x51e8 targets 0x514c and is always taken.
   The `bgez` branch at 0x51f0 targets 0x51e0, is taken when s4(?) >= 0 (signed), and falls through when s4(?) < 0 (signed).
-  The `bltz` branch at 0x520c targets 0x54ec, is taken when v0(=ret(.text+38624)) < 0 (signed), and falls through when v0(=ret(.text+38624)) >= 0 (signed).
-  The `blez` branch at 0x5214 targets 0x5234, is taken when v0(=ret(.text+38624)) <= 0 (signed), and falls through when v0(=ret(.text+38624)) > 0 (signed).
-  The `bltz` branch at 0x5244 targets 0x54e0, is taken when v0(=ret(.text+36728)) < 0 (signed), and falls through when v0(=ret(.text+36728)) >= 0 (signed).
+  The `bltz` branch at 0x520c targets 0x54ec, is taken when v0(=ret(.text+19312)) < 0 (signed), and falls through when v0(=ret(.text+19312)) >= 0 (signed).
+  The `blez` branch at 0x5214 targets 0x5234, is taken when v0(=ret(.text+19312)) <= 0 (signed), and falls through when v0(=ret(.text+19312)) > 0 (signed).
+  The `bltz` branch at 0x5244 targets 0x54e0, is taken when v0(=ret(.text+18364)) < 0 (signed), and falls through when v0(=ret(.text+18364)) >= 0 (signed).
   The `beq` branch at 0x5258 targets 0x514c and is always taken.
   The `bltz` branch at 0x5260 targets 0x5484, is taken when s4(?) < 0 (signed), and falls through when s4(?) >= 0 (signed).
   The `beq` branch at 0x5278 targets 0x514c and is always taken.
@@ -8600,7 +8600,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x546c targets 0x5118 and is always taken.
   The `beq` branch at 0x5474 targets 0x5320 and is always taken.
   The `beq` branch at 0x547c targets 0x52dc and is always taken.
-  The `beq` branch at 0x5498 targets 0x54fc, is taken when v0(=ret(.text+36320)) == t9(=-0x1), and falls through when v0(=ret(.text+36320)) != t9(=-0x1).
+  The `beq` branch at 0x5498 targets 0x54fc, is taken when v0(=ret(.text+18160)) == t9(=-0x1), and falls through when v0(=ret(.text+18160)) != t9(=-0x1).
   The `beq` branch at 0x54a4 targets 0x5270 and is always taken.
   The `beq` branch at 0x54b0 targets 0x5364 and is always taken.
   The `beq` branch at 0x54c8 targets 0x550c, is taken when (at(=[a0+131]:1) & 0x2) == 0, and falls through when (at(=[a0+131]:1) & 0x2) != 0.
@@ -8622,7 +8622,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/mvp.o`.
   Range: 0x568c-0x5a58 (972 bytes).
   It occupies 972 bytes.
-  The `lbu` at 0x56b0 loads 1 byte from sym(mvp_umba) +0x1302.
+  The `lbu` at 0x56b0 loads 1 byte from sym(mvp_umba) +0x981.
   2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x5b, including `sb` at 0x56dc, `sb` at 0x5944.
   The `sb` at 0x56e4 stores 1 byte to a0 (arg0 at entry) +0x5a.
   11 such `sb` accesses store 1 byte to ?, including `sb` at 0x5794, `sb` at 0x5798, `sb` at 0x579c.
@@ -8653,11 +8653,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x5704 calls mvpavio_preset_input with a0=sym(mvpavio_preset_input), a1=?, a2=?, a3=?.
   The `jalr` at 0x5720 calls mvpavio_preset_output with a0=?, a1=?, a2=sym(mvpavio_preset_output), a3=?, a4=-0x1.
   The `jalr` at 0x5738 calls mvpavio_preset_genlock with a0=?, a1=?, a2=?, a3=sym(mvpavio_preset_genlock).
-  The `jalr` at 0x5804 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+6256, a2=[a1+4], a3=?.
-  The `jalr` at 0x58d4 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+6256, a2=[a1+4], a3=[a0+97]:1, a4=[a0+98]:1, a5=one of 0x8, 0xf, a6=sym(mvperrprintf).
+  The `jalr` at 0x5804 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+3128, a2=[a1+4], a3=?.
+  The `jalr` at 0x58d4 calls mvperrprintf with a0=0x7, a1=sym(.rodata)+3128, a2=[a1+4], a3=[a0+97]:1, a4=[a0+98]:1, a5=one of 0x8, 0xf, a6=sym(mvperrprintf).
   The `jalr` at 0x58e4 calls mvpavio_setupoutput with a0=a0 at entry (arg0), a1=?, a2=sym(mvpavio_setupoutput), a3=?.
-  The `jalr` at 0x59dc calls mvperrprintf with a0=0x7, a1=sym(.rodata)+6256, a2=[a1+4], a3=?, a5=sym(mvperrprintf).
-  The `beq` branch at 0x56cc targets 0x5940, is taken when s3(=-0x1) == at(=[sym(.data)+4866]:1), and falls through when s3(=-0x1) != at(=[sym(.data)+4866]:1).
+  The `jalr` at 0x59dc calls mvperrprintf with a0=0x7, a1=sym(.rodata)+3128, a2=[a1+4], a3=?, a5=sym(mvperrprintf).
+  The `beq` branch at 0x56cc targets 0x5940, is taken when s3(=-0x1) == at(=[sym(.data)+2433]:1), and falls through when s3(=-0x1) != at(=[sym(.data)+2433]:1).
   The `beq` branch at 0x56f0 targets 0x5978, is taken when v0(=ret(mvpavio_preset_timing)) == s3(=-0x1), and falls through when v0(=ret(mvpavio_preset_timing)) != s3(=-0x1).
   The `beq` branch at 0x570c targets 0x5980, is taken when v0(=ret(mvpavio_preset_input)) == s3(=-0x1), and falls through when v0(=ret(mvpavio_preset_input)) != s3(=-0x1).
   The `beq` branch at 0x5728 targets 0x5988, is taken when v0(=ret(mvpavio_preset_output)) == s3(=-0x1), and falls through when v0(=ret(mvpavio_preset_output)) != s3(=-0x1).
@@ -8766,8 +8766,8 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x460, including `lw` at 0xae00, `lw` at 0xaea8, `lw` at 0xafe8.
   The `sb` at 0xae08 stores 1 byte to [a0+1120] +0x68.
   The `lbu` at 0xafec loads 1 byte from [a0+1120] +0x68.
-  The `jalr` at 0xae9c calls .text+22352 with a0=a0 at entry (arg0), a1=?, a2=0x8, a3=?.
-  The `jalr` at 0xaf64 calls .text+22352 with a0=a0 at entry (arg0), a1=?, a2=0x8, a3=?, a5=sym(av2_setup+196), a6=0xc.
+  The `jalr` at 0xae9c calls .text+43944 with a0=a0 at entry (arg0), a1=?, a2=0x8, a3=?.
+  The `jalr` at 0xaf64 calls .text+43944 with a0=a0 at entry (arg0), a1=?, a2=0x8, a3=?, a5=sym(mvppath_add_preempt), a6=0xc.
   The `beq` branch at 0xac84 targets 0xacb8 and is always taken.
   The `beq` branch at 0xac90 targets 0xaeac, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beq` branch at 0xac98 targets 0xaee4, is taken when ra(=0x1) == a0(?), and falls through when ra(=0x1) != a0(?).
@@ -8850,9 +8850,9 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lbu` accesses load 1 byte from ?, including `lbu` at 0xb1a8, `lbu` at 0xb1b0.
   The `lbu` at 0xb244 loads 1 byte from a1 (arg1 at entry) +0xe.
   The `sb` at 0xb25c stores 1 byte to ?.
-  The `jalr` at 0xb0e8 calls .text+22352 with a0=a0 at entry (arg0), a1=[sym(mvppath_table)], a2=0x8, a3=a3 at entry (arg3).
-  The `jalr` at 0xb134 calls .text+22352 with a0=a0 at entry (arg0), a1=[sym(mvppath_table)], a2=0x80000, a3=?, a7=[a1+15]:1.
-  The `jalr` at 0xb230 calls .text+22552 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=sym(av2_setup+396).
+  The `jalr` at 0xb0e8 calls .text+43944 with a0=a0 at entry (arg0), a1=[sym(mvppath_table)], a2=0x8, a3=a3 at entry (arg3).
+  The `jalr` at 0xb134 calls .text+43944 with a0=a0 at entry (arg0), a1=[sym(mvppath_table)], a2=0x80000, a3=?, a7=[a1+15]:1.
+  The `jalr` at 0xb230 calls .text+44044 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=sym(mvppath_free_memnode).
   The `bne` branch at 0xb050 targets 0xb0f4, is taken when at(=[a1+4]) < 0x3 (signed), and falls through when at(=[a1+4]) >= 0x3 (signed).
   The `beq` branch at 0xb060 targets 0xb228, is taken when a0(=[a1+12]:1) == v0(=0x1), and falls through when a0(=[a1+12]:1) != v0(=0x1).
   The `beq` branch at 0xb068 targets 0xb210, is taken when v0(=0x2) == a0(=[a1+12]:1), and falls through when v0(=0x2) != a0(=[a1+12]:1).
@@ -8882,7 +8882,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xb210 targets 0xb074 and is always taken.
   The `beq` branch at 0xb218 targets 0xb1e4 and is always taken.
   The `beq` branch at 0xb220 targets 0xb1e4 and is always taken.
-  The `beq` branch at 0xb23c targets 0xb260, is taken when v0(=ret(.text+22552)) == a4(=-0x1), and falls through when v0(=ret(.text+22552)) != a4(=-0x1).
+  The `beq` branch at 0xb23c targets 0xb260, is taken when v0(=ret(.text+44044)) == a4(=-0x1), and falls through when v0(=ret(.text+44044)) != a4(=-0x1).
   The `beq` branch at 0xb258 targets 0xb0f0 and is always taken.
   The `beq` branch at 0xb260 targets 0xb1e4 and is always taken.
   The return at 0xb208 has v0 = one of -0x1, 0x0.
@@ -8914,7 +8914,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xb374 calls mvppath_send_events with a0=?, a1=?, a2=?, a3=sym(mvppath_send_events).
   The `jalr` at 0xb3c0 calls mvptransfer_shutdown with a0=?, a1=?, a2=?, a3=sym(mvppath_send_events), a4=[a0+1968].
   The `jalr` at 0xb460 calls mvppath_send_available with a0=a0 at entry (arg0), a1=one of 0x20, 0x100000, 0x100020, a2=?, a3=sym(mvppath_send_available), a4=0x100000.
-  The `jalr` at 0xb4a8 calls .text+24632 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?, a4=sym(mvpavio_preset_input+144).
+  The `jalr` at 0xb4a8 calls .text+45084 with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?, a4=sym(mvppath_check_conflicts).
   The `beq` branch at 0xb2b8 targets 0xb49c, is taken when t8(=[a1+4]) >= 0x3 (signed), and falls through when t8(=[a1+4]) < 0x3 (signed).
   The `beq` branch at 0xb2c8 targets 0xb4a0, is taken when t9(=[a1+8]) >= 0x3 (signed), and falls through when t9(=[a1+8]) < 0x3 (signed).
   The `blez` branch at 0xb334 targets 0xb3e0, is taken when a4(=[a0+1968]) <= 0 (signed), and falls through when a4(=[a0+1968]) > 0 (signed).
@@ -8933,7 +8933,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xb434 targets 0xb46c, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `bne` branch at 0xb43c targets 0xb46c, is taken when a5(?) != 0, and falls through when a5(?) == 0.
   The `beq` branch at 0xb44c targets 0xb46c, is taken when s2(=one of 0x100000, 0x100020) == 0, and falls through when s2(=one of 0x100000, 0x100020) != 0.
-  The `beq` branch at 0xb4b4 targets 0xb4e4, is taken when v0(=ret(.text+24632)) == a5(=-0x1), and falls through when v0(=ret(.text+24632)) != a5(=-0x1).
+  The `beq` branch at 0xb4b4 targets 0xb4e4, is taken when v0(=ret(.text+45084)) == a5(=-0x1), and falls through when v0(=ret(.text+45084)) != a5(=-0x1).
   The `beq` branch at 0xb4bc targets 0xb2d4 and is always taken.
   The `beq` branch at 0xb4c4 targets 0xb46c, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `bne` branch at 0xb4cc targets 0xb468, is taken when a5(?) != 0, and falls through when a5(?) == 0.
@@ -8999,21 +8999,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xceac calls tile_mapin with a0=[(a1 + ([a0+3039]:1 << 0x2))], a1=0x11, a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[a0+3042]:1.
   The `jalr` at 0xcec8 calls tile_mapin with a0=[(a1 + ([a0+3040]:1 << 0x2))], a1=0x11, a2=?, a3=?.
   The `jalr` at 0xcee4 calls tile_mapin with a0=[(a1 + ([a0+3041]:1 << 0x2))], a1=0x11, a2=?, a3=?.
-  The `jalr` at 0xcf04 calls .text+38688 with a0=sp-48, a1=sym(.data)+6464, a2=0x0, a3=sym(mvpinterrupt+288).
+  The `jalr` at 0xcf04 calls .text+52112 with a0=sp-48, a1=sym(.data)+3232, a2=0x0, a3=sym(move_mipmap).
   The `jalr` at 0xcf18 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xcf20 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xcf28 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xcf50 calls tile_mapin with a0=[(a1 + ([a0+3039]:1 << 0x2))], a1=0x11, a2=sym(tile_mapin), a3=a3 at entry (arg3), a4=[a0+3042]:1.
-  The `jalr` at 0xcf78 calls .text+38688 with a0=sp-48, a1=sym(.data)+6416, a2=0x1, a3=sym(mvpinterrupt+288).
+  The `jalr` at 0xcf78 calls .text+52112 with a0=sp-48, a1=sym(.data)+3208, a2=0x1, a3=sym(move_mipmap).
   The `jalr` at 0xcf8c calls tile_mapout with a0=?, a1=?, a2=?, a3=?, a4=sym(tile_mapout).
   The `jalr` at 0xcfb4 calls tile_mapin with a0=[(a1 + ([a0+3039]:1 << 0x2))], a1=0x11, a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[a0+3042]:1.
   The `jalr` at 0xcfd0 calls tile_mapin with a0=[(a1 + ([a0+3040]:1 << 0x2))], a1=0x11, a2=?, a3=?.
-  The `jalr` at 0xcff4 calls .text+38688 with a0=sp-48, a1=sym(.data)+6432, a2=0x1, a3=sym(mvpinterrupt+288).
+  The `jalr` at 0xcff4 calls .text+52112 with a0=sp-48, a1=sym(.data)+3216, a2=0x1, a3=sym(move_mipmap).
   The `jalr` at 0xd008 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd010 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd038 calls tile_mapin with a0=[(a1 + ([a0+3039]:1 << 0x2))], a1=0x11, a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[a0+3042]:1.
   The `jalr` at 0xd054 calls tile_mapin with a0=[(a1 + ([a0+3040]:1 << 0x2))], a1=0x11, a2=?, a3=?.
-  The `jalr` at 0xd078 calls .text+38688 with a0=sp-48, a1=sym(.data)+6448, a2=0x0, a3=sym(mvpinterrupt+288).
+  The `jalr` at 0xd078 calls .text+52112 with a0=sp-48, a1=sym(.data)+3224, a2=0x0, a3=sym(move_mipmap).
   The `jalr` at 0xd08c calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd094 calls tile_mapout with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0xce50 targets 0xcf38, is taken when a4(=[a0+3042]:1) == at(=0x2), and falls through when a4(=[a0+3042]:1) != at(=0x2).
@@ -9024,7 +9024,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xcf94 targets 0xce7c and is always taken.
   The `beq` branch at 0xd018 targets 0xce7c and is always taken.
   The `beq` branch at 0xd09c targets 0xce7c and is always taken.
-  The return at 0xce8c has v0 = one of 0x16, ret(.text+38688).
+  The return at 0xce8c has v0 = one of 0x16, ret(.text+52112).
 - `__start` in `usr/gfx/arch/GENERIC/Xsgi` at 0x1005f6a0 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/gfx/arch/GENERIC/Xsgi`.

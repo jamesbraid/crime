@@ -7,15 +7,15 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xddec-0xde60 (116 bytes).
   It occupies 116 bytes.
-  The `ld` at 0xde18 loads 8 bytes from table(sym(.bss)+6144) +0x68.
-  The `lw` at 0xde1c loads 4 bytes from table(sym(.bss)+6144) +0x7c.
+  The `ld` at 0xde18 loads 8 bytes from table(sym(ecc_info)) +0x68.
+  The `lw` at 0xde1c loads 4 bytes from table(sym(ecc_info)) +0x7c.
   2 such `sd` accesses store 8 bytes to a2 (arg2 at entry) +0x8, including `sd` at 0xde28, `sd` at 0xde5c.
-  The `lw` at 0xde2c loads 4 bytes from table(sym(.bss)+6144) +0x80.
-  The `sw` at 0xde30 stores 4 bytes to table(sym(.bss)+6144) +0x84.
-  The `sw` at 0xde34 stores 4 bytes to table(sym(.bss)+6144) +0x88.
+  The `lw` at 0xde2c loads 4 bytes from table(sym(ecc_info)) +0x80.
+  The `sw` at 0xde30 stores 4 bytes to table(sym(ecc_info)) +0x84.
+  The `sw` at 0xde34 stores 4 bytes to table(sym(ecc_info)) +0x88.
   The `ld` at 0xde3c loads 8 bytes from abs 0xffffffffb4000260.
-  The `sw` at 0xde48 stores 4 bytes to table(sym(.bss)+6144) +0x8c.
-  The `lw` at 0xde4c loads 4 bytes from table(sym(.bss)+6144) +0x78.
+  The `sw` at 0xde48 stores 4 bytes to table(sym(ecc_info)) +0x8c.
+  The `lw` at 0xde4c loads 4 bytes from table(sym(ecc_info)) +0x78.
   The `bgez` branch at 0xde14 targets 0xde4c, is taken when v0(=([sym(r4000_config)] << 0x2e)) >= 0 (signed), and falls through when v0(=([sym(r4000_config)] << 0x2e)) < 0 (signed).
   The `beq` branch at 0xde58 targets 0xde2c and is always taken.
   The return at 0xde44 has v0 = 0x1.
@@ -24,11 +24,11 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/cpu/sysgen/IP32boot/kernel.o`.
   Range: 0xe930-0xea4c (284 bytes).
   It occupies 284 bytes.
-  The `lw` at 0xe9b8 loads 4 bytes from ((a0 << 0x2) + sym(real_data_eccsyns+312)) +0x17a0.
-  The `lw` at 0xe9c0 loads 4 bytes from ([((a0 << 0x2) + sym(real_data_eccsyns+312))+6048] + (a1 << 0x2)) +0x0.
-  The `lw` at 0xe9d4 loads 4 bytes from ((a0 << 0x2) + sym(real_data_eccsyns+312)) +0x1790.
-  The `sw` at 0xe9ec stores 4 bytes to ([((a0 << 0x2) + sym(real_data_eccsyns+312))+6048] + (a1 << 0x2)) +0x0.
-  The `jalr` at 0xe9dc calls (unknown callee) with a0=sym(.rodata)+8352, a1=?, a2=[([((a0 << 0x2) + sym(real_data_eccsyns+312))+6048] + (a1 << 0x2))], a3=?, a4=sym(real_data_eccsyns+312), a7=-0x1.
+  The `lw` at 0xe9b8 loads 4 bytes from ((a0 << 0x2) + sym(imask_values)) +0x17a0.
+  The `lw` at 0xe9c0 loads 4 bytes from ([((a0 << 0x2) + sym(imask_values))+6048] + (a1 << 0x2)) +0x0.
+  The `lw` at 0xe9d4 loads 4 bytes from ((a0 << 0x2) + sym(imask_values)) +0x1790.
+  The `sw` at 0xe9ec stores 4 bytes to ([((a0 << 0x2) + sym(imask_values))+6048] + (a1 << 0x2)) +0x0.
+  The `jalr` at 0xe9dc calls (unknown callee) with a0=sym(.rodata)+4176, a1=?, a2=[([((a0 << 0x2) + sym(imask_values))+6048] + (a1 << 0x2))], a3=?, a4=sym(imask_values), a7=-0x1.
   The `jal` at 0xea24 calls ecc_print_msg [0xe930] with a0=?, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `beq` branch at 0xe974 targets 0xe980, is taken when at(=[sym(pm_use_qprintf)]) == 0, and falls through when at(=[sym(pm_use_qprintf)]) != 0.
   The `beq` branch at 0xe984 targets 0xea10, is taken when a0 == a7(=-0x1), and falls through when a0 != a7(=-0x1).
@@ -36,7 +36,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xe994 targets 0xe9b0, is taken when a0 == a1(=0x1), and falls through when a0 != a1(=0x1).
   The `beq` branch at 0xe99c targets 0xe9b0, is taken when a0 == t1(=0x2), and falls through when a0 != t1(=0x2).
   The `beq` branch at 0xe9a4 targets 0xe9f8 and is always taken.
-  The `beq` branch at 0xe9c4 targets 0xe9f0, is taken when a2(=[([((a0 << 0x2) + sym(real_data_eccsyns+312))+6048] + (a1 << 0x2))]) == 0, and falls through when a2(=[([((a0 << 0x2) + sym(real_data_eccsyns+312))+6048] + (a1 << 0x2))]) != 0.
+  The `beq` branch at 0xe9c4 targets 0xe9f0, is taken when a2(=[([((a0 << 0x2) + sym(imask_values))+6048] + (a1 << 0x2))]) == 0, and falls through when a2(=[([((a0 << 0x2) + sym(imask_values))+6048] + (a1 << 0x2))]) != 0.
   The `beq` branch at 0xe9cc targets 0xea44, is taken when s3(=a3) == 0, and falls through when s3(=a3) != 0.
   The `beq` branch at 0xe9e4 targets 0xe9f4, is taken when s2(=a2) == 0, and falls through when s2(=a2) != 0.
   The `bne` branch at 0xea34 targets 0xea18, is taken when s0(?) < 0x3 (signed), and falls through when s0(?) >= 0x3 (signed).
