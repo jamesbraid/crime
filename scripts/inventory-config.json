@@ -55,8 +55,7 @@
         "flush_tlb",
         "da_flush_tlb",
         "check_delay_tlbflush",
-        "tfi_(?:restore|save)",
-        "err_save_regs"
+        "tfi_(?:restore|save)"
       ]
     },
     {
@@ -468,7 +467,6 @@
         "ecc_fixcache",
         "ecc_fixcdata",
         "ecc_fixctag",
-        "ecc_fixmem",
         "ecc_force_cache_line_invalid",
         "ecc_get_perr_addr",
         "ecc_is_branch",
