@@ -193,11 +193,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x10096bb0 loads 4 bytes from [a0] +0x1b4.
   The `lw` at 0x10096bbc loads 4 bytes from [a0] +0x174.
   The `lw` at 0x10096bc4 loads 4 bytes from ([[a0]+436] + ([0x102cf2c4] << 0x2)) +0x0.
-  The `lw` at 0x10096bd8 loads 4 bytes from [([[a0]+436] + ([0x102cf2c4] << 0x2))] +0x38.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0x10096be4, `lw` at 0x10096bf4.
+  2 such `lw` accesses load 4 bytes from [([[a0]+436] + ([0x102cf2c4] << 0x2))] +0x38, including `lw` at 0x10096bd8, `lw` at 0x10096bf4.
+  The `lw` at 0x10096be4 loads 4 bytes from [a0] +0x164.
   The `lw` at 0x10096be8 loads 4 bytes from a0 (arg0 at entry) +0x10.
   The `jalr` at 0x10096bd4 calls (unknown callee) with a0=[[([[a0]+436] + ([0x102cf2c4] << 0x2))]+56], a1=a0+4, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x10096bf0 calls (unknown callee) with a0=[a0+16], a1=[a0+16], a2=?, a3=?.
+  The `jalr` at 0x10096bf0 calls (unknown callee) with a0=[a0+16], a1=[a0+16], a2=[[([[a0]+436] + ([0x102cf2c4] << 0x2))]+56], a3=?.
   The return at 0x10096c04 has v0 = ret(?).
 
 - `SetupWildMatch..EO` in `usr/gfx/arch/GENERIC/Xsgi` at 0x100b9a70 (n32).
@@ -279,8 +279,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x100c0cf8 loads 4 bytes from [a0+28] +0x14.
   The `jal` at 0x100c0a30 calls t1_Allocate [0x1011d0f0] with a0=0x50, a1=a0 at entry (arg0), a2=0x0, a3=a3 at entry (arg3).
   The `jal` at 0x100c0ad0 calls t1_Dup [0x101565b0] with a0=[a0+32], a1=?, a2=?, a3=?.
-  The `jal` at 0x100c0b70 calls t1_Allocate [0x1011d0f0] with a0=0x18, a1=?, a2=?, a3=?.
-  The `jal` at 0x100c0cbc calls FatalError [0x10094f20] with a0=?, a1=?, a2=?, a3=?.
+  The `jal` at 0x100c0b70 calls t1_Allocate [0x1011d0f0] with a0=0x18, a1=0x102c2c10, a2=?, a3=?.
+  The `jal` at 0x100c0cbc calls FatalError [0x10094f20] with a0=0x10293a10, a1=?, a2=?, a3=?.
   The `beq` branch at 0x100c0a6c targets 0x100c0a94, is taken when s0(=[a0+28]) == 0, and falls through when s0(=[a0+28]) != 0.
   The `beq` branch at 0x100c0a80 targets 0x100c0a94, is taken when s3(=[[a0+28]+16]:2) >= s2(=[[a0+28]+18]:2) (signed), and falls through when s3(=[[a0+28]+16]:2) < s2(=[[a0+28]+18]:2) (signed).
   The `beq` branch at 0x100c0a8c targets 0x100c0cf0 and is always taken.
@@ -334,7 +334,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0x100d63f8 loads 1 byte from a0 (arg0 at entry) +0x1.
   The `jal` at 0x100d63c0 calls xiFree [0x100f0a40] with a0=?, a1=?, a2=?, a3=?.
   Calls xiFree [0x100f0a40] via direct with a0=a0 at entry (arg0), a1=?, a2=?, a3=? (`j` at 0x100d63f0).
-  The `jal` at 0x100d6420 calls FatalError [0x10094f20] with a0=?, a1=?, a2=?, a3=?.
+  The `jal` at 0x100d6420 calls FatalError [0x10094f20] with a0=0x10293698, a1=?, a2=?, a3=?.
   The `jal` at 0x100d643c calls FatalError [0x10094f20] with a0=0x102939e8, a1=a1 at entry (arg1), a2=[a0+2]:2, a3=a3 at entry (arg3).
   The `jal` at 0x100d6458 calls FatalError [0x10094f20] with a0=0x10293698, a1=?, a2=?, a3=?, a4=[a0]:1.
   The `bltz` branch at 0x100d6368 targets 0x100d6430, is taken when a2(=[a0+2]:2) < 0 (signed), and falls through when a2(=[a0+2]:2) >= 0 (signed).
@@ -424,7 +424,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x100ec25c stores 4 bytes to ([0x102c7194] + ([0x102c7190]:1 << 0x3)) -0x4.
   The `sw` at 0x100ec264 stores 4 bytes to ([0x102c7194] + ([0x102c7190]:1 << 0x3)) -0x8.
   The `jal` at 0x100ec10c calls Xalloc [0x1020aeb0] with a0=?, a1=?, a2=?, a3=?.
-  The `jal` at 0x100ec15c calls XdmcpReallocARRAYofARRAY8 [0x101f1c20] with a0=?, a1=[0x102c7190]:1+1, a2=?, a3=?.
+  The `jal` at 0x100ec15c calls XdmcpReallocARRAYofARRAY8 [0x101f1c20] with a0=0x102c7190, a1=[0x102c7190]:1+1, a2=?, a3=?.
   The `jal` at 0x100ec270 calls Xfree [0x101fc9c0] with a0=ret(Xalloc), a1=?, a2=?, a3=?.
   The `bne` branch at 0x100ec118 targets 0x100ec14c, is taken when v0(=ret(Xalloc)) != 0, and falls through when v0(=ret(Xalloc)) == 0.
   The `bne` branch at 0x100ec124 targets 0x100ec100, is taken when s0(?) != s2(=0x102cc118), and falls through when s0(?) == s2(=0x102cc118).
@@ -540,7 +540,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x1015a560 stores 4 bytes to a0 (arg0 at entry) +0x48.
   The `jalr` at 0x1015a548 calls strlen with a0=0x1028f578, a1=0x10191ca0, a2=0x102d0000, a3=0x1026c3e0, a4=[a0+72], a5=0x100bb0d0.
   The `jal` at 0x1015a554 calls Xalloc [0x1020aeb0] with a0=ret(strlen)+1, a1=?, a2=?, a3=?.
-  The `jalr` at 0x1015a568 calls strcpy with a0=ret(Xalloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x1015a568 calls strcpy with a0=ret(Xalloc), a1=0x1028f578, a2=?, a3=?.
   The `beq` branch at 0x1015a4e8 targets 0x1015a528, is taken when v0(=[0x102c5d44]) == 0, and falls through when v0(=[0x102c5d44]) != 0.
   The `beq` branch at 0x1015a510 targets 0x1015a538, is taken when a4(=[a0+72]) == 0, and falls through when a4(=[a0+72]) != 0.
   The `beq` branch at 0x1015a530 targets 0x1015a4f8 and is always taken.
@@ -774,7 +774,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x101c7440 stores 4 bytes to a0 (arg0 at entry) +0x48.
   The `jalr` at 0x101c7428 calls strlen with a0=0x1028f570, a1=0x10223ac0, a2=0x102d0000, a3=0x100fe4f0, a4=[a0+72], a5=0x10166f80.
   The `jal` at 0x101c7434 calls Xalloc [0x1020aeb0] with a0=ret(strlen)+1, a1=?, a2=?, a3=?.
-  The `jalr` at 0x101c7448 calls strcpy with a0=ret(Xalloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x101c7448 calls strcpy with a0=ret(Xalloc), a1=0x1028f570, a2=?, a3=?.
   The `beq` branch at 0x101c73c8 targets 0x101c7408, is taken when v0(=[0x102c5d44]) == 0, and falls through when v0(=[0x102c5d44]) != 0.
   The `beq` branch at 0x101c73f0 targets 0x101c7418, is taken when a4(=[a0+72]) == 0, and falls through when a4(=[a0+72]) != 0.
   The `beq` branch at 0x101c7410 targets 0x101c73d8 and is always taken.
@@ -953,8 +953,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd81e6ec loads 4 bytes from [[0x1014]+276] +0x8.
   The `sw` at 0xd81e700 stores 4 bytes to [[0x1014]+276] +0x4.
   The `jalr` at 0xd81e6e0 calls memcpy with a0=[[[0x1014]+276]+4]+4, a1=a0 at entry (arg0), a2=0x80, a3=[[[0x1014]+276]+4].
-  The `jalr` at 0xd81e710 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=?, a2=?, a3=?.
-  The `beq` branch at 0xd81e6fc targets 0xd81e71c, is taken when t9(=[[[0x1014]+276]+8]) >= a3(?) (unsigned), and falls through when t9(=[[[0x1014]+276]+8]) < a3(?) (unsigned).
+  The `jalr` at 0xd81e710 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4]+132, a2=?, a3=[[[0x1014]+276]+4]+132.
+  The `beq` branch at 0xd81e6fc targets 0xd81e71c, is taken when t9(=[[[0x1014]+276]+8]) >= a3(=[[[0x1014]+276]+4]+132) (unsigned), and falls through when t9(=[[[0x1014]+276]+8]) < a3(=[[[0x1014]+276]+4]+132) (unsigned).
   The return at 0xd81e728 has v0 = one of ret(memcpy), ret(__glXFlushRenderBuffer).
 
 - `__glx_LoadMatrixf` in `usr/gfx/arch/IP32CRM/libGL.so` at 0xd81e730 (o32).
@@ -970,8 +970,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd81e788 loads 4 bytes from [[0x1014]+276] +0x8.
   The `sw` at 0xd81e79c stores 4 bytes to [[0x1014]+276] +0x4.
   The `jalr` at 0xd81e77c calls memcpy with a0=[[[0x1014]+276]+4]+4, a1=a0 at entry (arg0), a2=0x40, a3=[[[0x1014]+276]+4].
-  The `jalr` at 0xd81e7ac calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=?, a2=?, a3=?.
-  The `beq` branch at 0xd81e798 targets 0xd81e7b8, is taken when t9(=[[[0x1014]+276]+8]) >= a3(?) (unsigned), and falls through when t9(=[[[0x1014]+276]+8]) < a3(?) (unsigned).
+  The `jalr` at 0xd81e7ac calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4]+68, a2=?, a3=[[[0x1014]+276]+4]+68.
+  The `beq` branch at 0xd81e798 targets 0xd81e7b8, is taken when t9(=[[[0x1014]+276]+8]) >= a3(=[[[0x1014]+276]+4]+68) (unsigned), and falls through when t9(=[[[0x1014]+276]+8]) < a3(=[[[0x1014]+276]+4]+68) (unsigned).
   The return at 0xd81e7c4 has v0 = one of ret(memcpy), ret(__glXFlushRenderBuffer).
 
 - `__glXSendMakeCurrentRead` in `usr/gfx/arch/IP32CRM/libGL.so` at 0xd824554 (o32).
@@ -999,11 +999,11 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xd824690, `lw` at 0xd8246a8, `lw` at 0xd8247bc.
   3 such `lw` accesses load 4 bytes from [a0+1232] +0x4, including `lw` at 0xd824694, `lw` at 0xd8247c0, `lw` at 0xd8248c8.
   2 such `lw` accesses load 4 bytes from a3 (arg3 at entry) +0x4, including `lw` at 0xd8246f4, `lw` at 0xd82481c.
-  The `lw` at 0xd824864 loads 4 bytes from ?.
+  The `lw` at 0xd824864 loads 4 bytes from ret(malloc) +0x0.
   4 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd824878, `sw` at 0xd82488c, `sw` at 0xd8248a0.
-  The `lw` at 0xd82487c loads 4 bytes from table(0x4) +0x0.
-  The `lw` at 0xd824890 loads 4 bytes from table(0x8) +0x0.
-  The `lw` at 0xd8248a4 loads 4 bytes from table(0xc) +0x0.
+  The `lw` at 0xd82487c loads 4 bytes from ret(malloc) +0x4.
+  The `lw` at 0xd824890 loads 4 bytes from ret(malloc) +0x8.
+  The `lw` at 0xd8248a4 loads 4 bytes from ret(malloc) +0xc.
   The `jalr` at 0xd824580 calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd8245a4 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd8245dc calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -1018,7 +1018,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd824804 calls __glXPostHiddenError with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=0x1a, a3=[a1+20].
   The `jalr` at 0xd824830 calls malloc with a0=0x10, a1=?, a2=?, a3=?.
   The `jalr` at 0xd824850 calls _XRead with a0=a0 at entry (arg0), a1=ret(malloc), a2=0x10, a3=?.
-  The `jalr` at 0xd8248b0 calls free with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd8248b0 calls free with a0=ret(malloc), a1=?, a2=?, a3=?.
   The `jalr` at 0xd8248d0 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd8248ec calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `beql` branch at 0xd824594 targets 0xd8245b4, is taken when v1(=[a0+1232]) == 0, and falls through when v1(=[a0+1232]) != 0; its branch-likely delay slot `lw t6,88(sp)` at 0xd824598 runs only when taken and is annulled on fall-through.
@@ -1072,8 +1072,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97dc44 loads 4 bytes from a0 (arg0 at entry) +0xc.
   5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4, including `lw` at 0xd97dc5c, `lw` at 0xd97dcb4, `lw` at 0xd97dce8.
   7 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1c, including `lw` at 0xd97dc60, `lw` at 0xd97dcb8, `lw` at 0xd97dcec.
-  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd97dc80, `lw` at 0xd97dcd0, `lw` at 0xd97dcd8.
+  The `lw` at 0xd97dc80 loads 4 bytes from [0x1010] +0x8.
   The `sw` at 0xd97dca8 stores 4 bytes to a0 (arg0 at entry) +0x1c.
+  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd97dcd0, `lw` at 0xd97dcd8, `lw` at 0xd97dce0.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x14, including `lw` at 0xd97dd08, `lw` at 0xd97dd38.
   7 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd97dd0c, `sw` at 0xd97dd14, `sw` at 0xd97dd18.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x18, including `lw` at 0xd97dd48, `lw` at 0xd97dd54.
@@ -1084,12 +1085,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97ddb8 loads 4 bytes from a0 (arg0 at entry) +0x10.
   The `sw` at 0xd97ddc4 stores 4 bytes to a0 (arg0 at entry) +0x10.
   The `jalr` at 0xd97dc1c calls (unknown callee) with a0=?, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a0 at entry (arg0).
-  The `jalr` at 0xd97dc88 calls (unknown callee) with a0=?, a1=[a0+28], a2=?, a3=a0 at entry (arg0).
+  The `jalr` at 0xd97dc88 calls (unknown callee) with a0=[0x1010], a1=[a0+28], a2=?, a3=a0 at entry (arg0).
   The `beql` branch at 0xd97dc34 targets 0xd97ddc8, is taken when v0(=ret(?)) == 0, and falls through when v0(=ret(?)) != 0; its branch-likely delay slot `addiu v0,zero,-1` at 0xd97dc38 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd97dcac targets 0xd97ddc8, is taken when v0(=ret(?)) == 0, and falls through when v0(=ret(?)) != 0; its branch-likely delay slot `addiu v0,zero,-1` at 0xd97dcb0 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd97dd04 targets 0xd97dd3c, is taken when t0(?) < v0(=[a0+4]) (signed), and falls through when t0(?) >= v0(=[a0+4]) (signed); its branch-likely delay slot `lw t5,20(a3)` at 0xd97dd08 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd97dd04 targets 0xd97dd3c, is taken when t0(=([a0+4] + a1)) < v0(=[a0+4]) (signed), and falls through when t0(=([a0+4] + a1)) >= v0(=[a0+4]) (signed); its branch-likely delay slot `lw t5,20(a3)` at 0xd97dd08 runs only when taken and is annulled on fall-through.
   The `bltz` branch at 0xd97dd10 targets 0xd97dd1c, is taken when a0(?) < 0 (signed), and falls through when a0(?) >= 0 (signed).
-  The `beq` branch at 0xd97dd2c targets 0xd97dd0c, is taken when t0(?) >= v0(?) (signed), and falls through when t0(?) < v0(?) (signed).
+  The `beq` branch at 0xd97dd2c targets 0xd97dd0c, is taken when t0(=([a0+4] + a1)) >= v0(?) (signed), and falls through when t0(=([a0+4] + a1)) < v0(?) (signed).
   The `beql` branch at 0xd97dd3c targets 0xd97dda0, is taken when t5(=[a0+20]) == 0, and falls through when t5(=[a0+20]) != 0; its branch-likely delay slot `lw t7,4(a3)` at 0xd97dd40 runs only when taken and is annulled on fall-through.
   The return at 0xd97ddd0 has v0 = one of -0x1, 0x0.
   The instructions from 0xd97ddd8 to 0xd99281c are not reached by any path from the entry, and their branches are not listed.
@@ -1254,9 +1255,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97cef4 loads 4 bytes from a0 (arg0 at entry) +0x20.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4, including `lw` at 0xd97cf24, `lw` at 0xd97cf70, `lw` at 0xd97d084.
   5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1c, including `lw` at 0xd97cf34, `lw` at 0xd97d034, `lw` at 0xd97d058.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd97cf3c, `lw` at 0xd97cf9c.
+  The `lw` at 0xd97cf3c loads 4 bytes from [0x1010] +0x8.
   The `lw` at 0xd97cf44 loads 4 bytes from a0 (arg0 at entry) +0xc.
   The `sw` at 0xd97cf6c stores 4 bytes to a0 (arg0 at entry) +0x1c.
+  The `lw` at 0xd97cf9c loads 4 bytes from ?.
   12 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd97cfb8, `sw` at 0xd97cfc4, `sw` at 0xd97cfe0.
   The `lw` at 0xd97d020 loads 4 bytes from a0 (arg0 at entry) +0x14.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x18, including `lw` at 0xd97d024, `lw` at 0xd97d050.
@@ -1267,7 +1269,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd97d0a8 stores 4 bytes to a0 (arg0 at entry) +0x18.
   The `sw` at 0xd97d0b4 stores 4 bytes to a0 (arg0 at entry) +0x10.
   The `jalr` at 0xd97cf08 calls (unknown callee) with a0=?, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd97cf5c calls (unknown callee) with a0=?, a1=[a0+28], a2=?, a3=?.
+  The `jalr` at 0xd97cf5c calls (unknown callee) with a0=[0x1010], a1=[a0+28], a2=?, a3=?.
   The `beq` branch at 0xd97cf10 targets 0xd97d0d0, is taken when v0(=ret(?)) == 0, and falls through when v0(=ret(?)) != 0.
   The `beq` branch at 0xd97cf68 targets 0xd97d0dc, is taken when v0(=ret(?)) == 0, and falls through when v0(=ret(?)) != 0.
   The `bne` branch at 0xd97cf98 targets 0xd97d020, is taken when s1(=([a0+4] + a1)) < t0(=[a0+4]) (signed), and falls through when s1(=([a0+4] + a1)) >= t0(=[a0+4]) (signed).
@@ -1809,14 +1811,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 328 bytes.
   The `lw` at 0x405748 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x405790 loads 4 bytes from a3 (arg3 at entry) +0x40.
-  The `lw` at 0x4057b0 loads 4 bytes from ?.
+  The `lw` at 0x4057b0 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x405770 calls mvpAssertFail with a0=0x4145c0, a1=0x4145e8, a2=0x36b, a3=a3 at entry (arg3).
-  The `jalr` at 0x4057ac calls ioctl with a0=?, a1=0x6d767003, a2=sp-20, a3=?.
+  The `jalr` at 0x4057ac calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-20, a3=?.
   The `jalr` at 0x4057c4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4057dc calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4057ec calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405804 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405824 calls mvpErrPrintf with a0=?, a1=0x4145f0, a2=ret(strerror), a3=?.
+  The `jalr` at 0x405824 calls mvpErrPrintf with a0=[a1+104], a1=0x4145f0, a2=ret(strerror), a3=?.
   The `beq` branch at 0x40574c targets 0x40575c, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405754 targets 0x40577c and is always taken.
   The `bne` branch at 0x4057b8 targets 0x405838, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -1833,8 +1835,12 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 936 bytes.
   The `lw` at 0x405890 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lbu` at 0x4058cc loads 1 byte from ?.
-  The `lw` at 0x405938 loads 4 bytes from ret(_dmBufferGetDmsPool) +0xc.
-  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405960, `lw` at 0x405970, `lw` at 0x405984.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0xc, including `lw` at 0x405938, `lw` at 0x4059bc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x8, including `lw` at 0x405960, `lw` at 0x4059cc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x4, including `lw` at 0x405970, `lw` at 0x4059dc.
+  3 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x0, including `lw` at 0x405984, `lw` at 0x4059f0, `lw` at 0x405a84.
+  The `lw` at 0x405a28 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
+  The `lw` at 0x405aa4 loads 4 bytes from ?.
   The `jalr` at 0x4058b8 calls mvpAssertFail with a0=0x414610, a1=0x414638, a2=0x38b, a3=a3 at entry (arg3).
   The `jalr` at 0x4058f4 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40590c calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
@@ -1851,7 +1857,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x405b24 calls mvpErrPrintf with a0=?, a1=0x414708, a2=?, a3=?.
   The `jalr` at 0x405b34 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405bb8 calls mvpPrintf with a0=?, a1=0x41472c, a2=?, a3=?.
-  The `jalr` at 0x405bd4 calls mvpPrintBufferInfo [0x405488] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x405bd4 calls mvpPrintBufferInfo [0x405488] with a0=?, a1=ret(_dmBufferGetDmsPool), a2=?, a3=?.
   The `beq` branch at 0x405894 targets 0x4058a4, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x40589c targets 0x4058c4 and is always taken.
   The `bne` branch at 0x4058d0 targets 0x4058e4, is taken when t9(?) != at(=0x3), and falls through when t9(?) == at(=0x3).
@@ -1859,12 +1865,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x405920 targets 0x405930, is taken when t2(=ret(_dmBufferGetDmsPool)) != 0, and falls through when t2(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x405928 targets 0x405bf0 and is always taken.
   The `bne` branch at 0x40593c targets 0x405998, is taken when t4(=[ret(_dmBufferGetDmsPool)+12]) != at(=0x2), and falls through when t4(=[ret(_dmBufferGetDmsPool)+12]) == at(=0x2).
-  The `bne` branch at 0x405968 targets 0x405998, is taken when (t5(=ret(mvpBufferAlignment)-1) & t7(?)) != 0, and falls through when (t5(=ret(mvpBufferAlignment)-1) & t7(?)) == 0.
-  The `bne` branch at 0x40597c targets 0x405998, is taken when t9(?) < t0(?) (signed), and falls through when t9(?) >= t0(?) (signed).
-  The `beq` branch at 0x405990 targets 0x405a0c, is taken when t1(?) >= t2(?) (signed), and falls through when t1(?) < t2(?) (signed).
+  The `bne` branch at 0x405968 targets 0x405998, is taken when (t5(=ret(mvpBufferAlignment)-1) & t7(=[ret(_dmBufferGetDmsPool)+8])) != 0, and falls through when (t5(=ret(mvpBufferAlignment)-1) & t7(=[ret(_dmBufferGetDmsPool)+8])) == 0.
+  The `bne` branch at 0x40597c targets 0x405998, is taken when t9(=[ret(_dmBufferGetDmsPool)+4]) < t0(=ret(mvpBufferSize)) (signed), and falls through when t9(=[ret(_dmBufferGetDmsPool)+4]) >= t0(=ret(mvpBufferSize)) (signed).
+  The `beq` branch at 0x405990 targets 0x405a0c, is taken when t1(=[ret(_dmBufferGetDmsPool)]) >= t2(=one of 0x3, 0x4) (signed), and falls through when t1(=[ret(_dmBufferGetDmsPool)]) < t2(=one of 0x3, 0x4) (signed).
   The `beq` branch at 0x405a04 targets 0x405bf0 and is always taken.
   The `beq` branch at 0x405a1c targets 0x405a5c, is taken when v0(=ret(mvpRead)) == 0, and falls through when v0(=ret(mvpRead)) != 0.
-  The `bne` branch at 0x405a2c targets 0x405a54, is taken when t1(?) != 0, and falls through when t1(?) == 0.
+  The `bne` branch at 0x405a2c targets 0x405a54, is taken when t1(=[ret(_dmBufferGetDmsPool)+24]) != 0, and falls through when t1(=[ret(_dmBufferGetDmsPool)+24]) == 0.
   The `beq` branch at 0x405a4c targets 0x405bf0 and is always taken.
   The `beq` branch at 0x405a54 targets 0x405a60 and is always taken.
   The `bne` branch at 0x405aac targets 0x405ba0, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -1890,15 +1896,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 372 bytes.
   The `lw` at 0x405c38 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x405cac loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
-  The `lw` at 0x405ccc loads 4 bytes from ?.
+  The `lw` at 0x405ccc loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x405c60 calls mvpAssertFail with a0=0x414748, a1=0x414770, a2=0x3d7, a3=a3 at entry (arg3).
   The `jalr` at 0x405c74 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405cc8 calls ioctl with a0=?, a1=0x6d767003, a2=sp-20, a3=?.
+  The `jalr` at 0x405cc8 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-20, a3=?.
   The `jalr` at 0x405ce0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405cf8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d08 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d20 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405d40 calls mvpErrPrintf with a0=?, a1=0x414778, a2=ret(strerror), a3=?.
+  The `jalr` at 0x405d40 calls mvpErrPrintf with a0=[a1+104], a1=0x414778, a2=ret(strerror), a3=?.
   The `beq` branch at 0x405c3c targets 0x405c4c, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405c44 targets 0x405c6c and is always taken.
   The `bne` branch at 0x405c88 targets 0x405c98, is taken when t8(=ret(_dmBufferGetDmsPool)) != 0, and falls through when t8(=ret(_dmBufferGetDmsPool)) == 0.
@@ -1916,35 +1922,38 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x405de8-0x4063c4 (1500 bytes).
   It occupies 1500 bytes.
   The `lw` at 0x405e1c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  16 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405e54, `lw` at 0x405f8c, `lw` at 0x405fbc.
-  10 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405fa0, `sw` at 0x405ffc, `sw` at 0x406018.
+  2 such `lw` accesses load 4 bytes from [a1+104] +0x24, including `lw` at 0x405e54, `lw` at 0x406394.
+  13 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405f8c, `lw` at 0x405fbc, `lw` at 0x405fd4.
+  9 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405fa0, `sw` at 0x405ffc, `sw` at 0x406018.
   2 such `lh` accesses load 2 bytes from ?, including `lh` at 0x406024, `lh` at 0x406034.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0x406028, `sh` at 0x406038.
-  The `lbu` at 0x4060bc loads 1 byte from ?.
+  The `lbu` at 0x4060bc loads 1 byte from [a1+104] +0x121.
+  The `lw` at 0x40628c loads 4 bytes from [a1+104] +0x28.
+  The `sw` at 0x40639c stores 4 bytes to [a1+104] +0x24.
   The `jalr` at 0x405e44 calls mvpAssertFail with a0=0x414794, a1=0x4147b8, a2=0x403, a3=a3 at entry (arg3).
   The `jalr` at 0x405ea0 calls mvpAssertFail with a0=0x4147c0, a1=0x4147cc, a2=0x40c, a3=?.
   The `jalr` at 0x405f24 calls mvpAssertFail with a0=0x4147d4, a1=0x4147d8, a2=0x41a, a3=?.
   The `jalr` at 0x405f5c calls mvpAssertFail with a0=0x4147e0, a1=0x414804, a2=0x41b, a3=?.
   The `jalr` at 0x405f88 calls mvpTransferMode with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x405fb8 calls mvpErrPrintf with a0=?, a1=0x41480c, a2=?, a3=?.
+  The `jalr` at 0x405fb8 calls mvpErrPrintf with a0=[a1+104], a1=0x41480c, a2=?, a3=?.
   The `jalr` at 0x405fe8 calls mvpFromVLEventMask with a0=0x4000, a1=?, a2=?, a3=?.
   The `jalr` at 0x406008 calls mvpFromVLEventMask with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x40608c calls mvpErrPrintf with a0=?, a1=0x414828, a2=?, a3=?.
-  The `jalr` at 0x406140 calls mvpPrintf with a0=?, a1=0x4148ac, a2=?, a3=?.
-  The `jalr` at 0x4061b0 calls mvpPrintf with a0=?, a1=0x41490c, a2=?, a3=?.
-  The `jalr` at 0x40620c calls mvpSendPathControls with a0=?, a1=0x1, a2=0x0, a3=?.
-  The `jalr` at 0x406220 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406268 calls mvpPrintf with a0=?, a1=0x414980, a2=?, a3=?.
-  The `jalr` at 0x406288 calls ioctl with a0=?, a1=0x6d767004, a2=sp-504, a3=?.
+  The `jalr` at 0x40608c calls mvpErrPrintf with a0=[a1+104], a1=0x414828, a2=?, a3=?.
+  The `jalr` at 0x406140 calls mvpPrintf with a0=[a1+104], a1=0x4148ac, a2=?, a3=?.
+  The `jalr` at 0x4061b0 calls mvpPrintf with a0=[a1+104], a1=0x41490c, a2=?, a3=?.
+  The `jalr` at 0x40620c calls mvpSendPathControls with a0=[a1+104], a1=0x1, a2=0x0, a3=?.
+  The `jalr` at 0x406220 calls mvpBufferSize with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406268 calls mvpPrintf with a0=[a1+104], a1=0x414980, a2=?, a3=?.
+  The `jalr` at 0x406288 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-504, a3=?.
   The `jalr` at 0x4062a0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062b8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062c8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062e0 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406300 calls mvpErrPrintf with a0=?, a1=0x4149a8, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406300 calls mvpErrPrintf with a0=[a1+104], a1=0x4149a8, a2=ret(strerror), a3=?.
   The `jalr` at 0x406310 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0x405e20 targets 0x405e30, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405e28 targets 0x405e50 and is always taken.
-  The `beq` branch at 0x405e5c targets 0x405e6c, is taken when (t9(?) & 0x200) == 0, and falls through when (t9(?) & 0x200) != 0.
+  The `beq` branch at 0x405e5c targets 0x405e6c, is taken when (t9(=[[a1+104]+36]) & 0x200) == 0, and falls through when (t9(=[[a1+104]+36]) & 0x200) != 0.
   The `beq` branch at 0x405e64 targets 0x4063b0 and is always taken.
   The `bne` branch at 0x405e70 targets 0x405ef8, is taken when t1(=a2) != 0, and falls through when t1(=a2) == 0.
   The `bne` branch at 0x405e7c targets 0x405e8c, is taken when t2(=a3) != 0, and falls through when t2(=a3) == 0.
@@ -1963,14 +1972,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x406078 targets 0x4060a0, is taken when t0(?) == at(=0x10000), and falls through when t0(?) != at(=0x10000).
   The `beq` branch at 0x406098 targets 0x4063b0 and is always taken.
   The `bne` branch at 0x4060ac targets 0x406100, is taken when t2(?) != at(=0x66), and falls through when t2(?) == at(=0x66).
-  The `bne` branch at 0x4060c0 targets 0x406100, is taken when t4(?) != at(=0x3), and falls through when t4(?) == at(=0x3).
+  The `bne` branch at 0x4060c0 targets 0x406100, is taken when t4(=[[a1+104]+289]:1) != at(=0x3), and falls through when t4(=[[a1+104]+289]:1) == at(=0x3).
   The `beq` branch at 0x4060c8 targets 0x406100 and is always taken.
   The `bne` branch at 0x406108 targets 0x406128, is taken when t0(?) != 0, and falls through when t0(?) == 0.
   The `bne` branch at 0x406118 targets 0x406128, is taken when t2(?) != 0, and falls through when t2(?) == 0.
   The `beq` branch at 0x406120 targets 0x406168, is taken when t3(?) == 0, and falls through when t3(?) != 0.
   The `bne` branch at 0x406174 targets 0x4061d8, is taken when t5(?) != at(=0x65), and falls through when t5(?) == at(=0x65).
   The `bne` branch at 0x406184 targets 0x4061d8, is taken when t2(?) < 0x2 (signed), and falls through when t2(?) >= 0x2 (signed).
-  The `bne` branch at 0x406190 targets 0x4061d8, is taken when t3(?) != 0, and falls through when t3(?) == 0.
+  The `bne` branch at 0x406190 targets 0x4061d8 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0x4061d0 targets 0x406200 and is always taken.
   The `bgtz` branch at 0x4061f8 targets 0x405f80, is taken when t5(?) > 0 (signed), and falls through when t5(?) <= 0 (signed).
   The `bne` branch at 0x406294 targets 0x406390, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -2271,14 +2280,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 328 bytes.
   The `lw` at 0x405748 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x405790 loads 4 bytes from a3 (arg3 at entry) +0x40.
-  The `lw` at 0x4057b0 loads 4 bytes from ?.
+  The `lw` at 0x4057b0 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x405770 calls mvpAssertFail with a0=0x4145c0, a1=0x4145e8, a2=0x36b, a3=a3 at entry (arg3).
-  The `jalr` at 0x4057ac calls ioctl with a0=?, a1=0x6d767003, a2=sp-20, a3=?.
+  The `jalr` at 0x4057ac calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-20, a3=?.
   The `jalr` at 0x4057c4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4057dc calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4057ec calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405804 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405824 calls mvpErrPrintf with a0=?, a1=0x4145f0, a2=ret(strerror), a3=?.
+  The `jalr` at 0x405824 calls mvpErrPrintf with a0=[a1+104], a1=0x4145f0, a2=ret(strerror), a3=?.
   The `beq` branch at 0x40574c targets 0x40575c, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405754 targets 0x40577c and is always taken.
   The `bne` branch at 0x4057b8 targets 0x405838, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -2295,8 +2304,12 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 936 bytes.
   The `lw` at 0x405890 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lbu` at 0x4058cc loads 1 byte from ?.
-  The `lw` at 0x405938 loads 4 bytes from ret(_dmBufferGetDmsPool) +0xc.
-  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405960, `lw` at 0x405970, `lw` at 0x405984.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0xc, including `lw` at 0x405938, `lw` at 0x4059bc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x8, including `lw` at 0x405960, `lw` at 0x4059cc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x4, including `lw` at 0x405970, `lw` at 0x4059dc.
+  3 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x0, including `lw` at 0x405984, `lw` at 0x4059f0, `lw` at 0x405a84.
+  The `lw` at 0x405a28 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
+  The `lw` at 0x405aa4 loads 4 bytes from ?.
   The `jalr` at 0x4058b8 calls mvpAssertFail with a0=0x414610, a1=0x414638, a2=0x38b, a3=a3 at entry (arg3).
   The `jalr` at 0x4058f4 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40590c calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
@@ -2313,7 +2326,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x405b24 calls mvpErrPrintf with a0=?, a1=0x414708, a2=?, a3=?.
   The `jalr` at 0x405b34 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405bb8 calls mvpPrintf with a0=?, a1=0x41472c, a2=?, a3=?.
-  The `jalr` at 0x405bd4 calls mvpPrintBufferInfo [0x405488] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x405bd4 calls mvpPrintBufferInfo [0x405488] with a0=?, a1=ret(_dmBufferGetDmsPool), a2=?, a3=?.
   The `beq` branch at 0x405894 targets 0x4058a4, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x40589c targets 0x4058c4 and is always taken.
   The `bne` branch at 0x4058d0 targets 0x4058e4, is taken when t9(?) != at(=0x3), and falls through when t9(?) == at(=0x3).
@@ -2321,12 +2334,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x405920 targets 0x405930, is taken when t2(=ret(_dmBufferGetDmsPool)) != 0, and falls through when t2(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x405928 targets 0x405bf0 and is always taken.
   The `bne` branch at 0x40593c targets 0x405998, is taken when t4(=[ret(_dmBufferGetDmsPool)+12]) != at(=0x2), and falls through when t4(=[ret(_dmBufferGetDmsPool)+12]) == at(=0x2).
-  The `bne` branch at 0x405968 targets 0x405998, is taken when (t5(=ret(mvpBufferAlignment)-1) & t7(?)) != 0, and falls through when (t5(=ret(mvpBufferAlignment)-1) & t7(?)) == 0.
-  The `bne` branch at 0x40597c targets 0x405998, is taken when t9(?) < t0(?) (signed), and falls through when t9(?) >= t0(?) (signed).
-  The `beq` branch at 0x405990 targets 0x405a0c, is taken when t1(?) >= t2(?) (signed), and falls through when t1(?) < t2(?) (signed).
+  The `bne` branch at 0x405968 targets 0x405998, is taken when (t5(=ret(mvpBufferAlignment)-1) & t7(=[ret(_dmBufferGetDmsPool)+8])) != 0, and falls through when (t5(=ret(mvpBufferAlignment)-1) & t7(=[ret(_dmBufferGetDmsPool)+8])) == 0.
+  The `bne` branch at 0x40597c targets 0x405998, is taken when t9(=[ret(_dmBufferGetDmsPool)+4]) < t0(=ret(mvpBufferSize)) (signed), and falls through when t9(=[ret(_dmBufferGetDmsPool)+4]) >= t0(=ret(mvpBufferSize)) (signed).
+  The `beq` branch at 0x405990 targets 0x405a0c, is taken when t1(=[ret(_dmBufferGetDmsPool)]) >= t2(=one of 0x3, 0x4) (signed), and falls through when t1(=[ret(_dmBufferGetDmsPool)]) < t2(=one of 0x3, 0x4) (signed).
   The `beq` branch at 0x405a04 targets 0x405bf0 and is always taken.
   The `beq` branch at 0x405a1c targets 0x405a5c, is taken when v0(=ret(mvpRead)) == 0, and falls through when v0(=ret(mvpRead)) != 0.
-  The `bne` branch at 0x405a2c targets 0x405a54, is taken when t1(?) != 0, and falls through when t1(?) == 0.
+  The `bne` branch at 0x405a2c targets 0x405a54, is taken when t1(=[ret(_dmBufferGetDmsPool)+24]) != 0, and falls through when t1(=[ret(_dmBufferGetDmsPool)+24]) == 0.
   The `beq` branch at 0x405a4c targets 0x405bf0 and is always taken.
   The `beq` branch at 0x405a54 targets 0x405a60 and is always taken.
   The `bne` branch at 0x405aac targets 0x405ba0, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -2352,15 +2365,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 372 bytes.
   The `lw` at 0x405c38 loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x405cac loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
-  The `lw` at 0x405ccc loads 4 bytes from ?.
+  The `lw` at 0x405ccc loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x405c60 calls mvpAssertFail with a0=0x414748, a1=0x414770, a2=0x3d7, a3=a3 at entry (arg3).
   The `jalr` at 0x405c74 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405cc8 calls ioctl with a0=?, a1=0x6d767003, a2=sp-20, a3=?.
+  The `jalr` at 0x405cc8 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-20, a3=?.
   The `jalr` at 0x405ce0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405cf8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d08 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d20 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x405d40 calls mvpErrPrintf with a0=?, a1=0x414778, a2=ret(strerror), a3=?.
+  The `jalr` at 0x405d40 calls mvpErrPrintf with a0=[a1+104], a1=0x414778, a2=ret(strerror), a3=?.
   The `beq` branch at 0x405c3c targets 0x405c4c, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405c44 targets 0x405c6c and is always taken.
   The `bne` branch at 0x405c88 targets 0x405c98, is taken when t8(=ret(_dmBufferGetDmsPool)) != 0, and falls through when t8(=ret(_dmBufferGetDmsPool)) == 0.
@@ -2378,35 +2391,38 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x405de8-0x4063c4 (1500 bytes).
   It occupies 1500 bytes.
   The `lw` at 0x405e1c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  16 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405e54, `lw` at 0x405f8c, `lw` at 0x405fbc.
-  10 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405fa0, `sw` at 0x405ffc, `sw` at 0x406018.
+  2 such `lw` accesses load 4 bytes from [a1+104] +0x24, including `lw` at 0x405e54, `lw` at 0x406394.
+  13 such `lw` accesses load 4 bytes from ?, including `lw` at 0x405f8c, `lw` at 0x405fbc, `lw` at 0x405fd4.
+  9 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405fa0, `sw` at 0x405ffc, `sw` at 0x406018.
   2 such `lh` accesses load 2 bytes from ?, including `lh` at 0x406024, `lh` at 0x406034.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0x406028, `sh` at 0x406038.
-  The `lbu` at 0x4060bc loads 1 byte from ?.
+  The `lbu` at 0x4060bc loads 1 byte from [a1+104] +0x121.
+  The `lw` at 0x40628c loads 4 bytes from [a1+104] +0x28.
+  The `sw` at 0x40639c stores 4 bytes to [a1+104] +0x24.
   The `jalr` at 0x405e44 calls mvpAssertFail with a0=0x414794, a1=0x4147b8, a2=0x403, a3=a3 at entry (arg3).
   The `jalr` at 0x405ea0 calls mvpAssertFail with a0=0x4147c0, a1=0x4147cc, a2=0x40c, a3=?.
   The `jalr` at 0x405f24 calls mvpAssertFail with a0=0x4147d4, a1=0x4147d8, a2=0x41a, a3=?.
   The `jalr` at 0x405f5c calls mvpAssertFail with a0=0x4147e0, a1=0x414804, a2=0x41b, a3=?.
   The `jalr` at 0x405f88 calls mvpTransferMode with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x405fb8 calls mvpErrPrintf with a0=?, a1=0x41480c, a2=?, a3=?.
+  The `jalr` at 0x405fb8 calls mvpErrPrintf with a0=[a1+104], a1=0x41480c, a2=?, a3=?.
   The `jalr` at 0x405fe8 calls mvpFromVLEventMask with a0=0x4000, a1=?, a2=?, a3=?.
   The `jalr` at 0x406008 calls mvpFromVLEventMask with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x40608c calls mvpErrPrintf with a0=?, a1=0x414828, a2=?, a3=?.
-  The `jalr` at 0x406140 calls mvpPrintf with a0=?, a1=0x4148ac, a2=?, a3=?.
-  The `jalr` at 0x4061b0 calls mvpPrintf with a0=?, a1=0x41490c, a2=?, a3=?.
-  The `jalr` at 0x40620c calls mvpSendPathControls with a0=?, a1=0x1, a2=0x0, a3=?.
-  The `jalr` at 0x406220 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406268 calls mvpPrintf with a0=?, a1=0x414980, a2=?, a3=?.
-  The `jalr` at 0x406288 calls ioctl with a0=?, a1=0x6d767004, a2=sp-504, a3=?.
+  The `jalr` at 0x40608c calls mvpErrPrintf with a0=[a1+104], a1=0x414828, a2=?, a3=?.
+  The `jalr` at 0x406140 calls mvpPrintf with a0=[a1+104], a1=0x4148ac, a2=?, a3=?.
+  The `jalr` at 0x4061b0 calls mvpPrintf with a0=[a1+104], a1=0x41490c, a2=?, a3=?.
+  The `jalr` at 0x40620c calls mvpSendPathControls with a0=[a1+104], a1=0x1, a2=0x0, a3=?.
+  The `jalr` at 0x406220 calls mvpBufferSize with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406268 calls mvpPrintf with a0=[a1+104], a1=0x414980, a2=?, a3=?.
+  The `jalr` at 0x406288 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-504, a3=?.
   The `jalr` at 0x4062a0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062b8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062c8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062e0 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406300 calls mvpErrPrintf with a0=?, a1=0x4149a8, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406300 calls mvpErrPrintf with a0=[a1+104], a1=0x4149a8, a2=ret(strerror), a3=?.
   The `jalr` at 0x406310 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0x405e20 targets 0x405e30, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x405e28 targets 0x405e50 and is always taken.
-  The `beq` branch at 0x405e5c targets 0x405e6c, is taken when (t9(?) & 0x200) == 0, and falls through when (t9(?) & 0x200) != 0.
+  The `beq` branch at 0x405e5c targets 0x405e6c, is taken when (t9(=[[a1+104]+36]) & 0x200) == 0, and falls through when (t9(=[[a1+104]+36]) & 0x200) != 0.
   The `beq` branch at 0x405e64 targets 0x4063b0 and is always taken.
   The `bne` branch at 0x405e70 targets 0x405ef8, is taken when t1(=a2) != 0, and falls through when t1(=a2) == 0.
   The `bne` branch at 0x405e7c targets 0x405e8c, is taken when t2(=a3) != 0, and falls through when t2(=a3) == 0.
@@ -2425,14 +2441,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x406078 targets 0x4060a0, is taken when t0(?) == at(=0x10000), and falls through when t0(?) != at(=0x10000).
   The `beq` branch at 0x406098 targets 0x4063b0 and is always taken.
   The `bne` branch at 0x4060ac targets 0x406100, is taken when t2(?) != at(=0x66), and falls through when t2(?) == at(=0x66).
-  The `bne` branch at 0x4060c0 targets 0x406100, is taken when t4(?) != at(=0x3), and falls through when t4(?) == at(=0x3).
+  The `bne` branch at 0x4060c0 targets 0x406100, is taken when t4(=[[a1+104]+289]:1) != at(=0x3), and falls through when t4(=[[a1+104]+289]:1) == at(=0x3).
   The `beq` branch at 0x4060c8 targets 0x406100 and is always taken.
   The `bne` branch at 0x406108 targets 0x406128, is taken when t0(?) != 0, and falls through when t0(?) == 0.
   The `bne` branch at 0x406118 targets 0x406128, is taken when t2(?) != 0, and falls through when t2(?) == 0.
   The `beq` branch at 0x406120 targets 0x406168, is taken when t3(?) == 0, and falls through when t3(?) != 0.
   The `bne` branch at 0x406174 targets 0x4061d8, is taken when t5(?) != at(=0x65), and falls through when t5(?) == at(=0x65).
   The `bne` branch at 0x406184 targets 0x4061d8, is taken when t2(?) < 0x2 (signed), and falls through when t2(?) >= 0x2 (signed).
-  The `bne` branch at 0x406190 targets 0x4061d8, is taken when t3(?) != 0, and falls through when t3(?) == 0.
+  The `bne` branch at 0x406190 targets 0x4061d8 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0x4061d0 targets 0x406200 and is always taken.
   The `bgtz` branch at 0x4061f8 targets 0x405f80, is taken when t5(?) > 0 (signed), and falls through when t5(?) <= 0 (signed).
   The `bne` branch at 0x406294 targets 0x406390, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -2695,7 +2711,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf405fe8-0xf4061d0 (488 bytes).
   It occupies 488 bytes.
-  The `lw` at 0xf40602c loads 4 bytes from ret(find_display) +0x8.
+  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf40602c, `lw` at 0xf4060e0.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf406034, `lw` at 0xf406180.
   The `lw` at 0xf406048 loads 4 bytes from abs 0xf40c004.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf40605c, `lw` at 0xf406074, `lw` at 0xf4060a0.
@@ -2708,7 +2724,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf4060cc stores 4 bytes to a0 (arg0 at entry) +0x60.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf4060d0, `sw` at 0xf406164.
   The `lhu` at 0xf4060d8 loads 2 bytes from [a0+108] +0x2.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4060e0, `lw` at 0xf4060ec.
+  The `lw` at 0xf4060ec loads 4 bytes from [ret(find_display)+8] +0x4.
   The `sb` at 0xf4060f0 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4060fc stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf406104 stores 4 bytes to [a0+108] +0xc.
@@ -2741,7 +2757,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4061d0-0xf4063bc (492 bytes).
   It occupies 492 bytes.
-  The `lw` at 0xf406214 loads 4 bytes from ret(find_display) +0x8.
+  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf406214, `lw` at 0xf4062cc.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40621c, `lw` at 0xf40636c.
   The `lw` at 0xf406230 loads 4 bytes from abs 0xf40c004.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf406244, `lw` at 0xf40625c, `lw` at 0xf406288.
@@ -2754,7 +2770,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf4062b8 stores 4 bytes to a0 (arg0 at entry) +0x60.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf4062bc, `sw` at 0xf406350.
   The `lhu` at 0xf4062c4 loads 2 bytes from [a0+108] +0x2.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4062cc, `lw` at 0xf4062d8.
+  The `lw` at 0xf4062d8 loads 4 bytes from [ret(find_display)+8] +0x4.
   The `sb` at 0xf4062dc stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4062e8 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf4062f0 stores 4 bytes to [a0+108] +0xc.
@@ -2790,18 +2806,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x405fec loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x406030 loads 4 bytes from a3 (arg3 at entry) +0x40.
   The `lw` at 0x406054 loads 4 bytes from a3 (arg3 at entry) +0x48.
-  The `lw` at 0x406060 loads 4 bytes from ?.
+  The `lw` at 0x406060 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406014 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x344, a3=a3 at entry (arg3).
-  The `jalr` at 0x406040 calls mvpBufferSize with a0=?, a1=[a3+64], a2=0x10, a3=0x12d.
-  The `jalr` at 0x406074 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=?.
+  The `jalr` at 0x406040 calls mvpBufferSize with a0=[a1+104], a1=[a3+64], a2=0x10, a3=0x12d.
+  The `jalr` at 0x406074 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=?.
   The `jalr` at 0x406090 calls oserror with a0=?, a1=?, a2=-0x1, a3=?.
   The `jalr` at 0x4060ac calls mvpRevisionError with a0=?, a1=?, a2=?, a3=0x7.
   The `jalr` at 0x4060b8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4060cc calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4060f4 calls mvpErrPrintf with a0=?, a1=0x418460, a2=?, a3=?, a4=ret(strerror).
+  The `jalr` at 0x4060f4 calls mvpErrPrintf with a0=[a1+104], a1=0x418460, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x406100 calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4061a0 calls mvpPrintf with a0=?, a1=0x418488, a2=?, a3=?.
-  The `bgezall` at 0x4061bc calls mvpPrintBufferInfo [0x405f50] with a0=?, a1=a3+8, a2=?, a3=?.
+  The `jalr` at 0x4061a0 calls mvpPrintf with a0=[a1+104], a1=0x418488, a2=?, a3=?.
+  The `bgezall` at 0x4061bc calls mvpPrintBufferInfo [0x405f50] with a0=[a1+104], a1=a3+8, a2=?, a3=?.
   The `bne` branch at 0x405ff8 targets 0x40601c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x406084 targets 0x406188, is taken when v0(=ret(ioctl)) != a2(=-0x1), and falls through when v0(=ret(ioctl)) == a2(=-0x1).
   The `bne` branch at 0x4060a0 targets 0x4060b4, is taken when v0(=ret(oserror)) != a3(=0x7), and falls through when v0(=ret(oserror)) == a3(=0x7).
@@ -2822,14 +2838,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 316 bytes.
   The `lw` at 0x40621c loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x406260 loads 4 bytes from a3 (arg3 at entry) +0x40.
-  The `lw` at 0x40626c loads 4 bytes from ?.
+  The `lw` at 0x40626c loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406244 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x36b, a3=a3 at entry (arg3).
-  The `jalr` at 0x406280 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=0x12e.
+  The `jalr` at 0x406280 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=0x12e.
   The `jalr` at 0x40629c calls oserror with a0=?, a1=?, a2=?, a3=?, a4=-0x1.
   The `jalr` at 0x4062b8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a5=0x7.
   The `jalr` at 0x4062c4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062d8 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4062f4 calls mvpErrPrintf with a0=?, a1=0x4184b0, a2=ret(strerror), a3=?.
+  The `jalr` at 0x4062f4 calls mvpErrPrintf with a0=[a1+104], a1=0x4184b0, a2=ret(strerror), a3=?.
   The `bne` branch at 0x406228 targets 0x40624c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x406290 targets 0x40630c, is taken when v0(=ret(ioctl)) != a4(=-0x1), and falls through when v0(=ret(ioctl)) == a4(=-0x1).
   The `bne` branch at 0x4062ac targets 0x4062c0, is taken when v0(=ret(oserror)) != a5(=0x7), and falls through when v0(=ret(oserror)) == a5(=0x7).
@@ -2842,40 +2858,44 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x406330-0x40673c (1036 bytes).
   It occupies 1036 bytes.
   The `lw` at 0x40635c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  The `lbu` at 0x406390 loads 1 byte from ?.
-  The `lw` at 0x406414 loads 4 bytes from ret(_dmBufferGetDmsPool) +0xc.
-  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x40643c, `lw` at 0x40645c, `lw` at 0x40647c.
+  The `lbu` at 0x406390 loads 1 byte from [a1+104] +0x121.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0xc, including `lw` at 0x406414, `lw` at 0x4064c4.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x8, including `lw` at 0x40643c, `lw` at 0x4064cc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x4, including `lw` at 0x40645c, `lw` at 0x4064d4.
+  3 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x0, including `lw` at 0x40647c, `lw` at 0x4064e0, `lw` at 0x406590.
+  The `lw` at 0x406524 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
+  The `lw` at 0x40659c loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406384 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x38b, a3=a3 at entry (arg3).
-  The `jalr` at 0x4063c8 calls mvpBufferSize with a0=?, a1=?, a2=one of 0x3, 0x4, a3=?, a4=one of 0x3, 0x4.
+  The `jalr` at 0x4063c8 calls mvpBufferSize with a0=[a1+104], a1=[[a1+104]+289]:1, a2=one of 0x3, 0x4, a3=?, a4=one of 0x3, 0x4.
   The `jalr` at 0x4063e0 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x40642c calls mvpBufferAlignment with a0=?, a1=?, a2=?, a3=?, a5=ret(_dmBufferGetDmsPool), a7=[ret(_dmBufferGetDmsPool)+12].
-  The `jalr` at 0x406498 calls mvpBufferAlignment with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4064ec calls mvpErrPrintf with a0=?, a1=0x4184d0, a2=0x2, a3=ret(mvpBufferAlignment).
-  The `jalr` at 0x40650c calls mvpRead with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406548 calls mvpErrPrintf with a0=?, a1=0x418578, a2=?, a3=?.
-  The `jalr` at 0x4065b0 calls ioctl with a0=?, a1=0x6d767003, a2=sp-104, a3=?, a4=0x10, a5=0x12d.
+  The `jalr` at 0x40642c calls mvpBufferAlignment with a0=[a1+104], a1=?, a2=?, a3=?, a5=ret(_dmBufferGetDmsPool), a7=[ret(_dmBufferGetDmsPool)+12].
+  The `jalr` at 0x406498 calls mvpBufferAlignment with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4064ec calls mvpErrPrintf with a0=[a1+104], a1=0x4184d0, a2=0x2, a3=ret(mvpBufferAlignment), a4=ret(mvpBufferSize), a5=one of 0x3, 0x4, a6=[ret(_dmBufferGetDmsPool)+12], a7=[ret(_dmBufferGetDmsPool)+8].
+  The `jalr` at 0x40650c calls mvpRead with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406548 calls mvpErrPrintf with a0=[a1+104], a1=0x418578, a2=?, a3=[ret(_dmBufferGetDmsPool)+24].
+  The `jalr` at 0x4065b0 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-104, a3=?, a4=0x10, a5=0x12d.
   The `jalr` at 0x4065cc calls oserror with a0=?, a1=?, a2=?, a3=?, a6=-0x1.
   The `jalr` at 0x4065e8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a7=0x7.
   The `jalr` at 0x4065f4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406608 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406630 calls mvpErrPrintf with a0=?, a1=0x4185a0, a2=?, a3=?, a4=ret(strerror).
+  The `jalr` at 0x406630 calls mvpErrPrintf with a0=[a1+104], a1=0x4185a0, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x40663c calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4066fc calls mvpPrintf with a0=?, a1=0x4185c8, a2=?, a3=?, a6=-0x1.
-  The `bgezall` at 0x406714 calls mvpPrintBufferInfo [0x405f50] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x4066fc calls mvpPrintf with a0=[a1+104], a1=0x4185c8, a2=?, a3=?, a6=-0x1.
+  The `bgezall` at 0x406714 calls mvpPrintBufferInfo [0x405f50] with a0=[a1+104], a1=ret(_dmBufferGetDmsPool), a2=?, a3=?.
   The `bne` branch at 0x406368 targets 0x40638c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
-  The `bne` branch at 0x406398 targets 0x4063b0, is taken when a1(?) != a2(=0x3), and falls through when a1(?) == a2(=0x3).
+  The `bne` branch at 0x406398 targets 0x4063b0, is taken when a1(=[[a1+104]+289]:1) != a2(=0x3), and falls through when a1(=[[a1+104]+289]:1) == a2(=0x3).
   The `beq` branch at 0x4063a8 targets 0x4063b8 and is always taken.
   The `bne` branch at 0x4063f8 targets 0x406410, is taken when a5(=ret(_dmBufferGetDmsPool)) != 0, and falls through when a5(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x406408 targets 0x406724 and is always taken.
   The `bne` branch at 0x40641c targets 0x406490, is taken when a7(=[ret(_dmBufferGetDmsPool)+12]) != t0(=0x2), and falls through when a7(=[ret(_dmBufferGetDmsPool)+12]) == t0(=0x2).
-  The `beq` branch at 0x406448 targets 0x406458, is taken when (t0(?) & t1(=ret(mvpBufferAlignment)-1)) == 0, and falls through when (t0(?) & t1(=ret(mvpBufferAlignment)-1)) != 0.
+  The `beq` branch at 0x406448 targets 0x406458, is taken when (t0(=[ret(_dmBufferGetDmsPool)+8]) & t1(=ret(mvpBufferAlignment)-1)) == 0, and falls through when (t0(=[ret(_dmBufferGetDmsPool)+8]) & t1(=ret(mvpBufferAlignment)-1)) != 0.
   The `beq` branch at 0x406450 targets 0x406490 and is always taken.
-  The `beq` branch at 0x406468 targets 0x406478, is taken when t1(?) >= t2(?) (signed), and falls through when t1(?) < t2(?) (signed).
+  The `beq` branch at 0x406468 targets 0x406478, is taken when t1(=[ret(_dmBufferGetDmsPool)+4]) >= t2(=ret(mvpBufferSize)) (signed), and falls through when t1(=[ret(_dmBufferGetDmsPool)+4]) < t2(=ret(mvpBufferSize)) (signed).
   The `beq` branch at 0x406470 targets 0x406490 and is always taken.
-  The `beq` branch at 0x406488 targets 0x406504, is taken when t2(?) >= t3(?) (signed), and falls through when t2(?) < t3(?) (signed).
+  The `beq` branch at 0x406488 targets 0x406504, is taken when t2(=[ret(_dmBufferGetDmsPool)]) >= t3(=one of 0x3, 0x4) (signed), and falls through when t2(=[ret(_dmBufferGetDmsPool)]) < t3(=one of 0x3, 0x4) (signed).
   The `beq` branch at 0x4064fc targets 0x406724 and is always taken.
   The `beq` branch at 0x406518 targets 0x406568, is taken when v0(=ret(mvpRead)) == 0, and falls through when v0(=ret(mvpRead)) != 0.
-  The `bne` branch at 0x406530 targets 0x406560, is taken when a3(?) != 0, and falls through when a3(?) == 0.
+  The `bne` branch at 0x406530 targets 0x406560, is taken when a3(=[ret(_dmBufferGetDmsPool)+24]) != 0, and falls through when a3(=[ret(_dmBufferGetDmsPool)+24]) == 0.
   The `beq` branch at 0x406558 targets 0x406724 and is always taken.
   The `beq` branch at 0x406560 targets 0x40656c and is always taken.
   The `bne` branch at 0x4065c0 targets 0x4066e4, is taken when v0(=ret(ioctl)) != a6(=-0x1), and falls through when v0(=ret(ioctl)) == a6(=-0x1).
@@ -2899,15 +2919,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 376 bytes.
   The `lw` at 0x40676c loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x4067e8 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
-  The `lw` at 0x4067f4 loads 4 bytes from ?.
+  The `lw` at 0x4067f4 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406794 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x3d7, a3=a3 at entry (arg3).
   The `jalr` at 0x4067a4 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406808 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=0x12e.
+  The `jalr` at 0x406808 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=0x12e.
   The `jalr` at 0x406824 calls oserror with a0=?, a1=?, a2=?, a3=?, a4=-0x1.
   The `jalr` at 0x406840 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a5=0x7.
   The `jalr` at 0x40684c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406860 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406880 calls mvpErrPrintf with a0=?, a1=0x4185e8, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406880 calls mvpErrPrintf with a0=[a1+104], a1=0x4185e8, a2=ret(strerror), a3=?.
   The `bne` branch at 0x406778 targets 0x40679c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x4067bc targets 0x4067d4, is taken when a1(=ret(_dmBufferGetDmsPool)) != 0, and falls through when a1(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x4067cc targets 0x4068a0 and is always taken.
@@ -2922,35 +2942,38 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x406960-0x406f34 (1492 bytes).
   It occupies 1492 bytes.
   The `lw` at 0x40698c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  12 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4069c0, `lw` at 0x406ab8, `lw` at 0x406af4.
-  6 such `sw` accesses store 4 bytes to ?, including `sw` at 0x406ad8, `sw` at 0x406b40, `sw` at 0x406b68.
+  2 such `lw` accesses load 4 bytes from [a1+104] +0x24, including `lw` at 0x4069c0, `lw` at 0x406f04.
+  9 such `lw` accesses load 4 bytes from ?, including `lw` at 0x406ab8, `lw` at 0x406af4, `lw` at 0x406b18.
+  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x406ad8, `sw` at 0x406b40, `sw` at 0x406b68.
   2 such `lh` accesses load 2 bytes from ?, including `lh` at 0x406b70, `lh` at 0x406b80.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0x406b78, `sh` at 0x406b88.
   2 such `ld` accesses load 8 bytes from ?, including `ld` at 0x406ba0, `ld` at 0x406c48.
   2 such `sd` accesses store 8 bytes to ?, including `sd` at 0x406ba8, `sd` at 0x406c84.
+  The `lw` at 0x406da0 loads 4 bytes from [a1+104] +0x28.
+  The `sw` at 0x406f10 stores 4 bytes to [a1+104] +0x24.
   The `jalr` at 0x4069b4 calls mvpAssertFail with a0=0x418608, a1=0x420180, a2=0x403, a3=a3 at entry (arg3).
   The `jalr` at 0x406a0c calls mvpAssertFail with a0=0x418630, a1=0x420180, a2=0x40c, a3=a2 at entry (arg2), a4=a3 at entry (arg3).
   The `jalr` at 0x406a60 calls mvpAssertFail with a0=0x420188, a1=0x420180, a2=0x41a, a3=a3 at entry (arg3).
   The `jalr` at 0x406a8c calls mvpAssertFail with a0=0x418640, a1=0x420180, a2=0x41b, a3=?.
   The `jalr` at 0x406ac0 calls mvpTransferMode with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406afc calls mvpErrPrintf with a0=?, a1=0x418668, a2=?, a3=?.
+  The `jalr` at 0x406afc calls mvpErrPrintf with a0=[a1+104], a1=0x418668, a2=?, a3=?.
   The `jalr` at 0x406b30 calls mvpFromVLEventMask with a0=0x4000, a1=ret(mvpTransferMode), a2=?, a3=?, a4=0x10.
   The `jalr` at 0x406b58 calls mvpFromVLEventMask with a0=?, a1=ret(mvpTransferMode), a2=?, a3=?, a4=0x10.
-  The `jalr` at 0x406be0 calls mvpErrPrintf with a0=?, a1=0x418688, a2=?, a3=?.
-  The `jalr` at 0x406c70 calls mvpPrintf with a0=?, a1=0x418710, a2=?, a3=?.
-  The `jalr` at 0x406cd4 calls mvpPrintf with a0=?, a1=0x418770, a2=?, a3=?.
-  The `jalr` at 0x406d40 calls mvpSendPathControls with a0=?, a1=0x1, a2=0x0, a3=?.
-  The `jalr` at 0x406d50 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406d94 calls mvpPrintf with a0=?, a1=0x4187e8, a2=?, a3=?, a4=ret(mvpBufferSize).
-  The `jalr` at 0x406db4 calls ioctl with a0=?, a1=0x6d767004, a2=sp-584, a3=?.
+  The `jalr` at 0x406be0 calls mvpErrPrintf with a0=[a1+104], a1=0x418688, a2=?, a3=?.
+  The `jalr` at 0x406c70 calls mvpPrintf with a0=[a1+104], a1=0x418710, a2=?, a3=?.
+  The `jalr` at 0x406cd4 calls mvpPrintf with a0=[a1+104], a1=0x418770, a2=?, a3=?, a6=0x0.
+  The `jalr` at 0x406d40 calls mvpSendPathControls with a0=[a1+104], a1=0x1, a2=0x0, a3=?.
+  The `jalr` at 0x406d50 calls mvpBufferSize with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406d94 calls mvpPrintf with a0=[a1+104], a1=0x4187e8, a2=?, a3=?, a4=ret(mvpBufferSize).
+  The `jalr` at 0x406db4 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-584, a3=?.
   The `jalr` at 0x406dd0 calls oserror with a0=?, a1=-0x1, a2=?, a3=?.
   The `jalr` at 0x406dec calls mvpRevisionError with a0=?, a1=?, a2=0x7, a3=?.
   The `jalr` at 0x406df8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406e0c calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406e2c calls mvpErrPrintf with a0=?, a1=0x418810, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406e2c calls mvpErrPrintf with a0=[a1+104], a1=0x418810, a2=ret(strerror), a3=?.
   The `jalr` at 0x406e38 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `bne` branch at 0x406998 targets 0x4069bc, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
-  The `beq` branch at 0x4069c8 targets 0x4069e0, is taken when (a1(?) & 0x200) == 0, and falls through when (a1(?) & 0x200) != 0.
+  The `beq` branch at 0x4069c8 targets 0x4069e0, is taken when (a1(=[[a1+104]+36]) & 0x200) == 0, and falls through when (a1(=[[a1+104]+36]) & 0x200) != 0.
   The `beq` branch at 0x4069d8 targets 0x406f1c and is always taken.
   The `bne` branch at 0x4069e4 targets 0x406a40, is taken when a3(=a2) != 0, and falls through when a3(=a2) == 0.
   The `beq` branch at 0x4069f0 targets 0x406a14, is taken when a4(=a3) == 0, and falls through when a4(=a3) != 0.
@@ -2970,7 +2993,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x406c4c targets 0x406c88, is taken when a4(?) == 0, and falls through when a4(?) != 0.
   The `bne` branch at 0x406c94 targets 0x406cf8, is taken when a4(?) != a5(=0x65), and falls through when a4(?) == a5(=0x65).
   The `bne` branch at 0x406ca4 targets 0x406cf8, is taken when a5(?) < 0x2 (signed), and falls through when a5(?) >= 0x2 (signed).
-  The `bne` branch at 0x406cb0 targets 0x406cf8, is taken when a6(?) != 0, and falls through when a6(?) == 0.
+  The `bne` branch at 0x406cb0 targets 0x406cf8 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0x406cf0 targets 0x406d30 and is always taken.
   The `bgtz` branch at 0x406d28 targets 0x406ab4, is taken when a4(?) > 0 (signed), and falls through when a4(?) <= 0 (signed).
   The `bne` branch at 0x406dc4 targets 0x406f00, is taken when v0(=ret(ioctl)) != a1(=-0x1), and falls through when v0(=ret(ioctl)) == a1(=-0x1).
@@ -2995,27 +3018,58 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib32/dmedia/video/debug/mvp.so`.
   Range: 0x411fe0-0x41392c (6476 bytes).
   It occupies 6476 bytes.
-  7 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x412010, `lbu` at 0x41284c, `lbu` at 0x412860.
+  8 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x412010, `lbu` at 0x412830, `lbu` at 0x41284c.
   The `sw` at 0x412090 stores 4 bytes to sym(mvpscreen_hbias) +0x0.
   The `sw` at 0x4120d4 stores 4 bytes to sym(mvpscreen_vbias) +0x0.
   The `sw` at 0x412118 stores 4 bytes to sym(mvpscreen_hend) +0x0.
   The `sw` at 0x41215c stores 4 bytes to sym(mvpscreen_vend) +0x0.
   The `sw` at 0x4121a0 stores 4 bytes to sym(mvpscreen_dvsize) +0x0.
   The `sw` at 0x4121e4 stores 4 bytes to sym(mvpscreen_dhsize) +0x0.
-  34 such `lh` accesses load 2 bytes from ?, including `lh` at 0x4121ec, `lh` at 0x412204, `lh` at 0x41221c.
+  The `lh` at 0x4121ec loads 2 bytes from a0 (arg0 at entry) +0x136.
   The `lw` at 0x4121f4 loads 4 bytes from sym(mvpscreen_hbias) +0x0.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x138, including `lh` at 0x412204, `lh` at 0x412ce0, `lh` at 0x412d8c.
   The `lw` at 0x41220c loads 4 bytes from sym(mvpscreen_vbias) +0x0.
-  26 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x41224c, `lbu` at 0x412264, `lbu` at 0x412290.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13a, including `lh` at 0x41221c, `lh` at 0x41298c, `lh` at 0x412e94.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13c, including `lh` at 0x412228, `lh` at 0x4129b4, `lh` at 0x4129e8.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x157, including `lbu` at 0x41224c, `lbu` at 0x412264.
+  3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x156, including `lbu` at 0x412290, `lbu` at 0x4126bc, `lbu` at 0x413070.
   The `lw` at 0x4122e4 loads 4 bytes from sym(mvpscreen_hend) +0x0.
   The `lw` at 0x412340 loads 4 bytes from sym(mvpscreen_vend) +0x0.
-  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0x4123a8, `sw` at 0x4123b4, `sw` at 0x4123c0.
+  3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x127, including `lbu` at 0x412388, `lbu` at 0x4126e0, `lbu` at 0x413058.
+  The `sw` at 0x4123a8 stores 4 bytes to a0 (arg0 at entry) +0x160.
+  The `sw` at 0x4123b4 stores 4 bytes to a0 (arg0 at entry) +0x164.
+  The `sw` at 0x4123c0 stores 4 bytes to a0 (arg0 at entry) +0x168.
   15 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x24, including `lw` at 0x4123c8, `lw` at 0x4123fc, `lw` at 0x412430.
-  13 such `sb` accesses store 1 byte to ?, including `sb` at 0x412510, `sb` at 0x41256c, `sb` at 0x412578.
-  12 such `sd` accesses store 8 bytes to ?, including `sd` at 0x412774, `sd` at 0x412db4, `sd` at 0x412dc0.
+  The `lbu` at 0x41248c loads 1 byte from a0 (arg0 at entry) +0x12d.
+  8 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x412498, `lbu` at 0x4124a0, `lbu` at 0x4124b4.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x126, including `lbu` at 0x4124dc, `lbu` at 0x413004.
+  The `sb` at 0x412510 stores 1 byte to a0 (arg0 at entry) +0x15a.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x157, including `sb` at 0x41256c, `sb` at 0x4125a0, `sb` at 0x4125d4.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x158, including `sb` at 0x412578, `sb` at 0x4125ac, `sb` at 0x4125e0.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x159, including `sb` at 0x412584, `sb` at 0x4125b8, `sb` at 0x4125ec.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x121, including `lbu` at 0x412674, `lbu` at 0x41302c.
+  The `lbu` at 0x412740 loads 1 byte from a0 (arg0 at entry) +0x15d.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x160, including `sd` at 0x412774, `sd` at 0x4132b4.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13e, including `lh` at 0x4127b0, `lh` at 0x413334.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x140, including `lh` at 0x4127bc, `lh` at 0x413340.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x142, including `lh` at 0x4127c8, `lh` at 0x41334c.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x144, including `lh` at 0x4127d4, `lh` at 0x413358.
   3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x146, including `lh` at 0x4127ec, `lh` at 0x4128ec, `lh` at 0x4134d0.
   3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x148, including `lh` at 0x412800, `lh` at 0x412900, `lh` at 0x4134e4.
-  4 such `sh` accesses store 2 bytes to ?, including `sh` at 0x412eb0, `sh` at 0x412f0c, `sh` at 0x4133a0.
+  The `lbu` at 0x4129bc loads 1 byte from a0 (arg0 at entry) +0x12c.
+  15 such `lh` accesses load 2 bytes from ?, including `lh` at 0x412bfc, `lh` at 0x412c6c, `lh` at 0x412d18.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x170, including `sd` at 0x412db4, `sd` at 0x4137f0.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x178, including `sd` at 0x412dc0, `sd` at 0x4137fc.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x180, including `sd` at 0x412dcc, `sd` at 0x413808.
+  2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x12e, including `sh` at 0x412eb0, `sh` at 0x4133a0.
+  The `lh` at 0x412ebc loads 2 bytes from a0 (arg0 at entry) +0x12e.
+  2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x130, including `sh` at 0x412f0c, `sh` at 0x413558.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x168, including `sd` at 0x412f18, `sd` at 0x413814.
+  The `lbu` at 0x412f5c loads 1 byte from a0 (arg0 at entry) +0x120.
+  The `sd` at 0x412f6c stores 8 bytes to a0 (arg0 at entry) +0x188.
+  The `lbu` at 0x413148 loads 1 byte from a0 (arg0 at entry) +0x125.
   The `lw` at 0x413174 loads 4 bytes from table(0x41a278) +0x0.
+  The `sd` at 0x4132c0 stores 8 bytes to a0 (arg0 at entry) +0x190.
   The `jalr` at 0x412038 calls mvpRead with a0=a0 at entry (arg0), a1=0x15f28, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x412058 calls getenv with a0=0x4204f8, a1=?, a2=0x2, a3=?.
   The `jalr` at 0x412080 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=ret(getenv).
@@ -3029,35 +3083,35 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x412190 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
   The `jalr` at 0x4121ac calls getenv with a0=0x420520, a1=?, a2=?, a3=?.
   The `jalr` at 0x4121d4 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4123f0 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420530, a3=0x0.
+  The `jalr` at 0x4123f0 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420530, a3=0x0, a7=a0+288.
   The `jalr` at 0x412424 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420538, a3=0x0.
   The `jalr` at 0x412458 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420540, a3=0x0.
   The `jalr` at 0x412470 calls mvpRead with a0=a0 at entry (arg0), a1=?, a2=0x2, a3=?.
   The `jalr` at 0x4124fc calls mvpMipmapMode with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x412638 calls mvpPanic with a0=0x41a1b0, a1=?, a2=?, a3=0x2, a5=0x3, a7=0x1.
   The `jalr` at 0x4127a4 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420548, a3=0x0.
-  The `jalr` at 0x412998 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x1.
-  The `jalr` at 0x4129cc calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
-  The `jalr` at 0x4129f4 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
+  The `jalr` at 0x412998 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=[a0+314]:2, a3=0x1.
+  The `jalr` at 0x4129cc calls mvpSetScale with a0=a0 at entry (arg0), a1=[a0+324]:2, a2=([a0+316]:2 + [a0+300]:1), a3=0x0.
+  The `jalr` at 0x4129f4 calls mvpSetScale with a0=a0 at entry (arg0), a1=[a0+324]:2, a2=[a0+316]:2, a3=0x0.
   The `jalr` at 0x412b30 calls mvpAssertFail with a0=0x41a1d0, a1=0x41a1f0, a2=0x12f, a3=?.
   The `jalr` at 0x412b9c calls mvpAssertFail with a0=0x41a200, a1=0x41a1f0, a2=0x134, a3=?.
-  The `bgezall` at 0x412bb8 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
+  The `bgezall` at 0x412bb8 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=[a0+318]:2, a2=0x0, a3=?.
   The `bgezall` at 0x412bdc calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
   The `jalr` at 0x412e00 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a218, a3=0x0, a7=-0x1.
   The `jalr` at 0x412e38 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a228, a3=0x0.
   The `jalr` at 0x412e70 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a238, a3=0x0.
   The `jalr` at 0x412e84 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x412efc calls mvpAssertFail with a0=0x41a248, a1=0x41a1f0, a2=0x155, a3=?.
-  The `jalr` at 0x412f4c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a268, a3=0x0.
-  The `jalr` at 0x412f9c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420550, a3=0x0, a4=0x0.
+  The `jalr` at 0x412efc calls mvpAssertFail with a0=0x41a248, a1=0x41a1f0, a2=0x155, a3=?, a6=a0+288.
+  The `jalr` at 0x412f4c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a268, a3=0x0, a4=0x0, a5=a0+288.
+  The `jalr` at 0x412f9c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420550, a3=0x0, a4=0x0, a5=a0+288, a6=[a0+288]:1.
   The `jalr` at 0x412fb4 calls mvpRead with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x413208 calls mvpPanic with a0=0x41a2a8, a1=?, a2=0x3, a3=?, a4=0x4.
-  The `jalr` at 0x4132f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420558, a3=0x0, a6=0x1.
-  The `jalr` at 0x413328 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2c0, a3=0x0.
-  The `jalr` at 0x413378 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0x413208 calls mvpPanic with a0=0x41a2a8, a1=[a0+342]:1, a2=0x3, a3=[a0+342]:1, a4=0x4, a5=[a0+342]:1, a7=[a0+342]:1.
+  The `jalr` at 0x4132f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420558, a3=0x0, a5=a0+288, a6=0x1.
+  The `jalr` at 0x413328 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2c0, a3=0x0, a4=0x0.
+  The `jalr` at 0x413378 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=[a0+324]:2, a4=[a0+322]:2, a5=[a0+320]:2, a6=[a0+318]:2.
   The `jalr` at 0x4133e4 calls mvpAssertFail with a0=0x41a2d0, a1=0x41a1f0, a2=0x1da, a3=?.
-  The `bgezall` at 0x413400 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
-  The `jalr` at 0x413848 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2f0, a3=0x0.
+  The `bgezall` at 0x413400 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=[a0+322]:2, a2=0x0, a3=?.
+  The `jalr` at 0x413848 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2f0, a3=0x0, a5=[a0+320]:2, a7=[a0+320]:2.
   The `jalr` at 0x413880 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a300, a3=0x0.
   The `jalr` at 0x4138b8 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a310, a3=0x0.
   The `jalr` at 0x4138f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a320, a3=0x0.
@@ -3069,7 +3123,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x41213c targets 0x412160, is taken when t1(=ret(getenv)) == 0, and falls through when t1(=ret(getenv)) != 0.
   The `beq` branch at 0x412180 targets 0x4121a4, is taken when t3(=ret(getenv)) == 0, and falls through when t3(=ret(getenv)) != 0.
   The `beq` branch at 0x4121c4 targets 0x4121e8, is taken when t9(=ret(getenv)) == 0, and falls through when t9(=ret(getenv)) != 0.
-  The `beq` branch at 0x41226c targets 0x412280, is taken when (at(?) & 0x1) == 0, and falls through when (at(?) & 0x1) != 0.
+  The `beq` branch at 0x41226c targets 0x412280, is taken when (at(=[a0+343]:1) & 0x1) == 0, and falls through when (at(=[a0+343]:1) & 0x1) != 0.
   The `beq` branch at 0x4123d0 targets 0x4123f8, is taken when (a5(=[a0+36]) & 0x8) == 0, and falls through when (a5(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412404 targets 0x41242c, is taken when (t0(=[a0+36]) & 0x8) == 0, and falls through when (t0(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412438 targets 0x412460, is taken when (t1(=[a0+36]) & 0x8) == 0, and falls through when (t1(=[a0+36]) & 0x8) != 0.
@@ -3077,7 +3131,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x412480 targets 0x412fac, is taken when v0(=ret(mvpRead)) != t2(=0x1), and falls through when v0(=ret(mvpRead)) == t2(=0x1).
   The `beq` branch at 0x4124a8 targets 0x4124c4, is taken when t3(?) >= t8(?) (signed), and falls through when t3(?) < t8(?) (signed).
   The `beq` branch at 0x4124bc targets 0x4124d0 and is always taken.
-  The `bne` branch at 0x4124ec targets 0x412648, is taken when v0(?) != v1(=0x2), and falls through when v0(?) == v1(=0x2).
+  The `bne` branch at 0x4124ec targets 0x412648, is taken when v0(=[a0+294]:1) != v1(=0x2), and falls through when v0(=[a0+294]:1) == v1(=0x2).
   The `beq` branch at 0x41251c targets 0x41255c, is taken when a2(?) == a3(=0x2), and falls through when a2(?) != a3(=0x2).
   The `beq` branch at 0x41252c targets 0x412590, is taken when a4(?) == a5(=0x3), and falls through when a4(?) != a5(=0x3).
   The `beq` branch at 0x41253c targets 0x4125c4, is taken when a6(?) == a7(=0x1), and falls through when a6(?) != a7(=0x1).
@@ -3090,7 +3144,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x412640 targets 0x412648 and is always taken.
   The `beq` branch at 0x412784 targets 0x4127ac, is taken when (a1(=[a0+36]) & 0x8) == 0, and falls through when (a1(=[a0+36]) & 0x8) != 0.
   The `bc1f` branch at 0x412824 targets 0x412848, is taken when not (f0 == f1(=0x3fe0000000000000) (c.eq.d at 0x41281c)), and falls through when f0 == f1(=0x3fe0000000000000) (c.eq.d at 0x41281c).
-  The `bne` branch at 0x412838 targets 0x412848, is taken when (t3(?) & 0x2) != 0, and falls through when (t3(?) & 0x2) == 0.
+  The `bne` branch at 0x412838 targets 0x412848, is taken when (t3(=[a0+296]:1) & 0x2) != 0, and falls through when (t3(=[a0+296]:1) & 0x2) == 0.
   The `bne` branch at 0x412854 targets 0x4128dc, is taken when (t9(=[a0+296]:1) & 0x2) != 0, and falls through when (t9(=[a0+296]:1) & 0x2) == 0.
   The `beq` branch at 0x412868 targets 0x412884, is taken when (ra(=[a0+296]:1) & 0x1) == 0, and falls through when (ra(=[a0+296]:1) & 0x1) != 0.
   The `bne` branch at 0x41287c targets 0x4128b0, is taken when at(=[a0+296]:1) != v0(=0x11), and falls through when at(=[a0+296]:1) == v0(=0x11).
@@ -3100,11 +3154,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1f` branch at 0x412924 targets 0x41295c, is taken when not (f1 == f2(=0x3fe0000000000000) (c.eq.d at 0x41291c)), and falls through when f1 == f2(=0x3fe0000000000000) (c.eq.d at 0x41291c).
   The `beq` branch at 0x412954 targets 0x412974 and is always taken.
   The `beq` branch at 0x412978 targets 0x412b38, is taken when t3(?) == 0, and falls through when t3(?) != 0.
-  The `beq` branch at 0x412a34 targets 0x412a50, is taken when (a3(?) & 0xff) == 0, and falls through when (a3(?) & 0xff) != 0.
-  The `beq` branch at 0x412a80 targets 0x412a9c, is taken when (t0(?) & 0xff) == 0, and falls through when (t0(?) & 0xff) != 0.
+  The `beq` branch at 0x412a34 targets 0x412a50, is taken when (a3(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (a3(=ret(mvpSetScale)) & 0xff) != 0.
+  The `beq` branch at 0x412a80 targets 0x412a9c, is taken when (t0(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (t0(=ret(mvpSetScale)) & 0xff) != 0.
   The `beq` branch at 0x412acc targets 0x412ae8, is taken when (t9(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (t9(=ret(mvpSetScale)) & 0xff) != 0.
-  The `beq` branch at 0x412af0 targets 0x412b18, is taken when a0(?) == a1(=-0x1), and falls through when a0(?) != a1(=-0x1).
-  The `beq` branch at 0x412b00 targets 0x412b18, is taken when a2(?) == a3(=-0x1), and falls through when a2(?) != a3(=-0x1).
+  The `beq` branch at 0x412af0 targets 0x412b18, is taken when a0(=ret(mvpSetScale)) == a1(=-0x1), and falls through when a0(=ret(mvpSetScale)) != a1(=-0x1).
+  The `beq` branch at 0x412b00 targets 0x412b18, is taken when a2(=ret(mvpSetScale)) == a3(=-0x1), and falls through when a2(=ret(mvpSetScale)) != a3(=-0x1).
   The `bne` branch at 0x412b10 targets 0x412b38, is taken when a4(=ret(mvpSetScale)) != a5(=-0x1), and falls through when a4(=ret(mvpSetScale)) == a5(=-0x1).
   The `beq` branch at 0x412b7c targets 0x412ba4, is taken when a1(?) == 0, and falls through when a1(?) != 0.
   The `beq` branch at 0x412ddc targets 0x412e08, is taken when (ra(=[a0+36]) & 0x8) == 0, and falls through when (ra(=[a0+36]) & 0x8) != 0.
@@ -3115,17 +3169,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x412f7c targets 0x412fa4, is taken when (a3(=[a0+36]) & 0x8) == 0, and falls through when (a3(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412fa4 targets 0x413914 and is always taken.
   The `bne` branch at 0x412fc0 targets 0x413900, is taken when v0(=ret(mvpRead)) != 0, and falls through when v0(=ret(mvpRead)) == 0.
-  The `beq` branch at 0x41307c targets 0x4130c8, is taken when a7(?) == t0(=0x1), and falls through when a7(?) != t0(=0x1).
-  The `beq` branch at 0x41308c targets 0x4130e4, is taken when v1(?) == a0(=0x2), and falls through when v1(?) != a0(=0x2).
-  The `beq` branch at 0x41309c targets 0x413108, is taken when a1(?) == a2(=0x3), and falls through when a1(?) != a2(=0x3).
-  The `beq` branch at 0x4130ac targets 0x41312c, is taken when a3(?) == a4(=0x4), and falls through when a3(?) != a4(=0x4).
-  The `beq` branch at 0x4130b8 targets 0x413144, is taken when a5(?) == 0, and falls through when a5(?) != 0.
+  The `beq` branch at 0x41307c targets 0x4130c8, is taken when a7(=[a0+342]:1) == t0(=0x1), and falls through when a7(=[a0+342]:1) != t0(=0x1).
+  The `beq` branch at 0x41308c targets 0x4130e4, is taken when v1(=[a0+342]:1) == a0(=0x2), and falls through when v1(=[a0+342]:1) != a0(=0x2).
+  The `beq` branch at 0x41309c targets 0x413108, is taken when a1(=[a0+342]:1) == a2(=0x3), and falls through when a1(=[a0+342]:1) != a2(=0x3).
+  The `beq` branch at 0x4130ac targets 0x41312c, is taken when a3(=[a0+342]:1) == a4(=0x4), and falls through when a3(=[a0+342]:1) != a4(=0x4).
+  The `beq` branch at 0x4130b8 targets 0x413144, is taken when a5(=[a0+342]:1) == 0, and falls through when a5(=[a0+342]:1) != 0.
   The `beq` branch at 0x4130c0 targets 0x413220 and is always taken.
   The `beq` branch at 0x4130dc targets 0x413220 and is always taken.
   The `beq` branch at 0x413100 targets 0x413220 and is always taken.
   The `beq` branch at 0x413124 targets 0x413220 and is always taken.
   The `beq` branch at 0x41313c targets 0x413220 and is always taken.
-  The `beq` branch at 0x413168 targets 0x4131fc, is taken when ra(?) >= 0xb (unsigned), and falls through when ra(?) < 0xb (unsigned).
+  The `beq` branch at 0x413168 targets 0x4131fc, is taken when ra(=[a0+293]:1) >= 0xb (unsigned), and falls through when ra(=[a0+293]:1) < 0xb (unsigned).
   The `beq` branch at 0x41319c targets 0x413218 and is always taken.
   The `beq` branch at 0x4131c0 targets 0x413218 and is always taken.
   The `beq` branch at 0x4131dc targets 0x413218 and is always taken.
@@ -3158,18 +3212,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x405fec loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x406030 loads 4 bytes from a3 (arg3 at entry) +0x40.
   The `lw` at 0x406054 loads 4 bytes from a3 (arg3 at entry) +0x48.
-  The `lw` at 0x406060 loads 4 bytes from ?.
+  The `lw` at 0x406060 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406014 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x344, a3=a3 at entry (arg3).
-  The `jalr` at 0x406040 calls mvpBufferSize with a0=?, a1=[a3+64], a2=0x10, a3=0x12d.
-  The `jalr` at 0x406074 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=?.
+  The `jalr` at 0x406040 calls mvpBufferSize with a0=[a1+104], a1=[a3+64], a2=0x10, a3=0x12d.
+  The `jalr` at 0x406074 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=?.
   The `jalr` at 0x406090 calls oserror with a0=?, a1=?, a2=-0x1, a3=?.
   The `jalr` at 0x4060ac calls mvpRevisionError with a0=?, a1=?, a2=?, a3=0x7.
   The `jalr` at 0x4060b8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4060cc calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4060f4 calls mvpErrPrintf with a0=?, a1=0x418460, a2=?, a3=?, a4=ret(strerror).
+  The `jalr` at 0x4060f4 calls mvpErrPrintf with a0=[a1+104], a1=0x418460, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x406100 calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4061a0 calls mvpPrintf with a0=?, a1=0x418488, a2=?, a3=?.
-  The `bgezall` at 0x4061bc calls mvpPrintBufferInfo [0x405f50] with a0=?, a1=a3+8, a2=?, a3=?.
+  The `jalr` at 0x4061a0 calls mvpPrintf with a0=[a1+104], a1=0x418488, a2=?, a3=?.
+  The `bgezall` at 0x4061bc calls mvpPrintBufferInfo [0x405f50] with a0=[a1+104], a1=a3+8, a2=?, a3=?.
   The `bne` branch at 0x405ff8 targets 0x40601c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x406084 targets 0x406188, is taken when v0(=ret(ioctl)) != a2(=-0x1), and falls through when v0(=ret(ioctl)) == a2(=-0x1).
   The `bne` branch at 0x4060a0 targets 0x4060b4, is taken when v0(=ret(oserror)) != a3(=0x7), and falls through when v0(=ret(oserror)) == a3(=0x7).
@@ -3190,14 +3244,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 316 bytes.
   The `lw` at 0x40621c loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x406260 loads 4 bytes from a3 (arg3 at entry) +0x40.
-  The `lw` at 0x40626c loads 4 bytes from ?.
+  The `lw` at 0x40626c loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406244 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x36b, a3=a3 at entry (arg3).
-  The `jalr` at 0x406280 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=0x12e.
+  The `jalr` at 0x406280 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=0x12e.
   The `jalr` at 0x40629c calls oserror with a0=?, a1=?, a2=?, a3=?, a4=-0x1.
   The `jalr` at 0x4062b8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a5=0x7.
   The `jalr` at 0x4062c4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4062d8 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4062f4 calls mvpErrPrintf with a0=?, a1=0x4184b0, a2=ret(strerror), a3=?.
+  The `jalr` at 0x4062f4 calls mvpErrPrintf with a0=[a1+104], a1=0x4184b0, a2=ret(strerror), a3=?.
   The `bne` branch at 0x406228 targets 0x40624c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x406290 targets 0x40630c, is taken when v0(=ret(ioctl)) != a4(=-0x1), and falls through when v0(=ret(ioctl)) == a4(=-0x1).
   The `bne` branch at 0x4062ac targets 0x4062c0, is taken when v0(=ret(oserror)) != a5(=0x7), and falls through when v0(=ret(oserror)) == a5(=0x7).
@@ -3210,40 +3264,44 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x406330-0x40673c (1036 bytes).
   It occupies 1036 bytes.
   The `lw` at 0x40635c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  The `lbu` at 0x406390 loads 1 byte from ?.
-  The `lw` at 0x406414 loads 4 bytes from ret(_dmBufferGetDmsPool) +0xc.
-  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x40643c, `lw` at 0x40645c, `lw` at 0x40647c.
+  The `lbu` at 0x406390 loads 1 byte from [a1+104] +0x121.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0xc, including `lw` at 0x406414, `lw` at 0x4064c4.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x8, including `lw` at 0x40643c, `lw` at 0x4064cc.
+  2 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x4, including `lw` at 0x40645c, `lw` at 0x4064d4.
+  3 such `lw` accesses load 4 bytes from ret(_dmBufferGetDmsPool) +0x0, including `lw` at 0x40647c, `lw` at 0x4064e0, `lw` at 0x406590.
+  The `lw` at 0x406524 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
+  The `lw` at 0x40659c loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406384 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x38b, a3=a3 at entry (arg3).
-  The `jalr` at 0x4063c8 calls mvpBufferSize with a0=?, a1=?, a2=one of 0x3, 0x4, a3=?, a4=one of 0x3, 0x4.
+  The `jalr` at 0x4063c8 calls mvpBufferSize with a0=[a1+104], a1=[[a1+104]+289]:1, a2=one of 0x3, 0x4, a3=?, a4=one of 0x3, 0x4.
   The `jalr` at 0x4063e0 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x40642c calls mvpBufferAlignment with a0=?, a1=?, a2=?, a3=?, a5=ret(_dmBufferGetDmsPool), a7=[ret(_dmBufferGetDmsPool)+12].
-  The `jalr` at 0x406498 calls mvpBufferAlignment with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4064ec calls mvpErrPrintf with a0=?, a1=0x4184d0, a2=0x2, a3=ret(mvpBufferAlignment).
-  The `jalr` at 0x40650c calls mvpRead with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406548 calls mvpErrPrintf with a0=?, a1=0x418578, a2=?, a3=?.
-  The `jalr` at 0x4065b0 calls ioctl with a0=?, a1=0x6d767003, a2=sp-104, a3=?, a4=0x10, a5=0x12d.
+  The `jalr` at 0x40642c calls mvpBufferAlignment with a0=[a1+104], a1=?, a2=?, a3=?, a5=ret(_dmBufferGetDmsPool), a7=[ret(_dmBufferGetDmsPool)+12].
+  The `jalr` at 0x406498 calls mvpBufferAlignment with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4064ec calls mvpErrPrintf with a0=[a1+104], a1=0x4184d0, a2=0x2, a3=ret(mvpBufferAlignment), a4=ret(mvpBufferSize), a5=one of 0x3, 0x4, a6=[ret(_dmBufferGetDmsPool)+12], a7=[ret(_dmBufferGetDmsPool)+8].
+  The `jalr` at 0x40650c calls mvpRead with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406548 calls mvpErrPrintf with a0=[a1+104], a1=0x418578, a2=?, a3=[ret(_dmBufferGetDmsPool)+24].
+  The `jalr` at 0x4065b0 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-104, a3=?, a4=0x10, a5=0x12d.
   The `jalr` at 0x4065cc calls oserror with a0=?, a1=?, a2=?, a3=?, a6=-0x1.
   The `jalr` at 0x4065e8 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a7=0x7.
   The `jalr` at 0x4065f4 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406608 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406630 calls mvpErrPrintf with a0=?, a1=0x4185a0, a2=?, a3=?, a4=ret(strerror).
+  The `jalr` at 0x406630 calls mvpErrPrintf with a0=[a1+104], a1=0x4185a0, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x40663c calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4066fc calls mvpPrintf with a0=?, a1=0x4185c8, a2=?, a3=?, a6=-0x1.
-  The `bgezall` at 0x406714 calls mvpPrintBufferInfo [0x405f50] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x4066fc calls mvpPrintf with a0=[a1+104], a1=0x4185c8, a2=?, a3=?, a6=-0x1.
+  The `bgezall` at 0x406714 calls mvpPrintBufferInfo [0x405f50] with a0=[a1+104], a1=ret(_dmBufferGetDmsPool), a2=?, a3=?.
   The `bne` branch at 0x406368 targets 0x40638c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
-  The `bne` branch at 0x406398 targets 0x4063b0, is taken when a1(?) != a2(=0x3), and falls through when a1(?) == a2(=0x3).
+  The `bne` branch at 0x406398 targets 0x4063b0, is taken when a1(=[[a1+104]+289]:1) != a2(=0x3), and falls through when a1(=[[a1+104]+289]:1) == a2(=0x3).
   The `beq` branch at 0x4063a8 targets 0x4063b8 and is always taken.
   The `bne` branch at 0x4063f8 targets 0x406410, is taken when a5(=ret(_dmBufferGetDmsPool)) != 0, and falls through when a5(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x406408 targets 0x406724 and is always taken.
   The `bne` branch at 0x40641c targets 0x406490, is taken when a7(=[ret(_dmBufferGetDmsPool)+12]) != t0(=0x2), and falls through when a7(=[ret(_dmBufferGetDmsPool)+12]) == t0(=0x2).
-  The `beq` branch at 0x406448 targets 0x406458, is taken when (t0(?) & t1(=ret(mvpBufferAlignment)-1)) == 0, and falls through when (t0(?) & t1(=ret(mvpBufferAlignment)-1)) != 0.
+  The `beq` branch at 0x406448 targets 0x406458, is taken when (t0(=[ret(_dmBufferGetDmsPool)+8]) & t1(=ret(mvpBufferAlignment)-1)) == 0, and falls through when (t0(=[ret(_dmBufferGetDmsPool)+8]) & t1(=ret(mvpBufferAlignment)-1)) != 0.
   The `beq` branch at 0x406450 targets 0x406490 and is always taken.
-  The `beq` branch at 0x406468 targets 0x406478, is taken when t1(?) >= t2(?) (signed), and falls through when t1(?) < t2(?) (signed).
+  The `beq` branch at 0x406468 targets 0x406478, is taken when t1(=[ret(_dmBufferGetDmsPool)+4]) >= t2(=ret(mvpBufferSize)) (signed), and falls through when t1(=[ret(_dmBufferGetDmsPool)+4]) < t2(=ret(mvpBufferSize)) (signed).
   The `beq` branch at 0x406470 targets 0x406490 and is always taken.
-  The `beq` branch at 0x406488 targets 0x406504, is taken when t2(?) >= t3(?) (signed), and falls through when t2(?) < t3(?) (signed).
+  The `beq` branch at 0x406488 targets 0x406504, is taken when t2(=[ret(_dmBufferGetDmsPool)]) >= t3(=one of 0x3, 0x4) (signed), and falls through when t2(=[ret(_dmBufferGetDmsPool)]) < t3(=one of 0x3, 0x4) (signed).
   The `beq` branch at 0x4064fc targets 0x406724 and is always taken.
   The `beq` branch at 0x406518 targets 0x406568, is taken when v0(=ret(mvpRead)) == 0, and falls through when v0(=ret(mvpRead)) != 0.
-  The `bne` branch at 0x406530 targets 0x406560, is taken when a3(?) != 0, and falls through when a3(?) == 0.
+  The `bne` branch at 0x406530 targets 0x406560, is taken when a3(=[ret(_dmBufferGetDmsPool)+24]) != 0, and falls through when a3(=[ret(_dmBufferGetDmsPool)+24]) == 0.
   The `beq` branch at 0x406558 targets 0x406724 and is always taken.
   The `beq` branch at 0x406560 targets 0x40656c and is always taken.
   The `bne` branch at 0x4065c0 targets 0x4066e4, is taken when v0(=ret(ioctl)) != a6(=-0x1), and falls through when v0(=ret(ioctl)) == a6(=-0x1).
@@ -3267,15 +3325,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 376 bytes.
   The `lw` at 0x40676c loads 4 bytes from a1 (arg1 at entry) +0x68.
   The `lw` at 0x4067e8 loads 4 bytes from ret(_dmBufferGetDmsPool) +0x18.
-  The `lw` at 0x4067f4 loads 4 bytes from ?.
+  The `lw` at 0x4067f4 loads 4 bytes from [a1+104] +0x28.
   The `jalr` at 0x406794 calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x3d7, a3=a3 at entry (arg3).
   The `jalr` at 0x4067a4 calls _dmBufferGetDmsPool with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406808 calls ioctl with a0=?, a1=0x6d767003, a2=sp-88, a3=0x12e.
+  The `jalr` at 0x406808 calls ioctl with a0=[[a1+104]+40], a1=0x6d767003, a2=sp-88, a3=0x12e.
   The `jalr` at 0x406824 calls oserror with a0=?, a1=?, a2=?, a3=?, a4=-0x1.
   The `jalr` at 0x406840 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a5=0x7.
   The `jalr` at 0x40684c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406860 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406880 calls mvpErrPrintf with a0=?, a1=0x4185e8, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406880 calls mvpErrPrintf with a0=[a1+104], a1=0x4185e8, a2=ret(strerror), a3=?.
   The `bne` branch at 0x406778 targets 0x40679c, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
   The `bne` branch at 0x4067bc targets 0x4067d4, is taken when a1(=ret(_dmBufferGetDmsPool)) != 0, and falls through when a1(=ret(_dmBufferGetDmsPool)) == 0.
   The `beq` branch at 0x4067cc targets 0x4068a0 and is always taken.
@@ -3290,35 +3348,38 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x406960-0x406f34 (1492 bytes).
   It occupies 1492 bytes.
   The `lw` at 0x40698c loads 4 bytes from a1 (arg1 at entry) +0x68.
-  12 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4069c0, `lw` at 0x406ab8, `lw` at 0x406af4.
-  6 such `sw` accesses store 4 bytes to ?, including `sw` at 0x406ad8, `sw` at 0x406b40, `sw` at 0x406b68.
+  2 such `lw` accesses load 4 bytes from [a1+104] +0x24, including `lw` at 0x4069c0, `lw` at 0x406f04.
+  9 such `lw` accesses load 4 bytes from ?, including `lw` at 0x406ab8, `lw` at 0x406af4, `lw` at 0x406b18.
+  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x406ad8, `sw` at 0x406b40, `sw` at 0x406b68.
   2 such `lh` accesses load 2 bytes from ?, including `lh` at 0x406b70, `lh` at 0x406b80.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0x406b78, `sh` at 0x406b88.
   2 such `ld` accesses load 8 bytes from ?, including `ld` at 0x406ba0, `ld` at 0x406c48.
   2 such `sd` accesses store 8 bytes to ?, including `sd` at 0x406ba8, `sd` at 0x406c84.
+  The `lw` at 0x406da0 loads 4 bytes from [a1+104] +0x28.
+  The `sw` at 0x406f10 stores 4 bytes to [a1+104] +0x24.
   The `jalr` at 0x4069b4 calls mvpAssertFail with a0=0x418608, a1=0x420180, a2=0x403, a3=a3 at entry (arg3).
   The `jalr` at 0x406a0c calls mvpAssertFail with a0=0x418630, a1=0x420180, a2=0x40c, a3=a2 at entry (arg2), a4=a3 at entry (arg3).
   The `jalr` at 0x406a60 calls mvpAssertFail with a0=0x420188, a1=0x420180, a2=0x41a, a3=a3 at entry (arg3).
   The `jalr` at 0x406a8c calls mvpAssertFail with a0=0x418640, a1=0x420180, a2=0x41b, a3=?.
   The `jalr` at 0x406ac0 calls mvpTransferMode with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406afc calls mvpErrPrintf with a0=?, a1=0x418668, a2=?, a3=?.
+  The `jalr` at 0x406afc calls mvpErrPrintf with a0=[a1+104], a1=0x418668, a2=?, a3=?.
   The `jalr` at 0x406b30 calls mvpFromVLEventMask with a0=0x4000, a1=ret(mvpTransferMode), a2=?, a3=?, a4=0x10.
   The `jalr` at 0x406b58 calls mvpFromVLEventMask with a0=?, a1=ret(mvpTransferMode), a2=?, a3=?, a4=0x10.
-  The `jalr` at 0x406be0 calls mvpErrPrintf with a0=?, a1=0x418688, a2=?, a3=?.
-  The `jalr` at 0x406c70 calls mvpPrintf with a0=?, a1=0x418710, a2=?, a3=?.
-  The `jalr` at 0x406cd4 calls mvpPrintf with a0=?, a1=0x418770, a2=?, a3=?.
-  The `jalr` at 0x406d40 calls mvpSendPathControls with a0=?, a1=0x1, a2=0x0, a3=?.
-  The `jalr` at 0x406d50 calls mvpBufferSize with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406d94 calls mvpPrintf with a0=?, a1=0x4187e8, a2=?, a3=?, a4=ret(mvpBufferSize).
-  The `jalr` at 0x406db4 calls ioctl with a0=?, a1=0x6d767004, a2=sp-584, a3=?.
+  The `jalr` at 0x406be0 calls mvpErrPrintf with a0=[a1+104], a1=0x418688, a2=?, a3=?.
+  The `jalr` at 0x406c70 calls mvpPrintf with a0=[a1+104], a1=0x418710, a2=?, a3=?.
+  The `jalr` at 0x406cd4 calls mvpPrintf with a0=[a1+104], a1=0x418770, a2=?, a3=?, a6=0x0.
+  The `jalr` at 0x406d40 calls mvpSendPathControls with a0=[a1+104], a1=0x1, a2=0x0, a3=?.
+  The `jalr` at 0x406d50 calls mvpBufferSize with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x406d94 calls mvpPrintf with a0=[a1+104], a1=0x4187e8, a2=?, a3=?, a4=ret(mvpBufferSize).
+  The `jalr` at 0x406db4 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-584, a3=?.
   The `jalr` at 0x406dd0 calls oserror with a0=?, a1=-0x1, a2=?, a3=?.
   The `jalr` at 0x406dec calls mvpRevisionError with a0=?, a1=?, a2=0x7, a3=?.
   The `jalr` at 0x406df8 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406e0c calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406e2c calls mvpErrPrintf with a0=?, a1=0x418810, a2=ret(strerror), a3=?.
+  The `jalr` at 0x406e2c calls mvpErrPrintf with a0=[a1+104], a1=0x418810, a2=ret(strerror), a3=?.
   The `jalr` at 0x406e38 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `bne` branch at 0x406998 targets 0x4069bc, is taken when at(=[a1+104]) != 0, and falls through when at(=[a1+104]) == 0.
-  The `beq` branch at 0x4069c8 targets 0x4069e0, is taken when (a1(?) & 0x200) == 0, and falls through when (a1(?) & 0x200) != 0.
+  The `beq` branch at 0x4069c8 targets 0x4069e0, is taken when (a1(=[[a1+104]+36]) & 0x200) == 0, and falls through when (a1(=[[a1+104]+36]) & 0x200) != 0.
   The `beq` branch at 0x4069d8 targets 0x406f1c and is always taken.
   The `bne` branch at 0x4069e4 targets 0x406a40, is taken when a3(=a2) != 0, and falls through when a3(=a2) == 0.
   The `beq` branch at 0x4069f0 targets 0x406a14, is taken when a4(=a3) == 0, and falls through when a4(=a3) != 0.
@@ -3338,7 +3399,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x406c4c targets 0x406c88, is taken when a4(?) == 0, and falls through when a4(?) != 0.
   The `bne` branch at 0x406c94 targets 0x406cf8, is taken when a4(?) != a5(=0x65), and falls through when a4(?) == a5(=0x65).
   The `bne` branch at 0x406ca4 targets 0x406cf8, is taken when a5(?) < 0x2 (signed), and falls through when a5(?) >= 0x2 (signed).
-  The `bne` branch at 0x406cb0 targets 0x406cf8, is taken when a6(?) != 0, and falls through when a6(?) == 0.
+  The `bne` branch at 0x406cb0 targets 0x406cf8 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0x406cf0 targets 0x406d30 and is always taken.
   The `bgtz` branch at 0x406d28 targets 0x406ab4, is taken when a4(?) > 0 (signed), and falls through when a4(?) <= 0 (signed).
   The `bne` branch at 0x406dc4 targets 0x406f00, is taken when v0(=ret(ioctl)) != a1(=-0x1), and falls through when v0(=ret(ioctl)) == a1(=-0x1).
@@ -3363,27 +3424,58 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib32/dmedia/video/mvp.so`.
   Range: 0x411fe0-0x41392c (6476 bytes).
   It occupies 6476 bytes.
-  7 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x412010, `lbu` at 0x41284c, `lbu` at 0x412860.
+  8 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x412010, `lbu` at 0x412830, `lbu` at 0x41284c.
   The `sw` at 0x412090 stores 4 bytes to sym(mvpscreen_hbias) +0x0.
   The `sw` at 0x4120d4 stores 4 bytes to sym(mvpscreen_vbias) +0x0.
   The `sw` at 0x412118 stores 4 bytes to sym(mvpscreen_hend) +0x0.
   The `sw` at 0x41215c stores 4 bytes to sym(mvpscreen_vend) +0x0.
   The `sw` at 0x4121a0 stores 4 bytes to sym(mvpscreen_dvsize) +0x0.
   The `sw` at 0x4121e4 stores 4 bytes to sym(mvpscreen_dhsize) +0x0.
-  34 such `lh` accesses load 2 bytes from ?, including `lh` at 0x4121ec, `lh` at 0x412204, `lh` at 0x41221c.
+  The `lh` at 0x4121ec loads 2 bytes from a0 (arg0 at entry) +0x136.
   The `lw` at 0x4121f4 loads 4 bytes from sym(mvpscreen_hbias) +0x0.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x138, including `lh` at 0x412204, `lh` at 0x412ce0, `lh` at 0x412d8c.
   The `lw` at 0x41220c loads 4 bytes from sym(mvpscreen_vbias) +0x0.
-  26 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x41224c, `lbu` at 0x412264, `lbu` at 0x412290.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13a, including `lh` at 0x41221c, `lh` at 0x41298c, `lh` at 0x412e94.
+  3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13c, including `lh` at 0x412228, `lh` at 0x4129b4, `lh` at 0x4129e8.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x157, including `lbu` at 0x41224c, `lbu` at 0x412264.
+  3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x156, including `lbu` at 0x412290, `lbu` at 0x4126bc, `lbu` at 0x413070.
   The `lw` at 0x4122e4 loads 4 bytes from sym(mvpscreen_hend) +0x0.
   The `lw` at 0x412340 loads 4 bytes from sym(mvpscreen_vend) +0x0.
-  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0x4123a8, `sw` at 0x4123b4, `sw` at 0x4123c0.
+  3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x127, including `lbu` at 0x412388, `lbu` at 0x4126e0, `lbu` at 0x413058.
+  The `sw` at 0x4123a8 stores 4 bytes to a0 (arg0 at entry) +0x160.
+  The `sw` at 0x4123b4 stores 4 bytes to a0 (arg0 at entry) +0x164.
+  The `sw` at 0x4123c0 stores 4 bytes to a0 (arg0 at entry) +0x168.
   15 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x24, including `lw` at 0x4123c8, `lw` at 0x4123fc, `lw` at 0x412430.
-  13 such `sb` accesses store 1 byte to ?, including `sb` at 0x412510, `sb` at 0x41256c, `sb` at 0x412578.
-  12 such `sd` accesses store 8 bytes to ?, including `sd` at 0x412774, `sd` at 0x412db4, `sd` at 0x412dc0.
+  The `lbu` at 0x41248c loads 1 byte from a0 (arg0 at entry) +0x12d.
+  8 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x412498, `lbu` at 0x4124a0, `lbu` at 0x4124b4.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x126, including `lbu` at 0x4124dc, `lbu` at 0x413004.
+  The `sb` at 0x412510 stores 1 byte to a0 (arg0 at entry) +0x15a.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x157, including `sb` at 0x41256c, `sb` at 0x4125a0, `sb` at 0x4125d4.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x158, including `sb` at 0x412578, `sb` at 0x4125ac, `sb` at 0x4125e0.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x159, including `sb` at 0x412584, `sb` at 0x4125b8, `sb` at 0x4125ec.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x121, including `lbu` at 0x412674, `lbu` at 0x41302c.
+  The `lbu` at 0x412740 loads 1 byte from a0 (arg0 at entry) +0x15d.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x160, including `sd` at 0x412774, `sd` at 0x4132b4.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x13e, including `lh` at 0x4127b0, `lh` at 0x413334.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x140, including `lh` at 0x4127bc, `lh` at 0x413340.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x142, including `lh` at 0x4127c8, `lh` at 0x41334c.
+  2 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x144, including `lh` at 0x4127d4, `lh` at 0x413358.
   3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x146, including `lh` at 0x4127ec, `lh` at 0x4128ec, `lh` at 0x4134d0.
   3 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x148, including `lh` at 0x412800, `lh` at 0x412900, `lh` at 0x4134e4.
-  4 such `sh` accesses store 2 bytes to ?, including `sh` at 0x412eb0, `sh` at 0x412f0c, `sh` at 0x4133a0.
+  The `lbu` at 0x4129bc loads 1 byte from a0 (arg0 at entry) +0x12c.
+  15 such `lh` accesses load 2 bytes from ?, including `lh` at 0x412bfc, `lh` at 0x412c6c, `lh` at 0x412d18.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x170, including `sd` at 0x412db4, `sd` at 0x4137f0.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x178, including `sd` at 0x412dc0, `sd` at 0x4137fc.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x180, including `sd` at 0x412dcc, `sd` at 0x413808.
+  2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x12e, including `sh` at 0x412eb0, `sh` at 0x4133a0.
+  The `lh` at 0x412ebc loads 2 bytes from a0 (arg0 at entry) +0x12e.
+  2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x130, including `sh` at 0x412f0c, `sh` at 0x413558.
+  2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x168, including `sd` at 0x412f18, `sd` at 0x413814.
+  The `lbu` at 0x412f5c loads 1 byte from a0 (arg0 at entry) +0x120.
+  The `sd` at 0x412f6c stores 8 bytes to a0 (arg0 at entry) +0x188.
+  The `lbu` at 0x413148 loads 1 byte from a0 (arg0 at entry) +0x125.
   The `lw` at 0x413174 loads 4 bytes from table(0x41a278) +0x0.
+  The `sd` at 0x4132c0 stores 8 bytes to a0 (arg0 at entry) +0x190.
   The `jalr` at 0x412038 calls mvpRead with a0=a0 at entry (arg0), a1=0x15f28, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x412058 calls getenv with a0=0x4204f8, a1=?, a2=0x2, a3=?.
   The `jalr` at 0x412080 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=ret(getenv).
@@ -3397,35 +3489,35 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x412190 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
   The `jalr` at 0x4121ac calls getenv with a0=0x420520, a1=?, a2=?, a3=?.
   The `jalr` at 0x4121d4 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4123f0 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420530, a3=0x0.
+  The `jalr` at 0x4123f0 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420530, a3=0x0, a7=a0+288.
   The `jalr` at 0x412424 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420538, a3=0x0.
   The `jalr` at 0x412458 calls mvpreg_gbetrace with a0=0x1, a1=0x420528, a2=0x420540, a3=0x0.
   The `jalr` at 0x412470 calls mvpRead with a0=a0 at entry (arg0), a1=?, a2=0x2, a3=?.
   The `jalr` at 0x4124fc calls mvpMipmapMode with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x412638 calls mvpPanic with a0=0x41a1b0, a1=?, a2=?, a3=0x2, a5=0x3, a7=0x1.
   The `jalr` at 0x4127a4 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420548, a3=0x0.
-  The `jalr` at 0x412998 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x1.
-  The `jalr` at 0x4129cc calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
-  The `jalr` at 0x4129f4 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
+  The `jalr` at 0x412998 calls mvpSetScale with a0=a0 at entry (arg0), a1=?, a2=[a0+314]:2, a3=0x1.
+  The `jalr` at 0x4129cc calls mvpSetScale with a0=a0 at entry (arg0), a1=[a0+324]:2, a2=([a0+316]:2 + [a0+300]:1), a3=0x0.
+  The `jalr` at 0x4129f4 calls mvpSetScale with a0=a0 at entry (arg0), a1=[a0+324]:2, a2=[a0+316]:2, a3=0x0.
   The `jalr` at 0x412b30 calls mvpAssertFail with a0=0x41a1d0, a1=0x41a1f0, a2=0x12f, a3=?.
   The `jalr` at 0x412b9c calls mvpAssertFail with a0=0x41a200, a1=0x41a1f0, a2=0x134, a3=?.
-  The `bgezall` at 0x412bb8 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
+  The `bgezall` at 0x412bb8 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=[a0+318]:2, a2=0x0, a3=?.
   The `bgezall` at 0x412bdc calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
   The `jalr` at 0x412e00 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a218, a3=0x0, a7=-0x1.
   The `jalr` at 0x412e38 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a228, a3=0x0.
   The `jalr` at 0x412e70 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a238, a3=0x0.
   The `jalr` at 0x412e84 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x412efc calls mvpAssertFail with a0=0x41a248, a1=0x41a1f0, a2=0x155, a3=?.
-  The `jalr` at 0x412f4c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a268, a3=0x0.
-  The `jalr` at 0x412f9c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420550, a3=0x0, a4=0x0.
+  The `jalr` at 0x412efc calls mvpAssertFail with a0=0x41a248, a1=0x41a1f0, a2=0x155, a3=?, a6=a0+288.
+  The `jalr` at 0x412f4c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a268, a3=0x0, a4=0x0, a5=a0+288.
+  The `jalr` at 0x412f9c calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420550, a3=0x0, a4=0x0, a5=a0+288, a6=[a0+288]:1.
   The `jalr` at 0x412fb4 calls mvpRead with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x413208 calls mvpPanic with a0=0x41a2a8, a1=?, a2=0x3, a3=?, a4=0x4.
-  The `jalr` at 0x4132f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420558, a3=0x0, a6=0x1.
-  The `jalr` at 0x413328 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2c0, a3=0x0.
-  The `jalr` at 0x413378 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0x413208 calls mvpPanic with a0=0x41a2a8, a1=[a0+342]:1, a2=0x3, a3=[a0+342]:1, a4=0x4, a5=[a0+342]:1, a7=[a0+342]:1.
+  The `jalr` at 0x4132f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x420558, a3=0x0, a5=a0+288, a6=0x1.
+  The `jalr` at 0x413328 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2c0, a3=0x0, a4=0x0.
+  The `jalr` at 0x413378 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=[a0+324]:2, a4=[a0+322]:2, a5=[a0+320]:2, a6=[a0+318]:2.
   The `jalr` at 0x4133e4 calls mvpAssertFail with a0=0x41a2d0, a1=0x41a1f0, a2=0x1da, a3=?.
-  The `bgezall` at 0x413400 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=?, a2=0x0, a3=?.
-  The `jalr` at 0x413848 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2f0, a3=0x0.
+  The `bgezall` at 0x413400 calls mvpCalcMitch [0x411da0] with a0=a0 at entry (arg0), a1=[a0+322]:2, a2=0x0, a3=?.
+  The `jalr` at 0x413848 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a2f0, a3=0x0, a5=[a0+320]:2, a7=[a0+320]:2.
   The `jalr` at 0x413880 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a300, a3=0x0.
   The `jalr` at 0x4138b8 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a310, a3=0x0.
   The `jalr` at 0x4138f0 calls mvpreg_trace with a0=0x1, a1=0x420528, a2=0x41a320, a3=0x0.
@@ -3437,7 +3529,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x41213c targets 0x412160, is taken when t1(=ret(getenv)) == 0, and falls through when t1(=ret(getenv)) != 0.
   The `beq` branch at 0x412180 targets 0x4121a4, is taken when t3(=ret(getenv)) == 0, and falls through when t3(=ret(getenv)) != 0.
   The `beq` branch at 0x4121c4 targets 0x4121e8, is taken when t9(=ret(getenv)) == 0, and falls through when t9(=ret(getenv)) != 0.
-  The `beq` branch at 0x41226c targets 0x412280, is taken when (at(?) & 0x1) == 0, and falls through when (at(?) & 0x1) != 0.
+  The `beq` branch at 0x41226c targets 0x412280, is taken when (at(=[a0+343]:1) & 0x1) == 0, and falls through when (at(=[a0+343]:1) & 0x1) != 0.
   The `beq` branch at 0x4123d0 targets 0x4123f8, is taken when (a5(=[a0+36]) & 0x8) == 0, and falls through when (a5(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412404 targets 0x41242c, is taken when (t0(=[a0+36]) & 0x8) == 0, and falls through when (t0(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412438 targets 0x412460, is taken when (t1(=[a0+36]) & 0x8) == 0, and falls through when (t1(=[a0+36]) & 0x8) != 0.
@@ -3445,7 +3537,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x412480 targets 0x412fac, is taken when v0(=ret(mvpRead)) != t2(=0x1), and falls through when v0(=ret(mvpRead)) == t2(=0x1).
   The `beq` branch at 0x4124a8 targets 0x4124c4, is taken when t3(?) >= t8(?) (signed), and falls through when t3(?) < t8(?) (signed).
   The `beq` branch at 0x4124bc targets 0x4124d0 and is always taken.
-  The `bne` branch at 0x4124ec targets 0x412648, is taken when v0(?) != v1(=0x2), and falls through when v0(?) == v1(=0x2).
+  The `bne` branch at 0x4124ec targets 0x412648, is taken when v0(=[a0+294]:1) != v1(=0x2), and falls through when v0(=[a0+294]:1) == v1(=0x2).
   The `beq` branch at 0x41251c targets 0x41255c, is taken when a2(?) == a3(=0x2), and falls through when a2(?) != a3(=0x2).
   The `beq` branch at 0x41252c targets 0x412590, is taken when a4(?) == a5(=0x3), and falls through when a4(?) != a5(=0x3).
   The `beq` branch at 0x41253c targets 0x4125c4, is taken when a6(?) == a7(=0x1), and falls through when a6(?) != a7(=0x1).
@@ -3458,7 +3550,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x412640 targets 0x412648 and is always taken.
   The `beq` branch at 0x412784 targets 0x4127ac, is taken when (a1(=[a0+36]) & 0x8) == 0, and falls through when (a1(=[a0+36]) & 0x8) != 0.
   The `bc1f` branch at 0x412824 targets 0x412848, is taken when not (f0 == f1(=0x3fe0000000000000) (c.eq.d at 0x41281c)), and falls through when f0 == f1(=0x3fe0000000000000) (c.eq.d at 0x41281c).
-  The `bne` branch at 0x412838 targets 0x412848, is taken when (t3(?) & 0x2) != 0, and falls through when (t3(?) & 0x2) == 0.
+  The `bne` branch at 0x412838 targets 0x412848, is taken when (t3(=[a0+296]:1) & 0x2) != 0, and falls through when (t3(=[a0+296]:1) & 0x2) == 0.
   The `bne` branch at 0x412854 targets 0x4128dc, is taken when (t9(=[a0+296]:1) & 0x2) != 0, and falls through when (t9(=[a0+296]:1) & 0x2) == 0.
   The `beq` branch at 0x412868 targets 0x412884, is taken when (ra(=[a0+296]:1) & 0x1) == 0, and falls through when (ra(=[a0+296]:1) & 0x1) != 0.
   The `bne` branch at 0x41287c targets 0x4128b0, is taken when at(=[a0+296]:1) != v0(=0x11), and falls through when at(=[a0+296]:1) == v0(=0x11).
@@ -3468,11 +3560,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1f` branch at 0x412924 targets 0x41295c, is taken when not (f1 == f2(=0x3fe0000000000000) (c.eq.d at 0x41291c)), and falls through when f1 == f2(=0x3fe0000000000000) (c.eq.d at 0x41291c).
   The `beq` branch at 0x412954 targets 0x412974 and is always taken.
   The `beq` branch at 0x412978 targets 0x412b38, is taken when t3(?) == 0, and falls through when t3(?) != 0.
-  The `beq` branch at 0x412a34 targets 0x412a50, is taken when (a3(?) & 0xff) == 0, and falls through when (a3(?) & 0xff) != 0.
-  The `beq` branch at 0x412a80 targets 0x412a9c, is taken when (t0(?) & 0xff) == 0, and falls through when (t0(?) & 0xff) != 0.
+  The `beq` branch at 0x412a34 targets 0x412a50, is taken when (a3(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (a3(=ret(mvpSetScale)) & 0xff) != 0.
+  The `beq` branch at 0x412a80 targets 0x412a9c, is taken when (t0(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (t0(=ret(mvpSetScale)) & 0xff) != 0.
   The `beq` branch at 0x412acc targets 0x412ae8, is taken when (t9(=ret(mvpSetScale)) & 0xff) == 0, and falls through when (t9(=ret(mvpSetScale)) & 0xff) != 0.
-  The `beq` branch at 0x412af0 targets 0x412b18, is taken when a0(?) == a1(=-0x1), and falls through when a0(?) != a1(=-0x1).
-  The `beq` branch at 0x412b00 targets 0x412b18, is taken when a2(?) == a3(=-0x1), and falls through when a2(?) != a3(=-0x1).
+  The `beq` branch at 0x412af0 targets 0x412b18, is taken when a0(=ret(mvpSetScale)) == a1(=-0x1), and falls through when a0(=ret(mvpSetScale)) != a1(=-0x1).
+  The `beq` branch at 0x412b00 targets 0x412b18, is taken when a2(=ret(mvpSetScale)) == a3(=-0x1), and falls through when a2(=ret(mvpSetScale)) != a3(=-0x1).
   The `bne` branch at 0x412b10 targets 0x412b38, is taken when a4(=ret(mvpSetScale)) != a5(=-0x1), and falls through when a4(=ret(mvpSetScale)) == a5(=-0x1).
   The `beq` branch at 0x412b7c targets 0x412ba4, is taken when a1(?) == 0, and falls through when a1(?) != 0.
   The `beq` branch at 0x412ddc targets 0x412e08, is taken when (ra(=[a0+36]) & 0x8) == 0, and falls through when (ra(=[a0+36]) & 0x8) != 0.
@@ -3483,17 +3575,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x412f7c targets 0x412fa4, is taken when (a3(=[a0+36]) & 0x8) == 0, and falls through when (a3(=[a0+36]) & 0x8) != 0.
   The `beq` branch at 0x412fa4 targets 0x413914 and is always taken.
   The `bne` branch at 0x412fc0 targets 0x413900, is taken when v0(=ret(mvpRead)) != 0, and falls through when v0(=ret(mvpRead)) == 0.
-  The `beq` branch at 0x41307c targets 0x4130c8, is taken when a7(?) == t0(=0x1), and falls through when a7(?) != t0(=0x1).
-  The `beq` branch at 0x41308c targets 0x4130e4, is taken when v1(?) == a0(=0x2), and falls through when v1(?) != a0(=0x2).
-  The `beq` branch at 0x41309c targets 0x413108, is taken when a1(?) == a2(=0x3), and falls through when a1(?) != a2(=0x3).
-  The `beq` branch at 0x4130ac targets 0x41312c, is taken when a3(?) == a4(=0x4), and falls through when a3(?) != a4(=0x4).
-  The `beq` branch at 0x4130b8 targets 0x413144, is taken when a5(?) == 0, and falls through when a5(?) != 0.
+  The `beq` branch at 0x41307c targets 0x4130c8, is taken when a7(=[a0+342]:1) == t0(=0x1), and falls through when a7(=[a0+342]:1) != t0(=0x1).
+  The `beq` branch at 0x41308c targets 0x4130e4, is taken when v1(=[a0+342]:1) == a0(=0x2), and falls through when v1(=[a0+342]:1) != a0(=0x2).
+  The `beq` branch at 0x41309c targets 0x413108, is taken when a1(=[a0+342]:1) == a2(=0x3), and falls through when a1(=[a0+342]:1) != a2(=0x3).
+  The `beq` branch at 0x4130ac targets 0x41312c, is taken when a3(=[a0+342]:1) == a4(=0x4), and falls through when a3(=[a0+342]:1) != a4(=0x4).
+  The `beq` branch at 0x4130b8 targets 0x413144, is taken when a5(=[a0+342]:1) == 0, and falls through when a5(=[a0+342]:1) != 0.
   The `beq` branch at 0x4130c0 targets 0x413220 and is always taken.
   The `beq` branch at 0x4130dc targets 0x413220 and is always taken.
   The `beq` branch at 0x413100 targets 0x413220 and is always taken.
   The `beq` branch at 0x413124 targets 0x413220 and is always taken.
   The `beq` branch at 0x41313c targets 0x413220 and is always taken.
-  The `beq` branch at 0x413168 targets 0x4131fc, is taken when ra(?) >= 0xb (unsigned), and falls through when ra(?) < 0xb (unsigned).
+  The `beq` branch at 0x413168 targets 0x4131fc, is taken when ra(=[a0+293]:1) >= 0xb (unsigned), and falls through when ra(=[a0+293]:1) < 0xb (unsigned).
   The `beq` branch at 0x41319c targets 0x413218 and is always taken.
   The `beq` branch at 0x4131c0 targets 0x413218 and is always taken.
   The `beq` branch at 0x4131dc targets 0x413218 and is always taken.
@@ -3867,7 +3959,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x101f98ec targets 0x101f9904, is taken when v0(=ret(?)) == 0, and falls through when v0(=ret(?)) != 0.
   The `beq` branch at 0x101f9904 targets 0x101f988c and is always taken.
   The return at 0x101f9894 has v0 = 0x0.
-  The return at 0x101f98fc has v0 = ?.
+  The return at 0x101f98fc has v0 = ret(?).
 
 - `GetScratchPixmapHeader` in `usr/gfx/arch/GENERIC/Xsgi` at 0x1027c4c0 (n32).
   Evidence grade: inferred.
@@ -3911,7 +4003,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd818f94 loads 4 bytes from [[0x1014]+276] +0x8.
   The `sw` at 0xd818fa8 stores 4 bytes to [[0x1014]+276] +0x4.
   The `jalr` at 0xd818f60 calls memcpy with a0=[[[0x1014]+276]+4]+8, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[0x1014]+276]+4].
-  The `jalr` at 0xd818f84 calls memcpy with a0=?, a1=a2 at entry (arg2), a2=?, a3=?.
+  The `jalr` at 0xd818f84 calls memcpy with a0=([[[0x1014]+276]+4] + (a0 << 0x2))+8, a1=a2 at entry (arg2), a2=(a0 << 0x2), a3=[[[0x1014]+276]+4].
   The `jalr` at 0xd818fb8 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=?, a2=?, a3=?.
   The `bltz` branch at 0xd818f18 targets 0xd818fc4, is taken when a0 < 0 (signed), and falls through when a0 >= 0 (signed).
   The `bltz` branch at 0xd818f20 targets 0xd818fc4, is taken when a0 < 0 (signed), and falls through when a0 >= 0 (signed).
@@ -4047,7 +4139,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd81a90c calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=[[[0x1014]+276]+4], a3=a3 at entry (arg3).
   The `jalr` at 0xd81a92c calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd81a974 calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108].
-  The `jalr` at 0xd81a9f4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=?, a3=[[[[0x1014]+276]+216]+108].
+  The `jalr` at 0xd81a9f4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[[0x1014]+276]+216]+108].
   The `jalr` at 0xd81aa14 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd81aa30 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `bltz` branch at 0xd81a8f0 targets 0xd81aa3c, is taken when a0 < 0 (signed), and falls through when a0 >= 0 (signed).
@@ -4088,7 +4180,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd81aab0 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=[[[0x1014]+276]+4].
   The `jalr` at 0xd81aad0 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd81ab18 calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108].
-  The `jalr` at 0xd81ab9c calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=?, a3=[[[[0x1014]+276]+216]+108].
+  The `jalr` at 0xd81ab9c calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[[0x1014]+276]+216]+108].
   The `jalr` at 0xd81abbc calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-56, a2=0x0, a3=0x0.
   The `jalr` at 0xd81abe0 calls _XRead with a0=[[[0x1014]+276]+216], a1=a2 at entry (arg2), a2=a0 at entry (arg0), a3=?.
   The `jalr` at 0xd81ac04 calls _XEatData with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
@@ -4168,7 +4260,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd82703c stores 4 bytes to [a0+108] +0x8.
   The `sw` at 0xd827044 stores 4 bytes to [a0+108] +0xc.
   The `lw` at 0xd82704c loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  The `sw` at 0xd827064 stores 4 bytes to ?.
+  The `sw` at 0xd827064 stores 4 bytes to [a0+108] +0x10.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xd827070, `lw` at 0xd827088.
   The `lw` at 0xd827074 loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xd826f84 calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -4183,7 +4275,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd826fd0 targets 0xd826ff4, is taken when t6(=[a0+112]) >= t7(=[a0+108]+20) (unsigned), and falls through when t6(=[a0+112]) < t7(=[a0+108]+20) (unsigned); its branch-likely delay slot `lw a2,52(sp)` at 0xd826fd4 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd82706c targets 0xd82708c, is taken when a1(=[a0+1232]) == 0, and falls through when a1(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xd827070 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd827090 targets 0xd8270a8, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw v0,40(sp)` at 0xd827094 runs only when taken and is annulled on fall-through.
-  The return at 0xd8270b4 has v0 = one of 0x0, ?.
+  The return at 0xd8270b4 has v0 = one of 0x0, ret(?).
 
 - `glXCreateGLXPixmapWithConfigSGIX` in `usr/gfx/arch/IP32CRM/libGL.so` at 0xd827814 (o32).
   Evidence grade: inferred.
@@ -4208,7 +4300,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd827900 stores 4 bytes to [a0+108] +0x10.
   The `sw` at 0xd827908 stores 4 bytes to [a0+108] +0x14.
   The `lw` at 0xd827910 loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  The `sw` at 0xd827928 stores 4 bytes to ?.
+  The `sw` at 0xd827928 stores 4 bytes to [a0+108] +0x18.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xd827934, `lw` at 0xd82794c.
   The `lw` at 0xd827938 loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xd82783c calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -4223,7 +4315,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd827888 targets 0xd8278ac, is taken when t6(=[a0+112]) >= t7(=[a0+108]+28) (unsigned), and falls through when t6(=[a0+112]) < t7(=[a0+108]+28) (unsigned); its branch-likely delay slot `lw a2,60(sp)` at 0xd82788c runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd827930 targets 0xd827950, is taken when a1(=[a0+1232]) == 0, and falls through when a1(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xd827934 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd827954 targets 0xd82796c, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw v0,44(sp)` at 0xd827958 runs only when taken and is annulled on fall-through.
-  The return at 0xd827978 has v0 = one of 0x0, ?.
+  The return at 0xd827978 has v0 = one of 0x0, ret(?).
 
 - `glXCreatePixmap` in `usr/gfx/arch/IP32CRM/libGL.so` at 0xd837408 (o32).
   Evidence grade: inferred.
@@ -4250,7 +4342,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd83751c stores 4 bytes to [a0+108] +0x8.
   The `sw` at 0xd837524 stores 4 bytes to [a0+108] +0xc.
   The `lw` at 0xd83752c loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd837544, `sw` at 0xd837548.
+  The `sw` at 0xd837544 stores 4 bytes to [a0+108] +0x10.
+  The `sw` at 0xd837548 stores 4 bytes to [a0+108] +0x14.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xd837554, `lw` at 0xd83756c.
   The `lw` at 0xd837558 loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xd837434 calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -4269,7 +4362,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd8374b0 targets 0xd8374d4, is taken when t7(=[a0+112]) >= t8(=[a0+108]+24) (unsigned), and falls through when t7(=[a0+112]) < t8(=[a0+108]+24) (unsigned); its branch-likely delay slot `lw a2,60(sp)` at 0xd8374b4 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd837550 targets 0xd837570, is taken when a1(=[a0+1232]) == 0, and falls through when a1(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xd837554 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd837574 targets 0xd83758c, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw v0,48(sp)` at 0xd837578 runs only when taken and is annulled on fall-through.
-  The return at 0xd837598 has v0 = one of 0x0, ?.
+  The return at 0xd837598 has v0 = one of 0x0, ret(?).
 
 - `glXDestroyPixmap` in `usr/gfx/arch/IP32CRM/libGL.so` at 0xd8375a0 (o32).
   Evidence grade: inferred.
@@ -4351,7 +4444,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd83f6d4 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=[[[0x1014]+276]+4].
   The `jalr` at 0xd83f6f4 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd83f73c calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108].
-  The `jalr` at 0xd83f7b4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=?, a3=[[[[0x1014]+276]+216]+108].
+  The `jalr` at 0xd83f7b4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[[0x1014]+276]+216]+108].
   The `jalr` at 0xd83f7d4 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-56, a2=0x0, a3=0x0.
   The `jalr` at 0xd83f7f8 calls _XRead with a0=[[[0x1014]+276]+216], a1=a2 at entry (arg2), a2=a0 at entry (arg0), a3=?.
   The `jalr` at 0xd83f818 calls _XEatData with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
@@ -4396,7 +4489,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd83f8c8 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=[[[0x1014]+276]+4], a3=a3 at entry (arg3).
   The `jalr` at 0xd83f8e8 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd83f930 calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108].
-  The `jalr` at 0xd83f9a8 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=?, a3=[[[[0x1014]+276]+216]+108].
+  The `jalr` at 0xd83f9a8 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[[0x1014]+276]+216]+108].
   The `jalr` at 0xd83f9c8 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd83f9e4 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `bltz` branch at 0xd83f8ac targets 0xd83f9f0, is taken when a0 < 0 (signed), and falls through when a0 >= 0 (signed).
@@ -4672,24 +4765,26 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0xd939604 loads 1 byte from [0x1010] +0xc95.
   The `lbu` at 0xd93962c loads 1 byte from [[0x1010]+33016] +0x4.
   The `lbu` at 0xd939688 loads 1 byte from ret(InitVICE) +0x4.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd939690, `lw` at 0xd9397c8, `lw` at 0xd9397d8.
+  The `lw` at 0xd939690 loads 4 bytes from ?.
   The `lw` at 0xd939750 loads 4 bytes from table(0xda41c3c) +0x0.
+  The `lw` at 0xd9397c8 loads 4 bytes from [0x1010] +0xc84.
+  The `lw` at 0xd9397d8 loads 4 bytes from [0x1010] +0x7d58.
   The `jalr` at 0xd9395a4 calls (unknown callee) with a0=[0x1010], a1=[[0x1010]+33016], a2=?, a3=?.
   The `jalr` at 0xd9395c4 calls __glSetError [0xd9d02a4] with a0=0x502, a1=[[0x1010]+33016], a2=?, a3=?.
   The `jalr` at 0xd9395e8 calls __glim_Accum [0xd9bf4c8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd939618 calls __glSetError [0xd9d02a4] with a0=0x502, a1=[[0x1010]+33016], a2=?, a3=?.
   The `jalr` at 0xd93963c calls InitVICE [0xd937850] with a0=[0x1010], a1=[[0x1010]+33016], a2=?, a3=?.
-  The `jalr` at 0xd939660 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd939660 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?.
   The `jalr` at 0xd939678 calls __glim_Accum [0xd9bf4c8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9396a0 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd9396a0 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?.
   The `jalr` at 0xd9396b8 calls __glim_Accum [0xd9bf4c8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9396e4 calls AccumAlloc [0xd937bec] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd939708 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd9396e4 calls AccumAlloc [0xd937bec] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=[0x1010]+31360.
+  The `jalr` at 0xd939708 calls SetupForSoftPathFallBack [0xd93a6f4] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=[0x1010]+31360.
   The `jalr` at 0xd939720 calls __glim_Accum [0xd9bf4c8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9397b8 calls __glSetError [0xd9d02a4] with a0=0x500, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9397fc calls SoftAccumOp [0xd939858] with a0=?, a1=?, a2=a0 at entry (arg0), a3=?.
-  The `jalr` at 0xd939814 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd939838 calls SoftAccumOp [0xd939858] with a0=?, a1=?, a2=a0 at entry (arg0), a3=?.
+  The `jalr` at 0xd9397b8 calls __glSetError [0xd9d02a4] with a0=0x500, a1=?, a2=?, a3=[0x1010]+31360.
+  The `jalr` at 0xd9397fc calls SoftAccumOp [0xd939858] with a0=[0x1010]+31360, a1=?, a2=a0 at entry (arg0), a3=[0x1010]+31360.
+  The `jalr` at 0xd939814 calls (unknown callee) with a0=[0x1010]+31360, a1=?, a2=?, a3=[0x1010]+31360.
+  The `jalr` at 0xd939838 calls SoftAccumOp [0xd939858] with a0=[0x1010]+31360, a1=?, a2=a0 at entry (arg0), a3=[0x1010]+31360.
   The `beq` branch at 0xd93958c targets 0xd9395d4, is taken when t6(=[0x1018]) == 0, and falls through when t6(=[0x1018]) != 0.
   The `bne` branch at 0xd939598 targets 0xd9395bc, is taken when t6(=[0x1018]) != at(=0x2), and falls through when t6(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd9395b4 targets 0xd939580 and is always taken.
@@ -4714,8 +4809,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd939798 targets 0xd9397c8 and is always taken.
   The `beq` branch at 0xd9397a8 targets 0xd9397c8 and is always taken.
   The `beq` branch at 0xd9397c0 targets 0xd939844 and is always taken.
-  The `bnel` branch at 0xd9397d0 targets 0xd939848, is taken when t5(?) != at(=0x1c00), and falls through when t5(?) == at(=0x1c00); its branch-likely delay slot `lw ra,36(sp)` at 0xd9397d4 runs only when taken and is annulled on fall-through.
-  The `bgez` branch at 0xd9397e4 targets 0xd93980c, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed).
+  The `bnel` branch at 0xd9397d0 targets 0xd939848, is taken when t5(=[[0x1010]+3204]) != at(=0x1c00), and falls through when t5(=[[0x1010]+3204]) == at(=0x1c00); its branch-likely delay slot `lw ra,36(sp)` at 0xd9397d4 runs only when taken and is annulled on fall-through.
+  The `bgez` branch at 0xd9397e4 targets 0xd93980c, is taken when t7(=([[0x1010]+32088] << 0xb)) >= 0 (signed), and falls through when t7(=([[0x1010]+32088] << 0xb)) < 0 (signed).
   The `beq` branch at 0xd939804 targets 0xd939844 and is always taken.
   The `bne` branch at 0xd939820 targets 0xd939844, is taken when v0(?) != 0, and falls through when v0(?) == 0.
   The return at 0xd939850 has v0 = one of 0xd9380fc, 0xd938534, 0xd938888, ?.
@@ -4734,8 +4829,10 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to [0x1010] +0x71c, including `sw` at 0xd93a86c, `sw` at 0xd93a874.
   The `swc1` at 0xd93a878 stores 4 bytes to [0x1010] +0x720.
   The `sw` at 0xd93a894 stores 4 bytes to abs 0x1018.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93a898, `lw` at 0xd93a89c.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd93a8ac, `sw` at 0xd93a8b0.
+  The `lw` at 0xd93a898 loads 4 bytes from [0x1010] +0x2dec.
+  The `lw` at 0xd93a89c loads 4 bytes from [0x1010] +0x2de8.
+  The `sw` at 0xd93a8ac stores 4 bytes to [0x1010] +0x2dec.
+  The `sw` at 0xd93a8b0 stores 4 bytes to [0x1010] +0x2de8.
   The `jalr` at 0xd93a80c calls __glSetError [0xd9d02a4] with a0=0x502, a1=[0x1010], a2=a0 at entry (arg0), a3=a3 at entry (arg3).
   The `jalr` at 0xd93a838 calls __glSetError [0xd9d02a4] with a0=0x500, a1=[0x1010], a2=a0 at entry (arg0), a3=a3 at entry (arg3).
   The `jalr` at 0xd93a884 calls __glCrmPassAlphaFunc [0xd93e654] with a0=[0x1010], a1=[0x1010], a2=a0 at entry (arg0), a3=a3 at entry (arg3).
@@ -4808,14 +4905,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd93aab0 loads 4 bytes from abs 0x1010.
   The `lw` at 0xd93aaf8 loads 4 bytes from table(0xda41cc4) +0x0.
   The `sw` at 0xd93ab34 stores 4 bytes to [0x1010] +0x72c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93ab6c, `lw` at 0xd93ab9c.
+  The `lw` at 0xd93ab6c loads 4 bytes from [0x1010] +0x700.
   The `sw` at 0xd93ab98 stores 4 bytes to abs 0x1018.
-  The `sw` at 0xd93aba4 stores 4 bytes to ?.
+  The `lw` at 0xd93ab9c loads 4 bytes from [0x1010] +0x2dec.
+  The `sw` at 0xd93aba4 stores 4 bytes to [0x1010] +0x2dec.
   The `jalr` at 0xd93aabc calls __glSetError [0xd9d02a4] with a0=0x502, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93ab1c calls __glSetError [0xd9d02a4] with a0=0x500, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93ab40 calls __glCrmPassLogicOp [0xd93ede4] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93ab5c calls __glCrmPassBlendFunc [0xd93e810] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93ab84 calls __glCrmEnableBlend [0xd93e6f4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93ab84 calls __glCrmEnableBlend [0xd93e6f4] with a0=[0x1010], a1=[0x1010], a2=?, a3=?.
   The `bne` branch at 0xd93aaac targets 0xd93aacc, is taken when t6(=[0x1018]) != at(=0x1), and falls through when t6(=[0x1018]) == at(=0x1).
   The `beq` branch at 0xd93aac4 targets 0xd93aba8 and is always taken.
   The `bne` branch at 0xd93aad0 targets 0xd93ab08, is taken when a0 < 0xbf2 (unsigned), and falls through when a0 >= 0xbf2 (unsigned).
@@ -4824,7 +4922,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd93ab24 targets 0xd93aba8 and is always taken.
   The `bne` branch at 0xd93ab30 targets 0xd93ab54, is taken when a0 != at(=0xbf1), and falls through when a0 == at(=0xbf1).
   The `beq` branch at 0xd93ab4c targets 0xd93ab6c and is always taken.
-  The `beql` branch at 0xd93ab74 targets 0xd93ab98, is taken when (t9(?) & 0x2) == 0, and falls through when (t9(?) & 0x2) != 0; its branch-likely delay slot `addiu t1,zero,2` at 0xd93ab78 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd93ab74 targets 0xd93ab98, is taken when (t9(=[[0x1010]+1792]) & 0x2) == 0, and falls through when (t9(=[[0x1010]+1792]) & 0x2) != 0; its branch-likely delay slot `addiu t1,zero,2` at 0xd93ab78 runs only when taken and is annulled on fall-through.
   The return at 0xd93abb0 has v0 = one of ret(__glSetError), ?.
   The indirect jump at 0xd93ab00 uses the jump table at 0xda41cc4 with targets 0xd93ab2c, 0xd93ab2c, 0xd93ab2c, 0xd93ab14, 0xd93ab2c, 0xd93ab2c.
 
@@ -5593,8 +5691,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd93c9d4 calls __glCrmPassStencilMode [0xd96f848] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93c9e8 calls __glCrmEnableStencilTest [0xd96f758] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93c9fc calls __glCrmPassStencilMask [0xd96f710] with a0=[0x1010], a1=?, a2=?, a3=?.
-  The `jalr` at 0xd93cb94 calls __glBindTexture [0xda309ac] with a0=[0x1010], a1=?, a2=?, a3=?.
-  The `jalr` at 0xd93cbdc calls memcpy with a0=[[0x1010]+2480], a1=[[[[0x1010]+12676]-4]+2304], a2=?, a3=?.
+  The `jalr` at 0xd93cb94 calls __glBindTexture [0xda309ac] with a0=[0x1010], a1=?, a2=?, a3=[[0x1010]+3604].
+  The `jalr` at 0xd93cbdc calls memcpy with a0=[[0x1010]+2480], a1=[[[[0x1010]+12676]-4]+2304], a2=?, a3=[[0x1010]+3604].
   The `jalr` at 0xd93cc00 calls memcpy with a0=[[0x1010]+2484], a1=[[[[0x1010]+12676]-4]+2308], a2=((([[0x1010]+3608] << 0x3) + [[0x1010]+3608]) << 0x2), a3=?.
   The `jalr` at 0xd93cc14 calls (unknown callee) with a0=[0x1010], a1=[[[[0x1010]+12676]-4]+2304], a2=?, a3=?.
   The `jalr` at 0xd93cc2c calls (unknown callee) with a0=[0x1010], a1=[[[[0x1010]+12676]-4]+2308], a2=?, a3=?.
@@ -5608,39 +5706,39 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd93bf94 targets 0xd93bfc0, is taken when (t0(=[[[[0x1010]+12676]-4]]) & 0x200) == 0, and falls through when (t0(=[[[[0x1010]+12676]-4]]) & 0x200) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93bf98 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd93bfc4 targets 0xd93c100, is taken when (t4(=[[[[0x1010]+12676]-4]]) & 0x4000) == 0, and falls through when (t4(=[[[[0x1010]+12676]-4]]) & 0x4000) != 0.
   The `bne` branch at 0xd93bff0 targets 0xd93bfd4, is taken when t8(?) != t0(=[[[0x1010]+12676]-4]+72), and falls through when t8(?) == t0(=[[[0x1010]+12676]-4]+72).
-  The `beq` branch at 0xd93c108 targets 0xd93c144, is taken when (t8(?) & 0x1) == 0, and falls through when (t8(?) & 0x1) != 0.
+  The `beq` branch at 0xd93c108 targets 0xd93c144, is taken when (t8(=[[[[0x1010]+12676]-4]]) & 0x1) == 0, and falls through when (t8(=[[[[0x1010]+12676]-4]]) & 0x1) != 0.
   The `bne` branch at 0xd93c134 targets 0xd93c118, is taken when t2(?) != t3(=[[[0x1010]+12676]-4]+264), and falls through when t2(?) == t3(=[[[0x1010]+12676]-4]+264).
-  The `beql` branch at 0xd93c14c targets 0xd93c1c4, is taken when (t5(?) & 0x100) == 0, and falls through when (t5(?) & 0x100) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c150 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd93c1c8 targets 0xd93c2ec, is taken when (t4(?) & 0x2000) == 0, and falls through when (t4(?) & 0x2000) != 0; its branch-likely delay slot `lw t1,68(sp)` at 0xd93c1cc runs only when taken and is annulled on fall-through.
-  The `bgez` branch at 0xd93c2f0 targets 0xd93c35c, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed).
+  The `beql` branch at 0xd93c14c targets 0xd93c1c4, is taken when (t5(=[[[[0x1010]+12676]-4]]) & 0x100) == 0, and falls through when (t5(=[[[[0x1010]+12676]-4]]) & 0x100) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c150 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd93c1c8 targets 0xd93c2ec, is taken when (t4(=[[[[0x1010]+12676]-4]]) & 0x2000) == 0, and falls through when (t4(=[[[[0x1010]+12676]-4]]) & 0x2000) != 0; its branch-likely delay slot `lw t1,68(sp)` at 0xd93c1cc runs only when taken and is annulled on fall-through.
+  The `bgez` branch at 0xd93c2f0 targets 0xd93c35c, is taken when t7(=([[[[0x1010]+12676]-4]] << 0xf)) >= 0 (signed), and falls through when t7(=([[[[0x1010]+12676]-4]] << 0xf)) < 0 (signed).
   The `bne` branch at 0xd93c31c targets 0xd93c300, is taken when t0(?) != t3(=[[[0x1010]+12676]-4]+48), and falls through when t0(?) == t3(=[[[0x1010]+12676]-4]+48).
-  The `beq` branch at 0xd93c364 targets 0xd93c3e8, is taken when (t4(?) & 0x80) == 0, and falls through when (t4(?) & 0x80) != 0.
+  The `beq` branch at 0xd93c364 targets 0xd93c3e8, is taken when (t4(=[[[[0x1010]+12676]-4]]) & 0x80) == 0, and falls through when (t4(=[[[[0x1010]+12676]-4]]) & 0x80) != 0.
   The `bne` branch at 0xd93c390 targets 0xd93c374, is taken when t7(?) != t3(=[[[0x1010]+12676]-4]+36), and falls through when t7(?) == t3(=[[[0x1010]+12676]-4]+36).
-  The `beq` branch at 0xd93c3f0 targets 0xd93c424, is taken when (t1(?) & 0x8000) == 0, and falls through when (t1(?) & 0x8000) != 0.
+  The `beq` branch at 0xd93c3f0 targets 0xd93c424, is taken when (t1(=[[[[0x1010]+12676]-4]]) & 0x8000) == 0, and falls through when (t1(=[[[[0x1010]+12676]-4]]) & 0x8000) != 0.
   The `bne` branch at 0xd93c41c targets 0xd93c400, is taken when t8(?) != t2(=[[[0x1010]+12676]-4]+36), and falls through when t8(?) == t2(=[[[0x1010]+12676]-4]+36).
-  The `beql` branch at 0xd93c42c targets 0xd93c5c0, is taken when (t4(?) & 0x40) == 0, and falls through when (t4(?) & 0x40) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c430 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd93c42c targets 0xd93c5c0, is taken when (t4(=[[[[0x1010]+12676]-4]]) & 0x40) == 0, and falls through when (t4(=[[[[0x1010]+12676]-4]]) & 0x40) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c430 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd93c4b0 targets 0xd93c494, is taken when t0(?) != t3(=[[[0x1010]+12676]-4]+72), and falls through when t0(?) == t3(=[[[0x1010]+12676]-4]+72).
   The `bne` branch at 0xd93c4ec targets 0xd93c4d0, is taken when t6(?) != t8(=[[[0x1010]+12676]-4]+72), and falls through when t6(?) == t8(=[[[0x1010]+12676]-4]+72).
-  The `beql` branch at 0xd93c5c4 targets 0xd93c624, is taken when (t4(?) & 0x4) == 0, and falls through when (t4(?) & 0x4) != 0; its branch-likely delay slot `lw t2,68(sp)` at 0xd93c5c8 runs only when taken and is annulled on fall-through.
-  The `bgezl` branch at 0xd93c628 targets 0xd93c63c, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed); its branch-likely delay slot `lw t3,68(sp)` at 0xd93c62c runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd93c644 targets 0xd93c730, is taken when (t3(?) & 0x20) == 0, and falls through when (t3(?) & 0x20) != 0.
+  The `beql` branch at 0xd93c5c4 targets 0xd93c624, is taken when (t4(=[[[[0x1010]+12676]-4]]) & 0x4) == 0, and falls through when (t4(=[[[[0x1010]+12676]-4]]) & 0x4) != 0; its branch-likely delay slot `lw t2,68(sp)` at 0xd93c5c8 runs only when taken and is annulled on fall-through.
+  The `bgezl` branch at 0xd93c628 targets 0xd93c63c, is taken when t7(=([[[[0x1010]+12676]-4]] << 0xe)) >= 0 (signed), and falls through when t7(=([[[[0x1010]+12676]-4]] << 0xe)) < 0 (signed); its branch-likely delay slot `lw t3,68(sp)` at 0xd93c62c runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd93c644 targets 0xd93c730, is taken when (t3(=[[[[0x1010]+12676]-4]]) & 0x20) == 0, and falls through when (t3(=[[[[0x1010]+12676]-4]]) & 0x20) != 0.
   The `bne` branch at 0xd93c66c targets 0xd93c650, is taken when t6(?) != t2(=[[[0x1010]+12676]-4]+120), and falls through when t6(?) == t2(=[[[0x1010]+12676]-4]+120).
-  The `beq` branch at 0xd93c73c targets 0xd93c78c, is taken when (t2(?) & 0x2) == 0, and falls through when (t2(?) & 0x2) != 0.
-  The `beql` branch at 0xd93c794 targets 0xd93c834, is taken when (t5(?) & 0x8) == 0, and falls through when (t5(?) & 0x8) != 0; its branch-likely delay slot `lw t1,68(sp)` at 0xd93c798 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd93c83c targets 0xd93c8e8, is taken when (t1(?) & 0x10) == 0, and falls through when (t1(?) & 0x10) != 0.
+  The `beq` branch at 0xd93c73c targets 0xd93c78c, is taken when (t2(=[[[[0x1010]+12676]-4]]) & 0x2) == 0, and falls through when (t2(=[[[[0x1010]+12676]-4]]) & 0x2) != 0.
+  The `beql` branch at 0xd93c794 targets 0xd93c834, is taken when (t5(=[[[[0x1010]+12676]-4]]) & 0x8) == 0, and falls through when (t5(=[[[[0x1010]+12676]-4]]) & 0x8) != 0; its branch-likely delay slot `lw t1,68(sp)` at 0xd93c798 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd93c83c targets 0xd93c8e8, is taken when (t1(=[[[[0x1010]+12676]-4]]) & 0x10) == 0, and falls through when (t1(=[[[[0x1010]+12676]-4]]) & 0x10) != 0.
   The `bne` branch at 0xd93c87c targets 0xd93c848, is taken when t0(?) != t4(=[[[0x1010]+12676]-4]+120), and falls through when t0(?) == t4(=[[[0x1010]+12676]-4]+120).
-  The `bgezl` branch at 0xd93c8f0 targets 0xd93c960, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed); its branch-likely delay slot `lw t5,68(sp)` at 0xd93c8f4 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd93c964 targets 0xd93ca0c, is taken when (t5(?) & 0x400) == 0, and falls through when (t5(?) & 0x400) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c968 runs only when taken and is annulled on fall-through.
-  The `bgez` branch at 0xd93ca14 targets 0xd93cc64, is taken when t0(?) >= 0 (signed), and falls through when t0(?) < 0 (signed).
+  The `bgezl` branch at 0xd93c8f0 targets 0xd93c960, is taken when t5(=([[[[0x1010]+12676]-4]] << 0xc)) >= 0 (signed), and falls through when t5(=([[[[0x1010]+12676]-4]] << 0xc)) < 0 (signed); its branch-likely delay slot `lw t5,68(sp)` at 0xd93c8f4 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd93c964 targets 0xd93ca0c, is taken when (t5(=[[[[0x1010]+12676]-4]]) & 0x400) == 0, and falls through when (t5(=[[[[0x1010]+12676]-4]]) & 0x400) != 0; its branch-likely delay slot `lw t4,68(sp)` at 0xd93c968 runs only when taken and is annulled on fall-through.
+  The `bgez` branch at 0xd93ca14 targets 0xd93cc64, is taken when t0(=([[[[0x1010]+12676]-4]] << 0xd)) >= 0 (signed), and falls through when t0(=([[[[0x1010]+12676]-4]] << 0xd)) < 0 (signed).
   The `bne` branch at 0xd93ca40 targets 0xd93ca24, is taken when t8(?) != t5(=[[[0x1010]+12676]-4]+120), and falls through when t8(?) == t5(=[[[0x1010]+12676]-4]+120).
   The `bne` branch at 0xd93ca78 targets 0xd93ca5c, is taken when t4(?) != t6(=[[[0x1010]+12676]-4]+120), and falls through when t4(?) == t6(=[[[0x1010]+12676]-4]+120).
   The `bne` branch at 0xd93cab0 targets 0xd93ca94, is taken when t9(?) != t7(=[[[0x1010]+12676]-4]+120), and falls through when t9(?) == t7(=[[[0x1010]+12676]-4]+120).
   The `bne` branch at 0xd93cae8 targets 0xd93cacc, is taken when t0(?) != t1(=[[[0x1010]+12676]-4]+120), and falls through when t0(?) == t1(=[[[0x1010]+12676]-4]+120).
   The `beq` branch at 0xd93cb68 targets 0xd93cbcc, is taken when a3(=[[0x1010]+3604]) == 0, and falls through when a3(=[[0x1010]+3604]) != 0.
   The `beql` branch at 0xd93cb7c targets 0xd93cbb4, is taken when a2(?) == t1(?), and falls through when a2(?) != t1(?); its branch-likely delay slot `addiu a1,a1,1` at 0xd93cb80 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xd93cbb8 targets 0xd93cb70, is taken when a1(?) != a3(?), and falls through when a1(?) == a3(?).
-  The `beql` branch at 0xd93cc6c targets 0xd93cce4, is taken when (t0(?) & 0x1000) == 0, and falls through when (t0(?) & 0x1000) != 0; its branch-likely delay slot `lw t6,68(sp)` at 0xd93cc70 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd93cce8 targets 0xd93cd40, is taken when (t6(?) & 0x800) == 0, and falls through when (t6(?) & 0x800) != 0; its branch-likely delay slot `sw zero,0(s1)` at 0xd93ccec runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd93cbb8 targets 0xd93cb70, is taken when a1(?) != a3(=[[0x1010]+3604]), and falls through when a1(?) == a3(=[[0x1010]+3604]).
+  The `beql` branch at 0xd93cc6c targets 0xd93cce4, is taken when (t0(=[[[[0x1010]+12676]-4]]) & 0x1000) == 0, and falls through when (t0(=[[[[0x1010]+12676]-4]]) & 0x1000) != 0; its branch-likely delay slot `lw t6,68(sp)` at 0xd93cc70 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd93cce8 targets 0xd93cd40, is taken when (t6(=[[[[0x1010]+12676]-4]]) & 0x800) == 0, and falls through when (t6(=[[[[0x1010]+12676]-4]]) & 0x800) != 0; its branch-likely delay slot `sw zero,0(s1)` at 0xd93ccec runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd93cd50 targets 0xd93cd6c and is always taken.
   The return at 0xd93cd78 has v0 = one of ret(__glSetError), ?.
 
@@ -5662,12 +5760,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd93d07c loads 4 bytes from table(0xda4205c) +0x0.
   32 such `sw` accesses store 4 bytes to [0x1010] +0x700, including `sw` at 0xd93d0cc, `sw` at 0xd93d0fc, `sw` at 0xd93d12c.
   2 such `lw` accesses load 4 bytes from [0x1010] +0x2e10, including `lw` at 0xd93d134, `lw` at 0xd93d248.
-  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93d14c, `lw` at 0xd93d25c, `lw` at 0xd93d40c.
+  2 such `lw` accesses load 4 bytes from [0x1010] +0x2ee0, including `lw` at 0xd93d14c, `lw` at 0xd93d25c.
   17 such `sw` accesses store 4 bytes to abs 0x1018, including `sw` at 0xd93d178, `sw` at 0xd93d230, `sw` at 0xd93d288.
-  16 such `lw` accesses load 4 bytes from [0x1010] +0x2dec, including `lw` at 0xd93d17c, `lw` at 0xd93d234, `lw` at 0xd93d28c.
-  16 such `sw` accesses store 4 bytes to [0x1010] +0x2dec, including `sw` at 0xd93d188, `sw` at 0xd93d240, `sw` at 0xd93d298.
+  17 such `lw` accesses load 4 bytes from [0x1010] +0x2dec, including `lw` at 0xd93d17c, `lw` at 0xd93d234, `lw` at 0xd93d28c.
+  17 such `sw` accesses store 4 bytes to [0x1010] +0x2dec, including `sw` at 0xd93d188, `sw` at 0xd93d240, `sw` at 0xd93d298.
   8 such `sw` accesses store 4 bytes to [0x1010] +0x704, including `sw` at 0xd93d308, `sw` at 0xd93d614, `sw` at 0xd93d638.
   The `lw` at 0xd93d3f4 loads 4 bytes from [0x1010] +0x2e8c.
+  The `lw` at 0xd93d40c loads 4 bytes from [0x1010] +0x2e84.
   The `lw` at 0xd93d520 loads 4 bytes from [0x1010] +0x70c.
   The `sw` at 0xd93d540 stores 4 bytes to [0x1010] +0x70c.
   The `lw` at 0xd93d548 loads 4 bytes from [0x1010] +0x708.
@@ -5682,23 +5781,22 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `sw` accesses store 4 bytes to [0x1010] +0x14ec, including `sw` at 0xd93d668, `sw` at 0xd93d684, `sw` at 0xd93d6a8.
   The `sb` at 0xd93d89c stores 1 byte to [0x1010] +0x7dd1.
   The `sb` at 0xd93d8c0 stores 1 byte to [0x1010] +0x7dd2.
-  The `sw` at 0xd93d8d4 stores 4 bytes to ?.
   The `jalr` at 0xd93cdb4 calls __glSetError [0xd9d02a4] with a0=0x502, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93cf1c calls __glSetError [0xd9d02a4] with a0=0x500, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d0d8 calls __glCrmEnableAlphaTest [0xd93e5b8] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d108 calls __glCrmEnableBlend [0xd93e6f4] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d13c calls (unknown callee) with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93d150 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93d150 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93d1a8 calls __glCrmEnableDepthTest [0xd94814c] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d1d8 calls __glCrmEnableDither [0xd93ece8] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d204 calls __glCrmEnableFogTest [0xd93efac] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d24c calls (unknown callee) with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93d260 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93d260 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93d2e4 calls __glCrmEnableLogicOp [0xd93ed60] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93d314 calls __glcrmim_BlendEquationEXT [0xd93aa88] with a0=0xbf1, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93d328 calls __glCrmEnableBlend [0xd93e6f4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93d328 calls __glCrmEnableBlend [0xd93e6f4] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93d3fc calls (unknown callee) with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93d410 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93d410 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93d440 calls __glCrmEnableStencilTest [0xd96f758] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `bne` branch at 0xd93cda4 targets 0xd93cdc4, is taken when t6(=[0x1018]) != at(=0x1), and falls through when t6(=[0x1018]) == at(=0x1).
   The `beq` branch at 0xd93cdbc targets 0xd93d8d8 and is always taken.
@@ -5883,11 +5981,12 @@ Each entry records selected software behavior from its exact binary range. The r
   32 such `sw` accesses store 4 bytes to [0x1010] +0x700, including `sw` at 0xd93dc3c, `sw` at 0xd93dc74, `sw` at 0xd93dcb0.
   2 such `lw` accesses load 4 bytes from [0x1010] +0x2e10, including `lw` at 0xd93dcac, `lw` at 0xd93ddd8.
   17 such `sw` accesses store 4 bytes to abs 0x1018, including `sw` at 0xd93dce4, `sw` at 0xd93ddc0, `sw` at 0xd93de20.
-  16 such `lw` accesses load 4 bytes from [0x1010] +0x2dec, including `lw` at 0xd93dce8, `lw` at 0xd93ddc4, `lw` at 0xd93de24.
-  16 such `sw` accesses store 4 bytes to [0x1010] +0x2dec, including `sw` at 0xd93dcf4, `sw` at 0xd93ddd0, `sw` at 0xd93de30.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93ddec, `lw` at 0xd93dfd8, `lw` at 0xd93e59c.
+  17 such `lw` accesses load 4 bytes from [0x1010] +0x2dec, including `lw` at 0xd93dce8, `lw` at 0xd93ddc4, `lw` at 0xd93de24.
+  17 such `sw` accesses store 4 bytes to [0x1010] +0x2dec, including `sw` at 0xd93dcf4, `sw` at 0xd93ddd0, `sw` at 0xd93de30.
+  The `lw` at 0xd93ddec loads 4 bytes from [0x1010] +0x2ee0.
   8 such `sw` accesses store 4 bytes to [0x1010] +0x704, including `sw` at 0xd93debc, `sw` at 0xd93e25c, `sw` at 0xd93e280.
   The `lw` at 0xd93dfc0 loads 4 bytes from [0x1010] +0x2e8c.
+  The `lw` at 0xd93dfd8 loads 4 bytes from [0x1010] +0x2e84.
   The `lw` at 0xd93e130 loads 4 bytes from [0x1010] +0x70c.
   The `sw` at 0xd93e15c stores 4 bytes to [0x1010] +0x70c.
   The `lw` at 0xd93e160 loads 4 bytes from [0x1010] +0x708.
@@ -5902,7 +6001,6 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `sw` accesses store 4 bytes to [0x1010] +0x14ec, including `sw` at 0xd93e2b8, `sw` at 0xd93e2dc, `sw` at 0xd93e304.
   The `sb` at 0xd93e568 stores 1 byte to [0x1010] +0x7dd1.
   The `sb` at 0xd93e590 stores 1 byte to [0x1010] +0x7dd2.
-  The `sw` at 0xd93e5a4 stores 4 bytes to ?.
   The `jalr` at 0xd93d91c calls __glSetError [0xd9d02a4] with a0=0x502, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93da84 calls __glSetError [0xd9d02a4] with a0=0x500, a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93dc48 calls __glCrmEnableAlphaTest [0xd93e5b8] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -5912,11 +6010,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd93dd58 calls __glCrmEnableDither [0xd93ece8] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93dd8c calls __glCrmEnableFogTest [0xd93efac] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93dddc calls (unknown callee) with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93ddf0 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93ddf0 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93de90 calls __glCrmEnableLogicOp [0xd93ed60] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93dec8 calls __glCrmEnableBlend [0xd93e6f4] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd93dfc8 calls (unknown callee) with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd93dfdc calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd93dfdc calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd93e018 calls __glCrmEnableStencilTest [0xd96f758] with a0=[0x1010], a1=[0x1010], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `bne` branch at 0xd93d90c targets 0xd93d92c, is taken when t6(=[0x1018]) != at(=0x1), and falls through when t6(=[0x1018]) == at(=0x1).
   The `beq` branch at 0xd93d924 targets 0xd93e5a8 and is always taken.
@@ -6742,12 +6840,12 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lwc1` accesses load 4 bytes from a1 (arg1 at entry) +0x30, including `lwc1` at 0xd947194, `lwc1` at 0xd947220.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x30, including `lwc1` at 0xd9471a0, `lwc1` at 0xd947228.
   2 such `lwc1` accesses load 4 bytes from a3 (arg3 at entry) +0x30, including `lwc1` at 0xd9471ac, `lwc1` at 0xd947230.
-  2 such `lw` accesses load 4 bytes from [a0+28208] +0xe8, including `lw` at 0xd9471b8, `lw` at 0xd947238.
+  3 such `lw` accesses load 4 bytes from [a0+28208] +0xe8, including `lw` at 0xd9471b8, `lw` at 0xd947238, `lw` at 0xd9473a4.
   2 such `lwc1` accesses load 4 bytes from a1 (arg1 at entry) +0x34, including `lwc1` at 0xd9471c4, `lwc1` at 0xd947244.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x34, including `lwc1` at 0xd9471d0, `lwc1` at 0xd94724c.
   2 such `lwc1` accesses load 4 bytes from a3 (arg3 at entry) +0x34, including `lwc1` at 0xd9471dc, `lwc1` at 0xd947254.
   The `lw` at 0xd947264 loads 4 bytes from [a0+28208] +0x4.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9473a4, `lw` at 0xd9474c4.
+  The `lw` at 0xd9474c4 loads 4 bytes from [a0+28208] +0x8.
   The `ldc1` at 0xd9477fc loads 8 bytes from abs 0xda429e8.
   The `ldc1` at 0xd947814 loads 8 bytes from abs 0xda429f0.
   The `sdc1` at 0xd9478a0 stores 8 bytes to a0 (arg0 at entry) +0x7e90.
@@ -6780,23 +6878,23 @@ Each entry records selected software behavior from its exact binary range. The r
   5 such `lwc1` accesses load 4 bytes from a1 (arg1 at entry) +0x80, including `lwc1` at 0xd947ba0, `lwc1` at 0xd947c10, `lwc1` at 0xd947c80.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x75c4, including `lw` at 0xd947bf4, `lw` at 0xd947db8, `lw` at 0xd947e94.
   The `jalr` at 0xd9472dc calls __glFloor [0xd991800] with a0=[[a0+28208]+232], a1=[a0+28208], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd947520 calls __glFloor [0xd991800] with a0=0x0, a1=?, a2=one of 0x0, 0x1, a3=a3 at entry (arg3).
-  The `jalr` at 0xd947740 calls __glFloor [0xd991800] with a0=one of 0x0, 0x1, a1=?, a2=?, a3=a3 at entry (arg3).
+  The `jalr` at 0xd947520 calls __glFloor [0xd991800] with a0=0x0, a1=[a0+28208], a2=one of 0x0, 0x1, a3=a3 at entry (arg3).
+  The `jalr` at 0xd947740 calls __glFloor [0xd991800] with a0=one of 0x0, 0x1, a1=?, a2=one of 0x0, 0x1, a3=a3 at entry (arg3).
   The `jalr` at 0xd947acc calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=a3 at entry (arg3).
   The `jalr` at 0xd947ae4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a2 at entry (arg2), a2=?, a3=?.
   The `jalr` at 0xd947afc calls (unknown callee) with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=?, a3=?.
   The `jalr` at 0xd947bec calls __glSnapXLeft [0xd9fb2d8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=a3 at entry (arg3); fp f14=[a1+132].
-  The `jalr` at 0xd947c4c calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
+  The `jalr` at 0xd947c4c calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a1+8], a3=?.
   The `jalr` at 0xd947c90 calls __glSnapXRight [0xd9fb464] with a0=a0+30136, a1=?, a2=?, a3=?.
   The `jalr` at 0xd947cac calls FillSubTriangle [0xd9460e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd947d08 calls __glSnapXRight [0xd9fb464] with a0=a0+30136, a1=?, a2=?, a3=?.
   The `jalr` at 0xd947d24 calls FillSubTriangle [0xd9460e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd947d68 calls __glSnapXRight [0xd9fb464] with a0=a0+30136, a1=?, a2=?, a3=a3 at entry (arg3); fp f14=[a1+132].
   The `jalr` at 0xd947db0 calls __glSnapXLeft [0xd9fb2d8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd947e10 calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
+  The `jalr` at 0xd947e10 calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a1+8], a3=?.
   The `jalr` at 0xd947e2c calls FillSubTriangle [0xd9460e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd947e8c calls __glSnapXLeft [0xd9fb2d8] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd947eec calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a2 at entry (arg2), a2=?, a3=?.
+  The `jalr` at 0xd947eec calls SetInitialParameters [0xd9466d0] with a0=a0 at entry (arg0), a1=a2 at entry (arg2), a2=[a2+8], a3=?.
   The `jalr` at 0xd947f08 calls FillSubTriangle [0xd9460e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `beq` branch at 0xd946ef4 targets 0xd9479b0, is taken when (t0(=[a0+30436]) & 0x1) == 0, and falls through when (t0(=[a0+30436]) & 0x1) != 0.
   The `beql` branch at 0xd946f00 targets 0xd94701c, is taken when (t0(=[a0+30436]) & 0x2) == 0, and falls through when (t0(=[a0+30436]) & 0x2) != 0; its branch-likely delay slot `lw t2,28072(s0)` at 0xd946f04 runs only when taken and is annulled on fall-through.
@@ -6836,9 +6934,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xd947468 targets 0xd947484, is taken when f10 < f0 (c.lt.s at 0xd947464), and falls through when not (f10 < f0 (c.lt.s at 0xd947464)); its branch-likely delay slot `mov.s $f0,$f10` at 0xd94746c runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd947474 targets 0xd947480, is taken when f8 < f4 (c.lt.s at 0xd947470), and falls through when not (f8 < f4 (c.lt.s at 0xd947470)); its branch-likely delay slot `mov.s $f2,$f8` at 0xd947478 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd947494 targets 0xd9474a4, is taken when not (f0 < f6 (c.lt.s at 0xd947490)), and falls through when f0 < f6 (c.lt.s at 0xd947490); its branch-likely delay slot `or a2,v1,zero` at 0xd947498 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xd9474a8 targets 0xd9474c4, is taken when a0(?) != at(=0x1), and falls through when a0(?) == at(=0x1).
+  The `bne` branch at 0xd9474a8 targets 0xd9474c4, is taken when a0(=[[a0+28208]+232]) != at(=0x1), and falls through when a0(=[[a0+28208]+232]) == at(=0x1).
   The `beq` branch at 0xd9474bc targets 0xd9476b4 and is always taken.
-  The `bnel` branch at 0xd9474cc targets 0xd9475e4, is taken when t9(?) != at(=0x2901), and falls through when t9(?) == at(=0x2901); its branch-likely delay slot `lwc1 $f8,372(sp)` at 0xd9474d0 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9474cc targets 0xd9475e4, is taken when t9(=[[a0+28208]+8]) != at(=0x2901), and falls through when t9(=[[a0+28208]+8]) == at(=0x2901); its branch-likely delay slot `lwc1 $f8,372(sp)` at 0xd9474d0 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd9474e4 targets 0xd9474f0, is taken when f18 < f10 (c.lt.s at 0xd9474dc), and falls through when not (f18 < f10 (c.lt.s at 0xd9474dc)); its branch-likely delay slot `mov.s $f0,$f18` at 0xd9474e8 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd9474f4 targets 0xd947510, is taken when f2 < f0 (c.lt.s at 0xd9474f0), and falls through when not (f2 < f0 (c.lt.s at 0xd9474f0)); its branch-likely delay slot `mov.s $f12,$f2` at 0xd9474f8 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd947500 targets 0xd94750c, is taken when f18 < f4 (c.lt.s at 0xd9474fc), and falls through when not (f18 < f4 (c.lt.s at 0xd9474fc)); its branch-likely delay slot `mov.s $f0,$f18` at 0xd947504 runs only when taken and is annulled on fall-through.
@@ -6867,14 +6965,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xd9477d4 targets 0xd9477e0, is taken when f8 < f6 (c.lt.d at 0xd9477d0), and falls through when not (f8 < f6 (c.lt.d at 0xd9477d0)); its branch-likely delay slot `mov.d $f2,$f6` at 0xd9477d8 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd9477ec targets 0xd947844, is taken when f0 == f14 (c.eq.d at 0xd9477e4), and falls through when not (f0 == f14 (c.eq.d at 0xd9477e4)); its branch-likely delay slot `lwc1 $f4,368(sp)` at 0xd9477f0 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xd947804 targets 0xd947844, is taken when f0 == f4(=0x3ff0000000000000) (c.eq.d at 0xd947800), and falls through when not (f0 == f4(=0x3ff0000000000000) (c.eq.d at 0xd947800)); its branch-likely delay slot `lwc1 $f4,368(sp)` at 0xd947808 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd947980 targets 0xd947994, is taken when a2(?) == 0, and falls through when a2(?) != 0.
+  The `beq` branch at 0xd947980 targets 0xd947994, is taken when a2(=one of 0x0, 0x1) == 0, and falls through when a2(=one of 0x0, 0x1) != 0.
   The `beq` branch at 0xd94798c targets 0xd947998 and is always taken.
-  The `beq` branch at 0xd947998 targets 0xd9479a8, is taken when a0(?) == 0, and falls through when a0(?) != 0.
+  The `beq` branch at 0xd947998 targets 0xd9479a8, is taken when a0(=one of 0x0, 0x1) == 0, and falls through when a0(=one of 0x0, 0x1) != 0.
   The `beq` branch at 0xd9479a0 targets 0xd947a10 and is always taken.
   The `beq` branch at 0xd9479a8 targets 0xd947a10 and is always taken.
   The `beq` branch at 0xd9479b0 targets 0xd947a00, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0xd9479f8 targets 0xd947a10 and is always taken.
-  The `beq` branch at 0xd947a14 targets 0xd947a78, is taken when (t0(?) & 0x4000) == 0, and falls through when (t0(?) & 0x4000) != 0.
+  The `beq` branch at 0xd947a14 targets 0xd947a78, is taken when (t0(=[a0+30436]) & 0x4000) == 0, and falls through when (t0(=[a0+30436]) & 0x4000) != 0.
   The `bne` branch at 0xd947a78 targets 0xd947a90, is taken when t8(?) != 0, and falls through when t8(?) == 0.
   The `beq` branch at 0xd947a80 targets 0xd947b48, is taken when t1(?) == 0, and falls through when t1(?) != 0.
   The `beql` branch at 0xd947a88 targets 0xd947b4c, is taken when t2(?) == 0, and falls through when t2(?) != 0; its branch-likely delay slot `lw t6,576(sp)` at 0xd947a8c runs only when taken and is annulled on fall-through.
@@ -7314,10 +7412,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd949f08 calls (unknown callee) with a0=a0 at entry (arg0), a1=a2 at entry (arg2), a2=?, a3=?.
   The `jalr` at 0xd94a058 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=a1 at entry (arg1).
   The `beq` branch at 0xd949dec targets 0xd94a064, is taken when t6(=[a0+29856]) == 0, and falls through when t6(=[a0+29856]) != 0.
-  The `beq` branch at 0xd949e04 targets 0xd949e70, is taken when (t0(?) & 0x4000) == 0, and falls through when (t0(?) & 0x4000) != 0.
+  The `beq` branch at 0xd949e04 targets 0xd949e70, is taken when (t0(=[a0+30436]) & 0x4000) == 0, and falls through when (t0(=[a0+30436]) & 0x4000) != 0.
   The `bc1fl` branch at 0xd949e40 targets 0xd949e60, is taken when not (f8(=[a2+136]) <= f6 (c.le.s at 0xd949e3c)), and falls through when f8(=[a2+136]) <= f6 (c.le.s at 0xd949e3c); its branch-likely delay slot `trunc.w.s $f8,$f6` at 0xd949e44 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd949e54 targets 0xd949e60 and is always taken.
-  The `beq` branch at 0xd949e74 targets 0xd949e98, is taken when (t0(?) & 0x8000) == 0, and falls through when (t0(?) & 0x8000) != 0.
+  The `beq` branch at 0xd949e74 targets 0xd949e98, is taken when (t0(=[a0+30436]) & 0x8000) == 0, and falls through when (t0(=[a0+30436]) & 0x8000) != 0.
   The `bne` branch at 0xd949e84 targets 0xd949e98, is taken when t4(=[a0+29848]:1) != 0, and falls through when t4(=[a0+29848]:1) == 0.
   The `beql` branch at 0xd949e98 targets 0xd949f4c, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `andi t8,t0,0x8` at 0xd949e9c runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd949ea8 targets 0xd949ed4, is taken when t7(=[a0+1912]) != at(=0x1102), and falls through when t7(=[a0+1912]) == at(=0x1102); its branch-likely delay slot `sw a0,72(sp)` at 0xd949eac runs only when taken and is annulled on fall-through.
@@ -7436,7 +7534,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd94f718 calls __glImageSize [0xd9e2608] with a0=a3 at entry (arg3), a1=0x1, a2=?, a3=?.
   The `jalr` at 0xd94f73c calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd94f7cc calls __glFillImage [0xd9e3324] with a0=[0x1010], a1=a3 at entry (arg3), a2=0x1, a3=?.
-  The `jalr` at 0xd94f7e4 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=?, a2=0xd94f5b0, a3=?.
+  The `jalr` at 0xd94f7e4 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd94f5b0, a3=?.
   The `bne` branch at 0xd94f670 targets 0xd94f6b0, is taken when a0 != at(=0x8063), and falls through when a0 == at(=0x8063).
   The `beq` branch at 0xd94f6a8 targets 0xd94f7f0 and is always taken.
   The `beq` branch at 0xd94f6b8 targets 0xd94f6d8, is taken when t1(=a0) == at(=0xde0), and falls through when t1(=a0) != at(=0xde0).
@@ -7489,7 +7587,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd94f974 calls __glImageSize [0xd9e2608] with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
   The `jalr` at 0xd94f998 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd94fa30 calls __glFillImage [0xd9e3324] with a0=[0x1010], a1=a3 at entry (arg3), a2=?, a3=?.
-  The `jalr` at 0xd94fa48 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=?, a2=0xd94f800, a3=?.
+  The `jalr` at 0xd94fa48 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd94f800, a3=?.
   The `bne` branch at 0xd94f8c4 targets 0xd94f90c, is taken when a0 != at(=0x8064), and falls through when a0 == at(=0x8064).
   The `beq` branch at 0xd94f904 targets 0xd94fa54 and is always taken.
   The `beq` branch at 0xd94f914 targets 0xd94f934, is taken when t2(=a0) == at(=0xde1), and falls through when t2(=a0) != at(=0xde1).
@@ -7535,7 +7633,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd94fb7c calls __glImageSize [0xd9e2608] with a0=a3 at entry (arg3), a1=0x1, a2=?, a3=?.
   The `jalr` at 0xd94fba0 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd94fc24 calls __glFillImage [0xd9e3324] with a0=[0x1010], a1=a3 at entry (arg3), a2=0x1, a3=?.
-  The `jalr` at 0xd94fc3c calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=?, a2=0xd94fa64, a3=?.
+  The `jalr` at 0xd94fc3c calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd94fa64, a3=?.
   The `beq` branch at 0xd94fb18 targets 0xd94fb38, is taken when a0 == at(=0xde0), and falls through when a0 != at(=0xde0).
   The `beq` branch at 0xd94fb30 targets 0xd94fc48 and is always taken.
   The `bne` branch at 0xd94fb64 targets 0xd94fc48, is taken when v0(=ret(crmlcCheckTexImageArgs)) != 0, and falls through when v0(=ret(crmlcCheckTexImageArgs)) == 0.
@@ -7582,7 +7680,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd94fd80 calls __glImageSize [0xd9e2608] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd94fda4 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd94fe38 calls __glFillImage [0xd9e3324] with a0=[0x1010], a1=?, a2=?, a3=?.
-  The `jalr` at 0xd94fe50 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=?, a2=0xd94fc58, a3=?.
+  The `jalr` at 0xd94fe50 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd94fc58, a3=?.
   The `beq` branch at 0xd94fd1c targets 0xd94fd3c, is taken when a0 == at(=0xde1), and falls through when a0 != at(=0xde1).
   The `beq` branch at 0xd94fd34 targets 0xd94fe5c and is always taken.
   The `bne` branch at 0xd94fd68 targets 0xd94fe5c, is taken when v0(=ret(crmlcCheckTexImageArgs)) != 0, and falls through when v0(=ret(crmlcCheckTexImageArgs)) == 0.
@@ -7600,13 +7698,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd94fec4 stores 4 bytes to ret(__glDlistAllocOp2) +0x10.
   The `swc1` at 0xd94fecc stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `swc1` at 0xd94fed4 stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd94fed8, `lw` at 0xd94fedc.
-  The `sw` at 0xd94fee8 stores 4 bytes to ?.
+  The `lw` at 0xd94fed8 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd94fedc loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd94fee8 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd94fe9c calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd94fef4 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931420, a3=?.
-  The `jalr` at 0xd94ff0c calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98af9c, a3=?.
+  The `jalr` at 0xd94fef4 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931420, a3=?.
+  The `jalr` at 0xd94ff0c calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98af9c, a3=?.
   The `beq` branch at 0xd94feac targets 0xd94ff18, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd94fee4 targets 0xd94ff04, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd94fee4 targets 0xd94ff04, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd94fefc targets 0xd94ff18 and is always taken.
   The return at 0xd94ff20 has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7623,13 +7722,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd94ff88 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `lwc1` at 0xd94ff8c loads 4 bytes from a0 (arg0 at entry) +0x8.
   The `swc1` at 0xd94ff90 stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd94ff94, `lw` at 0xd94ff98.
-  The `sw` at 0xd94ffa4 stores 4 bytes to ?.
+  The `lw` at 0xd94ff94 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd94ff98 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd94ffa4 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd94ff54 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a0 at entry (arg0), a3=a3 at entry (arg3).
-  The `jalr` at 0xd94ffb0 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931420, a3=?.
-  The `jalr` at 0xd94ffc8 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98af9c, a3=?.
+  The `jalr` at 0xd94ffb0 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931420, a3=?.
+  The `jalr` at 0xd94ffc8 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98af9c, a3=?.
   The `beq` branch at 0xd94ff68 targets 0xd94ffd4, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd94ffa0 targets 0xd94ffc0, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd94ffa0 targets 0xd94ffc0, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd94ffb8 targets 0xd94ffd4 and is always taken.
   The return at 0xd94ffdc has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7643,13 +7743,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd95003c stores 4 bytes to ret(__glDlistAllocOp2) +0x10.
   The `swc1` at 0xd950044 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `swc1` at 0xd95004c stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd950050, `lw` at 0xd950054.
-  The `sw` at 0xd950060 stores 4 bytes to ?.
+  The `lw` at 0xd950050 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd950054 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd950060 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd950014 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd95006c calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931470, a3=?.
-  The `jalr` at 0xd950084 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98a108, a3=?.
+  The `jalr` at 0xd95006c calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931470, a3=?.
+  The `jalr` at 0xd950084 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98a108, a3=?.
   The `beq` branch at 0xd950024 targets 0xd950090, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd95005c targets 0xd95007c, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd95005c targets 0xd95007c, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd950074 targets 0xd950090 and is always taken.
   The return at 0xd950098 has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7666,13 +7767,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd950100 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `lwc1` at 0xd950104 loads 4 bytes from a0 (arg0 at entry) +0x8.
   The `swc1` at 0xd950108 stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd95010c, `lw` at 0xd950110.
-  The `sw` at 0xd95011c stores 4 bytes to ?.
+  The `lw` at 0xd95010c loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd950110 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd95011c stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd9500cc calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a0 at entry (arg0), a3=a3 at entry (arg3).
-  The `jalr` at 0xd950128 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931470, a3=?.
-  The `jalr` at 0xd950140 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98a108, a3=?.
+  The `jalr` at 0xd950128 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931470, a3=?.
+  The `jalr` at 0xd950140 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98a108, a3=?.
   The `beq` branch at 0xd9500e0 targets 0xd95014c, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd950118 targets 0xd950138, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd950118 targets 0xd950138, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd950130 targets 0xd95014c and is always taken.
   The return at 0xd950154 has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7686,13 +7788,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd9501b4 stores 4 bytes to ret(__glDlistAllocOp2) +0x10.
   The `swc1` at 0xd9501bc stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `swc1` at 0xd9501c4 stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9501c8, `lw` at 0xd9501cc.
-  The `sw` at 0xd9501d8 stores 4 bytes to ?.
+  The `lw` at 0xd9501c8 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd9501cc loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd9501d8 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd95018c calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd9501e4 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931448, a3=?.
-  The `jalr` at 0xd9501fc calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98a62c, a3=?.
+  The `jalr` at 0xd9501e4 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931448, a3=?.
+  The `jalr` at 0xd9501fc calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98a62c, a3=?.
   The `beq` branch at 0xd95019c targets 0xd950208, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd9501d4 targets 0xd9501f4, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd9501d4 targets 0xd9501f4, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd9501ec targets 0xd950208 and is always taken.
   The return at 0xd950210 has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7709,13 +7812,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd950278 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
   The `lwc1` at 0xd95027c loads 4 bytes from a0 (arg0 at entry) +0x8.
   The `swc1` at 0xd950280 stores 4 bytes to ret(__glDlistAllocOp2) +0x18.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd950284, `lw` at 0xd950288.
-  The `sw` at 0xd950294 stores 4 bytes to ?.
+  The `lw` at 0xd950284 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd950288 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd950294 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd950244 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0xc, a2=a0 at entry (arg0), a3=a3 at entry (arg3).
-  The `jalr` at 0xd9502a0 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931448, a3=?.
-  The `jalr` at 0xd9502b8 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98a62c, a3=?.
+  The `jalr` at 0xd9502a0 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931448, a3=?.
+  The `jalr` at 0xd9502b8 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98a62c, a3=?.
   The `beq` branch at 0xd950258 targets 0xd9502c4, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd950290 targets 0xd9502b0, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd950290 targets 0xd9502b0, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd9502a8 targets 0xd9502c4 and is always taken.
   The return at 0xd9502cc has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7728,13 +7832,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sh` at 0xd95031c stores 2 bytes to ret(__glDlistAllocOp2) +0xc.
   The `swc1` at 0xd950328 stores 4 bytes to ret(__glDlistAllocOp2) +0x10.
   The `swc1` at 0xd950330 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd950334, `lw` at 0xd950338.
-  The `sw` at 0xd950344 stores 4 bytes to ?.
+  The `lw` at 0xd950334 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd950338 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd950344 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd950300 calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0x8, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd950350 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931498, a3=?.
-  The `jalr` at 0xd950368 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98abdc, a3=?.
+  The `jalr` at 0xd950350 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931498, a3=?.
+  The `jalr` at 0xd950368 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98abdc, a3=?.
   The `beq` branch at 0xd950310 targets 0xd950374, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd950340 targets 0xd950360, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd950340 targets 0xd950360, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd950358 targets 0xd950374 and is always taken.
   The return at 0xd95037c has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -7749,13 +7854,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xd9503d8 stores 4 bytes to ret(__glDlistAllocOp2) +0x10.
   The `lwc1` at 0xd9503dc loads 4 bytes from a0 (arg0 at entry) +0x4.
   The `swc1` at 0xd9503e0 stores 4 bytes to ret(__glDlistAllocOp2) +0x14.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9503e4, `lw` at 0xd9503e8.
-  The `sw` at 0xd9503f4 stores 4 bytes to ?.
+  The `lw` at 0xd9503e4 loads 4 bytes from [0x1010] +0x1384.
+  The `lw` at 0xd9503e8 loads 4 bytes from [0x1010] +0x1378.
+  The `sw` at 0xd9503f4 stores 4 bytes to [0x1010] +0x1384.
   The `jalr` at 0xd9503ac calls __glDlistAllocOp2 [0xd97c96c] with a0=[0x1010], a1=0x8, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd950400 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd931498, a3=?.
-  The `jalr` at 0xd950418 calls __glDlistAppendOp [0xd97ca04] with a0=?, a1=ret(__glDlistAllocOp2), a2=0xd98abdc, a3=?.
+  The `jalr` at 0xd950400 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd931498, a3=?.
+  The `jalr` at 0xd950418 calls __glDlistAppendOp [0xd97ca04] with a0=[0x1010], a1=ret(__glDlistAllocOp2), a2=0xd98abdc, a3=?.
   The `beq` branch at 0xd9503c0 targets 0xd950424, is taken when v0(=ret(__glDlistAllocOp2)) == 0, and falls through when v0(=ret(__glDlistAllocOp2)) != 0.
-  The `beq` branch at 0xd9503f0 targets 0xd950410, is taken when t9(?) == at(=0x1301), and falls through when t9(?) != at(=0x1301).
+  The `beq` branch at 0xd9503f0 targets 0xd950410, is taken when t9(=[[0x1010]+4984]) == at(=0x1301), and falls through when t9(=[[0x1010]+4984]) != at(=0x1301).
   The `beq` branch at 0xd950408 targets 0xd950424 and is always taken.
   The return at 0xd95042c has v0 = one of ret(__glDlistAllocOp2), ret(__glDlistAppendOp).
 
@@ -8159,11 +8265,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd95128c targets 0xd95129c, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `bnel` branch at 0xd951294 targets 0xd951354, is taken when t1(?) != 0, and falls through when t1(?) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd951298 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9512a8 targets 0xd951350, is taken when t2(=[a0+488]) != t3(=[a0+484]), and falls through when t2(=[a0+488]) == t3(=[a0+484]).
-  The `bnel` branch at 0xd9512b4 targets 0xd951354, is taken when (v1(?) & at(=0x21000)) != 0, and falls through when (v1(?) & at(=0x21000)) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9512b8 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9512b4 targets 0xd951354, is taken when (v1(=[a0+30436]) & at(=0x21000)) != 0, and falls through when (v1(=[a0+30436]) & at(=0x21000)) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9512b8 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9512c0 targets 0xd9512d8, is taken when t5(=[a0+28216]:1) == 0, and falls through when t5(=[a0+28216]:1) != 0; its branch-likely delay slot `lbu t8,3221(a0)` at 0xd9512c4 runs only when taken and is annulled on fall-through.
   The `bgezl` branch at 0xd9512cc targets 0xd951354, is taken when t7(=[a0+32090]:2) >= 0 (signed), and falls through when t7(=[a0+32090]:2) < 0 (signed); its branch-likely delay slot `addiu at,a0,32767` at 0xd9512d0 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9512d8 targets 0xd951308, is taken when t8(=[a0+3221]:1) == 0, and falls through when t8(=[a0+3221]:1) != 0; its branch-likely delay slot `lbu t0,3220(a0)` at 0xd9512dc runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd9512e4 targets 0xd951354, is taken when (v1(?) & 0x2000) != 0, and falls through when (v1(?) & 0x2000) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9512e8 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9512e4 targets 0xd951354, is taken when (v1(=[a0+30436]) & 0x2000) != 0, and falls through when (v1(=[a0+30436]) & 0x2000) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9512e8 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd9512f4 targets 0xd951354, is taken when (v0(=[a0+1812]) & 0x2) != 0, and falls through when (v0(=[a0+1812]) & 0x2) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9512f8 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd9512fc targets 0xd951354, is taken when v0(?) != 0, and falls through when v0(?) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd951300 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd95130c targets 0xd95132c, is taken when t0(=[a0+3220]:1) == 0, and falls through when t0(=[a0+3220]:1) != 0.
@@ -8173,7 +8279,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bgez` branch at 0xd951360 targets 0xd951374, is taken when t7(=[a0+32090]:2) >= 0 (signed), and falls through when t7(=[a0+32090]:2) < 0 (signed).
   The `beq` branch at 0xd95136c targets 0xd95137c and is always taken.
   The `bne` branch at 0xd9513bc targets 0xd9513f4, is taken when a1(=0x1c00) != t8(=[a0+3204]), and falls through when a1(=0x1c00) == t8(=[a0+3204]).
-  The `beq` branch at 0xd9513c8 targets 0xd9513dc, is taken when (v1(?) & 0x2000) == 0, and falls through when (v1(?) & 0x2000) != 0.
+  The `beq` branch at 0xd9513c8 targets 0xd9513dc, is taken when (v1(=[a0+30436]) & 0x2000) == 0, and falls through when (v1(=[a0+30436]) & 0x2000) != 0.
   The `bnel` branch at 0xd9513d4 targets 0xd9513f8, is taken when t0(=[a0+3221]:1) != 0, and falls through when t0(=[a0+3221]:1) == 0; its branch-likely delay slot `addiu at,a0,32767` at 0xd9513d8 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9513dc targets 0xd9513f4, is taken when t1(?) != 0, and falls through when t1(?) == 0.
   The return at 0xd951404 has v0 = ?.
@@ -8426,7 +8532,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd95291c targets 0xd952944 and is always taken.
   The `beql` branch at 0xd952928 targets 0xd952940, is taken when t5(=[a0+3382]:1) == 0, and falls through when t5(=[a0+3382]:1) != 0; its branch-likely delay slot `lw t7,30656(a2)` at 0xd95292c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd952934 targets 0xd952944 and is always taken.
-  The `beq` branch at 0xd95294c targets 0xd95296c, is taken when t8(?) == a1(=[a0+11764]), and falls through when t8(?) != a1(=[a0+11764]).
+  The `beq` branch at 0xd95294c targets 0xd95296c, is taken when t8(=[a0+11764]) == a1(=[a0+11764]), and falls through when t8(=[a0+11764]) != a1(=[a0+11764]).
   The `beq` branch at 0xd952984 targets 0xd9529e4, is taken when t9(=[0xda4d2a4]) == 0, and falls through when t9(=[0xda4d2a4]) != 0.
   The `beql` branch at 0xd952994 targets 0xd9529e8, is taken when t3(=[a0+3220]:1) == 0, and falls through when t3(=[a0+3220]:1) != 0; its branch-likely delay slot `addiu a0,a2,32196` at 0xd952998 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9529a4 targets 0xd9529b8, is taken when t4(=[a0+30524]:1) != 0, and falls through when t4(=[a0+30524]:1) == 0.
@@ -8447,7 +8553,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd952ab0 targets 0xd952acc, is taken when 0 < v1(=[a0+1248]) (unsigned), and falls through when 0 >= v1(=[a0+1248]) (unsigned).
   The `beql` branch at 0xd952abc targets 0xd952ad0, is taken when 0 >= v0(?) (unsigned), and falls through when 0 < v0(?) (unsigned); its branch-likely delay slot `sw v1,36(a0)` at 0xd952ac0 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd952ad4 targets 0xd952b0c, is taken when t6(?) != 0, and falls through when t6(?) == 0.
-  The `beql` branch at 0xd952ae0 targets 0xd952af8, is taken when (a3(?) & 0x2000) == 0, and falls through when (a3(?) & 0x2000) != 0; its branch-likely delay slot `lbu t9,28216(a2)` at 0xd952ae4 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd952ae0 targets 0xd952af8, is taken when (a3(=[a0+30436]) & 0x2000) == 0, and falls through when (a3(=[a0+30436]) & 0x2000) != 0; its branch-likely delay slot `lbu t9,28216(a2)` at 0xd952ae4 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd952aec targets 0xd952b10, is taken when t8(=[a0+3221]:1) != 0, and falls through when t8(=[a0+3221]:1) == 0; its branch-likely delay slot `sb zero,0(a0)` at 0xd952af0 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd952af8 targets 0xd952b1c, is taken when t9(=[a0+28216]:1) == 0, and falls through when t9(=[a0+28216]:1) != 0; its branch-likely delay slot `lbu t5,32011(a2)` at 0xd952afc runs only when taken and is annulled on fall-through.
   The `bltzl` branch at 0xd952b04 targets 0xd952b1c, is taken when t4(=[a0+32090]:2) < 0 (signed), and falls through when t4(=[a0+32090]:2) >= 0 (signed); its branch-likely delay slot `lbu t5,32011(a2)` at 0xd952b08 runs only when taken and is annulled on fall-through.
@@ -8456,7 +8562,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd952b2c targets 0xd952b44, is taken when t6(=[a0+32012]:1) == 0, and falls through when t6(=[a0+32012]:1) != 0; its branch-likely delay slot `addiu t2,zero,1` at 0xd952b30 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd952b38 targets 0xd952b48 and is always taken.
   The `bne` branch at 0xd952b54 targets 0xd952b8c, is taken when 0 < v0(?) (unsigned), and falls through when 0 >= v0(?) (unsigned).
-  The `beq` branch at 0xd952b60 targets 0xd952b84, is taken when (a3(?) & 0x40) == 0, and falls through when (a3(?) & 0x40) != 0.
+  The `beq` branch at 0xd952b60 targets 0xd952b84, is taken when (a3(=[a0+30436]) & 0x40) == 0, and falls through when (a3(=[a0+30436]) & 0x40) != 0.
   The `bnel` branch at 0xd952b7c targets 0xd952b90, is taken when 0 < v1(?) (unsigned), and falls through when 0 >= v1(?) (unsigned); its branch-likely delay slot `sb v1,5(a0)` at 0xd952b80 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd952ba8 targets 0xd952bb8, is taken when not (f0 < f2(=[a0+744]) (c.lt.s at 0xd952ba0)), and falls through when f0 < f2(=[a0+744]) (c.lt.s at 0xd952ba0); its branch-likely delay slot `sb t4,7(a0)` at 0xd952bac runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd952bc0 targets 0xd952bd0, is taken when not (f0 < f12(=[a0+748]) (c.lt.s at 0xd952bb8)), and falls through when f0 < f12(=[a0+748]) (c.lt.s at 0xd952bb8); its branch-likely delay slot `lbu t8,7(a0)` at 0xd952bc4 runs only when taken and is annulled on fall-through.
@@ -8476,7 +8582,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd952d88 targets 0xd952da4, is taken when v0(=one of 0x0, 0x1) != 0, and falls through when v0(=one of 0x0, 0x1) == 0.
   The `bc1tl` branch at 0xd952d98 targets 0xd952da8, is taken when f12 == f14 (c.eq.s at 0xd952d94), and falls through when not (f12 == f14 (c.eq.s at 0xd952d94)); its branch-likely delay slot `sb v1,9(a0)` at 0xd952d9c runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd952da8 targets 0xd952db4, is taken when t4(?) != 0, and falls through when t4(?) == 0; its branch-likely delay slot `sb t2,13(a0)` at 0xd952dac runs only when taken and is annulled on fall-through.
-  The `bgezl` branch at 0xd952db4 targets 0xd952dc8, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed); its branch-likely delay slot `sb zero,14(a0)` at 0xd952db8 runs only when taken and is annulled on fall-through.
+  The `bgezl` branch at 0xd952db4 targets 0xd952dc8, is taken when t5(=([a0+1796] << 0xe)) >= 0 (signed), and falls through when t5(=([a0+1796] << 0xe)) < 0 (signed); its branch-likely delay slot `sb zero,14(a0)` at 0xd952db8 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd952dbc targets 0xd952dc8 and is always taken.
   The `bnel` branch at 0xd952dcc targets 0xd952df4, is taken when t6(=[a0+761]:1) != 0, and falls through when t6(=[a0+761]:1) == 0; its branch-likely delay slot `sb zero,3(a0)` at 0xd952dd0 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd952ddc targets 0xd952df4, is taken when t7(=[a0+752]) != at(=-0x18), and falls through when t7(=[a0+752]) == at(=-0x18); its branch-likely delay slot `sb zero,3(a0)` at 0xd952de0 runs only when taken and is annulled on fall-through.
@@ -8588,12 +8694,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd954258 loads 4 bytes from a0 (arg0 at entry) +0x7d44.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0xe74, including `sw` at 0xd95425c, `sw` at 0xd954310.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0xe78, including `sw` at 0xd954260, `sw` at 0xd954318.
-  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd2, including `lbu` at 0xd9542a0, `lbu` at 0xd9542d4.
-  The `lbu` at 0xd954334 loads 1 byte from a0 (arg0 at entry) +0x7dcf.
-  41 such `lbu` accesses load 1 byte from ?, including `lbu` at 0xd95436c, `lbu` at 0xd9543a0, `lbu` at 0xd954480.
-  49 such `sb` accesses store 1 byte to ?, including `sb` at 0xd954384, `sb` at 0xd954388, `sb` at 0xd954390.
-  25 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd95438c, `sw` at 0xd954394, `sw` at 0xd954398.
+  5 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd2, including `lbu` at 0xd9542a0, `lbu` at 0xd9542d4, `lbu` at 0xd954c04.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dcf, including `lbu` at 0xd954334, `lbu` at 0xd9543a0.
+  23 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7e27, including `lbu` at 0xd95436c, `lbu` at 0xd954480, `lbu` at 0xd9544b8.
+  29 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd954384, `sb` at 0xd954388, `sb` at 0xd954490.
+  The `sw` at 0xd95438c stores 4 bytes to a0 (arg0 at entry) +0x7dd8.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dce, including `sb` at 0xd954390, `sb` at 0xd954568, `sb` at 0xd954900.
+  The `sw` at 0xd954394 stores 4 bytes to a0 (arg0 at entry) +0x7de0.
+  The `sw` at 0xd954398 stores 4 bytes to a0 (arg0 at entry) +0x7ddc.
   The `lw` at 0xd95439c loads 4 bytes from a0 (arg0 at entry) +0x2df4.
+  12 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e58, including `sw` at 0xd9543a4, `sw` at 0xd9544c0, `sw` at 0xd95450c.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dd4, including `sb` at 0xd9543a8, `sb` at 0xd954bb0, `sb` at 0xd954c4c.
+  4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e28, including `sw` at 0xd9543ac, `sw` at 0xd954594, `sw` at 0xd954908.
   The `lbu` at 0xd9543bc loads 1 byte from a0 (arg0 at entry) +0x478.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7d3c, including `lw` at 0xd9543cc, `lw` at 0xd954b44.
   2 such `lw` accesses load 4 bytes from [a0+32060] +0x0, including `lw` at 0xd9543d4, `lw` at 0xd954b4c.
@@ -8601,9 +8713,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0xd9543e4 loads 1 byte from [[a0+32060]+4] +0x4.
   The `lw` at 0xd9543f0 loads 4 bytes from [[a0+32060]+4] +0x28.
   The `lw` at 0xd954400 loads 4 bytes from [[a0+32060]+4] +0x2c.
-  19 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd954468, `lw` at 0xd9544a8, `lw` at 0xd9545b0.
+  8 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7de8, including `lw` at 0xd954468, `lw` at 0xd9544a8, `lw` at 0xd9545b0.
   2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x773d, including `lbu` at 0xd954474, `lbu` at 0xd9547c0.
+  12 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7e26, including `lbu` at 0xd95448c, `lbu` at 0xd9544cc, `lbu` at 0xd954518.
+  12 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e26, including `sb` at 0xd9544a4, `sb` at 0xd9544f0, `sb` at 0xd95453c.
   The `lbu` at 0xd954540 loads 1 byte from a0 (arg0 at entry) +0x773f.
+  8 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7de4, including `lw` at 0xd9545cc, `lw` at 0xd954684, `lw` at 0xd954698.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xd64, including `lw` at 0xd954634, `lw` at 0xd954700, `lw` at 0xd9549c8.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xd58, including `lw` at 0xd954640, `lw` at 0xd95470c.
   The `lw` at 0xd9547e4 loads 4 bytes from a0 (arg0 at entry) +0xd54.
@@ -8614,24 +8729,31 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xd954898 loads 4 bytes from a0 (arg0 at entry) +0x2a4.
   The `lw` at 0xd9548b0 loads 4 bytes from a0 (arg0 at entry) +0x80a0.
   The `lbu` at 0xd95490c loads 1 byte from a0 (arg0 at entry) +0x7d09.
+  The `lbu` at 0xd954918 loads 1 byte from a0 (arg0 at entry) +0x7dc8.
+  The `lbu` at 0xd9549bc loads 1 byte from a0 (arg0 at entry) +0x7dd0.
   The `lbu` at 0xd954ae8 loads 1 byte from a0 (arg0 at entry) +0x7a5c.
   The `lw` at 0xd954b38 loads 4 bytes from abs 0xda4d2a4.
   The `lw` at 0xd954b5c loads 4 bytes from a0 (arg0 at entry) +0x7d38.
+  4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e60, including `sw` at 0xd954b64, `sw` at 0xd954b74, `sw` at 0xd954b84.
   The `lw` at 0xd954b6c loads 4 bytes from [a0+32056] +0x0.
   The `lw` at 0xd954b78 loads 4 bytes from [a0+32056] +0x4.
   The `lbu` at 0xd954b7c loads 1 byte from [[a0+32056]+4] +0x4.
   The `lw` at 0xd954b88 loads 4 bytes from [[a0+32056]+4] +0x28.
   The `lw` at 0xd954b98 loads 4 bytes from [[a0+32056]+4] +0x2c.
   The `lw` at 0xd954bf8 loads 4 bytes from abs 0xda4d290.
+  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7de4, including `sw` at 0xd954c44, `sw` at 0xd954cd0.
   The `lw` at 0xd954c50 loads 4 bytes from a0 (arg0 at entry) +0x12f4.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x12f4, including `sw` at 0xd954c5c, `sw` at 0xd954cd8.
+  The `lw` at 0xd954cdc loads 4 bytes from a0 (arg0 at entry) +0x7e3c.
+  The `lw` at 0xd954cec loads 4 bytes from a0 (arg0 at entry) +0x7e30.
+  The `lw` at 0xd954cf8 loads 4 bytes from a0 (arg0 at entry) +0x7e44.
   The `jalr` at 0xd954298 calls __glInitReadPixelsInfo [0xd9b0554] with a0=a0 at entry (arg0), a1=sp-524, a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd9542c8 calls __glClipReadPixels [0xd9b0344] with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=?.
   The `jalr` at 0xd95435c calls __glInitPacker [0xd9a5ac0] with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=?.
   The `jalr` at 0xd954b08 calls __glCrmForceNonTagClear [0xd948fc4] with a0=a0 at entry (arg0), a1=a0+31228, a2=?, a3=one of 0x0, 0xd957f68.
-  The `jalr` at 0xd954bcc calls (unknown callee) with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=?.
-  The `jalr` at 0xd954c20 calls printf with a0=0xda42ec4, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd954c78 calls __glGenericPickReadPixels [0xd9b0c2c] with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=?.
+  The `jalr` at 0xd954bcc calls (unknown callee) with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=one of 0x0, 0xd957f68, 0xda3d5cc.
+  The `jalr` at 0xd954c20 calls printf with a0=0xda42ec4, a1=?, a2=?, a3=one of 0x0, 0xd957f68, 0xda3d5cc.
+  The `jalr` at 0xd954c78 calls __glGenericPickReadPixels [0xd9b0c2c] with a0=a0 at entry (arg0), a1=sp-524, a2=?, a3=one of 0x0, 0xd957f68, 0xda3d5cc.
   The `jalr` at 0xd954cb4 calls __glSlowPickReadPixels [0xd9b0b6c] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd954d00 calls (unknown callee) with a0=a0 at entry (arg0), a1=0x0, a2=?, a3=?.
   The `bne` branch at 0xd95423c targets 0xd954264, is taken when t6(=[a0+3536]:1) != 0, and falls through when t6(=[a0+3536]:1) == 0.
@@ -8643,7 +8765,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd95432c targets 0xd954d0c, is taken when t7(?) == 0, and falls through when t7(?) != 0.
   The `beq` branch at 0xd95433c targets 0xd954354, is taken when t8(=[a0+32207]:1) == 0, and falls through when t8(=[a0+32207]:1) != 0.
   The `beq` branch at 0xd954348 targets 0xd954354, is taken when (v0(?) & 0x1) == 0, and falls through when (v0(?) & 0x1) != 0.
-  The `beq` branch at 0xd9543c0 targets 0xd9543cc, is taken when t7(?) == 0, and falls through when t7(?) != 0.
+  The `beq` branch at 0xd9543c0 targets 0xd9543cc, is taken when t7(=[a0+32207]:1) == 0, and falls through when t7(=[a0+32207]:1) != 0.
   The `bnel` branch at 0xd9543d8 targets 0xd95440c, is taken when t5(=0x4) != t8(=[[a0+32060]]), and falls through when t5(=0x4) == t8(=[[a0+32060]]); its branch-likely delay slot `addiu at,zero,5121` at 0xd9543dc runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9543e8 targets 0xd95440c, is taken when t9(=[[[a0+32060]+4]+4]:1) == 0, and falls through when t9(=[[[a0+32060]+4]+4]:1) != 0; its branch-likely delay slot `addiu at,zero,5121` at 0xd9543ec runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9543f8 targets 0xd954a78, is taken when t6(=[[[a0+32060]+4]+40]) == at(=0x10), and falls through when t6(=[[[a0+32060]+4]+40]) != at(=0x10); its branch-likely delay slot `addiu at,zero,5122` at 0xd9543fc runs only when taken and is annulled on fall-through.
@@ -8662,17 +8784,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd95446c targets 0xd95459c and is always taken.
   The `bnel` branch at 0xd954478 targets 0xd95459c, is taken when t8(=[a0+30525]:1) != 0, and falls through when t8(=[a0+30525]:1) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd95447c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9544a0 targets 0xd954598 and is always taken.
-  The `bnel` branch at 0xd9544ac targets 0xd95459c, is taken when t7(?) != 0, and falls through when t7(?) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd9544b0 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9544ac targets 0xd95459c, is taken when t7(=[a0+32232]) != 0, and falls through when t7(=[a0+32232]) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd9544b0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9544ec targets 0xd954598 and is always taken.
-  The `bnel` branch at 0xd9544f8 targets 0xd95459c, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd9544fc runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9544f8 targets 0xd95459c, is taken when t6(=[a0+32232]) != 0, and falls through when t6(=[a0+32232]) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd9544fc runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd954538 targets 0xd954598 and is always taken.
   The `bnel` branch at 0xd954548 targets 0xd95459c, is taken when t9(=[a0+30527]:1) != 0, and falls through when t9(=[a0+30527]:1) == 0; its branch-likely delay slot `addiu at,zero,6408` at 0xd95454c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd95459c targets 0xd9545bc, is taken when t0(?) == at(=0x1908), and falls through when t0(?) != at(=0x1908).
   The `beq` branch at 0xd9545a4 targets 0xd954688, is taken when t0(?) == at(=0x8000), and falls through when t0(?) != at(=0x8000).
   The `beql` branch at 0xd9545ac targets 0xd954758, is taken when t0(?) == at(=0x81bb), and falls through when t0(?) != at(=0x81bb); its branch-likely delay slot `lw t6,36(v1)` at 0xd9545b0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9545b4 targets 0xd954acc and is always taken.
-  The `beql` branch at 0xd9545c4 targets 0xd9545d8, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `andi t6,t9,0x3` at 0xd9545c8 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd9545d0 targets 0xd954ac8, is taken when t7(?) == 0, and falls through when t7(?) != 0.
+  The `beql` branch at 0xd9545c4 targets 0xd9545d8, is taken when t6(=[a0+32232]) == 0, and falls through when t6(=[a0+32232]) != 0; its branch-likely delay slot `andi t6,t9,0x3` at 0xd9545c8 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd9545d0 targets 0xd954ac8, is taken when t7(=[a0+32228]) == 0, and falls through when t7(=[a0+32228]) != 0.
   The `bnel` branch at 0xd9545d8 targets 0xd954acc, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd9545dc runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9545e0 targets 0xd954604, is taken when t1(=one of 0x0, 0x1) == 0, and falls through when t1(=one of 0x0, 0x1) != 0.
   The `beql` branch at 0xd9545e8 targets 0xd954608, is taken when a1(=[a0+1144]:1) == 0, and falls through when a1(=[a0+1144]:1) != 0; its branch-likely delay slot `lbu t6,99(v1)` at 0xd9545ec runs only when taken and is annulled on fall-through.
@@ -8682,8 +8804,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd95465c targets 0xd954674, is taken when t6(?) != at(=0x3), and falls through when t6(?) == at(=0x3).
   The `beq` branch at 0xd95466c targets 0xd954680 and is always taken.
   The `beq` branch at 0xd954680 targets 0xd954ac8 and is always taken.
-  The `beql` branch at 0xd954690 targets 0xd9546a4, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `andi t6,t9,0x3` at 0xd954694 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd95469c targets 0xd954ac8, is taken when t7(?) == 0, and falls through when t7(?) != 0.
+  The `beql` branch at 0xd954690 targets 0xd9546a4, is taken when t6(=[a0+32232]) == 0, and falls through when t6(=[a0+32232]) != 0; its branch-likely delay slot `andi t6,t9,0x3` at 0xd954694 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd95469c targets 0xd954ac8, is taken when t7(=[a0+32228]) == 0, and falls through when t7(=[a0+32228]) != 0.
   The `bnel` branch at 0xd9546a4 targets 0xd954acc, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd9546a8 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9546ac targets 0xd9546d0, is taken when t1(=one of 0x0, 0x1) == 0, and falls through when t1(=one of 0x0, 0x1) != 0.
   The `beql` branch at 0xd9546b4 targets 0xd9546d4, is taken when a1(=[a0+1144]:1) == 0, and falls through when a1(=[a0+1144]:1) != 0; its branch-likely delay slot `lbu t6,99(v1)` at 0xd9546b8 runs only when taken and is annulled on fall-through.
@@ -8693,7 +8815,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd954728 targets 0xd954740, is taken when t6(?) != at(=0x2), and falls through when t6(?) == at(=0x2).
   The `beq` branch at 0xd954738 targets 0xd95474c and is always taken.
   The `beq` branch at 0xd95474c targets 0xd954ac8 and is always taken.
-  The `bnel` branch at 0xd954758 targets 0xd954acc, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd95475c runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd954758 targets 0xd954acc, is taken when t6(=[a0+32232]) != 0, and falls through when t6(=[a0+32232]) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd95475c runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd954760 targets 0xd954ac8, is taken when a1(=[a0+1144]:1) != 0, and falls through when a1(=[a0+1144]:1) == 0.
   The `bnel` branch at 0xd95476c targets 0xd954acc, is taken when (t8(?) & 0x3) != 0, and falls through when (t8(?) & 0x3) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954770 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9547ac targets 0xd954ac8 and is always taken.
@@ -8715,26 +8837,26 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9548b8 targets 0xd9548cc, is taken when t9(=[a0+32928]) == at(=0x1), and falls through when t9(=[a0+32928]) != at(=0x1).
   The `beq` branch at 0xd954904 targets 0xd954ac8 and is always taken.
   The `beql` branch at 0xd954910 targets 0xd954acc, is taken when t6(=[a0+32009]:1) == 0, and falls through when t6(=[a0+32009]:1) != 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954914 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd95491c targets 0xd954acc, is taken when t7(?) == 0, and falls through when t7(?) != 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954920 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd95491c targets 0xd954acc, is taken when t7(=[a0+32200]:1) == 0, and falls through when t7(=[a0+32200]:1) != 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954920 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd954924 targets 0xd954ac8, is taken when a1(=[a0+1144]:1) != 0, and falls through when a1(=[a0+1144]:1) == 0.
   The `bnel` branch at 0xd954934 targets 0xd954acc, is taken when (t6(?) & 0x3) != 0, and falls through when (t6(?) & 0x3) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954938 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd954978 targets 0xd954ac8 and is always taken.
   The `bnel` branch at 0xd954984 targets 0xd954acc, is taken when t0(?) != at(=0x1908), and falls through when t0(?) == at(=0x1908); its branch-likely delay slot `addiu at,zero,6401` at 0xd954988 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd954990 targets 0xd9549a4, is taken when t7(?) == 0, and falls through when t7(?) != 0.
-  The `beql` branch at 0xd95499c targets 0xd954acc, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd9549a0 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd954990 targets 0xd9549a4, is taken when t7(=[a0+32232]) == 0, and falls through when t7(=[a0+32232]) != 0.
+  The `beql` branch at 0xd95499c targets 0xd954acc, is taken when t8(=[a0+32228]) == 0, and falls through when t8(=[a0+32228]) != 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd9549a0 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9549a4 targets 0xd954ac8, is taken when a1(=[a0+1144]:1) != 0, and falls through when a1(=[a0+1144]:1) == 0.
   The `bnel` branch at 0xd9549b4 targets 0xd954acc, is taken when (t7(?) & 0x1) != 0, and falls through when (t7(?) & 0x1) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd9549b8 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd9549c4 targets 0xd9549dc, is taken when t9(?) != 0, and falls through when t9(?) == 0; its branch-likely delay slot `lw t7,3428(s0)` at 0xd9549c8 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9549c4 targets 0xd9549dc, is taken when t9(=[a0+32208]:1) != 0, and falls through when t9(=[a0+32208]:1) == 0; its branch-likely delay slot `lw t7,3428(s0)` at 0xd9549c8 runs only when taken and is annulled on fall-through.
   The `blezl` branch at 0xd9549dc targets 0xd9549fc, is taken when t7(=[a0+3428]) <= 0 (signed), and falls through when t7(=[a0+3428]) > 0 (signed); its branch-likely delay slot `lbu t7,99(v1)` at 0xd9549e0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9549f0 targets 0xd954a08 and is always taken.
   The `beq` branch at 0xd954a28 targets 0xd954ac8 and is always taken.
   The `bnel` branch at 0xd954a34 targets 0xd954acc, is taken when t0(?) != at(=0x1907), and falls through when t0(?) == at(=0x1907); its branch-likely delay slot `addiu at,zero,6401` at 0xd954a38 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd954a40 targets 0xd954acc, is taken when t9(?) != 0, and falls through when t9(?) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954a44 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd954a40 targets 0xd954acc, is taken when t9(=[a0+32232]) != 0, and falls through when t9(=[a0+32232]) == 0; its branch-likely delay slot `addiu at,zero,6401` at 0xd954a44 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd954a6c targets 0xd954ac8 and is always taken.
   The `bne` branch at 0xd954a78 targets 0xd954ac8, is taken when t4(?) != at(=0x1402), and falls through when t4(?) == at(=0x1402).
   The `bnel` branch at 0xd954a80 targets 0xd954acc, is taken when t0(?) != at(=0x1909), and falls through when t0(?) == at(=0x1909); its branch-likely delay slot `addiu at,zero,6401` at 0xd954a84 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd954a90 targets 0xd954aa4, is taken when t9(?) == 0, and falls through when t9(?) != 0; its branch-likely delay slot `or t9,t7,a2` at 0xd954a94 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd954a9c targets 0xd954ac8, is taken when t6(?) == 0, and falls through when t6(?) != 0.
+  The `beql` branch at 0xd954a90 targets 0xd954aa4, is taken when t9(=[a0+32232]) == 0, and falls through when t9(=[a0+32232]) != 0; its branch-likely delay slot `or t9,t7,a2` at 0xd954a94 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd954a9c targets 0xd954ac8, is taken when t6(=[a0+32228]) == 0, and falls through when t6(=[a0+32228]) != 0.
   The `bne` branch at 0xd954aa8 targets 0xd954ac8, is taken when (t9(?) & 0x3) != 0, and falls through when (t9(?) & 0x3) == 0.
   The `beq` branch at 0xd954acc targets 0xd954adc, is taken when t0(?) == at(=0x1901), and falls through when t0(?) != at(=0x1901).
   The `bne` branch at 0xd954ad4 targets 0xd954b2c, is taken when t0(?) != at(=0x1902), and falls through when t0(?) == at(=0x1902).
@@ -8749,16 +8871,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd954b80 targets 0xd954ba8, is taken when t7(=[[[a0+32056]+4]+4]:1) == 0, and falls through when t7(=[[[a0+32056]+4]+4]:1) != 0; its branch-likely delay slot `sw a3,156(v1)` at 0xd954b84 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd954b90 targets 0xd954bac, is taken when t8(=[[[a0+32056]+4]+40]) == at(=0x10), and falls through when t8(=[[[a0+32056]+4]+40]) != at(=0x10); its branch-likely delay slot `addiu t6,zero,1` at 0xd954b94 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd954b9c targets 0xd954bac, is taken when t9(=[[[a0+32056]+4]+44]) == 0, and falls through when t9(=[[[a0+32056]+4]+44]) != 0; its branch-likely delay slot `addiu t6,zero,1` at 0xd954ba0 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd954bb4 targets 0xd954bf0, is taken when a3(?) == 0, and falls through when a3(?) != 0.
+  The `beq` branch at 0xd954bb4 targets 0xd954bf0, is taken when a3(=one of 0x0, 0xd957f68, 0xda3d5cc) == 0, and falls through when a3(=one of 0x0, 0xd957f68, 0xda3d5cc) != 0.
   The `bne` branch at 0xd954be8 targets 0xd954cdc, is taken when v0(=ret(?)) != 0, and falls through when v0(=ret(?)) == 0.
   The `beql` branch at 0xd954c00 targets 0xd954c44, is taken when t8(=[0xda4d290]) == 0, and falls through when t8(=[0xda4d290]) != 0; its branch-likely delay slot `lbu t9,14(v1)` at 0xd954c04 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd954c48 targets 0xd954c60, is taken when t9(?) == 0, and falls through when t9(?) != 0.
-  The `beq` branch at 0xd954c60 targets 0xd954c70, is taken when a3(?) == 0, and falls through when a3(?) != 0.
+  The `beq` branch at 0xd954c48 targets 0xd954c60, is taken when t9(=[a0+32210]:1) == 0, and falls through when t9(=[a0+32210]:1) != 0.
+  The `beq` branch at 0xd954c60 targets 0xd954c70, is taken when a3(=one of 0x0, 0xd957f68, 0xda3d5cc) == 0, and falls through when a3(=one of 0x0, 0xd957f68, 0xda3d5cc) != 0.
   The `beq` branch at 0xd954c68 targets 0xd954c8c, is taken when t3(?) == 0, and falls through when t3(?) != 0.
   The `beq` branch at 0xd954c84 targets 0xd954cc4 and is always taken.
-  The `beq` branch at 0xd954ccc targets 0xd954cdc, is taken when t6(?) == 0, and falls through when t6(?) != 0.
-  The `beql` branch at 0xd954ce4 targets 0xd954d10, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `lw ra,52(sp)` at 0xd954ce8 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd954cf0 targets 0xd954d10, is taken when t9(?) == 0, and falls through when t9(?) != 0; its branch-likely delay slot `lw ra,52(sp)` at 0xd954cf4 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd954ccc targets 0xd954cdc, is taken when t6(=[a0+32210]:1) == 0, and falls through when t6(=[a0+32210]:1) != 0.
+  The `beql` branch at 0xd954ce4 targets 0xd954d10, is taken when t8(=[a0+32316]) == 0, and falls through when t8(=[a0+32316]) != 0; its branch-likely delay slot `lw ra,52(sp)` at 0xd954ce8 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd954cf0 targets 0xd954d10, is taken when t9(=[a0+32304]) == 0, and falls through when t9(=[a0+32304]) != 0; its branch-likely delay slot `lw ra,52(sp)` at 0xd954cf4 runs only when taken and is annulled on fall-through.
   The return at 0xd954d14 has v0 = ?.
   The instructions from 0xd9544f4 to 0xd9544f4 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xd954754 to 0xd954754 are not reached by any path from the entry, and their branches are not listed.
@@ -8778,9 +8900,9 @@ Each entry records selected software behavior from its exact binary range. The r
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0xe74, including `sw` at 0xd954d6c, `sw` at 0xd95534c, `sw` at 0xd955428.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0xe78, including `sw` at 0xd954d70, `sw` at 0xd955354, `sw` at 0xd955430.
   The `lbu` at 0xd954da0 loads 1 byte from a0 (arg0 at entry) +0x77bc.
-  The `lbu` at 0xd954db0 loads 1 byte from a0 (arg0 at entry) +0x7dd1.
-  The `lbu` at 0xd954dbc loads 1 byte from a0 (arg0 at entry) +0x7dd2.
-  The `lbu` at 0xd954dc8 loads 1 byte from a0 (arg0 at entry) +0x7dcd.
+  8 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd1, including `lbu` at 0xd954db0, `lbu` at 0xd9553b8, `lbu` at 0xd9553e4.
+  10 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd2, including `lbu` at 0xd954dbc, `lbu` at 0xd955380, `lbu` at 0xd9553a0.
+  7 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dcd, including `lbu` at 0xd954dc8, `lbu` at 0xd955714, `lbu` at 0xd955718.
   The `lwc1` at 0xd954ddc loads 4 bytes from a0 (arg0 at entry) +0xe60.
   The `lwc1` at 0xd954de4 loads 4 bytes from a0 (arg0 at entry) +0x7df0.
   The `lwc1` at 0xd954de8 loads 4 bytes from a0 (arg0 at entry) +0x7df8.
@@ -8793,13 +8915,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd954e74 stores 4 bytes to a0 (arg0 at entry) +0x7de0.
   The `sw` at 0xd954e78 stores 4 bytes to a0 (arg0 at entry) +0x7ddc.
   The `sw` at 0xd954e7c stores 4 bytes to a0 (arg0 at entry) +0x7e58.
-  The `sb` at 0xd954e80 stores 1 byte to a0 (arg0 at entry) +0x7dd4.
+  4 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dd4, including `sb` at 0xd954e80, `sb` at 0xd955788, `sb` at 0xd9557e8.
   The `lw` at 0xd954e84 loads 4 bytes from a0 (arg0 at entry) +0x2df4.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e28, including `sw` at 0xd954e8c, `sw` at 0xd954fbc, `sw` at 0xd955038.
   The `lw` at 0xd954e90 loads 4 bytes from a0 (arg0 at entry) +0x2df0.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e2c, including `sw` at 0xd954e98, `sw` at 0xd954fc0, `sw` at 0xd95503c.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7d3c, including `lw` at 0xd954e9c, `lw` at 0xd9552f0, `lw` at 0xd955300.
-  The `lw` at 0xd954ea0 loads 4 bytes from a0 (arg0 at entry) +0x7de4.
+  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7de4, including `lw` at 0xd954ea0, `lw` at 0xd9557ac.
   3 such `lw` accesses load 4 bytes from [a0+32060] +0x0, including `lw` at 0xd954ea4, `lw` at 0xd955304, `lw` at 0xd95566c.
   9 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7d38, including `lw` at 0xd954eac, `lw` at 0xd954ebc, `lw` at 0xd954edc.
   6 such `lw` accesses load 4 bytes from [a0+32060] +0x4, including `lw` at 0xd954eb0, `lw` at 0xd955094, `lw` at 0xd955180.
@@ -8820,16 +8942,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0xd955014 loads 1 byte from a0 (arg0 at entry) +0x7d09.
   The `lbu` at 0xd955020 loads 1 byte from a0 (arg0 at entry) +0x773f.
   The `lbu` at 0xd955104 loads 1 byte from a0 (arg0 at entry) +0x7dc5.
-  The `sw` at 0xd95514c stores 4 bytes to a0 (arg0 at entry) +0x7de4.
+  3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7de4, including `sw` at 0xd95514c, `sw` at 0xd9557e0, `sw` at 0xd95583c.
   2 such `lw` accesses load 4 bytes from abs 0xda4d290, including `lw` at 0xd955378, `lw` at 0xd9557b0.
-  25 such `lbu` accesses load 1 byte from ?, including `lbu` at 0xd955380, `lbu` at 0xd9553a0, `lbu` at 0xd9553b8.
   The `ldc1` at 0xd9553cc loads 8 bytes from abs 0xda43180.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x12f4, including `lw` at 0xd955468, `lw` at 0xd9557ec.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x12f4, including `sw` at 0xd955474, `sw` at 0xd9554d4, `sw` at 0xd9557f8.
-  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9554cc, `lw` at 0xd9557ac, `lw` at 0xd95584c.
+  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7e3c, including `lw` at 0xd9554cc, `lw` at 0xd95584c.
   The `lw` at 0xd955658 loads 4 bytes from abs 0xda4d2a4.
-  9 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd9556a4, `sw` at 0xd9556c0, `sw` at 0xd9556c8.
-  3 such `sb` accesses store 1 byte to ?, including `sb` at 0xd955788, `sb` at 0xd9557e8, `sb` at 0xd955848.
+  3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e60, including `sw` at 0xd9556a4, `sw` at 0xd9556c0, `sw` at 0xd9556c8.
+  3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dc9, including `lbu` at 0xd9556d8, `lbu` at 0xd9556e8, `lbu` at 0xd955700.
+  4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7e5c, including `sw` at 0xd955708, `sw` at 0xd955754, `sw` at 0xd955778.
+  The `lw` at 0xd955858 loads 4 bytes from a0 (arg0 at entry) +0x7e30.
+  The `lw` at 0xd955864 loads 4 bytes from a0 (arg0 at entry) +0x7e44.
   The `jalr` at 0xd954d98 calls __glInitCopyPixelsInfo [0xd9b14dc] with a0=a0 at entry (arg0), a1=sp-512, a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd954ff0 calls __glCrmForceNonTagClear [0xd948fc4] with a0=a0 at entry (arg0), a1=a0+31228, a2=?, a3=?.
   The `jalr` at 0xd955068 calls __glCrmForceNonTagClear [0xd948fc4] with a0=a0 at entry (arg0), a1=a0+31228, a2=?, a3=?.
@@ -8915,7 +9039,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bnel` branch at 0xd955258 targets 0xd95529c, is taken when t2(=0x10) != a2(=[[[a0+32060]+4]+40]), and falls through when t2(=0x10) == a2(=[[[a0+32060]+4]+40]); its branch-likely delay slot `addiu t7,zero,5122` at 0xd95525c runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd955260 targets 0xd955298, is taken when a1(=[[[a0+32060]+4]+44]) != 0, and falls through when a1(=[[[a0+32060]+4]+44]) == 0.
   The `beq` branch at 0xd955290 targets 0xd9552c0 and is always taken.
-  The `bne` branch at 0xd9552c0 targets 0xd9554d8, is taken when t4(?) != 0, and falls through when t4(?) == 0.
+  The `bne` branch at 0xd9552c0 targets 0xd9554d8, is taken when t4(=one of 0x0, 0xd958cf4, 0xd9593d4, 0xda3e114) != 0, and falls through when t4(=one of 0x0, 0xd958cf4, 0xd9593d4, 0xda3e114) == 0.
   The `bne` branch at 0xd9552d0 targets 0xd955374, is taken when t3(=0x4) != t7(=[[a0+32056]]), and falls through when t3(=0x4) == t7(=[[a0+32056]]).
   The `beq` branch at 0xd9552e0 targets 0xd955374, is taken when t9(=[[[a0+32056]+4]+4]:1) == 0, and falls through when t9(=[[[a0+32056]+4]+4]:1) != 0.
   The `beql` branch at 0xd9552ec targets 0xd955304, is taken when t2(=0x10) == t6(=[[[a0+32056]+4]+40]), and falls through when t2(=0x10) != t6(=[[[a0+32056]+4]+40]); its branch-likely delay slot `lw a0,32060(s0)` at 0xd9552f0 runs only when taken and is annulled on fall-through.
@@ -8927,25 +9051,25 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd955344 targets 0xd955358, is taken when t7(=[a0+3536]:1) != 0, and falls through when t7(=[a0+3536]:1) == 0.
   The `beq` branch at 0xd95536c targets 0xd95584c and is always taken.
   The `beql` branch at 0xd95537c targets 0xd9553a4, is taken when t8(=[0xda4d290]) == 0, and falls through when t8(=[0xda4d290]) != 0; its branch-likely delay slot `lbu t7,14(t0)` at 0xd955380 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd9553a8 targets 0xd9553e4, is taken when t7(?) == 0, and falls through when t7(?) != 0.
-  The `bne` branch at 0xd9553bc targets 0xd955404, is taken when t8(?) != 0, and falls through when t8(?) == 0.
+  The `beq` branch at 0xd9553a8 targets 0xd9553e4, is taken when t7(=[a0+32210]:1) == 0, and falls through when t7(=[a0+32210]:1) != 0.
+  The `bne` branch at 0xd9553bc targets 0xd955404, is taken when t8(=[a0+32209]:1) != 0, and falls through when t8(=[a0+32209]:1) == 0.
   The `beq` branch at 0xd9553dc targets 0xd955404 and is always taken.
-  The `beq` branch at 0xd9553ec targets 0xd955404, is taken when t7(?) == 0, and falls through when t7(?) != 0.
+  The `beq` branch at 0xd9553ec targets 0xd955404, is taken when t7(=[a0+32209]:1) == 0, and falls through when t7(=[a0+32209]:1) != 0.
   The `bne` branch at 0xd95541c targets 0xd955434, is taken when t9(=[a0+3536]:1) != 0, and falls through when t9(=[a0+3536]:1) == 0.
   The `bne` branch at 0xd95543c targets 0xd95584c, is taken when (t9(?) & 0xff) != 0, and falls through when (t9(?) & 0xff) == 0.
-  The `beq` branch at 0xd95544c targets 0xd95548c, is taken when t8(?) == 0, and falls through when t8(?) != 0.
+  The `beq` branch at 0xd95544c targets 0xd95548c, is taken when t8(=[a0+32210]:1) == 0, and falls through when t8(=[a0+32210]:1) != 0.
   The `bgez` branch at 0xd955454 targets 0xd955464, is taken when t9(?) >= 0 (signed), and falls through when t9(?) < 0 (signed).
-  The `beq` branch at 0xd955494 targets 0xd9554a8, is taken when t7(?) == 0, and falls through when t7(?) != 0.
-  The `beql` branch at 0xd9554c8 targets 0xd955850, is taken when t9(?) == 0, and falls through when t9(?) != 0; its branch-likely delay slot `lw t6,120(t0)` at 0xd9554cc runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd955494 targets 0xd9554a8, is taken when t7(=[a0+32209]:1) == 0, and falls through when t7(=[a0+32209]:1) != 0.
+  The `beql` branch at 0xd9554c8 targets 0xd955850, is taken when t9(=[a0+32210]:1) == 0, and falls through when t9(=[a0+32210]:1) != 0; its branch-likely delay slot `lw t6,120(t0)` at 0xd9554cc runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9554d0 targets 0xd95584c and is always taken.
-  The `beq` branch at 0xd9554e8 targets 0xd9554f8, is taken when t8(?) == 0, and falls through when t8(?) != 0.
-  The `beq` branch at 0xd95551c targets 0xd955540, is taken when t6(?) == 0, and falls through when t6(?) != 0.
+  The `beq` branch at 0xd9554e8 targets 0xd9554f8, is taken when t8(=[a0+32210]:1) == 0, and falls through when t8(=[a0+32210]:1) != 0.
+  The `beq` branch at 0xd95551c targets 0xd955540, is taken when t6(=[a0+32210]:1) == 0, and falls through when t6(=[a0+32210]:1) != 0.
   The `bgez` branch at 0xd95552c targets 0xd95553c, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed).
   The `bne` branch at 0xd955548 targets 0xd95555c, is taken when t6(=[a0+3536]:1) != 0, and falls through when t6(=[a0+3536]:1) == 0.
   The `bne` branch at 0xd955560 targets 0xd955878, is taken when (t9(?) & 0xff) != 0, and falls through when (t9(?) & 0xff) == 0.
-  The `beq` branch at 0xd9555b4 targets 0xd9555cc, is taken when t6(?) == 0, and falls through when t6(?) != 0.
+  The `beq` branch at 0xd9555b4 targets 0xd9555cc, is taken when t6(=[a0+32209]:1) == 0, and falls through when t6(=[a0+32209]:1) != 0.
   The `beq` branch at 0xd9555f4 targets 0xd955878, is taken when v0(=ret(__glClipDrawPixels)) == 0, and falls through when v0(=ret(__glClipDrawPixels)) != 0.
-  The `beq` branch at 0xd955604 targets 0xd95561c, is taken when t8(?) == 0, and falls through when t8(?) != 0.
+  The `beq` branch at 0xd955604 targets 0xd95561c, is taken when t8(=[a0+32209]:1) == 0, and falls through when t8(=[a0+32209]:1) != 0.
   The `beql` branch at 0xd95564c targets 0xd955790, is taken when t5(?) == 0, and falls through when t5(?) != 0; its branch-likely delay slot `or a0,s0,zero` at 0xd955650 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd95565c targets 0xd955790, is taken when t6(=[0xda4d2a4]) == 0, and falls through when t6(=[0xda4d2a4]) != 0; its branch-likely delay slot `or a0,s0,zero` at 0xd955660 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd955670 targets 0xd9556a8, is taken when t3(=0x4) != t1(=[[a0+32060]]), and falls through when t3(=0x4) == t1(=[[a0+32060]]).
@@ -8961,22 +9085,22 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9556f0 targets 0xd955704, is taken when t2(=0x10) == t9(=[[[a0+32056]+4]+40]), and falls through when t2(=0x10) != t9(=[[[a0+32056]+4]+40]).
   The `bnel` branch at 0xd9556fc targets 0xd955710, is taken when t6(=[[[a0+32056]+4]+44]) != 0, and falls through when t6(=[[[a0+32056]+4]+44]) == 0; its branch-likely delay slot `lbu t8,5(t0)` at 0xd955700 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd955704 targets 0xd955784 and is always taken.
-  The `bnel` branch at 0xd955710 targets 0xd95575c, is taken when t8(?) != 0, and falls through when t8(?) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955714 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd95571c targets 0xd95575c, is taken when t7(?) != 0, and falls through when t7(?) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955720 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd95572c targets 0xd95575c, is taken when t9(?) != 0, and falls through when t9(?) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955730 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd955710 targets 0xd95575c, is taken when t8(=[a0+32201]:1) != 0, and falls through when t8(=[a0+32201]:1) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955714 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd95571c targets 0xd95575c, is taken when t7(=[a0+32205]:1) != 0, and falls through when t7(=[a0+32205]:1) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955720 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd95572c targets 0xd95575c, is taken when t9(=[a0+32209]:1) != 0, and falls through when t9(=[a0+32209]:1) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955730 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd955734 targets 0xd95575c, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `lbu t7,9(t0)` at 0xd955738 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd95573c targets 0xd95574c, is taken when t3(=0x4) == a0(=[[a0+32056]]), and falls through when t3(=0x4) != a0(=[[a0+32056]]).
   The `bnel` branch at 0xd955744 targets 0xd95575c, is taken when a0(=[[a0+32056]]) != at(=0x5), and falls through when a0(=[[a0+32056]]) == at(=0x5); its branch-likely delay slot `lbu t7,9(t0)` at 0xd955748 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd955750 targets 0xd955784 and is always taken.
-  The `bne` branch at 0xd95575c targets 0xd955770, is taken when t7(?) != 0, and falls through when t7(?) == 0.
-  The `beq` branch at 0xd955768 targets 0xd95577c, is taken when t9(?) == 0, and falls through when t9(?) != 0.
+  The `bne` branch at 0xd95575c targets 0xd955770, is taken when t7(=[a0+32205]:1) != 0, and falls through when t7(=[a0+32205]:1) == 0.
+  The `beq` branch at 0xd955768 targets 0xd95577c, is taken when t9(=[a0+32209]:1) == 0, and falls through when t9(=[a0+32209]:1) != 0.
   The `beq` branch at 0xd955774 targets 0xd955784 and is always taken.
   The `bne` branch at 0xd9557a0 targets 0xd955848, is taken when v0(=ret(?)) != 0, and falls through when v0(=ret(?)) == 0.
   The `beql` branch at 0xd9557b8 targets 0xd9557e0, is taken when t6(=[0xda4d290]) == 0, and falls through when t6(=[0xda4d290]) != 0; its branch-likely delay slot `lbu t8,14(t0)` at 0xd9557bc runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd9557e4 targets 0xd9557fc, is taken when t8(?) == 0, and falls through when t8(?) != 0.
-  The `beq` branch at 0xd955838 targets 0xd955848, is taken when t7(?) == 0, and falls through when t7(?) != 0.
-  The `beql` branch at 0xd955850 targets 0xd95587c, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `lw ra,44(sp)` at 0xd955854 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd95585c targets 0xd95587c, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `lw ra,44(sp)` at 0xd955860 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd9557e4 targets 0xd9557fc, is taken when t8(=[a0+32210]:1) == 0, and falls through when t8(=[a0+32210]:1) != 0.
+  The `beq` branch at 0xd955838 targets 0xd955848, is taken when t7(=[a0+32210]:1) == 0, and falls through when t7(=[a0+32210]:1) != 0.
+  The `beql` branch at 0xd955850 targets 0xd95587c, is taken when t6(=[a0+32316]) == 0, and falls through when t6(=[a0+32316]) != 0; its branch-likely delay slot `lw ra,44(sp)` at 0xd955854 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd95585c targets 0xd95587c, is taken when t8(=[a0+32304]) == 0, and falls through when t8(=[a0+32304]) != 0; its branch-likely delay slot `lw ra,44(sp)` at 0xd955860 runs only when taken and is annulled on fall-through.
   The return at 0xd955880 has v0 = ?.
   The instructions from 0xd95570c to 0xd95570c are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xd955758 to 0xd955758 are not reached by any path from the entry, and their branches are not listed.
@@ -9024,14 +9148,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to abs 0x1018, including `sw` at 0xd963400, `sw` at 0xd9634bc.
   The `sw` at 0xd963448 stores 4 bytes to [0x1010] +0x80d4.
   The `lbu` at 0xd963450 loads 1 byte from ([0x1010] + a0) +0x80dc.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96347c, `lw` at 0xd96348c, `lw` at 0xd9634c4.
-  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd963488, `sw` at 0xd963494, `sw` at 0xd9634b0.
+  The `lw` at 0xd96347c loads 4 bytes from [0x1010] +0x807c.
+  3 such `sw` accesses store 4 bytes to [0x1010] +0x7db0, including `sw` at 0xd963488, `sw` at 0xd963494, `sw` at 0xd9634b0.
+  The `lw` at 0xd96348c loads 4 bytes from [0x1010] +0x8080.
+  The `lw` at 0xd9634c4 loads 4 bytes from ([0x1010] + (a0 << 0x2)) +0x2efc.
   The `jalr` at 0xd9633f0 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd96340c calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
   The `jalr` at 0xd963430 calls __glSetError [0xd9d02a4] with a0=0x500, a1=?, a2=?, a3=?.
   The `jalr` at 0xd963468 calls RemoveHalfPixelAdjust [0xd963260] with a0=[0x1010], a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9634a0 calls __glCrmDownloadCurrentColor [0xd940ff0] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd9634c8 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd9634a0 calls __glCrmDownloadCurrentColor [0xd940ff0] with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd9634c8 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `beql` branch at 0xd9633dc targets 0xd963420, is taken when t6(=[0x1018]) == 0, and falls through when t6(=[0x1018]) != 0; its branch-likely delay slot `sltiu at,s1,10` at 0xd9633e0 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9633e4 targets 0xd963404, is taken when t6(=[0x1018]) != s2(=0x2), and falls through when t6(=[0x1018]) == s2(=0x2).
   The `beq` branch at 0xd9633fc targets 0xd9633d4 and is always taken.
@@ -9039,8 +9165,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd963420 targets 0xd963440, is taken when at(?) != 0, and falls through when at(?) == 0.
   The `beq` branch at 0xd963438 targets 0xd9634d4 and is always taken.
   The `beql` branch at 0xd963454 targets 0xd96347c, is taken when t0(=[([0x1010] + a0)+32988]:1) == 0, and falls through when t0(=[([0x1010] + a0)+32988]:1) != 0; its branch-likely delay slot `addu v0,a0,s0` at 0xd963458 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd963484 targets 0xd9634b4, is taken when (t1(?) & 0x2) == 0, and falls through when (t1(?) & 0x2) != 0; its branch-likely delay slot `sw s2,32176(a0)` at 0xd963488 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd963490 targets 0xd9634b4, is taken when s2(=0x2) == t3(?), and falls through when s2(=0x2) != t3(?); its branch-likely delay slot `sw s2,32176(a0)` at 0xd963494 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd963484 targets 0xd9634b4, is taken when (t1(=[[0x1010]+32892]) & 0x2) == 0, and falls through when (t1(=[[0x1010]+32892]) & 0x2) != 0; its branch-likely delay slot `sw s2,32176(a0)` at 0xd963488 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd963490 targets 0xd9634b4, is taken when s2(=0x2) == t3(=[[0x1010]+32896]), and falls through when s2(=0x2) != t3(=[[0x1010]+32896]); its branch-likely delay slot `sw s2,32176(a0)` at 0xd963494 runs only when taken and is annulled on fall-through.
   The return at 0xd9634e4 has v0 = one of ret(__glSetError), ret(?).
   The instructions from 0xd96341c to 0xd96341c are not reached by any path from the entry, and their branches are not listed.
 
@@ -9053,15 +9179,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd96350c loads 4 bytes from abs 0x1010.
   The `lw` at 0xd96353c loads 4 bytes from [0x1010] +0x2f24.
   The `sw` at 0xd963550 stores 4 bytes to abs 0x1018.
-  The `lw` at 0xd963558 loads 4 bytes from table(0x80d4) +0x0.
-  The `lbu` at 0xd963568 loads 1 byte from table(0x80dc) +0x0.
+  The `lw` at 0xd963558 loads 4 bytes from [0x1010] +0x80d4.
+  The `lbu` at 0xd963568 loads 1 byte from ([0x1010] + [[0x1010]+32980]) +0x80dc.
   The `jalr` at 0xd963528 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd963540 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd96357c calls RestoreHalfPixelAdjust [0xd963300] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd96357c calls RestoreHalfPixelAdjust [0xd963300] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `beq` branch at 0xd963510 targets 0xd963520, is taken when t6(=[0x1018]) == 0, and falls through when t6(=[0x1018]) != 0.
   The `bnel` branch at 0xd963518 targets 0xd96353c, is taken when t6(=[0x1018]) != at(=0x2), and falls through when t6(=[0x1018]) == at(=0x2); its branch-likely delay slot `sw a0,36(sp)` at 0xd96351c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd963530 targets 0xd963588 and is always taken.
-  The `beql` branch at 0xd96356c targets 0xd96358c, is taken when t2(=entry(0x80dc)) == 0, and falls through when t2(=entry(0x80dc)) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd963570 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd96356c targets 0xd96358c, is taken when t2(=[([0x1010] + [[0x1010]+32980])+32988]:1) == 0, and falls through when t2(=[([0x1010] + [[0x1010]+32980])+32988]:1) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd963570 runs only when taken and is annulled on fall-through.
   The return at 0xd963590 has v0 = one of 0x8000, ?.
   The instructions from 0xd963538 to 0xd963538 are not reached by any path from the entry, and their branches are not listed.
 
@@ -9152,18 +9278,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd963954 loads 4 bytes from a0 (arg0 at entry) +0x80ac.
   The `sw` at 0xd963958 stores 4 bytes to a0 (arg0 at entry) +0x2f24.
   The `lw` at 0xd963964 loads 4 bytes from a0 (arg0 at entry) +0x2f24.
-  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd963978, `lw` at 0xd963998, `lw` at 0xd9639a4.
+  The `lw` at 0xd963978 loads 4 bytes from a0 (arg0 at entry) +0x80d8.
+  The `lw` at 0xd963998 loads 4 bytes from a0 (arg0 at entry) +0x80f0.
+  The `lw` at 0xd9639a4 loads 4 bytes from a0 (arg0 at entry) +0x80e8.
   The `sw` at 0xd9639ac stores 4 bytes to a0 (arg0 at entry) +0x30d0.
+  The `lw` at 0xd9639b0 loads 4 bytes from a0 (arg0 at entry) +0x80ec.
   The `sw` at 0xd9639b8 stores 4 bytes to a0 (arg0 at entry) +0x30b8.
   The `sw` at 0xd9639c0 stores 4 bytes to a0 (arg0 at entry) +0x2f30.
   The `jalr` at 0xd963968 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `beq` branch at 0xd963980 targets 0xd9639a4, is taken when v1(?) == at(=0x1b00), and falls through when v1(?) != at(=0x1b00).
-  The `beq` branch at 0xd96398c targets 0xd9639b0, is taken when v1(?) == at(=0x1b01), and falls through when v1(?) != at(=0x1b01).
-  The `beql` branch at 0xd963994 targets 0xd9639c0, is taken when v1(?) == at(=0x1b02), and falls through when v1(?) != at(=0x1b02); its branch-likely delay slot `lw t0,240(v0)` at 0xd963998 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd963980 targets 0xd9639a4, is taken when v1(=[a0+32984]) == at(=0x1b00), and falls through when v1(=[a0+32984]) != at(=0x1b00).
+  The `beq` branch at 0xd96398c targets 0xd9639b0, is taken when v1(=[a0+32984]) == at(=0x1b01), and falls through when v1(=[a0+32984]) != at(=0x1b01).
+  The `beql` branch at 0xd963994 targets 0xd9639c0, is taken when v1(=[a0+32984]) == at(=0x1b02), and falls through when v1(=[a0+32984]) != at(=0x1b02); its branch-likely delay slot `lw t0,240(v0)` at 0xd963998 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd96399c targets 0xd9639c8 and is always taken.
   The `beq` branch at 0xd9639a8 targets 0xd9639c4 and is always taken.
   The `beq` branch at 0xd9639b4 targets 0xd9639c4 and is always taken.
-  The return at 0xd9639cc has v0 = ?.
+  The return at 0xd9639cc has v0 = a0+32768.
   The instructions from 0xd9639bc to 0xd9639bc are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xd9639d4 to 0xd963e34 are not reached by any path from the entry, and their branches are not listed.
 
@@ -9174,7 +9303,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 396 bytes.
   The `lw` at 0xd9639fc loads 4 bytes from a0 (arg0 at entry) +0x80d4.
   The `lw` at 0xd963a20 loads 4 bytes from table(0xda432f0) +0x0.
-  The `lw` at 0xd963ac4 loads 4 bytes from ?.
+  The `lw` at 0xd963ac4 loads 4 bytes from a0 (arg0 at entry) +0x80d8.
   The `lw` at 0xd963adc loads 4 bytes from a0 (arg0 at entry) +0x2f30.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x2f24, including `lw` at 0xd963ae4, `lw` at 0xd963b38.
   The `lw` at 0xd963ae8 loads 4 bytes from a0 (arg0 at entry) +0x30d0.
@@ -9199,13 +9328,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd963a70 targets 0xd963abc and is always taken.
   The `beq` branch at 0xd963a88 targets 0xd963abc and is always taken.
   The `beq` branch at 0xd963aa0 targets 0xd963abc and is always taken.
-  The `beq` branch at 0xd963ac8 targets 0xd963ae8, is taken when v0(?) == at(=0x1b00), and falls through when v0(?) != at(=0x1b00).
-  The `beq` branch at 0xd963ad0 targets 0xd963b04, is taken when v0(?) == at(=0x1b01), and falls through when v0(?) != at(=0x1b01).
-  The `beql` branch at 0xd963ad8 targets 0xd963b24, is taken when v0(?) == at(=0x1b02), and falls through when v0(?) != at(=0x1b02); its branch-likely delay slot `lw t6,12080(s0)` at 0xd963adc runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd963ac8 targets 0xd963ae8, is taken when v0(=[a0+32984]) == at(=0x1b00), and falls through when v0(=[a0+32984]) != at(=0x1b00).
+  The `beq` branch at 0xd963ad0 targets 0xd963b04, is taken when v0(=[a0+32984]) == at(=0x1b01), and falls through when v0(=[a0+32984]) != at(=0x1b01).
+  The `beql` branch at 0xd963ad8 targets 0xd963b24, is taken when v0(=[a0+32984]) == at(=0x1b02), and falls through when v0(=[a0+32984]) != at(=0x1b02); its branch-likely delay slot `lw t6,12080(s0)` at 0xd963adc runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd963ae0 targets 0xd963b3c and is always taken.
   The `beq` branch at 0xd963afc targets 0xd963b38 and is always taken.
   The `beq` branch at 0xd963b18 targets 0xd963b38 and is always taken.
-  The return at 0xd963b58 has v0 = ?.
+  The return at 0xd963b58 has v0 = [a0+32984].
   The instructions from 0xd963b20 to 0xd963b20 are not reached by any path from the entry, and their branches are not listed.
   The indirect jump at 0xd963a28 uses the jump table at 0xda432f0 with targets 0xd963a78, 0xd963a48, 0xd963a60, 0xd963aa8, 0xd963a90, 0xd963a30.
 
@@ -9278,19 +9407,18 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lh` accesses load 2 bytes from ?, including `lh` at 0xd9645d8, `lh` at 0xd9645f4, `lh` at 0xd9645f8.
   The `lw` at 0xd96463c loads 4 bytes from a0 (arg0 at entry) +0x7e44.
   4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xd964680, `lwc1` at 0xd964684, `lwc1` at 0xd964690.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd9646e0, `sw` at 0xd9647e0.
+  The `sw` at 0xd9646e0 stores 4 bytes to ?.
   The `lw` at 0xd9646f8 loads 4 bytes from a1 (arg1 at entry) +0xcc.
-  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd96473c, `sw` at 0xd964794.
+  3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd96473c, `sw` at 0xd964794, `sw` at 0xd9647e0.
   The `lw` at 0xd964740 loads 4 bytes from a0 (arg0 at entry) +0x2df0.
   The `lbu` at 0xd964744 loads 1 byte from a0 (arg0 at entry) +0x7e27.
   The `lbu` at 0xd964748 loads 1 byte from a0 (arg0 at entry) +0x7e26.
   The `sw` at 0xd96474c stores 4 bytes to a0 (arg0 at entry) +0x7e2c.
-  The `lbu` at 0xd964768 loads 1 byte from a0 (arg0 at entry) +0x7dd1.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd1, including `lbu` at 0xd964768, `lbu` at 0xd9647bc.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd96476c, `sb` at 0xd964770, `sb` at 0xd964788.
   The `sb` at 0xd964778 stores 1 byte to a0 (arg0 at entry) +0x7dce.
   The `sw` at 0xd96477c stores 4 bytes to a0 (arg0 at entry) +0x7de0.
   The `sb` at 0xd964780 stores 1 byte to a0 (arg0 at entry) +0x7e26.
-  The `lbu` at 0xd9647bc loads 1 byte from ?.
   The `lw` at 0xd9647e4 loads 4 bytes from a1 (arg1 at entry) +0xdc.
   The `sw` at 0xd9647ec stores 4 bytes to a1 (arg1 at entry) +0xdc.
   The `sw` at 0xd9647f4 stores 4 bytes to a1 (arg1 at entry) +0xd0.
@@ -9308,14 +9436,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd9645ec targets 0xd964624, is taken when s0(?) == t2(=[a1+184]), and falls through when s0(?) != t2(=[a1+184]); its branch-likely delay slot `or s0,zero,zero` at 0xd9645f0 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd964618 targets 0xd9645f4, is taken when s0(?) != t2(=[a1+184]), and falls through when s0(?) == t2(=[a1+184]).
   The `bgezl` branch at 0xd964624 targets 0xd964634, is taken when t1(?) >= 0 (signed), and falls through when t1(?) < 0 (signed); its branch-likely delay slot `sw a2,108(sp)` at 0xd964628 runs only when taken and is annulled on fall-through.
-  The `blez` branch at 0xd964660 targets 0xd9646f8, is taken when t2(?) <= 0 (signed), and falls through when t2(?) > 0 (signed).
+  The `blez` branch at 0xd964660 targets 0xd9646f8, is taken when t2(=[a1+184]) <= 0 (signed), and falls through when t2(=[a1+184]) > 0 (signed).
   The `bgez` branch at 0xd964670 targets 0xd96467c, is taken when v1(?) >= 0 (signed), and falls through when v1(?) < 0 (signed).
   The `beq` branch at 0xd9646cc targets 0xd9646ec, is taken when 0 >= v1(?) (signed), and falls through when 0 < v1(?) (signed).
   The `bne` branch at 0xd9646e4 targets 0xd9646d4, is taken when 0 < v1(?) (signed), and falls through when 0 >= v1(?) (signed).
-  The `bne` branch at 0xd9646ec targets 0xd964668, is taken when s0(?) != t2(?), and falls through when s0(?) == t2(?).
+  The `bne` branch at 0xd9646ec targets 0xd964668, is taken when s0(?) != t2(=[a1+184]), and falls through when s0(?) == t2(=[a1+184]).
   The `beq` branch at 0xd964784 targets 0xd964790, is taken when t3(=[a0+32209]:1) == 0, and falls through when t3(=[a0+32209]:1) != 0.
   The `blezl` branch at 0xd964790 targets 0xd9647e4, is taken when s2(?) <= 0 (signed), and falls through when s2(?) > 0 (signed); its branch-likely delay slot `sw zero,20(v1)` at 0xd964794 runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd9647c4 targets 0xd9647d0, is taken when t4(?) != 0, and falls through when t4(?) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd9647c8 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9647c4 targets 0xd9647d0, is taken when t4(=[a0+32209]:1) != 0, and falls through when t4(=[a0+32209]:1) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd9647c8 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9647d8 targets 0xd964798, is taken when s0(?) < s2(?) (signed), and falls through when s0(?) >= s2(?) (signed).
   The return at 0xd964810 has v0 = one of [a1+208], ?.
 
@@ -9385,18 +9513,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xd964d2c loads 4 bytes from ?.
   The `sh` at 0xd964d5c stores 2 bytes to ?.
   The `lw` at 0xd964d74 loads 4 bytes from a1 (arg1 at entry) +0xcc.
-  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd964db8, `sw` at 0xd964e0c.
+  3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd964db8, `sw` at 0xd964e0c, `sw` at 0xd964e58.
   The `lw` at 0xd964dbc loads 4 bytes from a0 (arg0 at entry) +0x2df0.
   The `lbu` at 0xd964dc0 loads 1 byte from a0 (arg0 at entry) +0x7e27.
   The `lbu` at 0xd964dc4 loads 1 byte from a0 (arg0 at entry) +0x7e26.
   The `sw` at 0xd964dc8 stores 4 bytes to a0 (arg0 at entry) +0x7e2c.
   The `sb` at 0xd964ddc stores 1 byte to a0 (arg0 at entry) +0x7e26.
-  The `lbu` at 0xd964de4 loads 1 byte from a0 (arg0 at entry) +0x7dd1.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd1, including `lbu` at 0xd964de4, `lbu` at 0xd964e34.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd964de8, `sb` at 0xd964dec, `sb` at 0xd964e00.
   The `sb` at 0xd964df4 stores 1 byte to a0 (arg0 at entry) +0x7dce.
   The `sw` at 0xd964df8 stores 4 bytes to a0 (arg0 at entry) +0x7de0.
-  The `lbu` at 0xd964e34 loads 1 byte from ?.
-  The `sw` at 0xd964e58 stores 4 bytes to ?.
   The `lw` at 0xd964e5c loads 4 bytes from a1 (arg1 at entry) +0xdc.
   The `sw` at 0xd964e64 stores 4 bytes to a1 (arg1 at entry) +0xdc.
   The `sw` at 0xd964e6c stores 4 bytes to a1 (arg1 at entry) +0xd0.
@@ -9414,14 +9540,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd964c90 targets 0xd964cc8, is taken when s0(?) == t2(=[a1+184]), and falls through when s0(?) != t2(=[a1+184]); its branch-likely delay slot `or s0,zero,zero` at 0xd964c94 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd964cbc targets 0xd964c98, is taken when s0(?) != t2(=[a1+184]), and falls through when s0(?) == t2(=[a1+184]).
   The `bgezl` branch at 0xd964cc8 targets 0xd964cd8, is taken when t0(?) >= 0 (signed), and falls through when t0(?) < 0 (signed); its branch-likely delay slot `sw a2,116(sp)` at 0xd964ccc runs only when taken and is annulled on fall-through.
-  The `blez` branch at 0xd964d0c targets 0xd964d74, is taken when t2(?) <= 0 (signed), and falls through when t2(?) > 0 (signed).
+  The `blez` branch at 0xd964d0c targets 0xd964d74, is taken when t2(=[a1+184]) <= 0 (signed), and falls through when t2(=[a1+184]) > 0 (signed).
   The `bgez` branch at 0xd964d1c targets 0xd964d28, is taken when v1(?) >= 0 (signed), and falls through when v1(?) < 0 (signed).
   The `beq` branch at 0xd964d48 targets 0xd964d68, is taken when 0 >= v1(?) (signed), and falls through when 0 < v1(?) (signed).
   The `bne` branch at 0xd964d60 targets 0xd964d50, is taken when 0 < v1(?) (signed), and falls through when 0 >= v1(?) (signed).
-  The `bnel` branch at 0xd964d68 targets 0xd964d18, is taken when s0(?) != t2(?), and falls through when s0(?) == t2(?); its branch-likely delay slot `lh v1,0(a3)` at 0xd964d6c runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd964d68 targets 0xd964d18, is taken when s0(?) != t2(=[a1+184]), and falls through when s0(?) == t2(=[a1+184]); its branch-likely delay slot `lh v1,0(a3)` at 0xd964d6c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd964dfc targets 0xd964e08, is taken when t8(=[a0+32209]:1) == 0, and falls through when t8(=[a0+32209]:1) != 0.
   The `blezl` branch at 0xd964e08 targets 0xd964e5c, is taken when s2(?) <= 0 (signed), and falls through when s2(?) > 0 (signed); its branch-likely delay slot `sw zero,20(v1)` at 0xd964e0c runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd964e3c targets 0xd964e48, is taken when t6(?) != 0, and falls through when t6(?) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd964e40 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd964e3c targets 0xd964e48, is taken when t6(=[a0+32209]:1) != 0, and falls through when t6(=[a0+32209]:1) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd964e40 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd964e50 targets 0xd964e10, is taken when s0(?) < s2(?) (signed), and falls through when s0(?) >= s2(?) (signed).
   The return at 0xd964e88 has v0 = one of ret(crmSpanDoubleStore), [a1+208], ?.
 
@@ -9497,21 +9623,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9659a8 loads 4 bytes from a0 (arg0 at entry) +0x7e44.
   The `lh` at 0xd9659e4 loads 2 bytes from [a1+312] +0x0.
   The `lwc1` at 0xd9659fc loads 4 bytes from ?.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd965a2c, `sw` at 0xd965b54.
+  The `sw` at 0xd965a2c stores 4 bytes to ?.
   The `lw` at 0xd965a44 loads 4 bytes from a1 (arg1 at entry) +0xcc.
   The `lbu` at 0xd965a88 loads 1 byte from a0 (arg0 at entry) +0x7dca.
-  The `sw` at 0xd965a90 stores 4 bytes to a0 (arg0 at entry) +0x7dd8.
-  2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dce, including `sb` at 0xd965a94, `sb` at 0xd965aec.
+  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd965a90, `sw` at 0xd965b54.
+  3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dce, including `sb` at 0xd965a94, `sb` at 0xd965aec, `sb` at 0xd965b50.
   The `sw` at 0xd965a98 stores 4 bytes to a0 (arg0 at entry) +0x7e2c.
   The `sw` at 0xd965a9c stores 4 bytes to a0 (arg0 at entry) +0x7de0.
   The `lbu` at 0xd965aa4 loads 1 byte from a0 (arg0 at entry) +0x7e27.
   The `lbu` at 0xd965aa8 loads 1 byte from a0 (arg0 at entry) +0x7e26.
   The `sb` at 0xd965abc stores 1 byte to a0 (arg0 at entry) +0x7e26.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd965ac8, `sb` at 0xd965ad0, `sb` at 0xd965ae0.
-  The `lbu` at 0xd965acc loads 1 byte from a0 (arg0 at entry) +0x7dd1.
-  The `sb` at 0xd965ad8 stores 1 byte to a0 (arg0 at entry) +0x7dca.
-  The `lbu` at 0xd965b24 loads 1 byte from ?.
-  2 such `sb` accesses store 1 byte to ?, including `sb` at 0xd965b50, `sb` at 0xd965b5c.
+  2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd1, including `lbu` at 0xd965acc, `lbu` at 0xd965b24.
+  2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dca, including `sb` at 0xd965ad8, `sb` at 0xd965b5c.
   The `jalr` at 0xd965898 calls crmSpanDoubleStore [0xd964300] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=0xd965858.
   The `jalr` at 0xd9659b0 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd965b08 calls crmDrawPixelsXfer [0xd955f5c] with a0=a0 at entry (arg0), a1=sp-508, a2=?, a3=?.
@@ -9528,14 +9652,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd965940 targets 0xd965978, is taken when t1(?) == t3(=[a1+184]), and falls through when t1(?) != t3(=[a1+184]); its branch-likely delay slot `or t1,zero,zero` at 0xd965944 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd96596c targets 0xd965948, is taken when t1(?) != t3(=[a1+184]), and falls through when t1(?) == t3(=[a1+184]).
   The `bgezl` branch at 0xd965978 targets 0xd965988, is taken when t0(?) >= 0 (signed), and falls through when t0(?) < 0 (signed); its branch-likely delay slot `sll a1,t0,0x2` at 0xd96597c runs only when taken and is annulled on fall-through.
-  The `blez` branch at 0xd9659dc targets 0xd965a44, is taken when t3(?) <= 0 (signed), and falls through when t3(?) > 0 (signed).
+  The `blez` branch at 0xd9659dc targets 0xd965a44, is taken when t3(=[a1+184]) <= 0 (signed), and falls through when t3(=[a1+184]) > 0 (signed).
   The `bgez` branch at 0xd9659ec targets 0xd9659f8, is taken when v1(?) >= 0 (signed), and falls through when v1(?) < 0 (signed).
   The `beq` branch at 0xd965a18 targets 0xd965a38, is taken when 0 >= v1(?) (signed), and falls through when 0 < v1(?) (signed).
   The `bne` branch at 0xd965a30 targets 0xd965a20, is taken when 0 < v1(?) (signed), and falls through when 0 >= v1(?) (signed).
-  The `bnel` branch at 0xd965a38 targets 0xd9659e8, is taken when t1(?) != t3(?), and falls through when t1(?) == t3(?); its branch-likely delay slot `lh v1,0(a3)` at 0xd965a3c runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd965a38 targets 0xd9659e8, is taken when t1(?) != t3(=[a1+184]), and falls through when t1(?) == t3(=[a1+184]); its branch-likely delay slot `lh v1,0(a3)` at 0xd965a3c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd965adc targets 0xd965ae8, is taken when t6(=[a0+32209]:1) == 0, and falls through when t6(=[a0+32209]:1) != 0.
   The `blezl` branch at 0xd965ae8 targets 0xd965b54, is taken when t4(?) <= 0 (signed), and falls through when t4(?) > 0 (signed); its branch-likely delay slot `sb zero,10(v1)` at 0xd965aec runs only when taken and is annulled on fall-through.
-  The `bnel` branch at 0xd965b34 targets 0xd965b40, is taken when t8(?) != 0, and falls through when t8(?) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd965b38 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd965b34 targets 0xd965b40, is taken when t8(=[a0+32209]:1) != 0, and falls through when t8(=[a0+32209]:1) == 0; its branch-likely delay slot `addiu a0,zero,2` at 0xd965b38 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd965b48 targets 0xd965af0, is taken when t1(?) < t4(?) (signed), and falls through when t1(?) >= t4(?) (signed).
   The return at 0xd965b80 has v0 = one of [a1+208], ?.
 
@@ -9614,23 +9738,23 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9661ec loads 4 bytes from a0 (arg0 at entry) +0xc.
   The `jalr` at 0xd966008 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=?.
   The `jalr` at 0xd96604c calls (unknown callee) with a0=[a0+11764], a1=?, a2=?, a3=ret(?).
-  The `jalr` at 0xd9661f4 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=a0 at entry (arg0), a3=?.
+  The `jalr` at 0xd9661f4 calls (unknown callee) with a0=a0 at entry (arg0), a1=ret(?), a2=a0 at entry (arg0), a3=?.
   The `bnel` branch at 0xd965f70 targets 0xd965f7c, is taken when t8(=[a0+3220]:1) != 0, and falls through when t8(=[a0+3220]:1) == 0; its branch-likely delay slot `addiu t3,zero,4` at 0xd965f74 runs only when taken and is annulled on fall-through.
   The `blez` branch at 0xd965f80 targets 0xd965fe0, is taken when t4(=[a1+180]) <= 0 (signed), and falls through when t4(=[a1+180]) > 0 (signed).
   The `beq` branch at 0xd965f8c targets 0xd965fb0, is taken when (t4(=[a1+180]) & 0x3) == 0, and falls through when (t4(=[a1+180]) & 0x3) != 0.
   The `bne` branch at 0xd965fa0 targets 0xd965f94, is taken when v0(?) != t2(?), and falls through when v0(?) == t2(?).
   The `beql` branch at 0xd965fa8 targets 0xd965fe0, is taken when t2(?) == t4(=[a1+180]), and falls through when t2(?) != t4(=[a1+180]); its branch-likely delay slot `or t2,zero,zero` at 0xd965fac runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd965fd4 targets 0xd965fb0, is taken when t2(?) != t4(=[a1+180]), and falls through when t2(?) == t4(=[a1+180]).
-  The `blez` branch at 0xd966074 targets 0xd9661ec, is taken when t4(?) <= 0 (signed), and falls through when t4(?) > 0 (signed).
-  The `beq` branch at 0xd966080 targets 0xd9660dc, is taken when (t4(?) & 0x3) == 0, and falls through when (t4(?) & 0x3) != 0.
-  The `bne` branch at 0xd966098 targets 0xd9660b8, is taken when t3(?) != a0(=0x4), and falls through when t3(?) == a0(=0x4).
+  The `blez` branch at 0xd966074 targets 0xd9661ec, is taken when t4(=[a1+180]) <= 0 (signed), and falls through when t4(=[a1+180]) > 0 (signed).
+  The `beq` branch at 0xd966080 targets 0xd9660dc, is taken when (t4(=[a1+180]) & 0x3) == 0, and falls through when (t4(=[a1+180]) & 0x3) != 0.
+  The `bne` branch at 0xd966098 targets 0xd9660b8, is taken when t3(=one of 0x1, 0x4) != a0(=0x4), and falls through when t3(=one of 0x1, 0x4) == a0(=0x4).
   The `bne` branch at 0xd9660d0 targets 0xd966090, is taken when a1(?) != t2(?), and falls through when a1(?) == t2(?).
-  The `beq` branch at 0xd9660d8 targets 0xd9661ec, is taken when t2(?) == t4(?), and falls through when t2(?) != t4(?).
-  The `bne` branch at 0xd9660ec targets 0xd96610c, is taken when t3(?) != a0(=0x4), and falls through when t3(?) == a0(=0x4).
-  The `bne` branch at 0xd96612c targets 0xd96614c, is taken when t3(?) != a0(=0x4), and falls through when t3(?) == a0(=0x4).
-  The `bne` branch at 0xd96616c targets 0xd96618c, is taken when t3(?) != a0(=0x4), and falls through when t3(?) == a0(=0x4).
-  The `bne` branch at 0xd9661ac targets 0xd9661cc, is taken when t3(?) != a0(=0x4), and falls through when t3(?) == a0(=0x4).
-  The `bne` branch at 0xd9661e4 targets 0xd9660e4, is taken when t2(?) != t4(?), and falls through when t2(?) == t4(?).
+  The `beq` branch at 0xd9660d8 targets 0xd9661ec, is taken when t2(?) == t4(=[a1+180]), and falls through when t2(?) != t4(=[a1+180]).
+  The `bne` branch at 0xd9660ec targets 0xd96610c, is taken when t3(=one of 0x1, 0x4) != a0(=0x4), and falls through when t3(=one of 0x1, 0x4) == a0(=0x4).
+  The `bne` branch at 0xd96612c targets 0xd96614c, is taken when t3(=one of 0x1, 0x4) != a0(=0x4), and falls through when t3(=one of 0x1, 0x4) == a0(=0x4).
+  The `bne` branch at 0xd96616c targets 0xd96618c, is taken when t3(=one of 0x1, 0x4) != a0(=0x4), and falls through when t3(=one of 0x1, 0x4) == a0(=0x4).
+  The `bne` branch at 0xd9661ac targets 0xd9661cc, is taken when t3(=one of 0x1, 0x4) != a0(=0x4), and falls through when t3(=one of 0x1, 0x4) == a0(=0x4).
+  The `bne` branch at 0xd9661e4 targets 0xd9660e4, is taken when t2(?) != t4(=[a1+180]), and falls through when t2(?) == t4(=[a1+180]).
   The return at 0xd966204 has v0 = ret(?).
 
 - `__glCrmSpanReadColor2` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd96620c (o32).
@@ -9661,11 +9785,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd96634c stores 4 bytes to a0 (arg0 at entry) +0x7e58.
   The `sw` at 0xd966350 stores 4 bytes to a0 (arg0 at entry) +0x7e28.
   The `lwc1` at 0xd96638c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
-  13 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd966390, `lw` at 0xd9663b8, `lw` at 0xd9663f8.
-  The `lbu` at 0xd9663cc loads 1 byte from ?.
+  The `lw` at 0xd966390 loads 4 bytes from a0 (arg0 at entry) +0x7a48.
+  The `lw` at 0xd9663b8 loads 4 bytes from a0 (arg0 at entry) +0x7a60.
+  The `lbu` at 0xd9663cc loads 1 byte from a0 (arg0 at entry) +0x7a5c.
   The `lh` at 0xd9663e8 loads 2 bytes from [a1+312] +0x0.
+  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9663f8, `lw` at 0xd966484, `lw` at 0xd966504.
+  3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7a4c, including `lw` at 0xd966404, `lw` at 0xd966498, `lw` at 0xd966518.
   3 such `ldc1` accesses load 8 bytes from a0 (arg0 at entry) +0x668, including `ldc1` at 0xd966418, `ldc1` at 0xd9664ac, `ldc1` at 0xd96652c.
   2 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x0, including `swc1` at 0xd966424, `swc1` at 0xd966468.
+  5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7a58, including `lw` at 0xd966428, `lw` at 0xd9664a4, `lw` at 0xd9664c0.
   4 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xd9664b4, `swc1` at 0xd9664fc, `swc1` at 0xd966534.
   The `jalr` at 0xd966368 calls crmReadPixelsXfer [0xd957f68] with a0=a0 at entry (arg0), a1=sp-508, a2=a0+31228, a3=0x0.
   The `blez` branch at 0xd9662b0 targets 0xd966310, is taken when t2(=[a1+168]) <= 0 (signed), and falls through when t2(=[a1+168]) > 0 (signed).
@@ -9673,24 +9801,24 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd9662d0 targets 0xd9662c4, is taken when a0(?) != a3(?), and falls through when a0(?) == a3(?).
   The `beql` branch at 0xd9662d8 targets 0xd966310, is taken when a3(?) == t2(=[a1+168]), and falls through when a3(?) != t2(=[a1+168]); its branch-likely delay slot `or a3,zero,zero` at 0xd9662dc runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd966304 targets 0xd9662e0, is taken when a3(?) != t2(=[a1+168]), and falls through when a3(?) == t2(=[a1+168]).
-  The `bgez` branch at 0xd9663a0 targets 0xd9663b8, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed).
-  The `beq` branch at 0xd9663c4 targets 0xd9663d4, is taken when 0 >= t1(?) (unsigned), and falls through when 0 < t1(?) (unsigned).
-  The `blez` branch at 0xd9663d4 targets 0xd96658c, is taken when t2(?) <= 0 (signed), and falls through when t2(?) > 0 (signed).
-  The `beq` branch at 0xd9663e0 targets 0xd966474, is taken when (t2(?) & 0x1) == 0, and falls through when (t2(?) & 0x1) != 0.
+  The `bgez` branch at 0xd9663a0 targets 0xd9663b8, is taken when t7(=[a0+31304]) >= 0 (signed), and falls through when t7(=[a0+31304]) < 0 (signed).
+  The `beq` branch at 0xd9663c4 targets 0xd9663d4, is taken when 0 >= t1(=[a0+31328]) (unsigned), and falls through when 0 < t1(=[a0+31328]) (unsigned).
+  The `blez` branch at 0xd9663d4 targets 0xd96658c, is taken when t2(=[a1+168]) <= 0 (signed), and falls through when t2(=[a1+168]) > 0 (signed).
+  The `beq` branch at 0xd9663e0 targets 0xd966474, is taken when (t2(=[a1+168]) & 0x1) == 0, and falls through when (t2(=[a1+168]) & 0x1) != 0.
   The `beq` branch at 0xd9663fc targets 0xd966428, is taken when (t1(?) & 0xff) == 0, and falls through when (t1(?) & 0xff) != 0.
-  The `beq` branch at 0xd966410 targets 0xd966428, is taken when t9(?) == t6(?), and falls through when t9(?) != t6(?).
+  The `beq` branch at 0xd966410 targets 0xd966428, is taken when t9(=[a0+31308]) == t6(?), and falls through when t9(=[a0+31308]) != t6(?).
   The `beq` branch at 0xd966420 targets 0xd96646c and is always taken.
   The `bgez` branch at 0xd966448 targets 0xd966460, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
-  The `beq` branch at 0xd966470 targets 0xd96658c, is taken when a3(=0x1) == t2(?), and falls through when a3(=0x1) != t2(?).
+  The `beq` branch at 0xd966470 targets 0xd96658c, is taken when a3(=0x1) == t2(=[a1+168]), and falls through when a3(=0x1) != t2(=[a1+168]).
   The `beq` branch at 0xd966490 targets 0xd9664c0, is taken when t0(?) == 0, and falls through when t0(?) != 0.
-  The `beql` branch at 0xd9664a0 targets 0xd9664c4, is taken when t8(?) == t7(?), and falls through when t8(?) != t7(?); its branch-likely delay slot `lw t9,92(a2)` at 0xd9664a4 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd9664a0 targets 0xd9664c4, is taken when t8(=[a0+31308]) == t7(?), and falls through when t8(=[a0+31308]) != t7(?); its branch-likely delay slot `lw t9,92(a2)` at 0xd9664a4 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9664b8 targets 0xd966504 and is always taken.
   The `bgez` branch at 0xd9664e0 targets 0xd9664f4, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `beq` branch at 0xd966510 targets 0xd966540, is taken when t0(?) == 0, and falls through when t0(?) != 0.
-  The `beql` branch at 0xd966520 targets 0xd966544, is taken when t5(?) == t6(?), and falls through when t5(?) != t6(?); its branch-likely delay slot `lw t8,92(a2)` at 0xd966524 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd966520 targets 0xd966544, is taken when t5(=[a0+31308]) == t6(?), and falls through when t5(=[a0+31308]) != t6(?); its branch-likely delay slot `lw t8,92(a2)` at 0xd966524 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd966538 targets 0xd966584 and is always taken.
   The `bgez` branch at 0xd966560 targets 0xd966574, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
-  The `bnel` branch at 0xd966584 targets 0xd966484, is taken when a3(?) != t2(?), and falls through when a3(?) == t2(?); its branch-likely delay slot `lh t6,0(v1)` at 0xd966588 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd966584 targets 0xd966484, is taken when a3(?) != t2(=[a1+168]), and falls through when a3(?) == t2(=[a1+168]); its branch-likely delay slot `lh t6,0(v1)` at 0xd966588 runs only when taken and is annulled on fall-through.
   The return at 0xd966598 has v0 = one of a0+32196, ?.
 
 - `__glCrmSpanReadDepth2` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9665a0 (o32).
@@ -9705,39 +9833,43 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dce, including `sb` at 0xd9665fc, `sb` at 0xd966630.
   The `sw` at 0xd966600 stores 4 bytes to a0 (arg0 at entry) +0x7e58.
   The `sw` at 0xd966604 stores 4 bytes to a0 (arg0 at entry) +0x7e28.
-  27 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd966638, `lw` at 0xd966664, `lw` at 0xd96669c.
+  The `lw` at 0xd966638 loads 4 bytes from a0 (arg0 at entry) +0x7a48.
   The `lwc1` at 0xd96663c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
-  The `lbu` at 0xd966678 loads 1 byte from ?.
+  The `lw` at 0xd966664 loads 4 bytes from a0 (arg0 at entry) +0x7a60.
+  The `lbu` at 0xd966678 loads 1 byte from a0 (arg0 at entry) +0x7a5c.
+  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96669c, `lw` at 0xd966718, `lw` at 0xd96672c.
+  5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7a4c, including `lw` at 0xd9666a8, `lw` at 0xd966738, `lw` at 0xd9667ac.
+  10 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7a58, including `lw` at 0xd9666b4, `lw` at 0xd9666d0, `lw` at 0xd966744.
   5 such `ldc1` accesses load 8 bytes from a0 (arg0 at entry) +0x668, including `ldc1` at 0xd9666bc, `ldc1` at 0xd96674c, `ldc1` at 0xd9667c0.
   10 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xd9666c4, `swc1` at 0xd96670c, `swc1` at 0xd966754.
   The `jalr` at 0xd966618 calls crmReadPixelsXfer [0xd957f68] with a0=a0 at entry (arg0), a1=sp-508, a2=a2 at entry (arg2), a3=a0+31228.
-  The `bgez` branch at 0xd966650 targets 0xd966664, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed).
-  The `beq` branch at 0xd966670 targets 0xd966680, is taken when 0 >= t4(?) (unsigned), and falls through when 0 < t4(?) (unsigned).
-  The `blez` branch at 0xd966680 targets 0xd966908, is taken when t3(?) <= 0 (signed), and falls through when t3(?) > 0 (signed).
+  The `bgez` branch at 0xd966650 targets 0xd966664, is taken when t6(=[a0+31304]) >= 0 (signed), and falls through when t6(=[a0+31304]) < 0 (signed).
+  The `beq` branch at 0xd966670 targets 0xd966680, is taken when 0 >= t4(=[a0+31328]) (unsigned), and falls through when 0 < t4(=[a0+31328]) (unsigned).
+  The `blez` branch at 0xd966680 targets 0xd966908, is taken when t3(=[a1+168]) <= 0 (signed), and falls through when t3(=[a1+168]) > 0 (signed).
   The `beq` branch at 0xd966688 targets 0xd966720, is taken when v0(?) == 0, and falls through when v0(?) != 0.
   The `beq` branch at 0xd9666a0 targets 0xd9666d0, is taken when a2(?) == 0, and falls through when a2(?) != 0.
-  The `beql` branch at 0xd9666b0 targets 0xd9666d4, is taken when t7(?) == t8(?), and falls through when t7(?) != t8(?); its branch-likely delay slot `lw t9,92(a3)` at 0xd9666b4 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd9666b0 targets 0xd9666d4, is taken when t7(=[a0+31308]) == t8(?), and falls through when t7(=[a0+31308]) != t8(?); its branch-likely delay slot `lw t9,92(a3)` at 0xd9666b4 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9666c8 targets 0xd966714 and is always taken.
   The `bgez` branch at 0xd9666f0 targets 0xd966704, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `bnel` branch at 0xd966714 targets 0xd9666a0, is taken when t2(?) != a1(?), and falls through when t2(?) == a1(?); its branch-likely delay slot `lw v0,0(a0)` at 0xd966718 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd96671c targets 0xd966908, is taken when a1(?) == t3(?), and falls through when a1(?) != t3(?).
+  The `beq` branch at 0xd96671c targets 0xd966908, is taken when a1(?) == t3(=[a1+168]), and falls through when a1(?) != t3(=[a1+168]).
   The `beq` branch at 0xd966730 targets 0xd966760, is taken when a2(?) == 0, and falls through when a2(?) != 0.
-  The `beql` branch at 0xd966740 targets 0xd966764, is taken when t8(?) == t9(?), and falls through when t8(?) != t9(?); its branch-likely delay slot `lw t6,92(a3)` at 0xd966744 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd966740 targets 0xd966764, is taken when t8(=[a0+31308]) == t9(?), and falls through when t8(=[a0+31308]) != t9(?); its branch-likely delay slot `lw t6,92(a3)` at 0xd966744 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd966758 targets 0xd9667a4 and is always taken.
   The `bgez` branch at 0xd966780 targets 0xd966794, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `beq` branch at 0xd9667a4 targets 0xd9667d4, is taken when a2(?) == 0, and falls through when a2(?) != 0.
-  The `beql` branch at 0xd9667b4 targets 0xd9667d8, is taken when t9(?) == t6(?), and falls through when t9(?) != t6(?); its branch-likely delay slot `lw t7,92(a3)` at 0xd9667b8 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd9667b4 targets 0xd9667d8, is taken when t9(=[a0+31308]) == t6(?), and falls through when t9(=[a0+31308]) != t6(?); its branch-likely delay slot `lw t7,92(a3)` at 0xd9667b8 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9667cc targets 0xd966818 and is always taken.
   The `bgez` branch at 0xd9667f4 targets 0xd966808, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `beq` branch at 0xd966818 targets 0xd966848, is taken when a2(?) == 0, and falls through when a2(?) != 0.
-  The `beql` branch at 0xd966828 targets 0xd96684c, is taken when t6(?) == t7(?), and falls through when t6(?) != t7(?); its branch-likely delay slot `lw t8,92(a3)` at 0xd96682c runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd966828 targets 0xd96684c, is taken when t6(=[a0+31308]) == t7(?), and falls through when t6(=[a0+31308]) != t7(?); its branch-likely delay slot `lw t8,92(a3)` at 0xd96682c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd966840 targets 0xd96688c and is always taken.
   The `bgez` branch at 0xd966868 targets 0xd96687c, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `beq` branch at 0xd96688c targets 0xd9668bc, is taken when a2(?) == 0, and falls through when a2(?) != 0.
-  The `beql` branch at 0xd96689c targets 0xd9668c0, is taken when t7(?) == t8(?), and falls through when t7(?) != t8(?); its branch-likely delay slot `lw t9,92(a3)` at 0xd9668a0 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd96689c targets 0xd9668c0, is taken when t7(=[a0+31308]) == t8(?), and falls through when t7(=[a0+31308]) != t8(?); its branch-likely delay slot `lw t9,92(a3)` at 0xd9668a0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9668b4 targets 0xd966900 and is always taken.
   The `bgez` branch at 0xd9668dc targets 0xd9668f0, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
-  The `bnel` branch at 0xd966900 targets 0xd966730, is taken when a1(?) != t3(?), and falls through when a1(?) == t3(?); its branch-likely delay slot `lw v0,0(a0)` at 0xd966904 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd966900 targets 0xd966730, is taken when a1(?) != t3(=[a1+168]), and falls through when a1(?) == t3(=[a1+168]); its branch-likely delay slot `lw v0,0(a0)` at 0xd966904 runs only when taken and is annulled on fall-through.
   The return at 0xd966910 has v0 = ?.
 
 - `__glCrmSpanReadStencil` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd966918 (o32).
@@ -9762,16 +9894,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd96696c targets 0xd966960, is taken when a0(?) != a3(?), and falls through when a0(?) == a3(?).
   The `beql` branch at 0xd966974 targets 0xd9669ac, is taken when a3(?) == t0(=[a1+168]), and falls through when a3(?) != t0(=[a1+168]); its branch-likely delay slot `or a3,zero,zero` at 0xd966978 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd9669a0 targets 0xd96697c, is taken when a3(?) != t0(=[a1+168]), and falls through when a3(?) == t0(=[a1+168]).
-  The `blez` branch at 0xd966a2c targets 0xd966b84, is taken when t0(?) <= 0 (signed), and falls through when t0(?) > 0 (signed).
-  The `beq` branch at 0xd966a38 targets 0xd966a8c, is taken when (t0(?) & 0x3) == 0, and falls through when (t0(?) & 0x3) != 0.
+  The `blez` branch at 0xd966a2c targets 0xd966b84, is taken when t0(=[a1+168]) <= 0 (signed), and falls through when t0(=[a1+168]) > 0 (signed).
+  The `beq` branch at 0xd966a38 targets 0xd966a8c, is taken when (t0(=[a1+168]) & 0x3) == 0, and falls through when (t0(=[a1+168]) & 0x3) != 0.
   The `bgez` branch at 0xd966a50 targets 0xd966a68, is taken when t2(?) >= 0 (signed), and falls through when t2(?) < 0 (signed).
   The `bne` branch at 0xd966a7c targets 0xd966a40, is taken when a1(?) != a3(?), and falls through when a1(?) == a3(?).
-  The `beql` branch at 0xd966a84 targets 0xd966b88, is taken when a3(?) == t0(?), and falls through when a3(?) != t0(?); its branch-likely delay slot `lw ra,28(sp)` at 0xd966a88 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd966a84 targets 0xd966b88, is taken when a3(?) == t0(=[a1+168]), and falls through when a3(?) != t0(=[a1+168]); its branch-likely delay slot `lw ra,28(sp)` at 0xd966a88 runs only when taken and is annulled on fall-through.
   The `bgez` branch at 0xd966a9c targets 0xd966ab4, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed).
   The `bgez` branch at 0xd966adc targets 0xd966af0, is taken when t1(?) >= 0 (signed), and falls through when t1(?) < 0 (signed).
   The `bgez` branch at 0xd966b18 targets 0xd966b2c, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed).
   The `bgez` branch at 0xd966b54 targets 0xd966b68, is taken when t9(?) >= 0 (signed), and falls through when t9(?) < 0 (signed).
-  The `bne` branch at 0xd966b7c targets 0xd966a8c, is taken when a3(?) != t0(?), and falls through when a3(?) == t0(?).
+  The `bne` branch at 0xd966b7c targets 0xd966a8c, is taken when a3(?) != t0(=[a1+168]), and falls through when a3(?) == t0(=[a1+168]).
   The return at 0xd966b8c has v0 = ?.
 
 - `__glCrmSpanReadStencil2` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd966b94 (o32).
@@ -9789,16 +9921,16 @@ Each entry records selected software behavior from its exact binary range. The r
   5 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd966c40, `lw` at 0xd966c80, `lw` at 0xd966cb0.
   5 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xd966c6c, `swc1` at 0xd966cac, `swc1` at 0xd966cdc.
   The `jalr` at 0xd966c08 calls crmReadPixelsXfer [0xd957f68] with a0=a0 at entry (arg0), a1=sp-508, a2=a2 at entry (arg2), a3=[a1+168].
-  The `blez` branch at 0xd966c2c targets 0xd966d48, is taken when a3(?) <= 0 (signed), and falls through when a3(?) > 0 (signed).
-  The `beq` branch at 0xd966c38 targets 0xd966c80, is taken when (a3(?) & 0x3) == 0, and falls through when (a3(?) & 0x3) != 0.
+  The `blez` branch at 0xd966c2c targets 0xd966d48, is taken when a3(=[a1+168]) <= 0 (signed), and falls through when a3(=[a1+168]) > 0 (signed).
+  The `beq` branch at 0xd966c38 targets 0xd966c80, is taken when (a3(=[a1+168]) & 0x3) == 0, and falls through when (a3(=[a1+168]) & 0x3) != 0.
   The `bgez` branch at 0xd966c50 targets 0xd966c68, is taken when t3(?) >= 0 (signed), and falls through when t3(?) < 0 (signed).
   The `bne` branch at 0xd966c70 targets 0xd966c40, is taken when a1(?) != a0(?), and falls through when a1(?) == a0(?).
-  The `beql` branch at 0xd966c78 targets 0xd966d4c, is taken when a0(?) == a3(?), and falls through when a0(?) != a3(?); its branch-likely delay slot `lw ra,28(sp)` at 0xd966c7c runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd966c78 targets 0xd966d4c, is taken when a0(?) == a3(=[a1+168]), and falls through when a0(?) != a3(=[a1+168]); its branch-likely delay slot `lw ra,28(sp)` at 0xd966c7c runs only when taken and is annulled on fall-through.
   The `bgez` branch at 0xd966c90 targets 0xd966ca8, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed).
   The `bgez` branch at 0xd966cc0 targets 0xd966cd8, is taken when t7(?) >= 0 (signed), and falls through when t7(?) < 0 (signed).
   The `bgez` branch at 0xd966cf0 targets 0xd966d08, is taken when t9(?) >= 0 (signed), and falls through when t9(?) < 0 (signed).
   The `bgez` branch at 0xd966d20 targets 0xd966d38, is taken when t1(?) >= 0 (signed), and falls through when t1(?) < 0 (signed).
-  The `bne` branch at 0xd966d40 targets 0xd966c80, is taken when a0(?) != a3(?), and falls through when a0(?) == a3(?).
+  The `bne` branch at 0xd966d40 targets 0xd966c80, is taken when a0(?) != a3(=[a1+168]), and falls through when a0(?) == a3(=[a1+168]).
   The return at 0xd966d50 has v0 = ?.
 
 - `__glCrmInitRGB` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd968fbc (o32).
@@ -9863,13 +9995,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd969290 loads 4 bytes from a0 (arg0 at entry) +0x50.
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x0, including `lw` at 0xd9692e0, `lw` at 0xd9694c4.
   The `sw` at 0xd969310 stores 4 bytes to a1 (arg1 at entry) +0x80b0.
-  24 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96933c, `lw` at 0xd969360, `lw` at 0xd969364.
+  13 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x80b0, including `lw` at 0xd96933c, `lw` at 0xd969360, `lw` at 0xd969364.
   20 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xd969358, `swc1` at 0xd969370, `swc1` at 0xd9693d0.
   The `sw` at 0xd969490 stores 4 bytes to a1 (arg1 at entry) +0x80b4.
   2 such `sw` accesses store 4 bytes to a1 (arg1 at entry) +0x80b8, including `sw` at 0xd9694ac, `sw` at 0xd9694f8.
+  11 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x80b8, including `lw` at 0xd96951c, `lw` at 0xd969540, `lw` at 0xd969544.
   The `jalr` at 0xd968fe4 calls __glInitBuffer [0xd9c9f40] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a1 at entry (arg1).
   The `jalr` at 0xd9692e8 calls (unknown callee) with a0=a1 at entry (arg1), a1=?, a2=a1+32768, a3=a1 at entry (arg1).
-  The `jalr` at 0xd9694d0 calls (unknown callee) with a0=a1 at entry (arg1), a1=?, a2=?, a3=a1 at entry (arg1).
+  The `jalr` at 0xd9694d0 calls (unknown callee) with a0=a1 at entry (arg1), a1=?, a2=a1+32768, a3=a1 at entry (arg1).
   The `beq` branch at 0xd969018 targets 0xd96905c, is taken when t5(=((([a1+3256] + [a1+3260]) + [a1+3264]) + [a1+3268])-8) >= 0x19 (unsigned), and falls through when t5(=((([a1+3256] + [a1+3260]) + [a1+3264]) + [a1+3268])-8) < 0x19 (unsigned).
   The `beq` branch at 0xd969040 targets 0xd96905c and is always taken.
   The `beq` branch at 0xd96904c targets 0xd96905c and is always taken.
@@ -9902,7 +10035,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9694a8 targets 0xd969664 and is always taken.
   The `blez` branch at 0xd9694f4 targets 0xd969664, is taken when t1(?) <= 0 (signed), and falls through when t1(?) > 0 (signed).
   The `beq` branch at 0xd969500 targets 0xd969564, is taken when (t1(?) & 0x3) == 0, and falls through when (t1(?) & 0x3) != 0.
-  The `beq` branch at 0xd969514 targets 0xd969544, is taken when a0(?) == v1(?), and falls through when a0(?) != v1(?).
+  The `beq` branch at 0xd969514 targets 0xd969544, is taken when a0(?) == v1(=0x0), and falls through when a0(?) != v1(=0x0).
   The `bnel` branch at 0xd96953c targets 0xd969520, is taken when a0(?) != v1(?), and falls through when a0(?) == v1(?); its branch-likely delay slot `lw t8,184(a2)` at 0xd969540 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd969560 targets 0xd969664, is taken when v1(?) == t1(?), and falls through when v1(?) != t1(?).
   The `beql` branch at 0xd969570 targets 0xd9695f4, is taken when v1(?) == t1(?), and falls through when v1(?) != t1(?); its branch-likely delay slot `addiu t4,v1,1` at 0xd969574 runs only when taken and is annulled on fall-through.
@@ -10027,25 +10160,23 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd969c80 loads 4 bytes from a0 (arg0 at entry) +0x75f8.
   The `lbu` at 0xd969cbc loads 1 byte from a0 (arg0 at entry) +0x7dca.
   The `lbu` at 0xd969cc4 loads 1 byte from a0 (arg0 at entry) +0x7e27.
-  The `sw` at 0xd969cc8 stores 4 bytes to a0 (arg0 at entry) +0x7dd8.
+  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd969cc8, `sw` at 0xd969d30.
   The `sb` at 0xd969ccc stores 1 byte to a0 (arg0 at entry) +0x7dce.
   The `sw` at 0xd969cd0 stores 4 bytes to a0 (arg0 at entry) +0x7de0.
-  The `sb` at 0xd969cd4 stores 1 byte to a0 (arg0 at entry) +0x7dca.
+  2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dca, including `sb` at 0xd969cd4, `sb` at 0xd969d34.
   The `lw` at 0xd969cd8 loads 4 bytes from a0 (arg0 at entry) +0x7710.
   The `lbu` at 0xd969ce0 loads 1 byte from a0 (arg0 at entry) +0x7e26.
   The `sw` at 0xd969ce8 stores 4 bytes to a0 (arg0 at entry) +0x7e2c.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd969cf0, `sb` at 0xd969cfc, `sb` at 0xd969d08.
   The `sb` at 0xd969d04 stores 1 byte to a0 (arg0 at entry) +0x7e26.
-  The `sw` at 0xd969d30 stores 4 bytes to ?.
-  The `sb` at 0xd969d34 stores 1 byte to ?.
   The `jalr` at 0xd969acc calls (unknown callee) with a0=a0 at entry (arg0), a1=([a0+30248] << 0x1), a2=a2 at entry (arg2), a3=[a0+30248].
-  The `jalr` at 0xd969d1c calls crmDrawPixelsXfer [0xd955f5c] with a0=a0 at entry (arg0), a1=sp-524, a2=[a0+32202]:1, a3=?.
-  The `blez` branch at 0xd969ae0 targets 0xd969c74, is taken when a3(?) <= 0 (signed), and falls through when a3(?) > 0 (signed).
-  The `beq` branch at 0xd969aec targets 0xd969b50, is taken when (a3(?) & 0x3) == 0, and falls through when (a3(?) & 0x3) != 0.
+  The `jalr` at 0xd969d1c calls crmDrawPixelsXfer [0xd955f5c] with a0=a0 at entry (arg0), a1=sp-524, a2=[a0+32202]:1, a3=[a0+30248].
+  The `blez` branch at 0xd969ae0 targets 0xd969c74, is taken when a3(=[a0+30248]) <= 0 (signed), and falls through when a3(=[a0+30248]) > 0 (signed).
+  The `beq` branch at 0xd969aec targets 0xd969b50, is taken when (a3(=[a0+30248]) & 0x3) == 0, and falls through when (a3(=[a0+30248]) & 0x3) != 0.
   The `bc1f` branch at 0xd969b0c targets 0xd969b2c, is taken when not (f6 <= f4 (c.le.s at 0xd969b08)), and falls through when f6 <= f4 (c.le.s at 0xd969b08).
   The `beq` branch at 0xd969b24 targets 0xd969b34 and is always taken.
   The `bne` branch at 0xd969b44 targets 0xd969afc, is taken when a2(?) != a1(?), and falls through when a2(?) == a1(?).
-  The `beq` branch at 0xd969b4c targets 0xd969c74, is taken when a1(?) == a3(?), and falls through when a1(?) != a3(?).
+  The `beq` branch at 0xd969b4c targets 0xd969c74, is taken when a1(?) == a3(=[a0+30248]), and falls through when a1(?) != a3(=[a0+30248]).
   The `bc1f` branch at 0xd969b68 targets 0xd969b88, is taken when not (f10 <= f8 (c.le.s at 0xd969b64)), and falls through when f10 <= f8 (c.le.s at 0xd969b64).
   The `beq` branch at 0xd969b80 targets 0xd969b90 and is always taken.
   The `bc1f` branch at 0xd969bac targets 0xd969bcc, is taken when not (f18 <= f16 (c.le.s at 0xd969ba8)), and falls through when f18 <= f16 (c.le.s at 0xd969ba8).
@@ -10054,7 +10185,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd969c08 targets 0xd969c18 and is always taken.
   The `bc1f` branch at 0xd969c34 targets 0xd969c54, is taken when not (f10 <= f8 (c.le.s at 0xd969c30)), and falls through when f10 <= f8 (c.le.s at 0xd969c30).
   The `beq` branch at 0xd969c4c targets 0xd969c5c and is always taken.
-  The `bne` branch at 0xd969c6c targets 0xd969b58, is taken when a1(?) != a3(?), and falls through when a1(?) == a3(?).
+  The `bne` branch at 0xd969c6c targets 0xd969b58, is taken when a1(?) != a3(=[a0+30248]), and falls through when a1(?) == a3(=[a0+30248]).
   The return at 0xd969d44 has v0 = 0x0.
 
 - `__glCrmStoreCIStippledSpan` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd969d4c (o32).
@@ -10114,25 +10245,24 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd96a090 loads 4 bytes from a0 (arg0 at entry) +0x7700.
   The `lw` at 0xd96a0a8 loads 4 bytes from a0 (arg0 at entry) +0x7e44.
   20 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xd96a0e4, `lwc1` at 0xd96a11c, `lwc1` at 0xd96a158.
-  6 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd96a1f0, `sw` at 0xd96a314, `sw` at 0xd96a424.
+  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd96a1f0, `sw` at 0xd96a314, `sw` at 0xd96a424.
   The `lw` at 0xd96a648 loads 4 bytes from a0 (arg0 at entry) +0x75f4.
   The `lw` at 0xd96a654 loads 4 bytes from a0 (arg0 at entry) +0x75f8.
   The `lbu` at 0xd96a690 loads 1 byte from a0 (arg0 at entry) +0x7e27.
   The `lbu` at 0xd96a69c loads 1 byte from a0 (arg0 at entry) +0x7dca.
-  The `sw` at 0xd96a6a0 stores 4 bytes to a0 (arg0 at entry) +0x7dd8.
+  2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7dd8, including `sw` at 0xd96a6a0, `sw` at 0xd96a708.
   The `lbu` at 0xd96a6a8 loads 1 byte from a0 (arg0 at entry) +0x7e26.
   The `sb` at 0xd96a6ac stores 1 byte to a0 (arg0 at entry) +0x7dce.
   The `sw` at 0xd96a6b0 stores 4 bytes to a0 (arg0 at entry) +0x7de0.
-  The `sb` at 0xd96a6b4 stores 1 byte to a0 (arg0 at entry) +0x7dca.
+  2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7dca, including `sb` at 0xd96a6b4, `sb` at 0xd96a70c.
   The `lw` at 0xd96a6bc loads 4 bytes from a0 (arg0 at entry) +0x7710.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x7e27, including `sb` at 0xd96a6c4, `sb` at 0xd96a6d0, `sb` at 0xd96a6dc.
   The `sb` at 0xd96a6d8 stores 1 byte to a0 (arg0 at entry) +0x7e26.
   The `sw` at 0xd96a6e0 stores 4 bytes to a0 (arg0 at entry) +0x7e2c.
-  The `sb` at 0xd96a70c stores 1 byte to ?.
   The `jalr` at 0xd96a0ac calls (unknown callee) with a0=a0 at entry (arg0), a1=([a0+30248] << 0x2), a2=a2 at entry (arg2), a3=[a0+30248].
-  The `jalr` at 0xd96a6f4 calls crmDrawPixelsXfer [0xd955f5c] with a0=a0 at entry (arg0), a1=sp-524, a2=[a0+32202]:1, a3=?.
-  The `blez` branch at 0xd96a0c0 targets 0xd96a648, is taken when a3(?) <= 0 (signed), and falls through when a3(?) > 0 (signed).
-  The `beq` branch at 0xd96a0cc targets 0xd96a1f8, is taken when (a3(?) & 0x3) == 0, and falls through when (a3(?) & 0x3) != 0.
+  The `jalr` at 0xd96a6f4 calls crmDrawPixelsXfer [0xd955f5c] with a0=a0 at entry (arg0), a1=sp-524, a2=[a0+32202]:1, a3=[a0+30248].
+  The `blez` branch at 0xd96a0c0 targets 0xd96a648, is taken when a3(=[a0+30248]) <= 0 (signed), and falls through when a3(=[a0+30248]) > 0 (signed).
+  The `beq` branch at 0xd96a0cc targets 0xd96a1f8, is taken when (a3(=[a0+30248]) & 0x3) == 0, and falls through when (a3(=[a0+30248]) & 0x3) != 0.
   The `bc1f` branch at 0xd96a0ec targets 0xd96a10c, is taken when not (f6 <= f4 (c.le.s at 0xd96a0e8)), and falls through when f6 <= f4 (c.le.s at 0xd96a0e8).
   The `beq` branch at 0xd96a104 targets 0xd96a114 and is always taken.
   The `bc1f` branch at 0xd96a12c targets 0xd96a148, is taken when not (f10 <= f8 (c.le.s at 0xd96a124)), and falls through when f10 <= f8 (c.le.s at 0xd96a124).
@@ -10142,7 +10272,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1f` branch at 0xd96a1b8 targets 0xd96a1d4, is taken when not (f6 <= f4 (c.le.s at 0xd96a1a4)), and falls through when f6 <= f4 (c.le.s at 0xd96a1a4).
   The `beq` branch at 0xd96a1cc targets 0xd96a1d8 and is always taken.
   The `bne` branch at 0xd96a1ec targets 0xd96a0dc, is taken when a2(?) != a1(?), and falls through when a2(?) == a1(?).
-  The `beq` branch at 0xd96a1f4 targets 0xd96a648, is taken when a1(?) == a3(?), and falls through when a1(?) != a3(?).
+  The `beq` branch at 0xd96a1f4 targets 0xd96a648, is taken when a1(?) == a3(=[a0+30248]), and falls through when a1(?) != a3(=[a0+30248]).
   The `bc1f` branch at 0xd96a210 targets 0xd96a230, is taken when not (f10 <= f8 (c.le.s at 0xd96a20c)), and falls through when f10 <= f8 (c.le.s at 0xd96a20c).
   The `beq` branch at 0xd96a228 targets 0xd96a238 and is always taken.
   The `bc1f` branch at 0xd96a250 targets 0xd96a26c, is taken when not (f18 <= f16 (c.le.s at 0xd96a248)), and falls through when f18 <= f16 (c.le.s at 0xd96a248).
@@ -10175,7 +10305,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd96a5d8 targets 0xd96a5e4 and is always taken.
   The `bc1f` branch at 0xd96a60c targets 0xd96a628, is taken when not (f10 <= f8 (c.le.s at 0xd96a5f8)), and falls through when f10 <= f8 (c.le.s at 0xd96a5f8).
   The `beq` branch at 0xd96a620 targets 0xd96a62c and is always taken.
-  The `bne` branch at 0xd96a640 targets 0xd96a200, is taken when a1(?) != a3(?), and falls through when a1(?) == a3(?).
+  The `bne` branch at 0xd96a640 targets 0xd96a200, is taken when a1(?) != a3(=[a0+30248]), and falls through when a1(?) == a3(=[a0+30248]).
   The return at 0xd96a71c has v0 = 0x0.
   The instructions from 0xd96a18c to 0xd96a18c are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xd96a2b0 to 0xd96a2b0 are not reached by any path from the entry, and their branches are not listed.
@@ -10283,7 +10413,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xd96aeb8 loads 4 bytes from a0 (arg0 at entry) +0x7724.
   The `lwc1` at 0xd96aec0 loads 4 bytes from a0 (arg0 at entry) +0x7728.
   8 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x75fc, including `sw` at 0xd96aed4, `sw` at 0xd96b034, `sw` at 0xd96b054.
-  4 such `lw` accesses load 4 bytes from (a0 + ([a0+12224] << 0x2)) +0x2f48, including `lw` at 0xd96af5c, `lw` at 0xd96b038, `lw` at 0xd96b100.
+  6 such `lw` accesses load 4 bytes from (a0 + ([a0+12224] << 0x2)) +0x2f48, including `lw` at 0xd96af5c, `lw` at 0xd96b038, `lw` at 0xd96b100.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x770c, including `sb` at 0xd96af74, `sb` at 0xd96b058, `sb` at 0xd96b22c.
   The `lw` at 0xd96af88 loads 4 bytes from a0 (arg0 at entry) +0x7720.
   The `lw` at 0xd96af8c loads 4 bytes from a0 (arg0 at entry) +0x771c.
@@ -10296,13 +10426,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `ldc1` at 0xd96b07c loads 8 bytes from abs 0xda433a0.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x75f4, including `sw` at 0xd96b0bc, `sw` at 0xd96b134, `sw` at 0xd96b1d0.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7628, including `sw` at 0xd96b0c4, `sw` at 0xd96b120, `sw` at 0xd96b178.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96b138, `lw` at 0xd96b20c.
   The `jalr` at 0xd96af64 calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30248], a2=(a0 + ([a0+12224] << 0x2))+12104, a3=[a0+30248]; fp f12=[a0+30504].
   The `jalr` at 0xd96b03c calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30248], a2=(a0 + ([a0+12224] << 0x2))+12104, a3=[a0+30248].
   The `jalr` at 0xd96b104 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=(a0 + ([a0+12224] << 0x2))+12104, a3=[a0+30248].
-  The `jalr` at 0xd96b140 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd96b140 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=(a0 + ([a0+12224] << 0x2))+12104, a3=?.
   The `jalr` at 0xd96b190 calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30248], a2=(a0 + ([a0+12224] << 0x2))+12104, a3=[a0+30248].
-  The `jalr` at 0xd96b210 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd96b210 calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30248], a2=(a0 + ([a0+12224] << 0x2))+12104, a3=?.
   The `bc1f` branch at 0xd96ae8c targets 0xd96aeb0, is taken when not (f4 <= f0(=[a0+30484]) (c.le.s at 0xd96ae7c)), and falls through when f4 <= f0(=[a0+30484]) (c.le.s at 0xd96ae7c).
   The `beq` branch at 0xd96aea8 targets 0xd96aeb8 and is always taken.
   The `bc1f` branch at 0xd96aedc targets 0xd96aee8, is taken when not (f2(=[a0+30500]) < f12(=[a0+30504]) (c.lt.s at 0xd96aec8)), and falls through when f2(=[a0+30500]) < f12(=[a0+30504]) (c.lt.s at 0xd96aec8).
@@ -10345,7 +10474,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xd96b2bc loads 4 bytes from a0 (arg0 at entry) +0x7724.
   The `lwc1` at 0xd96b2c4 loads 4 bytes from a0 (arg0 at entry) +0x7728.
   8 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x75fc, including `sw` at 0xd96b2dc, `sw` at 0xd96b440, `sw` at 0xd96b478.
-  4 such `lw` accesses load 4 bytes from (a0 + ([a0+12224] << 0x2)) +0x2f84, including `lw` at 0xd96b35c, `lw` at 0xd96b444, `lw` at 0xd96b528.
+  6 such `lw` accesses load 4 bytes from (a0 + ([a0+12224] << 0x2)) +0x2f84, including `lw` at 0xd96b35c, `lw` at 0xd96b444, `lw` at 0xd96b528.
   3 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x770c, including `sb` at 0xd96b374, `sb` at 0xd96b470, `sb` at 0xd96b7d4.
   The `lw` at 0xd96b388 loads 4 bytes from a0 (arg0 at entry) +0x7720.
   The `lw` at 0xd96b38c loads 4 bytes from a0 (arg0 at entry) +0x771c.
@@ -10357,7 +10486,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `ldc1` at 0xd96b490 loads 8 bytes from abs 0xda433a8.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7628, including `sw` at 0xd96b4e0, `sw` at 0xd96b56c, `sw` at 0xd96b66c.
   6 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd96b58c, `sw` at 0xd96b5d4, `sw` at 0xd96b604.
-  6 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96b5a8, `lw` at 0xd96b5f4, `lw` at 0xd96b60c.
+  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd96b5a8, `lw` at 0xd96b5f4, `lw` at 0xd96b6f0.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7708, including `sw` at 0xd96b608, `sw` at 0xd96b640, `sw` at 0xd96b78c.
   The `jalr` at 0xd96b364 calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30472], a2=a2 at entry (arg2), a3=a3 at entry (arg3); fp f12=[a0+30504].
   The `jalr` at 0xd96b448 calls (unknown callee) with a0=a0 at entry (arg0), a1=[a0+30472], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -10473,9 +10602,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd970754 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `ldc1` at 0xd970774 loads 8 bytes from abs 0xda43460.
   2 such `sdc1` accesses store 8 bytes to ?, including `sdc1` at 0xd9707bc, `sdc1` at 0xd9707c8.
-  The `lw` at 0xd9707cc loads 4 bytes from ?.
+  The `lw` at 0xd9707cc loads 4 bytes from [a0] +0x3144.
   The `jalr` at 0xd97078c calls __d_to_ll with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0], a3=a3 at entry (arg3).
-  The `jalr` at 0xd9707d4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=sp-32.
+  The `jalr` at 0xd9707d4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0], a3=sp-32.
   The `bgez` branch at 0xd970768 targets 0xd97077c, is taken when t1(=([a1+8] << 0x6)) >= 0 (signed), and falls through when t1(=([a1+8] << 0x6)) < 0 (signed).
   The return at 0xd9707e4 has v0 = ret(?).
 
@@ -10487,9 +10616,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd970808 loads 4 bytes from a0 (arg0 at entry) +0x0.
   The `lw` at 0xd97080c loads 4 bytes from [a0] +0x77c0.
   The `lw` at 0xd970814 loads 4 bytes from [[a0]+30656] +0xa4.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd970828, `lw` at 0xd970830.
+  The `lw` at 0xd970828 loads 4 bytes from [a0] +0x77c4.
+  The `lw` at 0xd970830 loads 4 bytes from [[a0]+30660] +0xa4.
   The `jalr` at 0xd970818 calls (unknown callee) with a0=[[a0]+30656], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd970834 calls (unknown callee) with a0=?, a1=a1 at entry (arg1), a2=?, a3=?.
+  The `jalr` at 0xd970834 calls (unknown callee) with a0=[[a0]+30660], a1=a1 at entry (arg1), a2=?, a3=?.
   The return at 0xd970844 has v0 = ret(?).
 
 - `crmUpdateSharedTiles` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd970f64 (o32).
@@ -10577,16 +10707,16 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0xd97139c-0xd9717e0 (1092 bytes).
   It occupies 1092 bytes.
   The `lw` at 0xd9713c8 loads 4 bytes from a1 (arg1 at entry) +0x11c.
-  3 such `lw` accesses load 4 bytes from [a1+284] +0x4, including `lw` at 0xd9713d0, `lw` at 0xd9715a4, `lw` at 0xd9715c4.
+  5 such `lw` accesses load 4 bytes from [a1+284] +0x4, including `lw` at 0xd9713d0, `lw` at 0xd9715a4, `lw` at 0xd9715c4.
   The `lw` at 0xd9713e0 loads 4 bytes from a0 (arg0 at entry) +0x7f30.
   The `lw` at 0xd9713e8 loads 4 bytes from [a0+32560] +0x8.
   The `lw` at 0xd9713f8 loads 4 bytes from ([a0+32560] + ([[a0+32560]+8] << 0x2)) +0x20c.
-  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd971414, `lw` at 0xd97142c, `lw` at 0xd971478.
+  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd971414, `lw` at 0xd97142c, `lw` at 0xd971478.
   The `lwc1` at 0xd971430 loads 4 bytes from ?.
   3 such `sw` accesses store 4 bytes to [a0+32560] +0x8, including `sw` at 0xd97145c, `sw` at 0xd971470, `sw` at 0xd971474.
-  10 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd97148c, `sw` at 0xd971494, `sw` at 0xd97149c.
+  7 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd97148c, `sw` at 0xd971494, `sw` at 0xd97149c.
   The `sw` at 0xd9714a4 stores 4 bytes to [a1+284] +0x4.
-  4 such `lw` accesses load 4 bytes from [a1+284] +0x0, including `lw` at 0xd9714b0, `lw` at 0xd9714c0, `lw` at 0xd9714d4.
+  7 such `lw` accesses load 4 bytes from [a1+284] +0x0, including `lw` at 0xd9714b0, `lw` at 0xd9714c0, `lw` at 0xd9714d4.
   The `lw` at 0xd9714e8 loads 4 bytes from [a1+284] +0x24.
   The `lw` at 0xd9714f4 loads 4 bytes from [[a1+284]+36] +0x9c.
   The `lw` at 0xd971500 loads 4 bytes from [[[a1+284]+36]+156] +0x0.
@@ -10597,6 +10727,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9715f0 loads 4 bytes from [[a1+284]+32] +0x4.
   The `lw` at 0xd97160c loads 4 bytes from [[a1+284]+32] +0x8.
   The `lw` at 0xd971628 loads 4 bytes from a0 (arg0 at entry) +0x7b10.
+  3 such `sw` accesses store 4 bytes to [a1+284] +0x0, including `sw` at 0xd97166c, `sw` at 0xd971684, `sw` at 0xd971694.
   The `lw` at 0xd9716a8 loads 4 bytes from abs 0xda4d2f0.
   The `lw` at 0xd971710 loads 4 bytes from a0 (arg0 at entry) +0x7ef8.
   The `sw` at 0xd971724 stores 4 bytes to a0 (arg0 at entry) +0x7ef8.
@@ -10605,8 +10736,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9717c8 loads 4 bytes from a0 (arg0 at entry) +0x7efc.
   The `jalr` at 0xd971638 calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5603, a2=sp-84, a3=0x24.
   The `jalr` at 0xd9716cc calls printf with a0=0xda435a4, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd971748 calls texIoctlBind [0xd970ed4] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd971770 calls texFastBind [0xd970e78] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd971748 calls texIoctlBind [0xd970ed4] with a0=a0 at entry (arg0), a1=[[a1+284]+4], a2=?, a3=?.
+  The `jalr` at 0xd971770 calls texFastBind [0xd970e78] with a0=a0 at entry (arg0), a1=[[a1+284]+4], a2=?, a3=?.
   The `bgez` branch at 0xd9713d8 targets 0xd9714a8, is taken when t7(=[[a1+284]+4]) >= 0 (signed), and falls through when t7(=[[a1+284]+4]) < 0 (signed).
   The `beq` branch at 0xd971400 targets 0xd971464, is taken when t4(=[([a0+32560] + ([[a0+32560]+8] << 0x2))+524]) == 0, and falls through when t4(=[([a0+32560] + ([[a0+32560]+8] << 0x2))+524]) != 0.
   The `bne` branch at 0xd971418 targets 0xd97142c, is taken when t5(?) != 0, and falls through when t5(?) == 0.
@@ -10648,7 +10779,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd97175c targets 0xd971788 and is always taken.
   The `beql` branch at 0xd971790 targets 0xd9717d4, is taken when t4(?) == 0, and falls through when t4(?) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd971794 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd971798 targets 0xd9717d4, is taken when t1(?) == 0, and falls through when t1(?) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd97179c runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd9717a8 targets 0xd9717c8, is taken when (t5(?) & 0x80) == 0, and falls through when (t5(?) & 0x80) != 0; its branch-likely delay slot `lw t9,128(sp)` at 0xd9717ac runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd9717a8 targets 0xd9717c8, is taken when (t5(=[[a1+284]]) & 0x80) == 0, and falls through when (t5(=[[a1+284]]) & 0x80) != 0; its branch-likely delay slot `lw t9,128(sp)` at 0xd9717ac runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd9717bc targets 0xd9717d0 and is always taken.
   The return at 0xd9717d8 has v0 = ?.
   The instructions from 0xd9717c4 to 0xd9717c4 are not reached by any path from the entry, and their branches are not listed.
@@ -10694,16 +10825,23 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 360 bytes.
   The `lw` at 0xd972278 loads 4 bytes from a1 (arg1 at entry) +0x11c.
   The `lw` at 0xd972288 loads 4 bytes from [a1+284] +0x20.
-  The `lw` at 0xd9722a0 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0.
+  2 such `lw` accesses load 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0, including `lw` at 0xd9722a0, `lw` at 0xd9722e8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7f28, including `lw` at 0xd9722ac, `lw` at 0xd9722b8, `lw` at 0xd9722dc.
   The `lw` at 0xd9722b0 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x14.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0xd9722c4, `lw` at 0xd972380.
-  9 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd9722e4, `sw` at 0xd9722f4, `sw` at 0xd97232c.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9722e8, `lw` at 0xd9722f8, `lw` at 0xd972370.
+  3 such `sw` accesses store 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0, including `sw` at 0xd9722e4, `sw` at 0xd9722f4, `sw` at 0xd97232c.
+  The `lw` at 0xd9722f8 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x18.
   The `lw` at 0xd97230c loads 4 bytes from a0 (arg0 at entry) +0x7b10.
+  The `sw` at 0xd972330 stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x4.
+  The `sw` at 0xd972334 stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x8.
+  The `sw` at 0xd972338 stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x14.
+  The `sw` at 0xd97233c stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x18.
+  The `sw` at 0xd972340 stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x20.
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0xe4, including `lw` at 0xd97234c, `lw` at 0xd972398.
+  The `lw` at 0xd972370 loads 4 bytes from ?.
+  The `sw` at 0xd9723a4 stores 4 bytes to ?.
   The `jalr` at 0xd9722c8 calls (unknown callee) with a0=a0 at entry (arg0), a1=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+20], a2=a2 at entry (arg2), a3=a0 at entry (arg0).
-  The `jalr` at 0xd972318 calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5602, a2=?, a3=a0 at entry (arg0).
+  The `jalr` at 0xd972318 calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5602, a2=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+24], a3=a0 at entry (arg0).
   The `jalr` at 0xd972388 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=a0 at entry (arg0).
   The `beq` branch at 0xd972270 targets 0xd9723a8, is taken when a1 == 0, and falls through when a1 != 0.
   The `beql` branch at 0xd97227c targets 0xd9723ac, is taken when v1(=[a1+284]) == 0, and falls through when v1(=[a1+284]) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd972280 runs only when taken and is annulled on fall-through.
@@ -10711,8 +10849,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd9722a8 targets 0xd9722e0, is taken when (t0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) == 0, and falls through when (t0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw t2,32552(a3)` at 0xd9722ac runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9722b4 targets 0xd9722e0, is taken when a1(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+20]) == 0, and falls through when a1(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+20]) != 0; its branch-likely delay slot `lw t2,32552(a3)` at 0xd9722b8 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd9722e0 targets 0xd972330, is taken when t2(=[a0+32552]) == 0, and falls through when t2(=[a0+32552]) != 0; its branch-likely delay slot `sw zero,0(v0)` at 0xd9722e4 runs only when taken and is annulled on fall-through.
-  The `beql` branch at 0xd9722f0 targets 0xd972330, is taken when (t3(?) & 0x2) == 0, and falls through when (t3(?) & 0x2) != 0; its branch-likely delay slot `sw zero,0(v0)` at 0xd9722f4 runs only when taken and is annulled on fall-through.
-  The `beq` branch at 0xd972300 targets 0xd97232c, is taken when v1(?) == 0, and falls through when v1(?) != 0.
+  The `beql` branch at 0xd9722f0 targets 0xd972330, is taken when (t3(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) == 0, and falls through when (t3(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) != 0; its branch-likely delay slot `sw zero,0(v0)` at 0xd9722f4 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd972300 targets 0xd97232c, is taken when v1(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+24]) == 0, and falls through when v1(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+24]) != 0.
   The `beq` branch at 0xd972354 targets 0xd9723a8, is taken when v1(=[a1+228]) == 0, and falls through when v1(=[a1+228]) != 0.
   The `beql` branch at 0xd972374 targets 0xd9723ac, is taken when a1(?) == 0, and falls through when a1(?) != 0; its branch-likely delay slot `lw ra,28(sp)` at 0xd972378 runs only when taken and is annulled on fall-through.
   The return at 0xd9723b0 has v0 = one of ?, ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)).
@@ -10730,9 +10868,11 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7b10, including `lw` at 0xd972464, `lw` at 0xd9724a4.
   6 such `lw` accesses load 4 bytes from [a1+300] +0x4, including `lw` at 0xd972480, `lw` at 0xd97248c, `lw` at 0xd97249c.
   The `lw` at 0xd972484 loads 4 bytes from [a1+300] +0x14.
-  The `lw` at 0xd9724d8 loads 4 bytes from ?.
+  The `lw` at 0xd9724d8 loads 4 bytes from ([a0+32560] + ([[a1+300]+4] << 0x2)) +0x20c.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7ef8, including `lw` at 0xd9724e0, `lw` at 0xd972508.
-  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd9724e4, `sw` at 0xd9724f8, `sw` at 0xd972504.
+  The `sw` at 0xd9724e4 stores 4 bytes to ([a0+32560] + ([[a1+300]+4] << 0x2)) +0xc.
+  The `sw` at 0xd9724f8 stores 4 bytes to ([a0+32560] + ([[a1+300]+4] << 0x2)) +0x20c.
+  The `sw` at 0xd972504 stores 4 bytes to [a0+32560] +0x8.
   5 such `lw` accesses load 4 bytes from [a1+300] +0x24, including `lw` at 0xd972510, `lw` at 0xd972518, `lw` at 0xd972540.
   The `sw` at 0xd972514 stores 4 bytes to a0 (arg0 at entry) +0x7ef8.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0xd972520, `lw` at 0xd97256c, `lw` at 0xd972570.
@@ -10753,7 +10893,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9723ec targets 0xd9725cc, is taken when a1 == 0, and falls through when a1 != 0.
   The `beql` branch at 0xd9723f8 targets 0xd9725d0, is taken when v1(=[a1+300]) == 0, and falls through when v1(=[a1+300]) != 0; its branch-likely delay slot `lw ra,44(sp)` at 0xd9723fc runs only when taken and is annulled on fall-through.
   The `blez` branch at 0xd972408 targets 0xd972440, is taken when v0(=[a0+3732]) <= 0 (signed), and falls through when v0(=[a0+3732]) > 0 (signed).
-  The `bne` branch at 0xd972438 targets 0xd972414, is taken when s0(?) != v0(?), and falls through when s0(?) == v0(?).
+  The `bne` branch at 0xd972438 targets 0xd972414, is taken when s0(?) != v0(=[a0+3732]), and falls through when s0(?) == v0(=[a0+3732]).
   The `beq` branch at 0xd972448 targets 0xd97247c, is taken when v0(=[a0+32552]) == 0, and falls through when v0(=[a0+32552]) != 0.
   The `beq` branch at 0xd972458 targets 0xd97247c, is taken when v1(=[[a1+300]+8]) == 0, and falls through when v1(=[[a1+300]+8]) != 0.
   The `beql` branch at 0xd97247c targets 0xd9724bc, is taken when v0(=[a0+32552]) == 0, and falls through when v0(=[a0+32552]) != 0; its branch-likely delay slot `lw v0,4(s3)` at 0xd972480 runs only when taken and is annulled on fall-through.
@@ -10761,8 +10901,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd972498 targets 0xd9724bc, is taken when v0(=[[a1+300]+20]) == t8(=[[a1+300]+8]), and falls through when v0(=[[a1+300]+20]) != t8(=[[a1+300]+8]); its branch-likely delay slot `lw v0,4(s3)` at 0xd97249c runs only when taken and is annulled on fall-through.
   The `bltz` branch at 0xd9724bc targets 0xd972508, is taken when v0(=[[a1+300]+4]) < 0 (signed), and falls through when v0(=[[a1+300]+4]) >= 0 (signed).
   The `beq` branch at 0xd9724c4 targets 0xd972508, is taken when at(?) == 0, and falls through when at(?) != 0.
-  The `beq` branch at 0xd9724cc targets 0xd972508, is taken when t9(?) == 0, and falls through when t9(?) != 0.
-  The `bnel` branch at 0xd9724dc targets 0xd97250c, is taken when s3(=[a1+300]) != t1(?), and falls through when s3(=[a1+300]) == t1(?); its branch-likely delay slot `lw t8,32504(s1)` at 0xd9724e0 runs only when taken and is annulled on fall-through.
+  The `beq` branch at 0xd9724cc targets 0xd972508, is taken when t9(=[a0+32560]) == 0, and falls through when t9(=[a0+32560]) != 0.
+  The `bnel` branch at 0xd9724dc targets 0xd97250c, is taken when s3(=[a1+300]) != t1(=[([a0+32560] + ([[a1+300]+4] << 0x2))+524]), and falls through when s3(=[a1+300]) == t1(=[([a0+32560] + ([[a1+300]+4] << 0x2))+524]); its branch-likely delay slot `lw t8,32504(s1)` at 0xd9724e0 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd97250c targets 0xd97251c, is taken when s2(=a1+16) != t8(=[a0+32504]), and falls through when s2(=a1+16) == t8(=[a0+32504]); its branch-likely delay slot `lw a1,36(s3)` at 0xd972510 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd97251c targets 0xd9725a0, is taken when a1(=[[a1+300]+36]) == 0, and falls through when a1(=[[a1+300]+36]) != 0; its branch-likely delay slot `lw t9,12(s1)` at 0xd972520 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd972528 targets 0xd972548, is taken when a0(=[[[a1+300]+36]+148]) == 0, and falls through when a0(=[[[a1+300]+36]+148]) != 0; its branch-likely delay slot `lw a0,152(a1)` at 0xd97252c runs only when taken and is annulled on fall-through.
@@ -10871,16 +11011,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x30ec, including `sw` at 0xd972ce0, `sw` at 0xd972cf0.
   The `jalr` at 0xd972818 calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=0x0.
   The `jalr` at 0xd97284c calls __glIsTextureConsistent [0xda20d08] with a0=a0 at entry (arg0), a1=0x806f, a2=[a0+1792], a3=0x0.
-  The `jalr` at 0xd972878 calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd972878 calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=[a0+1792], a3=0x0.
   The `jalr` at 0xd9728a4 calls __glIsTextureConsistent [0xda20d08] with a0=a0 at entry (arg0), a1=0xde1, a2=[a0+1792], a3=0x0.
-  The `jalr` at 0xd9728cc calls __glLookUpTextureParams [0xda1d100] with a0=a0 at entry (arg0), a1=0xde1, a2=?, a3=?.
+  The `jalr` at 0xd9728cc calls __glLookUpTextureParams [0xda1d100] with a0=a0 at entry (arg0), a1=0xde1, a2=[a0+1792], a3=0x0.
   The `jalr` at 0xd9728e4 calls __glLookUpTexture [0xda1d19c] with a0=a0 at entry (arg0), a1=0xde1, a2=?, a3=?.
   The `jalr` at 0xd972918 calls __glIsTextureConsistent [0xda20d08] with a0=a0 at entry (arg0), a1=0xde0, a2=[a0+1792], a3=0x0.
-  The `jalr` at 0xd972940 calls __glLookUpTextureParams [0xda1d100] with a0=a0 at entry (arg0), a1=0xde0, a2=?, a3=?.
+  The `jalr` at 0xd972940 calls __glLookUpTextureParams [0xda1d100] with a0=a0 at entry (arg0), a1=0xde0, a2=[a0+1792], a3=0x0.
   The `jalr` at 0xd972958 calls __glLookUpTexture [0xda1d19c] with a0=a0 at entry (arg0), a1=0xde0, a2=?, a3=?.
-  The `jalr` at 0xd972a2c calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd972a64 calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd972cdc calls crmSetTextureParam [0xd9717e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd972a2c calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=[a0+1792], a3=?.
+  The `jalr` at 0xd972a64 calls __glGenericPickTextureProcs [0xd9f4050] with a0=a0 at entry (arg0), a1=?, a2=[a0+1792], a3=?.
+  The `jalr` at 0xd972cdc calls crmSetTextureParam [0xd9717e0] with a0=a0 at entry (arg0), a1=?, a2=[a0+1792], a3=?.
   The `beql` branch at 0xd972800 targets 0xd97282c, is taken when t6(=[a0+32011]:1) == 0, and falls through when t6(=[a0+32011]:1) != 0; its branch-likely delay slot `lw a2,1792(a0)` at 0xd972804 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd972820 targets 0xd972cfc and is always taken.
   The `beq` branch at 0xd972834 targets 0xd972888, is taken when (a2(=[a0+1792]) & at(=0x40000000)) == 0, and falls through when (a2(=[a0+1792]) & at(=0x40000000)) != 0.
@@ -10893,7 +11033,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd97292c targets 0xd972974, is taken when v0(=ret(__glIsTextureConsistent)) == 0, and falls through when v0(=ret(__glIsTextureConsistent)) != 0.
   The `beq` branch at 0xd972974 targets 0xd972a3c, is taken when a3(?) == 0, and falls through when a3(?) != 0.
   The `beql` branch at 0xd972984 targets 0xd972998, is taken when t4(=[a0+5864]) == 0, and falls through when t4(=[a0+5864]) != 0; its branch-likely delay slot `mtc1 zero,$f0` at 0xd972988 runs only when taken and is annulled on fall-through.
-  The `bltzl` branch at 0xd97298c targets 0xd972a20, is taken when t6(?) < 0 (signed), and falls through when t6(?) >= 0 (signed); its branch-likely delay slot `lbu t7,32090(a0)` at 0xd972990 runs only when taken and is annulled on fall-through.
+  The `bltzl` branch at 0xd97298c targets 0xd972a20, is taken when t6(=([a0+1792] << 0x0)) < 0 (signed), and falls through when t6(=([a0+1792] << 0x0)) >= 0 (signed); its branch-likely delay slot `lbu t7,32090(a0)` at 0xd972990 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd9729a0 targets 0xd972a20, is taken when not (f0 == f4 (c.eq.s at 0xd97299c)), and falls through when f0 == f4 (c.eq.s at 0xd97299c); its branch-likely delay slot `lbu t7,32090(a0)` at 0xd9729a4 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd9729b0 targets 0xd972a20, is taken when not (f0 == f6 (c.eq.s at 0xd9729ac)), and falls through when f0 == f6 (c.eq.s at 0xd9729ac); its branch-likely delay slot `lbu t7,32090(a0)` at 0xd9729b4 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xd9729c0 targets 0xd972a20, is taken when not (f0 == f8 (c.eq.s at 0xd9729bc)), and falls through when f0 == f8 (c.eq.s at 0xd9729bc); its branch-likely delay slot `lbu t7,32090(a0)` at 0xd9729c4 runs only when taken and is annulled on fall-through.
@@ -10907,9 +11047,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd972a4c targets 0xd972a78, is taken when t0(?) == 0, and falls through when t0(?) != 0; its branch-likely delay slot `and v0,a2,at` at 0xd972a50 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd972a6c targets 0xd972cfc and is always taken.
   The `beq` branch at 0xd972a78 targets 0xd972af0, is taken when v0(?) == 0, and falls through when v0(?) != 0.
-  The `bgez` branch at 0xd972a80 targets 0xd972af0, is taken when t3(?) >= 0 (signed), and falls through when t3(?) < 0 (signed).
-  The `bltz` branch at 0xd972a88 targets 0xd972af0, is taken when t4(?) < 0 (signed), and falls through when t4(?) >= 0 (signed).
-  The `bltz` branch at 0xd972a90 targets 0xd972af0, is taken when t5(?) < 0 (signed), and falls through when t5(?) >= 0 (signed).
+  The `bgez` branch at 0xd972a80 targets 0xd972af0, is taken when t3(=([a0+1792] << 0xc)) >= 0 (signed), and falls through when t3(=([a0+1792] << 0xc)) < 0 (signed).
+  The `bltz` branch at 0xd972a88 targets 0xd972af0, is taken when t4(=([a0+1792] << 0xb)) < 0 (signed), and falls through when t4(=([a0+1792] << 0xb)) >= 0 (signed).
+  The `bltz` branch at 0xd972a90 targets 0xd972af0, is taken when t5(=([a0+1792] << 0xa)) < 0 (signed), and falls through when t5(=([a0+1792] << 0xa)) >= 0 (signed).
   The `bne` branch at 0xd972aa4 targets 0xd972af0, is taken when t6(=[a0+2108]) != v1(=[a0+1984]), and falls through when t6(=[a0+2108]) == v1(=[a0+1984]).
   The `beq` branch at 0xd972aac targets 0xd972acc, is taken when v1(=[a0+1984]) == at(=0x2400), and falls through when v1(=[a0+1984]) != at(=0x2400).
   The `beq` branch at 0xd972ab4 targets 0xd972ad8, is taken when v1(=[a0+1984]) == at(=0x2401), and falls through when v1(=[a0+1984]) != at(=0x2401).
@@ -10919,9 +11059,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd972adc targets 0xd972c8c and is always taken.
   The `beq` branch at 0xd972ae8 targets 0xd972c8c and is always taken.
   The `bne` branch at 0xd972af0 targets 0xd972c84, is taken when v0(?) != 0, and falls through when v0(?) == 0.
-  The `bltz` branch at 0xd972af8 targets 0xd972c84, is taken when t0(?) < 0 (signed), and falls through when t0(?) >= 0 (signed).
-  The `bltz` branch at 0xd972b00 targets 0xd972c84, is taken when t1(?) < 0 (signed), and falls through when t1(?) >= 0 (signed).
-  The `bltz` branch at 0xd972b08 targets 0xd972c84, is taken when t2(?) < 0 (signed), and falls through when t2(?) >= 0 (signed).
+  The `bltz` branch at 0xd972af8 targets 0xd972c84, is taken when t0(=([a0+1792] << 0xc)) < 0 (signed), and falls through when t0(=([a0+1792] << 0xc)) >= 0 (signed).
+  The `bltz` branch at 0xd972b00 targets 0xd972c84, is taken when t1(=([a0+1792] << 0xb)) < 0 (signed), and falls through when t1(=([a0+1792] << 0xb)) >= 0 (signed).
+  The `bltz` branch at 0xd972b08 targets 0xd972c84, is taken when t2(=([a0+1792] << 0xa)) < 0 (signed), and falls through when t2(=([a0+1792] << 0xa)) >= 0 (signed).
   The `beq` branch at 0xd972b18 targets 0xd972c78, is taken when t3(=[a0+1744]) == at(=0x1702), and falls through when t3(=[a0+1744]) != at(=0x1702).
   The `bc1f` branch at 0xd972b34 targets 0xd972c78, is taken when not (f2(=0x3ff0000000000000) == f10 (c.eq.d at 0xd972b30)), and falls through when f2(=0x3ff0000000000000) == f10 (c.eq.d at 0xd972b30).
   The `bc1f` branch at 0xd972b4c targets 0xd972c78, is taken when not (f0 == f18 (c.eq.d at 0xd972b48)), and falls through when f0 == f18 (c.eq.d at 0xd972b48).
@@ -11183,9 +11323,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd973b8c calls __glCrmFlushAndConfirm [0xd943124] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd973bc4 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd973c30 calls dmBufferFree with a0=?, a1=?, a2=[a2+236], a3=0x0.
-  The `jalr` at 0xd973c74 calls dmParamsDestroy with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd973cc8 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xd973d08 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd973c74 calls dmParamsDestroy with a0=?, a1=?, a2=[a2+236], a3=?.
+  The `jalr` at 0xd973cc8 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=[a2+236], a3=?.
+  The `jalr` at 0xd973d08 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=[a2+236], a3=?.
   The `jalr` at 0xd973dfc calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd973e38 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd973e68 calls __glSetError [0xd9d02a4] with a0=0x505, a1=?, a2=?, a3=?.
@@ -11215,7 +11355,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd973bac targets 0xd973be4, is taken when a1(?) == 0, and falls through when a1(?) != 0; its branch-likely delay slot `lw a1,36(t2)` at 0xd973bb0 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd973be4 targets 0xd973dac, is taken when a1(?) == 0, and falls through when a1(?) != 0; its branch-likely delay slot `lw t9,180(sp)` at 0xd973be8 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd973bf8 targets 0xd973da8, is taken when (t8(?) & 0x80) == 0, and falls through when (t8(?) & 0x80) != 0.
-  The `bnel` branch at 0xd973c08 targets 0xd974228, is taken when t7(?) != 0, and falls through when t7(?) == 0; its branch-likely delay slot `or v0,zero,zero` at 0xd973c0c runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd973c08 targets 0xd974228, is taken when t7(=(((a3 << 0x3) + a3) << 0x2)) != 0, and falls through when t7(=(((a3 << 0x3) + a3) << 0x2)) == 0; its branch-likely delay slot `or v0,zero,zero` at 0xd973c0c runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd973c14 targets 0xd973c58, is taken when a0(?) == 0, and falls through when a0(?) != 0; its branch-likely delay slot `lw a0,152(a1)` at 0xd973c18 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd973c58 targets 0xd973c9c, is taken when a0(?) == 0, and falls through when a0(?) != 0; its branch-likely delay slot `lw t9,156(a1)` at 0xd973c5c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd973ca0 targets 0xd973cec, is taken when t9(?) == 0, and falls through when t9(?) != 0.
@@ -11226,7 +11366,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd973d88 targets 0xd973da0, is taken when a3(?) != 0, and falls through when a3(?) == 0.
   The `bnel` branch at 0xd973d98 targets 0xd973dac, is taken when t7(=[a2+236]) != at(=0x6), and falls through when t7(=[a2+236]) == at(=0x6); its branch-likely delay slot `lw t9,180(sp)` at 0xd973d9c runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd973db4 targets 0xd973de4, is taken when (t9(?) & 0x1) == 0, and falls through when (t9(?) & 0x1) != 0; its branch-likely delay slot `lw a1,20(t1)` at 0xd973db8 runs only when taken and is annulled on fall-through.
-  The `blezl` branch at 0xd973dc0 targets 0xd973de4, is taken when a2(?) <= 0 (signed), and falls through when a2(?) > 0 (signed); its branch-likely delay slot `lw a1,20(t1)` at 0xd973dc4 runs only when taken and is annulled on fall-through.
+  The `blezl` branch at 0xd973dc0 targets 0xd973de4, is taken when a2(=ret(crmComputeTexLevelSize)) <= 0 (signed), and falls through when a2(=ret(crmComputeTexLevelSize)) > 0 (signed); its branch-likely delay slot `lw a1,20(t1)` at 0xd973dc4 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd973e18 targets 0xd973e80, is taken when a2(?) == 0, and falls through when a2(?) != 0.
   The `bne` branch at 0xd973e50 targets 0xd973e80, is taken when v0(=ret(?)) != 0, and falls through when v0(=ret(?)) == 0.
   The `beq` branch at 0xd973e8c targets 0xd973ec0, is taken when (t7(?) & 0x2) == 0, and falls through when (t7(?) & 0x2) != 0.
@@ -11254,7 +11394,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd974160 targets 0xd9741f0 and is always taken.
   The `bne` branch at 0xd974188 targets 0xd97416c, is taken when t5(?) != t7(=sp-16), and falls through when t5(?) == t7(=sp-16).
   The `bne` branch at 0xd9741c0 targets 0xd9741a4, is taken when t7(?) != t9(=sp-216), and falls through when t7(?) == t9(=sp-216).
-  The `bnel` branch at 0xd9741f8 targets 0xd974228, is taken when t7(?) != 0, and falls through when t7(?) == 0; its branch-likely delay slot `lw v0,116(sp)` at 0xd9741fc runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd9741f8 targets 0xd974228, is taken when t7(=(((a3 << 0x3) + a3) << 0x2)) != 0, and falls through when t7(=(((a3 << 0x3) + a3) << 0x2)) == 0; its branch-likely delay slot `lw v0,116(sp)` at 0xd9741fc runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd974214 targets 0xd974228, is taken when t6(?) >= v0(?) (signed), and falls through when t6(?) < v0(?) (signed); its branch-likely delay slot `lw v0,116(sp)` at 0xd974218 runs only when taken and is annulled on fall-through.
   The return at 0xd974230 has v0 = one of 0x0, ?.
   The instructions from 0xd973a50 to 0xd973a50 are not reached by any path from the entry, and their branches are not listed.
@@ -11729,16 +11869,17 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 3504 bytes.
   The `lw` at 0xd9766ac loads 4 bytes from a0 (arg0 at entry) +0x7de4.
   The `lw` at 0xd9766dc loads 4 bytes from a1 (arg1 at entry) +0x11c.
-  The `lw` at 0xd9766e8 loads 4 bytes from [a1+284] +0x0.
+  2 such `lw` accesses load 4 bytes from [a1+284] +0x0, including `lw` at 0xd9766e8, `lw` at 0xd976f50.
   The `lw` at 0xd9766fc loads 4 bytes from [a1+284] +0x20.
   The `lw` at 0xd976718 loads 4 bytes from a1 (arg1 at entry) +0xe4.
-  19 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd976728, `lw` at 0xd97676c, `lw` at 0xd976774.
+  11 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd976728, `lw` at 0xd97676c, `lw` at 0xd976774.
   The `lbu` at 0xd976734 loads 1 byte from a0 (arg0 at entry) +0x9d8.
   The `lbu` at 0xd976738 loads 1 byte from a0 (arg0 at entry) +0x9d9.
   The `lbu` at 0xd97673c loads 1 byte from a0 (arg0 at entry) +0x9da.
   The `lbu` at 0xd976744 loads 1 byte from a0 (arg0 at entry) +0x9db.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7f2c, including `sw` at 0xd976764, `sw` at 0xd9768b4, `sw` at 0xd9768bc.
   The `lw` at 0xd9767a8 loads 4 bytes from table(0xda438f0) +0x0.
+  The `lw` at 0xd976900 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x10.
   The `lw` at 0xd976948 loads 4 bytes from abs 0xda4d2f4.
   The `lw` at 0xd9769b0 loads 4 bytes from a0 (arg0 at entry) +0x4a8.
   The `lw` at 0xd9769c8 loads 4 bytes from a0 (arg0 at entry) +0x4b4.
@@ -11751,12 +11892,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd976c24 loads 4 bytes from a1 (arg1 at entry) +0xe8.
   The `lw` at 0xd976c54 loads 4 bytes from table(0xda4395c) +0x0.
   The `sw` at 0xd976d68 stores 4 bytes to (sp-576 + (ret(__glGenericPickCopyImageSpan) << 0x2)) +0x168.
-  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd976e6c, `sw` at 0xd976ea4, `sw` at 0xd976f4c.
+  2 such `lw` accesses load 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0, including `lw` at 0xd976db4, `lw` at 0xd977378.
+  2 such `lw` accesses load 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x4, including `lw` at 0xd976dd4, `lw` at 0xd976f28.
+  The `lw` at 0xd976de4 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x20.
+  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd976e6c, `sw` at 0xd976ea4, `sw` at 0xd976fb8.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7f00, including `sw` at 0xd976ecc, `sw` at 0xd976f1c, `sw` at 0xd9770c8.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7f08, including `sw` at 0xd976ee8, `sw` at 0xd9770cc.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7f00, including `lw` at 0xd976efc, `lw` at 0xd976f10.
   The `sw` at 0xd976f0c stores 4 bytes to (a0 + ([a0+32512] << 0x2)) +0x7f08.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7f04, including `sw` at 0xd976f38, `sw` at 0xd9770d0.
+  The `sw` at 0xd976f4c stores 4 bytes to ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0.
+  The `sw` at 0xd976f5c stores 4 bytes to [a1+284] +0x0.
+  The `lw` at 0xd976f78 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x14.
   3 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x7dd1, including `lbu` at 0xd976fec, `lbu` at 0xd977094, `lbu` at 0xd977360.
   The `lw` at 0xd97714c loads 4 bytes from a0 (arg0 at entry) +0x7de8.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x7de4, including `sw` at 0xd9771ec, `sw` at 0xd977244.
@@ -11861,12 +12008,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd976cb0 targets 0xd976cf4 and is always taken.
   The `beq` branch at 0xd976cd4 targets 0xd976cf4 and is always taken.
   The `beq` branch at 0xd976d4c targets 0xd976d74, is taken when s0(=one of 0x0, 0xd9743c4) == 0, and falls through when s0(=one of 0x0, 0xd9743c4) != 0.
-  The `bne` branch at 0xd976d5c targets 0xd976d74, is taken when t6(?) != at(=-0x1), and falls through when t6(?) == at(=-0x1).
+  The `bne` branch at 0xd976d5c targets 0xd976d74 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0xd976d80 targets 0xd976da0, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beql` branch at 0xd976d8c targets 0xd976da4, is taken when t3(?) == 0, and falls through when t3(?) != 0; its branch-likely delay slot `lw t4,200(sp)` at 0xd976d90 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd976d98 targets 0xd976da8 and is always taken.
-  The `beq` branch at 0xd976dc8 targets 0xd976f3c, is taken when (v0(?) & 0x2) == 0, and falls through when (v0(?) & 0x2) != 0.
-  The `beq` branch at 0xd976e00 targets 0xd976e80, is taken when (v0(?) & 0x4) == 0, and falls through when (v0(?) & 0x4) != 0.
+  The `beq` branch at 0xd976dc8 targets 0xd976f3c, is taken when (v0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) == 0, and falls through when (v0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) != 0.
+  The `beq` branch at 0xd976e00 targets 0xd976e80, is taken when (v0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x4) == 0, and falls through when (v0(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x4) != 0.
   The `beq` branch at 0xd976e78 targets 0xd976ec0 and is always taken.
   The `bnel` branch at 0xd976ed4 targets 0xd976ee0, is taken when v0(?) < s3(?) (signed), and falls through when v0(?) >= s3(?) (signed); its branch-likely delay slot `or s0,v0,zero` at 0xd976ed8 runs only when taken and is annulled on fall-through.
   The `blez` branch at 0xd976ee4 targets 0xd976f20, is taken when s3(?) <= 0 (signed), and falls through when s3(?) > 0 (signed).
@@ -11891,7 +12038,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd9770a0 targets 0xd9770ac, is taken when t7(=[a0+32209]:1) == 0, and falls through when t7(=[a0+32209]:1) != 0.
   The `bne` branch at 0xd9770b4 targets 0xd977054, is taken when 0 < s8(?) (signed), and falls through when 0 >= s8(?) (signed).
   The `beq` branch at 0xd9770bc targets 0xd9773ec and is always taken.
-  The `bne` branch at 0xd977118 targets 0xd977134, is taken when t6(?) != at(=-0x1), and falls through when t6(?) == at(=-0x1).
+  The `bne` branch at 0xd977118 targets 0xd977134 and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `beq` branch at 0xd97712c targets 0xd977140 and is always taken.
   The `beq` branch at 0xd977154 targets 0xd9771b8, is taken when t5(=[a0+32232]) == 0, and falls through when t5(=[a0+32232]) != 0.
   The `bne` branch at 0xd97715c targets 0xd9771b8, is taken when t8(?) != 0, and falls through when t8(?) == 0.
@@ -11910,13 +12057,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bnel` branch at 0xd9772e4 targets 0xd9772f0, is taken when (s1(?) & 0x1) != 0, and falls through when (s1(?) & 0x1) == 0; its branch-likely delay slot `or s0,s4,zero` at 0xd9772e8 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd97731c targets 0xd9772e0, is taken when s1(?) < t8(?) (signed), and falls through when s1(?) >= t8(?) (signed).
   The `beq` branch at 0xd977368 targets 0xd97738c, is taken when t7(=[a0+32209]:1) == 0, and falls through when t7(=[a0+32209]:1) != 0.
-  The `bnel` branch at 0xd977380 targets 0xd977390, is taken when (t5(?) & 0x2) != 0, and falls through when (t5(?) & 0x2) == 0; its branch-likely delay slot `lw t6,696(sp)` at 0xd977384 runs only when taken and is annulled on fall-through.
+  The `bnel` branch at 0xd977380 targets 0xd977390, is taken when (t5(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) != 0, and falls through when (t5(=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x2) == 0; its branch-likely delay slot `lw t6,696(sp)` at 0xd977384 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd977398 targets 0xd9772cc, is taken when s0(?) != 0, and falls through when s0(?) == 0.
   The `bnel` branch at 0xd9773a8 targets 0xd9773ec, is taken when t8(?) < 0x2 (signed), and falls through when t8(?) >= 0x2 (signed); its branch-likely delay slot `lw ra,92(sp)` at 0xd9773ac runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd9773cc targets 0xd9773ec, is taken when t4(?) < 0x3 (signed), and falls through when t4(?) >= 0x3 (signed); its branch-likely delay slot `lw ra,92(sp)` at 0xd9773d0 runs only when taken and is annulled on fall-through.
   The return at 0xd977410 has v0 = one of ?, [a0+2520]:1, ret(?).
   The instructions from 0xd976a28 to 0xd976a28 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xd976afc to 0xd976afc are not reached by any path from the entry, and their branches are not listed.
+  The instructions from 0xd977134 to 0xd97713c are not reached by any path from the entry, and their branches are not listed.
   The indirect jump at 0xd976c5c uses the jump table at 0xda4395c with targets 0xd976c80, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c64, 0xd976cf4, 0xd976cf4, 0xd976c80, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c64, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c9c, 0xd976cb8, 0xd976cdc.
   The indirect jump at 0xd9767b0 uses the jump table at 0xda438f0 with targets 0xd9767c8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9767b8, 0xd9768a8, 0xd9768a8, 0xd9767d8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9767b8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd9768a8, 0xd976838, 0xd9767f8, 0xd976878.
   The indirect jump at 0xd976c5c uses the jump table at 0xda4395c with targets 0xd976c80, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c64, 0xd976cf4, 0xd976cf4, 0xd976c80, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c64, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976cf4, 0xd976c9c, 0xd976cb8, 0xd976cdc.
@@ -11992,19 +12140,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lbu` at 0xd9778a8 loads 1 byte from a0 (arg0 at entry) +0x7dd1.
   The `lw` at 0xd9778c8 loads 4 bytes from a1 (arg1 at entry) +0xe4.
   The `lw` at 0xd9778d4 loads 4 bytes from a1 (arg1 at entry) +0x11c.
-  22 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9778e0, `lw` at 0xd9778f8, `lw` at 0xd977904.
+  8 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9778e0, `lw` at 0xd9778f8, `lw` at 0xd977904.
   The `lw` at 0xd9778e8 loads 4 bytes from [a1+284] +0x20.
   The `lw` at 0xd977914 loads 4 bytes from a0 (arg0 at entry) +0x7d3c.
   The `lw` at 0xd97791c loads 4 bytes from [a0+32060] +0x0.
   The `lw` at 0xd977928 loads 4 bytes from [a0+32060] +0x1c.
-  The `lw` at 0xd97793c loads 4 bytes from [[a0+32060]+28] +0x94.
+  4 such `lw` accesses load 4 bytes from [[a0+32060]+28] +0x94, including `lw` at 0xd97793c, `lw` at 0xd977a90, `lw` at 0xd977b50.
   The `lw` at 0xd977940 loads 4 bytes from [[a0+32060]+28] +0x9c.
-  The `lw` at 0xd977954 loads 4 bytes from [[a0+32060]+28] +0x8c.
-  The `lw` at 0xd977960 loads 4 bytes from [[a0+32060]+28] +0x90.
+  2 such `lw` accesses load 4 bytes from [[a0+32060]+28] +0x8c, including `lw` at 0xd977954, `lw` at 0xd977b38.
+  2 such `lw` accesses load 4 bytes from [[a0+32060]+28] +0x90, including `lw` at 0xd977960, `lw` at 0xd977b44.
   The `lw` at 0xd977970 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x10.
-  The `lw` at 0xd977974 loads 4 bytes from [[[a0+32060]+28]+156] +0xc.
+  2 such `lw` accesses load 4 bytes from [[[a0+32060]+28]+156] +0xc, including `lw` at 0xd977974, `lw` at 0xd977b94.
   The `lbu` at 0xd977984 loads 1 byte from a1 (arg1 at entry) +0xd8.
-  The `lw` at 0xd977988 loads 4 bytes from [[[a0+32060]+28]+156] +0x10.
+  3 such `lw` accesses load 4 bytes from [[[a0+32060]+28]+156] +0x10, including `lw` at 0xd977988, `lw` at 0xd977a28, `lw` at 0xd977b9c.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6e30, including `lw` at 0xd9779d4, `lw` at 0xd977a24.
   2 such `lw` accesses load 4 bytes from [a1+284] +0x0, including `lw` at 0xd9779dc, `lw` at 0xd9779f8.
   11 such `lw` accesses load 4 bytes from [a1+284] +0x24, including `lw` at 0xd977a0c, `lw` at 0xd977ae4, `lw` at 0xd977af0.
@@ -12014,20 +12162,26 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd977a94 loads 4 bytes from ([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x20.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4, including `lw` at 0xd977ab4, `lw` at 0xd977acc.
   The `sw` at 0xd977ae8 stores 4 bytes to [[a1+284]+36] +0x9c.
-  4 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd977b28, `sw` at 0xd977c24, `sw` at 0xd977c30.
+  The `lw` at 0xd977b04 loads 4 bytes from [[a1+284]+36] +0x94.
+  2 such `sw` accesses store 4 bytes to [[a1+284]+36] +0x94, including `sw` at 0xd977b28, `sw` at 0xd977b54.
   The `sw` at 0xd977b3c stores 4 bytes to [[a1+284]+36] +0x8c.
   The `sw` at 0xd977b48 stores 4 bytes to [[a1+284]+36] +0x90.
-  The `sw` at 0xd977b54 stores 4 bytes to [[a1+284]+36] +0x94.
+  The `lw` at 0xd977b60 loads 4 bytes from [[a0+32060]+28] +0x98.
   The `lw` at 0xd977b68 loads 4 bytes from [[a1+284]+36] +0x98.
   3 such `lw` accesses load 4 bytes from [[a1+284]+36] +0x9c, including `lw` at 0xd977b74, `lw` at 0xd977c5c, `lw` at 0xd977c88.
+  The `lw` at 0xd977b78 loads 4 bytes from [[[a0+32060]+28]+156] +0x0.
   The `sw` at 0xd977b80 stores 4 bytes to [[[a1+284]+36]+156] +0x0.
+  The `lw` at 0xd977b84 loads 4 bytes from [[[a0+32060]+28]+156] +0x4.
   The `sw` at 0xd977b88 stores 4 bytes to [[[a1+284]+36]+156] +0x4.
+  The `lw` at 0xd977b8c loads 4 bytes from [[[a0+32060]+28]+156] +0x8.
   The `sw` at 0xd977b90 stores 4 bytes to [[[a1+284]+36]+156] +0x8.
   The `sw` at 0xd977b98 stores 4 bytes to [[[a1+284]+36]+156] +0xc.
   The `sw` at 0xd977ba0 stores 4 bytes to [[[a1+284]+36]+156] +0x10.
+  The `lw` at 0xd977ba4 loads 4 bytes from [[[a0+32060]+28]+156] +0x14.
   The `sw` at 0xd977ba8 stores 4 bytes to [[[a1+284]+36]+156] +0x14.
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0xec, including `lw` at 0xd977bc4, `lw` at 0xd977c98.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7b10, including `lw` at 0xd977c04, `lw` at 0xd977cbc, `lw` at 0xd977cf4.
+  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd977c24, `sw` at 0xd977c30, `sw` at 0xd977c50.
   2 such `lw` accesses load 4 bytes from [[[a1+284]+36]+156] +0x10, including `lw` at 0xd977c64, `lw` at 0xd977c8c.
   3 such `lw` accesses load 4 bytes from [a1+284] +0x8, including `lw` at 0xd977c94, `lw` at 0xd977ca8, `lw` at 0xd977ce0.
   The `lw` at 0xd977cd4 loads 4 bytes from [a1+284] +0x14.
@@ -12040,13 +12194,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd9779bc calls dmBufferAttach with a0=[[[a0+32060]+28]+148], a1=[[a0+32060]+28], a2=?, a3=[[[a0+32060]+28]+148].
   The `jalr` at 0xd9779e8 calls __glCrmFlushAndConfirm [0xd943124] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
   The `jalr` at 0xd977a48 calls crmDefineTexture [0xd97139c] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0xd977a9c calls printf with a0=0xda43690, a1=?, a2=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+32], a3=?.
+  The `jalr` at 0xd977a9c calls printf with a0=0xda43690, a1=[[[a0+32060]+28]+148], a2=[([[a1+284]+32] + (((a2 << 0x3) + a2) << 0x2))+32], a3=?.
   The `jalr` at 0xd977abc calls (unknown callee) with a0=a0 at entry (arg0), a1=0x1, a2=0xa0, a3=?.
   The `jalr` at 0xd977ad8 calls (unknown callee) with a0=a0 at entry (arg0), a1=0x1, a2=0x18, a3=?.
   The `jalr` at 0xd977af4 calls dmParamsCreate with a0=[[a1+284]+36]+152, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd977b18 calls dmBufferFree with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd977b64 calls dmParamsCopyAllElems with a0=?, a1=[[[a1+284]+36]+152], a2=?, a3=?.
-  The `jalr` at 0xd977bb4 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd977b18 calls dmBufferFree with a0=[[[a1+284]+36]+148], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd977b64 calls dmParamsCopyAllElems with a0=[[[a0+32060]+28]+152], a1=[[[a1+284]+36]+152], a2=?, a3=?.
+  The `jalr` at 0xd977bb4 calls dmBufferMapData with a0=[[[a0+32060]+28]+148], a1=?, a2=?, a3=?.
   The `jalr` at 0xd977c10 calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5602, a2=?, a3=?.
   The `jalr` at 0xd977cc4 calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5602, a2=[[a1+284]+8], a3=?.
   The `jalr` at 0xd977cfc calls __glCrmTexIoctl [0xd970d00] with a0=[a0+31504], a1=0x5602, a2=[[a1+284]+20], a3=?.
@@ -12080,9 +12234,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd977a54 targets 0xd977a74, is taken when v0(=ret(crmDefineTexture)) != 0, and falls through when v0(=ret(crmDefineTexture)) == 0.
   The `beq` branch at 0xd977a6c targets 0xd977d28 and is always taken.
   The `beq` branch at 0xd977a80 targets 0xd977aac, is taken when t6(=[0xda4d2f0]) == 0, and falls through when t6(=[0xda4d2f0]) != 0.
-  The `bne` branch at 0xd977aac targets 0xd977b04, is taken when v1(?) != 0, and falls through when v1(?) == 0.
+  The `bne` branch at 0xd977aac targets 0xd977b04, is taken when v1(=[[a1+284]+36]) != 0, and falls through when v1(=[[a1+284]+36]) == 0.
   The `beq` branch at 0xd977afc targets 0xd977b30 and is always taken.
-  The `beql` branch at 0xd977b08 targets 0xd977b30, is taken when a0(?) == 0, and falls through when a0(?) != 0; its branch-likely delay slot `sw v1,36(s1)` at 0xd977b0c runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd977b08 targets 0xd977b30, is taken when a0(=[[[a1+284]+36]+148]) == 0, and falls through when a0(=[[[a1+284]+36]+148]) != 0; its branch-likely delay slot `sw v1,36(s1)` at 0xd977b0c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977bd8 targets 0xd977c80, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beql` branch at 0xd977be8 targets 0xd977c4c, is taken when (v0(?) & 0x2) == 0, and falls through when (v0(?) & 0x2) != 0; its branch-likely delay slot `addiu t3,zero,-37` at 0xd977bec runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977bf8 targets 0xd977c28, is taken when v0(?) == 0, and falls through when v0(?) != 0.
@@ -12103,19 +12257,21 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from abs 0x1018, including `lw` at 0xd977dc4, `lw` at 0xd977e8c.
   2 such `lw` accesses load 4 bytes from abs 0x1010, including `lw` at 0xd977dd0, `lw` at 0xd977e98.
   2 such `lw` accesses load 4 bytes from ret(__glLookUpTextureObject) +0x0, including `lw` at 0xd977df8, `lw` at 0xd977ec0.
-  4 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd977e58, `sw` at 0xd977e5c, `sw` at 0xd977e88.
+  The `sw` at 0xd977e58 stores 4 bytes to ret(__glLookUpTextureParams) +0x4.
+  The `sw` at 0xd977e5c stores 4 bytes to ret(__glLookUpTextureParams) +0x0.
   The `sw` at 0xd977e64 stores 4 bytes to ret(__glLookUpTexture) +0x4.
   The `sw` at 0xd977e6c stores 4 bytes to ret(__glLookUpTexture) +0x8.
   2 such `sw` accesses store 4 bytes to abs 0x1018, including `sw` at 0xd977e74, `sw` at 0xd977f38.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd977e78, `lw` at 0xd977f3c.
-  2 such `sb` accesses store 1 byte to ?, including `sb` at 0xd977f20, `sb` at 0xd977f2c.
+  2 such `lw` accesses load 4 bytes from [0x1010] +0x2dec, including `lw` at 0xd977e78, `lw` at 0xd977f3c.
+  2 such `sw` accesses store 4 bytes to [0x1010] +0x2dec, including `sw` at 0xd977e88, `sw` at 0xd977f4c.
+  2 such `sb` accesses store 1 byte to ret(__glLookUpTextureParams) +0xd4, including `sb` at 0xd977f20, `sb` at 0xd977f2c.
   2 such `sb` accesses store 1 byte to ret(__glLookUpTexture) +0xd8, including `sb` at 0xd977f28, `sb` at 0xd977f30.
   The `jalr` at 0xd977de4 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=a0 at entry (arg0).
-  The `jalr` at 0xd977e14 calls __glLookUpTextureParams [0xda1d100] with a0=?, a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd977e2c calls __glLookUpTexture [0xda1d19c] with a0=?, a1=a0 at entry (arg0), a2=?, a3=?.
+  The `jalr` at 0xd977e14 calls __glLookUpTextureParams [0xda1d100] with a0=[0x1010], a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=?.
+  The `jalr` at 0xd977e2c calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=?.
   The `jalr` at 0xd977eac calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=a0 at entry (arg0).
-  The `jalr` at 0xd977edc calls __glLookUpTextureParams [0xda1d100] with a0=?, a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd977ef4 calls __glLookUpTexture [0xda1d19c] with a0=?, a1=a0 at entry (arg0), a2=?, a3=?.
+  The `jalr` at 0xd977edc calls __glLookUpTextureParams [0xda1d100] with a0=[0x1010], a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=?.
+  The `jalr` at 0xd977ef4 calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=?.
   The `beq` branch at 0xd977d60 targets 0xd977d74, is taken when a0 == at(=0xde0), and falls through when a0 != at(=0xde0).
   The `bnel` branch at 0xd977d6c targets 0xd977f54, is taken when a0 != at(=0xde1), and falls through when a0 == at(=0xde1); its branch-likely delay slot `or v0,zero,zero` at 0xd977d70 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977d7c targets 0xd977d9c, is taken when t6(=a1) == at(=0x2802), and falls through when t6(=a1) != at(=0x2802).
@@ -12130,7 +12286,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd977df0 targets 0xd977f50, is taken when v0(=ret(__glLookUpTextureObject)) == 0, and falls through when v0(=ret(__glLookUpTextureObject)) != 0.
   The `beql` branch at 0xd977e04 targets 0xd977f54, is taken when t8(=[ret(__glLookUpTextureObject)]) >= 0x3 (signed), and falls through when t8(=[ret(__glLookUpTextureObject)]) < 0x3 (signed); its branch-likely delay slot `or v0,zero,zero` at 0xd977e08 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977e3c targets 0xd977f50, is taken when v0(=ret(__glLookUpTexture)) == 0, and falls through when v0(=ret(__glLookUpTexture)) != 0.
-  The `beq` branch at 0xd977e44 targets 0xd977f50, is taken when v1(?) == 0, and falls through when v1(?) != 0.
+  The `beq` branch at 0xd977e44 targets 0xd977f50, is taken when v1(=ret(__glLookUpTextureParams)) == 0, and falls through when v1(=ret(__glLookUpTextureParams)) != 0.
   The `bnel` branch at 0xd977e54 targets 0xd977e6c, is taken when t9(=a1) != at(=0x2802), and falls through when t9(=a1) == at(=0x2802); its branch-likely delay slot `sw a2,4(v1)` at 0xd977e58 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977e60 targets 0xd977e70 and is always taken.
   The `beq` branch at 0xd977e84 targets 0xd977f54 and is always taken.
@@ -12138,7 +12294,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd977eb8 targets 0xd977f50, is taken when v0(=ret(__glLookUpTextureObject)) == 0, and falls through when v0(=ret(__glLookUpTextureObject)) != 0.
   The `beql` branch at 0xd977ecc targets 0xd977f54, is taken when t5(=[ret(__glLookUpTextureObject)]) >= 0x3 (signed), and falls through when t5(=[ret(__glLookUpTextureObject)]) < 0x3 (signed); its branch-likely delay slot `or v0,zero,zero` at 0xd977ed0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd977f04 targets 0xd977f50, is taken when v0(=ret(__glLookUpTexture)) == 0, and falls through when v0(=ret(__glLookUpTexture)) != 0.
-  The `beq` branch at 0xd977f0c targets 0xd977f50, is taken when v1(?) == 0, and falls through when v1(?) != 0.
+  The `beq` branch at 0xd977f0c targets 0xd977f50, is taken when v1(=ret(__glLookUpTextureParams)) == 0, and falls through when v1(=ret(__glLookUpTextureParams)) != 0.
   The `bne` branch at 0xd977f18 targets 0xd977f2c, is taken when t6(=a1) != at(=0x2802), and falls through when t6(=a1) == at(=0x2802).
   The `beq` branch at 0xd977f24 targets 0xd977f34 and is always taken.
   The `beq` branch at 0xd977f48 targets 0xd977f54 and is always taken.
@@ -12216,10 +12372,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd978240 calls __glim_BindTextureEXT [0xda30bec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a0 at entry (arg0), a3=a1 at entry (arg1).
   The `jalr` at 0xd978258 calls __glBindTexture [0xda309ac] with a0=[0x1010], a1=one of 0x0, 0x1, a2=a1 at entry (arg1), a3=a1 at entry (arg1).
   The `jalr` at 0xd97829c calls __glIsTextureConsistent [0xda20d08] with a0=[0x1010], a1=0xde1, a2=0x0, a3=?.
-  The `jalr` at 0xd9782bc calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=0xde1, a2=?, a3=?.
+  The `jalr` at 0xd9782bc calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=0xde1, a2=0x0, a3=?.
   The `jalr` at 0xd9782d4 calls __glLookUpTextureParams [0xda1d100] with a0=[0x1010], a1=0xde1, a2=?, a3=?.
   The `jalr` at 0xd97830c calls __glIsTextureConsistent [0xda20d08] with a0=[0x1010], a1=0xde0, a2=0x0, a3=?.
-  The `jalr` at 0xd97832c calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=0xde0, a2=?, a3=?.
+  The `jalr` at 0xd97832c calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=0xde0, a2=0x0, a3=?.
   The `jalr` at 0xd978344 calls __glLookUpTextureParams [0xda1d100] with a0=[0x1010], a1=0xde0, a2=?, a3=?.
   The `jalr` at 0xd9783b0 calls crmSetTextureParam [0xd9717e0] with a0=[0x1010], a1=?, a2=?, a3=?.
   The `beq` branch at 0xd97818c targets 0xd9781a8, is taken when t6(=[0xda4d308]) == 0, and falls through when t6(=[0xda4d308]) != 0.
@@ -12236,11 +12392,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd978248 targets 0xd9783d4 and is always taken.
   The `bgez` branch at 0xd978268 targets 0xd9783c0, is taken when t8(=[[0x1010]+32090]:2) >= 0 (signed), and falls through when t8(=[[0x1010]+32090]:2) < 0 (signed).
   The `bgez` branch at 0xd97827c targets 0xd9782ec, is taken when t0(=([[0x1010]+1792] << 0xe)) >= 0 (signed), and falls through when t0(=([[0x1010]+1792] << 0xe)) < 0 (signed).
-  The `bne` branch at 0xd978288 targets 0xd9782ec, is taken when a1(?) != at(=0x1), and falls through when a1(?) == at(=0x1).
+  The `bne` branch at 0xd978288 targets 0xd9782ec, is taken when a1(=one of 0x0, 0x1) != at(=0x1), and falls through when a1(=one of 0x0, 0x1) == at(=0x1).
   The `beq` branch at 0xd9782ac targets 0xd978358, is taken when v0(=ret(__glIsTextureConsistent)) == 0, and falls through when v0(=ret(__glIsTextureConsistent)) != 0.
   The `beq` branch at 0xd9782e4 targets 0xd978358 and is always taken.
   The `bgez` branch at 0xd9782f0 targets 0xd978358, is taken when t1(=([[0x1010]+1792] << 0xf)) >= 0 (signed), and falls through when t1(=([[0x1010]+1792] << 0xf)) < 0 (signed).
-  The `bne` branch at 0xd9782f8 targets 0xd978358, is taken when a1(?) != 0, and falls through when a1(?) == 0.
+  The `bne` branch at 0xd9782f8 targets 0xd978358, is taken when a1(=one of 0x0, 0x1) != 0, and falls through when a1(=one of 0x0, 0x1) == 0.
   The `beq` branch at 0xd97831c targets 0xd978358, is taken when v0(=ret(__glIsTextureConsistent)) == 0, and falls through when v0(=ret(__glIsTextureConsistent)) != 0.
   The `beql` branch at 0xd978358 targets 0xd9783c4, is taken when v1(?) == 0, and falls through when v1(?) != 0; its branch-likely delay slot `addiu t8,zero,2` at 0xd97835c runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd978370 targets 0xd9783c4, is taken when t3(?) != 0, and falls through when t3(?) == 0; its branch-likely delay slot `addiu t8,zero,2` at 0xd978374 runs only when taken and is annulled on fall-through.
@@ -12260,21 +12416,25 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9785c8 loads 4 bytes from table(0xda43a68) +0x0.
   The `lw` at 0xd97864c loads 4 bytes from ret(__glLookUpTexture) +0xe4.
   The `lw` at 0xd978658 loads 4 bytes from ret(__glLookUpTexture) +0x11c.
-  19 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd978664, `lw` at 0xd97867c, `lw` at 0xd97868c.
+  14 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd978664, `lw` at 0xd97867c, `lw` at 0xd97868c.
   The `lw` at 0xd97866c loads 4 bytes from [ret(__glLookUpTexture)+284] +0x20.
   3 such `lw` accesses load 4 bytes from ret(__glLookUpTexture) +0xe8, including `lw` at 0xd9786e0, `lw` at 0xd9787d4, `lw` at 0xd9787e0.
   The `lw` at 0xd9786f0 loads 4 bytes from table(0xda43a84) +0x0.
   2 such `lw` accesses load 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0xc, including `lw` at 0xd978790, `lw` at 0xd9787cc.
   The `lw` at 0xd9788d4 loads 4 bytes from ((table(-0x1) << 0x2) + sp-544) +0x168.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd9788dc, `sw` at 0xd978bcc.
+  The `sw` at 0xd9788dc stores 4 bytes to ?.
+  2 such `lw` accesses load 4 bytes from [0x1010] +0x0, including `lw` at 0xd978910, `lw` at 0xd978928.
   The `lw` at 0xd978940 loads 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x10.
   The `lw` at 0xd978950 loads 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x0.
   The `lw` at 0xd978984 loads 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x4.
   The `lw` at 0xd9789a0 loads 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x20.
   The `lw` at 0xd9789ac loads 4 bytes from ([[ret(__glLookUpTexture)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x14.
+  The `lw` at 0xd9789b8 loads 4 bytes from [0x1010] +0x77b8.
   The `lw` at 0xd9789c4 loads 4 bytes from [ret(__glLookUpTexture)+284] +0x0.
   2 such `lhu` accesses load 2 bytes from ?, including `lhu` at 0xd978a58, `lhu` at 0xd978ae8.
   2 such `sh` accesses store 2 bytes to ?, including `sh` at 0xd978a68, `sh` at 0xd978af8.
+  The `sw` at 0xd978bcc stores 4 bytes to [0x1010] +0x77b8.
+  2 such `lw` accesses load 4 bytes from [0x1010] +0xc, including `lw` at 0xd978c80, `lw` at 0xd978c98.
   The `jalr` at 0xd978450 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd978480 calls __glim_GetTexImage [0xd9dc0b4] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd9784b4 calls __glLookUpTexture [0xda1d19c] with a0=[0x1010], a1=a0 at entry (arg0), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12285,19 +12445,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd978618 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
   The `jalr` at 0xd978630 calls __glSetError [0xd9d02a4] with a0=0x500, a1=?, a2=?, a3=?.
   The `jalr` at 0xd9786bc calls __glim_GetTexImage [0xd9dc0b4] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd978808 calls __glInitImagePack [0xd9dc014] with a0=?, a1=sp-544, a2=?, a3=?.
-  The `jalr` at 0xd97883c calls __glInitPacker [0xd9a5ac0] with a0=?, a1=sp-544, a2=?, a3=?.
-  The `jalr` at 0xd978854 calls __glInitUnpacker [0xd9b6c64] with a0=?, a1=sp-544, a2=?, a3=?.
-  The `jalr` at 0xd978878 calls __glGenericPickCopyImageSpan [0xd9b2e20] with a0=?, a1=sp-544, a2=0x1, a3=?.
-  The `jalr` at 0xd978918 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd978930 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd978808 calls __glInitImagePack [0xd9dc014] with a0=[0x1010], a1=sp-544, a2=?, a3=?.
+  The `jalr` at 0xd97883c calls __glInitPacker [0xd9a5ac0] with a0=[0x1010], a1=sp-544, a2=?, a3=?.
+  The `jalr` at 0xd978854 calls __glInitUnpacker [0xd9b6c64] with a0=[0x1010], a1=sp-544, a2=?, a3=?.
+  The `jalr` at 0xd978878 calls __glGenericPickCopyImageSpan [0xd9b2e20] with a0=[0x1010], a1=sp-544, a2=0x1, a3=?.
+  The `jalr` at 0xd978918 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd978930 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `jalr` at 0xd978aa4 calls crmTileTexels [0xd975c5c] with a0=?, a1=?, a2=0x200, a3=?.
   The `jalr` at 0xd978b44 calls crmTileTexels [0xd975c5c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd978b5c calls bcopy with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd978ba8 calls (unknown callee) with a0=?, a1=sp-544, a2=?, a3=?.
-  The `jalr` at 0xd978be8 calls (unknown callee) with a0=?, a1=sp-544, a2=?, a3=?.
-  The `jalr` at 0xd978c88 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd978ca0 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd978ba8 calls (unknown callee) with a0=[0x1010], a1=sp-544, a2=?, a3=?.
+  The `jalr` at 0xd978be8 calls (unknown callee) with a0=[0x1010], a1=sp-544, a2=?, a3=?.
+  The `jalr` at 0xd978c88 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd978ca0 calls (unknown callee) with a0=[0x1010], a1=?, a2=?, a3=?.
   The `bne` branch at 0xd978440 targets 0xd978460, is taken when s8(=0x1) != t6(=[0x1018]), and falls through when s8(=0x1) == t6(=[0x1018]).
   The `beq` branch at 0xd978458 targets 0xd978cac and is always taken.
   The `bne` branch at 0xd978464 targets 0xd978490, is taken when s2(=a0) != at(=0x806f), and falls through when s2(=a0) == at(=0x806f).
@@ -12401,7 +12561,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd978e7c loads 4 bytes from [0x1010] +0x2fc.
   The `lw` at 0xd978e84 loads 4 bytes from [[0x1010]+764] +0x40.
   The `lw` at 0xd978e94 loads 4 bytes from [[0x1010]+764] +0x0.
-  The `sb` at 0xd978f5c stores 1 byte to ?.
+  The `sb` at 0xd978f5c stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd978f64 loads 4 bytes from [0x1010] +0x2dec.
   The `sw` at 0xd978f6c stores 4 bytes to [0x1010] +0x2dec.
   The `jalr` at 0xd978d2c calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12411,8 +12571,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd978e2c calls __glim_TexImage1D [0xda22240] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd978e44 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde0, a2=?, a3=ret(__glCheckTexImage1DArgs).
   The `jalr` at 0xd978e6c calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd978ee4 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=a1 at entry (arg1).
-  The `jalr` at 0xd978f44 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=0x0.
+  The `jalr` at 0xd978ee4 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=ret(__glCheckTexImage1DArgs), a3=a1 at entry (arg1).
+  The `jalr` at 0xd978f44 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=ret(__glCheckTexImage1DArgs), a2=a1 at entry (arg1), a3=0x0.
   The `beq` branch at 0xd978d14 targets 0xd978d58, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd978d1c targets 0xd978d40, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd978d38 targets 0xd978d58 and is always taken.
@@ -12444,7 +12604,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd979118 loads 4 bytes from a0 (arg0 at entry) +0x2fc.
   The `lw` at 0xd979120 loads 4 bytes from [a0+764] +0x40.
   The `lw` at 0xd979130 loads 4 bytes from [a0+764] +0x0.
-  The `sb` at 0xd9791fc stores 1 byte to ?.
+  The `sb` at 0xd9791fc stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd979204 loads 4 bytes from a0 (arg0 at entry) +0x2dec.
   The `sw` at 0xd97920c stores 4 bytes to a0 (arg0 at entry) +0x2dec.
   The `jalr` at 0xd978fc4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12454,8 +12614,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd9790c8 calls __gllei_TexImage1D [0xda2248c] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd9790e0 calls __glLookUpTextureObject [0xda1d228] with a0=a0 at entry (arg0), a1=0xde0, a2=?, a3=ret(__glCheckTexImage1DArgs).
   The `jalr` at 0xd979108 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd979180 calls crmCreateLevel [0xd973868] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=a2 at entry (arg2).
-  The `jalr` at 0xd9791e4 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=0x0.
+  The `jalr` at 0xd979180 calls crmCreateLevel [0xd973868] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=ret(__glCheckTexImage1DArgs), a3=a2 at entry (arg2).
+  The `jalr` at 0xd9791e4 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=ret(__glCheckTexImage1DArgs), a2=a2 at entry (arg2), a3=0x0.
   The `beq` branch at 0xd978fac targets 0xd978ff0, is taken when t6(=[0x1018]) == 0, and falls through when t6(=[0x1018]) != 0.
   The `bne` branch at 0xd978fb8 targets 0xd978fd8, is taken when t6(=[0x1018]) != at(=0x2), and falls through when t6(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd978fd0 targets 0xd978ff0 and is always taken.
@@ -12490,7 +12650,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9793f8 loads 4 bytes from [[0x1010]+764] +0x40.
   The `lw` at 0xd979408 loads 4 bytes from [[0x1010]+764] +0x0.
   The `lw` at 0xd979420 loads 4 bytes from [[0x1010]+764] +0x44.
-  The `sb` at 0xd9794e0 stores 1 byte to ?.
+  The `sb` at 0xd9794e0 stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd9794e8 loads 4 bytes from [0x1010] +0x2dec.
   The `sw` at 0xd9794f0 stores 4 bytes to [0x1010] +0x2dec.
   The `jalr` at 0xd979270 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12500,8 +12660,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd9793a0 calls __glim_TexImage2D [0xda226d0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd9793b8 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde1, a2=?, a3=ret(__glCheckTexImage2DArgs).
   The `jalr` at 0xd9793e0 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd979468 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=a1 at entry (arg1).
-  The `jalr` at 0xd9794c8 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=0x0.
+  The `jalr` at 0xd979468 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=ret(__glCheckTexImage2DArgs), a3=a1 at entry (arg1).
+  The `jalr` at 0xd9794c8 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=ret(__glCheckTexImage2DArgs), a2=a1 at entry (arg1), a3=0x0.
   The `beq` branch at 0xd979258 targets 0xd97929c, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd979260 targets 0xd979284, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd97927c targets 0xd97929c and is always taken.
@@ -12538,7 +12698,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd9796d4 loads 4 bytes from [a0+764] +0x40.
   The `lw` at 0xd9796e4 loads 4 bytes from [a0+764] +0x0.
   The `lw` at 0xd9796fc loads 4 bytes from [a0+764] +0x44.
-  The `sb` at 0xd9797c0 stores 1 byte to ?.
+  The `sb` at 0xd9797c0 stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd9797c8 loads 4 bytes from a0 (arg0 at entry) +0x2dec.
   The `sw` at 0xd9797d0 stores 4 bytes to a0 (arg0 at entry) +0x2dec.
   The `jalr` at 0xd979548 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12548,8 +12708,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd97967c calls __gllei_TexImage2D [0xda22944] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979694 calls __glLookUpTextureObject [0xda1d228] with a0=a0 at entry (arg0), a1=0xde1, a2=?, a3=ret(__glCheckTexImage2DArgs).
   The `jalr` at 0xd9796bc calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd979744 calls crmCreateLevel [0xd973868] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=a2 at entry (arg2).
-  The `jalr` at 0xd9797a8 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=0x0.
+  The `jalr` at 0xd979744 calls crmCreateLevel [0xd973868] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=ret(__glCheckTexImage2DArgs), a3=a2 at entry (arg2).
+  The `jalr` at 0xd9797a8 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=ret(__glCheckTexImage2DArgs), a2=a2 at entry (arg2), a3=0x0.
   The `beq` branch at 0xd979530 targets 0xd979574, is taken when t6(=[0x1018]) == 0, and falls through when t6(=[0x1018]) != 0.
   The `bne` branch at 0xd97953c targets 0xd97955c, is taken when t6(=[0x1018]) != at(=0x2), and falls through when t6(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd979554 targets 0xd979574 and is always taken.
@@ -12580,16 +12740,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97982c loads 4 bytes from [0x1010] +0x2e08.
   The `sw` at 0xd979844 stores 4 bytes to abs 0x1018.
   The `lw` at 0xd9798a0 loads 4 bytes from ret(__glCheckTexSubImage1DArgs) +0xe4.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd9798bc, `lw` at 0xd9799b4, `lw` at 0xd9799c8.
+  The `lw` at 0xd9798bc loads 4 bytes from ?.
   The `lw` at 0xd979910 loads 4 bytes from ret(__glCheckTexSubImage1DArgs) +0x11c.
   2 such `lw` accesses load 4 bytes from [0x1010] +0x6e30, including `lw` at 0xd97991c, `lw` at 0xd9799a0.
+  The `lw` at 0xd9799b4 loads 4 bytes from [ret(__glCheckTexSubImage1DArgs)+284] +0x20.
+  The `lw` at 0xd9799c8 loads 4 bytes from ([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x0.
   The `jalr` at 0xd979834 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979850 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979888 calls __glCheckTexSubImage1DArgs [0xda2f7c0] with a0=[0x1010], a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd9798f0 calls __glim_TexSubImage1DEXT [0xda2fc2c] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979934 calls __glCrmFlushAndConfirm [0xd943124] with a0=[0x1010], a1=ret(__glCheckTexSubImage1DArgs), a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd979994 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=?.
-  The `jalr` at 0xd9799e4 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd979994 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=ret(__glCheckTexSubImage1DArgs), a2=a1 at entry (arg1), a3=?.
+  The `jalr` at 0xd9799e4 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=ret(__glCheckTexSubImage1DArgs), a2=?, a3=?.
   The `beq` branch at 0xd97981c targets 0xd979860, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd979824 targets 0xd979848, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd979840 targets 0xd979860 and is always taken.
@@ -12600,8 +12762,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd979900 targets 0xd9799f0, is taken when t9(?) == 0, and falls through when t9(?) != 0.
   The `beql` branch at 0xd979908 targets 0xd9799f4, is taken when t6(=a3) == 0, and falls through when t6(=a3) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97990c runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd979924 targets 0xd979948, is taken when v0(=ret(__glCheckTexSubImage1DArgs)) != t8(=[[0x1010]+28208]), and falls through when v0(=ret(__glCheckTexSubImage1DArgs)) == t8(=[[0x1010]+28208]).
-  The `bne` branch at 0xd9799a8 targets 0xd9799f0, is taken when a1(?) != t9(=[[0x1010]+28208]), and falls through when a1(?) == t9(=[[0x1010]+28208]).
-  The `beql` branch at 0xd9799d0 targets 0xd9799f4, is taken when (t1(?) & 0x1) == 0, and falls through when (t1(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd9799d4 runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd9799a8 targets 0xd9799f0, is taken when a1(=ret(__glCheckTexSubImage1DArgs)) != t9(=[[0x1010]+28208]), and falls through when a1(=ret(__glCheckTexSubImage1DArgs)) == t9(=[[0x1010]+28208]).
+  The `beql` branch at 0xd9799d0 targets 0xd9799f4, is taken when (t1(=[([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) == 0, and falls through when (t1(=[([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd9799d4 runs only when taken and is annulled on fall-through.
   The return at 0xd9799f8 has v0 = one of ret(__glCheckTexSubImage1DArgs), ret(crmTexSubImageStore), ?.
 
 - `__glcrmlei_TexSubImage1DEXT` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd979a00 (o32).
@@ -12613,16 +12775,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd979a40 loads 4 bytes from a0 (arg0 at entry) +0x2e08.
   The `sw` at 0xd979a54 stores 4 bytes to a0 (arg0 at entry) +0xc80.
   The `lw` at 0xd979ab4 loads 4 bytes from ret(__glCheckTexSubImage1DArgs) +0xe4.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd979ad0, `lw` at 0xd979bcc, `lw` at 0xd979be0.
+  The `lw` at 0xd979ad0 loads 4 bytes from ?.
   The `lw` at 0xd979b24 loads 4 bytes from ret(__glCheckTexSubImage1DArgs) +0x11c.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6e30, including `lw` at 0xd979b30, `lw` at 0xd979bb8.
+  The `lw` at 0xd979bcc loads 4 bytes from [ret(__glCheckTexSubImage1DArgs)+284] +0x20.
+  The `lw` at 0xd979be0 loads 4 bytes from ([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0.
   The `jalr` at 0xd979a44 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979a60 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979a98 calls __glCheckTexSubImage1DArgs [0xda2f7c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979b04 calls __gllei_TexSubImage1DEXT [0xda2fdac] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979b48 calls __glCrmFlushAndConfirm [0xd943124] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage1DArgs), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd979bac calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd979bfc calls crmUpdateSharedTiles [0xd970f64] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd979bac calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage1DArgs), a2=a2 at entry (arg2), a3=?.
+  The `jalr` at 0xd979bfc calls crmUpdateSharedTiles [0xd970f64] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage1DArgs), a2=?, a3=?.
   The `beq` branch at 0xd979a30 targets 0xd979a70, is taken when t6(=[a0+3200]) == 0, and falls through when t6(=[a0+3200]) != 0.
   The `bne` branch at 0xd979a38 targets 0xd979a58, is taken when t6(=[a0+3200]) != at(=0x2), and falls through when t6(=[a0+3200]) == at(=0x2).
   The `beq` branch at 0xd979a50 targets 0xd979a70 and is always taken.
@@ -12633,8 +12797,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd979b14 targets 0xd979c0c, is taken when t9(?) == 0, and falls through when t9(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979b18 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd979b1c targets 0xd979c0c, is taken when t0(?) == 0, and falls through when t0(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979b20 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xd979b38 targets 0xd979b64, is taken when v0(=ret(__glCheckTexSubImage1DArgs)) != t8(=[a0+28208]), and falls through when v0(=ret(__glCheckTexSubImage1DArgs)) == t8(=[a0+28208]).
-  The `bne` branch at 0xd979bc0 targets 0xd979c08, is taken when a1(?) != t9(=[a0+28208]), and falls through when a1(?) == t9(=[a0+28208]).
-  The `beql` branch at 0xd979be8 targets 0xd979c0c, is taken when (t4(?) & 0x1) == 0, and falls through when (t4(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979bec runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd979bc0 targets 0xd979c08, is taken when a1(=ret(__glCheckTexSubImage1DArgs)) != t9(=[a0+28208]), and falls through when a1(=ret(__glCheckTexSubImage1DArgs)) == t9(=[a0+28208]).
+  The `beql` branch at 0xd979be8 targets 0xd979c0c, is taken when (t4(=[([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) == 0, and falls through when (t4(=[([[ret(__glCheckTexSubImage1DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979bec runs only when taken and is annulled on fall-through.
   The return at 0xd979c10 has v0 = one of ret(__glCheckTexSubImage1DArgs), ret(crmTexSubImageStore), ?.
 
 - `__glcrmim_TexSubImage2DEXT` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd979c18 (o32).
@@ -12648,16 +12812,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd979c78 stores 4 bytes to abs 0x1018.
   The `lbu` at 0xd979c94 loads 1 byte from [0x1010] +0x7dd1.
   The `lw` at 0xd979d08 loads 4 bytes from ret(__glCheckTexSubImage2DArgs) +0xe4.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd979d24, `lw` at 0xd979e34, `lw` at 0xd979e48.
+  The `lw` at 0xd979d24 loads 4 bytes from ?.
   The `lw` at 0xd979d88 loads 4 bytes from ret(__glCheckTexSubImage2DArgs) +0x11c.
   2 such `lw` accesses load 4 bytes from [0x1010] +0x6e30, including `lw` at 0xd979d94, `lw` at 0xd979e20.
+  The `lw` at 0xd979e34 loads 4 bytes from [ret(__glCheckTexSubImage2DArgs)+284] +0x20.
+  The `lw` at 0xd979e48 loads 4 bytes from ([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x0.
   The `jalr` at 0xd979c68 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979c84 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979ce8 calls __glCheckTexSubImage2DArgs [0xda2f8a0] with a0=[0x1010], a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd979d60 calls __glim_TexSubImage2DEXT [0xda2ff24] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979dac calls __glCrmFlushAndConfirm [0xd943124] with a0=[0x1010], a1=ret(__glCheckTexSubImage2DArgs), a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd979e14 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=?.
-  The `jalr` at 0xd979e64 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd979e14 calls crmTexSubImageStore [0xd976668] with a0=[0x1010], a1=ret(__glCheckTexSubImage2DArgs), a2=a1 at entry (arg1), a3=?.
+  The `jalr` at 0xd979e64 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=ret(__glCheckTexSubImage2DArgs), a2=?, a3=?.
   The `beq` branch at 0xd979c50 targets 0xd979c94, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd979c58 targets 0xd979c7c, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd979c74 targets 0xd979c94 and is always taken.
@@ -12671,8 +12837,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd979d78 targets 0xd979e74, is taken when t1(?) == 0, and falls through when t1(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979d7c runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd979d80 targets 0xd979e74, is taken when t0(?) == 0, and falls through when t0(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979d84 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd979d9c targets 0xd979dcc, is taken when v0(=ret(__glCheckTexSubImage2DArgs)) != t5(=[[0x1010]+28208]), and falls through when v0(=ret(__glCheckTexSubImage2DArgs)) == t5(=[[0x1010]+28208]); its branch-likely delay slot `lw t9,108(sp)` at 0xd979da0 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xd979e28 targets 0xd979e70, is taken when a1(?) != t4(=[[0x1010]+28208]), and falls through when a1(?) == t4(=[[0x1010]+28208]).
-  The `beql` branch at 0xd979e50 targets 0xd979e74, is taken when (t2(?) & 0x1) == 0, and falls through when (t2(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979e54 runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd979e28 targets 0xd979e70, is taken when a1(=ret(__glCheckTexSubImage2DArgs)) != t4(=[[0x1010]+28208]), and falls through when a1(=ret(__glCheckTexSubImage2DArgs)) == t4(=[[0x1010]+28208]).
+  The `beql` branch at 0xd979e50 targets 0xd979e74, is taken when (t2(=[([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) == 0, and falls through when (t2(=[([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979e54 runs only when taken and is annulled on fall-through.
   The return at 0xd979e78 has v0 = one of ret(__glCheckTexSubImage2DArgs), ret(crmTexSubImageStore), ?.
 
 - `__glcrmlei_TexSubImage2DEXT` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd979e80 (o32).
@@ -12685,16 +12851,18 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd979ed4 stores 4 bytes to a0 (arg0 at entry) +0xc80.
   The `lbu` at 0xd979ef0 loads 1 byte from a0 (arg0 at entry) +0x7dd1.
   The `lw` at 0xd979f64 loads 4 bytes from ret(__glCheckTexSubImage2DArgs) +0xe4.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd979f80, `lw` at 0xd97a09c, `lw` at 0xd97a0ac.
+  The `lw` at 0xd979f80 loads 4 bytes from ?.
   The `lw` at 0xd979fe8 loads 4 bytes from ret(__glCheckTexSubImage2DArgs) +0x11c.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6e30, including `lw` at 0xd979ff4, `lw` at 0xd97a084.
+  The `lw` at 0xd97a09c loads 4 bytes from [ret(__glCheckTexSubImage2DArgs)+284] +0x20.
+  The `lw` at 0xd97a0ac loads 4 bytes from ([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2)) +0x0.
   The `jalr` at 0xd979ec4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979ee0 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979f44 calls __glCheckTexSubImage2DArgs [0xda2f8a0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd979fc0 calls __gllei_TexSubImage2DEXT [0xda300b8] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a00c calls __glCrmFlushAndConfirm [0xd943124] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage2DArgs), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd97a078 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=?, a2=a2 at entry (arg2), a3=?.
-  The `jalr` at 0xd97a0c8 calls crmUpdateSharedTiles [0xd970f64] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd97a078 calls crmTexSubImageStore [0xd976668] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage2DArgs), a2=a2 at entry (arg2), a3=?.
+  The `jalr` at 0xd97a0c8 calls crmUpdateSharedTiles [0xd970f64] with a0=a0 at entry (arg0), a1=ret(__glCheckTexSubImage2DArgs), a2=?, a3=?.
   The `beq` branch at 0xd979eb0 targets 0xd979ef0, is taken when t6(=[a0+3200]) == 0, and falls through when t6(=[a0+3200]) != 0.
   The `bne` branch at 0xd979eb8 targets 0xd979ed8, is taken when t6(=[a0+3200]) != at(=0x2), and falls through when t6(=[a0+3200]) == at(=0x2).
   The `beq` branch at 0xd979ed0 targets 0xd979ef0 and is always taken.
@@ -12708,8 +12876,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beql` branch at 0xd979fd8 targets 0xd97a0d8, is taken when t1(?) == 0, and falls through when t1(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979fdc runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xd979fe0 targets 0xd97a0d8, is taken when t0(?) == 0, and falls through when t0(?) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd979fe4 runs only when taken and is annulled on fall-through.
   The `bnel` branch at 0xd979ffc targets 0xd97a030, is taken when v0(=ret(__glCheckTexSubImage2DArgs)) != t6(=[a0+28208]), and falls through when v0(=ret(__glCheckTexSubImage2DArgs)) == t6(=[a0+28208]); its branch-likely delay slot `lw t9,108(sp)` at 0xd97a000 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xd97a08c targets 0xd97a0d4, is taken when a1(?) != t6(=[a0+28208]), and falls through when a1(?) == t6(=[a0+28208]).
-  The `beql` branch at 0xd97a0b4 targets 0xd97a0d8, is taken when (t4(?) & 0x1) == 0, and falls through when (t4(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97a0b8 runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd97a08c targets 0xd97a0d4, is taken when a1(=ret(__glCheckTexSubImage2DArgs)) != t6(=[a0+28208]), and falls through when a1(=ret(__glCheckTexSubImage2DArgs)) == t6(=[a0+28208]).
+  The `beql` branch at 0xd97a0b4 targets 0xd97a0d8, is taken when (t4(=[([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) == 0, and falls through when (t4(=[([[ret(__glCheckTexSubImage2DArgs)+284]+32] + (((a2 << 0x3) + a2) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97a0b8 runs only when taken and is annulled on fall-through.
   The return at 0xd97a0dc has v0 = one of ret(__glCheckTexSubImage2DArgs), ret(crmTexSubImageStore), ?.
 
 - `__glcrmim_CopyTexImage1DEXT` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd97a0e4 (o32).
@@ -12727,7 +12895,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97a280 loads 4 bytes from [0x1010] +0x2fc.
   The `lw` at 0xd97a288 loads 4 bytes from [[0x1010]+764] +0x40.
   The `lw` at 0xd97a298 loads 4 bytes from [[0x1010]+764] +0x0.
-  The `sb` at 0xd97a348 stores 1 byte to ?.
+  The `sb` at 0xd97a348 stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd97a354 loads 4 bytes from [0x1010] +0x2dec.
   The `sw` at 0xd97a35c stores 4 bytes to [0x1010] +0x2dec.
   The `jalr` at 0xd97a134 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12737,8 +12905,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd97a230 calls __glim_CopyTexImage1DEXT [0xda3116c] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a248 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde0, a2=?, a3=ret(__glCheckCopyTexImageArgs).
   The `jalr` at 0xd97a270 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd97a2e8 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=a1 at entry (arg1).
-  The `jalr` at 0xd97a330 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=0x0.
+  The `jalr` at 0xd97a2e8 calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=ret(__glCheckCopyTexImageArgs), a3=a1 at entry (arg1).
+  The `jalr` at 0xd97a330 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=ret(__glCheckCopyTexImageArgs), a2=a1 at entry (arg1), a3=0x0.
   The `beq` branch at 0xd97a11c targets 0xd97a160, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd97a124 targets 0xd97a148, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd97a140 targets 0xd97a160 and is always taken.
@@ -12772,7 +12940,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97a53c loads 4 bytes from [[0x1010]+764] +0x40.
   The `lw` at 0xd97a54c loads 4 bytes from [[0x1010]+764] +0x0.
   The `lw` at 0xd97a564 loads 4 bytes from [[0x1010]+764] +0x44.
-  The `sb` at 0xd97a60c stores 1 byte to ?.
+  The `sb` at 0xd97a60c stores 1 byte to ret(__glLookUpTextureObject) +0xc.
   The `lw` at 0xd97a618 loads 4 bytes from [0x1010] +0x2dec.
   The `sw` at 0xd97a620 stores 4 bytes to [0x1010] +0x2dec.
   The `jalr` at 0xd97a3c0 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -12782,8 +12950,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd97a4e4 calls __glim_CopyTexImage2DEXT [0xda313c8] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a4fc calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde1, a2=?, a3=ret(__glCheckCopyTexImageArgs).
   The `jalr` at 0xd97a524 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd97a5ac calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=?, a3=a1 at entry (arg1).
-  The `jalr` at 0xd97a5f4 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=0x0.
+  The `jalr` at 0xd97a5ac calls crmCreateLevel [0xd973868] with a0=[0x1010], a1=a0 at entry (arg0), a2=ret(__glCheckCopyTexImageArgs), a3=a1 at entry (arg1).
+  The `jalr` at 0xd97a5f4 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=ret(__glCheckCopyTexImageArgs), a2=a1 at entry (arg1), a3=0x0.
   The `beq` branch at 0xd97a3a8 targets 0xd97a3ec, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd97a3b0 targets 0xd97a3d4, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd97a3cc targets 0xd97a3ec and is always taken.
@@ -12813,17 +12981,20 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd97a67c loads 4 bytes from [0x1010] +0x2e08.
   The `sw` at 0xd97a694 stores 4 bytes to abs 0x1018.
   The `lw` at 0xd97a708 loads 4 bytes from ret(__glCheckCopyTexSubImageArgs) +0xe4.
-  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd97a724, `lw` at 0xd97a798, `lw` at 0xd97a7fc.
+  The `lw` at 0xd97a724 loads 4 bytes from ?.
   The `lw` at 0xd97a76c loads 4 bytes from ret(__glLookUpTextureObject) +0x0.
+  The `lw` at 0xd97a798 loads 4 bytes from ret(__glCheckCopyTexSubImageArgs) +0x11c.
   The `lw` at 0xd97a7e8 loads 4 bytes from [0x1010] +0x6e30.
+  The `lw` at 0xd97a7fc loads 4 bytes from [ret(__glCheckCopyTexSubImageArgs)+284] +0x20.
+  The `lw` at 0xd97a80c loads 4 bytes from ([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x0.
   The `jalr` at 0xd97a684 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a6a0 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a6f0 calls __glCheckCopyTexSubImageArgs [0xda2faec] with a0=[0x1010], a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd97a74c calls __glim_CopyTexSubImage1DEXT [0xda31644] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a764 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde0, a2=?, a3=?.
-  The `jalr` at 0xd97a788 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd97a7d4 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=a2 at entry (arg2).
-  The `jalr` at 0xd97a828 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd97a788 calls __glSetError [0xd9d02a4] with a0=0x502, a1=ret(__glCheckCopyTexSubImageArgs), a2=?, a3=?.
+  The `jalr` at 0xd97a7d4 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=ret(__glCheckCopyTexSubImageArgs), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
+  The `jalr` at 0xd97a828 calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=ret(__glCheckCopyTexSubImageArgs), a2=?, a3=?.
   The `beq` branch at 0xd97a66c targets 0xd97a6b0, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd97a674 targets 0xd97a698, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd97a690 targets 0xd97a6b0 and is always taken.
@@ -12834,8 +13005,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd97a778 targets 0xd97a798, is taken when t8(=[ret(__glLookUpTextureObject)]) < 0x3 (signed), and falls through when t8(=[ret(__glLookUpTextureObject)]) >= 0x3 (signed).
   The `beq` branch at 0xd97a790 targets 0xd97a834 and is always taken.
   The `beq` branch at 0xd97a7e0 targets 0xd97a834, is taken when v0(=ret(crmTexSubImageRead)) == 0, and falls through when v0(=ret(crmTexSubImageRead)) != 0.
-  The `bne` branch at 0xd97a7f0 targets 0xd97a834, is taken when a1(?) != t9(=[[0x1010]+28208]), and falls through when a1(?) == t9(=[[0x1010]+28208]).
-  The `beql` branch at 0xd97a814 targets 0xd97a838, is taken when (t1(?) & 0x1) == 0, and falls through when (t1(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97a818 runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd97a7f0 targets 0xd97a834, is taken when a1(=ret(__glCheckCopyTexSubImageArgs)) != t9(=[[0x1010]+28208]), and falls through when a1(=ret(__glCheckCopyTexSubImageArgs)) == t9(=[[0x1010]+28208]).
+  The `beql` branch at 0xd97a814 targets 0xd97a838, is taken when (t1(=[([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) == 0, and falls through when (t1(=[([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97a818 runs only when taken and is annulled on fall-through.
   The return at 0xd97a83c has v0 = one of ret(crmTexSubImageRead), ?.
 
 - `__glcrmim_CopyTexSubImage2DEXT` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd97a844 (o32).
@@ -12849,22 +13020,25 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd97a8a4 stores 4 bytes to abs 0x1018.
   The `lbu` at 0xd97a8c0 loads 1 byte from [0x1010] +0x7dd1.
   The `lw` at 0xd97a938 loads 4 bytes from ret(__glCheckCopyTexSubImageArgs) +0xe4.
-  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd97a954, `lw` at 0xd97a9d8, `lw` at 0xd97aac0.
+  The `lw` at 0xd97a954 loads 4 bytes from ?.
   The `lw` at 0xd97a9ac loads 4 bytes from ret(__glLookUpTextureObject) +0x0.
+  The `lw` at 0xd97a9d8 loads 4 bytes from ret(__glCheckCopyTexSubImageArgs) +0x11c.
   The `lw` at 0xd97a9e4 loads 4 bytes from [0x1010] +0x7d3c.
   The `lw` at 0xd97a9ec loads 4 bytes from [[0x1010]+32060] +0x0.
   The `lw` at 0xd97aa3c loads 4 bytes from abs 0xda4d2f0.
   The `lw` at 0xd97aaac loads 4 bytes from [0x1010] +0x6e30.
+  The `lw` at 0xd97aac0 loads 4 bytes from [ret(__glCheckCopyTexSubImageArgs)+284] +0x20.
+  The `lw` at 0xd97aad0 loads 4 bytes from ([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2)) +0x0.
   The `jalr` at 0xd97a894 calls (unknown callee) with a0=[0x1010], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a8b0 calls __glSetError [0xd9d02a4] with a0=0x502, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a920 calls __glCheckCopyTexSubImageArgs [0xda2faec] with a0=[0x1010], a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd97a98c calls __glim_CopyTexSubImage2DEXT [0xda31820] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd97a9a4 calls __glLookUpTextureObject [0xda1d228] with a0=[0x1010], a1=0xde1, a2=?, a3=?.
-  The `jalr` at 0xd97a9c8 calls __glSetError [0xd9d02a4] with a0=0x502, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd97aa28 calls crmTexSubImageCopyDMPbuffer [0xd977834] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=a2 at entry (arg2).
+  The `jalr` at 0xd97a9c8 calls __glSetError [0xd9d02a4] with a0=0x502, a1=ret(__glCheckCopyTexSubImageArgs), a2=?, a3=?.
+  The `jalr` at 0xd97aa28 calls crmTexSubImageCopyDMPbuffer [0xd977834] with a0=[0x1010], a1=ret(__glCheckCopyTexSubImageArgs), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `jalr` at 0xd97aa50 calls printf with a0=0xda436c8, a1=?, a2=?, a3=?.
-  The `jalr` at 0xd97aa98 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=?, a2=a1 at entry (arg1), a3=a2 at entry (arg2).
-  The `jalr` at 0xd97aaec calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=?, a2=?, a3=?.
+  The `jalr` at 0xd97aa98 calls crmTexSubImageRead [0xd977418] with a0=[0x1010], a1=ret(__glCheckCopyTexSubImageArgs), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
+  The `jalr` at 0xd97aaec calls crmUpdateSharedTiles [0xd970f64] with a0=[0x1010], a1=ret(__glCheckCopyTexSubImageArgs), a2=?, a3=?.
   The `beq` branch at 0xd97a87c targets 0xd97a8c0, is taken when v0(=[0x1018]) == 0, and falls through when v0(=[0x1018]) != 0.
   The `bne` branch at 0xd97a884 targets 0xd97a8a8, is taken when v0(=[0x1018]) != at(=0x2), and falls through when v0(=[0x1018]) == at(=0x2).
   The `beq` branch at 0xd97a8a0 targets 0xd97a8c0 and is always taken.
@@ -12880,8 +13054,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xd97aa30 targets 0xd97aaf8, is taken when v0(=ret(crmTexSubImageCopyDMPbuffer)) != 0, and falls through when v0(=ret(crmTexSubImageCopyDMPbuffer)) == 0.
   The `beql` branch at 0xd97aa40 targets 0xd97aa60, is taken when t2(=[0xda4d2f0]) == 0, and falls through when t2(=[0xda4d2f0]) != 0; its branch-likely delay slot `lw t9,92(sp)` at 0xd97aa44 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd97aaa0 targets 0xd97aaf8, is taken when v0(=ret(crmTexSubImageRead)) == 0, and falls through when v0(=ret(crmTexSubImageRead)) != 0.
-  The `bne` branch at 0xd97aab4 targets 0xd97aaf8, is taken when t5(?) != t8(=[[0x1010]+28208]), and falls through when t5(?) == t8(=[[0x1010]+28208]).
-  The `beql` branch at 0xd97aad8 targets 0xd97aafc, is taken when (t9(?) & 0x1) == 0, and falls through when (t9(?) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97aadc runs only when taken and is annulled on fall-through.
+  The `bne` branch at 0xd97aab4 targets 0xd97aaf8, is taken when t5(=ret(__glCheckCopyTexSubImageArgs)) != t8(=[[0x1010]+28208]), and falls through when t5(=ret(__glCheckCopyTexSubImageArgs)) == t8(=[[0x1010]+28208]).
+  The `beql` branch at 0xd97aad8 targets 0xd97aafc, is taken when (t9(=[([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) == 0, and falls through when (t9(=[([[ret(__glCheckCopyTexSubImageArgs)+284]+32] + (((a1 << 0x3) + a1) << 0x2))]) & 0x1) != 0; its branch-likely delay slot `lw ra,60(sp)` at 0xd97aadc runs only when taken and is annulled on fall-through.
   The return at 0xd97ab00 has v0 = one of ret(crmTexSubImageRead), ?.
 
 - `__glcrmim_MipsVertexInLine3fv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd97ab10 (o32).
@@ -13091,7 +13265,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd993b30 calls __glFindWindowSize [0xd9d062c] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd993b54 calls __glSoftResetContext [0xd9cf3e0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd993b7c calls (unknown callee) with a0=0x0, a1=0x0, a2=[a0+3700], a3=[a0+3704].
-  The `jalr` at 0xd993b9c calls (unknown callee) with a0=0x0, a1=0x0, a2=?, a3=?.
+  The `jalr` at 0xd993b9c calls (unknown callee) with a0=0x0, a1=0x0, a2=[a0+3700], a3=[a0+3704].
   The `jalr` at 0xd993bb8 calls ApplyViewport [0xd993474] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd993bcc calls __glContextSetColorScales [0xd9cf03c] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd993bdc calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -13104,13 +13278,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd993ba4 targets 0xd993bc4 and is always taken.
   The `beq` branch at 0xd993bec targets 0xd993c54, is taken when t1(=[0x1048]) == 0, and falls through when t1(=[0x1048]) != 0.
   The `beq` branch at 0xd993bfc targets 0xd993c4c, is taken when t3(=[a0+4988]) == 0, and falls through when t3(=[a0+4988]) != 0.
-  The `bne` branch at 0xd993c30 targets 0xd993c14, is taken when t4(?) != t8(?), and falls through when t4(?) == t8(?).
+  The `bne` branch at 0xd993c30 targets 0xd993c14, is taken when t4(?) != t8(=a0+7952), and falls through when t4(?) == t8(=a0+7952).
   The `beq` branch at 0xd993c44 targets 0xd993cf0 and is always taken.
   The `beq` branch at 0xd993c4c targets 0xd993cf0 and is always taken.
   The `beql` branch at 0xd993c5c targets 0xd993cb0, is taken when t9(=[a0+4988]) == 0, and falls through when t9(=[a0+4988]) != 0; its branch-likely delay slot `addiu t9,zero,4176` at 0xd993c60 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xd993c90 targets 0xd993c74, is taken when t3(?) != t5(?), and falls through when t3(?) == t5(?).
+  The `bne` branch at 0xd993c90 targets 0xd993c74, is taken when t3(?) != t5(=a0+7952), and falls through when t3(?) == t5(=a0+7952).
   The `beq` branch at 0xd993ca4 targets 0xd993cf0 and is always taken.
-  The `bne` branch at 0xd993cd8 targets 0xd993cbc, is taken when t6(?) != t1(?), and falls through when t6(?) == t1(?).
+  The `bne` branch at 0xd993cd8 targets 0xd993cbc, is taken when t6(?) != t1(=a0+9848), and falls through when t6(?) == t1(=a0+9848).
   The return at 0xd993d10 has v0 = 0x1.
   The instructions from 0xd993cac to 0xd993cac are not reached by any path from the entry, and their branches are not listed.
 
@@ -13159,21 +13333,22 @@ Each entry records selected software behavior from its exact binary range. The r
   The `ldc1` at 0xda139f0 loads 8 bytes from abs 0xda47c90.
   4 such `lwc1` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lwc1` at 0xda13a18, `lwc1` at 0xda14430, `lwc1` at 0xda14458.
   The `lw` at 0xda13a34 loads 4 bytes from [a0+28208] +0xe4.
-  The `lw` at 0xda13a3c loads 4 bytes from [[a0+28208]+228] +0x18.
-  The `lw` at 0xda13a40 loads 4 bytes from [[a0+28208]+228] +0x14.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x18, including `lw` at 0xda13a3c, `lw` at 0xda13cfc.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x14, including `lw` at 0xda13a40, `lw` at 0xda13aa8.
   The `lw` at 0xda13a44 loads 4 bytes from [[a0+28208]+228] +0x2c.
   The `lw` at 0xda13a48 loads 4 bytes from [[a0+28208]+228] +0x0.
   The `lw` at 0xda13a54 loads 4 bytes from [a0+28208] +0x4.
   The `lwc1` at 0xda13a58 loads 4 bytes from [[a0+28208]+228] +0x20.
-  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda13aa8, `lw` at 0xda13cfc, `lw` at 0xda141c8.
   4 such `sw` accesses store 4 bytes to ?, including `sw` at 0xda13af0, `sw` at 0xda13b20, `sw` at 0xda13d44.
   The `ldc1` at 0xda13b68 loads 8 bytes from abs 0xda47c98.
   The `ldc1` at 0xda13b84 loads 8 bytes from abs 0xda47ca0.
   2 such `lw` accesses load 4 bytes from [a0+28208] +0x8, including `lw` at 0xda13c94, `lw` at 0xda13ca8.
-  45 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda13cb4, `lwc1` at 0xda13f70, `lwc1` at 0xda13f80.
+  The `lwc1` at 0xda13cb4 loads 4 bytes from [[a0+28208]+228] +0x24.
   The `ldc1` at 0xda13dc8 loads 8 bytes from abs 0xda47ca8.
   The `ldc1` at 0xda13de4 loads 8 bytes from abs 0xda47cb0.
+  44 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda13f70, `lwc1` at 0xda13f80, `lwc1` at 0xda13f90.
   13 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xda1407c, `swc1` at 0xda14080, `swc1` at 0xda14084.
+  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda141c8, `lw` at 0xda142d0, `lw` at 0xda142f0.
   The `lwc1` at 0xda14340 loads 4 bytes from [a0+28208] +0x9c.
   The `lwc1` at 0xda14344 loads 4 bytes from [a0+28208] +0xa0.
   The `lwc1` at 0xda1434c loads 4 bytes from [a0+28208] +0xa4.
@@ -13225,14 +13400,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xda13e14 targets 0xda13e64, is taken when f20 < f24 (c.lt.s at 0xda13e10), and falls through when not (f20 < f24 (c.lt.s at 0xda13e10)); its branch-likely delay slot `or t2,s3,zero` at 0xda13e18 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda13e20 targets 0xda13e64, is taken when f22 < f30(=0x3ff0000000000000) (c.lt.d at 0xda13e1c), and falls through when not (f22 < f30(=0x3ff0000000000000) (c.lt.d at 0xda13e1c)); its branch-likely delay slot `addiu t2,zero,8` at 0xda13e24 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda13e34 targets 0xda13e64, is taken when f0 < f10 (c.lt.d at 0xda13e30), and falls through when not (f0 < f10 (c.lt.d at 0xda13e30)); its branch-likely delay slot `addiu t2,zero,15` at 0xda13e38 runs only when taken and is annulled on fall-through.
-  The `bc1tl` branch at 0xda13e40 targets 0xda13e64, is taken when f14 < f20 (c.lt.s at 0xda13e3c), and falls through when not (f14 < f20 (c.lt.s at 0xda13e3c)); its branch-likely delay slot `addiu t2,zero,7` at 0xda13e44 runs only when taken and is annulled on fall-through.
+  The `bc1tl` branch at 0xda13e40 targets 0xda13e64, is taken when f14(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda13e3c), and falls through when not (f14(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda13e3c)); its branch-likely delay slot `addiu t2,zero,7` at 0xda13e44 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda13e4c targets 0xda13e64, is taken when f0 < f12 (c.lt.d at 0xda13e48), and falls through when not (f0 < f12 (c.lt.d at 0xda13e48)); its branch-likely delay slot `or t2,s5,zero` at 0xda13e50 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda13e58 targets 0xda13e64, is taken when not (f0 < f2 (c.lt.d at 0xda13e54)), and falls through when f0 < f2 (c.lt.d at 0xda13e54).
   The `bc1fl` branch at 0xda13eb0 targets 0xda13ec0, is taken when not (f8 < f24 (c.lt.s at 0xda13eac)), and falls through when f8 < f24 (c.lt.s at 0xda13eac); its branch-likely delay slot `addiu a0,v0,1` at 0xda13eb4 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xda13ed0 targets 0xda13ee8, is taken when not (f14 < f6 (c.lt.s at 0xda13ecc)), and falls through when f14 < f6 (c.lt.s at 0xda13ecc); its branch-likely delay slot `addiu v1,a0,1` at 0xda13ed4 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda13efc targets 0xda13f14, is taken when not (f14 < f10 (c.lt.s at 0xda13ef8)), and falls through when f14 < f10 (c.lt.s at 0xda13ef8).
   The `bne` branch at 0xda14088 targets 0xda14050, is taken when s0(?) < 0x4 (signed), and falls through when s0(?) >= 0x4 (signed).
-  The `bne` branch at 0xda14098 targets 0xda141ac, is taken when v0(?) != 0, and falls through when v0(?) == 0.
+  The `bne` branch at 0xda14098 targets 0xda141ac, is taken when v0(=one of 0x0, 0x1, 0x2) != 0, and falls through when v0(=one of 0x0, 0x1, 0x2) == 0.
   The `bne` branch at 0xda140a0 targets 0xda141ac, is taken when t1(?) != 0, and falls through when t1(?) == 0.
   The `bne` branch at 0xda140a8 targets 0xda141ac, is taken when t2(?) != 0, and falls through when t2(?) == 0.
   The `bgez` branch at 0xda1410c targets 0xda14120, is taken when s0(?) >= 0 (signed), and falls through when s0(?) < 0 (signed).
@@ -13243,7 +13418,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda1417c targets 0xda14198, is taken when s5(=0x3) != t9(?), and falls through when s5(=0x3) == t9(?).
   The `bne` branch at 0xda1419c targets 0xda140e4, is taken when s0(?) != a1(=0x10), and falls through when s0(?) == a1(=0x10).
   The `beq` branch at 0xda141a4 targets 0xda14398 and is always taken.
-  The `bne` branch at 0xda141ac targets 0xda142c0, is taken when v0(?) != at(=0x2), and falls through when v0(?) == at(=0x2).
+  The `bne` branch at 0xda141ac targets 0xda142c0, is taken when v0(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when v0(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `bne` branch at 0xda142b0 targets 0xda141c8, is taken when s0(?) != t3(=0x4), and falls through when s0(?) == t3(=0x4).
   The `beq` branch at 0xda142b8 targets 0xda14398 and is always taken.
   The `bne` branch at 0xda14324 targets 0xda1433c, is taken when (t7(?) & t1(?)) != 0, and falls through when (t7(?) & t1(?)) == 0.
@@ -13251,12 +13426,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda14354 targets 0xda14380 and is always taken.
   The `bne` branch at 0xda14380 targets 0xda142f0, is taken when a1(?) != t3(=0x4), and falls through when a1(?) == t3(=0x4).
   The `bne` branch at 0xda1438c targets 0xda142d0, is taken when s0(?) != t3(=0x4), and falls through when s0(?) == t3(=0x4).
-  The `bne` branch at 0xda1439c targets 0xda143d4, is taken when a2(?) != at(=0x2100), and falls through when a2(?) == at(=0x2100).
+  The `bne` branch at 0xda1439c targets 0xda143d4, is taken when a2(=[[a0+2484]]) != at(=0x2100), and falls through when a2(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda143cc targets 0xda14490 and is always taken.
   The `bne` branch at 0xda143dc targets 0xda143ec, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda143f0 targets 0xda1442c, is taken when t4(?) == 0, and falls through when t4(?) != 0.
   The `beq` branch at 0xda14424 targets 0xda1448c and is always taken.
-  The `bgez` branch at 0xda144d4 targets 0xda13a0c, is taken when a0(=table(-0x1)) >= 0 (signed), and falls through when a0(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda144d4 targets 0xda13a0c, is taken when a0(?) >= 0 (signed), and falls through when a0(?) < 0 (signed).
   The return at 0xda14520 has v0 = 0x0.
 
 - `__glTextureRGB_F_F_StippledSpan` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xda14528 (o32).
@@ -13274,11 +13449,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda145b0 loads 4 bytes from a0 (arg0 at entry) +0x7610.
   The `lwc1` at 0xda145b8 loads 4 bytes from a0 (arg0 at entry) +0x7614.
   The `lwc1` at 0xda145c0 loads 4 bytes from a0 (arg0 at entry) +0x761c.
-  6 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda14600, `lw` at 0xda1471c, `lw` at 0xda14988.
+  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda14600, `lw` at 0xda14e6c, `lw` at 0xda14f74.
   4 such `lwc1` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lwc1` at 0xda14640, `lwc1` at 0xda150ec, `lwc1` at 0xda15114.
   The `lw` at 0xda1466c loads 4 bytes from [a0+28208] +0xe4.
-  The `lw` at 0xda14674 loads 4 bytes from [[a0+28208]+228] +0x18.
-  The `lw` at 0xda14678 loads 4 bytes from [[a0+28208]+228] +0x14.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x18, including `lw` at 0xda14674, `lw` at 0xda14988.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x14, including `lw` at 0xda14678, `lw` at 0xda1471c.
   The `lw` at 0xda1467c loads 4 bytes from [[a0+28208]+228] +0x2c.
   The `lw` at 0xda14680 loads 4 bytes from [[a0+28208]+228] +0x0.
   The `lwc1` at 0xda14690 loads 4 bytes from [[a0+28208]+228] +0x20.
@@ -13291,13 +13466,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `ldc1` at 0xda14844 loads 8 bytes from abs 0xda47cd8.
   The `ldc1` at 0xda1485c loads 8 bytes from abs 0xda47ce0.
   2 such `lw` accesses load 4 bytes from [a0+28208] +0x8, including `lw` at 0xda14920, `lw` at 0xda14934.
-  45 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda14940, `lwc1` at 0xda14c0c, `lwc1` at 0xda14c1c.
+  The `lwc1` at 0xda14940 loads 4 bytes from [[a0+28208]+228] +0x24.
   The `ldc1` at 0xda14a3c loads 8 bytes from abs 0xda47ce8.
   The `ldc1` at 0xda14a5c loads 8 bytes from abs 0xda47cf0.
   The `ldc1` at 0xda14a78 loads 8 bytes from abs 0xda47cf8.
   The `ldc1` at 0xda14a94 loads 8 bytes from abs 0xda47d00.
   The `ldc1` at 0xda14ab8 loads 8 bytes from abs 0xda47d08.
   The `ldc1` at 0xda14ad0 loads 8 bytes from abs 0xda47d10.
+  44 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda14c0c, `lwc1` at 0xda14c1c, `lwc1` at 0xda14c2c.
   13 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xda14d20, `swc1` at 0xda14d24, `swc1` at 0xda14d28.
   The `lwc1` at 0xda14fe4 loads 4 bytes from [a0+28208] +0x9c.
   The `lwc1` at 0xda14fe8 loads 4 bytes from [a0+28208] +0xa0.
@@ -13354,14 +13530,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xda14aac targets 0xda14b0c, is taken when f22 < f28 (c.lt.s at 0xda14aa8), and falls through when not (f22 < f28 (c.lt.s at 0xda14aa8)); its branch-likely delay slot `or t2,s3,zero` at 0xda14ab0 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda14ac0 targets 0xda14b0c, is taken when f20 < f10(=0x3ff0000000000000) (c.lt.d at 0xda14abc), and falls through when not (f20 < f10(=0x3ff0000000000000) (c.lt.d at 0xda14abc)); its branch-likely delay slot `addiu t2,zero,8` at 0xda14ac4 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda14adc targets 0xda14b0c, is taken when f0 < f6 (c.lt.d at 0xda14ad8), and falls through when not (f0 < f6 (c.lt.d at 0xda14ad8)); its branch-likely delay slot `addiu t2,zero,15` at 0xda14ae0 runs only when taken and is annulled on fall-through.
-  The `bc1tl` branch at 0xda14ae8 targets 0xda14b0c, is taken when f26 < f22 (c.lt.s at 0xda14ae4), and falls through when not (f26 < f22 (c.lt.s at 0xda14ae4)); its branch-likely delay slot `addiu t2,zero,7` at 0xda14aec runs only when taken and is annulled on fall-through.
+  The `bc1tl` branch at 0xda14ae8 targets 0xda14b0c, is taken when f26(=[[[a0+28208]+228]+36]) < f22 (c.lt.s at 0xda14ae4), and falls through when not (f26(=[[[a0+28208]+228]+36]) < f22 (c.lt.s at 0xda14ae4)); its branch-likely delay slot `addiu t2,zero,7` at 0xda14aec runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda14af4 targets 0xda14b0c, is taken when f0 < f12 (c.lt.d at 0xda14af0), and falls through when not (f0 < f12 (c.lt.d at 0xda14af0)); its branch-likely delay slot `or t2,s6,zero` at 0xda14af8 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda14b00 targets 0xda14b0c, is taken when not (f0 < f2 (c.lt.d at 0xda14afc)), and falls through when f0 < f2 (c.lt.d at 0xda14afc).
   The `bc1fl` branch at 0xda14b4c targets 0xda14b5c, is taken when not (f4 < f28 (c.lt.s at 0xda14b48)), and falls through when f4 < f28 (c.lt.s at 0xda14b48); its branch-likely delay slot `addiu a0,v0,1` at 0xda14b50 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xda14b6c targets 0xda14b84, is taken when not (f26 < f8 (c.lt.s at 0xda14b68)), and falls through when f26 < f8 (c.lt.s at 0xda14b68); its branch-likely delay slot `addiu v1,a0,1` at 0xda14b70 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda14b98 targets 0xda14bb0, is taken when not (f26 < f6 (c.lt.s at 0xda14b94)), and falls through when f26 < f6 (c.lt.s at 0xda14b94).
   The `bne` branch at 0xda14d2c targets 0xda14cf4, is taken when s0(?) < 0x4 (signed), and falls through when s0(?) >= 0x4 (signed).
-  The `bne` branch at 0xda14d3c targets 0xda14e50, is taken when v0(?) != 0, and falls through when v0(?) == 0.
+  The `bne` branch at 0xda14d3c targets 0xda14e50, is taken when v0(=one of 0x0, 0x1, 0x2) != 0, and falls through when v0(=one of 0x0, 0x1, 0x2) == 0.
   The `bne` branch at 0xda14d44 targets 0xda14e50, is taken when t1(?) != 0, and falls through when t1(?) == 0.
   The `bne` branch at 0xda14d4c targets 0xda14e50, is taken when t2(?) != 0, and falls through when t2(?) == 0.
   The `bgez` branch at 0xda14db0 targets 0xda14dc4, is taken when s0(?) >= 0 (signed), and falls through when s0(?) < 0 (signed).
@@ -13372,7 +13548,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda14e20 targets 0xda14e3c, is taken when s6(=0x3) != t5(?), and falls through when s6(=0x3) == t5(?).
   The `bne` branch at 0xda14e40 targets 0xda14d88, is taken when s0(?) != a0(=0x10), and falls through when s0(?) == a0(=0x10).
   The `beq` branch at 0xda14e48 targets 0xda1503c and is always taken.
-  The `bne` branch at 0xda14e50 targets 0xda14f64, is taken when v0(?) != at(=0x2), and falls through when v0(?) == at(=0x2).
+  The `bne` branch at 0xda14e50 targets 0xda14f64, is taken when v0(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when v0(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `bne` branch at 0xda14f54 targets 0xda14e6c, is taken when s0(?) != t3(=0x4), and falls through when s0(?) == t3(=0x4).
   The `beq` branch at 0xda14f5c targets 0xda1503c and is always taken.
   The `bne` branch at 0xda14fc8 targets 0xda14fe0, is taken when (t7(?) & t1(?)) != 0, and falls through when (t7(?) & t1(?)) == 0.
@@ -13380,12 +13556,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda14ff8 targets 0xda15024 and is always taken.
   The `bne` branch at 0xda15024 targets 0xda14f94, is taken when a1(?) != t3(=0x4), and falls through when a1(?) == t3(=0x4).
   The `bne` branch at 0xda15030 targets 0xda14f74, is taken when s0(?) != t3(=0x4), and falls through when s0(?) == t3(=0x4).
-  The `bne` branch at 0xda15040 targets 0xda15084, is taken when a1(?) != at(=0x2100), and falls through when a1(?) == at(=0x2100).
+  The `bne` branch at 0xda15040 targets 0xda15084, is taken when a1(=[[a0+2484]]) != at(=0x2100), and falls through when a1(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda1507c targets 0xda15158 and is always taken.
   The `bne` branch at 0xda1508c targets 0xda1509c, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda150a0 targets 0xda150e8, is taken when t6(?) == 0, and falls through when t6(?) != 0.
   The `beq` branch at 0xda150e0 targets 0xda15158 and is always taken.
-  The `bgez` branch at 0xda15198 targets 0xda14618, is taken when v0(=table(-0x1)) >= 0 (signed), and falls through when v0(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda15198 targets 0xda14618, is taken when v0(?) >= 0 (signed), and falls through when v0(?) < 0 (signed).
   The `bnel` branch at 0xda151a4 targets 0xda145dc, is taken when t8(?) != 0, and falls through when t8(?) == 0; its branch-likely delay slot `lw v0,464(sp)` at 0xda151a8 runs only when taken and is annulled on fall-through.
   The return at 0xda151f0 has v0 = 0x0.
 
@@ -13407,24 +13583,25 @@ Each entry records selected software behavior from its exact binary range. The r
   7 such `lwc1` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lwc1` at 0xda152c0, `lwc1` at 0xda15f10, `lwc1` at 0xda162cc.
   The `lwc1` at 0xda152cc loads 4 bytes from [a0+28208] +0xf0.
   5 such `lw` accesses load 4 bytes from [a0+28208] +0xe4, including `lw` at 0xda152e4, `lw` at 0xda15d40, `lw` at 0xda160e0.
-  The `lw` at 0xda152f0 loads 4 bytes from [[a0+28208]+228] +0x18.
-  The `lw` at 0xda152fc loads 4 bytes from [[a0+28208]+228] +0x14.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x18, including `lw` at 0xda152f0, `lw` at 0xda155e0.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x14, including `lw` at 0xda152fc, `lw` at 0xda15384.
   The `lw` at 0xda15300 loads 4 bytes from [[a0+28208]+228] +0x2c.
   The `lw` at 0xda15304 loads 4 bytes from [[a0+28208]+228] +0x0.
   The `lwc1` at 0xda15314 loads 4 bytes from [[a0+28208]+228] +0x20.
   4 such `lw` accesses load 4 bytes from [a0+28208] +0x4, including `lw` at 0xda15330, `lw` at 0xda15d6c, `lw` at 0xda16120.
-  13 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda15384, `lw` at 0xda155e0, `lw` at 0xda15aa4.
   4 such `sw` accesses store 4 bytes to ?, including `sw` at 0xda153cc, `sw` at 0xda153fc, `sw` at 0xda15620.
   The `ldc1` at 0xda1542c loads 8 bytes from abs 0xda47d20.
   The `ldc1` at 0xda1544c loads 8 bytes from abs 0xda47d28.
   The `ldc1` at 0xda15468 loads 8 bytes from abs 0xda47d30.
   5 such `lw` accesses load 4 bytes from [a0+28208] +0x8, including `lw` at 0xda15578, `lw` at 0xda1558c, `lw` at 0xda15e2c.
-  110 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda15598, `lwc1` at 0xda15850, `lwc1` at 0xda15860.
+  The `lwc1` at 0xda15598 loads 4 bytes from [[a0+28208]+228] +0x24.
   The `ldc1` at 0xda15680 loads 8 bytes from abs 0xda47d40.
   The `ldc1` at 0xda156a0 loads 8 bytes from abs 0xda47d48.
   The `ldc1` at 0xda156bc loads 8 bytes from abs 0xda47d50.
   The `ldc1` at 0xda15710 loads 8 bytes from abs 0xda47d58.
+  108 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda15850, `lwc1` at 0xda15860, `lwc1` at 0xda15870.
   13 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xda15958, `swc1` at 0xda1595c, `swc1` at 0xda15960.
+  11 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda15aa4, `lw` at 0xda15bb8, `lw` at 0xda15bd8.
   13 such `lwc1` accesses load 4 bytes from [a0+28208] +0x9c, including `lwc1` at 0xda15c28, `lwc1` at 0xda15f50, `lwc1` at 0xda15fb0.
   13 such `lwc1` accesses load 4 bytes from [a0+28208] +0xa0, including `lwc1` at 0xda15c2c, `lwc1` at 0xda15f54, `lwc1` at 0xda15fb4.
   13 such `lwc1` accesses load 4 bytes from [a0+28208] +0xa4, including `lwc1` at 0xda15c34, `lwc1` at 0xda15f5c, `lwc1` at 0xda15fbc.
@@ -13434,6 +13611,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xda160fc loads 4 bytes from table(-0x38) +0x0.
   The `lw` at 0xda16100 loads 4 bytes from table(-0x64) +0x0.
   The `lwc1` at 0xda1610c loads 4 bytes from table(-0x44) +0x0.
+  The `lwc1` at 0xda161e0 loads 4 bytes from table(-0x40) +0x0.
   The `lwc1` at 0xda16a84 loads 4 bytes from a0 (arg0 at entry) +0x7820.
   The `lwc1` at 0xda16a94 loads 4 bytes from a0 (arg0 at entry) +0x7824.
   The `lwc1` at 0xda16aa0 loads 4 bytes from a0 (arg0 at entry) +0x7828.
@@ -13444,8 +13622,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda16b40 loads 4 bytes from a0 (arg0 at entry) +0x76b0.
   The `lwc1` at 0xda16b50 loads 4 bytes from a0 (arg0 at entry) +0x76b8.
   The `lwc1` at 0xda16b60 loads 4 bytes from a0 (arg0 at entry) +0x76bc.
-  The `jalr` at 0xda153a8 calls floor with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda153dc calls floor with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda153a8 calls floor with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?.
+  The `jalr` at 0xda153dc calls floor with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?.
   The `jalr` at 0xda154fc calls __glFloor [0xd991800] with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?; fp f14=0x3ff0000000000000.
   The `jalr` at 0xda155fc calls floor with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda1562c calls floor with a0=?, a1=?, a2=?, a3=?.
@@ -13454,21 +13632,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xda15884 calls floor with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda15da4 calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda15e04 calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=table(-0x1), a2=?, a3=?.
-  The `jalr` at 0xda15e5c calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda15ebc calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda15ee4 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda15e5c calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda15ebc calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda15ee4 calls __glFrac [0xd9917f0] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda15efc calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda16148 calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
   The `jalr` at 0xda161b0 calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
-  The `jalr` at 0xda1620c calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda16278 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda162a0 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda1620c calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
+  The `jalr` at 0xda16278 calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
+  The `jalr` at 0xda162a0 calls __glFrac [0xd9917f0] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
   The `jalr` at 0xda162b8 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda165c0 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda16638 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
-  The `jalr` at 0xda16698 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda16710 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda1674c calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda16698 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda16710 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda1674c calls __glFrac [0xd9917f0] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda16764 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `bltz` branch at 0xda152a4 targets 0xda16b7c, is taken when t6(=[a0+30248]-1) < 0 (signed), and falls through when t6(=[a0+30248]-1) >= 0 (signed).
   The `bc1fl` branch at 0xda152d8 targets 0xda15c8c, is taken when not (f14 <= f10(=[[a0+28208]+240]) (c.le.s at 0xda152d4)), and falls through when f14 <= f10(=[[a0+28208]+240]) (c.le.s at 0xda152d4); its branch-likely delay slot `c.eq.s $f14,$f2` at 0xda152dc runs only when taken and is annulled on fall-through.
@@ -13491,7 +13669,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1fl` branch at 0xda15548 targets 0xda15560, is taken when not (f28 < f8 (c.lt.s at 0xda15544)), and falls through when f28 < f8 (c.lt.s at 0xda15544); its branch-likely delay slot `addiu v1,a0,1` at 0xda1554c runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xda15574 targets 0xda15590, is taken when not (f28 < f4 (c.lt.s at 0xda15570)), and falls through when f28 < f4 (c.lt.s at 0xda15570); its branch-likely delay slot `lw t8,8(s4)` at 0xda15578 runs only when taken and is annulled on fall-through.
   The `bne` branch at 0xda1559c targets 0xda15670, is taken when t8(=[[a0+28208]+8]) != at(=0x2901), and falls through when t8(=[[a0+28208]+8]) == at(=0x2901).
-  The `bc1f` branch at 0xda155d4 targets 0xda15624, is taken when not (f2 < f24 (c.lt.s at 0xda155d0)), and falls through when f2 < f24 (c.lt.s at 0xda155d0).
+  The `bc1f` branch at 0xda155d4 targets 0xda15624, is taken when not (f2 < f24(=[[[a0+28208]+228]+36]) (c.lt.s at 0xda155d0)), and falls through when f2 < f24(=[[[a0+28208]+228]+36]) (c.lt.s at 0xda155d0).
   The `beq` branch at 0xda1561c targets 0xda15650 and is always taken.
   The `bne` branch at 0xda15654 targets 0xda155c0, is taken when s0(?) != s7(=0x3), and falls through when s0(?) == s7(=0x3).
   The `beq` branch at 0xda15668 targets 0xda157f0 and is always taken.
@@ -13502,14 +13680,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xda156f4 targets 0xda1574c, is taken when f20 < f10 (c.lt.s at 0xda156f0), and falls through when not (f20 < f10 (c.lt.s at 0xda156f0)); its branch-likely delay slot `or s6,s3,zero` at 0xda156f8 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda15700 targets 0xda1574c, is taken when f22 < f0(=0x3ff0000000000000) (c.lt.d at 0xda156fc), and falls through when not (f22 < f0(=0x3ff0000000000000) (c.lt.d at 0xda156fc)); its branch-likely delay slot `addiu s6,zero,8` at 0xda15704 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda1571c targets 0xda1574c, is taken when f0 < f6 (c.lt.d at 0xda15718), and falls through when not (f0 < f6 (c.lt.d at 0xda15718)); its branch-likely delay slot `addiu s6,zero,15` at 0xda15720 runs only when taken and is annulled on fall-through.
-  The `bc1tl` branch at 0xda15728 targets 0xda1574c, is taken when f24 < f20 (c.lt.s at 0xda15724), and falls through when not (f24 < f20 (c.lt.s at 0xda15724)); its branch-likely delay slot `addiu s6,zero,7` at 0xda1572c runs only when taken and is annulled on fall-through.
+  The `bc1tl` branch at 0xda15728 targets 0xda1574c, is taken when f24(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda15724), and falls through when not (f24(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda15724)); its branch-likely delay slot `addiu s6,zero,7` at 0xda1572c runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda15734 targets 0xda1574c, is taken when f0 < f12 (c.lt.d at 0xda15730), and falls through when not (f0 < f12 (c.lt.d at 0xda15730)); its branch-likely delay slot `or s6,s7,zero` at 0xda15738 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda15740 targets 0xda1574c, is taken when not (f0 < f2 (c.lt.d at 0xda1573c)), and falls through when f0 < f2 (c.lt.d at 0xda1573c).
   The `bc1fl` branch at 0xda1578c targets 0xda1579c, is taken when not (f4 < f6 (c.lt.s at 0xda15788)), and falls through when f4 < f6 (c.lt.s at 0xda15788); its branch-likely delay slot `addiu a0,v0,1` at 0xda15790 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xda157ac targets 0xda157c4, is taken when not (f24 < f10 (c.lt.s at 0xda157a8)), and falls through when f24 < f10 (c.lt.s at 0xda157a8); its branch-likely delay slot `addiu v1,a0,1` at 0xda157b0 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda157d8 targets 0xda157f0, is taken when not (f24 < f8 (c.lt.s at 0xda157d4)), and falls through when f24 < f8 (c.lt.s at 0xda157d4).
   The `bne` branch at 0xda15964 targets 0xda1592c, is taken when s0(?) < 0x4 (signed), and falls through when s0(?) >= 0x4 (signed).
-  The `bne` branch at 0xda15974 targets 0xda15a8c, is taken when v0(?) != 0, and falls through when v0(?) == 0.
+  The `bne` branch at 0xda15974 targets 0xda15a8c, is taken when v0(=one of 0x0, 0x1, 0x2) != 0, and falls through when v0(=one of 0x0, 0x1, 0x2) == 0.
   The `bne` branch at 0xda1597c targets 0xda15a8c, is taken when s5(?) != 0, and falls through when s5(?) == 0.
   The `bne` branch at 0xda15984 targets 0xda15a8c, is taken when s6(?) != 0, and falls through when s6(?) == 0.
   The `bgez` branch at 0xda159ec targets 0xda15a00, is taken when s0(?) >= 0 (signed), and falls through when s0(?) < 0 (signed).
@@ -13520,7 +13698,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda15a5c targets 0xda15a78, is taken when s7(=0x3) != t7(?), and falls through when s7(=0x3) == t7(?).
   The `bne` branch at 0xda15a7c targets 0xda159c4, is taken when s0(?) != a1(=0x10), and falls through when s0(?) == a1(=0x10).
   The `beq` branch at 0xda15a84 targets 0xda16a1c and is always taken.
-  The `bne` branch at 0xda15a8c targets 0xda15ba0, is taken when v0(?) != at(=0x2), and falls through when v0(?) == at(=0x2).
+  The `bne` branch at 0xda15a8c targets 0xda15ba0, is taken when v0(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when v0(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `bne` branch at 0xda15b8c targets 0xda15aa4, is taken when s0(?) != t2(=0x4), and falls through when s0(?) == t2(=0x4).
   The `beq` branch at 0xda15b98 targets 0xda16a1c and is always taken.
   The `bne` branch at 0xda15c0c targets 0xda15c20, is taken when (t7(?) & s5(?)) != 0, and falls through when (t7(?) & s5(?)) == 0.
@@ -13558,7 +13736,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda161ec targets 0xda16240, is taken when t5(=[[a0+28208]+8]) != at(=0x2901), and falls through when t5(=[[a0+28208]+8]) == at(=0x2901).
   The `beq` branch at 0xda16238 targets 0xda16294 and is always taken.
   The `bc1tl` branch at 0xda1624c targets 0xda16268, is taken when f0 < f8 (c.lt.s at 0xda16248), and falls through when not (f0 < f8 (c.lt.s at 0xda16248)); its branch-likely delay slot `mtc1 zero,$f22` at 0xda16250 runs only when taken and is annulled on fall-through.
-  The `bc1f` branch at 0xda1625c targets 0xda16268, is taken when not (f24 < f0 (c.lt.s at 0xda16258)), and falls through when f24 < f0 (c.lt.s at 0xda16258).
+  The `bc1f` branch at 0xda1625c targets 0xda16268, is taken when not (f24(=entry(-0x40)) < f0 (c.lt.s at 0xda16258)), and falls through when f24(=entry(-0x40)) < f0 (c.lt.s at 0xda16258).
   The `beq` branch at 0xda16300 targets 0xda163d0, is taken when v0(?) >= 0x1 (unsigned), and falls through when v0(?) < 0x1 (unsigned).
   The `beq` branch at 0xda163c8 targets 0xda16554 and is always taken.
   The `beq` branch at 0xda163e8 targets 0xda16410, is taken when t7(?) == 0, and falls through when t7(?) != 0.
@@ -13577,7 +13755,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda166cc targets 0xda16734 and is always taken.
   The `bc1tl` branch at 0xda166e0 targets 0xda166f8, is taken when f0 < f2 (c.lt.s at 0xda166dc), and falls through when not (f0 < f2 (c.lt.s at 0xda166dc)); its branch-likely delay slot `mov.s $f22,$f2` at 0xda166e4 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda166ec targets 0xda166f8, is taken when not (f24 < f0 (c.lt.s at 0xda166e8)), and falls through when f24 < f0 (c.lt.s at 0xda166e8).
-  The `bne` branch at 0xda167bc targets 0xda16894, is taken when t9(?) != at(=0x2), and falls through when t9(?) == at(=0x2).
+  The `bne` branch at 0xda167bc targets 0xda16894, is taken when t9(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t9(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda1688c targets 0xda16a1c and is always taken.
   The `beq` branch at 0xda168a8 targets 0xda168d0, is taken when t5(?) == 0, and falls through when t5(?) != 0.
   The `beq` branch at 0xda168c8 targets 0xda16904 and is always taken.
@@ -13587,12 +13765,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda16988 targets 0xda169c0 and is always taken.
   The `beq` branch at 0xda169c0 targets 0xda169e8, is taken when t4(?) == 0, and falls through when t4(?) != 0.
   The `beq` branch at 0xda169e0 targets 0xda16a18 and is always taken.
-  The `bne` branch at 0xda16a20 targets 0xda16a58, is taken when t6(?) != at(=0x2100), and falls through when t6(?) == at(=0x2100).
+  The `bne` branch at 0xda16a20 targets 0xda16a58, is taken when t6(=[[a0+2484]]) != at(=0x2100), and falls through when t6(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda16a50 targets 0xda16b1c and is always taken.
   The `bne` branch at 0xda16a64 targets 0xda16a74, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda16a78 targets 0xda16ab8, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0xda16ab0 targets 0xda16b1c and is always taken.
-  The `bgezl` branch at 0xda16b74 targets 0xda152bc, is taken when t9(=table(-0x1)) >= 0 (signed), and falls through when t9(=table(-0x1)) < 0 (signed); its branch-likely delay slot `lw a1,568(sp)` at 0xda16b78 runs only when taken and is annulled on fall-through.
+  The `bgezl` branch at 0xda16b74 targets 0xda152bc, is taken when t9(?) >= 0 (signed), and falls through when t9(?) < 0 (signed); its branch-likely delay slot `lw a1,568(sp)` at 0xda16b78 runs only when taken and is annulled on fall-through.
   The return at 0xda16bc0 has v0 = 0x0.
   The instructions from 0xda15c88 to 0xda15c88 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xda15e84 to 0xda15e84 are not reached by any path from the entry, and their branches are not listed.
@@ -13613,12 +13791,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda16c58 loads 4 bytes from a0 (arg0 at entry) +0x7614.
   The `lwc1` at 0xda16c60 loads 4 bytes from a0 (arg0 at entry) +0x761c.
   The `lwc1` at 0xda16c68 loads 4 bytes from a0 (arg0 at entry) +0x7620.
-  14 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda16cb8, `lw` at 0xda16dbc, `lw` at 0xda1700c.
+  12 such `lw` accesses load 4 bytes from ?, including `lw` at 0xda16cb8, `lw` at 0xda174dc, `lw` at 0xda175f0.
   7 such `lwc1` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lwc1` at 0xda16cec, `lwc1` at 0xda17948, `lwc1` at 0xda17d14.
   The `lwc1` at 0xda16cfc loads 4 bytes from [a0+28208] +0xf0.
   5 such `lw` accesses load 4 bytes from [a0+28208] +0xe4, including `lw` at 0xda16d18, `lw` at 0xda17778, `lw` at 0xda17b20.
-  The `lw` at 0xda16d20 loads 4 bytes from [[a0+28208]+228] +0x18.
-  The `lw` at 0xda16d28 loads 4 bytes from [[a0+28208]+228] +0x14.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x18, including `lw` at 0xda16d20, `lw` at 0xda1700c.
+  2 such `lw` accesses load 4 bytes from [[a0+28208]+228] +0x14, including `lw` at 0xda16d28, `lw` at 0xda16dbc.
   The `lw` at 0xda16d30 loads 4 bytes from [[a0+28208]+228] +0x2c.
   The `lw` at 0xda16d38 loads 4 bytes from [[a0+28208]+228] +0x0.
   The `lwc1` at 0xda16d44 loads 4 bytes from [[a0+28208]+228] +0x20.
@@ -13628,13 +13806,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `ldc1` at 0xda16e80 loads 8 bytes from abs 0xda47d78.
   The `ldc1` at 0xda16e9c loads 8 bytes from abs 0xda47d80.
   5 such `lw` accesses load 4 bytes from [a0+28208] +0x8, including `lw` at 0xda16fa8, `lw` at 0xda16fbc, `lw` at 0xda17864.
-  110 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda16fc8, `lwc1` at 0xda17288, `lwc1` at 0xda17298.
+  The `lwc1` at 0xda16fc8 loads 4 bytes from [[a0+28208]+228] +0x24.
   The `ldc1` at 0xda170ac loads 8 bytes from abs 0xda47d90.
   The `ldc1` at 0xda170cc loads 8 bytes from abs 0xda47d98.
   The `ldc1` at 0xda170e8 loads 8 bytes from abs 0xda47da0.
   The `ldc1` at 0xda17104 loads 8 bytes from abs 0xda47da8.
   The `ldc1` at 0xda17130 loads 8 bytes from abs 0xda47db0.
   The `ldc1` at 0xda17148 loads 8 bytes from abs 0xda47db8.
+  108 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda17288, `lwc1` at 0xda17298, `lwc1` at 0xda172a8.
   13 such `swc1` accesses store 4 bytes to ?, including `swc1` at 0xda17390, `swc1` at 0xda17394, `swc1` at 0xda17398.
   13 such `lwc1` accesses load 4 bytes from [a0+28208] +0x9c, including `lwc1` at 0xda17660, `lwc1` at 0xda1798c, `lwc1` at 0xda179ec.
   13 such `lwc1` accesses load 4 bytes from [a0+28208] +0xa0, including `lwc1` at 0xda17664, `lwc1` at 0xda17990, `lwc1` at 0xda179f0.
@@ -13645,6 +13824,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xda17b44 loads 4 bytes from table(-0x38) +0x0.
   The `lw` at 0xda17b48 loads 4 bytes from table(-0x64) +0x0.
   The `lwc1` at 0xda17b54 loads 4 bytes from table(-0x44) +0x0.
+  The `lwc1` at 0xda17c30 loads 4 bytes from table(-0x40) +0x0.
   The `lwc1` at 0xda18494 loads 4 bytes from a0 (arg0 at entry) +0x7820.
   The `lwc1` at 0xda184a4 loads 4 bytes from a0 (arg0 at entry) +0x7824.
   The `lwc1` at 0xda184b0 loads 4 bytes from a0 (arg0 at entry) +0x7828.
@@ -13655,8 +13835,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda18554 loads 4 bytes from a0 (arg0 at entry) +0x76b0.
   The `lwc1` at 0xda18568 loads 4 bytes from a0 (arg0 at entry) +0x76b8.
   The `lwc1` at 0xda18578 loads 4 bytes from a0 (arg0 at entry) +0x76bc.
-  The `jalr` at 0xda16ddc calls floor with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda16e10 calls floor with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda16ddc calls floor with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?.
+  The `jalr` at 0xda16e10 calls floor with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?.
   The `jalr` at 0xda16f2c calls __glFloor [0xd991800] with a0=?, a1=[[[a0+28208]+228]+20]-1, a2=?, a3=?; fp f14=0x3ff0000000000000.
   The `jalr` at 0xda17028 calls floor with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda17058 calls floor with a0=?, a1=?, a2=?, a3=?.
@@ -13665,21 +13845,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xda172bc calls floor with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda177dc calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda1783c calls __glFloor [0xd991800] with a0=[[a0+28208]+236], a1=table(-0x1), a2=?, a3=?.
-  The `jalr` at 0xda17894 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda178f4 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda1791c calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda17894 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda178f4 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda1791c calls __glFrac [0xd9917f0] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda17934 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda17b98 calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
   The `jalr` at 0xda17bfc calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
-  The `jalr` at 0xda17c54 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda17cc0 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda17ce8 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda17c54 calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
+  The `jalr` at 0xda17cc0 calls __glFloor [0xd991800] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
+  The `jalr` at 0xda17ce8 calls __glFrac [0xd9917f0] with a0=?, a1=('tent_gp', -80, 4, -1), a2=?, a3=?.
   The `jalr` at 0xda17d00 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xda18014 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda18078 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
-  The `jalr` at 0xda180cc calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda18134 calls __glFloor [0xd991800] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0xda1815c calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda180cc calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda18134 calls __glFloor [0xd991800] with a0=?, a1=table(-0x1), a2=?, a3=?.
+  The `jalr` at 0xda1815c calls __glFrac [0xd9917f0] with a0=?, a1=table(-0x1), a2=?, a3=?.
   The `jalr` at 0xda18174 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0xda16c6c targets 0xda185a0, is taken when t9(=[a0+30248]) == 0, and falls through when t9(=[a0+30248]) != 0.
   The `bne` branch at 0xda16c94 targets 0xda16ca4, is taken when t6(?) < 0x21 (signed), and falls through when t6(?) >= 0x21 (signed).
@@ -13716,14 +13896,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bc1tl` branch at 0xda17124 targets 0xda17184, is taken when f20 < f8(=0x4000000000000000) (c.lt.s at 0xda17120), and falls through when not (f20 < f8(=0x4000000000000000) (c.lt.s at 0xda17120)); its branch-likely delay slot `or s6,s3,zero` at 0xda17128 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda17138 targets 0xda17184, is taken when f22 < f10(=0x3ff0000000000000) (c.lt.d at 0xda17134), and falls through when not (f22 < f10(=0x3ff0000000000000) (c.lt.d at 0xda17134)); its branch-likely delay slot `addiu s6,zero,8` at 0xda1713c runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda17154 targets 0xda17184, is taken when f0 < f4 (c.lt.d at 0xda17150), and falls through when not (f0 < f4 (c.lt.d at 0xda17150)); its branch-likely delay slot `addiu s6,zero,15` at 0xda17158 runs only when taken and is annulled on fall-through.
-  The `bc1tl` branch at 0xda17160 targets 0xda17184, is taken when f26 < f20 (c.lt.s at 0xda1715c), and falls through when not (f26 < f20 (c.lt.s at 0xda1715c)); its branch-likely delay slot `addiu s6,zero,7` at 0xda17164 runs only when taken and is annulled on fall-through.
+  The `bc1tl` branch at 0xda17160 targets 0xda17184, is taken when f26(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda1715c), and falls through when not (f26(=[[[a0+28208]+228]+36]) < f20 (c.lt.s at 0xda1715c)); its branch-likely delay slot `addiu s6,zero,7` at 0xda17164 runs only when taken and is annulled on fall-through.
   The `bc1tl` branch at 0xda1716c targets 0xda17184, is taken when f0 < f12 (c.lt.d at 0xda17168), and falls through when not (f0 < f12 (c.lt.d at 0xda17168)); its branch-likely delay slot `or s6,s7,zero` at 0xda17170 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda17178 targets 0xda17184, is taken when not (f0 < f2 (c.lt.d at 0xda17174)), and falls through when f0 < f2 (c.lt.d at 0xda17174).
   The `bc1fl` branch at 0xda171c4 targets 0xda171d4, is taken when not (f6 < f4 (c.lt.s at 0xda171c0)), and falls through when f6 < f4 (c.lt.s at 0xda171c0); its branch-likely delay slot `addiu a0,v0,1` at 0xda171c8 runs only when taken and is annulled on fall-through.
   The `bc1fl` branch at 0xda171e4 targets 0xda171fc, is taken when not (f26 < f10 (c.lt.s at 0xda171e0)), and falls through when f26 < f10 (c.lt.s at 0xda171e0); its branch-likely delay slot `addiu v1,a0,1` at 0xda171e8 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda17210 targets 0xda17228, is taken when not (f26 < f8 (c.lt.s at 0xda1720c)), and falls through when f26 < f8 (c.lt.s at 0xda1720c).
   The `bne` branch at 0xda1739c targets 0xda17364, is taken when s0(?) < 0x4 (signed), and falls through when s0(?) >= 0x4 (signed).
-  The `bne` branch at 0xda173ac targets 0xda174c4, is taken when v0(?) != 0, and falls through when v0(?) == 0.
+  The `bne` branch at 0xda173ac targets 0xda174c4, is taken when v0(=one of 0x0, 0x1, 0x2) != 0, and falls through when v0(=one of 0x0, 0x1, 0x2) == 0.
   The `bne` branch at 0xda173b4 targets 0xda174c4, is taken when s5(?) != 0, and falls through when s5(?) == 0.
   The `bne` branch at 0xda173bc targets 0xda174c4, is taken when s6(?) != 0, and falls through when s6(?) == 0.
   The `bgez` branch at 0xda17424 targets 0xda17438, is taken when s0(?) >= 0 (signed), and falls through when s0(?) < 0 (signed).
@@ -13734,7 +13914,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda17494 targets 0xda174b0, is taken when s7(=0x3) != t6(?), and falls through when s7(=0x3) == t6(?).
   The `bne` branch at 0xda174b4 targets 0xda173fc, is taken when s0(?) != a0(=0x10), and falls through when s0(?) == a0(=0x10).
   The `beq` branch at 0xda174bc targets 0xda18430 and is always taken.
-  The `bne` branch at 0xda174c4 targets 0xda175d8, is taken when v0(?) != at(=0x2), and falls through when v0(?) == at(=0x2).
+  The `bne` branch at 0xda174c4 targets 0xda175d8, is taken when v0(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when v0(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `bne` branch at 0xda175c4 targets 0xda174dc, is taken when s0(?) != t2(=0x4), and falls through when s0(?) == t2(=0x4).
   The `beq` branch at 0xda175d0 targets 0xda18430 and is always taken.
   The `bne` branch at 0xda17644 targets 0xda17658, is taken when (t6(?) & s5(?)) != 0, and falls through when (t6(?) & s5(?)) == 0.
@@ -13772,7 +13952,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bnel` branch at 0xda17c3c targets 0xda17c8c, is taken when t5(=[[a0+28208]+8]) != at(=0x2901), and falls through when t5(=[[a0+28208]+8]) == at(=0x2901); its branch-likely delay slot `mtc1 zero,$f8` at 0xda17c40 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda17c80 targets 0xda17cdc and is always taken.
   The `bc1tl` branch at 0xda17c94 targets 0xda17cb0, is taken when f0 < f8 (c.lt.s at 0xda17c90), and falls through when not (f0 < f8 (c.lt.s at 0xda17c90)); its branch-likely delay slot `mtc1 zero,$f28` at 0xda17c98 runs only when taken and is annulled on fall-through.
-  The `bc1f` branch at 0xda17ca4 targets 0xda17cb0, is taken when not (f26 < f0 (c.lt.s at 0xda17ca0)), and falls through when f26 < f0 (c.lt.s at 0xda17ca0).
+  The `bc1f` branch at 0xda17ca4 targets 0xda17cb0, is taken when not (f26(=entry(-0x40)) < f0 (c.lt.s at 0xda17ca0)), and falls through when f26(=entry(-0x40)) < f0 (c.lt.s at 0xda17ca0).
   The `beq` branch at 0xda17d50 targets 0xda17e28, is taken when v0(?) >= 0x1 (unsigned), and falls through when v0(?) < 0x1 (unsigned).
   The `beq` branch at 0xda17e20 targets 0xda17fb4 and is always taken.
   The `beq` branch at 0xda17e40 targets 0xda17e68, is taken when t8(?) == 0, and falls through when t8(?) != 0.
@@ -13791,7 +13971,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda180f8 targets 0xda18150 and is always taken.
   The `bc1tl` branch at 0xda1810c targets 0xda18124, is taken when f0 < f2 (c.lt.s at 0xda18108), and falls through when not (f0 < f2 (c.lt.s at 0xda18108)); its branch-likely delay slot `mov.s $f28,$f2` at 0xda18110 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda18118 targets 0xda18124, is taken when not (f26 < f0 (c.lt.s at 0xda18114)), and falls through when f26 < f0 (c.lt.s at 0xda18114).
-  The `bne` branch at 0xda181c4 targets 0xda1829c, is taken when t3(?) != at(=0x2), and falls through when t3(?) == at(=0x2).
+  The `bne` branch at 0xda181c4 targets 0xda1829c, is taken when t3(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t3(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda18294 targets 0xda18430 and is always taken.
   The `beq` branch at 0xda182b0 targets 0xda182d8, is taken when t5(?) == 0, and falls through when t5(?) != 0.
   The `beq` branch at 0xda182d0 targets 0xda1830c and is always taken.
@@ -13801,12 +13981,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda18390 targets 0xda183c8 and is always taken.
   The `beq` branch at 0xda183c8 targets 0xda183f8, is taken when t9(?) == 0, and falls through when t9(?) != 0.
   The `beq` branch at 0xda183f0 targets 0xda18430 and is always taken.
-  The `bne` branch at 0xda18434 targets 0xda1846c, is taken when a1(?) != at(=0x2100), and falls through when a1(?) == at(=0x2100).
+  The `bne` branch at 0xda18434 targets 0xda1846c, is taken when a1(=[[a0+2484]]) != at(=0x2100), and falls through when a1(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda18464 targets 0xda18528 and is always taken.
   The `bne` branch at 0xda18474 targets 0xda18484, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda18488 targets 0xda184c4, is taken when t6(?) == 0, and falls through when t6(?) != 0.
   The `beq` branch at 0xda184bc targets 0xda18528 and is always taken.
-  The `bgez` branch at 0xda1858c targets 0xda16cd8, is taken when t9(=table(-0x1)) >= 0 (signed), and falls through when t9(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda1858c targets 0xda16cd8, is taken when t9(?) >= 0 (signed), and falls through when t9(?) < 0 (signed).
   The `bnel` branch at 0xda18598 targets 0xda16c88, is taken when t4(?) != 0, and falls through when t4(?) == 0; its branch-likely delay slot `lw t6,552(sp)` at 0xda1859c runs only when taken and is annulled on fall-through.
   The return at 0xda185e4 has v0 = 0x0.
   The instructions from 0xda176c0 to 0xda176c0 are not reached by any path from the entry, and their branches are not listed.
@@ -13923,12 +14103,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda18e14 targets 0xda18e20, is taken when v0(?) < a3(=entry(-0x4c)) (signed), and falls through when v0(?) >= a3(=entry(-0x4c)) (signed).
   The `beql` branch at 0xda18e44 targets 0xda18e60, is taken when t9(?) == 0, and falls through when t9(?) != 0; its branch-likely delay slot `lw t3,44(s0)` at 0xda18e48 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda18e54 targets 0xda18ee0 and is always taken.
-  The `bne` branch at 0xda18ee8 targets 0xda18f18, is taken when t9(?) != at(=0x2100), and falls through when t9(?) == at(=0x2100).
+  The `bne` branch at 0xda18ee8 targets 0xda18f18, is taken when t9(=[[a0+2484]]) != at(=0x2100), and falls through when t9(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda18f10 targets 0xda18fdc and is always taken.
   The `bne` branch at 0xda18f24 targets 0xda18f34, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda18f38 targets 0xda18f78, is taken when t2(?) == 0, and falls through when t2(?) != 0.
   The `beq` branch at 0xda18f70 targets 0xda18fe0 and is always taken.
-  The `bgezl` branch at 0xda19024 targets 0xda18694, is taken when t6(=table(-0x1)) >= 0 (signed), and falls through when t6(=table(-0x1)) < 0 (signed); its branch-likely delay slot `lw t5,312(sp)` at 0xda19028 runs only when taken and is annulled on fall-through.
+  The `bgezl` branch at 0xda19024 targets 0xda18694, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed); its branch-likely delay slot `lw t5,312(sp)` at 0xda19028 runs only when taken and is annulled on fall-through.
   The return at 0xda19070 has v0 = 0x0.
   The instructions from 0xda18ac8 to 0xda18ac8 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xda18bc8 to 0xda18bc8 are not reached by any path from the entry, and their branches are not listed.
@@ -14051,12 +14231,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xda19920 targets 0xda1992c, is taken when v0(?) < a2(=entry(-0x4c)) (signed), and falls through when v0(?) >= a2(=entry(-0x4c)) (signed).
   The `beql` branch at 0xda19950 targets 0xda1996c, is taken when t4(?) == 0, and falls through when t4(?) != 0; its branch-likely delay slot `lw t3,44(s0)` at 0xda19954 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda19960 targets 0xda199ec and is always taken.
-  The `bne` branch at 0xda199f4 targets 0xda19a24, is taken when t4(?) != at(=0x2100), and falls through when t4(?) == at(=0x2100).
+  The `bne` branch at 0xda199f4 targets 0xda19a24, is taken when t4(=[[a0+2484]]) != at(=0x2100), and falls through when t4(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda19a1c targets 0xda19ae0 and is always taken.
   The `bne` branch at 0xda19a30 targets 0xda19a40, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beq` branch at 0xda19a44 targets 0xda19a7c, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0xda19a74 targets 0xda19ae4 and is always taken.
-  The `bgez` branch at 0xda19b38 targets 0xda19170, is taken when t6(=table(-0x1)) >= 0 (signed), and falls through when t6(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda19b38 targets 0xda19170, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed).
   The `bnel` branch at 0xda19b44 targets 0xda19120, is taken when t5(?) != 0, and falls through when t5(?) == 0; its branch-likely delay slot `lw t4,296(sp)` at 0xda19b48 runs only when taken and is annulled on fall-through.
   The return at 0xda19b90 has v0 = 0x0.
   The instructions from 0xda195dc to 0xda195dc are not reached by any path from the entry, and their branches are not listed.
@@ -14149,7 +14329,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda19d84 targets 0xda19dd0 and is always taken.
   The `bc1tl` branch at 0xda19d98 targets 0xda19db4, is taken when f0 < f6 (c.lt.s at 0xda19d94), and falls through when not (f0 < f6 (c.lt.s at 0xda19d94)); its branch-likely delay slot `mtc1 zero,$f28` at 0xda19d9c runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda19da8 targets 0xda19db4, is taken when not (f2(=[[[a0+28208]+228]+36]) < f0 (c.lt.s at 0xda19da4)), and falls through when f2(=[[[a0+28208]+228]+36]) < f0 (c.lt.s at 0xda19da4).
-  The `bne` branch at 0xda19e28 targets 0xda19ef8, is taken when t5(?) != at(=0x2), and falls through when t5(?) == at(=0x2).
+  The `bne` branch at 0xda19e28 targets 0xda19ef8, is taken when t5(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t5(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda19ef0 targets 0xda1ac60 and is always taken.
   The `beq` branch at 0xda19f08 targets 0xda19f30, is taken when t2(?) == 0, and falls through when t2(?) != 0.
   The `beq` branch at 0xda19f28 targets 0xda19f64 and is always taken.
@@ -14208,7 +14388,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda1a960 targets 0xda1a9ac and is always taken.
   The `bc1tl` branch at 0xda1a974 targets 0xda1a990, is taken when f0 < f6 (c.lt.s at 0xda1a970), and falls through when not (f0 < f6 (c.lt.s at 0xda1a970)); its branch-likely delay slot `mtc1 zero,$f28` at 0xda1a978 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda1a984 targets 0xda1a990, is taken when not (f2 < f0 (c.lt.s at 0xda1a980)), and falls through when f2 < f0 (c.lt.s at 0xda1a980).
-  The `bne` branch at 0xda1aa14 targets 0xda1aae4, is taken when t2(?) != at(=0x2), and falls through when t2(?) == at(=0x2).
+  The `bne` branch at 0xda1aa14 targets 0xda1aae4, is taken when t2(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t2(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda1aadc targets 0xda1ac60 and is always taken.
   The `beq` branch at 0xda1aaf4 targets 0xda1ab1c, is taken when t1(?) == 0, and falls through when t1(?) != 0.
   The `beq` branch at 0xda1ab14 targets 0xda1ab50 and is always taken.
@@ -14218,12 +14398,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda1abcc targets 0xda1ac04 and is always taken.
   The `beql` branch at 0xda1ac04 targets 0xda1ac30, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `sllv t9,s2,s8` at 0xda1ac08 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda1ac24 targets 0xda1ac60 and is always taken.
-  The `bne` branch at 0xda1ac64 targets 0xda1ac9c, is taken when t3(?) != at(=0x2100), and falls through when t3(?) == at(=0x2100).
+  The `bne` branch at 0xda1ac64 targets 0xda1ac9c, is taken when t3(=[[a0+2484]]) != at(=0x2100), and falls through when t3(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda1ac94 targets 0xda1ad78 and is always taken.
   The `bne` branch at 0xda1aca8 targets 0xda1acb8, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beql` branch at 0xda1acbc targets 0xda1ad00, is taken when t5(?) == 0, and falls through when t5(?) != 0; its branch-likely delay slot `lw t6,356(sp)` at 0xda1acc0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda1acf4 targets 0xda1ad74 and is always taken.
-  The `bgez` branch at 0xda1adcc targets 0xda19c48, is taken when t8(=table(-0x1)) >= 0 (signed), and falls through when t8(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda1adcc targets 0xda19c48, is taken when t8(?) >= 0 (signed), and falls through when t8(?) < 0 (signed).
   The return at 0xda1ae18 has v0 = 0x0.
   The instructions from 0xda1a070 to 0xda1a070 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0xda1ac2c to 0xda1ac2c are not reached by any path from the entry, and their branches are not listed.
@@ -14316,7 +14496,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda1b070 targets 0xda1b0bc and is always taken.
   The `bc1tl` branch at 0xda1b084 targets 0xda1b0a0, is taken when f0 < f4 (c.lt.s at 0xda1b080), and falls through when not (f0 < f4 (c.lt.s at 0xda1b080)); its branch-likely delay slot `mtc1 zero,$f28` at 0xda1b088 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda1b094 targets 0xda1b0a0, is taken when not (f2(=[[[a0+28208]+228]+36]) < f0 (c.lt.s at 0xda1b090)), and falls through when f2(=[[[a0+28208]+228]+36]) < f0 (c.lt.s at 0xda1b090).
-  The `bne` branch at 0xda1b114 targets 0xda1b1e4, is taken when t2(?) != at(=0x2), and falls through when t2(?) == at(=0x2).
+  The `bne` branch at 0xda1b114 targets 0xda1b1e4, is taken when t2(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t2(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda1b1dc targets 0xda1bf6c and is always taken.
   The `beq` branch at 0xda1b1f8 targets 0xda1b220, is taken when t5(?) == 0, and falls through when t5(?) != 0.
   The `beq` branch at 0xda1b218 targets 0xda1b254 and is always taken.
@@ -14375,7 +14555,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda1bc70 targets 0xda1bcbc and is always taken.
   The `bc1tl` branch at 0xda1bc84 targets 0xda1bca0, is taken when f0 < f4 (c.lt.s at 0xda1bc80), and falls through when not (f0 < f4 (c.lt.s at 0xda1bc80)); its branch-likely delay slot `mtc1 zero,$f28` at 0xda1bc88 runs only when taken and is annulled on fall-through.
   The `bc1f` branch at 0xda1bc94 targets 0xda1bca0, is taken when not (f2 < f0 (c.lt.s at 0xda1bc90)), and falls through when f2 < f0 (c.lt.s at 0xda1bc90).
-  The `bne` branch at 0xda1bd24 targets 0xda1bdf4, is taken when t5(?) != at(=0x2), and falls through when t5(?) == at(=0x2).
+  The `bne` branch at 0xda1bd24 targets 0xda1bdf4, is taken when t5(=one of 0x0, 0x1, 0x2) != at(=0x2), and falls through when t5(=one of 0x0, 0x1, 0x2) == at(=0x2).
   The `beq` branch at 0xda1bdec targets 0xda1bf6c and is always taken.
   The `beq` branch at 0xda1be04 targets 0xda1be2c, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `beq` branch at 0xda1be24 targets 0xda1be60 and is always taken.
@@ -14385,12 +14565,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xda1bedc targets 0xda1bf14 and is always taken.
   The `beq` branch at 0xda1bf14 targets 0xda1bf3c, is taken when t6(?) == 0, and falls through when t6(?) != 0.
   The `beq` branch at 0xda1bf34 targets 0xda1bf6c and is always taken.
-  The `bne` branch at 0xda1bf74 targets 0xda1bfac, is taken when t7(?) != at(=0x2100), and falls through when t7(?) == at(=0x2100).
+  The `bne` branch at 0xda1bf74 targets 0xda1bfac, is taken when t7(=[[a0+2484]]) != at(=0x2100), and falls through when t7(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda1bfa4 targets 0xda1c07c and is always taken.
   The `bne` branch at 0xda1bfb8 targets 0xda1bfc8, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beql` branch at 0xda1bfcc targets 0xda1c008, is taken when t2(?) == 0, and falls through when t2(?) != 0; its branch-likely delay slot `lw t6,372(sp)` at 0xda1bfd0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda1bffc targets 0xda1c078 and is always taken.
-  The `bgez` branch at 0xda1c0e0 targets 0xda1af20, is taken when t4(=table(-0x1)) >= 0 (signed), and falls through when t4(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda1c0e0 targets 0xda1af20, is taken when t4(?) >= 0 (signed), and falls through when t4(?) < 0 (signed).
   The `bnel` branch at 0xda1c0ec targets 0xda1aed0, is taken when t3(?) != 0, and falls through when t3(?) == 0; its branch-likely delay slot `lw t3,344(sp)` at 0xda1c0f0 runs only when taken and is annulled on fall-through.
   The return at 0xda1c138 has v0 = 0x0.
   The instructions from 0xda1b330 to 0xda1b330 are not reached by any path from the entry, and their branches are not listed.
@@ -14637,8 +14817,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda1d078 loads 4 bytes from a0 (arg0 at entry) +0x76b0.
   The `lwc1` at 0xda1d080 loads 4 bytes from a0 (arg0 at entry) +0x76b8.
   The `lwc1` at 0xda1d088 loads 4 bytes from a0 (arg0 at entry) +0x76bc.
-  The `jalr` at 0xda1ce60 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=table(-0x1), a3=?.
-  The `jalr` at 0xda1cee4 calls __glFrac [0xd9917f0] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xda1ce60 calls __glFrac [0xd9917f0] with a0=?, a1=[[a0+2484]], a2=?, a3=?.
+  The `jalr` at 0xda1cee4 calls __glFrac [0xd9917f0] with a0=?, a1=[[a0+2484]], a2=?, a3=?.
   The `beq` branch at 0xda1cce4 targets 0xda1d0b0, is taken when t8(=[a0+30248]) == 0, and falls through when t8(=[a0+30248]) != 0.
   The `bne` branch at 0xda1ccf8 targets 0xda1cd04, is taken when a2(?) < 0x21 (signed), and falls through when a2(?) >= 0x21 (signed).
   The `bltz` branch at 0xda1cd24 targets 0xda1d0a4, is taken when a2(=table(-0x1)) < 0 (signed), and falls through when a2(=table(-0x1)) >= 0 (signed).
@@ -14662,12 +14842,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bnel` branch at 0xda1cf38 targets 0xda1cf48, is taken when v0(?) < v1(?) (signed), and falls through when v0(?) >= v1(?) (signed); its branch-likely delay slot `nor s4,s4,zero` at 0xda1cf3c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda1cf58 targets 0xda1cf70, is taken when t6(?) == 0, and falls through when t6(?) != 0.
   The `beq` branch at 0xda1cf68 targets 0xda1cf94 and is always taken.
-  The `bne` branch at 0xda1cf94 targets 0xda1cfc4, is taken when a1(?) != at(=0x2100), and falls through when a1(?) == at(=0x2100).
+  The `bne` branch at 0xda1cf94 targets 0xda1cfc4, is taken when a1(=[[a0+2484]]) != at(=0x2100), and falls through when a1(=[[a0+2484]]) == at(=0x2100).
   The `beq` branch at 0xda1cfbc targets 0xda1d06c and is always taken.
   The `bne` branch at 0xda1cfcc targets 0xda1cfdc, is taken when v0(?) < 0x1 (unsigned), and falls through when v0(?) >= 0x1 (unsigned).
   The `beql` branch at 0xda1cfe0 targets 0xda1d014, is taken when t2(?) == 0, and falls through when t2(?) != 0; its branch-likely delay slot `lw v0,2484(s5)` at 0xda1cfe4 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xda1d008 targets 0xda1d06c and is always taken.
-  The `bgez` branch at 0xda1d09c targets 0xda1cd2c, is taken when a2(=table(-0x1)) >= 0 (signed), and falls through when a2(=table(-0x1)) < 0 (signed).
+  The `bgez` branch at 0xda1d09c targets 0xda1cd2c, is taken when a2(?) >= 0 (signed), and falls through when a2(?) < 0 (signed).
   The `bnel` branch at 0xda1d0a8 targets 0xda1ccf0, is taken when t4(?) != 0, and falls through when t4(?) == 0; its branch-likely delay slot `lw a2,224(sp)` at 0xda1d0ac runs only when taken and is annulled on fall-through.
   The return at 0xda1d0f4 has v0 = 0x0.
   The instructions from 0xda1cf0c to 0xda1cf0c are not reached by any path from the entry, and their branches are not listed.
@@ -15102,8 +15282,11 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda26da0, `lw` at 0xda26ddc, `lw` at 0xda26e0c.
   The `lwc1` at 0xda26da4 loads 4 bytes from [a0+28208] +0xbc.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda26dc0, `lwc1` at 0xda26e40.
-  4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda26dd0, `lwc1` at 0xda26dd8, `lwc1` at 0xda26e00.
+  The `lwc1` at 0xda26dd0 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda26dd8 loads 4 bytes from [a0+28208] +0xb0.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda26df0, `lwc1` at 0xda26e4c.
+  The `lwc1` at 0xda26e00 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda26e08 loads 4 bytes from [a0+28208] +0xb4.
   The `lwc1` at 0xda26e20 loads 4 bytes from a2 (arg2 at entry) +0x0.
   The `lwc1` at 0xda26e2c loads 4 bytes from a1 (arg1 at entry) +0x0.
   The `lwc1` at 0xda26e30 loads 4 bytes from a1 (arg1 at entry) +0x4.
@@ -15166,9 +15349,12 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda26fec, `lw` at 0xda27024, `lw` at 0xda27054.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda27008, `lwc1` at 0xda27088.
   The `swc1` at 0xda27010 stores 4 bytes to a2 (arg2 at entry) +0x0.
-  4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27018, `lwc1` at 0xda27020, `lwc1` at 0xda27048.
+  The `lwc1` at 0xda27018 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda27020 loads 4 bytes from [a0+28208] +0xb0.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda27038, `lwc1` at 0xda27094.
   The `swc1` at 0xda27040 stores 4 bytes to a2 (arg2 at entry) +0x4.
+  The `lwc1` at 0xda27048 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda27050 loads 4 bytes from [a0+28208] +0xb4.
   The `swc1` at 0xda27070 stores 4 bytes to a2 (arg2 at entry) +0x8.
   The `lwc1` at 0xda27074 loads 4 bytes from a1 (arg1 at entry) +0x0.
   The `lwc1` at 0xda27078 loads 4 bytes from a1 (arg1 at entry) +0x4.
@@ -15284,9 +15470,12 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda273ec, `lw` at 0xda27418, `lw` at 0xda27448.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda27404, `lwc1` at 0xda27480.
   The `swc1` at 0xda2740c stores 4 bytes to a2 (arg2 at entry) +0x0.
-  4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27414, `lwc1` at 0xda2741c, `lwc1` at 0xda27444.
+  The `lwc1` at 0xda27414 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda2741c loads 4 bytes from [a0+28208] +0xb0.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda27434, `lwc1` at 0xda27490.
   The `swc1` at 0xda2743c stores 4 bytes to a2 (arg2 at entry) +0x4.
+  The `lwc1` at 0xda27444 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda2744c loads 4 bytes from [a0+28208] +0xb4.
   The `swc1` at 0xda2746c stores 4 bytes to a2 (arg2 at entry) +0x8.
   The `lwc1` at 0xda27470 loads 4 bytes from a0 (arg0 at entry) +0x7820.
   The `swc1` at 0xda27478 stores 4 bytes to a1 (arg1 at entry) +0x0.
@@ -15353,20 +15542,26 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda2765c loads 4 bytes from [a0+28208] +0xbc.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda27660, `lw` at 0xda2768c, `lw` at 0xda276bc.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda27678, `lwc1` at 0xda276e0.
-  7 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27688, `lwc1` at 0xda27690, `lwc1` at 0xda276b8.
+  The `lwc1` at 0xda27688 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda27690 loads 4 bytes from [a0+28208] +0xb0.
   The `lwc1` at 0xda276a8 loads 4 bytes from a2 (arg2 at entry) +0x8.
+  The `lwc1` at 0xda276b8 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda276c0 loads 4 bytes from [a0+28208] +0xb4.
   The `lwc1` at 0xda276d8 loads 4 bytes from a2 (arg2 at entry) +0x0.
   The `lwc1` at 0xda276ec loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda27700 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda27704 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda27710 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda27718 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2771c loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda27724 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda27728 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda27730 loads 4 bytes from [a0+2484] +0xc.
   The `swc1` at 0xda2773c stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `jalr` at 0xda2766c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0+3544], a3=a3 at entry (arg3).
   The `jalr` at 0xda2769c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda276cc calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
-  The return at 0xda2774c has v0 = ?.
+  The return at 0xda2774c has v0 = [a0+2484]+4.
 
 - `__glTextureSBBlendLA` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xda27754 (o32).
   Evidence grade: inferred.
@@ -15395,11 +15590,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xda27854 stores 4 bytes to a2 (arg2 at entry) +0x10.
   The `lwc1` at 0xda2785c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda27874 loads 4 bytes from a1 (arg1 at entry) +0x0.
-  3 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27878, `lwc1` at 0xda27890, `lwc1` at 0xda278ac.
+  The `lwc1` at 0xda27878 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda27884 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2788c stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda27890 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda27898 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2789c stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda278ac loads 4 bytes from [a0+2484] +0xc.
   The `lwc1` at 0xda278b4 loads 4 bytes from a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda278bc stores 4 bytes to a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda278c0 stores 4 bytes to a1 (arg1 at entry) +0x8.
@@ -15407,7 +15604,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xda277e8 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda27810 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda27838 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
-  The return at 0xda278d8 has v0 = ?.
+  The return at 0xda278d8 has v0 = [a0+2484]+4.
 
 - `__glTextureSBBlendRGB` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xda278e0 (o32).
   Evidence grade: inferred.
@@ -15422,21 +15619,27 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lwc1` at 0xda27928 loads 4 bytes from [a0+28208] +0xac.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda27948, `lwc1` at 0xda279b0.
   The `swc1` at 0xda27950 stores 4 bytes to a2 (arg2 at entry) +0x0.
-  7 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27958, `lwc1` at 0xda27960, `lwc1` at 0xda27988.
+  The `lwc1` at 0xda27958 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda27960 loads 4 bytes from [a0+28208] +0xb0.
   The `lwc1` at 0xda27978 loads 4 bytes from a2 (arg2 at entry) +0x8.
   The `swc1` at 0xda27980 stores 4 bytes to a2 (arg2 at entry) +0x4.
+  The `lwc1` at 0xda27988 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda27990 loads 4 bytes from [a0+28208] +0xb4.
   The `swc1` at 0xda279b8 stores 4 bytes to a2 (arg2 at entry) +0x8.
   The `lwc1` at 0xda279bc loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda279d0 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda279d4 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda279e0 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda279e8 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda279ec loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda279f4 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda279f8 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda27a00 loads 4 bytes from [a0+2484] +0xc.
   The `swc1` at 0xda27a0c stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `jalr` at 0xda2793c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0+3544], a3=a3 at entry (arg3).
   The `jalr` at 0xda2796c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda2799c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
-  The return at 0xda27a1c has v0 = ?.
+  The return at 0xda27a1c has v0 = [a0+2484]+4.
 
 - `__glTextureSBBlendRGBA` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xda27a24 (o32).
   Evidence grade: inferred.
@@ -15464,11 +15667,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `swc1` at 0xda27b18 stores 4 bytes to a2 (arg2 at entry) +0x10.
   The `lwc1` at 0xda27b20 loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda27b38 loads 4 bytes from a1 (arg1 at entry) +0x0.
-  3 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27b3c, `lwc1` at 0xda27b54, `lwc1` at 0xda27b70.
+  The `lwc1` at 0xda27b3c loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda27b48 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda27b50 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda27b54 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda27b5c loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda27b60 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda27b70 loads 4 bytes from [a0+2484] +0xc.
   The `lwc1` at 0xda27b78 loads 4 bytes from a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda27b7c stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda27b88 stores 4 bytes to a1 (arg1 at entry) +0xc.
@@ -15476,7 +15681,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xda27aac calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda27ad4 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
   The `jalr` at 0xda27afc calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
-  The return at 0xda27ba0 has v0 = ?.
+  The return at 0xda27ba0 has v0 = [a0+2484]+4.
 
 - `__glTextureSBBlendA` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xda27ba8 (o32).
   Evidence grade: inferred.
@@ -15552,8 +15757,11 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda27e14, `lw` at 0xda27e44, `lw` at 0xda27e74.
   The `lwc1` at 0xda27e18 loads 4 bytes from [a0+28208] +0xbc.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda27e30, `lwc1` at 0xda27eac.
-  4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda27e40, `lwc1` at 0xda27e48, `lwc1` at 0xda27e70.
+  The `lwc1` at 0xda27e40 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda27e48 loads 4 bytes from [a0+28208] +0xb0.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda27e60, `lwc1` at 0xda27ebc.
+  The `lwc1` at 0xda27e70 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda27e78 loads 4 bytes from [a0+28208] +0xb4.
   The `lwc1` at 0xda27e90 loads 4 bytes from a2 (arg2 at entry) +0x0.
   The `lwc1` at 0xda27e9c loads 4 bytes from a0 (arg0 at entry) +0x7820.
   The `swc1` at 0xda27ea4 stores 4 bytes to a1 (arg1 at entry) +0x0.
@@ -15616,9 +15824,12 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xdd8, including `lw` at 0xda28060, `lw` at 0xda2808c, `lw` at 0xda280bc.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda28078, `lwc1` at 0xda280f4.
   The `swc1` at 0xda28080 stores 4 bytes to a2 (arg2 at entry) +0x0.
-  4 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda28088, `lwc1` at 0xda28090, `lwc1` at 0xda280b8.
+  The `lwc1` at 0xda28088 loads 4 bytes from [a0+28208] +0xc0.
+  The `lwc1` at 0xda28090 loads 4 bytes from [a0+28208] +0xb0.
   2 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda280a8, `lwc1` at 0xda28104.
   The `swc1` at 0xda280b0 stores 4 bytes to a2 (arg2 at entry) +0x4.
+  The `lwc1` at 0xda280b8 loads 4 bytes from [a0+28208] +0xc4.
+  The `lwc1` at 0xda280c0 loads 4 bytes from [a0+28208] +0xb4.
   The `swc1` at 0xda280e0 stores 4 bytes to a2 (arg2 at entry) +0x8.
   The `lwc1` at 0xda280e4 loads 4 bytes from a0 (arg0 at entry) +0x7820.
   The `swc1` at 0xda280ec stores 4 bytes to a1 (arg1 at entry) +0x0.
@@ -16152,7 +16363,7 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1728, including `lw` at 0xda2ace0, `lw` at 0xda2ad4c, `lw` at 0xda2adc0.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e0, including `lw` at 0xda2ace8, `lw` at 0xda2ad54, `lw` at 0xda2adc8.
   3 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda2acf4, `lwc1` at 0xda2ae50, `lwc1` at 0xda2af6c.
-  9 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2ad14, `lwc1` at 0xda2ad84, `lwc1` at 0xda2adf0.
+  6 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2ad14, `lwc1` at 0xda2ad84, `lwc1` at 0xda2adf0.
   2 such `lwc1` accesses load 4 bytes from [a0+28208] +0xc0, including `lwc1` at 0xda2ad20, `lwc1` at 0xda2ae7c.
   2 such `lwc1` accesses load 4 bytes from [a0+28208] +0xb0, including `lwc1` at 0xda2ad28, `lwc1` at 0xda2ae84.
   3 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x8, including `lwc1` at 0xda2ad64, `lwc1` at 0xda2aec0, `lwc1` at 0xda2af58.
@@ -16160,10 +16371,13 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lwc1` accesses load 4 bytes from [a0+28208] +0xb4, including `lwc1` at 0xda2ad94, `lwc1` at 0xda2aef0.
   The `lwc1` at 0xda2af5c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda2af74 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2af78 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda2af88 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2af90 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2af98 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda2afa0 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2afa4 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda2afb4 loads 4 bytes from [a0+2484] +0xc.
   The `swc1` at 0xda2afbc stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `jalr` at 0xda2acb8 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0+3544], a3=a3 at entry (arg3).
   The `jalr` at 0xda2ad2c calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
@@ -16199,7 +16413,7 @@ Each entry records selected software behavior from its exact binary range. The r
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e8, including `lw` at 0xda2b0b4, `lw` at 0xda2b134, `lw` at 0xda2b1a0.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1728, including `lw` at 0xda2b0c8, `lw` at 0xda2b14c, `lw` at 0xda2b1b8.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e0, including `lw` at 0xda2b0d0, `lw` at 0xda2b154, `lw` at 0xda2b1c0.
-  16 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2b0fc, `lwc1` at 0xda2b17c, `lwc1` at 0xda2b1e8.
+  13 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2b0fc, `lwc1` at 0xda2b17c, `lwc1` at 0xda2b1e8.
   4 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x10, including `swc1` at 0xda2b100, `swc1` at 0xda2b40c, `swc1` at 0xda2b480.
   4 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x0, including `lwc1` at 0xda2b108, `lwc1` at 0xda2b25c, `lwc1` at 0xda2b488.
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xac, including `lwc1` at 0xda2b110, `lwc1` at 0xda2b264, `lwc1` at 0xda2b490.
@@ -16212,10 +16426,13 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xb4, including `lwc1` at 0xda2b1f8, `lwc1` at 0xda2b344, `lwc1` at 0xda2b578.
   The `lwc1` at 0xda2b654 loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda2b670 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2b674 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda2b684 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2b68c stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2b694 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda2b69c loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2b6a0 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda2b6ac loads 4 bytes from [a0+2484] +0xc.
   The `lwc1` at 0xda2b6b8 loads 4 bytes from a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda2b6c0 stores 4 bytes to a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda2b6c4 stores 4 bytes to a1 (arg1 at entry) +0x8.
@@ -16259,7 +16476,7 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1728, including `lw` at 0xda2b7c8, `lw` at 0xda2b834, `lw` at 0xda2b8a8.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e0, including `lw` at 0xda2b7d0, `lw` at 0xda2b83c, `lw` at 0xda2b8b0.
   3 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x4, including `lwc1` at 0xda2b7dc, `lwc1` at 0xda2b938, `lwc1` at 0xda2ba54.
-  9 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2b7fc, `lwc1` at 0xda2b86c, `lwc1` at 0xda2b8d8.
+  6 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2b7fc, `lwc1` at 0xda2b86c, `lwc1` at 0xda2b8d8.
   2 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x0, including `swc1` at 0xda2b800, `swc1` at 0xda2b95c.
   2 such `lwc1` accesses load 4 bytes from [a0+28208] +0xc0, including `lwc1` at 0xda2b808, `lwc1` at 0xda2b964.
   2 such `lwc1` accesses load 4 bytes from [a0+28208] +0xb0, including `lwc1` at 0xda2b810, `lwc1` at 0xda2b96c.
@@ -16270,10 +16487,13 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x8, including `swc1` at 0xda2b8e0, `swc1` at 0xda2ba38.
   The `lwc1` at 0xda2ba44 loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda2ba5c loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2ba60 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda2ba70 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2ba78 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2ba80 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda2ba88 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2ba8c stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda2ba9c loads 4 bytes from [a0+2484] +0xc.
   The `swc1` at 0xda2baa4 stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `jalr` at 0xda2b7a0 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0+3544], a3=a3 at entry (arg3).
   The `jalr` at 0xda2b814 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
@@ -16305,7 +16525,7 @@ Each entry records selected software behavior from its exact binary range. The r
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e8, including `lw` at 0xda2bb8c, `lw` at 0xda2bc0c, `lw` at 0xda2bc78.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1728, including `lw` at 0xda2bba0, `lw` at 0xda2bc24, `lw` at 0xda2bc90.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e0, including `lw` at 0xda2bba8, `lw` at 0xda2bc2c, `lw` at 0xda2bc98.
-  16 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2bbd4, `lwc1` at 0xda2bc54, `lwc1` at 0xda2bcc0.
+  13 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2bbd4, `lwc1` at 0xda2bc54, `lwc1` at 0xda2bcc0.
   4 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x10, including `swc1` at 0xda2bbd8, `swc1` at 0xda2bee4, `swc1` at 0xda2bf58.
   4 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x0, including `lwc1` at 0xda2bbe0, `lwc1` at 0xda2bd34, `lwc1` at 0xda2bf60.
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xac, including `lwc1` at 0xda2bbe8, `lwc1` at 0xda2bd3c, `lwc1` at 0xda2bf68.
@@ -16321,10 +16541,13 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `swc1` accesses store 4 bytes to a2 (arg2 at entry) +0x8, including `swc1` at 0xda2bd2c, `swc1` at 0xda2be7c, `swc1` at 0xda2c0ac.
   The `lwc1` at 0xda2c12c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda2c144 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2c148 loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda2c158 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2c160 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2c168 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda2c170 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2c174 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda2c184 loads 4 bytes from [a0+2484] +0xc.
   The `lwc1` at 0xda2c18c loads 4 bytes from a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda2c190 stores 4 bytes to a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2c19c stores 4 bytes to a1 (arg1 at entry) +0xc.
@@ -16401,7 +16624,7 @@ Each entry records selected software behavior from its exact binary range. The r
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e8, including `lw` at 0xda2c48c, `lw` at 0xda2c50c, `lw` at 0xda2c578.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x1728, including `lw` at 0xda2c4a0, `lw` at 0xda2c524, `lw` at 0xda2c590.
   13 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x16e0, including `lw` at 0xda2c4a8, `lw` at 0xda2c52c, `lw` at 0xda2c598.
-  17 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2c4d4, `lwc1` at 0xda2c554, `lwc1` at 0xda2c5c0.
+  13 such `lwc1` accesses load 4 bytes from ?, including `lwc1` at 0xda2c4d4, `lwc1` at 0xda2c554, `lwc1` at 0xda2c5c0.
   4 such `lwc1` accesses load 4 bytes from a2 (arg2 at entry) +0x0, including `lwc1` at 0xda2c4e0, `lwc1` at 0xda2c634, `lwc1` at 0xda2c860.
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xac, including `lwc1` at 0xda2c4e8, `lwc1` at 0xda2c63c, `lwc1` at 0xda2c868.
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xbc, including `lwc1` at 0xda2c4f0, `lwc1` at 0xda2c640, `lwc1` at 0xda2c870.
@@ -16413,12 +16636,16 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lwc1` accesses load 4 bytes from [a0+28208] +0xb4, including `lwc1` at 0xda2c5d0, `lwc1` at 0xda2c71c, `lwc1` at 0xda2c950.
   The `lwc1` at 0xda2ca3c loads 4 bytes from a0 (arg0 at entry) +0xdd8.
   The `lwc1` at 0xda2ca58 loads 4 bytes from a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2ca5c loads 4 bytes from [a0+2484] +0x4.
   The `lwc1` at 0xda2ca68 loads 4 bytes from a1 (arg1 at entry) +0x4.
   The `swc1` at 0xda2ca70 stores 4 bytes to a1 (arg1 at entry) +0x0.
+  The `lwc1` at 0xda2ca78 loads 4 bytes from [a0+2484] +0x8.
   The `lwc1` at 0xda2ca80 loads 4 bytes from a1 (arg1 at entry) +0x8.
   The `swc1` at 0xda2ca88 stores 4 bytes to a1 (arg1 at entry) +0x4.
+  The `lwc1` at 0xda2ca90 loads 4 bytes from [a0+2484] +0xc.
   The `lwc1` at 0xda2ca98 loads 4 bytes from a1 (arg1 at entry) +0xc.
   The `swc1` at 0xda2ca9c stores 4 bytes to a1 (arg1 at entry) +0x8.
+  The `lwc1` at 0xda2cab0 loads 4 bytes from [a0+2484] +0x10.
   The `swc1` at 0xda2cab8 stores 4 bytes to a1 (arg1 at entry) +0xc.
   The `jalr` at 0xda2c480 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=[a0+3544], a3=a3 at entry (arg3).
   The `jalr` at 0xda2c504 calls __GL_TEXENV_CLAMP [0xda26d20] with a0=?, a1=?, a2=[a0+3544], a3=?.
@@ -16752,7 +16979,7 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 132 bytes.
   The `lw` at 0xda2ec8c loads 4 bytes from a0 (arg0 at entry) +0x6e30.
   The `lw` at 0xda2eca0 loads 4 bytes from [a0+28208] +0x108.
-  The `lw` at 0xda2ecb8 loads 4 bytes from ?.
+  The `lw` at 0xda2ecb8 loads 4 bytes from [a0+28208] +0x104.
   The `jalr` at 0xda2eca8 calls (unknown callee) with a0=[a0+28208], a1=0x0, a2=?, a3=?.
   The `jalr` at 0xda2ecc4 calls (unknown callee) with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=sp-28, a3=?.
   The return at 0xda2ecd4 has v0 = ret(?).
@@ -16806,7 +17033,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xda3b9f0 stores 4 bytes to a0 (arg0 at entry) +0x8.
   The `sw` at 0xda3b9f8 stores 4 bytes to a0 (arg0 at entry) +0x4.
   The `jalr` at 0xda3ba04 calls __viceInit [0xda3ac40] with a0=[a0], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a2 at entry (arg2).
-  The `jalr` at 0xda3ba20 calls __viceAllocSPbuf [0xda3aa5c] with a0=?, a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
+  The `jalr` at 0xda3ba20 calls __viceAllocSPbuf [0xda3aa5c] with a0=[a0], a1=a0 at entry (arg0), a2=a1 at entry (arg1), a3=a2 at entry (arg2).
   The `bne` branch at 0xda3b9f4 targets 0xda3ba14, is taken when v0(=[[a0]+33020]) != 0, and falls through when v0(=[[a0]+33020]) == 0.
   The return at 0xda3ba34 has v0 = ret(__viceAllocSPbuf).
   The instructions from 0xda3ba3c to 0xda3bbac are not reached by any path from the entry, and their branches are not listed.
@@ -16830,13 +17057,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd814f9c stores 4 bytes to [[[0x1014]+276]+4] +0x4.
   The `sh` at 0xd814fac stores 2 bytes to [[[0x1014]+276]+4] +0x2.
   The `sh` at 0xd814fc8 stores 2 bytes to [[[0x1014]+276]+4] +0x0.
-  The `lw` at 0xd814ff0 loads 4 bytes from ?.
-  The `sw` at 0xd815000 stores 4 bytes to ?.
+  The `lw` at 0xd814ff0 loads 4 bytes from [[0x1014]+276] +0x8.
+  The `sw` at 0xd815000 stores 4 bytes to [[0x1014]+276] +0x4.
   The `jalr` at 0xd814fc4 calls memcpy with a0=[[[0x1014]+276]+4]+8, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=a3 at entry (arg3), a4=a0 at entry (arg0).
-  The `jalr` at 0xd814fe0 calls memcpy with a0=?, a1=a2 at entry (arg2), a2=?, a3=?.
-  The `jalr` at 0xd815020 calls __glXFlushRenderBuffer with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0xd814fe0 calls memcpy with a0=((a0 << 0x2) + [[[0x1014]+276]+4])+8, a1=a2 at entry (arg2), a2=(a0 << 0x2), a3=?.
+  The `jalr` at 0xd815020 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=?, a2=?, a3=?.
   The `bltz` branch at 0xd814f8c targets 0xd815004, is taken when a0 < 0 (signed), and falls through when a0 >= 0 (signed).
-  The `bne` branch at 0xd814ffc targets 0xd815018, is taken when a2(?) < s0(?) (unsigned), and falls through when a2(?) >= s0(?) (unsigned).
+  The `bne` branch at 0xd814ffc targets 0xd815018, is taken when a2(=[[[0x1014]+276]+8]) < s0(?) (unsigned), and falls through when a2(=[[[0x1014]+276]+8]) >= s0(?) (unsigned).
   The `beq` branch at 0xd815028 targets 0xd815008 and is always taken.
   The return at 0xd815010 has v0 = one of ?, ret(__glXFlushRenderBuffer).
 
@@ -16878,16 +17105,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd8163e8 loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8163f4 stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8163fc stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd816400, `lw` at 0xd816420.
+  The `lw` at 0xd816400 loads 4 bytes from [[0x1014]+276] +0x110.
   The `sw` at 0xd816408 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `sb` at 0xd816414 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd816420 loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd81642c stores 4 bytes to [[[[0x1014]+276]+216]+108] +0xc.
   The `sw` at 0xd816438 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `lw` at 0xd81644c loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd816458 loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd816398 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd8163b0 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+1232].
-  The `jalr` at 0xd816434 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-80, a2=0x0, a3=0x0, a5=a0 at entry (arg0), a6=0x11.
+  The `jalr` at 0xd816434 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-80, a2=0x0, a3=0x0, a4=[[[0x1014]+276]+60], a5=a0 at entry (arg0), a6=0x11, a7=[[[0x1014]+276]+272].
   The `jalr` at 0xd816450 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+1232].
   The `jalr` at 0xd816468 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd8164a0 calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108]+16.
@@ -16962,16 +17190,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd8166b4 loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8166c4 stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8166d0 stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd8166d4, `lw` at 0xd8166ec.
+  The `lw` at 0xd8166d4 loads 4 bytes from [[0x1014]+276] +0x110.
   The `sw` at 0xd8166dc stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `sb` at 0xd8166e4 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd8166ec loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd8166f0 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0xc.
   The `sw` at 0xd8166fc stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `lw` at 0xd81670c loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd816718 loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd816648 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=[[0x1014]+276], a3=a3 at entry (arg3).
   The `jalr` at 0xd816660 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=[[[[0x1014]+276]+216]+1232], a3=?.
-  The `jalr` at 0xd8166f8 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=?, a3=?, a4=[[[[0x1014]+276]+216]+108], a5=a0 at entry (arg0), a6=0x10.
+  The `jalr` at 0xd8166f8 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[0x1014]+276]+60], a4=[[[[0x1014]+276]+216]+108], a5=a0 at entry (arg0), a6=0x10, a7=[[[0x1014]+276]+272].
   The `jalr` at 0xd816710 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=[[[[0x1014]+276]+216]+1232], a3=?.
   The `jalr` at 0xd816724 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd81674c calls _XFlush with a0=[[[0x1014]+276]+216], a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=?, a4=[[[[0x1014]+276]+216]+108].
@@ -17003,16 +17232,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd81683c loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd816848 stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd816858 stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd81685c, `lw` at 0xd816878.
+  The `lw` at 0xd81685c loads 4 bytes from [[0x1014]+276] +0x110.
   The `sw` at 0xd816864 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `sb` at 0xd816870 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd816878 loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd816880 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0xc.
   The `sw` at 0xd81688c stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `lw` at 0xd8168f0 loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd8168fc loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd8167cc calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[[0x1014]+276].
   The `jalr` at 0xd8167e4 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?, a4=[[[[0x1014]+276]+216]+1232], a5=a0 at entry (arg0).
-  The `jalr` at 0xd816888 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=?, a3=?, a4=[[[[0x1014]+276]+216]+108], a7=a0 at entry (arg0).
+  The `jalr` at 0xd816888 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+16, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=?, a4=[[[[0x1014]+276]+216]+108], a5=(a0 << 0x2), a6=[[[0x1014]+276]+60], a7=a0 at entry (arg0).
   The `jalr` at 0xd8168a0 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-112, a2=0x0, a3=0x0.
   The `jalr` at 0xd8168bc calls _XRead with a0=[[[0x1014]+276]+216], a1=a2 at entry (arg2), a2=a0 at entry (arg0), a3=?.
   The `jalr` at 0xd8168dc calls _XEatData with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
@@ -17064,7 +17294,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd833dc8 stores 4 bytes to [a0+108] +0xc.
   The `sw` at 0xd833dcc stores 4 bytes to [a0+108] +0x8.
   The `lw` at 0xd833dd0 loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  The `sw` at 0xd833de4 stores 4 bytes to ?.
+  The `sw` at 0xd833de4 stores 4 bytes to [a0+108] +0x10.
   The `lw` at 0xd833df4 loads 4 bytes from [a0+1232] +0x4.
   The `lw` at 0xd833e00 loads 4 bytes from a0 (arg0 at entry) +0x7c.
   The `jalr` at 0xd833d38 calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -17079,7 +17309,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd833dec targets 0xd833e00, is taken when a5(=[a0+1232]) == 0, and falls through when a5(=[a0+1232]) != 0.
   The `beq` branch at 0xd833e04 targets 0xd833e18, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xd833e34 targets 0xd833d7c and is always taken.
-  The return at 0xd833e24 has v0 = ?.
+  The return at 0xd833e24 has v0 = ret(?).
   The return at 0xd833e48 has v0 = 0x0.
 
 - `glXDestroyGLXPixmap` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd833e50 (n32).
@@ -17137,7 +17367,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd839168 stores 4 bytes to [a0+108] +0x14.
   The `sw` at 0xd83916c stores 4 bytes to [a0+108] +0x10.
   The `lw` at 0xd839170 loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  The `sw` at 0xd839184 stores 4 bytes to ?.
+  The `sw` at 0xd839184 stores 4 bytes to [a0+108] +0x18.
   The `lw` at 0xd839194 loads 4 bytes from [a0+1232] +0x4.
   The `lw` at 0xd8391a0 loads 4 bytes from a0 (arg0 at entry) +0x7c.
   The `jalr` at 0xd8390cc calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -17152,7 +17382,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd83918c targets 0xd8391a0, is taken when a5(=[a0+1232]) == 0, and falls through when a5(=[a0+1232]) != 0.
   The `beq` branch at 0xd8391a4 targets 0xd8391b8, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xd8391d4 targets 0xd839110 and is always taken.
-  The return at 0xd8391c4 has v0 = ?.
+  The return at 0xd8391c4 has v0 = ret(?).
   The return at 0xd8391e8 has v0 = 0x0.
 
 - `glXCreatePixmap` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd83b64c (n32).
@@ -17177,7 +17407,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd83b708 stores 4 bytes to [a0+108] +0xc.
   The `sw` at 0xd83b70c stores 4 bytes to [a0+108] +0x8.
   The `lw` at 0xd83b710 loads 4 bytes from a0 (arg0 at entry) +0x2c.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd83b724, `sw` at 0xd83b728.
+  The `sw` at 0xd83b724 stores 4 bytes to [a0+108] +0x14.
+  The `sw` at 0xd83b728 stores 4 bytes to [a0+108] +0x10.
   The `lw` at 0xd83b738 loads 4 bytes from [a0+1232] +0x4.
   The `lw` at 0xd83b744 loads 4 bytes from a0 (arg0 at entry) +0x7c.
   The `jalr` at 0xd83b678 calls __glXSetupForCommand with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -17192,7 +17423,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd83b730 targets 0xd83b744, is taken when a5(=[a0+1232]) == 0, and falls through when a5(=[a0+1232]) != 0.
   The `beq` branch at 0xd83b748 targets 0xd83b75c, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xd83b778 targets 0xd83b6bc and is always taken.
-  The return at 0xd83b768 has v0 = ?.
+  The return at 0xd83b768 has v0 = ret(?).
   The return at 0xd83b78c has v0 = 0x0.
 
 - `glXDestroyPixmap` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd83b794 (n32).
@@ -17267,15 +17498,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd840d80 loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd840d8c stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd840d9c stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd840da0, `lw` at 0xd840db4.
+  The `lw` at 0xd840da0 loads 4 bytes from [[0x1014]+276] +0x110.
   The `sb` at 0xd840da8 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd840db4 loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd840dbc stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `sw` at 0xd840dc8 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `lw` at 0xd840e2c loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd840e38 loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd840d18 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3), a4=[[0x1014]+276].
   The `jalr` at 0xd840d30 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?, a4=[[[[0x1014]+276]+216]+1232], a5=a0 at entry (arg0).
-  The `jalr` at 0xd840dc4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=?, a3=?, a4=[[[[0x1014]+276]+216]+108], a7=a0 at entry (arg0).
+  The `jalr` at 0xd840dc4 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=?, a4=[[[[0x1014]+276]+216]+108], a5=(a0 << 0x2), a6=[[[0x1014]+276]+60], a7=a0 at entry (arg0).
   The `jalr` at 0xd840ddc calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-112, a2=0x0, a3=0x0.
   The `jalr` at 0xd840df8 calls _XRead with a0=[[[0x1014]+276]+216], a1=a2 at entry (arg2), a2=a0 at entry (arg0), a3=?.
   The `jalr` at 0xd840e18 calls _XEatData with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
@@ -17313,15 +17545,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd840f40 loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd840f50 stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd840f5c stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd840f60, `lw` at 0xd840f74.
+  The `lw` at 0xd840f60 loads 4 bytes from [[0x1014]+276] +0x110.
   The `sb` at 0xd840f68 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd840f74 loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd840f78 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `sw` at 0xd840f84 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `lw` at 0xd840f94 loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd840fa0 loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd840ed8 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=[[0x1014]+276], a3=a3 at entry (arg3).
   The `jalr` at 0xd840ef0 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=[[[[0x1014]+276]+216]+1232], a3=?.
-  The `jalr` at 0xd840f80 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=?, a3=?, a4=[[[[0x1014]+276]+216]+108], a5=a0 at entry (arg0), a7=[[[[0x1014]+276]+216]+96]+1.
+  The `jalr` at 0xd840f80 calls memcpy with a0=[[[[0x1014]+276]+216]+108]+12, a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=[[[0x1014]+276]+60], a4=[[[[0x1014]+276]+216]+108], a5=a0 at entry (arg0), a6=[[[0x1014]+276]+272], a7=[[[[0x1014]+276]+216]+96]+1.
   The `jalr` at 0xd840f98 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=[[[[0x1014]+276]+216]+1232], a3=?.
   The `jalr` at 0xd840fac calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd840fd4 calls _XFlush with a0=[[[0x1014]+276]+216], a1=a1 at entry (arg1), a2=(a0 << 0x2), a3=?, a4=[[[[0x1014]+276]+216]+108].
@@ -17394,15 +17627,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd8411c0 loads 4 bytes from [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8411cc stores 4 bytes to [[[0x1014]+276]+216] +0x60.
   The `sw` at 0xd8411d4 stores 4 bytes to [[[0x1014]+276]+216] +0x6c.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd8411d8, `lw` at 0xd8411f0.
+  The `lw` at 0xd8411d8 loads 4 bytes from [[0x1014]+276] +0x110.
   The `sb` at 0xd8411e0 stores 1 byte to [[[[0x1014]+276]+216]+108] +0x1.
+  The `lw` at 0xd8411f0 loads 4 bytes from [[0x1014]+276] +0x3c.
   The `sw` at 0xd8411fc stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x8.
   The `sw` at 0xd841208 stores 4 bytes to [[[[0x1014]+276]+216]+108] +0x4.
   The `lw` at 0xd84121c loads 4 bytes from [[[[0x1014]+276]+216]+1232] +0x4.
   The `lw` at 0xd841228 loads 4 bytes from [[[0x1014]+276]+216] +0x7c.
   The `jalr` at 0xd841174 calls __glXFlushRenderBuffer with a0=[[0x1014]+276], a1=[[[0x1014]+276]+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd84118c calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+1232].
-  The `jalr` at 0xd841204 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-80, a2=0x0, a3=0x0, a5=a0 at entry (arg0), a7=[[[[0x1014]+276]+216]+96]+1.
+  The `jalr` at 0xd841204 calls _XReply with a0=[[[0x1014]+276]+216], a1=sp-80, a2=0x0, a3=0x0, a4=[[[0x1014]+276]+60], a5=a0 at entry (arg0), a6=[[[0x1014]+276]+272], a7=[[[[0x1014]+276]+216]+96]+1.
   The `jalr` at 0xd841220 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+1232].
   The `jalr` at 0xd841238 calls (unknown callee) with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=?.
   The `jalr` at 0xd841270 calls _XFlush with a0=[[[0x1014]+276]+216], a1=?, a2=?, a3=[[[[0x1014]+276]+216]+108]+12.
@@ -17597,24 +17831,26 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xd93aab8 loads 4 bytes from [0x1010] +0x2e08.
   The `sw` at 0xd93aad4 stores 4 bytes to abs 0x1018.
   The `lbu` at 0xd93aae8 loads 1 byte from ?.
-  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93aaf4, `lw` at 0xd93ab4c, `lw` at 0xd93ab5c.
+  The `lw` at 0xd93aaf4 loads 4 bytes from ?.
+  The `lw` at 0xd93ab4c loads 4 bytes from [0x1010] +0xc84.
+  The `lw` at 0xd93ab5c loads 4 bytes from [0x1010] +0x7d58.
   The `jalr` at 0xd93aa60 calls __glSetError [0xd9cee50] with a0=0x502, a1=[0x1018], a2=[0x1010], a3=a3 at entry (arg3), a5=a0 at entry (arg0), a6=[[0x1010]+33016], a7=0x11637c.
   The `jalr` at 0xd93aaa0 calls __glSetError [0xd9cee50] with a0=0x502, a1=[0x1018], a2=[0x1010], a3=a3 at entry (arg3), a5=a0 at entry (arg0), a6=[[0x1010]+33016], a7=0x11637c.
   The `jalr` at 0xd93aabc calls (unknown callee) with a0=[0x1010], a1=[0x1018], a2=[0x1010], a3=a3 at entry (arg3), a5=a0 at entry (arg0), a6=[[0x1010]+33016], a7=0x11637c.
   The `bgezall` at 0xd93aad0 calls __glcrmim_Accum [0xd93aa10] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd93ab30 calls __glSetError [0xd9cee50] with a0=0x500, a1=0x103, a2=0x104, a3=?, a5=a0 at entry (arg0).
-  The `jalr` at 0xd93ab78 calls (unknown callee) with a0=?, a1=?, a2=?, a3=?, a5=a0 at entry (arg0).
-  The `bgezall` at 0xd93ab94 calls SoftAccumOp [0xd93acf0] with a0=?, a1=?, a2=a0 at entry (arg0), a3=?.
+  The `jalr` at 0xd93ab78 calls (unknown callee) with a0=[0x1010]+31360, a1=[0x1010]+31360, a2=?, a3=([[0x1010]+32088] << 0xb), a5=a0 at entry (arg0).
+  The `bgezall` at 0xd93ab94 calls SoftAccumOp [0xd93acf0] with a0=[0x1010]+31360, a1=?, a2=a0 at entry (arg0), a3=?.
   The `bgezall` at 0xd93abb0 calls InitVICE [0xd938e70] with a0=[0x1010], a1=[0x1018], a2=[0x1010], a3=a3 at entry (arg3), a5=a0 at entry (arg0), a6=[[0x1010]+33016], a7=0x11637c.
-  The `bgezall` at 0xd93abd4 calls SetupForSoftPathFallBack [0xd93bc00] with a0=?, a1=?, a2=?, a3=?, a5=a0 at entry (arg0), a6=ret(InitVICE).
+  The `bgezall` at 0xd93abd4 calls SetupForSoftPathFallBack [0xd93bc00] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?, a5=a0 at entry (arg0), a6=ret(InitVICE).
   The `jalr` at 0xd93abe4 calls __glim_Accum [0xd9bc8c0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `bgezall` at 0xd93ac48 calls AccumAlloc [0xd939230] with a0=?, a1=?, a2=?, a3=?, a5=a0 at entry (arg0).
-  The `bgezall` at 0xd93ac64 calls SetupForSoftPathFallBack [0xd93bc00] with a0=?, a1=?, a2=?, a3=?, a5=a0 at entry (arg0).
+  The `bgezall` at 0xd93ac48 calls AccumAlloc [0xd939230] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?, a5=a0 at entry (arg0).
+  The `bgezall` at 0xd93ac64 calls SetupForSoftPathFallBack [0xd93bc00] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?, a5=a0 at entry (arg0).
   The `jalr` at 0xd93ac74 calls __glim_Accum [0xd9bc8c0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xd93ac88 calls __glim_Accum [0xd9bc8c0] with a0=a0 at entry (arg0), a1=[0x1018], a2=[0x1010], a3=a3 at entry (arg3), a5=a0 at entry (arg0), a6=[[0x1010]+33016], a7=0x11637c.
-  The `bgezall` at 0xd93aca8 calls SetupForSoftPathFallBack [0xd93bc00] with a0=?, a1=?, a2=?, a3=?, a5=a0 at entry (arg0).
+  The `bgezall` at 0xd93aca8 calls SetupForSoftPathFallBack [0xd93bc00] with a0=[0x1010], a1=[0x1010]+31360, a2=?, a3=?, a5=a0 at entry (arg0).
   The `jalr` at 0xd93acb8 calls __glim_Accum [0xd9bc8c0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `bgezall` at 0xd93acd8 calls SoftAccumOp [0xd93acf0] with a0=?, a1=?, a2=a0 at entry (arg0), a3=?, a5=a0 at entry (arg0).
+  The `bgezall` at 0xd93acd8 calls SoftAccumOp [0xd93acf0] with a0=[0x1010]+31360, a1=[0x1010]+31360, a2=a0 at entry (arg0), a3=([[0x1010]+32088] << 0xb), a5=a0 at entry (arg0).
   The `beq` branch at 0xd93aa3c targets 0xd93aa78, is taken when a1(=[0x1018]) == 0, and falls through when a1(=[0x1018]) != 0.
   The `beq` branch at 0xd93aa54 targets 0xd93aab0, is taken when a1(=[0x1018]) == t0(=0x2), and falls through when a1(=[0x1018]) != t0(=0x2).
   The `beq` branch at 0xd93aa80 targets 0xd93ac84, is taken when t1(=[[0x1010]+32010]:1) == 0, and falls through when t1(=[[0x1010]+32010]:1) != 0.
@@ -17631,8 +17867,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd93ab1c targets 0xd93ac20, is taken when a5(=a0) == a1(=0x103), and falls through when a5(=a0) != a1(=0x103).
   The `beq` branch at 0xd93ab24 targets 0xd93ab40, is taken when a5(=a0) == a2(=0x104), and falls through when a5(=a0) != a2(=0x104).
   The `beq` branch at 0xd93ab38 targets 0xd93aa6c and is always taken.
-  The `bne` branch at 0xd93ab54 targets 0xd93aa68, is taken when ra(?) != at(=0x1c00), and falls through when ra(?) == at(=0x1c00).
-  The `bltz` branch at 0xd93ab64 targets 0xd93acc8, is taken when a3(?) < 0 (signed), and falls through when a3(?) >= 0 (signed).
+  The `bne` branch at 0xd93ab54 targets 0xd93aa68, is taken when ra(=[[0x1010]+3204]) != at(=0x1c00), and falls through when ra(=[[0x1010]+3204]) == at(=0x1c00).
+  The `bltz` branch at 0xd93ab64 targets 0xd93acc8, is taken when a3(=([[0x1010]+32088] << 0xb)) < 0 (signed), and falls through when a3(=([[0x1010]+32088] << 0xb)) >= 0 (signed).
   The `bne` branch at 0xd93ab80 targets 0xd93aa68, is taken when v0(?) != 0, and falls through when v0(?) == 0.
   The `beq` branch at 0xd93ab9c targets 0xd93aa6c and is always taken.
   The `bne` branch at 0xd93abbc targets 0xd93aae8, is taken when v0(=ret(InitVICE)) != 0, and falls through when v0(=ret(InitVICE)) == 0.
@@ -17659,8 +17895,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xd93bd10 stores 4 bytes to [0x1010] +0x71c.
   The `swc1` at 0xd93bd20 stores 4 bytes to [0x1010] +0x720.
   The `sw` at 0xd93bd2c stores 4 bytes to abs 0x1018.
-  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xd93bd38, `lw` at 0xd93bd3c.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd93bd48, `sw` at 0xd93bd54.
+  The `lw` at 0xd93bd38 loads 4 bytes from [0x1010] +0x2de8.
+  The `lw` at 0xd93bd3c loads 4 bytes from [0x1010] +0x2dec.
+  The `sw` at 0xd93bd48 stores 4 bytes to [0x1010] +0x2de8.
+  The `sw` at 0xd93bd54 stores 4 bytes to [0x1010] +0x2dec.
   The `bgezall` at 0xd93bd1c calls __glCrmPassAlphaFunc [0xd9402a0] with a0=[0x1010], a1=?, a2=a0 at entry (arg0), a3=[0x1010].
   The `jalr` at 0xd93bd68 calls __glSetError [0xd9cee50] with a0=0x500, a1=?, a2=a0 at entry (arg0), a3=[0x1010].
   The `jalr` at 0xd93bd7c calls __glSetError [0xd9cee50] with a0=0x502, a1=?, a2=a0 at entry (arg0), a3=[0x1010].
