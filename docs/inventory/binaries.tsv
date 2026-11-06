@@ -1,6 +1,6 @@
 binary	group	role	kind	abi	bytes	sha256	copies	functions	address_source	access_sites	unresolved_sites	status	doc	section
 sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	none	31	0	understood	docs/binaries.md#diagnostics	Diagnostics
-sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	symtab (dwarf addresses stale, dropped)	19	0	understood	docs/binaries.md#diagnostics	Diagnostics
+sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	symtab+dwarf	19	0	understood	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0		0	0	understood	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	symtab	18	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	symtab	111	3	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
@@ -17,7 +17,7 @@ usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	kernel	board-kernel	object	n32	42
 usr/cpu/sysgen/IP32boot/gfx.o	kernel-shared	shared-kernel	object	n32	40296	d9324b66d28a576b		57	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx.o)	kernel-shared	shared-kernel	object	n32	40308	9f5a58ab7cd5b715		57	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/gfxs.a(gfx_debug.o)	kernel-shared	shared-kernel	object	n32	964	a5152b68bb67d3c3		0	none	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
-usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	symtab (dwarf addresses stale, dropped)	154	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
+usr/cpu/sysgen/IP32boot/kernel.o	kernel-shared	shared-kernel	object	n32	504132	ebf09eeae80f3726		811	symtab+dwarf	154	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mace.o	kernel	board-kernel	object	n32	9704	5c8a35eeeef61004		12	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/mvp.o	kernel-video	board-kernel	object	n32	167864	214b4dfbf57dcdc0		169	symtab+dwarf	117	9	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/os.a(tile.o)	kernel-shared	shared-kernel	object	n32	31124	dbe331ca2334e1f6		24	symtab	0	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
@@ -25,7 +25,7 @@ usr/cpu/sysgen/IP32boot/rrm.o	kernel-shared	shared-kernel	object	n32	50168	9bbcb
 usr/gfx/arch/GENERIC/Xsgi	x-shared	shared-x-server	executable	n32	3120928	68792b0377bde4be		2936	dynsym	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGL.so	libraries	board-library	shared-object	o32	487952	102630464b588997		675	dynsym+mdebug	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM/libGLcore.so	libraries	board-library	shared-object	o32	2360688	f3a2f0f865030e72		3447	dynsym+mdebug	1159	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
-usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	dynsym (dwarf addresses stale, dropped)	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
+usr/gfx/arch/IP32CRM32/libGL.so	libraries	board-library	shared-object	n32	518648	1821600edaf1efe0		677	dynsym+dwarf (dwarf addresses stale, dropped except sections of their own)	0	0	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/arch/IP32CRM32/libGLcore.so	libraries	board-library	shared-object	n32	2572500	b33ef449a0ffa93a		3448	dynsym+dwarf	1173	7	understood	docs/binaries.md#opengl-and-the-x-server	OpenGL and the X server
 usr/gfx/gfxinit	tools	shared-tool	executable	n32	177132	add7430a5ae4cc7f		227	dynsym	0	0	understood	docs/functions.md#kernel-routines-one-entry-each-gfxo	Kernel routines, one entry each (`gfx.o`)
 usr/gfx/setmon	tools	shared-tool	executable	n32	289580	a59868a509468f55		249	dynsym	0	0	understood	docs/binaries.md#display-configuration-tools	Display configuration tools
