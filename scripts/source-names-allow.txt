@@ -166,3 +166,8 @@ s_size.c	name in the published OpenGL sample implementation
 stubs.c	name in published Linux or OpenBSD source
 sys/arch/sgi/dev/gbe.c	name in published OpenBSD source
 sys/arch/sgi/localbus/crimebus.h	name in published OpenBSD source
+mibstore.c	name in published X.Org xserver source (mi/)
+miregion.c	name in published X.Org xserver source (mi/)
+sys/rrm.h	header shipped in the installed IRIX 6.5.5 system
+root/usr/include/sys/rrm.h	header shipped in the installed IRIX 6.5.5 system
+root/usr/include/sys/stropts.h	header shipped in the installed IRIX 6.5.5 system

@@ -825,7 +825,7 @@ Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that to
   It is a return (`jr ra`) with a nop in the delay slot, so it reads and writes no register and calls nothing. The code that follows it in the object, from offset 0x8168, is `add_vice`.
 - `add_vice` in `kernel.o`: probes the video-compression engine and registers it in the hardware inventory, a 124-byte routine with no symbol at offset 0x8168. Established.
   It stores 4 to the word at 0xb700e014 (the 0x17000000 window plus 0xe014) and calls `us_delay` with 10, then stores 0 to the word at 0xb70001bc and calls `us_delay` with 10 again; each store sits in the delay slot of its call, so it is issued before the delay runs.
-  It then loads the CRIME interrupt status doubleword at 0xb4000010 and returns when bit 31 (0x80000000) is clear. When the bit is set it copies the word at 0xb7000164 to the word at 0xb700e00c and calls `add_to_inventory` with 15, 3, 0, 0 and the word at 0xb700000c, which it loads in the call's delay slot, and then returns.
+  It then loads the CRIME interrupt status doubleword at 0xb4000010 and returns when bit 31 (0x80000000) is clear. When the bit is set it copies the word at 0xb7000164 to the word at 0xb700e00c and calls `add_to_inventory` with 15, 3, 0, 0 and the word at 0xb700000c, which it loads in the call's delay slot, and then returns. The 6.5.30 `add_cpuboard` reaches this routine (offset 0x8168) with a `jal`.
 
 ## Bus-error probes
 
