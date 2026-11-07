@@ -25,11 +25,11 @@ Assembly antialiased line drawer. Established: 1 routines in the unit, 1 listed 
 |---|---|---|
 | `__glCrmAntiAliasLineRGB` | 0xd933200 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly antialiased RGB line, 299 instructions. It writes the primitive (+0x2060), both end points, the antialiasing register through its alias (+0x2990, several times per line), the colour and its steppers (+0x20e0 to +0x2108), the foreground (+0x20d0), the depth steppers (+0x21d0, +0x21d8) and zeroes the fog steppers. |
 
-### `crm_accum.c`
+### the CRIME GL driver source unit 1
 
 Accumulation buffer, through the VICE media library and digital-media buffers. Established: 16 routines in the unit, 16 listed here; no routine stores through the register base.
 
-### `crm_attrib.c`
+### the CRIME GL driver attribute state source unit
 
 OpenGL state entry points that turn state into CRIME register words: DrawMode, alpha test, blend colour and function, colour mask, fog colour and logic op. Established: 37 routines in the unit, 33 listed here; 8 routines store through the register base.
 
@@ -42,7 +42,7 @@ OpenGL state entry points that turn state into CRIME register words: DrawMode, a
 | `__glCrmPassLogicOp` | 0xd940900 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): passes the OpenGL logic operation code, 109 instructions. It translates the sixteen operations to the engine's four-bit codes and stores the result to +0x21b0 (the logic-op register), once for the shadow and once for the hardware. |
 | `__glCrmPassColorMask` | 0xd940bc0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): passes the colour write mask, 162 instructions. It packs the channel enables into the engine's mask word and stores it to +0x21b8, writing 0 for the case where every channel is masked. |
 
-### `crm_bitmap.c`
+### the CRIME GL driver bitmap source unit
 
 Bitmaps drawn with the stipple registers. Established: 3 routines in the unit, 3 listed here; 3 routines store through the register base.
 
@@ -52,7 +52,7 @@ Bitmaps drawn with the stipple registers. Established: 3 routines in the unit, 3
 | `__glCrmRenderFrontBackBitmap` | 0xd941af0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a bitmap into the front and back buffers in turn, 114 instructions. It clears bit 1 of the draw-mode word (+0x2018) for the second pass, stores the stencil mask (+0x21e8) around each pass, and calls the single-buffer bitmap routine through a table in the context. |
 | `__glCrmRenderLeftRightBitmap` | 0xd941cc0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a bitmap into the left and right stereo buffers in turn, 135 instructions. It clears bit 0 of the buffer-mode word (+0x2008) between passes, stores the stencil mask (+0x21e8) around each and calls the single-buffer routine through a context table. |
 
-### `crm_ci.c`
+### the CRIME GL driver color-index source unit
 
 Colour-buffer fetch, store, read and clear for colour-index visuals. Established: 9 routines in the unit, 9 listed here; 3 routines store through the register base.
 
@@ -62,7 +62,7 @@ Colour-buffer fetch, store, read and clear for colour-index visuals. Established
 | `StoreCI2` | 0xd941f70 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): stores one colour-index pixel from the second span form, 56 instructions. It writes the primitive (+0x2060), the position (+0x2080, +0x2084) and the colour through the start alias at +0x28d0, with a second pixel when the span is two wide. |
 | `ClearCI` | 0xd9423c0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): clears a colour-index buffer, 289 instructions. It sends ioctl 0x5606 to prepare the buffer, selects the buffer (+0x2008) and draw mode (+0x2018), loads the clear index into the foreground colour (+0x20d0), sets the primitive (+0x2060) and the rectangle corners (+0x2080 to +0x2088 and the alias +0x288c) and commits. |
 
-### `crm_coloropt.c`
+### the CRIME GL driver source unit 2
 
 Current and raster colour download into the foreground register. Established: 24 routines in the unit, 24 listed here; 4 routines store through the register base.
 
@@ -73,7 +73,7 @@ Current and raster colour download into the foreground register. Established: 24
 | `__glcrmim_Indexf` | 0xd942c70 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the immediate-mode glIndexf handler, 27 instructions. It converts the colour index to the buffer's pixel word and stores it to the foreground colour register +0x20d0 in two stores, one per pixel size. |
 | `__glcrmim_FastColor4ub` | 0xd9435b0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the immediate-mode glColor4ub handler, 54 instructions. It packs the four bytes into the buffer's pixel word and stores it to the foreground colour register +0x20d0 in two stores, one per pixel size. |
 
-### `crm_context.c`
+### the CRIME GL driver context source unit
 
 Context and drawable set-up: sends the board-information, shadow-mapping, drawable and TLB-set requests listed, and flushes (`PP_FLUSH`). Established: 27 routines in the unit, 21 listed here; 1 routine stores through the register base.
 
@@ -84,7 +84,7 @@ Context and drawable set-up: sends the board-information, shadow-mapping, drawab
 | `__glCrmSetCurrentBuffers` | 0xd944800 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): binds the draw and read buffers after a drawable change, 109 instructions. It builds a request record in the context with the number 0x55f7 (select a frame-buffer TLB set) and a buffer code of 2, and sends it through the table hook at +0x14. |
 | `DecoupleSwapBuffers` | 0xd944c90 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): a short routine of 60 instructions that makes one indirect call through the hook at +0x14 of the context's table with the drawable it was given. It stores no engine register and sends no ioctl of its own. |
 
-### `crm_ctri.c`
+### the CRIME GL driver source unit 3
 
 Triangle variants: stippled, left/right stereo and slow-path triangles. Established: 5 routines in the unit, 5 listed here; 4 routines store through the register base.
 
@@ -95,7 +95,7 @@ Triangle variants: stippled, left/right stereo and slow-path triangles. Establis
 | `__glCrmFillFrontBackTriangle` | 0xd948490 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): fills a triangle in the front and back buffers in turn, 116 instructions. It clears bit 1 of the draw-mode register +0x2018, stores the stencil mask +0x21e8 around each pass and calls the single-buffer fill through the context table at -0x7efc. |
 | `__glCrmFillLeftRightTriangle` | 0xd948660 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): fills a triangle in the left and right stereo buffers in turn, 107 instructions. It clears bit 0 of the destination buffer mode +0x2008 between passes, stores the stencil mask +0x21e8 around each and calls the single-buffer fill through the context table at -0x7ee8. |
 
-### `crm_depth.c`
+### the CRIME GL driver depth source unit
 
 Depth-buffer access and clears: depth function, stencil mode, rectangle primitives and the clear-buffer request. Established: 12 routines in the unit, 9 listed here; 3 routines store through the register base.
 
@@ -103,7 +103,7 @@ Depth-buffer access and clears: depth function, stencil mode, rectangle primitiv
 |---|---|---|
 | `FirstClearDepth` | 0xd94a7a0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the first clear of the depth buffer, 173 instructions. It stores stencil mode +0x21e0 and depth function +0x21c0, sets draw mode +0x2018 and the primitive +0x2060 to 0x3020000, writes the rectangle through the GL vertex registers (+0x2080 to +0x208c) and restores the three registers. |
 
-### `crm_igloo.c`
+### the CRIME GL driver source unit 4
 
 Compatibility (IRIS GL-style) helpers; sends resource-manager command 1009. Established: 7 routines in the unit, 7 listed here; no routine stores through the register base.
 
@@ -111,7 +111,7 @@ Compatibility (IRIS GL-style) helpers; sends resource-manager command 1009. Esta
 |---|---|---|
 | `crmIglooFullScreen` | 0xd94aef0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): a short routine of 37 instructions that makes two indirect calls through the context hooks at +0x2e84 and +0x2e88, one after the other. It stores no engine register and sends no ioctl of its own. |
 
-### `crm_line.c`
+### the CRIME GL driver source unit 5
 
 Line set-up: wide, stippled, scissored, aliased and antialiased lines. Established: 9 routines in the unit, 9 listed here; 3 routines store through the register base.
 
@@ -121,7 +121,7 @@ Line set-up: wide, stippled, scissored, aliased and antialiased lines. Establish
 | `__glCrmRenderFrontBackLine` | 0xd94c750 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a line into the front and back buffers in turn, 106 instructions. It clears bit 1 of the draw-mode register +0x2018 for the second pass, stores the stencil mask +0x21e8 around each pass and calls the single-buffer line routine through the context table at -0x7ef8. |
 | `__glCrmRenderLeftRightLine` | 0xd94c900 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a line into the left and right stereo buffers in turn, 119 instructions. It clears bit 0 of the destination buffer mode +0x2008 between passes, stores the stencil mask +0x21e8 around each and calls the single-buffer routine through the table at -0x7ee4. |
 
-### `crm_linedraw.c`
+### the CRIME GL driver line drawing source unit
 
 Flat, fogged colour-index and polygon-offset lines. Established: 4 routines in the unit, 4 listed here; 3 routines store through the register base.
 
@@ -142,7 +142,7 @@ Assembly line drawers: colour-optimised, stippled, fogged and depth lines with t
 | `__glCrmFogRGBLine` | 0xd938134 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly fogged RGB line, 163 instructions. It writes both end points through the GL vertex registers, the primitive (+0x2060), the stipple pattern and mode (+0x20c4, +0x20c0), the red start (+0x20e0) and its steppers (+0x20f0, +0x20f8, +0x2900, +0x2908) and zeroes the fog steppers (+0x2180, +0x2188). |
 | `__glCrmDepthLine` | 0xd9383c0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly depth-tested line, 215 instructions. It writes the end points, the primitive (+0x2060), the stipple registers (+0x20c4, +0x20c0), the depth steppers (+0x21d0, +0x21d8), the colour through the alias at +0x28d0 and commits with a store to the null register through its alias (+0x29f0). |
 
-### `crm_linespan.c`
+### the CRIME GL driver line span source unit
 
 Stippled line stored as spans. Established: 2 routines in the unit, 2 listed here; 2 routines store through the register base.
 
@@ -151,7 +151,7 @@ Stippled line stored as spans. Established: 2 routines in the unit, 2 listed her
 | `__glCrmStoreLine` | 0xd94e020 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the general line routine of the span path, 1068 instructions. It computes texture, fog and antialias values with `__glFloor` and `powf`, then writes the first end (+0x2080, +0x2084), the colour (+0x20d0), the texture and fog registers (+0x2130 to +0x2188), the primitive (+0x2060) and the second end (+0x2088, +0x208c), committing through the null alias (+0x29f0). |
 | `__glCrmStoreStippledLine` | 0xd94f0e0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the stippled variant of the general line routine, 1092 instructions. It makes the same writes as `__glCrmStoreLine` (end points, colour +0x20d0, texture and fog registers, primitive +0x2060) and builds the antialias index with `__glBuildAntiAliasIndex`. |
 
-### `crm_listcomp.c`
+### the CRIME GL driver list compilation source unit
 
 Display-list compile and execute for the texture-image commands. Established: 17 routines in the unit, 17 listed here; no routine stores through the register base.
 
@@ -159,11 +159,11 @@ Display-list compile and execute for the texture-image commands. Established: 17
 
 Assembly display-list executors for vertex, normal, colour and texture coordinate. Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
-### `crm_pick.c`
+### the CRIME GL driver picking source unit
 
 Selection of the primitive and lighting procedures for the current state. Established: 11 routines in the unit, 4 listed here; 1 routine stores through the register base.
 
-### `crm_pixel.c`
+### the CRIME GL driver pixel source unit
 
 DrawPixels, ReadPixels and CopyPixels through the linear TLBs ([pixel-transfer.md](pixel-transfer.md)). Established: 39 routines in the unit, 34 listed here; 7 routines store through the register base.
 
@@ -174,7 +174,7 @@ DrawPixels, ReadPixels and CopyPixels through the linear TLBs ([pixel-transfer.m
 | `crmFastDoubleStore` | 0xd956ce0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): stores a span into the front and back buffers of a double-buffered window, 109 instructions. It zeroes the stencil mask (+0x21e8) around each store, calls the span store routine through a register-held pointer and rewrites the draw-mode register +0x2018. |
 | `crmCopyPixelsXfer` | 0xd9597b0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): copies pixels with the transfer path , 368 instructions. It sets draw mode +0x2018 and primitive +0x2060 to 0x600078, writes the rectangle through the GL vertex registers (+0x2080 to +0x208c), the transfer source address and steps (+0x20a0, +0x20a8, +0x28ac), selects buffers with `__glCrmSetDrawBuffer` and restores the colour mask +0x21b8. |
 
-### `crm_point.c`
+### the CRIME GL driver source unit 6
 
 Point rendering through the Primitive and GL vertex registers, with fog and depth variants. Established: 13 routines in the unit, 11 listed here; 11 routines store through the register base.
 
@@ -200,11 +200,11 @@ Assembly RGBA point renderer. Established: 2 routines in the unit, 2 listed here
 | `__glCrmRenderPointRGBA` | 0xd95e250 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly RGBA point, 34 instructions. It stores the primitive (+0x2060) in two stores and the colour through the start alias at +0x28d0 so the write commits. |
 | `__glCrmRenderPointDepthRGBA` | 0xd95e2d8 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly depth-tested RGBA point, 42 instructions. It stores the primitive (+0x2060) in two stores and the colour to the foreground register +0x20d0. |
 
-### `crm_polyaa.c`
+### the CRIME GL driver antialiased polygon source unit
 
 Plane-equation helpers for antialiased polygons. Established: 3 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `crm_prim.c`
+### the CRIME GL driver primitive source unit
 
 Begin/End and primitive state, half-pixel adjustment, rectangles. Established: 23 routines in the unit, 23 listed here; 3 routines store through the register base.
 
@@ -214,7 +214,7 @@ Begin/End and primitive state, half-pixel adjustment, rectangles. Established: 2
 | `EndPoints` | 0xd963b10 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): ends a point primitive, 79 instructions. It calls `__glEndPrim`, then stores the texture mode register +0x2110 to the value the current state needs, once for each of its two paths. |
 | `__glCrmBeginPoints` | 0xd963c50 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): begins a point primitive, 86 instructions. It calls `__glBeginPoints`, then stores the texture mode register +0x2110, once for each of its two paths, so points are drawn with texturing as the state requires. |
 
-### `crm_pxspan.c`
+### the CRIME GL driver source unit 7
 
 Span renderers used by the pixel paths. Established: 15 routines in the unit, 15 listed here; 3 routines store through the register base.
 
@@ -224,7 +224,7 @@ Span renderers used by the pixel paths. Established: 15 routines in the unit, 15
 | `__glCrmSpanRenderDepth` | 0xd964c80 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): writes a span of depth values as pixels, 176 instructions. It prepares the pixel operations with `__glCrmSetupPixelRenderOps`, then for each pixel writes the primitive (+0x2060), the depth value as the foreground colour (+0x20d0) and the position, with the x position through the start alias (+0x2880) to commit. |
 | `__glCrmSpanRenderDepth2` | 0xd964f50 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the second form of the depth span writer, 211 instructions. It prepares the pixel operations with `__glCrmSetupPixelRenderOps`, then stores the primitive (+0x2060), the depth value in the foreground colour (+0x20d0) and the position (+0x2080 and +0x2084) for each pixel. |
 
-### `crm_rect.c`
+### the CRIME GL driver rectangle source unit
 
 Fast rectangles. Established: 3 routines in the unit, 3 listed here; 2 routines store through the register base.
 
@@ -233,7 +233,7 @@ Fast rectangles. Established: 3 routines in the unit, 3 listed here; 2 routines 
 | `__glCrmFrontBackRect` | 0xd9669e0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a rectangle into the front and back buffers in turn, 116 instructions. It selects each buffer with `__glCrmSetStoreBuffer`, clears bit 1 of the draw-mode register +0x2018 for the second pass, stores the stencil mask (+0x21e8) around each and calls the rectangle routine through the table at -0x7eec. |
 | `__glCrmLeftRightRect` | 0xd966bb0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): draws a rectangle into the left and right stereo buffers in turn, 129 instructions. It clears bit 0 of the destination buffer mode +0x2008 between passes, stores the stencil mask (+0x21e8) around each and calls the rectangle routine through the table at -0x7ed8. |
 
-### `crm_rgb.c`
+### the CRIME GL driver RGB source unit
 
 Colour-buffer fetch, store, read and clear for RGBA visuals. Established: 18 routines in the unit, 18 listed here; 4 routines store through the register base.
 
@@ -244,7 +244,7 @@ Colour-buffer fetch, store, read and clear for RGBA visuals. Established: 18 rou
 | `ReturnRGBASpan` | 0xd966fb0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): reads an RGBA span back for the pixel-read path, 206 instructions. It reads through the transfer routine `crmDrawPixelsXfer` and rewrites the draw-mode register +0x2018, with a context hook at +0x7e44 for the fallback. |
 | `ClearRGBA` | 0xd967980 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): clears the colour buffer, 438 instructions. It reads the destination buffer mode with `__glCrmGetDstBufMode`, sends ioctl 0x5606 (clear a buffer through the transfer engine), then selects the buffer (+0x2008) and draw mode (+0x2018), sets the primitive (+0x2060), the clear colour (+0x20d0) and the rectangle (+0x2080 to +0x288c) and restores the buffer with `__glCrmSetDrawBuffer`. |
 
-### `crm_span.c`
+### the CRIME GL driver source unit 8
 
 Span store routines that draw one span as a hardware primitive with colour, texture and fog steppers. Established: 14 routines in the unit, 13 listed here; 6 routines store through the register base.
 
@@ -256,7 +256,7 @@ Span store routines that draw one span as a hardware primitive with colour, text
 | `__glCrmDumpStippledFlatSpan` | 0xd96c570 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): writes a flat-colour stippled span, 213 instructions. It stores the stipple pattern through its alias (+0x28c4) and the stipple mode (+0x20c0), the draw mode (+0x2018) twice, the primitive (+0x2060), both span ends (+0x2080 to +0x208c) and the colour (+0x20d0). |
 | `__glCrmDumpStippledSmoothSpan` | 0xd96c8d0 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): writes a smooth-shaded stippled span, 227 instructions. It stores the stipple pattern through its alias (+0x28c4), the stipple mode (+0x20c0), the draw mode (+0x2018) before and after, the primitive (+0x2060) and both span ends (+0x2080 to +0x208c). |
 
-### `crm_stencil.c`
+### the CRIME GL driver source unit 9
 
 Stencil-buffer access and clears, with the same register set as the depth unit. Established: 12 routines in the unit, 11 listed here; 4 routines store through the register base.
 
@@ -266,7 +266,7 @@ Stencil-buffer access and clears, with the same register set as the depth unit. 
 | `__glCrmUpdatePolyStipple` | 0xd96d450 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): loads the polygon stipple pattern into the engine, 237 instructions. It saves stencil mode (+0x21e0) and mask (+0x21e8), selects a buffer through the source buffer mode (+0x2000), then uses the transfer path (draw mode and primitive 0x600040, source address and steps +0x20a0 to +0x20ac) to copy the pattern in, and restores the read and draw buffers with `__glCrmSetReadBuffer` and `__glCrmSetDrawBuffer`. |
 | `ClearStencil` | 0xd96d970 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): clears the stencil planes, 171 instructions. It forces a non-tagged clear with `__glCrmForceNonTagClear`, sets the stencil mask (+0x21e8), stencil mode (+0x21e0), draw mode (+0x2018) and primitive (+0x2060 = 0x3020000), and sends ioctl 0x5606 (clear a buffer through the transfer engine) through the hook at +0x14. |
 
-### `crm_store.c`
+### the CRIME GL driver store source unit
 
 Store-procedure selection and double-buffer and depth stores. Established: 6 routines in the unit, 6 listed here; 3 routines store through the register base.
 
@@ -277,47 +277,47 @@ Store-procedure selection and double-buffer and depth stores. Established: 6 rou
 | `crmDoDoubleStore_D` | 0xd96e050 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): stores a span into both buffers with a depth test, 74 instructions. It calls the store routine at +0xa4 of its argument, rewrites the draw-mode register +0x2018 with bit 1 cleared and calls the routine a second time. |
 | `crmDoDoubleStore_SD` | 0xd96e180 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): stores a span into both buffers with stencil and depth, 84 instructions. It zeroes the stencil mask (+0x21e8), calls the store routine at +0xa4 of its argument, restores the mask, rewrites the draw-mode register (+0x2018) and calls the routine again. |
 
-### `crm_texture.c`
+### the CRIME GL driver texture source unit
 
 Texture objects: allocation, definition and binding; writes the texture mode, border and environment colour and sends the texture-set request (see [memory.md](memory.md)). Established: 54 routines in the unit, 39 listed here and two more in [Routines read in full](#routines-read-in-full-from-the-disassembly); `crmSetTextureParam` stores through the register base.
 
 | Routine | Address | Role and derivation |
 |---|---|---|
-| `crmSetTextureParam` | 0xd96efc0 | Established ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30, 1964 bytes, whole body read from the disassembly and the DWARF-named unit `crm_texture.s`): the only routine of the unit that writes the texture registers `+0x2110`, `+0x2118`, `+0x2160` and `+0x2168`; the earlier credit given to the store-procedure picker was a naming slip, because this routine sits after the picker in the file and has no symbol of its own in the export table. It marks bit 15 of the draw-mode cache word at +0x7d58, and with no current texture object (word at +0x6e30) clears the bit again and returns. Otherwise it builds the mode word from the object: texel type and depth from its first level record, the subtiled flag, the minification filter (the two basic and four mipmap forms) in bits 7 to 9, the magnification filter in bit 6, the two wrap modes in bits 4 to 5 and 2 to 3, the environment mode in bits 0 to 1, and the base and top level numbers in bits 10 to 13 and 14 to 17. It packs the 64-bit format word from the level sizes. For the wrap modes that use a border it truncates the four border floats times the context's colour scales, packs them as bytes and stores the colour to `+0x2160` of both register views at +0x7db8 and +0x7dbc; for the blend environment mode it does the same for the environment colour at `+0x2168`. It then calls the shared-tile routine and, with the object, the texture-definition routine, and on a zero result drops the current texture object. The mode word goes to `+0x2110` when the cache at +0x7e68 differs or the bit was clear on entry, and the format word to `+0x2118` when either cache word at +0x7e6c or +0x7e70 differs. |
+| `crmSetTextureParam` | 0xd96efc0 | Established ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30, 1964 bytes, whole body read from the disassembly and the DWARF-named unit the CRIME GL driver texture assembly unit): the only routine of the unit that writes the texture registers `+0x2110`, `+0x2118`, `+0x2160` and `+0x2168`; the earlier credit given to the store-procedure picker was a naming slip, because this routine sits after the picker in the file and has no symbol of its own in the export table. It marks bit 15 of the draw-mode cache word at +0x7d58, and with no current texture object (word at +0x6e30) clears the bit again and returns. Otherwise it builds the mode word from the object: texel type and depth from its first level record, the subtiled flag, the minification filter (the two basic and four mipmap forms) in bits 7 to 9, the magnification filter in bit 6, the two wrap modes in bits 4 to 5 and 2 to 3, the environment mode in bits 0 to 1, and the base and top level numbers in bits 10 to 13 and 14 to 17. It packs the 64-bit format word from the level sizes. For the wrap modes that use a border it truncates the four border floats times the context's colour scales, packs them as bytes and stores the colour to `+0x2160` of both register views at +0x7db8 and +0x7dbc; for the blend environment mode it does the same for the environment colour at `+0x2168`. It then calls the shared-tile routine and, with the object, the texture-definition routine, and on a zero result drops the current texture object. The mode word goes to `+0x2110` when the cache at +0x7e68 differs or the bit was clear on entry, and the format word to `+0x2118` when either cache word at +0x7e6c or +0x7e70 differs. |
 
 ### `crm_vapi.ma`
 
 Assembly in-line vertex entry points. Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `vice_colormatrix.c`
+### the VICE pixel path color-matrix source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `vice_colortable.c`
+### the VICE pixel path color-table source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
-### `vice_convolve.c`
+### the VICE pixel path convolution source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
-### `vice_histogram.c`
+### the VICE pixel path histogram source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `vice_pbuffer.c`
+### the VICE pixel path pixel-buffer source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-### `vice_pixel.c`
+### the VICE pixel path pixel source unit
 
 VICE media-engine imaging helpers; no CRIME register store. Established: 26 routines in the unit, 26 listed here; no routine stores through the register base.
 
 ## Assembly units built for this target
 
-Hand-written assembly fast paths: the API dispatch stubs, transform, clip-check, lighting and fast primitive and vertex routines. The two triangle units (`crm_astri.s`, `crm_astextri.s`) store to the rendering registers directly; the others do arithmetic in memory and call the CRIME units through the context.
+Hand-written assembly fast paths: the API dispatch stubs, transform, clip-check, lighting and fast primitive and vertex routines. The two triangle units (the CRIME GL driver assembly unit 3, the CRIME GL driver assembly unit 2) store to the rendering registers directly; the others do arithmetic in memory and call the CRIME units through the context.
 
-### `crm_astri.s`
+### the CRIME GL driver assembly unit 3
 
 Assembly triangle renderers that write the rendering registers directly. Established: 8 routines in the unit, 7 listed here; 8 routines store through the register base.
 
@@ -331,35 +331,35 @@ Assembly triangle renderers that write the rendering registers directly. Establi
 | `__glCrmSmoothRGBZTriangle` | 0xd936d14 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly smooth RGB depth-tested triangle, 134 instructions. It sets the primitive (+0x2060) with words from 0x2000000 to 0x2030000 and stores the three vertices through the 64-bit GL vertex registers (+0x2080, +0x2088, +0x2090). |
 | `__glCrmSmoothRGBAZTriangle` | 0xd936f2c | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the assembly smooth RGBA depth-tested triangle, 157 instructions. It sets the primitive (+0x2060) with words from 0x2000000 to 0x2030000 and stores the three vertices through the 64-bit GL vertex registers (+0x2080, +0x2088, +0x2090). |
 
-### `mips4_lighting.s`
+### the MIPS assembly fast path lighting assembly unit
 
 Established: 3 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `mips4_poly.s`
+### the MIPS assembly fast path polygon assembly unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `mips4_vclip.s`
+### the MIPS assembly fast path assembly unit 1
 
 Established: 13 routines in the unit, 11 listed here; no routine stores through the register base.
 
-### `mips4_xform.s`
+### the MIPS assembly fast path transform assembly unit
 
 Established: 15 routines in the unit, 15 listed here; no routine stores through the register base.
 
-### `mips_fastapi.s`
+### the MIPS assembly fast path fast API assembly unit
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
 
-### `mips_polyfin.s`
+### the MIPS assembly fast path polygon finish assembly unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `mips_prim.s`
+### the MIPS assembly fast path primitive assembly unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-### `mips_vertex.s`
+### the MIPS assembly fast path vertex assembly unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
@@ -367,23 +367,23 @@ Established: 9 routines in the unit, 9 listed here; no routine stores through th
 
 The software back end for rendering into X pixmaps. No routine stores through the register base; the store and fetch routines move pixels of 8, 16 and 32 bits in memory.
 
-### `pix_ci.c`
+### the pixel path color-index source unit
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-### `pix_cx.c`
+### the pixel path color source unit
 
 Pixmap context set-up; sends resource-manager command 1005. Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
 | Routine | Address | Role and derivation |
 |---|---|---|
-| `SwapBuffers` | 0xd944b90 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the swap entry of the context unit `pix_cx.c`, 62 instructions. Its only external call is `fprintf`, and it stores no engine register and sends no ioctl, so in this build the entry only reports. |
+| `SwapBuffers` | 0xd944b90 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): the swap entry of the context unit the pixel path color source unit, 62 instructions. Its only external call is `fprintf`, and it stores no engine register and sends no ioctl, so in this build the entry only reports. |
 
-### `pix_pick.c`
+### the pixel path picking source unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `pix_rgb.c`
+### the pixel path RGB source unit
 
 Established: 11 routines in the unit, 11 listed here; no routine stores through the register base.
 
@@ -391,7 +391,7 @@ Established: 11 routines in the unit, 11 listed here; no routine stores through 
 
 The device-independent OpenGL implementation: state, validation, matrix and lighting code and the software rasteriser (spans, lines, polygons, fog, texture, blending, depth and stencil operations). These are the fallbacks the CRIME units select when the hardware cannot do an operation.
 
-### `so_accumop.c`
+### the software renderer accumulation source unit
 
 Established: 7 routines in the unit, 7 listed here; 1 routine stores through the register base.
 
@@ -399,63 +399,63 @@ Established: 7 routines in the unit, 7 listed here; 1 routine stores through the
 |---|---|---|
 | `Return` | 0xd939d60 | Inferred ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): returns accumulation values to the framebuffer, 265 instructions. It sets the video-engine DMA buffer TLB with `vice_dmbuf_settlb` twice, moves the data through two further video-engine calls, flushes the cache and calls `crmDrawPixelsXfer` to write the pixels. |
 
-### `so_alphatst.c`
+### the software renderer alpha test source unit
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-### `so_async.c`
+### the software renderer asynchronous source unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `so_attrib.c`
+### the software renderer attribute state source unit
 
 Established: 65 routines in the unit, 58 listed here; no routine stores through the register base.
 
-### `so_bitdraw.c`
+### the software renderer bitmap drawing source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_bitmap.c`
+### the software renderer bitmap source unit
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-### `so_blend.c`
+### the software renderer blending source unit
 
 Established: 50 routines in the unit, 49 listed here; no routine stores through the register base.
 
-### `so_buffers.c`
+### the software renderer buffer source unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-### `so_capi.c`
+### the software renderer immediate-mode API source unit
 
 Established: 38 routines in the unit, 38 listed here; no routine stores through the register base.
 
-### `so_clear.c`
+### the software renderer clear source unit
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-### `so_clip.c`
+### the software renderer clipping source unit
 
 Established: 21 routines in the unit, 21 listed here; no routine stores through the register base.
 
-### `so_colortable.c`
+### the software renderer color-table source unit
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-### `so_context.c`
+### the software renderer context source unit
 
 Established: 18 routines in the unit, 17 listed here; no routine stores through the register base.
 
-### `so_convolve.c`
+### the software renderer convolution source unit
 
 Established: 19 routines in the unit, 19 listed here; no routine stores through the register base.
 
-### `so_deform.c`
+### the software renderer deformation source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_depthop.c`
+### the software renderer depth operations source unit
 
 Established: 32 routines in the unit, 31 listed here; 1 routine stores through the register base.
 
@@ -463,187 +463,187 @@ Established: 32 routines in the unit, 31 listed here; 1 routine stores through t
 |---|---|---|
 | `Fix_zbuffer` | 0xd94aa70 | Established ([CRIME build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so), 6.5.30): writes the depth clear value over a rectangle, 138 instructions. It returns at once when a context flag byte is set. It saves stencil mode (+0x21e0), stencil mask (+0x21e8) and depth function (+0x21c0), sets the mask to 0xff and adds one field to the depth function, then draws a rectangle with draw mode 0x400007 and primitive +0x2060 = 0x3020000 through the GL vertex registers. The depth steppers (+0x21d0, +0x21d8) are zeroed and the depth value, scaled from a word of the second argument, goes to the depth alias (+0x29c8). The three saved registers are then restored. |
 
-### `so_dlist.c`
+### the software renderer display-list source unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `so_eval.c`
+### the software renderer evaluator source unit
 
 Established: 56 routines in the unit, 56 listed here; no routine stores through the register base.
 
-### `so_feedback.c`
+### the software renderer feedback source unit
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
-### `so_finish.c`
+### the software renderer finish source unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `so_fog.c`
+### the software renderer fog source unit
 
 Established: 8 routines in the unit, 7 listed here; no routine stores through the register base.
 
-### `so_get.c`
+### the software renderer state query source unit
 
 Established: 33 routines in the unit, 33 listed here; no routine stores through the register base.
 
-### `so_histogram.c`
+### the software renderer histogram source unit
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-### `so_image.c`
+### the software renderer image source unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-### `so_lighting.c`
+### the software renderer lighting source unit
 
 Established: 25 routines in the unit, 24 listed here; no routine stores through the register base.
 
-### `so_lineclip.c`
+### the software renderer line clipping source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_linedraw.c`
+### the software renderer line drawing source unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-### `so_linefin.c`
+### the software renderer line finish source unit
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
 
-### `so_linespan.c`
+### the software renderer line span source unit
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-### `so_listcomp.c`
+### the software renderer list compilation source unit
 
 Established: 54 routines in the unit, 54 listed here; no routine stores through the register base.
 
-### `so_math.c`
+### the software renderer math source unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `so_memmgr.c`
+### the software renderer memory management source unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
-### `so_names.c`
+### the software renderer name tables source unit
 
 Established: 37 routines in the unit, 37 listed here; no routine stores through the register base.
 
-### `so_napi.c`
+### the software renderer normal-mode API source unit
 
 Established: 8 routines in the unit, 8 listed here; no routine stores through the register base.
 
-### `so_pick.c`
+### the software renderer picking source unit
 
 Established: 15 routines in the unit, 13 listed here; no routine stores through the register base.
 
-### `so_pntaa.c`
+### the software renderer antialiased point source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_pntdraw.c`
+### the software renderer point drawing source unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `so_pntfin.c`
+### the software renderer point finish source unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `so_polyaa.c`
+### the software renderer antialiased polygon source unit
 
 Established: 7 routines in the unit, 5 listed here; 1 routine stores through the register base.
 
-### `so_polyclip.c`
+### the software renderer polygon clipping source unit
 
 Established: 5 routines in the unit, 4 listed here; no routine stores through the register base.
 
-### `so_polydraw.c`
+### the software renderer polygon drawing source unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `so_polyfin.c`
+### the software renderer polygon finish source unit
 
 Established: 29 routines in the unit, 29 listed here; no routine stores through the register base.
 
-### `so_polymode.c`
+### the software renderer polygon mode source unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
-### `so_polyspan.c`
+### the software renderer polygon span source unit
 
 Established: 32 routines in the unit, 32 listed here; no routine stores through the register base.
 
-### `so_prim.c`
+### the software renderer primitive source unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `so_rapi.c`
+### the software renderer raster API source unit
 
 Established: 24 routines in the unit, 24 listed here; no routine stores through the register base.
 
-### `so_rasterpos.c`
+### the software renderer raster position source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_rect.c`
+### the software renderer rectangle source unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `so_select.c`
+### the software renderer selection source unit
 
 Established: 9 routines in the unit, 9 listed here; no routine stores through the register base.
 
-### `so_size.c`
+### the software renderer size source unit
 
 Established: 24 routines in the unit, 24 listed here; no routine stores through the register base.
 
-### `so_slowspan.c`
+### the software renderer slow span source unit
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_speccache.c`
+### the software renderer specular cache source unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `so_stencilop.c`
+### the software renderer stencil operations source unit
 
 Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-### `so_store.c`
+### the software renderer store source unit
 
 Established: 11 routines in the unit, 11 listed here; no routine stores through the register base.
 
-### `so_subdiv.c`
+### the software renderer subdivision source unit
 
 Established: 29 routines in the unit, 29 listed here; no routine stores through the register base.
 
-### `so_tapi.c`
+### the software renderer texture API source unit
 
 Established: 30 routines in the unit, 30 listed here; no routine stores through the register base.
 
-### `so_texoptspan.c`
+### the software renderer source unit 1
 
 Established: 12 routines in the unit, 12 listed here; no routine stores through the register base.
 
-### `so_texture.c`
+### the software renderer texture source unit
 
 Established: 207 routines in the unit, 207 listed here; no routine stores through the register base.
 
-### `so_vapi.c`
+### the software renderer vertex API source unit
 
 Established: 26 routines in the unit, 26 listed here; no routine stores through the register base.
 
-### `so_vertarray.c`
+### the software renderer vertex-array source unit
 
 Established: 35 routines in the unit, 19 listed here; no routine stores through the register base.
 
-### `so_vertex.c`
+### the software renderer vertex source unit
 
 Established: 4 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `so_xform.c`
+### the software renderer transform source unit
 
 Established: 55 routines in the unit, 53 listed here; no routine stores through the register base.
 
@@ -655,19 +655,19 @@ Pixel packing, unpacking, conversion and the imaging subset (convolution, histog
 
 Established: 18 routines in the unit, 18 listed here; no routine stores through the register base.
 
-### `px_colormatrix.c`
+### the pixel path color-matrix source unit
 
 Established: 5 routines in the unit, 5 listed here; no routine stores through the register base.
 
-### `px_convolve.c`
+### the pixel path convolution source unit
 
 Established: 35 routines in the unit, 35 listed here; no routine stores through the register base.
 
-### `px_histogram.c`
+### the pixel path histogram source unit
 
 Established: 21 routines in the unit, 21 listed here; no routine stores through the register base.
 
-### `px_modify.c`
+### the pixel path modification source unit
 
 Established: 19 routines in the unit, 19 listed here; no routine stores through the register base.
 
@@ -683,11 +683,11 @@ Established: 43 routines in the unit, 43 listed here; no routine stores through 
 
 Established: 10 routines in the unit, 10 listed here; no routine stores through the register base.
 
-### `px_render.c`
+### the pixel path rendering source unit
 
 Established: 27 routines in the unit, 27 listed here; no routine stores through the register base.
 
-### `px_unpack.c`
+### the pixel path unpacking source unit
 
 Established: 101 routines in the unit, 101 listed here; no routine stores through the register base.
 
@@ -703,7 +703,7 @@ Established: 10 routines in the unit, 10 listed here; no routine stores through 
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `dl_interp.s`
+### the display-list code interpretation assembly unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
@@ -711,7 +711,7 @@ Established: 2 routines in the unit, 2 listed here; no routine stores through th
 
 Established: 20 routines in the unit, 20 listed here; no routine stores through the register base.
 
-### `dl_matopt.c`
+### the display-list code matrix optimization source unit
 
 Established: 4 routines in the unit, 4 listed here; no routine stores through the register base.
 
@@ -719,7 +719,7 @@ Established: 4 routines in the unit, 4 listed here; no routine stores through th
 
 Established: 23 routines in the unit, 23 listed here; no routine stores through the register base.
 
-### `dl_page.c`
+### the display-list code paging source unit
 
 Established: 6 routines in the unit, 6 listed here; no routine stores through the register base.
 
@@ -731,15 +731,15 @@ Established: 9 routines in the unit, 9 listed here; no routine stores through th
 
 Generated display-list code. Each compile routine (`__gllc_` prefix) allocates a list operation (`__glDlistAllocOp2`), stores its arguments, records the address of its executor (`__glle_` prefix, the matching unit) and appends the operation (`__glDlistAppendOp`); each executor replays one operation.
 
-### `g_lcomp.c`
+### the GL front end list compile source unit
 
 Established: 318 routines in the unit, 318 listed here; no routine stores through the register base.
 
-### `g_lexec.c`
+### the GL front end list execute source unit
 
 Established: 230 routines in the unit, 230 listed here; no routine stores through the register base.
 
-### `g_vertarray.c`
+### the GL front end vertex-array source unit
 
 Established: 33 routines in the unit, 33 listed here; no routine stores through the register base.
 
@@ -759,7 +759,7 @@ Established: 1 routines in the unit, 1 listed here; no routine stores through th
 
 Established: 3 routines in the unit, 3 listed here; no routine stores through the register base.
 
-### `mips_copydisp.s`
+### the MIPS assembly fast path copy/display assembly unit
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
@@ -767,7 +767,7 @@ Established: 1 routines in the unit, 1 listed here; no routine stores through th
 
 Established: 1 routines in the unit, 1 listed here; no routine stores through the register base.
 
-### `mips_texutil.s`
+### the MIPS assembly fast path texture utility assembly unit
 
 Established: 2 routines in the unit, 2 listed here; no routine stores through the register base.
 
@@ -1028,14 +1028,14 @@ One entry each, for routines of the N32 build that were read from first instruct
   Otherwise it calls `ioctl` and keeps the result.
   A nonzero result with the dump word nonzero calls `perror` with `__glCrmTexIoctl Error`; with the dump word zero it returns -1 at once.
   With the dump word nonzero it prints one line after success or failure, chosen by the request.
-  Request 22017 (0x5601) prints `CRIME_TEX_ALLOC` with the argument words at +4, +8, +0 and +12.
-  Request 22018 prints `CRIME_TEX_DEALLOC` with the argument itself.
-  Request 22019 (0x5603) prints `CRIME_TEX_DEFINE` with the words at +0, +4 and +8, then a second line with the six words at +12, +16, +20, +24, +28 and +32.
+  Request 22017 (0x5601) prints the texture allocate request with the argument words at +4, +8, +0 and +12.
+  Request 22018 prints the texture dealloc request with the argument itself.
+  Request 22019 (0x5603) prints the texture define request with the words at +0, +4 and +8, then a second line with the six words at +12, +16, +20, +24, +28 and +32.
   Other requests print nothing.
   It returns 0 when the `ioctl` result was zero and -1 otherwise, chosen by `movz` in the return's delay slot.
 - `texIoctlBind` in `usr/gfx/arch/IP32CRM32/libGLcore.so`: binds a texture slot through the driver, a 120-byte routine at 0xd96e540. Established.
   The arguments are the context and the slot number, which it keeps on the stack.
-  With the dump word at gp-21560 nonzero it first prints `CRIME_TEX_IOCTL_BIND: slotId %d`.
+  With the dump word at gp-21560 nonzero it first prints `the texture ioctl bind request: slotId %d`.
   It calls `ioctl` with the descriptor at context +31504, request 22096 (0x5650) and the address of the saved slot number.
   A nonzero result calls `perror` with `GL Error : texIoctlBind ` whatever the dump word is, and returns -1.
   A zero result returns 0. It writes no engine register.

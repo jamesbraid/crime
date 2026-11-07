@@ -1,6 +1,6 @@
 # Rendering TLB formats
 
-Every client of the rendering TLB group at `0x15001000`, as the IRIX 6.5.30 kernel loads it. Offsets and register counts are in [CRIME_RE.h](../CRIME_RE.h). Labels: **established** (read from the cited function), **inferred**, **unknown**. Sources: `crime_kernel/decomp/crime_tiles.c` and `crime_dma.c`, same names in `crime_kernel/disasm/`.
+Every client of the rendering TLB group at `0x15001000`, as the IRIX 6.5.30 kernel loads it. Offsets and register counts are in [CRIME_RE.h](../CRIME_RE.h). Labels: **established** (read from the cited function), **inferred**, **unknown**. Sources: `crime_kernel/decomp/crime_tiles.c` and the CRIME kernel driver DMA source unit, same names in `crime_kernel/disasm/`.
 
 All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for the tile TLBs, finish with a write of 0 to `+0x4008` (established).
 
@@ -38,7 +38,7 @@ All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for 
 
 # Texture level layout in the texture TLB
 
-How a texture's mip levels are placed in the 112 entries of the texture TLB (`+0x1600`, 28 registers of four 16-bit tile entries) and inside their tiles. Sources: the IRIX 6.5.30 kernel object `crime_tiles.o` (`crime.a`), function `crmDefineTex` (`.text` `0x18d0`, 0x458 bytes) and its `.data` section; N32 `libGLcore` (`crm_texture.s`): `crmDefineTexture` (`0x0d96eb70`), `crmSetTextureParam`, `crmUpdateSharedTiles` and `crmCreateLevel`, plus the `.data` words at `0x0da46428`..`0x0da46440`.
+How a texture's mip levels are placed in the 112 entries of the texture TLB (`+0x1600`, 28 registers of four 16-bit tile entries) and inside their tiles. Sources: the IRIX 6.5.30 kernel object `crime_tiles.o` (`crime.a`), function `crmDefineTex` (`.text` `0x18d0`, 0x458 bytes) and its `.data` section; N32 `libGLcore` (the CRIME GL driver texture assembly unit): `crmDefineTexture` (`0x0d96eb70`), `crmSetTextureParam`, `crmUpdateSharedTiles` and `crmCreateLevel`, plus the `.data` words at `0x0da46428`..`0x0da46440`. The request structure is a slot number, a width and a height, then six texture identifiers, with a limit of six mip levels (read from `crmDefineTex`). The largest level-of-detail value of 10 is not read from any binary here: unknown, settled by the bound compare in the texture-parameter routine of `libGLcore`.
 
 ## The fixed start table
 
@@ -161,7 +161,7 @@ Established (specification, memory decode text): for every request the controlle
 
 ## Settled in pass 7
 
-- The frame-buffer and depth apertures: no shipped software uses them. The graphics kernel objects build no address in them (above); the X module's four `0x1000_0000` constants are comparison limits, not addresses (`crm.s` 21216, 25459, 27916, 42288); libGLcore's five `0x1000_0000` constants are masks of an enable bit in its context word at +1792 (`crm_attrib.s`, `so_attrib.s`), and it builds no `0x1200_0000` or KSEG alias of either window; `ide.IP32` builds no KSEG1 aperture address. So the aperture's addressing rule and what a read returns while the engine draws are unknown: no shipped software or published source depends on them. Routes tried: [spec] PDF 47-48, the 6.5.30 kernel, X module, libGLcore, `ide.IP32`, Linux, NetBSD, MAME.
+- The frame-buffer and depth apertures: no shipped software uses them. The graphics kernel objects build no address in them (above); the X module's four `0x1000_0000` constants are comparison limits, not addresses (`crm.s` 21216, 25459, 27916, 42288); libGLcore's five `0x1000_0000` constants are masks of an enable bit in its context word at +1792 (the CRIME GL driver attribute state assembly unit, the software renderer attribute state assembly unit), and it builds no `0x1200_0000` or KSEG alias of either window; `ide.IP32` builds no KSEG1 aperture address. So the aperture's addressing rule and what a read returns while the engine draws are unknown: no shipped software or published source depends on them. Routes tried: [spec] PDF 47-48, the 6.5.30 kernel, X module, libGLcore, `ide.IP32`, Linux, NetBSD, MAME.
 - The high alias (`0x2000_0000`) and the reserved ranges: IRIX reaches memory through the low alias and the full window only, Linux through the low alias and `CRIME_HI_MEM_BASE` (`0x4000_0000`), and `ide.IP32` sizes memory from the bank controls without probing addresses (pass 7 above). Which device answers the high alias, whether it equals the upper 512 MiB of the full window, and how reserved ranges respond are unknown: no shipped software or published source depends on them. Routes tried: [spec] PDF 47-52 (its table leaves the responder of the high alias open), the 6.5.30 kernel, `ide.IP32`, Linux, NetBSD, MAME. A model can alias the high window to the full window's upper half and raise a CPU error on reserved ranges, which the CPU error status's illegal-address bit provides for.
 
 ## Register roles for the remaining CRIME registers

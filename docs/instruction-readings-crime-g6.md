@@ -10267,16 +10267,16 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xd99dbb0 targets 0xd99dc38, is taken when a0(=[a0+30645]:1) == 0, and falls through when a0(=[a0+30645]:1) != 0.
   The `beq` branch at 0xd99dc58 targets 0xd99ddac, is taken when 0 >= a0(?) (unsigned), and falls through when 0 < a0(?) (unsigned).
   The `bne` branch at 0xd99dc9c targets 0xd99dca8 and is always taken.
-  The `beql` branch at 0xd99dcac targets 0xd99dcc8, is taken when t3(?) == 0, and falls through when t3(?) != 0; its branch-likely delay slot `cvt.s.d $f16,$f2` at 0xd99dcb0 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd99dcac targets 0xd99dcc8, is taken when t3(?) == 0, and falls through when t3(?) != 0; its branch-likely delay slot `the CRIME stack assembly unit 4.d $f16,$f2` at 0xd99dcb0 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd99dcbc targets 0xd99dccc and is always taken.
   The `bne` branch at 0xd99dce0 targets 0xd99dcec and is always taken.
-  The `beql` branch at 0xd99dcf0 targets 0xd99dd0c, is taken when t5(?) == 0, and falls through when t5(?) != 0; its branch-likely delay slot `cvt.s.d $f6,$f2` at 0xd99dcf4 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd99dcf0 targets 0xd99dd0c, is taken when t5(?) == 0, and falls through when t5(?) != 0; its branch-likely delay slot `the CRIME stack assembly unit 4.d $f6,$f2` at 0xd99dcf4 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd99dd00 targets 0xd99dd10 and is always taken.
   The `bne` branch at 0xd99dd24 targets 0xd99dd30 and is always taken.
-  The `beql` branch at 0xd99dd34 targets 0xd99dd50, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `cvt.s.d $f16,$f2` at 0xd99dd38 runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd99dd34 targets 0xd99dd50, is taken when t6(?) == 0, and falls through when t6(?) != 0; its branch-likely delay slot `the CRIME stack assembly unit 4.d $f16,$f2` at 0xd99dd38 runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd99dd44 targets 0xd99dd54 and is always taken.
   The `bne` branch at 0xd99dd68 targets 0xd99dd74 and is always taken.
-  The `beql` branch at 0xd99dd78 targets 0xd99dd94, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `cvt.s.d $f6,$f2` at 0xd99dd7c runs only when taken and is annulled on fall-through.
+  The `beql` branch at 0xd99dd78 targets 0xd99dd94, is taken when t8(?) == 0, and falls through when t8(?) != 0; its branch-likely delay slot `the CRIME stack assembly unit 4.d $f6,$f2` at 0xd99dd7c runs only when taken and is annulled on fall-through.
   The `beq` branch at 0xd99dd88 targets 0xd99dd98 and is always taken.
   The `bne` branch at 0xd99dd98 targets 0xd99dc7c, is taken when a0(?) != a2(=0x10), and falls through when a0(?) == a2(=0x10).
   The `beq` branch at 0xd99ddb4 targets 0xd99de40, is taken when a0(=[a0+30524]:1) == 0, and falls through when a0(=[a0+30524]:1) != 0.

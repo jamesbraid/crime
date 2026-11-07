@@ -1,0 +1,168 @@
+# Source-file names and request names the reference docs may carry: each one is a name that a published source holds,
+# a file shipped in the installed system, or a file in this workspace. Anything else is described in words.
+# NAME<TAB>REASON; checked by retools/scripts/check-leaks.py.
+CRIME.h	file in this workspace
+CRIME_RE.h	file in this workspace
+GBE.h	file in this workspace
+MTE.h	file in this workspace
+Xext/shm.c	name in published OpenBSD X.Org source
+arch/mips/include/asm/ip32/crime.h	name in published Linux source
+arch/mips/sgi-ip32/crime.c	name in published Linux source
+arch/mips/sgi-ip32/ip32-memory.c	name in published Linux source
+context.h	name in the published OpenGL sample implementation
+cpu.h	name in the published OpenGL sample implementation
+crime.c	name in published Linux or OpenBSD source
+crime.h	name in published Linux or OpenBSD source
+crimebus.h	name in published Linux or OpenBSD source
+crimereg.h	name in published NetBSD, X.Org or Mesa source
+crm.s	file in this workspace
+crmfb.c	name in published NetBSD, X.Org or Mesa source
+crmfbreg.h	name in published NetBSD, X.Org or Mesa source
+dix/colormap.c	name in published OpenBSD X.Org source
+dl_block.c	name in the published OpenGL sample implementation
+dl_init.c	name in the published OpenGL sample implementation
+dl_list.c	name in the published OpenGL sample implementation
+dl_opt.c	name in the published OpenGL sample implementation
+dl_table.c	name in the published OpenGL sample implementation
+drivers/video/fbdev/gbefb.c	name in published Linux source
+error.c	name in the published OpenGL sample implementation
+gbe.c	name in published Linux or OpenBSD source
+gbe.h	name in published Linux or OpenBSD source
+gbefb.c	name in published Linux or OpenBSD source
+gbereg.h	name in published Linux or OpenBSD source
+gfx/lib/opengl/glcore/dl_block.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_init.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_list.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_mopt.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_opt.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_pplst.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/dl_table.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_api.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_hist.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_mod.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_pack.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_paths.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_read.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_rend.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/px_upack.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_accum.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_attrib.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_blend.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_btdraw.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_buffer.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_capi.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_ci.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_clip.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_contxt.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_convol.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_cpydsp.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_ctable.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_depth.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_dlist.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_eval.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_feed.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_finish.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_fog.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_get.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_hist.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_image.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lcache.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lcomp.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_light.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lnclip.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lndraw.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lnfin.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_lnspan.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_math.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_memmgr.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_names.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_napi.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgaa.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgclip.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgdraw.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgfin.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgmode.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pgspan.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_pick.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_prim.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_ptaa.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_ptdraw.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_ptfin.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_rapi.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_rect.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_rgb.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_rpos.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_select.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_size.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_span.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_sten.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_store.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_tapi.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_tex.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_texel.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_texextr.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_texmgr.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_vapi.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_varray.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_vertex.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_xform.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/glcore/s_zfuncs.c	path in the published OpenGL sample implementation
+gfx/lib/opengl/include/importsx.h	path in the published OpenGL sample implementation
+glcore_crime.h	file in this workspace
+importsx.h	name in the published OpenGL sample implementation
+include/vertex.h	path in the published OpenGL sample implementation
+include/video/gbe.h	name in published Linux source
+ip32-dma.c	name in published Linux or OpenBSD source
+ip32-memory.c	name in published Linux or OpenBSD source
+libglcore/asm/ODYSSEY/x.s	path to a file in this workspace
+lighting.h	name in the published OpenGL sample implementation
+linux/arch/mips/include/asm/ip32/crime.h	name in published Linux source
+mace.h	name in published Linux or OpenBSD source
+mi/miarc.c	name in published OpenBSD X.Org source
+mi/mibitblt.c	name in published OpenBSD X.Org source
+mi/micmap.c	name in published OpenBSD X.Org source
+mi/miexpose.c	name in published OpenBSD X.Org source
+mi/mifillarc.c	name in published OpenBSD X.Org source
+mi/mifillrct.c	name in published OpenBSD X.Org source
+mi/migc.c	name in published OpenBSD X.Org source
+mi/miglblt.c	name in published OpenBSD X.Org source
+mi/mipoly.c	name in published OpenBSD X.Org source
+mi/mipolyrect.c	name in published OpenBSD X.Org source
+mi/mipolyseg.c	name in published OpenBSD X.Org source
+mi/mipolytext.c	name in published OpenBSD X.Org source
+mi/mipushpxl.c	name in published OpenBSD X.Org source
+mi/miscrinit.c	name in published OpenBSD X.Org source
+mi/mivaltree.c	name in published OpenBSD X.Org source
+mi/miwideline.c	name in published OpenBSD X.Org source
+mi/miwindow.c	name in published OpenBSD X.Org source
+mi/mizerarc.c	name in published OpenBSD X.Org source
+mi/mizerline.c	name in published OpenBSD X.Org source
+migc.c	name in published NetBSD, X.Org or Mesa source
+netbsd/sys/arch/sgimips/dev/crimereg.h	name in published NetBSD source
+ogl-sample/gfx/lib/opengl/glcore/px_upack.c	path in the published OpenGL sample implementation
+ogl-sample/gfx/lib/opengl/glcore/s_blend.c	path in the published OpenGL sample implementation
+ogl-sample/gfx/lib/opengl/glcore/s_eval.c	path in the published OpenGL sample implementation
+ogl-sample/gfx/lib/opengl/glcore/s_names.c	path in the published OpenGL sample implementation
+ogl-sample/gfx/lib/opengl/glcore/s_sten.c	path in the published OpenGL sample implementation
+ogl-sample/gfx/lib/opengl/glcore/s_varray.c	path in the published OpenGL sample implementation
+osunix.h	name in the published OpenGL sample implementation
+px_api.c	name in the published OpenGL sample implementation
+px_pack.c	name in the published OpenGL sample implementation
+px_paths.c	name in the published OpenGL sample implementation
+px_read.c	name in the published OpenGL sample implementation
+px_upack.c	name in the published OpenGL sample implementation
+s_buffer.c	name in the published OpenGL sample implementation
+s_contxt.c	name in the published OpenGL sample implementation
+s_ctable.c	name in the published OpenGL sample implementation
+s_feed.c	name in the published OpenGL sample implementation
+s_finish.c	name in the published OpenGL sample implementation
+s_get.c	name in the published OpenGL sample implementation
+s_names.c	name in the published OpenGL sample implementation
+s_prim.c	name in the published OpenGL sample implementation
+s_rect.c	name in the published OpenGL sample implementation
+s_rpos.c	name in the published OpenGL sample implementation
+s_select.c	name in the published OpenGL sample implementation
+s_size.c	name in the published OpenGL sample implementation
+stubs.c	name in published Linux or OpenBSD source
+sys/arch/sgi/dev/gbe.c	name in published OpenBSD source
+sys/arch/sgi/localbus/crimebus.h	name in published OpenBSD source

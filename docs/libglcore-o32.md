@@ -334,14 +334,14 @@ Offsets below are numeric. "View 1" and "view 2" mean the two engine register wi
   It takes the descriptor, the request code and the argument pointer.
   When the word at 0xda4d2f8 is non-zero and the request is 0x5602 (release) it returns 0 without calling the kernel.
   Otherwise it calls `ioctl` with the three arguments, keeps the result and, when the word at 0xda4d2f0 is non-zero, prints through `perror` the string "__glCrmTexIoctl Error" on a failure, and prints the request through `printf`:
-  for 0x5601 the format "CRIME_TEX_ALLOC: nTiles %d  flag %x  texId %x  addr %x" with the argument words +4, +8, +0, +12;
-  for 0x5602 "CRIME_TEX_DEALLOC: texId %x" with the argument pointer itself; for 0x5603 "CRIME_TEX_DEFINE:
+  for 0x5601 the format "the texture allocate request: nTiles %d  flag %x  texId %x  addr %x" with the argument words +4, +8, +0, +12;
+  for 0x5602 "the texture dealloc request: texId %x" with the argument pointer itself; for 0x5603 "the texture define request:
   slotId %d  size %d x %d" with words +0, +4, +8 and then a second line of six hex values from words +12 to +32. It returns 0 when the kernel call returned 0 and -1 otherwise: the branch-likely at 0xd970e5c runs its delay-slot `li` of -1 at 0xd970e60 only when the result was non-zero, and the fall-through `move` at 0xd970e64 gives 0; the early return for 0x5602 gets its 0 from the delay slot of the branch-likely at 0xd970d30, and 0xd970d90 is the third branch-likely.
   Established.
 - `texIoctlBind` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)):
   asks the kernel to select texture set number `n`, 144 bytes at offset 0xd970ed4.
   It takes the context and the slot number.
-  When the word at 0xda4d2f0 is non-zero it prints "CRIME_TEX_IOCTL_BIND: slotId %d" with `printf`, the slot number still in the second argument register.
+  When the word at 0xda4d2f0 is non-zero it prints "the texture ioctl bind request: slotId %d" with `printf`, the slot number still in the second argument register.
   It then calls `ioctl` on the descriptor at context +31504 with request 0x5650 and the address of the slot, which it stored on the stack.
   A non-zero result prints "GL Error : texIoctlBind " with `perror` and returns -1; a zero result returns 0. Established.
 - `RenderPointTextured` in `libGLcore.so` ([o32 build](../root/usr/gfx/arch/IP32CRM/libGLcore.so)):
