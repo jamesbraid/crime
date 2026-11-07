@@ -305,21 +305,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lb` at 0x452c28 loads 1 byte from a0 (arg0 at entry) +0x16.
   The `sb` at 0x452c30 stores 1 byte to a0 (arg0 at entry) +0x15.
   The `sb` at 0x452c3c stores 1 byte to a0 (arg0 at entry) +0x16.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x10, including `lw` at 0x452c44, `lw` at 0x452db4.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x14, including `lw` at 0x452c50, `lw` at 0x452dbc.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0x452c5c, `lw` at 0x452dac.
+  The `lw` at 0x452c44 loads 4 bytes from a0 (arg0 at entry) +0x10.
+  The `lw` at 0x452c50 loads 4 bytes from a0 (arg0 at entry) +0x14.
+  The `lw` at 0x452c5c loads 4 bytes from a0 (arg0 at entry) +0xc.
   The `lbu` at 0x452c6c loads 1 byte from a0 (arg0 at entry) +0x18.
-  7 such `lw` accesses load 4 bytes from ?, including `lw` at 0x452cd4, `lw` at 0x452cec, `lw` at 0x452cfc.
+  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x452cd4, `lw` at 0x452cec, `lw` at 0x452cfc.
   12 such `sw` accesses store 4 bytes to ?, including `sw` at 0x452d18, `sw` at 0x452d3c, `sw` at 0x452d58.
   6 such `sb` accesses store 1 byte to ?, including `sb` at 0x452e14, `sb` at 0x452e58, `sb` at 0x452e88.
   4 such `lb` accesses load 1 byte from ?, including `lb` at 0x452e74, `lb` at 0x452e80, `lb` at 0x452e9c.
   The `jalr` at 0x452c84 calls glGetColorTableParameterivSGI with a0=[a0+12], a1=0x80d9, a2=sp-80, a3=[a0+22]:1, a4=a0+12, a6=a0+12, a7=[a0+23]:1.
-  The `bgezall` at 0x452cb0 calls glxGetTexImageSize [0x44de50] with a0=[a0+12], a1=0x1, a2=[a0+16], a3=[a0+20], a5=0x1, a6=0x1, a7=0x1.
+  The `bgezall` at 0x452cb0 calls glxGetTexImageSize [0x44de50] with a0=?, a1=0x1, a2=?, a3=?, a5=0x1, a6=0x1, a7=0x1.
   The `jalr` at 0x452d08 calls Xrealloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x452d2c calls Xalloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x452d94 calls glPixelStorei with a0=0xd00, a1=?, a2=?, a3=?.
   The `jalr` at 0x452da0 calls glxClearErrorFlag [0x44a460] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x452dc8 calls glGetColorTableSGI with a0=[a0+12], a1=[a0+16], a2=[a0+20], a3=?.
+  The `jalr` at 0x452dc8 calls glGetColorTableSGI with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x452dd4 calls glxErrorFlagIsSet [0x447e10] with a0=?, a1=?, a2=?, a3=?.
   The `bgez` branch at 0x452cc4 targets 0x452cd0, is taken when t2(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when t2(=ret(glxGetTexImageSize)) < 0 (signed).
   The `beq` branch at 0x452ce0 targets 0x452d78, is taken when t3(?) >= t8(?) (signed), and falls through when t3(?) < t8(?) (signed).
@@ -1705,8 +1705,8 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from sym(serverGeneration) +0x0, including `lw` at 0x459724, `lw` at 0x459734.
   The `lw` at 0x45975c loads 4 bytes from a0 (arg0 at entry) +0x0.
   The `lw` at 0x459774 loads 4 bytes from (sym(clientThreadp) + ([a0] << 0x2)) +0x0.
-  The `lw` at 0x459804 loads 4 bytes from ?.
-  The `sw` at 0x45989c stores 4 bytes to (sym(clientThreadp) + ([a0] << 0x2)) +0x0.
+  11 such `lw` accesses load 4 bytes from ?, including `lw` at 0x459804, `lw` at 0x459980, `lw` at 0x459990.
+  12 such `sw` accesses store 4 bytes to ?, including `sw` at 0x45989c, `sw` at 0x459904, `sw` at 0x45990c.
   The `sw` at 0x4598a8 stores 4 bytes to table(0x493514) +0x0.
   The `sh` at 0x4598b0 stores 2 bytes to table(0x49351a) +0x0.
   The `sw` at 0x4598b8 stores 4 bytes to table(0x49351c) +0x0.
@@ -1714,22 +1714,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x4598d0 stores 4 bytes to table(0x493538) +0x0.
   The `sw` at 0x4598dc stores 4 bytes to table(0x49353c) +0x0.
   The `sw` at 0x4598e8 stores 4 bytes to table(0x493540) +0x0.
-  The `sw` at 0x459904 stores 4 bytes to table(0x493528) +0x0.
-  The `sw` at 0x45990c stores 4 bytes to table(0x493550) +0x0.
-  The `sw` at 0x45993c stores 4 bytes to ?.
-  The `sw` at 0x459964 stores 4 bytes to table(0x493594) +0x0.
-  The `sw` at 0x459970 stores 4 bytes to table(0x493598) +0x0.
-  The `sw` at 0x459978 stores 4 bytes to table(0x4935a8) +0x0.
-  2 such `lw` accesses load 4 bytes from table(0x49352c) +0x0, including `lw` at 0x459980, `lw` at 0x459990.
   6 such `lw` accesses load 4 bytes from sym(sgimtx_arena) +0x0, including `lw` at 0x459998, `lw` at 0x4599ac, `lw` at 0x4599e8.
-  The `sw` at 0x4599c8 stores 4 bytes to table(0x49352c) +0x0.
-  2 such `lw` accesses load 4 bytes from table(0x493530) +0x0, including `lw` at 0x4599d0, `lw` at 0x4599e0.
-  The `sw` at 0x459a18 stores 4 bytes to table(0x493530) +0x0.
-  5 such `lw` accesses load 4 bytes from table(0x4935a0) +0x0, including `lw` at 0x459a20, `lw` at 0x459a30, `lw` at 0x459a44.
-  The `sw` at 0x459a7c stores 4 bytes to table(0x4935a0) +0x0.
-  The `sw` at 0x459ad4 stores 4 bytes to table(0x4935a4) +0x0.
-  The `lw` at 0x459adc loads 4 bytes from table(0x4935a4) +0x0.
-  The `sw` at 0x459b40 stores 4 bytes to table(0x493510) +0x0.
   The `sw` at 0x459ba8 stores 4 bytes to [(sym(clientThreadp) + ([a0] << 0x2))] +0x28.
   The `sw` at 0x459bc0 stores 4 bytes to [(sym(clientThreadp) + ([a0] << 0x2))] +0x30.
   The `jalr` at 0x4595dc calls sigemptyset with a0=sp-136, a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -1746,19 +1731,19 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4597b8 calls ErrorF with a0=0x48d090, a1=?, a2=?, a3=?.
   The `jalr` at 0x45984c calls ErrorF with a0=0x48d0c8, a1=0x100, a2=0x1, a3=?.
   The `jalr` at 0x4598f4 calls Xalloc with a0=0x40, a1=?, a2=a5 at entry (arg5), a3=table(0x493510), a5=table(0x493510), a6=a3 at entry (arg3), a7=table(0x493510).
-  The `jalr` at 0x4599a0 calls usfreesema with a0=entry(0x49352c), a1=[sym(sgimtx_arena)], a2=table(0x493510), a3=table(0x493510), a6=-0x1.
+  The `jalr` at 0x4599a0 calls usfreesema with a0=?, a1=[sym(sgimtx_arena)], a2=?, a3=?, a6=-0x1.
   The `jalr` at 0x4599b8 calls usnewsema with a0=[sym(sgimtx_arena)], a1=0x0, a2=?, a3=?.
-  The `jalr` at 0x4599f0 calls usfreesema with a0=entry(0x493530), a1=[sym(sgimtx_arena)], a2=table(0x493510), a3=?.
+  The `jalr` at 0x4599f0 calls usfreesema with a0=?, a1=[sym(sgimtx_arena)], a2=?, a3=?.
   The `jalr` at 0x459a08 calls usnewsema with a0=[sym(sgimtx_arena)], a1=0x0, a2=?, a3=?.
-  The `jalr` at 0x459a38 calls usclosepollsema with a0=entry(0x4935a0), a1=entry(0x4935a0), a2=table(0x493510), a3=?.
-  The `jalr` at 0x459a54 calls usfreepollsema with a0=entry(0x4935a0), a1=[sym(sgimtx_arena)], a2=?, a3=?.
+  The `jalr` at 0x459a38 calls usclosepollsema with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x459a54 calls usfreepollsema with a0=?, a1=[sym(sgimtx_arena)], a2=?, a3=?.
   The `jalr` at 0x459a6c calls usnewpollsema with a0=[sym(sgimtx_arena)], a1=0x0, a2=?, a3=?.
-  The `jalr` at 0x459a9c calls ErrorF with a0=0x48d100, a1=entry(0x4935a0), a2=table(0x493510), a3=?.
-  The `jalr` at 0x459ac4 calls usopenpollsema with a0=entry(0x4935a0), a1=0x1b6, a2=table(0x493510), a3=?.
-  The `jalr` at 0x459afc calls ErrorF with a0=0x48d130, a1=[sym(errno)], a2=table(0x493510), a3=?.
+  The `jalr` at 0x459a9c calls ErrorF with a0=0x48d100, a1=?, a2=?, a3=?.
+  The `jalr` at 0x459ac4 calls usopenpollsema with a0=?, a1=0x1b6, a2=?, a3=?.
+  The `jalr` at 0x459afc calls ErrorF with a0=0x48d130, a1=[sym(errno)], a2=?, a3=?.
   The `jalr` at 0x459b28 calls sproc with a0=0x450990, a1=0x40, a2=?, a3=?.
-  The `jalr` at 0x459b60 calls ErrorF with a0=0x48d170, a1=?, a2=-0x1, a3=table(0x493510).
-  The `jalr` at 0x459b74 calls (unnamed) [0x4736c0] with a0=table(0x493510), a1=?, a2=?, a3=?.
+  The `jalr` at 0x459b60 calls ErrorF with a0=0x48d170, a1=?, a2=-0x1, a3=?.
+  The `jalr` at 0x459b74 calls (unnamed) [0x4736c0] with a0=?, a1=?, a2=?, a3=?.
   The `bne` branch at 0x4595c4 targets 0x45971c, is taken when at(=[0x49301c]) != 0, and falls through when at(=[0x49301c]) == 0.
   The `bne` branch at 0x4596cc targets 0x459700, is taken when a1(=ret(usinit)) != 0, and falls through when a1(=ret(usinit)) == 0.
   The `beq` branch at 0x4596f8 targets 0x459bcc and is always taken.
@@ -1773,12 +1758,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x45985c targets 0x459bcc and is always taken.
   The `beq` branch at 0x45991c targets 0x45995c and is never taken: its condition can never hold for these operands, so execution always falls through.
   The `bne` branch at 0x459954 targets 0x459924, is taken when a4(?) < 0x10 (signed), and falls through when a4(?) >= 0x10 (signed).
-  The `beq` branch at 0x459984 targets 0x4599a8, is taken when t1(=entry(0x49352c)) == 0, and falls through when t1(=entry(0x49352c)) != 0.
-  The `beq` branch at 0x4599d4 targets 0x4599f8, is taken when a1(=entry(0x493530)) == 0, and falls through when a1(=entry(0x493530)) != 0.
-  The `beq` branch at 0x459a24 targets 0x459a5c, is taken when a1(=entry(0x4935a0)) == 0, and falls through when a1(=entry(0x4935a0)) != 0.
-  The `bne` branch at 0x459a88 targets 0x459ab4, is taken when a1(=entry(0x4935a0)) != 0, and falls through when a1(=entry(0x4935a0)) == 0.
+  The `beq` branch at 0x459984 targets 0x4599a8, is taken when t1(?) == 0, and falls through when t1(?) != 0.
+  The `beq` branch at 0x4599d4 targets 0x4599f8, is taken when a1(?) == 0, and falls through when a1(?) != 0.
+  The `beq` branch at 0x459a24 targets 0x459a5c, is taken when a1(?) == 0, and falls through when a1(?) != 0.
+  The `bne` branch at 0x459a88 targets 0x459ab4, is taken when a1(?) != 0, and falls through when a1(?) == 0.
   The `beq` branch at 0x459aac targets 0x459bcc and is always taken.
-  The `bgez` branch at 0x459ae0 targets 0x459b14, is taken when a1(=entry(0x4935a4)) >= 0 (signed), and falls through when a1(=entry(0x4935a4)) < 0 (signed).
+  The `bgez` branch at 0x459ae0 targets 0x459b14, is taken when a1(?) >= 0 (signed), and falls through when a1(?) < 0 (signed).
   The `beq` branch at 0x459b0c targets 0x459bcc and is always taken.
   The `bne` branch at 0x459b48 targets 0x459b8c, is taken when a1(=ret(sproc)) != a2(=-0x1), and falls through when a1(=ret(sproc)) == a2(=-0x1).
   The `beq` branch at 0x459b84 targets 0x459bcc and is always taken.
@@ -3254,12 +3239,12 @@ Each entry records selected software behavior from its exact binary range. The r
   6 such `sb` accesses store 1 byte to ?, including `sb` at 0x45f67c, `sb` at 0x45f6c0, `sb` at 0x45f6f0.
   4 such `lb` accesses load 1 byte from ?, including `lb` at 0x45f6dc, `lb` at 0x45f6e8, `lb` at 0x45f704.
   The `jalr` at 0x45f4f4 calls glGetHistogramParameterivEXT with a0=[a0+12], a1=0x8026, a2=sp-80, a3=a0+12, a4=[a0+22]:1, a5=a0+12, a7=a0+12.
-  The `jalr` at 0x45f520 calls glxGetTexImageSize [0x44de50] with a0=[a0+12], a1=0x1, a2=[a0+16], a3=[a0+20], a5=0x1, a6=0x1, a7=0x1.
+  The `jalr` at 0x45f520 calls glxGetTexImageSize [0x44de50] with a0=?, a1=0x1, a2=?, a3=?, a5=0x1, a6=0x1, a7=0x1.
   The `jalr` at 0x45f578 calls Xrealloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x45f59c calls Xalloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x45f604 calls glPixelStorei with a0=0xd00, a1=?, a2=?, a3=?.
   The `jalr` at 0x45f610 calls glxClearErrorFlag [0x44a460] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x45f630 calls glGetHistogramEXT with a0=[a0+12], a1=?, a2=[a0+16], a3=[a0+20].
+  The `jalr` at 0x45f630 calls glGetHistogramEXT with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x45f63c calls glxErrorFlagIsSet [0x447e10] with a0=?, a1=?, a2=?, a3=?.
   The `bgez` branch at 0x45f534 targets 0x45f540, is taken when t3(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when t3(=ret(glxGetTexImageSize)) < 0 (signed).
   The `beq` branch at 0x45f550 targets 0x45f5e8, is taken when t8(?) >= t9(?) (signed), and falls through when t8(?) < t9(?) (signed).
@@ -3781,7 +3766,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4625b4 calls glxLookupFBConfig [0x4567e0] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x462624 calls glxGetDrawablePrivate with a0=a3 at entry (arg3), a1=?, a2=?, a3=?.
   The `jalr` at 0x462684 calls glxLookupFBConfig [0x4567e0] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x46271c calls glxSendMakeCurrent [0x487380] with a0=[a0+44], a1=?, a2=?, a3=0x0, a4=one of 0x0, 0x1.
+  The `jalr` at 0x46271c calls glxSendMakeCurrent [0x487380] with a0=[a0+44], a1=?, a2=?, a3=0x0.
   The `bgezall` at 0x462730 calls sgiGetThreadCmdStatus [0x45b0b0] with a0=sp-200, a1=[(sym(clientThreadp) + ([[a0+44]] << 0x2))], a2=?, a3=?.
   The `jalr` at 0x4627b8 calls glxFreeDrawablePrivate with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4627f8 calls glxFreeGLXDrawable [0x481a70] with a0=?, a1=?, a2=?, a3=?.
@@ -6034,28 +6019,28 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lb` at 0x46be1c loads 1 byte from a0 (arg0 at entry) +0x16.
   The `sb` at 0x46be24 stores 1 byte to a0 (arg0 at entry) +0x15.
   The `sb` at 0x46be30 stores 1 byte to a0 (arg0 at entry) +0x16.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0x46be38, `lw` at 0x46c02c.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x10, including `lw` at 0x46be44, `lw` at 0x46c034.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x14, including `lw` at 0x46be50, `lw` at 0x46c03c.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x8, including `lw` at 0x46be5c, `lw` at 0x46c024.
+  The `lw` at 0x46be38 loads 4 bytes from a0 (arg0 at entry) +0xc.
+  The `lw` at 0x46be44 loads 4 bytes from a0 (arg0 at entry) +0x10.
+  The `lw` at 0x46be50 loads 4 bytes from a0 (arg0 at entry) +0x14.
+  The `lw` at 0x46be5c loads 4 bytes from a0 (arg0 at entry) +0x8.
   The `lbu` at 0x46be6c loads 1 byte from a0 (arg0 at entry) +0x18.
-  7 such `lw` accesses load 4 bytes from ?, including `lw` at 0x46bf4c, `lw` at 0x46bf64, `lw` at 0x46bf74.
+  11 such `lw` accesses load 4 bytes from ?, including `lw` at 0x46bf4c, `lw` at 0x46bf64, `lw` at 0x46bf74.
   15 such `sw` accesses store 4 bytes to ?, including `sw` at 0x46bf90, `sw` at 0x46bfb4, `sw` at 0x46bfd0.
   18 such `sb` accesses store 1 byte to ?, including `sb` at 0x46c094, `sb` at 0x46c0d8, `sb` at 0x46c12c.
   16 such `lb` accesses load 1 byte from ?, including `lb` at 0x46c118, `lb` at 0x46c124, `lb` at 0x46c140.
   The `jalr` at 0x46be88 calls glGetTexLevelParameteriv with a0=[a0+8], a1=[a0+12], a2=0x1000, a3=sp-96, a4=[a0+22]:1, a5=a0+8, a7=a0+8.
-  The `jalr` at 0x46bea4 calls glGetTexLevelParameteriv with a0=[a0+8], a1=[a0+12], a2=0x1001, a3=sp-92.
-  The `jalr` at 0x46bed0 calls glGetTexLevelParameteriv with a0=[a0+8], a1=[a0+12], a2=0x8071, a3=sp-88, a4=0x806f.
-  The `jalr` at 0x46befc calls glGetTexLevelParameteriv with a0=[a0+8], a1=[a0+12], a2=0x8136, a3=sp-84, a5=[a0+8], a6=0x8134.
-  The `jalr` at 0x46bf28 calls glxGetTexImageSize [0x44de50] with a0=[a0+8], a1=[a0+12], a2=[a0+16], a3=[a0+20].
+  The `jalr` at 0x46bea4 calls glGetTexLevelParameteriv with a0=?, a1=?, a2=0x1001, a3=sp-92.
+  The `jalr` at 0x46bed0 calls glGetTexLevelParameteriv with a0=?, a1=?, a2=0x8071, a3=sp-88, a4=0x806f.
+  The `jalr` at 0x46befc calls glGetTexLevelParameteriv with a0=?, a1=?, a2=0x8136, a3=sp-84, a6=0x8134.
+  The `jalr` at 0x46bf28 calls glxGetTexImageSize [0x44de50] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x46bf80 calls Xrealloc with a0=?, a1=?, a2=?, a3=?, a7=ret(glxGetTexImageSize).
   The `jalr` at 0x46bfa4 calls Xalloc with a0=?, a1=?, a2=?, a3=?, a7=ret(glxGetTexImageSize).
   The `jalr` at 0x46c00c calls glPixelStorei with a0=0xd00, a1=?, a2=?, a3=?.
   The `jalr` at 0x46c018 calls glxClearErrorFlag [0x44a460] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x46c048 calls glGetTexImage with a0=[a0+8], a1=[a0+12], a2=[a0+16], a3=[a0+20].
+  The `jalr` at 0x46c048 calls glGetTexImage with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x46c054 calls glxErrorFlagIsSet [0x447e10] with a0=?, a1=?, a2=?, a3=?.
-  The `bne` branch at 0x46beb4 targets 0x46bed8, is taken when a3(=[a0+8]) != a4(=0x806f), and falls through when a3(=[a0+8]) == a4(=0x806f).
-  The `bne` branch at 0x46bee0 targets 0x46bf04, is taken when a5(=[a0+8]) != a6(=0x8134), and falls through when a5(=[a0+8]) == a6(=0x8134).
+  The `bne` branch at 0x46beb4 targets 0x46bed8, is taken when a3(?) != a4(=0x806f), and falls through when a3(?) == a4(=0x806f).
+  The `bne` branch at 0x46bee0 targets 0x46bf04, is taken when a5(?) != a6(=0x8134), and falls through when a5(?) == a6(=0x8134).
   The `bgez` branch at 0x46bf3c targets 0x46bf48, is taken when a7(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when a7(=ret(glxGetTexImageSize)) < 0 (signed).
   The `beq` branch at 0x46bf58 targets 0x46bff0, is taken when t0(?) >= t1(?) (signed), and falls through when t0(?) < t1(?) (signed).
   The `beq` branch at 0x46bf68 targets 0x46bf9c, is taken when t1(?) == 0, and falls through when t1(?) != 0.
@@ -7707,8 +7692,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x471f44 calls Xalloc with a0=0x20, a1=?, a2=?, a3=?, a5=ret(SecurityLookupIDByType).
   The `jalr` at 0x472058 calls glxSwapQueryContextInfoEXTReply [0x42c150] with a0=[a0+44], a1=sp-96, a2=ret(Xalloc), a3=ret(Xalloc)+24, a4=0x800c, a5=ret(Xalloc)+20, a6=ret(Xalloc)+20, a7=[[ret(SecurityLookupIDByType)+16]].
   The `jalr` at 0x472078 calls WriteToClient with a0=[a0+44], a1=0x20, a2=sp-96, a3=ret(Xalloc)+24, a4=0x800c, a5=ret(Xalloc)+20, a6=ret(Xalloc)+20, a7=[[ret(SecurityLookupIDByType)+16]].
-  The `jalr` at 0x472090 calls WriteToClient with a0=[a0+44], a1=0x20, a2=ret(Xalloc), a3=?.
-  The `jalr` at 0x4720a0 calls Xfree with a0=ret(Xalloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x472090 calls WriteToClient with a0=[a0+44], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4720a0 calls Xfree with a0=?, a1=?, a2=?, a3=?.
   The `bne` branch at 0x471ed4 targets 0x471f00, is taken when a5(=ret(SecurityLookupIDByType)) != 0, and falls through when a5(=ret(SecurityLookupIDByType)) == 0.
   The `beq` branch at 0x471ef8 targets 0x4720b0 and is always taken.
   The `beq` branch at 0x472040 targets 0x472068, is taken when ra(=[[a0+44]+16]) == 0, and falls through when ra(=[[a0+44]+16]) != 0.
@@ -8591,8 +8576,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x47619c calls Xalloc with a0=0x18, a1=?, a2=?, a3=?, a4=ret(LookupIDByType), a7=0x18.
   The `jalr` at 0x476278 calls glxSwapQueryContextReply [0x451470] with a0=[a0+44], a1=sp-96, a2=ret(Xalloc), a3=0x8011, a4=ret(Xalloc)+12, a5=ret(Xalloc)+12, a6=[[ret(LookupIDByType)+20]+72], a7=ret(Xalloc)+8.
   The `jalr` at 0x476298 calls WriteToClient with a0=[a0+44], a1=0x20, a2=sp-96, a3=0x8011, a4=ret(Xalloc)+12, a5=ret(Xalloc)+12, a6=[[ret(LookupIDByType)+20]+72], a7=ret(Xalloc)+8.
-  The `jalr` at 0x4762b0 calls WriteToClient with a0=[a0+44], a1=0x18, a2=ret(Xalloc), a3=?.
-  The `jalr` at 0x4762c0 calls Xfree with a0=ret(Xalloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x4762b0 calls WriteToClient with a0=[a0+44], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4762c0 calls Xfree with a0=?, a1=?, a2=?, a3=?.
   The `bne` branch at 0x47612c targets 0x476158, is taken when a4(=ret(LookupIDByType)) != 0, and falls through when a4(=ret(LookupIDByType)) == 0.
   The `beq` branch at 0x476150 targets 0x4762d0 and is always taken.
   The `beq` branch at 0x476260 targets 0x476288, is taken when t9(=[[a0+44]+16]) == 0, and falls through when t9(=[[a0+44]+16]) != 0.
@@ -11516,25 +11501,25 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lb` at 0x480ffc loads 1 byte from a0 (arg0 at entry) +0x16.
   The `sb` at 0x481004 stores 1 byte to a0 (arg0 at entry) +0x15.
   The `sb` at 0x481010 stores 1 byte to a0 (arg0 at entry) +0x16.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x10, including `lw` at 0x481018, `lw` at 0x48122c.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x14, including `lw` at 0x481024, `lw` at 0x481234.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0x481030, `lw` at 0x481224.
+  The `lw` at 0x481018 loads 4 bytes from a0 (arg0 at entry) +0x10.
+  The `lw` at 0x481024 loads 4 bytes from a0 (arg0 at entry) +0x14.
+  The `lw` at 0x481030 loads 4 bytes from a0 (arg0 at entry) +0xc.
   The `lbu` at 0x481040 loads 1 byte from a0 (arg0 at entry) +0x18.
-  7 such `lw` accesses load 4 bytes from ?, including `lw` at 0x48112c, `lw` at 0x48114c, `lw` at 0x48115c.
+  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x48112c, `lw` at 0x48114c, `lw` at 0x48115c.
   13 such `sw` accesses store 4 bytes to ?, including `sw` at 0x481180, `sw` at 0x4811ac, `sw` at 0x4811c8.
   10 such `sb` accesses store 1 byte to ?, including `sb` at 0x48129c, `sb` at 0x4812e8, `sb` at 0x481324.
   8 such `lb` accesses load 1 byte from ?, including `lb` at 0x481310, `lb` at 0x48131c, `lb` at 0x481338.
   The `jalr` at 0x481058 calls glGetConvolutionParameterivEXT with a0=[a0+12], a1=0x8018, a2=sp-96, a3=[a0+22]:1, a4=a0+12, a6=a0+12, a7=[a0+23]:1.
-  The `jalr` at 0x481070 calls glGetConvolutionParameterivEXT with a0=[a0+12], a1=0x8019, a2=sp-92, a3=?.
-  The `jalr` at 0x48109c calls glxGetTexImageSize [0x44de50] with a0=[a0+12], a1=0x1, a2=[a0+16], a3=[a0+20], a5=0x1, a6=0x1, a7=0x1.
-  The `jalr` at 0x4810d0 calls glxGetTexImageSize [0x44de50] with a0=[a0+12], a1=0x1, a2=[a0+16], a3=[a0+20], a5=0x1, a6=0x1, a7=0x1.
+  The `jalr` at 0x481070 calls glGetConvolutionParameterivEXT with a0=?, a1=0x8019, a2=sp-92, a3=?.
+  The `jalr` at 0x48109c calls glxGetTexImageSize [0x44de50] with a0=?, a1=0x1, a2=?, a3=?, a5=0x1, a6=0x1, a7=0x1.
+  The `jalr` at 0x4810d0 calls glxGetTexImageSize [0x44de50] with a0=?, a1=0x1, a2=?, a3=?, a5=0x1, a6=0x1, a7=0x1.
   The `jalr` at 0x481170 calls Xrealloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x48119c calls Xalloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x48120c calls glPixelStorei with a0=0xd00, a1=?, a2=?, a3=?.
   The `jalr` at 0x481218 calls glxClearErrorFlag [0x44a460] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x481250 calls glGetSeparableFilterEXT with a0=[a0+12], a1=[a0+16], a2=[a0+20], a3=?, a5=0x0.
+  The `jalr` at 0x481250 calls glGetSeparableFilterEXT with a0=?, a1=?, a2=?, a3=?, a5=0x0.
   The `jalr` at 0x48125c calls glxErrorFlagIsSet [0x447e10] with a0=?, a1=?, a2=?, a3=?.
-  The `bgez` branch at 0x4810e4 targets 0x4810f0, is taken when t2(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when t2(=ret(glxGetTexImageSize)) < 0 (signed).
+  The `bgez` branch at 0x4810e4 targets 0x4810f0, is taken when t2(?) >= 0 (signed), and falls through when t2(?) < 0 (signed).
   The `bgez` branch at 0x4810f4 targets 0x481100, is taken when t3(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when t3(=ret(glxGetTexImageSize)) < 0 (signed).
   The `beq` branch at 0x481140 targets 0x4811f0, is taken when t8(?) >= t9(?) (signed), and falls through when t8(?) < t9(?) (signed).
   The `beq` branch at 0x481150 targets 0x48118c, is taken when at(?) == 0, and falls through when at(?) != 0.
@@ -13435,24 +13420,24 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lb` at 0x4891bc loads 1 byte from a0 (arg0 at entry) +0x16.
   The `sb` at 0x4891c4 stores 1 byte to a0 (arg0 at entry) +0x15.
   The `sb` at 0x4891d0 stores 1 byte to a0 (arg0 at entry) +0x16.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x10, including `lw` at 0x4891d8, `lw` at 0x489380.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x14, including `lw` at 0x4891e4, `lw` at 0x489388.
-  2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0xc, including `lw` at 0x4891f0, `lw` at 0x489378.
+  The `lw` at 0x4891d8 loads 4 bytes from a0 (arg0 at entry) +0x10.
+  The `lw` at 0x4891e4 loads 4 bytes from a0 (arg0 at entry) +0x14.
+  The `lw` at 0x4891f0 loads 4 bytes from a0 (arg0 at entry) +0xc.
   The `lbu` at 0x489200 loads 1 byte from a0 (arg0 at entry) +0x18.
-  7 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4892a0, `lw` at 0x4892b8, `lw` at 0x4892c8.
+  10 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4892a0, `lw` at 0x4892b8, `lw` at 0x4892c8.
   13 such `sw` accesses store 4 bytes to ?, including `sw` at 0x4892e4, `sw` at 0x489308, `sw` at 0x489324.
   10 such `sb` accesses store 1 byte to ?, including `sb` at 0x4893e0, `sb` at 0x489424, `sb` at 0x489460.
   8 such `lb` accesses load 1 byte from ?, including `lb` at 0x48944c, `lb` at 0x489458, `lb` at 0x489474.
   The `jalr` at 0x489218 calls glGetConvolutionParameterivEXT with a0=[a0+12], a1=0x8018, a2=sp-96, a3=[a0+22]:1, a4=a0+12, a6=a0+12, a7=[a0+23]:1.
-  The `jalr` at 0x489250 calls glGetConvolutionParameterivEXT with a0=[a0+12], a1=0x8019, a2=sp-92, a3=?.
-  The `jalr` at 0x48927c calls glxGetTexImageSize [0x44de50] with a0=[a0+12], a1=0x1, a2=[a0+16], a3=[a0+20], a6=0x1, a7=0x1.
+  The `jalr` at 0x489250 calls glGetConvolutionParameterivEXT with a0=?, a1=0x8019, a2=sp-92, a3=?.
+  The `jalr` at 0x48927c calls glxGetTexImageSize [0x44de50] with a0=?, a1=0x1, a2=?, a3=?, a6=0x1, a7=0x1.
   The `jalr` at 0x4892d4 calls Xrealloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4892f8 calls Xalloc with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x489360 calls glPixelStorei with a0=0xd00, a1=?, a2=?, a3=?.
   The `jalr` at 0x48936c calls glxClearErrorFlag [0x44a460] with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x489394 calls glGetConvolutionFilterEXT with a0=[a0+12], a1=[a0+16], a2=[a0+20], a3=?.
+  The `jalr` at 0x489394 calls glGetConvolutionFilterEXT with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4893a0 calls glxErrorFlagIsSet [0x447e10] with a0=?, a1=?, a2=?, a3=?.
-  The `bne` branch at 0x489228 targets 0x489240, is taken when t2(=[a0+12]) != t3(=0x8010), and falls through when t2(=[a0+12]) == t3(=0x8010).
+  The `bne` branch at 0x489228 targets 0x489240, is taken when t2(?) != t3(=0x8010), and falls through when t2(?) == t3(=0x8010).
   The `beq` branch at 0x489238 targets 0x489258 and is always taken.
   The `bgez` branch at 0x489290 targets 0x48929c, is taken when t9(=ret(glxGetTexImageSize)) >= 0 (signed), and falls through when t9(=ret(glxGetTexImageSize)) < 0 (signed).
   The `beq` branch at 0x4892ac targets 0x489344, is taken when ra(?) >= at(?) (signed), and falls through when ra(?) < at(?) (signed).
@@ -15112,16 +15097,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x14, including `sw` at 0x4069a4, `sw` at 0x4069c4.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x0, including `lw` at 0x406b20, `lw` at 0x406b7c.
   The `jalr` at 0x4066e8 calls dmParamsCopyAllElems with a0=?, a1=[a0+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x406718 calls dmParamsCopyAllElems with a0=?, a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x40673c calls dmParamsGetEnum with a0=[a0+4], a1=0x410b2c, a2=?, a3=?.
-  The `jalr` at 0x406774 calls dmParamsSetEnum with a0=[a0+8], a1=0x410b40, a2=?, a3=?.
-  The `jalr` at 0x406790 calls dmParamsSetEnum with a0=[a0+8], a1=0x410b54, a2=0x44c, a3=?.
+  The `jalr` at 0x406718 calls dmParamsCopyAllElems with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x40673c calls dmParamsGetEnum with a0=?, a1=0x410b2c, a2=?, a3=?.
+  The `jalr` at 0x406774 calls dmParamsSetEnum with a0=?, a1=0x410b40, a2=?, a3=?.
+  The `jalr` at 0x406790 calls dmParamsSetEnum with a0=?, a1=0x410b54, a2=0x44c, a3=?.
   The `jalr` at 0x4067c0 calls dmParamsCopyAllElems with a0=?, a1=[a0+12], a2=?, a3=?.
   The `jalr` at 0x406808 calls _e_go [0x406274] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406824 calls needsConvert [0x4034cc] with a0=[a0+4], a1=[a0+8], a2=?, a3=?.
+  The `jalr` at 0x406824 calls needsConvert [0x4034cc] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406840 calls dmBufferGetSize with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x406874 calls dmSetError with a0=0x1777, a1=0x410b6c, a2=0x410b74, a3=?.
-  The `jalr` at 0x4068a0 calls dmImageFrameSize with a0=[a0+8], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4068a0 calls dmImageFrameSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4068ec calls dmBufferDestroyPool with a0=[a0+16], a1=?, a2=?, a3=?.
   The `jalr` at 0x406900 calls dmParamsCreate with a0=sp-40, a1=?, a2=?, a3=?.
   The `jalr` at 0x406930 calls dmBufferSetPoolDefaults with a0=?, a1=0x2, a2=?, a3=0x0.
@@ -15132,7 +15117,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4069d4 calls dmBufferAllocate with a0=[a0+16], a1=sp-12, a2=?, a3=?.
   The `jalr` at 0x4069f4 calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x406a0c calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406a30 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=[a0+4], a3=[a0+8].
+  The `jalr` at 0x406a30 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
   The `jalr` at 0x406a54 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406a74 calls dmBufferGetImageType with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x406a90 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
@@ -15229,7 +15214,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4070c8 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4070e0 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x407104 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
-  The `jalr` at 0x407128 calls dmBufferSetSize with a0=?, a1=ret(dmImageFrameSize), a2=?, a3=?.
+  The `jalr` at 0x407128 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x407148 calls dmBufferGetImageType with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x407164 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
   The `jalr` at 0x407188 calls dmBufferGetUSTMSCpair with a0=sp-88, a1=?, a2=?, a3=?.
@@ -15313,7 +15298,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x4073c4 targets 0x4073d4, is taken when v0(=ret(dmBufferSetSize)) == 0, and falls through when v0(=ret(dmBufferSetSize)) != 0.
   The `beq` branch at 0x4073cc targets 0x407458 and is always taken.
   The `beq` branch at 0x407448 targets 0x407458 and is always taken.
-  The return at 0x407460 has v0 = one of ret(vice_dmbuf_recv), -0x1.
+  The return at 0x407460 has v0 = one of ?, -0x1.
   The instructions from 0x407450 to 0x407454 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x407468 to 0x407ef4 are not reached by any path from the entry, and their branches are not listed.
 - `zoneFromIndexTab` in `usr/lib/dmedia/imageconverters/debug/vicedv.so` at 0x407470 (o32).
@@ -17382,14 +17367,8 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x4026c0-0x402a7c (956 bytes).
   It occupies 956 bytes.
   The `sw` at 0x402784 stores 4 bytes to ret(calloc) +0x11c.
-  The `sw` at 0x4027fc stores 4 bytes to ret(calloc) +0x0.
-  2 such `lw` accesses load 4 bytes from ret(calloc) +0x0, including `lw` at 0x402808, `lw` at 0x402994.
-  The `sw` at 0x4028a0 stores 4 bytes to ret(calloc) +0x108.
-  The `lw` at 0x402938 loads 4 bytes from ret(calloc) +0x108.
-  The `sw` at 0x4029b4 stores 4 bytes to ret(calloc) +0xa0.
-  The `lw` at 0x4029bc loads 4 bytes from ret(calloc) +0xa0.
-  The `sw` at 0x402a24 stores 4 bytes to ret(calloc) +0xb4.
-  The `lw` at 0x402a2c loads 4 bytes from ret(calloc) +0xb4.
+  4 such `sw` accesses store 4 bytes to ?, including `sw` at 0x4027fc, `sw` at 0x4028a0, `sw` at 0x4029b4.
+  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0x402808, `lw` at 0x402938, `lw` at 0x402994.
   The `sw` at 0x402a54 stores 4 bytes to a1 (arg1 at entry) +0x0.
   The `jalr` at 0x4026e8 calls vice_get_lib_rev with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x402718 calls dmSetError with a0=0x1774, a1=0x40c428, a2=0x40c434, a3=0x6b7a.
@@ -17397,23 +17376,23 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x402768 calls dmSetError with a0=0x1774, a1=0x40c450, a2=0x40c45c, a3=?.
   The `jalr` at 0x402794 calls init_formats [0x401b00] with a0=ret(calloc)+4, a1=?, a2=?, a3=?.
   The `jalr` at 0x4027b8 calls dmSetError with a0=0x1774, a1=0x40c46c, a2=0x40c478, a3=?.
-  The `jalr` at 0x4027cc calls free with a0=ret(calloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x4027cc calls free with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4027e8 calls vice_open_and_setetc with a0=0x40c4a4, a1=?, a2=?, a3=?.
   The `jalr` at 0x402828 calls dmSetError with a0=0x1774, a1=0x40c4b4, a2=0x40c4c0, a3=?.
-  The `jalr` at 0x402840 calls free_formats [0x401bb4] with a0=ret(calloc)+4, a1=?, a2=?, a3=?.
-  The `jalr` at 0x402854 calls free with a0=ret(calloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x402840 calls free_formats [0x401bb4] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x402854 calls free with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x402874 calls vice_alloc with a0=ret(vice_open_and_setetc), a1=0x1, a2=?, a3=?.
   The `jalr` at 0x402890 calls vice_mmap with a0=ret(vice_open_and_setetc), a1=ret(vice_alloc), a2=0x1, a3=?.
   The `jalr` at 0x4028bc calls vice_settlb with a0=ret(vice_open_and_setetc), a1=0x7e, a2=ret(vice_alloc), a3=0x1.
   The `jalr` at 0x4028e0 calls dmSetError with a0=0x1774, a1=0x40c4dc, a2=0x40c4e8, a3=?.
-  The `jalr` at 0x4028f8 calls e_cleanup [0x402a7c] with a0=ret(calloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x4028f8 calls e_cleanup [0x402a7c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x402914 calls vice_file with a0=0x40c508, a1=?, a2=?, a3=?.
-  The `jalr` at 0x402934 calls __vu_readfile with a0=ret(vice_file), a1=[ret(calloc)+264], a2=0x1e00, a3=?.
+  The `jalr` at 0x402934 calls __vu_readfile with a0=ret(vice_file), a1=?, a2=0x1e00, a3=?.
   The `jalr` at 0x40295c calls dmSetError with a0=0x1774, a1=0x40c518, a2=0x40c524, a3=?.
-  The `jalr` at 0x402974 calls e_cleanup [0x402a7c] with a0=ret(calloc), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4029a4 calls vice_event_init with a0=[ret(calloc)], a1=ret(calloc)+184, a2=ret(calloc)+224, a3=0x40.
+  The `jalr` at 0x402974 calls e_cleanup [0x402a7c] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x4029a4 calls vice_event_init with a0=?, a1=?, a2=?, a3=0x40.
   The `jalr` at 0x4029dc calls dmSetError with a0=0x1774, a1=0x40c540, a2=0x40c54c, a3=?.
-  The `jalr` at 0x4029f4 calls e_cleanup [0x402a7c] with a0=ret(calloc), a1=?, a2=?, a3=?.
+  The `jalr` at 0x4029f4 calls e_cleanup [0x402a7c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x402a10 calls getenv with a0=0x40c564, a1=?, a2=?, a3=?.
   The `jalr` at 0x402a40 calls printf with a0=0x40c570, a1=?, a2=?, a3=?.
   The `beq` branch at 0x4026f8 targets 0x40272c, is taken when t6(?) == at(=0x6b7a), and falls through when t6(?) != at(=0x6b7a).
@@ -17422,15 +17401,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x402774 targets 0x402a68 and is always taken.
   The `beq` branch at 0x40279c targets 0x4027e0, is taken when v0(=ret(init_formats)) == 0, and falls through when v0(=ret(init_formats)) != 0.
   The `beq` branch at 0x4027d8 targets 0x402a68 and is always taken.
-  The `bgez` branch at 0x40280c targets 0x402868, is taken when t2(=[ret(calloc)]) >= 0 (signed), and falls through when t2(=[ret(calloc)]) < 0 (signed).
+  The `bgez` branch at 0x40280c targets 0x402868, is taken when t2(?) >= 0 (signed), and falls through when t2(?) < 0 (signed).
   The `beq` branch at 0x402860 targets 0x402a68 and is always taken.
   The `beq` branch at 0x4028c4 targets 0x40290c, is taken when v0(=ret(vice_settlb)) == 0, and falls through when v0(=ret(vice_settlb)) != 0.
   The `beq` branch at 0x402904 targets 0x402a68 and is always taken.
   The `beq` branch at 0x402940 targets 0x402988, is taken when v0(=ret(__vu_readfile)) == at(=0x1e00), and falls through when v0(=ret(__vu_readfile)) != at(=0x1e00).
   The `beq` branch at 0x402980 targets 0x402a68 and is always taken.
-  The `bgez` branch at 0x4029c0 targets 0x402a08, is taken when t0(=[ret(calloc)+160]) >= 0 (signed), and falls through when t0(=[ret(calloc)+160]) < 0 (signed).
+  The `bgez` branch at 0x4029c0 targets 0x402a08, is taken when t0(?) >= 0 (signed), and falls through when t0(?) < 0 (signed).
   The `beq` branch at 0x402a00 targets 0x402a68 and is always taken.
-  The `beq` branch at 0x402a30 targets 0x402a4c, is taken when t4(=[ret(calloc)+180]) == 0, and falls through when t4(=[ret(calloc)+180]) != 0.
+  The `beq` branch at 0x402a30 targets 0x402a4c, is taken when t4(?) == 0, and falls through when t4(?) != 0.
   The `beq` branch at 0x402a58 targets 0x402a68 and is always taken.
   The return at 0x402a74 has v0 = one of -0x1, 0x0.
   The instructions from 0x402a60 to 0x402a64 are not reached by any path from the entry, and their branches are not listed.
@@ -17789,17 +17768,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x4042b0 loads 4 bytes from ?.
   The `sw` at 0x4042d0 stores 4 bytes to ?.
   The `jalr` at 0x403bec calls dmParamsCopyAllElems with a0=?, a1=[a0+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x403c1c calls dmParamsCopyAllElems with a0=?, a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x403c40 calls dmParamsGetEnum with a0=[a0+4], a1=0x40ca44, a2=?, a3=?.
-  The `jalr` at 0x403c84 calls dmParamsSetEnum with a0=[a0+8], a1=0x40ca58, a2=?, a3=?.
-  The `jalr` at 0x403ca0 calls dmParamsSetEnum with a0=[a0+8], a1=0x40ca6c, a2=0x44c, a3=?.
+  The `jalr` at 0x403c1c calls dmParamsCopyAllElems with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x403c40 calls dmParamsGetEnum with a0=?, a1=0x40ca44, a2=?, a3=?.
+  The `jalr` at 0x403c84 calls dmParamsSetEnum with a0=?, a1=0x40ca58, a2=?, a3=?.
+  The `jalr` at 0x403ca0 calls dmParamsSetEnum with a0=?, a1=0x40ca6c, a2=0x44c, a3=?.
   The `jalr` at 0x403cd0 calls dmParamsCopyAllElems with a0=?, a1=[a0+12], a2=?, a3=?.
   The `jalr` at 0x403d24 calls _e_go [0x403364] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403d5c calls dmImageCompressedSize [0x403a08] with a0=[a0+8], a1=[a0+12], a2=?, a3=?.
-  The `jalr` at 0x403d80 calls needsConvert [0x401d38] with a0=[a0+4], a1=[a0+8], a2=?, a3=?.
+  The `jalr` at 0x403d5c calls dmImageCompressedSize [0x403a08] with a0=?, a1=[a0+12], a2=?, a3=?.
+  The `jalr` at 0x403d80 calls needsConvert [0x401d38] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403d9c calls dmBufferGetSize with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x403dd0 calls dmSetError with a0=0x1777, a1=0x40ca84, a2=0x40ca90, a3=?.
-  The `jalr` at 0x403dfc calls dmImageFrameSize with a0=[a0+8], a1=?, a2=?, a3=?.
+  The `jalr` at 0x403dfc calls dmImageFrameSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403e48 calls dmBufferDestroyPool with a0=[a0+16], a1=?, a2=?, a3=?.
   The `jalr` at 0x403e5c calls dmParamsCreate with a0=sp-172, a1=?, a2=?, a3=?.
   The `jalr` at 0x403e8c calls dmBufferSetPoolDefaults with a0=?, a1=0x1, a2=?, a3=0x0.
@@ -17811,7 +17790,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x403f50 calls dmBufferAllocate with a0=[a0+16], a1=sp-12, a2=?, a3=?.
   The `jalr` at 0x403f70 calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x403f88 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x403fac calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=[a0+4], a3=[a0+8].
+  The `jalr` at 0x403fac calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
   The `jalr` at 0x403fd0 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403ff0 calls dmBufferGetImageType with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x40400c calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
@@ -17885,7 +17864,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bgtz` branch at 0x404304 targets 0x404334, is taken when t4(=ret(select)) > 0 (signed), and falls through when t4(=ret(select)) <= 0 (signed).
   The `beq` branch at 0x404338 targets 0x404354, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `beq` branch at 0x404354 targets 0x404364 and is always taken.
-  The return at 0x404370 has v0 = one of -0x1, 0x0.
+  The return at 0x404370 has v0 = one of -0x1, ?.
   The instructions from 0x40435c to 0x404360 are not reached by any path from the entry, and their branches are not listed.
 - `e_recv` in `usr/lib/dmedia/imageconverters/debug/vicejpeg.so` at 0x404378 (o32).
   Evidence grade: inferred.
@@ -18344,7 +18323,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x405cac calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405cc4 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405ce8 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
-  The `jalr` at 0x405d0c calls dmBufferSetSize with a0=?, a1=ret(dmImageFrameSize), a2=?, a3=?.
+  The `jalr` at 0x405d0c calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d2c calls dmBufferGetImageType with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405d48 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
   The `jalr` at 0x405d6c calls dmBufferGetUSTMSCpair with a0=sp-72, a1=?, a2=?, a3=?.
@@ -20014,16 +19993,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x14, including `sw` at 0x4066c4, `sw` at 0x4066e8.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x0, including `lw` at 0x40683c, `lw` at 0x40689c.
   The `jalr` at 0x406404 calls dmParamsCopyAllElems with a0=?, a1=[a0+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x406434 calls dmParamsCopyAllElems with a0=?, a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x406458 calls dmParamsGetEnum with a0=[a0+4], a1=0x410b2c, a2=?, a3=?.
-  The `jalr` at 0x406490 calls dmParamsSetEnum with a0=[a0+8], a1=0x410b40, a2=?, a3=?.
-  The `jalr` at 0x4064ac calls dmParamsSetEnum with a0=[a0+8], a1=0x410b54, a2=0x44c, a3=?.
+  The `jalr` at 0x406434 calls dmParamsCopyAllElems with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x406458 calls dmParamsGetEnum with a0=?, a1=0x410b2c, a2=?, a3=?.
+  The `jalr` at 0x406490 calls dmParamsSetEnum with a0=?, a1=0x410b40, a2=?, a3=?.
+  The `jalr` at 0x4064ac calls dmParamsSetEnum with a0=?, a1=0x410b54, a2=0x44c, a3=?.
   The `jalr` at 0x4064dc calls dmParamsCopyAllElems with a0=?, a1=[a0+12], a2=?, a3=?.
   The `jalr` at 0x406524 calls _e_go [0x405fb4] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x406540 calls needsConvert [0x403470] with a0=[a0+4], a1=[a0+8], a2=?, a3=?.
+  The `jalr` at 0x406540 calls needsConvert [0x403470] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40655c calls dmBufferGetSize with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x406590 calls dmSetError with a0=0x1777, a1=0x410b6c, a2=0x410b74, a3=?.
-  The `jalr` at 0x4065bc calls dmImageFrameSize with a0=[a0+8], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4065bc calls dmImageFrameSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406608 calls dmBufferDestroyPool with a0=[a0+16], a1=?, a2=?, a3=?.
   The `jalr` at 0x40661c calls dmParamsCreate with a0=sp-40, a1=?, a2=?, a3=?.
   The `jalr` at 0x40664c calls dmBufferSetPoolDefaults with a0=?, a1=0x2, a2=?, a3=0x0.
@@ -20034,7 +20013,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4066f4 calls dmBufferAllocate with a0=[a0+16], a1=sp-12, a2=?, a3=?.
   The `jalr` at 0x406714 calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x40672c calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x406750 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=[a0+4], a3=[a0+8].
+  The `jalr` at 0x406750 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
   The `jalr` at 0x406774 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406794 calls dmBufferGetImageType with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x4067b0 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
@@ -20129,7 +20108,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x406d64 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406d7c calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406da0 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
-  The `jalr` at 0x406dc4 calls dmBufferSetSize with a0=?, a1=ret(dmImageFrameSize), a2=?, a3=?.
+  The `jalr` at 0x406dc4 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406de4 calls dmBufferGetImageType with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406e00 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
   The `jalr` at 0x406e24 calls dmBufferGetUSTMSCpair with a0=sp-88, a1=?, a2=?, a3=?.
@@ -20210,7 +20189,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x406ff8 targets 0x4070d8 and is always taken.
   The `beq` branch at 0x407050 targets 0x407060, is taken when v0(=ret(dmBufferSetSize)) == 0, and falls through when v0(=ret(dmBufferSetSize)) != 0.
   The `beq` branch at 0x407058 targets 0x4070d8 and is always taken.
-  The return at 0x4070e0 has v0 = one of ret(vice_dmbuf_recv), -0x1.
+  The return at 0x4070e0 has v0 = one of ?, -0x1.
   The instructions from 0x4070e8 to 0x407ad4 are not reached by any path from the entry, and their branches are not listed.
 - `zoneFromIndexTab` in `usr/lib/dmedia/imageconverters/vicedv.so` at 0x4070f0 (o32).
   Evidence grade: inferred.
@@ -22603,17 +22582,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x403e18 loads 4 bytes from ?.
   The `sw` at 0x403e40 stores 4 bytes to ?.
   The `jalr` at 0x403804 calls dmParamsCopyAllElems with a0=?, a1=[a0+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x403834 calls dmParamsCopyAllElems with a0=?, a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x403858 calls dmParamsGetEnum with a0=[a0+4], a1=0x408a44, a2=?, a3=?.
-  The `jalr` at 0x40388c calls dmParamsSetEnum with a0=[a0+8], a1=0x408a58, a2=?, a3=?.
-  The `jalr` at 0x4038a8 calls dmParamsSetEnum with a0=[a0+8], a1=0x408a6c, a2=0x44c, a3=?.
+  The `jalr` at 0x403834 calls dmParamsCopyAllElems with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x403858 calls dmParamsGetEnum with a0=?, a1=0x408a44, a2=?, a3=?.
+  The `jalr` at 0x40388c calls dmParamsSetEnum with a0=?, a1=0x408a58, a2=?, a3=?.
+  The `jalr` at 0x4038a8 calls dmParamsSetEnum with a0=?, a1=0x408a6c, a2=0x44c, a3=?.
   The `jalr` at 0x4038dc calls dmParamsCopyAllElems with a0=?, a1=[a0+12], a2=?, a3=?.
   The `jalr` at 0x40392c calls _e_go [0x403090] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403964 calls dmImageCompressedSize [0x40364c] with a0=[a0+8], a1=[a0+12], a2=?, a3=?.
-  The `jalr` at 0x403984 calls needsConvert [0x401d1c] with a0=[a0+4], a1=[a0+8], a2=?, a3=?.
+  The `jalr` at 0x403964 calls dmImageCompressedSize [0x40364c] with a0=?, a1=[a0+12], a2=?, a3=?.
+  The `jalr` at 0x403984 calls needsConvert [0x401d1c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40399c calls dmBufferGetSize with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x4039cc calls dmSetError with a0=0x1777, a1=0x408a84, a2=0x408a90, a3=?.
-  The `jalr` at 0x4039f4 calls dmImageFrameSize with a0=[a0+8], a1=?, a2=?, a3=?.
+  The `jalr` at 0x4039f4 calls dmImageFrameSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403a2c calls dmBufferDestroyPool with a0=[a0+16], a1=?, a2=?, a3=?.
   The `jalr` at 0x403a40 calls dmParamsCreate with a0=sp-172, a1=?, a2=?, a3=?.
   The `jalr` at 0x403a70 calls dmBufferSetPoolDefaults with a0=?, a1=0x1, a2=?, a3=0x0.
@@ -22625,7 +22604,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x403b24 calls dmBufferAllocate with a0=[a0+16], a1=sp-12, a2=?, a3=?.
   The `jalr` at 0x403b44 calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x403b5c calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x403b7c calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=[a0+4], a3=[a0+8].
+  The `jalr` at 0x403b7c calls dmICAnyToAny with a0=?, a1=ret(dmBufferMapData), a2=?, a3=?.
   The `jalr` at 0x403ba0 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403bc0 calls dmBufferGetImageType with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x403bd8 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
@@ -22698,7 +22677,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x403e28 targets 0x403e34, is taken when t2(?) == 0, and falls through when t2(?) != 0.
   The `bgtz` branch at 0x403e5c targets 0x403e8c, is taken when v0(=ret(select)) > 0 (signed), and falls through when v0(=ret(select)) <= 0 (signed).
   The `beql` branch at 0x403e90 targets 0x403eac, is taken when a0(?) == 0, and falls through when a0(?) != 0; its branch-likely delay slot `lw v0,228(sp)` at 0x403e94 runs only when taken and is annulled on fall-through.
-  The return at 0x403eb8 has v0 = one of -0x1, 0x0.
+  The return at 0x403eb8 has v0 = one of -0x1, ?.
   The instructions from 0x4039e0 to 0x4039e0 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x403cf8 to 0x403cf8 are not reached by any path from the entry, and their branches are not listed.
 - `e_recv` in `usr/lib/dmedia/imageconverters/vicejpeg.so` at 0x403ec0 (o32).
@@ -23014,15 +22993,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x4050c8 loads 4 bytes from a0 (arg0 at entry) +0xac.
   The `lbu` at 0x405100 loads 1 byte from ([a0+140] + ret(dmBufferMapData)) -0x5.
   The `jalr` at 0x404d4c calls dmParamsCopyAllElems with a0=?, a1=[a0+4], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x404d74 calls dmParamsSetEnum with a0=[a0+4], a1=0x408ee8, a2=0x44c, a3=?.
-  The `jalr` at 0x404da0 calls dmParamsCopyAllElems with a0=?, a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x404dc4 calls dmParamsIsPresent with a0=[a0+8], a1=0x408f00, a2=?, a3=?.
-  The `jalr` at 0x404de0 calls dmParamsGetEnum with a0=[a0+8], a1=0x408f14, a2=?, a3=?.
-  The `jalr` at 0x404e1c calls dmParamsSetEnum with a0=[a0+4], a1=0x408f28, a2=?, a3=?.
+  The `jalr` at 0x404d74 calls dmParamsSetEnum with a0=?, a1=0x408ee8, a2=0x44c, a3=?.
+  The `jalr` at 0x404da0 calls dmParamsCopyAllElems with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404dc4 calls dmParamsIsPresent with a0=?, a1=0x408f00, a2=?, a3=?.
+  The `jalr` at 0x404de0 calls dmParamsGetEnum with a0=?, a1=0x408f14, a2=?, a3=?.
+  The `jalr` at 0x404e1c calls dmParamsSetEnum with a0=?, a1=0x408f28, a2=?, a3=?.
   The `jalr` at 0x404e3c calls dmParamsCopyAllElems with a0=?, a1=[a0+12], a2=?, a3=?.
   The `jalr` at 0x404e84 calls _d_go [0x404914] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404eb0 calls needsConvert [0x401d1c] with a0=[a0+4], a1=[a0+8], a2=?, a3=?.
-  The `jalr` at 0x404ec8 calls dmImageFrameSize with a0=[a0+4], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404eb0 calls needsConvert [0x401d1c] with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404ec8 calls dmImageFrameSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f04 calls dmBufferDestroyPool with a0=[a0+16], a1=?, a2=?, a3=?.
   The `jalr` at 0x404f18 calls dmParamsCreate with a0=sp-24, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f48 calls dmBufferSetPoolDefaults with a0=?, a1=0x2, a2=?, a3=0x0.
@@ -23117,7 +23096,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x40538c calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4053a4 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4053c4 calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?.
-  The `jalr` at 0x4053e8 calls dmBufferSetSize with a0=?, a1=ret(dmImageFrameSize), a2=?, a3=?.
+  The `jalr` at 0x4053e8 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405408 calls dmBufferGetImageType with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x405420 calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
   The `jalr` at 0x405444 calls dmBufferGetUSTMSCpair with a0=sp-72, a1=?, a2=?, a3=?.
@@ -23141,7 +23120,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x405430 targets 0x4054b8 and is always taken.
   The `beq` branch at 0x405484 targets 0x405494, is taken when v0(=ret(dmBufferSetUSTMSCpair)) == 0, and falls through when v0(=ret(dmBufferSetUSTMSCpair)) != 0.
   The `beq` branch at 0x40548c targets 0x4054b8 and is always taken.
-  The return at 0x4054c4 has v0 = one of ret(vice_dmbuf_recv), -0x1.
+  The return at 0x4054c4 has v0 = one of ?, -0x1.
   The instructions from 0x4054cc to 0x4054cc are not reached by any path from the entry, and their branches are not listed.
 - `put_sof` in `usr/lib/dmedia/imageconverters/vicejpeg.so` at 0x4054d0 (o32).
   Evidence grade: inferred.
@@ -24341,39 +24320,34 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x8, including `lw` at 0x403c78, `lw` at 0x403cac, `lw` at 0x403f90.
   2 such `lw` accesses load 4 bytes from [a1+8] +0x38, including `lw` at 0x403c88, `lw` at 0x403f94.
   4 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0xc, including `lw` at 0x403d4c, `lw` at 0x403e9c, `lw` at 0x403ebc.
-  The `sw` at 0x403d50 stores 4 bytes to ret(malloc) +0x20.
-  4 such `lw` accesses load 4 bytes from ret(malloc) +0x24, including `lw` at 0x403da4, `lw` at 0x403dc0, `lw` at 0x403dd0.
-  3 such `sw` accesses store 4 bytes to ret(malloc) +0x24, including `sw` at 0x403db4, `sw` at 0x403dc8, `sw` at 0x403fdc.
+  7 such `sw` accesses store 4 bytes to ?, including `sw` at 0x403d50, `sw` at 0x403db4, `sw` at 0x403dc8.
+  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0x403da4, `lw` at 0x403dc0, `lw` at 0x403dd0.
   2 such `sw` accesses store 4 bytes to sym(mvpregtrace) +0x0, including `sw` at 0x403df4, `sw` at 0x403dfc.
   2 such `lw` accesses load 4 bytes from abs 0x4178e0, including `lw` at 0x403e10, `lw` at 0x403e74.
-  The `sw` at 0x403e28 stores 4 bytes to ret(malloc) +0x28.
   The `lw` at 0x403ec8 loads 4 bytes from a1 (arg1 at entry) +0x38.
   The `lw` at 0x403ed4 loads 4 bytes from a1 (arg1 at entry) +0x34.
-  The `lw` at 0x403ee8 loads 4 bytes from ret(malloc) +0x28.
-  The `sw` at 0x403f9c stores 4 bytes to ret(malloc) +0x118.
-  The `sw` at 0x403fe8 stores 4 bytes to ret(malloc) +0x38.
   The `sw` at 0x403ff4 stores 4 bytes to a1 (arg1 at entry) +0x68.
   The `jalr` at 0x403ca8 calls mvpPrintf with a0=0x0, a1=0x414148, a2=[a1+8], a3=?.
   The `jalr` at 0x403cbc calls malloc with a0=0x198, a1=?, a2=?, a3=?.
   The `jalr` at 0x403cdc calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403cf4 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403d18 calls mvpErrPrintf with a0=ret(malloc), a1=0x414170, a2=0x198, a3=ret(strerror).
+  The `jalr` at 0x403d18 calls mvpErrPrintf with a0=?, a1=0x414170, a2=0x198, a3=ret(strerror).
   The `jalr` at 0x403d38 calls bzero with a0=ret(malloc), a1=0x198, a2=?, a3=?.
   The `jalr` at 0x403d5c calls getenv with a0=0x41419c, a1=?, a2=?, a3=?.
   The `jalr` at 0x403d80 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
   The `jalr` at 0x403e0c calls open with a0=[0x4178e0], a1=0x2, a2=?, a3=?.
   The `jalr` at 0x403e30 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403e48 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403e70 calls mvpPrintf with a0=ret(malloc), a1=0x4141a8, a2=[0x4178e0], a3=ret(strerror).
-  The `jalr` at 0x403e84 calls free with a0=ret(malloc), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403ef4 calls ioctl with a0=[ret(malloc)+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x403e70 calls mvpPrintf with a0=?, a1=0x4141a8, a2=[0x4178e0], a3=ret(strerror).
+  The `jalr` at 0x403e84 calls free with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x403ef4 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x403f0c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f24 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f34 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f4c calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403f74 calls mvpErrPrintf with a0=ret(malloc), a1=0x4141c4, a2=[a1+56], a3=[a1+52].
+  The `jalr` at 0x403f74 calls mvpErrPrintf with a0=?, a1=0x4141c4, a2=?, a3=?.
   The `jalr` at 0x403fbc calls mvpAssertFail with a0=0x414208, a1=0x41423c, a2=0x155, a3=?.
-  The `jalr` at 0x40400c calls sprintf with a0=ret(malloc), a1=0x414244, a2=[a1+12], a3=?.
+  The `jalr` at 0x40400c calls sprintf with a0=?, a1=0x414244, a2=[a1+12], a3=?.
   The `beq` branch at 0x403c7c targets 0x403c8c, is taken when t7(=[a1+8]) == 0, and falls through when t7(=[a1+8]) != 0.
   The `beq` branch at 0x403c84 targets 0x403c90 and is always taken.
   The `bne` branch at 0x403cd0 targets 0x403d2c, is taken when t9(=ret(malloc)) != 0, and falls through when t9(=ret(malloc)) == 0.
@@ -24403,16 +24377,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x8, including `lw` at 0x404068, `lw` at 0x40408c.
   The `lw` at 0x404078 loads 4 bytes from [a1+8] +0x38.
   The `lw` at 0x4040ac loads 4 bytes from a1 (arg1 at entry) +0x68.
-  2 such `lw` accesses load 4 bytes from [a1+104] +0x28, including `lw` at 0x404108, `lw` at 0x40417c.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404108, `lw` at 0x40417c.
   The `sw` at 0x40416c stores 4 bytes to a1 (arg1 at entry) +0x68.
   The `jalr` at 0x40409c calls mvpPrintf with a0=0x0, a1=0x414250, a2=[a1+8], a3=?.
   The `jalr` at 0x4040d4 calls mvpAssertFail with a0=0x414284, a1=0x4142ac, a2=0x16e, a3=?.
-  The `jalr` at 0x404104 calls ioctl with a0=[[a1+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404104 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x40411c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404134 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404154 calls mvpErrPrintf with a0=[a1+104], a1=0x4142b4, a2=ret(strerror), a3=?.
-  The `jalr` at 0x404178 calls close with a0=[[a1+104]+40], a1=?, a2=?, a3=?.
-  The `jalr` at 0x40418c calls free with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404154 calls mvpErrPrintf with a0=?, a1=0x4142b4, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404178 calls close with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x40418c calls free with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0x40406c targets 0x40407c, is taken when t7(=[a1+8]) == 0, and falls through when t7(=[a1+8]) != 0.
   The `beq` branch at 0x404074 targets 0x404080 and is always taken.
   The `beq` branch at 0x4040b0 targets 0x4040c0, is taken when t0(=[a1+104]) == 0, and falls through when t0(=[a1+104]) != 0.
@@ -24496,47 +24470,41 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x404640 loads 4 bytes from a0 (arg0 at entry) +0x68.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0x404678, `lw` at 0x4046f0, `lw` at 0x4049b0.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x64, including `lw` at 0x404704, `lw` at 0x404d38.
-  18 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404710, `lw` at 0x404720, `lw` at 0x404730.
-  The `lw` at 0x404764 loads 4 bytes from [a0+104] +0x118.
-  The `lbu` at 0x404768 loads 1 byte from [[a0+104]+280] +0x129.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40479c, `sw` at 0x404d48.
+  27 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404710, `lw` at 0x404720, `lw` at 0x404730.
+  9 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x404768, `lbu` at 0x404850, `lbu` at 0x404890.
+  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40479c, `sw` at 0x404a04, `sw` at 0x404a78.
   9 such `sb` accesses store 1 byte to ?, including `sb` at 0x4047c0, `sb` at 0x4047e4, `sb` at 0x40480c.
-  6 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x404850, `lbu` at 0x404890, `lbu` at 0x404cd8.
-  4 such `lw` accesses load 4 bytes from [a0+104] +0x24, including `lw` at 0x4049fc, `lw` at 0x404a70, `lw` at 0x404e78.
-  3 such `sw` accesses store 4 bytes to [a0+104] +0x24, including `sw` at 0x404a04, `sw` at 0x404a78, `sw` at 0x404fa0.
-  3 such `lw` accesses load 4 bytes from [a0+104] +0x28, including `lw` at 0x404bdc, `lw` at 0x404e30, `lw` at 0x404f2c.
-  2 such `lbu` accesses load 1 byte from [a0+104] +0x4b, including `lbu` at 0x404cb0, `lbu` at 0x404dec.
-  3 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x404d5c, `lw` at 0x404d7c, `lw` at 0x404dac.
+  2 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x404d5c, `lw` at 0x404d7c.
   The `jalr` at 0x404630 calls mvpPrintf with a0=0x0, a1=0x414354, a2=[a0+8], a3=?.
   The `jalr` at 0x404668 calls mvpAssertFail with a0=0x414394, a1=0x4143bc, a2=0x213, a3=?.
   The `jalr` at 0x4046a4 calls mvpAssertFail with a0=0x4143c4, a1=0x4143e8, a2=0x214, a3=?.
   The `jalr` at 0x4046cc calls bzero with a0=sp-240, a1=0xe8, a2=?, a3=?.
   The `jalr` at 0x40484c calls mvpProxy with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404894 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404a18 calls strncat with a0=[a0+104], a1=0x4143f0, a2=0x20, a3=?.
-  The `jalr` at 0x404ba8 calls bcopy with a0=sp-232, a1=[a0+104]+60, a2=0xdc, a3=?.
-  The `jalr` at 0x404bd8 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404a18 calls strncat with a0=?, a1=0x4143f0, a2=0x20, a3=?.
+  The `jalr` at 0x404ba8 calls bcopy with a0=sp-232, a1=?, a2=0xdc, a3=?.
+  The `jalr` at 0x404bd8 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x404bf0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c08 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c18 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c30 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404c50 calls mvpPrintf with a0=[a0+104], a1=0x4143fc, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404c50 calls mvpPrintf with a0=?, a1=0x4143fc, a2=ret(strerror), a3=?.
   The `jalr` at 0x404c60 calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404d1c calls mvpGetNodeProto [0x40331c] with a0=[a0+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404d1c calls mvpGetNodeProto [0x40331c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404d78 calls mvpProxy with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404da8 calls mvpCDev with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404e2c calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404da8 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404e2c calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x404e48 calls mvpPanic with a0=0x414410, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404e68 calls bcopy with a0=sp-232, a1=[a0+104]+60, a2=0xdc, a3=?.
-  The `jalr` at 0x404ea4 calls mvpDecodePath [0x4033ac] with a0=[a0+104], a1=sp-384, a2=?, a3=?.
-  The `jalr` at 0x404eb8 calls strlen with a0=[a0+104], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404edc calls strncat with a0=[a0+104], a1=sp-384, a2=?, a3=?.
+  The `jalr` at 0x404e68 calls bcopy with a0=sp-232, a1=?, a2=0xdc, a3=?.
+  The `jalr` at 0x404ea4 calls mvpDecodePath [0x4033ac] with a0=?, a1=sp-384, a2=?, a3=?.
+  The `jalr` at 0x404eb8 calls strlen with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404edc calls strncat with a0=?, a1=sp-384, a2=?, a3=?.
   The `jalr` at 0x404ef8 calls strncpy with a0=sp-232, a1=sp-384, a2=0x1f, a3=?.
-  The `jalr` at 0x404f28 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
-  The `jalr` at 0x404f3c calls mvpSetupPathControls with a0=[a0+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404f28 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404f3c calls mvpSetupPathControls with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f50 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f68 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404f88 calls mvpErrPrintf with a0=[a0+104], a1=0x414434, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404f88 calls mvpErrPrintf with a0=?, a1=0x414434, a2=ret(strerror), a3=?.
   The `beq` branch at 0x4045f0 targets 0x404600, is taken when t7(=[a0+8]) == 0, and falls through when t7(=[a0+8]) != 0.
   The `beq` branch at 0x4045f8 targets 0x404604 and is always taken.
   The `beq` branch at 0x404644 targets 0x404654, is taken when t2(=[a0+104]) == 0, and falls through when t2(=[a0+104]) != 0.
@@ -24597,13 +24565,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x404c8c targets 0x404fb4 and is always taken.
   The `beq` branch at 0x404c94 targets 0x404fb4 and is always taken.
   The `beq` branch at 0x404c9c targets 0x404fb4 and is always taken.
-  The `blez` branch at 0x404cb4 targets 0x404dfc, is taken when t7(=[[a0+104]+75]:1) <= 0 (signed), and falls through when t7(=[[a0+104]+75]:1) > 0 (signed).
+  The `blez` branch at 0x404cb4 targets 0x404dfc, is taken when t7(?) <= 0 (signed), and falls through when t7(?) > 0 (signed).
   The `beq` branch at 0x404ce8 targets 0x404ddc, is taken when t0(?) == s0(?), and falls through when t0(?) != s0(?).
-  The `bne` branch at 0x404df4 targets 0x404cbc, is taken when t9(?) < t2(=[[a0+104]+75]:1) (signed), and falls through when t9(?) >= t2(=[[a0+104]+75]:1) (signed).
+  The `bne` branch at 0x404df4 targets 0x404cbc, is taken when t9(?) < t2(?) (signed), and falls through when t9(?) >= t2(?) (signed).
   The `beq` branch at 0x404e00 targets 0x404e74, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `bne` branch at 0x404e38 targets 0x404e54, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
-  The `bne` branch at 0x404e80 targets 0x404f94, is taken when (t0(=[[a0+104]+36]) & 0x100) != 0, and falls through when (t0(=[[a0+104]+36]) & 0x100) == 0.
-  The `bne` branch at 0x404e8c targets 0x404f94, is taken when (t0(=[[a0+104]+36]) & 0x200) != 0, and falls through when (t0(=[[a0+104]+36]) & 0x200) == 0.
+  The `bne` branch at 0x404e80 targets 0x404f94, is taken when (t0(?) & 0x100) != 0, and falls through when (t0(?) & 0x100) == 0.
+  The `bne` branch at 0x404e8c targets 0x404f94, is taken when (t0(?) & 0x200) != 0, and falls through when (t0(?) & 0x200) == 0.
   The `beq` branch at 0x404f44 targets 0x404f94, is taken when v0(=ret(mvpSetupPathControls)) == 0, and falls through when v0(=ret(mvpSetupPathControls)) != 0.
   The `beq` branch at 0x404fa4 targets 0x404fb4 and is always taken.
   The return at 0x404fc0 has v0 = one of 0x3, 0x8, 0x13, 0x1a, 0x0.
@@ -24725,17 +24693,16 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x4063c4-0x406524 (352 bytes).
   It occupies 352 bytes.
   The `lw` at 0x4063f0 loads 4 bytes from a1 (arg1 at entry) +0x68.
-  The `lw` at 0x406464 loads 4 bytes from [a1+104] +0x28.
-  The `lw` at 0x4064f4 loads 4 bytes from [a1+104] +0x24.
-  The `sw` at 0x4064fc stores 4 bytes to [a1+104] +0x24.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0x406464, `lw` at 0x4064f4.
+  The `sw` at 0x4064fc stores 4 bytes to ?.
   The `jalr` at 0x406418 calls mvpAssertFail with a0=0x4149c0, a1=0x4149e8, a2=0x483, a3=a3 at entry (arg3).
-  The `jalr` at 0x406440 calls mvpPrintf with a0=[a1+104], a1=0x4149f0, a2=?, a3=?.
-  The `jalr` at 0x406460 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-504, a3=?.
+  The `jalr` at 0x406440 calls mvpPrintf with a0=?, a1=0x4149f0, a2=?, a3=?.
+  The `jalr` at 0x406460 calls ioctl with a0=?, a1=0x6d767004, a2=sp-504, a3=?.
   The `jalr` at 0x406478 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406490 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4064a0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4064b8 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4064d8 calls mvpErrPrintf with a0=[a1+104], a1=0x414a00, a2=ret(strerror), a3=?.
+  The `jalr` at 0x4064d8 calls mvpErrPrintf with a0=?, a1=0x414a00, a2=ret(strerror), a3=?.
   The `beq` branch at 0x4063f4 targets 0x406404, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x4063fc targets 0x406424 and is always taken.
   The `bne` branch at 0x40646c targets 0x4064ec, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -25544,17 +25511,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 1708 bytes.
   The `lw` at 0x409128 loads 4 bytes from a3 (arg3 at entry) +0xc.
   The `lw` at 0x4091a4 loads 4 bytes from table(0x415660) +0x0.
-  10 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x409234, `lw` at 0x409284, `lw` at 0x409330.
+  12 such `lw` accesses load 4 bytes from ?, including `lw` at 0x409234, `lw` at 0x409284, `lw` at 0x409330.
   The `sb` at 0x40935c stores 1 byte to a0 (arg0 at entry) +0x125.
-  The `lw` at 0x409460 loads 4 bytes from [a3+12] +0x4.
-  The `lw` at 0x409480 loads 4 bytes from [a3+12] +0x8.
   The `jalr` at 0x40914c calls mvpFromVLControlValue with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=sp-148, a3=a3 at entry (arg3).
-  The `jalr` at 0x409230 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=[[a3+12]], a2=?, a3=?.
+  The `jalr` at 0x409230 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x409308 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0x40932c calls mvpfromvlformat [0x4089c8] with a0=[[a3+12]], a1=?, a2=?, a3=?.
+  The `jalr` at 0x40932c calls mvpfromvlformat [0x4089c8] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4093d0 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
   The `jalr` at 0x409414 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0x409678 calls bcopy with a0=[a3+12], a1=?, a2=0x26, a3=?.
+  The `jalr` at 0x409678 calls bcopy with a0=?, a1=?, a2=0x26, a3=?.
   The `jalr` at 0x40969c calls mvpSendI2C with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x4096bc calls mvpSetVideoPortControl with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x4096dc calls mvpControlIOCTL [0x406c4c] with a0=a0 at entry (arg0), a1=sp-152, a2=a1 at entry (arg1), a3=?.
@@ -25578,10 +25543,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x409248 targets 0x409258, is taken when t1(=ret(mvpfromvltiming)) != at(=-0x1), and falls through when t1(=ret(mvpfromvltiming)) == at(=-0x1).
   The `beq` branch at 0x409250 targets 0x409790 and is always taken.
   The `beq` branch at 0x409270 targets 0x4096cc and is always taken.
-  The `beq` branch at 0x409288 targets 0x4092bc, is taken when s0(=[[a3+12]]) == 0, and falls through when s0(=[[a3+12]]) != 0.
-  The `beq` branch at 0x409294 targets 0x4092bc, is taken when s0(=[[a3+12]]) == at(=0x1), and falls through when s0(=[[a3+12]]) != at(=0x1).
-  The `beq` branch at 0x4092a0 targets 0x4092c8, is taken when s0(=[[a3+12]]) == at(=0x2), and falls through when s0(=[[a3+12]]) != at(=0x2).
-  The `beq` branch at 0x4092ac targets 0x4092d8, is taken when s0(=[[a3+12]]) == at(=0x3), and falls through when s0(=[[a3+12]]) != at(=0x3).
+  The `beq` branch at 0x409288 targets 0x4092bc, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409294 targets 0x4092bc, is taken when s0(?) == at(=0x1), and falls through when s0(?) != at(=0x1).
+  The `beq` branch at 0x4092a0 targets 0x4092c8, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
+  The `beq` branch at 0x4092ac targets 0x4092d8, is taken when s0(?) == at(=0x3), and falls through when s0(?) != at(=0x3).
   The `beq` branch at 0x4092b4 targets 0x4092e8 and is always taken.
   The `beq` branch at 0x4092c0 targets 0x4092f0 and is always taken.
   The `beq` branch at 0x4092d0 targets 0x4092f0 and is always taken.
@@ -25591,8 +25556,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x409344 targets 0x409354, is taken when t1(=ret(mvpfromvlformat)) != at(=-0x1), and falls through when t1(=ret(mvpfromvlformat)) == at(=-0x1).
   The `beq` branch at 0x40934c targets 0x409790 and is always taken.
   The `beq` branch at 0x409360 targets 0x409790 and is always taken.
-  The `beq` branch at 0x409378 targets 0x409394, is taken when s0(=[[a3+12]]) == 0, and falls through when s0(=[[a3+12]]) != 0.
-  The `beq` branch at 0x409384 targets 0x4093a0, is taken when s0(=[[a3+12]]) == at(=0x2), and falls through when s0(=[[a3+12]]) != at(=0x2).
+  The `beq` branch at 0x409378 targets 0x409394, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409384 targets 0x4093a0, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
   The `beq` branch at 0x40938c targets 0x4093b0 and is always taken.
   The `beq` branch at 0x409398 targets 0x4093b8 and is always taken.
   The `beq` branch at 0x4093a8 targets 0x4093b8 and is always taken.
@@ -25600,13 +25565,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x4093e0 targets 0x4096cc and is always taken.
   The `beq` branch at 0x409424 targets 0x4096cc and is always taken.
   The `beq` branch at 0x409444 targets 0x4096cc and is always taken.
-  The `bne` branch at 0x409458 targets 0x40946c, is taken when t7(=[[a3+12]]) != at(=0x2), and falls through when t7(=[[a3+12]]) == at(=0x2).
-  The `beq` branch at 0x409464 targets 0x409474, is taken when t8(=[[a3+12]+4]) == 0, and falls through when t8(=[[a3+12]+4]) != 0.
+  The `bne` branch at 0x409458 targets 0x40946c, is taken when t7(?) != at(=0x2), and falls through when t7(?) == at(=0x2).
+  The `beq` branch at 0x409464 targets 0x409474, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0x40946c targets 0x409790 and is always taken.
-  The `beq` branch at 0x409484 targets 0x4094b8, is taken when s0(=[[a3+12]+8]) == 0, and falls through when s0(=[[a3+12]+8]) != 0.
-  The `beq` branch at 0x409490 targets 0x4094c4, is taken when s0(=[[a3+12]+8]) == at(=0x1), and falls through when s0(=[[a3+12]+8]) != at(=0x1).
-  The `beq` branch at 0x40949c targets 0x4094d4, is taken when s0(=[[a3+12]+8]) == at(=0x2), and falls through when s0(=[[a3+12]+8]) != at(=0x2).
-  The `beq` branch at 0x4094a8 targets 0x4094e4, is taken when s0(=[[a3+12]+8]) == at(=0x3), and falls through when s0(=[[a3+12]+8]) != at(=0x3).
+  The `beq` branch at 0x409484 targets 0x4094b8, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409490 targets 0x4094c4, is taken when s0(?) == at(=0x1), and falls through when s0(?) != at(=0x1).
+  The `beq` branch at 0x40949c targets 0x4094d4, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
+  The `beq` branch at 0x4094a8 targets 0x4094e4, is taken when s0(?) == at(=0x3), and falls through when s0(?) != at(=0x3).
   The `beq` branch at 0x4094b0 targets 0x4094f4 and is always taken.
   The `beq` branch at 0x4094bc targets 0x4094fc and is always taken.
   The `beq` branch at 0x4094cc targets 0x4094fc and is always taken.
@@ -25762,13 +25727,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x409f88 loads 4 bytes from a3 (arg3 at entry) +0xc.
   The `lw` at 0x409fcc loads 4 bytes from table(0x415750) +0x0.
   The `lw` at 0x409ff8 loads 4 bytes from table(0x4157a4) +0x0.
-  26 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x40a028, `lw` at 0x40a20c, `lw` at 0x40a64c.
-  8 such `lw` accesses load 4 bytes from [a3+12] +0x4, including `lw` at 0x40a034, `lw` at 0x40a184, `lw` at 0x40ab2c.
+  17 such `lw` accesses load 4 bytes from ?, including `lw` at 0x40a028, `lw` at 0x40a034, `lw` at 0x40a184.
   The `lbu` at 0x40a060 loads 1 byte from a0 (arg0 at entry) +0x157.
   8 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x13a, including `sh` at 0x40a0d4, `sh` at 0x40a690, `sh` at 0x40b3e8.
-  10 such `sw` accesses store 4 bytes to [a3+12] +0x0, including `sw` at 0x40a0dc, `sw` at 0x40a6a0, `sw` at 0x40b0a4.
+  20 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40a0dc, `sw` at 0x40a0f0, `sw` at 0x40a6a0.
   6 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x13c, including `sh` at 0x40a0e8, `sh` at 0x40a6ac, `sh` at 0x40b3f4.
-  9 such `sw` accesses store 4 bytes to [a3+12] +0x4, including `sw` at 0x40a0f0, `sw` at 0x40a6bc, `sw` at 0x40b0c0.
   4 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x40a124, `lbu` at 0x40aab4, `lbu` at 0x40b508.
   16 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x146, including `lh` at 0x40a148, `lh` at 0x40a308, `lh` at 0x40a404.
   16 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x148, including `lh` at 0x40a14c, `lh` at 0x40a314, `lh` at 0x40a40c.
@@ -25794,10 +25757,13 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x140, including `sh` at 0x40aa28, `sh` at 0x40b088, `sh` at 0x40beb4.
   6 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x142, including `lh` at 0x40aa34, `lh` at 0x40b0c8, `lh` at 0x40b614.
   7 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x144, including `lh` at 0x40aa44, `lh` at 0x40b0d4, `lh` at 0x40b480.
-  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40aa88, `sw` at 0x40b418, `sw` at 0x40b4d0.
   2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x12b, including `sb` at 0x40ab50, `sb` at 0x40ab74.
+  2 such `lw` accesses load 4 bytes from [a3+12] +0x4, including `lw` at 0x40b428, `lw` at 0x40b4e4.
+  15 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x40b434, `lw` at 0x40b4ac, `lw` at 0x40b4e0.
+  2 such `sw` accesses store 4 bytes to [a3+12] +0x0, including `sw` at 0x40b444, `sw` at 0x40b5a8.
   The `sh` at 0x40b4b0 stores 2 bytes to a0 (arg0 at entry) +0x136.
   The `sh` at 0x40b4bc stores 2 bytes to a0 (arg0 at entry) +0x138.
+  2 such `sw` accesses store 4 bytes to [a3+12] +0x4, including `sw` at 0x40b4c4, `sw` at 0x40b5bc.
   The `lbu` at 0x40b524 loads 1 byte from ?.
   The `lh` at 0x40b5a4 loads 2 bytes from a0 (arg0 at entry) +0x14a.
   The `lh` at 0x40b5b4 loads 2 bytes from a0 (arg0 at entry) +0x14c.
@@ -25856,8 +25822,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x40c738 calls mvpfromvlpacking [0x408214] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40c774 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x40ca4c calls printf with a0=0x415054, a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x40ca6c calls mvpfromvlcolorspace [0x408878] with a0=[[a3+12]], a1=[a0+293]:1, a2=?, a3=?.
-  The `jalr` at 0x40caa4 calls fprintf with a0=sym(__iob)+32, a1=0x415074, a2=[[a3+12]], a3=?.
+  The `jalr` at 0x40ca6c calls mvpfromvlcolorspace [0x408878] with a0=?, a1=[a0+293]:1, a2=?, a3=?.
+  The `jalr` at 0x40caa4 calls fprintf with a0=sym(__iob)+32, a1=0x415074, a2=?, a3=?.
   The `jalr` at 0x40cb18 calls mvpfromvlformat [0x4089c8] with a0=[[a3+12]], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40cb60 calls mvpfromvlmemmode with a0=a0 at entry (arg0), a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40cba0 calls mvpMipmapMode with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -25868,8 +25834,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x40a01c targets 0x40a104, is taken when v0(=ret(mvpRead)) != at(=0x2), and falls through when v0(=ret(mvpRead)) == at(=0x2).
   The `beq` branch at 0x40a064 targets 0x40a084, is taken when t5(=[a0+343]:1) == 0, and falls through when t5(=[a0+343]:1) != 0.
   The `bgez` branch at 0x40a070 targets 0x40a080, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed).
-  The `beq` branch at 0x40a090 targets 0x40a0a8, is taken when t9(?) >= t8(=[[a3+12]]) (signed), and falls through when t9(?) < t8(=[[a3+12]]) (signed).
-  The `beq` branch at 0x40a0b4 targets 0x40a0cc, is taken when t3(?) >= t2(=[[a3+12]+4]) (signed), and falls through when t3(?) < t2(=[[a3+12]+4]) (signed).
+  The `beq` branch at 0x40a090 targets 0x40a0a8, is taken when t9(?) >= t8(?) (signed), and falls through when t9(?) < t8(?) (signed).
+  The `beq` branch at 0x40a0b4 targets 0x40a0cc, is taken when t3(?) >= t2(?) (signed), and falls through when t3(?) < t2(?) (signed).
   The `beq` branch at 0x40a0f4 targets 0x40ccdc and is always taken.
   The `bne` branch at 0x40a194 targets 0x40a1d8, is taken when t6(=[a0+289]:1) != 0, and falls through when t6(=[a0+289]:1) == 0.
   The `bgez` branch at 0x40a1a4 targets 0x40a1b8, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed).
@@ -25910,7 +25876,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x40a5fc targets 0x40a60c, is taken when v0(=ret(mvpSetScale)) != at(=-0x1), and falls through when v0(=ret(mvpSetScale)) == at(=-0x1).
   The `beq` branch at 0x40a604 targets 0x40ccf8 and is always taken.
   The `beq` branch at 0x40a60c targets 0x40a644 and is always taken.
-  The `bne` branch at 0x40a650 targets 0x40a668, is taken when t4(?) != t3(=[[a3+12]]), and falls through when t4(?) == t3(=[[a3+12]]).
+  The `bne` branch at 0x40a650 targets 0x40a668, is taken when t4(?) != t3(?), and falls through when t4(?) == t3(?).
   The `beq` branch at 0x40a660 targets 0x40a670, is taken when t1(?) == t5(?), and falls through when t1(?) != t5(?).
   The `beq` branch at 0x40a6f4 targets 0x40a710, is taken when t7(?) >= t8(?) (signed), and falls through when t7(?) < t8(?) (signed).
   The `beq` branch at 0x40a71c targets 0x40a734, is taken when t5(?) >= t1(?) (signed), and falls through when t5(?) < t1(?) (signed).
@@ -26156,7 +26122,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x40ccd4 targets 0x40ccf8 and is always taken.
   The `beq` branch at 0x40cce0 targets 0x40cce8, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `beq` branch at 0x40cce8 targets 0x40ccf8 and is always taken.
-  The return at 0x40cd08 has v0 = one of 0x0, 0x2, 0x7, 0x19, 0x400, 0x401.
+  The return at 0x40cd08 has v0 = one of 0x0, 0x2, 0x7, ?.
   The instructions from 0x40a0fc to 0x40a100 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x40ccf0 to 0x40ccf4 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x40cd10 to 0x40cd60 are not reached by any path from the entry, and their branches are not listed.
@@ -26266,16 +26232,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lh` at 0x40d2cc loads 2 bytes from a0 (arg0 at entry) +0x13c.
   2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x40d41c, `lbu` at 0x40d53c.
   2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x136, including `sh` at 0x40d460, `sh` at 0x40d4e4.
-  The `sw` at 0x40d468 stores 4 bytes to [a3+12] +0x0.
+  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40d468, `sw` at 0x40d47c, `sw` at 0x40d580.
   2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x138, including `sh` at 0x40d474, `sh` at 0x40d4ec.
-  The `sw` at 0x40d47c stores 4 bytes to [a3+12] +0x4.
   The `sb` at 0x40d494 stores 1 byte to a0 (arg0 at entry) +0x123.
   The `sb` at 0x40d4b0 stores 1 byte to a0 (arg0 at entry) +0x156.
   The `sb` at 0x40d4cc stores 1 byte to a0 (arg0 at entry) +0x157.
   The `lbu` at 0x40d4d4 loads 1 byte from a0 (arg0 at entry) +0x157.
   The `lbu` at 0x40d4f8 loads 1 byte from a0 (arg0 at entry) +0x121.
   The `sb` at 0x40d518 stores 1 byte to a0 (arg0 at entry) +0x121.
-  The `sw` at 0x40d580 stores 4 bytes to ?.
   The `jalr` at 0x40d258 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40d290 calls mvpSetTiming [0x406d98] with a0=a0 at entry (arg0), a1=ret(mvpfromvltiming), a2=?, a3=?.
   The `jalr` at 0x40d2e8 calls mvpGetCFI [0x406d34] with a0=a0 at entry (arg0), a1=sp-160, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -26309,7 +26273,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x40d570 targets 0x40d5a0 and is always taken.
   The `beq` branch at 0x40d588 targets 0x40d590, is taken when t9(?) == 0, and falls through when t9(?) != 0.
   The `beq` branch at 0x40d590 targets 0x40d5a0 and is always taken.
-  The return at 0x40d5ac has v0 = one of 0x0, 0x2, 0x7, 0x19.
+  The return at 0x40d5ac has v0 = one of 0x2, 0x7, ?.
   The instructions from 0x40d598 to 0x40d59c are not reached by any path from the entry, and their branches are not listed.
 - `mvpGetScreenControl` in `usr/lib/dmedia/video/debug/mvp.so` at 0x40d5b4 (o32).
   Evidence grade: inferred.
@@ -26696,14 +26660,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 312 bytes.
   The `lw` at 0x40ed7c loads 4 bytes from a1 (arg1 at entry) +0x68.
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x48, including `lw` at 0x40edc8, `lw` at 0x40edec.
-  The `lw` at 0x40ee10 loads 4 bytes from [a1+104] +0x28.
+  The `lw` at 0x40ee10 loads 4 bytes from ?.
   The `jalr` at 0x40eda4 calls mvpAssertFail with a0=0x416540, a1=0x416568, a2=0x9d, a3=a3 at entry (arg3).
-  The `jalr` at 0x40edc4 calls mvpPrintf with a0=[a1+104], a1=0x416574, a2=[a1+72], a3=?.
+  The `jalr` at 0x40edc4 calls mvpPrintf with a0=?, a1=0x416574, a2=[a1+72], a3=?.
   The `jalr` at 0x40ede8 calls mvpFromVLEventMask with a0=[a1+72], a1=?, a2=?, a3=?.
-  The `jalr` at 0x40ee0c calls ioctl with a0=[[a1+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x40ee0c calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x40ee24 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40ee3c calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x40ee5c calls mvpPrintf with a0=[a1+104], a1=0x416588, a2=[a1+104], a3=?.
+  The `jalr` at 0x40ee5c calls mvpPrintf with a0=?, a1=0x416588, a2=?, a3=?.
   The `beq` branch at 0x40ed80 targets 0x40ed90, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x40ed88 targets 0x40edb0 and is always taken.
   The `bne` branch at 0x40ee18 targets 0x40ee70, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -27066,7 +27030,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x41325c calls mvpgeti2ccontrolindex [0x412264] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x413298 calls mvpCDev with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x4132b8 calls mvpFromVLControlValue with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=sp-148, a3=?.
-  The `jalr` at 0x4132d4 calls mvpsendi2ccontrols [0x412370] with a0=a0 at entry (arg0), a1=ret(mvpgeti2ccontrolindex), a2=sp-152, a3=?.
+  The `jalr` at 0x4132d4 calls mvpsendi2ccontrols [0x412370] with a0=a0 at entry (arg0), a1=?, a2=sp-152, a3=?.
   The `beq` branch at 0x4131c4 targets 0x413240, is taken when t6(=ret(mvpothercontrol)) == 0, and falls through when t6(=ret(mvpothercontrol)) != 0.
   The `bne` branch at 0x4131d4 targets 0x4131e4, is taken when t7(=ret(mvpothercontrol)) != at(=-0x1), and falls through when t7(=ret(mvpothercontrol)) == at(=-0x1).
   The `beq` branch at 0x4131dc targets 0x4132f4 and is always taken.
@@ -27282,39 +27246,34 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x8, including `lw` at 0x403c78, `lw` at 0x403cac, `lw` at 0x403f90.
   2 such `lw` accesses load 4 bytes from [a1+8] +0x38, including `lw` at 0x403c88, `lw` at 0x403f94.
   4 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0xc, including `lw` at 0x403d4c, `lw` at 0x403e9c, `lw` at 0x403ebc.
-  The `sw` at 0x403d50 stores 4 bytes to ret(malloc) +0x20.
-  4 such `lw` accesses load 4 bytes from ret(malloc) +0x24, including `lw` at 0x403da4, `lw` at 0x403dc0, `lw` at 0x403dd0.
-  3 such `sw` accesses store 4 bytes to ret(malloc) +0x24, including `sw` at 0x403db4, `sw` at 0x403dc8, `sw` at 0x403fdc.
+  7 such `sw` accesses store 4 bytes to ?, including `sw` at 0x403d50, `sw` at 0x403db4, `sw` at 0x403dc8.
+  5 such `lw` accesses load 4 bytes from ?, including `lw` at 0x403da4, `lw` at 0x403dc0, `lw` at 0x403dd0.
   2 such `sw` accesses store 4 bytes to sym(mvpregtrace) +0x0, including `sw` at 0x403df4, `sw` at 0x403dfc.
   2 such `lw` accesses load 4 bytes from abs 0x4178e0, including `lw` at 0x403e10, `lw` at 0x403e74.
-  The `sw` at 0x403e28 stores 4 bytes to ret(malloc) +0x28.
   The `lw` at 0x403ec8 loads 4 bytes from a1 (arg1 at entry) +0x38.
   The `lw` at 0x403ed4 loads 4 bytes from a1 (arg1 at entry) +0x34.
-  The `lw` at 0x403ee8 loads 4 bytes from ret(malloc) +0x28.
-  The `sw` at 0x403f9c stores 4 bytes to ret(malloc) +0x118.
-  The `sw` at 0x403fe8 stores 4 bytes to ret(malloc) +0x38.
   The `sw` at 0x403ff4 stores 4 bytes to a1 (arg1 at entry) +0x68.
   The `jalr` at 0x403ca8 calls mvpPrintf with a0=0x0, a1=0x414148, a2=[a1+8], a3=?.
   The `jalr` at 0x403cbc calls malloc with a0=0x198, a1=?, a2=?, a3=?.
   The `jalr` at 0x403cdc calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403cf4 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403d18 calls mvpErrPrintf with a0=ret(malloc), a1=0x414170, a2=0x198, a3=ret(strerror).
+  The `jalr` at 0x403d18 calls mvpErrPrintf with a0=?, a1=0x414170, a2=0x198, a3=ret(strerror).
   The `jalr` at 0x403d38 calls bzero with a0=ret(malloc), a1=0x198, a2=?, a3=?.
   The `jalr` at 0x403d5c calls getenv with a0=0x41419c, a1=?, a2=?, a3=?.
   The `jalr` at 0x403d80 calls atoi with a0=ret(getenv), a1=?, a2=?, a3=?.
   The `jalr` at 0x403e0c calls open with a0=[0x4178e0], a1=0x2, a2=?, a3=?.
   The `jalr` at 0x403e30 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403e48 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403e70 calls mvpPrintf with a0=ret(malloc), a1=0x4141a8, a2=[0x4178e0], a3=ret(strerror).
-  The `jalr` at 0x403e84 calls free with a0=ret(malloc), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403ef4 calls ioctl with a0=[ret(malloc)+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x403e70 calls mvpPrintf with a0=?, a1=0x4141a8, a2=[0x4178e0], a3=ret(strerror).
+  The `jalr` at 0x403e84 calls free with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x403ef4 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x403f0c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f24 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f34 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x403f4c calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x403f74 calls mvpErrPrintf with a0=ret(malloc), a1=0x4141c4, a2=[a1+56], a3=[a1+52].
+  The `jalr` at 0x403f74 calls mvpErrPrintf with a0=?, a1=0x4141c4, a2=?, a3=?.
   The `jalr` at 0x403fbc calls mvpAssertFail with a0=0x414208, a1=0x41423c, a2=0x155, a3=?.
-  The `jalr` at 0x40400c calls sprintf with a0=ret(malloc), a1=0x414244, a2=[a1+12], a3=?.
+  The `jalr` at 0x40400c calls sprintf with a0=?, a1=0x414244, a2=[a1+12], a3=?.
   The `beq` branch at 0x403c7c targets 0x403c8c, is taken when t7(=[a1+8]) == 0, and falls through when t7(=[a1+8]) != 0.
   The `beq` branch at 0x403c84 targets 0x403c90 and is always taken.
   The `bne` branch at 0x403cd0 targets 0x403d2c, is taken when t9(=ret(malloc)) != 0, and falls through when t9(=ret(malloc)) == 0.
@@ -27344,16 +27303,16 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x8, including `lw` at 0x404068, `lw` at 0x40408c.
   The `lw` at 0x404078 loads 4 bytes from [a1+8] +0x38.
   The `lw` at 0x4040ac loads 4 bytes from a1 (arg1 at entry) +0x68.
-  2 such `lw` accesses load 4 bytes from [a1+104] +0x28, including `lw` at 0x404108, `lw` at 0x40417c.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404108, `lw` at 0x40417c.
   The `sw` at 0x40416c stores 4 bytes to a1 (arg1 at entry) +0x68.
   The `jalr` at 0x40409c calls mvpPrintf with a0=0x0, a1=0x414250, a2=[a1+8], a3=?.
   The `jalr` at 0x4040d4 calls mvpAssertFail with a0=0x414284, a1=0x4142ac, a2=0x16e, a3=?.
-  The `jalr` at 0x404104 calls ioctl with a0=[[a1+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404104 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x40411c calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404134 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404154 calls mvpErrPrintf with a0=[a1+104], a1=0x4142b4, a2=ret(strerror), a3=?.
-  The `jalr` at 0x404178 calls close with a0=[[a1+104]+40], a1=?, a2=?, a3=?.
-  The `jalr` at 0x40418c calls free with a0=[a1+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404154 calls mvpErrPrintf with a0=?, a1=0x4142b4, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404178 calls close with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x40418c calls free with a0=?, a1=?, a2=?, a3=?.
   The `beq` branch at 0x40406c targets 0x40407c, is taken when t7(=[a1+8]) == 0, and falls through when t7(=[a1+8]) != 0.
   The `beq` branch at 0x404074 targets 0x404080 and is always taken.
   The `beq` branch at 0x4040b0 targets 0x4040c0, is taken when t0(=[a1+104]) == 0, and falls through when t0(=[a1+104]) != 0.
@@ -27437,47 +27396,41 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x404640 loads 4 bytes from a0 (arg0 at entry) +0x68.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0x404678, `lw` at 0x4046f0, `lw` at 0x4049b0.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x64, including `lw` at 0x404704, `lw` at 0x404d38.
-  18 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404710, `lw` at 0x404720, `lw` at 0x404730.
-  The `lw` at 0x404764 loads 4 bytes from [a0+104] +0x118.
-  The `lbu` at 0x404768 loads 1 byte from [[a0+104]+280] +0x129.
-  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40479c, `sw` at 0x404d48.
+  27 such `lw` accesses load 4 bytes from ?, including `lw` at 0x404710, `lw` at 0x404720, `lw` at 0x404730.
+  9 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x404768, `lbu` at 0x404850, `lbu` at 0x404890.
+  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40479c, `sw` at 0x404a04, `sw` at 0x404a78.
   9 such `sb` accesses store 1 byte to ?, including `sb` at 0x4047c0, `sb` at 0x4047e4, `sb` at 0x40480c.
-  6 such `lbu` accesses load 1 byte from ?, including `lbu` at 0x404850, `lbu` at 0x404890, `lbu` at 0x404cd8.
-  4 such `lw` accesses load 4 bytes from [a0+104] +0x24, including `lw` at 0x4049fc, `lw` at 0x404a70, `lw` at 0x404e78.
-  3 such `sw` accesses store 4 bytes to [a0+104] +0x24, including `sw` at 0x404a04, `sw` at 0x404a78, `sw` at 0x404fa0.
-  3 such `lw` accesses load 4 bytes from [a0+104] +0x28, including `lw` at 0x404bdc, `lw` at 0x404e30, `lw` at 0x404f2c.
-  2 such `lbu` accesses load 1 byte from [a0+104] +0x4b, including `lbu` at 0x404cb0, `lbu` at 0x404dec.
-  3 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x404d5c, `lw` at 0x404d7c, `lw` at 0x404dac.
+  2 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x404d5c, `lw` at 0x404d7c.
   The `jalr` at 0x404630 calls mvpPrintf with a0=0x0, a1=0x414354, a2=[a0+8], a3=?.
   The `jalr` at 0x404668 calls mvpAssertFail with a0=0x414394, a1=0x4143bc, a2=0x213, a3=?.
   The `jalr` at 0x4046a4 calls mvpAssertFail with a0=0x4143c4, a1=0x4143e8, a2=0x214, a3=?.
   The `jalr` at 0x4046cc calls bzero with a0=sp-240, a1=0xe8, a2=?, a3=?.
   The `jalr` at 0x40484c calls mvpProxy with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404894 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404a18 calls strncat with a0=[a0+104], a1=0x4143f0, a2=0x20, a3=?.
-  The `jalr` at 0x404ba8 calls bcopy with a0=sp-232, a1=[a0+104]+60, a2=0xdc, a3=?.
-  The `jalr` at 0x404bd8 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404a18 calls strncat with a0=?, a1=0x4143f0, a2=0x20, a3=?.
+  The `jalr` at 0x404ba8 calls bcopy with a0=sp-232, a1=?, a2=0xdc, a3=?.
+  The `jalr` at 0x404bd8 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x404bf0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c08 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c18 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404c30 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404c50 calls mvpPrintf with a0=[a0+104], a1=0x4143fc, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404c50 calls mvpPrintf with a0=?, a1=0x4143fc, a2=ret(strerror), a3=?.
   The `jalr` at 0x404c60 calls oserror with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404d1c calls mvpGetNodeProto [0x40331c] with a0=[a0+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404d1c calls mvpGetNodeProto [0x40331c] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404d78 calls mvpProxy with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404da8 calls mvpCDev with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404e2c calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404da8 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404e2c calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x404e48 calls mvpPanic with a0=0x414410, a1=?, a2=?, a3=?.
-  The `jalr` at 0x404e68 calls bcopy with a0=sp-232, a1=[a0+104]+60, a2=0xdc, a3=?.
-  The `jalr` at 0x404ea4 calls mvpDecodePath [0x4033ac] with a0=[a0+104], a1=sp-384, a2=?, a3=?.
-  The `jalr` at 0x404eb8 calls strlen with a0=[a0+104], a1=?, a2=?, a3=?.
-  The `jalr` at 0x404edc calls strncat with a0=[a0+104], a1=sp-384, a2=?, a3=?.
+  The `jalr` at 0x404e68 calls bcopy with a0=sp-232, a1=?, a2=0xdc, a3=?.
+  The `jalr` at 0x404ea4 calls mvpDecodePath [0x4033ac] with a0=?, a1=sp-384, a2=?, a3=?.
+  The `jalr` at 0x404eb8 calls strlen with a0=?, a1=?, a2=?, a3=?.
+  The `jalr` at 0x404edc calls strncat with a0=?, a1=sp-384, a2=?, a3=?.
   The `jalr` at 0x404ef8 calls strncpy with a0=sp-232, a1=sp-384, a2=0x1f, a3=?.
-  The `jalr` at 0x404f28 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
-  The `jalr` at 0x404f3c calls mvpSetupPathControls with a0=[a0+104], a1=?, a2=?, a3=?.
+  The `jalr` at 0x404f28 calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x404f3c calls mvpSetupPathControls with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f50 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404f68 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x404f88 calls mvpErrPrintf with a0=[a0+104], a1=0x414434, a2=ret(strerror), a3=?.
+  The `jalr` at 0x404f88 calls mvpErrPrintf with a0=?, a1=0x414434, a2=ret(strerror), a3=?.
   The `beq` branch at 0x4045f0 targets 0x404600, is taken when t7(=[a0+8]) == 0, and falls through when t7(=[a0+8]) != 0.
   The `beq` branch at 0x4045f8 targets 0x404604 and is always taken.
   The `beq` branch at 0x404644 targets 0x404654, is taken when t2(=[a0+104]) == 0, and falls through when t2(=[a0+104]) != 0.
@@ -27538,13 +27491,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x404c8c targets 0x404fb4 and is always taken.
   The `beq` branch at 0x404c94 targets 0x404fb4 and is always taken.
   The `beq` branch at 0x404c9c targets 0x404fb4 and is always taken.
-  The `blez` branch at 0x404cb4 targets 0x404dfc, is taken when t7(=[[a0+104]+75]:1) <= 0 (signed), and falls through when t7(=[[a0+104]+75]:1) > 0 (signed).
+  The `blez` branch at 0x404cb4 targets 0x404dfc, is taken when t7(?) <= 0 (signed), and falls through when t7(?) > 0 (signed).
   The `beq` branch at 0x404ce8 targets 0x404ddc, is taken when t0(?) == s0(?), and falls through when t0(?) != s0(?).
-  The `bne` branch at 0x404df4 targets 0x404cbc, is taken when t9(?) < t2(=[[a0+104]+75]:1) (signed), and falls through when t9(?) >= t2(=[[a0+104]+75]:1) (signed).
+  The `bne` branch at 0x404df4 targets 0x404cbc, is taken when t9(?) < t2(?) (signed), and falls through when t9(?) >= t2(?) (signed).
   The `beq` branch at 0x404e00 targets 0x404e74, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `bne` branch at 0x404e38 targets 0x404e54, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
-  The `bne` branch at 0x404e80 targets 0x404f94, is taken when (t0(=[[a0+104]+36]) & 0x100) != 0, and falls through when (t0(=[[a0+104]+36]) & 0x100) == 0.
-  The `bne` branch at 0x404e8c targets 0x404f94, is taken when (t0(=[[a0+104]+36]) & 0x200) != 0, and falls through when (t0(=[[a0+104]+36]) & 0x200) == 0.
+  The `bne` branch at 0x404e80 targets 0x404f94, is taken when (t0(?) & 0x100) != 0, and falls through when (t0(?) & 0x100) == 0.
+  The `bne` branch at 0x404e8c targets 0x404f94, is taken when (t0(?) & 0x200) != 0, and falls through when (t0(?) & 0x200) == 0.
   The `beq` branch at 0x404f44 targets 0x404f94, is taken when v0(=ret(mvpSetupPathControls)) == 0, and falls through when v0(=ret(mvpSetupPathControls)) != 0.
   The `beq` branch at 0x404fa4 targets 0x404fb4 and is always taken.
   The return at 0x404fc0 has v0 = one of 0x3, 0x8, 0x13, 0x1a, 0x0.
@@ -27666,17 +27619,16 @@ Each entry records selected software behavior from its exact binary range. The r
   Range: 0x4063c4-0x406524 (352 bytes).
   It occupies 352 bytes.
   The `lw` at 0x4063f0 loads 4 bytes from a1 (arg1 at entry) +0x68.
-  The `lw` at 0x406464 loads 4 bytes from [a1+104] +0x28.
-  The `lw` at 0x4064f4 loads 4 bytes from [a1+104] +0x24.
-  The `sw` at 0x4064fc stores 4 bytes to [a1+104] +0x24.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0x406464, `lw` at 0x4064f4.
+  The `sw` at 0x4064fc stores 4 bytes to ?.
   The `jalr` at 0x406418 calls mvpAssertFail with a0=0x4149c0, a1=0x4149e8, a2=0x483, a3=a3 at entry (arg3).
-  The `jalr` at 0x406440 calls mvpPrintf with a0=[a1+104], a1=0x4149f0, a2=?, a3=?.
-  The `jalr` at 0x406460 calls ioctl with a0=[[a1+104]+40], a1=0x6d767004, a2=sp-504, a3=?.
+  The `jalr` at 0x406440 calls mvpPrintf with a0=?, a1=0x4149f0, a2=?, a3=?.
+  The `jalr` at 0x406460 calls ioctl with a0=?, a1=0x6d767004, a2=sp-504, a3=?.
   The `jalr` at 0x406478 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x406490 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4064a0 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4064b8 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x4064d8 calls mvpErrPrintf with a0=[a1+104], a1=0x414a00, a2=ret(strerror), a3=?.
+  The `jalr` at 0x4064d8 calls mvpErrPrintf with a0=?, a1=0x414a00, a2=ret(strerror), a3=?.
   The `beq` branch at 0x4063f4 targets 0x406404, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x4063fc targets 0x406424 and is always taken.
   The `bne` branch at 0x40646c targets 0x4064ec, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -28485,17 +28437,15 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 1708 bytes.
   The `lw` at 0x409128 loads 4 bytes from a3 (arg3 at entry) +0xc.
   The `lw` at 0x4091a4 loads 4 bytes from table(0x415660) +0x0.
-  10 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x409234, `lw` at 0x409284, `lw` at 0x409330.
+  12 such `lw` accesses load 4 bytes from ?, including `lw` at 0x409234, `lw` at 0x409284, `lw` at 0x409330.
   The `sb` at 0x40935c stores 1 byte to a0 (arg0 at entry) +0x125.
-  The `lw` at 0x409460 loads 4 bytes from [a3+12] +0x4.
-  The `lw` at 0x409480 loads 4 bytes from [a3+12] +0x8.
   The `jalr` at 0x40914c calls mvpFromVLControlValue with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=sp-148, a3=a3 at entry (arg3).
-  The `jalr` at 0x409230 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=[[a3+12]], a2=?, a3=?.
+  The `jalr` at 0x409230 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x409308 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0x40932c calls mvpfromvlformat [0x4089c8] with a0=[[a3+12]], a1=?, a2=?, a3=?.
+  The `jalr` at 0x40932c calls mvpfromvlformat [0x4089c8] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4093d0 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
   The `jalr` at 0x409414 calls mvpGetGenlockSource [0x408cec] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0x409678 calls bcopy with a0=[a3+12], a1=?, a2=0x26, a3=?.
+  The `jalr` at 0x409678 calls bcopy with a0=?, a1=?, a2=0x26, a3=?.
   The `jalr` at 0x40969c calls mvpSendI2C with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x4096bc calls mvpSetVideoPortControl with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x4096dc calls mvpControlIOCTL [0x406c4c] with a0=a0 at entry (arg0), a1=sp-152, a2=a1 at entry (arg1), a3=?.
@@ -28519,10 +28469,10 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x409248 targets 0x409258, is taken when t1(=ret(mvpfromvltiming)) != at(=-0x1), and falls through when t1(=ret(mvpfromvltiming)) == at(=-0x1).
   The `beq` branch at 0x409250 targets 0x409790 and is always taken.
   The `beq` branch at 0x409270 targets 0x4096cc and is always taken.
-  The `beq` branch at 0x409288 targets 0x4092bc, is taken when s0(=[[a3+12]]) == 0, and falls through when s0(=[[a3+12]]) != 0.
-  The `beq` branch at 0x409294 targets 0x4092bc, is taken when s0(=[[a3+12]]) == at(=0x1), and falls through when s0(=[[a3+12]]) != at(=0x1).
-  The `beq` branch at 0x4092a0 targets 0x4092c8, is taken when s0(=[[a3+12]]) == at(=0x2), and falls through when s0(=[[a3+12]]) != at(=0x2).
-  The `beq` branch at 0x4092ac targets 0x4092d8, is taken when s0(=[[a3+12]]) == at(=0x3), and falls through when s0(=[[a3+12]]) != at(=0x3).
+  The `beq` branch at 0x409288 targets 0x4092bc, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409294 targets 0x4092bc, is taken when s0(?) == at(=0x1), and falls through when s0(?) != at(=0x1).
+  The `beq` branch at 0x4092a0 targets 0x4092c8, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
+  The `beq` branch at 0x4092ac targets 0x4092d8, is taken when s0(?) == at(=0x3), and falls through when s0(?) != at(=0x3).
   The `beq` branch at 0x4092b4 targets 0x4092e8 and is always taken.
   The `beq` branch at 0x4092c0 targets 0x4092f0 and is always taken.
   The `beq` branch at 0x4092d0 targets 0x4092f0 and is always taken.
@@ -28532,8 +28482,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x409344 targets 0x409354, is taken when t1(=ret(mvpfromvlformat)) != at(=-0x1), and falls through when t1(=ret(mvpfromvlformat)) == at(=-0x1).
   The `beq` branch at 0x40934c targets 0x409790 and is always taken.
   The `beq` branch at 0x409360 targets 0x409790 and is always taken.
-  The `beq` branch at 0x409378 targets 0x409394, is taken when s0(=[[a3+12]]) == 0, and falls through when s0(=[[a3+12]]) != 0.
-  The `beq` branch at 0x409384 targets 0x4093a0, is taken when s0(=[[a3+12]]) == at(=0x2), and falls through when s0(=[[a3+12]]) != at(=0x2).
+  The `beq` branch at 0x409378 targets 0x409394, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409384 targets 0x4093a0, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
   The `beq` branch at 0x40938c targets 0x4093b0 and is always taken.
   The `beq` branch at 0x409398 targets 0x4093b8 and is always taken.
   The `beq` branch at 0x4093a8 targets 0x4093b8 and is always taken.
@@ -28541,13 +28491,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x4093e0 targets 0x4096cc and is always taken.
   The `beq` branch at 0x409424 targets 0x4096cc and is always taken.
   The `beq` branch at 0x409444 targets 0x4096cc and is always taken.
-  The `bne` branch at 0x409458 targets 0x40946c, is taken when t7(=[[a3+12]]) != at(=0x2), and falls through when t7(=[[a3+12]]) == at(=0x2).
-  The `beq` branch at 0x409464 targets 0x409474, is taken when t8(=[[a3+12]+4]) == 0, and falls through when t8(=[[a3+12]+4]) != 0.
+  The `bne` branch at 0x409458 targets 0x40946c, is taken when t7(?) != at(=0x2), and falls through when t7(?) == at(=0x2).
+  The `beq` branch at 0x409464 targets 0x409474, is taken when t8(?) == 0, and falls through when t8(?) != 0.
   The `beq` branch at 0x40946c targets 0x409790 and is always taken.
-  The `beq` branch at 0x409484 targets 0x4094b8, is taken when s0(=[[a3+12]+8]) == 0, and falls through when s0(=[[a3+12]+8]) != 0.
-  The `beq` branch at 0x409490 targets 0x4094c4, is taken when s0(=[[a3+12]+8]) == at(=0x1), and falls through when s0(=[[a3+12]+8]) != at(=0x1).
-  The `beq` branch at 0x40949c targets 0x4094d4, is taken when s0(=[[a3+12]+8]) == at(=0x2), and falls through when s0(=[[a3+12]+8]) != at(=0x2).
-  The `beq` branch at 0x4094a8 targets 0x4094e4, is taken when s0(=[[a3+12]+8]) == at(=0x3), and falls through when s0(=[[a3+12]+8]) != at(=0x3).
+  The `beq` branch at 0x409484 targets 0x4094b8, is taken when s0(?) == 0, and falls through when s0(?) != 0.
+  The `beq` branch at 0x409490 targets 0x4094c4, is taken when s0(?) == at(=0x1), and falls through when s0(?) != at(=0x1).
+  The `beq` branch at 0x40949c targets 0x4094d4, is taken when s0(?) == at(=0x2), and falls through when s0(?) != at(=0x2).
+  The `beq` branch at 0x4094a8 targets 0x4094e4, is taken when s0(?) == at(=0x3), and falls through when s0(?) != at(=0x3).
   The `beq` branch at 0x4094b0 targets 0x4094f4 and is always taken.
   The `beq` branch at 0x4094bc targets 0x4094fc and is always taken.
   The `beq` branch at 0x4094cc targets 0x4094fc and is always taken.
@@ -28703,13 +28653,11 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x409f88 loads 4 bytes from a3 (arg3 at entry) +0xc.
   The `lw` at 0x409fcc loads 4 bytes from table(0x415750) +0x0.
   The `lw` at 0x409ff8 loads 4 bytes from table(0x4157a4) +0x0.
-  26 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x40a028, `lw` at 0x40a20c, `lw` at 0x40a64c.
-  8 such `lw` accesses load 4 bytes from [a3+12] +0x4, including `lw` at 0x40a034, `lw` at 0x40a184, `lw` at 0x40ab2c.
+  17 such `lw` accesses load 4 bytes from ?, including `lw` at 0x40a028, `lw` at 0x40a034, `lw` at 0x40a184.
   The `lbu` at 0x40a060 loads 1 byte from a0 (arg0 at entry) +0x157.
   8 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x13a, including `sh` at 0x40a0d4, `sh` at 0x40a690, `sh` at 0x40b3e8.
-  10 such `sw` accesses store 4 bytes to [a3+12] +0x0, including `sw` at 0x40a0dc, `sw` at 0x40a6a0, `sw` at 0x40b0a4.
+  20 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40a0dc, `sw` at 0x40a0f0, `sw` at 0x40a6a0.
   6 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x13c, including `sh` at 0x40a0e8, `sh` at 0x40a6ac, `sh` at 0x40b3f4.
-  9 such `sw` accesses store 4 bytes to [a3+12] +0x4, including `sw` at 0x40a0f0, `sw` at 0x40a6bc, `sw` at 0x40b0c0.
   4 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x40a124, `lbu` at 0x40aab4, `lbu` at 0x40b508.
   16 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x146, including `lh` at 0x40a148, `lh` at 0x40a308, `lh` at 0x40a404.
   16 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x148, including `lh` at 0x40a14c, `lh` at 0x40a314, `lh` at 0x40a40c.
@@ -28735,10 +28683,13 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x140, including `sh` at 0x40aa28, `sh` at 0x40b088, `sh` at 0x40beb4.
   6 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x142, including `lh` at 0x40aa34, `lh` at 0x40b0c8, `lh` at 0x40b614.
   7 such `lh` accesses load 2 bytes from a0 (arg0 at entry) +0x144, including `lh` at 0x40aa44, `lh` at 0x40b0d4, `lh` at 0x40b480.
-  5 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40aa88, `sw` at 0x40b418, `sw` at 0x40b4d0.
   2 such `sb` accesses store 1 byte to a0 (arg0 at entry) +0x12b, including `sb` at 0x40ab50, `sb` at 0x40ab74.
+  2 such `lw` accesses load 4 bytes from [a3+12] +0x4, including `lw` at 0x40b428, `lw` at 0x40b4e4.
+  15 such `lw` accesses load 4 bytes from [a3+12] +0x0, including `lw` at 0x40b434, `lw` at 0x40b4ac, `lw` at 0x40b4e0.
+  2 such `sw` accesses store 4 bytes to [a3+12] +0x0, including `sw` at 0x40b444, `sw` at 0x40b5a8.
   The `sh` at 0x40b4b0 stores 2 bytes to a0 (arg0 at entry) +0x136.
   The `sh` at 0x40b4bc stores 2 bytes to a0 (arg0 at entry) +0x138.
+  2 such `sw` accesses store 4 bytes to [a3+12] +0x4, including `sw` at 0x40b4c4, `sw` at 0x40b5bc.
   The `lbu` at 0x40b524 loads 1 byte from ?.
   The `lh` at 0x40b5a4 loads 2 bytes from a0 (arg0 at entry) +0x14a.
   The `lh` at 0x40b5b4 loads 2 bytes from a0 (arg0 at entry) +0x14c.
@@ -28797,8 +28748,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x40c738 calls mvpfromvlpacking [0x408214] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40c774 calls mvpPixSize with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x40ca4c calls printf with a0=0x415054, a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0x40ca6c calls mvpfromvlcolorspace [0x408878] with a0=[[a3+12]], a1=[a0+293]:1, a2=?, a3=?.
-  The `jalr` at 0x40caa4 calls fprintf with a0=sym(__iob)+32, a1=0x415074, a2=[[a3+12]], a3=?.
+  The `jalr` at 0x40ca6c calls mvpfromvlcolorspace [0x408878] with a0=?, a1=[a0+293]:1, a2=?, a3=?.
+  The `jalr` at 0x40caa4 calls fprintf with a0=sym(__iob)+32, a1=0x415074, a2=?, a3=?.
   The `jalr` at 0x40cb18 calls mvpfromvlformat [0x4089c8] with a0=[[a3+12]], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40cb60 calls mvpfromvlmemmode with a0=a0 at entry (arg0), a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40cba0 calls mvpMipmapMode with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -28809,8 +28760,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x40a01c targets 0x40a104, is taken when v0(=ret(mvpRead)) != at(=0x2), and falls through when v0(=ret(mvpRead)) == at(=0x2).
   The `beq` branch at 0x40a064 targets 0x40a084, is taken when t5(=[a0+343]:1) == 0, and falls through when t5(=[a0+343]:1) != 0.
   The `bgez` branch at 0x40a070 targets 0x40a080, is taken when t6(?) >= 0 (signed), and falls through when t6(?) < 0 (signed).
-  The `beq` branch at 0x40a090 targets 0x40a0a8, is taken when t9(?) >= t8(=[[a3+12]]) (signed), and falls through when t9(?) < t8(=[[a3+12]]) (signed).
-  The `beq` branch at 0x40a0b4 targets 0x40a0cc, is taken when t3(?) >= t2(=[[a3+12]+4]) (signed), and falls through when t3(?) < t2(=[[a3+12]+4]) (signed).
+  The `beq` branch at 0x40a090 targets 0x40a0a8, is taken when t9(?) >= t8(?) (signed), and falls through when t9(?) < t8(?) (signed).
+  The `beq` branch at 0x40a0b4 targets 0x40a0cc, is taken when t3(?) >= t2(?) (signed), and falls through when t3(?) < t2(?) (signed).
   The `beq` branch at 0x40a0f4 targets 0x40ccdc and is always taken.
   The `bne` branch at 0x40a194 targets 0x40a1d8, is taken when t6(=[a0+289]:1) != 0, and falls through when t6(=[a0+289]:1) == 0.
   The `bgez` branch at 0x40a1a4 targets 0x40a1b8, is taken when t5(?) >= 0 (signed), and falls through when t5(?) < 0 (signed).
@@ -28851,7 +28802,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0x40a5fc targets 0x40a60c, is taken when v0(=ret(mvpSetScale)) != at(=-0x1), and falls through when v0(=ret(mvpSetScale)) == at(=-0x1).
   The `beq` branch at 0x40a604 targets 0x40ccf8 and is always taken.
   The `beq` branch at 0x40a60c targets 0x40a644 and is always taken.
-  The `bne` branch at 0x40a650 targets 0x40a668, is taken when t4(?) != t3(=[[a3+12]]), and falls through when t4(?) == t3(=[[a3+12]]).
+  The `bne` branch at 0x40a650 targets 0x40a668, is taken when t4(?) != t3(?), and falls through when t4(?) == t3(?).
   The `beq` branch at 0x40a660 targets 0x40a670, is taken when t1(?) == t5(?), and falls through when t1(?) != t5(?).
   The `beq` branch at 0x40a6f4 targets 0x40a710, is taken when t7(?) >= t8(?) (signed), and falls through when t7(?) < t8(?) (signed).
   The `beq` branch at 0x40a71c targets 0x40a734, is taken when t5(?) >= t1(?) (signed), and falls through when t5(?) < t1(?) (signed).
@@ -29097,7 +29048,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x40ccd4 targets 0x40ccf8 and is always taken.
   The `beq` branch at 0x40cce0 targets 0x40cce8, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `beq` branch at 0x40cce8 targets 0x40ccf8 and is always taken.
-  The return at 0x40cd08 has v0 = one of 0x0, 0x2, 0x7, 0x19, 0x400, 0x401.
+  The return at 0x40cd08 has v0 = one of 0x0, 0x2, 0x7, ?.
   The instructions from 0x40a0fc to 0x40a100 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x40ccf0 to 0x40ccf4 are not reached by any path from the entry, and their branches are not listed.
   The instructions from 0x40cd10 to 0x40cd60 are not reached by any path from the entry, and their branches are not listed.
@@ -29207,16 +29158,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lh` at 0x40d2cc loads 2 bytes from a0 (arg0 at entry) +0x13c.
   2 such `lbu` accesses load 1 byte from a0 (arg0 at entry) +0x128, including `lbu` at 0x40d41c, `lbu` at 0x40d53c.
   2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x136, including `sh` at 0x40d460, `sh` at 0x40d4e4.
-  The `sw` at 0x40d468 stores 4 bytes to [a3+12] +0x0.
+  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0x40d468, `sw` at 0x40d47c, `sw` at 0x40d580.
   2 such `sh` accesses store 2 bytes to a0 (arg0 at entry) +0x138, including `sh` at 0x40d474, `sh` at 0x40d4ec.
-  The `sw` at 0x40d47c stores 4 bytes to [a3+12] +0x4.
   The `sb` at 0x40d494 stores 1 byte to a0 (arg0 at entry) +0x123.
   The `sb` at 0x40d4b0 stores 1 byte to a0 (arg0 at entry) +0x156.
   The `sb` at 0x40d4cc stores 1 byte to a0 (arg0 at entry) +0x157.
   The `lbu` at 0x40d4d4 loads 1 byte from a0 (arg0 at entry) +0x157.
   The `lbu` at 0x40d4f8 loads 1 byte from a0 (arg0 at entry) +0x121.
   The `sb` at 0x40d518 stores 1 byte to a0 (arg0 at entry) +0x121.
-  The `sw` at 0x40d580 stores 4 bytes to ?.
   The `jalr` at 0x40d258 calls mvpfromvltiming [0x4068c0] with a0=a0 at entry (arg0), a1=[[a3+12]], a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x40d290 calls mvpSetTiming [0x406d98] with a0=a0 at entry (arg0), a1=ret(mvpfromvltiming), a2=?, a3=?.
   The `jalr` at 0x40d2e8 calls mvpGetCFI [0x406d34] with a0=a0 at entry (arg0), a1=sp-160, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -29250,7 +29199,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x40d570 targets 0x40d5a0 and is always taken.
   The `beq` branch at 0x40d588 targets 0x40d590, is taken when t9(?) == 0, and falls through when t9(?) != 0.
   The `beq` branch at 0x40d590 targets 0x40d5a0 and is always taken.
-  The return at 0x40d5ac has v0 = one of 0x0, 0x2, 0x7, 0x19.
+  The return at 0x40d5ac has v0 = one of 0x2, 0x7, ?.
   The instructions from 0x40d598 to 0x40d59c are not reached by any path from the entry, and their branches are not listed.
 - `mvpGetScreenControl` in `usr/lib/dmedia/video/mvp.so` at 0x40d5b4 (o32).
   Evidence grade: inferred.
@@ -29637,14 +29586,14 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 312 bytes.
   The `lw` at 0x40ed7c loads 4 bytes from a1 (arg1 at entry) +0x68.
   2 such `lw` accesses load 4 bytes from a1 (arg1 at entry) +0x48, including `lw` at 0x40edc8, `lw` at 0x40edec.
-  The `lw` at 0x40ee10 loads 4 bytes from [a1+104] +0x28.
+  The `lw` at 0x40ee10 loads 4 bytes from ?.
   The `jalr` at 0x40eda4 calls mvpAssertFail with a0=0x416540, a1=0x416568, a2=0x9d, a3=a3 at entry (arg3).
-  The `jalr` at 0x40edc4 calls mvpPrintf with a0=[a1+104], a1=0x416574, a2=[a1+72], a3=?.
+  The `jalr` at 0x40edc4 calls mvpPrintf with a0=?, a1=0x416574, a2=[a1+72], a3=?.
   The `jalr` at 0x40ede8 calls mvpFromVLEventMask with a0=[a1+72], a1=?, a2=?, a3=?.
-  The `jalr` at 0x40ee0c calls ioctl with a0=[[a1+104]+40], a1=0x6d767002, a2=sp-240, a3=?.
+  The `jalr` at 0x40ee0c calls ioctl with a0=?, a1=0x6d767002, a2=sp-240, a3=?.
   The `jalr` at 0x40ee24 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40ee3c calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x40ee5c calls mvpPrintf with a0=[a1+104], a1=0x416588, a2=[a1+104], a3=?.
+  The `jalr` at 0x40ee5c calls mvpPrintf with a0=?, a1=0x416588, a2=?, a3=?.
   The `beq` branch at 0x40ed80 targets 0x40ed90, is taken when t7(=[a1+104]) == 0, and falls through when t7(=[a1+104]) != 0.
   The `beq` branch at 0x40ed88 targets 0x40edb0 and is always taken.
   The `bne` branch at 0x40ee18 targets 0x40ee70, is taken when v0(=ret(ioctl)) != at(=-0x1), and falls through when v0(=ret(ioctl)) == at(=-0x1).
@@ -30007,7 +29956,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x41325c calls mvpgeti2ccontrolindex [0x412264] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x413298 calls mvpCDev with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x4132b8 calls mvpFromVLControlValue with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=sp-148, a3=?.
-  The `jalr` at 0x4132d4 calls mvpsendi2ccontrols [0x412370] with a0=a0 at entry (arg0), a1=ret(mvpgeti2ccontrolindex), a2=sp-152, a3=?.
+  The `jalr` at 0x4132d4 calls mvpsendi2ccontrols [0x412370] with a0=a0 at entry (arg0), a1=?, a2=sp-152, a3=?.
   The `beq` branch at 0x4131c4 targets 0x413240, is taken when t6(=ret(mvpothercontrol)) == 0, and falls through when t6(=ret(mvpothercontrol)) != 0.
   The `bne` branch at 0x4131d4 targets 0x4131e4, is taken when t7(=ret(mvpothercontrol)) != at(=-0x1), and falls through when t7(=ret(mvpothercontrol)) == at(=-0x1).
   The `beq` branch at 0x4131dc targets 0x4132f4 and is always taken.
@@ -30588,15 +30537,15 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xd0032bc calls stat with a0=a0 at entry (arg0), a1=sp-144, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xd0032dc calls open with a0=a0 at entry (arg0), a1=0x0, a2=?, a3=?.
   The `jalr` at 0xd003300 calls read with a0=ret(open), a1=a1 at entry (arg1), a2=?, a3=?.
-  The `jalr` at 0xd003318 calls close with a0=ret(open), a1=?, a2=?, a3=?.
+  The `jalr` at 0xd003318 calls close with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0xd003354 calls printf with a0=0xd004340, a1=a0 at entry (arg0), a2=?, a3=?.
   The `bne` branch at 0xd0032ac targets 0xd0032d0, is taken when a2 != 0, and falls through when a2 == 0.
   The `bltz` branch at 0xd0032c4 targets 0xd003338, is taken when v0(=ret(stat)) < 0 (signed), and falls through when v0(=ret(stat)) >= 0 (signed).
   The `bltz` branch at 0xd0032ec targets 0xd003338, is taken when v0(=ret(open)) < 0 (signed), and falls through when v0(=ret(open)) >= 0 (signed).
-  The `blez` branch at 0xd003328 targets 0xd003338, is taken when v1(=ret(read)) <= 0 (signed), and falls through when v1(=ret(read)) > 0 (signed).
+  The `blez` branch at 0xd003328 targets 0xd003338, is taken when v1(?) <= 0 (signed), and falls through when v1(?) > 0 (signed).
   The `beq` branch at 0xd003330 targets 0xd003364 and is always taken.
   The `beql` branch at 0xd003340 targets 0xd003364, is taken when t6(=[sym(_vicenoise)]) == 0, and falls through when t6(=[sym(_vicenoise)]) != 0; its branch-likely delay slot `addiu v0,zero,-1` at 0xd003344 runs only when taken and is annulled on fall-through.
-  The return at 0xd00336c has v0 = one of ret(read), -0x1.
+  The return at 0xd00336c has v0 = one of ?, -0x1.
 - `__vu_readfile` in `usr/lib/internal/libvice.so` at 0xd003374 (o32).
   Evidence grade: inferred.
   Exact binary: `usr/lib/internal/libvice.so`.
@@ -30875,7 +30824,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4022d4-0xf4024b4 (480 bytes).
   It occupies 480 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf402314, `lw` at 0xf4023b0.
+  The `lw` at 0xf402314 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40231c, `lw` at 0xf4023e8, `lw` at 0xf402444.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf402330, `lw` at 0xf402348, `lw` at 0xf402374.
   The `lw` at 0xf402334 loads 4 bytes from [a0+1232] +0x0.
@@ -30886,7 +30835,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf402388 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf40239c stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4023a0 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4023bc loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4023b0, `lw` at 0xf4023bc.
   The `sb` at 0xf4023c0 stores 1 byte to [a0+108] +0x1.
   The `sh` at 0xf4023c4 stores 2 bytes to [a0+108] +0x4.
   The `sh` at 0xf4023c8 stores 2 bytes to [a0+108] +0x6.
@@ -30923,7 +30872,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4024b4-0xf402704 (592 bytes).
   It occupies 592 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf4024f4, `lw` at 0xf4025ac.
+  The `lw` at 0xf4024f4 loads 4 bytes from ret(find_display) +0x8.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf4024fc, `lw` at 0xf4025e0, `lw` at 0xf402654.
   The `lw` at 0xf402510 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf402528, `lw` at 0xf402540, `lw` at 0xf40256c.
@@ -30935,7 +30884,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf402584 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf402598 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf40259c stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4025b4 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4025ac, `lw` at 0xf4025b4.
   The `sb` at 0xf4025b8 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4025c4 stores 4 bytes to [a0+108] +0x4.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf4025e8, `lw` at 0xf402600, `lw` at 0xf40265c.
@@ -31309,7 +31258,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4036e4-0xf403994 (688 bytes).
   It occupies 688 bytes.
-  3 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf403728, `lw` at 0xf4037f8, `lw` at 0xf403830.
+  The `lw` at 0xf403728 loads 4 bytes from ret(find_display) +0x8.
   The `lw` at 0xf403748 loads 4 bytes from abs 0xf40c004.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40375c, `lw` at 0xf40392c.
   7 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf403770, `lw` at 0xf403790, `lw` at 0xf4037c4.
@@ -31321,7 +31270,7 @@ Each entry records selected software behavior from its exact binary range. The r
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf4037dc, `lw` at 0xf403814, `lw` at 0xf403820.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf4037f0, `sw` at 0xf4038e0.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x60, including `sw` at 0xf4037f4, `sw` at 0xf4038e4.
-  2 such `lw` accesses load 4 bytes from [ret(find_display)+8] +0x4, including `lw` at 0xf403804, `lw` at 0xf403834.
+  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4037f8, `lw` at 0xf403804, `lw` at 0xf403830.
   The `sb` at 0xf403808 stores 1 byte to [a0+108] +0x1.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4c8, including `lw` at 0xf403844, `lw` at 0xf4038fc.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x4c8, including `sw` at 0xf403854, `sw` at 0xf403914.
@@ -31353,7 +31302,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf403910 targets 0xf40392c and is always taken.
   The `beql` branch at 0xf403930 targets 0xf403950, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf403934 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf403954 targets 0xf40396c, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t7,100(sp)` at 0xf403958 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf403970 targets 0xf403980 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf403970 targets 0xf403980, is taken when t7(?) != 0, and falls through when t7(?) == 0.
   The `beq` branch at 0xf403978 targets 0xf403980 and is always taken.
   The return at 0xf40398c has v0 = one of 0x0, 0x1.
   The instructions from 0xf403768 to 0xf403768 are not reached by any path from the entry, and their branches are not listed.
@@ -31369,7 +31318,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf403a14 loads 4 bytes from [a0+1232] +0x0.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x70, including `lw` at 0xf403a30, `lw` at 0xf403b38, `lw` at 0xf403ba0.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x64, including `sw` at 0xf403a40, `sw` at 0xf403a64, `sw` at 0xf403bb0.
-  3 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf403a70, `sh` at 0xf403b30, `sh` at 0xf403bd8.
+  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf403a70, `sh` at 0xf403bd8.
   3 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf403a74, `sb` at 0xf403aac, `sb` at 0xf403bdc.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf403a78, `lw` at 0xf403ab0, `lw` at 0xf403ab8.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf403a8c, `sw` at 0xf403b80, `sw` at 0xf403bf4.
@@ -31379,8 +31328,9 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4c8, including `lw` at 0xf403ad8, `lw` at 0xf403c10.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x4c8, including `sw` at 0xf403ae8, `sw` at 0xf403c28.
   The `sw` at 0xf403af0 stores 4 bytes to [a0+108] +0x4.
-  The `sw` at 0xf403b1c stores 4 bytes to [a0+108] +0x8.
-  The `lhu` at 0xf403b20 loads 2 bytes from [a0+108] +0x2.
+  The `sw` at 0xf403b1c stores 4 bytes to ?.
+  The `lhu` at 0xf403b20 loads 2 bytes from ?.
+  The `sh` at 0xf403b30 stores 2 bytes to ?.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf403c48, `lw` at 0xf403c60.
   The `lw` at 0xf403c4c loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xf4039c4 calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -31408,7 +31358,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf403c24 targets 0xf403c40 and is always taken.
   The `beql` branch at 0xf403c44 targets 0xf403c64, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf403c48 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf403c68 targets 0xf403c80, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t7,116(sp)` at 0xf403c6c runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf403c84 targets 0xf403c94 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf403c84 targets 0xf403c94, is taken when t7(?) != 0, and falls through when t7(?) == 0.
   The `beq` branch at 0xf403c8c targets 0xf403c94 and is always taken.
   The return at 0xf403ca0 has v0 = one of 0x0, 0x1.
   The instructions from 0xf403a04 to 0xf403a04 are not reached by any path from the entry, and their branches are not listed.
@@ -31456,7 +31406,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf403e94 targets 0xf403eb4 and is always taken.
   The `beql` branch at 0xf403eb8 targets 0xf403ed8, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf403ebc runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf403edc targets 0xf403ef4, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t8,100(sp)` at 0xf403ee0 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf403ef8 targets 0xf403f08 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf403ef8 targets 0xf403f08, is taken when t8(?) != 0, and falls through when t8(?) == 0.
   The `beq` branch at 0xf403f00 targets 0xf403f08 and is always taken.
   The return at 0xf403f14 has v0 = one of 0x0, 0x1.
   The instructions from 0xf403d14 to 0xf403d14 are not reached by any path from the entry, and their branches are not listed.
@@ -31519,10 +31469,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf404380 stores 4 bytes to ret(malloc) +0x194.
   The `sw` at 0xf404388 stores 4 bytes to ret(malloc) +0x188.
   The `sw` at 0xf404390 stores 4 bytes to ret(malloc) +0x18c.
-  2 such `sw` accesses store 4 bytes to ret(malloc) +0x144, including `sw` at 0xf4043c8, `sw` at 0xf4043cc.
-  2 such `sw` accesses store 4 bytes to ret(malloc) +0x150, including `sw` at 0xf404440, `sw` at 0xf404464.
-  2 such `sw` accesses store 4 bytes to ret(malloc) +0x190, including `sw` at 0xf404488, `sw` at 0xf40455c.
-  3 such `sw` accesses store 4 bytes to ?, including `sw` at 0xf4044cc, `sw` at 0xf4044dc, `sw` at 0xf40450c.
+  9 such `sw` accesses store 4 bytes to ?, including `sw` at 0xf4043c8, `sw` at 0xf4043cc, `sw` at 0xf404440.
   The `jalr` at 0xf403f54 calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xf403f80 calls XMissingExtension with a0=a0 at entry (arg0), a1=[0xf40c004], a2=?, a3=?.
   The `jalr` at 0xf403fa8 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -31587,7 +31534,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4045d8-0xf40486c (660 bytes).
   It occupies 660 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf40461c, `lw` at 0xf4046d4.
+  The `lw` at 0xf40461c loads 4 bytes from ret(find_display) +0x8.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf404624, `lw` at 0xf40470c, `lw` at 0xf40475c.
   The `lw` at 0xf404638 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf404650, `lw` at 0xf404668, `lw` at 0xf404694.
@@ -31599,7 +31546,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf4046ac loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf4046c0 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4046c4 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4046dc loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4046d4, `lw` at 0xf4046dc.
   The `sb` at 0xf4046e0 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4046ec stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf4046f4 stores 4 bytes to [a0+108] +0x8.
@@ -31738,7 +31685,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf404cc4-0xf408f50 (17036 bytes).
   It occupies 17036 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf404d08, `lw` at 0xf404dc0.
+  The `lw` at 0xf404d08 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf404d10, `lw` at 0xf404e00, `lw` at 0xf404e50.
   The `lw` at 0xf404d24 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf404d3c, `lw` at 0xf404d54, `lw` at 0xf404d80.
@@ -31750,7 +31697,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf404d98 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf404dac stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf404db0 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf404dc8 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf404dc0, `lw` at 0xf404dc8.
   The `sb` at 0xf404dcc stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf404dd8 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf404de0 stores 4 bytes to [a0+108] +0x8.
@@ -31880,7 +31827,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf40529c-0xf40547c (480 bytes).
   It occupies 480 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf4052e0, `lw` at 0xf405398.
+  The `lw` at 0xf4052e0 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf4052e8, `lw` at 0xf4053d8, `lw` at 0xf405428.
   The `lw` at 0xf4052fc loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf405314, `lw` at 0xf40532c, `lw` at 0xf405358.
@@ -31892,7 +31839,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf405370 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf405384 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf405388 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4053a0 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf405398, `lw` at 0xf4053a0.
   The `sb` at 0xf4053a4 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4053b0 stores 4 bytes to [a0+108] +0x8.
   The `sw` at 0xf4053b8 stores 4 bytes to [a0+108] +0x4.
@@ -31966,7 +31913,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4055e0-0xf4057c8 (488 bytes).
   It occupies 488 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf405624, `lw` at 0xf4056dc.
+  The `lw` at 0xf405624 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40562c, `lw` at 0xf40570c, `lw` at 0xf405774.
   The `lw` at 0xf405640 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf405658, `lw` at 0xf405670, `lw` at 0xf40569c.
@@ -31978,7 +31925,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf4056b4 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf4056c8 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4056cc stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4056e4 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4056dc, `lw` at 0xf4056e4.
   The `sb` at 0xf4056e8 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4056f4 stores 4 bytes to [a0+108] +0x4.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf405714, `lw` at 0xf40572c, `lw` at 0xf40577c.
@@ -32058,7 +32005,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4059ac-0xf405c2c (640 bytes).
   It occupies 640 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf4059f4, `lw` at 0xf405ac0.
+  The `lw` at 0xf4059f4 loads 4 bytes from ret(find_display) +0x8.
   The `lw` at 0xf405a14 loads 4 bytes from abs 0xf40c004.
   5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf405a28, `lw` at 0xf405b08, `lw` at 0xf405b60.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf405a3c, `lw` at 0xf405a54, `lw` at 0xf405a80.
@@ -32070,7 +32017,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf405a98 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf405aac stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf405ab0 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf405ac8 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf405ac0, `lw` at 0xf405ac8.
   The `sb` at 0xf405acc stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf405ad8 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf405ae0 stores 4 bytes to [a0+108] +0x8.
@@ -32118,7 +32065,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf405c2c-0xf405df8 (460 bytes).
   It occupies 460 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf405c6c, `lw` at 0xf405d24.
+  The `lw` at 0xf405c6c loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf405c74, `lw` at 0xf405d54, `lw` at 0xf405da4.
   The `lw` at 0xf405c88 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf405ca0, `lw` at 0xf405cb8, `lw` at 0xf405ce4.
@@ -32130,7 +32077,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf405cfc loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf405d10 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf405d14 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf405d2c loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf405d24, `lw` at 0xf405d2c.
   The `sb` at 0xf405d30 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf405d3c stores 4 bytes to [a0+108] +0x4.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf405d5c, `lw` at 0xf405d74, `lw` at 0xf405dac.
@@ -32163,7 +32110,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf405df8-0xf405fe8 (496 bytes).
   It occupies 496 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf405e3c, `lw` at 0xf405ef4.
+  The `lw` at 0xf405e3c loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf405e44, `lw` at 0xf405f2c, `lw` at 0xf405f94.
   The `lw` at 0xf405e58 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf405e70, `lw` at 0xf405e88, `lw` at 0xf405eb4.
@@ -32175,7 +32122,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf405ecc loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf405ee0 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf405ee4 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf405efc loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf405ef4, `lw` at 0xf405efc.
   The `sb` at 0xf405f00 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf405f0c stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf405f14 stores 4 bytes to [a0+108] +0x8.
@@ -32210,7 +32157,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4063bc-0xf4066d0 (788 bytes).
   It occupies 788 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf406400, `lw` at 0xf4064d4.
+  The `lw` at 0xf406400 loads 4 bytes from ret(find_display) +0x8.
   The `lw` at 0xf406420 loads 4 bytes from abs 0xf40c004.
   6 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40643c, `lw` at 0xf406514, `lw` at 0xf40656c.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf406450, `lw` at 0xf406468, `lw` at 0xf406494.
@@ -32222,7 +32169,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf4064ac loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf4064c0 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4064c4 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4064dc loads 4 bytes from [ret(find_display)+8] +0x4.
+  3 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4064d4, `lw` at 0xf4064dc, `lw` at 0xf40666c.
   The `sb` at 0xf4064e0 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4064ec stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf4064f4 stores 4 bytes to [a0+108] +0x8.
@@ -32230,7 +32177,6 @@ Each entry records selected software behavior from its exact binary range. The r
   10 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf40651c, `lw` at 0xf406534, `lw` at 0xf406574.
   5 such `lw` accesses load 4 bytes from [a0+1232] +0x4, including `lw` at 0xf406520, `lw` at 0xf406578, `lw` at 0xf4065c4.
   2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xf4065b4, `sw` at 0xf40661c.
-  The `lw` at 0xf40666c loads 4 bytes from ?.
   The `jalr` at 0xf4063ec calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xf40641c calls XMissingExtension with a0=a0 at entry (arg0), a1=[0xf40c004], a2=?, a3=?.
   The `jalr` at 0xf40645c calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -32370,7 +32316,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf406a40-0xf406d14 (724 bytes).
   It occupies 724 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf406a84, `lw` at 0xf406b3c.
+  The `lw` at 0xf406a84 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf406a8c, `lw` at 0xf406bf0, `lw` at 0xf406cc0.
   The `lw` at 0xf406aa0 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf406ab8, `lw` at 0xf406ad0, `lw` at 0xf406afc.
@@ -32382,7 +32328,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf406b14 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf406b28 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf406b2c stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf406b48 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf406b3c, `lw` at 0xf406b48.
   The `sb` at 0xf406b4c stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf406b64 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf406b74 stores 4 bytes to [a0+108] +0x8.
@@ -32466,7 +32412,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf406ef4-0xf4071cc (728 bytes).
   It occupies 728 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf406f38, `lw` at 0xf406ff4.
+  The `lw` at 0xf406f38 loads 4 bytes from ret(find_display) +0x8.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf406f40, `lw` at 0xf407064, `lw` at 0xf4070b4.
   The `lw` at 0xf406f54 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf406f6c, `lw` at 0xf406f84, `lw` at 0xf406fb0.
@@ -32479,7 +32425,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf406fe0 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf406fe4 stores 4 bytes to a0 (arg0 at entry) +0x60.
   The `lhu` at 0xf406fec loads 2 bytes from [a0+108] +0x2.
-  The `lw` at 0xf407000 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf406ff4, `lw` at 0xf407000.
   The `sb` at 0xf407004 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf407014 stores 4 bytes to [a0+108] +0x4.
   The `sb` at 0xf407020 stores 1 byte to [a0+108] +0x10.
@@ -32527,7 +32473,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4071cc-0xf407394 (456 bytes).
   It occupies 456 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf40720c, `lw` at 0xf4072c4.
+  The `lw` at 0xf40720c loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf407214, `lw` at 0xf4072fc, `lw` at 0xf407340.
   The `lw` at 0xf407228 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf407240, `lw` at 0xf407258, `lw` at 0xf407284.
@@ -32539,7 +32485,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf40729c loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf4072b0 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4072b4 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf4072cc loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4072c4, `lw` at 0xf4072cc.
   The `sb` at 0xf4072d0 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf4072dc stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf4072e4 stores 4 bytes to [a0+108] +0x8.
@@ -32648,7 +32594,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf407644-0xf407810 (460 bytes).
   It occupies 460 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf407684, `lw` at 0xf40773c.
+  The `lw` at 0xf407684 loads 4 bytes from ret(find_display) +0x8.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf40768c, `lw` at 0xf40776c, `lw` at 0xf4077bc.
   The `lw` at 0xf4076a0 loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf4076b8, `lw` at 0xf4076d0, `lw` at 0xf4076fc.
@@ -32660,7 +32606,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf407714 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf407728 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf40772c stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf407744 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf40773c, `lw` at 0xf407744.
   The `sb` at 0xf407748 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf407754 stores 4 bytes to [a0+108] +0x4.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf407774, `lw` at 0xf40778c, `lw` at 0xf4077c4.
@@ -32693,7 +32639,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf407810-0xf407aa4 (660 bytes).
   It occupies 660 bytes.
-  2 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf407850, `lw` at 0xf407908.
+  The `lw` at 0xf407850 loads 4 bytes from ret(find_display) +0x8.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf407858, `lw` at 0xf407940, `lw` at 0xf407990.
   The `lw` at 0xf40786c loads 4 bytes from abs 0xf40c004.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf407884, `lw` at 0xf40789c, `lw` at 0xf4078c8.
@@ -32705,7 +32651,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf4078e0 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf4078f4 stores 4 bytes to a0 (arg0 at entry) +0x6c.
   The `sw` at 0xf4078f8 stores 4 bytes to a0 (arg0 at entry) +0x60.
-  The `lw` at 0xf407910 loads 4 bytes from [ret(find_display)+8] +0x4.
+  2 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf407908, `lw` at 0xf407910.
   The `sb` at 0xf407914 stores 1 byte to [a0+108] +0x1.
   The `sw` at 0xf407920 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf407928 stores 4 bytes to [a0+108] +0x8.
@@ -32897,7 +32843,7 @@ Each entry records selected software behavior from its exact binary range. The r
   Exact binary: `usr/lib/libXsgivc.so`.
   Range: 0xf4081c0-0xf408484 (708 bytes).
   It occupies 708 bytes.
-  3 such `lw` accesses load 4 bytes from ret(find_display) +0x8, including `lw` at 0xf408204, `lw` at 0xf4082d4, `lw` at 0xf408308.
+  The `lw` at 0xf408204 loads 4 bytes from ret(find_display) +0x8.
   The `lw` at 0xf408224 loads 4 bytes from abs 0xf40c004.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4d0, including `lw` at 0xf408238, `lw` at 0xf40841c.
   7 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf40824c, `lw` at 0xf40826c, `lw` at 0xf4082a0.
@@ -32909,7 +32855,7 @@ Each entry records selected software behavior from its exact binary range. The r
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf4082b8, `lw` at 0xf4082f0, `lw` at 0xf4082fc.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf4082cc, `sw` at 0xf4083d0.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x60, including `sw` at 0xf4082d0, `sw` at 0xf4083d4.
-  2 such `lw` accesses load 4 bytes from [ret(find_display)+8] +0x4, including `lw` at 0xf4082e0, `lw` at 0xf40830c.
+  4 such `lw` accesses load 4 bytes from ?, including `lw` at 0xf4082d4, `lw` at 0xf4082e0, `lw` at 0xf408308.
   The `sb` at 0xf4082e4 stores 1 byte to [a0+108] +0x1.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4c8, including `lw` at 0xf40831c, `lw` at 0xf4083ec.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x4c8, including `sw` at 0xf40832c, `sw` at 0xf408404.
@@ -32924,7 +32870,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xf4081f0 calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xf408220 calls XMissingExtension with a0=a0 at entry (arg0), a1=[0xf40c004], a2=?, a3=?.
   The `jalr` at 0xf40825c calls (unknown callee) with a0=a0 at entry (arg0), a1=ret(find_display), a2=?, a3=?.
-  The `jalr` at 0xf408290 calls _XFlush with a0=a0 at entry (arg0), a1=ret(find_display), a2=?, a3=?.
+  The `jalr` at 0xf408290 calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf40836c calls GenerateVFList [0xf402704] with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=?, a3=[a0+108]+2.
   The `jalr` at 0xf408398 calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf4083e4 calls _XReply with a0=a0 at entry (arg0), a1=sp-120, a2=0x0, a3=0x1.
@@ -32943,7 +32889,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf408400 targets 0xf40841c and is always taken.
   The `beql` branch at 0xf408420 targets 0xf408440, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf408424 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf408444 targets 0xf40845c, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t3,100(sp)` at 0xf408448 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf408460 targets 0xf408470 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf408460 targets 0xf408470, is taken when t3(?) != 0, and falls through when t3(?) == 0.
   The `beq` branch at 0xf408468 targets 0xf408470 and is always taken.
   The return at 0xf40847c has v0 = one of 0x0, 0x1.
   The instructions from 0xf408244 to 0xf408244 are not reached by any path from the entry, and their branches are not listed.
@@ -32959,7 +32905,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf408504 loads 4 bytes from [a0+1232] +0x0.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x70, including `lw` at 0xf408520, `lw` at 0xf408628, `lw` at 0xf408690.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x64, including `sw` at 0xf408530, `sw` at 0xf408554, `sw` at 0xf4086a0.
-  3 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408560, `sh` at 0xf408620, `sh` at 0xf4086c8.
+  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408560, `sh` at 0xf4086c8.
   3 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf408564, `sb` at 0xf40859c, `sb` at 0xf4086cc.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf408568, `lw` at 0xf4085a0, `lw` at 0xf4085a8.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf40857c, `sw` at 0xf408670, `sw` at 0xf4086e4.
@@ -32969,8 +32915,9 @@ Each entry records selected software behavior from its exact binary range. The r
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x4c8, including `lw` at 0xf4085c8, `lw` at 0xf408700.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x4c8, including `sw` at 0xf4085d8, `sw` at 0xf408718.
   The `sw` at 0xf4085e0 stores 4 bytes to [a0+108] +0x4.
-  The `sw` at 0xf40860c stores 4 bytes to [a0+108] +0x8.
-  The `lhu` at 0xf408610 loads 2 bytes from [a0+108] +0x2.
+  The `sw` at 0xf40860c stores 4 bytes to ?.
+  The `lhu` at 0xf408610 loads 2 bytes from ?.
+  The `sh` at 0xf408620 stores 2 bytes to ?.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf408738, `lw` at 0xf408750.
   The `lw` at 0xf40873c loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xf4084b4 calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -32998,7 +32945,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf408714 targets 0xf408730 and is always taken.
   The `beql` branch at 0xf408734 targets 0xf408754, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf408738 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf408758 targets 0xf408770, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t7,116(sp)` at 0xf40875c runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf408774 targets 0xf408784 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf408774 targets 0xf408784, is taken when t7(?) != 0, and falls through when t7(?) == 0.
   The `beq` branch at 0xf40877c targets 0xf408784 and is always taken.
   The return at 0xf408790 has v0 = one of 0x0, 0x1.
   The instructions from 0xf4084f4 to 0xf4084f4 are not reached by any path from the entry, and their branches are not listed.
@@ -33014,7 +32961,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf40881c loads 4 bytes from [a0+1232] +0x0.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x70, including `lw` at 0xf408838, `lw` at 0xf40894c, `lw` at 0xf4089b4.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x64, including `sw` at 0xf408848, `sw` at 0xf40886c, `sw` at 0xf4089c4.
-  3 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408878, `sh` at 0xf408944, `sh` at 0xf4089ec.
+  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408878, `sh` at 0xf4089ec.
   3 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf40887c, `sb` at 0xf4088b4, `sb` at 0xf4089f0.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf408880, `lw` at 0xf4088b8, `lw` at 0xf4088c0.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf408894, `sw` at 0xf408994, `sw` at 0xf408a08.
@@ -33026,8 +32973,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf4088f8 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf408900 stores 4 bytes to [a0+108] +0xc.
   The `sw` at 0xf408904 stores 4 bytes to [a0+108] +0x8.
-  The `sw` at 0xf408930 stores 4 bytes to [a0+108] +0x10.
-  The `lhu` at 0xf408934 loads 2 bytes from [a0+108] +0x2.
+  The `sw` at 0xf408930 stores 4 bytes to ?.
+  The `lhu` at 0xf408934 loads 2 bytes from ?.
+  The `sh` at 0xf408944 stores 2 bytes to ?.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf408a5c, `lw` at 0xf408a74.
   The `lw` at 0xf408a60 loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xf4087cc calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -33055,7 +33003,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf408a38 targets 0xf408a54 and is always taken.
   The `beql` branch at 0xf408a58 targets 0xf408a78, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf408a5c runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf408a7c targets 0xf408a94, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t8,116(sp)` at 0xf408a80 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf408a98 targets 0xf408aa8 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf408a98 targets 0xf408aa8, is taken when t8(?) != 0, and falls through when t8(?) == 0.
   The `beq` branch at 0xf408aa0 targets 0xf408aa8 and is always taken.
   The return at 0xf408ab4 has v0 = one of 0x0, 0x1.
   The instructions from 0xf40880c to 0xf40880c are not reached by any path from the entry, and their branches are not listed.
@@ -33071,7 +33019,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf408b40 loads 4 bytes from [a0+1232] +0x0.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x70, including `lw` at 0xf408b5c, `lw` at 0xf408c74, `lw` at 0xf408cdc.
   4 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x64, including `sw` at 0xf408b6c, `sw` at 0xf408b90, `sw` at 0xf408cec.
-  3 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408b9c, `sh` at 0xf408c6c, `sh` at 0xf408d14.
+  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf408b9c, `sh` at 0xf408d14.
   3 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf408ba0, `sb` at 0xf408bd8, `sb` at 0xf408d18.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf408ba4, `lw` at 0xf408bdc, `lw` at 0xf408be4.
   3 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x6c, including `sw` at 0xf408bb8, `sw` at 0xf408cbc, `sw` at 0xf408d30.
@@ -33083,8 +33031,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf408c20 stores 4 bytes to [a0+108] +0x4.
   The `sw` at 0xf408c28 stores 4 bytes to [a0+108] +0xc.
   The `sw` at 0xf408c2c stores 4 bytes to [a0+108] +0x8.
-  The `sw` at 0xf408c58 stores 4 bytes to [a0+108] +0x10.
-  The `lhu` at 0xf408c5c loads 2 bytes from [a0+108] +0x2.
+  The `sw` at 0xf408c58 stores 4 bytes to ?.
+  The `lhu` at 0xf408c5c loads 2 bytes from ?.
+  The `sh` at 0xf408c6c stores 2 bytes to ?.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf408d84, `lw` at 0xf408d9c.
   The `lw` at 0xf408d88 loads 4 bytes from [a0+1232] +0x4.
   The `jalr` at 0xf408af0 calls find_display [0xf4019c0] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
@@ -33112,7 +33061,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf408d60 targets 0xf408d7c and is always taken.
   The `beql` branch at 0xf408d80 targets 0xf408da0, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0; its branch-likely delay slot `lw v0,124(s0)` at 0xf408d84 runs only when taken and is annulled on fall-through.
   The `beql` branch at 0xf408da4 targets 0xf408dbc, is taken when v0(=[a0+124]) == 0, and falls through when v0(=[a0+124]) != 0; its branch-likely delay slot `lw t0,116(sp)` at 0xf408da8 runs only when taken and is annulled on fall-through.
-  The `bne` branch at 0xf408dc0 targets 0xf408dd0 and is never taken: its condition can never hold for these operands, so execution always falls through.
+  The `bne` branch at 0xf408dc0 targets 0xf408dd0, is taken when t0(?) != 0, and falls through when t0(?) == 0.
   The `beq` branch at 0xf408dc8 targets 0xf408dd0 and is always taken.
   The return at 0xf408ddc has v0 = one of 0x0, 0x1.
   The instructions from 0xf408b30 to 0xf408b30 are not reached by any path from the entry, and their branches are not listed.
@@ -33909,7 +33858,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x406100 calls dmSetError with a0=0x1778, a1=0x47ff08, a2=0x4144e8, a3=?.
   The `jalr` at 0x406120 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x40613c calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?, a4=ret(dmBufferMapData).
-  The `jalr` at 0x406164 calls qparsemain with a0=ret(dmBufferMapData), a1=[a0+220], a2=[a0+224], a3=ret(dmBufferMapData).
+  The `jalr` at 0x406164 calls qparsemain with a0=ret(dmBufferMapData), a1=[a0+220], a2=[a0+224], a3=?.
   The `jalr` at 0x406174 calls dmBufferGetUSTMSCpair with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x406198 calls dmBufferSetUSTMSCpair with a0=?, a1=ret(dmBufferGetUSTMSCpair), a2=?, a3=?.
   The `jalr` at 0x4061c4 calls vice_dmbuf_send with a0=[a0], a1=?, a2=a0+136, a3=a0+100, a4=0x4.
@@ -36724,7 +36673,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x404358 calls dmBufferAllocate with a0=[a0+16], a1=sp-296, a2=a0 at entry (arg0), a3=?.
   The `jalr` at 0x404384 calls dmBufferMapData with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x404398 calls dmBufferMapData with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4043bc calls dmICAnyToAny with a0=ret(dmBufferMapData), a1=ret(dmBufferMapData), a2=?, a3=?, a4=0x0.
+  The `jalr` at 0x4043bc calls dmICAnyToAny with a0=?, a1=ret(dmBufferMapData), a2=?, a3=?, a4=0x0.
   The `jalr` at 0x4043e8 calls dmBufferSetSize with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404414 calls dmBufferGetImageType with a0=a1 at entry (arg1), a1=?, a2=?, a3=?.
   The `jalr` at 0x40442c calls dmBufferSetImageType with a0=?, a1=ret(dmBufferGetImageType), a2=?, a3=?.
@@ -37850,7 +37799,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bgezall` at 0x403188 calls _poolneeds [0x403100] with a0=0x0, a1=?, a2=?, a3=?.
   The `jalr` at 0x403198 calls dmBufferCreatePool with a0=?, a1=0x47bea8, a2=?, a3=?.
   The `jalr` at 0x4031c0 calls dmParamsDestroy with a0=?, a1=?, a2=?, a3=?.
-  The `jalr` at 0x4031d0 calls dmBufferSetPoolSelectSize with a0=[0x47bea8], a1=(a0 << 0x10), a2=?, a3=?.
+  The `jalr` at 0x4031d0 calls dmBufferSetPoolSelectSize with a0=[0x47bea8], a1=?, a2=?, a3=?.
   The `jalr` at 0x4031dc calls dmBufferGetPoolFD with a0=[0x47bea8], a1=?, a2=?, a3=?.
   The `beq` branch at 0x4031a0 targets 0x4031bc, is taken when v0(=ret(dmBufferCreatePool)) == 0, and falls through when v0(=ret(dmBufferCreatePool)) != 0.
   The return at 0x4031b4 has v0 = -0x1.
@@ -41061,8 +41010,8 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x402488 calls dmSetError with a0=0x1774, a1=0x408068, a2=0x408198, a3=?.
   The `jalr` at 0x4024a0 calls vice_open_and_setetc with a0=0x4081d8, a1=?, a2=0x410000, a3=?.
   The `jalr` at 0x4024bc calls vice_alloc with a0=ret(vice_open_and_setetc), a1=0x1, a2=?, a3=?.
-  The `jalr` at 0x4024d4 calls vice_mmap with a0=ret(vice_open_and_setetc), a1=ret(vice_alloc), a2=0x1, a3=?.
-  The `jalr` at 0x4024f4 calls vice_settlb with a0=ret(vice_open_and_setetc), a1=0x7e, a2=ret(vice_alloc), a3=0x1, a4=sp-80.
+  The `jalr` at 0x4024d4 calls vice_mmap with a0=?, a1=ret(vice_alloc), a2=0x1, a3=?.
+  The `jalr` at 0x4024f4 calls vice_settlb with a0=?, a1=0x7e, a2=?, a3=0x1, a4=sp-80.
   The `jalr` at 0x402514 calls dmSetError with a0=0x1774, a1=0x408068, a2=0x408208, a3=?.
   The `bgezall` at 0x402524 calls e_cleanup [0x402670] with a0=ret(calloc), a1=?, a2=?, a3=?.
   The `jalr` at 0x40253c calls vice_file with a0=0x408228, a1=?, a2=0x410000, a3=?.
@@ -41072,7 +41021,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x4025a8 calls vice_event_init with a0=[ret(calloc)], a1=ret(calloc)+184, a2=ret(calloc)+224, a3=0x40, a4=0x40.
   The `jalr` at 0x4025c0 calls getenv with a0=0x408270, a1=?, a2=?, a3=?.
   The `jalr` at 0x4025f8 calls dmSetError with a0=0x1774, a1=0x408068, a2=0x4081e8, a3=?.
-  The `bgezall` at 0x402608 calls free_formats [0x401ad8] with a0=ret(calloc)+4, a1=?, a2=?, a3=?.
+  The `bgezall` at 0x402608 calls free_formats [0x401ad8] with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x402614 calls free with a0=ret(calloc), a1=?, a2=?, a3=?.
   The `jalr` at 0x40262c calls printf with a0=0x408280, a1=?, a2=?, a3=?.
   The `jalr` at 0x402650 calls dmSetError with a0=0x1774, a1=0x408068, a2=0x408258, a3=?.
@@ -41565,7 +41514,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x403bc8 targets 0x4039e0 and is always taken.
   The `beq` branch at 0x403be8 targets 0x403b00 and is always taken.
   The `beq` branch at 0x403c08 targets 0x403b00 and is always taken.
-  The return at 0x4039f4 has v0 = one of -0x1, ret(dmBufferSetImageType), ret(vice_dmbuf_recv).
+  The return at 0x4039f4 has v0 = one of -0x1, ret(dmBufferSetImageType), ?.
 - `d_open` in `usr/lib32/dmedia/imageconverters/vicejpeg.so` at 0x403c10 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/dmedia/imageconverters/vicejpeg.so`.
@@ -43049,7 +42998,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x4022b0 targets 0x402304, is taken when v0(?) == 0, and falls through when v0(?) != 0.
   The `beq` branch at 0x4022bc targets 0x4022dc, is taken when a7(=[a0+140]) == 0, and falls through when a7(=[a0+140]) != 0.
   The `beq` branch at 0x402350 targets 0x4022f8 and is always taken.
-  The return at 0x4022fc has v0 = one of -0x1, ret(vice_dmbuf_recv).
+  The return at 0x4022fc has v0 = one of -0x1, ?.
   The return at 0x40232c has v0 = ret(dmBufferSetImageType).
 - `mvpRead` in `usr/lib32/dmedia/video/debug/mvp.so` at 0x403a80 (n32).
   Evidence grade: inferred.
@@ -43260,7 +43209,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x404824 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a7=0x7.
   The `jalr` at 0x404830 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404844 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x40486c calls mvpErrPrintf with a0=ret(malloc), a1=0x418180, a2=[a1+56], a3=[a1+52], a4=ret(strerror).
+  The `jalr` at 0x40486c calls mvpErrPrintf with a0=ret(malloc), a1=0x418180, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x4048b8 calls mvpAssertFail with a0=0x4181c8, a1=0x420180, a2=0x155, a3=[[a1+8]+56], a4=ret(malloc), a6=-0x1.
   The `jalr` at 0x40490c calls sprintf with a0=ret(malloc), a1=0x418200, a2=[a1+12], a3=a1 at entry (arg1), a4=a1 at entry (arg1), a5=ret(malloc).
   The `beq` branch at 0x404540 targets 0x404560, is taken when at(=[a1+8]) == 0, and falls through when at(=[a1+8]) != 0.
@@ -43365,7 +43314,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x405004 loads 4 bytes from a0 (arg0 at entry) +0x68.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0x405038, `lw` at 0x4050a8, `lw` at 0x405390.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x64, including `lw` at 0x4050c0, `lw` at 0x4057bc.
-  19 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4050d0, `lw` at 0x4050dc, `lw` at 0x4050f0.
+  20 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4050d0, `lw` at 0x4050dc, `lw` at 0x4050f0.
   The `lw` at 0x40512c loads 4 bytes from [a0+104] +0x118.
   The `lbu` at 0x405130 loads 1 byte from [[a0+104]+280] +0x129.
   2 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405168, `sw` at 0x4057d0.
@@ -43375,7 +43324,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `sw` accesses store 4 bytes to [a0+104] +0x24, including `sw` at 0x4053f4, `sw` at 0x405470, `sw` at 0x405a30.
   3 such `lw` accesses load 4 bytes from [a0+104] +0x28, including `lw` at 0x4055ec, `lw` at 0x4058b0, `lw` at 0x4059a8.
   2 such `lbu` accesses load 1 byte from [a0+104] +0x4b, including `lbu` at 0x405700, `lbu` at 0x405880.
-  3 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x4057d8, `lw` at 0x4057fc, `lw` at 0x405830.
+  2 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x4057d8, `lw` at 0x4057fc.
   The `jalr` at 0x404ff8 calls mvpPrintf with a0=0x0, a1=0x4182d8, a2=[a0+8], a3=?, a4=a0 at entry (arg0).
   The `jalr` at 0x40502c calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x213, a3=?.
   The `jalr` at 0x40505c calls mvpAssertFail with a0=0x418318, a1=0x420180, a2=0x214, a3=?.
@@ -43393,7 +43342,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x405684 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `bgezall` at 0x4057a4 calls mvpGetNodeProto [0x403b40] with a0=[a0+104], a1=?, a2=?, a3=?.
   The `jalr` at 0x405804 calls mvpProxy with a0=[ret(mvpGetNodeProto)], a1=[ret(mvpGetNodeProto)], a2=?, a3=?.
-  The `jalr` at 0x405838 calls mvpCDev with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
+  The `jalr` at 0x405838 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4058c4 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-464, a3=?.
   The `jalr` at 0x4058e8 calls mvpPanic with a0=0x418368, a1=?, a2=?, a3=-0x1.
   The `jalr` at 0x405904 calls bcopy with a0=sp-456, a1=[a0+104]+60, a2=0xdc, a3=?.
@@ -46093,7 +46042,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x404824 calls mvpRevisionError with a0=?, a1=?, a2=?, a3=?, a7=0x7.
   The `jalr` at 0x404830 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x404844 calls strerror with a0=ret(oserror), a1=?, a2=?, a3=?.
-  The `jalr` at 0x40486c calls mvpErrPrintf with a0=ret(malloc), a1=0x418180, a2=[a1+56], a3=[a1+52], a4=ret(strerror).
+  The `jalr` at 0x40486c calls mvpErrPrintf with a0=ret(malloc), a1=0x418180, a2=?, a3=?, a4=ret(strerror).
   The `jalr` at 0x4048b8 calls mvpAssertFail with a0=0x4181c8, a1=0x420180, a2=0x155, a3=[[a1+8]+56], a4=ret(malloc), a6=-0x1.
   The `jalr` at 0x40490c calls sprintf with a0=ret(malloc), a1=0x418200, a2=[a1+12], a3=a1 at entry (arg1), a4=a1 at entry (arg1), a5=ret(malloc).
   The `beq` branch at 0x404540 targets 0x404560, is taken when at(=[a1+8]) == 0, and falls through when at(=[a1+8]) != 0.
@@ -46198,7 +46147,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x405004 loads 4 bytes from a0 (arg0 at entry) +0x68.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0x405038, `lw` at 0x4050a8, `lw` at 0x405390.
   2 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x64, including `lw` at 0x4050c0, `lw` at 0x4057bc.
-  19 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4050d0, `lw` at 0x4050dc, `lw` at 0x4050f0.
+  20 such `lw` accesses load 4 bytes from ?, including `lw` at 0x4050d0, `lw` at 0x4050dc, `lw` at 0x4050f0.
   The `lw` at 0x40512c loads 4 bytes from [a0+104] +0x118.
   The `lbu` at 0x405130 loads 1 byte from [[a0+104]+280] +0x129.
   2 such `sw` accesses store 4 bytes to ?, including `sw` at 0x405168, `sw` at 0x4057d0.
@@ -46208,7 +46157,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `sw` accesses store 4 bytes to [a0+104] +0x24, including `sw` at 0x4053f4, `sw` at 0x405470, `sw` at 0x405a30.
   3 such `lw` accesses load 4 bytes from [a0+104] +0x28, including `lw` at 0x4055ec, `lw` at 0x4058b0, `lw` at 0x4059a8.
   2 such `lbu` accesses load 1 byte from [a0+104] +0x4b, including `lbu` at 0x405700, `lbu` at 0x405880.
-  3 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x4057d8, `lw` at 0x4057fc, `lw` at 0x405830.
+  2 such `lw` accesses load 4 bytes from ret(mvpGetNodeProto) +0x0, including `lw` at 0x4057d8, `lw` at 0x4057fc.
   The `jalr` at 0x404ff8 calls mvpPrintf with a0=0x0, a1=0x4182d8, a2=[a0+8], a3=?, a4=a0 at entry (arg0).
   The `jalr` at 0x40502c calls mvpAssertFail with a0=0x418248, a1=0x420180, a2=0x213, a3=?.
   The `jalr` at 0x40505c calls mvpAssertFail with a0=0x418318, a1=0x420180, a2=0x214, a3=?.
@@ -46226,7 +46175,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0x405684 calls oserror with a0=?, a1=?, a2=?, a3=?.
   The `bgezall` at 0x4057a4 calls mvpGetNodeProto [0x403b40] with a0=[a0+104], a1=?, a2=?, a3=?.
   The `jalr` at 0x405804 calls mvpProxy with a0=[ret(mvpGetNodeProto)], a1=[ret(mvpGetNodeProto)], a2=?, a3=?.
-  The `jalr` at 0x405838 calls mvpCDev with a0=[ret(mvpGetNodeProto)], a1=?, a2=?, a3=?.
+  The `jalr` at 0x405838 calls mvpCDev with a0=?, a1=?, a2=?, a3=?.
   The `jalr` at 0x4058c4 calls ioctl with a0=[[a0+104]+40], a1=0x6d767002, a2=sp-464, a3=?.
   The `jalr` at 0x4058e8 calls mvpPanic with a0=0x418368, a1=?, a2=?, a3=-0x1.
   The `jalr` at 0x405904 calls bcopy with a0=sp-456, a1=[a0+104]+60, a2=0xdc, a3=?.
@@ -49106,12 +49055,11 @@ Each entry records selected software behavior from its exact binary range. The r
   It occupies 240 bytes.
   The `lw` at 0xd002938 loads 4 bytes from ((a0 << 0x2) + sym(_etcp)) +0x0.
   The `lw` at 0xd002958 loads 4 bytes from ((a0 << 0x2) + sym(_etcid)) +0x0.
-  The `sw` at 0xd0029f8 stores 4 bytes to ((a0 << 0x2) + sym(_etcp)) +0x0.
-  The `sw` at 0xd002a04 stores 4 bytes to ((a0 << 0x2) + sym(_etcid)) +0x0.
+  2 such `sw` accesses store 4 bytes to ?, including `sw` at 0xd0029f8, `sw` at 0xd002a04.
   The `jalr` at 0xd00297c calls __assert with a0=0xd0042f8, a1=0xd004308, a2=0x25, a3=0x9b60, a4=[((a0 << 0x2) + sym(_etcid))], a5=sym(_etcid).
   The `jalr` at 0xd00298c calls vice_alloc with a0=a0 at entry (arg0), a1=0x1, a2=?, a3=?.
   The `jalr` at 0xd0029a4 calls vice_mmap with a0=a0 at entry (arg0), a1=ret(vice_alloc), a2=0x1, a3=?.
-  The `jalr` at 0xd0029c4 calls vice_settlb with a0=a0 at entry (arg0), a1=0x7f, a2=ret(vice_alloc), a3=0x1, a4=sp-80.
+  The `jalr` at 0xd0029c4 calls vice_settlb with a0=a0 at entry (arg0), a1=0x7f, a2=?, a3=0x1, a4=sp-80.
   The `bne` branch at 0xd002948 targets 0xd0029d8, is taken when at(=[((a0 << 0x2) + sym(_etcp))]) != 0, and falls through when at(=[((a0 << 0x2) + sym(_etcp))]) == 0.
   The `beq` branch at 0xd002960 targets 0xd002984, is taken when a4(=[((a0 << 0x2) + sym(_etcid))]) == 0, and falls through when a4(=[((a0 << 0x2) + sym(_etcid))]) != 0.
   The `beq` branch at 0xd0029cc targets 0xd0029e8, is taken when v0(=ret(vice_settlb)) == 0, and falls through when v0(=ret(vice_settlb)) != 0.
@@ -49375,7 +49323,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from sym(_vicenoise) +0x0, including `lw` at 0xd0034a0, `lw` at 0xd0034e4, `lw` at 0xd003530.
   The `sw` at 0xd003528 stores 4 bytes to a1 (arg1 at entry) +0x0.
   The `jalr` at 0xd00345c calls open with a0=a0 at entry (arg0), a1=0x0, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jalr` at 0xd00348c calls mmap with a0=0x0, a1=?, a2=0x1, a3=0x2, a4=ret(open), a5=0x0.
+  The `jalr` at 0xd00348c calls mmap with a0=0x0, a1=?, a2=0x1, a3=0x2, a5=0x0.
   The `jalr` at 0xd0034b8 calls printf with a0=0xd0043e8, a1=a0 at entry (arg0), a2=?, a3=?.
   The `jalr` at 0xd0034f8 calls printf with a0=0xd0043e8, a1=a0 at entry (arg0), a2=?, a3=?.
   The `jalr` at 0xd003510 calls stat with a0=a0 at entry (arg0), a1=sp-192, a2=?, a3=?.
@@ -49765,13 +49713,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf4036fc targets 0xf403714 and is always taken.
   The `beq` branch at 0xf403718 targets 0xf40372c, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf403734 targets 0xf403744, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf403754 targets 0xf4037a8 and is always taken.
+  The `beq` branch at 0xf403754 targets 0xf4037a8, is taken when at(?) == 0, and falls through when at(?) != 0.
   The `beq` branch at 0xf403784 targets 0xf403580 and is always taken.
   The `beq` branch at 0xf403794 targets 0xf4036b0 and is always taken.
   The `beq` branch at 0xf4037a0 targets 0xf40369c and is always taken.
+  The return at 0xf403770 has v0 = 0x0.
   The return at 0xf4037b4 has v0 = 0x1.
   The return at 0xf4037e4 has v0 = 0x0.
-  The instructions from 0xf40375c to 0xf403774 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryOutputGain` in `usr/lib32/libXsgivc.so` at 0xf4037f0 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -49836,7 +49784,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf403a90 targets 0xf403aa8 and is always taken.
   The `beq` branch at 0xf403aac targets 0xf403ac0, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf403ac4 targets 0xf403ad8, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf403ad8 targets 0xf403b3c and is always taken.
+  The `beq` branch at 0xf403ad8 targets 0xf403b3c, is taken when v0(?) == 0, and falls through when v0(?) != 0.
   The `beq` branch at 0xf403b20 targets 0xf403970 and is always taken.
   The `beq` branch at 0xf403b34 targets 0xf403a44 and is always taken.
   The `beq` branch at 0xf403b3c targets 0xf403ae0 and is always taken.
@@ -49952,13 +49900,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf403fa8 targets 0xf403fc0 and is always taken.
   The `beq` branch at 0xf403fc4 targets 0xf403fd8, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf403fe0 targets 0xf403ff0, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf404000 targets 0xf404058 and is always taken.
+  The `beq` branch at 0xf404000 targets 0xf404058, is taken when at(?) == 0, and falls through when at(?) != 0.
   The `beq` branch at 0xf404034 targets 0xf403e2c and is always taken.
   The `beq` branch at 0xf404044 targets 0xf403f5c and is always taken.
   The `beq` branch at 0xf404050 targets 0xf403f48 and is always taken.
+  The return at 0xf40401c has v0 = 0x0.
   The return at 0xf404064 has v0 = 0x1.
   The return at 0xf404094 has v0 = 0x0.
-  The instructions from 0xf404008 to 0xf404020 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcFreeVideoFormatInfo` in `usr/lib32/libXsgivc.so` at 0xf4040a0 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -50040,7 +49988,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf404430 targets 0xf404440, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xf404440 targets 0xf40433c and is always taken.
   The return at 0xf40426c has v0 = 0x0.
-  The return at 0xf404350 has v0 = one of ret(malloc), 0x0.
+  The return at 0xf404350 has v0 = one of ?, 0x0.
   The return at 0xf404374 has v0 = 0x0.
 - `XSGIvcDisableChannel` in `usr/lib32/libXsgivc.so` at 0xf404450 (n32).
   Evidence grade: inferred.
@@ -50084,12 +50032,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf4045c8 targets 0xf4045e0 and is always taken.
   The `beq` branch at 0xf4045e4 targets 0xf4045f8, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf4045fc targets 0xf40460c, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf40461c targets 0xf40465c and is always taken.
+  The `beq` branch at 0xf40461c targets 0xf40465c, is taken when t0(?) == 0, and falls through when t0(?) != 0.
   The `beq` branch at 0xf404644 targets 0xf4044cc and is always taken.
   The `beq` branch at 0xf404654 targets 0xf404578 and is always taken.
+  The return at 0xf404634 has v0 = 0x0.
   The return at 0xf404660 has v0 = 0x1.
   The return at 0xf40468c has v0 = 0x0.
-  The instructions from 0xf404624 to 0xf404638 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryOutputPhaseSCH` in `usr/lib32/libXsgivc.so` at 0xf4046a0 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -50159,7 +50107,7 @@ Each entry records selected software behavior from its exact binary range. The r
   9 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf404938, `lw` at 0xf404978, `lw` at 0xf404a28.
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x70, including `lw` at 0xf40493c, `lw` at 0xf404a2c, `lw` at 0xf404a80.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x64, including `sw` at 0xf404960, `sw` at 0xf404a94.
-  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf404968, `sh` at 0xf404a24.
+  The `sh` at 0xf404968 stores 2 bytes to [a0+108] +0x2.
   2 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf404970, `sb` at 0xf40499c.
   4 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x60, including `lw` at 0xf404974, `lw` at 0xf4049a0, `lw` at 0xf4049a8.
   2 such `sw` accesses store 4 bytes to a0 (arg0 at entry) +0x60, including `sw` at 0xf404980, `sw` at 0xf404ac8.
@@ -50171,17 +50119,17 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xf4049ec stores 4 bytes to [a0+108] +0xc.
   The `sw` at 0xf4049f0 stores 4 bytes to [a0+108] +0x8.
   The `sw` at 0xf4049f8 stores 4 bytes to [a0+108] +0x4.
-  The `sw` at 0xf404a10 stores 4 bytes to [a0+108] +0x10.
-  The `lhu` at 0xf404a14 loads 2 bytes from [a0+108] +0x2.
+  The `sw` at 0xf404a10 stores 4 bytes to ?.
+  The `lhu` at 0xf404a14 loads 2 bytes from ?.
+  2 such `sh` accesses store 2 bytes to ?, including `sh` at 0xf404a24, `sh` at 0xf404aa4.
   The `sb` at 0xf404a9c stores 1 byte to ?.
-  The `sh` at 0xf404aa4 stores 2 bytes to ?.
   The `lw` at 0xf404b08 loads 4 bytes from [a0+1232] +0x4.
   The `lw` at 0xf404b14 loads 4 bytes from a0 (arg0 at entry) +0x7c.
   The `bgezall` at 0xf404904 calls find_display [0xf407460] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0xf404930 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf4049f4 calls strlen with a0=a3 at entry (arg3), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=?, a4=0x1, a5=sp-128, a6=[a0+108], a7=sym(_XAsyncErrorHandler).
-  The `jalr` at 0xf404a4c calls memcpy with a0=[a0+108], a1=a3 at entry (arg3), a2=ret(strlen)+1, a3=?, a6=[a0+108], a7=[a0+108].
-  The `jalr` at 0xf404a74 calls _XSend with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=ret(strlen)+1, a3=?, a6=[a0+108], a7=[a0+108].
+  The `jalr` at 0xf404a4c calls memcpy with a0=[a0+108], a1=a3 at entry (arg3), a2=ret(strlen)+1, a3=?, a6=[a0+108].
+  The `jalr` at 0xf404a74 calls _XSend with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=ret(strlen)+1, a3=?, a6=[a0+108].
   The `jalr` at 0xf404ad0 calls _XReply with a0=a0 at entry (arg0), a1=sp-104, a2=0x0, a3=0x1.
   The `jalr` at 0xf404af4 calls _XDeqAsyncHandler with a0=a0 at entry (arg0), a1=sp-144, a2=?, a3=?.
   The `jalr` at 0xf404b0c calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
@@ -50201,14 +50149,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf404ae4 targets 0xf404afc and is always taken.
   The `beq` branch at 0xf404b00 targets 0xf404b14, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf404b18 targets 0xf404b2c, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf404b2c targets 0xf404b88 and is always taken.
+  The `beq` branch at 0xf404b2c targets 0xf404b88, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beq` branch at 0xf404b68 targets 0xf404950 and is always taken.
   The `beq` branch at 0xf404b78 targets 0xf404a94 and is always taken.
   The `beq` branch at 0xf404b80 targets 0xf404a80 and is always taken.
   The `beq` branch at 0xf404b88 targets 0xf404b50 and is always taken.
   The `beq` branch at 0xf404ba4 targets 0xf404b4c and is always taken.
+  The return at 0xf404b44 has v0 = 0x0.
   The return at 0xf404b58 has v0 = one of 0x0, 0x1.
-  The instructions from 0xf404b34 to 0xf404b48 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryVersion` in `usr/lib32/libXsgivc.so` at 0xf404d80 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -50363,13 +50311,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf40530c targets 0xf405324 and is always taken.
   The `beq` branch at 0xf405328 targets 0xf40533c, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf405344 targets 0xf405354, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf405364 targets 0xf4053b8 and is always taken.
+  The `beq` branch at 0xf405364 targets 0xf4053b8, is taken when at(?) == 0, and falls through when at(?) != 0.
   The `beq` branch at 0xf405394 targets 0xf405184 and is always taken.
   The `beq` branch at 0xf4053a4 targets 0xf4052c0 and is always taken.
   The `beq` branch at 0xf4053b0 targets 0xf4052ac and is always taken.
+  The return at 0xf405380 has v0 = 0x0.
   The return at 0xf4053c4 has v0 = 0x1.
   The return at 0xf4053f4 has v0 = 0x0.
-  The instructions from 0xf40536c to 0xf405384 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcNVListVideoFormats` in `usr/lib32/libXsgivc.so` at 0xf405400 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -50443,7 +50391,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf405748 targets 0xf405758, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xf405758 targets 0xf405660 and is always taken.
   The return at 0xf405594 has v0 = 0x0.
-  The return at 0xf405674 has v0 = one of ret(malloc), 0x0.
+  The return at 0xf405674 has v0 = one of ?, 0x0.
   The return at 0xf405694 has v0 = 0x0.
 - `XSGIvcSetChannelGammaMap` in `usr/lib32/libXsgivc.so` at 0xf405760 (n32).
   Evidence grade: inferred.
@@ -50666,7 +50614,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x6c, including `lw` at 0xf406040, `lw` at 0xf406078, `lw` at 0xf406244.
   The `lw` at 0xf406044 loads 4 bytes from a0 (arg0 at entry) +0x70.
   The `sw` at 0xf406060 stores 4 bytes to a0 (arg0 at entry) +0x64.
-  2 such `sh` accesses store 2 bytes to [a0+108] +0x2, including `sh` at 0xf406068, `sh` at 0xf4060d8.
+  The `sh` at 0xf406068 stores 2 bytes to [a0+108] +0x2.
   2 such `sb` accesses store 1 byte to [a0+108] +0x0, including `sb` at 0xf406070, `sb` at 0xf4060a8.
   The `lw` at 0xf406074 loads 4 bytes from a0 (arg0 at entry) +0x60.
   The `sw` at 0xf406080 stores 4 bytes to a0 (arg0 at entry) +0x60.
@@ -50674,8 +50622,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0xf406094 loads 4 bytes from [ret(find_display)+8] +0x4.
   The `sw` at 0xf406098 stores 4 bytes to [a0+108] +0x4.
   The `sb` at 0xf40609c stores 1 byte to [a0+108] +0x1.
-  The `lhu` at 0xf4060c0 loads 2 bytes from [a0+108] +0x2.
-  The `sw` at 0xf4060cc stores 4 bytes to [a0+108] +0x8.
+  The `lhu` at 0xf4060c0 loads 2 bytes from ?.
+  The `sw` at 0xf4060cc stores 4 bytes to ?.
+  The `sh` at 0xf4060d8 stores 2 bytes to ?.
   The `sw` at 0xf406108 stores 4 bytes to a3 (arg3 at entry) +0x0.
   5 such `lw` accesses load 4 bytes from [a0+1232] +0x4, including `lw` at 0xf406118, `lw` at 0xf4061f8, `lw` at 0xf406254.
   5 such `lw` accesses load 4 bytes from a0 (arg0 at entry) +0x7c, including `lw` at 0xf406124, `lw` at 0xf406204, `lw` at 0xf406260.
@@ -50724,7 +50673,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf406300 targets 0xf406310, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
   The `beq` branch at 0xf406310 targets 0xf40621c and is always taken.
   The return at 0xf406150 has v0 = 0x0.
-  The return at 0xf406230 has v0 = one of ret(malloc), 0x0.
+  The return at 0xf406230 has v0 = one of ?, 0x0.
   The return at 0xf40628c has v0 = 0x0.
 - `XSGIvcQueryMonitorName` in `usr/lib32/libXsgivc.so` at 0xf406320 (n32).
   Evidence grade: inferred.
@@ -50852,7 +50801,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf406890 targets 0xf4067d8 and is always taken.
   The `beq` branch at 0xf4068b0 targets 0xf4067d8 and is always taken.
   The return at 0xf4066cc has v0 = 0x0.
-  The return at 0xf4067e8 has v0 = one of ret(malloc), 0x0.
+  The return at 0xf4067e8 has v0 = one of ?, 0x0.
   The return at 0xf40680c has v0 = 0x0.
 - `XSGIvcQueryMonitorBaseProtocol` in `usr/lib32/libXsgivc.so` at 0xf4068c0 (n32).
   Evidence grade: inferred.
@@ -51239,7 +51188,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jalr` at 0xf4078d8 calls _XReply with a0=a0 at entry (arg0), a1=sp-120, a2=0x0, a3=0x1.
   The `jalr` at 0xf4078fc calls _XDeqAsyncHandler with a0=a0 at entry (arg0), a1=sp-160, a2=?, a3=?.
   The `jalr` at 0xf407914 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0xf407928 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
+  The `jalr` at 0xf407928 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf407978 calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf40798c calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0xf4079b4 calls XMissingExtension with a0=a0 at entry (arg0), a1=[0xf40c13c], a2=?, a3=?.
@@ -51253,14 +51202,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf4078ec targets 0xf407904 and is always taken.
   The `beq` branch at 0xf407908 targets 0xf40791c, is taken when v0(=[a0+1232]) == 0, and falls through when v0(=[a0+1232]) != 0.
   The `beq` branch at 0xf407920 targets 0xf407934, is taken when t9(=[a0+124]) == 0, and falls through when t9(=[a0+124]) != 0.
-  The `beq` branch at 0xf407934 targets 0xf40799c and is always taken.
+  The `beq` branch at 0xf407934 targets 0xf40799c, is taken when a3(?) == 0, and falls through when a3(?) != 0.
   The `beq` branch at 0xf407980 targets 0xf4077b8 and is always taken.
   The `beq` branch at 0xf407994 targets 0xf4078a0 and is always taken.
   The `beq` branch at 0xf40799c targets 0xf407944 and is always taken.
   The `beq` branch at 0xf4079bc targets 0xf407940 and is always taken.
   The return at 0xf40794c has v0 = one of 0x0, 0x1.
   The return at 0xf40796c has v0 = 0x0.
-  The instructions from 0xf40793c to 0xf40793c are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcMultiCursorSetMode` in `usr/lib32/libXsgivc.so` at 0xf4079d0 (n32).
   Evidence grade: inferred.
   Exact binary: `usr/lib32/libXsgivc.so`.
@@ -51696,7 +51644,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xf409140 targets 0xf409088 and is always taken.
   The `beq` branch at 0xf409160 targets 0xf409088 and is always taken.
   The return at 0xf408f7c has v0 = 0x0.
-  The return at 0xf409098 has v0 = one of ret(malloc), 0x0.
+  The return at 0xf409098 has v0 = one of ?, 0x0.
   The return at 0xf4090bc has v0 = 0x0.
 - `XSGIvcQueryBestChannelRectangle` in `usr/lib32/libXsgivc.so` at 0xf409170 (n32).
   Evidence grade: inferred.
@@ -52141,13 +52089,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2003eb8 targets 0x2003ed0 and is always taken.
   The `beq` branch at 0x2003ed4 targets 0x2003ee8, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x2003ef0 targets 0x2003f00, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x2003f10 targets 0x2003f68 and is always taken.
+  The `beq` branch at 0x2003f10 targets 0x2003f68, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beq` branch at 0x2003f44 targets 0x2003d24 and is always taken.
   The `beq` branch at 0x2003f54 targets 0x2003e64 and is always taken.
   The `beq` branch at 0x2003f60 targets 0x2003e4c and is always taken.
+  The return at 0x2003f2c has v0 = 0x0.
   The return at 0x2003f74 has v0 = 0x1.
   The return at 0x2003fa4 has v0 = 0x0.
-  The instructions from 0x2003f18 to 0x2003f30 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryOutputGain` in `usr/lib64/libXsgivc.so` at 0x2003fb0 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52212,14 +52160,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2004278 targets 0x2004290 and is always taken.
   The `beq` branch at 0x2004294 targets 0x20042a8, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x20042ac targets 0x20042c0, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x20042c0 targets 0x2004328 and is always taken.
+  The `beq` branch at 0x20042c0 targets 0x2004328, is taken when t1(?) == 0, and falls through when t1(?) != 0.
   The `beq` branch at 0x200430c targets 0x2004138 and is always taken.
   The `beq` branch at 0x2004320 targets 0x2004224 and is always taken.
   The `beq` branch at 0x2004328 targets 0x20042d0 and is always taken.
   The `beq` branch at 0x2004348 targets 0x20042cc and is always taken.
   The return at 0x20042d8 has v0 = one of 0x0, 0x1.
   The return at 0x20042f8 has v0 = 0x0.
-  The instructions from 0x20042c8 to 0x20042c8 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcSendMonitorCommand` in `usr/lib64/libXsgivc.so` at 0x2004350 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52329,13 +52276,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x20047bc targets 0x20047d4 and is always taken.
   The `beq` branch at 0x20047d8 targets 0x20047ec, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x20047f4 targets 0x2004804, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x2004814 targets 0x2004868 and is always taken.
+  The `beq` branch at 0x2004814 targets 0x2004868, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beq` branch at 0x2004844 targets 0x2004628 and is always taken.
   The `beq` branch at 0x2004854 targets 0x2004768 and is always taken.
   The `beq` branch at 0x2004860 targets 0x2004750 and is always taken.
+  The return at 0x2004830 has v0 = 0x0.
   The return at 0x2004874 has v0 = 0x1.
   The return at 0x20048a4 has v0 = 0x0.
-  The instructions from 0x200481c to 0x2004834 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcFreeVideoFormatInfo` in `usr/lib64/libXsgivc.so` at 0x20048b0 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52417,7 +52364,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2004c64 targets 0x2004c74, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
   The `beq` branch at 0x2004c74 targets 0x2004b70 and is always taken.
   The return at 0x2004a98 has v0 = 0x0.
-  The return at 0x2004b84 has v0 = one of ret(malloc), 0x0.
+  The return at 0x2004b84 has v0 = one of ?, 0x0.
   The return at 0x2004ba8 has v0 = 0x0.
 - `XSGIvcDisableChannel` in `usr/lib64/libXsgivc.so` at 0x2004c80 (n64).
   Evidence grade: inferred.
@@ -52461,12 +52408,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2004e14 targets 0x2004e2c and is always taken.
   The `beq` branch at 0x2004e30 targets 0x2004e44, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x2004e48 targets 0x2004e58, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x2004e68 targets 0x2004ea8 and is always taken.
+  The `beq` branch at 0x2004e68 targets 0x2004ea8, is taken when t3(?) == 0, and falls through when t3(?) != 0.
   The `beq` branch at 0x2004e90 targets 0x2004d04 and is always taken.
   The `beq` branch at 0x2004ea0 targets 0x2004dbc and is always taken.
+  The return at 0x2004e80 has v0 = 0x0.
   The return at 0x2004eac has v0 = 0x1.
   The return at 0x2004ed8 has v0 = 0x0.
-  The instructions from 0x2004e70 to 0x2004e84 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryOutputPhaseSCH` in `usr/lib64/libXsgivc.so` at 0x2004ee0 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52536,7 +52483,7 @@ Each entry records selected software behavior from its exact binary range. The r
   9 such `ld` accesses load 8 bytes from a0 (arg0 at entry) +0xb0, including `ld` at 0x200518c, `ld` at 0x20051d4, `ld` at 0x2005290.
   3 such `ld` accesses load 8 bytes from a0 (arg0 at entry) +0xb8, including `ld` at 0x2005190, `ld` at 0x2005294, `ld` at 0x20052e4.
   2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0xa0, including `sd` at 0x20051ac, `sd` at 0x20052fc.
-  2 such `sh` accesses store 2 bytes to [a0+176]:8 +0x2, including `sh` at 0x20051b4, `sh` at 0x200528c.
+  The `sh` at 0x20051b4 stores 2 bytes to [a0+176]:8 +0x2.
   2 such `sb` accesses store 1 byte to [a0+176]:8 +0x0, including `sb` at 0x20051c8, `sb` at 0x20051fc.
   4 such `ld` accesses load 8 bytes from a0 (arg0 at entry) +0x98, including `ld` at 0x20051cc, `ld` at 0x2005200, `ld` at 0x2005208.
   2 such `sd` accesses store 8 bytes to a0 (arg0 at entry) +0x98, including `sd` at 0x20051e0, `sd` at 0x2005338.
@@ -52548,21 +52495,21 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0x200524c stores 4 bytes to [a0+176]:8 +0xc.
   The `sw` at 0x2005250 stores 4 bytes to [a0+176]:8 +0x8.
   The `sw` at 0x2005258 stores 4 bytes to [a0+176]:8 +0x4.
-  The `lhu` at 0x2005270 loads 2 bytes from [a0+176]:8 +0x2.
-  The `sw` at 0x2005274 stores 4 bytes to [a0+176]:8 +0x10.
-  The `sh` at 0x2005304 stores 2 bytes to ?.
+  The `lhu` at 0x2005270 loads 2 bytes from ?.
+  The `sw` at 0x2005274 stores 4 bytes to ?.
+  2 such `sh` accesses store 2 bytes to ?, including `sh` at 0x200528c, `sh` at 0x2005304.
   The `sb` at 0x200530c stores 1 byte to ?.
   The `ld` at 0x2005378 loads 8 bytes from [a0+2408]:8 +0x8.
   The `ld` at 0x2005384 loads 8 bytes from a0 (arg0 at entry) +0xd0.
   The `bgezall` at 0x2005158 calls find_display [0x2007e50] with a0=a0 at entry (arg0), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jalr` at 0x2005184 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x2005254 calls strlen with a0=a3 at entry (arg3), a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=?, a4=0x1, a5=sp-136, a6=[a0+176]:8, a7=sym(_XAsyncErrorHandler).
-  The `jalr` at 0x20052ac calls memcpy with a0=[a0+176]:8, a1=a3 at entry (arg3), a2=(ret(strlen)+1 << 0x0), a3=ret(strlen)+1, a5=((ret(strlen)+1 << 0x0) + [a0+176]:8), a6=[a0+176]:8, a7=[a0+176]:8.
-  The `jalr` at 0x20052d8 calls _XSend with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=(ret(strlen)+1 << 0x0), a3=ret(strlen)+1, a5=((ret(strlen)+1 << 0x0) + [a0+176]:8), a6=[a0+176]:8, a7=[a0+176]:8.
+  The `jalr` at 0x20052ac calls memcpy with a0=[a0+176]:8, a1=a3 at entry (arg3), a2=(ret(strlen)+1 << 0x0), a3=ret(strlen)+1, a5=((ret(strlen)+1 << 0x0) + [a0+176]:8), a6=[a0+176]:8.
+  The `jalr` at 0x20052d8 calls _XSend with a0=a0 at entry (arg0), a1=a3 at entry (arg3), a2=(ret(strlen)+1 << 0x0), a3=ret(strlen)+1, a5=((ret(strlen)+1 << 0x0) + [a0+176]:8), a6=[a0+176]:8.
   The `jalr` at 0x2005340 calls _XReply with a0=a0 at entry (arg0), a1=sp-104, a2=0x0, a3=0x1.
   The `jalr` at 0x2005364 calls _XDeqAsyncHandler with a0=a0 at entry (arg0), a1=sp-160, a2=?, a3=?.
   The `jalr` at 0x200537c calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
-  The `jalr` at 0x2005390 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=0x0.
+  The `jalr` at 0x2005390 calls (unknown callee) with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x20053d0 calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?, a6=[a0+176]:8.
   The `jalr` at 0x20053e0 calls _XFlush with a0=a0 at entry (arg0), a1=?, a2=?, a3=?.
   The `jalr` at 0x200540c calls XMissingExtension with a0=a0 at entry (arg0), a1=[0x200c260]:8, a2=?, a3=?.
@@ -52578,14 +52525,14 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2005354 targets 0x200536c and is always taken.
   The `beq` branch at 0x2005370 targets 0x2005384, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x2005388 targets 0x200539c, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x200539c targets 0x20053f8 and is always taken.
+  The `beq` branch at 0x200539c targets 0x20053f8, is taken when a3(?) == 0, and falls through when a3(?) != 0.
   The `beq` branch at 0x20053d8 targets 0x20051a8 and is always taken.
   The `beq` branch at 0x20053e8 targets 0x20052fc and is always taken.
   The `beq` branch at 0x20053f0 targets 0x20052e4 and is always taken.
   The `beq` branch at 0x20053f8 targets 0x20053c0 and is always taken.
   The `beq` branch at 0x2005414 targets 0x20053bc and is always taken.
+  The return at 0x20053b4 has v0 = 0x0.
   The return at 0x20053c8 has v0 = one of 0x0, 0x1.
-  The instructions from 0x20053a4 to 0x20053b8 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcQueryVersion` in `usr/lib64/libXsgivc.so` at 0x2005600 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52740,13 +52687,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2005bc8 targets 0x2005be0 and is always taken.
   The `beq` branch at 0x2005be4 targets 0x2005bf8, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x2005c00 targets 0x2005c10, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x2005c20 targets 0x2005c78 and is always taken.
+  The `beq` branch at 0x2005c20 targets 0x2005c78, is taken when a0(?) == 0, and falls through when a0(?) != 0.
   The `beq` branch at 0x2005c54 targets 0x2005a28 and is always taken.
   The `beq` branch at 0x2005c64 targets 0x2005b74 and is always taken.
   The `beq` branch at 0x2005c70 targets 0x2005b5c and is always taken.
+  The return at 0x2005c3c has v0 = 0x0.
   The return at 0x2005c84 has v0 = 0x1.
   The return at 0x2005cb4 has v0 = 0x0.
-  The instructions from 0x2005c28 to 0x2005c40 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcNVListVideoFormats` in `usr/lib64/libXsgivc.so` at 0x2005cc0 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -52820,7 +52767,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x200602c targets 0x200603c, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
   The `beq` branch at 0x200603c targets 0x2005f44 and is always taken.
   The return at 0x2005e70 has v0 = 0x0.
-  The return at 0x2005f58 has v0 = one of ret(malloc), 0x0.
+  The return at 0x2005f58 has v0 = one of ?, 0x0.
   The return at 0x2005f78 has v0 = 0x0.
 - `XSGIvcSetChannelGammaMap` in `usr/lib64/libXsgivc.so` at 0x2006050 (n64).
   Evidence grade: inferred.
@@ -53043,7 +52990,7 @@ Each entry records selected software behavior from its exact binary range. The r
   3 such `ld` accesses load 8 bytes from a0 (arg0 at entry) +0xb0, including `ld` at 0x2006964, `ld` at 0x20069a4, `ld` at 0x2006b88.
   The `ld` at 0x2006968 loads 8 bytes from a0 (arg0 at entry) +0xb8.
   The `sd` at 0x2006988 stores 8 bytes to a0 (arg0 at entry) +0xa0.
-  2 such `sh` accesses store 2 bytes to [a0+176]:8 +0x2, including `sh` at 0x2006990, `sh` at 0x2006a18.
+  The `sh` at 0x2006990 stores 2 bytes to [a0+176]:8 +0x2.
   2 such `sb` accesses store 1 byte to [a0+176]:8 +0x0, including `sb` at 0x2006998, `sb` at 0x20069d8.
   The `ld` at 0x200699c loads 8 bytes from a0 (arg0 at entry) +0x98.
   The `sd` at 0x20069b0 stores 8 bytes to a0 (arg0 at entry) +0x98.
@@ -53051,8 +52998,9 @@ Each entry records selected software behavior from its exact binary range. The r
   The `lw` at 0x20069c4 loads 4 bytes from [ret(find_display)+16]:8 +0x4.
   The `sw` at 0x20069c8 stores 4 bytes to [a0+176]:8 +0x4.
   The `sb` at 0x20069cc stores 1 byte to [a0+176]:8 +0x1.
-  The `lhu` at 0x20069f8 loads 2 bytes from [a0+176]:8 +0x2.
-  The `sw` at 0x2006a08 stores 4 bytes to [a0+176]:8 +0x8.
+  The `lhu` at 0x20069f8 loads 2 bytes from ?.
+  The `sw` at 0x2006a08 stores 4 bytes to ?.
+  The `sh` at 0x2006a18 stores 2 bytes to ?.
   The `sw` at 0x2006a48 stores 4 bytes to a3 (arg3 at entry) +0x0.
   5 such `ld` accesses load 8 bytes from [a0+2408]:8 +0x8, including `ld` at 0x2006a58, `ld` at 0x2006b3c, `ld` at 0x2006b98.
   5 such `ld` accesses load 8 bytes from a0 (arg0 at entry) +0xd0, including `ld` at 0x2006a64, `ld` at 0x2006b48, `ld` at 0x2006ba4.
@@ -53101,7 +53049,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2006c44 targets 0x2006c54, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
   The `beq` branch at 0x2006c54 targets 0x2006b60 and is always taken.
   The return at 0x2006a90 has v0 = 0x0.
-  The return at 0x2006b74 has v0 = one of ret(malloc), 0x0.
+  The return at 0x2006b74 has v0 = one of ?, 0x0.
   The return at 0x2006bd0 has v0 = 0x0.
 - `XSGIvcQueryMonitorName` in `usr/lib64/libXsgivc.so` at 0x2006c60 (n64).
   Evidence grade: inferred.
@@ -53229,7 +53177,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2007228 targets 0x2007174 and is always taken.
   The `beq` branch at 0x2007248 targets 0x2007174 and is always taken.
   The return at 0x2007050 has v0 = 0x0.
-  The return at 0x2007184 has v0 = one of ret(malloc), 0x0.
+  The return at 0x2007184 has v0 = one of ?, 0x0.
   The return at 0x20071a8 has v0 = 0x0.
 - `XSGIvcQueryMonitorBaseProtocol` in `usr/lib64/libXsgivc.so` at 0x2007250 (n64).
   Evidence grade: inferred.
@@ -53633,14 +53581,13 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2008328 targets 0x2008340 and is always taken.
   The `beq` branch at 0x2008344 targets 0x2008358, is taken when v0(=[a0+2408]:8) == 0, and falls through when v0(=[a0+2408]:8) != 0.
   The `beq` branch at 0x200835c targets 0x2008370, is taken when t9(=[a0+208]:8) == 0, and falls through when t9(=[a0+208]:8) != 0.
-  The `beq` branch at 0x2008370 targets 0x20083d4 and is always taken.
+  The `beq` branch at 0x2008370 targets 0x20083d4, is taken when t3(?) == 0, and falls through when t3(?) != 0.
   The `beq` branch at 0x20083b8 targets 0x20081d4 and is always taken.
   The `beq` branch at 0x20083cc targets 0x20082d4 and is always taken.
   The `beq` branch at 0x20083d4 targets 0x2008380 and is always taken.
   The `beq` branch at 0x20083f4 targets 0x200837c and is always taken.
   The return at 0x2008388 has v0 = one of 0x0, 0x1.
   The return at 0x20083a8 has v0 = 0x0.
-  The instructions from 0x2008378 to 0x2008378 are not reached by any path from the entry, and their branches are not listed.
 - `XSGIvcMultiCursorSetMode` in `usr/lib64/libXsgivc.so` at 0x2008400 (n64).
   Evidence grade: inferred.
   Exact binary: `usr/lib64/libXsgivc.so`.
@@ -54077,7 +54024,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0x2009bb4 targets 0x2009afc and is always taken.
   The `beq` branch at 0x2009bd4 targets 0x2009afc and is always taken.
   The return at 0x20099dc has v0 = 0x0.
-  The return at 0x2009b0c has v0 = one of ret(malloc), 0x0.
+  The return at 0x2009b0c has v0 = one of ?, 0x0.
   The return at 0x2009b30 has v0 = 0x0.
 - `XSGIvcQueryBestChannelRectangle` in `usr/lib64/libXsgivc.so` at 0x2009be0 (n64).
   Evidence grade: inferred.

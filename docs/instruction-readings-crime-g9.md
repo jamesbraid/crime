@@ -722,7 +722,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0xa001ac04 calls Signal [0xa002495c] with a0=0x2, a1=0xffffffffa001a1c8, a2=?, a3=?.
   The `jal` at 0xa001ac1c calls copyregs [0xa001ad98] with a0=[0xffffffffa0058e00], a1=[0xffffffffa0058e4c], a2=sp-160, a3=?.
   The `jal` at 0xa001ac3c calls _do_it [0xa0010e9c] with a0=sp-192, a1=[a0+4], a2=0x1, a3=sp-168, a4=0xffffffffa001101c.
-  The `jal` at 0xa001ac50 calls copyregs [0xa001ad98] with a0=[0xffffffffa0058e4c], a1=[0xffffffffa0058e00], a2=?, a3=?, a5=[[0xffffffffa0001010]+12].
+  The `jal` at 0xa001ac50 calls copyregs [0xa001ad98] with a0=[0xffffffffa0058e4c], a1=[0xffffffffa0058e00], a2=?, a3=?.
   The `jal` at 0xa001ac64 calls Signal [0xa002495c] with a0=0x2, a1=0xffffffffa001bdf4, a2=?, a3=?.
   The `beq` branch at 0xa001aa88 targets 0xa001ac74, is taken when v0(=ret(isidbg)) == 0, and falls through when v0(=ret(isidbg)) != 0.
   The `beq` branch at 0xa001aa98 targets 0xa001abc4, is taken when s0(=a1) == t8(=0x1), and falls through when s0(=a1) != t8(=0x1).
@@ -1779,12 +1779,12 @@ Each entry records selected software behavior from its exact binary range. The r
   The `sw` at 0xa0025cdc stores 4 bytes to a1 (arg1 at entry) +0x0.
   The `jal` at 0xa0025be4 calls index [0xa0030e70] with a0=a0 at entry (arg0), a1=0x28, a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0xa0025c18 calls strncmp [0xa0030d60] with a0=?, a1=a0 at entry (arg0), a2=?, a3=?.
-  The `jal` at 0xa0025c54 calls parseargs [0xa0025ac8] with a0=ret(index), a1=?, a2=sp-80, a3=?.
+  The `jal` at 0xa0025c54 calls parseargs [0xa0025ac8] with a0=?, a1=?, a2=sp-80, a3=?.
   The `jal` at 0xa0025c64 calls strlen [0xa00309ac] with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0xa0025c74 calls strlen [0xa00309ac] with a0=ret(parseargs), a1=?, a2=?, a3=?.
-  The `jal` at 0xa0025c98 calls malloc [0xa002fb10] with a0=?, a1=(ret(strlen) + ret(strlen)), a2=?, a3=?.
+  The `jal` at 0xa0025c98 calls malloc [0xa002fb10] with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0xa0025cb8 calls sprintf [0xa002e920] with a0=ret(malloc), a1=?, a2=?, a3=?.
-  The `jal` at 0xa0025cc8 calls strcat [0xa00308f0] with a0=ret(malloc), a1=ret(parseargs), a2=?, a3=?.
+  The `jal` at 0xa0025cc8 calls strcat [0xa00308f0] with a0=ret(malloc), a1=?, a2=?, a3=?.
   The `beq` branch at 0xa0025bf0 targets 0xa0025c34, is taken when v0(=ret(index)) == 0, and falls through when v0(=ret(index)) != 0.
   The `beq` branch at 0xa0025bf8 targets 0xa0025c34, is taken when s2(?) == 0, and falls through when s2(?) != 0.
   The `beq` branch at 0xa0025c08 targets 0xa0025c34, is taken when a0(=[0xffffffffa003bee0]) == 0, and falls through when a0(=[0xffffffffa003bee0]) != 0.
@@ -1846,7 +1846,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `jal` at 0xa0025ebc calls next [0xa0025ce0] with a0=a3 at entry (arg3), a1=sp-80, a2=sp-76, a3=sp-72.
   The `jal` at 0xa0025f30 calls walk [0xa0025e60] with a0=[a0+44], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
   The `jal` at 0xa0025f70 calls walk [0xa0025e60] with a0=[a0+40], a1=a1 at entry (arg1), a2=a2 at entry (arg2), a3=a3 at entry (arg3).
-  The `jal` at 0xa0025f88 calls strncmp [0xa0030d60] with a0=ret(next), a1=?, a2=?, a3=?.
+  The `jal` at 0xa0025f88 calls strncmp [0xa0030d60] with a0=?, a1=?, a2=?, a3=?.
   The `jal` at 0xa0025fc8 calls walk [0xa0025e60] with a0=[a0+44], a1=?, a2=?, a3=?.
   The `beq` branch at 0xa0025e88 targets 0xa0025f44, is taken when a0 == 0, and falls through when a0 != 0.
   The `beql` branch at 0xa0025e94 targets 0xa0025eb4, is taken when a1 == s0(=0x2b), and falls through when a1 != s0(=0x2b); its branch-likely delay slot `or a0,s3,zero` at 0xa0025e98 runs only when taken and is annulled on fall-through.
@@ -1856,7 +1856,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `beq` branch at 0xa0025ed4 targets 0xa0025f0c, is taken when t8(=[0xffffffffa003c778]) == 0, and falls through when t8(=[0xffffffffa003c778]) != 0.
   The `beq` branch at 0xa0025ef0 targets 0xa0025f88, is taken when a2(?) >= t9(?) (unsigned), and falls through when a2(?) < t9(?) (unsigned).
   The `bne` branch at 0xa0025f00 targets 0xa0025ee8, is taken when ra(?) != 0, and falls through when ra(?) == 0.
-  The `bne` branch at 0xa0025f08 targets 0xa0025f24, is taken when at(=one of 0x0, 0x1) != 0, and falls through when at(=one of 0x0, 0x1) == 0.
+  The `bne` branch at 0xa0025f08 targets 0xa0025f24, is taken when at(?) != 0, and falls through when at(?) == 0.
   The `beq` branch at 0xa0025f14 targets 0xa0025fb8, is taken when s2(=a1) == v1(=0x2b), and falls through when s2(=a1) != v1(=0x2b).
   The `beq` branch at 0xa0025f1c targets 0xa0025f48 and is always taken.
   The `beql` branch at 0xa0025f38 targets 0xa0025f68, is taken when v0(=ret(walk)) == 0, and falls through when v0(=ret(walk)) != 0; its branch-likely delay slot `lw a0,40(s1)` at 0xa0025f3c runs only when taken and is annulled on fall-through.
@@ -2349,7 +2349,7 @@ Each entry records selected software behavior from its exact binary range. The r
   The `bne` branch at 0xa002e1b4 targets 0xa002dfe0, is taken when a4(?) != a6(?), and falls through when a4(?) == a6(?).
   The `beq` branch at 0xa002e1bc targets 0xa002e0c8, is taken when a2(=[0xffffffffa005a3e4]) == 0, and falls through when a2(=[0xffffffffa005a3e4]) != 0.
   The `beq` branch at 0xa002e1d4 targets 0xa002e0c8 and is always taken.
-  The return at 0xa002e0c0 has v0 = one of -0x1, 0x0.
+  The return at 0xa002e0c0 has v0 = one of 0x0, ?.
 - `fputchar` in `sbin/stand/symmon.IP32` at 0xa002e1dc (n32).
   Evidence grade: inferred.
   Exact binary: `sbin/stand/symmon.IP32`.
