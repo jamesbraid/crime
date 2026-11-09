@@ -68,7 +68,7 @@ subsystem and X server installed (the `eoe` and `x_eoe` products).
 
 The `members` block lists the archive members that are in scope; an archive
 not named there is in scope whole. `os.a` is the whole base kernel, so only the
-tile allocator is read. `scripts/inventory.py` reads both blocks.
+tile allocator is read. `retools/tools/inventory.py` reads both blocks.
 
 ```members
 /usr/cpu/sysgen/IP32boot/os.a tile.o
@@ -115,7 +115,7 @@ a live guest.
 
 To use a different source, tar the paths in the block above from an installed O2
 and unpack with `mkdir -p root && cd root && tar -xvf /path/to/crime_root.tar`.
-`scripts/populate-root` then creates the symlinks from section 4.
+The symlinks from section 4 are committed; they resolve once `root/` is filled.
 
 ## 3. IRIX 6.5.0 (names and lines only)
 
@@ -127,7 +127,7 @@ useful for diffing.
 
 ## 4. Symlinks
 
-`scripts/populate-root` reads these blocks. `archives` lines are `ARCHIVE LINKDIR`:
+These blocks list the committed symlinks. `archives` lines are `ARCHIVE LINKDIR`:
 the archive's members are unpacked inside `root/` and linked into `LINKDIR`.
 `links` lines are `LINK TARGET`, relative to the repository root, one per binary
 (the same file-level style as gr4).
@@ -206,4 +206,4 @@ symbols either.
 | `vof/*.vfo` | not code | not measured |
 
 Types must come from the CRIME specification, the Linux and NetBSD drivers and these
-notes, not from debug sections. Run `scripts/map_binaries.py` for per-file detail.
+notes, not from debug sections. Run `retools/tools/map_binaries.py` for per-file detail.

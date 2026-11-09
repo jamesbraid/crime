@@ -39,7 +39,7 @@ Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 19
 
 For licensing reasons proprietary SGI binaries are **not checked into source control** (the local `root/` tree is gitignored). Copy them from an authentic IRIX distribution into `root/` following [IRIX_FILES.md](IRIX_FILES.md). Disassembly, decompiled C, headers and notes derived from them are committed.
 
-The subdirectories below contain relative symbolic links, one per file, resolving into `root/` (`scripts/populate-root` creates them from the `links` and `archives` blocks in IRIX_FILES.md). The targets were verified against IRIX 6.5.30 (O2 install and install media).
+The subdirectories below contain relative symbolic links, one per file, resolving into `root/` (committed; the `links` and `archives` blocks in IRIX_FILES.md list them). The targets were verified against IRIX 6.5.30 (O2 install and install media).
 
 | Directory | Contents | Target in `root/` | Debug level (6.5.30) |
 |---|---|---|---|
@@ -100,9 +100,8 @@ Install these on your workstation:
 
 Initialise only the submodules you need: `git submodule update --init m2c spimdisasm libdwarf-code`. `linux`, `netbsd` and `openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 linux netbsd openbsd`).
 
-Scripts (`scripts/`, run from the repository root):
+Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `scripts/` keeps only this workspace's configuration and data:
 
-- `populate-root`: create the symlinks listed in IRIX_FILES.md once `root/` is filled.
 - `map_binaries.py`: catalogue every linked binary (sections, functions, DWARF compilation units) into `binaries_manifest.json`.
 - `disasm_kernel.py`: disassemble the kernel `.o` objects into m2c-ready assembly under `crime_kernel/disasm/`. Unpack archives (`.a`) with `ar x` first.
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
@@ -110,9 +109,9 @@ Scripts (`scripts/`, run from the repository root):
 - `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `ddx/groups.json`. Its default module path is a placeholder; pass the real one.
 - `inventory.py`: count what the in-scope binaries contain and grade each entry understood, located, named-only, undocumented or no-software-dependency. It writes `docs/inventory/` and the measured table at the top of `docs/coverage.md`; see section 8.
 - `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
-- `ghidra/scripts/`: Ghidra headless scripts for IRIX code (gp and jump-table recovery, register-window stores, call edges, struct typing, bulk decompile), with the rules for choosing between Ghidra and the pipeline in [ghidra/scripts/README.md](ghidra/scripts/README.md). Shared, byte for byte, with the other graphics workspaces.
+- `retools/ghidra/scripts/`: Ghidra headless scripts for IRIX code (gp and jump-table recovery, register-window stores, call edges, struct typing, bulk decompile), with the rules for choosing between Ghidra and the pipeline in [retools/ghidra/scripts/README.md](retools/ghidra/scripts/README.md). Shared, byte for byte, with the other graphics workspaces.
 
-The scripts descend from gr4's and carry its BSD-3 notice ([scripts/LICENSE-gr4](scripts/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
+The scripts descend from gr4's and carry its BSD-3 notice ([retools/tools/LICENSE-gr4](retools/tools/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
 
 ---
 
@@ -202,7 +201,7 @@ A row becomes `understood` only through an entry whose subject it is: a table ro
 
 ## 8. Working on this repository
 
-Workflow: populate `root/` (IRIX_FILES.md), run `scripts/populate-root`, run `scripts/inventory.py`, pick work from the inventory, then read, write headers and docs, and regenerate the inventory.
+Workflow: populate `root/` (IRIX_FILES.md), run `retools/tools/inventory.py`, pick work from the inventory, then read, write headers and docs, and regenerate the inventory.
 
 ### Picking work
 
@@ -217,14 +216,14 @@ The inventory is the work list. [docs/coverage.md](docs/coverage.md) shows the m
 - `spec-registers.tsv`: every register in the public CRIME 1.5 and GBE specifications.
 - `summary.tsv`: the counts behind the table in `docs/coverage.md`.
 
-Take rows whose status is `undocumented` (then `named-only` and `located`), and take each to `understood`, sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `understood` when an entry (a table row, list item, paragraph or header comment) names it and also carries a label (established or inferred), a role and hardware effect, and a derivation citation, with no more than three items named on a line; a mention or a list of names reaches `named-only` at most. `scripts/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
+Take rows whose status is `undocumented` (then `named-only` and `located`), and take each to `understood`, sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `understood` when an entry (a table row, list item, paragraph or header comment) names it and also carries a label (established or inferred), a role and hardware effect, and a derivation citation, with no more than three items named on a line; a mention or a list of names reaches `named-only` at most. `retools/tools/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `docs/inventory/README.md` for how rows are detected and what the detection cannot see.
 
 In the same commit as any finding:
 
-1. Run `scripts/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `docs/inventory/` and `docs/coverage.md`.
+1. Run `retools/tools/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `docs/inventory/` and `docs/coverage.md`.
 2. Update the affected area row in `docs/coverage.md`.
 
-Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory-config.json` and say why in the commit. `scripts/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `scripts/inventory-config.json`.
+Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory-config.json` and say why in the commit. `retools/tools/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `scripts/inventory-config.json`.
 
 Roles:
 

@@ -2199,7 +2199,7 @@ These short routines were read in full from the 6.5.30 `kernel.o` object. Their 
 
 ## Memory-error, exception-vector and start-up routines without a symbol (`kernel.o`)
 
-These routines were read in full from the 6.5.30 `kernel.o` with relocations resolved (`objdump -dr`, `scripts/facts.py`). 
+These routines were read in full from the 6.5.30 `kernel.o` with relocations resolved (`objdump -dr`, `retools/tools/facts.py`).
 
 - `print_memerr` in `kernel.o`: prints the CRIME memory-error status and address as one console line, a 400-byte routine with no symbol at offset 0x105c4. Established.
   Its first two arguments are the status doubleword and the address doubleword. It masks the status with 0x0e700000 and picks the error-type text: bit 20 alone gives the soft ECC text, bit 21 the hard ECC text and bit 22 the multiple-error text, and in each of those three cases bit 24 chooses the read-modify-write text over the read text. Bit 25 alone gives the invalid-address-on-read text, bit 26 the write text and bit 27 the read-modify-write text. Any other value gives the unknown-error-type text.

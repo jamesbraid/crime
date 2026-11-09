@@ -12,9 +12,10 @@ ghidra/
                        tests/, tools/)
   import/<name>/       loader and import scripts for firmware images
   types/<name>/        data-type scripts
-  scripts/             the shared IRIX scripts (IrixGp, IrixJumpTables,
-                       FindWindowStores, MarkVolatileWindows, ...), linked from the retools submodule
 ```
+
+The shared IRIX scripts (IrixGp, IrixJumpTables, FindWindowStores, MarkVolatileWindows, ...)
+are in the retools submodule at `retools/ghidra/scripts/`; this directory does not link them.
 
 ## Build and run
 
@@ -22,11 +23,11 @@ Run a component's `tests/run-ghidra.sh` in the Ghidra image, then its
 `tests/check.py` on the dump directory it writes:
 
 ```sh
-tools/re-run --ghidra ghidra/processors/NAME/tests/run-ghidra.sh .cache/NAME
-tools/re-run python3 ghidra/processors/NAME/tests/check.py .cache/NAME
+retools/tools/re-run --ghidra ghidra/processors/NAME/tests/run-ghidra.sh .cache/NAME
+retools/tools/re-run python3 ghidra/processors/NAME/tests/check.py .cache/NAME
 ```
 
-(`tools/re-run` mounts the workspace at `/work`, the Ghidra image with `--ghidra` and
+(`retools/tools/re-run` mounts the workspace at `/work`, the Ghidra image with `--ghidra` and
 the toolchain image without.)
 
 ## Components
@@ -37,25 +38,25 @@ the toolchain image without.)
 
 ## Decompiled C as JSON, typed structures and function similarity
 
-`tools/re-run --ghidra-export OBJECT` runs Ghidra over one ELF object under `root/` (a linked
+`retools/tools/re-run --ghidra-export OBJECT` runs Ghidra over one ELF object under `root/` (a linked
 library or kernel, or a relocatable driver object) and prints the path of the JSON it wrote under
 `.cache/ghidra-export/`, which git ignores, so there is nothing to commit by accident. It builds the
 Ghidra image on first use. A relocatable object has no load address: name its functions, do not give
-addresses (Ghidra places such an object itself, so the addresses in its JSON are Ghidra's, not section offsets). The options are listed at the top of [tools/ghidra-export.py](../tools/ghidra-export.py);
+addresses (Ghidra places such an object itself, so the addresses in its JSON are Ghidra's, not section offsets). The options are listed at the top of [retools/tools/ghidra-export.py](../retools/tools/ghidra-export.py);
 function-similarity databases live in `.cache/ghidra-bsim/`.
 
 ```sh
 # decompiled C per function, as JSON with the decompiler's warnings
-tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
+retools/tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
     --decompile-symbol NAME --decompile-symbol 'prefix_*' --decompile-symbol @0xADDRESS
 # the same, with named structure fields
-tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
+retools/tools/re-run --ghidra-export root/usr/gfx/arch/IP32CRM32/libGLcore.so \
     --decompile-symbol NAME --types ghidra/types/context.types.json
 # every function, or a list file (one name, glob or @address per line)
-tools/re-run --ghidra-export OBJECT --decompile-all
-tools/re-run --ghidra-export OBJECT --decompile-list names.txt
+retools/tools/re-run --ghidra-export OBJECT --decompile-all
+retools/tools/re-run --ghidra-export OBJECT --decompile-list names.txt
 # function similarity: one object per run, each matched against those before it
-tools/re-run --ghidra-export OBJECT --bsim-db libglcore --bsim-label family-host-abi
+retools/tools/re-run --ghidra-export OBJECT --bsim-db libglcore --bsim-label family-host-abi
 ```
 
 `--types` takes a JSON file kept in the repository, with `structs`
@@ -75,7 +76,7 @@ is the machine address and `ghidra_address` where Ghidra holds it (the C text us
 
 ```sh
 # every routine of a PROM image, given its container header size and load address
-tools/re-run --ghidra-export root/firmware/PROM.img --flat --header HEADER_BYTES --load 0xLOAD_ADDRESS \
+retools/tools/re-run --ghidra-export root/firmware/PROM.img --flat --header HEADER_BYTES --load 0xLOAD_ADDRESS \
     --decompile-all
 ```
 

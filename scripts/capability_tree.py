@@ -1,1 +1,0 @@
-../retools/scripts/capability_tree.py

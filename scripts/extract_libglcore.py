@@ -1,1 +1,0 @@
-../retools/scripts/crime/extract_libglcore.py

@@ -1,1 +1,0 @@
-../retools/scripts/crime/extract_gl_tokens.py
