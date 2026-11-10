@@ -60,7 +60,6 @@ Sources searched: the CRIME, GBE, MACE and VICE specifications, the hardware dev
 
 - **VICE instruction sets and table formats.** The specification copy lacks printed pages 250 to 391. Routes tried: the three mirrors above (same file), the web (nothing else public). Next: disassemble the code images `libvice.so` and the `vice*.so` converters load, and read the `crime_tileaddr_for_vice` caller chain in `kernel.o`. Triage: software now. Step: disassemble the code images that libvice.so and the VICE converters load, and read the caller chain of crime_tileaddr_for_vice in the kernel object.
 - **Memory clock wording.** The 1997 product guide says "100 MHz" synchronous DRAM; the technical report and the CRIME specification clock the memory interface at 66 MHz with 133 MHz data pins. Inferred: 100 MHz is the part grade. Routes tried: both. Next: the memory chapter of the CRIME specification for the refresh and CAS timing assumptions. Triage: software now. Step: read the memory chapter of the CRIME specification for the refresh and CAS timing assumptions.
-- **PAL filter ratio in the MACE clip register text.** The register text (PDF 46) says "7868/720" where the overview and output register say 786 pixels, 12/11. Inferred: a misprint. No second source; the shipped video library is the next route (`mvp.o`). Triage: software now. Step: read the PAL format files and the clip-register code in the video library (mvp.o) for the filter ratio field.
 - **IRIX programming of MACE video framelock and genlock.** No binary in scope reaches the video window; see [mace-video.md](mace-video.md). Next: `mvp.o`, `mvp.so` and `libXsgivc.so`. Triage: software now. Step: read the framelock and genlock register writes in mvp.o, mvp.so and libXsgivc.so.
 - **VICE interrupt line.** [spec] says interrupt status bit 31 is a registered copy of a 100 MHz pin and [vice] gives the nine causes behind it; whether IRIX ever unmasks input 31 is not known. Routes tried: the kernel dispatcher in [memory.md](memory.md). Next: the VICE driver object in the kernel. Triage: missing release or binary. Step: the 6.5.30 kernel objects in this clone hold no VICE driver, only `vice_err`, `crime_tileaddr_for_vice` and `add_vice`, and the handler registrations with a constant input number name 28, 29, 21, 20, 25, 26, 16, 17, 6 and 5, never 31; three registrations pass the input in a register (`setmaceisavector`, `mvpinterrupt_init` and one in `crime_init`). Read those three sources, and look for the VICE driver in a release that ships it as a separate module.
 
@@ -174,6 +173,7 @@ Open from this pass:
 
 Scope of `kernel.o` and the shared inventory script: unchanged since pass 3; the per-group function filter proposed there is still the way to stop counting the non-graphics part of the base kernel object, and is being handled outside this workspace.
 
+No new route was available for these routines, so each entry rests on the disassembly of the 6.5.30 binary and, for the sample-server routines, on the public X.Org source of the same routine.
 
 30 October 2026, function backfill pass 3 (functions understood: 1,418 of 17,280, up from 1,328 at the start of the pass, both counted with the pinned sibling checkouts; distinct names 1,304, up from 1,224). Done in this pass:
 
@@ -198,6 +198,7 @@ Next, in order:
 - [xsgi.md](xsgi.md): `dbcDelayedSwapBufferDone`, `dbcSetDrawBuffer`, `ddxOpenScreens` and `ddxPostOpenScreens`, established from the whole decompilation.
 - [libglcore-o32.md](libglcore-o32.md): `__glCrmPassLogicOp`, `__glCrmPassStencilMode`, `__glCrmPassBlendFunc` (with a code table), `__glCrmUpdateHardwareState`, `__glCrmDepthLine` and `__glCrmFlatColorLine`, read from the whole disassembly.
 - [functions.md](functions.md): `crmerr_intr` and `vice_err` of `kernel.o`.
+- Routes for the next passes: the X server layer (the `nfb` routines, the four Xsgi routines) and the OpenGL driver routines (`rrmValidateCID`, `crmSetTextureParam`, `crmDefineTexture`, every `__glCrm` routine) are read from the 6.5.30 `crm.so`, `Xsgi` and `libGLcore.so` binaries; the kernel routines and the register questions below from the 6.5.30 kernel objects.
 
 Next, in order:
 
