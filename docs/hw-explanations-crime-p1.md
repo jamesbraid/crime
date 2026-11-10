@@ -22,6 +22,9 @@ Each entry says what one routine does to the hardware and cites the instruction 
   bundle shows only that `ra` was stored there at 0xd938330.
   Unknown: whether `vice_dmbuf_settlb`, `vice_etc_dramp` and `vice_put` touch device registers,
   since no notes for any of them appear in the bundle.
+  Settling test: disassemble the three routines in the library that contains them and check whether
+  any load or store uses an address in the 0x17000000 VICE window or a register-indirect base derived
+  from it; absence of such accesses settles the question for software, not for hardware.
   Evidence grade: inferred.
 - `AccumulateLoad` in `usr/gfx/arch/IP32CRM32/libGLcore.so` at 0xd9396b0 (n32).
   Inferred: reads frame-buffer pixels back in passes and hands them to the vice buffer calls, because
@@ -129,7 +132,9 @@ Each entry says what one routine does to the hardware and cites the instruction 
   0xd93e73c, since no value is given for those two stores; a linked row naming the field and a
   trace of their source registers would settle both.
   Unknown: whether abs 0x1018 is a hardware register; a linked mmio row for that address, or a
-  reviewed datasheet line naming it, would settle it.
+  reviewed datasheet line naming it, would settle it. Settling test: check the base register of the
+  accesses at the two stores (a base of zero means a literal low address, which still has to be
+  mapped to a device to be a register) and search the CRIME and MACE register tables for an offset 0x1018.
   Evidence grade: inferred.
 - `__glCrmEnableBlend` in `usr/gfx/arch/IP32CRM32/libGLcore.so` at 0xd940320 (n32).
   Writes words +0x7d58 and +0x2dec of the object at a0, and on one branch calls the pass routines
@@ -292,7 +297,9 @@ Each entry says what one routine does to the hardware and cites the instruction 
   the mask register at +0x21e8 of both mappings only when the byte at +0x7d09 and bit 15 of the
   word at +0x700 are set.
   Unknown: the device register, if any, at the absolute addresses 0x1018 and 0x1010; no datasheet
-  excerpt in the bundle names either address.
+  excerpt in the bundle names either address. Settling test: the same base-register check as for
+  0x1018 on the stores to both addresses, plus a search of the register tables for offsets 0x1010
+  and 0x1018; if neither a register row nor a mapping to a device window appears, the question stays unknown.
   Evidence grade: inferred.
 - `crmTexSubImageRead` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd977418 (o32).
   Inferred: `__glInitReadImageSrcInfo` sets up the source side and `__glClipReadPixels` clips the
@@ -342,7 +349,9 @@ Each entry says what one routine does to the hardware and cites the instruction 
   at a0, which a field table for that structure would supply.
   Unknown: the device-side work of `mapScratch`, `unmapScratch`, `pinBuffer`, `unpinBuffer` and
   `LoadLinearTlb`, and the targets of the three register-indirect calls at 0xd953504, 0xd95351c and
-  0xd953530; the notes for those routines, once written, would cover them.
+  0xd953530; the notes for those routines, once written, would cover them. Settling test: disassemble
+  each routine and list the stores to uncached device windows; resolve the three indirect calls by
+  reading the function-pointer table they load from (a dynamic-symbol or relocation read).
   Evidence grade: inferred.
 - `sgiInitKeymapInfo..JFC` in `usr/gfx/arch/GENERIC/Xsgi` at 0x10194160 (n32).
   Inferred: gets the keymap description for the keymap entry in a1 from the driver through request
