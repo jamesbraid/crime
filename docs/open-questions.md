@@ -13,7 +13,6 @@ Method and limits: each item was read with its cited evidence, meaning the lead'
 ### Software now, in priority order
 
 1. **VICE MPEG-2 entry point** (the Nekonomicon VICE lead). [vice.md](vice.md) lists `mpeg2dec` and `mpeg2dec_fld` program names, which conflicts with the "no MPEG-2 entry point" premise. Read the MPEG-2 entry point in the microcode image.
-2. **`dmBufferAllocate` slot leak.** Read the slot-free path on the failure route in the media library. The Result also calls it untestable.
 3. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
 4. **Video driver routines.** `mvptransfer_interrupt`, `av1_setup` and `av2_setup`, the three `mvp.o` routines still named only (see the last items).
 5. **o32 `DrawMode` and `Primitive` words** in `ClearCI`, `ClearRGBA`, `ClearStencil` and `crmCopyPixelsXfer`.
@@ -26,7 +25,7 @@ The other 44 software-now items follow in file order, each with its step inline.
 ### Found while triaging
 
 - Every recollection lead in section 14 has a Result line. Of the 71 recollection items here, 23 (from the 3D texture lead through the fill-rate lead) carry "Tested" lines from 30 October; the other 48 carry only section 14's Result. The list and section 14 need reconciling, and 7 items are tagged settled by an existing result.
-- Several Results call a question untestable where a software read exists: the NetBSD crmfb pixel format (the public driver source), the `dmBufferAllocate` leak (media library code) and the tile clearing on X session start (kernel allocator).
+- Several Results call a question untestable where a software read exists: the NetBSD crmfb pixel format (the public driver source) and the tile clearing on X session start (kernel allocator).
 - In this clone the submodules for NetBSD, Linux, OpenBSD, GXemul, MAME and the SGI documents are empty; readings that cite them need a checkout that holds those trees.
 - `xscreen` and `findvis` are not under the shipped `root/` tree, so the two items that name them are missing-binary items.
 - The intro and two items name a route the repo does not hold; they need rewording.
@@ -105,7 +104,6 @@ Each lead in [published-sources.md, section 14](published-sources.md#14-recollec
 - A constant-bit-rate MJPEG capture drops no frames in ICE, and IRIX 6.5.16 and later drop frames on capture: the ICE JPEG capture lead. Triage: missing release or binary. Step: the 6.5.16 drop claim needs that release, which is not in the set; the rate claim needs a JPEG microcode run, which needs the chip or a model.
 - The CRIME ID register reads "a" revision 1, and the four 128 MiB banks decode to 0x0, 0x08000000, 0x50000000 and 0x58000000: the CRIME bank map lead. Triage: settled by existing result. Step: the decode matches the identity layout in the Linux driver and the memory map; confirm and drop the line.
 - The DMbuffer frame buffer layout is non-linear and chunked, and a pbuffer DMbuffer needs glFinish before a CPU map: the DMbuffer layout lead. Triage: software now. Step: read the DMbuffer map path in the media library for a cache flush before CPU access, which is the glFinish caveat.
-- Triage: software now. Step: read the dmBufferAllocate slot-free path in the media library for the failure-path leak; the Result calls it untestable, but a slot leak is a code question.
 - Scan-out and video out at 1280x1024x60 reduce fill rate by a measurable amount: the memory bandwidth contention lead. Triage: hardware only. Step: the contention needs a timed run; recorded, not scheduled.
 - MPEG-1 decode leaves VICE state needing a reset after a few plays: the MPEG-1 pink video lead. Triage: software now. Step: read the reset calls that libvice and mvp make between decodes; the decoder-state fault itself is hardware only.
 - The O2 dual-head option is a PCI card that reports one CRIME display; display (0:1) is not supported: the second head lead. Triage: software now. Step: read the dual-channel detection (the dualchannel confidence test) and the X module's multi-screen path for display 0:1.
