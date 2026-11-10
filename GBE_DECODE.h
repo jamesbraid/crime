@@ -45,16 +45,16 @@
 #define GBE_OFF_VT_F2RF_LOCK 0x1001c /* established */
 #define GBE_OFF_VT_INTR01 0x10020 /* established */
 #define GBE_OFF_VT_INTR23 0x10024 /* established */
-#define GBE_OFF_FP_HDRV 0x10028 /* inferred */
-#define GBE_OFF_FP_VDRV 0x1002c /* inferred */
-#define GBE_OFF_FP_DE 0x10030 /* inferred */
+#define GBE_OFF_FP_HDRV 0x10028 /* established: gbe-spec register table, pages 39 and 40 */
+#define GBE_OFF_FP_VDRV 0x1002c /* established: gbe-spec register table, pages 39 and 40 */
+#define GBE_OFF_FP_DE 0x10030 /* established: gbe-spec register table, pages 39 and 40 */
 #define GBE_OFF_VT_HPIXEN 0x10034 /* established */
 #define GBE_OFF_VT_VPIXEN 0x10038 /* established */
 #define GBE_OFF_VT_HCMAP 0x1003c /* established */
 #define GBE_OFF_VT_VCMAP 0x10040 /* established */
-#define GBE_OFF_DID_START_XY 0x10044 /* inferred */
-#define GBE_OFF_CRS_START_XY 0x10048 /* inferred */
-#define GBE_OFF_VC_START_XY 0x1004c /* inferred */
+#define GBE_OFF_DID_START_XY 0x10044 /* established: gbe-spec register table, pages 39 and 40 */
+#define GBE_OFF_CRS_START_XY 0x10048 /* established: gbe-spec register table, pages 39 and 40 */
+#define GBE_OFF_VC_START_XY 0x1004c /* established: gbe-spec register table, pages 39 and 40 */
 #define GBE_OFF_OVR_WIDTH_TILE 0x20000 /* established */
 #define GBE_OFF_OVR_INHWCTRL 0x20004 /* established */
 #define GBE_OFF_OVR_CONTROL 0x20008 /* established */
@@ -142,6 +142,51 @@
 #define GBE_VT_INTR23_LINE2_SHIFT 12
 #define GBE_VT_INTR23_LINE2_MASK  0xfffu
 /* The four line interrupts reach CRIME interrupt inputs 16 to 19. */
+/* The three flat-panel drive registers and the three start-preset registers
+ * share one layout: two 12-bit counts, "off" or "x" in the low half. The
+ * specification names them VT_10 to VT_12 and VT_17 to VT_19 (pages 39 and
+ * 40). It compares FP_HDRV, FP_DE and the "x" halves with the horizontal
+ * counter and FP_VDRV and the "y" halves with the vertical counter, but it
+ * compares both halves of FP_DE with the horizontal counter. The totals
+ * shipped software writes for two fixed panels (806 and 771, 1065 and 1024)
+ * look like line counts, not pixel counts (inferred from magnitude); which
+ * counter FP_DE really uses is unknown. */
+/* FIELD: FP_HDRV.off 11:0 established */
+#define GBE_FP_HDRV_OFF_SHIFT 0
+#define GBE_FP_HDRV_OFF_MASK  0xfffu
+/* FIELD: FP_HDRV.on 23:12 established */
+#define GBE_FP_HDRV_ON_SHIFT 12
+#define GBE_FP_HDRV_ON_MASK  0xfffu
+/* FIELD: FP_VDRV.off 11:0 established */
+#define GBE_FP_VDRV_OFF_SHIFT 0
+#define GBE_FP_VDRV_OFF_MASK  0xfffu
+/* FIELD: FP_VDRV.on 23:12 established */
+#define GBE_FP_VDRV_ON_SHIFT 12
+#define GBE_FP_VDRV_ON_MASK  0xfffu
+/* FIELD: FP_DE.off 11:0 established */
+#define GBE_FP_DE_OFF_SHIFT 0
+#define GBE_FP_DE_OFF_MASK  0xfffu
+/* FIELD: FP_DE.on 23:12 established */
+#define GBE_FP_DE_ON_SHIFT 12
+#define GBE_FP_DE_ON_MASK  0xfffu
+/* FIELD: DID_START_XY.startx 11:0 established */
+#define GBE_DID_START_XY_STARTX_SHIFT 0
+#define GBE_DID_START_XY_STARTX_MASK  0xfffu
+/* FIELD: DID_START_XY.starty 23:12 established */
+#define GBE_DID_START_XY_STARTY_SHIFT 12
+#define GBE_DID_START_XY_STARTY_MASK  0xfffu
+/* FIELD: CRS_START_XY.startx 11:0 established */
+#define GBE_CRS_START_XY_STARTX_SHIFT 0
+#define GBE_CRS_START_XY_STARTX_MASK  0xfffu
+/* FIELD: CRS_START_XY.starty 23:12 established */
+#define GBE_CRS_START_XY_STARTY_SHIFT 12
+#define GBE_CRS_START_XY_STARTY_MASK  0xfffu
+/* FIELD: VC_START_XY.startx 11:0 established */
+#define GBE_VC_START_XY_STARTX_SHIFT 0
+#define GBE_VC_START_XY_STARTX_MASK  0xfffu
+/* FIELD: VC_START_XY.starty 23:12 established */
+#define GBE_VC_START_XY_STARTY_SHIFT 12
+#define GBE_VC_START_XY_STARTY_MASK  0xfffu
 /* ---- planes ---- */
 /* FIELD: OVR_WIDTH_TILE.fifo_reset 13:13 established */
 #define GBE_OVR_WIDTH_TILE_FIFO_RESET_SHIFT 13
@@ -279,6 +324,16 @@
  */
 /*
  * TESTVEC: 0xff804000 as CMAP_ENTRY => r=255, g=128, b=64
+ */
+
+/*
+ * TESTVEC: 0x00000fff as FP_HDRV => off=4095, on=0
+ */
+/*
+ * TESTVEC: 0x00001fff as FP_VDRV => off=4095, on=1
+ */
+/*
+ * TESTVEC: 0x00303326 as FP_DE => off=806, on=771
  */
 
 #endif /* GBE_DECODE_H */
