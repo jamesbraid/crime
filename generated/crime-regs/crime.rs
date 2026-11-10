@@ -1,4 +1,4 @@
-// generated from o2gfx f91052fc0766 CRIME_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 453c862972fc CRIME_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! CRIME memory controller and CPU-interface registers,
 //! and the interrupt input bit positions.
@@ -20,6 +20,10 @@ pub const ID_LOW_BYTE_DRAFT: u32 = 177;
 pub const MEM_BANKS: u32 = 8;
 /// established.
 pub const WATCHDOG_COUNT_BITS: u32 = 20;
+/// established: reset of bank 0.
+pub const MEM_BANK_CONTROL_RESET_BASE: u32 = 0;
+/// established: reset of bank n is BASE + n * STEP.
+pub const MEM_BANK_CONTROL_RESET_STEP: u32 = 1;
 
 /// CRIME CPU-interface register `id`: read, 64-bit; reset unknown; established.
 pub const REG_ID: u32 = 0x0000;
@@ -340,6 +344,11 @@ impl MemBankControl {
     /// Bit 8, established.
     pub const fn sdram_geometry(self) -> bool {
         (self.0 >> 8) & 1 != 0
+    }
+
+    /// Bits 4:0, established.
+    pub const fn base_match(self) -> u32 {
+        self.0 & 0x1f
     }
 }
 

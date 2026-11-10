@@ -65,6 +65,10 @@
 #define GBE_OFF_DID_INHWCTRL 0x40000 /* established */
 #define GBE_OFF_DID_CONTROL 0x40004 /* established */
 #define GBE_OFF_MODE_TABLE 0x48000 /* established: 32 window-ID entries */
+#define GBE_OFF_VC_0 0x80000 /* established: video capture region, left and right */
+#define GBE_OFF_VC_1 0x80004 /* established: video capture region, top and bottom */
+#define GBE_OFF_VC_2 0x80008 /* established: video capture control */
+#define GBE_OFF_VC_3 0x8000c /* established: video capture field and descriptor control */
 #define GBE_OFF_CMAP 0x50000 /* established: colour map */
 #define GBE_OFF_CMAP_FIFO 0x58000 /* established */
 #define GBE_OFF_GMAP 0x60000 /* established: 256 gamma entries */
@@ -181,6 +185,23 @@
 /* FIELD: CRS_START_XY.starty 23:12 established */
 #define GBE_CRS_START_XY_STARTY_SHIFT 12
 #define GBE_CRS_START_XY_STARTY_MASK  0xfffu
+/* FIELD: VT_FLAGS.sync_low 5:5 established */
+#define GBE_VT_FLAGS_SYNC_LOW_SHIFT 5
+#define GBE_VT_FLAGS_SYNC_LOW_MASK  0x1u
+/* sync_low is the sync-on-green control; that set means sync-on-green off is the public driver's reading (inferred). */
+/* FIELD: VT_HCMAP.off 11:0 established */
+#define GBE_VT_HCMAP_OFF_SHIFT 0
+#define GBE_VT_HCMAP_OFF_MASK  0xfffu
+/* FIELD: VT_HCMAP.on 23:12 established */
+#define GBE_VT_HCMAP_ON_SHIFT 12
+#define GBE_VT_HCMAP_ON_MASK  0xfffu
+/* FIELD: VT_VCMAP.off 11:0 established */
+#define GBE_VT_VCMAP_OFF_SHIFT 0
+#define GBE_VT_VCMAP_OFF_MASK  0xfffu
+/* FIELD: VT_VCMAP.on 23:12 established */
+#define GBE_VT_VCMAP_ON_SHIFT 12
+#define GBE_VT_VCMAP_ON_MASK  0xfffu
+/* The colour-map write window. A public driver reads the on counts, as left by firmware, as the active width and height (inferred). */
 /* FIELD: VC_START_XY.startx 11:0 established */
 #define GBE_VC_START_XY_STARTX_SHIFT 0
 #define GBE_VC_START_XY_STARTX_MASK  0xfffu
@@ -200,6 +221,8 @@
 /* FIELD: FRM_SIZE_TILE.depth 14:13 established */
 #define GBE_FRM_SIZE_TILE_DEPTH_SHIFT 13
 #define GBE_FRM_SIZE_TILE_DEPTH_MASK  0x3u
+/* ENUM: FRM_SIZE_TILE.depth 0 bits8 established */
+#define GBE_FRM_SIZE_TILE_DEPTH_BITS8 0
 /* ENUM: FRM_SIZE_TILE.depth 1 bits16 established */
 #define GBE_FRM_SIZE_TILE_DEPTH_BITS16 1
 /* ENUM: FRM_SIZE_TILE.depth 2 bits32 established */
@@ -264,6 +287,10 @@
 #define GBE_MODE_ENTRY_TYP_RGB5 4
 /* ENUM: MODE_ENTRY.typ 5 rgb8 established */
 #define GBE_MODE_ENTRY_TYP_RGB8 5
+/* ENUM: MODE_ENTRY.typ 6 rgba5 established */
+#define GBE_MODE_ENTRY_TYP_RGBA5 6
+/* ENUM: MODE_ENTRY.typ 7 rgb10 established */
+#define GBE_MODE_ENTRY_TYP_RGB10 7
 /* FIELD: MODE_ENTRY.cm 9:5 established */
 #define GBE_MODE_ENTRY_CM_SHIFT 5
 #define GBE_MODE_ENTRY_CM_MASK  0x1fu
@@ -289,6 +316,58 @@
 #define GBE_DID_LINE_DID_SHIFT 11
 #define GBE_DID_LINE_DID_MASK  0x1fu
 /* DID_LINE is a 16-bit entry. gm=1 turns gamma off. */
+/* ---- tile list ---- */
+/* FIELD: TILE_LIST_ENTRY.tile 12:0 established */
+#define GBE_TILE_LIST_ENTRY_TILE_SHIFT 0
+#define GBE_TILE_LIST_ENTRY_TILE_MASK  0x1fffu
+/* A tile-list entry is a 16-bit halfword holding a 13-bit tile number; the upper three bits are not decoded here. */
+/* ---- video capture ---- */
+/* FIELD: VC_0.left 11:0 established */
+#define GBE_VC_0_LEFT_SHIFT 0
+#define GBE_VC_0_LEFT_MASK  0xfffu
+/* FIELD: VC_0.right 23:12 established */
+#define GBE_VC_0_RIGHT_SHIFT 12
+#define GBE_VC_0_RIGHT_MASK  0xfffu
+/* FIELD: VC_1.top 11:0 established */
+#define GBE_VC_1_TOP_SHIFT 0
+#define GBE_VC_1_TOP_MASK  0xfffu
+/* FIELD: VC_1.bottom 23:12 established */
+#define GBE_VC_1_BOTTOM_SHIFT 12
+#define GBE_VC_1_BOTTOM_MASK  0xfffu
+/* FIELD: VC_2.dma_enable 0:0 established */
+#define GBE_VC_2_DMA_ENABLE_SHIFT 0
+#define GBE_VC_2_DMA_ENABLE_MASK  0x1u
+/* FIELD: VC_2.flicker_filter 1:1 established */
+#define GBE_VC_2_FLICKER_FILTER_SHIFT 1
+#define GBE_VC_2_FLICKER_FILTER_MASK  0x1u
+/* FIELD: VC_2.auto_field 2:2 established */
+#define GBE_VC_2_AUTO_FIELD_SHIFT 2
+#define GBE_VC_2_AUTO_FIELD_MASK  0x1u
+/* FIELD: VC_2.full_screen 3:3 established */
+#define GBE_VC_2_FULL_SCREEN_SHIFT 3
+#define GBE_VC_2_FULL_SCREEN_MASK  0x1u
+/* FIELD: VC_2.cs_bypass 4:4 established */
+#define GBE_VC_2_CS_BYPASS_SHIFT 4
+#define GBE_VC_2_CS_BYPASS_MASK  0x1u
+/* FIELD: VC_3.field_select 0:0 established */
+#define GBE_VC_3_FIELD_SELECT_SHIFT 0
+#define GBE_VC_3_FIELD_SELECT_MASK  0x1u
+/* FIELD: VC_3.descr_dma_enable 1:1 established */
+#define GBE_VC_3_DESCR_DMA_ENABLE_SHIFT 1
+#define GBE_VC_3_DESCR_DMA_ENABLE_MASK  0x1u
+/* FIELD: VC_3.field_corrupt 2:2 established */
+#define GBE_VC_3_FIELD_CORRUPT_SHIFT 2
+#define GBE_VC_3_FIELD_CORRUPT_MASK  0x1u
+/* FIELD: VC_3.end_of_field 3:3 established */
+#define GBE_VC_3_END_OF_FIELD_SHIFT 3
+#define GBE_VC_3_END_OF_FIELD_MASK  0x1u
+/* FIELD: VC_3.current_field 4:4 established */
+#define GBE_VC_3_CURRENT_FIELD_SHIFT 4
+#define GBE_VC_3_CURRENT_FIELD_MASK  0x1u
+/* FIELD: VC_3.descr_ptr 31:5 established */
+#define GBE_VC_3_DESCR_PTR_SHIFT 5
+#define GBE_VC_3_DESCR_PTR_MASK  0x7ffffffu
+/* Capture region bounds are inclusive. current_field is read only; descriptor-list DMA does not work on revision 1.1. */
 /* ---- colour map ---- */
 /* FIELD: CMAP_FIFO.free 5:0 established */
 #define GBE_CMAP_FIFO_FREE_SHIFT 0

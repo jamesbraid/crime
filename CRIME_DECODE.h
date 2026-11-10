@@ -164,7 +164,14 @@
 /* FIELD: CRIME.mem_bank_control.sdram_geometry 8:8 established */
 #define CRIME_MEM_BANK_CONTROL_SDRAM_GEOMETRY_SHIFT 8
 #define CRIME_MEM_BANK_CONTROL_SDRAM_GEOMETRY_MASK  0x1u
-/* sdram_geometry selects 16 Mbit or 64 Mbit device geometry; the other bits (bank address) are not decoded here. */
+/* FIELD: CRIME.mem_bank_control.base_match 4:0 established */
+#define CRIME_MEM_BANK_CONTROL_BASE_MATCH_SHIFT 0
+#define CRIME_MEM_BANK_CONTROL_BASE_MATCH_MASK  0x1fu
+/* sdram_geometry selects 16 Mbit or 64 Mbit device geometry; base_match is compared with request address bits 29:25 for a 32 MiB bank. */
+/* Reset values differ per bank, so the REG line's reset=unknown stands for none of them: bank n resets to n for n = 0 to 7
+ * (established, [spec] table 6-14; no shipped software writes banks 2 to 7). With 32 MiB parts that puts bank n at n * 32 MiB. */
+#define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 /* established: reset of bank 0 */
+#define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 /* established: reset of bank n is BASE + n * STEP */
 /* REG: CRIME.mem_error_stat 0x250 rw64 reset=unknown established */
 /* The single hard/soft/multiple bits are cleared by writing 0. */
 /* FIELD: CRIME.mem_error_stat.mace_id 6:0 established */

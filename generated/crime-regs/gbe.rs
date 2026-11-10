@@ -1,4 +1,4 @@
-// generated from o2gfx 702e0132824e GBE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 453c862972fc GBE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! GBE display back end register words, tables and
 //! offsets.
@@ -82,6 +82,14 @@ pub const OFF_DID_INHWCTRL: u32 = 0x40000;
 pub const OFF_DID_CONTROL: u32 = 0x40004;
 /// established: 32 window-ID entries.
 pub const OFF_MODE_TABLE: u32 = 0x48000;
+/// established: video capture region, left and right.
+pub const OFF_VC_0: u32 = 0x80000;
+/// established: video capture region, top and bottom.
+pub const OFF_VC_1: u32 = 0x80004;
+/// established: video capture control.
+pub const OFF_VC_2: u32 = 0x80008;
+/// established: video capture field and descriptor control.
+pub const OFF_VC_3: u32 = 0x8000c;
 /// established: colour map.
 pub const OFF_CMAP: u32 = 0x50000;
 /// established.
@@ -148,6 +156,8 @@ impl CtrlstatPclkSelect {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum FrmSizeTileDepth {
     /// established.
+    Bits8,
+    /// established.
     Bits16,
     /// established.
     Bits32,
@@ -158,6 +168,7 @@ pub enum FrmSizeTileDepth {
 impl FrmSizeTileDepth {
     pub const fn from_bits(v: u32) -> Self {
         match v {
+            0x0 => Self::Bits8,
             0x1 => Self::Bits16,
             0x2 => Self::Bits32,
             _ => Self::Other(v as u8),
@@ -166,6 +177,7 @@ impl FrmSizeTileDepth {
 
     pub const fn bits(self) -> u32 {
         match self {
+            Self::Bits8 => 0x0,
             Self::Bits16 => 0x1,
             Self::Bits32 => 0x2,
             Self::Other(v) => v as u32,
@@ -221,6 +233,10 @@ pub enum ModeEntryTyp {
     Rgb5,
     /// established.
     Rgb8,
+    /// established.
+    Rgba5,
+    /// established.
+    Rgb10,
     /// A value the notes do not name.
     Other(u8),
 }
@@ -234,6 +250,8 @@ impl ModeEntryTyp {
             0x3 => Self::Rgb4,
             0x4 => Self::Rgb5,
             0x5 => Self::Rgb8,
+            0x6 => Self::Rgba5,
+            0x7 => Self::Rgb10,
             _ => Self::Other(v as u8),
         }
     }
@@ -246,6 +264,8 @@ impl ModeEntryTyp {
             Self::Rgb4 => 0x3,
             Self::Rgb5 => 0x4,
             Self::Rgb8 => 0x5,
+            Self::Rgba5 => 0x6,
+            Self::Rgb10 => 0x7,
             Self::Other(v) => v as u32,
         }
     }
@@ -536,6 +556,73 @@ impl CrsStartXy {
 
     /// Bits 23:12, established.
     pub const fn starty(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `VT_FLAGS` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VtFlags(u32);
+
+impl VtFlags {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 5, established.
+    pub const fn sync_low(self) -> bool {
+        (self.0 >> 5) & 1 != 0
+    }
+}
+
+/// The `VT_HCMAP` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VtHcmap(u32);
+
+impl VtHcmap {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn off(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn on(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `VT_VCMAP` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VtVcmap(u32);
+
+impl VtVcmap {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn off(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn on(self) -> u32 {
         (self.0 >> 12) & 0xfff
     }
 }
@@ -840,6 +927,156 @@ impl DidLine {
     /// Bits 15:11, established.
     pub const fn did(self) -> u32 {
         (self.0 >> 11) & 0x1f
+    }
+}
+
+/// The `TILE_LIST_ENTRY` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct TileListEntry(u32);
+
+impl TileListEntry {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 12:0, established.
+    pub const fn tile(self) -> u32 {
+        self.0 & 0x1fff
+    }
+}
+
+/// The `VC_0` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Vc0(u32);
+
+impl Vc0 {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn left(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn right(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `VC_1` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Vc1(u32);
+
+impl Vc1 {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn top(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn bottom(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `VC_2` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Vc2(u32);
+
+impl Vc2 {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn dma_enable(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn flicker_filter(self) -> bool {
+        (self.0 >> 1) & 1 != 0
+    }
+
+    /// Bit 2, established.
+    pub const fn auto_field(self) -> bool {
+        (self.0 >> 2) & 1 != 0
+    }
+
+    /// Bit 3, established.
+    pub const fn full_screen(self) -> bool {
+        (self.0 >> 3) & 1 != 0
+    }
+
+    /// Bit 4, established.
+    pub const fn cs_bypass(self) -> bool {
+        (self.0 >> 4) & 1 != 0
+    }
+}
+
+/// The `VC_3` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Vc3(u32);
+
+impl Vc3 {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn field_select(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn descr_dma_enable(self) -> bool {
+        (self.0 >> 1) & 1 != 0
+    }
+
+    /// Bit 2, established.
+    pub const fn field_corrupt(self) -> bool {
+        (self.0 >> 2) & 1 != 0
+    }
+
+    /// Bit 3, established.
+    pub const fn end_of_field(self) -> bool {
+        (self.0 >> 3) & 1 != 0
+    }
+
+    /// Bit 4, established.
+    pub const fn current_field(self) -> bool {
+        (self.0 >> 4) & 1 != 0
+    }
+
+    /// Bits 31:5, established.
+    pub const fn descr_ptr(self) -> u32 {
+        self.0 >> 5
     }
 }
 
