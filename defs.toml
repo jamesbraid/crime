@@ -1,0 +1,75 @@
+[project]
+name = "o2gfx"
+regenerate = "retools/tools/defs/gen_decode_rust.py --config defs.toml"
+
+[rust]
+out_dir = "generated/crime-regs"
+
+[checks]
+address_bits = 15
+
+[[banned.extra]]
+label = "kernel routine prefix"
+regex = '\b(?:crime|crm|gbe)[A-Z]\w*'
+
+[[headers]]
+file = "CRIME_DECODE.h"
+block = "CRIME"
+group = "crime"
+module = "crime"
+rust_prefix = "CRIME_"
+register_doc = "CRIME CPU-interface register"
+description = ["CRIME memory controller and CPU-interface registers,", "and the interrupt input bit positions."]
+
+[[headers]]
+file = "MTE_DECODE.h"
+block = "MTE"
+group = "mte"
+module = "mte"
+rust_prefix = "MTE_"
+register_doc = "Memory transfer engine register"
+description = ["CRIME memory transfer engine registers, address word", "and tile geometry."]
+
+[[headers]]
+file = "GBE_DECODE.h"
+group = "gbe"
+prefix = "GBE"
+module = "gbe"
+rust_prefix = "GBE_"
+register_doc = "GBE register"
+description = ["GBE display back end register words, tables and", "offsets."]
+
+[[claims]]
+group = "gbe"
+label = "dot clock fields"
+doc = "docs/gbe.md"
+regex = '`M` (\d+):(\d+), `N` (\d+):(\d+), `P` (\d+):(\d+), run (\d+)'
+binds = [["F", "DOTCLOCK.m_minus_1", 1, 2], ["F", "DOTCLOCK.n_minus_1", 3, 4], ["F", "DOTCLOCK.p", 5, 6], ["F", "DOTCLOCK.run", 7]]
+
+[[claims]]
+group = "gbe"
+label = "frame size totals"
+doc = "docs/gbe.md"
+regex = 'total pixels per line in (\d+):(\d+), total lines in (\d+):(\d+)'
+binds = [["F", "VT_XYMAX.htotal", 1, 2], ["F", "VT_XYMAX.vtotal", 3, 4]]
+
+[[claims]]
+group = "gbe"
+label = "display-ID control"
+doc = "docs/gbe.md"
+regex = '`did_base` in bits (\d+):(\d+) \(the upper 16 bits.*?DMA enable in bit (\d+)'
+binds = [["F", "DID_CONTROL.did_base", 1, 2], ["F", "DID_CONTROL.dma_enable", 3]]
+
+[[claims]]
+group = "gbe"
+label = "frame size tile fields"
+doc = "docs/gbe.md"
+regex = 'width in whole tiles at (\d+):(\d+), remainder in 32-byte units at (\d+):(\d+), depth at (\d+):(\d+)'
+binds = [["F", "FRM_SIZE_TILE.width_tiles", 1, 2], ["F", "FRM_SIZE_TILE.remainder", 3, 4], ["F", "FRM_SIZE_TILE.depth", 5, 6]]
+
+[[claims]]
+group = "mte"
+label = "address word"
+doc = "docs/mte.md"
+regex = 'one 32-bit word with a column in bits (\d+):(\d+) and a row in bits (\d+):(\d+)'
+binds = [["F", "ADDR.byte_col", 1, 2], ["F", "ADDR.row", 3, 4]]
