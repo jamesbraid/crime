@@ -1,4 +1,4 @@
-// generated from o2gfx f91052fc0766 GBE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 30137b67be65 GBE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! GBE display back end register words, tables and
 //! offsets.
@@ -42,11 +42,11 @@ pub const OFF_VT_F2RF_LOCK: u32 = 0x1001c;
 pub const OFF_VT_INTR01: u32 = 0x10020;
 /// established.
 pub const OFF_VT_INTR23: u32 = 0x10024;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_FP_HDRV: u32 = 0x10028;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_FP_VDRV: u32 = 0x1002c;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_FP_DE: u32 = 0x10030;
 /// established.
 pub const OFF_VT_HPIXEN: u32 = 0x10034;
@@ -56,11 +56,11 @@ pub const OFF_VT_VPIXEN: u32 = 0x10038;
 pub const OFF_VT_HCMAP: u32 = 0x1003c;
 /// established.
 pub const OFF_VT_VCMAP: u32 = 0x10040;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_DID_START_XY: u32 = 0x10044;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_CRS_START_XY: u32 = 0x10048;
-/// inferred.
+/// established: gbe-spec register table, pages 39 and 40.
 pub const OFF_VC_START_XY: u32 = 0x1004c;
 /// established.
 pub const OFF_OVR_WIDTH_TILE: u32 = 0x20000;
@@ -416,6 +416,150 @@ impl VtIntr23 {
 
     /// Bits 23:12, established.
     pub const fn line2(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `FP_HDRV` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct FpHdrv(u32);
+
+impl FpHdrv {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn off(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn on(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `FP_VDRV` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct FpVdrv(u32);
+
+impl FpVdrv {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn off(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn on(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `FP_DE` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct FpDe(u32);
+
+impl FpDe {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn off(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn on(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `DID_START_XY` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct DidStartXy(u32);
+
+impl DidStartXy {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn startx(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn starty(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `CRS_START_XY` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct CrsStartXy(u32);
+
+impl CrsStartXy {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn startx(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn starty(self) -> u32 {
+        (self.0 >> 12) & 0xfff
+    }
+}
+
+/// The `VC_START_XY` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VcStartXy(u32);
+
+impl VcStartXy {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 11:0, established.
+    pub const fn startx(self) -> u32 {
+        self.0 & 0xfff
+    }
+
+    /// Bits 23:12, established.
+    pub const fn starty(self) -> u32 {
         (self.0 >> 12) & 0xfff
     }
 }
@@ -812,5 +956,26 @@ mod tests {
         assert_eq!(w.r(), 255, "r");
         assert_eq!(w.g(), 128, "g");
         assert_eq!(w.b(), 64, "b");
+    }
+
+    #[test]
+    fn testvec_fp_hdrv_fff() {
+        let w = FpHdrv::new(0xfff);
+        assert_eq!(w.off(), 4095, "off");
+        assert_eq!(w.on(), 0, "on");
+    }
+
+    #[test]
+    fn testvec_fp_vdrv_1fff() {
+        let w = FpVdrv::new(0x1fff);
+        assert_eq!(w.off(), 4095, "off");
+        assert_eq!(w.on(), 1, "on");
+    }
+
+    #[test]
+    fn testvec_fp_de_303326() {
+        let w = FpDe::new(0x303326);
+        assert_eq!(w.off(), 806, "off");
+        assert_eq!(w.on(), 771, "on");
     }
 }
