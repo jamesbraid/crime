@@ -44,7 +44,7 @@ All registers sit on doubleword boundaries whatever their width; unused bits rea
 - `MSP_CAUSE` at `+0x70`: established ([vice] PDF 51). The read-only exception code in bits 6:2 (address errors, break, watchpoint, reserved instruction in either unit, contention, instruction fetch) with a branch-delay flag in bit 31.
 - `MSP_ExcpFlag` at `+0x48`: established ([vice] PDF 52). One sticky bit per exception code, cleared by software; all bits must be cleared before new exceptions are detected, and it shows exceptions that coincide when the cause register can hold only the highest priority.
 - `MSP_D_RAM` at `+0x100`: established ([vice] PDF 48). Three enable bits, one per data RAM bank, say which banks the scalar unit may touch. A load or store to a disabled bank is ignored and reads unknown data. Enabling all three is safe but stalls DMA on every scalar access.
-- `VICEMSP_COUNT` at `+0x108`: established ([vice] PDF 53). A writable 32-bit free-running clock counter; at 66 MHz it wraps in about 60 seconds.
+- `VICEMSP_COUNT` at `+0x108`: established ([vice] PDF 53). A writable 32-bit free-running clock counter; at 66 MHz it wraps in about 65 seconds (71.6 s at 60 MHz).
 
 ### Bitstream processor and mailboxes
 
@@ -115,5 +115,5 @@ Not in `root/`; read from the 6.5 base media directories `var/arch/vicedx/` and 
 
 ## Conflicts and open points
 
-- Conflict: [report] (as read in published-sources.md) rates the bitstream processor at 60 MHz, while [vice] gives the chip one clock of 66 MHz (a 15 ns period, PDF 199) and no separate bitstream clock. Unknown which is right for the shipped part; the specification covers revision 3 and the report is a product statement. Recorded in [open-questions.md](open-questions.md).
+- Conflict inside the specification, not only against the report: the design text gives the chip one 15 ns, 66 MHz clock ([vice] PDF 199; the input pin `VClock` is described as 66 MHz), while the AC characteristics table gives the clock period rate as 60 MHz maximum, a 17 ns minimum cycle (table 80, PDF 235). [report] rates the bitstream processor at 60 MHz, which agrees with that table, and no source gives the bitstream processor a separate clock. Established: both numbers are in the specification and the chip has one clock input. Inferred: the report's figure is the characterised maximum of that clock, not a second clock. Unknown: the frequency the shipped board drives (the specification covers revision 3; no shipped software reads or depends on it). Test on hardware: read the free-running counter at `+0x108` twice, a few seconds apart, against a MACE timer; 66 MHz wraps the 32-bit counter in 65 s and 60 MHz in 71.6 s.
 - Agreement: both give two DMA channels with host, MSP and BSP programmability; the 64 KB translation granule matches [spec]'s 64 KB tile.
