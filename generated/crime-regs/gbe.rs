@@ -1,4 +1,4 @@
-// generated from o2gfx 453c862972fc GBE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx f96d74030387 GBE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! GBE display back end register words, tables and
 //! offsets.
@@ -90,6 +90,16 @@ pub const OFF_VC_1: u32 = 0x80004;
 pub const OFF_VC_2: u32 = 0x80008;
 /// established: video capture field and descriptor control.
 pub const OFF_VC_3: u32 = 0x8000c;
+/// established: capture tile addresses, tiles 1 and 2.
+pub const OFF_VC_4: u32 = 0x80010;
+/// established: capture tile addresses, tiles 3 and 4.
+pub const OFF_VC_5: u32 = 0x80014;
+/// established: capture tile addresses, tiles 5 and 6.
+pub const OFF_VC_6: u32 = 0x80018;
+/// established: capture tile addresses, tiles 7 and 8.
+pub const OFF_VC_7: u32 = 0x8001c;
+/// established: capture tile addresses, tiles 9 and 10; write only.
+pub const OFF_VC_8: u32 = 0x80020;
 /// established: colour map.
 pub const OFF_CMAP: u32 = 0x50000;
 /// established.
@@ -108,6 +118,10 @@ pub const OFF_CRS_GLYPH: u32 = 0x78000;
 pub const DEVICE_ID_VALUE: u32 = 0x666;
 /// established.
 pub const MODE_ENTRIES: u32 = 32;
+/// established: entries are consecutive 32-bit words, so swap slot n sits at the table base plus 4 * n.
+pub const MODE_ENTRY_STRIDE: u32 = 4;
+/// established: VC_4 to VC_8 hold the ten tiles of one captured field, two per register.
+pub const VC_TILE_REGS: u32 = 5;
 /// established.
 pub const GMAP_ENTRIES: u32 = 0x100;
 /// established: revision 1.1.
@@ -1077,6 +1091,30 @@ impl Vc3 {
     /// Bits 31:5, established.
     pub const fn descr_ptr(self) -> u32 {
         self.0 >> 5
+    }
+}
+
+/// The `VC_TILES` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct VcTiles(u32);
+
+impl VcTiles {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bits 31:16, established.
+    pub const fn tile_first(self) -> u32 {
+        self.0 >> 16
+    }
+
+    /// Bits 15:0, established.
+    pub const fn tile_second(self) -> u32 {
+        self.0 & 0xffff
     }
 }
 

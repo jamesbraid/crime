@@ -1,4 +1,4 @@
-// generated from o2gfx 453c862972fc CRIME_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx f96d74030387 CRIME_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! CRIME memory controller and CPU-interface registers,
 //! and the interrupt input bit positions.
@@ -20,6 +20,22 @@ pub const ID_LOW_BYTE_DRAFT: u32 = 177;
 pub const MEM_BANKS: u32 = 8;
 /// established.
 pub const WATCHDOG_COUNT_BITS: u32 = 20;
+/// established: first 256 MiB, so KSEG0 needs no TLB entry.
+pub const PHYS_LOW_ALIAS_BASE: u32 = 0;
+/// established.
+pub const PHYS_LOW_ALIAS_BYTES: u32 = 0x10000000;
+/// established as a window; its responder is open in the specification.
+pub const PHYS_HIGH_ALIAS_BASE: u32 = 0x20000000;
+/// established: 512 MiB; inferred to be the upper half of the full window.
+pub const PHYS_HIGH_ALIAS_BYTES: u32 = 0x20000000;
+/// established: all memory, up to 1 GiB; the only memory window GBE and (with the no-ECC alias) VICE see.
+pub const PHYS_FULL_MEM_BASE: u32 = 0x40000000;
+/// established.
+pub const PHYS_FULL_MEM_BYTES: u32 = 0x40000000;
+/// established: skips ECC check and correction on reads and writes; ECC is still generated on writes.
+pub const PHYS_NOECC_MEM_BASE: u32 = 0x80000000;
+/// established.
+pub const PHYS_NOECC_MEM_BYTES: u32 = 0x40000000;
 /// established: reset of bank 0.
 pub const MEM_BANK_CONTROL_RESET_BASE: u32 = 0;
 /// established: reset of bank n is BASE + n * STEP.
