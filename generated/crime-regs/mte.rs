@@ -1,4 +1,4 @@
-// generated from o2gfx f91052fc0766 MTE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 4893c3f9552a MTE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! CRIME memory transfer engine registers, address word
 //! and tile geometry.
@@ -277,11 +277,13 @@ mod tests {
     }
 
     #[test]
-    fn testvec_mte_mode_108() {
-        let w = Mode::new(0x108);
+    fn testvec_mte_mode_10b() {
+        let w = Mode::new(0x10b);
         assert_eq!(w.copy() as u32, 0, "copy");
         assert_eq!(w.depth().bits(), 1, "depth");
         assert_eq!(w.dst_buf().bits(), 2, "dst_buf");
+        assert_eq!(w.src_ecc() as u32, 1, "src_ecc");
+        assert_eq!(w.dst_ecc() as u32, 1, "dst_ecc");
     }
 
     #[test]
