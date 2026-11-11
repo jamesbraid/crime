@@ -2,7 +2,7 @@
   "family": "O2 (CRIME and GBE)",
   "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
-    "prose": ["docs/*.md"],
+    "prose": ["docs/*.md", "docs/routines/*.md"],
     "headers": ["*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],
     "tables": [],
     "index": ["AGENTS.md", "README.md", "IRIX_FILES.md", "docs/coverage.md", "docs/open-questions.md", "docs/captures.md"],
