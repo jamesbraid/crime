@@ -11,7 +11,7 @@ The layout and working style follow [gr2](https://github.com/techomancer/gr2) an
 
 The O2 has no geometry engine. CRIME rasterizes, textures and depth-tests primitives that the host CPU has already transformed, lit and clipped, so IRIX's `libGLcore` does that work in software and feeds CRIME commands. CRIME also owns the CPU interface, the system memory controller, the interrupt controller and the aperture windows through which the CPU sees the frame and depth buffers. GBE reads the frame buffer from system memory and generates the video timing. The rest of the machine sits behind MACE (PCI, audio, serial, ROM decode), which is outside this project except where graphics depends on it. The first configuration this project reads is an O2 with stock graphics and IRIX 6.5.30; other CPU modules, chip revisions and options are separate configurations, and a fact from one does not fill a gap in another.
 
-Facts in this file are labelled **established** (read directly from a published document, a capture or a shipped binary, with the page, install path, function or offset), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Anything unlabelled is unknown. Do not fill gaps from memory, from other SGI graphics families or from other emulators.
+Facts in this file are labelled **established** (read directly from a published document, a capture, a shipped binary or public open-source code (cited by project, revision and file), with the page, install path, function or offset), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Anything unlabelled is unknown. Do not fill gaps from memory, from other SGI graphics families or from other emulators.
 
 ### Established from public sources
 
@@ -163,8 +163,8 @@ reword or reformat an entry to change its grade. Independent audits sample
 entries against the binaries, and their measured rates are published beside
 the coverage figures.
 
-An entry that was written quickly and not yet checked against the binary or
-its document ends with "Unverified." in place of "Inferred." or "Established.".
+An entry that was written quickly and not yet checked against the binary, its
+document or public open-source code (cited by project, revision and file) ends with "Unverified." in place of "Inferred." or "Established.".
 It grades at most `located`, whatever else it says, so the understood figure
 counts only what has been read. When you re-read it, correct it and change the
 label to established or inferred.
