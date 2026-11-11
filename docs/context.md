@@ -210,4 +210,4 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
   `crmLoadNonglobalsFromShadow` reloads it with the two slope registers when flag 0x20 is set.
 - `+0x4008` write-zero register: the register the kernel writes 0 to after each batch of engine state. Established.
   `crimePcxSwap` in `crime.o` stores it after saving the outgoing client with `crmSavePP`, and again after the incoming client's loads.
-  `crmLoadCidTlb` in `crime_tiles.o` ends with it (`sw zero,16392`), and so does `crime_load_linear_tlb` in `crime_dma.o`.
+  The register is listed in [RE_DECODE.h](../RE_DECODE.h) as `ib_discard`, a 32-bit write-only word. `crmLoadCidTlb` in `crime_tiles.o` ends with it (`sw zero,16392`), and so does `crime_load_linear_tlb` in `crime_dma.o`.

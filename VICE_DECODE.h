@@ -30,6 +30,39 @@
 
 #include <stdint.h>
 
+/* ---- memory regions ---- */
+/*
+ * The chip's memories sit in the same 64 KiB window as its registers. Each
+ * region's base and extent are the specification's address map: the bitstream
+ * processor's output buffer and input buffer (2 KiB each), the three
+ * 2 KiB data RAM banks and the translation buffer. An access to an
+ * unimplemented part of a range reads zeros. The access width is not given
+ * by the map: banks are listed at the 32-bit width of the signal processor's
+ * scalar unit and the bitstream buffers at the 16-bit width of the bitstream
+ * processor, which is inferred. The translation buffer has 64 entries and the
+ * specification gives no entry stride, so only its first entry is listed.
+ */
+/* REG: VICE.bsp_out_buf 0x7000 rw16 count=1024 reset=unknown inferred */
+/* REG: VICE.bsp_in_buf 0x7800 rw16 count=1024 reset=unknown inferred */
+/* REG: VICE.data_ram_a 0x8000 rw32 count=512 reset=unknown inferred */
+/* REG: VICE.data_ram_b 0x8800 rw32 count=512 reset=unknown inferred */
+/* REG: VICE.data_ram_c 0x9000 rw32 count=512 reset=unknown inferred */
+/* REG: VICE.tlb 0xf000 rw32 reset=unknown established */
+/*
+ * A translation buffer entry is a 32-bit word written whole: valid in bit 0,
+ * writable (permits DMA writes to the page) in bit 1 and the 64 KiB physical
+ * page number in bits 31:16.
+ */
+/* FIELD: TLB_ENTRY.valid 0:0 established */
+#define VICE_TLB_ENTRY_VALID_SHIFT 0
+#define VICE_TLB_ENTRY_VALID_MASK  0x1u
+/* FIELD: TLB_ENTRY.writable 1:1 established */
+#define VICE_TLB_ENTRY_WRITABLE_SHIFT 1
+#define VICE_TLB_ENTRY_WRITABLE_MASK  0x1u
+/* FIELD: TLB_ENTRY.page 31:16 established */
+#define VICE_TLB_ENTRY_PAGE_SHIFT 16
+#define VICE_TLB_ENTRY_PAGE_MASK  0xffffu
+
 /* ---- chip ---- */
 /* REG: VICE.id 0x0008 r8 reset=unknown established */
 /* REG: VICE.cfg 0xe000 rw16 reset=unknown established */

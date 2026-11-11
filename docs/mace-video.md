@@ -44,7 +44,7 @@ Scope: the spec is a design document of 1996. It lists seven unsettled design qu
 
 ## Registers
 
-All registers are 64-bit, big-endian doubleword accesses. A register marked double-buffered takes effect at the next field, when the next-descriptor register is read. Offsets are within one channel's set; the input set repeats at `+0x80000`.
+All registers are 64-bit, big-endian doubleword accesses. The layouts below are recorded in [MACE_VIDEO_IN_DECODE.h](../MACE_VIDEO_IN_DECODE.h) for the input channel and [MACE_VIDEO_DECODE.h](../MACE_VIDEO_DECODE.h) for the output channel; fields are decoded for the control and status registers and the input configuration register, and the other registers are listed by offset only. A register marked double-buffered takes effect at the next field, when the next-descriptor register is read. Offsets are within one channel's set; the input set repeats at `+0x80000`.
 
 ### Input channel
 

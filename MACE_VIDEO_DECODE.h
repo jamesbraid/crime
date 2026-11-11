@@ -1,19 +1,24 @@
 /*
- * MACE_VIDEO_DECODE.h - O2 MACE video chip-level configuration
+ * MACE_VIDEO_DECODE.h - O2 MACE video output channel and chip-level configuration
  *
- * Publish-safe register contract for the one MACE video register that belongs
- * to neither the input nor the output channels: the video hardware
- * configuration word. Its offset is from the start of the video output
- * channel register window. The word is 64 bits wide because the chip revision
- * sits in bits 35:32; shipped software reads it with a 64-bit access.
+ * Publish-safe register contract for the MACE video output channel and for the
+ * one video register that belongs to neither the input nor the output channels:
+ * the video hardware configuration word. Offsets are from the start of the video
+ * output channel register window. The input channel is in
+ * MACE_VIDEO_IN_DECODE.h. Channel registers are 64-bit doubleword accesses. The
+ * configuration word is 64 bits wide because the chip revision sits in bits
+ * 35:32; shipped software reads it with a 64-bit access.
  *
  * Grammar (one annotation per comment line, do not reformat):
  *   REG: <BLOCK>.<name> <offset> <acc><width> [count=<n>] reset=<v> <grade>
  *   FIELD: <BLOCK>.<name>.<field> <hi>:<lo> <grade>     a register field
  *   ENUM: <target> <value> <label> <grade>
  *
- * Derivation. The layout is the video hardware configuration table of the
- * published MACE 2.0 specification. Shipped video software sets and clears
+ * Derivation. The layouts are the register tables of the video chapter of the
+ * published MACE 2.0 specification. Shipped video software changes the low nine
+ * bits of the control register as a unit and reads the status register to clear
+ * pending causes, which agrees with the table. The hardware configuration word
+ * follows its own table of that chapter. Shipped video software sets and clears
  * the reset, source, precision, correction, count and output-pin bits as the
  * table says and reads the revision code from bits 35:32, which agrees with
  * the table. The meaning of each source and count field outside those uses
@@ -24,6 +29,71 @@
 
 #include <stdint.h>
 
+/* ---- output channel registers ----
+ * One channel set, offsets from the start of the output channel window. All
+ * are 64-bit doubleword accesses. The status register clears the pending
+ * causes on read; the DMA-active bit is live.
+ */
+/* REG: VOUT.control 0x0000 rw64 reset=0 established */
+/* REG: VOUT.status 0x0008 r64 reset=0 established */
+/* REG: VOUT.config 0x0010 rw64 reset=unknown established */
+/* REG: VOUT.next_desc 0x0018 rw64 reset=unknown established */
+/* REG: VOUT.fld_offset 0x0020 rw64 reset=unknown established */
+/* REG: VOUT.field_size 0x0028 rw64 reset=unknown established */
+/* REG: VOUT.hpad_odd 0x0030 rw64 reset=unknown established */
+/* REG: VOUT.vpad_odd 0x0038 rw64 reset=unknown established */
+/* REG: VOUT.hpad_even 0x0040 rw64 reset=unknown established */
+/* REG: VOUT.vpad_even 0x0048 rw64 reset=unknown established */
+/* REG: VOUT.gen_dly 0x0050 rw64 reset=unknown established */
+/* REG: VOUT.dma_desc 0x0080 rw64 count=8 reset=unknown established */
+/*
+ * Control: bit 0 enables DMA and writing zero resets the engine; the rest
+ * enable the interrupts named. Bits 5, 6 and 9 do not exist on the output
+ * channel.
+ */
+/* FIELD: VOUT.control.dma_enable 0:0 established */
+#define VOUT_CONTROL_DMA_ENABLE_SHIFT 0
+#define VOUT_CONTROL_DMA_ENABLE_MASK  0x1u
+/* FIELD: VOUT.control.int_vsync 1:1 established */
+#define VOUT_CONTROL_INT_VSYNC_SHIFT 1
+#define VOUT_CONTROL_INT_VSYNC_MASK  0x1u
+/* FIELD: VOUT.control.int_dma_done 2:2 established */
+#define VOUT_CONTROL_INT_DMA_DONE_SHIFT 2
+#define VOUT_CONTROL_INT_DMA_DONE_MASK  0x1u
+/* FIELD: VOUT.control.int_genlock_lost 3:3 established */
+#define VOUT_CONTROL_INT_GENLOCK_LOST_SHIFT 3
+#define VOUT_CONTROL_INT_GENLOCK_LOST_MASK  0x1u
+/* FIELD: VOUT.control.int_buffer 4:4 established */
+#define VOUT_CONTROL_INT_BUFFER_SHIFT 4
+#define VOUT_CONTROL_INT_BUFFER_MASK  0x1u
+/* FIELD: VOUT.control.int_fifo_underflow 7:7 established */
+#define VOUT_CONTROL_INT_FIFO_UNDERFLOW_SHIFT 7
+#define VOUT_CONTROL_INT_FIFO_UNDERFLOW_MASK  0x1u
+/* FIELD: VOUT.control.int_crime_error 8:8 established */
+#define VOUT_CONTROL_INT_CRIME_ERROR_SHIFT 8
+#define VOUT_CONTROL_INT_CRIME_ERROR_MASK  0x1u
+/* Status: the control layout's causes, plus DMA active; bits 5, 6, 9 and 10 do not exist on the output channel. */
+/* FIELD: VOUT.status.dma_active 0:0 established */
+#define VOUT_STATUS_DMA_ACTIVE_SHIFT 0
+#define VOUT_STATUS_DMA_ACTIVE_MASK  0x1u
+/* FIELD: VOUT.status.vsync 1:1 established */
+#define VOUT_STATUS_VSYNC_SHIFT 1
+#define VOUT_STATUS_VSYNC_MASK  0x1u
+/* FIELD: VOUT.status.dma_done 2:2 established */
+#define VOUT_STATUS_DMA_DONE_SHIFT 2
+#define VOUT_STATUS_DMA_DONE_MASK  0x1u
+/* FIELD: VOUT.status.lost_sync 3:3 established */
+#define VOUT_STATUS_LOST_SYNC_SHIFT 3
+#define VOUT_STATUS_LOST_SYNC_MASK  0x1u
+/* FIELD: VOUT.status.buffer 4:4 established */
+#define VOUT_STATUS_BUFFER_SHIFT 4
+#define VOUT_STATUS_BUFFER_MASK  0x1u
+/* FIELD: VOUT.status.fifo_underflow 7:7 established */
+#define VOUT_STATUS_FIFO_UNDERFLOW_SHIFT 7
+#define VOUT_STATUS_FIFO_UNDERFLOW_MASK  0x1u
+/* FIELD: VOUT.status.crime_error 8:8 established */
+#define VOUT_STATUS_CRIME_ERROR_SHIFT 8
+#define VOUT_STATUS_CRIME_ERROR_MASK  0x1u
 /* REG: VOUT.vhw_cfg 0x0058 rw64 reset=unknown established */
 /* FIELD: VOUT.vhw_cfg.port_ab_reset 0:0 established */
 #define VOUT_VHW_CFG_PORT_AB_RESET_SHIFT 0

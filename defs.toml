@@ -59,7 +59,17 @@ group = "mace_video"
 module = "mace_video"
 rust_prefix = "VOUT_"
 register_doc = "MACE video register"
-description = ["MACE video chip-level hardware configuration word."]
+description = ["MACE video output channel registers and the chip-level", "hardware configuration word."]
+
+[[headers]]
+file = "MACE_VIDEO_IN_DECODE.h"
+block = "VIN"
+space = "mace_video_in"
+group = "mace_video_in"
+module = "mace_video_in"
+rust_prefix = "VIN_"
+register_doc = "MACE video input register"
+description = ["MACE video input channel registers."]
 
 [[headers]]
 file = "GBE_DECODE.h"

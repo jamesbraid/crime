@@ -277,6 +277,23 @@
 /* REG: RE.tex_sqs 0x2120 w64 reset=unknown established */
 /* REG: RE.tex_tqs 0x2128 w64 reset=unknown established */
 /* REG: RE.tex_qs 0x2130 w32 reset=unknown established */
+/*
+ * tex_stflags sits between tex_qs and tex_dsqdx and is absent from the
+ * specification's register table, which skips from the one to the other.
+ * Shipped software computes one flag per texture coordinate for each textured
+ * triangle from range tests on the vertex values, writes the s flag in bit 0
+ * and the t flag in bit 1 with a 32-bit store, and scales the start and slope
+ * values of a flagged coordinate by 2^39 instead of 2^43. Inferred: a set
+ * flag tells the engine that coordinate's stepper carries four fewer fraction
+ * bits. The layout is established; that meaning is inferred.
+ */
+/* REG: RE.tex_stflags 0x2134 w32 reset=unknown established */
+/* FIELD: RE.tex_stflags.s_flag 0:0 established */
+#define RE_TEX_STFLAGS_S_FLAG_SHIFT 0
+#define RE_TEX_STFLAGS_S_FLAG_MASK  0x1u
+/* FIELD: RE.tex_stflags.t_flag 1:1 established */
+#define RE_TEX_STFLAGS_T_FLAG_SHIFT 1
+#define RE_TEX_STFLAGS_T_FLAG_MASK  0x1u
 /* REG: RE.tex_dsqdx 0x2138 w64 reset=unknown established */
 /* REG: RE.tex_dsqdy 0x2140 w64 reset=unknown established */
 /* REG: RE.tex_dtqdx 0x2148 w64 reset=unknown established */
@@ -596,5 +613,16 @@
 /* FIELD: RE.status.start 5:0 inferred */
 #define RE_STATUS_START_SHIFT 0
 #define RE_STATUS_START_MASK  0x3fu
+
+/*
+ * ib_discard sits two doublewords above the status register. Shipped kernel
+ * code stores zero to it with a 32-bit store, never reads it, and does so after
+ * saving the outgoing client's queued writes on a context switch, after the
+ * incoming client's loads, and at the end of each translation table loader.
+ * The user-mode library and the X server never write it. Inferred: the write
+ * discards the queued writes not yet committed. The register's position and
+ * its write-zero use are established; that effect is inferred.
+ */
+/* REG: RE.ib_discard 0x4008 w32 reset=unknown established */
 
 #endif /* RE_DECODE_H */
