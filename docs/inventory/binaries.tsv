@@ -1,7 +1,7 @@
 binary	group	role	kind	abi	bytes	sha256	copies	functions	address_source	access_sites	unresolved_sites	status	doc	section
 sbin/stand/ide.IP32	standalone	board-diagnostic	executable	o32	763504	9c2ded7e65b68405		0	none	31	0	understood	docs/binaries.md#diagnostics	Diagnostics
 sbin/stand/symmon.IP32	standalone	board-diagnostic	executable	n32	502980	12d8ecedae658546		755	symtab+dwarf	19	0	understood	docs/binaries.md#diagnostics	Diagnostics
-usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0		0	0	understood	docs/binaries.md#diagnostics	Diagnostics
+usr/cpu/firmware/ip32prom.image	firmware	board-firmware	data	-	431872	11230c353cb14fcc		0		0	0	located	docs/binaries.md#diagnostics	Diagnostics
 usr/cpu/sysgen/IP32boot/a3_dd.o	kernel-video	board-kernel	object	n32	53544	d78116d803856ce6		55	symtab	18	0	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime.o)	kernel	board-kernel	object	n32	61572	1cc4da3459d921fe		65	symtab	111	3	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)
 usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	kernel	board-kernel	object	n32	11268	f66d63177831f79c		6	symtab	19	3	understood	docs/binaries.md#kernel-objects-usrcpusysgenip32boot	Kernel objects (`usr/cpu/sysgen/IP32boot/`)

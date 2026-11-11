@@ -51,7 +51,7 @@ CRIME 1.5	7-3	165	RE	0x2070	Vertex.X[0]	1	0	32	W	1	understood	docs/opengl.md#reg
 CRIME 1.5	7-3	165	RE	0x2074	Vertex.X[1]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x2078	Vertex.X[2]	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x2080	Vertex.GL[0].x	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
-CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	166	RE	0x2084	Vertex.GL[0].y	1	0	32	W	1	named-only	docs/hw-explanations-crime-p1.md#hardware-facing-routine-explanations-crime-and-its-neighbours-on-ip32-pilot-1	Hardware-facing routine explanations, CRIME and its neighbours on IP32, pilot 1
 CRIME 1.5	7-3	166	RE	0x2088	Vertex.GL[1].x	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	166	RE	0x208c	Vertex.GL[1].y	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	166	RE	0x2090	Vertex.GL[2].x	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
@@ -65,12 +65,12 @@ CRIME 1.5	7-3	166	RE	0x20c0	Stipple.mode	1	0	32	R/W	1	understood	docs/opengl.md#
 CRIME 1.5	7-3	166	RE	0x20c4	Stipple.pattern	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20d0	Shade.fgColor	1	0	32	W	1	understood	docs/opengl.md#register-roles	Register roles
 CRIME 1.5	7-3	166	RE	0x20d8	Shade.bgColor	1	0	32	R/W	1	understood	docs/opengl.md#register-roles	Register roles
-CRIME 1.5	7-3	166	RE	0x20e0	Shade.Rs	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	166	RE	0x20e0	Shade.Rs	1	0	32	W	1	named-only	docs/context.md#the-flag-word-at-record-offset-0x1f0	The flag word at record offset 0x1f0
 CRIME 1.5	7-3	167	RE	0x20e4	Shade.Gs	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x20e8	Shade.Bs	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
-CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
-CRIME 1.5	7-3	167	RE	0x20f0	Shade.drdx	1	0	32	W	1	understood	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
-CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
+CRIME 1.5	7-3	167	RE	0x20ec	Shade.As	1	0	32	W	1	named-only	docs/opengl.md#constant-rendering-words-and-the-texture-range-register-pass-7	Constant rendering words and the texture range register (pass 7)
+CRIME 1.5	7-3	167	RE	0x20f0	Shade.drdx	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
+CRIME 1.5	7-3	167	RE	0x20f4	Shade.dgdx	1	0	32	W	1	named-only	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x20f8	Shade.drdy	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 CRIME 1.5	7-3	167	RE	0x20fc	Shade.dgdy	1	0	32	W	1	understood	docs/context.md#rendering-engine-registers-by-access-site-6530	Rendering-engine registers by access site (6.5.30)
 CRIME 1.5	7-3	167	RE	0x2100	Shade.dbdx	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
@@ -123,7 +123,7 @@ CRIME 1.5	7-15	184	RE	0x3070	MTE.null	1	0	32	W	0	no-software-dependency	docs/ope
 CRIME 1.5	7-15	184	RE	0x3078	MTE.ﬂush	1	0	32	W	1	understood	docs/opengl.md#constant-words-by-register	Constant words by register
 GBE rev 1.1	3.2	36	GBE	0x0	CTRLSTAT	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	36	GBE	0x4	DOTCLK	1	0	32	R/W	1	understood	docs/gbe.md#registers-the-base-kernel-touches-at-shutdown-early_gbe_stop	Registers the base kernel touches at shutdown (`early_gbe_stop`)
-GBE rev 1.1	3.2	37	GBE	0x8	I2C	1	0	32	R/W	0	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	37	GBE	0x8	I2C	1	0	32	R/W	0	understood	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
 GBE rev 1.1	3.2	37	GBE	0xc	SYSCLK	1	0	32	R/W	0	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	37	GBE	0x10	I2CFP	1	0	32	R/W	0	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	37	GBE	0x14	DEVICE_ID	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
