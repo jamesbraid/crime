@@ -1,4 +1,4 @@
-// generated from o2gfx 4893c3f9552a VICE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 4d94af455e87 VICE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! VICE imaging and compression engine chip, signal processor,
 //! bitstream processor, mailbox and DMA channel registers.
@@ -139,6 +139,54 @@ pub const REG_DMA_VICE_PT_CH2_WIDTH: u32 = 16;
 /// VICE register `dma_count_ch2`: read, 16-bit; reset unknown; established.
 pub const REG_DMA_COUNT_CH2: u32 = 0x01e8;
 pub const REG_DMA_COUNT_CH2_WIDTH: u32 = 16;
+/// VICE register `dma_ctl_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_CTL_CH1_D1: u32 = 0x1000;
+pub const REG_DMA_CTL_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_smem_hi_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_SMEM_HI_CH1_D1: u32 = 0x1008;
+pub const REG_DMA_SMEM_HI_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_smem_lo_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_SMEM_LO_CH1_D1: u32 = 0x1010;
+pub const REG_DMA_SMEM_LO_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_width_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_WIDTH_CH1_D1: u32 = 0x1018;
+pub const REG_DMA_WIDTH_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_stride_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_STRIDE_CH1_D1: u32 = 0x1020;
+pub const REG_DMA_STRIDE_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_lines_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_LINES_CH1_D1: u32 = 0x1028;
+pub const REG_DMA_LINES_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_vmem_y_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_VMEM_Y_CH1_D1: u32 = 0x1030;
+pub const REG_DMA_VMEM_Y_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_vmem_c_ch1_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_VMEM_C_CH1_D1: u32 = 0x1038;
+pub const REG_DMA_VMEM_C_CH1_D1_WIDTH: u32 = 16;
+/// VICE register `dma_ctl_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_CTL_CH2_D1: u32 = 0x1100;
+pub const REG_DMA_CTL_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_smem_hi_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_SMEM_HI_CH2_D1: u32 = 0x1108;
+pub const REG_DMA_SMEM_HI_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_smem_lo_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_SMEM_LO_CH2_D1: u32 = 0x1110;
+pub const REG_DMA_SMEM_LO_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_width_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_WIDTH_CH2_D1: u32 = 0x1118;
+pub const REG_DMA_WIDTH_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_stride_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_STRIDE_CH2_D1: u32 = 0x1120;
+pub const REG_DMA_STRIDE_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_lines_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_LINES_CH2_D1: u32 = 0x1128;
+pub const REG_DMA_LINES_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_vmem_y_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_VMEM_Y_CH2_D1: u32 = 0x1130;
+pub const REG_DMA_VMEM_Y_CH2_D1_WIDTH: u32 = 16;
+/// VICE register `dma_vmem_c_ch2_d1`: read/write, 16-bit; reset unknown; established.
+pub const REG_DMA_VMEM_C_CH2_D1: u32 = 0x1138;
+pub const REG_DMA_VMEM_C_CH2_D1_WIDTH: u32 = 16;
 
 /// Values of `code` in `MspCause` that the header names.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
