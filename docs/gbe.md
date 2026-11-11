@@ -594,22 +594,22 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
 - `VC_3` at `+0x8000c`: the capture sequencing word, field select in bit 0 and the descriptor-list DMA enable in bit 1, which the specification marks as not working on revision 1.1 (page 47). Established.
   `mvpreg_initmace` stores zero here at `0xb7e4` and `mvptransfer_stop_dma` at `0x93c`; `mvptransfer_start_dma` stores a word at `0x7e4` made of a flag byte from the path and, unless the driver's copy mode is on, the physical address of the path's descriptor block; `mvptransfer_screen_interrupt` loads the word at `0x1a4c`. Established (the instructions); the meaning of the flag byte is inferred.
   Bits 31:5 point at the descriptor list, and bits 4:2 report field-corrupt, end-of-field and the current field. Routes tried: the 6.5.30 kernel and X module, `mvp.o` and the specification.
-- `VC_4` at `+0x80010`: the first pair of capture tile addresses, tile 1 in bits 31:16 and tile 2 in bits 15:0 (page 47). Established.
+- `VC_4` at `+0x80010`: the first pair of capture tile addresses, tile 1 in bits 31:16 and tile 2 in bits 15:0 (page 47). Established. Offset and the shared tile-pair layout (`VC_TILES`) recorded in [GBE_DECODE.h](../GBE_DECODE.h).
   `mvpreg_initmace` stores zero here at `0xb7ec`; `mvptransfer_start_dma` stores a word read from the physical descriptor block at `0x7bc` when the driver's copy mode (the word at data `+8`) is on. Established (the instructions).
   The five tile registers `+0x80010` to `+0x80020` together hold the ten tiles of one captured field. Routes tried: the inventory scan, `mvp.o` and `libXsgivc`.
-- `VC_5` at `+0x80014`: the second pair of capture tile addresses, tiles 3 and 4, the earlier one in the upper half (page 48). Established.
+- `VC_5` at `+0x80014`: the second pair of capture tile addresses, tiles 3 and 4, the earlier one in the upper half (page 48). Established. Offset and layout recorded in [GBE_DECODE.h](../GBE_DECODE.h).
   `mvpreg_initmace` stores zero here at `0xb7f4`; `mvptransfer_start_dma` copies the second word of the descriptor block here at `0x7c4` in copy mode. Established (the instructions).
   It follows `+0x80010` at a four-byte step, as each register holds two 16-bit entries.
-- `VC_6` at `+0x80018`: the third pair of capture tile addresses, tiles 5 and 6 (page 48). Established.
+- `VC_6` at `+0x80018`: the third pair of capture tile addresses, tiles 5 and 6 (page 48). Established. Offset and layout recorded in [GBE_DECODE.h](../GBE_DECODE.h).
   `mvpreg_initmace` stores zero here at `0xb7fc`; `mvptransfer_start_dma` copies the third word here at `0x7cc` in copy mode. Established (the instructions).
   The middle register of the five, it sits between `+0x80014` and `+0x8001c`.
 - `VC_7` at `+0x8001c`: the fourth pair of capture tile addresses, tiles 7 and 8 (page 48). Established.
   `mvpreg_initmace` stores zero here at `0xb804`; `mvptransfer_start_dma` copies the fourth word here at `0x7d4` in copy mode. Established (the instructions).
   Only tiles 9 and 10 in `+0x80020` follow it in the descriptor list.
-- `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established.
+- `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established. Offset and layout recorded in [GBE_DECODE.h](../GBE_DECODE.h).
   `mvpreg_initmace` stores zero here at `0xb810`; `mvptransfer_start_dma` copies the fifth word here at `0x7e0` in copy mode. Established (the instructions).
   A read returns no defined value because the register has no read path; the driver never reads it.
-- `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established.
+- `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established. The table base, its 32-bit entry stride and the entry fields (`MODE_ENTRY`) are in [GBE_DECODE.h](../GBE_DECODE.h).
   `crimeRetraceHandler` in `crime_retrace.o` walks the 32 swap slots of 24 bytes each and advances its table pointer by 4 bytes per slot.
   For a slot whose swap is due it rewrites the buffer bits of that slot's entry, the pair of low bits of the word.
   `crimeSetDisplayMode` writes the same entry for ioctl 0x55f4 with index 1.

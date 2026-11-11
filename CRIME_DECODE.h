@@ -4,7 +4,10 @@
  * Publish-safe register contract for the CRIME ASIC's CPU-interface window:
  * ID, control, interrupt, error and memory-control registers. Offsets are
  * from the start of the CRIME register window (physical 0x14000000). Every
- * register here is 64 bits wide and takes doubleword accesses only.
+ * register here is 64 bits wide; the specification allows doubleword
+ * accesses only. Shipped diagnostics read the low half of each memory bank
+ * control with a 32-bit load at the register's offset plus 4 (see the bank
+ * control note below), so a 32-bit load of a low half is a known exception.
  *
  * Grammar (one annotation per comment line, do not reformat):
  *   REG: <BLOCK>.<name> <offset> <acc><width> [count=<n>] reset=<v> <grade>
@@ -41,6 +44,16 @@
 #define CRIME_ID_LOW_BYTE_DRAFT 0xb1 /* inferred: draft specification 1.5 value, never seen on shipped parts */
 #define CRIME_MEM_BANKS 8 /* established: memory bank control registers */
 #define CRIME_WATCHDOG_COUNT_BITS 20 /* established */
+
+/* CPU physical memory aliases (established, [spec] PDF 47-52). One location must be reached through only one of the low alias, the high alias or the full window, or caches see incoherent copies. */
+#define CRIME_PHYS_LOW_ALIAS_BASE 0x00000000u /* established: first 256 MiB, so KSEG0 needs no TLB entry */
+#define CRIME_PHYS_LOW_ALIAS_BYTES 0x10000000u /* established */
+#define CRIME_PHYS_HIGH_ALIAS_BASE 0x20000000u /* established as a window; its responder is open in the specification */
+#define CRIME_PHYS_HIGH_ALIAS_BYTES 0x20000000u /* established: 512 MiB; inferred to be the upper half of the full window */
+#define CRIME_PHYS_FULL_MEM_BASE 0x40000000u /* established: all memory, up to 1 GiB; the only memory window GBE and (with the no-ECC alias) VICE see */
+#define CRIME_PHYS_FULL_MEM_BYTES 0x40000000u /* established */
+#define CRIME_PHYS_NOECC_MEM_BASE 0x80000000u /* established: skips ECC check and correction on reads and writes; ECC is still generated on writes */
+#define CRIME_PHYS_NOECC_MEM_BYTES 0x40000000u /* established */
 
 /* ---- identity and control ---- */
 /* REG: CRIME.id 0x000 r64 reset=unknown established */
@@ -167,6 +180,15 @@
 /* FIELD: CRIME.mem_bank_control.base_match 4:0 established */
 #define CRIME_MEM_BANK_CONTROL_BASE_MATCH_SHIFT 0
 #define CRIME_MEM_BANK_CONTROL_BASE_MATCH_MASK  0x1fu
+/*
+ * Access width. Shipped memory-sizing code in the diagnostics reads the low
+ * half of bank 0 to 7 as a 32-bit load at the register's offset plus 4 (the
+ * big-endian low word). Real machines are expected to accept such a load
+ * (inferred from the diagnostics shipping with that access; no capture of the
+ * result is held). Shipped software issues no write of a bank control here,
+ * so the doubleword-only rule stays the contract for writes. The low
+ * half carries sdram_geometry and base_match.
+ */
 /* sdram_geometry selects 16 Mbit or 64 Mbit device geometry; base_match is compared with request address bits 29:25 for a 32 MiB bank. */
 /* Reset values differ per bank, so the REG line's reset=unknown stands for none of them: bank n resets to n for n = 0 to 7
  * (established, [spec] table 6-14; no shipped software writes banks 2 to 7). With 32 MiB parts that puts bank n at n * 32 MiB. */

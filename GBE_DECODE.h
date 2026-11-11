@@ -69,6 +69,11 @@
 #define GBE_OFF_VC_1 0x80004 /* established: video capture region, top and bottom */
 #define GBE_OFF_VC_2 0x80008 /* established: video capture control */
 #define GBE_OFF_VC_3 0x8000c /* established: video capture field and descriptor control */
+#define GBE_OFF_VC_4 0x80010 /* established: capture tile addresses, tiles 1 and 2 */
+#define GBE_OFF_VC_5 0x80014 /* established: capture tile addresses, tiles 3 and 4 */
+#define GBE_OFF_VC_6 0x80018 /* established: capture tile addresses, tiles 5 and 6 */
+#define GBE_OFF_VC_7 0x8001c /* established: capture tile addresses, tiles 7 and 8 */
+#define GBE_OFF_VC_8 0x80020 /* established: capture tile addresses, tiles 9 and 10; write only */
 #define GBE_OFF_CMAP 0x50000 /* established: colour map */
 #define GBE_OFF_CMAP_FIFO 0x58000 /* established */
 #define GBE_OFF_GMAP 0x60000 /* established: 256 gamma entries */
@@ -79,6 +84,8 @@
 
 #define GBE_DEVICE_ID_VALUE 0x666 /* established: the probe requires this */
 #define GBE_MODE_ENTRIES 32 /* established */
+#define GBE_MODE_ENTRY_STRIDE 4 /* established: entries are consecutive 32-bit words, so swap slot n sits at the table base plus 4 * n */
+#define GBE_VC_TILE_REGS 5 /* established: VC_4 to VC_8 hold the ten tiles of one captured field, two per register */
 #define GBE_GMAP_ENTRIES 256 /* established */
 #define GBE_CMAP_ENTRIES_REV1 4608 /* established: revision 1.1 */
 #define GBE_CMAP_ENTRIES_REV2 6144 /* inferred: revision 2 */
@@ -367,6 +374,13 @@
 /* FIELD: VC_3.descr_ptr 31:5 established */
 #define GBE_VC_3_DESCR_PTR_SHIFT 5
 #define GBE_VC_3_DESCR_PTR_MASK  0x7ffffffu
+/* VC_4 to VC_8 share one layout: two 16-bit tile addresses, the earlier tile of the pair in the upper half. */
+/* FIELD: VC_TILES.tile_first 31:16 established */
+#define GBE_VC_TILES_TILE_FIRST_SHIFT 16
+#define GBE_VC_TILES_TILE_FIRST_MASK  0xffffu
+/* FIELD: VC_TILES.tile_second 15:0 established */
+#define GBE_VC_TILES_TILE_SECOND_SHIFT 0
+#define GBE_VC_TILES_TILE_SECOND_MASK  0xffffu
 /* Capture region bounds are inclusive. current_field is read only; descriptor-list DMA does not work on revision 1.1. */
 /* ---- colour map ---- */
 /* FIELD: CMAP_FIFO.free 5:0 established */

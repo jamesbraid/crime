@@ -129,11 +129,11 @@ Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 
 
 The CPU interface decodes a 40-bit physical address (established, PDF 47); the specification says VICE's decode was extended from 36 bits over the CRIME 1.1 implementation (established, PDF 49), which `CRIME.h` records as the 1.1 versus 1.5 difference. The map shows `0x0_c000_0000` (1 GiB) and the space above `0x3_0000_0000` as reserved.
 
-- Memory aliases (established, PDF 47): the first 256 MiB is reachable at the low alias so KSEG0 needs no TLB entry; the full 1 GiB needs TLB entries at the full window; "the high 512 MiB is aliased into the upper 512 MiB of the first gigabyte" of address space, which the specification gives as a more compact page-table option than the 1.5 to 2 GiB range. Interpretation (inferred): the high alias at `0x2000_0000` to `0x3fff_ffff` is the same memory as the upper half (offset 512 MiB and up) of the full window. A given physical location must be reached through exactly one of the low alias, the high alias or the full window, or the caches see incoherent copies (established, PDF 47).
+- Memory aliases (established, PDF 47): the first 256 MiB is reachable at the low alias so KSEG0 needs no TLB entry; the full 1 GiB needs TLB entries at the full window; "the high 512 MiB is aliased into the upper 512 MiB of the first gigabyte" of address space, which the specification gives as a more compact page-table option than the 1.5 to 2 GiB range. Interpretation (inferred): the high alias at `0x2000_0000` to `0x3fff_ffff` is the same memory as the upper half (offset 512 MiB and up) of the full window. A given physical location must be reached through exactly one of the low alias, the high alias or the full window, or the caches see incoherent copies (established, PDF 47). Recorded as the physical alias constants in [CRIME_DECODE.h](../CRIME_DECODE.h).
 - Frame and depth apertures (established, PDF 47): "linear address space access" to the current 2048 by 2048 by 32-bit frame and depth buffers as the rendering engine maps them. Unknown: how an aperture offset maps to tiled memory, which rendering TLB (A, B or C) it uses, and what a read does while the engine writes; no public source or binary read documents it (the kernel and library code read here never touch either window, below). Test that would settle it: a read or write through the frame aperture at a known pixel on hardware while the buffer is written through the engine, compared with the tile list; the document route is the specification's aperture chapter (PDF 47-48) and any later revision that names the translation table.
 - No-ECC alias (established, PDF 47): reads and writes skip ECC checking and correction only; ECC is still generated on writes and a sub-doubleword write still makes a read-modify-write. The specification gives its purpose as reading raw memory in an ECC fix-up routine and reading data the rendering engine wrote without raising ECC errors. The rendering TLB reaches the same alias through bit 15 of a tile entry (see above).
 - Reverse-endian memory exists only for devices: PCI sees memory at two windows, native at `0x4000_0000` and reverse endian at `0` (established, PDF 51-52, tables 3-5 and 3-6). The CPU map has no reverse-endian window.
-- Other masters (established, PDF 49-52): VICE sees only `0x4000_0000` full memory and the no-ECC alias at `0x8000_0000`; MACE DMA sees full memory, no-ECC memory and nothing below; GBE sees the full memory window and the specification marks everything else reserved. Linux agrees for non-PCI devices: it adds `0x4000_0000` to a RAM offset (`phys_to_dma`, `CRIME_HI_MEM_BASE`), and for PCI devices uses offset zero. IRIX and Linux both give GBE tile numbers below that window; see `docs/gbe.md` (pass 6).
+- Other masters (established, PDF 49-52): VICE sees only `0x4000_0000` full memory and the no-ECC alias at `0x8000_0000`; MACE DMA sees full memory, no-ECC memory and nothing below; GBE sees the full memory window and the specification marks everything else reserved. Linux agrees for non-PCI devices: it adds `0x4000_0000` to a RAM offset (`phys_to_dma`, `CRIME_HI_MEM_BASE`), and for PCI devices uses offset zero. IRIX and Linux both give GBE tile numbers below that window; see `docs/gbe.md` (pass 6). Recorded with the alias constants in [CRIME_DECODE.h](../CRIME_DECODE.h).
 
 ## Where memory sits (established, [spec] PDF 135-153; Linux `ip32-memory.c`)
 
@@ -240,20 +240,20 @@ One row per register offset the shipped code reaches, from the disassembly under
   `cpu_get_memsize` in `symmon.IP32` loads it as a doubleword at 0xa0027e44 and uses it as the reference value.
   A later bank is counted only when its register differs from this one.
   `ide.IP32` reads its low half at 0xa00f022c and its high half at 0xa00f0230.
-- `+0x20c` Bank 0 Control, low word: the low half of bank 0, whose bit 8 is the part size. Established.
+- `+0x20c` Bank 0 Control, low word: the low half of bank 0, whose bit 8 is the part size. Established. Access width: the 32-bit load is a documented exception to the specification's doubleword-only rule in [CRIME_DECODE.h](../CRIME_DECODE.h); that real silicon accepts it is inferred.
   `ide.IP32` loads it with `lw` at 0xa00f022c before its sizing loop.
   It keeps the value at stack slot 20 as the template that identical banks are compared against.
 - `+0x210` Bank 1 Control: the second bank register and the start of the sizing loop. Established.
   `cpu_get_memsize` in `symmon.IP32` starts its pointer here, `ori a2,a2,0x210` at 0xa0027e6c.
   It adds 128 MiB for bit 8 set and 32 MiB for clear to a running total, skipping any bank equal to bank 0.
   `ide.IP32` runs the same loop from 0xa00f025c.
-- `+0x214` Bank 1 Control, low word: the low half of bank 1 as a 32-bit load. Established.
+- `+0x214` Bank 1 Control, low word: the low half of bank 1 as a 32-bit load. Established. Same exception as bank 0.
   `ide.IP32` loads it at 0xa00f0264 with `lw t5,4(v0)`.
   It tests bit 8 of the value against the bank-0 low word to choose 32 or 128 MiB.
-- `+0x21c` Bank 2 Control, low word: the low half of bank 2 as a 32-bit load. Established.
+- `+0x21c` Bank 2 Control, low word: the low half of bank 2 as a 32-bit load. Established. Same exception as bank 0.
   `ide.IP32` loads it with `lw t3,12(v0)` at 0xa00f02ac, in the first of its six unrolled passes after bank 1.
   A bank is skipped only when both of its words equal bank 0's; otherwise bit 8 of this word adds 32 or 128 MiB to the total.
-- `+0x224` Bank 3 Control, low word: bank 3's size bit and match field. Established.
+- `+0x224` Bank 3 Control, low word: bank 3's size bit and match field. Established. Same exception as bank 0.
   The next unrolled pass of the `ide.IP32` sizing loop reads it with `lw t1,12(v0)` at 0xa00f02f4, after the pointer has advanced by 8.
   It is compared with the bank-0 low word kept at stack slot 20, and bit 8 selects the size added.
 - `+0x22c` Bank 4 Control, low word: read by the third pass of the same loop. Established.
@@ -261,7 +261,7 @@ One row per register offset the shipped code reaches, from the disassembly under
   The 0x100 mask on it picks 0x02000000 or 0x08000000 for the running total in `v1`.
 - `+0x234` Bank 5 Control, low word: the fourth pass, which loads it at 0xa00f0384 with `lw t5,12(v0)`. Established.
   Its high word comes from `lw t4,8(v0)` at 0xa00f0380, and both are compared with bank 0 before the size test.
-- `+0x23c` Bank 6 Control, low word: loaded by the fifth pass at 0xa00f03cc with `lw t3,12(v0)`. Established.
+- `+0x23c` Bank 6 Control, low word: loaded by the fifth pass at 0xa00f03cc with `lw t3,12(v0)`. Established. Same exception as bank 0.
   Equality with both words of bank 0 skips the bank; a differing word falls through to the bit 8 test.
 - `+0x244` Bank 7 Control, low word: the last word the sizing loop reads. Established.
   `ide.IP32` loads it with `lw t1,12(v0)` at 0xa00f0414, the sixth unrolled pass, the last of the loop.

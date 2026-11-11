@@ -31,6 +31,15 @@ register_doc = "Memory transfer engine register"
 description = ["CRIME memory transfer engine registers, address word", "and tile geometry."]
 
 [[headers]]
+file = "RE_DECODE.h"
+block = "RE"
+group = "re"
+module = "re"
+rust_prefix = "RE_"
+register_doc = "CRIME rendering engine register"
+description = ["CRIME rendering engine interface buffer, linear", "translation tables and clip registers."]
+
+[[headers]]
 file = "GBE_DECODE.h"
 group = "gbe"
 prefix = "GBE"

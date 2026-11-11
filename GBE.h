@@ -171,6 +171,17 @@
 /* gbeGmapInit loads a linear ramp i * 0x01010100, or a table from crime_init
  * .data when gbe_gammawar is set [E, k:crime_init:gbeGmapInit]. */
 
+/* ---- Video capture (+0x80000) --------------------------------------------- */
+/* VC_0/VC_1 region bounds, VC_2 mode, VC_3 field and descriptor control;
+ * VC_4 to VC_8 hold the ten capture tile addresses, two 16-bit entries per
+ * register with the earlier tile in the upper half [E, gbe-spec pp. 47-48].
+ * VC_8 has no read path. Fields: GBE_DECODE.h. */
+#define GBE_VC_0            0x80000
+#define GBE_VC_1            0x80004
+#define GBE_VC_2            0x80008
+#define GBE_VC_3            0x8000c
+#define GBE_VC_TILES(n)     (0x80010 + 4 * (n)) /* n = 0..4: VC_4..VC_8 [E] */
+
 /* ---- Cursor --------------------------------------------------------------- */
 #define GBE_CRS_POS         0x70000
 #define GBE_CRS_CTL         0x70004 /* bit 0 enable */

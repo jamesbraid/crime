@@ -79,7 +79,7 @@ Established (6.5.30 `crime_tiles.o`, the tail of `crmValidateDrawable`): the loo
 4. Copy each entry: 64-bit address word from `IB_ADDR(i)` (`+0x200 + 8i`) and the two data words from `IB_DATA(i)` (`+8i`), into the client context at `+0x150` (addresses, 64 doublewords) and `+0x350` (data, 64 doublewords). Ring wraps at 64.
 5. Write 0 to `+0x4008`.
 
-Interface-buffer address word, as decoded by `crmRestorePP` and `crmFindPP` (established as software decoding; the hardware meaning of the byte-lane field is inferred): bits 39:32 register index in doublewords within the group, bits 42:40 group (0 interface, 1 TLB, 2 pixel pipe, 3 memory transfer, per `CRIME_RE.h`), bits 44:43 lane code, bit 45 used by `crmFindPP` as a stop flag (role unknown; the start alias at offset `0x800` cannot be among the decoded bits, so inferred that bit 45 may mark an entry that carried it, unverified). Replay computes `window + ((index * 8) | (group << 12))` and writes through the uncached alias: lane code 3 stores the 64-bit data word, 2 stores data word 0 at the register address (high word in big-endian layout), 1 stores data word 1 at register address + 4, 0 prints a driver warning and writes nothing. Test that would settle it: read back the address RAM slots after one plain-alias write, one start-alias write and one half-word write to the same register, and compare bits 45:43 across the three (a hardware capture, which needs its own agreement); or a later specification revision whose interface-buffer chapter gives the address RAM layout.
+Interface-buffer address word, as decoded by `crmRestorePP` and `crmFindPP` (established as software decoding; the hardware meaning of the byte-lane field is inferred): bits 39:32 register index in doublewords within the group, bits 42:40 group (0 interface, 1 TLB, 2 pixel pipe, 3 memory transfer, per `CRIME_RE.h`), bits 44:43 lane code, bit 45 used by `crmFindPP` as a stop flag (role unknown; the start alias at offset `0x800` cannot be among the decoded bits, so inferred that bit 45 may mark an entry that carried it, unverified). Replay computes `window + ((index * 8) | (group << 12))` and writes through the uncached alias: lane code 3 stores the 64-bit data word, 2 stores data word 0 at the register address (high word in big-endian layout), 1 stores data word 1 at register address + 4, 0 prints a driver warning and writes nothing. Test that would settle it: read back the address RAM slots after one plain-alias write, one start-alias write and one half-word write to the same register, and compare bits 45:43 across the three (a hardware capture, which needs its own agreement); or a later specification revision whose interface-buffer chapter gives the address RAM layout. Field layout recorded in [RE_DECODE.h](../RE_DECODE.h) as `IBADDR_HI` (index, group, lane, flag).
 
 ## Other users of the save and replay
 
@@ -151,10 +151,10 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
 - `+0x1780` TLB.linearB: the first doubleword of linear table B, the host-memory table used for the destination of a read-back (table 7-2). Established.
   `crmValidateDrawable` in `crime_tiles.o` fills it from descriptor offset `+0xd0` when the descriptor's word at `+0x24` or `+0x34` is non-zero.
   Otherwise it zeroes all 32 linear doublewords once, and only if the board's loaded flag at `+0xb4` is set.
-- `+0x1788` TLB.linearB: the second doubleword of linear table B, taking descriptor offset `+0xd8` (table 7-2). Established.
+- `+0x1788` TLB.linearB: the second doubleword of linear table B, taking descriptor offset `+0xd8` (table 7-2). Established. Both doublewords are covered by the `tlb_lin_a` and `tlb_lin_b` registers of [RE_DECODE.h](../RE_DECODE.h) (16 doublewords each, entries in `LINENT`).
   The same second pass that writes `+0x1708` loads the doubleword at descriptor offset `+0xd8` into it.
   Of its two 32-bit entries the upper one holds the even page and the lower one the odd page.
-- `+0x2020` ScrMask[0]: the first 64-bit screen mask, x start in bits 63:48, y start in 47:32, x end (exclusive) in 31:16 and y end in 15:0 (table 7-3). Established.
+- `+0x2020` ScrMask[0]: the first 64-bit screen mask, x start in bits 63:48, y start in 47:32, x end (exclusive) in 31:16 and y end in 15:0 (table 7-3). Established. Layout recorded in [RE_DECODE.h](../RE_DECODE.h) as `SCRMASK_HI` and `SCRMASK_LO`.
   `crimeValidateClip` in `crime.o` writes the first clip rectangle here, and with an empty list writes the window's bounding box here and leaves the other four masks alone.
   In the kernel's ClipMode word this register pairs with enable bit 5 and mode bit 0.
 - `+0x2028` ScrMask[1]: the second screen mask, same field layout as the first (table 7-3). Established.
@@ -163,7 +163,7 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
 - `+0x2030` ScrMask[2]: the third screen mask (table 7-3). Established.
   `crmSetSmask` in `crm.so` stores it with a doubleword store for X clip rectangles, and mirrors the value at shadow offset `+0x30`, the register offset minus 0x2000.
   Three rectangles make the kernel write ClipMode 0xe7, so this register's enable is bit 7 and its mode bit 2.
-- `+0x2038` ScrMask[3]: the fourth screen mask (table 7-3). Established.
+- `+0x2038` ScrMask[3]: the fourth screen mask (table 7-3). Established. Encoding recorded in [RE_DECODE.h](../RE_DECODE.h) as `clipmode`, with the kernel's pairing of enable and mode bits.
   A four-rectangle clip list makes `crimeValidateClip` in `crime.o` set ClipMode 0x1ef, which enables this mask through bit 8 and sets its mode bit 3.
   A rectangle starting left of or above the origin is cut there before the 64-bit store, its end staying at start plus size.
 - `+0x2040` ScrMask[4]: the fifth and last screen mask (table 7-3). Established.
