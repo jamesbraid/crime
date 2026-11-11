@@ -112,20 +112,20 @@ Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 
 
 ## The map (established, [spec] PDF 47-48, table 3-1)
 
-| CPU physical address | Size | Function | Responds |
-|---|---|---|---|
-| `0x0_0000_0000` | 256 MiB | low memory alias (also what KSEG0 reaches) | CRIME |
-| `0x0_1000_0000` | 32 MiB | frame buffer aperture | CRIME |
-| `0x0_1200_0000` | 32 MiB | depth buffer aperture | CRIME |
-| `0x0_1400_0000` | 32 MiB | CRIME registers | CRIME |
-| `0x0_1600_0000` | 16 MiB | GBE registers | GBE |
-| `0x0_1700_0000` | 16 MiB | VICE registers and RAM | VICE |
-| `0x0_1800_0000` to `0x0_1fff_ffff` | | MACE windows (PCI low I/O 32 MiB, PCI low memory 32 MiB at `0x1a00_0000`, PCI configuration `0x1c00_0000`, I/O `0x1f00_0000`, audio/video `0x1f40_0000`, super I/O `0x1f80_0000`, ROM `0x1fc0_0000`) | MACE |
-| `0x0_2000_0000` | 512 MiB | high memory alias | the table shows a question mark |
-| `0x0_4000_0000` | 1 GiB | full memory | CRIME |
-| `0x0_8000_0000` | 1 GiB | no-ECC memory alias | CRIME |
-| `0x1_0000_0000` | 4 GiB | PCI I/O (high) | MACE |
-| `0x2_0000_0000` | 4 GiB | PCI memory (high) | MACE |
+| CPU physical address | Size | Function | Responds | Grade |
+|---|---|---|---|---|
+| `0x0_0000_0000` | 256 MiB | low memory alias (also what KSEG0 reaches) | CRIME | established |
+| `0x0_1000_0000` | 32 MiB | frame buffer aperture | CRIME | established |
+| `0x0_1200_0000` | 32 MiB | depth buffer aperture | CRIME | established |
+| `0x0_1400_0000` | 32 MiB | CRIME registers | CRIME | established |
+| `0x0_1600_0000` | 16 MiB | GBE registers | GBE | established |
+| `0x0_1700_0000` | 16 MiB | VICE registers and RAM | VICE | established |
+| `0x0_1800_0000` to `0x0_1fff_ffff` | | MACE windows (PCI low I/O 32 MiB, PCI low memory 32 MiB at `0x1a00_0000`, PCI configuration `0x1c00_0000`, I/O `0x1f00_0000`, audio/video `0x1f40_0000`, super I/O `0x1f80_0000`, ROM `0x1fc0_0000`) | MACE | established |
+| `0x0_2000_0000` | 512 MiB | high memory alias | the table shows a question mark | established |
+| `0x0_4000_0000` | 1 GiB | full memory | CRIME | established |
+| `0x0_8000_0000` | 1 GiB | no-ECC memory alias | CRIME | established |
+| `0x1_0000_0000` | 4 GiB | PCI I/O (high) | MACE | established |
+| `0x2_0000_0000` | 4 GiB | PCI memory (high) | MACE | established |
 
 The CPU interface decodes a 40-bit physical address (established, PDF 47); the specification says VICE's decode was extended from 36 bits over the CRIME 1.1 implementation (established, PDF 49), which `CRIME.h` records as the 1.1 versus 1.5 difference. The map shows `0x0_c000_0000` (1 GiB) and the space above `0x3_0000_0000` as reserved.
 

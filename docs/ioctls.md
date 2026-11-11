@@ -54,21 +54,21 @@ Argument bytes (established from the dispatcher reads): byte 0 the buffer kind (
 
 `RRM_Dispatch` takes commands 1000 to 1099 through a table of 16-byte entries that starts at command 1000 (established: the entry address is `table + (command - 1000) * 16`; the first word of each entry is a handler). The relocated handler names give the commands (established from `rrm.o`'s relocation table):
 
-| Command | Handler | Command | Handler |
-|---|---|---|---|
-| 1000 | `RRM_OpenRN` | 1013 | `RRM_SwapGroup` |
-| 1001 | `RRM_CloseRN` | 1014 | `RRM_SwapUnGroup` |
-| 1002 | `RRM_BindProcToRN` | 1015 | `RRM_ValidateMessage` |
-| 1003 | `RRM_BindRNToClip` | 1016 | `RRM_GetDisplayModes` |
-| 1004 | `RRM_UnbindRNFromClip` | 1017 | `RRM_LoadDisplayMode` |
-| 1005 | `RRM_SwapBuf` | 1018 | `RRM_CushionBuffer` |
-| 1006 | `RRM_SetSwapInterval` | 1019 | `RRM_SwapReady` |
-| 1007 | `RRM_WaitForRetrace` | 1020 | `RRM_MGR_SwapBuf` |
-| 1008 | `RRM_SetDisplayMode` | 1021 | `RRM_SetVideoSync` |
-| 1009 | `RRM_Message` | 1022 | `RRM_GetVideoSync` |
-| 1010 | `RRM_InvalidateRN` | 1023 | `RRM_WaitVideoSync` |
-| 1011 | `RRM_ValidateClip` | 1024 | `RRM_BindRNToReadAndClip` |
-| 1012 | `RRM_ValidateSwapBuf` | 1025 | `RRM_MapClipToSwapbufID` |
+| Command | Handler | Command | Handler | Grade |
+|---|---|---|---|---|
+| 1000 | `RRM_OpenRN` | 1013 | `RRM_SwapGroup` | established |
+| 1001 | `RRM_CloseRN` | 1014 | `RRM_SwapUnGroup` | established |
+| 1002 | `RRM_BindProcToRN` | 1015 | `RRM_ValidateMessage` | established |
+| 1003 | `RRM_BindRNToClip` | 1016 | `RRM_GetDisplayModes` | established |
+| 1004 | `RRM_UnbindRNFromClip` | 1017 | `RRM_LoadDisplayMode` | established |
+| 1005 | `RRM_SwapBuf` | 1018 | `RRM_CushionBuffer` | established |
+| 1006 | `RRM_SetSwapInterval` | 1019 | `RRM_SwapReady` | established |
+| 1007 | `RRM_WaitForRetrace` | 1020 | `RRM_MGR_SwapBuf` | established |
+| 1008 | `RRM_SetDisplayMode` | 1021 | `RRM_SetVideoSync` | established |
+| 1009 | `RRM_Message` | 1022 | `RRM_GetVideoSync` | established |
+| 1010 | `RRM_InvalidateRN` | 1023 | `RRM_WaitVideoSync` | established |
+| 1011 | `RRM_ValidateClip` | 1024 | `RRM_BindRNToReadAndClip` | established |
+| 1012 | `RRM_ValidateSwapBuf` | 1025 | `RRM_MapClipToSwapbufID` | established |
 
 The commands are numbered in the table's order (entries at offsets 0, 0x10, ... 0x190). "RN" is the resource manager's name for a render node; what a node is beyond the names is unknown here.
 

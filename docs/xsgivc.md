@@ -8,45 +8,45 @@ Source: the N32 build `usr/lib32/libXsgivc.so` of IRIX 6.5.30, `objdump -d`. The
 
 Established for every request routine: the routine looks up the display's extension record (`find_display`), reserves a request in the display buffer, writes the extension's major opcode (taken from the record) at byte 0, the minor opcode at byte 1 and the request length in 4-byte words at bytes 2-3, fills the body, and for queries waits for the reply (`_XReply`). The minor opcode below is the constant stored at byte 1; the length is the fixed part the routine writes (variable-length requests add their data after it).
 
-| Minor | Routine | Fixed length (words) |
-|---:|---|---:|
-| 0 | `XSGIvcQueryVersion` (sends client version 1.3 in the body) | 2 |
-| 1 | `XSGIvcQueryVideoScreenInfo` | 2 |
-| 2 | `XSGIvcListVideoFormats` | 6 |
-| 3 | `XSGIvcListVideoFormatCombinations` | 3 |
-| 4 | `XSGIvcListVideoFormatsInCombination` | 3 |
-| 5 | `XSGIvcLoadVideoFormat` | 5 |
-| 6 | `XSGIvcLoadVideoFormatCombination` | 3 |
-| 7 | `XSGIvcDisableChannel` | 3 |
-| 8 | `XSGIvcQueryChannelInfo` | 3 |
-| 9 | `XSGIvcQueryMonitorName` | 3 |
-| 10 | `SetOneControl` (the common set routine, below) | 5 |
-| 11 | `QueryOneControl` (the common query routine, below) | 4 |
-| 12 | `XSGIvcSetOutputSync` | 5 |
-| 13 | `XSGIvcQueryOutputSync` | 4 |
-| 14 | `XSGIvcSetScreenInputSyncSource` | 4 |
-| 15 | `XSGIvcQueryScreenInputSyncSource` | 2 |
-| 16 | `XSGIvcSetPlatformParameter` | 5 |
-| 17 | `XSGIvcQueryPlatformParameter` | 5 |
-| 18 | `XSGIvcQueryScreenGammaMaps` | 2 |
-| 19 | `XSGIvcQueryGammaMap` | 3 |
-| 20 | `XSGIvcStoreGammaColors8` | 5 |
-| 21 | `XSGIvcStoreGammaColors16` | 5 |
-| 22 | `XSGIvcQueryGammaColors` | 4 |
-| 23 | `XSGIvcSelectInput` | 3 |
-| 24 | `XSGIvcSetChannelInputRectangle`, `XSGIvcQueryBestChannelRectangle` (one request serves both; the routines differ in the body and in whether they read a reply) | 8 |
-| 25 | `XSGIvcSendMonitorCommand`, `XSGIvcSendMonitorQuery` | 5 |
-| 26 | `XSGIvcQueryMonitorBaseProtocol` | 3 |
-| 27 | `XSGIvcSetScreenExternalSyncSource` | 3 |
-| 28 | `XSGIvcQueryScreenExternalSyncSource` | 2 |
-| 29 | `XSGIvcQueryExternalSyncSourceName` | 3 |
-| 30 | `XSGIvcNVListVideoFormats` | 6 |
-| 31 | `XSGIvcNVListVideoFormatCombinations` | 4 |
-| 32 | `XSGIvcNVLoadVideoFormat` | 7 |
-| 33 | `XSGIvcNVLoadVideoFormatCombination` | 3 |
-| 34 | `XSGIvcLoadVideoFormatByName`, `XSGIvcNVLoadVideoFormatByName` | 5 |
-| 35 | `XSGIvcInitMonitorBaseProtocol` | 3 |
-| 36 | `XSGIvcMultiCursorSetMode` | 2 |
+| Minor | Routine | Fixed length (words) | Grade |
+|---:|---|---:|---|
+| 0 | `XSGIvcQueryVersion` (sends client version 1.3 in the body) | 2 | established |
+| 1 | `XSGIvcQueryVideoScreenInfo` | 2 | established |
+| 2 | `XSGIvcListVideoFormats` | 6 | established |
+| 3 | `XSGIvcListVideoFormatCombinations` | 3 | established |
+| 4 | `XSGIvcListVideoFormatsInCombination` | 3 | established |
+| 5 | `XSGIvcLoadVideoFormat` | 5 | established |
+| 6 | `XSGIvcLoadVideoFormatCombination` | 3 | established |
+| 7 | `XSGIvcDisableChannel` | 3 | established |
+| 8 | `XSGIvcQueryChannelInfo` | 3 | established |
+| 9 | `XSGIvcQueryMonitorName` | 3 | established |
+| 10 | `SetOneControl` (the common set routine, below) | 5 | established |
+| 11 | `QueryOneControl` (the common query routine, below) | 4 | established |
+| 12 | `XSGIvcSetOutputSync` | 5 | established |
+| 13 | `XSGIvcQueryOutputSync` | 4 | established |
+| 14 | `XSGIvcSetScreenInputSyncSource` | 4 | established |
+| 15 | `XSGIvcQueryScreenInputSyncSource` | 2 | established |
+| 16 | `XSGIvcSetPlatformParameter` | 5 | established |
+| 17 | `XSGIvcQueryPlatformParameter` | 5 | established |
+| 18 | `XSGIvcQueryScreenGammaMaps` | 2 | established |
+| 19 | `XSGIvcQueryGammaMap` | 3 | established |
+| 20 | `XSGIvcStoreGammaColors8` | 5 | established |
+| 21 | `XSGIvcStoreGammaColors16` | 5 | established |
+| 22 | `XSGIvcQueryGammaColors` | 4 | established |
+| 23 | `XSGIvcSelectInput` | 3 | established |
+| 24 | `XSGIvcSetChannelInputRectangle`, `XSGIvcQueryBestChannelRectangle` (one request serves both; the routines differ in the body and in whether they read a reply) | 8 | established |
+| 25 | `XSGIvcSendMonitorCommand`, `XSGIvcSendMonitorQuery` | 5 | established |
+| 26 | `XSGIvcQueryMonitorBaseProtocol` | 3 | established |
+| 27 | `XSGIvcSetScreenExternalSyncSource` | 3 | established |
+| 28 | `XSGIvcQueryScreenExternalSyncSource` | 2 | established |
+| 29 | `XSGIvcQueryExternalSyncSourceName` | 3 | established |
+| 30 | `XSGIvcNVListVideoFormats` | 6 | established |
+| 31 | `XSGIvcNVListVideoFormatCombinations` | 4 | established |
+| 32 | `XSGIvcNVLoadVideoFormat` | 7 | established |
+| 33 | `XSGIvcNVLoadVideoFormatCombination` | 3 | established |
+| 34 | `XSGIvcLoadVideoFormatByName`, `XSGIvcNVLoadVideoFormatByName` | 5 | established |
+| 35 | `XSGIvcInitMonitorBaseProtocol` | 3 | established |
+| 36 | `XSGIvcMultiCursorSetMode` | 2 | established |
 
 The `NV` routines are a second set of format requests with their own minor opcodes (30 to 33) beside the plain ones (2, 3, 5, 6); both name forms of the load-by-name request share 34. What distinguishes the two sets is not read here (inferred from the name: a non-volatile form that the server records as the default format).
 
@@ -54,15 +54,15 @@ The `NV` routines are a second set of format requests with their own minor opcod
 
 Established: the output-level routines are two-instruction wrappers that pass a control number to the common routines `QueryOneControl` (minor 11) and `SetOneControl` (minor 10):
 
-| Control | Query | Set |
-|---:|---|---|
-| 1 | `XSGIvcQueryOutputGain` | `XSGIvcSetOutputGain` |
-| 6 | `XSGIvcQueryOutputPedestal` | `XSGIvcSetOutputPedestal` |
-| 7 | `XSGIvcQueryOutputPhaseH` | `XSGIvcSetOutputPhaseH` |
-| 8 | `XSGIvcQueryOutputPhaseSCH` | `XSGIvcSetOutputPhaseSCH` |
-| 9 | `XSGIvcQueryOutputPhaseV` | `XSGIvcSetOutputPhaseV` |
-| 10 | `XSGIvcQueryChannelGammaMap` | `XSGIvcSetChannelGammaMap` |
-| 11 | `XSGIvcQueryOutputBlanking` | `XSGIvcSetOutputBlanking` |
+| Control | Query | Set | Grade |
+|---:|---|---|---|
+| 1 | `XSGIvcQueryOutputGain` | `XSGIvcSetOutputGain` | established |
+| 6 | `XSGIvcQueryOutputPedestal` | `XSGIvcSetOutputPedestal` | established |
+| 7 | `XSGIvcQueryOutputPhaseH` | `XSGIvcSetOutputPhaseH` | established |
+| 8 | `XSGIvcQueryOutputPhaseSCH` | `XSGIvcSetOutputPhaseSCH` | established |
+| 9 | `XSGIvcQueryOutputPhaseV` | `XSGIvcSetOutputPhaseV` | established |
+| 10 | `XSGIvcQueryChannelGammaMap` | `XSGIvcSetChannelGammaMap` | established |
+| 11 | `XSGIvcQueryOutputBlanking` | `XSGIvcSetOutputBlanking` | established |
 
 The gain routines are longer than the others because they pass a component record rather than a single value (established: they build the argument on the stack before the call).
 

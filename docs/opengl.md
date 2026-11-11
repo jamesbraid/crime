@@ -117,24 +117,24 @@ The function stores `m` in gc+30436 and also in gc+0x7dc0-based words, and then 
 
 - the enable word `e` (gc+1792) bit for each capability, by running every enum from 0 to 0x87ff through `__glim_Enable` (the software attribute module, `0x0d9c2a70..0x0d9c371c`; the routine is a compare tree, no jump table, so a path-by-path evaluation of the listing gives each case; `__glim_Disable` clears the same bits). GL names are the public enum values:
 
-| `e` bit | Capability | `e` bit | Capability |
-|---|---|---|---|
-| 0x1 | GL_ALPHA_TEST | 0x10000 | GL_TEXTURE_1D |
-| 0x2 | GL_BLEND | 0x20000 | GL_TEXTURE_2D |
-| 0x4 | GL_INDEX_LOGIC_OP | 0x40000 to 0x200000 | GL_TEXTURE_GEN_S, T, R, Q |
-| 0x8 | GL_DITHER | 0x400000 | GL_NORMALIZE |
-| 0x10 | GL_DEPTH_TEST | 0x800000 | GL_AUTO_NORMAL |
-| 0x20 | GL_FOG | 0x1000000 | GL_POLYGON_OFFSET_FILL (0x8037) |
-| 0x40 | GL_LIGHTING | 0x2000000, 0x4000000, 0x8000000 | GL_CONVOLUTION_1D, _2D, GL_SEPARABLE_2D |
-| 0x80 | GL_COLOR_MATERIAL | 0x10000000, 0x20000000 | GL_HISTOGRAM, GL_MINMAX |
-| 0x100 | GL_LINE_STIPPLE | 0x40000000 | GL_TEXTURE_3D (0x806f) |
-| 0x200 | GL_LINE_SMOOTH | 0x80000000 | GL_TEXTURE_COLOR_TABLE_SGI (0x80bc) |
-| 0x400 | GL_POINT_SMOOTH | | |
-| 0x800 | GL_POLYGON_SMOOTH | | |
-| 0x1000 | GL_CULL_FACE | | |
-| 0x2000 | GL_POLYGON_STIPPLE | | |
-| 0x4000 | GL_SCISSOR_TEST | | |
-| 0x8000 | GL_STENCIL_TEST | | |
+| `e` bit | Capability | `e` bit | Capability | Grade |
+|---|---|---|---|---|
+| 0x1 | GL_ALPHA_TEST | 0x10000 | GL_TEXTURE_1D | established |
+| 0x2 | GL_BLEND | 0x20000 | GL_TEXTURE_2D | established |
+| 0x4 | GL_INDEX_LOGIC_OP | 0x40000 to 0x200000 | GL_TEXTURE_GEN_S, T, R, Q | established |
+| 0x8 | GL_DITHER | 0x400000 | GL_NORMALIZE | established |
+| 0x10 | GL_DEPTH_TEST | 0x800000 | GL_AUTO_NORMAL | established |
+| 0x20 | GL_FOG | 0x1000000 | GL_POLYGON_OFFSET_FILL (0x8037) | established |
+| 0x40 | GL_LIGHTING | 0x2000000, 0x4000000, 0x8000000 | GL_CONVOLUTION_1D, _2D, GL_SEPARABLE_2D | established |
+| 0x80 | GL_COLOR_MATERIAL | 0x10000000, 0x20000000 | GL_HISTOGRAM, GL_MINMAX | established |
+| 0x100 | GL_LINE_STIPPLE | 0x40000000 | GL_TEXTURE_3D (0x806f) | established |
+| 0x200 | GL_LINE_SMOOTH | 0x80000000 | GL_TEXTURE_COLOR_TABLE_SGI (0x80bc) | established |
+| 0x400 | GL_POINT_SMOOTH | | | established |
+| 0x800 | GL_POLYGON_SMOOTH | | | established |
+| 0x1000 | GL_CULL_FACE | | | established |
+| 0x2000 | GL_POLYGON_STIPPLE | | | established |
+| 0x4000 | GL_SCISSOR_TEST | | | established |
+| 0x8000 | GL_STENCIL_TEST | | | established |
 
   The other capabilities use neighbouring words: gc+1796 (GL_POLYGON_OFFSET_POINT 0x200, _LINE 0x400; the three colour tables 0x80d0 to 0x80d2 as bits 0 to 2), gc+1800 (GL_LIGHT0 to 7, bits 0 to 7), gc+1804 (GL_CLIP_PLANE0 to 5), gc+1808 (GL_MAP1_*), gc+1812 (GL_MAP2_*); GL_COLOR_LOGIC_OP calls `__glim_BlendEquationEXT` instead of setting a bit. The vertex-array enables (0x8074 to 0x8079) set bits of gc+5356 and gc+5344, not `e`.
 - The validation call-outs are decoded below.
@@ -229,19 +229,19 @@ Source: IRIX 6.5.30 N32 `libGLcore`, the CRIME GL driver texture assembly unit: 
 - Established (`crmComputeTexLevelSize`): for each level it takes the requested internal format, the level size and the border width. The usable size is the given size minus twice the border; it fails (returns -1) if either side exceeds the context limit at gc+0xE8C. It fills two records. The level record (offsets +0x40 to +0x5c) holds a GL base format, the stored internal format, and six bit counts (+0x48 red, +0x4c green, +0x50 blue, +0x54 alpha, +0x58 luminance, +0x5c intensity; the colour-to-offset naming is inferred from which counts are set for which format). The hardware record holds the texel type code at +0xC, the texel depth at +0x10 and the layout fields at +0, +4 and +8. It returns the level's storage size in bytes, `width * height << depth`.
 - Established, the format table. Each requested format collapses onto one stored format; all of the stored formats are 16 or 32 bits per texel (the depth value is a log2 of bytes: 1 for 16 bit, 2 for 32 bit). GL names below are the public OpenGL 1.2 and SGIS ones that match the numeric constants in the code.
 
-| Requested internal format (GL) | Stored format | Bits stored | Depth (log2 bytes) | Type code |
-|---|---|---|---|---|
-| `GL_ALPHA`, `GL_ALPHA4/8/12/16` | `GL_ALPHA16` | A 16 | 1 | 5 |
-| `GL_LUMINANCE`, `GL_LUMINANCE4/8/12/16` | `GL_LUMINANCE16` | L 16 | 1 | 7 |
-| `GL_LUMINANCE_ALPHA`, `GL_LUMINANCE4_ALPHA4`, `GL_LUMINANCE6_ALPHA2`, `GL_LUMINANCE8_ALPHA8`, `GL_LUMINANCE12_ALPHA4`, `GL_LUMINANCE12_ALPHA12`, `GL_LUMINANCE16_ALPHA16` | `GL_LUMINANCE8_ALPHA8` | L 8, A 8 | 1 | 8 |
-| `GL_INTENSITY`, `GL_INTENSITY4/8/12/16` | `GL_INTENSITY16` | I 16 | 1 | 6 |
-| `GL_RGB8`, `GL_RGB10`, `GL_RGB12`, `GL_RGB16` | `GL_RGBA8` (RGB stored in 32-bit texels) | R 8, G 8, B 8 | 2 | 1 |
-| `GL_RGB2_EXT` (`0x804e`), `GL_RGB4`, `GL_RGB5`, `GL_R3_G3_B2` | `GL_RGB5_A1` tag with 5-bit RGB channels and no alpha bits | 5/5/5 | 1 | 1 |
-| `GL_RGB` (3, `0x1907`) | `GL_RGBA8` or `GL_RGB5_A1`, by the size test below | 8/8/8 or 5/5/5 | 2 or 1 | 1 |
-| `GL_RGBA` (4, `0x1908`) | `GL_RGBA8` or `GL_RGBA4`, by the size test below | 8/8/8/8 or 4/4/4/4 | 2 or 1 | 2 or 4 |
-| `GL_RGBA8`, `GL_RGB10_A2`, `GL_RGBA12`, `GL_RGBA16` | `GL_RGBA8` | 8/8/8/8 | 2 | 2 |
-| `GL_RGBA2`, `GL_RGBA4` | `GL_RGBA4` | 4/4/4/4 | 1 | 4 |
-| `GL_RGB5_A1` | `GL_RGB5_A1` | 5/5/5/1 | 1 | 2 |
+| Requested internal format (GL) | Stored format | Bits stored | Depth (log2 bytes) | Type code | Grade |
+|---|---|---|---|---|---|
+| `GL_ALPHA`, `GL_ALPHA4/8/12/16` | `GL_ALPHA16` | A 16 | 1 | 5 | established |
+| `GL_LUMINANCE`, `GL_LUMINANCE4/8/12/16` | `GL_LUMINANCE16` | L 16 | 1 | 7 | established |
+| `GL_LUMINANCE_ALPHA`, `GL_LUMINANCE4_ALPHA4`, `GL_LUMINANCE6_ALPHA2`, `GL_LUMINANCE8_ALPHA8`, `GL_LUMINANCE12_ALPHA4`, `GL_LUMINANCE12_ALPHA12`, `GL_LUMINANCE16_ALPHA16` | `GL_LUMINANCE8_ALPHA8` | L 8, A 8 | 1 | 8 | established |
+| `GL_INTENSITY`, `GL_INTENSITY4/8/12/16` | `GL_INTENSITY16` | I 16 | 1 | 6 | established |
+| `GL_RGB8`, `GL_RGB10`, `GL_RGB12`, `GL_RGB16` | `GL_RGBA8` (RGB stored in 32-bit texels) | R 8, G 8, B 8 | 2 | 1 | established |
+| `GL_RGB2_EXT` (`0x804e`), `GL_RGB4`, `GL_RGB5`, `GL_R3_G3_B2` | `GL_RGB5_A1` tag with 5-bit RGB channels and no alpha bits | 5/5/5 | 1 | 1 | established |
+| `GL_RGB` (3, `0x1907`) | `GL_RGBA8` or `GL_RGB5_A1`, by the size test below | 8/8/8 or 5/5/5 | 2 or 1 | 1 | established |
+| `GL_RGBA` (4, `0x1908`) | `GL_RGBA8` or `GL_RGBA4`, by the size test below | 8/8/8/8 or 4/4/4/4 | 2 or 1 | 2 or 4 | established |
+| `GL_RGBA8`, `GL_RGB10_A2`, `GL_RGBA12`, `GL_RGBA16` | `GL_RGBA8` | 8/8/8/8 | 2 | 2 | established |
+| `GL_RGBA2`, `GL_RGBA4` | `GL_RGBA4` | 4/4/4/4 | 1 | 4 | established |
+| `GL_RGB5_A1` | `GL_RGB5_A1` | 5/5/5/1 | 1 | 2 | established |
 
 - Established: type code 3 is never produced by this routine. Established (`crmSetTextureParam`): the Texture.mode texel-type field (bits 23:20) receives the type code and the texel-depth field (bits 19:18) receives the depth value from the same record, so the codes above are what the hardware sees; the format record the mode is built from is the one at offset 32 of the texture object's image record (gc object +284).
 - Established, the choice between stored formats for RGB and RGBA requests: it depends on a count `n` read from gc+0xCB8 plus gc+0xCBC plus gc+0xCC0 and on one global flag read gp-relative. Generic `GL_RGB` stores 8-bit channels in 32-bit texels when `n` is 16 or more or the flag is set, otherwise 5-bit channels in 16-bit texels. Generic `GL_RGBA` stores 4-bit channels (RGBA4) when `n` is below 9 and the flag is clear, otherwise RGBA8. The explicit sized formats in the table do not consult `n`.

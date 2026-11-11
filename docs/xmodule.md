@@ -67,38 +67,38 @@ Established (`crm.so` `0x58a930`; arguments: rendering pointer, shadow pointer, 
 
 Established by replaying the module's code with the chain above followed by hand (private `+0x0` as the rendering engine, private `+0x8` as GBE). Every offset below is a register already named in [CRIME_RE.h](../CRIME_RE.h), [MTE.h](../MTE.h) or [GBE.h](../GBE.h). Offsets are relative to the rendering engine unless marked GBE; "alias" stores go through the start alias (`+0x800`).
 
-| Routines | Offsets |
-|---|---|
-| `crmSetSmask` | `+0x2010`, `+0x2020`, `+0x2028`, `+0x2030`, `+0x2038`, `+0x2040` |
-| `crmSolidPolyFillRect`, `crmFillPolygon` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078`. `crmSolidPolyFillRect` also stores the rectangle vertices through the start alias of `+0x2070` (`0x43d464`, read by hand: the replay loses the offset at the loop head) |
-| `crmFillTriangle..GD` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` |
-| `crmFillHWTriangle..HD` | as `crmFillTriangle..GD`, plus `+0x2010` and `+0x2078` |
-| `crmValidateVisual` | as `crmFillTriangle..GD`, plus `+0x2074` (alias) |
-| `crmDrawImage` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8` |
-| `crmFillTriangleMTE..FD`, `crmTileRects` | `+0x2008`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` |
-| `crmValidateClip` | as `crmTileRects`, plus `+0x3078` |
-| `crmDrawCID` | transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` |
-| `crmImageGlyphBlt`, `crmPolyGlyphBlt` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3010`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` |
-| `crmImageGlyphBltP2C`, `crmImageGlyphBltP4C`, `crmPolyGlyphBltP2C`, `crmPolyGlyphBltP4C`, `crmPolyGlyphBltP5C` | as `crmImageGlyphBlt`, plus `+0x20c4` |
-| `crmImageGlyphBltP5C` | as `crmImageGlyphBltP2C`, without `+0x2010` and `+0x21f8` |
-| `crmImageGlyphBltP3C` | as `crmImageGlyphBlt`, without `+0x2010` and `+0x21f8` |
-| `crmPolyGlyphBltP3C` | as `crmImageGlyphBltP3C`, without `+0x2070` |
-| `crmImageGlyphBltP5CS`, `crmPolyGlyphBltP5CS` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20c4`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` (no transfer engine) |
-| `crmLineSS`, `crmSegmentSS` | `+0x2008`, `+0x2018`, `+0x2058`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8` |
-| `crmPolyPoint` | as `crmLineSS`, plus `+0x2010`, the screen masks `+0x2020` to `+0x2040`, `+0x2070` and `+0x21f8` |
-| `crmSegmentSD` | as `crmPolyPoint`, plus `+0x20c0`, `+0x20c4` and `+0x20d8` |
-| `crmLineSD` | as `crmSegmentSD`, plus `+0x21f0` (alias) |
-| `crmReadImage8`, `crmReadImage16`, `crmReadImage16on16`, `crmReadImage16on32`, `crmReadImage24` | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x20a8` (64-bit, both steps), `+0x20b4` |
-| `crmInitHW..HB` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21f8`; transfer engine as `crmSolidPolyFillRect` |
-| `crmSolidFillSpans` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` |
-| `crmInvalidate`, `crmInitiateBufferSwap`, `crmUnSchedMgrSwapBuf`, `crmDestroyWindow` | the swap-by-copy sequence of [mte.md](mte.md): `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20a0` (alias), `+0x20a8`, `+0x21b0`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3020`, `+0x3028`, `+0x3030`, `+0x3038`, `+0x3040`, `+0x3048`, `+0x3078` |
-| `crmBitBltSS..M` (read by hand) | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070` (64-bit), `+0x20a8`, `+0x21b0` |
-| `crmZeroPolyArc` (read by hand) | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` |
-| `crmStorePseudoColors`, `crmInstallPseudoColorMap`, `crmBlackCmap` | GBE `+0x58000` (colour-map FIFO level, read) |
-| `crmBlankScreen` | GBE `+0x58000`, `+0x54408` (map entry `0x1102`), `+0x70004` (cursor control) |
-| `crmDisplayCursor` | GBE `+0x70004`, `+0x70008`, `+0x7000c`, `+0x70010` (cursor control and the three cursor colours) |
-| `crmInstallCursor` | GBE `+0x70004`, `+0x78000`, `+0x78004` (cursor glyph) |
-| `crmPowerSaver..O` | GBE `+0x10018` (`VT_FLAGS`, read and written) |
+| Routines | Offsets | Grade |
+|---|---|---|
+| `crmSetSmask` | `+0x2010`, `+0x2020`, `+0x2028`, `+0x2030`, `+0x2038`, `+0x2040` | established |
+| `crmSolidPolyFillRect`, `crmFillPolygon` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078`. `crmSolidPolyFillRect` also stores the rectangle vertices through the start alias of `+0x2070` (`0x43d464`, read by hand: the replay loses the offset at the loop head) | established |
+| `crmFillTriangle..GD` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` | established |
+| `crmFillHWTriangle..HD` | as `crmFillTriangle..GD`, plus `+0x2010` and `+0x2078` | established |
+| `crmValidateVisual` | as `crmFillTriangle..GD`, plus `+0x2074` (alias) | established |
+| `crmDrawImage` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8` | established |
+| `crmFillTriangleMTE..FD`, `crmTileRects` | `+0x2008`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` | established |
+| `crmValidateClip` | as `crmTileRects`, plus `+0x3078` | established |
+| `crmDrawCID` | transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` | established |
+| `crmImageGlyphBlt`, `crmPolyGlyphBlt` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3010`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048`, `+0x3078` | established |
+| `crmImageGlyphBltP2C`, `crmImageGlyphBltP4C`, `crmPolyGlyphBltP2C`, `crmPolyGlyphBltP4C`, `crmPolyGlyphBltP5C` | as `crmImageGlyphBlt`, plus `+0x20c4` | established |
+| `crmImageGlyphBltP5C` | as `crmImageGlyphBltP2C`, without `+0x2010` and `+0x21f8` | established |
+| `crmImageGlyphBltP3C` | as `crmImageGlyphBlt`, without `+0x2010` and `+0x21f8` | established |
+| `crmPolyGlyphBltP3C` | as `crmImageGlyphBltP3C`, without `+0x2070` | established |
+| `crmImageGlyphBltP5CS`, `crmPolyGlyphBltP5CS` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20c0`, `+0x20c4`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` (no transfer engine) | established |
+| `crmLineSS`, `crmSegmentSS` | `+0x2008`, `+0x2018`, `+0x2058`, `+0x2060`, `+0x20d0`, `+0x21b0`, `+0x21b8` | established |
+| `crmPolyPoint` | as `crmLineSS`, plus `+0x2010`, the screen masks `+0x2020` to `+0x2040`, `+0x2070` and `+0x21f8` | established |
+| `crmSegmentSD` | as `crmPolyPoint`, plus `+0x20c0`, `+0x20c4` and `+0x20d8` | established |
+| `crmLineSD` | as `crmSegmentSD`, plus `+0x21f0` (alias) | established |
+| `crmReadImage8`, `crmReadImage16`, `crmReadImage16on16`, `crmReadImage16on32`, `crmReadImage24` | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x20a8` (64-bit, both steps), `+0x20b4` | established |
+| `crmInitHW..HB` | `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21f8`; transfer engine as `crmSolidPolyFillRect` | established |
+| `crmSolidFillSpans` | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3018`, `+0x3030`, `+0x3038`, `+0x3048` | established |
+| `crmInvalidate`, `crmInitiateBufferSwap`, `crmUnSchedMgrSwapBuf`, `crmDestroyWindow` | the swap-by-copy sequence of [mte.md](mte.md): `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20a0` (alias), `+0x20a8`, `+0x21b0`, `+0x21f8`; transfer engine `+0x3000`, `+0x3008`, `+0x3020`, `+0x3028`, `+0x3030`, `+0x3038`, `+0x3040`, `+0x3048`, `+0x3078` | established |
+| `crmBitBltSS..M` (read by hand) | `+0x2000`, `+0x2008`, `+0x2018`, `+0x2060`, `+0x2070` (64-bit), `+0x20a8`, `+0x21b0` | established |
+| `crmZeroPolyArc` (read by hand) | `+0x2008`, `+0x2010`, `+0x2018`, `+0x2060`, `+0x2070`, `+0x20d0`, `+0x21b0`, `+0x21b8`, `+0x21f8` | established |
+| `crmStorePseudoColors`, `crmInstallPseudoColorMap`, `crmBlackCmap` | GBE `+0x58000` (colour-map FIFO level, read) | established |
+| `crmBlankScreen` | GBE `+0x58000`, `+0x54408` (map entry `0x1102`), `+0x70004` (cursor control) | established |
+| `crmDisplayCursor` | GBE `+0x70004`, `+0x70008`, `+0x7000c`, `+0x70010` (cursor control and the three cursor colours) | established |
+| `crmInstallCursor` | GBE `+0x70004`, `+0x78000`, `+0x78004` (cursor glyph) | established |
+| `crmPowerSaver..O` | GBE `+0x10018` (`VT_FLAGS`, read and written) | established |
 
 The two routines read by hand keep the rendering pointer in a frame-pointer spill slot (`crmZeroPolyArc`, `-656($30)`) or reach their store loop through a block the replay cannot enter with known values (`crmBitBltSS..M`, private pointer in `$17`, rendering pointer loaded at `0x598b98`); the replay misses them. Both were checked instruction by instruction. The colour-map store loops reach `+0x50000 + 4n` with a computed index and are left as unresolved GBE sites (three in the replay); their layout is in [gbe.md](gbe.md). The mapping does not cover the CRIME CPU-interface window at `0x14000000`, so the module cannot reach it.
 ## Visual and depth tables (crm.so)
@@ -109,12 +109,12 @@ Source: `usr/lib/X11/dyDDX/crm.so` (6.5.30), the `.data` objects `crmVisuals16` 
 - Established: the four sets are the frame-buffer configurations of the X module: a 16-bit or 32-bit frame buffer (the `16` and `24` names; `24` is the 32-bit buffer with 24 colour planes), each with and without software double buffering (the `db` sets). `crmInit` prints `requested framebuffer configuration (%d bits deep, with%s software double buffering` and, if the kernel refuses, `not allowed by kernel, falling back to %d bits`. Inferred: `db` marks the double-buffered set, from that message and the larger visual counts.
 - Established, the visuals by set (depth in planes: count; class and layout):
 
-| Set | Depths and visual counts | Visuals |
-|---|---|---|
-| `16` | 1: 0, 8: 6, 12: 2, 15: 4 | 8 planes: PseudoColor (256), StaticColor and TrueColor with 3-3-2 masks `0xe0`, `0x1c`, `0x03`; 12 planes: PseudoColor with 4096 entries; 15 planes: TrueColor with 5-5-5 masks `0x7c00`, `0x03e0`, `0x001f` |
-| `16db` | 1: 0, 8: 6, 12: 4, 15: 6 | the same kinds with more 12- and 15-plane entries |
-| `24` | 1: 0, 8: 6, 12: 6, 15: 8, 24: 6 | adds 24 planes: TrueColor with masks `0xff0000`, `0x00ff00`, `0x0000ff` (four) and the reversed byte order `0x0000ff`, `0x00ff00`, `0xff0000` (one), and one DirectColor |
-| `24db` | 1: 0, 8: 6, 12: 6, 15: 6, 24: 11 | 24 planes: ten TrueColor (two byte orders) and one DirectColor |
+| Set | Depths and visual counts | Visuals | Grade |
+|---|---|---|---|
+| `16` | 1: 0, 8: 6, 12: 2, 15: 4 | 8 planes: PseudoColor (256), StaticColor and TrueColor with 3-3-2 masks `0xe0`, `0x1c`, `0x03`; 12 planes: PseudoColor with 4096 entries; 15 planes: TrueColor with 5-5-5 masks `0x7c00`, `0x03e0`, `0x001f` | established |
+| `16db` | 1: 0, 8: 6, 12: 4, 15: 6 | the same kinds with more 12- and 15-plane entries | established |
+| `24` | 1: 0, 8: 6, 12: 6, 15: 8, 24: 6 | adds 24 planes: TrueColor with masks `0xff0000`, `0x00ff00`, `0x0000ff` (four) and the reversed byte order `0x0000ff`, `0x00ff00`, `0xff0000` (one), and one DirectColor | established |
+| `24db` | 1: 0, 8: 6, 12: 6, 15: 6, 24: 11 | 24 planes: ten TrueColor (two byte orders) and one DirectColor | established |
 
 - Unknown: which record is the root visual and how the server picks it from the table (the server prints `Requested root visual ID not available, checking other visual parameters`; the selection code was not read here).
 

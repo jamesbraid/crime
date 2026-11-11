@@ -44,10 +44,10 @@ Sources: the 6.5.30 kernel object `crime_retrace.o` (`crmSwapBufd`, `crm_copy_sw
 
 Established: the kernel swaps a double-buffered window by copying, not by flipping a display pointer. For each batch of pending swap boxes `crmSwapBufd` loads frame-buffer TLBs A and B for the drawable (`crmLoadTlbABC`, index 0 and 1), then writes a fixed register set once before copying. The set depends on the pixel size of the screen, which the function takes from the byte at offset `0x2f` of the board's mode record (value `0x20` means 32-bit pixels):
 
-| Register | 16-bit pixels | 32-bit pixels | Reading |
-|---|---|---|---|
-| `0x2000` (BufMode.src) | `0x504` | `0x628` | tiled buffer through TLB B (bufType 1), word depth 16 or 32 bits, pixel format colour-index for 16-bit (pixType 0) or RGBA for 32-bit (pixType 2), pixel depth equal to word depth, no double-pixel |
-| `0x2008` (BufMode.dst) | `0x104` | `0x228` | the same format through TLB A (bufType 0) |
+| Register | 16-bit pixels | 32-bit pixels | Reading | Grade |
+|---|---|---|---|---|
+| `0x2000` (BufMode.src) | `0x504` | `0x628` | tiled buffer through TLB B (bufType 1), word depth 16 or 32 bits, pixel format colour-index for 16-bit (pixType 0) or RGBA for 32-bit (pixType 2), pixel depth equal to word depth, no double-pixel | established |
+| `0x2008` (BufMode.dst) | `0x104` | `0x228` | the same format through TLB A (bufType 0) | established |
 
 The same set also holds, for both sizes, `0x2010` (ClipMode) = `0x0` (clip-ID and all five screen-mask tests off), `0x2050` and `0x2058` (WinOffset.src and WinOffset.dst) = `0x0` (box coordinates are already frame-buffer relative), `0x2018` (DrawMode) = `0x200278` (the transfer word of the X server's copy sequence above), `0x2060` (Primitive) = `0x03020000` (rectangle, edge type 2, as above), `0x21b0` (LogicOp) = `0x3` (copy), `0x3000` (MTE.mode) = `0x820`, `0x3008` (MTE.byteMask) = `0xffffffff`, and `0x3040`, `0x3048` (the MTE Y steps) = `0x1`. The MTE mode is copy (bit 11), source TLB B (bits 7:5 = 1), destination TLB A (bits 4:2 = 0), depth field 0, no ECC bits, the same value the X server uses.
 

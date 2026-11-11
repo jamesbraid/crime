@@ -54,22 +54,22 @@ Established from the file bytes:
 
 A fixed block of 32-bit values inside each file holds the timing in the order below (established by position; each file's pixel clock is the word before `H back porch` and the sums reproduce the file name, see the table). `V` columns are counted in pixel clocks; dividing by the line length gives lines.
 
-| File | Pixel clock Hz | H back, sync, front, active | Active lines | V back, sync, front (lines) | Total | Refresh |
-|---|---|---|---|---|---|---|
-| 640x480_60 | 25,174,800 | 48, 96, 16, 640 | 480 | 33, 2, 10 | 800 x 525 | 59.94 |
-| 800x600_60 | 40,000,304 | 88, 128, 40, 800 | 600 | 23, 4, 1 | 1056 x 628 | 60.32 |
-| 800x600_72 | 50,000,296 | 64, 120, 56, 800 | 600 | 23, 6, 37 | 1040 x 666 | 72.19 |
-| 1024x768_60 | 65,000,173 | 160, 136, 24, 1024 | 768 | 29, 6, 3 | 1344 x 806 | 60.00 |
-| 1024x768_70 | 74,999,615 | 144, 136, 24, 1024 | 768 | 29, 6, 3 | 1328 x 806 | 70.07 |
-| 1024x768_75 | 78,750,438 | 176, 96, 16, 1024 | 768 | 28, 3, 1 | 1312 x 800 | 75.03 |
-| 1280x1024_48 | 85,881,600 | 200, 120, 80, 1280 | 1024 | 34, 3, 4 | 1680 x 1065 | 48.00 |
-| 1280x1024_50 | 89,460,000 | 200, 120, 80, 1280 | 1024 | 35, 3, 3 | 1680 x 1065 | 50.00 |
-| 1280x1024_60 | 107,244,648 | 250, 120, 30, 1280 | 1024 | 35, 3, 3 | 1680 x 1065 | 59.94 |
-| 1280x1024_72 | 129,467,520 | 240, 140, 30, 1280 | 1024 | 34, 3, 3 | 1690 x 1064 | 72.00 |
-| 1280x1024_75 | 135,000,585 | 248, 144, 16, 1280 | 1024 | 38, 3, 1 | 1688 x 1066 | 75.03 |
-| 1600x1024_48p | 97,219,200 | 170, 100, 30, 1600 | 1024 | 36, 3, 3 | 1900 x 1066 | 48.00 |
-| 1600x1024_50p | 101,270,000 | 170, 100, 30, 1600 | 1024 | 36, 3, 3 | 1900 x 1066 | 50.00 |
-| 1600x1024_60p | 108,732,000 | 45, 35, 20, 1600 | 1024 | 36, 3, 3 | 1700 x 1066 | 60.00 |
+| File | Pixel clock Hz | H back, sync, front, active | Active lines | V back, sync, front (lines) | Total | Refresh | Grade |
+|---|---|---|---|---|---|---|---|
+| 640x480_60 | 25,174,800 | 48, 96, 16, 640 | 480 | 33, 2, 10 | 800 x 525 | 59.94 | established |
+| 800x600_60 | 40,000,304 | 88, 128, 40, 800 | 600 | 23, 4, 1 | 1056 x 628 | 60.32 | established |
+| 800x600_72 | 50,000,296 | 64, 120, 56, 800 | 600 | 23, 6, 37 | 1040 x 666 | 72.19 | established |
+| 1024x768_60 | 65,000,173 | 160, 136, 24, 1024 | 768 | 29, 6, 3 | 1344 x 806 | 60.00 | established |
+| 1024x768_70 | 74,999,615 | 144, 136, 24, 1024 | 768 | 29, 6, 3 | 1328 x 806 | 70.07 | established |
+| 1024x768_75 | 78,750,438 | 176, 96, 16, 1024 | 768 | 28, 3, 1 | 1312 x 800 | 75.03 | established |
+| 1280x1024_48 | 85,881,600 | 200, 120, 80, 1280 | 1024 | 34, 3, 4 | 1680 x 1065 | 48.00 | established |
+| 1280x1024_50 | 89,460,000 | 200, 120, 80, 1280 | 1024 | 35, 3, 3 | 1680 x 1065 | 50.00 | established |
+| 1280x1024_60 | 107,244,648 | 250, 120, 30, 1280 | 1024 | 35, 3, 3 | 1680 x 1065 | 59.94 | established |
+| 1280x1024_72 | 129,467,520 | 240, 140, 30, 1280 | 1024 | 34, 3, 3 | 1690 x 1064 | 72.00 | established |
+| 1280x1024_75 | 135,000,585 | 248, 144, 16, 1280 | 1024 | 38, 3, 1 | 1688 x 1066 | 75.03 | established |
+| 1600x1024_48p | 97,219,200 | 170, 100, 30, 1600 | 1024 | 36, 3, 3 | 1900 x 1066 | 48.00 | established |
+| 1600x1024_50p | 101,270,000 | 170, 100, 30, 1600 | 1024 | 36, 3, 3 | 1900 x 1066 | 50.00 | established |
+| 1600x1024_60p | 108,732,000 | 45, 35, 20, 1600 | 1024 | 36, 3, 3 | 1700 x 1066 | 60.00 | established |
 
 The computed refresh equals the file name for every row, which supports the field order. The `2@` files repeat the numbers of the matching single-channel formats (1024x768 at 60, 70 and 75 Hz; 1280x1024 at 48, 50, 60, 72 and 75 Hz); the `p` files differ from their base only in the file layout (the block starts a few words later). Established differences (word-by-word comparison of all eight `2@` files against their single-channel bases, 6.5.30 set, 2026-11-10): a `2@` file has the base's timing, clock and PLL words unchanged, and differs in exactly three places. The title is the base title followed by the text ` Dual Channel` (13 bytes, padded to the next word); the word at file offset `0xf0` is the title length in bytes without the terminator (0xb to 0x18 for the 1024x768 files, 0xc to 0x19 for the 1280x1024 files; every single-channel file holds its own title length there: 640x480_60 holds 3, 800x600 holds 0xa); and the option-hardware name is `O2_DCD` (length word 6) where the base has `None` (length word 4). Every other changed word is a file offset that moved by the inserted bytes (12 or 16 bytes after the title in the 1024x768 files, 16 or 20 in the 1280x1024 files, depending on whether the word lies before or after the option-hardware name). So the dual-channel formats carry no alternate-field timing, no second-channel origin and no refresh change: each channel runs the base format's timing (established). The `p` files were not compared word by word in this pass; their extra leading words stay unknown (low value: no reader parses them).
 
@@ -84,10 +84,10 @@ Sources: the two stereo `.vfo` files, `ddx/crm.so` (`crmLoadTimingTable`, dynsym
 
 The numeric block sits after the state-table fill (runs of 1, 2, 3, 4) as in the mono files: pixel clock, then H back, sync, front, active in pixel clocks, then the active line count and the vertical group. A mono file lists the vertical group once, in pixel clocks (lines times line length): back porch, sync width, sync width plus the horizontal sync width, active, front porch. A stereo file lists the same group twice, each repetition preceded by the active line count, and the second repetition is identical to the first:
 
-| File | Pixel clock Hz | H back, sync, front, active | Per-field V back, sync, active, front (lines) | Lines per frame | Frame rate |
-|---|---|---|---|---|---|
-| 1024x768_96s | 103,502,592 | 182, 104, 26, 1024 (total 1336) | 33, 3, 768, 3 (807 per field) | 1614 | 48.00 Hz (96 fields) |
-| 1280x492_120s | 107,143,949 | 250, 120, 30, 1280 (total 1680) | 34, 3, 492, 3 (532 per field) | 1064 | 59.94 Hz (119.88 fields) |
+| File | Pixel clock Hz | H back, sync, front, active | Per-field V back, sync, active, front (lines) | Lines per frame | Frame rate | Grade |
+|---|---|---|---|---|---|---|
+| 1024x768_96s | 103,502,592 | 182, 104, 26, 1024 (total 1336) | 33, 3, 768, 3 (807 per field) | 1614 | 48.00 Hz (96 fields) | established |
+| 1280x492_120s | 107,143,949 | 250, 120, 30, 1280 (total 1680) | 34, 3, 492, 3 (532 per field) | 1064 | 59.94 Hz (119.88 fields) | established |
 
 Verified by dividing the pixel counts by the line length (for example 44088 = 33 x 1336 and 4112 = 4008 + 104 in the first file; 57120 = 34 x 1680, 5160 = 5040 + 120 in the second) and by the clock: 103,502,592 / (1336 x 1614) = 48.00, 107,143,949 / (1680 x 1064) = 59.94. The header words differ from a mono file only in the active height at +0x98 (1536 and 984, twice the field height) and a count of 2 at +0xc0 (also at +0xbc in the first file); the per-field line count repeats at +0xc4 and +0xc8; the files carry an `OptionHardware` value `None` (string at about +0x190); a name string follows (`1024x768_96 Stereo Window` for the first file), and the frame rate double is the full-frame rate. Unknown: the meaning of the second occurrence of each header word, and what the "sync plus hsync" entry feeds; the stereo files also carry the line-type and edge tables that are not decoded.
 
@@ -95,19 +95,19 @@ Verified by dividing the pixel counts by the line length (for example 44088 = 33
 
 The function takes an in-memory format description (not the file layout; it is built by a library this workspace does not hold) and an open format file, and builds a 0x30-byte kernel record on its stack, then sends it with ioctl `0x55f6` to `crimeLoadTimingTable`. From the stores, with `W`, `H` the description's width and height words (+0x104, +0x100), `T` total pixels per line (+0x10c), `L` total lines (+0x108), `rate` the float at +0x110, `clk` the integer at +0x118, `hb`, `hs`, `hf` the three horizontal words at +0x11c, +0x120, +0x124, and `vb`, `vs`, `vf` the three vertical pixel counts at offsets +8, +0xc, +0x14 of the table the description points to (+0x130):
 
-| Record field | Value |
-|---|---|
-| 0x08, 0x0a | W, H |
-| 0x0c | rate x 1000, truncated |
-| 0x10 | clk / 1000, truncated |
-| 0x14, 0x16, 0x18 | T, W, W + hf + hs + hb |
-| 0x1a, 0x1c | W + hf, W + hf + hs |
-| 0x1e | L |
-| 0x20, 0x22 | H, H + (vb + vs + vf) / T |
-| 0x24, 0x26 | H + vf / T, that + vs / T |
-| 0x28, 0x2a, 0x2c | the file's `DacPll_M`, `DacPll_N`, `DacPll_P` (read with `SDBgetSymbolValueScalar`) |
-| 0x04 | flags: 0x02 when the description's class word (+0x134) is 4, 0x10 when it is 1, otherwise from the file's `OptionHardware` string: `None` 0, `Presenter_1024` 0x100, `Presenter_1280` 0x200, `Flatpanel_1600SW` 0x400, `O2_DCD` 0x800; any other name prints an error |
-| 0x00 | format id, 0 when the three PLL symbols are present |
+| Record field | Value | Grade |
+|---|---|---|
+| 0x08, 0x0a | W, H | established |
+| 0x0c | rate x 1000, truncated | established |
+| 0x10 | clk / 1000, truncated | established |
+| 0x14, 0x16, 0x18 | T, W, W + hf + hs + hb | established |
+| 0x1a, 0x1c | W + hf, W + hf + hs | established |
+| 0x1e | L | established |
+| 0x20, 0x22 | H, H + (vb + vs + vf) / T | established |
+| 0x24, 0x26 | H + vf / T, that + vs / T | established |
+| 0x28, 0x2a, 0x2c | the file's `DacPll_M`, `DacPll_N`, `DacPll_P` (read with `SDBgetSymbolValueScalar`) | established |
+| 0x04 | flags: 0x02 when the description's class word (+0x134) is 4, 0x10 when it is 1, otherwise from the file's `OptionHardware` string: `None` 0, `Presenter_1024` 0x100, `Presenter_1280` 0x200, `Flatpanel_1600SW` 0x400, `O2_DCD` 0x800; any other name prints an error | established |
+| 0x00 | format id, 0 when the three PLL symbols are present | established |
 
 Cross-check (established): applying these rules to the numbers of 13 of the 14 mono files, and to `1280x492_120s`, reproduces fields 0x14 to 0x26 of a kernel built-in record exactly (640x480_60 id 1, 800x600_60 and _72 ids 2 and 3, 1024x768 at 60, 70 and 75 ids 4 to 6, 1280x1024 at 48, 50, 60, 72 and 75 ids 7 to 11, 1280x492_120s id 13, 1600x1024_48p and _50p id 15, the `p` variants the same as their bases). Not reproduced: `1024x768_96s` (no built-in record) and `1600x1024_60p` (no built-in record).
 
@@ -250,18 +250,18 @@ Sources: [gbe-spec] "GBE ASIC spec for REV1.1", 18 July 1996, 50 pages (page num
 
 Established, rev 1.1: reset values of the registers a driver sees.
 
-| Register | Reset |
-|---|---|
-| `CTRLSTAT` (`+0x00`) | chip id 1 in 3:0; all ten `io_n` pin pairs `11` (data 1, output-enable-bar 1, so every pin is an input); `half_phase` 0; `csync_polarity` 0; pixel-clock select (29:28) `00`, the external TTL clock input |
-| `DOTCLK` (`+0x04`) | all fields 0 |
-| `I2C` (`+0x08`), `I2CFP` (`+0x10`) | data and clock both 1 (open-drain released) |
-| `SYSCLK` (`+0x0c`) | `tm(0)` 1, every other defined bit 0 |
-| `DEVICE_ID` (`+0x14`) | `0x666` |
-| `VT_XY` (`+0x10000`) | `vt_freeze` 1 (counters stopped), counters 0; every other timing register 0 |
-| `OVR_*`, `FRM_*`, `DID*` | 0 (every DMA-enable bit clear); `WID`, `CMAP`, `GMAP`, cursor RAM and registers have no stated reset |
-| `CMFIFO` (`+0x58000`) | 0 |
-| `CRS_1` (`+0x70004`) | 0 (cursor off) |
-| `VC_2` (`+0x80008`) | flicker filter 1, auto field 1, others 0; `VC_3` `vc_oddeven` 1 |
+| Register | Reset | Grade |
+|---|---|---|
+| `CTRLSTAT` (`+0x00`) | chip id 1 in 3:0; all ten `io_n` pin pairs `11` (data 1, output-enable-bar 1, so every pin is an input); `half_phase` 0; `csync_polarity` 0; pixel-clock select (29:28) `00`, the external TTL clock input | established |
+| `DOTCLK` (`+0x04`) | all fields 0 | established |
+| `I2C` (`+0x08`), `I2CFP` (`+0x10`) | data and clock both 1 (open-drain released) | established |
+| `SYSCLK` (`+0x0c`) | `tm(0)` 1, every other defined bit 0 | established |
+| `DEVICE_ID` (`+0x14`) | `0x666` | established |
+| `VT_XY` (`+0x10000`) | `vt_freeze` 1 (counters stopped), counters 0; every other timing register 0 | established |
+| `OVR_*`, `FRM_*`, `DID*` | 0 (every DMA-enable bit clear); `WID`, `CMAP`, `GMAP`, cursor RAM and registers have no stated reset | established |
+| `CMFIFO` (`+0x58000`) | 0 | established |
+| `CRS_1` (`+0x70004`) | 0 (cursor off) | established |
+| `VC_2` (`+0x80008`) | flicker filter 1, auto field 1, others 0; `VC_3` `vc_oddeven` 1 | established |
 
 How this meets IRIX (established from `gbeProbe`, `gbeStop`, `crimeInitInfo`):
 
@@ -368,24 +368,24 @@ Sources: the shipped IRIX 6.5.30 stand-alone diagnostics `ide.IP32` (`diags/ide.
 
 Each `.vfo` file carries the three PLL scalars `DacPll_M`, `DacPll_N` and `DacPll_P` next to its nominal pixel clock (established: the schema lists the three names with a file offset each, and the values at those offsets were read as 32-bit big-endian words; the `p` and `2@` variants repeat the values of their base format). The output frequency is `M x f_ref / (N x 2^P)` with `f_ref` = 20 MHz ([gbe-spec] pp. 30-31, section 2.13, a 20 MHz crystal; rev 1.1). Established by arithmetic: with 20 MHz every shipped format lands within 1.3 percent of its nominal clock, and with 27 MHz none does (`640x480_60` would run at 33.75 MHz). Inferred: IRIX 6.5.30 assumes the 20 MHz reference on every board it supports, since neither `crmLoadTimingTable` nor `crmInvalidVideoTiming` selects a crystal by GBE revision (the kernel only range-checks the fields, see above); the 27 MHz reference that the Linux driver uses for revision 2 and later has no counterpart in the shipped IRIX code.
 
-| File | M | N | P | VCO MHz (M x 20 / N) | Output MHz | Nominal MHz | Difference |
-|---|---|---|---|---|---|---|---|
-| `640x480_60` | 5 | 1 | 2 | 100.0 | 25.000 | 25.175 | -0.69 % |
-| `800x600_60` | 8 | 1 | 2 | 160.0 | 40.000 | 40.000 | 0.00 % |
-| `800x600_72` | 5 | 1 | 1 | 100.0 | 50.000 | 50.000 | 0.00 % |
-| `1024x768_60` | 13 | 2 | 1 | 130.0 | 65.000 | 65.000 | 0.00 % |
-| `1024x768_70` | 15 | 2 | 1 | 150.0 | 75.000 | 75.000 | 0.00 % |
-| `1024x768_75` | 39 | 5 | 1 | 156.0 | 78.000 | 78.750 | -0.95 % |
-| `1024x768_96s` | 31 | 3 | 1 | 206.7 | 103.333 | 103.503 | -0.16 % |
-| `1280x1024_48` | 30 | 7 | 0 | 85.7 | 85.714 | 85.882 | -0.19 % |
-| `1280x1024_50` | 9 | 1 | 1 | 180.0 | 90.000 | 89.460 | +0.60 % |
-| `1280x1024_60` | 16 | 3 | 0 | 106.7 | 106.667 | 107.245 | -0.54 % |
-| `1280x1024_72` | 13 | 2 | 0 | 130.0 | 130.000 | 129.468 | +0.41 % |
-| `1280x1024_75` | 27 | 4 | 0 | 135.0 | 135.000 | 135.001 | 0.00 % |
-| `1280x492_120s` | 16 | 3 | 0 | 106.7 | 106.667 | 107.144 | -0.45 % |
-| `1600x1024_48p` | 34 | 7 | 0 | 97.1 | 97.143 | 97.219 | -0.08 % |
-| `1600x1024_50p` | 5 | 1 | 0 | 100.0 | 100.000 | 101.270 | -1.25 % |
-| `1600x1024_60p` | 38 | 7 | 0 | 108.6 | 108.571 | 108.732 | -0.15 % |
+| File | M | N | P | VCO MHz (M x 20 / N) | Output MHz | Nominal MHz | Difference | Grade |
+|---|---|---|---|---|---|---|---|---|
+| `640x480_60` | 5 | 1 | 2 | 100.0 | 25.000 | 25.175 | -0.69 % | established |
+| `800x600_60` | 8 | 1 | 2 | 160.0 | 40.000 | 40.000 | 0.00 % | established |
+| `800x600_72` | 5 | 1 | 1 | 100.0 | 50.000 | 50.000 | 0.00 % | established |
+| `1024x768_60` | 13 | 2 | 1 | 130.0 | 65.000 | 65.000 | 0.00 % | established |
+| `1024x768_70` | 15 | 2 | 1 | 150.0 | 75.000 | 75.000 | 0.00 % | established |
+| `1024x768_75` | 39 | 5 | 1 | 156.0 | 78.000 | 78.750 | -0.95 % | established |
+| `1024x768_96s` | 31 | 3 | 1 | 206.7 | 103.333 | 103.503 | -0.16 % | established |
+| `1280x1024_48` | 30 | 7 | 0 | 85.7 | 85.714 | 85.882 | -0.19 % | established |
+| `1280x1024_50` | 9 | 1 | 1 | 180.0 | 90.000 | 89.460 | +0.60 % | established |
+| `1280x1024_60` | 16 | 3 | 0 | 106.7 | 106.667 | 107.245 | -0.54 % | established |
+| `1280x1024_72` | 13 | 2 | 0 | 130.0 | 130.000 | 129.468 | +0.41 % | established |
+| `1280x1024_75` | 27 | 4 | 0 | 135.0 | 135.000 | 135.001 | 0.00 % | established |
+| `1280x492_120s` | 16 | 3 | 0 | 106.7 | 106.667 | 107.144 | -0.45 % | established |
+| `1600x1024_48p` | 34 | 7 | 0 | 97.1 | 97.143 | 97.219 | -0.08 % | established |
+| `1600x1024_50p` | 5 | 1 | 0 | 100.0 | 100.000 | 101.270 | -1.25 % | established |
+| `1600x1024_60p` | 38 | 7 | 0 | 108.6 | 108.571 | 108.732 | -0.15 % | established |
 
 - Established: of the 15 built-in kernel records (`crime_init.o` `.data` from file offset 0x22e8, 0x30 bytes each), records 12 and 14 are all zero and the others carry the same M, N and P as the matching files at offsets 0x28, 0x2a and 0x2c, with two exceptions: record 13 (the stereo timing) carries M=27, N=5, P=0, not the 16, 3, 0 of `1280x492_120s`, and record 15 carries the 5, 1, 0 of `1600x1024_50p`, not the 34, 7, 0 of `1600x1024_48p`. For example id 1, 640 by 480, M=5, N=1, P=2, so the kernel's own table has the same 0.7 percent offset from 25.175 MHz.
 - Established: the specification's own example coefficients are different and closer to nominal (25.175 MHz is M=146, N=29, P=4 with output 25.172 MHz; 135.000 MHz is M=216, N=32, P=1), and IRIX uses neither those nor a fixed set: it uses small integer M and N chosen once per format. A model that accepts any M, N and P in range and derives the pixel clock from them reproduces both.
