@@ -51,7 +51,7 @@ The o32 build uses the MIPS IV reciprocal and conditional-move forms (`recip.s`,
 
 ### Blend code table
 
-Codes `__glCrmPassBlendFunc` builds, read from its three jump tables and comparisons. Destination alpha, its inverse and the source alpha-saturate factor depend on whether the word at +0xcc4 is positive.
+Codes `__glCrmPassBlendFunc` builds, read from its three jump tables and comparisons. Established: the routine's stores were re-read with the host-facts tool in the o32 `libGLcore.so`. It stores equation codes 0 to 4, source codes 0 to 12 and destination codes 0 to 11, and the conditional pairs (destination alpha 6 or 1, its inverse 7 or 0, source alpha saturate 12 or 0) match the rows below. The same codes are the specification's blend table, recorded as the `blend_func` enums of [RE_DECODE.h](../RE_DECODE.h). The name for each code follows the GL enum order the jump tables index; the tool does not name the cases, so the row labels beyond the value sets are the reading of that order. Destination alpha, its inverse and the source alpha-saturate factor depend on whether the word at +0xcc4 is positive.
 
 | OpenGL name | Equation code | Source code | Destination code |
 |---|---:|---:|---:|
