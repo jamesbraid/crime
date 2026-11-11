@@ -22,7 +22,8 @@
  * per register. The interrupt cause layout, the mailbox layout and the DMA
  * control and status layouts are shared by the registers that use them and are
  * declared once. The signal-processor and bitstream-processor instruction sets,
- * the DMA descriptor registers and the translation buffer are not decoded here.
+ * the translation buffer, and the second to fourth descriptor sets of each DMA
+ * channel (the same eight registers again at a stride of 0x40), are not decoded here.
  */
 #ifndef VICE_DECODE_H
 #define VICE_DECODE_H
@@ -200,7 +201,8 @@
 /* ---- DMA channels ---- */
 /*
  * Channel 2 repeats channel 1's registers at a fixed distance and shares the
- * control (DMACTL) and status layouts. The descriptor sets are not decoded here.
+ * control (DMACTL) and status layouts. Only the first descriptor set of each channel
+ * is decoded; the bit layouts of its registers are not.
  */
 /* REG: VICE.dma_ctl_ch1 0x0180 rw16 reset=unknown established */
 /* REG: VICE.dma_stat_ch1 0x0188 r16 reset=unknown established */
@@ -214,6 +216,22 @@
 /* REG: VICE.dma_mem_pt_ch2 0x01d8 r32 reset=unknown established */
 /* REG: VICE.dma_vice_pt_ch2 0x01e0 r16 reset=unknown established */
 /* REG: VICE.dma_count_ch2 0x01e8 r16 reset=unknown established */
+/* REG: VICE.dma_ctl_ch1_d1 0x1000 rw16 reset=unknown established */
+/* REG: VICE.dma_smem_hi_ch1_d1 0x1008 rw16 reset=unknown established */
+/* REG: VICE.dma_smem_lo_ch1_d1 0x1010 rw16 reset=unknown established */
+/* REG: VICE.dma_width_ch1_d1 0x1018 rw16 reset=unknown established */
+/* REG: VICE.dma_stride_ch1_d1 0x1020 rw16 reset=unknown established */
+/* REG: VICE.dma_lines_ch1_d1 0x1028 rw16 reset=unknown established */
+/* REG: VICE.dma_vmem_y_ch1_d1 0x1030 rw16 reset=unknown established */
+/* REG: VICE.dma_vmem_c_ch1_d1 0x1038 rw16 reset=unknown established */
+/* REG: VICE.dma_ctl_ch2_d1 0x1100 rw16 reset=unknown established */
+/* REG: VICE.dma_smem_hi_ch2_d1 0x1108 rw16 reset=unknown established */
+/* REG: VICE.dma_smem_lo_ch2_d1 0x1110 rw16 reset=unknown established */
+/* REG: VICE.dma_width_ch2_d1 0x1118 rw16 reset=unknown established */
+/* REG: VICE.dma_stride_ch2_d1 0x1120 rw16 reset=unknown established */
+/* REG: VICE.dma_lines_ch2_d1 0x1128 rw16 reset=unknown established */
+/* REG: VICE.dma_vmem_y_ch2_d1 0x1130 rw16 reset=unknown established */
+/* REG: VICE.dma_vmem_c_ch2_d1 0x1138 rw16 reset=unknown established */
 /* FIELD: DMACTL.go 0:0 established */
 #define VICE_DMACTL_GO_SHIFT 0
 #define VICE_DMACTL_GO_MASK  0x1u
