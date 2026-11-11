@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	address_unknown	input
 binaries	82	0	81	3	77	0	1	0	0	0	98.8	100.0	100.0	98.8			100.0	20	2026-11-02		0				
-functions	15124	2156	2952	36	2786	10397	12169	3	0	0	19.5	100.0	100.0	19.5			75.0	16	2026-11-02		86	63	214	0	
-functions (distinct names)	9635	2091	2368	33	2332	6353	7265	2	0	0	24.6	100.0	100.0	24.6							42				
+functions	15124	2156	2952	36	2786	9489	11243	929	0	0	19.5	93.9	100.0	19.5			75.0	16	2026-11-02		86	63	214	0	
+functions (distinct names)	9635	2091	2368	33	2332	6344	7256	11	0	0	24.6	99.9	100.0	24.6							42				
 mmio	199	0	195	0	182	0	0	4	0	0	98.0	98.0	100.0	98.0	60		75.0	20	2026-11-02		0				
 tokens	83	0	83	4	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0				
 ioctls	42	0	41	0	30	0	1	0	0	0	97.6	100.0	100.0	97.6			100.0	10	2026-10-29		0				
@@ -10,7 +10,7 @@ spec-registers	260	0	254	1	243	0	0	4	0	2	97.7	98.5	100.0	98.5			100.0	10	2026-10
 input root manifest	71																								37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
 input sibling kona																									99f969a532ffe26d56cb1248c523b72bb363858a
 input sibling odsy																									d26e4eb50277be0cf3bb1ee4f8585f466fdff647
-functions in sbin/stand/symmon.IP32	755	0	378	1	350	374	376	1	0	0	50.1	99.9	100.0	50.1							0	1	72	0	
+functions in sbin/stand/symmon.IP32	755	0	378	1	350	365	367	10	0	0	50.1	98.7	100.0	50.1							0	1	72	0	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_dma.o)	6	0	6	0	6	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
@@ -29,13 +29,13 @@ functions in usr/cpu/sysgen/IP32boot/mace.o	12	0	12	0	12	0	0	0	0	0	100.0	100.0	1
 functions in usr/cpu/sysgen/IP32boot/mvp.o	169	0	161	5	160	7	8	0	0	0	95.3	100.0	100.0	95.3							0	0	2	0	
 functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
-functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	61	8	61	1411	1414	0	0	0	4.1	100.0	100.0	4.1							0	0	0	0	
+functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	61	8	61	1409	1412	2	0	0	4.1	99.9	100.0	4.1							0	0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	675	675	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	539	10	536	2184	2907	1	0	0	15.6	100.0	100.0	15.6							42	31	68	0	
-functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	677	677	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	531	8	528	2201	2916	1	0	0	15.4	100.0	100.0	15.4							44	31	68	0	
-functions in usr/gfx/gfxinit	227	0	33	1	33	194	194	0	0	0	14.5	100.0	100.0	14.5							0	0	0	0	
-functions in usr/gfx/setmon	246	3	43	0	43	191	203	0	0	0	17.5	100.0	100.0	17.5							0	0	0	0	
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	539	10	536	2190	2902	6	0	0	15.6	99.8	100.0	15.6							42	31	68	0	
+functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	29	29	648	0	0	0.0	4.3	100.0	0.0							0	0	0	0	
+functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	531	8	528	1964	2673	244	0	0	15.4	92.9	100.0	15.4							44	31	68	0	
+functions in usr/gfx/gfxinit	227	0	33	1	33	192	192	2	0	0	14.5	99.1	100.0	14.5							0	0	0	0	
+functions in usr/gfx/setmon	246	3	43	0	43	190	202	1	0	0	17.5	99.6	100.0	17.5							0	0	0	0	
 functions in usr/lib/X11/dyDDX/crm.so	840	0	541	0	537	40	299	0	0	0	64.4	100.0	100.0	64.4							0	0	0	0	
 functions in usr/lib/X11/dyDDX/glx.so	981	0	3	0	3	978	978	0	0	0	0.3	100.0	100.0	0.3							0	0	0	0	
 functions in usr/lib/dmedia/imageconverters/debug/vicedv.so	95	0	1	0	1	94	94	0	0	0	1.1	100.0	100.0	1.1							0	0	0	0	
@@ -43,22 +43,22 @@ functions in usr/lib/dmedia/imageconverters/debug/vicejpeg.so	64	0	0	0	0	64	64	0
 functions in usr/lib/dmedia/imageconverters/debug/vicers.so	26	0	0	0	0	26	26	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicedv.so	95	0	1	0	1	94	94	0	0	0	1.1	100.0	100.0	1.1							0	0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicejpeg.so	64	0	0	0	0	64	64	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib/dmedia/imageconverters/vicempeg.so	19	0	0	0	0	19	19	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
+functions in usr/lib/dmedia/imageconverters/vicempeg.so	19	0	0	0	0	18	18	1	0	0	0.0	94.7	100.0	0.0							0	0	0	0	
 functions in usr/lib/dmedia/imageconverters/vicers.so	26	0	0	0	0	26	26	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
 functions in usr/lib/dmedia/video/debug/mvp.so	114	0	0	0	0	89	114	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
 functions in usr/lib/dmedia/video/mvp.so	114	0	0	0	0	89	114	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
 functions in usr/lib/internal/libvice.so	50	0	0	0	0	50	50	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
 functions in usr/lib/libXsgivc.so	63	0	0	0	0	63	63	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/debug/vicedv.so	96	0	1	0	1	95	95	0	0	0	1.0	100.0	100.0	1.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	65	0	0	0	0	65	65	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/debug/vicers.so	27	0	0	0	0	27	27	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicedv.so	96	0	0	0	0	95	96	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicejpeg.so	65	0	0	0	0	65	65	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicempeg.so	20	0	0	0	0	20	20	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/imageconverters/vicers.so	27	0	0	0	0	27	27	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/dmedia/video/debug/mvp.so	115	0	22	0	22	90	93	0	0	0	19.1	100.0	100.0	19.1							0	0	0	0	
-functions in usr/lib32/dmedia/video/mvp.so	115	0	22	0	22	90	93	0	0	0	19.1	100.0	100.0	19.1							0	0	0	0	
-functions in usr/lib32/internal/libvice.so	51	0	0	0	0	51	51	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib32/libXsgivc.so	64	0	0	0	0	64	64	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/lib64/libXsgivc.so	64	0	0	0	0	64	64	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/sbin/Confidence/dualchannel	39	0	7	0	7	32	32	0	0	0	17.9	100.0	100.0	17.9							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/debug/vicedv.so	96	0	1	0	1	94	94	1	0	0	1.0	99.0	100.0	1.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/debug/vicejpeg.so	65	0	0	0	0	64	64	1	0	0	0.0	98.5	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/debug/vicers.so	27	0	0	0	0	26	26	1	0	0	0.0	96.3	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicedv.so	96	0	0	0	0	95	95	1	0	0	0.0	99.0	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicejpeg.so	65	0	0	0	0	64	64	1	0	0	0.0	98.5	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicempeg.so	20	0	0	0	0	18	18	2	0	0	0.0	90.0	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/imageconverters/vicers.so	27	0	0	0	0	26	26	1	0	0	0.0	96.3	100.0	0.0							0	0	0	0	
+functions in usr/lib32/dmedia/video/debug/mvp.so	115	0	22	0	22	89	92	1	0	0	19.1	99.1	100.0	19.1							0	0	0	0	
+functions in usr/lib32/dmedia/video/mvp.so	115	0	22	0	22	89	92	1	0	0	19.1	99.1	100.0	19.1							0	0	0	0	
+functions in usr/lib32/internal/libvice.so	51	0	0	0	0	50	50	1	0	0	0.0	98.0	100.0	0.0							0	0	0	0	
+functions in usr/lib32/libXsgivc.so	64	0	0	0	0	63	63	1	0	0	0.0	98.4	100.0	0.0							0	0	0	0	
+functions in usr/lib64/libXsgivc.so	64	0	0	0	0	63	63	1	0	0	0.0	98.4	100.0	0.0							0	0	0	0	
+functions in usr/sbin/Confidence/dualchannel	39	0	7	0	7	30	30	2	0	0	17.9	94.9	100.0	17.9							0	0	0	0	
