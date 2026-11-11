@@ -158,7 +158,7 @@ The imaging and compression engine: a media signal processor, a bitstream proces
 
 | Area | Status | Owner | Datasheet topic | Seed |
 |---|---|---|---|---|
-| Registers and fields | partial | `docs/vice.md` | imaging engine | the register map, interrupt and exception registers, mailboxes, DMA control and descriptors, and the translation entry, from the VICE design specification. Open: both instruction sets (the specification copy lacks its appendix) and what the shipped converters upload (`docs/open-questions.md`). |
+| Registers and fields | partial | `docs/vice.md`, `VICE_DECODE.h` | imaging engine | the register map, interrupt and exception registers, mailboxes, DMA control and descriptors, and the translation entry, from the VICE design specification. Open: both instruction sets (the specification copy lacks its appendix) and what the shipped converters upload (`docs/open-questions.md`). |
 | Address map and translation | partial | `docs/vice.md` | imaging engine | the window layout, the linear and tile address spaces, and the buffer entry format; they agree with the CRIME window and the 64 KB tile. |
 
 ### libGLcore to CRIME command stream

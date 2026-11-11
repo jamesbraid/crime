@@ -6,7 +6,7 @@ regenerate = "retools/tools/defs/gen_decode_rust.py --config defs.toml"
 out_dir = "generated/crime-regs"
 
 [checks]
-address_bits = 15
+address_bits = 16
 
 [[banned.extra]]
 label = "kernel routine prefix"
@@ -24,6 +24,7 @@ description = ["CRIME memory controller and CPU-interface registers,", "and the 
 [[headers]]
 file = "MTE_DECODE.h"
 block = "MTE"
+space = "re"
 group = "mte"
 module = "mte"
 rust_prefix = "MTE_"
@@ -33,11 +34,32 @@ description = ["CRIME memory transfer engine registers, address word", "and tile
 [[headers]]
 file = "RE_DECODE.h"
 block = "RE"
+space = "re"
 group = "re"
 module = "re"
 rust_prefix = "RE_"
 register_doc = "CRIME rendering engine register"
-description = ["CRIME rendering engine interface buffer, linear", "translation tables and clip registers."]
+description = ["CRIME rendering engine interface buffer, translation", "tables, pixel pipeline registers and status."]
+
+[[headers]]
+file = "VICE_DECODE.h"
+block = "VICE"
+space = "vice"
+group = "vice"
+module = "vice"
+rust_prefix = "VICE_"
+register_doc = "VICE register"
+description = ["VICE imaging and compression engine chip, signal processor,", "bitstream processor, mailbox and DMA channel registers."]
+
+[[headers]]
+file = "MACE_VIDEO_DECODE.h"
+block = "VOUT"
+space = "mace_video_out"
+group = "mace_video"
+module = "mace_video"
+rust_prefix = "VOUT_"
+register_doc = "MACE video register"
+description = ["MACE video chip-level hardware configuration word."]
 
 [[headers]]
 file = "GBE_DECODE.h"

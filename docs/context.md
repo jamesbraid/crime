@@ -130,13 +130,13 @@ GBE registers are not part of the switch (see Summary). Per-drawable display sta
 
 One entry per rendering-engine register the shipped 6.5.30 code reaches, or that the CRIME 1.5 specification lists and no code reaches, from `crime_kernel/disasm/`, `libglcore/asm/CRIME/` and the register tables of `root/spec/crime.txt` (tables 7-1 to 7-3). Offsets are from the rendering-engine window. Every entry carries a label.
 
-- `IntfBuf.data` at `+0x0`: 128 doubleword slots of the host interface buffer, which hold the data half of each register write waiting for the engine (table 7-1). Established.
+- `IntfBuf.data` at `+0x0`: 128 doubleword slots of the host interface buffer, which hold the data half of each register write waiting for the engine (table 7-1). Established. Recorded as `ib_data` and `ib_addr` (64 entries each) in [RE_DECODE.h](../RE_DECODE.h).
   `crmSavePP` in `crime.o` reads the low and high words of slot `s` at byte `8 * s` of the window and the matching address from `+0x200 + 8 * s`.
   Its loop wraps the slot index back to 0 when it reaches 64, so IRIX treats the ring as 64 entries even though the table lists 128.
-- `TLB.fbB` at `+0x1200`: 64 registers of the second frame-buffer translation table, four 16-bit tile numbers each (table 7-2). Established.
+- `TLB.fbB` at `+0x1200`: 64 registers of the second frame-buffer translation table, four 16-bit tile numbers each (table 7-2). Established. Recorded as `tlb_fb_b` in [RE_DECODE.h](../RE_DECODE.h).
   `crmLoadTlbABC` in `crime_tiles.o` writes it together with the A and C tables from the drawable's tile list, shifting the physical address right by 16.
   A write of 0 to `+0x4008` ends every such batch.
-- `TLB.fbC` at `+0x1400`: the third frame-buffer table, the same 64-register shape as `+0x1200` and `+0x1000` (table 7-2). Established.
+- `TLB.fbC` at `+0x1400`: the third frame-buffer table, the same 64-register shape as `+0x1200` and `+0x1000` (table 7-2). Established. Recorded as `tlb_fb_c` in [RE_DECODE.h](../RE_DECODE.h).
   The kernel skips the load for a slot whose cached serial equals the board's, by comparing words at board offsets 0xa4 to 0xac inside `crmValidateDrawable`.
   A drawable whose cached serial matches the board's leaves it as it was.
 - `TLB.tex` at `+0x1600`: 28 registers of the texture table, four 16-bit tile numbers each (table 7-2). Established.

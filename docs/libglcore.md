@@ -75,7 +75,7 @@ Current and raster colour download into the foreground register. Established: 24
 
 ### the CRIME GL driver context source unit
 
-Context and drawable set-up: sends the board-information, shadow-mapping, drawable and TLB-set requests listed, and flushes (`PP_FLUSH`). Established: 27 routines in the unit, 21 listed here; 1 routine stores through the register base.
+Context and drawable set-up: sends the board-information, shadow-mapping, drawable and TLB-set requests listed, and flushes (`PP_FLUSH`, `pixpipe_flush` in [RE_DECODE.h](../RE_DECODE.h)). Established: 27 routines in the unit, 21 listed here; 1 routine stores through the register base.
 
 | Routine | Address | Role and derivation |
 |---|---|---|

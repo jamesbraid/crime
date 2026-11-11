@@ -75,7 +75,7 @@ All registers are 64-bit, big-endian doubleword accesses. A register marked doub
 - `VOUT.HPAD_EVEN` at `+0x40`: established ([mace] PDF 51). The even-field copy of the odd horizontal timing register.
 - `VOUT.VPAD_EVEN` at `+0x48`: established ([mace] PDF 52). The even-field copy of the odd vertical timing register.
 - `VOUT.GEN_DLY` at `+0x50`: established ([mace] PDF 52-53). Extra genlock delay of up to a line in bits 10:0, in clocks; it must never be zero when a genlock source is used. The fixed delay is 15 clocks from a D1 source and 10 from the external sync, so the minimum totals are 16 and 11.
-- `VOUT.VHW_CFG` at `+0x58`: established ([mace] PDF 53-55). Chip-level video setup that belongs to neither channel: reset and AB/CD select for the two input ports, the audio-sync source with its precision and correction bits, the same set for GBE framelock, the general-purpose output pin in bit 18, and a four-bit chip revision code in bits 35:32.
+- `VOUT.VHW_CFG` at `+0x58`: established ([mace] PDF 53-55). Chip-level video setup that belongs to neither channel: reset and AB/CD select for the two input ports, the audio-sync source with its precision and correction bits, the same set for GBE framelock, the general-purpose output pin in bit 18, and a four-bit chip revision code in bits 35:32. Recorded in [MACE_VIDEO_DECODE.h](../MACE_VIDEO_DECODE.h).
 - `VOUT.DMA_DESC` at `+0x80` to `+0xb8`: established ([mace] PDF 56). Same format as the input descriptors, linear or tiled only.
 
 The counter that stamps each field lives in the MACE timer block, not here: its low bit says odd (0) or even (1) field and its upper half snapshots the system uptime at start of field ([mace] PDF 56). Established.

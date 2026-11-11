@@ -120,7 +120,7 @@
  * TESTVEC: 0x00000820 as MTE.mode => copy=1, stipple=0, depth=0, src_buf=1, dst_buf=0
  */
 /*
- * TESTVEC: 0x00000108 as MTE.mode => copy=0, depth=1, dst_buf=2
+ * TESTVEC: 0x0000010b as MTE.mode => copy=0, depth=1, dst_buf=2, src_ecc=1, dst_ecc=1
  */
 /*
  * TESTVEC: 0x00400020 as ADDR => byte_col=64, row=32

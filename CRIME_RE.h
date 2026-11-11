@@ -1,7 +1,9 @@
 /*
  * CRIME_RE.h - SGI O2 (IP32) CRIME rendering engine.
  *
- * Labels: [E] established, [I] inferred, [U] unknown.
+ * Labels: [E] established, [I] inferred, [U] unknown. In the pixel pipeline
+ * group, G marks a global register and NG a non-global one ([spec] PDF 164);
+ * those two tags are register classes, not grades.
  * Sources:
  *   [spec]   CRIME 1.5 Specification rev 0.3, 2 June 1997 (PDF page numbers).
  *   [netbsd] netbsd/sys/arch/sgimips/dev/crmfbreg.h.
