@@ -58,7 +58,7 @@ Other public sources in this repository:
 - `openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `netbsd/`, so it is weak independent support. `docs/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
 - `gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
 - `sgi-docs/`, `OpenGL-Registry/`, `ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
-- `irix-657m-src/`: a public link included for symmetry with gr4. Reading it exposes you to vendor source.
+- `irix-657m-src/`: a public link included for symmetry with gr4. Hint only, never evidence: reading it exposes you to vendor source.
 - `docs/sources/`: full copies of the chip specifications (CRIME, GBE, MACE, VICE) and of the published patents, papers, technical reports, manuals, product guides and white papers that [docs/published-sources.md](docs/published-sources.md) cites for the O2 graphics and media chips, one entry each with its SHA-256 in [docs/sources/README.md](docs/sources/README.md). These are published designers' statements (labelled "established (published)" or "inferred" as that file says), not vendor source. Documents already in the `sgi-docs/` submodule are cited there, not copied.
 
 ---
@@ -141,16 +141,20 @@ shows as the driver's expectation, not as proof of hardware behaviour.
 Write findings in your own words. Never paste vendor source, HDL or
 proprietary binaries into the repository.
 
-Findings taken from the linked IRIX source tree are committed like any
-other finding: restated in your own words and cited by path, as in
-`<source path>` or `<source path>`, with the release
-(a release). Each chip header lists the source paths it drew on in its
-opening comment. Never copy code, comments, macro bodies or file layout. Where
-a 6.5.30 binary confirms the same fact, cite both.
+Source trees are hints only. The linked IRIX source tree may suggest where to
+look in a binary or a published document, but a hint is never evidence. Do not
+cite it by path, release or file name, and do not compare a routine with it in
+committed text. Every fact must be confirmed at an address in a shipped 6.5.30
+binary or in a published document or capture; otherwise it is graded inferred
+or unknown. No source text, comments, macro bodies, file layout, source paths or
+internal identifiers from the source tree go into the repository. Symbol names
+in a shipped binary's own symbol table or debug information, and names in
+published headers and manuals, are fine.
 
-Before you call a fact unknown, search the linked IRIX source tree for the
-device, its diagnostics and its PROM code, and list that search among the
-routes tried. A question is not exhausted until the source has been read.
+Before you call a fact unknown, search the shipped binaries and the published
+documents and captures for the device, its diagnostics and its PROM code, and
+list those routes among the routes tried. Searches of the source tree may
+suggest where to look; they are not among the routes tried.
 
 Label honestly. Use "established" only for what you read in full: the whole
 function body, table or source passage. A reading built from call lists,
