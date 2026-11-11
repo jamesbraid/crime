@@ -1,4 +1,4 @@
-// generated from o2gfx 4d94af455e87 VICE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 45f590324bef VICE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! VICE imaging and compression engine chip, signal processor,
 //! bitstream processor, mailbox and DMA channel registers.
@@ -10,6 +10,29 @@
 
 #![allow(dead_code)]
 
+/// VICE register `bsp_out_buf`: read/write, 16-bit, 1024 consecutive registers; reset unknown; inferred.
+pub const REG_BSP_OUT_BUF: u32 = 0x7000;
+pub const REG_BSP_OUT_BUF_WIDTH: u32 = 16;
+pub const REG_BSP_OUT_BUF_COUNT: u32 = 1024;
+/// VICE register `bsp_in_buf`: read/write, 16-bit, 1024 consecutive registers; reset unknown; inferred.
+pub const REG_BSP_IN_BUF: u32 = 0x7800;
+pub const REG_BSP_IN_BUF_WIDTH: u32 = 16;
+pub const REG_BSP_IN_BUF_COUNT: u32 = 1024;
+/// VICE register `data_ram_a`: read/write, 32-bit, 512 consecutive registers; reset unknown; inferred.
+pub const REG_DATA_RAM_A: u32 = 0x8000;
+pub const REG_DATA_RAM_A_WIDTH: u32 = 32;
+pub const REG_DATA_RAM_A_COUNT: u32 = 512;
+/// VICE register `data_ram_b`: read/write, 32-bit, 512 consecutive registers; reset unknown; inferred.
+pub const REG_DATA_RAM_B: u32 = 0x8800;
+pub const REG_DATA_RAM_B_WIDTH: u32 = 32;
+pub const REG_DATA_RAM_B_COUNT: u32 = 512;
+/// VICE register `data_ram_c`: read/write, 32-bit, 512 consecutive registers; reset unknown; inferred.
+pub const REG_DATA_RAM_C: u32 = 0x9000;
+pub const REG_DATA_RAM_C_WIDTH: u32 = 32;
+pub const REG_DATA_RAM_C_COUNT: u32 = 512;
+/// VICE register `tlb`: read/write, 32-bit; reset unknown; established.
+pub const REG_TLB: u32 = 0xf000;
+pub const REG_TLB_WIDTH: u32 = 32;
 /// VICE register `id`: read, 8-bit; reset unknown; established.
 pub const REG_ID: u32 = 0x0008;
 pub const REG_ID_WIDTH: u32 = 8;
@@ -238,6 +261,35 @@ impl MspCauseCode {
             Self::Adei => 0x7,
             Self::Other(v) => v as u32,
         }
+    }
+}
+
+/// The `TLB_ENTRY` word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct TlbEntry(u32);
+
+impl TlbEntry {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn valid(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn writable(self) -> bool {
+        (self.0 >> 1) & 1 != 0
+    }
+
+    /// Bits 31:16, established.
+    pub const fn page(self) -> u32 {
+        self.0 >> 16
     }
 }
 

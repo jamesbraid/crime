@@ -1,6 +1,7 @@
-// generated from o2gfx 4893c3f9552a MACE_VIDEO_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 45f590324bef MACE_VIDEO_DECODE.h - do not edit, regenerate in o2gfx
 //!
-//! MACE video chip-level hardware configuration word.
+//! MACE video output channel registers and the chip-level
+//! hardware configuration word.
 //!
 //! Grades on each item say what is known about it: `established` is what the
 //! shipped driver software does, read in full; `inferred` is a reasoned
@@ -9,6 +10,43 @@
 
 #![allow(dead_code)]
 
+/// MACE video register `control`: read/write, 64-bit; reset 0; established.
+pub const REG_CONTROL: u32 = 0x0000;
+pub const REG_CONTROL_WIDTH: u32 = 64;
+/// MACE video register `status`: read, 64-bit; reset 0; established.
+pub const REG_STATUS: u32 = 0x0008;
+pub const REG_STATUS_WIDTH: u32 = 64;
+/// MACE video register `config`: read/write, 64-bit; reset unknown; established.
+pub const REG_CONFIG: u32 = 0x0010;
+pub const REG_CONFIG_WIDTH: u32 = 64;
+/// MACE video register `next_desc`: read/write, 64-bit; reset unknown; established.
+pub const REG_NEXT_DESC: u32 = 0x0018;
+pub const REG_NEXT_DESC_WIDTH: u32 = 64;
+/// MACE video register `fld_offset`: read/write, 64-bit; reset unknown; established.
+pub const REG_FLD_OFFSET: u32 = 0x0020;
+pub const REG_FLD_OFFSET_WIDTH: u32 = 64;
+/// MACE video register `field_size`: read/write, 64-bit; reset unknown; established.
+pub const REG_FIELD_SIZE: u32 = 0x0028;
+pub const REG_FIELD_SIZE_WIDTH: u32 = 64;
+/// MACE video register `hpad_odd`: read/write, 64-bit; reset unknown; established.
+pub const REG_HPAD_ODD: u32 = 0x0030;
+pub const REG_HPAD_ODD_WIDTH: u32 = 64;
+/// MACE video register `vpad_odd`: read/write, 64-bit; reset unknown; established.
+pub const REG_VPAD_ODD: u32 = 0x0038;
+pub const REG_VPAD_ODD_WIDTH: u32 = 64;
+/// MACE video register `hpad_even`: read/write, 64-bit; reset unknown; established.
+pub const REG_HPAD_EVEN: u32 = 0x0040;
+pub const REG_HPAD_EVEN_WIDTH: u32 = 64;
+/// MACE video register `vpad_even`: read/write, 64-bit; reset unknown; established.
+pub const REG_VPAD_EVEN: u32 = 0x0048;
+pub const REG_VPAD_EVEN_WIDTH: u32 = 64;
+/// MACE video register `gen_dly`: read/write, 64-bit; reset unknown; established.
+pub const REG_GEN_DLY: u32 = 0x0050;
+pub const REG_GEN_DLY_WIDTH: u32 = 64;
+/// MACE video register `dma_desc`: read/write, 64-bit, 8 consecutive registers; reset unknown; established.
+pub const REG_DMA_DESC: u32 = 0x0080;
+pub const REG_DMA_DESC_WIDTH: u32 = 64;
+pub const REG_DMA_DESC_COUNT: u32 = 8;
 /// MACE video register `vhw_cfg`: read/write, 64-bit; reset unknown; established.
 pub const REG_VHW_CFG: u32 = 0x0058;
 pub const REG_VHW_CFG_WIDTH: u32 = 64;
@@ -84,6 +122,104 @@ impl VhwCfgGbeFramelockSource {
             Self::PortCd => 0x3,
             Self::Other(v) => v as u32,
         }
+    }
+}
+
+/// The `control` register word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Control(u32);
+
+impl Control {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn dma_enable(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn int_vsync(self) -> bool {
+        (self.0 >> 1) & 1 != 0
+    }
+
+    /// Bit 2, established.
+    pub const fn int_dma_done(self) -> bool {
+        (self.0 >> 2) & 1 != 0
+    }
+
+    /// Bit 3, established.
+    pub const fn int_genlock_lost(self) -> bool {
+        (self.0 >> 3) & 1 != 0
+    }
+
+    /// Bit 4, established.
+    pub const fn int_buffer(self) -> bool {
+        (self.0 >> 4) & 1 != 0
+    }
+
+    /// Bit 7, established.
+    pub const fn int_fifo_underflow(self) -> bool {
+        (self.0 >> 7) & 1 != 0
+    }
+
+    /// Bit 8, established.
+    pub const fn int_crime_error(self) -> bool {
+        (self.0 >> 8) & 1 != 0
+    }
+}
+
+/// The `status` register word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Status(u32);
+
+impl Status {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn dma_active(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn vsync(self) -> bool {
+        (self.0 >> 1) & 1 != 0
+    }
+
+    /// Bit 2, established.
+    pub const fn dma_done(self) -> bool {
+        (self.0 >> 2) & 1 != 0
+    }
+
+    /// Bit 3, established.
+    pub const fn lost_sync(self) -> bool {
+        (self.0 >> 3) & 1 != 0
+    }
+
+    /// Bit 4, established.
+    pub const fn buffer(self) -> bool {
+        (self.0 >> 4) & 1 != 0
+    }
+
+    /// Bit 7, established.
+    pub const fn fifo_underflow(self) -> bool {
+        (self.0 >> 7) & 1 != 0
+    }
+
+    /// Bit 8, established.
+    pub const fn crime_error(self) -> bool {
+        (self.0 >> 8) & 1 != 0
     }
 }
 

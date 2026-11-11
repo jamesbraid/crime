@@ -1,4 +1,4 @@
-// generated from o2gfx 4893c3f9552a RE_DECODE.h - do not edit, regenerate in o2gfx
+// generated from o2gfx 45f590324bef RE_DECODE.h - do not edit, regenerate in o2gfx
 //!
 //! CRIME rendering engine interface buffer, translation
 //! tables, pixel pipeline registers and status.
@@ -172,6 +172,9 @@ pub const REG_TEX_TQS_WIDTH: u32 = 64;
 /// CRIME rendering engine register `tex_qs`: write, 32-bit; reset unknown; established.
 pub const REG_TEX_QS: u32 = 0x2130;
 pub const REG_TEX_QS_WIDTH: u32 = 32;
+/// CRIME rendering engine register `tex_stflags`: write, 32-bit; reset unknown; established.
+pub const REG_TEX_STFLAGS: u32 = 0x2134;
+pub const REG_TEX_STFLAGS_WIDTH: u32 = 32;
 /// CRIME rendering engine register `tex_dsqdx`: write, 64-bit; reset unknown; established.
 pub const REG_TEX_DSQDX: u32 = 0x2138;
 pub const REG_TEX_DSQDX_WIDTH: u32 = 64;
@@ -256,6 +259,9 @@ pub const REG_PIXPIPE_FLUSH_WIDTH: u32 = 32;
 /// CRIME rendering engine register `status`: read, 32-bit; reset unknown; established.
 pub const REG_STATUS: u32 = 0x4000;
 pub const REG_STATUS_WIDTH: u32 = 32;
+/// CRIME rendering engine register `ib_discard`: write, 32-bit; reset unknown; established.
+pub const REG_IB_DISCARD: u32 = 0x4008;
+pub const REG_IB_DISCARD_WIDTH: u32 = 32;
 
 /// Values of `group` in `IbaddrHi` that the header names.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -931,6 +937,30 @@ impl ScrmaskLo {
     /// Bits 15:0, established.
     pub const fn y_end(self) -> u32 {
         self.0 & 0xffff
+    }
+}
+
+/// The `tex_stflags` register word.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct TexStflags(u32);
+
+impl TexStflags {
+    pub const fn new(word: u32) -> Self {
+        Self(word)
+    }
+
+    pub const fn raw(self) -> u32 {
+        self.0
+    }
+
+    /// Bit 0, established.
+    pub const fn s_flag(self) -> bool {
+        self.0 & 1 != 0
+    }
+
+    /// Bit 1, established.
+    pub const fn t_flag(self) -> bool {
+        (self.0 >> 1) & 1 != 0
     }
 }
 
