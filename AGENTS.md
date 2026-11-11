@@ -28,7 +28,7 @@ Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 19
 ### Major blocks
 
 - **CRIME rendering engine**: lines, triangles, span fills, texture and depth. Role: partly known from [spec]; texture and filtering semantics unknown.
-- **MTE**: the memory transfer engine (copies, fills, transfers to and from host memory). Role: named in [spec]; semantics unknown here.
+- **MTE**: the memory transfer engine (copies, fills, transfers to and from host memory). Role: named in [spec]; register and mode fields, the byte-column address word and the kernel and X-server uses are established in [docs/mte.md](docs/mte.md); overlap and ordering against the pixel pipeline stay open there.
 - **CRIME memory, TLB and interrupts**: the ECC memory controller, the rendering TLB and the interrupt controller as graphics uses them. Role: base registers known from [spec].
 - **GBE**: the display back end, with frame buffer, overlay, cursor, colormap and timing. Role: known from [spec] and [linux]; fine details unknown.
 - **libGLcore to CRIME command stream**: what the OpenGL driver writes and in what order. Role: unknown.

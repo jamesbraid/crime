@@ -61,4 +61,4 @@ Sources: the kernel request above; `libGLcore` `__glCrmPickDrawPixels` (the CRIM
 
 - Settled: no GL entry point calls the kernel pixel DMA request; only the X module's image routines send it (`docs/ioctls.md`, senders).
 - Settled: the request fields (above), the step units, the replication fields and the overlap order.
-- Unknown: no shipped software or published source depends on it: the unused step bits and a zero step (above).
+- Unknown: no shipped software or published source depends on it: the unused step bits and a zero step (above). Test that would settle it: transfer one row from a linear source with the X step set to the pixel size plus `0x20000` (bit 17 set), then again with a step of zero, and again with bits 27:17 clear, and compare the pixels written with the pixels read; repeat for a frame-buffer source with bit 11 of the step set. The routes tried above (kernel, `libGLcore`, X module, the specification) give no layout for those bits, so only a hardware run answers it, and that needs the hardware proposal the project requires.
