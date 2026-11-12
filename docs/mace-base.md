@@ -254,6 +254,17 @@ resetting the PCI bus.
   above produces by itself. Which clock feeds the 16550 is unresolved.
 - Device interrupts reach peripheral status bit 20 (port 1) and bit 26 (port 2),
   then CRIME bit 4 (established, [mace] 125 to 126 and 179).
+- The TL16PIR552PH data sheet controls the port's external interrupt output with
+  modem control bit 3, which master reset clears (inferred, TI SLLS222A printed
+  pages 25 and 30). The part's identity in the O2 is not established, so this
+  stays inferred until it is. The register items are in
+  `defs/mace_uart.toml`.
+- The same data sheet puts the infrared select on bit 6 of the scratch-position
+  register, with the prescaler in bits 5:0, and after reset makes UART 0 an
+  infrared channel and UART 1 an ordinary UART (inferred, TI SLLS222A printed
+  page 33). That conflicts with the MACE specification's bit 7 above. The data
+  sheet's UART 0 and UART 1 are not mapped to MACE ports 1 and 2 here, since
+  that wiring is unknown. See the unresolved list.
 - The MACE serial DMA channels are a separate feature, covered in
   [mace-serial-dma.md](mace-serial-dma.md). A PIO-only frontend must not claim
   DMA support.
@@ -307,6 +318,16 @@ resetting the PCI bus.
   DEVSEL bit placement is asserted.
 - Which clock feeds the 16550s (the 22 MHz path or the 1,843,200 Hz software
   clock).
+- Which part the O2's two external UARTs are. The TI data sheet is the only
+  source for the modem control bit and the scratch reset above, so those stay
+  inferred until the part is identified.
+- The infrared select bit in the scratch-position register: bit 7 in the MACE
+  specification (printed page 126) and bit 6 in the TI data sheet (printed page
+  33). The MACE reading is established as printed, so the conflict is recorded,
+  not settled.
+- Whether the scratch value survives the MACE external reset from ring-base bit
+  0. The TI data sheet says master reset has no effect on it, but nothing shows
+  that the MACE reset pin is a master reset.
 - The physical pin that the second onboard SCSI controller uses (the table
   label and the route to CRIME bit 9 disagree on the label).
 - The serial DMA channel blocks, which [mace-serial-dma.md](mace-serial-dma.md)

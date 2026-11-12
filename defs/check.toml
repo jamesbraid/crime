@@ -41,6 +41,9 @@ group = "mace_i2c"
 [units.mace_serial_dma]
 group = "mace_serial_dma"
 
+[units.mace_uart]
+group = "mace_uart"
+
 [units.mace_pci]
 group = "mace_pci"
 prose_offsets = false

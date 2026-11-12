@@ -10,6 +10,7 @@ pub mod mace_periph;
 pub mod mace_ps2;
 pub mod mace_serial_dma;
 pub mod mace_timer;
+pub mod mace_uart;
 pub mod mace_video;
 pub mod mace_video_in;
 pub mod mte;
