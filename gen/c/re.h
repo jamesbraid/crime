@@ -456,7 +456,13 @@
 #define RE_BG_COLOR_OFFSET                           0x20d8u /* established */
 
 /*
- * The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; docs/opengl.md notes that the upper bits of the starts are ignored (inferred). Colour arithmetic and its clamp are in docs/pixel-arithmetic.md.
+ * The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; docs/opengl.md notes that the upper bits of the starts are ignored (inferred). One unit is 4096 (twelve fraction bits), so 255.0 is the word 255 times 4096 (established, [spec] PDF 200-201). Colour arithmetic and its clamp are in docs/pixel-arithmetic.md.
+ *
+ * Table 7-3 marks all twelve shading words as 32-bit, non-global and write-only (established, [spec] PDF 166-167).
+ *
+ * Flat shading gives every fragment the foreground colour, so these words do not change flat triangle, line, point or rectangle output (established, [spec] PDF 200).
+ *
+ * Each word also has a START alias, which sits 2048 bytes above it. The manual names the START offset without a value. The public NetBSD O2 framebuffer driver supplies 2048 (established, public NetBSD driver; [spec] PDF 186).
  */
 /* shade_start: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_SHADE_START_OFFSET                        0x20e0u /* established */
