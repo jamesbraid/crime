@@ -537,6 +537,11 @@ The register's own field table is empty in the specification (section 7.3.1.17).
 
 ### Register `colormask`
 
+A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The
+engine has no per-bit write, so it does a read-modify-write of the pixel
+(established, [spec] PDF 211, section 7.3.7.15). The mask applies to colour-index
+and RGB(A) pixels alike. Its use with DrawMode bit 7 is in docs/de-2d-drawing.md.
+
 ### Register `depth_func`
 
 Depth comparison and clear-depth word. The specification omits the field

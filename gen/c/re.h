@@ -735,6 +735,12 @@
 #define RE_LOGICOP_CODE_NAND                         14 /* inferred */
 #define RE_LOGICOP_CODE_SET                          15 /* inferred */
 
+/*
+ * A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The
+ * engine has no per-bit write, so it does a read-modify-write of the pixel
+ * (established, [spec] PDF 211, section 7.3.7.15). The mask applies to colour-index
+ * and RGB(A) pixels alike. Its use with DrawMode bit 7 is in docs/de-2d-drawing.md.
+ */
 /* colormask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_COLORMASK_OFFSET                          0x21b8u /* established */
 

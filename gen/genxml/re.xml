@@ -589,6 +589,10 @@ is discarded.</doc>
     <field name="code" start="0" size="4" type="logicop_code" grade="inferred"/>
   </struct>
   <struct name="COLORMASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21b8" access="rw" space="re" reset="unknown">
+    <doc>A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The
+engine has no per-bit write, so it does a read-modify-write of the pixel
+(established, [spec] PDF 211, section 7.3.7.15). The mask applies to colour-index
+and RGB(A) pixels alike. Its use with DrawMode bit 7 is in docs/de-2d-drawing.md.</doc>
   </struct>
   <struct name="DEPTH_FUNC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21c0" access="rw" space="re" reset="unknown">
     <doc>Depth comparison and clear-depth word. The specification omits the field

@@ -115,6 +115,10 @@ unknown, as in [AGENTS.md](../AGENTS.md).
   at bit 9. The drivers use the reverse. Which is right is not settled, and the
   pipeline order in [docs/pixel-arithmetic.md](pixel-arithmetic.md) follows the
   drivers.
+- Established ([spec] PDF 211, section 7.3.7.15): the ColorMask register is the
+  colour plane mask. A 1 updates the matching bit of the colour buffer and a 0
+  leaves it as it was. The chip has no per-bit write, so the masking is a
+  read-modify-write of the pixel.
 
 ## Clipping order
 

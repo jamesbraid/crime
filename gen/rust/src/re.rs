@@ -1711,7 +1711,7 @@ pub mod logicop {
         }
     }
 }
-/// (established)
+/// A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The engine has no per-bit write, so it does a read-modify-write of the pi (established)
 pub mod colormask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21b8;

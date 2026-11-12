@@ -972,6 +972,11 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The
+engine has no per-bit write, so it does a read-modify-write of the pixel
+(established, [spec] PDF 211, section 7.3.7.15). The mask applies to colour-index
+and RGB(A) pixels alike. Its use with DrawMode bit 7 is in docs/de-2d-drawing.md."""
 
 [registers.depth_func]
 offset = 0x21c0
