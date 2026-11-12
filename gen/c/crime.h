@@ -57,6 +57,15 @@
 #define CRIME_WATCHDOG_COUNT_MASK                    0xfffffull
 #define CRIME_WATCHDOG_COUNT_INPLACE                 (CRIME_WATCHDOG_COUNT_MASK << CRIME_WATCHDOG_COUNT_SHIFT)
 
+/*
+ * Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md).
+ */
+/* timer: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
+#define CRIME_TIMER_OFFSET                           0x38u /* established */
+#define CRIME_TIMER_COUNT_SHIFT                      0 /* established */
+#define CRIME_TIMER_COUNT_MASK                       0xffffffffull
+#define CRIME_TIMER_COUNT_INPLACE                    (CRIME_TIMER_COUNT_MASK << CRIME_TIMER_COUNT_SHIFT)
+
 /* cpu_error_addr: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_ADDR_OFFSET                  0x40u /* established */
 

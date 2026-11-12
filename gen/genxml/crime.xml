@@ -35,6 +35,10 @@
     <field name="warm_reset_timeout" start="20" size="1" type="uint" grade="established"/>
     <field name="count" start="0" size="20" type="uint" grade="established"/>
   </struct>
+  <struct name="TIMER" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x38" access="rw" reset="0x0">
+    <doc>Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md).</doc>
+    <field name="count" start="0" size="32" type="uint" grade="established"/>
+  </struct>
   <struct name="CPU_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x40" access="r" reset="unknown">
   </struct>
   <struct name="CPU_ERROR_STAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" reset="0x0">

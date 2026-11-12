@@ -137,6 +137,21 @@ pub mod watchdog {
         }
     }
 }
+/// Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 p (established)
+pub mod timer {
+    pub const WIDTH: u32 = 64;
+    pub const OFFSET: u64 = 0x38;
+    pub mod count { // bits 31:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffffffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
 /// (established)
 pub mod cpu_error_addr {
     pub const WIDTH: u32 = 64;
