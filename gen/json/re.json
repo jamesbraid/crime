@@ -149,7 +149,7 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "from": "published CRIME 1.5 draft specification, PDF 164, Table 7-2"
   },
   {
    "unit": "re",
@@ -163,7 +163,7 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "from": "published CRIME 1.5 draft specification, PDF 164, Table 7-2"
   },
   {
    "unit": "re",
@@ -177,7 +177,7 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "from": "published CRIME 1.5 draft specification, PDF 164, Table 7-2"
   },
   {
    "unit": "re",
@@ -191,7 +191,7 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "from": "published CRIME 1.5 draft specification, PDF 164, Table 7-2"
   },
   {
    "unit": "re",
@@ -1094,6 +1094,328 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.tiled",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.texel_type",
+   "hi": 23,
+   "lo": 20,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.rgb",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.rgba",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.rgba4",
+   "value": 4,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.alpha",
+   "value": 5,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.intensity",
+   "value": 6,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.luminance",
+   "value": 7,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_type.luminance_alpha",
+   "value": 8,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.texel_depth",
+   "hi": 19,
+   "lo": 18,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_depth.bits16",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.texel_depth.bits32",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.map_level",
+   "hi": 17,
+   "lo": 14,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.max_level",
+   "hi": 13,
+   "lo": 10,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.min_filter",
+   "hi": 9,
+   "lo": 7,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.nearest",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.linear",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.nearest_mipmap_nearest",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.linear_mipmap_nearest",
+   "value": 3,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.nearest_mipmap_linear",
+   "value": 4,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.min_filter.linear_mipmap_linear",
+   "value": 5,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.mag_filter",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.mag_filter.nearest",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.mag_filter.linear",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.wrap_s",
+   "hi": 5,
+   "lo": 4,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_s.clamp",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_s.repeat",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_s.clamp_to_edge",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_s.clamp_to_border",
+   "value": 3,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.wrap_t",
+   "hi": 3,
+   "lo": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_t.clamp",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_t.repeat",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_t.clamp_to_edge",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.wrap_t.clamp_to_border",
+   "value": 3,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_mode.func",
+   "hi": 1,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.func.modulate",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.func.decal",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.func.blend",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "tex_mode.func.replace",
+   "value": 3,
+   "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
   {
@@ -1108,7 +1430,61 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.u_shift",
+   "hi": 47,
+   "lo": 44,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.v_shift",
+   "hi": 43,
+   "lo": 40,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.u_wrap_shift",
+   "hi": 39,
+   "lo": 36,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.v_wrap_shift",
+   "hi": 35,
+   "lo": 32,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.u_index_mask",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "tex_format.v_index_mask",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
   },
   {
    "unit": "re",

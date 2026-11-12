@@ -87,28 +87,28 @@ pub mod tlb_fb_c {
     pub const COUNT: u32 = 64;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// Texture translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). (established)
 pub mod tlb_tex {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x1600;
     pub const COUNT: u32 = 28;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). (established)
 pub mod tlb_cid {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x16e0;
     pub const COUNT: u32 = 4;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2). (established)
 pub mod tlb_lin_a {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x1700;
     pub const COUNT: u32 = 16;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2). (established)
 pub mod tlb_lin_b {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x1780;
@@ -787,15 +787,403 @@ pub mod shade_dady {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x210c;
 }
-/// (established)
+/// Texture mode register, 32 bits (established, [spec] PDF 178-179, Table 7-13). Bits 31:25 are reserved. The fields below carry the table's bit ranges a (established)
 pub mod tex_mode {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2110;
+    pub mod tiled { // bits 24:24, established
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod texel_type { // bits 23:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const RGB: u32 = 1; // established
+        pub const RGBA: u32 = 2; // established
+        pub const RGBA4: u32 = 4; // established
+        pub const ALPHA: u32 = 5; // established
+        pub const INTENSITY: u32 = 6; // established
+        pub const LUMINANCE: u32 = 7; // established
+        pub const LUMINANCE_ALPHA: u32 = 8; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Rgb,
+            Rgba,
+            Rgba4,
+            Alpha,
+            Intensity,
+            Luminance,
+            LuminanceAlpha,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    1 => Self::Rgb,
+                    2 => Self::Rgba,
+                    4 => Self::Rgba4,
+                    5 => Self::Alpha,
+                    6 => Self::Intensity,
+                    7 => Self::Luminance,
+                    8 => Self::LuminanceAlpha,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Rgb => 1,
+                    Self::Rgba => 2,
+                    Self::Rgba4 => 4,
+                    Self::Alpha => 5,
+                    Self::Intensity => 6,
+                    Self::Luminance => 7,
+                    Self::LuminanceAlpha => 8,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod texel_depth { // bits 19:18, established
+        pub const SHIFT: u32 = 18;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const BITS16: u32 = 1; // established
+        pub const BITS32: u32 = 2; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Bits16,
+            Bits32,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    1 => Self::Bits16,
+                    2 => Self::Bits32,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Bits16 => 1,
+                    Self::Bits32 => 2,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod map_level { // bits 17:14, established
+        pub const SHIFT: u32 = 14;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_level { // bits 13:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod min_filter { // bits 9:7, established
+        pub const SHIFT: u32 = 7;
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NEAREST: u32 = 0; // established
+        pub const LINEAR: u32 = 1; // established
+        pub const NEAREST_MIPMAP_NEAREST: u32 = 2; // established
+        pub const LINEAR_MIPMAP_NEAREST: u32 = 3; // established
+        pub const NEAREST_MIPMAP_LINEAR: u32 = 4; // established
+        pub const LINEAR_MIPMAP_LINEAR: u32 = 5; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Nearest,
+            Linear,
+            NearestMipmapNearest,
+            LinearMipmapNearest,
+            NearestMipmapLinear,
+            LinearMipmapLinear,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Nearest,
+                    1 => Self::Linear,
+                    2 => Self::NearestMipmapNearest,
+                    3 => Self::LinearMipmapNearest,
+                    4 => Self::NearestMipmapLinear,
+                    5 => Self::LinearMipmapLinear,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Nearest => 0,
+                    Self::Linear => 1,
+                    Self::NearestMipmapNearest => 2,
+                    Self::LinearMipmapNearest => 3,
+                    Self::NearestMipmapLinear => 4,
+                    Self::LinearMipmapLinear => 5,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod mag_filter { // bits 6:6, established
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NEAREST: u32 = 0; // established
+        pub const LINEAR: u32 = 1; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Nearest,
+            Linear,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Nearest,
+                    1 => Self::Linear,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Nearest => 0,
+                    Self::Linear => 1,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod wrap_s { // bits 5:4, established
+        pub const SHIFT: u32 = 4;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const CLAMP: u32 = 0; // established
+        pub const REPEAT: u32 = 1; // established
+        pub const CLAMP_TO_EDGE: u32 = 2; // established
+        pub const CLAMP_TO_BORDER: u32 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Clamp,
+            Repeat,
+            ClampToEdge,
+            ClampToBorder,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Clamp,
+                    1 => Self::Repeat,
+                    2 => Self::ClampToEdge,
+                    3 => Self::ClampToBorder,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Clamp => 0,
+                    Self::Repeat => 1,
+                    Self::ClampToEdge => 2,
+                    Self::ClampToBorder => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod wrap_t { // bits 3:2, established
+        pub const SHIFT: u32 = 2;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const CLAMP: u32 = 0; // established
+        pub const REPEAT: u32 = 1; // established
+        pub const CLAMP_TO_EDGE: u32 = 2; // established
+        pub const CLAMP_TO_BORDER: u32 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Clamp,
+            Repeat,
+            ClampToEdge,
+            ClampToBorder,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Clamp,
+                    1 => Self::Repeat,
+                    2 => Self::ClampToEdge,
+                    3 => Self::ClampToBorder,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Clamp => 0,
+                    Self::Repeat => 1,
+                    Self::ClampToEdge => 2,
+                    Self::ClampToBorder => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod func { // bits 1:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const MODULATE: u32 = 0; // established
+        pub const DECAL: u32 = 1; // established
+        pub const BLEND: u32 = 2; // established
+        pub const REPLACE: u32 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Modulate,
+            Decal,
+            Blend,
+            Replace,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Modulate,
+                    1 => Self::Decal,
+                    2 => Self::Blend,
+                    3 => Self::Replace,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Modulate => 0,
+                    Self::Decal => 1,
+                    Self::Blend => 2,
+                    Self::Replace => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
 }
-/// (established)
+/// Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:48 are reserved. The table names six fields and their bit ranges but g (established)
 pub mod tex_format {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2118;
+    pub mod u_shift { // bits 47:44, established
+        pub const SHIFT: u32 = 44;
+        pub const MASK: u64 = 0xf;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod v_shift { // bits 43:40, established
+        pub const SHIFT: u32 = 40;
+        pub const MASK: u64 = 0xf;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod u_wrap_shift { // bits 39:36, established
+        pub const SHIFT: u32 = 36;
+        pub const MASK: u64 = 0xf;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod v_wrap_shift { // bits 35:32, established
+        pub const SHIFT: u32 = 32;
+        pub const MASK: u64 = 0xf;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod u_index_mask { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod v_index_mask { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod tex_sqs {
@@ -2283,6 +2671,28 @@ mod tests {
         assert_eq!(stipple_mode::max_index::get(0x2050000), 5);
         assert_eq!(stipple_mode::repeat::get(0x2050000), 0);
         assert_eq!(stipple_mode::max_repeat::get(0x2050000), 0);
+    }
+
+    #[test]
+    fn tex_mode_12800d7() {
+        assert_eq!(tex_mode::tiled::get(0x12800d7), 1);
+        assert_eq!(tex_mode::texel_type::get(0x12800d7), 2);
+        assert_eq!(tex_mode::texel_depth::get(0x12800d7), 2);
+        assert_eq!(tex_mode::min_filter::get(0x12800d7), 1);
+        assert_eq!(tex_mode::mag_filter::get(0x12800d7), 1);
+        assert_eq!(tex_mode::wrap_s::get(0x12800d7), 1);
+        assert_eq!(tex_mode::wrap_t::get(0x12800d7), 1);
+        assert_eq!(tex_mode::func::get(0x12800d7), 3);
+    }
+
+    #[test]
+    fn tex_format_a32100ff0fff() {
+        assert_eq!(tex_format::u_shift::get(0xa32100ff0fff), 10);
+        assert_eq!(tex_format::v_shift::get(0xa32100ff0fff), 3);
+        assert_eq!(tex_format::u_wrap_shift::get(0xa32100ff0fff), 2);
+        assert_eq!(tex_format::v_wrap_shift::get(0xa32100ff0fff), 1);
+        assert_eq!(tex_format::u_index_mask::get(0xa32100ff0fff), 255);
+        assert_eq!(tex_format::v_index_mask::get(0xa32100ff0fff), 4095);
     }
 
     #[test]

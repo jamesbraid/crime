@@ -78,22 +78,34 @@
 #define RE_TLB_FB_C_COUNT                            64
 #define RE_TLB_FB_C_STRIDE                           8
 
-/* tlb_tex: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Texture translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+ */
+/* tlb_tex: rw64, space re, reset unknown; published CRIME 1.5 draft specification, PDF 164, Table 7-2 */
 #define RE_TLB_TEX_OFFSET                            0x1600u /* established */
 #define RE_TLB_TEX_COUNT                             28
 #define RE_TLB_TEX_STRIDE                            8
 
-/* tlb_cid: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+ */
+/* tlb_cid: rw64, space re, reset unknown; published CRIME 1.5 draft specification, PDF 164, Table 7-2 */
 #define RE_TLB_CID_OFFSET                            0x16e0u /* established */
 #define RE_TLB_CID_COUNT                             4
 #define RE_TLB_CID_STRIDE                            8
 
-/* tlb_lin_a: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+ */
+/* tlb_lin_a: rw64, space re, reset unknown; published CRIME 1.5 draft specification, PDF 164, Table 7-2 */
 #define RE_TLB_LIN_A_OFFSET                          0x1700u /* established */
 #define RE_TLB_LIN_A_COUNT                           16
 #define RE_TLB_LIN_A_STRIDE                          8
 
-/* tlb_lin_b: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+ */
+/* tlb_lin_b: rw64, space re, reset unknown; published CRIME 1.5 draft specification, PDF 164, Table 7-2 */
 #define RE_TLB_LIN_B_OFFSET                          0x1780u /* established */
 #define RE_TLB_LIN_B_COUNT                           16
 #define RE_TLB_LIN_B_STRIDE                          8
@@ -434,11 +446,94 @@
 /* shade_dady: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_SHADE_DADY_OFFSET                         0x210cu /* established */
 
-/* tex_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Texture mode register, 32 bits (established, [spec] PDF 178-179, Table 7-13). Bits 31:25 are reserved. The fields below carry the table's bit ranges and names. Enumerated values are the table's own; encodings it marks reserved have no name here.
+ */
+/* tex_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 */
 #define RE_TEX_MODE_OFFSET                           0x2110u /* established */
+#define RE_TEX_MODE_TILED_SHIFT                      24 /* established */
+#define RE_TEX_MODE_TILED_MASK                       0x1u
+#define RE_TEX_MODE_TILED_INPLACE                    (RE_TEX_MODE_TILED_MASK << RE_TEX_MODE_TILED_SHIFT)
+#define RE_TEX_MODE_TEXEL_TYPE_SHIFT                 20 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_MASK                  0xfu
+#define RE_TEX_MODE_TEXEL_TYPE_INPLACE               (RE_TEX_MODE_TEXEL_TYPE_MASK << RE_TEX_MODE_TEXEL_TYPE_SHIFT)
+#define RE_TEX_MODE_TEXEL_TYPE_RGB                   1 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_RGBA                  2 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_RGBA4                 4 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_ALPHA                 5 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_INTENSITY             6 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_LUMINANCE             7 /* established */
+#define RE_TEX_MODE_TEXEL_TYPE_LUMINANCE_ALPHA       8 /* established */
+#define RE_TEX_MODE_TEXEL_DEPTH_SHIFT                18 /* established */
+#define RE_TEX_MODE_TEXEL_DEPTH_MASK                 0x3u
+#define RE_TEX_MODE_TEXEL_DEPTH_INPLACE              (RE_TEX_MODE_TEXEL_DEPTH_MASK << RE_TEX_MODE_TEXEL_DEPTH_SHIFT)
+#define RE_TEX_MODE_TEXEL_DEPTH_BITS16               1 /* established */
+#define RE_TEX_MODE_TEXEL_DEPTH_BITS32               2 /* established */
+#define RE_TEX_MODE_MAP_LEVEL_SHIFT                  14 /* established */
+#define RE_TEX_MODE_MAP_LEVEL_MASK                   0xfu
+#define RE_TEX_MODE_MAP_LEVEL_INPLACE                (RE_TEX_MODE_MAP_LEVEL_MASK << RE_TEX_MODE_MAP_LEVEL_SHIFT)
+#define RE_TEX_MODE_MAX_LEVEL_SHIFT                  10 /* established */
+#define RE_TEX_MODE_MAX_LEVEL_MASK                   0xfu
+#define RE_TEX_MODE_MAX_LEVEL_INPLACE                (RE_TEX_MODE_MAX_LEVEL_MASK << RE_TEX_MODE_MAX_LEVEL_SHIFT)
+#define RE_TEX_MODE_MIN_FILTER_SHIFT                 7 /* established */
+#define RE_TEX_MODE_MIN_FILTER_MASK                  0x7u
+#define RE_TEX_MODE_MIN_FILTER_INPLACE               (RE_TEX_MODE_MIN_FILTER_MASK << RE_TEX_MODE_MIN_FILTER_SHIFT)
+#define RE_TEX_MODE_MIN_FILTER_NEAREST               0 /* established */
+#define RE_TEX_MODE_MIN_FILTER_LINEAR                1 /* established */
+#define RE_TEX_MODE_MIN_FILTER_NEAREST_MIPMAP_NEAREST 2 /* established */
+#define RE_TEX_MODE_MIN_FILTER_LINEAR_MIPMAP_NEAREST 3 /* established */
+#define RE_TEX_MODE_MIN_FILTER_NEAREST_MIPMAP_LINEAR 4 /* established */
+#define RE_TEX_MODE_MIN_FILTER_LINEAR_MIPMAP_LINEAR  5 /* established */
+#define RE_TEX_MODE_MAG_FILTER_SHIFT                 6 /* established */
+#define RE_TEX_MODE_MAG_FILTER_MASK                  0x1u
+#define RE_TEX_MODE_MAG_FILTER_INPLACE               (RE_TEX_MODE_MAG_FILTER_MASK << RE_TEX_MODE_MAG_FILTER_SHIFT)
+#define RE_TEX_MODE_MAG_FILTER_NEAREST               0 /* established */
+#define RE_TEX_MODE_MAG_FILTER_LINEAR                1 /* established */
+#define RE_TEX_MODE_WRAP_S_SHIFT                     4 /* established */
+#define RE_TEX_MODE_WRAP_S_MASK                      0x3u
+#define RE_TEX_MODE_WRAP_S_INPLACE                   (RE_TEX_MODE_WRAP_S_MASK << RE_TEX_MODE_WRAP_S_SHIFT)
+#define RE_TEX_MODE_WRAP_S_CLAMP                     0 /* established */
+#define RE_TEX_MODE_WRAP_S_REPEAT                    1 /* established */
+#define RE_TEX_MODE_WRAP_S_CLAMP_TO_EDGE             2 /* established */
+#define RE_TEX_MODE_WRAP_S_CLAMP_TO_BORDER           3 /* established */
+#define RE_TEX_MODE_WRAP_T_SHIFT                     2 /* established */
+#define RE_TEX_MODE_WRAP_T_MASK                      0x3u
+#define RE_TEX_MODE_WRAP_T_INPLACE                   (RE_TEX_MODE_WRAP_T_MASK << RE_TEX_MODE_WRAP_T_SHIFT)
+#define RE_TEX_MODE_WRAP_T_CLAMP                     0 /* established */
+#define RE_TEX_MODE_WRAP_T_REPEAT                    1 /* established */
+#define RE_TEX_MODE_WRAP_T_CLAMP_TO_EDGE             2 /* established */
+#define RE_TEX_MODE_WRAP_T_CLAMP_TO_BORDER           3 /* established */
+#define RE_TEX_MODE_FUNC_SHIFT                       0 /* established */
+#define RE_TEX_MODE_FUNC_MASK                        0x3u
+#define RE_TEX_MODE_FUNC_INPLACE                     (RE_TEX_MODE_FUNC_MASK << RE_TEX_MODE_FUNC_SHIFT)
+#define RE_TEX_MODE_FUNC_MODULATE                    0 /* established */
+#define RE_TEX_MODE_FUNC_DECAL                       1 /* established */
+#define RE_TEX_MODE_FUNC_BLEND                       2 /* established */
+#define RE_TEX_MODE_FUNC_REPLACE                     3 /* established */
 
-/* tex_format: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:48 are reserved. The table names six fields and their bit ranges but gives no description for any of them, so what each field computes is unknown here.
+ */
+/* tex_format: rw64, space re, reset unknown; published CRIME 1.5 draft specification, PDF 179, Table 7-14 */
 #define RE_TEX_FORMAT_OFFSET                         0x2118u /* established */
+#define RE_TEX_FORMAT_U_SHIFT_SHIFT                  44 /* established */
+#define RE_TEX_FORMAT_U_SHIFT_MASK                   0xfull
+#define RE_TEX_FORMAT_U_SHIFT_INPLACE                (RE_TEX_FORMAT_U_SHIFT_MASK << RE_TEX_FORMAT_U_SHIFT_SHIFT)
+#define RE_TEX_FORMAT_V_SHIFT_SHIFT                  40 /* established */
+#define RE_TEX_FORMAT_V_SHIFT_MASK                   0xfull
+#define RE_TEX_FORMAT_V_SHIFT_INPLACE                (RE_TEX_FORMAT_V_SHIFT_MASK << RE_TEX_FORMAT_V_SHIFT_SHIFT)
+#define RE_TEX_FORMAT_U_WRAP_SHIFT_SHIFT             36 /* established */
+#define RE_TEX_FORMAT_U_WRAP_SHIFT_MASK              0xfull
+#define RE_TEX_FORMAT_U_WRAP_SHIFT_INPLACE           (RE_TEX_FORMAT_U_WRAP_SHIFT_MASK << RE_TEX_FORMAT_U_WRAP_SHIFT_SHIFT)
+#define RE_TEX_FORMAT_V_WRAP_SHIFT_SHIFT             32 /* established */
+#define RE_TEX_FORMAT_V_WRAP_SHIFT_MASK              0xfull
+#define RE_TEX_FORMAT_V_WRAP_SHIFT_INPLACE           (RE_TEX_FORMAT_V_WRAP_SHIFT_MASK << RE_TEX_FORMAT_V_WRAP_SHIFT_SHIFT)
+#define RE_TEX_FORMAT_U_INDEX_MASK_SHIFT             16 /* established */
+#define RE_TEX_FORMAT_U_INDEX_MASK_MASK              0xffffull
+#define RE_TEX_FORMAT_U_INDEX_MASK_INPLACE           (RE_TEX_FORMAT_U_INDEX_MASK_MASK << RE_TEX_FORMAT_U_INDEX_MASK_SHIFT)
+#define RE_TEX_FORMAT_V_INDEX_MASK_SHIFT             0 /* established */
+#define RE_TEX_FORMAT_V_INDEX_MASK_MASK              0xffffull
+#define RE_TEX_FORMAT_V_INDEX_MASK_INPLACE           (RE_TEX_FORMAT_V_INDEX_MASK_MASK << RE_TEX_FORMAT_V_INDEX_MASK_SHIFT)
 
 /* tex_sqs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_TEX_SQS_OFFSET                            0x2120u /* established */

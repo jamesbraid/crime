@@ -26,10 +26,10 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `tlb_fb_a` | 0x1000 | rw | 64 | 64 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `tlb_fb_b` | 0x1200 | rw | 64 | 64 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `tlb_fb_c` | 0x1400 | rw | 64 | 64 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tlb_tex` | 0x1600 | rw | 64 | 28 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tlb_cid` | 0x16e0 | rw | 64 | 4 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tlb_lin_a` | 0x1700 | rw | 64 | 16 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tlb_lin_b` | 0x1780 | rw | 64 | 16 | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `tlb_tex` | 0x1600 | rw | 64 | 28 | re | unknown | established | published CRIME 1.5 draft specification, PDF 164, Table 7-2 |
+| `tlb_cid` | 0x16e0 | rw | 64 | 4 | re | unknown | established | published CRIME 1.5 draft specification, PDF 164, Table 7-2 |
+| `tlb_lin_a` | 0x1700 | rw | 64 | 16 | re | unknown | established | published CRIME 1.5 draft specification, PDF 164, Table 7-2 |
+| `tlb_lin_b` | 0x1780 | rw | 64 | 16 | re | unknown | established | published CRIME 1.5 draft specification, PDF 164, Table 7-2 |
 | `bufmode_src` | 0x2000 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `bufmode_dst` | 0x2008 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `clipmode` | 0x2010 | rw | 32 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
@@ -60,8 +60,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `shade_dadx` | 0x2104 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `shade_dbdy` | 0x2108 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `shade_dady` | 0x210c | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tex_mode` | 0x2110 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `tex_format` | 0x2118 | rw | 64 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `tex_mode` | 0x2110 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |
+| `tex_format` | 0x2118 | rw | 64 |  | re | unknown | established | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |
 | `tex_sqs` | 0x2120 | w | 64 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `tex_tqs` | 0x2128 | w | 64 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `tex_qs` | 0x2130 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
@@ -155,17 +155,25 @@ Array of 64 registers, stride 8.
 
 ### Register `tlb_tex`
 
+Texture translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+
 Array of 28 registers, stride 8.
 
 ### Register `tlb_cid`
+
+Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
 
 Array of 4 registers, stride 8.
 
 ### Register `tlb_lin_a`
 
+Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
+
 Array of 16 registers, stride 8.
 
 ### Register `tlb_lin_b`
+
+Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2).
 
 Array of 16 registers, stride 8.
 
@@ -390,7 +398,33 @@ Array of 4 registers, stride 4.
 
 ### Register `tex_mode`
 
+Texture mode register, 32 bits (established, [spec] PDF 178-179, Table 7-13). Bits 31:25 are reserved. The fields below carry the table's bit ranges and names. Enumerated values are the table's own; encodings it marks reserved have no name here.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 24 | `tiled` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 23:20 | `texel_type` | established | rgb=1, rgba=2, rgba4=4, alpha=5, intensity=6, luminance=7, luminance_alpha=8 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 19:18 | `texel_depth` | established | bits16=1, bits32=2 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 17:14 | `map_level` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 13:10 | `max_level` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 9:7 | `min_filter` | established | nearest=0, linear=1, nearest_mipmap_nearest=2, linear_mipmap_nearest=3, nearest_mipmap_linear=4, linear_mipmap_linear=5 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 6 | `mag_filter` | established | nearest=0, linear=1 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 5:4 | `wrap_s` | established | clamp=0, repeat=1, clamp_to_edge=2, clamp_to_border=3 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 3:2 | `wrap_t` | established | clamp=0, repeat=1, clamp_to_edge=2, clamp_to_border=3 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 1:0 | `func` | established | modulate=0, decal=1, blend=2, replace=3 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+
 ### Register `tex_format`
+
+Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:48 are reserved. The table names six fields and their bit ranges but gives no description for any of them, so what each field computes is unknown here.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 47:44 | `u_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 43:40 | `v_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 39:36 | `u_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 35:32 | `v_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 31:16 | `u_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 15:0 | `v_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
 
 ### Register `tex_sqs`
 
@@ -750,6 +784,8 @@ A vector is a value recorded from a source. An example only shows the layout.
 | `winoffset_dst` | 0x10002 | vector | x=1, y=2 |
 | `primitive` | 0x3020000 | vector | op=3, line_skip_last=0, edge=2, line_width=0 |
 | `stipple_mode` | 0x2050000 | vector | index=2, max_index=5, repeat=0, max_repeat=0 |
+| `tex_mode` | 0x12800d7 | vector | tiled=1, texel_type=2, texel_depth=2, min_filter=1, mag_filter=1, wrap_s=1, wrap_t=1, func=3 |
+| `tex_format` | 0xa32100ff0fff | vector | u_shift=10, v_shift=3, u_wrap_shift=2, v_wrap_shift=1, u_index_mask=255, v_index_mask=4095 |
 | `aa_line` | 0x10002 | vector | slope=1, ideal=2 |
 | `aa_cov` | 0x4040 | vector | start=64, end=64 |
 | `BUFMODE` | 0x504 | vector | buf_type=1, buf_depth=1, pix_type=0, pix_depth=1, double_pix=0 |
