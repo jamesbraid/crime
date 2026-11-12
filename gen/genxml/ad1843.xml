@@ -177,6 +177,46 @@
     <field name="direction" start="8" size="1" type="uint" grade="established"/>
     <field name="magnitude" start="0" size="8" type="uint" grade="established"/>
   </struct>
+  <struct name="CLOCK2_MODE" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x13" access="rw" space="codec_reg" reset="0xff">
+    <doc>Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred).</doc>
+    <field name="ref" start="15" size="1" type="uint" grade="inferred"/>
+    <field name="video_select" start="14" size="1" type="uint" grade="unknown"/>
+    <field name="pll_gain" start="13" size="1" type="uint" grade="unknown"/>
+    <field name="bit_plus_200hz" start="12" size="1" type="uint" grade="established"/>
+    <field name="conv_8_7_multiplier" start="11" size="1" type="uint" grade="established"/>
+    <field name="conv_128_multiplier" start="10" size="1" type="uint" grade="established"/>
+    <field name="conv_modifier" start="4" size="4" type="uint" grade="established"/>
+    <field name="bit_modifier" start="0" size="4" type="uint" grade="established"/>
+  </struct>
+  <struct name="CLOCK2_HZ" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x14" access="rw" space="codec_reg" reset="0xbb80">
+    <doc>Nominal rate of generator 2 in Hz. Reset is 48000 (established, register pages 28-50).</doc>
+    <field name="hz" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="CLOCK2_PHASE" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x15" access="rw" space="codec_reg" reset="0x0">
+    <doc>Phase work for generator 2, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45).</doc>
+    <field name="direction" start="8" size="1" type="uint" grade="established"/>
+    <field name="magnitude" start="0" size="8" type="uint" grade="established"/>
+  </struct>
+  <struct name="CLOCK3_MODE" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x16" access="rw" space="codec_reg" reset="0xff">
+    <doc>Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43).</doc>
+    <field name="ref" start="15" size="1" type="uint" grade="inferred"/>
+    <field name="video_select" start="14" size="1" type="uint" grade="unknown"/>
+    <field name="pll_gain" start="13" size="1" type="uint" grade="unknown"/>
+    <field name="bit_plus_200hz" start="12" size="1" type="uint" grade="established"/>
+    <field name="conv_8_7_multiplier" start="11" size="1" type="uint" grade="established"/>
+    <field name="conv_128_multiplier" start="10" size="1" type="uint" grade="established"/>
+    <field name="conv_modifier" start="4" size="4" type="uint" grade="established"/>
+    <field name="bit_modifier" start="0" size="4" type="uint" grade="established"/>
+  </struct>
+  <struct name="CLOCK3_HZ" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x17" access="rw" space="codec_reg" reset="0xbb80">
+    <doc>Nominal rate of generator 3 in Hz. Reset is 48000 (established, register pages 28-50).</doc>
+    <field name="hz" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="CLOCK3_PHASE" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x18" access="rw" space="codec_reg" reset="0x0">
+    <doc>Phase work for generator 3, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45).</doc>
+    <field name="direction" start="8" size="1" type="uint" grade="established"/>
+    <field name="magnitude" start="0" size="8" type="uint" grade="established"/>
+  </struct>
   <struct name="DIGITAL_FILTER" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x19" access="rw" space="codec_reg" reset="0x0">
     <doc>Digital ADC source, resample filter and DAC mix mode. The resample filter and DAC mix mode change only while the converters they affect are off (established, register pages 28-50 and the constraints text).</doc>
     <field name="resample_filter" start="15" size="1" type="uint" grade="established"/>

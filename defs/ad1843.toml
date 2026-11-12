@@ -361,6 +361,94 @@ Phase work for generator 1. A write replaces the remaining work. Units are 1/300
 direction = { bits = [8, 8], grade = "established" }
 magnitude = { bits = [7, 0], grade = "established" }
 
+[registers.clock2_mode]
+offset = 19
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00ff
+doc = "Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred)."
+
+[registers.clock2_mode.fields]
+ref = { bits = [15, 15], grade = "inferred" }
+video_select = { bits = [14, 14], grade = "unknown" }
+pll_gain = { bits = [13, 13], grade = "unknown" }
+bit_plus_200hz = { bits = [12, 12], grade = "established" }
+conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
+conv_128_multiplier = { bits = [10, 10], grade = "established" }
+conv_modifier = { bits = [7, 4], grade = "established" }
+bit_modifier = { bits = [3, 0], grade = "established" }
+
+[registers.clock2_hz]
+offset = 20
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xbb80
+doc = "Nominal rate of generator 2 in Hz. Reset is 48000 (established, register pages 28-50)."
+
+[registers.clock2_hz.fields]
+hz = { bits = [15, 0], grade = "established" }
+
+[registers.clock2_phase]
+offset = 21
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Phase work for generator 2, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
+
+[registers.clock2_phase.fields]
+direction = { bits = [8, 8], grade = "established" }
+magnitude = { bits = [7, 0], grade = "established" }
+
+[registers.clock3_mode]
+offset = 22
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00ff
+doc = "Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43)."
+
+[registers.clock3_mode.fields]
+ref = { bits = [15, 15], grade = "inferred" }
+video_select = { bits = [14, 14], grade = "unknown" }
+pll_gain = { bits = [13, 13], grade = "unknown" }
+bit_plus_200hz = { bits = [12, 12], grade = "established" }
+conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
+conv_128_multiplier = { bits = [10, 10], grade = "established" }
+conv_modifier = { bits = [7, 4], grade = "established" }
+bit_modifier = { bits = [3, 0], grade = "established" }
+
+[registers.clock3_hz]
+offset = 23
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xbb80
+doc = "Nominal rate of generator 3 in Hz. Reset is 48000 (established, register pages 28-50)."
+
+[registers.clock3_hz.fields]
+hz = { bits = [15, 0], grade = "established" }
+
+[registers.clock3_phase]
+offset = 24
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Phase work for generator 3, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
+
+[registers.clock3_phase.fields]
+direction = { bits = [8, 8], grade = "established" }
+magnitude = { bits = [7, 0], grade = "established" }
+
 [registers.digital_filter]
 offset = 25
 access = "rw"

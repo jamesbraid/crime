@@ -400,6 +400,108 @@
 #define AD1843_CLOCK1_PHASE_MAGNITUDE_INPLACE        (AD1843_CLOCK1_PHASE_MAGNITUDE_MASK << AD1843_CLOCK1_PHASE_MAGNITUDE_SHIFT)
 
 /*
+ * Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred).
+ */
+/* clock2_mode: rw16, space codec_reg, reset 0xff; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK2_MODE_OFFSET                    0x13u /* established */
+#define AD1843_CLOCK2_MODE_REF_SHIFT                 15 /* inferred */
+#define AD1843_CLOCK2_MODE_REF_MASK                  0x1u
+#define AD1843_CLOCK2_MODE_REF_INPLACE               (AD1843_CLOCK2_MODE_REF_MASK << AD1843_CLOCK2_MODE_REF_SHIFT)
+#define AD1843_CLOCK2_MODE_VIDEO_SELECT_SHIFT        14 /* unknown */
+#define AD1843_CLOCK2_MODE_VIDEO_SELECT_MASK         0x1u
+#define AD1843_CLOCK2_MODE_VIDEO_SELECT_INPLACE      (AD1843_CLOCK2_MODE_VIDEO_SELECT_MASK << AD1843_CLOCK2_MODE_VIDEO_SELECT_SHIFT)
+#define AD1843_CLOCK2_MODE_PLL_GAIN_SHIFT            13 /* unknown */
+#define AD1843_CLOCK2_MODE_PLL_GAIN_MASK             0x1u
+#define AD1843_CLOCK2_MODE_PLL_GAIN_INPLACE          (AD1843_CLOCK2_MODE_PLL_GAIN_MASK << AD1843_CLOCK2_MODE_PLL_GAIN_SHIFT)
+#define AD1843_CLOCK2_MODE_BIT_PLUS_200HZ_SHIFT      12 /* established */
+#define AD1843_CLOCK2_MODE_BIT_PLUS_200HZ_MASK       0x1u
+#define AD1843_CLOCK2_MODE_BIT_PLUS_200HZ_INPLACE    (AD1843_CLOCK2_MODE_BIT_PLUS_200HZ_MASK << AD1843_CLOCK2_MODE_BIT_PLUS_200HZ_SHIFT)
+#define AD1843_CLOCK2_MODE_CONV_8_7_MULTIPLIER_SHIFT 11 /* established */
+#define AD1843_CLOCK2_MODE_CONV_8_7_MULTIPLIER_MASK  0x1u
+#define AD1843_CLOCK2_MODE_CONV_8_7_MULTIPLIER_INPLACE (AD1843_CLOCK2_MODE_CONV_8_7_MULTIPLIER_MASK << AD1843_CLOCK2_MODE_CONV_8_7_MULTIPLIER_SHIFT)
+#define AD1843_CLOCK2_MODE_CONV_128_MULTIPLIER_SHIFT 10 /* established */
+#define AD1843_CLOCK2_MODE_CONV_128_MULTIPLIER_MASK  0x1u
+#define AD1843_CLOCK2_MODE_CONV_128_MULTIPLIER_INPLACE (AD1843_CLOCK2_MODE_CONV_128_MULTIPLIER_MASK << AD1843_CLOCK2_MODE_CONV_128_MULTIPLIER_SHIFT)
+#define AD1843_CLOCK2_MODE_CONV_MODIFIER_SHIFT       4 /* established */
+#define AD1843_CLOCK2_MODE_CONV_MODIFIER_MASK        0xfu
+#define AD1843_CLOCK2_MODE_CONV_MODIFIER_INPLACE     (AD1843_CLOCK2_MODE_CONV_MODIFIER_MASK << AD1843_CLOCK2_MODE_CONV_MODIFIER_SHIFT)
+#define AD1843_CLOCK2_MODE_BIT_MODIFIER_SHIFT        0 /* established */
+#define AD1843_CLOCK2_MODE_BIT_MODIFIER_MASK         0xfu
+#define AD1843_CLOCK2_MODE_BIT_MODIFIER_INPLACE      (AD1843_CLOCK2_MODE_BIT_MODIFIER_MASK << AD1843_CLOCK2_MODE_BIT_MODIFIER_SHIFT)
+
+/*
+ * Nominal rate of generator 2 in Hz. Reset is 48000 (established, register pages 28-50).
+ */
+/* clock2_hz: rw16, space codec_reg, reset 0xbb80; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK2_HZ_OFFSET                      0x14u /* established */
+#define AD1843_CLOCK2_HZ_HZ_SHIFT                    0 /* established */
+#define AD1843_CLOCK2_HZ_HZ_MASK                     0xffffu
+#define AD1843_CLOCK2_HZ_HZ_INPLACE                  (AD1843_CLOCK2_HZ_HZ_MASK << AD1843_CLOCK2_HZ_HZ_SHIFT)
+
+/*
+ * Phase work for generator 2, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45).
+ */
+/* clock2_phase: rw16, space codec_reg, reset 0x0; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK2_PHASE_OFFSET                   0x15u /* established */
+#define AD1843_CLOCK2_PHASE_DIRECTION_SHIFT          8 /* established */
+#define AD1843_CLOCK2_PHASE_DIRECTION_MASK           0x1u
+#define AD1843_CLOCK2_PHASE_DIRECTION_INPLACE        (AD1843_CLOCK2_PHASE_DIRECTION_MASK << AD1843_CLOCK2_PHASE_DIRECTION_SHIFT)
+#define AD1843_CLOCK2_PHASE_MAGNITUDE_SHIFT          0 /* established */
+#define AD1843_CLOCK2_PHASE_MAGNITUDE_MASK           0xffu
+#define AD1843_CLOCK2_PHASE_MAGNITUDE_INPLACE        (AD1843_CLOCK2_PHASE_MAGNITUDE_MASK << AD1843_CLOCK2_PHASE_MAGNITUDE_SHIFT)
+
+/*
+ * Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43).
+ */
+/* clock3_mode: rw16, space codec_reg, reset 0xff; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK3_MODE_OFFSET                    0x16u /* established */
+#define AD1843_CLOCK3_MODE_REF_SHIFT                 15 /* inferred */
+#define AD1843_CLOCK3_MODE_REF_MASK                  0x1u
+#define AD1843_CLOCK3_MODE_REF_INPLACE               (AD1843_CLOCK3_MODE_REF_MASK << AD1843_CLOCK3_MODE_REF_SHIFT)
+#define AD1843_CLOCK3_MODE_VIDEO_SELECT_SHIFT        14 /* unknown */
+#define AD1843_CLOCK3_MODE_VIDEO_SELECT_MASK         0x1u
+#define AD1843_CLOCK3_MODE_VIDEO_SELECT_INPLACE      (AD1843_CLOCK3_MODE_VIDEO_SELECT_MASK << AD1843_CLOCK3_MODE_VIDEO_SELECT_SHIFT)
+#define AD1843_CLOCK3_MODE_PLL_GAIN_SHIFT            13 /* unknown */
+#define AD1843_CLOCK3_MODE_PLL_GAIN_MASK             0x1u
+#define AD1843_CLOCK3_MODE_PLL_GAIN_INPLACE          (AD1843_CLOCK3_MODE_PLL_GAIN_MASK << AD1843_CLOCK3_MODE_PLL_GAIN_SHIFT)
+#define AD1843_CLOCK3_MODE_BIT_PLUS_200HZ_SHIFT      12 /* established */
+#define AD1843_CLOCK3_MODE_BIT_PLUS_200HZ_MASK       0x1u
+#define AD1843_CLOCK3_MODE_BIT_PLUS_200HZ_INPLACE    (AD1843_CLOCK3_MODE_BIT_PLUS_200HZ_MASK << AD1843_CLOCK3_MODE_BIT_PLUS_200HZ_SHIFT)
+#define AD1843_CLOCK3_MODE_CONV_8_7_MULTIPLIER_SHIFT 11 /* established */
+#define AD1843_CLOCK3_MODE_CONV_8_7_MULTIPLIER_MASK  0x1u
+#define AD1843_CLOCK3_MODE_CONV_8_7_MULTIPLIER_INPLACE (AD1843_CLOCK3_MODE_CONV_8_7_MULTIPLIER_MASK << AD1843_CLOCK3_MODE_CONV_8_7_MULTIPLIER_SHIFT)
+#define AD1843_CLOCK3_MODE_CONV_128_MULTIPLIER_SHIFT 10 /* established */
+#define AD1843_CLOCK3_MODE_CONV_128_MULTIPLIER_MASK  0x1u
+#define AD1843_CLOCK3_MODE_CONV_128_MULTIPLIER_INPLACE (AD1843_CLOCK3_MODE_CONV_128_MULTIPLIER_MASK << AD1843_CLOCK3_MODE_CONV_128_MULTIPLIER_SHIFT)
+#define AD1843_CLOCK3_MODE_CONV_MODIFIER_SHIFT       4 /* established */
+#define AD1843_CLOCK3_MODE_CONV_MODIFIER_MASK        0xfu
+#define AD1843_CLOCK3_MODE_CONV_MODIFIER_INPLACE     (AD1843_CLOCK3_MODE_CONV_MODIFIER_MASK << AD1843_CLOCK3_MODE_CONV_MODIFIER_SHIFT)
+#define AD1843_CLOCK3_MODE_BIT_MODIFIER_SHIFT        0 /* established */
+#define AD1843_CLOCK3_MODE_BIT_MODIFIER_MASK         0xfu
+#define AD1843_CLOCK3_MODE_BIT_MODIFIER_INPLACE      (AD1843_CLOCK3_MODE_BIT_MODIFIER_MASK << AD1843_CLOCK3_MODE_BIT_MODIFIER_SHIFT)
+
+/*
+ * Nominal rate of generator 3 in Hz. Reset is 48000 (established, register pages 28-50).
+ */
+/* clock3_hz: rw16, space codec_reg, reset 0xbb80; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK3_HZ_OFFSET                      0x17u /* established */
+#define AD1843_CLOCK3_HZ_HZ_SHIFT                    0 /* established */
+#define AD1843_CLOCK3_HZ_HZ_MASK                     0xffffu
+#define AD1843_CLOCK3_HZ_HZ_INPLACE                  (AD1843_CLOCK3_HZ_HZ_MASK << AD1843_CLOCK3_HZ_HZ_SHIFT)
+
+/*
+ * Phase work for generator 3, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45).
+ */
+/* clock3_phase: rw16, space codec_reg, reset 0x0; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
+#define AD1843_CLOCK3_PHASE_OFFSET                   0x18u /* established */
+#define AD1843_CLOCK3_PHASE_DIRECTION_SHIFT          8 /* established */
+#define AD1843_CLOCK3_PHASE_DIRECTION_MASK           0x1u
+#define AD1843_CLOCK3_PHASE_DIRECTION_INPLACE        (AD1843_CLOCK3_PHASE_DIRECTION_MASK << AD1843_CLOCK3_PHASE_DIRECTION_SHIFT)
+#define AD1843_CLOCK3_PHASE_MAGNITUDE_SHIFT          0 /* established */
+#define AD1843_CLOCK3_PHASE_MAGNITUDE_MASK           0xffu
+#define AD1843_CLOCK3_PHASE_MAGNITUDE_INPLACE        (AD1843_CLOCK3_PHASE_MAGNITUDE_MASK << AD1843_CLOCK3_PHASE_MAGNITUDE_SHIFT)
+
+/*
  * Digital ADC source, resample filter and DAC mix mode. The resample filter and DAC mix mode change only while the converters they affect are off (established, register pages 28-50 and the constraints text).
  */
 /* digital_filter: rw16, space codec_reg, reset 0x0; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
