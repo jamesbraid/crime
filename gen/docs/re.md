@@ -336,6 +336,16 @@ bits. The layout is established; that meaning is inferred.
 
 ### Register `alphatest`
 
+Alpha test function and reference. Bits 31:12 are reserved in the specification.
+The test runs on fragment alpha after antialias coverage and only for RGB(A)
+pixels, and it is enabled by DrawMode bit 11. A fragment whose comparison fails
+is discarded.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 11:8 | `func` | established | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, PDF page 180 | Comparison function, codes 0 to 7 as in the enum. Codes 8 to 15 have no meaning in the specification's table; their behaviour is unknown. |
+| 7:0 | `ref` | established |  | published CRIME 1.5 draft specification, PDF page 180 | 8-bit reference value that the fragment alpha is compared with. |
+
 ### Register `blend_color`
 
 ### Register `blend_func`

@@ -747,10 +747,78 @@ pub mod aa_cov {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2194;
 }
-/// (established)
+/// Alpha test function and reference. Bits 31:12 are reserved in the specification. The test runs on fragment alpha after antialias coverage and only for (established)
 pub mod alphatest {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2198;
+    pub mod func { // bits 11:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NEVER: u32 = 0; // established
+        pub const LESS: u32 = 1; // established
+        pub const EQUAL: u32 = 2; // established
+        pub const LEQUAL: u32 = 3; // established
+        pub const GREATER: u32 = 4; // established
+        pub const NOTEQUAL: u32 = 5; // established
+        pub const GEQUAL: u32 = 6; // established
+        pub const ALWAYS: u32 = 7; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Never,
+            Less,
+            Equal,
+            Lequal,
+            Greater,
+            Notequal,
+            Gequal,
+            Always,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Never,
+                    1 => Self::Less,
+                    2 => Self::Equal,
+                    3 => Self::Lequal,
+                    4 => Self::Greater,
+                    5 => Self::Notequal,
+                    6 => Self::Gequal,
+                    7 => Self::Always,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Never => 0,
+                    Self::Less => 1,
+                    Self::Equal => 2,
+                    Self::Lequal => 3,
+                    Self::Greater => 4,
+                    Self::Notequal => 5,
+                    Self::Gequal => 6,
+                    Self::Always => 7,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod r#ref { // bits 7:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod blend_color {

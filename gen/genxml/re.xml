@@ -15,6 +15,16 @@
     <value name="lr_tb" value="2" grade="established"/>
     <value name="rl_tb" value="3" grade="established"/>
   </enum>
+  <enum name="alphatest_func">
+    <value name="never" value="0" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="less" value="1" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="equal" value="2" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="lequal" value="3" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="greater" value="4" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="notequal" value="5" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="gequal" value="6" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+    <value name="always" value="7" grade="established" from="published CRIME 1.5 draft specification, PDF page 207"/>
+  </enum>
   <enum name="blend_func_op">
     <value name="add" value="0" grade="established"/>
     <value name="min" value="1" grade="established"/>
@@ -312,6 +322,12 @@ bits. The layout is established; that meaning is inferred.</doc>
   <struct name="AA_COV" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2194" access="w" space="re" reset="unknown">
   </struct>
   <struct name="ALPHATEST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2198" access="rw" space="re" reset="unknown">
+    <doc>Alpha test function and reference. Bits 31:12 are reserved in the specification.
+The test runs on fragment alpha after antialias coverage and only for RGB(A)
+pixels, and it is enabled by DrawMode bit 11. A fragment whose comparison fails
+is discarded.</doc>
+    <field name="func" start="8" size="4" type="alphatest_func" grade="established" from="published CRIME 1.5 draft specification, PDF page 180"/>
+    <field name="ref" start="0" size="8" type="uint" grade="established" from="published CRIME 1.5 draft specification, PDF page 180"/>
   </struct>
   <struct name="BLEND_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21a0" access="rw" space="re" reset="unknown">
   </struct>

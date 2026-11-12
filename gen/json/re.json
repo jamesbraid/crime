@@ -1252,6 +1252,88 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "alphatest.func",
+   "hi": 11,
+   "lo": 8,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 180"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.never",
+   "value": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.less",
+   "value": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.equal",
+   "value": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.lequal",
+   "value": 3,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.greater",
+   "value": 4,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.notequal",
+   "value": 5,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.gequal",
+   "value": 6,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "alphatest.func.always",
+   "value": 7,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 207"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "alphatest.ref",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, PDF page 180"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "blend_color",
    "offset": 8608,

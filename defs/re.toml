@@ -585,6 +585,33 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Alpha test function and reference. Bits 31:12 are reserved in the specification.
+The test runs on fragment alpha after antialias coverage and only for RGB(A)
+pixels, and it is enabled by DrawMode bit 11. A fragment whose comparison fails
+is discarded."""
+
+[registers.alphatest.fields.func]
+bits = [11, 8]
+grade = "established"
+from = "published CRIME 1.5 draft specification, PDF page 180"
+doc = "Comparison function, codes 0 to 7 as in the enum. Codes 8 to 15 have no meaning in the specification's table; their behaviour is unknown."
+
+[registers.alphatest.fields.func.enums]
+never = { value = 0, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+less = { value = 1, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+equal = { value = 2, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+lequal = { value = 3, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+greater = { value = 4, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+notequal = { value = 5, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+gequal = { value = 6, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+always = { value = 7, grade = "established", from = "published CRIME 1.5 draft specification, PDF page 207" }
+
+[registers.alphatest.fields.ref]
+bits = [7, 0]
+grade = "established"
+from = "published CRIME 1.5 draft specification, PDF page 180"
+doc = "8-bit reference value that the fragment alpha is compared with."
 
 [registers.blend_color]
 offset = 0x21a0

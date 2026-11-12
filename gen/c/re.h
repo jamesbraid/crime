@@ -372,8 +372,28 @@
 /* aa_cov: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_AA_COV_OFFSET                             0x2194u /* established */
 
+/*
+ * Alpha test function and reference. Bits 31:12 are reserved in the specification.
+ * The test runs on fragment alpha after antialias coverage and only for RGB(A)
+ * pixels, and it is enabled by DrawMode bit 11. A fragment whose comparison fails
+ * is discarded.
+ */
 /* alphatest: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_ALPHATEST_OFFSET                          0x2198u /* established */
+#define RE_ALPHATEST_FUNC_SHIFT                      8 /* established */
+#define RE_ALPHATEST_FUNC_MASK                       0xfu
+#define RE_ALPHATEST_FUNC_INPLACE                    (RE_ALPHATEST_FUNC_MASK << RE_ALPHATEST_FUNC_SHIFT)
+#define RE_ALPHATEST_FUNC_NEVER                      0 /* established */
+#define RE_ALPHATEST_FUNC_LESS                       1 /* established */
+#define RE_ALPHATEST_FUNC_EQUAL                      2 /* established */
+#define RE_ALPHATEST_FUNC_LEQUAL                     3 /* established */
+#define RE_ALPHATEST_FUNC_GREATER                    4 /* established */
+#define RE_ALPHATEST_FUNC_NOTEQUAL                   5 /* established */
+#define RE_ALPHATEST_FUNC_GEQUAL                     6 /* established */
+#define RE_ALPHATEST_FUNC_ALWAYS                     7 /* established */
+#define RE_ALPHATEST_REF_SHIFT                       0 /* established */
+#define RE_ALPHATEST_REF_MASK                        0xffu
+#define RE_ALPHATEST_REF_INPLACE                     (RE_ALPHATEST_REF_MASK << RE_ALPHATEST_REF_SHIFT)
 
 /* blend_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BLEND_COLOR_OFFSET                        0x21a0u /* established */

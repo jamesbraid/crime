@@ -55,6 +55,13 @@ After truncation the integer part is clamped to [0, 2^24): negative results beco
 
 Routes tried for the blend arithmetic: the specification (equation 12 and the factor tables only; its dithering section is "TBD"); [hdr] (field layout and codes, no arithmetic); [ide] (the 6.5.30 `ide.IP32` strings: the visual tests draw flat points, lines and rectangles and compare a CRC of the frame buffer; none enables blending, depth, fog or texture); [gl] hardware set-up (selects codes only) and software path (float OpenGL formula); Linux `gbefb`, NetBSD `crmfb`, MAME `crime.cpp` and GXemul the emulator-side device model source unit 2 (none models the pixel pipe's blender, depth or texture stages). Not read: the O2 libraries of IRIX 6.3; they cannot change the answer, because the blend is computed in the engine after the driver has selected codes. Published sources, searched 2026-10-29 ([published-sources.md](published-sources.md)): the O2 technical report, the unified-memory and digital-media white papers, the graphics-implementations paper and the one patent on the chip give the order of operations (destination read in the colour pipeline, depth and stencil discard first) and the 8-bit operand width, and no product width, rounding or saturation rule; the dither is limited to the 3:3:2 and 5:5:5 formats, with no matrix.
 
+## Alpha test
+
+- Established ([spec] PDF 207, section 7.3.7.11): the alpha test compares the fragment's alpha after antialiasing coverage has been applied. It applies only to RGB(A) pixels, is enabled by DrawMode bit 11, and discards the fragment when the comparison fails. The driver's glAlphaFunc reference is scaled to the 8-bit field as described in [opengl.md](opengl.md).
+- Established ([spec] PDF 180, AlphaTest register; PDF 207, table 7-19): the reference is bits 7:0, an 8-bit value, and the function is bits 11:8. Bits 31:12 are reserved. The function codes are NEVER 0 (false), LESS 1 (`alpha < ref`), EQUAL 2 (`alpha == ref`), LEQUAL 3 (`alpha <= ref`), GREATER 4 (`alpha > ref`), NOTEQUAL 5 (`alpha != ref`), GEQUAL 6 (`alpha >= ref`) and ALWAYS 7 (true).
+- Unknown: function codes 8 to 15 have no entry in the specification's table, so their behaviour is not known. No shipped software or published source sets one.
+- Unknown: the order of the alpha test against the depth and stencil tests. The specification gives the coverage-then-alpha-test order and says nothing about depth or stencil relative to it.
+
 ## Texel filtering
 
 ### Coordinates reaching the filter
