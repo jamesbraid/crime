@@ -4,6 +4,7 @@ pub mod crime;
 pub mod gbe;
 pub mod mace_audio;
 pub mod mace_ethernet;
+pub mod mace_i2c;
 pub mod mace_pci;
 pub mod mace_periph;
 pub mod mace_timer;

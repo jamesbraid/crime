@@ -35,6 +35,9 @@ group = "mace_periph"
 [units.mace_timer]
 group = "mace_timer"
 
+[units.mace_i2c]
+group = "mace_i2c"
+
 [units.mace_pci]
 group = "mace_pci"
 prose_offsets = false

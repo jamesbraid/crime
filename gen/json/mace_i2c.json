@@ -1,0 +1,189 @@
+{
+ "schema": "defs-flat/1",
+ "source": "defs/mace_i2c.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_i2c",
+   "kind": "register",
+   "name": "config",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.clock_in",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.data_in",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.clock_pin_override",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.data_pin_override",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.fast_mode",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "config.reset",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "register",
+   "name": "config_alias",
+   "offset": 8,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "register",
+   "name": "control",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.bus_error",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.ack_missing",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.transfer_busy",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.hold",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.direction",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "control.force_idle",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "register",
+   "name": "data",
+   "offset": 24,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "field",
+   "name": "data.byte",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  },
+  {
+   "unit": "mace_i2c",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 523436032,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+  }
+ ]
+}
