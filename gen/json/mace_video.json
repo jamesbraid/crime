@@ -187,6 +187,58 @@
   },
   {
    "unit": "mace_video",
+   "kind": "field",
+   "name": "next_desc.table_address",
+   "hi": 31,
+   "lo": 6,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "next_desc.valid",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "next_desc.bit1",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "next_desc.field_to_send",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "next_desc.field_to_send.odd",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "next_desc.field_to_send.even",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
    "kind": "register",
    "name": "fld_offset",
    "offset": 32,
@@ -196,6 +248,15 @@
    "stride": 8,
    "space": "mace_video_out",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "fld_offset.byte_offset",
+   "hi": 15,
+   "lo": 3,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },
@@ -215,6 +276,24 @@
   },
   {
    "unit": "mace_video",
+   "kind": "field",
+   "name": "field_size.lines",
+   "hi": 21,
+   "lo": 12,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "field_size.bytes",
+   "hi": 11,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
    "kind": "register",
    "name": "hpad_odd",
    "offset": 48,
@@ -224,6 +303,33 @@
    "stride": 8,
    "space": "mace_video_out",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_odd.eav_image",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_odd.eav_eav",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_odd.eav_sav",
+   "hi": 9,
+   "lo": 0,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },
@@ -243,6 +349,42 @@
   },
   {
    "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_odd.image_start",
+   "hi": 39,
+   "lo": 30,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_odd.field_end",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_odd.trailing_blank_start",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_odd.leading_blank_end",
+   "hi": 9,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
    "kind": "register",
    "name": "hpad_even",
    "offset": 64,
@@ -257,6 +399,33 @@
   },
   {
    "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_even.eav_image",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_even.eav_eav",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "hpad_even.eav_sav",
+   "hi": 9,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
    "kind": "register",
    "name": "vpad_even",
    "offset": 72,
@@ -266,6 +435,42 @@
    "stride": 8,
    "space": "mace_video_out",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_even.image_start",
+   "hi": 39,
+   "lo": 30,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_even.field_end",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_even.trailing_blank_start",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vpad_even.leading_blank_end",
+   "hi": 9,
+   "lo": 0,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },

@@ -66,17 +66,59 @@ causes on read; the DMA-active bit is live.
 
 ### Register `next_desc`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:6 | `table_address` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Physical address of the 64-byte descriptor table (printed page 44, table 13). |
+| 2 | `valid` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Software sets it to queue a descriptor. Hardware clears it after copying the descriptor (printed page 44, table 13). |
+| 1 | `bit1` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Unused (printed page 44, table 13). |
+| 0 | `field_to_send` | established | odd=0, even=1 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Field to send next. Zero sends odd, one sends even. This is not an input-style selector (printed page 44, table 13). |
+
 ### Register `fld_offset`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 15:3 | `byte_offset` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14). |
 
 ### Register `field_size`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 21:12 | `lines` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Lines in the memory image, stored literally with no plus one. It describes the image, not the raster totals (printed page 45, table 16). |
+| 11:3 | `bytes` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Bytes per line, a multiple of eight, stored literally (printed page 45, table 16). |
+
 ### Register `hpad_odd`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 29:20 | `eav_image` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20). |
+| 19:10 | `eav_eav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20). |
+| 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20). |
 
 ### Register `vpad_odd`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 39:30 | `image_start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52). |
+| 29:20 | `field_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52). |
+| 19:10 | `trailing_blank_start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52). |
+| 9:0 | `leading_blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21). |
+
 ### Register `hpad_even`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 29:20 | `eav_image` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20). |
+| 19:10 | `eav_eav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20). |
+| 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels (printed page 51, table 20). |
+
 ### Register `vpad_even`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 39:30 | `image_start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52). |
+| 29:20 | `field_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52). |
+| 19:10 | `trailing_blank_start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52). |
+| 9:0 | `leading_blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21). |
 
 ### Register `gen_dly`
 
@@ -84,7 +126,7 @@ causes on read; the DMA-active bit is live.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 35:32 | `revision` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
+| 35:32 | `revision` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Four-bit chip revision code. The numeric value for MACE revision 2.0 is not published (printed page 54, table 23), so no value is recorded here. |
 | 22:19 | `sof_count_even` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
 | 18 | `gpibo` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
 | 17:14 | `sof_count_odd` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |

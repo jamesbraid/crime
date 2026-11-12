@@ -108,12 +108,29 @@ width = 64
 grade = "established"
 space = "mace_video_in"
 
+[registers.next_desc.fields]
+table_address = { bits = [31, 6], grade = "established", doc = "Physical address of the 64-byte descriptor table (printed page 44, table 12)." }
+valid = { bits = [2, 2], grade = "established", doc = "Software sets it to queue a descriptor. Hardware clears it after copying the descriptor. A clear bit skips the next field (printed pages 44 and 45, tables 12 and 13)." }
+
+[registers.next_desc.fields.field_select]
+bits = [1, 0]
+grade = "established"
+doc = "Field the queued descriptor starts on. Values 0 and 1 both take either field ID, 2 waits for an odd field and 3 waits for an even field (printed page 44, table 12)."
+
+[registers.next_desc.fields.field_select.enums]
+either = { value = 0, grade = "established" }
+odd = { value = 2, grade = "established" }
+even = { value = 3, grade = "established" }
+
 [registers.fld_offset]
 offset = 0x20
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+
+[registers.fld_offset.fields]
+byte_offset = { bits = [15, 3], grade = "established", doc = "Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14)." }
 
 [registers.line_width]
 offset = 0x28
@@ -122,6 +139,9 @@ width = 64
 grade = "established"
 space = "mace_video_in"
 
+[registers.line_width.fields]
+bytes = { bits = [11, 3], grade = "established", doc = "Input line width in bytes, a multiple of eight, stored literally. It is neither a pixel count nor minus one (printed page 45, table 15)." }
+
 [registers.hclip_odd]
 offset = 0x30
 access = "rw"
@@ -129,12 +149,21 @@ width = 64
 grade = "established"
 space = "mace_video_in"
 
+[registers.hclip_odd.fields]
+start = { bits = [9, 0], grade = "established", doc = "Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17)." }
+end = { bits = [19, 10], grade = "established", doc = "Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17)." }
+
 [registers.vclip_odd]
 offset = 0x38
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+
+[registers.vclip_odd.fields]
+start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
+blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
+end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
 
 [registers.alpha_odd]
 offset = 0x40
@@ -150,12 +179,21 @@ width = 64
 grade = "established"
 space = "mace_video_in"
 
+[registers.hclip_even.fields]
+start = { bits = [9, 0], grade = "established", doc = "Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17)." }
+end = { bits = [19, 10], grade = "established", doc = "Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17)." }
+
 [registers.vclip_even]
 offset = 0x50
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+
+[registers.vclip_even.fields]
+start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
+blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
+end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
 
 [registers.alpha_even]
 offset = 0x58

@@ -81,19 +81,55 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `next_desc`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:6 | `table_address` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Physical address of the 64-byte descriptor table (printed page 44, table 12). |
+| 2 | `valid` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Software sets it to queue a descriptor. Hardware clears it after copying the descriptor. A clear bit skips the next field (printed pages 44 and 45, tables 12 and 13). |
+| 1:0 | `field_select` | established | either=0, odd=2, even=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Field the queued descriptor starts on. Values 0 and 1 both take either field ID, 2 waits for an odd field and 3 waits for an even field (printed page 44, table 12). |
+
 ### Register `fld_offset`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 15:3 | `byte_offset` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14). |
 
 ### Register `line_width`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 11:3 | `bytes` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Input line width in bytes, a multiple of eight, stored literally. It is neither a pixel count nor minus one (printed page 45, table 15). |
+
 ### Register `hclip_odd`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 19:10 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17). |
+| 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17). |
+
 ### Register `vclip_odd`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
+| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
+| 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |
 
 ### Register `alpha_odd`
 
 ### Register `hclip_even`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 19:10 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17). |
+| 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17). |
+
 ### Register `vclip_even`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
+| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
+| 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |
 
 ### Register `alpha_even`
 

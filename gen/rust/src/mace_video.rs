@@ -161,36 +161,270 @@ pub mod config {
 pub mod next_desc {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
+    pub mod table_address { // bits 31:6, established
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u64 = 0x3ffffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod valid { // bits 2:2, established
+        pub const SHIFT: u32 = 2;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod bit1 { // bits 1:1, established
+        pub const SHIFT: u32 = 1;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod field_to_send { // bits 0:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const ODD: u64 = 0; // established
+        pub const EVEN: u64 = 1; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Odd,
+            Even,
+            Other(u64),
+        }
+        impl Value {
+            pub const fn from_raw(v: u64) -> Self {
+                match v {
+                    0 => Self::Odd,
+                    1 => Self::Even,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u64 {
+                match self {
+                    Self::Odd => 0,
+                    Self::Even => 1,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
 }
 /// (established)
 pub mod fld_offset {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
+    pub mod byte_offset { // bits 15:3, established
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u64 = 0x1fff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod field_size {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;
+    pub mod lines { // bits 21:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod bytes { // bits 11:3, established
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u64 = 0x1ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod hpad_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x30;
+    pub mod eav_image { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod eav_eav { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod eav_sav { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod vpad_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x38;
+    pub mod image_start { // bits 39:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod field_end { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod trailing_blank_start { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod leading_blank_end { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod hpad_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x40;
+    pub mod eav_image { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod eav_eav { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod eav_sav { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod vpad_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x48;
+    pub mod image_start { // bits 39:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod field_end { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod trailing_blank_start { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod leading_blank_end { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod gen_dly {

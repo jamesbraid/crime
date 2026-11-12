@@ -124,27 +124,75 @@
 
 /* next_desc: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_NEXT_DESC_OFFSET                         0x18u /* established */
+#define VIN_NEXT_DESC_TABLE_ADDRESS_SHIFT            6 /* established */
+#define VIN_NEXT_DESC_TABLE_ADDRESS_MASK             0x3ffffffull
+#define VIN_NEXT_DESC_TABLE_ADDRESS_INPLACE          (VIN_NEXT_DESC_TABLE_ADDRESS_MASK << VIN_NEXT_DESC_TABLE_ADDRESS_SHIFT)
+#define VIN_NEXT_DESC_VALID_SHIFT                    2 /* established */
+#define VIN_NEXT_DESC_VALID_MASK                     0x1ull
+#define VIN_NEXT_DESC_VALID_INPLACE                  (VIN_NEXT_DESC_VALID_MASK << VIN_NEXT_DESC_VALID_SHIFT)
+#define VIN_NEXT_DESC_FIELD_SELECT_SHIFT             0 /* established */
+#define VIN_NEXT_DESC_FIELD_SELECT_MASK              0x3ull
+#define VIN_NEXT_DESC_FIELD_SELECT_INPLACE           (VIN_NEXT_DESC_FIELD_SELECT_MASK << VIN_NEXT_DESC_FIELD_SELECT_SHIFT)
+#define VIN_NEXT_DESC_FIELD_SELECT_EITHER            0 /* established */
+#define VIN_NEXT_DESC_FIELD_SELECT_ODD               2 /* established */
+#define VIN_NEXT_DESC_FIELD_SELECT_EVEN              3 /* established */
 
 /* fld_offset: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_FLD_OFFSET_OFFSET                        0x20u /* established */
+#define VIN_FLD_OFFSET_BYTE_OFFSET_SHIFT             3 /* established */
+#define VIN_FLD_OFFSET_BYTE_OFFSET_MASK              0x1fffull
+#define VIN_FLD_OFFSET_BYTE_OFFSET_INPLACE           (VIN_FLD_OFFSET_BYTE_OFFSET_MASK << VIN_FLD_OFFSET_BYTE_OFFSET_SHIFT)
 
 /* line_width: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_LINE_WIDTH_OFFSET                        0x28u /* established */
+#define VIN_LINE_WIDTH_BYTES_SHIFT                   3 /* established */
+#define VIN_LINE_WIDTH_BYTES_MASK                    0x1ffull
+#define VIN_LINE_WIDTH_BYTES_INPLACE                 (VIN_LINE_WIDTH_BYTES_MASK << VIN_LINE_WIDTH_BYTES_SHIFT)
 
 /* hclip_odd: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_HCLIP_ODD_OFFSET                         0x30u /* established */
+#define VIN_HCLIP_ODD_END_SHIFT                      10 /* established */
+#define VIN_HCLIP_ODD_END_MASK                       0x3ffull
+#define VIN_HCLIP_ODD_END_INPLACE                    (VIN_HCLIP_ODD_END_MASK << VIN_HCLIP_ODD_END_SHIFT)
+#define VIN_HCLIP_ODD_START_SHIFT                    0 /* established */
+#define VIN_HCLIP_ODD_START_MASK                     0x3ffull
+#define VIN_HCLIP_ODD_START_INPLACE                  (VIN_HCLIP_ODD_START_MASK << VIN_HCLIP_ODD_START_SHIFT)
 
 /* vclip_odd: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_VCLIP_ODD_OFFSET                         0x38u /* established */
+#define VIN_VCLIP_ODD_END_SHIFT                      20 /* established */
+#define VIN_VCLIP_ODD_END_MASK                       0x3ffull
+#define VIN_VCLIP_ODD_END_INPLACE                    (VIN_VCLIP_ODD_END_MASK << VIN_VCLIP_ODD_END_SHIFT)
+#define VIN_VCLIP_ODD_BLANK_END_SHIFT                10 /* established */
+#define VIN_VCLIP_ODD_BLANK_END_MASK                 0x3ffull
+#define VIN_VCLIP_ODD_BLANK_END_INPLACE              (VIN_VCLIP_ODD_BLANK_END_MASK << VIN_VCLIP_ODD_BLANK_END_SHIFT)
+#define VIN_VCLIP_ODD_START_SHIFT                    0 /* established */
+#define VIN_VCLIP_ODD_START_MASK                     0x3ffull
+#define VIN_VCLIP_ODD_START_INPLACE                  (VIN_VCLIP_ODD_START_MASK << VIN_VCLIP_ODD_START_SHIFT)
 
 /* alpha_odd: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_ALPHA_ODD_OFFSET                         0x40u /* inferred */
 
 /* hclip_even: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_HCLIP_EVEN_OFFSET                        0x48u /* established */
+#define VIN_HCLIP_EVEN_END_SHIFT                     10 /* established */
+#define VIN_HCLIP_EVEN_END_MASK                      0x3ffull
+#define VIN_HCLIP_EVEN_END_INPLACE                   (VIN_HCLIP_EVEN_END_MASK << VIN_HCLIP_EVEN_END_SHIFT)
+#define VIN_HCLIP_EVEN_START_SHIFT                   0 /* established */
+#define VIN_HCLIP_EVEN_START_MASK                    0x3ffull
+#define VIN_HCLIP_EVEN_START_INPLACE                 (VIN_HCLIP_EVEN_START_MASK << VIN_HCLIP_EVEN_START_SHIFT)
 
 /* vclip_even: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_VCLIP_EVEN_OFFSET                        0x50u /* established */
+#define VIN_VCLIP_EVEN_END_SHIFT                     20 /* established */
+#define VIN_VCLIP_EVEN_END_MASK                      0x3ffull
+#define VIN_VCLIP_EVEN_END_INPLACE                   (VIN_VCLIP_EVEN_END_MASK << VIN_VCLIP_EVEN_END_SHIFT)
+#define VIN_VCLIP_EVEN_BLANK_END_SHIFT               10 /* established */
+#define VIN_VCLIP_EVEN_BLANK_END_MASK                0x3ffull
+#define VIN_VCLIP_EVEN_BLANK_END_INPLACE             (VIN_VCLIP_EVEN_BLANK_END_MASK << VIN_VCLIP_EVEN_BLANK_END_SHIFT)
+#define VIN_VCLIP_EVEN_START_SHIFT                   0 /* established */
+#define VIN_VCLIP_EVEN_START_MASK                    0x3ffull
+#define VIN_VCLIP_EVEN_START_INPLACE                 (VIN_VCLIP_EVEN_START_MASK << VIN_VCLIP_EVEN_START_SHIFT)
 
 /* alpha_even: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_ALPHA_EVEN_OFFSET                        0x58u /* inferred */

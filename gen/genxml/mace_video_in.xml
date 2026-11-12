@@ -23,6 +23,11 @@
     <value name="loopback_e" value="2" grade="established"/>
     <value name="loopback_f" value="3" grade="established"/>
   </enum>
+  <enum name="next_desc_field_select">
+    <value name="either" value="0" grade="established"/>
+    <value name="odd" value="2" grade="established"/>
+    <value name="even" value="3" grade="established"/>
+  </enum>
   <struct name="CONTROL" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x0" access="rw" space="mace_video_in" reset="0x0">
     <field name="int_gpib" start="9" size="1" type="uint" grade="established"/>
     <field name="int_crime_error" start="8" size="1" type="uint" grade="established"/>
@@ -61,20 +66,35 @@
     <field name="channel_reset" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="NEXT_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" space="mace_video_in" reset="unknown">
+    <field name="table_address" start="6" size="26" type="uint" grade="established"/>
+    <field name="valid" start="2" size="1" type="uint" grade="established"/>
+    <field name="field_select" start="0" size="2" type="next_desc_field_select" grade="established"/>
   </struct>
   <struct name="FLD_OFFSET" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" space="mace_video_in" reset="unknown">
+    <field name="byte_offset" start="3" size="13" type="uint" grade="established"/>
   </struct>
   <struct name="LINE_WIDTH" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" space="mace_video_in" reset="unknown">
+    <field name="bytes" start="3" size="9" type="uint" grade="established"/>
   </struct>
   <struct name="HCLIP_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" space="mace_video_in" reset="unknown">
+    <field name="end" start="10" size="10" type="uint" grade="established"/>
+    <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VCLIP_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x38" access="rw" space="mace_video_in" reset="unknown">
+    <field name="end" start="20" size="10" type="uint" grade="established"/>
+    <field name="blank_end" start="10" size="10" type="uint" grade="established"/>
+    <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="ALPHA_ODD" size="8" grade="inferred" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x40" access="rw" space="mace_video_in" reset="unknown">
   </struct>
   <struct name="HCLIP_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" space="mace_video_in" reset="unknown">
+    <field name="end" start="10" size="10" type="uint" grade="established"/>
+    <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VCLIP_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" space="mace_video_in" reset="unknown">
+    <field name="end" start="20" size="10" type="uint" grade="established"/>
+    <field name="blank_end" start="10" size="10" type="uint" grade="established"/>
+    <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="ALPHA_EVEN" size="8" grade="inferred" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x58" access="rw" space="mace_video_in" reset="unknown">
   </struct>

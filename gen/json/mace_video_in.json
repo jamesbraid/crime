@@ -452,6 +452,57 @@
   },
   {
    "unit": "mace_video_in",
+   "kind": "field",
+   "name": "next_desc.table_address",
+   "hi": 31,
+   "lo": 6,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "next_desc.valid",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "next_desc.field_select",
+   "hi": 1,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "enum_value",
+   "name": "next_desc.field_select.either",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "enum_value",
+   "name": "next_desc.field_select.odd",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "enum_value",
+   "name": "next_desc.field_select.even",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
    "kind": "register",
    "name": "fld_offset",
    "offset": 32,
@@ -461,6 +512,15 @@
    "stride": 8,
    "space": "mace_video_in",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "fld_offset.byte_offset",
+   "hi": 15,
+   "lo": 3,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },
@@ -480,6 +540,15 @@
   },
   {
    "unit": "mace_video_in",
+   "kind": "field",
+   "name": "line_width.bytes",
+   "hi": 11,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
    "kind": "register",
    "name": "hclip_odd",
    "offset": 48,
@@ -494,6 +563,24 @@
   },
   {
    "unit": "mace_video_in",
+   "kind": "field",
+   "name": "hclip_odd.end",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "hclip_odd.start",
+   "hi": 9,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
    "kind": "register",
    "name": "vclip_odd",
    "offset": 56,
@@ -503,6 +590,33 @@
    "stride": 8,
    "space": "mace_video_in",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_odd.end",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_odd.blank_end",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_odd.start",
+   "hi": 9,
+   "lo": 0,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },
@@ -536,6 +650,24 @@
   },
   {
    "unit": "mace_video_in",
+   "kind": "field",
+   "name": "hclip_even.end",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "hclip_even.start",
+   "hi": 9,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
    "kind": "register",
    "name": "vclip_even",
    "offset": 80,
@@ -545,6 +677,33 @@
    "stride": 8,
    "space": "mace_video_in",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_even.end",
+   "hi": 29,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_even.blank_end",
+   "hi": 19,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video_in",
+   "kind": "field",
+   "name": "vclip_even.start",
+   "hi": 9,
+   "lo": 0,
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
   },

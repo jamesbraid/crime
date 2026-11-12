@@ -1,8 +1,8 @@
-# O2 MACE free-running counter, three compare registers and audio time stamps
+# O2 MACE free-running counter, three compare registers and audio and video time stamps
 
 <!-- generated from defs/mace_timer.toml by defs-gen - do not edit, change the source -->
 
-MACE timer block: the 32-bit counter, the three 32-bit compare registers that set level interrupts, and the audio MSC/UST pairs. Offsets are from the block base (constant BLOCK_BASE).
+MACE timer block: the 32-bit counter, the three 32-bit compare registers that set level interrupts, and the audio and video UST/MSC pairs. Offsets are from the block base (constant BLOCK_BASE).
 
 Unit `mace_timer`, macro prefix `MACE_TIMER`.
 Default source: published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout.
@@ -18,6 +18,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `cmp1` | 0x10 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |
 | `cmp2` | 0x18 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |
 | `audio_pair` | 0x20 | rw | 64 | 3 |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |
+| `video_pair` | 0x38 | rw | 64 | 3 |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |
 
 ### Register `counter`
 
@@ -61,6 +62,18 @@ Array of 3 registers, stride 8.
 |---|---|---|---|---|---|
 | 63:32 | `ust` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |  |
 | 31:0 | `msc` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |  |
+
+### Register `video_pair`
+
+Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active. DMA enable does not clock it, and software can write it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published.
+
+Array of 3 registers, stride 8.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 63:32 | `ust` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |  |
+| 31:1 | `frame_count` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout |  |
+| 0 | `field_id` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | Zero for odd, one for even (printed page 56, table 25). |
 
 ## Constants
 

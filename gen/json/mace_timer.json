@@ -129,6 +129,47 @@
   },
   {
    "unit": "mace_timer",
+   "kind": "register",
+   "name": "video_pair",
+   "offset": 56,
+   "access": "rw",
+   "width": 64,
+   "count": 3,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "video_pair.ust",
+   "hi": 63,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "video_pair.frame_count",
+   "hi": 31,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "video_pair.field_id",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
    "kind": "constant",
    "name": "BLOCK_BASE",
    "value": 523501568,

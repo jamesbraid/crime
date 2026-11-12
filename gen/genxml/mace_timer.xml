@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from defs/mace_timer.toml by defs-gen - do not edit, change the source -->
-<genxml unit="mace_timer" prefix="MACE_TIMER" title="O2 MACE free-running counter, three compare registers and audio time stamps" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout">
-  <doc>MACE timer block: the 32-bit counter, the three 32-bit compare registers that set level interrupts, and the audio MSC/UST pairs. Offsets are from the block base (constant BLOCK_BASE).</doc>
+<genxml unit="mace_timer" prefix="MACE_TIMER" title="O2 MACE free-running counter, three compare registers and audio and video time stamps" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout">
+  <doc>MACE timer block: the 32-bit counter, the three 32-bit compare registers that set level interrupts, and the audio and video UST/MSC pairs. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="COUNTER" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout" register="yes" offset="0x0" access="rw" reset="0x0">
     <doc>One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see docs/open-questions.md).</doc>
     <field name="count" start="0" size="32" type="uint" grade="established"/>
@@ -22,6 +22,12 @@
     <doc>Audio time stamp pairs: capture at 0x20, playback 1 at 0x28 and playback 2 at 0x30. A 64-bit read of a pair returns UST in bits 63:32 and MSC in bits 31:0. UST is the 960 ns counter at the last counted sample, and MSC is the sample pair count. MSC is writable so software can clear it (established, printed page 63 and the table on printed page 147). Section 7.2.1 of the same chapter swaps the two offsets in its prose; the table and the figure on page 63 agree with this layout.</doc>
     <field name="ust" start="32" size="32" type="uint" grade="established"/>
     <field name="msc" start="0" size="32" type="uint" grade="established"/>
+  </struct>
+  <struct name="VIDEO_PAIR" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout" register="yes" offset="0x38" access="rw" count="3" stride="8" reset="unknown">
+    <doc>Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active. DMA enable does not clock it, and software can write it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published.</doc>
+    <field name="ust" start="32" size="32" type="uint" grade="established"/>
+    <field name="frame_count" start="1" size="31" type="uint" grade="established"/>
+    <field name="field_id" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f340000" grade="established"/>
   <constant name="CMP0_ALIAS" value="0x1f350000" grade="established"/>

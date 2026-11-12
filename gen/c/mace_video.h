@@ -65,24 +65,89 @@
 
 /* next_desc: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_NEXT_DESC_OFFSET                        0x18u /* established */
+#define VOUT_NEXT_DESC_TABLE_ADDRESS_SHIFT           6 /* established */
+#define VOUT_NEXT_DESC_TABLE_ADDRESS_MASK            0x3ffffffull
+#define VOUT_NEXT_DESC_TABLE_ADDRESS_INPLACE         (VOUT_NEXT_DESC_TABLE_ADDRESS_MASK << VOUT_NEXT_DESC_TABLE_ADDRESS_SHIFT)
+#define VOUT_NEXT_DESC_VALID_SHIFT                   2 /* established */
+#define VOUT_NEXT_DESC_VALID_MASK                    0x1ull
+#define VOUT_NEXT_DESC_VALID_INPLACE                 (VOUT_NEXT_DESC_VALID_MASK << VOUT_NEXT_DESC_VALID_SHIFT)
+#define VOUT_NEXT_DESC_BIT1_SHIFT                    1 /* established */
+#define VOUT_NEXT_DESC_BIT1_MASK                     0x1ull
+#define VOUT_NEXT_DESC_BIT1_INPLACE                  (VOUT_NEXT_DESC_BIT1_MASK << VOUT_NEXT_DESC_BIT1_SHIFT)
+#define VOUT_NEXT_DESC_FIELD_TO_SEND_SHIFT           0 /* established */
+#define VOUT_NEXT_DESC_FIELD_TO_SEND_MASK            0x1ull
+#define VOUT_NEXT_DESC_FIELD_TO_SEND_INPLACE         (VOUT_NEXT_DESC_FIELD_TO_SEND_MASK << VOUT_NEXT_DESC_FIELD_TO_SEND_SHIFT)
+#define VOUT_NEXT_DESC_FIELD_TO_SEND_ODD             0 /* established */
+#define VOUT_NEXT_DESC_FIELD_TO_SEND_EVEN            1 /* established */
 
 /* fld_offset: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_FLD_OFFSET_OFFSET                       0x20u /* established */
+#define VOUT_FLD_OFFSET_BYTE_OFFSET_SHIFT            3 /* established */
+#define VOUT_FLD_OFFSET_BYTE_OFFSET_MASK             0x1fffull
+#define VOUT_FLD_OFFSET_BYTE_OFFSET_INPLACE          (VOUT_FLD_OFFSET_BYTE_OFFSET_MASK << VOUT_FLD_OFFSET_BYTE_OFFSET_SHIFT)
 
 /* field_size: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_FIELD_SIZE_OFFSET                       0x28u /* established */
+#define VOUT_FIELD_SIZE_LINES_SHIFT                  12 /* established */
+#define VOUT_FIELD_SIZE_LINES_MASK                   0x3ffull
+#define VOUT_FIELD_SIZE_LINES_INPLACE                (VOUT_FIELD_SIZE_LINES_MASK << VOUT_FIELD_SIZE_LINES_SHIFT)
+#define VOUT_FIELD_SIZE_BYTES_SHIFT                  3 /* established */
+#define VOUT_FIELD_SIZE_BYTES_MASK                   0x1ffull
+#define VOUT_FIELD_SIZE_BYTES_INPLACE                (VOUT_FIELD_SIZE_BYTES_MASK << VOUT_FIELD_SIZE_BYTES_SHIFT)
 
 /* hpad_odd: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_HPAD_ODD_OFFSET                         0x30u /* established */
+#define VOUT_HPAD_ODD_EAV_IMAGE_SHIFT                20 /* established */
+#define VOUT_HPAD_ODD_EAV_IMAGE_MASK                 0x3ffull
+#define VOUT_HPAD_ODD_EAV_IMAGE_INPLACE              (VOUT_HPAD_ODD_EAV_IMAGE_MASK << VOUT_HPAD_ODD_EAV_IMAGE_SHIFT)
+#define VOUT_HPAD_ODD_EAV_EAV_SHIFT                  10 /* established */
+#define VOUT_HPAD_ODD_EAV_EAV_MASK                   0x3ffull
+#define VOUT_HPAD_ODD_EAV_EAV_INPLACE                (VOUT_HPAD_ODD_EAV_EAV_MASK << VOUT_HPAD_ODD_EAV_EAV_SHIFT)
+#define VOUT_HPAD_ODD_EAV_SAV_SHIFT                  0 /* established */
+#define VOUT_HPAD_ODD_EAV_SAV_MASK                   0x3ffull
+#define VOUT_HPAD_ODD_EAV_SAV_INPLACE                (VOUT_HPAD_ODD_EAV_SAV_MASK << VOUT_HPAD_ODD_EAV_SAV_SHIFT)
 
 /* vpad_odd: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_VPAD_ODD_OFFSET                         0x38u /* established */
+#define VOUT_VPAD_ODD_IMAGE_START_SHIFT              30 /* established */
+#define VOUT_VPAD_ODD_IMAGE_START_MASK               0x3ffull
+#define VOUT_VPAD_ODD_IMAGE_START_INPLACE            (VOUT_VPAD_ODD_IMAGE_START_MASK << VOUT_VPAD_ODD_IMAGE_START_SHIFT)
+#define VOUT_VPAD_ODD_FIELD_END_SHIFT                20 /* established */
+#define VOUT_VPAD_ODD_FIELD_END_MASK                 0x3ffull
+#define VOUT_VPAD_ODD_FIELD_END_INPLACE              (VOUT_VPAD_ODD_FIELD_END_MASK << VOUT_VPAD_ODD_FIELD_END_SHIFT)
+#define VOUT_VPAD_ODD_TRAILING_BLANK_START_SHIFT     10 /* established */
+#define VOUT_VPAD_ODD_TRAILING_BLANK_START_MASK      0x3ffull
+#define VOUT_VPAD_ODD_TRAILING_BLANK_START_INPLACE   (VOUT_VPAD_ODD_TRAILING_BLANK_START_MASK << VOUT_VPAD_ODD_TRAILING_BLANK_START_SHIFT)
+#define VOUT_VPAD_ODD_LEADING_BLANK_END_SHIFT        0 /* established */
+#define VOUT_VPAD_ODD_LEADING_BLANK_END_MASK         0x3ffull
+#define VOUT_VPAD_ODD_LEADING_BLANK_END_INPLACE      (VOUT_VPAD_ODD_LEADING_BLANK_END_MASK << VOUT_VPAD_ODD_LEADING_BLANK_END_SHIFT)
 
 /* hpad_even: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_HPAD_EVEN_OFFSET                        0x40u /* established */
+#define VOUT_HPAD_EVEN_EAV_IMAGE_SHIFT               20 /* established */
+#define VOUT_HPAD_EVEN_EAV_IMAGE_MASK                0x3ffull
+#define VOUT_HPAD_EVEN_EAV_IMAGE_INPLACE             (VOUT_HPAD_EVEN_EAV_IMAGE_MASK << VOUT_HPAD_EVEN_EAV_IMAGE_SHIFT)
+#define VOUT_HPAD_EVEN_EAV_EAV_SHIFT                 10 /* established */
+#define VOUT_HPAD_EVEN_EAV_EAV_MASK                  0x3ffull
+#define VOUT_HPAD_EVEN_EAV_EAV_INPLACE               (VOUT_HPAD_EVEN_EAV_EAV_MASK << VOUT_HPAD_EVEN_EAV_EAV_SHIFT)
+#define VOUT_HPAD_EVEN_EAV_SAV_SHIFT                 0 /* established */
+#define VOUT_HPAD_EVEN_EAV_SAV_MASK                  0x3ffull
+#define VOUT_HPAD_EVEN_EAV_SAV_INPLACE               (VOUT_HPAD_EVEN_EAV_SAV_MASK << VOUT_HPAD_EVEN_EAV_SAV_SHIFT)
 
 /* vpad_even: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_VPAD_EVEN_OFFSET                        0x48u /* established */
+#define VOUT_VPAD_EVEN_IMAGE_START_SHIFT             30 /* established */
+#define VOUT_VPAD_EVEN_IMAGE_START_MASK              0x3ffull
+#define VOUT_VPAD_EVEN_IMAGE_START_INPLACE           (VOUT_VPAD_EVEN_IMAGE_START_MASK << VOUT_VPAD_EVEN_IMAGE_START_SHIFT)
+#define VOUT_VPAD_EVEN_FIELD_END_SHIFT               20 /* established */
+#define VOUT_VPAD_EVEN_FIELD_END_MASK                0x3ffull
+#define VOUT_VPAD_EVEN_FIELD_END_INPLACE             (VOUT_VPAD_EVEN_FIELD_END_MASK << VOUT_VPAD_EVEN_FIELD_END_SHIFT)
+#define VOUT_VPAD_EVEN_TRAILING_BLANK_START_SHIFT    10 /* established */
+#define VOUT_VPAD_EVEN_TRAILING_BLANK_START_MASK     0x3ffull
+#define VOUT_VPAD_EVEN_TRAILING_BLANK_START_INPLACE  (VOUT_VPAD_EVEN_TRAILING_BLANK_START_MASK << VOUT_VPAD_EVEN_TRAILING_BLANK_START_SHIFT)
+#define VOUT_VPAD_EVEN_LEADING_BLANK_END_SHIFT       0 /* established */
+#define VOUT_VPAD_EVEN_LEADING_BLANK_END_MASK        0x3ffull
+#define VOUT_VPAD_EVEN_LEADING_BLANK_END_INPLACE     (VOUT_VPAD_EVEN_LEADING_BLANK_END_MASK << VOUT_VPAD_EVEN_LEADING_BLANK_END_SHIFT)
 
 /* gen_dly: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_GEN_DLY_OFFSET                          0x50u /* established */

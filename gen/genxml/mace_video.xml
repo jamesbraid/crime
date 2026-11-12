@@ -3,6 +3,10 @@
 <genxml unit="mace_video" prefix="VOUT" title="O2 MACE video output channel and chip-level configuration" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings">
   <doc>MACE video output channel registers and the chip-level hardware configuration word.</doc>
   <space name="mace_video_out" unit="byte"/>
+  <enum name="next_desc_field_to_send">
+    <value name="odd" value="0" grade="established"/>
+    <value name="even" value="1" grade="established"/>
+  </enum>
   <enum name="vhw_cfg_gbe_framelock_source">
     <value name="output_ef" value="0" grade="established"/>
     <value name="external" value="1" grade="established"/>
@@ -40,18 +44,39 @@ causes on read; the DMA-active bit is live.</doc>
   <struct name="CONFIG" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x10" access="rw" space="mace_video_out" reset="unknown">
   </struct>
   <struct name="NEXT_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" space="mace_video_out" reset="unknown">
+    <field name="table_address" start="6" size="26" type="uint" grade="established"/>
+    <field name="valid" start="2" size="1" type="uint" grade="established"/>
+    <field name="bit1" start="1" size="1" type="uint" grade="established"/>
+    <field name="field_to_send" start="0" size="1" type="next_desc_field_to_send" grade="established"/>
   </struct>
   <struct name="FLD_OFFSET" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" space="mace_video_out" reset="unknown">
+    <field name="byte_offset" start="3" size="13" type="uint" grade="established"/>
   </struct>
   <struct name="FIELD_SIZE" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" space="mace_video_out" reset="unknown">
+    <field name="lines" start="12" size="10" type="uint" grade="established"/>
+    <field name="bytes" start="3" size="9" type="uint" grade="established"/>
   </struct>
   <struct name="HPAD_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" space="mace_video_out" reset="unknown">
+    <field name="eav_image" start="20" size="10" type="uint" grade="established"/>
+    <field name="eav_eav" start="10" size="10" type="uint" grade="established"/>
+    <field name="eav_sav" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VPAD_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x38" access="rw" space="mace_video_out" reset="unknown">
+    <field name="image_start" start="30" size="10" type="uint" grade="established"/>
+    <field name="field_end" start="20" size="10" type="uint" grade="established"/>
+    <field name="trailing_blank_start" start="10" size="10" type="uint" grade="established"/>
+    <field name="leading_blank_end" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="HPAD_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x40" access="rw" space="mace_video_out" reset="unknown">
+    <field name="eav_image" start="20" size="10" type="uint" grade="established"/>
+    <field name="eav_eav" start="10" size="10" type="uint" grade="established"/>
+    <field name="eav_sav" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VPAD_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" space="mace_video_out" reset="unknown">
+    <field name="image_start" start="30" size="10" type="uint" grade="established"/>
+    <field name="field_end" start="20" size="10" type="uint" grade="established"/>
+    <field name="trailing_blank_start" start="10" size="10" type="uint" grade="established"/>
+    <field name="leading_blank_end" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="GEN_DLY" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" space="mace_video_out" reset="unknown">
   </struct>

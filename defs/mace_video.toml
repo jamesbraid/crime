@@ -65,12 +65,29 @@ width = 64
 grade = "established"
 space = "mace_video_out"
 
+[registers.next_desc.fields]
+table_address = { bits = [31, 6], grade = "established", doc = "Physical address of the 64-byte descriptor table (printed page 44, table 13)." }
+valid = { bits = [2, 2], grade = "established", doc = "Software sets it to queue a descriptor. Hardware clears it after copying the descriptor (printed page 44, table 13)." }
+bit1 = { bits = [1, 1], grade = "established", doc = "Unused (printed page 44, table 13)." }
+
+[registers.next_desc.fields.field_to_send]
+bits = [0, 0]
+grade = "established"
+doc = "Field to send next. Zero sends odd, one sends even. This is not an input-style selector (printed page 44, table 13)."
+
+[registers.next_desc.fields.field_to_send.enums]
+odd = { value = 0, grade = "established" }
+even = { value = 1, grade = "established" }
+
 [registers.fld_offset]
 offset = 0x20
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+
+[registers.fld_offset.fields]
+byte_offset = { bits = [15, 3], grade = "established", doc = "Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14)." }
 
 [registers.field_size]
 offset = 0x28
@@ -79,12 +96,21 @@ width = 64
 grade = "established"
 space = "mace_video_out"
 
+[registers.field_size.fields]
+bytes = { bits = [11, 3], grade = "established", doc = "Bytes per line, a multiple of eight, stored literally (printed page 45, table 16)." }
+lines = { bits = [21, 12], grade = "established", doc = "Lines in the memory image, stored literally with no plus one. It describes the image, not the raster totals (printed page 45, table 16)." }
+
 [registers.hpad_odd]
 offset = 0x30
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+
+[registers.hpad_odd.fields]
+eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20)." }
+eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
+eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
 
 [registers.vpad_odd]
 offset = 0x38
@@ -93,6 +119,12 @@ width = 64
 grade = "established"
 space = "mace_video_out"
 
+[registers.vpad_odd.fields]
+leading_blank_end = { bits = [9, 0], grade = "established", doc = "Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21)." }
+trailing_blank_start = { bits = [19, 10], grade = "established", doc = "Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52)." }
+field_end = { bits = [29, 20], grade = "established", doc = "Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52)." }
+image_start = { bits = [39, 30], grade = "established", doc = "Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52)." }
+
 [registers.hpad_even]
 offset = 0x40
 access = "rw"
@@ -100,12 +132,23 @@ width = 64
 grade = "established"
 space = "mace_video_out"
 
+[registers.hpad_even.fields]
+eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels (printed page 51, table 20)." }
+eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
+eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
+
 [registers.vpad_even]
 offset = 0x48
 access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+
+[registers.vpad_even.fields]
+leading_blank_end = { bits = [9, 0], grade = "established", doc = "Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21)." }
+trailing_blank_start = { bits = [19, 10], grade = "established", doc = "Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52)." }
+field_end = { bits = [29, 20], grade = "established", doc = "Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52)." }
+image_start = { bits = [39, 30], grade = "established", doc = "Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52)." }
 
 [registers.gen_dly]
 offset = 0x50
@@ -122,7 +165,7 @@ grade = "established"
 space = "mace_video_out"
 
 [registers.vhw_cfg.fields]
-revision = { bits = [35, 32], grade = "established" }
+revision = { bits = [35, 32], grade = "established", doc = "Four-bit chip revision code. The numeric value for MACE revision 2.0 is not published (printed page 54, table 23), so no value is recorded here." }
 sof_count_even = { bits = [22, 19], grade = "established" }
 gpibo = { bits = [18, 18], grade = "established" }
 sof_count_odd = { bits = [17, 14], grade = "established" }

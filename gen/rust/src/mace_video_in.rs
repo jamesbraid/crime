@@ -435,26 +435,154 @@ pub mod config {
 pub mod next_desc {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
+    pub mod table_address { // bits 31:6, established
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u64 = 0x3ffffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod valid { // bits 2:2, established
+        pub const SHIFT: u32 = 2;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod field_select { // bits 1:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const EITHER: u64 = 0; // established
+        pub const ODD: u64 = 2; // established
+        pub const EVEN: u64 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Either,
+            Odd,
+            Even,
+            Other(u64),
+        }
+        impl Value {
+            pub const fn from_raw(v: u64) -> Self {
+                match v {
+                    0 => Self::Either,
+                    2 => Self::Odd,
+                    3 => Self::Even,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u64 {
+                match self {
+                    Self::Either => 0,
+                    Self::Odd => 2,
+                    Self::Even => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
 }
 /// (established)
 pub mod fld_offset {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
+    pub mod byte_offset { // bits 15:3, established
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u64 = 0x1fff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod line_width {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;
+    pub mod bytes { // bits 11:3, established
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u64 = 0x1ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod hclip_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x30;
+    pub mod end { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod start { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod vclip_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x38;
+    pub mod end { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod blank_end { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod start { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (inferred)
 pub mod alpha_odd {
@@ -465,11 +593,61 @@ pub mod alpha_odd {
 pub mod hclip_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x48;
+    pub mod end { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod start { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod vclip_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x50;
+    pub mod end { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod blank_end { // bits 19:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod start { // bits 9:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (inferred)
 pub mod alpha_even {

@@ -1,10 +1,10 @@
 """generated from defs/mace_timer.toml by defs-gen - do not edit, change the source
-O2 MACE free-running counter, three compare registers and audio time stamps"""
+O2 MACE free-running counter, three compare registers and audio and video time stamps"""
 
 UNIT = 'mace_timer'
-REGISTERS = {'counter': {'offset': 0, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 0, 'grade': 'established'}, 'cmp0': {'offset': 8, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'cmp1': {'offset': 16, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'cmp2': {'offset': 24, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'audio_pair': {'offset': 32, 'access': 'rw', 'width': 64, 'count': 3, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}}
+REGISTERS = {'counter': {'offset': 0, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 0, 'grade': 'established'}, 'cmp0': {'offset': 8, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'cmp1': {'offset': 16, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'cmp2': {'offset': 24, 'access': 'rw', 'width': 64, 'count': 1, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'audio_pair': {'offset': 32, 'access': 'rw', 'width': 64, 'count': 3, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}, 'video_pair': {'offset': 56, 'access': 'rw', 'width': 64, 'count': 3, 'stride': 8, 'space': None, 'reset': 'unknown', 'grade': 'established'}}
 WORDS = {}
-FIELDS = {'counter': {'count': (31, 0)}, 'cmp0': {'value': (31, 0)}, 'cmp1': {'value': (31, 0)}, 'cmp2': {'value': (31, 0)}, 'audio_pair': {'ust': (63, 32), 'msc': (31, 0)}}
+FIELDS = {'counter': {'count': (31, 0)}, 'cmp0': {'value': (31, 0)}, 'cmp1': {'value': (31, 0)}, 'cmp2': {'value': (31, 0)}, 'audio_pair': {'ust': (63, 32), 'msc': (31, 0)}, 'video_pair': {'ust': (63, 32), 'frame_count': (31, 1), 'field_id': (0, 0)}}
 ENUMS = {}
 FIELD_ENUM = {}
 CONSTANTS = {'BLOCK_BASE': {'value': 523501568, 'count': 1, 'stride': 1}, 'CMP0_ALIAS': {'value': 523567104, 'count': 1, 'stride': 1}, 'CMP1_ALIAS': {'value': 523632640, 'count': 1, 'stride': 1}, 'CMP2_ALIAS': {'value': 523698176, 'count': 1, 'stride': 1}}
