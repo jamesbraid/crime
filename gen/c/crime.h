@@ -46,14 +46,20 @@
 #define CRIME_INTSTAT_OFFSET                         0x10u /* established */
 
 /*
- * A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233).
+ * A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233). Table 5-11 (PDF 117) gives bits 31:0 as read/write, 1 enabling, reset zero. It has no row for bits 63:32, so their effect on the hardware is unknown.
  */
 /* intmask: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTMASK_OFFSET                         0x18u /* established */
+#define CRIME_INTMASK_ENABLE_SHIFT                   0 /* established */
+#define CRIME_INTMASK_ENABLE_MASK                    0xffffffffull
+#define CRIME_INTMASK_ENABLE_INPLACE                 (CRIME_INTMASK_ENABLE_MASK << CRIME_INTMASK_ENABLE_SHIFT)
 
 /* softint: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_SOFTINT_OFFSET                         0x20u /* established */
 
+/*
+ * Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr), 24 to 22 (rendering idle, full and empty) and 19 to 16 (GBE). It marks 27 to 25 (rendering idle, full and empty levels) level-sensitive. The table leaves the other status bits unlabelled (established).
+ */
 /* hardint: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_HARDINT_OFFSET                         0x28u /* established */
 
@@ -139,6 +145,8 @@
  * (established, [spec] table 6-14; no shipped software writes banks 2 to 7). With 32 MiB parts that puts bank n at n * 32 MiB.
  * #define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 / * established: reset of bank 0
  * #define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 / * established: reset of bank n is BASE + n * STEP
+ *
+ * The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here).
  */
 /* mem_error_stat: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_STAT_OFFSET                  0x250u /* established */

@@ -133,6 +133,15 @@
   },
   {
    "unit": "crime",
+   "kind": "field",
+   "name": "intmask.enable",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
    "kind": "register",
    "name": "softint",
    "offset": 32,

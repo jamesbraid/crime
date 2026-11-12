@@ -28,11 +28,13 @@
     <doc>Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106).</doc>
   </struct>
   <struct name="INTMASK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" reset="0x0">
-    <doc>A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233).</doc>
+    <doc>A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233). Table 5-11 (PDF 117) gives bits 31:0 as read/write, 1 enabling, reset zero. It has no row for bits 63:32, so their effect on the hardware is unknown.</doc>
+    <field name="enable" start="0" size="32" type="uint" grade="established"/>
   </struct>
   <struct name="SOFTINT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" reset="0x0">
   </struct>
   <struct name="HARDINT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" reset="unknown">
+    <doc>Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr), 24 to 22 (rendering idle, full and empty) and 19 to 16 (GBE). It marks 27 to 25 (rendering idle, full and empty levels) level-sensitive. The table leaves the other status bits unlabelled (established).</doc>
   </struct>
   <struct name="WATCHDOG" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" reset="0x0">
     <field name="warm_reset_timeout" start="20" size="1" type="uint" grade="established"/>
@@ -75,7 +77,9 @@
     <doc>Reset values differ per bank, so the REG line's reset=unknown stands for none of them: bank n resets to n for n = 0 to 7
 (established, [spec] table 6-14; no shipped software writes banks 2 to 7). With 32 MiB parts that puts bank n at n * 32 MiB.
 #define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 /* established: reset of bank 0
-#define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 /* established: reset of bank n is BASE + n * STEP</doc>
+#define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 /* established: reset of bank n is BASE + n * STEP
+
+The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here).</doc>
     <field name="invalid_addr_rmw" start="27" size="1" type="uint" grade="established"/>
     <field name="invalid_addr_write" start="26" size="1" type="uint" grade="established"/>
     <field name="invalid_addr_read" start="25" size="1" type="uint" grade="established"/>

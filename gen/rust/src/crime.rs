@@ -101,13 +101,23 @@ pub mod intstat {
 pub mod intmask {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
+    pub mod enable { // bits 31:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffffffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod softint {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
 }
-/// (established)
+/// Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr), 24 to 22 (rendering idle, full and empty) and 19 to 16 (GBE). It mark (established)
 pub mod hardint {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;
