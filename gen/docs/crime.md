@@ -114,10 +114,12 @@ The CRIME 1.5 CPU interface register map has no row for this offset. It lists th
 
 ### Register `mem_control`
 
+Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150).
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 1 | `use_repl_check` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
-| 0 | `ecc_enable` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 1 | `use_repl_check` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | 1 makes the controller write the replacement check byte in mem_error_ecc_repl as the check bits, instead of generated check bits. Resets to 0 (established, [spec] PDF 150). |
+| 0 | `ecc_enable` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | 1 enables memory ECC. Resets to 0 (established, [spec] PDF 150). |
 
 ### Register `mem_bank_control`
 
@@ -165,7 +167,7 @@ The shipped IRIX kernel's address probes write zero here before each probe, then
 
 ### Register `mem_error_ecc_repl`
 
-The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
+The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). When bit 1 of mem_control is set, the controller writes this low byte repeated across the four check bytes of a 256-bit memory word (established, [spec] PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|

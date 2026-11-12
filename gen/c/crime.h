@@ -117,6 +117,9 @@
 /* vice_error_addr: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_VICE_ERROR_ADDR_OFFSET                 0x58u /* established */
 
+/*
+ * Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150).
+ */
 /* mem_control: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_CONTROL_OFFSET                     0x200u /* established */
 #define CRIME_MEM_CONTROL_USE_REPL_CHECK_SHIFT       1 /* established */
@@ -206,7 +209,7 @@
 #define CRIME_MEM_ERROR_ECC_CHK_OFFSET               0x268u /* established */
 
 /*
- * The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
+ * The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). When bit 1 of mem_control is set, the controller writes this low byte repeated across the four check bytes of a 256-bit memory word (established, [spec] PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
  */
 /* mem_error_ecc_repl: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_ECC_REPL_OFFSET              0x270u /* established */

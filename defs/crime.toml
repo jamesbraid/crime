@@ -153,10 +153,12 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x0
+doc = """
+Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150)."""
 
 [registers.mem_control.fields]
-use_repl_check = { bits = [1, 1], grade = "established" }
-ecc_enable = { bits = [0, 0], grade = "established" }
+use_repl_check = { bits = [1, 1], grade = "established", doc = "1 makes the controller write the replacement check byte in mem_error_ecc_repl as the check bits, instead of generated check bits. Resets to 0 (established, [spec] PDF 150)." }
+ecc_enable = { bits = [0, 0], grade = "established", doc = "1 enables memory ECC. Resets to 0 (established, [spec] PDF 150)." }
 
 [registers.mem_bank_control]
 offset = 0x208
@@ -226,7 +228,7 @@ width = 64
 grade = "established"
 reset = 0x0
 doc = """
-The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown)."""
+The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). When bit 1 of mem_control is set, the controller writes this low byte repeated across the four check bytes of a 256-bit memory word (established, [spec] PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown)."""
 
 [registers.mem_error_ecc_repl.fields]
 check = { bits = [7, 0], grade = "established" }

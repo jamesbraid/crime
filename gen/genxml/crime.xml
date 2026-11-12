@@ -65,6 +65,7 @@
   <struct name="VICE_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x58" access="r" reset="unknown">
   </struct>
   <struct name="MEM_CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x200" access="rw" reset="0x0">
+    <doc>Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150).</doc>
     <field name="use_repl_check" start="1" size="1" type="uint" grade="established"/>
     <field name="ecc_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
@@ -103,7 +104,7 @@ The shipped IRIX kernel's address probes write zero here before each probe, then
   <struct name="MEM_ERROR_ECC_CHK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x268" access="r" reset="unknown">
   </struct>
   <struct name="MEM_ERROR_ECC_REPL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x270" access="rw" reset="0x0">
-    <doc>The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).</doc>
+    <doc>The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). When bit 1 of mem_control is set, the controller writes this low byte repeated across the four check bytes of a 256-bit memory word (established, [spec] PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).</doc>
     <field name="check" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="CPU_ERROR_STAT_15" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x4048" access="rw" reset="0x0">

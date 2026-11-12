@@ -232,7 +232,7 @@ pub mod vice_error_addr {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x58;
 }
-/// (established)
+/// Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write ef (established)
 pub mod mem_control {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x200;
@@ -454,7 +454,7 @@ pub mod mem_error_ecc_chk {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x268;
 }
-/// The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's pu (established)
+/// The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). When bit 1 of mem_control is set, the contro (established)
 pub mod mem_error_ecc_repl {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x270;
