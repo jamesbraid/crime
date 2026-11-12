@@ -333,7 +333,9 @@ control and does not appear in the primitive word.</doc>
   <struct name="VERTEX_X" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2070" access="w" count="3" stride="4" space="re" reset="unknown">
   </struct>
   <struct name="VERTEX_GL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2080" access="w" count="6" stride="4" space="re" reset="unknown">
-    <doc>Readback extents (inferred, software expectation). A GL readback of a
+    <doc>GL-mode vertex coordinates are 13.6 fixed point in table 7-3 (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
+
+Readback extents (inferred, software expectation). A GL readback of a
 rectangle writes inclusive pixel indices, not the half-open edges of the
 scissor: the far x is the start x plus the programmed copy width minus one,
 and the far y is the start y minus the row count plus one, each as
@@ -387,6 +389,7 @@ max_index, so that behaviour is unknown.</doc>
   <struct name="STIPPLE_PATTERN" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c4" access="rw" space="re" reset="unknown">
   </struct>
   <struct name="FG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20d0" access="w" space="re" reset="unknown">
+    <doc>Flat-shaded colour for triangles and lines with DrawMode shade bit 16 clear, and for points and rectangles always. The engine assigns this one value to every fragment (established, [spec] PDF 200, section 7.3.7.1). Colour index flat shading loads an 8-bit index for 8-bit pixels and a 12-bit index for 16-bit and 32-bit pixels. RGBA flat shading loads an RGBA8 value whatever the pixel depth (established, [spec] PDF 200).</doc>
   </struct>
   <struct name="BG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20d8" access="rw" space="re" reset="unknown">
   </struct>

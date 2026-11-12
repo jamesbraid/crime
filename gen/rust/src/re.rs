@@ -643,7 +643,7 @@ pub mod vertex_x {
     pub const COUNT: u32 = 3;
     pub const STRIDE: u64 = 4;
 }
-/// Readback extents (inferred, software expectation). A GL readback of a rectangle writes inclusive pixel indices, not the half-open edges of the scissor (established)
+/// GL-mode vertex coordinates are 13.6 fixed point in table 7-3 (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fi (established)
 pub mod vertex_gl {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2080;
@@ -730,7 +730,7 @@ pub mod stipple_pattern {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20c4;
 }
-/// (established)
+/// Flat-shaded colour for triangles and lines with DrawMode shade bit 16 clear, and for points and rectangles always. The engine assigns this one value t (established)
 pub mod fg_color {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20d0;

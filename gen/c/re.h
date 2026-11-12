@@ -320,6 +320,8 @@
 #define RE_VERTEX_X_STRIDE                           4
 
 /*
+ * GL-mode vertex coordinates are 13.6 fixed point in table 7-3 (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
+ *
  * Readback extents (inferred, software expectation). A GL readback of a
  * rectangle writes inclusive pixel indices, not the half-open edges of the
  * scissor: the far x is the start x plus the programmed copy width minus one,
@@ -394,6 +396,9 @@
 /* stipple_pattern: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STIPPLE_PATTERN_OFFSET                    0x20c4u /* established */
 
+/*
+ * Flat-shaded colour for triangles and lines with DrawMode shade bit 16 clear, and for points and rectangles always. The engine assigns this one value to every fragment (established, [spec] PDF 200, section 7.3.7.1). Colour index flat shading loads an 8-bit index for 8-bit pixels and a 12-bit index for 16-bit and 32-bit pixels. RGBA flat shading loads an RGBA8 value whatever the pixel depth (established, [spec] PDF 200).
+ */
 /* fg_color: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_FG_COLOR_OFFSET                           0x20d0u /* established */
 

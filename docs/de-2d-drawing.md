@@ -41,6 +41,33 @@ unknown, as in [AGENTS.md](../AGENTS.md).
 - Established ([spec] PDF 200): points and rectangles are always flat shaded.
   Their colour comes from the foreground register alone.
 
+## Triangles and edge functions
+
+- Established ([spec] PDF 190, equations 2 and 3): the rasterizer evaluates a
+  linear edge function `E(x,y) = A*x + B*y + C`, with `A = dy` and `B = -dx`,
+  where `dx` and `dy` are the edge's end-minus-start differences. A one-pixel
+  step in x or y adds or subtracts A or B, so the value at each sample comes
+  from the value at the previous one.
+- Established ([spec] PDF 191): E is positive on one side of an edge and
+  negative on the other, and points with E = 0 are assigned to the positive
+  side.
+- Conflict ([spec] PDF 191 to 193): PDF 192 says the edges of a clockwise
+  convex polygon bound its interior on the negative side. It then says a point
+  is inside when every edge function is at least zero, which is the positive
+  side. Figure 7-10 (PDF 193) labels the triangle interior with negative edge
+  values. Which sign the engine tests is not settled.
+- Established ([spec] PDF 191, figure 7-8; PDF 198): the edge-function
+  figure draws x increasing to the right and y downward. The framebuffer
+  origin is the upper-left corner in both X and GL mode, and pixels are
+  sampled at their upper-left corner (PDF 198). The specification leaves
+  conversion of the OpenGL viewport to that orientation to the host.
+- Unknown: which triangle owns a sample on a shared edge. The traversal figure
+  (figure 7-11, PDF 194) has no annotations, and the sections on PDF 191, 193
+  and 195 are marked "TBD".
+- Established ([spec] PDF 197): in the primitive list of section 7.3.6.1, the
+  triangle item is a heading with no body text. The GL-mode coordinate format
+  on the same page is in [defs/re.toml](../defs/re.toml) under `vertex_gl`.
+
 ## Stipple
 
 - Established ([spec] PDF 177): the stipple mode word holds a starting index
