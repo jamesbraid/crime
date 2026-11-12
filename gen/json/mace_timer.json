@@ -135,6 +135,33 @@
    "count": 1,
    "grade": "established",
    "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "CMP0_ALIAS",
+   "value": 523567104,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "CMP1_ALIAS",
+   "value": 523632640,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "CMP2_ALIAS",
+   "value": 523698176,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   }
  ]
 }

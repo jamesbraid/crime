@@ -25,19 +25,25 @@
 #define MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_INPLACE  (MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_MASK << MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_SHIFT)
 
 /*
- * Interrupt enables clear at reset, bits 0 to 7 for the PCI inputs and bits 24 to 31 for error enables (established, printed pages 164 and 162). Reset value of the other bits is not stated.
+ * Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-error response (bit 10) and the error interrupts (bits 24 to 31). Every bit resets to zero (established, printed pages 164 and 165, Table 85). Bit 9 is reserved on revision 0 and an arbiter control on revision 1. Input n of bits 0 to 7 reaches CRIME bit 8 plus n, and PCI error conditions reach CRIME bit 7 (established, printed page 179).
  */
 /* pci_control: rw32, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PCI_PCI_CONTROL_OFFSET                  0x8u /* established */
 #define MACE_PCI_PCI_CONTROL_ERROR_ENABLE_SHIFT      24 /* established */
 #define MACE_PCI_PCI_CONTROL_ERROR_ENABLE_MASK       0xffu
 #define MACE_PCI_PCI_CONTROL_ERROR_ENABLE_INPLACE    (MACE_PCI_PCI_CONTROL_ERROR_ENABLE_MASK << MACE_PCI_PCI_CONTROL_ERROR_ENABLE_SHIFT)
+#define MACE_PCI_PCI_CONTROL_PARITY_RESPONSE_SHIFT   10 /* established */
+#define MACE_PCI_PCI_CONTROL_PARITY_RESPONSE_MASK    0x1u
+#define MACE_PCI_PCI_CONTROL_PARITY_RESPONSE_INPLACE (MACE_PCI_PCI_CONTROL_PARITY_RESPONSE_MASK << MACE_PCI_PCI_CONTROL_PARITY_RESPONSE_SHIFT)
+#define MACE_PCI_PCI_CONTROL_SERR_ENABLE_SHIFT       8 /* established */
+#define MACE_PCI_PCI_CONTROL_SERR_ENABLE_MASK        0x1u
+#define MACE_PCI_PCI_CONTROL_SERR_ENABLE_INPLACE     (MACE_PCI_PCI_CONTROL_SERR_ENABLE_MASK << MACE_PCI_PCI_CONTROL_SERR_ENABLE_SHIFT)
 #define MACE_PCI_PCI_CONTROL_IRQ_ENABLE_SHIFT        0 /* established */
 #define MACE_PCI_PCI_CONTROL_IRQ_ENABLE_MASK         0xffu
 #define MACE_PCI_PCI_CONTROL_IRQ_ENABLE_INPLACE      (MACE_PCI_PCI_CONTROL_IRQ_ENABLE_MASK << MACE_PCI_PCI_CONTROL_IRQ_ENABLE_SHIFT)
 
 /*
- * Read-buffer flush and revision. Reads return 1 for MACE 2.0. Writes request buffer invalidation (established, printed pages 161 to 163). The reset value of the read is not stated.
+ * Read-buffer flush and revision. Reads return 1 for MACE 2.0 and 0 for the first MACE, revision 1.0 (established, printed page 165). Any write requests buffer invalidation, whatever value it carries (established, printed page 165). The reset value of the read is not stated.
  */
 /* pci_rev: rw32, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PCI_PCI_REV_OFFSET                      0xcu /* established */

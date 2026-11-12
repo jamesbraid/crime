@@ -19,7 +19,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `ring_base`
 
-Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.
+Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That reset drives the RstISA pin in the ISA pin group, not a PCI pin (established, printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -28,7 +28,7 @@ Bit 0 asserts the external serial and parallel controller reset; it resets to on
 
 ### Register `periph_status`
 
-Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125).
+Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -56,3 +56,8 @@ Gates delivery of the status bits. A mask bit does not clear the device conditio
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
 | `BLOCK_BASE` | 0x1f310000 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | physical base of the peripheral ring and status block (printed page 123) |
+| `ISA_BASE` | 0x1f380000 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | physical base of the external ISA I/O space (address map, printed page 181) |
+| `ISA_REG_STRIDE` | 0x100 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | each external 8-bit register occupies a 256-byte slice (printed page 133) |
+| `RTC_BASE` | 0x1f3a0000 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | external Dallas calendar clock, at the ISA base plus 0x20000 (printed page 133); its register contents are in the clock's own contract, not here |
+| `SERIAL_A_BASE` | 0x1f390000 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | external 16550-compatible serial port COM 1, at the ISA base plus 0x10000 (printed page 133) |
+| `SERIAL_B_BASE` | 0x1f398000 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | external 16550-compatible serial port COM 2, at the ISA base plus 0x18000 (printed page 133) |

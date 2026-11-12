@@ -24,4 +24,7 @@
     <field name="msc" start="0" size="32" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f340000" grade="established"/>
+  <constant name="CMP0_ALIAS" value="0x1f350000" grade="established"/>
+  <constant name="CMP1_ALIAS" value="0x1f360000" grade="established"/>
+  <constant name="CMP2_ALIAS" value="0x1f370000" grade="established"/>
 </genxml>

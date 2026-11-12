@@ -67,3 +67,6 @@ msc = { bits = [31, 0], grade = "established" }
 
 [constants]
 BLOCK_BASE = { value = 0x1f340000, grade = "established", doc = "physical base of the timer block (printed page 147)" }
+CMP0_ALIAS = { value = 0x1f350000, grade = "established", doc = "alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181)" }
+CMP1_ALIAS = { value = 0x1f360000, grade = "established", doc = "alias of the compare register at offset 0x10, numbered #2 (printed page 181)" }
+CMP2_ALIAS = { value = 0x1f370000, grade = "established", doc = "alias of the compare register at offset 0x18, numbered #3 (printed page 181)" }

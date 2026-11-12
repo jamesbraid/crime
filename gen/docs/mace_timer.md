@@ -67,3 +67,6 @@ Array of 3 registers, stride 8.
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
 | `BLOCK_BASE` | 0x1f340000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | physical base of the timer block (printed page 147) |
+| `CMP0_ALIAS` | 0x1f350000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181) |
+| `CMP1_ALIAS` | 0x1f360000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x10, numbered #2 (printed page 181) |
+| `CMP2_ALIAS` | 0x1f370000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x18, numbered #3 (printed page 181) |

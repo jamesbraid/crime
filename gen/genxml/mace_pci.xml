@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from defs/mace_pci.toml by defs-gen - do not edit, change the source -->
 <genxml unit="mace_pci" prefix="MACE_PCI" title="O2 MACE PCI host bridge control registers" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers">
-  <doc>MACE PCI control block: error capture, interrupt and error enables, read-buffer revision, and the configuration address and data ports. Offsets are from the block base (constant BLOCK_BASE). Unlisted offsets in the block are not implemented.</doc>
+  <doc>MACE PCI control block: error capture, interrupt and error enables, read-buffer revision, and the configuration address and data ports. Offsets are from the block base (constant BLOCK_BASE). Only these six registers exist in the block, and they are not repeated across it (established, printed pages 161 and 181). A read of any other offset in the block returns 0xff in each byte position it covers, and a write to one is discarded (established, printed pages 161 and 162).</doc>
   <struct name="PCI_ERROR_ADDR" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="r" reset="0x0">
     <doc>Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163).</doc>
   </struct>
@@ -11,12 +11,14 @@
     <field name="addr_valid" start="19" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="PCI_CONTROL" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x8" access="rw" reset="unknown">
-    <doc>Interrupt enables clear at reset, bits 0 to 7 for the PCI inputs and bits 24 to 31 for error enables (established, printed pages 164 and 162). Reset value of the other bits is not stated.</doc>
+    <doc>Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-error response (bit 10) and the error interrupts (bits 24 to 31). Every bit resets to zero (established, printed pages 164 and 165, Table 85). Bit 9 is reserved on revision 0 and an arbiter control on revision 1. Input n of bits 0 to 7 reaches CRIME bit 8 plus n, and PCI error conditions reach CRIME bit 7 (established, printed page 179).</doc>
     <field name="error_enable" start="24" size="8" type="uint" grade="established"/>
+    <field name="parity_response" start="10" size="1" type="uint" grade="established"/>
+    <field name="serr_enable" start="8" size="1" type="uint" grade="established"/>
     <field name="irq_enable" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="PCI_REV" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0xc" access="rw" reset="unknown">
-    <doc>Read-buffer flush and revision. Reads return 1 for MACE 2.0. Writes request buffer invalidation (established, printed pages 161 to 163). The reset value of the read is not stated.</doc>
+    <doc>Read-buffer flush and revision. Reads return 1 for MACE 2.0 and 0 for the first MACE, revision 1.0 (established, printed page 165). Any write requests buffer invalidation, whatever value it carries (established, printed page 165). The reset value of the read is not stated.</doc>
   </struct>
   <struct name="PCI_CFG_ADDR" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0xcf8" access="rw" reset="unknown">
     <doc>Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printed page 161).</doc>

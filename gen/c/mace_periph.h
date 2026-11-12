@@ -7,7 +7,7 @@
 
 
 /*
- * Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.
+ * Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That reset drives the RstISA pin in the ISA pin group, not a PCI pin (established, printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.
  */
 /* ring_base: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_RING_BASE_OFFSET                 0x0u /* established */
@@ -19,7 +19,7 @@
 #define MACE_PERIPH_RING_BASE_EXT_RESET_INPLACE      (MACE_PERIPH_RING_BASE_EXT_RESET_MASK << MACE_PERIPH_RING_BASE_EXT_RESET_SHIFT)
 
 /*
- * Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125).
+ * Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).
  */
 /* periph_status: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_PERIPH_STATUS_OFFSET             0x10u /* established */
@@ -73,5 +73,10 @@
 #define MACE_PERIPH_PERIPH_MASK_OFFSET               0x18u /* established */
 
 #define MACE_PERIPH_BLOCK_BASE                       0x1f310000u /* established */
+#define MACE_PERIPH_ISA_BASE                         0x1f380000u /* established */
+#define MACE_PERIPH_ISA_REG_STRIDE                   0x100u /* established */
+#define MACE_PERIPH_RTC_BASE                         0x1f3a0000u /* established */
+#define MACE_PERIPH_SERIAL_A_BASE                    0x1f390000u /* established */
+#define MACE_PERIPH_SERIAL_B_BASE                    0x1f398000u /* established */
 
 #endif /* MACE_PERIPH_GEN_H */

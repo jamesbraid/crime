@@ -2,7 +2,7 @@
 // O2 MACE peripheral ring base and interrupt status and mask
 #![allow(dead_code)]
 
-/// Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned bas (established)
+/// Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That r (established)
 pub mod ring_base {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x0;
@@ -178,3 +178,8 @@ pub mod periph_mask {
     pub const OFFSET: u64 = 0x18;
 }
 pub const BLOCK_BASE: u32 = 0x1f310000; // established
+pub const ISA_BASE: u32 = 0x1f380000; // established
+pub const ISA_REG_STRIDE: u32 = 0x100; // established
+pub const RTC_BASE: u32 = 0x1f3a0000; // established
+pub const SERIAL_A_BASE: u32 = 0x1f390000; // established
+pub const SERIAL_B_BASE: u32 = 0x1f398000; // established

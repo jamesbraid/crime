@@ -90,3 +90,6 @@ pub mod audio_pair {
     }
 }
 pub const BLOCK_BASE: u32 = 0x1f340000; // established
+pub const CMP0_ALIAS: u32 = 0x1f350000; // established
+pub const CMP1_ALIAS: u32 = 0x1f360000; // established
+pub const CMP2_ALIAS: u32 = 0x1f370000; // established

@@ -75,6 +75,24 @@
   {
    "unit": "mace_pci",
    "kind": "field",
+   "name": "pci_control.parity_response",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_pci",
+   "kind": "field",
+   "name": "pci_control.serr_enable",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_pci",
+   "kind": "field",
    "name": "pci_control.irq_enable",
    "hi": 7,
    "lo": 0,

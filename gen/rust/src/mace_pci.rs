@@ -32,13 +32,33 @@ pub mod pci_error_flags {
         }
     }
 }
-/// Interrupt enables clear at reset, bits 0 to 7 for the PCI inputs and bits 24 to 31 for error enables (established, printed pages 164 and 162). Reset v (established)
+/// Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-error response (bit 10) and the error interrupts (bits 24 to 31). Every bi (established)
 pub mod pci_control {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x8;
     pub mod error_enable { // bits 31:24, established
         pub const SHIFT: u32 = 24;
         pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod parity_response { // bits 10:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod serr_enable { // bits 8:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
@@ -57,7 +77,7 @@ pub mod pci_control {
         }
     }
 }
-/// Read-buffer flush and revision. Reads return 1 for MACE 2.0. Writes request buffer invalidation (established, printed pages 161 to 163). The reset val (established)
+/// Read-buffer flush and revision. Reads return 1 for MACE 2.0 and 0 for the first MACE, revision 1.0 (established, printed page 165). Any write requests (established)
 pub mod pci_rev {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0xc;

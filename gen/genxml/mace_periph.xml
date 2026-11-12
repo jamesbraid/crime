@@ -3,12 +3,12 @@
 <genxml unit="mace_periph" prefix="MACE_PERIPH" title="O2 MACE peripheral ring base and interrupt status and mask" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers">
   <doc>MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="RING_BASE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="rw" reset="unknown">
-    <doc>Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.</doc>
+    <doc>Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That reset drives the RstISA pin in the ISA pin group, not a PCI pin (established, printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.</doc>
     <field name="dma_ring_base" start="15" size="17" type="uint" grade="established"/>
     <field name="ext_reset" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="PERIPH_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x10" access="rw" reset="unknown">
-    <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125).</doc>
+    <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).</doc>
     <field name="serial_b" start="26" size="1" type="uint" grade="established"/>
     <field name="serial_a" start="20" size="1" type="uint" grade="established"/>
     <field name="timer_cmp2" start="15" size="1" type="uint" grade="established"/>
@@ -28,4 +28,9 @@
     <doc>Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.</doc>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f310000" grade="established"/>
+  <constant name="ISA_BASE" value="0x1f380000" grade="established"/>
+  <constant name="ISA_REG_STRIDE" value="0x100" grade="established"/>
+  <constant name="RTC_BASE" value="0x1f3a0000" grade="established"/>
+  <constant name="SERIAL_A_BASE" value="0x1f390000" grade="established"/>
+  <constant name="SERIAL_B_BASE" value="0x1f398000" grade="established"/>
 </genxml>

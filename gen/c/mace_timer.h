@@ -57,5 +57,8 @@
 #define MACE_TIMER_AUDIO_PAIR_MSC_INPLACE            (MACE_TIMER_AUDIO_PAIR_MSC_MASK << MACE_TIMER_AUDIO_PAIR_MSC_SHIFT)
 
 #define MACE_TIMER_BLOCK_BASE                        0x1f340000u /* established */
+#define MACE_TIMER_CMP0_ALIAS                        0x1f350000u /* established */
+#define MACE_TIMER_CMP1_ALIAS                        0x1f360000u /* established */
+#define MACE_TIMER_CMP2_ALIAS                        0x1f370000u /* established */
 
 #endif /* MACE_TIMER_GEN_H */
