@@ -636,7 +636,7 @@ pub mod primitive {
         }
     }
 }
-/// (established)
+/// In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not  (established)
 pub mod vertex_x {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2070;
@@ -725,7 +725,7 @@ pub mod stipple_mode {
         }
     }
 }
-/// (established)
+/// The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a g (established)
 pub mod stipple_pattern {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20c4;

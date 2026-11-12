@@ -302,6 +302,8 @@ The specification gives line_width as the subpixel line width divided by two
 specification. DrawMode bit 19, which enables line stipple, is a separate
 control and does not appear in the primitive word.
 
+The unit of the line width is unknown. The specification's six-bit subpixel precision (established, [spec] PDF 159) is listed for OpenGL rasterization, not for X lines. The public NetBSD O2 framebuffer driver's register header calls the field half pixels (inferred, software expectation). Which scale the X engine uses is unknown. See docs/de-2d-drawing.md.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:24 | `op` | established | point=0, line=1, triangle=2, rect=3 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
@@ -310,6 +312,8 @@ control and does not appear in the primitive word.
 | 15:0 | `line_width` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `vertex_x`
+
+In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md.
 
 Array of 3 registers, stride 4.
 
@@ -373,6 +377,8 @@ max_index, so that behaviour is unknown.
 | 7:0 | `max_repeat` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `stipple_pattern`
+
+The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a glyph row sits in the word. The public NetBSD O2 framebuffer driver places an 8-bit font row at bits 31:24 and a 16-bit row at bits 31:16 (inferred, software expectation), so rows fill the high end of the word. Sample order within the word is unknown. See docs/de-2d-drawing.md.
 
 ### Register `fg_color`
 

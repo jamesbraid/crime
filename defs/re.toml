@@ -331,7 +331,9 @@ doc = """
 The specification gives line_width as the subpixel line width divided by two
 (established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
 specification. DrawMode bit 19, which enables line stipple, is a separate
-control and does not appear in the primitive word."""
+control and does not appear in the primitive word.
+
+The unit of the line width is unknown. The specification's six-bit subpixel precision (established, [spec] PDF 159) is listed for OpenGL rasterization, not for X lines. The public NetBSD O2 framebuffer driver's register header calls the field half pixels (inferred, software expectation). Which scale the X engine uses is unknown. See docs/de-2d-drawing.md."""
 
 [registers.primitive.fields]
 line_skip_last = { bits = [18, 18], grade = "established" }
@@ -368,6 +370,8 @@ width = 32
 grade = "established"
 count = 3
 space = "re"
+doc = """
+In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md."""
 
 [registers.vertex_gl]
 offset = 0x2080
@@ -476,6 +480,8 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a glyph row sits in the word. The public NetBSD O2 framebuffer driver places an 8-bit font row at bits 31:24 and a 16-bit row at bits 31:16 (inferred, software expectation), so rows fill the high end of the word. Sample order within the word is unknown. See docs/de-2d-drawing.md."""
 
 [registers.fg_color]
 offset = 0x20d0

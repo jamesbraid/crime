@@ -304,6 +304,8 @@
  * (established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
  * specification. DrawMode bit 19, which enables line stipple, is a separate
  * control and does not appear in the primitive word.
+ *
+ * The unit of the line width is unknown. The specification's six-bit subpixel precision (established, [spec] PDF 159) is listed for OpenGL rasterization, not for X lines. The public NetBSD O2 framebuffer driver's register header calls the field half pixels (inferred, software expectation). Which scale the X engine uses is unknown. See docs/de-2d-drawing.md.
  */
 /* primitive: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PRIMITIVE_OFFSET                          0x2060u /* established */
@@ -328,6 +330,9 @@
 #define RE_PRIMITIVE_LINE_WIDTH_MASK                 0xffffu
 #define RE_PRIMITIVE_LINE_WIDTH_INPLACE              (RE_PRIMITIVE_LINE_WIDTH_MASK << RE_PRIMITIVE_LINE_WIDTH_SHIFT)
 
+/*
+ * In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md.
+ */
 /* vertex_x: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_VERTEX_X_OFFSET                           0x2070u /* established */
 #define RE_VERTEX_X_COUNT                            3
@@ -409,6 +414,9 @@
 #define RE_STIPPLE_MODE_MAX_REPEAT_MASK              0xffu
 #define RE_STIPPLE_MODE_MAX_REPEAT_INPLACE           (RE_STIPPLE_MODE_MAX_REPEAT_MASK << RE_STIPPLE_MODE_MAX_REPEAT_SHIFT)
 
+/*
+ * The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a glyph row sits in the word. The public NetBSD O2 framebuffer driver places an 8-bit font row at bits 31:24 and a 16-bit row at bits 31:16 (inferred, software expectation), so rows fill the high end of the word. Sample order within the word is unknown. See docs/de-2d-drawing.md.
+ */
 /* stipple_pattern: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STIPPLE_PATTERN_OFFSET                    0x20c4u /* established */
 

@@ -27,6 +27,12 @@ unknown, as in [AGENTS.md](../AGENTS.md).
   writes each half as the window origin minus 0x1000.
 - Unknown: whether the WinOffset halves are signed. The specification does not
   say, and the 0x1000 bias in the kernel does not settle it.
+- Established ([spec] PDF 197): in X mode each vertex coordinate is a 16-bit
+  unsigned value in the range [0, 2^16). The origin is the upper-left corner
+  (PDF 198), as above.
+- Inferred (software expectation): the NetBSD driver packs X into bits 31:16
+  of each X vertex word and Y into bits 15:0 (NetBSD `sys/arch/sgimips/dev/crmfb.c`
+  lines 1493 and 1509). The specification does not state this packing.
 
 ## Primitives
 
@@ -40,6 +46,11 @@ unknown, as in [AGENTS.md](../AGENTS.md).
   whose source and destination overlap. That is unknown.
 - Established ([spec] PDF 200): points and rectangles are always flat shaded.
   Their colour comes from the foreground register alone.
+- Unknown: how a point or a line is rasterized. The geometric primitives
+  section is marked "TBD" (PDF 195), and its point and line subsections
+  (PDF 196 to 197) are headings with no body text. The text gives no rule for
+  sample positions, endpoints or width. The unit of the line width field is
+  also unknown; see [defs/re.toml](../defs/re.toml) under `primitive`.
 
 ## Triangles and edge functions
 
@@ -85,6 +96,14 @@ unknown, as in [AGENTS.md](../AGENTS.md).
 - Inferred from the bit name (DrawMode bit 17): with opaque stipple on, a zero
   bit in the pattern is drawn in the background colour. With it off, a zero bit
   draws nothing.
+- Inferred (software expectation): the NetBSD driver writes the stipple mode as
+  `0x001f0000` (NetBSD `sys/arch/sgimips/dev/crmfb.c` line 1481). That sets the
+  maximum index to 31 in bits 20:16, which matches the reading above. Its header
+  gives the same field shifts (`crmfbreg.h` lines 393 and 394).
+- Inferred (software expectation): for each glyph row, the driver places an
+  8-bit row at bits 31:24 and a 16-bit row at bits 31:16 of the pattern
+  (`crmfb.c` lines 1491 and 1507), so the row sits at the high end of the word.
+  Unknown: which of those bits is drawn first. The specification does not say.
 
 ## Logic operation and plane masks
 
