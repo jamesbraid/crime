@@ -188,6 +188,8 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set."""
 
 [registers.drawmode.fields]
 no_conflict = { bits = [23, 23], grade = "established" }

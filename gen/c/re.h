@@ -124,6 +124,9 @@
 #define RE_CLIPMODE_MODE_MASK                        0x1fu
 #define RE_CLIPMODE_MODE_INPLACE                     (RE_CLIPMODE_MODE_MASK << RE_CLIPMODE_MODE_SHIFT)
 
+/*
+ * Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+ */
 /* drawmode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DRAWMODE_OFFSET                           0x2018u /* established */
 #define RE_DRAWMODE_NO_CONFLICT_SHIFT                23 /* established */

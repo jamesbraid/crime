@@ -189,6 +189,8 @@ the queued state as one primitive.
 
 ### Register `drawmode`
 
+Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 23 | `no_conflict` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |

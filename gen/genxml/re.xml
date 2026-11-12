@@ -187,6 +187,7 @@ the queued state as one primitive.</doc>
     </test>
   </struct>
   <struct name="DRAWMODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2018" access="rw" space="re" reset="unknown">
+    <doc>Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.</doc>
     <field name="no_conflict" start="23" size="1" type="uint" grade="established"/>
     <field name="gl" start="22" size="1" type="uint" grade="established"/>
     <field name="pixel_xfer" start="21" size="1" type="uint" grade="established"/>

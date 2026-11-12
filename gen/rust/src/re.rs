@@ -170,7 +170,7 @@ pub mod clipmode {
         }
     }
 }
-/// (established)
+/// Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (establi (established)
 pub mod drawmode {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2018;
