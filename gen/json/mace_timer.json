@@ -15,7 +15,7 @@
    "space": null,
    "reset": 0,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -24,7 +24,7 @@
    "hi": 31,
    "lo": 0,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -38,7 +38,7 @@
    "space": null,
    "reset": "unknown",
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -47,7 +47,7 @@
    "hi": 31,
    "lo": 0,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -61,7 +61,7 @@
    "space": null,
    "reset": "unknown",
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -70,7 +70,7 @@
    "hi": 31,
    "lo": 0,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -84,7 +84,7 @@
    "space": null,
    "reset": "unknown",
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -93,7 +93,39 @@
    "hi": 31,
    "lo": 0,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "register",
+   "name": "audio_pair",
+   "offset": 32,
+   "access": "rw",
+   "width": 64,
+   "count": 3,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "audio_pair.ust",
+   "hi": 63,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "audio_pair.msc",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   },
   {
    "unit": "mace_timer",
@@ -102,7 +134,7 @@
    "value": 523501568,
    "count": 1,
    "grade": "established",
-   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
   }
  ]
 }

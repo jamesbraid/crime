@@ -1,6 +1,8 @@
 // generated from defs/ by defs-gen - do not edit, change the source
+pub mod ad1843;
 pub mod crime;
 pub mod gbe;
+pub mod mace_audio;
 pub mod mace_pci;
 pub mod mace_periph;
 pub mod mace_timer;

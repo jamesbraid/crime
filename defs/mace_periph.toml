@@ -36,6 +36,14 @@ timer_cmp1 = { bits = [14, 14], grade = "established" }
 timer_cmp2 = { bits = [15, 15], grade = "established" }
 serial_a = { bits = [20, 20], grade = "established" }
 serial_b = { bits = [26, 26], grade = "established" }
+audio_codec_mask = { bits = [0, 0], grade = "established", doc = "Read-only. The last codec response ANDed with the codec response mask is nonzero (printed page 125, slot 6)." }
+audio_volume = { bits = [1, 1], grade = "established", doc = "Read-only. A volume push button edge is latched (printed page 125, slot 6)." }
+audio_capture_threshold = { bits = [2, 2], grade = "established", doc = "Read-only. The capture ring meets its interrupt threshold (printed page 125, slot 6)." }
+audio_capture_overflow = { bits = [3, 3], grade = "established", doc = "Read-only. Capture DMA FIFO overflow error (printed page 125, slot 6)." }
+audio_playback1_threshold = { bits = [4, 4], grade = "established", doc = "Read-only. The playback 1 ring meets its interrupt threshold (printed page 125, slot 6)." }
+audio_playback1_error = { bits = [5, 5], grade = "established", doc = "Read-only. A memory error on the playback 1 DMA; the channel has stopped (printed page 125, slot 6)." }
+audio_playback2_threshold = { bits = [6, 6], grade = "established", doc = "Read-only. The playback 2 ring meets its interrupt threshold (printed page 125, slot 6)." }
+audio_playback2_error = { bits = [7, 7], grade = "established", doc = "Read-only. A memory error on the playback 2 DMA; the channel has stopped (printed page 125, slot 6)." }
 
 [registers.periph_mask]
 offset = 0x18

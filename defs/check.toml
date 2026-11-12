@@ -39,6 +39,12 @@ group = "mace_timer"
 group = "mace_pci"
 prose_offsets = false
 
+[units.mace_audio]
+group = "mace_audio"
+
+[units.ad1843]
+group = "ad1843"
+
 [[claims]]
 group = "gbe"
 label = "dot clock fields"

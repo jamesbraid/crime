@@ -1,0 +1,370 @@
+{
+ "schema": "defs-flat/1",
+ "source": "defs/mace_audio.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "ctl_status",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.volume_edge_24",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.volume_edge_23",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.playback2_read_alias",
+   "hi": 22,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.playback1_read_alias",
+   "hi": 15,
+   "lo": 9,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.capture_write_alias",
+   "hi": 8,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.codec_present",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ctl_status.codec_reset",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "codec_cmd",
+   "offset": 8,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 65536,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "codec_cmd.codec_addr",
+   "hi": 23,
+   "lo": 17,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "codec_cmd.codec_direction",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "codec_cmd.codec_direction.write",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "codec_cmd.codec_direction.read",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "codec_cmd.codec_data",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "response_mask",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "response_mask.mask",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "codec_response",
+   "offset": 24,
+   "access": "r",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "codec_response.word",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "ring_control",
+   "offset": 32,
+   "access": "rw",
+   "width": 64,
+   "count": 3,
+   "stride": 32,
+   "space": null,
+   "reset": 1024,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_control.channel_reset",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_control.dma_enable",
+   "hi": 9,
+   "lo": 9,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_control.threshold",
+   "hi": 7,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.off",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.depth_quarter",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.depth_half",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.depth_three_quarter",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.empty",
+   "value": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.not_empty",
+   "value": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.full",
+   "value": 6,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "enum_value",
+   "name": "ring_control.threshold.not_full",
+   "value": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "ring_read",
+   "offset": 40,
+   "access": "rw",
+   "width": 64,
+   "count": 3,
+   "stride": 32,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_read.block_index",
+   "hi": 11,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "ring_write",
+   "offset": 48,
+   "access": "rw",
+   "width": 64,
+   "count": 3,
+   "stride": 32,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_write.block_index",
+   "hi": 11,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "register",
+   "name": "ring_depth",
+   "offset": 56,
+   "access": "r",
+   "width": 64,
+   "count": 3,
+   "stride": 32,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "field",
+   "name": "ring_depth.blocks",
+   "hi": 11,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  },
+  {
+   "unit": "mace_audio",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 523239424,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+  }
+ ]
+}

@@ -15,6 +15,14 @@
     <field name="timer_cmp1" start="14" size="1" type="uint" grade="established"/>
     <field name="timer_cmp0" start="13" size="1" type="uint" grade="established"/>
     <field name="rtc" start="8" size="1" type="uint" grade="established"/>
+    <field name="audio_playback2_error" start="7" size="1" type="uint" grade="established"/>
+    <field name="audio_playback2_threshold" start="6" size="1" type="uint" grade="established"/>
+    <field name="audio_playback1_error" start="5" size="1" type="uint" grade="established"/>
+    <field name="audio_playback1_threshold" start="4" size="1" type="uint" grade="established"/>
+    <field name="audio_capture_overflow" start="3" size="1" type="uint" grade="established"/>
+    <field name="audio_capture_threshold" start="2" size="1" type="uint" grade="established"/>
+    <field name="audio_volume" start="1" size="1" type="uint" grade="established"/>
+    <field name="audio_codec_mask" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="PERIPH_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x18" access="rw" reset="unknown">
     <doc>Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.</doc>
