@@ -1952,6 +1952,97 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "depth_func.func",
+   "hi": 27,
+   "lo": 25,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.never",
+   "value": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.less",
+   "value": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.equal",
+   "value": 2,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.lequal",
+   "value": 3,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.greater",
+   "value": 4,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.notequal",
+   "value": 5,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.gequal",
+   "value": 6,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "depth_func.func.always",
+   "value": 7,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "depth_func.tag_clear",
+   "hi": 24,
+   "lo": 24,
+   "grade": "unknown",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "depth_func.clear",
+   "hi": 23,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "depth_zs",
    "offset": 8648,
@@ -2008,6 +2099,172 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.ref",
+   "hi": 31,
+   "lo": 24,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.value_mask",
+   "hi": 23,
+   "lo": 16,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.func",
+   "hi": 15,
+   "lo": 12,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.never",
+   "value": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.less",
+   "value": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.equal",
+   "value": 2,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.lequal",
+   "value": 3,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.greater",
+   "value": 4,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.notequal",
+   "value": 5,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.gequal",
+   "value": 6,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.func.always",
+   "value": 7,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.fail_op",
+   "hi": 11,
+   "lo": 8,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.keep",
+   "value": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.zero",
+   "value": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.replace",
+   "value": 2,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.incr",
+   "value": 3,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.decr",
+   "value": 4,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "stencil_mode.fail_op.invert",
+   "value": 5,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.depth_fail_op",
+   "hi": 7,
+   "lo": 4,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mode.pass_op",
+   "hi": 3,
+   "lo": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "stencil_mask",
    "offset": 8680,
@@ -2018,6 +2275,15 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stencil_mask.write_mask",
+   "hi": 7,
+   "lo": 0,
+   "grade": "inferred",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
   {

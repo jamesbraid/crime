@@ -830,6 +830,37 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Depth comparison and clear-depth word. The specification omits the field
+encoding (established, [spec] PDF 169-170). The field layout below is inferred
+from the words the shipped driver stores here. Bits 31:28 have no established
+meaning."""
+
+[registers.depth_func.fields.func]
+bits = [27, 25]
+grade = "inferred"
+from = "comparison names: published CRIME 1.5 draft specification, Table 7-25, PDF 213"
+doc = "Depth comparison. The codes follow the GL order from NEVER (0) to ALWAYS (7). The driver writes the GL function minus GL_NEVER. Codes are a software expectation, not a measured chip encoding."
+
+[registers.depth_func.fields.func.enums]
+never = { value = 0, grade = "inferred" }
+less = { value = 1, grade = "inferred" }
+equal = { value = 2, grade = "inferred" }
+lequal = { value = 3, grade = "inferred" }
+greater = { value = 4, grade = "inferred" }
+notequal = { value = 5, grade = "inferred" }
+gequal = { value = 6, grade = "inferred" }
+always = { value = 7, grade = "inferred" }
+
+[registers.depth_func.fields.tag_clear]
+bits = [24, 24]
+grade = "unknown"
+doc = "The driver sets this bit on its tagged-clear path (docs/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use."
+
+[registers.depth_func.fields.clear]
+bits = [23, 0]
+grade = "established"
+doc = "Clear depth in 24-bit depth-buffer units, computed by the driver from glClearDepth with truncation (docs/pixel-arithmetic.md)."
 
 [registers.depth_zs]
 offset = 0x21c8
@@ -837,6 +868,11 @@ access = "w"
 width = 64
 grade = "established"
 space = "re"
+doc = """
+Start depth of a triangle or depth span, a 25.12 two's complement value with
+the fraction in the low 12 bits (established, [spec] PDF 169-170 and 212-213).
+Written through its start alias, which commits the queued primitive.
+The depth derivatives below use the same format."""
 
 [registers.depth_dzdx]
 offset = 0x21d0
@@ -844,6 +880,9 @@ access = "w"
 width = 64
 grade = "established"
 space = "re"
+doc = """
+Depth step in x, 25.12 two's complement (established, [spec] PDF 169-170).
+Written through its start alias, as for the start depth."""
 
 [registers.depth_dzdy]
 offset = 0x21d8
@@ -851,6 +890,9 @@ access = "w"
 width = 64
 grade = "established"
 space = "re"
+doc = """
+Depth step in y, 25.12 two's complement (established, [spec] PDF 169-170).
+Written through its start alias, as for the start depth."""
 
 [registers.stencil_mode]
 offset = 0x21e0
@@ -858,6 +900,61 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Stencil test and update word. The specification leaves its field table empty
+(established, [spec] PDF 182). The field positions below are inferred from the
+words the shipped driver stores here. The six operation names are established
+from [spec] Table 7-27 (PDF 214), but the specification's stencil section is
+marked TBD. Its orientation of the comparison conflicts with the API and the
+driver; see docs/pixel-arithmetic.md. Written through its start alias."""
+
+[registers.stencil_mode.fields.ref]
+bits = [31, 24]
+grade = "inferred"
+doc = "Stencil reference value, eight bits."
+
+[registers.stencil_mode.fields.value_mask]
+bits = [23, 16]
+grade = "inferred"
+doc = "Comparison mask, eight bits, from the API stencil mask. Whether the chip applies it to both operands as the API does is unknown (docs/pixel-arithmetic.md)."
+
+[registers.stencil_mode.fields.func]
+bits = [15, 12]
+grade = "inferred"
+doc = "Stencil comparison. Codes 0 to 7 follow the GL order as for the depth comparison. The driver writes bit 15 clear. Codes 8 to 15 have no meaning in any source read here."
+
+[registers.stencil_mode.fields.func.enums]
+never = { value = 0, grade = "inferred" }
+less = { value = 1, grade = "inferred" }
+equal = { value = 2, grade = "inferred" }
+lequal = { value = 3, grade = "inferred" }
+greater = { value = 4, grade = "inferred" }
+notequal = { value = 5, grade = "inferred" }
+gequal = { value = 6, grade = "inferred" }
+always = { value = 7, grade = "inferred" }
+
+[registers.stencil_mode.fields.fail_op]
+bits = [11, 8]
+grade = "inferred"
+doc = "Stencil update when the stencil test fails. Codes 0 to 5 are the operations below; codes 6 to 15 have no meaning in any source read here."
+
+[registers.stencil_mode.fields.depth_fail_op]
+bits = [7, 4]
+grade = "inferred"
+doc = "Stencil update when the stencil test passes and the depth test fails. Same codes as fail_op. Which stored stencil operation the chip applies on a depth failure is not given by the specification (unknown)."
+
+[registers.stencil_mode.fields.pass_op]
+bits = [3, 0]
+grade = "inferred"
+doc = "Stencil update when both tests pass. Same codes as fail_op."
+
+[registers.stencil_mode.fields.fail_op.enums]
+keep = { value = 0, grade = "inferred" }
+zero = { value = 1, grade = "inferred" }
+replace = { value = 2, grade = "inferred" }
+incr = { value = 3, grade = "inferred" }
+decr = { value = 4, grade = "inferred" }
+invert = { value = 5, grade = "inferred" }
 
 [registers.stencil_mask]
 offset = 0x21e8
@@ -865,6 +962,15 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Stencil write mask. The driver writes either 0 or 0xff here on its depth path
+(inferred). Only bits 7:0 are the mask; bits 31:8 have no established meaning.
+Written through its start alias, as for the start depth."""
+
+[registers.stencil_mask.fields.write_mask]
+bits = [7, 0]
+grade = "inferred"
+doc = "Stencil write mask, bits 7:0. The driver writes 0 or 0xff here (inferred). The per-bit rule the chip applies is unknown; the API rule is that a set bit permits the stencil update and a clear bit keeps the old bit."
 
 [registers.pixpipe_null]
 offset = 0x21f0

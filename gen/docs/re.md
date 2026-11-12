@@ -472,15 +472,61 @@ The register's own field table is empty in the specification (section 7.3.1.17).
 
 ### Register `depth_func`
 
+Depth comparison and clear-depth word. The specification omits the field
+encoding (established, [spec] PDF 169-170). The field layout below is inferred
+from the words the shipped driver stores here. Bits 31:28 have no established
+meaning.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 27:25 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Depth comparison. The codes follow the GL order from NEVER (0) to ALWAYS (7). The driver writes the GL function minus GL_NEVER. Codes are a software expectation, not a measured chip encoding. |
+| 24 | `tag_clear` | unknown |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | The driver sets this bit on its tagged-clear path (docs/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use. |
+| 23:0 | `clear` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Clear depth in 24-bit depth-buffer units, computed by the driver from glClearDepth with truncation (docs/pixel-arithmetic.md). |
+
 ### Register `depth_zs`
+
+Start depth of a triangle or depth span, a 25.12 two's complement value with
+the fraction in the low 12 bits (established, [spec] PDF 169-170 and 212-213).
+Written through its start alias, which commits the queued primitive.
+The depth derivatives below use the same format.
 
 ### Register `depth_dzdx`
 
+Depth step in x, 25.12 two's complement (established, [spec] PDF 169-170).
+Written through its start alias, as for the start depth.
+
 ### Register `depth_dzdy`
+
+Depth step in y, 25.12 two's complement (established, [spec] PDF 169-170).
+Written through its start alias, as for the start depth.
 
 ### Register `stencil_mode`
 
+Stencil test and update word. The specification leaves its field table empty
+(established, [spec] PDF 182). The field positions below are inferred from the
+words the shipped driver stores here. The six operation names are established
+from [spec] Table 7-27 (PDF 214), but the specification's stencil section is
+marked TBD. Its orientation of the comparison conflicts with the API and the
+driver; see docs/pixel-arithmetic.md. Written through its start alias.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:24 | `ref` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil reference value, eight bits. |
+| 23:16 | `value_mask` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Comparison mask, eight bits, from the API stencil mask. Whether the chip applies it to both operands as the API does is unknown (docs/pixel-arithmetic.md). |
+| 15:12 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil comparison. Codes 0 to 7 follow the GL order as for the depth comparison. The driver writes bit 15 clear. Codes 8 to 15 have no meaning in any source read here. |
+| 11:8 | `fail_op` | inferred | keep=0, zero=1, replace=2, incr=3, decr=4, invert=5 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil update when the stencil test fails. Codes 0 to 5 are the operations below; codes 6 to 15 have no meaning in any source read here. |
+| 7:4 | `depth_fail_op` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil update when the stencil test passes and the depth test fails. Same codes as fail_op. Which stored stencil operation the chip applies on a depth failure is not given by the specification (unknown). |
+| 3:0 | `pass_op` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil update when both tests pass. Same codes as fail_op. |
+
 ### Register `stencil_mask`
+
+Stencil write mask. The driver writes either 0 or 0xff here on its depth path
+(inferred). Only bits 7:0 are the mask; bits 31:8 have no established meaning.
+Written through its start alias, as for the start depth.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 7:0 | `write_mask` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil write mask, bits 7:0. The driver writes 0 or 0xff here (inferred). The per-bit rule the chip applies is unknown; the API rule is that a set bit permits the stencil update and a clear bit keeps the old bit. |
 
 ### Register `pixpipe_null`
 

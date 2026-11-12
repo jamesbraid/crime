@@ -603,23 +603,108 @@
 /* colormask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_COLORMASK_OFFSET                          0x21b8u /* established */
 
+/*
+ * Depth comparison and clear-depth word. The specification omits the field
+ * encoding (established, [spec] PDF 169-170). The field layout below is inferred
+ * from the words the shipped driver stores here. Bits 31:28 have no established
+ * meaning.
+ */
 /* depth_func: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DEPTH_FUNC_OFFSET                         0x21c0u /* established */
+#define RE_DEPTH_FUNC_FUNC_SHIFT                     25 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_MASK                      0x7u
+#define RE_DEPTH_FUNC_FUNC_INPLACE                   (RE_DEPTH_FUNC_FUNC_MASK << RE_DEPTH_FUNC_FUNC_SHIFT)
+#define RE_DEPTH_FUNC_FUNC_NEVER                     0 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_LESS                      1 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_EQUAL                     2 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_LEQUAL                    3 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_GREATER                   4 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_NOTEQUAL                  5 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_GEQUAL                    6 /* inferred */
+#define RE_DEPTH_FUNC_FUNC_ALWAYS                    7 /* inferred */
+#define RE_DEPTH_FUNC_TAG_CLEAR_SHIFT                24 /* unknown */
+#define RE_DEPTH_FUNC_TAG_CLEAR_MASK                 0x1u
+#define RE_DEPTH_FUNC_TAG_CLEAR_INPLACE              (RE_DEPTH_FUNC_TAG_CLEAR_MASK << RE_DEPTH_FUNC_TAG_CLEAR_SHIFT)
+#define RE_DEPTH_FUNC_CLEAR_SHIFT                    0 /* established */
+#define RE_DEPTH_FUNC_CLEAR_MASK                     0xffffffu
+#define RE_DEPTH_FUNC_CLEAR_INPLACE                  (RE_DEPTH_FUNC_CLEAR_MASK << RE_DEPTH_FUNC_CLEAR_SHIFT)
 
+/*
+ * Start depth of a triangle or depth span, a 25.12 two's complement value with
+ * the fraction in the low 12 bits (established, [spec] PDF 169-170 and 212-213).
+ * Written through its start alias, which commits the queued primitive.
+ * The depth derivatives below use the same format.
+ */
 /* depth_zs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DEPTH_ZS_OFFSET                           0x21c8u /* established */
 
+/*
+ * Depth step in x, 25.12 two's complement (established, [spec] PDF 169-170).
+ * Written through its start alias, as for the start depth.
+ */
 /* depth_dzdx: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DEPTH_DZDX_OFFSET                         0x21d0u /* established */
 
+/*
+ * Depth step in y, 25.12 two's complement (established, [spec] PDF 169-170).
+ * Written through its start alias, as for the start depth.
+ */
 /* depth_dzdy: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DEPTH_DZDY_OFFSET                         0x21d8u /* established */
 
+/*
+ * Stencil test and update word. The specification leaves its field table empty
+ * (established, [spec] PDF 182). The field positions below are inferred from the
+ * words the shipped driver stores here. The six operation names are established
+ * from [spec] Table 7-27 (PDF 214), but the specification's stencil section is
+ * marked TBD. Its orientation of the comparison conflicts with the API and the
+ * driver; see docs/pixel-arithmetic.md. Written through its start alias.
+ */
 /* stencil_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STENCIL_MODE_OFFSET                       0x21e0u /* established */
+#define RE_STENCIL_MODE_REF_SHIFT                    24 /* inferred */
+#define RE_STENCIL_MODE_REF_MASK                     0xffu
+#define RE_STENCIL_MODE_REF_INPLACE                  (RE_STENCIL_MODE_REF_MASK << RE_STENCIL_MODE_REF_SHIFT)
+#define RE_STENCIL_MODE_VALUE_MASK_SHIFT             16 /* inferred */
+#define RE_STENCIL_MODE_VALUE_MASK_MASK              0xffu
+#define RE_STENCIL_MODE_VALUE_MASK_INPLACE           (RE_STENCIL_MODE_VALUE_MASK_MASK << RE_STENCIL_MODE_VALUE_MASK_SHIFT)
+#define RE_STENCIL_MODE_FUNC_SHIFT                   12 /* inferred */
+#define RE_STENCIL_MODE_FUNC_MASK                    0xfu
+#define RE_STENCIL_MODE_FUNC_INPLACE                 (RE_STENCIL_MODE_FUNC_MASK << RE_STENCIL_MODE_FUNC_SHIFT)
+#define RE_STENCIL_MODE_FUNC_NEVER                   0 /* inferred */
+#define RE_STENCIL_MODE_FUNC_LESS                    1 /* inferred */
+#define RE_STENCIL_MODE_FUNC_EQUAL                   2 /* inferred */
+#define RE_STENCIL_MODE_FUNC_LEQUAL                  3 /* inferred */
+#define RE_STENCIL_MODE_FUNC_GREATER                 4 /* inferred */
+#define RE_STENCIL_MODE_FUNC_NOTEQUAL                5 /* inferred */
+#define RE_STENCIL_MODE_FUNC_GEQUAL                  6 /* inferred */
+#define RE_STENCIL_MODE_FUNC_ALWAYS                  7 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_SHIFT                8 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_MASK                 0xfu
+#define RE_STENCIL_MODE_FAIL_OP_INPLACE              (RE_STENCIL_MODE_FAIL_OP_MASK << RE_STENCIL_MODE_FAIL_OP_SHIFT)
+#define RE_STENCIL_MODE_FAIL_OP_KEEP                 0 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_ZERO                 1 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_REPLACE              2 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_INCR                 3 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_DECR                 4 /* inferred */
+#define RE_STENCIL_MODE_FAIL_OP_INVERT               5 /* inferred */
+#define RE_STENCIL_MODE_DEPTH_FAIL_OP_SHIFT          4 /* inferred */
+#define RE_STENCIL_MODE_DEPTH_FAIL_OP_MASK           0xfu
+#define RE_STENCIL_MODE_DEPTH_FAIL_OP_INPLACE        (RE_STENCIL_MODE_DEPTH_FAIL_OP_MASK << RE_STENCIL_MODE_DEPTH_FAIL_OP_SHIFT)
+#define RE_STENCIL_MODE_PASS_OP_SHIFT                0 /* inferred */
+#define RE_STENCIL_MODE_PASS_OP_MASK                 0xfu
+#define RE_STENCIL_MODE_PASS_OP_INPLACE              (RE_STENCIL_MODE_PASS_OP_MASK << RE_STENCIL_MODE_PASS_OP_SHIFT)
 
+/*
+ * Stencil write mask. The driver writes either 0 or 0xff here on its depth path
+ * (inferred). Only bits 7:0 are the mask; bits 31:8 have no established meaning.
+ * Written through its start alias, as for the start depth.
+ */
 /* stencil_mask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STENCIL_MASK_OFFSET                       0x21e8u /* established */
+#define RE_STENCIL_MASK_WRITE_MASK_SHIFT             0 /* inferred */
+#define RE_STENCIL_MASK_WRITE_MASK_MASK              0xffu
+#define RE_STENCIL_MASK_WRITE_MASK_INPLACE           (RE_STENCIL_MASK_WRITE_MASK_MASK << RE_STENCIL_MASK_WRITE_MASK_SHIFT)
 
 /* pixpipe_null: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PIXPIPE_NULL_OFFSET                       0x21f0u /* established */

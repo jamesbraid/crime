@@ -1288,35 +1288,271 @@ pub mod colormask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21b8;
 }
-/// (established)
+/// Depth comparison and clear-depth word. The specification omits the field encoding (established, [spec] PDF 169-170). The field layout below is inferre (established)
 pub mod depth_func {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21c0;
+    pub mod func { // bits 27:25, inferred
+        pub const SHIFT: u32 = 25;
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NEVER: u32 = 0; // inferred
+        pub const LESS: u32 = 1; // inferred
+        pub const EQUAL: u32 = 2; // inferred
+        pub const LEQUAL: u32 = 3; // inferred
+        pub const GREATER: u32 = 4; // inferred
+        pub const NOTEQUAL: u32 = 5; // inferred
+        pub const GEQUAL: u32 = 6; // inferred
+        pub const ALWAYS: u32 = 7; // inferred
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Never,
+            Less,
+            Equal,
+            Lequal,
+            Greater,
+            Notequal,
+            Gequal,
+            Always,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Never,
+                    1 => Self::Less,
+                    2 => Self::Equal,
+                    3 => Self::Lequal,
+                    4 => Self::Greater,
+                    5 => Self::Notequal,
+                    6 => Self::Gequal,
+                    7 => Self::Always,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Never => 0,
+                    Self::Less => 1,
+                    Self::Equal => 2,
+                    Self::Lequal => 3,
+                    Self::Greater => 4,
+                    Self::Notequal => 5,
+                    Self::Gequal => 6,
+                    Self::Always => 7,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod tag_clear { // bits 24:24, unknown
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod clear { // bits 23:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xffffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Start depth of a triangle or depth span, a 25.12 two's complement value with the fraction in the low 12 bits (established, [spec] PDF 169-170 and 212- (established)
 pub mod depth_zs {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x21c8;
 }
-/// (established)
+/// Depth step in x, 25.12 two's complement (established, [spec] PDF 169-170). Written through its start alias, as for the start depth. (established)
 pub mod depth_dzdx {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x21d0;
 }
-/// (established)
+/// Depth step in y, 25.12 two's complement (established, [spec] PDF 169-170). Written through its start alias, as for the start depth. (established)
 pub mod depth_dzdy {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x21d8;
 }
-/// (established)
+/// Stencil test and update word. The specification leaves its field table empty (established, [spec] PDF 182). The field positions below are inferred fro (established)
 pub mod stencil_mode {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21e0;
+    pub mod r#ref { // bits 31:24, inferred
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod value_mask { // bits 23:16, inferred
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod func { // bits 15:12, inferred
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NEVER: u32 = 0; // inferred
+        pub const LESS: u32 = 1; // inferred
+        pub const EQUAL: u32 = 2; // inferred
+        pub const LEQUAL: u32 = 3; // inferred
+        pub const GREATER: u32 = 4; // inferred
+        pub const NOTEQUAL: u32 = 5; // inferred
+        pub const GEQUAL: u32 = 6; // inferred
+        pub const ALWAYS: u32 = 7; // inferred
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Never,
+            Less,
+            Equal,
+            Lequal,
+            Greater,
+            Notequal,
+            Gequal,
+            Always,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Never,
+                    1 => Self::Less,
+                    2 => Self::Equal,
+                    3 => Self::Lequal,
+                    4 => Self::Greater,
+                    5 => Self::Notequal,
+                    6 => Self::Gequal,
+                    7 => Self::Always,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Never => 0,
+                    Self::Less => 1,
+                    Self::Equal => 2,
+                    Self::Lequal => 3,
+                    Self::Greater => 4,
+                    Self::Notequal => 5,
+                    Self::Gequal => 6,
+                    Self::Always => 7,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod fail_op { // bits 11:8, inferred
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const KEEP: u32 = 0; // inferred
+        pub const ZERO: u32 = 1; // inferred
+        pub const REPLACE: u32 = 2; // inferred
+        pub const INCR: u32 = 3; // inferred
+        pub const DECR: u32 = 4; // inferred
+        pub const INVERT: u32 = 5; // inferred
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Keep,
+            Zero,
+            Replace,
+            Incr,
+            Decr,
+            Invert,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Keep,
+                    1 => Self::Zero,
+                    2 => Self::Replace,
+                    3 => Self::Incr,
+                    4 => Self::Decr,
+                    5 => Self::Invert,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Keep => 0,
+                    Self::Zero => 1,
+                    Self::Replace => 2,
+                    Self::Incr => 3,
+                    Self::Decr => 4,
+                    Self::Invert => 5,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod depth_fail_op { // bits 7:4, inferred
+        pub const SHIFT: u32 = 4;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod pass_op { // bits 3:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Stencil write mask. The driver writes either 0 or 0xff here on its depth path (inferred). Only bits 7:0 are the mask; bits 31:8 have no established me (established)
 pub mod stencil_mask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21e8;
+    pub mod write_mask { // bits 7:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod pixpipe_null {
