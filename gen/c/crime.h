@@ -73,7 +73,7 @@
 #define CRIME_WATCHDOG_COUNT_INPLACE                 (CRIME_WATCHDOG_COUNT_MASK << CRIME_WATCHDOG_COUNT_SHIFT)
 
 /*
- * Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md).
+ * Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md). The low word would sit at offset 0x3c under big-endian addressing, and IRIX's query_cyclecntr returns 0xb400003c as the address of the counter's low word (software expectation, so inferred; docs/functions.md). Whether a four-byte read there returns the same count is unknown. The CPU-interface rule allows doubleword accesses only (established, [spec] PDF 113), and Table 5-1 (printed page 5-5, PDF 93) lists single and partial-word processor requests without saying whether they reach these registers (see docs/open-questions.md).
  */
 /* timer: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_TIMER_OFFSET                           0x38u /* established */
