@@ -177,10 +177,19 @@ what the chip does. No capture is used.
   during operation (established, [mace] 75).
 - The generation bits sit beside the read and write indexes. The page does not
   say what they count, so their meaning is inferred from the layout only
-  (inferred).
+  (inferred). It also does not say when either bit changes, so the transition
+  rule is unknown.
+- Event-status bits 12:8 are described only as an alias of the read pointer
+  (established, [mace] 72). Reading bit 12 as the read generation, so that the
+  five-bit alias equals FIFO-information bits 12:8 at a quiescent point, is an
+  inference from the layout (inferred). The page does not state it, and no
+  capture checks it.
 - Linux's receive read-index alias covers bits 11 to 8, four bits, which matches
   a sixteen-entry FIFO (software expectation, inferred; `METH_INT_RX_RPTR_MASK`
-  in `meth.h`).
+  in `meth.h`). Its inactive mask, `0x1F00`, includes bit 12, and a comment asks
+  whether the FIFO has 16 or 32 entries (software expectation, inferred; public
+  Linux `meth.h` at `db2ddb8`). The OpenBSD and NetBSD definitions were not
+  checked for this note, so the software view of bit 12 is unresolved.
 
 ## Receive packets, buckets and status
 

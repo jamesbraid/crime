@@ -64,7 +64,7 @@ tx_abort = { bits = [4, 4], grade = "established", doc = "Set when the transmitt
 rx_threshold = { bits = [5, 5], grade = "established", doc = "Set when the selected receive threshold condition is valid (printed page 72)." }
 rx_cluster_fifo_underflow = { bits = [6, 6], grade = "established", doc = "Set when the receive cluster FIFO was empty and a packet arrived that could not be queued (printed page 72)." }
 rx_dma_fifo_overflow = { bits = [7, 7], grade = "established", doc = "Set when the internal receive DMA FIFO overflowed. DMA stops, and the page calls this fatal (printed page 72)." }
-rx_cluster_read_pointer = { bits = [12, 8], grade = "established", doc = "Read-only alias of the receive cluster FIFO read index (printed page 72)." }
+rx_cluster_read_pointer = { bits = [12, 8], grade = "established", doc = "Read-only alias of the receive cluster FIFO read index (printed page 72). The page does not say that bit 12 is the read generation; reading it that way is an inference (see the MACE Ethernet page)." }
 tx_read_pointer = { bits = [24, 16], grade = "established", doc = "Read-only alias of the transmit ring read pointer (printed page 72)." }
 rx_sequence = { bits = [29, 25], grade = "established", doc = "Read-only. Starting sequence number of the cluster at the head of the receive FIFO (printed page 72)." }
 multicast_hash_output = { bits = [30, 30], grade = "established", doc = "Read-only test and debug bit. It latches the hash-select output while receive DMA is disabled. The page names the select as DMA control bits 14 to 9, which overlap the start offset and interrupt fields. The select is unknown (printed page 72)." }
