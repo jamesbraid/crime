@@ -122,15 +122,15 @@ Array of 2 registers, stride 8.
 
 ### Register `rx_fifo_pointers`
 
-Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). Reset clears the indexes and count only (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).
+Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). The text says reset clears the indexes and count (printed page 75). Table 45 also prints a reset of zero for both generation bits, which the text does not mention (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).
 
 Array of 3 registers, stride 8.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 20 | `write_generation` | inferred |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Generation bit listed beside the write index. The page does not say what it counts. |
+| 20 | `write_generation` | inferred |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Generation bit listed beside the write index. Its reset is printed as zero (printed page 75). The page does not say what it counts. |
 | 19:16 | `write_index` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Write index (printed page 75). |
-| 12 | `read_generation` | inferred |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Generation bit listed beside the read index. The page does not say what it counts. |
+| 12 | `read_generation` | inferred |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Generation bit listed beside the read index. Its reset is printed as zero (printed page 75). The page does not say what it counts. |
 | 11:8 | `read_index` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Read index (printed page 75). |
 | 4:0 | `count` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Number of cluster addresses queued (printed page 75). |
 
@@ -208,7 +208,7 @@ Physical base address of the transmit ring in main memory. Bits 12 to 0 are not 
 
 ### Register `rx_fifo_data`
 
-Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75).
+Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75). Table 46 prints a reset of zero for the address bits, which conflicts with that text. Which one applies is unknown (printed page 75).
 
 Array of 32 registers, stride 8.
 

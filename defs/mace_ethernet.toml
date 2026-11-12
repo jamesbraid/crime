@@ -148,14 +148,14 @@ width = 64
 reset = 0x0
 grade = "established"
 doc = """
-Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). Reset clears the indexes and count only (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70)."""
+Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). The text says reset clears the indexes and count (printed page 75). Table 45 also prints a reset of zero for both generation bits, which the text does not mention (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70)."""
 
 [registers.rx_fifo_pointers.fields]
 count = { bits = [4, 0], grade = "established", doc = "Number of cluster addresses queued (printed page 75)." }
 read_index = { bits = [11, 8], grade = "established", doc = "Read index (printed page 75)." }
-read_generation = { bits = [12, 12], grade = "inferred", doc = "Generation bit listed beside the read index. The page does not say what it counts." }
+read_generation = { bits = [12, 12], grade = "inferred", doc = "Generation bit listed beside the read index. Its reset is printed as zero (printed page 75). The page does not say what it counts." }
 write_index = { bits = [19, 16], grade = "established", doc = "Write index (printed page 75)." }
-write_generation = { bits = [20, 20], grade = "inferred", doc = "Generation bit listed beside the write index. The page does not say what it counts." }
+write_generation = { bits = [20, 20], grade = "inferred", doc = "Generation bit listed beside the write index. Its reset is printed as zero (printed page 75). The page does not say what it counts." }
 
 [registers.rx_fifo_data]
 offset = 0x100
@@ -164,7 +164,7 @@ access = "rw"
 width = 64
 grade = "established"
 doc = """
-Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75)."""
+Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75). Table 46 prints a reset of zero for the address bits, which conflicts with that text. Which one applies is unknown (printed page 75)."""
 
 [registers.rx_fifo_data.fields]
 cluster_base = { bits = [31, 12], grade = "established", doc = "Cluster base address, 4 KiB aligned (printed pages 75 and 80)." }

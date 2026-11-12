@@ -177,7 +177,7 @@
 #define MACE_ETHERNET_TX_RING_POINTERS_WRITE_POINTER_INPLACE (MACE_ETHERNET_TX_RING_POINTERS_WRITE_POINTER_MASK << MACE_ETHERNET_TX_RING_POINTERS_WRITE_POINTER_SHIFT)
 
 /*
- * Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). Reset clears the indexes and count only (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).
+ * Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). The text says reset clears the indexes and count (printed page 75). Table 45 also prints a reset of zero for both generation bits, which the text does not mention (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).
  */
 /* rx_fifo_pointers: r64, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) */
 #define MACE_ETHERNET_RX_FIFO_POINTERS_OFFSET        0x40u /* established */
@@ -296,7 +296,7 @@
 #define MACE_ETHERNET_TX_RING_BASE_BASE_INPLACE      (MACE_ETHERNET_TX_RING_BASE_BASE_MASK << MACE_ETHERNET_TX_RING_BASE_BASE_SHIFT)
 
 /*
- * Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75).
+ * Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75). Table 46 prints a reset of zero for the address bits, which conflicts with that text. Which one applies is unknown (printed page 75).
  */
 /* rx_fifo_data: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) */
 #define MACE_ETHERNET_RX_FIFO_DATA_OFFSET            0x100u /* established */

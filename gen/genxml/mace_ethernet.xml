@@ -74,7 +74,7 @@
     <field name="write_pointer" start="0" size="9" type="uint" grade="established"/>
   </struct>
   <struct name="RX_FIFO_POINTERS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)" register="yes" offset="0x40" access="r" count="3" stride="8" reset="0x0">
-    <doc>Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). Reset clears the indexes and count only (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).</doc>
+    <doc>Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). The text says reset clears the indexes and count (printed page 75). Table 45 also prints a reset of zero for both generation bits, which the text does not mention (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70).</doc>
     <field name="write_generation" start="20" size="1" type="uint" grade="inferred"/>
     <field name="write_index" start="16" size="4" type="uint" grade="established"/>
     <field name="read_generation" start="12" size="1" type="uint" grade="inferred"/>
@@ -122,7 +122,7 @@
     <field name="base" start="13" size="19" type="uint" grade="established"/>
   </struct>
   <struct name="RX_FIFO_DATA" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)" register="yes" offset="0x100" access="rw" count="32" stride="8" reset="unknown">
-    <doc>Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75).</doc>
+    <doc>Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75). Table 46 prints a reset of zero for the address bits, which conflicts with that text. Which one applies is unknown (printed page 75).</doc>
     <field name="cluster_base" start="12" size="20" type="uint" grade="established"/>
     <field name="zero_low" start="0" size="12" type="uint" grade="established"/>
   </struct>

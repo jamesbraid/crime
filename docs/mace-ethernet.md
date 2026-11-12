@@ -135,8 +135,11 @@ No driver, capture or other source is used for the facts below.
 - Software pushes addresses by PIO writes. Hardware pops one when DMA into that
   cluster completes, and then the event interrupt is raised (established, [mace]
   75).
-- Reset clears the indexes and the count only. The address contents are not
-  initialised (established, [mace] 75).
+- The text says reset clears the indexes and the count only, and that the
+  address contents are not initialised (established, [mace] 75). Table 45 also
+  prints a reset of zero for both generation bits, which the text does not
+  mention (established, [mace] 75). Whether the generation bits are cleared
+  is therefore stated only by the table column.
 - Hardware does not stop software from overrunning or underflowing the FIFO
   through PIO. Hardware never underflows it itself (established, [mace] 75).
 - Software should not read the FIFO while receive DMA is enabled (established,
@@ -213,6 +216,12 @@ No driver, capture or other source is used for the facts below.
   pointers and the FIFO indexes and count read zero (established, [mace] 72
   through 75).
 - The cluster FIFO address contents are not initialised (established, [mace] 75).
+  Table 46 nonetheless prints a reset of zero for address bits 31:12
+  (established, [mace] 75). Which of the two governs is unknown.
+- The reset column of table 38 is headed "Chip Reset". The reset columns of
+  tables 39 to 46 are headed "MAC Reset" (established, [mace] 71 to 75). The
+  text does not say which reset signal the second heading names, or whether
+  core reset bit 0 clears the fields under it (unknown).
 - Reset values are not given for the station addresses, the multicast mask, the
   ring base, the secondary address or the read-start register (unknown, [mace]
   70 and 76).
