@@ -398,7 +398,13 @@ through a frame-buffer table or linear access through a linear table;
 buf_depth is the word size in memory and pix_depth the pixel size, which
 must not exceed it. ycrcb is valid in the source word only. Shipped
 software writes the values in the vectors below; other bits are reserved
-(one shipped swap path sets bit 30 as well).
+(one shipped swap path sets bit 30 as well). The specification's register
+tables (established, [spec] PDF 171-172) mark bits 31:13 reserved and give
+them no function. They also mark buf_type 3 and 6 and pix_type 4 to 14
+reserved, and list only depth values 0 to 2 for buf_depth and pix_depth, so
+value 3 of either depth field is not defined. Whether the hardware ignores
+bits 31:13 on write or returns them on read is unknown; no shipped software
+or published source depends on it.
 When doublePix is set, doublePixSel says which half of the word is selected (established, [spec] PDF 171-172). The specification does not say which bit value picks the front half and which the back, so that mapping is unknown.</doc>
     <field name="buf_type" start="10" size="3" type="bufmode_buf_type" grade="established"/>
     <field name="buf_depth" start="8" size="2" type="bufmode_buf_depth" grade="established"/>
