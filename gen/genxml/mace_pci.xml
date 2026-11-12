@@ -20,6 +20,7 @@
     <doc>Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-error response (bit 10) and the error interrupts (bits 24 to 31). Every bit resets to zero (established, printed pages 164 and 165, Table 85). Bit 9 is reserved on revision 0 and an arbiter control on revision 1. Input n of bits 0 to 7 reaches CRIME bit 8 plus n, and PCI error conditions reach CRIME bit 7 (established, printed page 179).</doc>
     <field name="error_enable" start="24" size="8" type="uint" grade="established"/>
     <field name="read_buffer_inval" start="16" size="8" type="uint" grade="established"/>
+    <field name="park_last_in_use" start="15" size="1" type="uint" grade="established"/>
     <field name="read_multiple" start="11" size="1" type="uint" grade="established"/>
     <field name="parity_response" start="10" size="1" type="uint" grade="established"/>
     <field name="serr_enable" start="8" size="1" type="uint" grade="established"/>

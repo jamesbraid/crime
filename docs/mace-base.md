@@ -317,3 +317,6 @@ resetting the PCI bus.
   a CPU store invalidates read buffers (see the bursts and read-ahead section).
 - Whether PCI Control bit 16 invalidates only prefetch buffers or all read
   buffers, as the printed table's split suggests (see `defs/mace_pci.toml`).
+- Bus grant timing under PCI Control bit 15 (park on host or on the last master
+  in use). The published text names the two parking targets and nothing about
+  when a grant moves between them (unknown).

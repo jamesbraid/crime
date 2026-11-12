@@ -116,6 +116,16 @@ pub mod pci_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
+    pub mod park_last_in_use { // bits 15:15, established
+        pub const SHIFT: u32 = 15;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod read_multiple { // bits 11:11, established
         pub const SHIFT: u32 = 11;
         pub const MASK: u32 = 0x1;

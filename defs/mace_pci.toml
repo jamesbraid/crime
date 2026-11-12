@@ -46,6 +46,7 @@ irq_enable = { bits = [7, 0], grade = "established" }
 serr_enable = { bits = [8, 8], grade = "established", doc = "SERR_N signalling enable (printed page 164)." }
 parity_response = { bits = [10, 10], grade = "established", doc = "Parity-error response enable (printed page 164)." }
 read_multiple = { bits = [11, 11], grade = "established", doc = "Memory Read Multiple read-ahead. Set, a Memory Read Multiple may fetch the next 128-byte region when the master reads across a 128-byte boundary. Clear, Memory Read Multiple behaves like Memory Read and Memory Read Line (printed pages 158 and 164)." }
+park_last_in_use = { bits = [15, 15], grade = "established", doc = "PCI arbiter parking. Zero parks the bus grant on the host; one parks it on the last master in use (printed page 164, the PCI Control table). Reset zero. The published text gives no grant timing for either value." }
 read_buffer_inval = { bits = [23, 16], grade = "established", doc = "Bit 16 plus n selects read-buffer invalidation when PCI input n asserts. The bit-16 row names prefetch buffers for input 0, and the rows for bits 17 to 23 name all read buffers. The printed text keeps that split, and it is kept here pending review (printed pages 164 and 165)." }
 error_enable = { bits = [31, 24], grade = "established" }
 
