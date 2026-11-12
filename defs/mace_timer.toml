@@ -1,0 +1,55 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mace_timer"
+prefix = "MACE_TIMER"
+title = "O2 MACE free-running counter and three compare registers"
+doc = "MACE timer block: the 32-bit counter and the three 32-bit compare registers that set level interrupts. Offsets are from the block base (constant BLOCK_BASE)."
+from = "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+public_from = ["published MACE 2.0 I/O ASIC specification"]
+
+[registers.counter]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+doc = """
+One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see docs/open-questions.md)."""
+
+[registers.counter.fields]
+count = { bits = [31, 0], grade = "established" }
+
+[registers.cmp0]
+offset = 0x8
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+32-bit compare. Equality sets level interrupt latch 0, which drives peripheral status bit 13. Writing the register clears the latch, and the latch resets low. The reset value of the compare is not stated (established, printed page 147)."""
+
+[registers.cmp0.fields]
+value = { bits = [31, 0], grade = "established" }
+
+[registers.cmp1]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+32-bit compare. Equality sets level interrupt latch 1, which drives peripheral status bit 14. Writing clears the latch. Reset value not stated (established, printed page 147)."""
+
+[registers.cmp1.fields]
+value = { bits = [31, 0], grade = "established" }
+
+[registers.cmp2]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+32-bit compare. Equality sets level interrupt latch 2, which drives peripheral status bit 15. Writing clears the latch. Reset value not stated (established, printed page 147)."""
+
+[registers.cmp2.fields]
+value = { bits = [31, 0], grade = "established" }
+
+[constants]
+BLOCK_BASE = { value = 0x1f340000, grade = "established", doc = "physical base of the timer block (printed page 147)" }

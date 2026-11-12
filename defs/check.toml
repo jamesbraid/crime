@@ -28,6 +28,15 @@ group = "mace_video_in"
 
 [units.gbe]
 group = "gbe"
+
+[units.mace_periph]
+group = "mace_periph"
+
+[units.mace_timer]
+group = "mace_timer"
+
+[units.mace_pci]
+group = "mace_pci"
 prose_offsets = false
 
 [[claims]]

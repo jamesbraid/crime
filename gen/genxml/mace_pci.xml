@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/mace_pci.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_pci" prefix="MACE_PCI" title="O2 MACE PCI host bridge control registers" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers">
+  <doc>MACE PCI control block: error capture, interrupt and error enables, read-buffer revision, and the configuration address and data ports. Offsets are from the block base (constant BLOCK_BASE). Unlisted offsets in the block are not implemented.</doc>
+  <struct name="PCI_ERROR_ADDR" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="r" reset="0x0">
+    <doc>Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163).</doc>
+  </struct>
+  <struct name="PCI_ERROR_FLAGS" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x4" access="rw" reset="unknown">
+    <doc>Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one preserves them (established, printed page 162). A bad transaction size may set bit 27; the specification calls that result unexpected, so it is not named here.</doc>
+    <field name="master_abort" start="31" size="1" type="uint" grade="established"/>
+    <field name="addr_valid" start="19" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="PCI_CONTROL" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x8" access="rw" reset="unknown">
+    <doc>Interrupt enables clear at reset, bits 0 to 7 for the PCI inputs and bits 24 to 31 for error enables (established, printed pages 164 and 162). Reset value of the other bits is not stated.</doc>
+    <field name="error_enable" start="24" size="8" type="uint" grade="established"/>
+    <field name="irq_enable" start="0" size="8" type="uint" grade="established"/>
+  </struct>
+  <struct name="PCI_REV" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0xc" access="rw" reset="unknown">
+    <doc>Read-buffer flush and revision. Reads return 1 for MACE 2.0. Writes request buffer invalidation (established, printed pages 161 to 163). The reset value of the read is not stated.</doc>
+  </struct>
+  <struct name="PCI_CFG_ADDR" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0xcf8" access="rw" reset="unknown">
+    <doc>Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printed page 161).</doc>
+  </struct>
+  <struct name="PCI_CFG_DATA" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0xcfc" access="rw" reset="unknown">
+    <doc>Configuration data port. Accepts 8-, 16-, 24- or 32-bit data access. A missing device gives a master abort, and the specification gives no value to return for it (established, printed pages 161 to 163).</doc>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f080000" grade="established"/>
+</genxml>

@@ -1,0 +1,108 @@
+{
+ "schema": "defs-flat/1",
+ "source": "defs/mace_timer.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_timer",
+   "kind": "register",
+   "name": "counter",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "counter.count",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "register",
+   "name": "cmp0",
+   "offset": 8,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "cmp0.value",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "register",
+   "name": "cmp1",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "cmp1.value",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "register",
+   "name": "cmp2",
+   "offset": 24,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "field",
+   "name": "cmp2.value",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 523501568,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 147 and 148) and the public Linux mace_timers layout"
+  }
+ ]
+}

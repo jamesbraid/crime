@@ -1,0 +1,130 @@
+{
+ "schema": "defs-flat/1",
+ "source": "defs/mace_periph.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_periph",
+   "kind": "register",
+   "name": "ring_base",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "ring_base.dma_ring_base",
+   "hi": 31,
+   "lo": 15,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "ring_base.ext_reset",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "register",
+   "name": "periph_status",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_b",
+   "hi": 26,
+   "lo": 26,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a",
+   "hi": 20,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.timer_cmp2",
+   "hi": 15,
+   "lo": 15,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.timer_cmp1",
+   "hi": 14,
+   "lo": 14,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.timer_cmp0",
+   "hi": 13,
+   "lo": 13,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.rtc",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "register",
+   "name": "periph_mask",
+   "offset": 24,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 523304960,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  }
+ ]
+}

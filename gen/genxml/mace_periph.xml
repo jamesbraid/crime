@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/mace_periph.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_periph" prefix="MACE_PERIPH" title="O2 MACE peripheral ring base and interrupt status and mask" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers">
+  <doc>MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE).</doc>
+  <struct name="RING_BASE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="rw" reset="unknown">
+    <doc>Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.</doc>
+    <field name="dma_ring_base" start="15" size="17" type="uint" grade="established"/>
+    <field name="ext_reset" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="PERIPH_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x10" access="rw" reset="unknown">
+    <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125).</doc>
+    <field name="serial_b" start="26" size="1" type="uint" grade="established"/>
+    <field name="serial_a" start="20" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp2" start="15" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp1" start="14" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp0" start="13" size="1" type="uint" grade="established"/>
+    <field name="rtc" start="8" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="PERIPH_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x18" access="rw" reset="unknown">
+    <doc>Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.</doc>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f310000" grade="established"/>
+</genxml>

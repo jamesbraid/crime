@@ -1,0 +1,49 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mace_periph"
+prefix = "MACE_PERIPH"
+title = "O2 MACE peripheral ring base and interrupt status and mask"
+doc = "MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE)."
+from = "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+public_from = ["published MACE 2.0 I/O ASIC specification"]
+
+# Access direction is taken from the register table. The prose and table
+# disagree for the status register; see docs/open-questions.md.
+
+[registers.ring_base]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it. Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described."""
+
+[registers.ring_base.fields]
+ext_reset = { bits = [0, 0], grade = "established" }
+dma_ring_base = { bits = [31, 15], grade = "established" }
+
+[registers.periph_status]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125)."""
+
+[registers.periph_status.fields]
+rtc = { bits = [8, 8], grade = "established" }
+timer_cmp0 = { bits = [13, 13], grade = "established" }
+timer_cmp1 = { bits = [14, 14], grade = "established" }
+timer_cmp2 = { bits = [15, 15], grade = "established" }
+serial_a = { bits = [20, 20], grade = "established" }
+serial_b = { bits = [26, 26], grade = "established" }
+
+[registers.periph_mask]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated."""
+
+[constants]
+BLOCK_BASE = { value = 0x1f310000, grade = "established", doc = "physical base of the peripheral ring and status block (printed page 123)" }
