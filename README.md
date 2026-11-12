@@ -68,6 +68,7 @@ Each line takes its description from the page's own title or opening sentence.
 - [docs/mace-video.md](docs/mace-video.md): MACE video: capture, playback and framelock
 - [docs/mace-audio.md](docs/mace-audio.md): MACE audio interface and AD1843 codec: DMA rings, sample formats, codec timing and routing
 - [docs/mace-base.md](docs/mace-base.md): MACE base: PCI bridge devices and interrupt map, PCI byte positions and windows, PCI reset, serial and RTC frontends
+- [docs/mace-ethernet.md](docs/mace-ethernet.md): MACE Fast-Ethernet diagnostic interrupt request and last transmit status vector
 - [docs/vice.md](docs/vice.md): VICE: the imaging and compression engine
 
 ### Kernel, X server and OpenGL driver

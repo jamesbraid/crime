@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/mace_ethernet.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_ethernet" prefix="MACE_ETHERNET" title="O2 MACE Fast-Ethernet diagnostic interrupt request and transmit status vector" from="published MACE 2.0 I/O ASIC specification (printed pages 70, 78, 79, 173, 175, 179 and 181)">
+  <doc>The diagnostic register at offset 0x58 of the MACE Fast-Ethernet block: a write sends an interrupt update packet, and a read returns the status vector of the last transmit. Offsets are from the block base (constant BLOCK_BASE). The rest of the Fast-Ethernet block has no entry yet.</doc>
+  <struct name="INTERRUPT_REQUEST" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 70, 78, 79, 173, 175, 179 and 181)" register="yes" offset="0x58" access="w" reset="unknown">
+    <doc>Write-only diagnostic port. Each write generates one interrupt update packet for the Ethernet tag, carrying bits 31:0 of the write (established, printed page 70). Reads at this offset return the last transmit status vector instead, see TX_STATUS_VECTOR (established, printed page 70). No reset value is given (printed page 70). All registers in the block are accessed as 64-bit programmed I/O (established, printed page 70). Whether the upper 32 bits of a 64-bit write are used, and whether narrower accesses work, is not stated.</doc>
+    <field name="write_enable" start="16" size="16" type="uint" grade="inferred"/>
+    <field name="value" start="0" size="16" type="uint" grade="inferred"/>
+  </struct>
+  <struct name="TX_STATUS_VECTOR" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 70, 78, 79, 173, 175, 179 and 181)">
+    <doc>Transmit status vector. The MAC unit supplies it after each transmit, and it is written over the first doubleword of the transmit message in the ring (established, printed pages 78 and 79). A read of Interrupt Request at offset 0x58 returns it (established, printed page 70). The published layout is below. No reset value is given, and which failures update the vector is not stated (printed pages 70 and 79).</doc>
+    <field name="one_filled" start="63" size="1" type="uint" grade="established"/>
+    <field name="zero_filled" start="29" size="34" type="uint" grade="established"/>
+    <field name="late_collision_drop" start="28" size="1" type="uint" grade="established"/>
+    <field name="excessive_deferral" start="27" size="1" type="uint" grade="established"/>
+    <field name="excess_collisions" start="26" size="1" type="uint" grade="established"/>
+    <field name="underrun" start="25" size="1" type="uint" grade="established"/>
+    <field name="excessive_length" start="24" size="1" type="uint" grade="established"/>
+    <field name="completed" start="23" size="1" type="uint" grade="established"/>
+    <field name="deferred" start="22" size="1" type="uint" grade="established"/>
+    <field name="crc_error" start="21" size="1" type="uint" grade="established"/>
+    <field name="late_collision" start="20" size="1" type="uint" grade="established"/>
+    <field name="collision_retries" start="16" size="4" type="uint" grade="established"/>
+    <field name="length" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f280000" grade="established"/>
+  <constant name="INTERRUPT_SLOT" value="0x3" grade="established"/>
+  <constant name="INTERRUPT_UPDATE_TAG" value="0xc" grade="established"/>
+</genxml>

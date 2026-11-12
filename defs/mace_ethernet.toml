@@ -1,0 +1,45 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mace_ethernet"
+prefix = "MACE_ETHERNET"
+title = "O2 MACE Fast-Ethernet diagnostic interrupt request and transmit status vector"
+doc = "The diagnostic register at offset 0x58 of the MACE Fast-Ethernet block: a write sends an interrupt update packet, and a read returns the status vector of the last transmit. Offsets are from the block base (constant BLOCK_BASE). The rest of the Fast-Ethernet block has no entry yet."
+from = "published MACE 2.0 I/O ASIC specification (printed pages 70, 78, 79, 173, 175, 179 and 181)"
+public_from = ["published MACE 2.0 I/O ASIC specification"]
+
+[registers.interrupt_request]
+offset = 0x58
+access = "w"
+width = 64
+grade = "established"
+doc = """
+Write-only diagnostic port. Each write generates one interrupt update packet for the Ethernet tag, carrying bits 31:0 of the write (established, printed page 70). Reads at this offset return the last transmit status vector instead, see TX_STATUS_VECTOR (established, printed page 70). No reset value is given (printed page 70). All registers in the block are accessed as 64-bit programmed I/O (established, printed page 70). Whether the upper 32 bits of a 64-bit write are used, and whether narrower accesses work, is not stated."""
+
+[registers.interrupt_request.fields]
+write_enable = { bits = [31, 16], grade = "inferred", doc = "Enable for each of the sixteen interrupt slots. Bit 16 + j enables slot j. The packet layout names these bits 'Interrupt Bit Write Enables' (established, printed page 175); the register's own table does not say it feeds the packet, so the mapping is inferred." }
+value = { bits = [15, 0], grade = "inferred", doc = "New value for each enabled slot: bit j is written to slot j. The packet layout names these bits 'Interrupt Bits' (established, printed page 175); the mapping from the register is inferred as above." }
+
+[words.TX_STATUS_VECTOR]
+width = 64
+grade = "established"
+doc = """
+Transmit status vector. The MAC unit supplies it after each transmit, and it is written over the first doubleword of the transmit message in the ring (established, printed pages 78 and 79). A read of Interrupt Request at offset 0x58 returns it (established, printed page 70). The published layout is below. No reset value is given, and which failures update the vector is not stated (printed pages 70 and 79)."""
+
+[words.TX_STATUS_VECTOR.fields]
+length = { bits = [15, 0], grade = "established", doc = "True transmit length in bytes (established, printed page 79)." }
+collision_retries = { bits = [19, 16], grade = "established", doc = "Collision retry count. The table prints this field as 16:19 (established, printed page 79)." }
+late_collision = { bits = [20, 20], grade = "established", doc = "Late collision seen on at least one attempt (established, printed page 79)." }
+crc_error = { bits = [21, 21], grade = "established", doc = "CRC error seen on at least one attempt (established, printed page 79)." }
+deferred = { bits = [22, 22], grade = "established", doc = "Packet deferred on at least one attempt (established, printed page 79)." }
+completed = { bits = [23, 23], grade = "established", doc = "Transmit completed successfully (established, printed page 79)." }
+excessive_length = { bits = [24, 24], grade = "established", doc = "Transmit aborted for excessive length (established, printed page 79)." }
+underrun = { bits = [25, 25], grade = "established", doc = "Transmit aborted for underrun (established, printed page 79)." }
+excess_collisions = { bits = [26, 26], grade = "established", doc = "Transmit dropped for excess collisions (established, printed page 79)." }
+excessive_deferral = { bits = [27, 27], grade = "established", doc = "Transmit canceled for excessive deferral (established, printed page 79)." }
+late_collision_drop = { bits = [28, 28], grade = "established", doc = "Transmit dropped for late collision (established, printed page 79)." }
+zero_filled = { bits = [62, 29], grade = "established", doc = "Always zero (established, printed page 79)." }
+one_filled = { bits = [63, 63], grade = "established", doc = "Always one (established, printed page 79)." }
+
+[constants]
+BLOCK_BASE = { value = 0x1f280000, grade = "established", doc = "physical base of the Fast-Ethernet block, PIO select 101 and CRIME PIO tag 0x08 (printed page 181)" }
+INTERRUPT_UPDATE_TAG = { value = 0x0c, grade = "established", doc = "source tag of the Ethernet interrupt update packet (printed page 173)" }
+INTERRUPT_SLOT = { value = 3, grade = "established", doc = "MACE interrupt slot of the Fast-Ethernet interface (printed page 179, Table 90)" }

@@ -42,6 +42,9 @@ prose_offsets = false
 [units.mace_audio]
 group = "mace_audio"
 
+[units.mace_ethernet]
+group = "mace_ethernet"
+
 [units.ad1843]
 group = "ad1843"
 
