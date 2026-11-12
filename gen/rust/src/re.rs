@@ -740,7 +740,7 @@ pub mod bg_color {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20d8;
 }
-/// (established)
+/// The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers i (established)
 pub mod shade_start {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20e0;

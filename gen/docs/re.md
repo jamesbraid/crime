@@ -413,6 +413,8 @@ Flat-shaded colour for triangles and lines with DrawMode shade bit 16 clear, and
 
 ### Register `shade_start`
 
+The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; docs/opengl.md notes that the upper bits of the starts are ignored (inferred). Colour arithmetic and its clamp are in docs/pixel-arithmetic.md.
+
 Array of 4 registers, stride 4.
 
 ### Register `shade_drdx`

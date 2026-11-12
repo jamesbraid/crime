@@ -473,6 +473,7 @@ max_index, so that behaviour is unknown.</doc>
   <struct name="BG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20d8" access="rw" space="re" reset="unknown">
   </struct>
   <struct name="SHADE_START" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20e0" access="w" count="4" stride="4" space="re" reset="unknown">
+    <doc>The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; docs/opengl.md notes that the upper bits of the starts are ignored (inferred). Colour arithmetic and its clamp are in docs/pixel-arithmetic.md.</doc>
   </struct>
   <struct name="SHADE_DRDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20f0" access="w" space="re" reset="unknown">
   </struct>
