@@ -441,9 +441,21 @@ bits. The layout is established; that meaning is inferred.
 ### Register `aa_line`
 
 Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
-The register table gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). docs/context.md reads the slope from the same table as 2.14 in bits 31:16. That conflicts with this layout and is not resolved here.
+The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:16 | `slope` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:0 | `ideal` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `aa_cov`
+
+The register map gives this word as the start and end endpoint coverage values, each a 7-bit value (established, [spec] register map, PDF 169). The published text does not place them within the word. The split below is a software reading (inferred, docs/opengl.md): the driver writes values from 1 to 64, which fit in 7 bits, with the start value in bits 15:8 and the end value in bits 7:0.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 15:8 | `start` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 7:0 | `end` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `alphatest`
 
@@ -726,6 +738,8 @@ A vector is a value recorded from a source. An example only shows the layout.
 | `winoffset_dst` | 0x10002 | vector | x=1, y=2 |
 | `primitive` | 0x3020000 | vector | op=3, line_skip_last=0, edge=2, line_width=0 |
 | `stipple_mode` | 0x2050000 | vector | index=2, max_index=5, repeat=0, max_repeat=0 |
+| `aa_line` | 0x10002 | vector | slope=1, ideal=2 |
+| `aa_cov` | 0x4040 | vector | start=64, end=64 |
 | `BUFMODE` | 0x504 | vector | buf_type=1, buf_depth=1, pix_type=0, pix_depth=1, double_pix=0 |
 | `IBADDR_HI` | 0x1a0a | example | index=10, group=2, lane=3, start_flag=0 |
 | `LINENT` | 0x80000123 | vector | page=291, valid=1 |

@@ -901,11 +901,51 @@ pub mod fog_dfdy {
 pub mod aa_line {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2190;
+    pub mod slope { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod ideal { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// The register map gives this word as the start and end endpoint coverage values, each a 7-bit value (established, [spec] register map, PDF 169). The pu (established)
 pub mod aa_cov {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2194;
+    pub mod start { // bits 15:8, inferred
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod end { // bits 7:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// Alpha test function and reference. Bits 31:12 are reserved in the specification. The test runs on fragment alpha after antialias coverage and only for (established)
 pub mod alphatest {
@@ -2209,6 +2249,18 @@ mod tests {
         assert_eq!(stipple_mode::max_index::get(0x2050000), 5);
         assert_eq!(stipple_mode::repeat::get(0x2050000), 0);
         assert_eq!(stipple_mode::max_repeat::get(0x2050000), 0);
+    }
+
+    #[test]
+    fn aa_line_10002() {
+        assert_eq!(aa_line::slope::get(0x10002), 1);
+        assert_eq!(aa_line::ideal::get(0x10002), 2);
+    }
+
+    #[test]
+    fn aa_cov_4040() {
+        assert_eq!(aa_cov::start::get(0x4040), 64);
+        assert_eq!(aa_cov::end::get(0x4040), 64);
     }
 
     #[test]

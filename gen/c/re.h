@@ -506,13 +506,28 @@
 
 /*
  * Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
- * The register table gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). docs/context.md reads the slope from the same table as 2.14 in bits 31:16. That conflicts with this layout and is not resolved here.
+ * The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md).
  */
 /* aa_line: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_AA_LINE_OFFSET                            0x2190u /* established */
+#define RE_AA_LINE_SLOPE_SHIFT                       16 /* established */
+#define RE_AA_LINE_SLOPE_MASK                        0xffffu
+#define RE_AA_LINE_SLOPE_INPLACE                     (RE_AA_LINE_SLOPE_MASK << RE_AA_LINE_SLOPE_SHIFT)
+#define RE_AA_LINE_IDEAL_SHIFT                       0 /* established */
+#define RE_AA_LINE_IDEAL_MASK                        0xffffu
+#define RE_AA_LINE_IDEAL_INPLACE                     (RE_AA_LINE_IDEAL_MASK << RE_AA_LINE_IDEAL_SHIFT)
 
+/*
+ * The register map gives this word as the start and end endpoint coverage values, each a 7-bit value (established, [spec] register map, PDF 169). The published text does not place them within the word. The split below is a software reading (inferred, docs/opengl.md): the driver writes values from 1 to 64, which fit in 7 bits, with the start value in bits 15:8 and the end value in bits 7:0.
+ */
 /* aa_cov: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_AA_COV_OFFSET                             0x2194u /* established */
+#define RE_AA_COV_START_SHIFT                        8 /* inferred */
+#define RE_AA_COV_START_MASK                         0xffu
+#define RE_AA_COV_START_INPLACE                      (RE_AA_COV_START_MASK << RE_AA_COV_START_SHIFT)
+#define RE_AA_COV_END_SHIFT                          0 /* inferred */
+#define RE_AA_COV_END_MASK                           0xffu
+#define RE_AA_COV_END_INPLACE                        (RE_AA_COV_END_MASK << RE_AA_COV_END_SHIFT)
 
 /*
  * Alpha test function and reference. Bits 31:12 are reserved in the specification.

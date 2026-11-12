@@ -1368,6 +1368,24 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "aa_line.slope",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "aa_line.ideal",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "aa_cov",
    "offset": 8596,
@@ -1378,6 +1396,24 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "aa_cov.start",
+   "hi": 15,
+   "lo": 8,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "aa_cov.end",
+   "hi": 7,
+   "lo": 0,
+   "grade": "inferred",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
   {
