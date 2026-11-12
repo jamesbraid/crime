@@ -26,6 +26,10 @@
     <field name="timer_cmp2" start="15" size="1" type="uint" grade="established"/>
     <field name="timer_cmp1" start="14" size="1" type="uint" grade="established"/>
     <field name="timer_cmp0" start="13" size="1" type="uint" grade="established"/>
+    <field name="ps2_mouse_poll" start="12" size="1" type="uint" grade="established"/>
+    <field name="ps2_mouse_irq" start="11" size="1" type="uint" grade="established"/>
+    <field name="ps2_kbd_poll" start="10" size="1" type="uint" grade="established"/>
+    <field name="ps2_kbd_irq" start="9" size="1" type="uint" grade="established"/>
     <field name="rtc" start="8" size="1" type="uint" grade="established"/>
     <field name="audio_playback2_error" start="7" size="1" type="uint" grade="established"/>
     <field name="audio_playback2_threshold" start="6" size="1" type="uint" grade="established"/>

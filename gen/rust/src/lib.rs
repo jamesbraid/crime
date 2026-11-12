@@ -7,6 +7,7 @@ pub mod mace_ethernet;
 pub mod mace_i2c;
 pub mod mace_pci;
 pub mod mace_periph;
+pub mod mace_ps2;
 pub mod mace_timer;
 pub mod mace_video;
 pub mod mace_video_in;

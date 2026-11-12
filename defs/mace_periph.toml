@@ -56,6 +56,10 @@ timer_cmp1 = { bits = [14, 14], grade = "established" }
 timer_cmp2 = { bits = [15, 15], grade = "established" }
 serial_a = { bits = [20, 20], grade = "established" }
 serial_b = { bits = [26, 26], grade = "established" }
+ps2_kbd_irq = { bits = [9, 9], grade = "established", doc = "Read-only. Keyboard port interrupt request (established, printed page 125, slot 5). See the PS/2 unit." }
+ps2_kbd_poll = { bits = [10, 10], grade = "established", doc = "Read-only. Unmasked keyboard poll flag, the non-interrupt version of the keyboard request (established, printed page 125, slot 5)." }
+ps2_mouse_irq = { bits = [11, 11], grade = "established", doc = "Read-only. Mouse port interrupt request (established, printed page 125, slot 5)." }
+ps2_mouse_poll = { bits = [12, 12], grade = "established", doc = "Read-only. Unmasked mouse poll flag, the non-interrupt version of the mouse request (established, printed page 125, slot 5)." }
 audio_codec_mask = { bits = [0, 0], grade = "established", doc = "Read-only. The last codec response ANDed with the codec response mask is nonzero (printed page 125, slot 6)." }
 audio_volume = { bits = [1, 1], grade = "established", doc = "Read-only. A volume push button edge is latched (printed page 125, slot 6)." }
 audio_capture_threshold = { bits = [2, 2], grade = "established", doc = "Read-only. The capture ring meets its interrupt threshold (printed page 125, slot 6)." }

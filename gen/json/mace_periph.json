@@ -192,6 +192,42 @@
   {
    "unit": "mace_periph",
    "kind": "field",
+   "name": "periph_status.ps2_mouse_poll",
+   "hi": 12,
+   "lo": 12,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.ps2_mouse_irq",
+   "hi": 11,
+   "lo": 11,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.ps2_kbd_poll",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.ps2_kbd_irq",
+   "hi": 9,
+   "lo": 9,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
    "name": "periph_status.rtc",
    "hi": 8,
    "lo": 8,
