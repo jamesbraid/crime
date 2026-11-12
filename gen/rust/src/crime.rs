@@ -212,7 +212,7 @@ pub mod cpu_error_stat {
         }
     }
 }
-/// (inferred)
+/// The CRIME 1.5 CPU interface register map has no row for this offset. It lists the CPU error address and the CPU error status (cpu_error_stat_15) and n (inferred)
 pub mod cpu_error_ena {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x50;

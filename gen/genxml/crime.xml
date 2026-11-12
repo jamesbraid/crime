@@ -58,6 +58,7 @@
     </test>
   </struct>
   <struct name="CPU_ERROR_ENA" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" reset="unknown">
+    <doc>The CRIME 1.5 CPU interface register map has no row for this offset. It lists the CPU error address and the CPU error status (cpu_error_stat_15) and nothing in between (established, [spec] Table 5-7, PDF 113). The name CRIME_CPU_ERROR_ENA and this offset come from NetBSD's public crime header, which places it after the CPU error status. The driver in that tree does not program the name (software expectation, inferred). Linux's public O2 crime header leaves the same slot as padding after the status (software expectation, inferred). Reset value, field layout and readback are unknown from any published source; the revision-0 enable word that IRIX writes is described in docs/memory.md.</doc>
   </struct>
   <struct name="VICE_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x58" access="r" reset="unknown">
   </struct>

@@ -102,6 +102,9 @@
 #define CRIME_CPU_ERROR_STAT_CPU_WRITE_PARITY_MASK   0x1ull
 #define CRIME_CPU_ERROR_STAT_CPU_WRITE_PARITY_INPLACE (CRIME_CPU_ERROR_STAT_CPU_WRITE_PARITY_MASK << CRIME_CPU_ERROR_STAT_CPU_WRITE_PARITY_SHIFT)
 
+/*
+ * The CRIME 1.5 CPU interface register map has no row for this offset. It lists the CPU error address and the CPU error status (cpu_error_stat_15) and nothing in between (established, [spec] Table 5-7, PDF 113). The name CRIME_CPU_ERROR_ENA and this offset come from NetBSD's public crime header, which places it after the CPU error status. The driver in that tree does not program the name (software expectation, inferred). Linux's public O2 crime header leaves the same slot as padding after the status (software expectation, inferred). Reset value, field layout and readback are unknown from any published source; the revision-0 enable word that IRIX writes is described in docs/memory.md.
+ */
 /* cpu_error_ena: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_ENA_OFFSET                   0x50u /* inferred */
 

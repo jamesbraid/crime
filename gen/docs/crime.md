@@ -102,6 +102,8 @@ Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). 
 
 ### Register `cpu_error_ena`
 
+The CRIME 1.5 CPU interface register map has no row for this offset. It lists the CPU error address and the CPU error status (cpu_error_stat_15) and nothing in between (established, [spec] Table 5-7, PDF 113). The name CRIME_CPU_ERROR_ENA and this offset come from NetBSD's public crime header, which places it after the CPU error status. The driver in that tree does not program the name (software expectation, inferred). Linux's public O2 crime header leaves the same slot as padding after the status (software expectation, inferred). Reset value, field layout and readback are unknown from any published source; the revision-0 enable word that IRIX writes is described in docs/memory.md.
+
 ### Register `vice_error_addr`
 
 ### Register `mem_control`
