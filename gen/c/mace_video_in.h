@@ -151,6 +151,22 @@
 
 /* hclip_odd: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_HCLIP_ODD_OFFSET                         0x30u /* established */
+#define VIN_HCLIP_ODD_FILTER_MODE_SHIFT              39 /* established */
+#define VIN_HCLIP_ODD_FILTER_MODE_MASK               0x3ull
+#define VIN_HCLIP_ODD_FILTER_MODE_INPLACE            (VIN_HCLIP_ODD_FILTER_MODE_MASK << VIN_HCLIP_ODD_FILTER_MODE_SHIFT)
+#define VIN_HCLIP_ODD_FILTER_MODE_NONE               0 /* established */
+#define VIN_HCLIP_ODD_FILTER_MODE_PAL_NONSQUARE      1 /* established */
+#define VIN_HCLIP_ODD_FILTER_MODE_NTSC_NONSQUARE     2 /* established */
+#define VIN_HCLIP_ODD_FILTER_MODE_HALF               3 /* established */
+#define VIN_HCLIP_ODD_SCALE_ON_SHIFT                 38 /* established */
+#define VIN_HCLIP_ODD_SCALE_ON_MASK                  0x1ull
+#define VIN_HCLIP_ODD_SCALE_ON_INPLACE               (VIN_HCLIP_ODD_SCALE_ON_MASK << VIN_HCLIP_ODD_SCALE_ON_SHIFT)
+#define VIN_HCLIP_ODD_SCALE_RATIO_SHIFT              30 /* established */
+#define VIN_HCLIP_ODD_SCALE_RATIO_MASK               0xffull
+#define VIN_HCLIP_ODD_SCALE_RATIO_INPLACE            (VIN_HCLIP_ODD_SCALE_RATIO_MASK << VIN_HCLIP_ODD_SCALE_RATIO_SHIFT)
+#define VIN_HCLIP_ODD_FILT_COUNT_SHIFT               20 /* established */
+#define VIN_HCLIP_ODD_FILT_COUNT_MASK                0x3ffull
+#define VIN_HCLIP_ODD_FILT_COUNT_INPLACE             (VIN_HCLIP_ODD_FILT_COUNT_MASK << VIN_HCLIP_ODD_FILT_COUNT_SHIFT)
 #define VIN_HCLIP_ODD_END_SHIFT                      10 /* established */
 #define VIN_HCLIP_ODD_END_MASK                       0x3ffull
 #define VIN_HCLIP_ODD_END_INPLACE                    (VIN_HCLIP_ODD_END_MASK << VIN_HCLIP_ODD_END_SHIFT)
@@ -160,6 +176,12 @@
 
 /* vclip_odd: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_VCLIP_ODD_OFFSET                         0x38u /* established */
+#define VIN_VCLIP_ODD_SCALE_ON_SHIFT                 38 /* established */
+#define VIN_VCLIP_ODD_SCALE_ON_MASK                  0x1ull
+#define VIN_VCLIP_ODD_SCALE_ON_INPLACE               (VIN_VCLIP_ODD_SCALE_ON_MASK << VIN_VCLIP_ODD_SCALE_ON_SHIFT)
+#define VIN_VCLIP_ODD_SCALE_RATIO_SHIFT              30 /* established */
+#define VIN_VCLIP_ODD_SCALE_RATIO_MASK               0xffull
+#define VIN_VCLIP_ODD_SCALE_RATIO_INPLACE            (VIN_VCLIP_ODD_SCALE_RATIO_MASK << VIN_VCLIP_ODD_SCALE_RATIO_SHIFT)
 #define VIN_VCLIP_ODD_END_SHIFT                      20 /* established */
 #define VIN_VCLIP_ODD_END_MASK                       0x3ffull
 #define VIN_VCLIP_ODD_END_INPLACE                    (VIN_VCLIP_ODD_END_MASK << VIN_VCLIP_ODD_END_SHIFT)
@@ -175,6 +197,22 @@
 
 /* hclip_even: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_HCLIP_EVEN_OFFSET                        0x48u /* established */
+#define VIN_HCLIP_EVEN_FILTER_MODE_SHIFT             39 /* established */
+#define VIN_HCLIP_EVEN_FILTER_MODE_MASK              0x3ull
+#define VIN_HCLIP_EVEN_FILTER_MODE_INPLACE           (VIN_HCLIP_EVEN_FILTER_MODE_MASK << VIN_HCLIP_EVEN_FILTER_MODE_SHIFT)
+#define VIN_HCLIP_EVEN_FILTER_MODE_NONE              0 /* established */
+#define VIN_HCLIP_EVEN_FILTER_MODE_PAL_NONSQUARE     1 /* established */
+#define VIN_HCLIP_EVEN_FILTER_MODE_NTSC_NONSQUARE    2 /* established */
+#define VIN_HCLIP_EVEN_FILTER_MODE_HALF              3 /* established */
+#define VIN_HCLIP_EVEN_SCALE_ON_SHIFT                38 /* established */
+#define VIN_HCLIP_EVEN_SCALE_ON_MASK                 0x1ull
+#define VIN_HCLIP_EVEN_SCALE_ON_INPLACE              (VIN_HCLIP_EVEN_SCALE_ON_MASK << VIN_HCLIP_EVEN_SCALE_ON_SHIFT)
+#define VIN_HCLIP_EVEN_SCALE_RATIO_SHIFT             30 /* established */
+#define VIN_HCLIP_EVEN_SCALE_RATIO_MASK              0xffull
+#define VIN_HCLIP_EVEN_SCALE_RATIO_INPLACE           (VIN_HCLIP_EVEN_SCALE_RATIO_MASK << VIN_HCLIP_EVEN_SCALE_RATIO_SHIFT)
+#define VIN_HCLIP_EVEN_FILT_COUNT_SHIFT              20 /* established */
+#define VIN_HCLIP_EVEN_FILT_COUNT_MASK               0x3ffull
+#define VIN_HCLIP_EVEN_FILT_COUNT_INPLACE            (VIN_HCLIP_EVEN_FILT_COUNT_MASK << VIN_HCLIP_EVEN_FILT_COUNT_SHIFT)
 #define VIN_HCLIP_EVEN_END_SHIFT                     10 /* established */
 #define VIN_HCLIP_EVEN_END_MASK                      0x3ffull
 #define VIN_HCLIP_EVEN_END_INPLACE                   (VIN_HCLIP_EVEN_END_MASK << VIN_HCLIP_EVEN_END_SHIFT)
@@ -184,6 +222,12 @@
 
 /* vclip_even: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_VCLIP_EVEN_OFFSET                        0x50u /* established */
+#define VIN_VCLIP_EVEN_SCALE_ON_SHIFT                38 /* established */
+#define VIN_VCLIP_EVEN_SCALE_ON_MASK                 0x1ull
+#define VIN_VCLIP_EVEN_SCALE_ON_INPLACE              (VIN_VCLIP_EVEN_SCALE_ON_MASK << VIN_VCLIP_EVEN_SCALE_ON_SHIFT)
+#define VIN_VCLIP_EVEN_SCALE_RATIO_SHIFT             30 /* established */
+#define VIN_VCLIP_EVEN_SCALE_RATIO_MASK              0xffull
+#define VIN_VCLIP_EVEN_SCALE_RATIO_INPLACE           (VIN_VCLIP_EVEN_SCALE_RATIO_MASK << VIN_VCLIP_EVEN_SCALE_RATIO_SHIFT)
 #define VIN_VCLIP_EVEN_END_SHIFT                     20 /* established */
 #define VIN_VCLIP_EVEN_END_MASK                      0x3ffull
 #define VIN_VCLIP_EVEN_END_INPLACE                   (VIN_VCLIP_EVEN_END_MASK << VIN_VCLIP_EVEN_END_SHIFT)

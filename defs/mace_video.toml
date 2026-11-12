@@ -58,6 +58,82 @@ width = 64
 grade = "established"
 space = "mace_video_out"
 
+[registers.config.fields]
+channel_enable = { bits = [0, 0], grade = "established", doc = "Zero resets processing of this channel, one enables it (printed page 40, table 11)." }
+genlock_reset = { bits = [5, 5], grade = "established", doc = "Zero resets the genlock and clocked output circuitry, one enables it. It must be one even for free-running output (printed page 40, table 11)." }
+genlock_precision = { bits = [8, 8], grade = "established", doc = "Pixel precision of the genlock source: zero for 8-bit D1, one for 10-bit (printed page 40, table 11)." }
+genlock_ecc = { bits = [9, 9], grade = "established", doc = "One enables D1 error correction on the genlock source (printed page 40, table 11)." }
+sof_count_odd = { bits = [13, 10], grade = "established", doc = "Lines to wait after the start of vertical blank before checking the field ID for an odd field (printed page 40, table 11)." }
+notch_filter = { bits = [17, 17], grade = "established", doc = "One enables the notch filter, which the table says is generally used for RGB data that was dithered earlier (printed page 41, table 11)." }
+interleaved = { bits = [20, 20], grade = "established", doc = "Zero is field mode, one is interleaved frame mode (printed page 41, table 11)." }
+sof_count_even = { bits = [25, 22], grade = "established", doc = "Lines to wait after the start of vertical blank before checking the field ID for an even field (printed page 41, table 11)." }
+
+[registers.config.fields.port_e_source]
+bits = [2, 1]
+grade = "established"
+doc = "Data source for output port E (printed page 40, table 11)."
+
+[registers.config.fields.port_e_source.enums]
+disabled = { value = 0, grade = "established" }
+genlock_passthrough = { value = 1, grade = "established" }
+yuv = { value = 2, grade = "established" }
+alpha = { value = 3, grade = "established" }
+
+[registers.config.fields.port_f_source]
+bits = [4, 3]
+grade = "established"
+doc = "Data source for output port F, with the same values as port E (printed page 40, table 11)."
+
+[registers.config.fields.port_f_source.enums]
+disabled = { value = 0, grade = "established" }
+genlock_passthrough = { value = 1, grade = "established" }
+yuv = { value = 2, grade = "established" }
+alpha = { value = 3, grade = "established" }
+
+[registers.config.fields.genlock_source]
+bits = [7, 6]
+grade = "established"
+doc = "Output reference. Zero runs on the 13.5 MHz pixel clock with internal timing, with no genlock (printed page 40, table 11)."
+
+[registers.config.fields.genlock_source.enums]
+none = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.config.fields.pixel_format]
+bits = [16, 14]
+grade = "established"
+doc = "DMA pixel format, the same six codes as the input channel (printed page 40, table 11)."
+
+[registers.config.fields.pixel_format.enums]
+rgba32 = { value = 0, grade = "established" }
+rgba5551 = { value = 1, grade = "established" }
+yuv422_8 = { value = 2, grade = "established" }
+yuv422_10 = { value = 3, grade = "established" }
+abgr32 = { value = 4, grade = "established" }
+yuva4224 = { value = 5, grade = "established" }
+
+[registers.config.fields.clamping]
+bits = [19, 18]
+grade = "established"
+doc = "Output clamping or expansion (printed page 41, table 11)."
+
+[registers.config.fields.clamping.enums]
+none = { value = 0, grade = "established" }
+extended = { value = 1, grade = "established" }
+legal = { value = 2, grade = "established" }
+special_expansion = { value = 3, grade = "established" }
+
+[registers.config.fields.mem_mode]
+bits = [21, 21]
+grade = "established"
+doc = "Memory organisation. The output channel has linear and tiled modes only (printed page 41, table 11)."
+
+[registers.config.fields.mem_mode.enums]
+linear = { value = 0, grade = "established" }
+tiled = { value = 1, grade = "established" }
+
 [registers.next_desc]
 offset = 0x18
 access = "rw"
@@ -95,6 +171,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+doc = "Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59)."
 
 [registers.field_size.fields]
 bytes = { bits = [11, 3], grade = "established", doc = "Bytes per line, a multiple of eight, stored literally (printed page 45, table 16)." }
@@ -111,6 +188,18 @@ space = "mace_video_out"
 eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20)." }
 eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
 eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
+filter_count = { bits = [39, 30], grade = "established", doc = "Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20)." }
+
+[registers.hpad_odd.fields.filter_mode]
+bits = [41, 40]
+grade = "established"
+doc = "Square-to-non-square filter on the output (printed page 51, table 20)."
+
+[registers.hpad_odd.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_11_12 = { value = 1, grade = "established" }
+ntsc_11_10 = { value = 2, grade = "established" }
+double_width = { value = 3, grade = "established" }
 
 [registers.vpad_odd]
 offset = 0x38
@@ -136,6 +225,18 @@ space = "mace_video_out"
 eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels (printed page 51, table 20)." }
 eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
 eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
+filter_count = { bits = [39, 30], grade = "established", doc = "Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20)." }
+
+[registers.hpad_even.fields.filter_mode]
+bits = [41, 40]
+grade = "established"
+doc = "Square-to-non-square filter on the output (printed page 51, table 20)."
+
+[registers.hpad_even.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_11_12 = { value = 1, grade = "established" }
+ntsc_11_10 = { value = 2, grade = "established" }
+double_width = { value = 3, grade = "established" }
 
 [registers.vpad_even]
 offset = 0x48

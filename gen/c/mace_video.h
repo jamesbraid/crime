@@ -62,6 +62,72 @@
 
 /* config: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_CONFIG_OFFSET                           0x10u /* established */
+#define VOUT_CONFIG_SOF_COUNT_EVEN_SHIFT             22 /* established */
+#define VOUT_CONFIG_SOF_COUNT_EVEN_MASK              0xfull
+#define VOUT_CONFIG_SOF_COUNT_EVEN_INPLACE           (VOUT_CONFIG_SOF_COUNT_EVEN_MASK << VOUT_CONFIG_SOF_COUNT_EVEN_SHIFT)
+#define VOUT_CONFIG_MEM_MODE_SHIFT                   21 /* established */
+#define VOUT_CONFIG_MEM_MODE_MASK                    0x1ull
+#define VOUT_CONFIG_MEM_MODE_INPLACE                 (VOUT_CONFIG_MEM_MODE_MASK << VOUT_CONFIG_MEM_MODE_SHIFT)
+#define VOUT_CONFIG_MEM_MODE_LINEAR                  0 /* established */
+#define VOUT_CONFIG_MEM_MODE_TILED                   1 /* established */
+#define VOUT_CONFIG_INTERLEAVED_SHIFT                20 /* established */
+#define VOUT_CONFIG_INTERLEAVED_MASK                 0x1ull
+#define VOUT_CONFIG_INTERLEAVED_INPLACE              (VOUT_CONFIG_INTERLEAVED_MASK << VOUT_CONFIG_INTERLEAVED_SHIFT)
+#define VOUT_CONFIG_CLAMPING_SHIFT                   18 /* established */
+#define VOUT_CONFIG_CLAMPING_MASK                    0x3ull
+#define VOUT_CONFIG_CLAMPING_INPLACE                 (VOUT_CONFIG_CLAMPING_MASK << VOUT_CONFIG_CLAMPING_SHIFT)
+#define VOUT_CONFIG_CLAMPING_NONE                    0 /* established */
+#define VOUT_CONFIG_CLAMPING_EXTENDED                1 /* established */
+#define VOUT_CONFIG_CLAMPING_LEGAL                   2 /* established */
+#define VOUT_CONFIG_CLAMPING_SPECIAL_EXPANSION       3 /* established */
+#define VOUT_CONFIG_NOTCH_FILTER_SHIFT               17 /* established */
+#define VOUT_CONFIG_NOTCH_FILTER_MASK                0x1ull
+#define VOUT_CONFIG_NOTCH_FILTER_INPLACE             (VOUT_CONFIG_NOTCH_FILTER_MASK << VOUT_CONFIG_NOTCH_FILTER_SHIFT)
+#define VOUT_CONFIG_PIXEL_FORMAT_SHIFT               14 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_MASK                0x7ull
+#define VOUT_CONFIG_PIXEL_FORMAT_INPLACE             (VOUT_CONFIG_PIXEL_FORMAT_MASK << VOUT_CONFIG_PIXEL_FORMAT_SHIFT)
+#define VOUT_CONFIG_PIXEL_FORMAT_RGBA32              0 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_RGBA5551            1 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_YUV422_8            2 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_YUV422_10           3 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_ABGR32              4 /* established */
+#define VOUT_CONFIG_PIXEL_FORMAT_YUVA4224            5 /* established */
+#define VOUT_CONFIG_SOF_COUNT_ODD_SHIFT              10 /* established */
+#define VOUT_CONFIG_SOF_COUNT_ODD_MASK               0xfull
+#define VOUT_CONFIG_SOF_COUNT_ODD_INPLACE            (VOUT_CONFIG_SOF_COUNT_ODD_MASK << VOUT_CONFIG_SOF_COUNT_ODD_SHIFT)
+#define VOUT_CONFIG_GENLOCK_ECC_SHIFT                9 /* established */
+#define VOUT_CONFIG_GENLOCK_ECC_MASK                 0x1ull
+#define VOUT_CONFIG_GENLOCK_ECC_INPLACE              (VOUT_CONFIG_GENLOCK_ECC_MASK << VOUT_CONFIG_GENLOCK_ECC_SHIFT)
+#define VOUT_CONFIG_GENLOCK_PRECISION_SHIFT          8 /* established */
+#define VOUT_CONFIG_GENLOCK_PRECISION_MASK           0x1ull
+#define VOUT_CONFIG_GENLOCK_PRECISION_INPLACE        (VOUT_CONFIG_GENLOCK_PRECISION_MASK << VOUT_CONFIG_GENLOCK_PRECISION_SHIFT)
+#define VOUT_CONFIG_GENLOCK_SOURCE_SHIFT             6 /* established */
+#define VOUT_CONFIG_GENLOCK_SOURCE_MASK              0x3ull
+#define VOUT_CONFIG_GENLOCK_SOURCE_INPLACE           (VOUT_CONFIG_GENLOCK_SOURCE_MASK << VOUT_CONFIG_GENLOCK_SOURCE_SHIFT)
+#define VOUT_CONFIG_GENLOCK_SOURCE_NONE              0 /* established */
+#define VOUT_CONFIG_GENLOCK_SOURCE_EXTERNAL          1 /* established */
+#define VOUT_CONFIG_GENLOCK_SOURCE_PORT_AB           2 /* established */
+#define VOUT_CONFIG_GENLOCK_SOURCE_PORT_CD           3 /* established */
+#define VOUT_CONFIG_GENLOCK_RESET_SHIFT              5 /* established */
+#define VOUT_CONFIG_GENLOCK_RESET_MASK               0x1ull
+#define VOUT_CONFIG_GENLOCK_RESET_INPLACE            (VOUT_CONFIG_GENLOCK_RESET_MASK << VOUT_CONFIG_GENLOCK_RESET_SHIFT)
+#define VOUT_CONFIG_PORT_F_SOURCE_SHIFT              3 /* established */
+#define VOUT_CONFIG_PORT_F_SOURCE_MASK               0x3ull
+#define VOUT_CONFIG_PORT_F_SOURCE_INPLACE            (VOUT_CONFIG_PORT_F_SOURCE_MASK << VOUT_CONFIG_PORT_F_SOURCE_SHIFT)
+#define VOUT_CONFIG_PORT_F_SOURCE_DISABLED           0 /* established */
+#define VOUT_CONFIG_PORT_F_SOURCE_GENLOCK_PASSTHROUGH 1 /* established */
+#define VOUT_CONFIG_PORT_F_SOURCE_YUV                2 /* established */
+#define VOUT_CONFIG_PORT_F_SOURCE_ALPHA              3 /* established */
+#define VOUT_CONFIG_PORT_E_SOURCE_SHIFT              1 /* established */
+#define VOUT_CONFIG_PORT_E_SOURCE_MASK               0x3ull
+#define VOUT_CONFIG_PORT_E_SOURCE_INPLACE            (VOUT_CONFIG_PORT_E_SOURCE_MASK << VOUT_CONFIG_PORT_E_SOURCE_SHIFT)
+#define VOUT_CONFIG_PORT_E_SOURCE_DISABLED           0 /* established */
+#define VOUT_CONFIG_PORT_E_SOURCE_GENLOCK_PASSTHROUGH 1 /* established */
+#define VOUT_CONFIG_PORT_E_SOURCE_YUV                2 /* established */
+#define VOUT_CONFIG_PORT_E_SOURCE_ALPHA              3 /* established */
+#define VOUT_CONFIG_CHANNEL_ENABLE_SHIFT             0 /* established */
+#define VOUT_CONFIG_CHANNEL_ENABLE_MASK              0x1ull
+#define VOUT_CONFIG_CHANNEL_ENABLE_INPLACE           (VOUT_CONFIG_CHANNEL_ENABLE_MASK << VOUT_CONFIG_CHANNEL_ENABLE_SHIFT)
 
 /* next_desc: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_NEXT_DESC_OFFSET                        0x18u /* established */
@@ -86,6 +152,9 @@
 #define VOUT_FLD_OFFSET_BYTE_OFFSET_MASK             0x1fffull
 #define VOUT_FLD_OFFSET_BYTE_OFFSET_INPLACE          (VOUT_FLD_OFFSET_BYTE_OFFSET_MASK << VOUT_FLD_OFFSET_BYTE_OFFSET_SHIFT)
 
+/*
+ * Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).
+ */
 /* field_size: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_FIELD_SIZE_OFFSET                       0x28u /* established */
 #define VOUT_FIELD_SIZE_LINES_SHIFT                  12 /* established */
@@ -97,6 +166,16 @@
 
 /* hpad_odd: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_HPAD_ODD_OFFSET                         0x30u /* established */
+#define VOUT_HPAD_ODD_FILTER_MODE_SHIFT              40 /* established */
+#define VOUT_HPAD_ODD_FILTER_MODE_MASK               0x3ull
+#define VOUT_HPAD_ODD_FILTER_MODE_INPLACE            (VOUT_HPAD_ODD_FILTER_MODE_MASK << VOUT_HPAD_ODD_FILTER_MODE_SHIFT)
+#define VOUT_HPAD_ODD_FILTER_MODE_NONE               0 /* established */
+#define VOUT_HPAD_ODD_FILTER_MODE_PAL_11_12          1 /* established */
+#define VOUT_HPAD_ODD_FILTER_MODE_NTSC_11_10         2 /* established */
+#define VOUT_HPAD_ODD_FILTER_MODE_DOUBLE_WIDTH       3 /* established */
+#define VOUT_HPAD_ODD_FILTER_COUNT_SHIFT             30 /* established */
+#define VOUT_HPAD_ODD_FILTER_COUNT_MASK              0x3ffull
+#define VOUT_HPAD_ODD_FILTER_COUNT_INPLACE           (VOUT_HPAD_ODD_FILTER_COUNT_MASK << VOUT_HPAD_ODD_FILTER_COUNT_SHIFT)
 #define VOUT_HPAD_ODD_EAV_IMAGE_SHIFT                20 /* established */
 #define VOUT_HPAD_ODD_EAV_IMAGE_MASK                 0x3ffull
 #define VOUT_HPAD_ODD_EAV_IMAGE_INPLACE              (VOUT_HPAD_ODD_EAV_IMAGE_MASK << VOUT_HPAD_ODD_EAV_IMAGE_SHIFT)
@@ -124,6 +203,16 @@
 
 /* hpad_even: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_HPAD_EVEN_OFFSET                        0x40u /* established */
+#define VOUT_HPAD_EVEN_FILTER_MODE_SHIFT             40 /* established */
+#define VOUT_HPAD_EVEN_FILTER_MODE_MASK              0x3ull
+#define VOUT_HPAD_EVEN_FILTER_MODE_INPLACE           (VOUT_HPAD_EVEN_FILTER_MODE_MASK << VOUT_HPAD_EVEN_FILTER_MODE_SHIFT)
+#define VOUT_HPAD_EVEN_FILTER_MODE_NONE              0 /* established */
+#define VOUT_HPAD_EVEN_FILTER_MODE_PAL_11_12         1 /* established */
+#define VOUT_HPAD_EVEN_FILTER_MODE_NTSC_11_10        2 /* established */
+#define VOUT_HPAD_EVEN_FILTER_MODE_DOUBLE_WIDTH      3 /* established */
+#define VOUT_HPAD_EVEN_FILTER_COUNT_SHIFT            30 /* established */
+#define VOUT_HPAD_EVEN_FILTER_COUNT_MASK             0x3ffull
+#define VOUT_HPAD_EVEN_FILTER_COUNT_INPLACE          (VOUT_HPAD_EVEN_FILTER_COUNT_MASK << VOUT_HPAD_EVEN_FILTER_COUNT_SHIFT)
 #define VOUT_HPAD_EVEN_EAV_IMAGE_SHIFT               20 /* established */
 #define VOUT_HPAD_EVEN_EAV_IMAGE_MASK                0x3ffull
 #define VOUT_HPAD_EVEN_EAV_IMAGE_INPLACE             (VOUT_HPAD_EVEN_EAV_IMAGE_MASK << VOUT_HPAD_EVEN_EAV_IMAGE_SHIFT)

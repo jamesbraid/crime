@@ -528,6 +528,78 @@ pub mod line_width {
 pub mod hclip_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x30;
+    pub mod filter_mode { // bits 40:39, established
+        pub const SHIFT: u32 = 39;
+        pub const MASK: u64 = 0x3;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NONE: u64 = 0; // established
+        pub const PAL_NONSQUARE: u64 = 1; // established
+        pub const NTSC_NONSQUARE: u64 = 2; // established
+        pub const HALF: u64 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            None,
+            PalNonsquare,
+            NtscNonsquare,
+            Half,
+            Other(u64),
+        }
+        impl Value {
+            pub const fn from_raw(v: u64) -> Self {
+                match v {
+                    0 => Self::None,
+                    1 => Self::PalNonsquare,
+                    2 => Self::NtscNonsquare,
+                    3 => Self::Half,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u64 {
+                match self {
+                    Self::None => 0,
+                    Self::PalNonsquare => 1,
+                    Self::NtscNonsquare => 2,
+                    Self::Half => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod scale_on { // bits 38:38, established
+        pub const SHIFT: u32 = 38;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod scale_ratio { // bits 37:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0xff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod filt_count { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod end { // bits 19:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u64 = 0x3ff;
@@ -553,6 +625,26 @@ pub mod hclip_odd {
 pub mod vclip_odd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x38;
+    pub mod scale_on { // bits 38:38, established
+        pub const SHIFT: u32 = 38;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod scale_ratio { // bits 37:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0xff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod end { // bits 29:20, established
         pub const SHIFT: u32 = 20;
         pub const MASK: u64 = 0x3ff;
@@ -593,6 +685,78 @@ pub mod alpha_odd {
 pub mod hclip_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x48;
+    pub mod filter_mode { // bits 40:39, established
+        pub const SHIFT: u32 = 39;
+        pub const MASK: u64 = 0x3;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const NONE: u64 = 0; // established
+        pub const PAL_NONSQUARE: u64 = 1; // established
+        pub const NTSC_NONSQUARE: u64 = 2; // established
+        pub const HALF: u64 = 3; // established
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            None,
+            PalNonsquare,
+            NtscNonsquare,
+            Half,
+            Other(u64),
+        }
+        impl Value {
+            pub const fn from_raw(v: u64) -> Self {
+                match v {
+                    0 => Self::None,
+                    1 => Self::PalNonsquare,
+                    2 => Self::NtscNonsquare,
+                    3 => Self::Half,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u64 {
+                match self {
+                    Self::None => 0,
+                    Self::PalNonsquare => 1,
+                    Self::NtscNonsquare => 2,
+                    Self::Half => 3,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
+    pub mod scale_on { // bits 38:38, established
+        pub const SHIFT: u32 = 38;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod scale_ratio { // bits 37:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0xff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod filt_count { // bits 29:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u64 = 0x3ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod end { // bits 19:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u64 = 0x3ff;
@@ -618,6 +782,26 @@ pub mod hclip_even {
 pub mod vclip_even {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x50;
+    pub mod scale_on { // bits 38:38, established
+        pub const SHIFT: u32 = 38;
+        pub const MASK: u64 = 0x1;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod scale_ratio { // bits 37:30, established
+        pub const SHIFT: u32 = 30;
+        pub const MASK: u64 = 0xff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod end { // bits 29:20, established
         pub const SHIFT: u32 = 20;
         pub const MASK: u64 = 0x3ff;

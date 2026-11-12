@@ -152,6 +152,20 @@ space = "mace_video_in"
 [registers.hclip_odd.fields]
 start = { bits = [9, 0], grade = "established", doc = "Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17)." }
 end = { bits = [19, 10], grade = "established", doc = "Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17)." }
+filt_count = { bits = [29, 20], grade = "established", doc = "Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17)." }
+scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17)." }
+scale_on = { bits = [38, 38], grade = "established", doc = "One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17)." }
+
+[registers.hclip_odd.fields.filter_mode]
+bits = [40, 39]
+grade = "established"
+doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md."
+
+[registers.hclip_odd.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_nonsquare = { value = 1, grade = "established" }
+ntsc_nonsquare = { value = 2, grade = "established" }
+half = { value = 3, grade = "established" }
 
 [registers.vclip_odd]
 offset = 0x38
@@ -164,6 +178,8 @@ space = "mace_video_in"
 start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
 blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
 end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
+scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18)." }
+scale_on = { bits = [38, 38], grade = "established", doc = "One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18)." }
 
 [registers.alpha_odd]
 offset = 0x40
@@ -182,6 +198,20 @@ space = "mace_video_in"
 [registers.hclip_even.fields]
 start = { bits = [9, 0], grade = "established", doc = "Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17)." }
 end = { bits = [19, 10], grade = "established", doc = "Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17)." }
+filt_count = { bits = [29, 20], grade = "established", doc = "Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17)." }
+scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17)." }
+scale_on = { bits = [38, 38], grade = "established", doc = "One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17)." }
+
+[registers.hclip_even.fields.filter_mode]
+bits = [40, 39]
+grade = "established"
+doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md."
+
+[registers.hclip_even.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_nonsquare = { value = 1, grade = "established" }
+ntsc_nonsquare = { value = 2, grade = "established" }
+half = { value = 3, grade = "established" }
 
 [registers.vclip_even]
 offset = 0x50
@@ -194,6 +224,8 @@ space = "mace_video_in"
 start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
 blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
 end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
+scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18)." }
+scale_on = { bits = [38, 38], grade = "established", doc = "One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18)." }
 
 [registers.alpha_even]
 offset = 0x58

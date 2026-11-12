@@ -28,6 +28,18 @@
     <value name="odd" value="2" grade="established"/>
     <value name="even" value="3" grade="established"/>
   </enum>
+  <enum name="hclip_odd_filter_mode">
+    <value name="none" value="0" grade="established"/>
+    <value name="pal_nonsquare" value="1" grade="established"/>
+    <value name="ntsc_nonsquare" value="2" grade="established"/>
+    <value name="half" value="3" grade="established"/>
+  </enum>
+  <enum name="hclip_even_filter_mode">
+    <value name="none" value="0" grade="established"/>
+    <value name="pal_nonsquare" value="1" grade="established"/>
+    <value name="ntsc_nonsquare" value="2" grade="established"/>
+    <value name="half" value="3" grade="established"/>
+  </enum>
   <struct name="CONTROL" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x0" access="rw" space="mace_video_in" reset="0x0">
     <field name="int_gpib" start="9" size="1" type="uint" grade="established"/>
     <field name="int_crime_error" start="8" size="1" type="uint" grade="established"/>
@@ -77,10 +89,16 @@
     <field name="bytes" start="3" size="9" type="uint" grade="established"/>
   </struct>
   <struct name="HCLIP_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" space="mace_video_in" reset="unknown">
+    <field name="filter_mode" start="39" size="2" type="hclip_odd_filter_mode" grade="established"/>
+    <field name="scale_on" start="38" size="1" type="uint" grade="established"/>
+    <field name="scale_ratio" start="30" size="8" type="uint" grade="established"/>
+    <field name="filt_count" start="20" size="10" type="uint" grade="established"/>
     <field name="end" start="10" size="10" type="uint" grade="established"/>
     <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VCLIP_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x38" access="rw" space="mace_video_in" reset="unknown">
+    <field name="scale_on" start="38" size="1" type="uint" grade="established"/>
+    <field name="scale_ratio" start="30" size="8" type="uint" grade="established"/>
     <field name="end" start="20" size="10" type="uint" grade="established"/>
     <field name="blank_end" start="10" size="10" type="uint" grade="established"/>
     <field name="start" start="0" size="10" type="uint" grade="established"/>
@@ -88,10 +106,16 @@
   <struct name="ALPHA_ODD" size="8" grade="inferred" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x40" access="rw" space="mace_video_in" reset="unknown">
   </struct>
   <struct name="HCLIP_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" space="mace_video_in" reset="unknown">
+    <field name="filter_mode" start="39" size="2" type="hclip_even_filter_mode" grade="established"/>
+    <field name="scale_on" start="38" size="1" type="uint" grade="established"/>
+    <field name="scale_ratio" start="30" size="8" type="uint" grade="established"/>
+    <field name="filt_count" start="20" size="10" type="uint" grade="established"/>
     <field name="end" start="10" size="10" type="uint" grade="established"/>
     <field name="start" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="VCLIP_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" space="mace_video_in" reset="unknown">
+    <field name="scale_on" start="38" size="1" type="uint" grade="established"/>
+    <field name="scale_ratio" start="30" size="8" type="uint" grade="established"/>
     <field name="end" start="20" size="10" type="uint" grade="established"/>
     <field name="blank_end" start="10" size="10" type="uint" grade="established"/>
     <field name="start" start="0" size="10" type="uint" grade="established"/>

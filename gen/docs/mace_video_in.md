@@ -103,6 +103,10 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md. |
+| 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17). |
+| 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17). |
+| 29:20 | `filt_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17). |
 | 19:10 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17). |
 
@@ -110,6 +114,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18). |
+| 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18). |
 | 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
 | 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |
@@ -120,6 +126,10 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md. |
+| 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17). |
+| 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17). |
+| 29:20 | `filt_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17). |
 | 19:10 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored end. The captured pixel count is end minus start plus 1 (printed pages 46 and 47, table 17). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Stored start. The first captured pixel is start plus 2, counted from the first pixel after the EAV code (printed pages 46 and 47, table 17). |
 
@@ -127,6 +137,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18). |
+| 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18). |
 | 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
 | 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |

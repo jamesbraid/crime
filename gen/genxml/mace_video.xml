@@ -3,9 +3,57 @@
 <genxml unit="mace_video" prefix="VOUT" title="O2 MACE video output channel and chip-level configuration" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings">
   <doc>MACE video output channel registers and the chip-level hardware configuration word.</doc>
   <space name="mace_video_out" unit="byte"/>
+  <enum name="config_mem_mode">
+    <value name="linear" value="0" grade="established"/>
+    <value name="tiled" value="1" grade="established"/>
+  </enum>
+  <enum name="config_clamping">
+    <value name="none" value="0" grade="established"/>
+    <value name="extended" value="1" grade="established"/>
+    <value name="legal" value="2" grade="established"/>
+    <value name="special_expansion" value="3" grade="established"/>
+  </enum>
+  <enum name="config_pixel_format">
+    <value name="rgba32" value="0" grade="established"/>
+    <value name="rgba5551" value="1" grade="established"/>
+    <value name="yuv422_8" value="2" grade="established"/>
+    <value name="yuv422_10" value="3" grade="established"/>
+    <value name="abgr32" value="4" grade="established"/>
+    <value name="yuva4224" value="5" grade="established"/>
+  </enum>
+  <enum name="config_genlock_source">
+    <value name="none" value="0" grade="established"/>
+    <value name="external" value="1" grade="established"/>
+    <value name="port_ab" value="2" grade="established"/>
+    <value name="port_cd" value="3" grade="established"/>
+  </enum>
+  <enum name="config_port_f_source">
+    <value name="disabled" value="0" grade="established"/>
+    <value name="genlock_passthrough" value="1" grade="established"/>
+    <value name="yuv" value="2" grade="established"/>
+    <value name="alpha" value="3" grade="established"/>
+  </enum>
+  <enum name="config_port_e_source">
+    <value name="disabled" value="0" grade="established"/>
+    <value name="genlock_passthrough" value="1" grade="established"/>
+    <value name="yuv" value="2" grade="established"/>
+    <value name="alpha" value="3" grade="established"/>
+  </enum>
   <enum name="next_desc_field_to_send">
     <value name="odd" value="0" grade="established"/>
     <value name="even" value="1" grade="established"/>
+  </enum>
+  <enum name="hpad_odd_filter_mode">
+    <value name="none" value="0" grade="established"/>
+    <value name="pal_11_12" value="1" grade="established"/>
+    <value name="ntsc_11_10" value="2" grade="established"/>
+    <value name="double_width" value="3" grade="established"/>
+  </enum>
+  <enum name="hpad_even_filter_mode">
+    <value name="none" value="0" grade="established"/>
+    <value name="pal_11_12" value="1" grade="established"/>
+    <value name="ntsc_11_10" value="2" grade="established"/>
+    <value name="double_width" value="3" grade="established"/>
   </enum>
   <enum name="vhw_cfg_gbe_framelock_source">
     <value name="output_ef" value="0" grade="established"/>
@@ -42,6 +90,20 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="dma_active" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="CONFIG" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x10" access="rw" space="mace_video_out" reset="unknown">
+    <field name="sof_count_even" start="22" size="4" type="uint" grade="established"/>
+    <field name="mem_mode" start="21" size="1" type="config_mem_mode" grade="established"/>
+    <field name="interleaved" start="20" size="1" type="uint" grade="established"/>
+    <field name="clamping" start="18" size="2" type="config_clamping" grade="established"/>
+    <field name="notch_filter" start="17" size="1" type="uint" grade="established"/>
+    <field name="pixel_format" start="14" size="3" type="config_pixel_format" grade="established"/>
+    <field name="sof_count_odd" start="10" size="4" type="uint" grade="established"/>
+    <field name="genlock_ecc" start="9" size="1" type="uint" grade="established"/>
+    <field name="genlock_precision" start="8" size="1" type="uint" grade="established"/>
+    <field name="genlock_source" start="6" size="2" type="config_genlock_source" grade="established"/>
+    <field name="genlock_reset" start="5" size="1" type="uint" grade="established"/>
+    <field name="port_f_source" start="3" size="2" type="config_port_f_source" grade="established"/>
+    <field name="port_e_source" start="1" size="2" type="config_port_e_source" grade="established"/>
+    <field name="channel_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="NEXT_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" space="mace_video_out" reset="unknown">
     <field name="table_address" start="6" size="26" type="uint" grade="established"/>
@@ -53,10 +115,13 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="byte_offset" start="3" size="13" type="uint" grade="established"/>
   </struct>
   <struct name="FIELD_SIZE" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" space="mace_video_out" reset="unknown">
+    <doc>Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).</doc>
     <field name="lines" start="12" size="10" type="uint" grade="established"/>
     <field name="bytes" start="3" size="9" type="uint" grade="established"/>
   </struct>
   <struct name="HPAD_ODD" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" space="mace_video_out" reset="unknown">
+    <field name="filter_mode" start="40" size="2" type="hpad_odd_filter_mode" grade="established"/>
+    <field name="filter_count" start="30" size="10" type="uint" grade="established"/>
     <field name="eav_image" start="20" size="10" type="uint" grade="established"/>
     <field name="eav_eav" start="10" size="10" type="uint" grade="established"/>
     <field name="eav_sav" start="0" size="10" type="uint" grade="established"/>
@@ -68,6 +133,8 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="leading_blank_end" start="0" size="10" type="uint" grade="established"/>
   </struct>
   <struct name="HPAD_EVEN" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x40" access="rw" space="mace_video_out" reset="unknown">
+    <field name="filter_mode" start="40" size="2" type="hpad_even_filter_mode" grade="established"/>
+    <field name="filter_count" start="30" size="10" type="uint" grade="established"/>
     <field name="eav_image" start="20" size="10" type="uint" grade="established"/>
     <field name="eav_eav" start="10" size="10" type="uint" grade="established"/>
     <field name="eav_sav" start="0" size="10" type="uint" grade="established"/>

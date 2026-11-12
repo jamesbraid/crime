@@ -64,6 +64,23 @@ causes on read; the DMA-active bit is live.
 
 ### Register `config`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 25:22 | `sof_count_even` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Lines to wait after the start of vertical blank before checking the field ID for an even field (printed page 41, table 11). |
+| 21 | `mem_mode` | established | linear=0, tiled=1 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Memory organisation. The output channel has linear and tiled modes only (printed page 41, table 11). |
+| 20 | `interleaved` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Zero is field mode, one is interleaved frame mode (printed page 41, table 11). |
+| 19:18 | `clamping` | established | none=0, extended=1, legal=2, special_expansion=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Output clamping or expansion (printed page 41, table 11). |
+| 17 | `notch_filter` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables the notch filter, which the table says is generally used for RGB data that was dithered earlier (printed page 41, table 11). |
+| 16:14 | `pixel_format` | established | rgba32=0, rgba5551=1, yuv422_8=2, yuv422_10=3, abgr32=4, yuva4224=5 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | DMA pixel format, the same six codes as the input channel (printed page 40, table 11). |
+| 13:10 | `sof_count_odd` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Lines to wait after the start of vertical blank before checking the field ID for an odd field (printed page 40, table 11). |
+| 9 | `genlock_ecc` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables D1 error correction on the genlock source (printed page 40, table 11). |
+| 8 | `genlock_precision` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixel precision of the genlock source: zero for 8-bit D1, one for 10-bit (printed page 40, table 11). |
+| 7:6 | `genlock_source` | established | none=0, external=1, port_ab=2, port_cd=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Output reference. Zero runs on the 13.5 MHz pixel clock with internal timing, with no genlock (printed page 40, table 11). |
+| 5 | `genlock_reset` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Zero resets the genlock and clocked output circuitry, one enables it. It must be one even for free-running output (printed page 40, table 11). |
+| 4:3 | `port_f_source` | established | disabled=0, genlock_passthrough=1, yuv=2, alpha=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Data source for output port F, with the same values as port E (printed page 40, table 11). |
+| 2:1 | `port_e_source` | established | disabled=0, genlock_passthrough=1, yuv=2, alpha=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Data source for output port E (printed page 40, table 11). |
+| 0 | `channel_enable` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Zero resets processing of this channel, one enables it (printed page 40, table 11). |
+
 ### Register `next_desc`
 
 | Bits | Field | Grade | Values | Source | Description |
@@ -81,6 +98,8 @@ causes on read; the DMA-active bit is live.
 
 ### Register `field_size`
 
+Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 21:12 | `lines` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Lines in the memory image, stored literally with no plus one. It describes the image, not the raster totals (printed page 45, table 16). |
@@ -90,6 +109,8 @@ causes on read; the DMA-active bit is live.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 41:40 | `filter_mode` | established | none=0, pal_11_12=1, ntsc_11_10=2, double_width=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Square-to-non-square filter on the output (printed page 51, table 20). |
+| 39:30 | `filter_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20). |
 | 29:20 | `eav_image` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20). |
 | 19:10 | `eav_eav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20). |
 | 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20). |
@@ -107,6 +128,8 @@ causes on read; the DMA-active bit is live.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 41:40 | `filter_mode` | established | none=0, pal_11_12=1, ntsc_11_10=2, double_width=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Square-to-non-square filter on the output (printed page 51, table 20). |
+| 39:30 | `filter_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20). |
 | 29:20 | `eav_image` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20). |
 | 19:10 | `eav_eav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20). |
 | 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels (printed page 51, table 20). |
