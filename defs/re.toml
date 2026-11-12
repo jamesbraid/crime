@@ -714,6 +714,8 @@ access = "w"
 width = 64
 grade = "established"
 space = "re"
+doc = """
+The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown)."""
 
 [registers.tex_tqs]
 offset = 0x2128
@@ -728,6 +730,8 @@ access = "w"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: a shipped IRIX graphics driver's triangle set-up, also recorded in the survey of shipped software). The public manual does not say which register commits a textured primitive."""
 
 [registers.tex_stflags]
 offset = 0x2134

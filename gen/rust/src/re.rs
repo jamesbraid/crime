@@ -1185,7 +1185,7 @@ pub mod tex_format {
         }
     }
 }
-/// (established)
+/// The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public  (established)
 pub mod tex_sqs {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2120;
@@ -1195,7 +1195,7 @@ pub mod tex_tqs {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2128;
 }
-/// (established)
+/// The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes (established)
 pub mod tex_qs {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2130;

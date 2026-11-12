@@ -471,9 +471,13 @@ Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:
 
 ### Register `tex_sqs`
 
+The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown).
+
 ### Register `tex_tqs`
 
 ### Register `tex_qs`
+
+The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: a shipped IRIX graphics driver's triangle set-up, also recorded in the survey of shipped software). The public manual does not say which register commits a textured primitive.
 
 ### Register `tex_stflags`
 
