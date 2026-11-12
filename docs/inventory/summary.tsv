@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	address_unknown	input
 binaries	82	0	81	3	77	0	1	0	0	0	98.8	100.0	100.0	98.8			100.0	20	2026-11-02		0				
-functions	15124	2156	3131	84	2958	9332	11081	912	0	0	20.7	94.0	100.0	20.7			75.0	16	2026-11-02		86	63	214	0	
-functions (distinct names)	9635	2091	2542	81	2499	6185	7092	1	0	0	26.4	100.0	100.0	26.4							42				
+functions	15124	2156	3153	84	2980	9318	11059	912	0	0	20.8	94.0	100.0	20.8			75.0	16	2026-11-02		86	63	214	0	
+functions (distinct names)	9635	2091	2563	81	2520	6171	7071	1	0	0	26.6	100.0	100.0	26.6							42				
 mmio	199	0	199	0	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		75.0	20	2026-11-02		0				
 tokens	83	0	83	3	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0				
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0				
@@ -31,7 +31,7 @@ functions in usr/cpu/sysgen/IP32boot/os.a(tile.o)	24	0	24	0	24	0	0	0	0	0	100.0	1
 functions in usr/cpu/sysgen/IP32boot/rrm.o	70	0	70	0	70	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/gfx/arch/GENERIC/Xsgi	1475	1461	66	8	66	1409	1409	0	0	0	4.5	100.0	100.0	4.5							0	0	0	0	
 functions in usr/gfx/arch/IP32CRM/libGL.so	675	0	0	0	0	675	675	0	0	0	0.0	100.0	100.0	0.0							0	0	0	0	
-functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	700	55	690	2037	2747	0	0	0	20.3	100.0	100.0	20.3							42	31	68	0	
+functions in usr/gfx/arch/IP32CRM/libGLcore.so	3447	0	722	55	712	2023	2725	0	0	0	20.9	100.0	100.0	20.9							42	31	68	0	
 functions in usr/gfx/arch/IP32CRM32/libGL.so	677	0	0	0	0	29	29	648	0	0	0.0	4.3	100.0	0.0							0	0	0	0	
 functions in usr/gfx/arch/IP32CRM32/libGLcore.so	3448	0	531	8	528	1964	2673	244	0	0	15.4	92.9	100.0	15.4							44	31	68	0	
 functions in usr/gfx/gfxinit	227	0	33	1	33	192	192	2	0	0	14.5	99.1	100.0	14.5							0	0	0	0	
