@@ -1,10 +1,260 @@
 # Hardware definitions. Edit this file; gen/ is generated from it.
 unit = "mace_ethernet"
 prefix = "MACE_ETHERNET"
-title = "O2 MACE Fast-Ethernet diagnostic interrupt request and transmit status vector"
-doc = "The diagnostic register at offset 0x58 of the MACE Fast-Ethernet block: a write sends an interrupt update packet, and a read returns the status vector of the last transmit. Offsets are from the block base (constant BLOCK_BASE). The rest of the Fast-Ethernet block has no entry yet."
-from = "published MACE 2.0 I/O ASIC specification (printed pages 70, 78, 79, 173, 175, 179 and 181)"
+title = "O2 MACE Fast-Ethernet block: registers, DMA message formats and diagnostic port"
+doc = "The MACE Fast-Ethernet block: MAC control, interrupt status, transmit and receive DMA control, the transmit ring, the receive cluster FIFO, the PHY bus and the station-address filter. Offsets are from the block base (constant BLOCK_BASE). Diagnostic transmit queue registers, the backoff seed and the incoming message queue have no entry yet."
+from = "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
 public_from = ["published MACE 2.0 I/O ASIC specification"]
+
+[enums.dest_filter_mode]
+doc = "Destination address filter mode in MAC control."
+
+[enums.dest_filter_mode.values]
+physical_only = { value = 0, grade = "established" }
+physical_broadcast_multicast = { value = 1, grade = "established" }
+physical_broadcast_all_multicast = { value = 2, grade = "established" }
+any_packet = { value = 3, grade = "established" }
+
+[enums.tx_ring_size]
+doc = "Transmit ring size select in DMA control. Each ring entry is 128 bytes."
+
+[enums.tx_ring_size.values]
+kib8 = { value = 0, grade = "established", doc = "8 KiB ring, 64 entries." }
+kib16 = { value = 1, grade = "established", doc = "16 KiB ring, 128 entries." }
+kib32 = { value = 2, grade = "established", doc = "32 KiB ring, 256 entries." }
+kib64 = { value = 3, grade = "established", doc = "64 KiB ring, 512 entries." }
+
+[registers.mac_control]
+offset = 0x00
+access = "rw"
+width = 64
+reset = 0x20000001
+grade = "established"
+doc = """
+MAC configuration and the MAC core reset. Bits not listed read zero (printed page 70). Reset sets core reset (bit 0) and the read-only revision field to 1, so the reset value is 0x20000001 (printed page 71)."""
+
+[registers.mac_control.fields]
+core_reset = { bits = [0, 0], grade = "established", doc = "1 holds the MAC core in global reset. 0 runs it. Resets to 1 (printed page 71)." }
+full_duplex = { bits = [1, 1], grade = "established", doc = "1 enables full-duplex operation (printed page 71)." }
+loopback_internal = { bits = [2, 2], grade = "established", doc = "1 selects internal loopback on the internal MII bus, and the speed and interface selects are then ignored (printed page 71)." }
+speed_100 = { bits = [3, 3], grade = "established", doc = "1 selects 100 Mbit operation, 0 selects 10 Mbit (printed page 71)." }
+m10t_sia_select = { bits = [4, 4], grade = "established", doc = "0 selects the MII bus, 1 the SIA bus. In internal loopback the bit forces a collision indication instead, which can provoke retries and aborts in a test (printed page 71)." }
+dest_filter_mode = { bits = [6, 5], grade = "established", enum = "dest_filter_mode", doc = "Which destination addresses the receive filter passes (printed page 71)." }
+link_failure_enable = { bits = [7, 7], grade = "established", doc = "1 makes the hardware scan the external PHY for link failure. Each failure raises the link-failure interrupt (printed pages 71 and 72)." }
+ipg_t = { bits = [14, 8], grade = "established", doc = "Inter-packet gap for back-to-back transmits. Each count is two transmit clock periods, 40 ns at 100 Mbit and 400 ns at 10 Mbit (printed page 71)." }
+ipg_r1 = { bits = [21, 15], grade = "established", doc = "Resets the gap timer when carrier sense goes active within two thirds of the gap period after a receive, since that carrier may be a collision fragment (printed page 71)." }
+ipg_r2 = { bits = [28, 22], grade = "established", doc = "Gap before transmitting after the chip has received a packet. The value may need adjusting for PHY delay (printed page 71)." }
+revision = { bits = [31, 29], grade = "established", doc = "Read-only implementation revision. 0 is the initial implementation and 1 is the first with improved transmit concatenation support (printed page 71)." }
+
+[registers.interrupt_status]
+offset = 0x08
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Interrupt event flags for the Fast-Ethernet interface, with read-only pointer and sequence aliases. Writing one to a flag bit clears it. Writing zero leaves it unchanged (printed page 72). The interface drives CRIME interrupt slot 3 (printed page 179). Bits not listed read zero."""
+
+[registers.interrupt_status.fields]
+tx_ring_empty = { bits = [0, 0], grade = "established", doc = "Set when the transmit ring read and write pointers are equal (printed page 72)." }
+tx_user_request = { bits = [1, 1], grade = "established", doc = "Set when a transmit message with its completion-interrupt bit set has been sent (printed page 72)." }
+tx_link_failure = { bits = [2, 2], grade = "established", doc = "Set when the external PHY reports a link failure. Only raised when link-failure scanning is enabled (printed page 72)." }
+tx_memory_error = { bits = [3, 3], grade = "established", doc = "Set on a memory error during a transmit DMA transaction. DMA stops, and the page calls this fatal (printed page 72)." }
+tx_abort = { bits = [4, 4], grade = "established", doc = "Set when the transmitter aborts. DMA stops, the page calls this fatal, and software should read the transmit status vector for the reason (printed page 72)." }
+rx_threshold = { bits = [5, 5], grade = "established", doc = "Set when the selected receive threshold condition is valid (printed page 72)." }
+rx_cluster_fifo_underflow = { bits = [6, 6], grade = "established", doc = "Set when the receive cluster FIFO was empty and a packet arrived that could not be queued (printed page 72)." }
+rx_dma_fifo_overflow = { bits = [7, 7], grade = "established", doc = "Set when the internal receive DMA FIFO overflowed. DMA stops, and the page calls this fatal (printed page 72)." }
+rx_cluster_read_pointer = { bits = [12, 8], grade = "established", doc = "Read-only alias of the receive cluster FIFO read index (printed page 72)." }
+tx_read_pointer = { bits = [24, 16], grade = "established", doc = "Read-only alias of the transmit ring read pointer (printed page 72)." }
+rx_sequence = { bits = [29, 25], grade = "established", doc = "Read-only. Starting sequence number of the cluster at the head of the receive FIFO (printed page 72)." }
+multicast_hash_output = { bits = [30, 30], grade = "established", doc = "Read-only test and debug bit. It latches the hash-select output while receive DMA is disabled. The page names the select as DMA control bits 14 to 9, which overlap the start offset and interrupt fields. The select is unknown (printed page 72)." }
+
+[registers.dma_control]
+offset = 0x10
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Transmit and receive DMA control. Bits not listed read zero (printed pages 73 and 74). The table lists no DMA reset bit, although the transmit pointer section refers to one (unknown, printed page 74)."""
+
+[registers.dma_control.fields]
+tx_interrupt_enable = { bits = [0, 0], grade = "established", doc = "1 makes the interrupt output follow an empty transmit ring. 0 keeps it inactive (printed page 73)." }
+tx_dma_enable = { bits = [1, 1], grade = "established", doc = "1 runs the transmit channel. 0 masks the non-fatal transmit interrupts (printed page 73)." }
+tx_ring_size = { bits = [3, 2], grade = "established", enum = "tx_ring_size", doc = "Transmit ring size, 8, 16, 32 or 64 KiB (printed pages 73 and 78)." }
+rx_interrupt_enable = { bits = [9, 9], grade = "inferred", doc = "1 enables the receive interrupt output. The prose on pages 73 and 74 says the output is active when the threshold differs from the FIFO count. The Boolean printed on page 73 says the reverse, equal means active, so the polarity is unresolved and the prose reading is kept as inferred." }
+rx_interrupt_threshold = { bits = [8, 4], grade = "established", doc = "Water mark compared with the receive cluster FIFO count. Equal disables the output and unequal enables it, per the prose on pages 73 and 74. The page gives a range of 0 to 16 (printed page 80). Values above 16 are not described." }
+rx_runt_enable = { bits = [10, 10], grade = "established", doc = "1 receives packets shorter than 64 bytes. 0 discards them (printed page 73)." }
+rx_gather_enable = { bits = [11, 11], grade = "established", doc = "1 asks for back-to-back packets to be gathered into one 4 KiB cluster. The packing and close rules are not stated (printed page 80)." }
+rx_start_offset = { bits = [14, 12], grade = "established", doc = "Index of the doubleword where receive DMA starts filling the first bucket of each packet. Doublewords before it are padding. Zero is not recommended (printed page 73)." }
+rx_dma_enable = { bits = [15, 15], grade = "established", doc = "1 runs the receive channel. 0 inactivates it and masks the receive interrupts (printed page 73)." }
+
+[registers.interrupt_delay]
+offset = 0x18
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Receive interrupt delay. The count is in 30.69 microsecond ticks, so the 63 maximum is about 2 ms (printed page 73). A new packet starts the count-down. Expiry delivers the pending receive threshold condition to interrupt status. The count ends early when the receive FIFO drops below four entries (printed pages 73 and 80). Restart-on-each-packet behaviour is not stated (unknown)."""
+
+[registers.interrupt_delay.fields]
+count = { bits = [5, 0], grade = "established", doc = "Count-down value in 30.69 microsecond ticks (printed page 73)." }
+
+[registers.tx_interrupt_alias]
+offset = 0x20
+access = "w"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Write-only alias of the transmit interrupt enable in DMA control (printed page 74). Reads are not described."""
+
+[registers.tx_interrupt_alias.fields]
+tx_interrupt_enable = { bits = [0, 0], grade = "established", doc = "Same meaning as the DMA control bit (printed page 74)." }
+
+[registers.rx_interrupt_alias]
+offset = 0x28
+access = "w"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Write-only alias of the receive interrupt enable and threshold in DMA control (printed page 74). Reads are not described."""
+
+[registers.rx_interrupt_alias.fields]
+rx_interrupt_enable = { bits = [9, 9], grade = "inferred", doc = "Same meaning as the DMA control bit, with the same unresolved polarity (see DMA control)." }
+rx_interrupt_threshold = { bits = [8, 4], grade = "established", doc = "Same meaning as the DMA control field (printed page 74)." }
+
+[registers.tx_ring_pointers]
+offset = 0x30
+count = 2
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The second element is an alias (printed page 70)."""
+
+[registers.tx_ring_pointers.fields]
+read_pointer = { bits = [24, 16], grade = "established", doc = "Read-only. Current ring read pointer (printed page 74)." }
+write_pointer = { bits = [8, 0], grade = "established", doc = "Writable producer index. Nine bits cover a 512-entry ring (printed page 74)." }
+
+[registers.rx_fifo_pointers]
+offset = 0x40
+count = 3
+access = "r"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). Reset clears the indexes and count only (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70)."""
+
+[registers.rx_fifo_pointers.fields]
+count = { bits = [4, 0], grade = "established", doc = "Number of cluster addresses queued (printed page 75)." }
+read_index = { bits = [11, 8], grade = "established", doc = "Read index (printed page 75)." }
+read_generation = { bits = [12, 12], grade = "inferred", doc = "Generation bit listed beside the read index. The page does not say what it counts." }
+write_index = { bits = [19, 16], grade = "established", doc = "Write index (printed page 75)." }
+write_generation = { bits = [20, 20], grade = "inferred", doc = "Generation bit listed beside the write index. The page does not say what it counts." }
+
+[registers.rx_fifo_data]
+offset = 0x100
+count = 32
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Receive cluster FIFO data port. A write pushes a cluster base address, and the low 12 bits are not kept, so they read back as zero (printed page 75). The 32 locations are aliases of one port with no index (printed page 75). Contents are not initialized at reset (printed page 75)."""
+
+[registers.rx_fifo_data.fields]
+cluster_base = { bits = [31, 12], grade = "established", doc = "Cluster base address, 4 KiB aligned (printed pages 75 and 80)." }
+zero_low = { bits = [11, 0], grade = "established", doc = "Read as zero (printed page 75)." }
+
+[registers.phy_data]
+offset = 0x60
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+PHY serial bus data. A write sets the outgoing value. After a read, the field holds the value read from the PHY (printed page 76)."""
+
+[registers.phy_data.fields]
+data = { bits = [15, 0], grade = "established", doc = "Read: incoming value. Write: outgoing value (printed page 76)." }
+busy = { bits = [16, 16], grade = "established", doc = "Read-only. 1 while incoming data is still being assembled, so the data is not yet valid (printed page 76)." }
+
+[registers.phy_address]
+offset = 0x68
+access = "rw"
+width = 64
+reset = 0x0
+grade = "established"
+doc = """
+PHY device and register address for the next access (printed page 76)."""
+
+[registers.phy_address.fields]
+device_address = { bits = [9, 5], grade = "established", doc = "PHY device address (printed page 76)." }
+register_address = { bits = [4, 0], grade = "established", doc = "PHY internal register address (printed page 76)." }
+
+[registers.phy_read_start]
+offset = 0x70
+access = "w"
+width = 64
+grade = "established"
+doc = """
+Writing any value starts an external PHY read at the addresses in the PHY address register (printed page 76). Reset value is not given (printed page 76)."""
+
+[registers.phy_read_start.fields]
+start = { bits = [0, 0], grade = "established", doc = "The written value is not examined (printed page 76)." }
+
+[registers.station_address]
+offset = 0xa0
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70)."""
+
+[registers.station_address.fields]
+address_byte_0 = { bits = [7, 0], grade = "established", doc = "First byte on the wire (printed page 77)." }
+address_byte_1 = { bits = [15, 8], grade = "established", doc = "Second byte (printed page 77)." }
+address_byte_2 = { bits = [23, 16], grade = "established", doc = "Third byte (printed page 77)." }
+address_byte_3 = { bits = [31, 24], grade = "established", doc = "Fourth byte (printed page 77)." }
+address_byte_4 = { bits = [39, 32], grade = "established", doc = "Fifth byte (printed page 77)." }
+address_byte_5 = { bits = [47, 40], grade = "established", doc = "Sixth byte (printed page 77)." }
+
+[registers.secondary_station_address]
+offset = 0xa8
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+48-bit secondary station address. The table calls it a secondary physical or multicast address (printed page 70). The filter section describes two physical station addresses (printed page 77). Reset value is not given (printed page 70)."""
+
+[registers.secondary_station_address.fields]
+address = { bits = [47, 0], grade = "established", doc = "Secondary station address (printed pages 70 and 77)." }
+
+[registers.multicast_filter]
+offset = 0xb0
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+64-bit multicast hash mask. A multicast destination address reduces to a six-bit index, the six most significant bits of a 32-bit CRC over the 48-bit address. The packet passes if the mask bit at that index is set. The mask is not an exact address filter, so software must still check the address (printed page 77). Reset value is not given (printed page 70)."""
+
+[registers.multicast_filter.fields]
+mask = { bits = [63, 0], grade = "established", doc = "Hash mask, one bit per index (printed page 77)." }
+
+[registers.tx_ring_base]
+offset = 0xb8
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Physical base address of the transmit ring in main memory. Bits 12 to 0 are not defined, so they read zero (printed page 70). Reset value is not given (printed page 70)."""
+
+[registers.tx_ring_base.fields]
+base = { bits = [31, 13], grade = "established", doc = "Ring base address (printed page 70)." }
 
 [registers.interrupt_request]
 offset = 0x58
@@ -17,6 +267,34 @@ Write-only diagnostic port. Each write generates one interrupt update packet for
 [registers.interrupt_request.fields]
 write_enable = { bits = [31, 16], grade = "inferred", doc = "Enable for each of the sixteen interrupt slots. Bit 16 + j enables slot j. The packet layout names these bits 'Interrupt Bit Write Enables' (established, printed page 175); the register's own table does not say it feeds the packet, so the mapping is inferred." }
 value = { bits = [15, 0], grade = "inferred", doc = "New value for each enabled slot: bit j is written to slot j. The packet layout names these bits 'Interrupt Bits' (established, printed page 175); the mapping from the register is inferred as above." }
+
+[words.TX_COMMAND]
+width = 64
+grade = "established"
+doc = """
+Transmit command header, the first doubleword of a transmit ring message. Each message starts on a 128-byte boundary (printed page 78). The MAC overwrites this word with the status vector after transmit (printed pages 78 and 79)."""
+
+[words.TX_COMMAND.fields]
+length_minus_one = { bits = [15, 0], grade = "established", doc = "Length of the packet data in bytes, minus one (printed page 79)." }
+inline_start = { bits = [22, 16], grade = "established", doc = "Byte offset of the inline data within the message data area. Zero skips the data area and starts from the first pointer. Other valid starts are at least eight (printed page 79)." }
+stop_on_abort = { bits = [23, 23], grade = "established", doc = "1 asks for transmit DMA to stop on an abort (printed page 79). Page 72 calls every abort fatal, so whether bit 23 changes that is unresolved." }
+completion_interrupt = { bits = [24, 24], grade = "established", doc = "1 raises the user transmit interrupt after the packet is sent (printed page 79)." }
+pointer1_valid = { bits = [25, 25], grade = "established", doc = "Concatenation pointer 1 is valid (printed page 79)." }
+pointer2_valid = { bits = [26, 26], grade = "established", doc = "Concatenation pointer 2 is valid (printed page 79)." }
+pointer3_valid = { bits = [27, 27], grade = "established", doc = "Concatenation pointer 3 is valid (printed page 79)." }
+must_be_zero = { bits = [63, 28], grade = "established", doc = "Should be filled with zeros (printed page 79)." }
+
+[words.TX_CONCAT_POINTER]
+width = 64
+grade = "established"
+doc = """
+Transmit concatenation pointer: the physical address and length of a buffer that holds the rest of the packet (printed page 79). The buffer lies inside a 4 KiB aligned area (printed page 78)."""
+
+[words.TX_CONCAT_POINTER.fields]
+zero_low = { bits = [2, 0], grade = "established", doc = "Should be filled with zeros (printed page 79)." }
+address = { bits = [31, 3], grade = "established", doc = "Physical start address of the buffer data (printed page 79)." }
+length_minus_one = { bits = [47, 32], grade = "established", doc = "Length of the buffer data in bytes, minus one (printed page 79)." }
+zero_high = { bits = [63, 48], grade = "established", doc = "Should be filled with zeros (printed page 79)." }
 
 [words.TX_STATUS_VECTOR]
 width = 64
@@ -39,7 +317,36 @@ late_collision_drop = { bits = [28, 28], grade = "established", doc = "Transmit 
 zero_filled = { bits = [62, 29], grade = "established", doc = "Always zero (established, printed page 79)." }
 one_filled = { bits = [63, 63], grade = "established", doc = "Always one (established, printed page 79)." }
 
+[words.RX_STATUS_VECTOR]
+width = 64
+grade = "established"
+doc = """
+Receive status vector. It occupies the first doubleword of the first 256-byte bucket of each packet (printed pages 80 and 81)."""
+
+[words.RX_STATUS_VECTOR.fields]
+length = { bits = [15, 0], grade = "established", doc = "Receive length in bytes (printed page 81). The page does not say whether the four-byte check sequence is counted." }
+code_violation = { bits = [16, 16], grade = "established", doc = "Receive code violation (printed page 81)." }
+dribble_nibble = { bits = [17, 17], grade = "established", doc = "Dribble nibble (printed page 81)." }
+crc_error = { bits = [18, 18], grade = "established", doc = "CRC error (printed page 81)." }
+multicast_packet = { bits = [19, 19], grade = "established", doc = "Multicast packet (printed page 81)." }
+broadcast_packet = { bits = [20, 20], grade = "established", doc = "Broadcast packet (printed page 81)." }
+invalid_preamble = { bits = [21, 21], grade = "established", doc = "Invalid preamble, length or code (printed page 81)." }
+long_event_seen = { bits = [22, 22], grade = "established", doc = "Long event previously seen (printed page 81)." }
+bad_packet = { bits = [23, 23], grade = "established", doc = "Received bad packet (printed page 81)." }
+carrier_event_seen = { bits = [24, 24], grade = "established", doc = "Carrier event previously seen (printed page 81)." }
+multicast_filter_match = { bits = [25, 25], grade = "established", doc = "Multicast filter match (printed page 81)." }
+physical_address_match = { bits = [26, 26], grade = "established", doc = "Physical address filter match (printed page 81)." }
+sequence = { bits = [31, 27], grade = "established", doc = "5-bit receive sequence number (printed pages 80 and 81)." }
+partial_checksum = { bits = [47, 32], grade = "established", doc = "Partial Internet checksum: an uncomplemented 16-bit end-around-carry sum of the valid packet bytes, from the first byte after the preamble through the CRC (printed pages 80 and 81). Byte pairing is not stated (unknown)." }
+zero_filled = { bits = [62, 48], grade = "established", doc = "Always zero (printed page 81)." }
+always_one = { bits = [63, 63], grade = "established", doc = "Always one (printed page 81)." }
+
 [constants]
-BLOCK_BASE = { value = 0x1f280000, grade = "established", doc = "physical base of the Fast-Ethernet block, PIO select 101 and CRIME PIO tag 0x08 (printed page 181)" }
+BLOCK_BASE = { value = 0x1f280000, grade = "established", doc = "physical base of the Fast-Ethernet block, PIO select 101 and CRIME PIO tag 0x08 (printed page 181). The block is 512 KiB and its registers repeat across it (printed page 181)." }
 INTERRUPT_UPDATE_TAG = { value = 0x0c, grade = "established", doc = "source tag of the Ethernet interrupt update packet (printed page 173)" }
 INTERRUPT_SLOT = { value = 3, grade = "established", doc = "MACE interrupt slot of the Fast-Ethernet interface (printed page 179, Table 90)" }
+TX_ENTRY_BYTES = { value = 128, grade = "established", doc = "size of one transmit ring message (printed page 78)" }
+RX_BUCKET_BYTES = { value = 256, grade = "established", doc = "size of a receive bucket, and each packet starts on one (printed page 80)" }
+RX_CLUSTER_BYTES = { value = 4096, grade = "established", doc = "size of a receive cluster buffer (printed pages 75 and 80)" }
+RX_CLUSTER_FIFO_DEPTH = { value = 16, grade = "established", doc = "entries in the receive cluster address FIFO (printed page 75)" }
+INTERRUPT_DELAY_TICK_NS = { value = 30690, grade = "established", doc = "one interrupt delay count, 30.69 microseconds (printed page 73)" }
