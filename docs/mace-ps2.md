@@ -33,7 +33,9 @@ Sources:
 - Each serial stream is 11 bits: a start bit of zero, eight data bits least
   significant first, odd parity, and a stop bit of one (established, [mace] 139,
   table 69). The auxiliary device supplies the serial clock, and the port
-  shifts out on its falling edge (established, [mace] 141).
+  shifts out on its falling edge (established, [mace] 141). The external clock
+  line is open-collector, and the port's clock-enable output can inhibit it
+  (established, [mace] 141).
 - The auxiliary device polls the clock at 100 microsecond intervals, so software
   must allow settling time after it changes clock permit (established, [mace] 141).
   The specification does not give a full clock period. The clock frequency and
@@ -49,6 +51,9 @@ Sources:
 - A timeout exists in the transmit-enable description, and the specification
   says its zero state disables it. It does not say how long the timeout is.
   The timeout is unknown.
+- The receive and transmit procedure sections of the specification are
+  placeholders (established, [mace] 142). The procedures that tie the bits
+  together are therefore not given (see Unknown).
 
 ## Interrupt requests
 
@@ -93,6 +98,9 @@ hardware evidence.
   about the transmit-empty bit after reset. Which one the silicon does is
   unknown.
 - The receive buffer and its status alias reset to zero (established, [mace] 140).
+  The status table resets status bit 1, which the alias mirrors at bit 9, to
+  one (established, [mace] 142). The two tables conflict on bit 9 after reset.
+  Which level the silicon takes is unknown.
 - The reset behaviour of the external device clock line at power-up is
   unknown.
 
@@ -105,3 +113,14 @@ hardware evidence.
 - When the parity and framing error flags are cleared.
 - The reset level of the transmit-empty bit at power-up (see Reset).
 - Revision-specific reset behaviour of the port.
+- How an interrupt is acknowledged. The specification folds the transmit-empty
+  and receive-full causes into one request bit per device and does not say how
+  software tells them apart or clears them.
+- When the receive-full condition clears, what happens to a byte that arrives
+  while one is waiting, and what a transmit write does while the buffer is
+  busy. The specification's procedure sections do not give these.
+- What happens when reset is asserted during a frame in flight.
+- Whether a register or width the specification does not define causes a bus
+  error. The specification defines no fault for these accesses.
+- The host's inhibit and resume sequence on the clock line. Settling it needs
+  an IBM PS/2 electrical or protocol source that is not in the repository yet.

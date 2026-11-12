@@ -16,7 +16,7 @@
 #define MACE_PS2_TRANSMIT_BYTE_INPLACE               (MACE_PS2_TRANSMIT_BYTE_MASK << MACE_PS2_TRANSMIT_BYTE_SHIFT)
 
 /*
- * Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140).
+ * Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140). The status table resets status bit 1, which this alias mirrors at bit 9, to one (printed page 142), so the alias reset conflicts between the two tables (established as printed; the reset level of bit 9 is unknown).
  */
 /* receive: r64, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) */
 #define MACE_PS2_RECEIVE_OFFSET                      0x8u /* established */

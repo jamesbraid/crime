@@ -7,7 +7,7 @@
     <field name="byte" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="RECEIVE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x8" access="r" reset="0x0">
-    <doc>Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140).</doc>
+    <doc>Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140). The status table resets status bit 1, which this alias mirrors at bit 9, to one (printed page 142), so the alias reset conflicts between the two tables (established as printed; the reset level of bit 9 is unknown).</doc>
     <field name="status_alias" start="8" size="8" type="uint" grade="established"/>
     <field name="byte" start="0" size="8" type="uint" grade="established"/>
   </struct>

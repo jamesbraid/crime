@@ -28,7 +28,7 @@ Transmit buffer, bits 7:0: the byte currently shifted out of the data line (esta
 
 ### Register `receive`
 
-Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140).
+Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140). The status table resets status bit 1, which this alias mirrors at bit 9, to one (printed page 142), so the alias reset conflicts between the two tables (established as printed; the reset level of bit 9 is unknown).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
