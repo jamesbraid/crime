@@ -134,7 +134,7 @@ width = 64
 reset = 0x0
 grade = "established"
 doc = """
-Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The second element is an alias (printed page 70)."""
+Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The page does not say whether the pointer values wrap at the selected ring size, or whether the empty comparison masks higher bits (unknown, printed pages 74 and 78). The second element is an alias (printed page 70)."""
 
 [registers.tx_ring_pointers.fields]
 read_pointer = { bits = [24, 16], grade = "established", doc = "Read-only. Current ring read pointer (printed page 74)." }
@@ -207,13 +207,24 @@ Writing any value starts an external PHY read at the addresses in the PHY addres
 [registers.phy_read_start.fields]
 start = { bits = [0, 0], grade = "established", doc = "The written value is not examined (printed page 76)." }
 
+[registers.backoff_seed]
+offset = 0x78
+access = "w"
+width = 64
+grade = "established"
+doc = """
+Random-number seed for the linear-feedback shift register that drives the transmit backoff counter. Write-only. Only bits 10 to 0 are defined (printed page 70). Reset value is not given (printed page 70)."""
+
+[registers.backoff_seed.fields]
+seed = { bits = [10, 0], grade = "established", doc = "Seed for the backoff shift register (printed page 70)." }
+
 [registers.station_address]
 offset = 0xa0
 access = "rw"
 width = 64
 grade = "established"
 doc = """
-Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70)."""
+Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70). The Linux and OpenBSD drivers write the first octet to bits 47 to 40 and the last octet to bits 7 to 0, the reverse of this map (software expectation, inferred; the Linux and OpenBSD station-address load routines). Which mapping the chip applies is unresolved."""
 
 [registers.station_address.fields]
 address_byte_0 = { bits = [7, 0], grade = "established", doc = "First byte on the wire (printed page 77)." }
@@ -277,7 +288,7 @@ Transmit command header, the first doubleword of a transmit ring message. Each m
 [words.TX_COMMAND.fields]
 length_minus_one = { bits = [15, 0], grade = "established", doc = "Length of the packet data in bytes, minus one (printed page 79)." }
 inline_start = { bits = [22, 16], grade = "established", doc = "Byte offset of the inline data within the message data area. Zero skips the data area and starts from the first pointer. Other valid starts are at least eight (printed page 79)." }
-stop_on_abort = { bits = [23, 23], grade = "established", doc = "1 asks for transmit DMA to stop on an abort (printed page 79). Page 72 calls every abort fatal, so whether bit 23 changes that is unresolved." }
+stop_on_abort = { bits = [23, 23], grade = "established", doc = "1 asks for transmit DMA to stop on an abort (printed page 79). Page 72 calls every abort fatal, so whether bit 23 changes that is unresolved. The Linux driver never sets it on the ordinary transmit path, and the OpenBSD driver defines it without setting it (software expectation, inferred; the Linux transmit paths and the OpenBSD stop-on-abort mask)." }
 completion_interrupt = { bits = [24, 24], grade = "established", doc = "1 raises the user transmit interrupt after the packet is sent (printed page 79)." }
 pointer1_valid = { bits = [25, 25], grade = "established", doc = "Concatenation pointer 1 is valid (printed page 79)." }
 pointer2_valid = { bits = [26, 26], grade = "established", doc = "Concatenation pointer 2 is valid (printed page 79)." }
@@ -324,7 +335,7 @@ doc = """
 Receive status vector. It occupies the first doubleword of the first 256-byte bucket of each packet (printed pages 80 and 81)."""
 
 [words.RX_STATUS_VECTOR.fields]
-length = { bits = [15, 0], grade = "established", doc = "Receive length in bytes (printed page 81). The page does not say whether the four-byte check sequence is counted." }
+length = { bits = [15, 0], grade = "established", doc = "Receive length in bytes (printed page 81). The page does not say whether the four-byte check sequence is counted. The Linux and OpenBSD drivers subtract four bytes from it before passing a packet up, which suggests it includes the check sequence (software expectation, inferred; the Linux and OpenBSD receive paths)." }
 code_violation = { bits = [16, 16], grade = "established", doc = "Receive code violation (printed page 81)." }
 dribble_nibble = { bits = [17, 17], grade = "established", doc = "Dribble nibble (printed page 81)." }
 crc_error = { bits = [18, 18], grade = "established", doc = "CRC error (printed page 81)." }
@@ -337,7 +348,7 @@ carrier_event_seen = { bits = [24, 24], grade = "established", doc = "Carrier ev
 multicast_filter_match = { bits = [25, 25], grade = "established", doc = "Multicast filter match (printed page 81)." }
 physical_address_match = { bits = [26, 26], grade = "established", doc = "Physical address filter match (printed page 81)." }
 sequence = { bits = [31, 27], grade = "established", doc = "5-bit receive sequence number (printed pages 80 and 81)." }
-partial_checksum = { bits = [47, 32], grade = "established", doc = "Partial Internet checksum: an uncomplemented 16-bit end-around-carry sum of the valid packet bytes, from the first byte after the preamble through the CRC (printed pages 80 and 81). Byte pairing is not stated (unknown)." }
+partial_checksum = { bits = [47, 32], grade = "established", doc = "Partial Internet checksum: an uncomplemented 16-bit end-around-carry sum of the valid packet bytes, from the first byte after the preamble through the CRC (printed pages 80 and 81). Byte pairing is not stated (unknown). The Linux and OpenBSD drivers define the field but do not read it (software expectation, inferred; the Linux status structure and the OpenBSD receive-status mask)." }
 zero_filled = { bits = [62, 48], grade = "established", doc = "Always zero (printed page 81)." }
 always_one = { bits = [63, 63], grade = "established", doc = "Always one (printed page 81)." }
 

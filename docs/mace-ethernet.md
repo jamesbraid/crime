@@ -6,8 +6,7 @@ the message formats in memory. The register offsets, widths, reset values and
 field positions are in `defs/mace_ethernet.toml`, and this page does not repeat
 them. The page covers what the defs cannot say: behaviour, timing, interactions
 and what the specification leaves open. The transmit queue diagnostic registers,
-the backoff seed, the incoming message queue and the multicast hash algorithm
-are not covered yet.
+the incoming message queue and the multicast hash algorithm are not covered yet.
 
 Grades follow [AGENTS.md](../AGENTS.md): **established** (the published
 document states it, with the page), **inferred** (a reasoned reading, with the
@@ -15,11 +14,15 @@ reasoning) or **unknown**.
 
 Source:
 
-- **[mace]** SGI, *MACE I/O ASIC Specification*, chip revision 2.0, July 16,
-  1996. Stored as `docs/sources/specs/mace-2.0-specification.pdf`. Page numbers
-  are the printed ones.
+- **[mace]** SGI, *MACE I/O ASIC Specification*, chip revision 2.0. The cover is
+  dated May 31, 1996 and the page footers July 16, 1996. Stored as
+  `docs/sources/specs/mace-2.0-specification.pdf`. Page numbers are the printed ones.
+- **[linux]** Linux `drivers/net/ethernet/sgi/meth.c` and `meth.h` at
+  `db2ddb8`. **[openbsd]** OpenBSD `sys/arch/sgi/dev/if_mec.c` at `2df91d8`.
 
-No driver, capture or other source is used for the facts below.
+The facts below come from the specification. A bullet that cites a driver is a
+software expectation and is graded inferred. It shows what software assumes, not
+what the chip does. No capture is used.
 
 ## Block and access
 
@@ -33,6 +36,12 @@ No driver, capture or other source is used for the facts below.
 - Offset `0x58` has one address and two meanings. A write is the Interrupt
   Request port, write-only, bits 31:0. A read is the Last Transmit Vector,
   read-only, bits 63:0 (established, [mace] 70).
+- Table 37 lists offset `0x98` twice, once as the incoming message header 2 and
+  once as the incoming message dword 2. Both are read-only and reserved. Which
+  one is the register at that offset is unknown (unknown, [mace] 70). The table
+  also lists the incoming message queue at `0x80` and `0x88`, and transmit
+  diagnostic words at `0xc0` to `0xf8` for two packets. They are read-only and
+  marked diagnostic or reserved. This page gives them no meaning (unknown, [mace] 70).
 
 ## MAC control
 
@@ -56,6 +65,10 @@ No driver, capture or other source is used for the facts below.
 - Flags 3, 4 and 7 each stop DMA and are called fatal (established, [mace] 72).
   Flag 6 means a packet arrived while the cluster FIFO was empty and could not
   be queued (established, [mace] 72).
+- Masking an output does not clear its event. A zero transmit-empty or
+  receive-threshold output enable makes the output inactive, and the event flags
+  stay latched, since the page keeps the flags and the enables separate
+  (inferred from [mace] 72 and 73).
 - The specification names no receive memory-error flag. Whether a receive DMA
   memory error sets any flag is unknown.
 - Bit 30 is a debug bit that latches the hash-select output while receive DMA is
@@ -106,6 +119,16 @@ No driver, capture or other source is used for the facts below.
   exists is unknown (unknown, [mace] 74).
 - Each ring message starts on a 128-byte boundary. Its first doubleword is the
   command header (established, [mace] 78 and 79).
+- The page does not say whether the pointer values wrap at the selected ring size,
+  or whether the empty comparison masks higher bits. Page 78 gives the full
+  condition as the write pointer at the N-1 entry without giving N (unknown,
+  [mace] 74 and 78).
+- Linux uses 64 entries (`TX_RING_ENTRIES 64` in `meth.h`), so its driver
+  exercises only the 8 KiB ring (software expectation, inferred; [linux]).
+- Linux advances its consumer modulo 64 and compares it with the transmit read
+  alias in bits 23 to 16 only, eight bits rather than the nine-bit field
+  (software expectation, inferred; `TX_INFO_RPTR` in `meth.h`, transmit completion
+  in `meth.c`).
 
 ## Transmit command and pointers
 
@@ -127,6 +150,10 @@ No driver, capture or other source is used for the facts below.
   word in the defs (established, [mace] 78 and 79).
 - Abort is called fatal on page 72, but bit 23 makes termination conditional on
   page 79. Which one applies is unresolved (unknown).
+- Linux sets the completion-interrupt bit on every transmit and uses inline data
+  or one or two concatenation pointers. It never sets bit 23 on the ordinary
+  path, and OpenBSD defines bit 23 without setting it (software expectation, inferred; `meth.c`
+  transmit paths, `MEC_TXCMD_TERMDMA` in `if_mec.c`).
 
 ## Receive clusters and FIFO
 
@@ -151,10 +178,21 @@ No driver, capture or other source is used for the facts below.
 - The generation bits sit beside the read and write indexes. The page does not
   say what they count, so their meaning is inferred from the layout only
   (inferred).
+- Linux's receive read-index alias covers bits 11 to 8, four bits, which matches
+  a sixteen-entry FIFO (software expectation, inferred; `METH_INT_RX_RPTR_MASK`
+  in `meth.h`).
 
 ## Receive packets, buckets and status
 
 - Each packet starts on a 256-byte bucket boundary (established, [mace] 80).
+- With start offset four, packet bytes begin at byte 34 of the bucket: the status
+  doubleword, three padding doublewords and two zero bytes. Linux uses that layout
+  (`METH_RX_HEAD 34` in `meth.h`) with start offset four (software expectation,
+  inferred; arithmetic from [mace] 73 and 80).
+- Linux stops receive DMA after an address-FIFO underflow and sets it again on the
+  next repost. After reset it refills all sixteen address slots without draining
+  the FIFO first (software expectation, inferred; `meth.c` underflow handler and
+  reset path). The driver does not show that the chip clears its own enable bits.
 - The first doubleword of the first bucket holds the status vector, and the
   packet data follows. Doublewords before the start offset are padding, and
   two more bytes of padding sit before the packet (established, [mace] 73 and 80).
@@ -163,6 +201,9 @@ No driver, capture or other source is used for the facts below.
 - The page does not say whether the length includes the four-byte check
   sequence. The checksum does include it, so it is in the summed bytes (see
   below). Whether the check sequence is counted in the length is unknown.
+  Linux and OpenBSD both subtract four bytes from the length before passing a
+  packet up, which suggests the length includes the check sequence (software
+  expectation, inferred; `meth.c` and `if_mec.c` receive paths).
 - The sequence number tells software whether a cluster holds more than one
   packet. It can be compared between consecutive clusters, or against the value
   in interrupt status (established, [mace] 81 and 72).
@@ -173,6 +214,9 @@ No driver, capture or other source is used for the facts below.
   valid packet bytes, excluding the preamble and including the CRC. Any final
   carry is folded back in (established, [mace] 80 and 81).
 - Software removes the header bytes and the CRC itself (established, [mace] 81).
+- Linux and OpenBSD define the checksum field but do not read it (software
+  expectation, inferred; `meth.h` status structure, `MEC_RXSTAT_CKSUM` in
+  `if_mec.c`).
 - The byte pairing into 16-bit words is not stated. Whether odd-length frames
   pad the last byte into the high half is unknown (unknown).
 
@@ -198,6 +242,11 @@ No driver, capture or other source is used for the facts below.
   not an exact filter (established, [mace] 77).
 - The page gives a reference routine for the hash (established, [mace] 77). It
   is not reproduced here.
+- Linux and OpenBSD both write the first octet of the station address to bits 47
+  to 40 and the last octet to bits 7 to 0 (software expectation, inferred;
+  `load_eaddr` in `meth.c`, `mec_reset` in `if_mec.c`). That is the reverse of
+  the byte map above. Which mapping the chip applies is unresolved, and no capture
+  settles it.
 
 ## PHY bus
 
@@ -207,6 +256,16 @@ No driver, capture or other source is used for the facts below.
 - To write, wait for busy to clear, write the addresses, write the value to the
   data register and poll busy until it clears (established, [mace] 76).
 - The read-start reset value is not given (unknown, [mace] 76).
+- Linux scans PHY addresses 0 to 31 and keeps the first whose identifier register
+  is neither all ones nor all zeros (software expectation, inferred; `mdio_probe`
+  in `meth.c`).
+- OpenBSD notes that an early scan can see responses at addresses 10 and 11 that
+  settle to address 8 shortly after reset (software expectation, inferred;
+  `if_mec.c` lines 694 to 700). That is a driver observation, not a reset value,
+  and it does not say which PHY any machine has.
+- Linux's debug build names the ICS1890 among the PHY identifiers it can print
+  (software expectation, inferred; `meth.c` debug output). That does not show
+  that any O2 has that part.
 
 ## Reset
 
@@ -225,6 +284,14 @@ No driver, capture or other source is used for the facts below.
 - Reset values are not given for the station addresses, the multicast mask, the
   ring base, the secondary address or the read-start register (unknown, [mace]
   70 and 76).
+- Linux pulses MAC core reset, writes DMA control with both enables clear, zeroes
+  its software transmit cursors, programs the ring base, and only then sets the
+  enables before the first transmit (software expectation, inferred; `meth.c`
+  probe and open paths).
+- OpenBSD pulses core reset and then writes DMA control zero in its reset path
+  (software expectation, inferred; `if_mec.c` lines 672 to 689).
+- Those driver sequences do not isolate what core reset does to the transmit
+  read index. Readback after partial or isolated sequences is unknown.
 
 ## Diagnostic interrupt request and transmit status vector
 
@@ -277,3 +344,7 @@ No driver, capture or other source is used for the facts below.
 - Unknown: the DMA reset control that the pointer section refers to.
 - Unknown: whether a physical capture matches the packet mapping above. No
   capture of this register is in the repository.
+- Unknown: whether the DMA enable bits read back as zero after a fatal stop, and
+  what restarts DMA after one (established that fatal flags stop DMA, [mace] 72).
+  The driver code clears its own enables after an underflow, which says nothing
+  about the chip's readback.

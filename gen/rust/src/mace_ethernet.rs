@@ -639,6 +639,21 @@ pub mod phy_read_start {
         }
     }
 }
+/// Random-number seed for the linear-feedback shift register that drives the transmit backoff counter. Write-only. Only bits 10 to 0 are defined (printed (established)
+pub mod backoff_seed {
+    pub const WIDTH: u32 = 64;
+    pub const OFFSET: u64 = 0x78;
+    pub mod seed { // bits 10:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0x7ff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
 /// Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first b (established)
 pub mod station_address {
     pub const WIDTH: u32 = 64;

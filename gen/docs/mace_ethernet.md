@@ -25,6 +25,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `phy_data` | 0x60 | rw | 64 |  |  | 0x0 | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
 | `phy_address` | 0x68 | rw | 64 |  |  | 0x0 | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
 | `phy_read_start` | 0x70 | w | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
+| `backoff_seed` | 0x78 | w | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
 | `station_address` | 0xa0 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
 | `secondary_station_address` | 0xa8 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
 | `multicast_filter` | 0xb0 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) |
@@ -111,7 +112,7 @@ Write-only alias of the receive interrupt enable and threshold in DMA control (p
 
 ### Register `tx_ring_pointers`
 
-Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The second element is an alias (printed page 70).
+Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The page does not say whether the pointer values wrap at the selected ring size, or whether the empty comparison masks higher bits (unknown, printed pages 74 and 78). The second element is an alias (printed page 70).
 
 Array of 2 registers, stride 8.
 
@@ -169,9 +170,17 @@ Writing any value starts an external PHY read at the addresses in the PHY addres
 |---|---|---|---|---|---|
 | 0 | `start` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | The written value is not examined (printed page 76). |
 
+### Register `backoff_seed`
+
+Random-number seed for the linear-feedback shift register that drives the transmit backoff counter. Write-only. Only bits 10 to 0 are defined (printed page 70). Reset value is not given (printed page 70).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 10:0 | `seed` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Seed for the backoff shift register (printed page 70). |
+
 ### Register `station_address`
 
-Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70).
+Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70). The Linux and OpenBSD drivers write the first octet to bits 47 to 40 and the last octet to bits 7 to 0, the reverse of this map (software expectation, inferred; the Linux and OpenBSD station-address load routines). Which mapping the chip applies is unresolved.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -234,7 +243,7 @@ Receive status vector. It occupies the first doubleword of the first 256-byte bu
 |---|---|---|---|---|---|
 | 63 | `always_one` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Always one (printed page 81). |
 | 62:48 | `zero_filled` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Always zero (printed page 81). |
-| 47:32 | `partial_checksum` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Partial Internet checksum: an uncomplemented 16-bit end-around-carry sum of the valid packet bytes, from the first byte after the preamble through the CRC (printed pages 80 and 81). Byte pairing is not stated (unknown). |
+| 47:32 | `partial_checksum` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Partial Internet checksum: an uncomplemented 16-bit end-around-carry sum of the valid packet bytes, from the first byte after the preamble through the CRC (printed pages 80 and 81). Byte pairing is not stated (unknown). The Linux and OpenBSD drivers define the field but do not read it (software expectation, inferred; the Linux status structure and the OpenBSD receive-status mask). |
 | 31:27 | `sequence` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | 5-bit receive sequence number (printed pages 80 and 81). |
 | 26 | `physical_address_match` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Physical address filter match (printed page 81). |
 | 25 | `multicast_filter_match` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Multicast filter match (printed page 81). |
@@ -247,7 +256,7 @@ Receive status vector. It occupies the first doubleword of the first 256-byte bu
 | 18 | `crc_error` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | CRC error (printed page 81). |
 | 17 | `dribble_nibble` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Dribble nibble (printed page 81). |
 | 16 | `code_violation` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Receive code violation (printed page 81). |
-| 15:0 | `length` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Receive length in bytes (printed page 81). The page does not say whether the four-byte check sequence is counted. |
+| 15:0 | `length` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Receive length in bytes (printed page 81). The page does not say whether the four-byte check sequence is counted. The Linux and OpenBSD drivers subtract four bytes from it before passing a packet up, which suggests it includes the check sequence (software expectation, inferred; the Linux and OpenBSD receive paths). |
 
 ### Word `TX_COMMAND`
 
@@ -260,7 +269,7 @@ Transmit command header, the first doubleword of a transmit ring message. Each m
 | 26 | `pointer2_valid` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Concatenation pointer 2 is valid (printed page 79). |
 | 25 | `pointer1_valid` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Concatenation pointer 1 is valid (printed page 79). |
 | 24 | `completion_interrupt` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | 1 raises the user transmit interrupt after the packet is sent (printed page 79). |
-| 23 | `stop_on_abort` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | 1 asks for transmit DMA to stop on an abort (printed page 79). Page 72 calls every abort fatal, so whether bit 23 changes that is unresolved. |
+| 23 | `stop_on_abort` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | 1 asks for transmit DMA to stop on an abort (printed page 79). Page 72 calls every abort fatal, so whether bit 23 changes that is unresolved. The Linux driver never sets it on the ordinary transmit path, and the OpenBSD driver defines it without setting it (software expectation, inferred; the Linux transmit paths and the OpenBSD stop-on-abort mask). |
 | 22:16 | `inline_start` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Byte offset of the inline data within the message data area. Zero skips the data area and starts from the first pointer. Other valid starts are at least eight (printed page 79). |
 | 15:0 | `length_minus_one` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) | Length of the packet data in bytes, minus one (printed page 79). |
 

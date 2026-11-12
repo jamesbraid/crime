@@ -688,6 +688,29 @@
   {
    "unit": "mace_ethernet",
    "kind": "register",
+   "name": "backoff_seed",
+   "offset": 120,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "backoff_seed.seed",
+   "hi": 10,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
    "name": "station_address",
    "offset": 160,
    "access": "rw",

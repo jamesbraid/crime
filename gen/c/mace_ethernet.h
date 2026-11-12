@@ -163,7 +163,7 @@
 #define MACE_ETHERNET_RX_INTERRUPT_ALIAS_RX_INTERRUPT_THRESHOLD_INPLACE (MACE_ETHERNET_RX_INTERRUPT_ALIAS_RX_INTERRUPT_THRESHOLD_MASK << MACE_ETHERNET_RX_INTERRUPT_ALIAS_RX_INTERRUPT_THRESHOLD_SHIFT)
 
 /*
- * Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The second element is an alias (printed page 70).
+ * Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The page does not say whether the pointer values wrap at the selected ring size, or whether the empty comparison masks higher bits (unknown, printed pages 74 and 78). The second element is an alias (printed page 70).
  */
 /* tx_ring_pointers: rw64, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) */
 #define MACE_ETHERNET_TX_RING_POINTERS_OFFSET        0x30u /* established */
@@ -245,7 +245,16 @@
 #define MACE_ETHERNET_PHY_READ_START_START_INPLACE   (MACE_ETHERNET_PHY_READ_START_START_MASK << MACE_ETHERNET_PHY_READ_START_START_SHIFT)
 
 /*
- * Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70).
+ * Random-number seed for the linear-feedback shift register that drives the transmit backoff counter. Write-only. Only bits 10 to 0 are defined (printed page 70). Reset value is not given (printed page 70).
+ */
+/* backoff_seed: w64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) */
+#define MACE_ETHERNET_BACKOFF_SEED_OFFSET            0x78u /* established */
+#define MACE_ETHERNET_BACKOFF_SEED_SEED_SHIFT        0 /* established */
+#define MACE_ETHERNET_BACKOFF_SEED_SEED_MASK         0x7ffull
+#define MACE_ETHERNET_BACKOFF_SEED_SEED_INPLACE      (MACE_ETHERNET_BACKOFF_SEED_SEED_MASK << MACE_ETHERNET_BACKOFF_SEED_SEED_SHIFT)
+
+/*
+ * Physical station address, 48 bits. The receive filter compares the address one byte at a time. Address byte n sits in bits 8n+7 to 8n, and the first byte is the first byte received from the wire. Bit 0 of the first byte is the first bit on the wire (printed page 77). Reset value is not given (printed page 70). The Linux and OpenBSD drivers write the first octet to bits 47 to 40 and the last octet to bits 7 to 0, the reverse of this map (software expectation, inferred; the Linux and OpenBSD station-address load routines). Which mapping the chip applies is unresolved.
  */
 /* station_address: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181) */
 #define MACE_ETHERNET_STATION_ADDRESS_OFFSET         0xa0u /* established */
