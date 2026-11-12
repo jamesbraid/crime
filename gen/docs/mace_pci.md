@@ -26,11 +26,17 @@ Captured address of a PCI error. Valid only while the address-valid flag is set 
 
 ### Register `pci_error_flags`
 
-Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one preserves them (established, printed page 162). A bad transaction size may set bit 27; the specification calls that result unexpected, so it is not named here.
+Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one preserves them (established, printed page 162). A bad transaction size may set bit 27; the specification calls that result unexpected, so it is not named here. Each of bits 28 to 31 has an address-valid partner at bits 16 to 19 (bit 28 with 16, through bit 31 with 19). Clearing an error bit also clears its partner. The error address then keeps its value but is invalid until another qualifying error (established, printed pages 162 and 163).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31 | `master_abort` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 30 | `target_abort` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 29 | `data_parity` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 28 | `retry` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 26 | `system_error` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 24 | `parity` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 23 | `read_buffer_overrun` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
 | 19 | `addr_valid` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
 
 ### Register `pci_control`
@@ -40,6 +46,8 @@ Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-erro
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:24 | `error_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 23:16 | `read_buffer_inval` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers | Bit 16 plus n selects read-buffer invalidation when PCI input n asserts. The bit-16 row names prefetch buffers for input 0, and the rows for bits 17 to 23 name all read buffers. The printed text keeps that split, and it is kept here pending review (printed pages 164 and 165). |
+| 11 | `read_multiple` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers | Memory Read Multiple read-ahead. Set, a Memory Read Multiple may fetch the next 128-byte region when the master reads across a 128-byte boundary. Clear, Memory Read Multiple behaves like Memory Read and Memory Read Line (printed pages 158 and 164). |
 | 10 | `parity_response` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers | Parity-error response enable (printed page 164). |
 | 8 | `serr_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers | SERR_N signalling enable (printed page 164). |
 | 7:0 | `irq_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |

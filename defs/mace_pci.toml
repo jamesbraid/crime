@@ -21,9 +21,15 @@ access = "rw"
 width = 32
 grade = "established"
 doc = """
-Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one preserves them (established, printed page 162). A bad transaction size may set bit 27; the specification calls that result unexpected, so it is not named here."""
+Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one preserves them (established, printed page 162). A bad transaction size may set bit 27; the specification calls that result unexpected, so it is not named here. Each of bits 28 to 31 has an address-valid partner at bits 16 to 19 (bit 28 with 16, through bit 31 with 19). Clearing an error bit also clears its partner. The error address then keeps its value but is invalid until another qualifying error (established, printed pages 162 and 163)."""
 
 [registers.pci_error_flags.fields]
+read_buffer_overrun = { bits = [23, 23], grade = "established" }
+parity = { bits = [24, 24], grade = "established" }
+system_error = { bits = [26, 26], grade = "established" }
+retry = { bits = [28, 28], grade = "established" }
+data_parity = { bits = [29, 29], grade = "established" }
+target_abort = { bits = [30, 30], grade = "established" }
 addr_valid = { bits = [19, 19], grade = "established" }
 master_abort = { bits = [31, 31], grade = "established" }
 
@@ -39,6 +45,8 @@ Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-erro
 irq_enable = { bits = [7, 0], grade = "established" }
 serr_enable = { bits = [8, 8], grade = "established", doc = "SERR_N signalling enable (printed page 164)." }
 parity_response = { bits = [10, 10], grade = "established", doc = "Parity-error response enable (printed page 164)." }
+read_multiple = { bits = [11, 11], grade = "established", doc = "Memory Read Multiple read-ahead. Set, a Memory Read Multiple may fetch the next 128-byte region when the master reads across a 128-byte boundary. Clear, Memory Read Multiple behaves like Memory Read and Memory Read Line (printed pages 158 and 164)." }
+read_buffer_inval = { bits = [23, 16], grade = "established", doc = "Bit 16 plus n selects read-buffer invalidation when PCI input n asserts. The bit-16 row names prefetch buffers for input 0, and the rows for bits 17 to 23 name all read buffers. The printed text keeps that split, and it is kept here pending review (printed pages 164 and 165)." }
 error_enable = { bits = [31, 24], grade = "established" }
 
 [registers.pci_rev]

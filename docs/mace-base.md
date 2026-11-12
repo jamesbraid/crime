@@ -60,6 +60,13 @@ the PCI block's six registers fail to repeat (established, [mace] 161).
   and 43). The chip's three slot positions do not all fit this machine.
 - Slot width and signalling voltage are unknown. The guides read here do not
   state them.
+- The bridge does not accept a dual-address cycle as a target. A 64-bit data
+  width therefore does not give a PCI address above 32 bits (established,
+  [mace] 157 to 158 and 161).
+- The O2 PCI adapter does not respond to REQ64#. A 64-bit logical transfer
+  runs as two 32-bit data phases (established, [guide] 379). The chip text
+  describes 32-bit and 64-bit target transfers ([mace] 157). The guide is the
+  O2-specific statement, and the chip revision it describes is unknown.
 
 ### Device numbers
 
@@ -167,8 +174,33 @@ revisions. The MACE 2.0 register readback is 1 (see `defs/mace_pci.toml`).
 - A 64-bit native-view write with disabled byte positions can store bad data
   (established, [mace] 167). This does not affect 32-bit masters.
 
+## Bursts and read-ahead
+
+- A burst ends at a 128-byte line boundary. The bridge disconnects there, and
+  a master that continues must start another transaction. The chip text's
+  example is a 256-byte read: a 128-byte burst, a disconnect at the line end,
+  and another transaction for the rest (established, [mace] 158). PCI 2.1
+  (printed pages 41 to 43) treats Disconnect as a normal target termination
+  that can fall on a resource boundary.
+- The bridge's virtual PCI cache line is at most 128 bytes. A device's
+  configured cache-line size may be smaller (established, [mace] 158 to 159).
+- Memory Read and Memory Read Line get the same read-ahead. Memory Read
+  Multiple gets read-ahead only when PCI Control bit 11 is set, and then only
+  when the master reads across a 128-byte boundary. See `defs/mace_pci.toml`
+  (established, [mace] 158 and 164).
+- Read-ahead is a prefetch hint. It is not hardware cache coherency.
+- A PCI memory write invalidates buffered reads for the same 128-byte region
+  (established, [mace] 159). The specification does not say that a CPU store
+  to RAM does the same, so that is unknown.
+- Capacity, replacement order, latency, initial contents, and the effect of
+  an interrupt that arrives during an outstanding prefetch are not documented
+  (unknown). An implementation without retained prefetch data must say so and
+  test the behaviour it claims.
+
 ## Interrupt delivery
 
+- PCI inputs are level sensitive. MACE sends a new value to CRIME when an
+  input's level changes (established, [mace] 179).
 - The peripheral controller ORs each group of sources and sends the result
   to CRIME whenever the group's level changes (established, [mace] 179). Status
   bits 0 to 7 feed CRIME bit 6, bits 8 to 15 feed CRIME bit 5, and bits 16 to 31
@@ -281,3 +313,7 @@ resetting the PCI bus.
   Control section above).
 - Narrow access to Misc Control (see the same section).
 - Slot width and signalling voltage.
+- Read-buffer capacity, replacement, latency and initial contents, and whether
+  a CPU store invalidates read buffers (see the bursts and read-ahead section).
+- Whether PCI Control bit 16 invalidates only prefetch buffers or all read
+  buffers, as the printed table's split suggests (see `defs/mace_pci.toml`).
