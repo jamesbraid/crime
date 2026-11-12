@@ -6,22 +6,25 @@
 #include <stdint.h>
 
 
-/* mode: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+/*
+ * Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185).
+ */
+/* mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define MTE_MODE_OFFSET                              0x3000u /* established */
 #define MTE_MODE_COPY_SHIFT                          11 /* established */
-#define MTE_MODE_COPY_MASK                           0x1ull
+#define MTE_MODE_COPY_MASK                           0x1u
 #define MTE_MODE_COPY_INPLACE                        (MTE_MODE_COPY_MASK << MTE_MODE_COPY_SHIFT)
 #define MTE_MODE_STIPPLE_SHIFT                       10 /* established */
-#define MTE_MODE_STIPPLE_MASK                        0x1ull
+#define MTE_MODE_STIPPLE_MASK                        0x1u
 #define MTE_MODE_STIPPLE_INPLACE                     (MTE_MODE_STIPPLE_MASK << MTE_MODE_STIPPLE_SHIFT)
 #define MTE_MODE_DEPTH_SHIFT                         8 /* established */
-#define MTE_MODE_DEPTH_MASK                          0x3ull
+#define MTE_MODE_DEPTH_MASK                          0x3u
 #define MTE_MODE_DEPTH_INPLACE                       (MTE_MODE_DEPTH_MASK << MTE_MODE_DEPTH_SHIFT)
 #define MTE_MODE_DEPTH_BITS8                         0 /* established */
 #define MTE_MODE_DEPTH_BITS16                        1 /* established */
 #define MTE_MODE_DEPTH_BITS32                        2 /* established */
 #define MTE_MODE_SRC_BUF_SHIFT                       5 /* established */
-#define MTE_MODE_SRC_BUF_MASK                        0x7ull
+#define MTE_MODE_SRC_BUF_MASK                        0x7u
 #define MTE_MODE_SRC_BUF_INPLACE                     (MTE_MODE_SRC_BUF_MASK << MTE_MODE_SRC_BUF_SHIFT)
 #define MTE_MODE_SRC_BUF_FB_A                        0 /* established */
 #define MTE_MODE_SRC_BUF_FB_B                        1 /* established */
@@ -31,7 +34,7 @@
 #define MTE_MODE_SRC_BUF_LIN_B                       5 /* established */
 #define MTE_MODE_SRC_BUF_CID                         6 /* established */
 #define MTE_MODE_DST_BUF_SHIFT                       2 /* established */
-#define MTE_MODE_DST_BUF_MASK                        0x7ull
+#define MTE_MODE_DST_BUF_MASK                        0x7u
 #define MTE_MODE_DST_BUF_INPLACE                     (MTE_MODE_DST_BUF_MASK << MTE_MODE_DST_BUF_SHIFT)
 #define MTE_MODE_DST_BUF_FB_A                        0 /* established */
 #define MTE_MODE_DST_BUF_FB_B                        1 /* established */
@@ -41,44 +44,77 @@
 #define MTE_MODE_DST_BUF_LIN_B                       5 /* established */
 #define MTE_MODE_DST_BUF_CID                         6 /* established */
 #define MTE_MODE_SRC_ECC_SHIFT                       1 /* established */
-#define MTE_MODE_SRC_ECC_MASK                        0x1ull
+#define MTE_MODE_SRC_ECC_MASK                        0x1u
 #define MTE_MODE_SRC_ECC_INPLACE                     (MTE_MODE_SRC_ECC_MASK << MTE_MODE_SRC_ECC_SHIFT)
 #define MTE_MODE_DST_ECC_SHIFT                       0 /* established */
-#define MTE_MODE_DST_ECC_MASK                        0x1ull
+#define MTE_MODE_DST_ECC_MASK                        0x1u
 #define MTE_MODE_DST_ECC_INPLACE                     (MTE_MODE_DST_ECC_MASK << MTE_MODE_DST_ECC_SHIFT)
 
-/* bytemask: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_BYTEMASK_OFFSET                          0x3008u /* inferred */
+/*
+ * Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown).
+ */
+/* bytemask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_BYTEMASK_OFFSET                          0x3008u /* established */
 
-/* stipplemask: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_STIPPLEMASK_OFFSET                       0x3010u /* inferred */
+/*
+ * Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined.
+ */
+/* stipplemask: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_STIPPLEMASK_OFFSET                       0x3010u /* established */
 
-/* fg: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_FG_OFFSET                                0x3018u /* inferred */
+/*
+ * The clear value, 32 bits, readable and writable (established, [spec] PDF 183).
+ */
+/* fg: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_FG_OFFSET                                0x3018u /* established */
 
-/* src0: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_SRC0_OFFSET                              0x3020u /* inferred */
+/*
+ * Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183).
+ */
+/* src0: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_SRC0_OFFSET                              0x3020u /* established */
 
-/* src1: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_SRC1_OFFSET                              0x3028u /* inferred */
+/*
+ * Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183).
+ */
+/* src1: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_SRC1_OFFSET                              0x3028u /* established */
 
-/* dst0: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_DST0_OFFSET                              0x3030u /* inferred */
+/*
+ * Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).
+ */
+/* dst0: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_DST0_OFFSET                              0x3030u /* established */
 
-/* dst1: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_DST1_OFFSET                              0x3038u /* inferred */
+/*
+ * Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).
+ */
+/* dst1: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_DST1_OFFSET                              0x3038u /* established */
 
-/* src_ystep: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_SRC_YSTEP_OFFSET                         0x3040u /* inferred */
+/*
+ * Source row step, 32 bits, readable and writable (established, [spec] PDF 184).
+ */
+/* src_ystep: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_SRC_YSTEP_OFFSET                         0x3040u /* established */
 
-/* dst_ystep: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_DST_YSTEP_OFFSET                         0x3048u /* inferred */
+/*
+ * Destination row step, 32 bits, readable and writable (established, [spec] PDF 184).
+ */
+/* dst_ystep: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_DST_YSTEP_OFFSET                         0x3048u /* established */
 
-/* null: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_NULL_OFFSET                              0x3070u /* inferred */
+/*
+ * Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md).
+ */
+/* null: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_NULL_OFFSET                              0x3070u /* established */
 
-/* flush: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
-#define MTE_FLUSH_OFFSET                             0x3078u /* inferred */
+/*
+ * Flush command, 32 bits, write-only (established, [spec] PDF 184).
+ */
+/* flush: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define MTE_FLUSH_OFFSET                             0x3078u /* established */
 
 /* word ADDR: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define MTE_ADDR_WIDTH                               32 /* established */

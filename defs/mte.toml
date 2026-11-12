@@ -15,9 +15,11 @@ legacy_guard = "MTE_DECODE_H"
 [registers.mode]
 offset = 0x3000
 access = "rw"
-width = 64
+width = 32
 grade = "established"
 space = "re"
+doc = """
+Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185)."""
 
 [registers.mode.fields]
 copy = { bits = [11, 11], grade = "established" }
@@ -71,79 +73,101 @@ expect = { copy = 1, stipple = 0, depth = 0, src_buf = 1, dst_buf = 0 }
 [registers.bytemask]
 offset = 0x3008
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown)."""
 
 [registers.stipplemask]
 offset = 0x3010
-access = "rw"
-width = 64
-grade = "inferred"
+access = "w"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined."""
 
 [registers.fg]
 offset = 0x3018
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+The clear value, 32 bits, readable and writable (established, [spec] PDF 183)."""
 
 [registers.src0]
 offset = 0x3020
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183)."""
 
 [registers.src1]
 offset = 0x3028
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183)."""
 
 [registers.dst0]
 offset = 0x3030
-access = "rw"
-width = 64
-grade = "inferred"
+access = "w"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
 
 [registers.dst1]
 offset = 0x3038
-access = "rw"
-width = 64
-grade = "inferred"
+access = "w"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
 
 [registers.src_ystep]
 offset = 0x3040
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Source row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
 
 [registers.dst_ystep]
 offset = 0x3048
 access = "rw"
-width = 64
-grade = "inferred"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Destination row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
 
 [registers.null]
 offset = 0x3070
-access = "rw"
-width = 64
-grade = "inferred"
+access = "w"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md)."""
 
 [registers.flush]
 offset = 0x3078
-access = "rw"
-width = 64
-grade = "inferred"
+access = "w"
+width = 32
+grade = "established"
 space = "re"
+doc = """
+Flush command, 32 bits, write-only (established, [spec] PDF 184)."""
 
 [words.ADDR]
 width = 32

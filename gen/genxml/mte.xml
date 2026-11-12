@@ -26,7 +26,8 @@
     <value name="lin_b" value="5" grade="established"/>
     <value name="cid" value="6" grade="established"/>
   </enum>
-  <struct name="MODE" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3000" access="rw" space="re" reset="unknown">
+  <struct name="MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3000" access="rw" space="re" reset="unknown">
+    <doc>Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185).</doc>
     <field name="copy" start="11" size="1" type="uint" grade="established"/>
     <field name="stipple" start="10" size="1" type="uint" grade="established"/>
     <field name="depth" start="8" size="2" type="mode_depth" grade="established"/>
@@ -49,27 +50,38 @@
       <expect field="dst_buf" value="0"/>
     </test>
   </struct>
-  <struct name="BYTEMASK" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3008" access="rw" space="re" reset="unknown">
+  <struct name="BYTEMASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3008" access="rw" space="re" reset="unknown">
+    <doc>Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown).</doc>
   </struct>
-  <struct name="STIPPLEMASK" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3010" access="rw" space="re" reset="unknown">
+  <struct name="STIPPLEMASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3010" access="w" space="re" reset="unknown">
+    <doc>Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined.</doc>
   </struct>
-  <struct name="FG" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3018" access="rw" space="re" reset="unknown">
+  <struct name="FG" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3018" access="rw" space="re" reset="unknown">
+    <doc>The clear value, 32 bits, readable and writable (established, [spec] PDF 183).</doc>
   </struct>
-  <struct name="SRC0" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3020" access="rw" space="re" reset="unknown">
+  <struct name="SRC0" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3020" access="rw" space="re" reset="unknown">
+    <doc>Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183).</doc>
   </struct>
-  <struct name="SRC1" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3028" access="rw" space="re" reset="unknown">
+  <struct name="SRC1" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3028" access="rw" space="re" reset="unknown">
+    <doc>Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183).</doc>
   </struct>
-  <struct name="DST0" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3030" access="rw" space="re" reset="unknown">
+  <struct name="DST0" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3030" access="w" space="re" reset="unknown">
+    <doc>Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).</doc>
   </struct>
-  <struct name="DST1" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3038" access="rw" space="re" reset="unknown">
+  <struct name="DST1" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3038" access="w" space="re" reset="unknown">
+    <doc>Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).</doc>
   </struct>
-  <struct name="SRC_YSTEP" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3040" access="rw" space="re" reset="unknown">
+  <struct name="SRC_YSTEP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3040" access="rw" space="re" reset="unknown">
+    <doc>Source row step, 32 bits, readable and writable (established, [spec] PDF 184).</doc>
   </struct>
-  <struct name="DST_YSTEP" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3048" access="rw" space="re" reset="unknown">
+  <struct name="DST_YSTEP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3048" access="rw" space="re" reset="unknown">
+    <doc>Destination row step, 32 bits, readable and writable (established, [spec] PDF 184).</doc>
   </struct>
-  <struct name="NULL" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3070" access="rw" space="re" reset="unknown">
+  <struct name="NULL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3070" access="w" space="re" reset="unknown">
+    <doc>Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md).</doc>
   </struct>
-  <struct name="FLUSH" size="8" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3078" access="rw" space="re" reset="unknown">
+  <struct name="FLUSH" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x3078" access="w" space="re" reset="unknown">
+    <doc>Flush command, 32 bits, write-only (established, [spec] PDF 184).</doc>
   </struct>
   <struct name="ADDR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
     <field name="byte_col" start="16" size="16" type="uint" grade="established"/>

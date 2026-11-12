@@ -2,6 +2,12 @@
 
 How IRIX 6.5.30 drives the memory transfer engine beyond the kernel buffer clear. Register names and mode fields are in [MTE.h](../MTE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Citations of `crm.so` give lines of `ddx/asm/crm/crm/crm.s` (the module is stripped, so there are no useful function bounds; the listing's `glabel` lines do not match the code that follows them). Register offsets are decimal in that listing: the MTE group is 12288 (0x3000) to 12408 (0x3078).
 
+## Engine rules from the specification
+
+Established, [spec] PDF 160: the engine performs byte-aligned clears and copies on both linear buffers and framebuffers. That is the whole stated alignment rule. The 32-byte alignment under "Address word" below is still inferred; the specification does not state it.
+
+Established, [spec] PDF 186: a host commits an operation by offsetting its last parameter write by a START_OFFSET number of bytes. The specification does not give that number. The X server and NetBSD use `0x800`, the start alias in `defs/re.toml`. Writes after the commit do not change the committed operation. Committed operations run in commit order, each to completion, with no interruption. The specification states these rules for primitives in the host interface buffer. MTE writes use the same buffer, so applying them to MTE operations is inferred.
+
 ## Address word
 
 Established (read from the X server and from NetBSD `crmfb_fill_rect` and `crmfb_scroll`): each of SRC0, SRC1, DST0 and DST1 is one 32-bit word with a column in bits 31:16 and a row in bits 15:0. The column is a **byte** column, whatever the pixel size. NetBSD shifts the pixel x left by 0, 1 or 2 for 8, 16 or 32 bit pixels, and writes the last byte of the last pixel as the end column (`((x + w) << shift) - 1`). The X server does the same: its shift is 17 for 16-bit and 18 for 32-bit pixels, and the end word adds `0x10000` or `0x30000` (crm.s 26899-26900, 27045-27048). That is `x << 16` for the start and `((x + w) << shift) - 1` for the end, so the byte shift is folded into one constant.
@@ -37,6 +43,8 @@ The kernel clear (`crime_clear_buffer`) uses the same address word. See MTE.h fo
 
 - MTE completion: the engine's MTE idle bit is status bit 25 (NetBSD `CRIME_DE_MTE_IDLE`); IRIX polls the combined idle bit 28 only. Interrupts, reset, host-memory transfers and ordering against pixel-pipeline primitives are settled or labelled in `docs/reset.md` (pass 7): commit order, no MTE-specific interrupt, no reset value any software depends on.
 - Stipple period, settled in pass 7 as a driver expectation: the X server's stippled MTE fill sends one MTE operation per row and, before each, writes STIPPLEMASK with a 32-bit word built from the pattern and rotated by a column-dependent amount (`crm.s` 2489, 2546: a right rotate of a 32-bit value by `n` and `32 - n`). A 32-bit rotation only makes sense for a 32-pixel repeat, so the engine applies the mask with a period of 32 pixels starting at the destination's start column (inferred). NetBSD never sets the MTE stipple bit (it stipples through the pixel pipeline). Bit order within the word beyond that: unknown: no other software depends on it.
+- Byte mask: its polarity and bit-to-byte order are not in the specification (unknown). The X server writes all ones for full-width writes, which is the only value the shipped code is seen to use.
+- Overlapping linear copies: whether a copy whose source and destination share bytes runs in a fixed order, and which order, is not stated in the specification or in any shipped software read (unknown).
 
 ## Buffer swap by copy in the kernel (`crmSwapBufd`)
 

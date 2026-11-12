@@ -19,20 +19,22 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Register | Offset | Access | Width | Count | Space | Reset | Grade | Source |
 |---|---|---|---|---|---|---|---|---|
-| `mode` | 0x3000 | rw | 64 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `bytemask` | 0x3008 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `stipplemask` | 0x3010 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `fg` | 0x3018 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `src0` | 0x3020 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `src1` | 0x3028 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `dst0` | 0x3030 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `dst1` | 0x3038 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `src_ystep` | 0x3040 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `dst_ystep` | 0x3048 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `null` | 0x3070 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
-| `flush` | 0x3078 | rw | 64 |  | re | unknown | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `mode` | 0x3000 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `bytemask` | 0x3008 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `stipplemask` | 0x3010 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `fg` | 0x3018 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `src0` | 0x3020 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `src1` | 0x3028 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `dst0` | 0x3030 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `dst1` | 0x3038 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `src_ystep` | 0x3040 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `dst_ystep` | 0x3048 | rw | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `null` | 0x3070 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `flush` | 0x3078 | w | 32 |  | re | unknown | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 
 ### Register `mode`
+
+Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -46,25 +48,47 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `bytemask`
 
+Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown).
+
 ### Register `stipplemask`
+
+Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined.
 
 ### Register `fg`
 
+The clear value, 32 bits, readable and writable (established, [spec] PDF 183).
+
 ### Register `src0`
+
+Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183).
 
 ### Register `src1`
 
+Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183).
+
 ### Register `dst0`
+
+Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).
 
 ### Register `dst1`
 
+Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183).
+
 ### Register `src_ystep`
+
+Source row step, 32 bits, readable and writable (established, [spec] PDF 184).
 
 ### Register `dst_ystep`
 
+Destination row step, 32 bits, readable and writable (established, [spec] PDF 184).
+
 ### Register `null`
 
+Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md).
+
 ### Register `flush`
+
+Flush command, 32 bits, write-only (established, [spec] PDF 184).
 
 ## Words
 

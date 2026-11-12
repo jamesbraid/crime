@@ -2,51 +2,51 @@
 // O2 CRIME memory transfer engine registers and tile layout
 #![allow(dead_code)]
 
-/// (established)
+/// Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184).  (established)
 pub mod mode {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3000;
     pub mod copy { // bits 11:11, established
         pub const SHIFT: u32 = 11;
-        pub const MASK: u64 = 0x1;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
     pub mod stipple { // bits 10:10, established
         pub const SHIFT: u32 = 10;
-        pub const MASK: u64 = 0x1;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
     pub mod depth { // bits 9:8, established
         pub const SHIFT: u32 = 8;
-        pub const MASK: u64 = 0x3;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
-        pub const BITS8: u64 = 0; // established
-        pub const BITS16: u64 = 1; // established
-        pub const BITS32: u64 = 2; // established
+        pub const BITS8: u32 = 0; // established
+        pub const BITS16: u32 = 1; // established
+        pub const BITS32: u32 = 2; // established
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
         pub enum Value {
             Bits8,
             Bits16,
             Bits32,
-            Other(u64),
+            Other(u32),
         }
         impl Value {
-            pub const fn from_raw(v: u64) -> Self {
+            pub const fn from_raw(v: u32) -> Self {
                 match v {
                     0 => Self::Bits8,
                     1 => Self::Bits16,
@@ -54,7 +54,7 @@ pub mod mode {
                     _ => Self::Other(v),
                 }
             }
-            pub const fn raw(self) -> u64 {
+            pub const fn raw(self) -> u32 {
                 match self {
                     Self::Bits8 => 0,
                     Self::Bits16 => 1,
@@ -66,20 +66,20 @@ pub mod mode {
     }
     pub mod src_buf { // bits 7:5, established
         pub const SHIFT: u32 = 5;
-        pub const MASK: u64 = 0x7;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
-        pub const FB_A: u64 = 0; // established
-        pub const FB_B: u64 = 1; // established
-        pub const FB_C: u64 = 2; // established
-        pub const TEX: u64 = 3; // established
-        pub const LIN_A: u64 = 4; // established
-        pub const LIN_B: u64 = 5; // established
-        pub const CID: u64 = 6; // established
+        pub const FB_A: u32 = 0; // established
+        pub const FB_B: u32 = 1; // established
+        pub const FB_C: u32 = 2; // established
+        pub const TEX: u32 = 3; // established
+        pub const LIN_A: u32 = 4; // established
+        pub const LIN_B: u32 = 5; // established
+        pub const CID: u32 = 6; // established
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
         pub enum Value {
             FbA,
@@ -89,10 +89,10 @@ pub mod mode {
             LinA,
             LinB,
             Cid,
-            Other(u64),
+            Other(u32),
         }
         impl Value {
-            pub const fn from_raw(v: u64) -> Self {
+            pub const fn from_raw(v: u32) -> Self {
                 match v {
                     0 => Self::FbA,
                     1 => Self::FbB,
@@ -104,7 +104,7 @@ pub mod mode {
                     _ => Self::Other(v),
                 }
             }
-            pub const fn raw(self) -> u64 {
+            pub const fn raw(self) -> u32 {
                 match self {
                     Self::FbA => 0,
                     Self::FbB => 1,
@@ -120,20 +120,20 @@ pub mod mode {
     }
     pub mod dst_buf { // bits 4:2, established
         pub const SHIFT: u32 = 2;
-        pub const MASK: u64 = 0x7;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
-        pub const FB_A: u64 = 0; // established
-        pub const FB_B: u64 = 1; // established
-        pub const FB_C: u64 = 2; // established
-        pub const TEX: u64 = 3; // established
-        pub const LIN_A: u64 = 4; // established
-        pub const LIN_B: u64 = 5; // established
-        pub const CID: u64 = 6; // established
+        pub const FB_A: u32 = 0; // established
+        pub const FB_B: u32 = 1; // established
+        pub const FB_C: u32 = 2; // established
+        pub const TEX: u32 = 3; // established
+        pub const LIN_A: u32 = 4; // established
+        pub const LIN_B: u32 = 5; // established
+        pub const CID: u32 = 6; // established
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
         pub enum Value {
             FbA,
@@ -143,10 +143,10 @@ pub mod mode {
             LinA,
             LinB,
             Cid,
-            Other(u64),
+            Other(u32),
         }
         impl Value {
-            pub const fn from_raw(v: u64) -> Self {
+            pub const fn from_raw(v: u32) -> Self {
                 match v {
                     0 => Self::FbA,
                     1 => Self::FbB,
@@ -158,7 +158,7 @@ pub mod mode {
                     _ => Self::Other(v),
                 }
             }
-            pub const fn raw(self) -> u64 {
+            pub const fn raw(self) -> u32 {
                 match self {
                     Self::FbA => 0,
                     Self::FbB => 1,
@@ -174,78 +174,78 @@ pub mod mode {
     }
     pub mod src_ecc { // bits 1:1, established
         pub const SHIFT: u32 = 1;
-        pub const MASK: u64 = 0x1;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
     pub mod dst_ecc { // bits 0:0, established
         pub const SHIFT: u32 = 0;
-        pub const MASK: u64 = 0x1;
-        pub const fn get(v: u64) -> u64 {
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
-        pub const fn set(v: u64, x: u64) -> u64 {
+        pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
 }
-/// (inferred)
+/// Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated  (established)
 pub mod bytemask {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3008;
 }
-/// (inferred)
+/// Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined. (established)
 pub mod stipplemask {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3010;
 }
-/// (inferred)
+/// The clear value, 32 bits, readable and writable (established, [spec] PDF 183). (established)
 pub mod fg {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3018;
 }
-/// (inferred)
+/// Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183). (established)
 pub mod src0 {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3020;
 }
-/// (inferred)
+/// Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (estab (established)
 pub mod src1 {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3028;
 }
-/// (inferred)
+/// Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183). (established)
 pub mod dst0 {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3030;
 }
-/// (inferred)
+/// Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183). (established)
 pub mod dst1 {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3038;
 }
-/// (inferred)
+/// Source row step, 32 bits, readable and writable (established, [spec] PDF 184). (established)
 pub mod src_ystep {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3040;
 }
-/// (inferred)
+/// Destination row step, 32 bits, readable and writable (established, [spec] PDF 184). (established)
 pub mod dst_ystep {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3048;
 }
-/// (inferred)
+/// Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md). (established)
 pub mod null {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3070;
 }
-/// (inferred)
+/// Flush command, 32 bits, write-only (established, [spec] PDF 184). (established)
 pub mod flush {
-    pub const WIDTH: u32 = 64;
+    pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3078;
 }
 /// (established)

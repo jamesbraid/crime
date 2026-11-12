@@ -108,6 +108,17 @@ Sources: `crime_kernel/disasm/kernel/kernel.text.s` (`mlreset`, `ecc_disable`, `
 - Established ([netbsd] names in `crimereg.h`): inputs 28 and 29 are `CRIME_INT_SOFT0` and `CRIME_INT_SOFT1` (`0x10000000` and `0x20000000`), the software interrupts. This settles the question left open above; IRIX raises them through SOFTINT as recorded.
 - Established ([netbsd] `crimereg.h`): interrupt inputs 0-15 are the MACE-routed sources (video in and out, Ethernet, serial, audio, PCI slots and bridge); IRIX registers only 4 and 5 for them (the MACE ISA and misc inputs), so the rest reach the kernel through MACE's own interrupt layer (unknown, outside this repository's scope). The CRIME side is documented: MACE sets or clears bits 15:0 of the interrupt status register by sending CRIME a 16-bit value and mask over the interconnect, and those bits are read-only to software ([spec] section 5.7.4, printed pages 5-22 to 5-23; established); how MACE decides to send each message is in the MACE specification's interrupt chapter, which this repository does not hold. Test that settles it: a document read, the MACE specification's interrupt status and mask register chapter, for how each source maps onto bits 15:0 and how a pending bit is cleared; no hardware test is needed for the CRIME side.
 
+# ECC coding, read suppression and error latching
+
+Sources: [spec] CRIME 1.5 specification, PDF 144-146 (memory controller, ECC logic, read-modify-write and error handling, printed pages 6-24 to 6-26). Labels as above.
+
+- Established ([spec] PDF 144): the code is single-error-correcting, double-error-detecting. Eight check bits cover each 64 data bits, and the 256-bit memory word holds four such units. ECC is generated on every write.
+- Established ([spec] PDF 144): a read can turn off the detect and correct units for that request by clearing the request's ECC valid bit. The syndrome is then forced to zero, so the data is neither corrected nor checked. This is a per-request flag, not a bit in a CRIME register.
+- Established ([spec] PDF 144): an uncorrectable read returns the data as read, with an error signal to the client.
+- Established ([spec] PDF 145): a write narrower than 64 bits is a read-modify-write. The controller reads the word, merges the client's bytes, and writes back with new ECC. The client's byte mask goes to memory unchanged, so bytes outside the mask keep their old contents and their old check bits. A read-modify-write does not scrub bad data.
+- Established ([spec] PDF 146): the error registers latch as follows. The first hard error sets the status and the address. A second hard error sets the multiple-error bit. A soft error with no hard error earlier sets the status and the address. An address error with no ECC error also sets them. The specification does not say what a soft error after a hard error latches (unknown).
+- Established ([spec] PDF 146): an ECC error also captures the syndrome in the ECC syndrome register. The specification refers to the R4000 manual for the syndrome's encoding, which is not in this repository (unknown).
+
 # CPU address windows and aliases (pass 6)
 
 Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 135-153 (memory controller); Linux `arch/mips/sgi-ip32/ip32-memory.c`, `ip32-dma.c`, `arch/mips/include/asm/ip32/crime.h`; MAME `src/mame/sgi/o2.cpp`; the IRIX kernel listings under `crime_kernel/`. Labels as above.
