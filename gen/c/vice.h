@@ -21,7 +21,7 @@
 /* hst_bsp_out_box: r16, space vice, reset unknown; published VICE design specification */
 #define VICE_HST_BSP_OUT_BOX_OFFSET                  0x30u /* established */
 
-/* msp_ctl_stat: rw32, space vice, reset unknown; published VICE design specification */
+/* msp_ctl_stat: rw32, space vice, reset 0x0; published VICE design specification */
 #define VICE_MSP_CTL_STAT_OFFSET                     0x40u /* established */
 #define VICE_MSP_CTL_STAT_RESET_RELEASE_SHIFT        1 /* established */
 #define VICE_MSP_CTL_STAT_RESET_RELEASE_MASK         0x1u
@@ -30,8 +30,32 @@
 #define VICE_MSP_CTL_STAT_GO_MASK                    0x1u
 #define VICE_MSP_CTL_STAT_GO_INPLACE                 (VICE_MSP_CTL_STAT_GO_MASK << VICE_MSP_CTL_STAT_GO_SHIFT)
 
-/* msp_excp_flag: rw32, space vice, reset unknown; published VICE design specification */
+/* msp_excp_flag: rw32, space vice, reset 0x0; published VICE design specification */
 #define VICE_MSP_EXCP_FLAG_OFFSET                    0x48u /* established */
+#define VICE_MSP_EXCP_FLAG_ADEI_SHIFT                7 /* established */
+#define VICE_MSP_EXCP_FLAG_ADEI_MASK                 0x1u
+#define VICE_MSP_EXCP_FLAG_ADEI_INPLACE              (VICE_MSP_EXCP_FLAG_ADEI_MASK << VICE_MSP_EXCP_FLAG_ADEI_SHIFT)
+#define VICE_MSP_EXCP_FLAG_CON_SHIFT                 6 /* established */
+#define VICE_MSP_EXCP_FLAG_CON_MASK                  0x1u
+#define VICE_MSP_EXCP_FLAG_CON_INPLACE               (VICE_MSP_EXCP_FLAG_CON_MASK << VICE_MSP_EXCP_FLAG_CON_SHIFT)
+#define VICE_MSP_EXCP_FLAG_VURI_SHIFT                5 /* established */
+#define VICE_MSP_EXCP_FLAG_VURI_MASK                 0x1u
+#define VICE_MSP_EXCP_FLAG_VURI_INPLACE              (VICE_MSP_EXCP_FLAG_VURI_MASK << VICE_MSP_EXCP_FLAG_VURI_SHIFT)
+#define VICE_MSP_EXCP_FLAG_SURI_SHIFT                4 /* established */
+#define VICE_MSP_EXCP_FLAG_SURI_MASK                 0x1u
+#define VICE_MSP_EXCP_FLAG_SURI_INPLACE              (VICE_MSP_EXCP_FLAG_SURI_MASK << VICE_MSP_EXCP_FLAG_SURI_SHIFT)
+#define VICE_MSP_EXCP_FLAG_WP_SHIFT                  3 /* established */
+#define VICE_MSP_EXCP_FLAG_WP_MASK                   0x1u
+#define VICE_MSP_EXCP_FLAG_WP_INPLACE                (VICE_MSP_EXCP_FLAG_WP_MASK << VICE_MSP_EXCP_FLAG_WP_SHIFT)
+#define VICE_MSP_EXCP_FLAG_BP_SHIFT                  2 /* established */
+#define VICE_MSP_EXCP_FLAG_BP_MASK                   0x1u
+#define VICE_MSP_EXCP_FLAG_BP_INPLACE                (VICE_MSP_EXCP_FLAG_BP_MASK << VICE_MSP_EXCP_FLAG_BP_SHIFT)
+#define VICE_MSP_EXCP_FLAG_ADES_SHIFT                1 /* established */
+#define VICE_MSP_EXCP_FLAG_ADES_MASK                 0x1u
+#define VICE_MSP_EXCP_FLAG_ADES_INPLACE              (VICE_MSP_EXCP_FLAG_ADES_MASK << VICE_MSP_EXCP_FLAG_ADES_SHIFT)
+#define VICE_MSP_EXCP_FLAG_ADEL_SHIFT                0 /* established */
+#define VICE_MSP_EXCP_FLAG_ADEL_MASK                 0x1u
+#define VICE_MSP_EXCP_FLAG_ADEL_INPLACE              (VICE_MSP_EXCP_FLAG_ADEL_MASK << VICE_MSP_EXCP_FLAG_ADEL_SHIFT)
 
 /* msp_pc: rw32, space vice, reset unknown; published VICE design specification */
 #define VICE_MSP_PC_OFFSET                           0x50u /* established */
@@ -42,7 +66,7 @@
 /* msp_bad_addr: r32, space vice, reset unknown; published VICE design specification */
 #define VICE_MSP_BAD_ADDR_OFFSET                     0x58u /* established */
 
-/* msp_watchpoint: rw32, space vice, reset unknown; published VICE design specification */
+/* msp_watchpoint: rw32, space vice, reset 0x0; published VICE design specification */
 #define VICE_MSP_WATCHPOINT_OFFSET                   0x60u /* established */
 
 /* msp_epc: r32, space vice, reset unknown; published VICE design specification */
@@ -85,7 +109,7 @@
 /* bsp_sw_int: w32, space vice, reset unknown; published VICE design specification */
 #define VICE_BSP_SW_INT_OFFSET                       0x80u /* inferred */
 
-/* msp_d_ram: rw32, space vice, reset unknown; published VICE design specification */
+/* msp_d_ram: rw32, space vice, reset 0x0; published VICE design specification */
 #define VICE_MSP_D_RAM_OFFSET                        0x100u /* established */
 #define VICE_MSP_D_RAM_BANK_C_SHIFT                  2 /* established */
 #define VICE_MSP_D_RAM_BANK_C_MASK                   0x1u

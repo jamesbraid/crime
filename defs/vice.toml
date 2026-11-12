@@ -47,6 +47,7 @@ space = "vice"
 offset = 0x40
 access = "rw"
 width = 32
+reset = 0x0
 grade = "established"
 space = "vice"
 
@@ -58,8 +59,19 @@ go = { bits = [0, 0], grade = "established" }
 offset = 0x48
 access = "rw"
 width = 32
+reset = 0x0
 grade = "established"
 space = "vice"
+
+[registers.msp_excp_flag.fields]
+adel = { bits = [0, 0], grade = "established" }
+ades = { bits = [1, 1], grade = "established" }
+bp = { bits = [2, 2], grade = "established" }
+wp = { bits = [3, 3], grade = "established" }
+suri = { bits = [4, 4], grade = "established" }
+vuri = { bits = [5, 5], grade = "established" }
+con = { bits = [6, 6], grade = "established" }
+adei = { bits = [7, 7], grade = "established" }
 
 [registers.msp_pc]
 offset = 0x50
@@ -82,6 +94,7 @@ space = "vice"
 offset = 0x60
 access = "rw"
 width = 32
+reset = 0x0
 grade = "established"
 space = "vice"
 
@@ -134,6 +147,7 @@ width is a placeholder and the grade says so."""
 offset = 0x100
 access = "rw"
 width = 32
+reset = 0x0
 grade = "established"
 space = "vice"
 

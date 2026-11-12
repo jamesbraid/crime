@@ -22,16 +22,16 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `id` | 0x8 | r | 8 |  | vice | 0xe1 | established | published VICE design specification |
 | `hst_bsp_in_box` | 0x28 | r | 16 |  | vice | unknown | established | published VICE design specification |
 | `hst_bsp_out_box` | 0x30 | r | 16 |  | vice | unknown | established | published VICE design specification |
-| `msp_ctl_stat` | 0x40 | rw | 32 |  | vice | unknown | established | published VICE design specification |
-| `msp_excp_flag` | 0x48 | rw | 32 |  | vice | unknown | established | published VICE design specification |
+| `msp_ctl_stat` | 0x40 | rw | 32 |  | vice | 0x0 | established | published VICE design specification |
+| `msp_excp_flag` | 0x48 | rw | 32 |  | vice | 0x0 | established | published VICE design specification |
 | `msp_pc` | 0x50 | rw | 32 |  | vice | unknown | established | published VICE design specification |
 | `msp_bad_addr` | 0x58 | r | 32 |  | vice | unknown | established | published VICE design specification |
-| `msp_watchpoint` | 0x60 | rw | 32 |  | vice | unknown | established | published VICE design specification |
+| `msp_watchpoint` | 0x60 | rw | 32 |  | vice | 0x0 | established | published VICE design specification |
 | `msp_epc` | 0x68 | r | 32 |  | vice | unknown | established | published VICE design specification |
 | `msp_cause` | 0x70 | r | 32 |  | vice | unknown | established | published VICE design specification |
 | `bsp_rpage` | 0x78 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `bsp_sw_int` | 0x80 | w | 32 |  | vice | unknown | inferred | published VICE design specification |
-| `msp_d_ram` | 0x100 | rw | 32 |  | vice | unknown | established | published VICE design specification |
+| `msp_d_ram` | 0x100 | rw | 32 |  | vice | 0x0 | established | published VICE design specification |
 | `msp_count` | 0x108 | rw | 32 |  | vice | unknown | established | published VICE design specification |
 | `bsp_ctl_stat` | 0x110 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `bsp_watchpoint` | 0x118 | rw | 16 |  | vice | unknown | established | published VICE design specification |
@@ -155,6 +155,17 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | 0 | `go` | established |  | published VICE design specification |  |
 
 ### Register `msp_excp_flag`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 7 | `adei` | established |  | published VICE design specification |  |
+| 6 | `con` | established |  | published VICE design specification |  |
+| 5 | `vuri` | established |  | published VICE design specification |  |
+| 4 | `suri` | established |  | published VICE design specification |  |
+| 3 | `wp` | established |  | published VICE design specification |  |
+| 2 | `bp` | established |  | published VICE design specification |  |
+| 1 | `ades` | established |  | published VICE design specification |  |
+| 0 | `adel` | established |  | published VICE design specification |  |
 
 ### Register `msp_pc`
 

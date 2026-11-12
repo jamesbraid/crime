@@ -88,7 +88,7 @@
    "count": 1,
    "stride": 4,
    "space": "vice",
-   "reset": "unknown",
+   "reset": 0,
    "grade": "established",
    "from": "published VICE design specification"
   },
@@ -120,7 +120,79 @@
    "count": 1,
    "stride": 4,
    "space": "vice",
-   "reset": "unknown",
+   "reset": 0,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.adei",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.con",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.vuri",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.suri",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.wp",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.bp",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.ades",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published VICE design specification"
+  },
+  {
+   "unit": "vice",
+   "kind": "field",
+   "name": "msp_excp_flag.adel",
+   "hi": 0,
+   "lo": 0,
    "grade": "established",
    "from": "published VICE design specification"
   },
@@ -171,7 +243,7 @@
    "count": 1,
    "stride": 4,
    "space": "vice",
-   "reset": "unknown",
+   "reset": 0,
    "grade": "established",
    "from": "published VICE design specification"
   },
@@ -332,7 +404,7 @@
    "count": 1,
    "stride": 4,
    "space": "vice",
-   "reset": "unknown",
+   "reset": 0,
    "grade": "established",
    "from": "published VICE design specification"
   },
