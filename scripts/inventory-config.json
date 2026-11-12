@@ -3,7 +3,7 @@
   "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
     "prose": ["docs/*.md", "docs/routines/*.md"],
-    "headers": ["*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],
+    "headers": ["*.h", "gen/c/*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],
     "tables": [],
     "index": ["AGENTS.md", "README.md", "IRIX_FILES.md", "docs/coverage.md", "docs/open-questions.md", "docs/captures.md"],
     "dumps": [],
@@ -604,7 +604,7 @@
     {"name": "MACEVCH", "size": "0x80000", "physical": "0x1f100000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
     {"name": "MACEI2C", "size": "0x10000", "physical": "0x1f330000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
     {"name": "MACETIMER", "size": "0x10000", "physical": "0x1f340000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
-    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "docs/*.md"]},
+    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "gen/c/*.h", "docs/*.md"]},
     {"name": "VICE", "size": "0x1000000", "physical": "0x17000000", "docs": ["docs/vice.md"]}
   ],
   "bases": [
