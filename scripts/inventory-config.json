@@ -1,5 +1,6 @@
 {
   "family": "O2 (CRIME and GBE)",
+  "review_required": ["docs/routines/t1-*.md", "docs/routines/t2-*.md"],
   "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
     "prose": ["docs/*.md", "docs/routines/*.md"],
