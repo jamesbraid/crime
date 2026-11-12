@@ -69,6 +69,7 @@ Each line takes its description from the page's own title or opening sentence.
 - [docs/mace-audio.md](docs/mace-audio.md): MACE audio interface and AD1843 codec: DMA rings, sample formats, codec timing and routing
 - [docs/mace-base.md](docs/mace-base.md): MACE base: PCI bridge devices and interrupt map, PCI byte positions and windows, PCI reset, serial and RTC frontends
 - [docs/mace-ps2.md](docs/mace-ps2.md): MACE PS/2 keyboard and mouse ports: address map, serial frame, interrupt levels and reset
+- [docs/mace-serial-dma.md](docs/mace-serial-dma.md): MACE serial port DMA channels: ring placement, packet formats, interrupt causes and open questions
 - [docs/mace-ethernet.md](docs/mace-ethernet.md): MACE Fast-Ethernet: MAC, interrupt, DMA ring and receive FIFO registers, message formats, PHY bus and the diagnostic port
 - [docs/vice.md](docs/vice.md): VICE: the imaging and compression engine
 

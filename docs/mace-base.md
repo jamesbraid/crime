@@ -254,8 +254,9 @@ resetting the PCI bus.
   above produces by itself. Which clock feeds the 16550 is unresolved.
 - Device interrupts reach peripheral status bit 20 (port 1) and bit 26 (port 2),
   then CRIME bit 4 (established, [mace] 125 to 126 and 179).
-- The MACE serial DMA channels are a separate feature. A PIO-only frontend must
-  not claim DMA support.
+- The MACE serial DMA channels are a separate feature, covered in
+  [mace-serial-dma.md](mace-serial-dma.md). A PIO-only frontend must not claim
+  DMA support.
 
 ## RTC frontend
 
@@ -308,7 +309,8 @@ resetting the PCI bus.
   clock).
 - The physical pin that the second onboard SCSI controller uses (the table
   label and the route to CRIME bit 9 disagree on the label).
-- The serial DMA channel blocks, which this page does not cover.
+- The serial DMA channel blocks, which [mace-serial-dma.md](mace-serial-dma.md)
+  covers, and their open questions.
 - The Number-In-a-Can line protocol, timing, part and contents (see the Misc
   Control section above).
 - Narrow access to Misc Control (see the same section).

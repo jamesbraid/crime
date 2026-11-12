@@ -147,9 +147,99 @@
   {
    "unit": "mace_periph",
    "kind": "field",
+   "name": "periph_status.serial_b_rx_overrun",
+   "hi": 31,
+   "lo": 31,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_b_rx_threshold",
+   "hi": 30,
+   "lo": 30,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_b_tx_error",
+   "hi": 29,
+   "lo": 29,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_b_tx_pair",
+   "hi": 28,
+   "lo": 28,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_b_tx_threshold",
+   "hi": 27,
+   "lo": 27,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
    "name": "periph_status.serial_b",
    "hi": 26,
    "lo": 26,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a_rx_overrun",
+   "hi": 25,
+   "lo": 25,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a_rx_threshold",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a_tx_error",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a_tx_pair",
+   "hi": 22,
+   "lo": 22,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
+  },
+  {
+   "unit": "mace_periph",
+   "kind": "field",
+   "name": "periph_status.serial_a_tx_threshold",
+   "hi": 21,
+   "lo": 21,
    "grade": "established",
    "from": "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"
   },

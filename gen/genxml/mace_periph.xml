@@ -21,7 +21,17 @@
   </struct>
   <struct name="PERIPH_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x10" access="rw" reset="unknown">
     <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).</doc>
+    <field name="serial_b_rx_overrun" start="31" size="1" type="uint" grade="established"/>
+    <field name="serial_b_rx_threshold" start="30" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_error" start="29" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_pair" start="28" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_threshold" start="27" size="1" type="uint" grade="established"/>
     <field name="serial_b" start="26" size="1" type="uint" grade="established"/>
+    <field name="serial_a_rx_overrun" start="25" size="1" type="uint" grade="established"/>
+    <field name="serial_a_rx_threshold" start="24" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_error" start="23" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_pair" start="22" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_threshold" start="21" size="1" type="uint" grade="established"/>
     <field name="serial_a" start="20" size="1" type="uint" grade="established"/>
     <field name="timer_cmp2" start="15" size="1" type="uint" grade="established"/>
     <field name="timer_cmp1" start="14" size="1" type="uint" grade="established"/>
