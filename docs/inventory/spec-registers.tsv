@@ -164,7 +164,7 @@ GBE rev 1.1	3.2	46	GBE	0x70000	CRS_0	1	0	32	R/W	1	understood	docs/gbe.md#gbe-reg
 GBE rev 1.1	3.2	46	GBE	0x70004	CRS_1	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	46	GBE	0x70008	CRS_CM[3]	3	4	32	R/W	3	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	46	GBE	0x78000	CRS_GLY[64]	64	4	32	R/W	5	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
-GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
+GBE rev 1.1	3.2	47	GBE	0x80000	VC_0	1	0	32	R/W	1	understood	docs/gbe.md#reset-state-rev-11-gbe-spec-pp-36-47	Reset state (rev 1.1, [gbe-spec] pp. 36-47)
 GBE rev 1.1	3.2	47	GBE	0x80004	VC_1	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	47	GBE	0x80008	VC_2	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
 GBE rev 1.1	3.2	47	GBE	0x8000c	VC_3	1	0	32	R/W	1	understood	docs/gbe.md#gbe-registers-by-access-site-6530	GBE registers by access site (6.5.30)
