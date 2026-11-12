@@ -101,10 +101,12 @@ pub mod ctrlstat {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
         pub const EXTERNAL: u32 = 0; // established
+        pub const DIFFERENTIAL: u32 = 1; // established
         pub const INTERNAL: u32 = 3; // established
         #[derive(Debug, Clone, Copy, PartialEq, Eq)]
         pub enum Value {
             External,
+            Differential,
             Internal,
             Other(u32),
         }
@@ -112,6 +114,7 @@ pub mod ctrlstat {
             pub const fn from_raw(v: u32) -> Self {
                 match v {
                     0 => Self::External,
+                    1 => Self::Differential,
                     3 => Self::Internal,
                     _ => Self::Other(v),
                 }
@@ -119,6 +122,7 @@ pub mod ctrlstat {
             pub const fn raw(self) -> u32 {
                 match self {
                     Self::External => 0,
+                    Self::Differential => 1,
                     Self::Internal => 3,
                     Self::Other(v) => v,
                 }
@@ -1163,6 +1167,12 @@ mod tests {
         assert_eq!(cmap_entry::r::get(0xff804000), 255);
         assert_eq!(cmap_entry::g::get(0xff804000), 128);
         assert_eq!(cmap_entry::b::get(0xff804000), 64);
+    }
+
+    #[test]
+    fn ctrlstat_10000000() {
+        assert_eq!(ctrlstat::pclk_select::get(0x10000000), 1);
+        assert_eq!(ctrlstat::chip_rev::get(0x10000000), 0);
     }
 
     #[test]

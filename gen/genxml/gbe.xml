@@ -4,6 +4,7 @@
   <doc>GBE display back end register words, tables and offsets.</doc>
   <enum name="ctrlstat_pclk_select">
     <value name="external" value="0" grade="established"/>
+    <value name="differential" value="1" grade="established"/>
     <value name="internal" value="3" grade="established"/>
   </enum>
   <enum name="frm_size_tile_depth">
@@ -53,6 +54,10 @@
     <field name="io4_data" start="14" size="1" type="uint" grade="established"/>
     <field name="io3_data" start="12" size="1" type="uint" grade="established"/>
     <field name="chip_rev" start="0" size="4" type="uint" grade="established"/>
+    <test value="0x10000000" kind="vector">
+      <expect field="pclk_select" value="1"/>
+      <expect field="chip_rev" value="0"/>
+    </test>
     <test value="0x30000000" kind="vector">
       <expect field="pclk_select" value="3"/>
       <expect field="chip_rev" value="0"/>

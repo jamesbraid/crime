@@ -45,6 +45,7 @@
 #define GBE_CTRLSTAT_PCLK_SELECT_MASK                0x3u
 #define GBE_CTRLSTAT_PCLK_SELECT_INPLACE             (GBE_CTRLSTAT_PCLK_SELECT_MASK << GBE_CTRLSTAT_PCLK_SELECT_SHIFT)
 #define GBE_CTRLSTAT_PCLK_SELECT_EXTERNAL            0 /* established */
+#define GBE_CTRLSTAT_PCLK_SELECT_DIFFERENTIAL        1 /* established */
 #define GBE_CTRLSTAT_PCLK_SELECT_INTERNAL            3 /* established */
 #define GBE_CTRLSTAT_IO6_DATA_SHIFT                  18 /* established */
 #define GBE_CTRLSTAT_IO6_DATA_MASK                   0x1u

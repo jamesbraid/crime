@@ -80,7 +80,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 29:28 | `pclk_select` | established | external=0, internal=3 | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 29:28 | `pclk_select` | established | external=0, differential=1, internal=3 | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 18 | `io6_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 16 | `io5_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 14 | `io4_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
@@ -391,6 +391,7 @@ A vector is a value recorded from a source. An example only shows the layout.
 | Target | Value | Kind | Decoded |
 |---|---|---|---|
 | `CMAP_ENTRY` | 0xff804000 | vector | r=255, g=128, b=64 |
+| `CTRLSTAT` | 0x10000000 | vector | pclk_select=1, chip_rev=0 |
 | `CTRLSTAT` | 0x30000000 | vector | pclk_select=3, chip_rev=0 |
 | `DID_CONTROL` | 0x10005 | vector | did_base=5, dma_enable=1 |
 | `DOTCLOCK` | 0x100000 | vector | run=1, p=0 |

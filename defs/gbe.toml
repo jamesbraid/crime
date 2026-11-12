@@ -62,11 +62,16 @@ grade = "established"
 
 [words.CTRLSTAT.fields.pclk_select.enums]
 external = { value = 0, grade = "established" }
+differential = { value = 1, grade = "established" }
 internal = { value = 3, grade = "established" }
 
 [[words.CTRLSTAT.tests]]
 value = 0x30000000
 expect = { pclk_select = 3, chip_rev = 0 }
+
+[[words.CTRLSTAT.tests]]
+value = 0x10000000
+expect = { pclk_select = 1, chip_rev = 0 }
 
 [words.DID_CONTROL]
 width = 32

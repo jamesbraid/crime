@@ -273,6 +273,14 @@ How this meets IRIX (established from `gbeProbe`, `gbeStop`, `crimeInitInfo`):
 
 Settled in pass 7 (below): the revision nibble tells the rev 1.1 part (1) from its successor (2); the strap's only use is the gamma workaround, and its other meanings are labelled. Reset values after revision 1.1 are labelled there. What `io_0` to `io_2` and `io_7` to `io_9` drive is unknown: no shipped software or published source depends on it (routes in pass 7).
 
+## Pixel-clock source select (`CTRLSTAT` 29:28)
+
+Established, rev 1.1 ([gbe-spec] p. 36, the `pclksel` field; pin names from the pad table on pp. 3 and 4): the reset value is `00`, which selects the external TTL pixel-clock input. `01` selects the external differential pixel-clock input, a pad pair (`pad_pclk_in_pos` and `pad_pclk_in_neg`). `11` selects the internal dot-clock PLL. The TTL input is optional on the part (`pad_pclk_in`, "dot clock in from external PLL"). The internal PLL takes its reference from the 20 MHz crystal on `pad_xin`.
+
+Unknown: the value `10` (bits 29:28). The rev 1.1 specification does not describe it, and no shipped software or published source here writes it. Settling it needs a specification or errata for the revision that has it.
+
+Unknown: which of the three sources a shipped O2 board connects to its pixel-clock pins. The specification names the pins but not the board wiring, and no source here settles which input is fitted.
+
 ## Colour-map FIFO (settles the conflict in `GBE.h`)
 
 Established, rev 1.1 ([gbe-spec] p. 18, p. 45): the colour map is single-ported, so writes go through a 64-deep FIFO that drains during horizontal and vertical blanking; `CMFIFO` bits 5:0 report the number of free entries; the true free count may be higher than the value read but never lower; software must never have more than 64 writes outstanding and may fill an empty FIFO with 64 writes then poll for a low-water mark. This is the X server's reading (free slots, wait for 48) and contradicts the Linux driver, which waits while the field is 63 or more (an occupancy reading). The specification and IRIX agree; Linux disagrees for rev 1.1 and its behaviour on real silicon is unknown here.
