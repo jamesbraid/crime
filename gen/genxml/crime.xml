@@ -3,7 +3,7 @@
 <genxml unit="crime" prefix="CRIME" title="O2 CRIME memory controller and CPU interface registers" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
   <doc>CRIME memory controller and CPU-interface registers, and the interrupt input bit positions.</doc>
   <struct name="ID" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x0" access="r" reset="unknown">
-    <doc>The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).</doc>
+    <doc>The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).</doc>
     <field name="family" start="4" size="4" type="uint" grade="established"/>
     <field name="rev" start="0" size="4" type="uint" grade="established"/>
     <test value="0xa1" kind="vector">
@@ -69,7 +69,7 @@
     <field name="ecc_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="MEM_BANK_CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x208" access="rw" count="8" stride="8" reset="unknown">
-    <doc>Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).</doc>
+    <doc>Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).</doc>
     <field name="sdram_geometry" start="8" size="1" type="uint" grade="established"/>
     <field name="base_match" start="0" size="5" type="uint" grade="established"/>
   </struct>

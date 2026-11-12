@@ -36,7 +36,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `id`
 
-The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
+The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -121,7 +121,7 @@ The CRIME 1.5 CPU interface register map has no row for this offset. It lists th
 
 ### Register `mem_bank_control`
 
-Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).
+Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
 
 Array of 8 registers, stride 8.
 

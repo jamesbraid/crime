@@ -7,7 +7,7 @@
 
 
 /*
- * The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
+ * The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
  */
 /* id: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_ID_OFFSET                              0x0u /* established */
@@ -127,7 +127,7 @@
 #define CRIME_MEM_CONTROL_ECC_ENABLE_INPLACE         (CRIME_MEM_CONTROL_ECC_ENABLE_MASK << CRIME_MEM_CONTROL_ECC_ENABLE_SHIFT)
 
 /*
- * Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).
+ * Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
  */
 /* mem_bank_control: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_BANK_CONTROL_OFFSET                0x208u /* established */
