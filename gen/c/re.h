@@ -48,6 +48,13 @@
 #define RE_IB_CTL_COUNT_MASK                         0x7fu
 #define RE_IB_CTL_COUNT_INPLACE                      (RE_IB_CTL_COUNT_MASK << RE_IB_CTL_COUNT_SHIFT)
 
+/*
+ * The published interface-buffer address map lists the data RAM, the address
+ * RAM and the control word, and no register at the doubleword after the control
+ * word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
+ * does not access that doubleword either. Its name, width and access come from
+ * the shipped kernel's zero stores, so they stay inferred. See docs/reset.md.
+ */
 /* ib_reset: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_IB_RESET_OFFSET                           0x408u /* inferred */
 

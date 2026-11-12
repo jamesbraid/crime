@@ -130,6 +130,12 @@ no bit layout for these thresholds, so the field bits below stay inferred.
 
 ### Register `ib_reset`
 
+The published interface-buffer address map lists the data RAM, the address
+RAM and the control word, and no register at the doubleword after the control
+word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
+does not access that doubleword either. Its name, width and access come from
+the shipped kernel's zero stores, so they stay inferred. See docs/reset.md.
+
 ### Register `tlb_fb_a`
 
 The frame-buffer tables A, B and C each hold 64 doublewords, the texture

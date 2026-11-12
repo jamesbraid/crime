@@ -66,6 +66,12 @@ access = "w"
 width = 32
 grade = "inferred"
 space = "re"
+doc = """
+The published interface-buffer address map lists the data RAM, the address
+RAM and the control word, and no register at the doubleword after the control
+word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
+does not access that doubleword either. Its name, width and access come from
+the shipped kernel's zero stores, so they stay inferred. See docs/reset.md."""
 
 [registers.tlb_fb_a]
 offset = 0x1000

@@ -61,7 +61,7 @@ pub mod ib_ctl {
         }
     }
 }
-/// (inferred)
+/// The published interface-buffer address map lists the data RAM, the address RAM and the control word, and no register at the doubleword after the contr (inferred)
 pub mod ib_reset {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x408;
