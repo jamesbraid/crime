@@ -366,6 +366,10 @@
 /* fog_dfdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_FOG_DFDY_OFFSET                           0x2188u /* established */
 
+/*
+ * Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
+ * The register table gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). docs/context.md reads the slope from the same table as 2.14 in bits 31:16. That conflicts with this layout and is not resolved here.
+ */
 /* aa_line: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_AA_LINE_OFFSET                            0x2190u /* established */
 
@@ -395,9 +399,15 @@
 #define RE_ALPHATEST_REF_MASK                        0xffu
 #define RE_ALPHATEST_REF_INPLACE                     (RE_ALPHATEST_REF_MASK << RE_ALPHATEST_REF_SHIFT)
 
+/*
+ * Blend constant colour, read and written as a 32-bit word (established, [spec] register map, PDF 169, which names it "blend RGBA constant color"). The constant-color and constant-alpha factor codes of Blend.func select it. The specification does not draw its per-byte layout, so the byte order is unknown.
+ */
 /* blend_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BLEND_COLOR_OFFSET                        0x21a0u /* established */
 
+/*
+ * Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row with no factor given, and the destination factor table has no such code (established absence, [spec] Tables 7-20 and 7-21, PDF 208-209). The specification's factor arithmetic therefore omits it. It also gives no clamp for ADD or SUBTRACT. Both are unknown here; see docs/pixel-arithmetic.md.
+ */
 /* blend_func: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BLEND_FUNC_OFFSET                         0x21a8u /* established */
 #define RE_BLEND_FUNC_OP_SHIFT                       8 /* established */
@@ -440,6 +450,9 @@
 #define RE_BLEND_FUNC_DST_CONSTANT_ALPHA             10 /* established */
 #define RE_BLEND_FUNC_DST_ONE_MINUS_CONSTANT_ALPHA   11 /* established */
 
+/*
+ * The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification.
+ */
 /* logicop: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_LOGICOP_OFFSET                            0x21b0u /* established */
 
@@ -530,6 +543,7 @@
  * must not exceed it. ycrcb is valid in the source word only. Shipped
  * software writes the values in the vectors below; other bits are reserved
  * (one shipped swap path sets bit 30 as well).
+ * When doublePix is set, doublePixSel says which half of the word is selected (established, [spec] PDF 171-172). The specification does not say which bit value picks the front half and which the back, so that mapping is unknown.
  */
 /* word BUFMODE: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BUFMODE_WIDTH                             32 /* established */
@@ -619,6 +633,42 @@
 #define RE_LINENT_PAGE_SHIFT                         0 /* established */
 #define RE_LINENT_PAGE_MASK                          0x7fffffffu
 #define RE_LINENT_PAGE_INPLACE                       (RE_LINENT_PAGE_MASK << RE_LINENT_PAGE_SHIFT)
+
+/*
+ * 16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). The NetBSD crmfb driver describes 16-bit raster operations as 5:5:5 with red at bit 11, green at 6 and blue at 1 (software expectation, public driver). That places the fields differently. The conflict is not resolved here.
+ */
+/* word PIXEL_A1_RGB5: 16 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PIXEL_A1_RGB5_WIDTH                       16 /* established */
+#define RE_PIXEL_A1_RGB5_ALPHA_SHIFT                 15 /* established */
+#define RE_PIXEL_A1_RGB5_ALPHA_MASK                  0x1u
+#define RE_PIXEL_A1_RGB5_ALPHA_INPLACE               (RE_PIXEL_A1_RGB5_ALPHA_MASK << RE_PIXEL_A1_RGB5_ALPHA_SHIFT)
+#define RE_PIXEL_A1_RGB5_RED_SHIFT                   10 /* established */
+#define RE_PIXEL_A1_RGB5_RED_MASK                    0x1fu
+#define RE_PIXEL_A1_RGB5_RED_INPLACE                 (RE_PIXEL_A1_RGB5_RED_MASK << RE_PIXEL_A1_RGB5_RED_SHIFT)
+#define RE_PIXEL_A1_RGB5_GREEN_SHIFT                 5 /* established */
+#define RE_PIXEL_A1_RGB5_GREEN_MASK                  0x1fu
+#define RE_PIXEL_A1_RGB5_GREEN_INPLACE               (RE_PIXEL_A1_RGB5_GREEN_MASK << RE_PIXEL_A1_RGB5_GREEN_SHIFT)
+#define RE_PIXEL_A1_RGB5_BLUE_SHIFT                  0 /* established */
+#define RE_PIXEL_A1_RGB5_BLUE_MASK                   0x1fu
+#define RE_PIXEL_A1_RGB5_BLUE_INPLACE                (RE_PIXEL_A1_RGB5_BLUE_MASK << RE_PIXEL_A1_RGB5_BLUE_SHIFT)
+
+/*
+ * 32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3).
+ */
+/* word PIXEL_RGBA8: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PIXEL_RGBA8_WIDTH                         32 /* established */
+#define RE_PIXEL_RGBA8_RED_SHIFT                     24 /* established */
+#define RE_PIXEL_RGBA8_RED_MASK                      0xffu
+#define RE_PIXEL_RGBA8_RED_INPLACE                   (RE_PIXEL_RGBA8_RED_MASK << RE_PIXEL_RGBA8_RED_SHIFT)
+#define RE_PIXEL_RGBA8_GREEN_SHIFT                   16 /* established */
+#define RE_PIXEL_RGBA8_GREEN_MASK                    0xffu
+#define RE_PIXEL_RGBA8_GREEN_INPLACE                 (RE_PIXEL_RGBA8_GREEN_MASK << RE_PIXEL_RGBA8_GREEN_SHIFT)
+#define RE_PIXEL_RGBA8_BLUE_SHIFT                    8 /* established */
+#define RE_PIXEL_RGBA8_BLUE_MASK                     0xffu
+#define RE_PIXEL_RGBA8_BLUE_INPLACE                  (RE_PIXEL_RGBA8_BLUE_MASK << RE_PIXEL_RGBA8_BLUE_SHIFT)
+#define RE_PIXEL_RGBA8_ALPHA_SHIFT                   0 /* established */
+#define RE_PIXEL_RGBA8_ALPHA_MASK                    0xffu
+#define RE_PIXEL_RGBA8_ALPHA_INPLACE                 (RE_PIXEL_RGBA8_ALPHA_MASK << RE_PIXEL_RGBA8_ALPHA_SHIFT)
 
 /*
  * Each screen mask is one clip rectangle; the end coordinates are exclusive.

@@ -737,7 +737,7 @@ pub mod fog_dfdy {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2188;
 }
-/// (established)
+/// Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antial (established)
 pub mod aa_line {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2190;
@@ -820,12 +820,12 @@ pub mod alphatest {
         }
     }
 }
-/// (established)
+/// Blend constant colour, read and written as a 32-bit word (established, [spec] register map, PDF 169, which names it "blend RGBA constant color"). The  (established)
 pub mod blend_color {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21a0;
 }
-/// (established)
+/// Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row with no factor given, and the destination factor table has no such co (established)
 pub mod blend_func {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21a8;
@@ -1028,7 +1028,7 @@ pub mod blend_func {
         }
     }
 }
-/// (established)
+/// The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, (established)
 pub mod logicop {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21b0;
@@ -1484,6 +1484,94 @@ pub mod linent {
     pub mod page { // bits 30:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x7fffffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// 16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (establishe (established)
+pub mod pixel_a1_rgb5 {
+    pub const WIDTH: u32 = 16;
+    pub mod alpha { // bits 15:15, established
+        pub const SHIFT: u32 = 15;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod red { // bits 14:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod green { // bits 9:5, established
+        pub const SHIFT: u32 = 5;
+        pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod blue { // bits 4:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// 32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (es (established)
+pub mod pixel_rgba8 {
+    pub const WIDTH: u32 = 32;
+    pub mod red { // bits 31:24, established
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod green { // bits 23:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod blue { // bits 15:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod alpha { // bits 7:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xff;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }

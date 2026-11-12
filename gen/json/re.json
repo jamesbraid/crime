@@ -2194,6 +2194,94 @@
   {
    "unit": "re",
    "kind": "word",
+   "name": "PIXEL_A1_RGB5",
+   "width": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_A1_RGB5.alpha",
+   "hi": 15,
+   "lo": 15,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_A1_RGB5.red",
+   "hi": 14,
+   "lo": 10,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_A1_RGB5.green",
+   "hi": 9,
+   "lo": 5,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_A1_RGB5.blue",
+   "hi": 4,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "word",
+   "name": "PIXEL_RGBA8",
+   "width": 32,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RGBA8.red",
+   "hi": 31,
+   "lo": 24,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RGBA8.green",
+   "hi": 23,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RGBA8.blue",
+   "hi": 15,
+   "lo": 8,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RGBA8.alpha",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "word",
    "name": "SCRMASK_HI",
    "width": 32,
    "grade": "established",
