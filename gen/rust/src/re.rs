@@ -16,7 +16,7 @@ pub mod ib_addr {
     pub const COUNT: u32 = 64;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// The specification names this word's thresholds in its interface-buffer section. Above the stall level, host writes stall for the stall count, given in (established)
 pub mod ib_ctl {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x400;

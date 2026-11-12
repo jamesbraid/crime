@@ -114,6 +114,13 @@ Array of 64 registers, stride 8.
 
 ### Register `ib_ctl`
 
+The specification names this word's thresholds in its interface-buffer section.
+Above the stall level, host writes stall for the stall count, given in 66 MHz
+cycles. Above the interrupt level, the host receives an interrupt; it then
+either polls the status register until the level falls or enables the
+buffer-empty interrupt (established, [spec] PDF 185). The specification gives
+no bit layout for these thresholds, so the field bits below stay inferred.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 27:21 | `full` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
@@ -544,7 +551,9 @@ memory transfer engine idle bit in the NetBSD driver; the OpenBSD driver
 names the same bit ready and never reads it. The kernel's transfer-wait
 routine tests bit 25, which fits an idle reading, so the position is
 established and the meaning inferred. The start field (5:0) is where the
-entries not yet committed begin; its meaning is inferred.
+entries not yet committed begin; its meaning is inferred. The specification's
+register map lists the status registers as a user-space region, placed after
+the MTE registers in the rendering block (established, [spec] PDF 162).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|

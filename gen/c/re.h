@@ -25,6 +25,14 @@
 #define RE_IB_ADDR_COUNT                             64
 #define RE_IB_ADDR_STRIDE                            8
 
+/*
+ * The specification names this word's thresholds in its interface-buffer section.
+ * Above the stall level, host writes stall for the stall count, given in 66 MHz
+ * cycles. Above the interrupt level, the host receives an interrupt; it then
+ * either polls the status register until the level falls or enables the
+ * buffer-empty interrupt (established, [spec] PDF 185). The specification gives
+ * no bit layout for these thresholds, so the field bits below stay inferred.
+ */
 /* ib_ctl: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_IB_CTL_OFFSET                             0x400u /* established */
 #define RE_IB_CTL_FULL_SHIFT                         21 /* inferred */
@@ -723,7 +731,9 @@
  * names the same bit ready and never reads it. The kernel's transfer-wait
  * routine tests bit 25, which fits an idle reading, so the position is
  * established and the meaning inferred. The start field (5:0) is where the
- * entries not yet committed begin; its meaning is inferred.
+ * entries not yet committed begin; its meaning is inferred. The specification's
+ * register map lists the status registers as a user-space region, placed after
+ * the MTE registers in the rendering block (established, [spec] PDF 162).
  */
 /* status: r32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STATUS_OFFSET                             0x4000u /* established */
