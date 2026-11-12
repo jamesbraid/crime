@@ -249,7 +249,7 @@ doc = """
 Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PDF 106 to 108; established). Each bit is ORed with others onto one R10000 interrupt line, IP2 to IP6, given by the CRIME_IP*_CAUSES constants. CRIME signals the processor when a bit in a group asserts or de-asserts (established, PDF 106). Table 5-6 (PDF 109) pairs IP2 to IP6 with cause register bits 10 to 14 and SysAD bits 0 to 4. The prose on PDF 109 and PDF 110 swaps bits 20 and 21. Table 5-5, Table 5-10 (PDF 116) and the revision note on PDF 233 do not, so bit 20 is the CPU interface error and bit 21 the memory error (established)."""
 
 [words.INTBIT.fields]
-vice = { bits = [31, 31], grade = "established" }
+vice = { bits = [31, 31], grade = "established", doc = "Read by the IRIX VICE probe, which never writes this word to acknowledge it (established, kernel add_vice). Whether the bit stays set after the VICE cause is cleared, and so whether a later guest that unmasks it sees a spurious interrupt, is unknown." }
 syscorerr = { bits = [30, 30], grade = "established" }
 soft1 = { bits = [29, 29], grade = "established" }
 soft0 = { bits = [28, 28], grade = "established" }

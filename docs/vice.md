@@ -149,6 +149,25 @@ Not in `root/`; read from the 6.5 base media directories `var/arch/vicedx/` and 
 - Established (published output, `hinv` dumps from O2 hosts): the inventory line is `Vice: TRE` (193 dumps) or `Vice: DX` (72), and the video line `Video: MVP unit 0 version 1.4` (187 dumps), `1.2` (65) or `1.3` (7). Every pairing of the two variants with the three versions occurs (TRE with 1.4 in 150 dumps, with 1.2 in 37, with 1.3 in 2; DX with 1.4 in 34, with 1.2 in 25, with 1.3 in 5). DX goes with the early CPU modules: R5000 at 180 MHz or less (60 dumps) and R10000 at 175 MHz or less (11, chip revision 2.5 in 10 of them); no DX dump has an R12000 (38 TRE dumps) or a faster clock, while TRE is on R5000 up to 300 MHz, R10000 and R12000. The graphics revision letters do not move with the Vice variant: all 56 `gfxinfo` dumps for the CRM board print CRM revision C and GBE revision B.
 - Inferred (secondhand: [a developer's 2002 post on imaging for O2](sources/reports/o2-imaging-techniques-usenet-2002.txt) and [a list from an SGI engineer reproduced on a hobbyist site](sources/reports/sgidepot-melting-the-ice.html)): the imaging extensions run on the chip only when every coefficient of an operation is either an integer of magnitude above one or a real in -1.0 to 1.0, never mixed; otherwise the CPU does it at a fraction of the speed. Capture is accelerated only for PAL and NTSC frame sizes. These describe what the IRIX driver does on top of the hardware, not the hardware itself.
 
+## IRIX identity probe
+
+The IRIX kernel probes for the chip once, at boot, and adds an inventory entry when it answers. The register sequence is in [functions.md](functions.md) under `add_vice`. The name `hinv` prints depends only on the 32-bit ID word the probe reads (`VICE_ID` at `+0x8`, its low half at `+0xc`).
+
+- Established (`sbin/hinv` of the 6.5.30 media, read from its disassembly; `hinv` prints `Vice: ` followed by):
+
+  | ID word | Printed |
+  |---|---|
+  | `0x000000e1` | `EN` |
+  | `0x000000e2` | `DX` |
+  | `0x000000e3` | `TRE` |
+  | `0x000000e4` | `QT` |
+  | any other | the word in hexadecimal |
+
+  `hinv` compares the whole word and nothing else. `DX` and `TRE` are revisions 2 and 3, as the published names in [defs/vice.toml](../defs/vice.toml) say.
+- Inferred (`libvice.so` of the same media, read from its disassembly): the library picks the microcode directory from the same word, obtained through a driver ioctl whose code was not read. It tests for `0xe1` (directory `vice`) and `0xe2` (`vicedx`) and takes `vicetre` for every other word.
+- Established (kernel `add_vice`): the probe writes `4` to the enable word at `+0xe014`, the low half of the slot at `+0xe010`, and does not restore it, so cause 2 stays enabled after boot. Other writers of that slot were not checked.
+- Unknown: the value of the upper word of the ID doubleword, and whether any later consumer reads the ID again. The library reads it once through the driver when it chooses the directory.
+
 ## Conflicts and open points
 
 - Conflict between published tables: `DMA_VICE_PT_CH1` and `CH2` are 16 bits in the register map ([vice] PDF 40, rows `0x1a0` and `0x1e0`), but their register format table gives 32 bits, the C pointer in bits 31:16 and the Y pointer in bits 15:0 ([vice] PDF 66, table 41). The defs keep 16 bits from the map. Unresolved.

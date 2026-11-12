@@ -189,7 +189,7 @@ Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PD
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 31 | `vice` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 31 | `vice` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | Read by the IRIX VICE probe, which never writes this word to acknowledge it (established, kernel add_vice). Whether the bit stays set after the VICE cause is cleared, and so whether a later guest that unmasks it sees a spurious interrupt, is unknown. |
 | 30 | `syscorerr` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 29 | `soft1` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 28 | `soft0` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |

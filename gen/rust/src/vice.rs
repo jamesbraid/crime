@@ -2,7 +2,7 @@
 // O2 VICE imaging and compression engine registers
 #![allow(dead_code)]
 
-/// (established)
+/// Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is "TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRI (established)
 pub mod id {
     pub const WIDTH: u32 = 8;
     pub const OFFSET: u64 = 0x8;

@@ -139,6 +139,12 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `id`
 
+Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is
+"TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRIX
+identity probe reads the 32-bit word at offset 0xc, the low half of this doubleword,
+and compares the whole word (established, kernel add_vice and hinv disassembly).
+The upper word is not read by the probe, and its value is unknown.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 3:0 | `revision` | established | vice_a=1, vice_b=2, vice_c=3 | published VICE design specification |  |
