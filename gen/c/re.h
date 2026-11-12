@@ -121,7 +121,9 @@
  * written only; the others read back. Global registers apply once the pipe
  * has drained, non-global ones per primitive ([spec] PDF 164).
  * Writing any pixel pipeline register with the start-alias bit set commits
- * the queued state as one primitive.
+ * the queued state as one primitive. Writes after that commit do not change
+ * the committed primitive, and committed primitives run in commit order, each
+ * to completion (established, [spec] PDF 186, printed 7-30).
  */
 /* bufmode_src: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BUFMODE_SRC_OFFSET                        0x2000u /* established */
@@ -332,7 +334,9 @@
 #define RE_VERTEX_X_STRIDE                           4
 
 /*
- * GL-mode vertex coordinates are 13.6 fixed point in table 7-3 (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
+ * Table 7-3 lists each GL vertex word as 32 bits, non-global and write-only, in 13.6 fixed point (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
+ *
+ * Start-alias stores (inferred, software expectation, docs/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
  *
  * Readback extents (inferred, software expectation). A GL readback of a
  * rectangle writes inclusive pixel indices, not the half-open edges of the

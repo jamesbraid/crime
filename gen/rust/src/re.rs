@@ -643,7 +643,7 @@ pub mod vertex_x {
     pub const COUNT: u32 = 3;
     pub const STRIDE: u64 = 4;
 }
-/// GL-mode vertex coordinates are 13.6 fixed point in table 7-3 (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fi (established)
+/// Table 7-3 lists each GL vertex word as 32 bits, non-global and write-only, in 13.6 fixed point (established, [spec] PDF 166). The GL-mode text on PDF  (established)
 pub mod vertex_gl {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2080;
