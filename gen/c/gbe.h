@@ -377,6 +377,9 @@
 #define GBE_OVR_INHWCTRL_DMA_ENABLE_MASK             0x1u
 #define GBE_OVR_INHWCTRL_DMA_ENABLE_INPLACE          (GBE_OVR_INHWCTRL_DMA_ENABLE_MASK << GBE_OVR_INHWCTRL_DMA_ENABLE_SHIFT)
 
+/*
+ * Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14).
+ */
 /* word OVR_WIDTH_TILE: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
 #define GBE_OVR_WIDTH_TILE_WIDTH                     32 /* established */
 #define GBE_OVR_WIDTH_TILE_FIFO_RESET_SHIFT          13 /* established */

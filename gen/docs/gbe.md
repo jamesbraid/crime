@@ -300,6 +300,8 @@ to 1. The spec places external pullups on the flat-panel clock and data outputs
 
 ### Word `OVR_WIDTH_TILE`
 
+Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14).
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 13 | `fifo_reset` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
@@ -518,7 +520,7 @@ is not.
 | `OFF_CMAP_FIFO` | 0x58000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_CRS_CMAP` | 0x70008 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_CRS_CTL` | 0x70004 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| `OFF_CRS_GLYPH` | 0x78000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| `OFF_CRS_GLYPH` | 0x78000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | page 46 table start; the page 34 table gives a different start offset, conflict open |
 | `OFF_CRS_POS` | 0x70000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_CRS_START_XY` | 0x10048 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | gbe-spec register table, pages 39 and 40 |
 | `OFF_CTRLSTAT` | 0x0 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |

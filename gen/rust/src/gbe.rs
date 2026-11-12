@@ -1020,7 +1020,7 @@ pub mod ovr_inhwctrl {
         }
     }
 }
-/// (established)
+/// Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14). (established)
 pub mod ovr_width_tile {
     pub const WIDTH: u32 = 32;
     pub mod fifo_reset { // bits 13:13, established

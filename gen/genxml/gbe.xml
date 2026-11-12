@@ -224,6 +224,7 @@ to 1. The spec places external pullups on the flat-panel clock and data outputs
     <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="OVR_WIDTH_TILE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <doc>Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14).</doc>
     <field name="fifo_reset" start="13" size="1" type="uint" grade="established"/>
     <field name="width_tiles" start="5" size="8" type="uint" grade="established"/>
     <field name="remainder" start="0" size="5" type="uint" grade="established"/>

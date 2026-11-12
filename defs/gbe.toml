@@ -346,6 +346,7 @@ dma_enable = { bits = [0, 0], grade = "established" }
 [words.OVR_WIDTH_TILE]
 width = 32
 grade = "established"
+doc = "Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14)."
 
 [words.OVR_WIDTH_TILE.fields]
 fifo_reset = { bits = [13, 13], grade = "established" }
@@ -587,7 +588,7 @@ OFF_CMAP = { value = 0x50000, grade = "established", doc = "colour map" }
 OFF_CMAP_FIFO = { value = 0x58000, grade = "established" }
 OFF_CRS_CMAP = { value = 0x70008, grade = "established" }
 OFF_CRS_CTL = { value = 0x70004, grade = "established" }
-OFF_CRS_GLYPH = { value = 0x78000, grade = "established" }
+OFF_CRS_GLYPH = { value = 0x78000, grade = "established", doc = "page 46 table start; the page 34 table gives a different start offset, conflict open" }
 OFF_CRS_POS = { value = 0x70000, grade = "established" }
 OFF_CRS_START_XY = { value = 0x10048, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
 OFF_CTRLSTAT = { value = 0x0, grade = "established" }
