@@ -298,9 +298,24 @@ Array of 3 registers, stride 4.
 
 ### Register `vertex_gl`
 
+Readback extents (inferred, software expectation). A GL readback of a
+rectangle writes inclusive pixel indices, not the half-open edges of the
+scissor: the far x is the start x plus the programmed copy width minus one,
+and the far y is the start y minus the row count plus one, each as
+(index << 6) & 0x7ffff. A one-row readback therefore writes equal y words and
+still copies one row. Only driver writes show this. How the engine resolves a
+fractional edge is unknown. See docs/pixel-transfer.md.
+
 Array of 6 registers, stride 4.
 
 ### Register `xfer_src_addr`
+
+Readback source start (inferred, software expectation). For a readback from a
+buffer H rows high, the driver writes the x component as the window x and the
+y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
+bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
+equation that combines this packed start with SrcWinOffset is unknown. See
+docs/pixel-transfer.md.
 
 ### Register `xfer_src_stride`
 
@@ -311,6 +326,14 @@ Array of 6 registers, stride 4.
 ### Register `xfer_dst_addr`
 
 ### Register `xfer_dst_stride`
+
+Readback row-end increment (inferred, software expectation). With S bytes per
+pixel, a scratch row pitch P and a programmed copy width C, the driver writes
+S + max(P - C * S, 0). The row pitch is then (C - 1) * S + that value, which
+equals P. The width C is the aligned width, not the requested width: the
+driver rounds it up until the row is a multiple of eight bytes, so a
+requested width of 15 at four bytes per pixel programs 16. See
+docs/pixel-transfer.md.
 
 ### Register `stipple_mode`
 

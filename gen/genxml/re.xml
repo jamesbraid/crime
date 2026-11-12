@@ -299,8 +299,21 @@ control and does not appear in the primitive word.</doc>
   <struct name="VERTEX_X" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2070" access="w" count="3" stride="4" space="re" reset="unknown">
   </struct>
   <struct name="VERTEX_GL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2080" access="w" count="6" stride="4" space="re" reset="unknown">
+    <doc>Readback extents (inferred, software expectation). A GL readback of a
+rectangle writes inclusive pixel indices, not the half-open edges of the
+scissor: the far x is the start x plus the programmed copy width minus one,
+and the far y is the start y minus the row count plus one, each as
+(index &lt;&lt; 6) &amp; 0x7ffff. A one-row readback therefore writes equal y words and
+still copies one row. Only driver writes show this. How the engine resolves a
+fractional edge is unknown. See docs/pixel-transfer.md.</doc>
   </struct>
   <struct name="XFER_SRC_ADDR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20a0" access="w" space="re" reset="unknown">
+    <doc>Readback source start (inferred, software expectation). For a readback from a
+buffer H rows high, the driver writes the x component as the window x and the
+y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
+bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
+equation that combines this packed start with SrcWinOffset is unknown. See
+docs/pixel-transfer.md.</doc>
   </struct>
   <struct name="XFER_SRC_STRIDE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20a4" access="w" space="re" reset="unknown">
   </struct>
@@ -311,6 +324,13 @@ control and does not appear in the primitive word.</doc>
   <struct name="XFER_DST_ADDR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20b0" access="w" space="re" reset="unknown">
   </struct>
   <struct name="XFER_DST_STRIDE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20b4" access="w" space="re" reset="unknown">
+    <doc>Readback row-end increment (inferred, software expectation). With S bytes per
+pixel, a scratch row pitch P and a programmed copy width C, the driver writes
+S + max(P - C * S, 0). The row pitch is then (C - 1) * S + that value, which
+equals P. The width C is the aligned width, not the requested width: the
+driver rounds it up until the row is a multiple of eight bytes, so a
+requested width of 15 at four bytes per pixel programs 16. See
+docs/pixel-transfer.md.</doc>
   </struct>
   <struct name="STIPPLE_MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c0" access="rw" space="re" reset="unknown">
     <doc>Stipple sequence state: the starting pattern index, the maximum pattern index,

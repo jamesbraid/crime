@@ -85,6 +85,27 @@ case, which none of the RGB paths above exercise.
 - Unknown: the CI16 indexed layout. Its logical index width, destination lane
   and plane-mask behaviour are not established by any cited source.
 
+## RGBA32 readback through the GL rectangle
+
+Every fact here is inferred: it is a software expectation of the IRIX 6.5.30 client driver (N32 `libGLcore.so`, SHA-256 `b33ef449a0ffa93afd9242bc331eeb81111e22e81e3d8b7f1b6045c666cc9492`), read from what the driver writes. No hardware capture backs it, and no public file states it.
+
+Exposure: an author who read restricted vendor source supplied these statements. The text here is in our own words. Anyone implementing or reviewing the RGBA32 readback must work from the public material and their own evidence, not from this section.
+
+The route moves four-byte RGBA storage from a tiled frame buffer to a linear scratch buffer. A CPU routine then copies bytes zero to two of each pixel and drops byte three. The hardware writes RGBA, not RGB.
+
+- Extents. For start x X, start y Y, programmed copy width C and R rows, the four GL words are `(X << 6) & 0x7ffff`, `((X + C - 1) << 6) & 0x7ffff`, `(Y << 6) & 0x7ffff` and `((Y - R + 1) << 6) & 0x7ffff`. The far edges are inclusive, unlike the scissor's exclusive maximum edges. A one-row readback writes equal y words and still copies one row. See `defs/re.toml`, `vertex_gl`.
+- Aligned width. The driver increases the programmed width C until a row is a multiple of eight bytes. A requested width of 15 at four bytes per pixel programs 16. The hardware touches the whole aligned pixel. The CPU routine returns only the requested pixels, so scratch must have room for the aligned row.
+- Source start. The driver writes x as the window x and y as H - 1 - window y, each masked to 11 bits, with H the buffer height. For a 128-row buffer, y = 127 - window y. See `defs/re.toml`, `xfer_src_addr`.
+- Row end. The row-end increment is `S + max(P - C * S, 0)`, with S the bytes per pixel and P the scratch row pitch. For C = 16, S = 4 and P = 64 it is 4, not 64. The row pitch is `(C - 1) * S + increment`, which equals P. See `defs/re.toml`, `xfer_dst_stride`.
+- Primitive. For this route the driver forces the rectangle opcode to 3 and the edge field to 0 (`lr_bt`) and keeps the other fields. The driver's reading is that, under the upper-left orientation, the walk runs toward increasing x and decreasing y. This conflicts with the Primitive statement in step 3 above, which picks the edge from the order flags. Both statements are unresolved for this route. Both source steps carry literal 1, so the walk direction has to come from the Primitive edge, not from the sign of the step.
+
+What the driver writes does not give a complete rule for the hardware. The following are unknown:
+
+- Whether the engine resolves a fractional rectangle edge exactly on a tie, and how. No published or shipped source settles it.
+- How the packed 11-bit source start combines with SrcWinOffset. The driver leaves SrcWinOffset set (window origin minus 0x1000, nonzero at the root), and the equation that combines it with the packed start is not known.
+- Whether DstWinOffset affects linear addressing or clipping, or is ignored. The driver does not reset it on this route, and no source says what it does to a linear destination.
+- Whether the row-end increment and aligned width are the only inputs to the row advance. The driver's constructed values are not evidence of the engine's counter.
+
 ## Unknown
 
 - Settled: no GL entry point calls the kernel pixel DMA request; only the X module's image routines send it (`docs/ioctls.md`, senders).

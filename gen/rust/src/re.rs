@@ -643,14 +643,14 @@ pub mod vertex_x {
     pub const COUNT: u32 = 3;
     pub const STRIDE: u64 = 4;
 }
-/// (established)
+/// Readback extents (inferred, software expectation). A GL readback of a rectangle writes inclusive pixel indices, not the half-open edges of the scissor (established)
 pub mod vertex_gl {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2080;
     pub const COUNT: u32 = 6;
     pub const STRIDE: u64 = 4;
 }
-/// (established)
+/// Readback source start (inferred, software expectation). For a readback from a buffer H rows high, the driver writes the x component as the window x an (established)
 pub mod xfer_src_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20a0;
@@ -675,7 +675,7 @@ pub mod xfer_dst_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20b0;
 }
-/// (established)
+/// Readback row-end increment (inferred, software expectation). With S bytes per pixel, a scratch row pitch P and a programmed copy width C, the driver w (established)
 pub mod xfer_dst_stride {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20b4;
