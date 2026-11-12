@@ -6,8 +6,14 @@
 #include <stdint.h>
 
 
-/* id: r8, space vice, reset unknown; published VICE design specification */
+/* id: r8, space vice, reset 0xe1; published VICE design specification */
 #define VICE_ID_OFFSET                               0x8u /* established */
+#define VICE_ID_REVISION_SHIFT                       0 /* established */
+#define VICE_ID_REVISION_MASK                        0xfu
+#define VICE_ID_REVISION_INPLACE                     (VICE_ID_REVISION_MASK << VICE_ID_REVISION_SHIFT)
+#define VICE_ID_REVISION_VICE_A                      1 /* established */
+#define VICE_ID_REVISION_VICE_B                      2 /* established */
+#define VICE_ID_REVISION_VICE_C                      3 /* established */
 
 /* hst_bsp_in_box: r16, space vice, reset unknown; published VICE design specification */
 #define VICE_HST_BSP_IN_BOX_OFFSET                   0x28u /* established */
@@ -61,6 +67,15 @@
 #define VICE_MSP_CAUSE_CODE_VURI                     5 /* established */
 #define VICE_MSP_CAUSE_CODE_CON                      6 /* established */
 #define VICE_MSP_CAUSE_CODE_ADEI                     7 /* established */
+
+/*
+ * Listed in the register map as the BSP R Page, 16 bits read and write, with no
+ * register section. The specification names an RPage register as the base for
+ * bitstream processor loads and stores; that it is the host's view of the same
+ * register is inferred.
+ */
+/* bsp_rpage: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_BSP_RPAGE_OFFSET                        0x78u /* established */
 
 /*
  * The software-interrupt registers carry no data in the specification's
@@ -162,8 +177,9 @@
 
 /*
  * Channel 2 repeats channel 1's registers at a fixed distance and shares the
- * control (DMACTL) and status layouts. Only the first descriptor set of each channel
- * is decoded; the bit layouts of its registers are not.
+ * control (DMACTL) and status layouts. The four descriptor sets of each channel
+ * are separate registers below; every set uses the DMA_DESC_CTL layout for its
+ * control word.
  */
 /* dma_ctl_ch1: rw16, space vice, reset unknown; published VICE design specification */
 #define VICE_DMA_CTL_CH1_OFFSET                      0x180u /* established */
@@ -242,6 +258,78 @@
 /* dma_vmem_c_ch1_d1: rw16, space vice, reset unknown; published VICE design specification */
 #define VICE_DMA_VMEM_C_CH1_D1_OFFSET                0x1038u /* established */
 
+/* dma_ctl_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH1_D2_OFFSET                   0x1040u /* established */
+
+/* dma_smem_hi_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH1_D2_OFFSET               0x1048u /* established */
+
+/* dma_smem_lo_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH1_D2_OFFSET               0x1050u /* established */
+
+/* dma_width_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH1_D2_OFFSET                 0x1058u /* established */
+
+/* dma_stride_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH1_D2_OFFSET                0x1060u /* established */
+
+/* dma_lines_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH1_D2_OFFSET                 0x1068u /* established */
+
+/* dma_vmem_y_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH1_D2_OFFSET                0x1070u /* established */
+
+/* dma_vmem_c_ch1_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH1_D2_OFFSET                0x1078u /* established */
+
+/* dma_ctl_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH1_D3_OFFSET                   0x1080u /* established */
+
+/* dma_smem_hi_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH1_D3_OFFSET               0x1088u /* established */
+
+/* dma_smem_lo_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH1_D3_OFFSET               0x1090u /* established */
+
+/* dma_width_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH1_D3_OFFSET                 0x1098u /* established */
+
+/* dma_stride_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH1_D3_OFFSET                0x10a0u /* established */
+
+/* dma_lines_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH1_D3_OFFSET                 0x10a8u /* established */
+
+/* dma_vmem_y_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH1_D3_OFFSET                0x10b0u /* established */
+
+/* dma_vmem_c_ch1_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH1_D3_OFFSET                0x10b8u /* established */
+
+/* dma_ctl_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH1_D4_OFFSET                   0x10c0u /* established */
+
+/* dma_smem_hi_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH1_D4_OFFSET               0x10c8u /* established */
+
+/* dma_smem_lo_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH1_D4_OFFSET               0x10d0u /* established */
+
+/* dma_width_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH1_D4_OFFSET                 0x10d8u /* established */
+
+/* dma_stride_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH1_D4_OFFSET                0x10e0u /* established */
+
+/* dma_lines_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH1_D4_OFFSET                 0x10e8u /* established */
+
+/* dma_vmem_y_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH1_D4_OFFSET                0x10f0u /* established */
+
+/* dma_vmem_c_ch1_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH1_D4_OFFSET                0x10f8u /* established */
+
 /* dma_ctl_ch2_d1: rw16, space vice, reset unknown; published VICE design specification */
 #define VICE_DMA_CTL_CH2_D1_OFFSET                   0x1100u /* established */
 
@@ -265,6 +353,111 @@
 
 /* dma_vmem_c_ch2_d1: rw16, space vice, reset unknown; published VICE design specification */
 #define VICE_DMA_VMEM_C_CH2_D1_OFFSET                0x1138u /* established */
+
+/* dma_ctl_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH2_D2_OFFSET                   0x1140u /* established */
+
+/* dma_smem_hi_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH2_D2_OFFSET               0x1148u /* established */
+
+/* dma_smem_lo_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH2_D2_OFFSET               0x1150u /* established */
+
+/* dma_width_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH2_D2_OFFSET                 0x1158u /* established */
+
+/* dma_stride_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH2_D2_OFFSET                0x1160u /* established */
+
+/* dma_lines_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH2_D2_OFFSET                 0x1168u /* established */
+
+/* dma_vmem_y_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH2_D2_OFFSET                0x1170u /* established */
+
+/* dma_vmem_c_ch2_d2: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH2_D2_OFFSET                0x1178u /* established */
+
+/* dma_ctl_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH2_D3_OFFSET                   0x1180u /* established */
+
+/* dma_smem_hi_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH2_D3_OFFSET               0x1188u /* established */
+
+/* dma_smem_lo_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH2_D3_OFFSET               0x1190u /* established */
+
+/* dma_width_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH2_D3_OFFSET                 0x1198u /* established */
+
+/* dma_stride_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH2_D3_OFFSET                0x11a0u /* established */
+
+/* dma_lines_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH2_D3_OFFSET                 0x11a8u /* established */
+
+/* dma_vmem_y_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH2_D3_OFFSET                0x11b0u /* established */
+
+/* dma_vmem_c_ch2_d3: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH2_D3_OFFSET                0x11b8u /* established */
+
+/* dma_ctl_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_CTL_CH2_D4_OFFSET                   0x11c0u /* established */
+
+/* dma_smem_hi_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_HI_CH2_D4_OFFSET               0x11c8u /* established */
+
+/* dma_smem_lo_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_SMEM_LO_CH2_D4_OFFSET               0x11d0u /* established */
+
+/* dma_width_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_WIDTH_CH2_D4_OFFSET                 0x11d8u /* established */
+
+/* dma_stride_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_STRIDE_CH2_D4_OFFSET                0x11e0u /* established */
+
+/* dma_lines_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_LINES_CH2_D4_OFFSET                 0x11e8u /* established */
+
+/* dma_vmem_y_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_Y_CH2_D4_OFFSET                0x11f0u /* established */
+
+/* dma_vmem_c_ch2_d4: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_DMA_VMEM_C_CH2_D4_OFFSET                0x11f8u /* established */
+
+/*
+ * MSP instruction RAM, 4 KB. The map gives the size and the specification says
+ * the host loads it, while the MSP itself can only fetch from it. The access
+ * width is not published: 32 bits is inferred from the scalar instruction size.
+ * The DMA location table lists this RAM at 16 bits, so the width is unresolved.
+ */
+/* msp_i_ram: rw32, space vice, reset unknown; published VICE design specification */
+#define VICE_MSP_I_RAM_OFFSET                        0x2000u /* inferred */
+#define VICE_MSP_I_RAM_COUNT                         1024
+#define VICE_MSP_I_RAM_STRIDE                        4
+
+/*
+ * BSP instruction RAM, 1K by 16 bits (2 KB). The host loads it; the BSP can only
+ * fetch from it. The unused tail of the window is not implemented and reads zero.
+ */
+/* bsp_i_ram: rw16, space vice, reset unknown; published VICE design specification */
+#define VICE_BSP_I_RAM_OFFSET                        0x4000u /* established */
+#define VICE_BSP_I_RAM_COUNT                         1024
+#define VICE_BSP_I_RAM_STRIDE                        2
+
+/*
+ * Bitstream processor table memory, 1280 entries of 22 bits (block diagram and
+ * map). Each entry is presented as a 32-bit word, with the top ten bits reading
+ * zero. The 32-bit presentation is inferred from the span the map gives.
+ */
+/* table_mem: rw32, space vice, reset unknown; published VICE design specification */
+#define VICE_TABLE_MEM_OFFSET                        0x5000u /* inferred */
+#define VICE_TABLE_MEM_COUNT                         1280
+#define VICE_TABLE_MEM_STRIDE                        4
+#define VICE_TABLE_MEM_VALUE_SHIFT                   0 /* established */
+#define VICE_TABLE_MEM_VALUE_MASK                    0x3fffffu
+#define VICE_TABLE_MEM_VALUE_INPLACE                 (VICE_TABLE_MEM_VALUE_MASK << VICE_TABLE_MEM_VALUE_SHIFT)
 
 /*
  * The chip's memories sit in the same 64 KiB window as its registers. Each
@@ -394,6 +587,66 @@
 #define VICE_DMASTAT_DONE_SHIFT                      0 /* established */
 #define VICE_DMASTAT_DONE_MASK                       0x1u
 #define VICE_DMASTAT_DONE_INPLACE                    (VICE_DMASTAT_DONE_MASK << VICE_DMASTAT_DONE_SHIFT)
+
+/*
+ * Control word of a DMA descriptor set. Each set of each channel uses this layout.
+ * The published field table marks the half-pel flags, the half-pel enable and the
+ * location field as not implemented; the bits are still defined so that software
+ * writes are seen.
+ */
+/* word DMA_DESC_CTL: 16 bits; published VICE design specification */
+#define VICE_DMA_DESC_CTL_WIDTH                      16 /* established */
+#define VICE_DMA_DESC_CTL_HALT_SHIFT                 15 /* established */
+#define VICE_DMA_DESC_CTL_HALT_MASK                  0x1u
+#define VICE_DMA_DESC_CTL_HALT_INPLACE               (VICE_DMA_DESC_CTL_HALT_MASK << VICE_DMA_DESC_CTL_HALT_SHIFT)
+#define VICE_DMA_DESC_CTL_SKIP_SHIFT                 14 /* established */
+#define VICE_DMA_DESC_CTL_SKIP_MASK                  0x1u
+#define VICE_DMA_DESC_CTL_SKIP_INPLACE               (VICE_DMA_DESC_CTL_SKIP_MASK << VICE_DMA_DESC_CTL_SKIP_SHIFT)
+#define VICE_DMA_DESC_CTL_DIRECTION_SHIFT            13 /* established */
+#define VICE_DMA_DESC_CTL_DIRECTION_MASK             0x1u
+#define VICE_DMA_DESC_CTL_DIRECTION_INPLACE          (VICE_DMA_DESC_CTL_DIRECTION_MASK << VICE_DMA_DESC_CTL_DIRECTION_SHIFT)
+#define VICE_DMA_DESC_CTL_DIRECTION_WRITE            0 /* established */
+#define VICE_DMA_DESC_CTL_DIRECTION_READ             1 /* established */
+#define VICE_DMA_DESC_CTL_FILL_SOURCE_SHIFT          12 /* established */
+#define VICE_DMA_DESC_CTL_FILL_SOURCE_MASK           0x1u
+#define VICE_DMA_DESC_CTL_FILL_SOURCE_INPLACE        (VICE_DMA_DESC_CTL_FILL_SOURCE_MASK << VICE_DMA_DESC_CTL_FILL_SOURCE_SHIFT)
+#define VICE_DMA_DESC_CTL_FILL_SOURCE_SYSTEM         0 /* established */
+#define VICE_DMA_DESC_CTL_FILL_SOURCE_DATA_REGISTER  1 /* established */
+#define VICE_DMA_DESC_CTL_YC_SHIFT                   10 /* established */
+#define VICE_DMA_DESC_CTL_YC_MASK                    0x3u
+#define VICE_DMA_DESC_CTL_YC_INPLACE                 (VICE_DMA_DESC_CTL_YC_MASK << VICE_DMA_DESC_CTL_YC_SHIFT)
+#define VICE_DMA_DESC_CTL_YC_BLOCK                   0 /* established */
+#define VICE_DMA_DESC_CTL_YC_SPLIT_420               1 /* established */
+#define VICE_DMA_DESC_CTL_YC_SPLIT_422               2 /* established */
+#define VICE_DMA_DESC_CTL_YC_Y_ONLY                  3 /* established */
+#define VICE_DMA_DESC_CTL_LUMA_HALF_SHIFT            8 /* established */
+#define VICE_DMA_DESC_CTL_LUMA_HALF_MASK             0x3u
+#define VICE_DMA_DESC_CTL_LUMA_HALF_INPLACE          (VICE_DMA_DESC_CTL_LUMA_HALF_MASK << VICE_DMA_DESC_CTL_LUMA_HALF_SHIFT)
+#define VICE_DMA_DESC_CTL_INTERLEAVE_SHIFT           7 /* established */
+#define VICE_DMA_DESC_CTL_INTERLEAVE_MASK            0x1u
+#define VICE_DMA_DESC_CTL_INTERLEAVE_INPLACE         (VICE_DMA_DESC_CTL_INTERLEAVE_MASK << VICE_DMA_DESC_CTL_INTERLEAVE_SHIFT)
+#define VICE_DMA_DESC_CTL_INTERLEAVE_BLOCK           0 /* established */
+#define VICE_DMA_DESC_CTL_INTERLEAVE_INTERLEAVE      1 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_SHIFT             4 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_MASK              0x7u
+#define VICE_DMA_DESC_CTL_LOCATION_INPLACE           (VICE_DMA_DESC_CTL_LOCATION_MASK << VICE_DMA_DESC_CTL_LOCATION_SHIFT)
+#define VICE_DMA_DESC_CTL_LOCATION_RAM_A             0 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_RAM_B             1 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_RAM_C             2 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_MSP_I_RAM         3 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_BSP_I_RAM         4 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_BSP_TABLE         5 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_BSP_FIFO          6 /* established */
+#define VICE_DMA_DESC_CTL_LOCATION_TLB_RAM           7 /* established */
+#define VICE_DMA_DESC_CTL_HALF_PEL_ENABLE_SHIFT      3 /* established */
+#define VICE_DMA_DESC_CTL_HALF_PEL_ENABLE_MASK       0x1u
+#define VICE_DMA_DESC_CTL_HALF_PEL_ENABLE_INPLACE    (VICE_DMA_DESC_CTL_HALF_PEL_ENABLE_MASK << VICE_DMA_DESC_CTL_HALF_PEL_ENABLE_SHIFT)
+#define VICE_DMA_DESC_CTL_CHROMA_ONLY_SHIFT          2 /* established */
+#define VICE_DMA_DESC_CTL_CHROMA_ONLY_MASK           0x1u
+#define VICE_DMA_DESC_CTL_CHROMA_ONLY_INPLACE        (VICE_DMA_DESC_CTL_CHROMA_ONLY_MASK << VICE_DMA_DESC_CTL_CHROMA_ONLY_SHIFT)
+#define VICE_DMA_DESC_CTL_CHROMA_HALF_SHIFT          0 /* established */
+#define VICE_DMA_DESC_CTL_CHROMA_HALF_MASK           0x3u
+#define VICE_DMA_DESC_CTL_CHROMA_HALF_INPLACE        (VICE_DMA_DESC_CTL_CHROMA_HALF_MASK << VICE_DMA_DESC_CTL_CHROMA_HALF_SHIFT)
 
 /* word MBOX: 32 bits; published VICE design specification */
 #define VICE_MBOX_WIDTH                              32 /* established */

@@ -19,7 +19,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Register | Offset | Access | Width | Count | Space | Reset | Grade | Source |
 |---|---|---|---|---|---|---|---|---|
-| `id` | 0x8 | r | 8 |  | vice | unknown | established | published VICE design specification |
+| `id` | 0x8 | r | 8 |  | vice | 0xe1 | established | published VICE design specification |
 | `hst_bsp_in_box` | 0x28 | r | 16 |  | vice | unknown | established | published VICE design specification |
 | `hst_bsp_out_box` | 0x30 | r | 16 |  | vice | unknown | established | published VICE design specification |
 | `msp_ctl_stat` | 0x40 | rw | 32 |  | vice | unknown | established | published VICE design specification |
@@ -29,6 +29,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `msp_watchpoint` | 0x60 | rw | 32 |  | vice | unknown | established | published VICE design specification |
 | `msp_epc` | 0x68 | r | 32 |  | vice | unknown | established | published VICE design specification |
 | `msp_cause` | 0x70 | r | 32 |  | vice | unknown | established | published VICE design specification |
+| `bsp_rpage` | 0x78 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `bsp_sw_int` | 0x80 | w | 32 |  | vice | unknown | inferred | published VICE design specification |
 | `msp_d_ram` | 0x100 | rw | 32 |  | vice | unknown | established | published VICE design specification |
 | `msp_count` | 0x108 | rw | 32 |  | vice | unknown | established | published VICE design specification |
@@ -67,6 +68,30 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `dma_lines_ch1_d1` | 0x1028 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_vmem_y_ch1_d1` | 0x1030 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_vmem_c_ch1_d1` | 0x1038 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch1_d2` | 0x1040 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch1_d2` | 0x1048 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch1_d2` | 0x1050 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch1_d2` | 0x1058 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch1_d2` | 0x1060 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch1_d2` | 0x1068 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch1_d2` | 0x1070 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch1_d2` | 0x1078 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch1_d3` | 0x1080 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch1_d3` | 0x1088 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch1_d3` | 0x1090 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch1_d3` | 0x1098 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch1_d3` | 0x10a0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch1_d3` | 0x10a8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch1_d3` | 0x10b0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch1_d3` | 0x10b8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch1_d4` | 0x10c0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch1_d4` | 0x10c8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch1_d4` | 0x10d0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch1_d4` | 0x10d8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch1_d4` | 0x10e0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch1_d4` | 0x10e8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch1_d4` | 0x10f0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch1_d4` | 0x10f8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_ctl_ch2_d1` | 0x1100 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_smem_hi_ch2_d1` | 0x1108 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_smem_lo_ch2_d1` | 0x1110 | rw | 16 |  | vice | unknown | established | published VICE design specification |
@@ -75,6 +100,33 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `dma_lines_ch2_d1` | 0x1128 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_vmem_y_ch2_d1` | 0x1130 | rw | 16 |  | vice | unknown | established | published VICE design specification |
 | `dma_vmem_c_ch2_d1` | 0x1138 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch2_d2` | 0x1140 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch2_d2` | 0x1148 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch2_d2` | 0x1150 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch2_d2` | 0x1158 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch2_d2` | 0x1160 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch2_d2` | 0x1168 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch2_d2` | 0x1170 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch2_d2` | 0x1178 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch2_d3` | 0x1180 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch2_d3` | 0x1188 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch2_d3` | 0x1190 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch2_d3` | 0x1198 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch2_d3` | 0x11a0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch2_d3` | 0x11a8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch2_d3` | 0x11b0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch2_d3` | 0x11b8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_ctl_ch2_d4` | 0x11c0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_hi_ch2_d4` | 0x11c8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_smem_lo_ch2_d4` | 0x11d0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_width_ch2_d4` | 0x11d8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_stride_ch2_d4` | 0x11e0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_lines_ch2_d4` | 0x11e8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_y_ch2_d4` | 0x11f0 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `dma_vmem_c_ch2_d4` | 0x11f8 | rw | 16 |  | vice | unknown | established | published VICE design specification |
+| `msp_i_ram` | 0x2000 | rw | 32 | 1024 | vice | unknown | inferred | published VICE design specification |
+| `bsp_i_ram` | 0x4000 | rw | 16 | 1024 | vice | unknown | established | published VICE design specification |
+| `table_mem` | 0x5000 | rw | 32 | 1280 | vice | unknown | inferred | published VICE design specification |
 | `bsp_out_buf` | 0x7000 | rw | 16 | 1024 | vice | unknown | inferred | published VICE design specification |
 | `bsp_in_buf` | 0x7800 | rw | 16 | 1024 | vice | unknown | inferred | published VICE design specification |
 | `data_ram_a` | 0x8000 | rw | 32 | 512 | vice | unknown | inferred | published VICE design specification |
@@ -86,6 +138,10 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `tlb` | 0xf000 | rw | 32 |  | vice | unknown | established | published VICE design specification |
 
 ### Register `id`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 3:0 | `revision` | established | vice_a=1, vice_b=2, vice_c=3 | published VICE design specification |  |
 
 ### Register `hst_bsp_in_box`
 
@@ -122,6 +178,13 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 |---|---|---|---|---|---|
 | 31 | `branch_delay` | established |  | published VICE design specification |  |
 | 6:2 | `code` | established | adel=0, ades=1, bp=2, wp=3, suri=4, vuri=5, con=6, adei=7 | published VICE design specification |  |
+
+### Register `bsp_rpage`
+
+Listed in the register map as the BSP R Page, 16 bits read and write, with no
+register section. The specification names an RPage register as the base for
+bitstream processor loads and stores; that it is the host's view of the same
+register is inferred.
 
 ### Register `bsp_sw_int`
 
@@ -197,8 +260,9 @@ two software-interrupt registers.
 ### Register `dma_ctl_ch1`
 
 Channel 2 repeats channel 1's registers at a fixed distance and shares the
-control (DMACTL) and status layouts. Only the first descriptor set of each channel
-is decoded; the bit layouts of its registers are not.
+control (DMACTL) and status layouts. The four descriptor sets of each channel
+are separate registers below; every set uses the DMA_DESC_CTL layout for its
+control word.
 
 ### Register `dma_stat_ch1`
 
@@ -251,6 +315,54 @@ bitstream processor the output one; the directions here are the map's.
 
 ### Register `dma_vmem_c_ch1_d1`
 
+### Register `dma_ctl_ch1_d2`
+
+### Register `dma_smem_hi_ch1_d2`
+
+### Register `dma_smem_lo_ch1_d2`
+
+### Register `dma_width_ch1_d2`
+
+### Register `dma_stride_ch1_d2`
+
+### Register `dma_lines_ch1_d2`
+
+### Register `dma_vmem_y_ch1_d2`
+
+### Register `dma_vmem_c_ch1_d2`
+
+### Register `dma_ctl_ch1_d3`
+
+### Register `dma_smem_hi_ch1_d3`
+
+### Register `dma_smem_lo_ch1_d3`
+
+### Register `dma_width_ch1_d3`
+
+### Register `dma_stride_ch1_d3`
+
+### Register `dma_lines_ch1_d3`
+
+### Register `dma_vmem_y_ch1_d3`
+
+### Register `dma_vmem_c_ch1_d3`
+
+### Register `dma_ctl_ch1_d4`
+
+### Register `dma_smem_hi_ch1_d4`
+
+### Register `dma_smem_lo_ch1_d4`
+
+### Register `dma_width_ch1_d4`
+
+### Register `dma_stride_ch1_d4`
+
+### Register `dma_lines_ch1_d4`
+
+### Register `dma_vmem_y_ch1_d4`
+
+### Register `dma_vmem_c_ch1_d4`
+
 ### Register `dma_ctl_ch2_d1`
 
 ### Register `dma_smem_hi_ch2_d1`
@@ -266,6 +378,82 @@ bitstream processor the output one; the directions here are the map's.
 ### Register `dma_vmem_y_ch2_d1`
 
 ### Register `dma_vmem_c_ch2_d1`
+
+### Register `dma_ctl_ch2_d2`
+
+### Register `dma_smem_hi_ch2_d2`
+
+### Register `dma_smem_lo_ch2_d2`
+
+### Register `dma_width_ch2_d2`
+
+### Register `dma_stride_ch2_d2`
+
+### Register `dma_lines_ch2_d2`
+
+### Register `dma_vmem_y_ch2_d2`
+
+### Register `dma_vmem_c_ch2_d2`
+
+### Register `dma_ctl_ch2_d3`
+
+### Register `dma_smem_hi_ch2_d3`
+
+### Register `dma_smem_lo_ch2_d3`
+
+### Register `dma_width_ch2_d3`
+
+### Register `dma_stride_ch2_d3`
+
+### Register `dma_lines_ch2_d3`
+
+### Register `dma_vmem_y_ch2_d3`
+
+### Register `dma_vmem_c_ch2_d3`
+
+### Register `dma_ctl_ch2_d4`
+
+### Register `dma_smem_hi_ch2_d4`
+
+### Register `dma_smem_lo_ch2_d4`
+
+### Register `dma_width_ch2_d4`
+
+### Register `dma_stride_ch2_d4`
+
+### Register `dma_lines_ch2_d4`
+
+### Register `dma_vmem_y_ch2_d4`
+
+### Register `dma_vmem_c_ch2_d4`
+
+### Register `msp_i_ram`
+
+MSP instruction RAM, 4 KB. The map gives the size and the specification says
+the host loads it, while the MSP itself can only fetch from it. The access
+width is not published: 32 bits is inferred from the scalar instruction size.
+The DMA location table lists this RAM at 16 bits, so the width is unresolved.
+
+Array of 1024 registers, stride 4.
+
+### Register `bsp_i_ram`
+
+BSP instruction RAM, 1K by 16 bits (2 KB). The host loads it; the BSP can only
+fetch from it. The unused tail of the window is not implemented and reads zero.
+
+Array of 1024 registers, stride 2.
+
+### Register `table_mem`
+
+Bitstream processor table memory, 1280 entries of 22 bits (block diagram and
+map). Each entry is presented as a 32-bit word, with the top ten bits reading
+zero. The 32-bit presentation is inferred from the span the map gives.
+
+Array of 1280 registers, stride 4.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 21:0 | `value` | established |  | published VICE design specification |  |
 
 ### Register `bsp_out_buf`
 
@@ -317,6 +505,7 @@ Array of 512 registers, stride 4.
 | `CAUSE` | 32 | established | published VICE design specification |
 | `DMACTL` | 32 | established | published VICE design specification |
 | `DMASTAT` | 32 | established | published VICE design specification |
+| `DMA_DESC_CTL` | 16 | established | published VICE design specification |
 | `MBOX` | 32 | established | published VICE design specification |
 | `TLB_ENTRY` | 32 | established | published VICE design specification |
 
@@ -356,6 +545,27 @@ Array of 512 registers, stride 4.
 | 2 | `active` | established |  | published VICE design specification |  |
 | 1 | `error` | established |  | published VICE design specification |  |
 | 0 | `done` | established |  | published VICE design specification |  |
+
+### Word `DMA_DESC_CTL`
+
+Control word of a DMA descriptor set. Each set of each channel uses this layout.
+The published field table marks the half-pel flags, the half-pel enable and the
+location field as not implemented; the bits are still defined so that software
+writes are seen.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 15 | `halt` | established |  | published VICE design specification |  |
+| 14 | `skip` | established |  | published VICE design specification |  |
+| 13 | `direction` | established | write=0, read=1 | published VICE design specification |  |
+| 12 | `fill_source` | established | system=0, data_register=1 | published VICE design specification |  |
+| 11:10 | `yc` | established | block=0, split_420=1, split_422=2, y_only=3 | published VICE design specification |  |
+| 9:8 | `luma_half` | established |  | published VICE design specification |  |
+| 7 | `interleave` | established | block=0, interleave=1 | published VICE design specification |  |
+| 6:4 | `location` | established | ram_a=0, ram_b=1, ram_c=2, msp_i_ram=3, bsp_i_ram=4, bsp_table=5, bsp_fifo=6, tlb_ram=7 | published VICE design specification |  |
+| 3 | `half_pel_enable` | established |  | published VICE design specification |  |
+| 2 | `chroma_only` | established |  | published VICE design specification |  |
+| 1:0 | `chroma_half` | established |  | published VICE design specification |  |
 
 ### Word `MBOX`
 

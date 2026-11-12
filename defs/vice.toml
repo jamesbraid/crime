@@ -16,8 +16,18 @@ legacy_guard = "VICE_DECODE_H"
 offset = 0x8
 access = "r"
 width = 8
+reset = 0xe1
 grade = "established"
 space = "vice"
+
+[registers.id.fields.revision]
+bits = [3, 0]
+grade = "established"
+
+[registers.id.fields.revision.enums]
+vice_a = { value = 1, grade = "established" }
+vice_b = { value = 2, grade = "established" }
+vice_c = { value = 3, grade = "established" }
 
 [registers.hst_bsp_in_box]
 offset = 0x28
@@ -258,8 +268,9 @@ grade = "established"
 space = "vice"
 doc = """
 Channel 2 repeats channel 1's registers at a fixed distance and shares the
-control (DMACTL) and status layouts. Only the first descriptor set of each channel
-is decoded; the bit layouts of its registers are not."""
+control (DMACTL) and status layouts. The four descriptor sets of each channel
+are separate registers below; every set uses the DMA_DESC_CTL layout for its
+control word."""
 
 [registers.dma_stat_ch1]
 offset = 0x188
@@ -559,6 +570,523 @@ access = "rw"
 width = 32
 grade = "established"
 space = "vice"
+
+[registers.bsp_rpage]
+offset = 0x78
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+Listed in the register map as the BSP R Page, 16 bits read and write, with no
+register section. The specification names an RPage register as the base for
+bitstream processor loads and stores; that it is the host's view of the same
+register is inferred."""
+
+[registers.msp_i_ram]
+offset = 0x2000
+access = "rw"
+width = 32
+count = 1024
+grade = "inferred"
+space = "vice"
+doc = """
+MSP instruction RAM, 4 KB. The map gives the size and the specification says
+the host loads it, while the MSP itself can only fetch from it. The access
+width is not published: 32 bits is inferred from the scalar instruction size.
+The DMA location table lists this RAM at 16 bits, so the width is unresolved."""
+
+[registers.bsp_i_ram]
+offset = 0x4000
+access = "rw"
+width = 16
+count = 1024
+grade = "established"
+space = "vice"
+doc = """
+BSP instruction RAM, 1K by 16 bits (2 KB). The host loads it; the BSP can only
+fetch from it. The unused tail of the window is not implemented and reads zero."""
+
+[registers.table_mem]
+offset = 0x5000
+access = "rw"
+width = 32
+count = 1280
+grade = "inferred"
+space = "vice"
+doc = """
+Bitstream processor table memory, 1280 entries of 22 bits (block diagram and
+map). Each entry is presented as a 32-bit word, with the top ten bits reading
+zero. The 32-bit presentation is inferred from the span the map gives."""
+
+[registers.table_mem.fields.value]
+bits = [21, 0]
+grade = "established"
+
+[registers.dma_ctl_ch1_d2]
+offset = 0x1040
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d2]
+offset = 0x1048
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d2]
+offset = 0x1050
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d2]
+offset = 0x1058
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d2]
+offset = 0x1060
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d2]
+offset = 0x1068
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d2]
+offset = 0x1070
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d2]
+offset = 0x1078
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch1_d3]
+offset = 0x1080
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d3]
+offset = 0x1088
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d3]
+offset = 0x1090
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d3]
+offset = 0x1098
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d3]
+offset = 0x10a0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d3]
+offset = 0x10a8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d3]
+offset = 0x10b0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d3]
+offset = 0x10b8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch1_d4]
+offset = 0x10c0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d4]
+offset = 0x10c8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d4]
+offset = 0x10d0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d4]
+offset = 0x10d8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d4]
+offset = 0x10e0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d4]
+offset = 0x10e8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d4]
+offset = 0x10f0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d4]
+offset = 0x10f8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d2]
+offset = 0x1140
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d2]
+offset = 0x1148
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d2]
+offset = 0x1150
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d2]
+offset = 0x1158
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d2]
+offset = 0x1160
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d2]
+offset = 0x1168
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d2]
+offset = 0x1170
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d2]
+offset = 0x1178
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d3]
+offset = 0x1180
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d3]
+offset = 0x1188
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d3]
+offset = 0x1190
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d3]
+offset = 0x1198
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d3]
+offset = 0x11a0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d3]
+offset = 0x11a8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d3]
+offset = 0x11b0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d3]
+offset = 0x11b8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d4]
+offset = 0x11c0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d4]
+offset = 0x11c8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d4]
+offset = 0x11d0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d4]
+offset = 0x11d8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d4]
+offset = 0x11e0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d4]
+offset = 0x11e8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d4]
+offset = 0x11f0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d4]
+offset = 0x11f8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[words.DMA_DESC_CTL]
+width = 16
+grade = "established"
+doc = """
+Control word of a DMA descriptor set. Each set of each channel uses this layout.
+The published field table marks the half-pel flags, the half-pel enable and the
+location field as not implemented; the bits are still defined so that software
+writes are seen."""
+
+[words.DMA_DESC_CTL.fields.chroma_half]
+bits = [1, 0]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.chroma_only]
+bits = [2, 2]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.half_pel_enable]
+bits = [3, 3]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.location]
+bits = [6, 4]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.location.enums]
+ram_a = { value = 0, grade = "established" }
+ram_b = { value = 1, grade = "established" }
+ram_c = { value = 2, grade = "established" }
+msp_i_ram = { value = 3, grade = "established" }
+bsp_i_ram = { value = 4, grade = "established" }
+bsp_table = { value = 5, grade = "established" }
+bsp_fifo = { value = 6, grade = "established" }
+tlb_ram = { value = 7, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.interleave]
+bits = [7, 7]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.interleave.enums]
+block = { value = 0, grade = "established" }
+interleave = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.luma_half]
+bits = [9, 8]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.yc]
+bits = [11, 10]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.yc.enums]
+block = { value = 0, grade = "established" }
+split_420 = { value = 1, grade = "established" }
+split_422 = { value = 2, grade = "established" }
+y_only = { value = 3, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.fill_source]
+bits = [12, 12]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.fill_source.enums]
+system = { value = 0, grade = "established" }
+data_register = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.direction]
+bits = [13, 13]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.direction.enums]
+write = { value = 0, grade = "established" }
+read = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.skip]
+bits = [14, 14]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.halt]
+bits = [15, 15]
+grade = "established"
 
 [words.CAUSE]
 width = 32
