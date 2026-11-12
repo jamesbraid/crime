@@ -36,6 +36,19 @@ grade = "established"
 
 [words.CRS_CTL.fields]
 enable = { bits = [0, 0], grade = "established" }
+crosshair = { bits = [1, 1], grade = "established" }
+
+[words.CRS_POS]
+width = 32
+grade = "established"
+doc = """
+Cursor position, CRS_0. The table gives 16-bit X in bits 15:0 and Y in bits 31:16,
+reset zero. The spec's functional text (pp. 20-22) calls positions 12-bit, and NetBSD
+treats the fields as signed. Width and signedness are unresolved."""
+
+[words.CRS_POS.fields]
+x = { bits = [15, 0], grade = "established" }
+y = { bits = [31, 16], grade = "established" }
 
 [words.CRS_START_XY]
 width = 32
@@ -48,12 +61,37 @@ startx = { bits = [11, 0], grade = "established" }
 [words.CTRLSTAT]
 width = 32
 grade = "established"
+doc = """
+Pin pair n is data at bit 6+2n and an active-low output enable at bit 7+2n, for
+n = 0 to 9. Reset is 11 for every pair (data high, output disabled), so every pin
+is an input. Bit 4 is the monitor sense pin, an external read-only input whose
+polarity and wiring are not established. Bits 26 (half-phase) and 27 (composite
+sync polarity) reset to zero. Bits 3:0 are the chip revision, read-only."""
 
 [words.CTRLSTAT.fields]
+monitor_sense = { bits = [4, 4], grade = "established" }
+half_phase = { bits = [26, 26], grade = "established" }
+csync_polarity = { bits = [27, 27], grade = "established" }
+io9_oe_n = { bits = [25, 25], grade = "established" }
+io9_data = { bits = [24, 24], grade = "established" }
+io8_oe_n = { bits = [23, 23], grade = "established" }
+io8_data = { bits = [22, 22], grade = "established" }
+io7_oe_n = { bits = [21, 21], grade = "established" }
+io7_data = { bits = [20, 20], grade = "established" }
+io6_oe_n = { bits = [19, 19], grade = "established" }
 io6_data = { bits = [18, 18], grade = "established" }
+io5_oe_n = { bits = [17, 17], grade = "established" }
 io5_data = { bits = [16, 16], grade = "established" }
+io4_oe_n = { bits = [15, 15], grade = "established" }
 io4_data = { bits = [14, 14], grade = "established" }
+io3_oe_n = { bits = [13, 13], grade = "established" }
 io3_data = { bits = [12, 12], grade = "established" }
+io2_oe_n = { bits = [11, 11], grade = "established" }
+io2_data = { bits = [10, 10], grade = "established" }
+io1_oe_n = { bits = [9, 9], grade = "established" }
+io1_data = { bits = [8, 8], grade = "established" }
+io0_oe_n = { bits = [7, 7], grade = "established" }
+io0_data = { bits = [6, 6], grade = "established" }
 chip_rev = { bits = [3, 0], grade = "established" }
 
 [words.CTRLSTAT.fields.pclk_select]
@@ -121,8 +159,15 @@ startx = { bits = [11, 0], grade = "established" }
 [words.DOTCLOCK]
 width = 32
 grade = "established"
+doc = """
+Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their
+reset contents unspecified, and the spec gives no PLL lock time or frequency limits.
+Bits 25:24 are manufacturer test controls and are not described."""
 
 [words.DOTCLOCK.fields]
+out_of_lock = { bits = [23, 23], grade = "established" }
+out_of_range = { bits = [22, 22], grade = "established" }
+test = { bits = [25, 24], grade = "established" }
 run = { bits = [20, 20], grade = "established" }
 p = { bits = [15, 14], grade = "established" }
 n_minus_1 = { bits = [13, 8], grade = "established" }
@@ -193,6 +238,14 @@ grade = "established"
 [words.FRM_INHWCTRL.fields]
 dma_enable = { bits = [0, 0], grade = "established" }
 
+[words.FRM_SIZE_PIXEL]
+width = 32
+grade = "established"
+doc = "Frame height in pixels, shared by the normal and overlay planes. Reset zero."
+
+[words.FRM_SIZE_PIXEL.fields]
+height = { bits = [31, 16], grade = "established" }
+
 [words.FRM_SIZE_TILE]
 width = 32
 grade = "established"
@@ -210,6 +263,34 @@ grade = "established"
 bits8 = { value = 0, grade = "established" }
 bits16 = { value = 1, grade = "established" }
 bits32 = { value = 2, grade = "established" }
+
+[words.I2C]
+width = 32
+grade = "established"
+doc = """
+Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 1.
+The spec gives separate output and synchronized input pins (page 22): a write sets
+the outputs, and a read returns the bus state, which can differ from the output
+latch. NetBSD XORs both written and read bits with 3 and calls the fields low
+active. That is a software expectation (inferred), and the register table alone does
+not say whether writing 1 releases a line. Whether the reset value 1 means released
+is therefore not established."""
+
+[words.I2C.fields]
+sda = { bits = [0, 0], grade = "established" }
+sdc = { bits = [1, 1], grade = "established" }
+
+[words.I2CFP]
+width = 32
+grade = "established"
+doc = """
+Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset
+to 1. The spec places external pullups on the flat-panel clock and data outputs
+(page 4). The inverted-convention caveat under I2C applies here too."""
+
+[words.I2CFP.fields]
+sda = { bits = [0, 0], grade = "established" }
+sdc = { bits = [1, 1], grade = "established" }
 
 [words.MODE_ENTRY]
 width = 32
@@ -270,6 +351,23 @@ grade = "established"
 fifo_reset = { bits = [13, 13], grade = "established" }
 width_tiles = { bits = [12, 5], grade = "established" }
 remainder = { bits = [4, 0], grade = "established" }
+
+[words.SYSCLK]
+width = 32
+grade = "established"
+doc = """
+System PLL test controls, gains and divider. Reset has bit 3 set (test control 0)
+and every other defined bit zero."""
+
+[words.SYSCLK.fields]
+tm = { bits = [3, 0], grade = "established" }
+voltage_gain = { bits = [9, 8], grade = "established" }
+current_gain = { bits = [11, 10], grade = "established" }
+divider = { bits = [14, 12], grade = "established" }
+
+[[words.SYSCLK.tests]]
+value = 0x8
+expect = { tm = 8 }
 
 [words.TILE_LIST_ENTRY]
 width = 32
@@ -333,12 +431,94 @@ grade = "established"
 tile_first = { bits = [31, 16], grade = "established" }
 tile_second = { bits = [15, 0], grade = "established" }
 
+[words.VT_F2RF_LOCK]
+width = 32
+grade = "inferred"
+doc = """
+Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a
+stereo toggle line and a frame-lock line. Which half holds which is inferred from the
+listing order in the register table, the same order the interrupt words use. No reset
+table is given."""
+
+[words.VT_F2RF_LOCK.fields]
+stereo_toggle_y = { bits = [11, 0], grade = "inferred" }
+frame_lock_y = { bits = [23, 12], grade = "inferred" }
+
+[words.VT_HBLANK]
+width = 32
+grade = "established"
+doc = "Horizontal blanking turns off and on at these pixel counts (VT_5)."
+
+[words.VT_HBLANK.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
+[words.VT_HPIXEN]
+width = 32
+grade = "established"
+doc = """
+Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical
+enables combine with OR. The table does not settle that rule."""
+
+[words.VT_HPIXEN.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
+[words.VT_HSYNC]
+width = 32
+grade = "established"
+doc = "Horizontal sync turns off and on at these pixel counts (VT_3)."
+
+[words.VT_HSYNC.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
+[words.VT_VBLANK]
+width = 32
+grade = "established"
+doc = "Vertical blanking turns off and on at these lines (VT_4)."
+
+[words.VT_VBLANK.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
+[words.VT_VPIXEN]
+width = 32
+grade = "established"
+doc = "Vertical pixel-enable window, VT_14."
+
+[words.VT_VPIXEN.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
+[words.VT_VSYNC]
+width = 32
+grade = "established"
+doc = """
+Vertical sync turns off and on at these lines (VT_2). The page 38 text for the on
+row repeats the off comparator, so the positions are established but that description
+is not."""
+
+[words.VT_VSYNC.fields]
+off = { bits = [11, 0], grade = "established" }
+on = { bits = [23, 12], grade = "established" }
+
 [words.VT_FLAGS]
 width = 32
 grade = "established"
+doc = """
+Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other
+bits follow the public Linux and NetBSD encodings, which are software expectations,
+and the table gives no reset value for them."""
 
 [words.VT_FLAGS.fields]
 sync_low = { bits = [5, 5], grade = "established" }
+vertical_invert = { bits = [0, 0], grade = "inferred" }
+vertical_forced_low = { bits = [1, 1], grade = "inferred" }
+horizontal_invert = { bits = [2, 2], grade = "inferred" }
+horizontal_forced_low = { bits = [3, 3], grade = "inferred" }
+composite_sync_high = { bits = [4, 4], grade = "inferred" }
+stereo_forced_high = { bits = [6, 6], grade = "inferred" }
 
 [words.VT_HCMAP]
 width = 32
@@ -377,6 +557,8 @@ width = 32
 grade = "established"
 
 [words.VT_XY.fields]
+x = { bits = [11, 0], grade = "established" }
+y = { bits = [23, 12], grade = "established" }
 freeze = { bits = [31, 31], grade = "established" }
 
 [words.VT_XYMAX]

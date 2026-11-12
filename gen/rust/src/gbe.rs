@@ -53,9 +53,43 @@ pub mod cmap_fifo {
 /// (established)
 pub mod crs_ctl {
     pub const WIDTH: u32 = 32;
+    pub mod crosshair { // bits 1:1, established
+        pub const SHIFT: u32 = 1;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod enable { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Cursor position, CRS_0. The table gives 16-bit X in bits 15:0 and Y in bits 31:16, reset zero. The spec's functional text (pp. 20-22) calls positions  (established)
+pub mod crs_pos {
+    pub const WIDTH: u32 = 32;
+    pub mod y { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod x { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xffff;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
@@ -88,7 +122,7 @@ pub mod crs_start_xy {
         }
     }
 }
-/// (established)
+/// Pin pair n is data at bit 6+2n and an active-low output enable at bit 7+2n, for n = 0 to 9. Reset is 11 for every pair (data high, output disabled), s (established)
 pub mod ctrlstat {
     pub const WIDTH: u32 = 32;
     pub mod pclk_select { // bits 29:28, established
@@ -129,8 +163,108 @@ pub mod ctrlstat {
             }
         }
     }
+    pub mod csync_polarity { // bits 27:27, established
+        pub const SHIFT: u32 = 27;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod half_phase { // bits 26:26, established
+        pub const SHIFT: u32 = 26;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io9_oe_n { // bits 25:25, established
+        pub const SHIFT: u32 = 25;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io9_data { // bits 24:24, established
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io8_oe_n { // bits 23:23, established
+        pub const SHIFT: u32 = 23;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io8_data { // bits 22:22, established
+        pub const SHIFT: u32 = 22;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io7_oe_n { // bits 21:21, established
+        pub const SHIFT: u32 = 21;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io7_data { // bits 20:20, established
+        pub const SHIFT: u32 = 20;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io6_oe_n { // bits 19:19, established
+        pub const SHIFT: u32 = 19;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod io6_data { // bits 18:18, established
         pub const SHIFT: u32 = 18;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io5_oe_n { // bits 17:17, established
+        pub const SHIFT: u32 = 17;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
@@ -149,6 +283,16 @@ pub mod ctrlstat {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
+    pub mod io4_oe_n { // bits 15:15, established
+        pub const SHIFT: u32 = 15;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod io4_data { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
@@ -159,8 +303,88 @@ pub mod ctrlstat {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
+    pub mod io3_oe_n { // bits 13:13, established
+        pub const SHIFT: u32 = 13;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod io3_data { // bits 12:12, established
         pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io2_oe_n { // bits 11:11, established
+        pub const SHIFT: u32 = 11;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io2_data { // bits 10:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io1_oe_n { // bits 9:9, established
+        pub const SHIFT: u32 = 9;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io1_data { // bits 8:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io0_oe_n { // bits 7:7, established
+        pub const SHIFT: u32 = 7;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod io0_data { // bits 6:6, established
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod monitor_sense { // bits 4:4, established
+        pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
@@ -310,9 +534,39 @@ pub mod did_start_xy {
         }
     }
 }
-/// (established)
+/// Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their reset contents unspecified, and the spec gives no PLL lock time or (established)
 pub mod dotclock {
     pub const WIDTH: u32 = 32;
+    pub mod test { // bits 25:24, established
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod out_of_lock { // bits 23:23, established
+        pub const SHIFT: u32 = 23;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod out_of_range { // bits 22:22, established
+        pub const SHIFT: u32 = 22;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod run { // bits 20:20, established
         pub const SHIFT: u32 = 20;
         pub const MASK: u32 = 0x1;
@@ -464,6 +718,20 @@ pub mod frm_inhwctrl {
         }
     }
 }
+/// Frame height in pixels, shared by the normal and overlay planes. Reset zero. (established)
+pub mod frm_size_pixel {
+    pub const WIDTH: u32 = 32;
+    pub mod height { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
 /// (established)
 pub mod frm_size_tile {
     pub const WIDTH: u32 = 32;
@@ -528,6 +796,54 @@ pub mod frm_size_tile {
     pub mod remainder { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 1. The spec gives separate output and synchronized input pins (page 22 (established)
+pub mod i2c {
+    pub const WIDTH: u32 = 32;
+    pub mod sdc { // bits 1:1, established
+        pub const SHIFT: u32 = 1;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod sda { // bits 0:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset to 1. The spec places external pullups on the flat-panel clock an (established)
+pub mod i2cfp {
+    pub const WIDTH: u32 = 32;
+    pub mod sdc { // bits 1:1, established
+        pub const SHIFT: u32 = 1;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod sda { // bits 0:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
@@ -730,6 +1046,50 @@ pub mod ovr_width_tile {
     pub mod remainder { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// System PLL test controls, gains and divider. Reset has bit 3 set (test control 0) and every other defined bit zero. (established)
+pub mod sysclk {
+    pub const WIDTH: u32 = 32;
+    pub mod divider { // bits 14:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod current_gain { // bits 11:10, established
+        pub const SHIFT: u32 = 10;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod voltage_gain { // bits 9:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod tm { // bits 3:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
@@ -966,9 +1326,43 @@ pub mod vc_tiles {
         }
     }
 }
-/// (established)
+/// Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a stereo toggle line and a frame-lock line. Which half holds which is (inferred)
+pub mod vt_f2rf_lock {
+    pub const WIDTH: u32 = 32;
+    pub mod frame_lock_y { // bits 23:12, inferred
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod stereo_toggle_y { // bits 11:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other bits follow the public Linux and NetBSD encodings, which are softw (established)
 pub mod vt_flags {
     pub const WIDTH: u32 = 32;
+    pub mod stereo_forced_high { // bits 6:6, inferred
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod sync_low { // bits 5:5, established
         pub const SHIFT: u32 = 5;
         pub const MASK: u32 = 0x1;
@@ -979,9 +1373,131 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
+    pub mod composite_sync_high { // bits 4:4, inferred
+        pub const SHIFT: u32 = 4;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod horizontal_forced_low { // bits 3:3, inferred
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod horizontal_invert { // bits 2:2, inferred
+        pub const SHIFT: u32 = 2;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod vertical_forced_low { // bits 1:1, inferred
+        pub const SHIFT: u32 = 1;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod vertical_invert { // bits 0:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Horizontal blanking turns off and on at these pixel counts (VT_5). (established)
+pub mod vt_hblank {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod vt_hcmap {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical enables combine with OR. The table does not settle that rule. (established)
+pub mod vt_hpixen {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Horizontal sync turns off and on at these pixel counts (VT_3). (established)
+pub mod vt_hsync {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
         pub const SHIFT: u32 = 12;
@@ -1052,8 +1568,80 @@ pub mod vt_intr23 {
         }
     }
 }
+/// Vertical blanking turns off and on at these lines (VT_4). (established)
+pub mod vt_vblank {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
 /// (established)
 pub mod vt_vcmap {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Vertical pixel-enable window, VT_14. (established)
+pub mod vt_vpixen {
+    pub const WIDTH: u32 = 32;
+    pub mod on { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod off { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
+/// Vertical sync turns off and on at these lines (VT_2). The page 38 text for the on row repeats the off comparator, so the positions are established but (established)
+pub mod vt_vsync {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
         pub const SHIFT: u32 = 12;
@@ -1082,6 +1670,26 @@ pub mod vt_xy {
     pub mod freeze { // bits 31:31, established
         pub const SHIFT: u32 = 31;
         pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod y { // bits 23:12, established
+        pub const SHIFT: u32 = 12;
+        pub const MASK: u32 = 0xfff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod x { // bits 11:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xfff;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
@@ -1236,6 +1844,11 @@ mod tests {
         assert_eq!(mode_entry::buf::get(0x41), 1);
         assert_eq!(mode_entry::typ::get(0x41), 0);
         assert_eq!(mode_entry::cm::get(0x41), 2);
+    }
+
+    #[test]
+    fn sysclk_8() {
+        assert_eq!(sysclk::tm::get(0x8), 8);
     }
 
     #[test]

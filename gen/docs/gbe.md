@@ -16,6 +16,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `CMAP_ENTRY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `CMAP_FIFO` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `CRS_CTL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `CRS_POS` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `CRS_START_XY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `CTRLSTAT` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `DID_CONTROL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
@@ -29,11 +30,15 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `FP_VDRV` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `FRM_CONTROL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `FRM_INHWCTRL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `FRM_SIZE_PIXEL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `FRM_SIZE_TILE` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `I2C` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `I2CFP` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `MODE_ENTRY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `OVR_CONTROL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `OVR_INHWCTRL` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `OVR_WIDTH_TILE` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `SYSCLK` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `TILE_LIST_ENTRY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_0` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_1` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
@@ -41,11 +46,18 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `VC_3` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_START_XY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_TILES` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_F2RF_LOCK` | 32 | inferred | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_FLAGS` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_HBLANK` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_HCMAP` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_HPIXEN` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_HSYNC` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_INTR01` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_INTR23` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_VBLANK` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_VCMAP` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_VPIXEN` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_VSYNC` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_XY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_XYMAX` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 
@@ -67,7 +79,19 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 1 | `crosshair` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 0 | `enable` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `CRS_POS`
+
+Cursor position, CRS_0. The table gives 16-bit X in bits 15:0 and Y in bits 31:16,
+reset zero. The spec's functional text (pp. 20-22) calls positions 12-bit, and NetBSD
+treats the fields as signed. Width and signedness are unresolved.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:16 | `y` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 15:0 | `x` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `CRS_START_XY`
 
@@ -78,13 +102,38 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Word `CTRLSTAT`
 
+Pin pair n is data at bit 6+2n and an active-low output enable at bit 7+2n, for
+n = 0 to 9. Reset is 11 for every pair (data high, output disabled), so every pin
+is an input. Bit 4 is the monitor sense pin, an external read-only input whose
+polarity and wiring are not established. Bits 26 (half-phase) and 27 (composite
+sync polarity) reset to zero. Bits 3:0 are the chip revision, read-only.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 29:28 | `pclk_select` | established | external=0, differential=1, internal=3 | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 27 | `csync_polarity` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 26 | `half_phase` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 25 | `io9_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 24 | `io9_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 23 | `io8_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 22 | `io8_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 21 | `io7_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 20 | `io7_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 19 | `io6_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 18 | `io6_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 17 | `io5_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 16 | `io5_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 15 | `io4_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 14 | `io4_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 13 | `io3_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 12 | `io3_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11 | `io2_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 10 | `io2_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 9 | `io1_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 8 | `io1_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 7 | `io0_oe_n` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 6 | `io0_data` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 4 | `monitor_sense` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 3:0 | `chip_rev` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `DID_CONTROL`
@@ -125,8 +174,15 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Word `DOTCLOCK`
 
+Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their
+reset contents unspecified, and the spec gives no PLL lock time or frequency limits.
+Bits 25:24 are manufacturer test controls and are not described.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 25:24 | `test` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 23 | `out_of_lock` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 22 | `out_of_range` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 20 | `run` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 15:14 | `p` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 13:8 | `n_minus_1` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
@@ -176,6 +232,14 @@ counter FP_DE really uses is unknown.
 |---|---|---|---|---|---|
 | 0 | `dma_enable` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
+### Word `FRM_SIZE_PIXEL`
+
+Frame height in pixels, shared by the normal and overlay planes. Reset zero.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:16 | `height` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
 ### Word `FRM_SIZE_TILE`
 
 | Bits | Field | Grade | Values | Source | Description |
@@ -184,6 +248,32 @@ counter FP_DE really uses is unknown.
 | 14:13 | `depth` | established | bits8=0, bits16=1, bits32=2 | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 12:5 | `width_tiles` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 4:0 | `remainder` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `I2C`
+
+Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 1.
+The spec gives separate output and synchronized input pins (page 22): a write sets
+the outputs, and a read returns the bus state, which can differ from the output
+latch. NetBSD XORs both written and read bits with 3 and calls the fields low
+active. That is a software expectation (inferred), and the register table alone does
+not say whether writing 1 releases a line. Whether the reset value 1 means released
+is therefore not established.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 1 | `sdc` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 0 | `sda` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `I2CFP`
+
+Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset
+to 1. The spec places external pullups on the flat-panel clock and data outputs
+(page 4). The inverted-convention caveat under I2C applies here too.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 1 | `sdc` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 0 | `sda` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `MODE_ENTRY`
 
@@ -215,6 +305,18 @@ counter FP_DE really uses is unknown.
 | 13 | `fifo_reset` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 12:5 | `width_tiles` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 4:0 | `remainder` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `SYSCLK`
+
+System PLL test controls, gains and divider. Reset has bit 3 set (test control 0)
+and every other defined bit zero.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 14:12 | `divider` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:10 | `current_gain` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 9:8 | `voltage_gain` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 3:0 | `tm` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `TILE_LIST_ENTRY`
 
@@ -271,13 +373,63 @@ counter FP_DE really uses is unknown.
 | 31:16 | `tile_first` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 15:0 | `tile_second` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
-### Word `VT_FLAGS`
+### Word `VT_F2RF_LOCK`
+
+Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a
+stereo toggle line and a frame-lock line. Which half holds which is inferred from the
+listing order in the register table, the same order the interrupt words use. No reset
+table is given.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 23:12 | `frame_lock_y` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `stereo_toggle_y` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_FLAGS`
+
+Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other
+bits follow the public Linux and NetBSD encodings, which are software expectations,
+and the table gives no reset value for them.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 6 | `stereo_forced_high` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 5 | `sync_low` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 4 | `composite_sync_high` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 3 | `horizontal_forced_low` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 2 | `horizontal_invert` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 1 | `vertical_forced_low` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 0 | `vertical_invert` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_HBLANK`
+
+Horizontal blanking turns off and on at these pixel counts (VT_5).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `VT_HCMAP`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_HPIXEN`
+
+Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical
+enables combine with OR. The table does not settle that rule.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_HSYNC`
+
+Horizontal sync turns off and on at these pixel counts (VT_3).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -298,7 +450,36 @@ counter FP_DE really uses is unknown.
 | 23:12 | `line2` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 11:0 | `line3` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
+### Word `VT_VBLANK`
+
+Vertical blanking turns off and on at these lines (VT_4).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
 ### Word `VT_VCMAP`
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_VPIXEN`
+
+Vertical pixel-enable window, VT_14.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 23:12 | `on` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `off` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+
+### Word `VT_VSYNC`
+
+Vertical sync turns off and on at these lines (VT_2). The page 38 text for the on
+row repeats the off comparator, so the positions are established but that description
+is not.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -310,6 +491,8 @@ counter FP_DE really uses is unknown.
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31 | `freeze` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 23:12 | `y` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `x` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `VT_XYMAX`
 
@@ -401,4 +584,5 @@ A vector is a value recorded from a source. An example only shows the layout.
 | `FP_HDRV` | 0xfff | vector | off=4095, on=0 |
 | `FP_VDRV` | 0x1fff | vector | off=4095, on=1 |
 | `MODE_ENTRY` | 0x41 | vector | buf=1, typ=0, cm=2 |
+| `SYSCLK` | 0x8 | vector | tm=8 |
 | `VT_XYMAX` | 0x20d320 | vector | htotal=800, vtotal=525 |

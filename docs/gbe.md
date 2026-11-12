@@ -270,6 +270,7 @@ How this meets IRIX (established from `gbeProbe`, `gbeStop`, `crimeInitInfo`):
 - `crimeInitInfo` then rewrites `CTRLSTAT` as `(old & 0x30000000) | 0xaa000`: the clock select is kept and bits 13, 15, 17, 19 become 1, which turns `io_3` to `io_6` back into inputs and leaves `io_0` to `io_2` and `io_7` to `io_9` as outputs driving 0 (the pin pairs are data/output-enable-bar per [gbe-spec] p. 36).
 - The same function then reads the four data bits of `io_3` to `io_6` (register bits 12, 14, 16, 18) as a 4-bit board strap value, stored at board offset `+0x28`, and the chip revision nibble (3:0) at `+0x2a` (established). What each strap code means is unknown here; one use is established: when all four read 0 the global `gbe_gammawar` (initial value 1, `.sdata` of `crime_init.o`) becomes 1, and when any is non-zero it becomes 0 (the code only writes it while it is non-zero). `gbeGmapInit` loads the alternative gamma table when it is 1 (see `GBE.h`).
 - `gbeBlankScreen` blanks by writing `0x000aa000` (clock select 0, the external clock input, which is not driven) and unblanks with `0x300aa000` (established). Inferred: blanking is a clock deselect, as `GBE.h` says.
+- The same blank routine also switches a fitted flat panel off and on over I2C (established from the routine's binary). Whether those I2C writes go through the `I2CFP` register, and the command bytes sent, are not identified here.
 - Stopping the display (`gbeStop`, established): save `FRM_CONTROL`, `OVR_CONTROL`, `DID_CONTROL`; clear the DMA-enable bit of each (bit 0, bit 0, bit 16); wait up to 20,000 times 10 microseconds (0x4e20 polls) for the live twins to follow; then write `FRM_CONTROL = (saved without bit 0) + 0x20` and wait for `FRM_INHWCTRL` to equal it. The spec makes sense of this: the `*_CONTROL` registers are shadows (spec names `FRM_3`, `OVR_2`, `DID_SHADOW`) copied into the live twin (`FRM_2`, `OVR_1`, `DID`) at the beginning of blanking ([gbe-spec] pp. 42-44, established). The `+0x20` bumps the tile-list pointer by one 32-byte unit, because the pointer field is bits 31:5 ([gbe-spec] p. 43): a changed pointer is visible in the live register once the copy happened, so the loop is a fence that waits for one more blanking edge (inferred reason). Linux writes the pointer shifted by 9 (`gbefb.c`), a coarser alignment than the 32 bytes the spec and IRIX use; both are acceptable to the hardware if the list is 512-byte aligned.
 
 Settled in pass 7 (below): the revision nibble tells the rev 1.1 part (1) from its successor (2); the strap's only use is the gamma workaround, and its other meanings are labelled. Reset values after revision 1.1 are labelled there. What `io_0` to `io_2` and `io_7` to `io_9` drive is unknown: no shipped software or published source depends on it (routes in pass 7).
@@ -632,6 +633,34 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
   `crimeRetraceHandler` in `crime_retrace.o` walks the 32 swap slots of 24 bytes each and advances its table pointer by 4 bytes per slot.
   For a slot whose swap is due it rewrites the buffer bits of that slot's entry, the pair of low bits of the word.
   `crimeSetDisplayMode` writes the same entry for ioctl 0x55f4 with index 1.
+
+# Pins, cursor and pixel enable
+
+Facts here come from the GBE 1.1 specification, cited as [gbe-spec] with its own page numbers, unless a label says otherwise.
+
+## I2C and pin pairs
+
+- Established ([gbe-spec] p. 22): the I2C output and input pins are separate. A write changes the outputs. A read returns the synchronized bus state, which can differ from the output latch. The output path uses an external open-collector driver, which the I2C text names as an F06.
+- Established ([gbe-spec] p. 4): external pullups sit on the flat-panel clock and data outputs.
+- Established ([gbe-spec] p. 36): each pin pair is a data bit and an active-low output enable (`CTRLSTAT`, bits 6+2n and 7+2n for pairs 0 to 9). Reset `11` makes every pin an input.
+- Inferred (NetBSD `crmfb` driver): the driver XORs both written and read I2C bits with 3 and calls the fields low active. The register table alone does not establish that writing 1 releases a line. This conflicts with the reset row above, which says "open-drain released". Treat that wording as unconfirmed until a bus reading at reset, or a spec errata, settles the polarity.
+- Unknown: what the monitor sense pin (`CTRLSTAT` bit 4) reports. It is an external read-only input. Its polarity and wiring are not established.
+
+## Clock status
+
+- Established ([gbe-spec] pp. 36-37): `DOTCLOCK` bits 22 (out of range) and 23 (out of lock) are status bits with unspecified reset contents. Bits 25:24 are manufacturer test controls and are not described.
+- Unknown: PLL lock time and the frequency limits. The pages read give neither.
+
+## Cursor glyph and crosshair
+
+- Established ([gbe-spec] pp. 21-22, 46): the glyph is 64 words, two per 32-pixel row, rows from top to bottom. Each word holds 16 pixels at two bits each, the leftmost in bits 31:30 and the rightmost in bits 1:0. Glyph index 0 is transparent.
+- Established ([gbe-spec] p. 22): crosshair mode (`CRS_CTL` bit 1) draws in cursor colour 1, ignores glyph RAM and centres on the cursor position.
+- Unknown: cursor position width and sign. The register table gives 16-bit fields, the functional text (pp. 20-22) says 12-bit, and NetBSD treats the fields as signed. `defs/gbe.toml` carries the table reading only.
+
+## Pixel enable and DMA aliases
+
+- Unknown: the spec prose says the horizontal and vertical pixel enables combine with OR. The window table does not settle that rule.
+- Established ([gbe-spec] pp. 5-7, 34): GBE DMA uses 32-bit addresses in CRIME's full RAM aperture from `0x40000000`. CPU low-RAM and no-ECC aliases are not DMA targets.
 
 # Public driver cross-check
 
