@@ -6,6 +6,9 @@
 #include <stdint.h>
 
 
+/*
+ * The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
+ */
 /* id: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_ID_OFFSET                              0x0u /* established */
 #define CRIME_ID_FAMILY_SHIFT                        4 /* established */
@@ -36,9 +39,15 @@
 #define CRIME_CONTROL_ENDIAN_MASK                    0x1ull
 #define CRIME_CONTROL_ENDIAN_INPLACE                 (CRIME_CONTROL_ENDIAN_MASK << CRIME_CONTROL_ENDIAN_SHIFT)
 
+/*
+ * Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106).
+ */
 /* intstat: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTSTAT_OFFSET                         0x10u /* established */
 
+/*
+ * A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233).
+ */
 /* intmask: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTMASK_OFFSET                         0x18u /* established */
 
@@ -66,11 +75,23 @@
 #define CRIME_TIMER_COUNT_MASK                       0xffffffffull
 #define CRIME_TIMER_COUNT_INPLACE                    (CRIME_TIMER_COUNT_MASK << CRIME_TIMER_COUNT_SHIFT)
 
+/*
+ * Records address bits 33:2 of a failed CPU programmed-I/O access, in the low 32 bits (established, [spec] Table 5-16, PDF 120). The spec records it for a SysAD parity error or an invalid address. Whether clearing the status also clears this register or the interrupt cause is unknown. The spec says software would like bits 39:34 captured as well (established, [spec] PDF 233); see the status register.
+ */
 /* cpu_error_addr: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_ADDR_OFFSET                  0x40u /* established */
+#define CRIME_CPU_ERROR_ADDR_ADDR_33_2_SHIFT         0 /* established */
+#define CRIME_CPU_ERROR_ADDR_ADDR_33_2_MASK          0xffffffffull
+#define CRIME_CPU_ERROR_ADDR_ADDR_33_2_INPLACE       (CRIME_CPU_ERROR_ADDR_ADDR_33_2_MASK << CRIME_CPU_ERROR_ADDR_ADDR_33_2_SHIFT)
 
+/*
+ * Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register's address as 0x14004048 (see cpu_error_stat_15). Bits 1 and 0 are no longer supported on 1.5 because SysADC is not used (established, PDF 120). Bits 8:3 hold address bits 39:34 on 1.5 "if it can be implemented"; whether fitted parts do is unknown. The spec does not define "invalid address", so whether a refused CPU access sets bit 2 is unknown.
+ */
 /* cpu_error_stat: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_STAT_OFFSET                  0x48u /* established */
+#define CRIME_CPU_ERROR_STAT_ADDR_39_34_SHIFT        3 /* unknown */
+#define CRIME_CPU_ERROR_STAT_ADDR_39_34_MASK         0x3full
+#define CRIME_CPU_ERROR_STAT_ADDR_39_34_INPLACE      (CRIME_CPU_ERROR_STAT_ADDR_39_34_MASK << CRIME_CPU_ERROR_STAT_ADDR_39_34_SHIFT)
 #define CRIME_CPU_ERROR_STAT_ILLEGAL_ADDR_SHIFT      2 /* established */
 #define CRIME_CPU_ERROR_STAT_ILLEGAL_ADDR_MASK       0x1ull
 #define CRIME_CPU_ERROR_STAT_ILLEGAL_ADDR_INPLACE    (CRIME_CPU_ERROR_STAT_ILLEGAL_ADDR_MASK << CRIME_CPU_ERROR_STAT_ILLEGAL_ADDR_SHIFT)
@@ -179,9 +200,15 @@
 #define CRIME_MEM_ERROR_ECC_REPL_CHECK_MASK          0xffull
 #define CRIME_MEM_ERROR_ECC_REPL_CHECK_INPLACE       (CRIME_MEM_ERROR_ECC_REPL_CHECK_MASK << CRIME_MEM_ERROR_ECC_REPL_CHECK_SHIFT)
 
+/*
+ * The CRIME 1.5 specification places the CPU error status register here, on its own 16 KiB page so that it can be mapped to user programs (established, [spec] Table 5-7 and its note, PDF 113). Bit layout as in Table 5-17 (PDF 120). The grade stays inferred: whether a fitted part implements this offset is not established.
+ */
 /* cpu_error_stat_15: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_STAT_15_OFFSET               0x4048u /* inferred */
 
+/*
+ * Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PDF 106 to 108; established). Each bit is ORed with others onto one R10000 interrupt line, IP2 to IP6, given by the CRIME_IP*_CAUSES constants. CRIME signals the processor when a bit in a group asserts or de-asserts (established, PDF 106). Table 5-6 (PDF 109) pairs IP2 to IP6 with cause register bits 10 to 14 and SysAD bits 0 to 4. The prose on PDF 109 and PDF 110 swaps bits 20 and 21. Table 5-5, Table 5-10 (PDF 116) and the revision note on PDF 233 do not, so bit 20 is the CPU interface error and bit 21 the memory error (established).
+ */
 /* word INTBIT: 32 bits; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTBIT_WIDTH                           32 /* established */
 #define CRIME_INTBIT_VICE_SHIFT                      31 /* established */
@@ -239,6 +266,11 @@
 #define CRIME_ID_FAMILY_SHIPPED                      0xa0u /* established */
 #define CRIME_ID_LOW_BYTE_DRAFT                      0xb1u /* inferred */
 #define CRIME_ID_LOW_BYTE_SHIPPED                    0xa1u /* established */
+#define CRIME_IP2_CAUSES                             0x8fc00038u /* established */
+#define CRIME_IP3_CAUSES                             0xfff07u /* established */
+#define CRIME_IP4_CAUSES                             0x10000000u /* established */
+#define CRIME_IP5_CAUSES                             0x20000040u /* established */
+#define CRIME_IP6_CAUSES                             0x40300080u /* established */
 #define CRIME_MEM_BANKS                              0x8u /* established */
 #define CRIME_MEM_BANK_CONTROL_RESET_BASE            0x0u /* established */
 #define CRIME_MEM_BANK_CONTROL_RESET_STEP            0x1u /* established */

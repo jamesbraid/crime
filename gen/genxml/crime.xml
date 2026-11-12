@@ -3,6 +3,7 @@
 <genxml unit="crime" prefix="CRIME" title="O2 CRIME memory controller and CPU interface registers" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
   <doc>CRIME memory controller and CPU-interface registers, and the interrupt input bit positions.</doc>
   <struct name="ID" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x0" access="r" reset="unknown">
+    <doc>The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).</doc>
     <field name="family" start="4" size="4" type="uint" grade="established"/>
     <field name="rev" start="0" size="4" type="uint" grade="established"/>
     <test value="0xa1" kind="vector">
@@ -24,8 +25,10 @@
     </test>
   </struct>
   <struct name="INTSTAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x10" access="r" reset="unknown">
+    <doc>Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106).</doc>
   </struct>
   <struct name="INTMASK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" reset="0x0">
+    <doc>A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233).</doc>
   </struct>
   <struct name="SOFTINT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" reset="0x0">
   </struct>
@@ -40,8 +43,12 @@
     <field name="count" start="0" size="32" type="uint" grade="established"/>
   </struct>
   <struct name="CPU_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x40" access="r" reset="unknown">
+    <doc>Records address bits 33:2 of a failed CPU programmed-I/O access, in the low 32 bits (established, [spec] Table 5-16, PDF 120). The spec records it for a SysAD parity error or an invalid address. Whether clearing the status also clears this register or the interrupt cause is unknown. The spec says software would like bits 39:34 captured as well (established, [spec] PDF 233); see the status register.</doc>
+    <field name="addr_33_2" start="0" size="32" type="uint" grade="established"/>
   </struct>
   <struct name="CPU_ERROR_STAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" reset="0x0">
+    <doc>Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register's address as 0x14004048 (see cpu_error_stat_15). Bits 1 and 0 are no longer supported on 1.5 because SysADC is not used (established, PDF 120). Bits 8:3 hold address bits 39:34 on 1.5 "if it can be implemented"; whether fitted parts do is unknown. The spec does not define "invalid address", so whether a refused CPU access sets bit 2 is unknown.</doc>
+    <field name="addr_39_34" start="3" size="6" type="uint" grade="unknown"/>
     <field name="illegal_addr" start="2" size="1" type="uint" grade="established"/>
     <field name="vice_write_parity" start="1" size="1" type="uint" grade="established"/>
     <field name="cpu_write_parity" start="0" size="1" type="uint" grade="established"/>
@@ -94,8 +101,10 @@
     <field name="check" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="CPU_ERROR_STAT_15" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x4048" access="rw" reset="0x0">
+    <doc>The CRIME 1.5 specification places the CPU error status register here, on its own 16 KiB page so that it can be mapped to user programs (established, [spec] Table 5-7 and its note, PDF 113). Bit layout as in Table 5-17 (PDF 120). The grade stays inferred: whether a fitted part implements this offset is not established.</doc>
   </struct>
   <struct name="INTBIT" size="4" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
+    <doc>Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PDF 106 to 108; established). Each bit is ORed with others onto one R10000 interrupt line, IP2 to IP6, given by the CRIME_IP*_CAUSES constants. CRIME signals the processor when a bit in a group asserts or de-asserts (established, PDF 106). Table 5-6 (PDF 109) pairs IP2 to IP6 with cause register bits 10 to 14 and SysAD bits 0 to 4. The prose on PDF 109 and PDF 110 swaps bits 20 and 21. Table 5-5, Table 5-10 (PDF 116) and the revision note on PDF 233 do not, so bit 20 is the CPU interface error and bit 21 the memory error (established).</doc>
     <field name="vice" start="31" size="1" type="uint" grade="established"/>
     <field name="syscorerr" start="30" size="1" type="uint" grade="established"/>
     <field name="soft1" start="29" size="1" type="uint" grade="established"/>
@@ -126,6 +135,11 @@
   <constant name="ID_FAMILY_SHIPPED" value="0xa0" grade="established"/>
   <constant name="ID_LOW_BYTE_DRAFT" value="0xb1" grade="inferred"/>
   <constant name="ID_LOW_BYTE_SHIPPED" value="0xa1" grade="established"/>
+  <constant name="IP2_CAUSES" value="0x8fc00038" grade="established"/>
+  <constant name="IP3_CAUSES" value="0xfff07" grade="established"/>
+  <constant name="IP4_CAUSES" value="0x10000000" grade="established"/>
+  <constant name="IP5_CAUSES" value="0x20000040" grade="established"/>
+  <constant name="IP6_CAUSES" value="0x40300080" grade="established"/>
   <constant name="MEM_BANKS" value="0x8" grade="established"/>
   <constant name="MEM_BANK_CONTROL_RESET_BASE" value="0x0" grade="established"/>
   <constant name="MEM_BANK_CONTROL_RESET_STEP" value="0x1" grade="established"/>

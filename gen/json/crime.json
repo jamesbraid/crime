@@ -230,6 +230,15 @@
   },
   {
    "unit": "crime",
+   "kind": "field",
+   "name": "cpu_error_addr.addr_33_2",
+   "hi": 31,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
    "kind": "register",
    "name": "cpu_error_stat",
    "offset": 72,
@@ -240,6 +249,15 @@
    "space": null,
    "reset": 0,
    "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "field",
+   "name": "cpu_error_stat.addr_39_34",
+   "hi": 8,
+   "lo": 3,
+   "grade": "unknown",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
   },
   {
@@ -773,6 +791,51 @@
    "kind": "constant",
    "name": "ID_LOW_BYTE_SHIPPED",
    "value": 161,
+   "count": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IP2_CAUSES",
+   "value": 2411724856,
+   "count": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IP3_CAUSES",
+   "value": 1048327,
+   "count": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IP4_CAUSES",
+   "value": 268435456,
+   "count": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IP5_CAUSES",
+   "value": 536870976,
+   "count": 1,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IP6_CAUSES",
+   "value": 1076887680,
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"

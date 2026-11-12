@@ -2,7 +2,7 @@
 // O2 CRIME memory controller and CPU interface registers
 #![allow(dead_code)]
 
-/// (established)
+/// The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a questi (established)
 pub mod id {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x0;
@@ -92,12 +92,12 @@ pub mod control {
         }
     }
 }
-/// (established)
+/// Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software int (established)
 pub mod intstat {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x10;
 }
-/// (established)
+/// A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established)
 pub mod intmask {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
@@ -152,15 +152,35 @@ pub mod timer {
         }
     }
 }
-/// (established)
+/// Records address bits 33:2 of a failed CPU programmed-I/O access, in the low 32 bits (established, [spec] Table 5-16, PDF 120). The spec records it for (established)
 pub mod cpu_error_addr {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x40;
+    pub mod addr_33_2 { // bits 31:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffffffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register (established)
 pub mod cpu_error_stat {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x48;
+    pub mod addr_39_34 { // bits 8:3, unknown
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u64 = 0x3f;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
     pub mod illegal_addr { // bits 2:2, established
         pub const SHIFT: u32 = 2;
         pub const MASK: u64 = 0x1;
@@ -439,12 +459,12 @@ pub mod mem_error_ecc_repl {
         }
     }
 }
-/// (inferred)
+/// The CRIME 1.5 specification places the CPU error status register here, on its own 16 KiB page so that it can be mapped to user programs (established,  (inferred)
 pub mod cpu_error_stat_15 {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x4048;
 }
-/// (established)
+/// Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PDF 106 to 108; established). Each bit is ORed with others onto one R100 (established)
 pub mod intbit {
     pub const WIDTH: u32 = 32;
     pub mod vice { // bits 31:31, established
@@ -621,6 +641,11 @@ pub mod intbit {
 pub const ID_FAMILY_SHIPPED: u32 = 0xa0; // established
 pub const ID_LOW_BYTE_DRAFT: u32 = 0xb1; // inferred
 pub const ID_LOW_BYTE_SHIPPED: u32 = 0xa1; // established
+pub const IP2_CAUSES: u32 = 0x8fc00038; // established
+pub const IP3_CAUSES: u32 = 0xfff07; // established
+pub const IP4_CAUSES: u32 = 0x10000000; // established
+pub const IP5_CAUSES: u32 = 0x20000040; // established
+pub const IP6_CAUSES: u32 = 0x40300080; // established
 pub const MEM_BANKS: u32 = 0x8; // established
 pub const MEM_BANK_CONTROL_RESET_BASE: u32 = 0x0; // established
 pub const MEM_BANK_CONTROL_RESET_STEP: u32 = 0x1; // established

@@ -36,6 +36,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `id`
 
+The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too, so the wider rule is unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 7:4 | `family` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
@@ -54,7 +56,11 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `intstat`
 
+Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106).
+
 ### Register `intmask`
+
+A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233).
 
 ### Register `softint`
 
@@ -77,10 +83,19 @@ Free-running counter. The specification defines bits 31:0 as read/write with res
 
 ### Register `cpu_error_addr`
 
-### Register `cpu_error_stat`
+Records address bits 33:2 of a failed CPU programmed-I/O access, in the low 32 bits (established, [spec] Table 5-16, PDF 120). The spec records it for a SysAD parity error or an invalid address. Whether clearing the status also clears this register or the interrupt cause is unknown. The spec says software would like bits 39:34 captured as well (established, [spec] PDF 233); see the status register.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
+| 31:0 | `addr_33_2` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+
+### Register `cpu_error_stat`
+
+Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register's address as 0x14004048 (see cpu_error_stat_15). Bits 1 and 0 are no longer supported on 1.5 because SysADC is not used (established, PDF 120). Bits 8:3 hold address bits 39:34 on 1.5 "if it can be implemented"; whether fitted parts do is unknown. The spec does not define "invalid address", so whether a refused CPU access sets bit 2 is unknown.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 8:3 | `addr_39_34` | unknown |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 2 | `illegal_addr` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 1 | `vice_write_parity` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 0 | `cpu_write_parity` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
@@ -146,6 +161,8 @@ Reset values differ per bank, so the REG line's reset=unknown stands for none of
 
 ### Register `cpu_error_stat_15`
 
+The CRIME 1.5 specification places the CPU error status register here, on its own 16 KiB page so that it can be mapped to user programs (established, [spec] Table 5-7 and its note, PDF 113). Bit layout as in Table 5-17 (PDF 120). The grade stays inferred: whether a fitted part implements this offset is not established.
+
 ## Words
 
 | Word | Width | Grade | Source |
@@ -153,6 +170,8 @@ Reset values differ per bank, so the REG line's reset=unknown stands for none of
 | `INTBIT` | 32 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 
 ### Word `INTBIT`
+
+Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PDF 106 to 108; established). Each bit is ORed with others onto one R10000 interrupt line, IP2 to IP6, given by the CRIME_IP*_CAUSES constants. CRIME signals the processor when a bit in a group asserts or de-asserts (established, PDF 106). Table 5-6 (PDF 109) pairs IP2 to IP6 with cause register bits 10 to 14 and SysAD bits 0 to 4. The prose on PDF 109 and PDF 110 swaps bits 20 and 21. Table 5-5, Table 5-10 (PDF 116) and the revision note on PDF 233 do not, so bit 20 is the CPU interface error and bit 21 the memory error (established).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -179,8 +198,13 @@ Reset values differ per bank, so the REG line's reset=unknown stands for none of
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
 | `ID_FAMILY_SHIPPED` | 0xa0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | family nibble of every shipped part, revision nibble 1-15 |
-| `ID_LOW_BYTE_DRAFT` | 0xb1 | inferred | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | draft specification 1.5 value, never seen on shipped parts |
+| `ID_LOW_BYTE_DRAFT` | 0xb1 | inferred | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | draft specification 1.5 value, never seen on shipped parts; the spec gives it as the 1.5 reset value (established, PDF 114), but no shipped part has been read |
 | `ID_LOW_BYTE_SHIPPED` | 0xa1 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | the only low byte accepted for graphics |
+| `IP2_CAUSES` | 0x8fc00038 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bits on processor level IP2: VICE (31), rendering engine (27 to 22), MACE misc, serial and parallel, Ethernet (5, 4, 3); Table 5-5, PDF 106 to 108 |
+| `IP3_CAUSES` | 0xfff07 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bits on IP3: GBE (19 to 16), MACE PCI inputs (15 to 8), MACE video (2 to 0) |
+| `IP4_CAUSES` | 0x10000000 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bit on IP4: software interrupt 0 (28) |
+| `IP5_CAUSES` | 0x20000040 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bits on IP5: software interrupt 1 (29), MACE audio (6) |
+| `IP6_CAUSES` | 0x40300080 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bits on IP6: CPU SysCorErr (30), memory error (21), CPU interface error (20), MACE PCI error (7) |
 | `MEM_BANKS` | 0x8 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | memory bank control registers |
 | `MEM_BANK_CONTROL_RESET_BASE` | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | reset of bank 0 |
 | `MEM_BANK_CONTROL_RESET_STEP` | 0x1 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | reset of bank n is BASE + n * STEP |
