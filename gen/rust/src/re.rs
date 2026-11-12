@@ -2062,6 +2062,40 @@ pub mod pixel_a1_rgb5 {
         }
     }
 }
+/// 8-bit RGB colour pixel, named RG3_B2 (332) in the specification: red in bits 7:5, green in bits 4:2 and blue in bits 1:0, with no alpha field (establi (established)
+pub mod pixel_rg3_b2 {
+    pub const WIDTH: u32 = 8;
+    pub mod red { // bits 7:5, established
+        pub const SHIFT: u32 = 5;
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod green { // bits 4:2, established
+        pub const SHIFT: u32 = 2;
+        pub const MASK: u32 = 0x7;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod blue { // bits 1:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0x3;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+}
 /// 32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (es (established)
 pub mod pixel_rgba8 {
     pub const WIDTH: u32 = 32;
@@ -2276,5 +2310,12 @@ mod tests {
     fn linent_80000123() {
         assert_eq!(linent::page::get(0x80000123), 291);
         assert_eq!(linent::valid::get(0x80000123), 1);
+    }
+
+    #[test]
+    fn pixel_rg3_b2_e3() {
+        assert_eq!(pixel_rg3_b2::red::get(0xe3), 7);
+        assert_eq!(pixel_rg3_b2::green::get(0xe3), 0);
+        assert_eq!(pixel_rg3_b2::blue::get(0xe3), 3);
     }
 }

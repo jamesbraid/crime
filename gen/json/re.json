@@ -2821,6 +2821,41 @@
   {
    "unit": "re",
    "kind": "word",
+   "name": "PIXEL_RG3_B2",
+   "width": 8,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RG3_B2.red",
+   "hi": 7,
+   "lo": 5,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RG3_B2.green",
+   "hi": 4,
+   "lo": 2,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "PIXEL_RG3_B2.blue",
+   "hi": 1,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "word",
    "name": "PIXEL_RGBA8",
    "width": 32,
    "grade": "established",

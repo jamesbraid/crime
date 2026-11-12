@@ -809,6 +809,7 @@
  * bits 31:13 on write or returns them on read is unknown; no shipped software
  * or published source depends on it.
  * When doublePix is set, doublePixSel says which half of the word is selected (established, [spec] PDF 171-172). The specification does not say which bit value picks the front half and which the back, so that mapping is unknown.
+ * The pixel figure (established, [spec] PDF 188, figure 7-5 in section 7.3.4.3) draws no 32-bit RGB layout. It shows CI8, CI12, RG3_B2, A1_RGB5 and RGBA8 only. So the bit positions of red, green and blue for pix_type 1 at 32 bits are unknown, and so is whether the low byte is unused. Routes tried: that figure. Not yet tried: the 32-bit RGB paths in the public NetBSD driver and in shipped libGLcore readbacks.
  */
 /* word BUFMODE: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BUFMODE_WIDTH                             32 /* established */
@@ -900,7 +901,7 @@
 #define RE_LINENT_PAGE_INPLACE                       (RE_LINENT_PAGE_MASK << RE_LINENT_PAGE_SHIFT)
 
 /*
- * 16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). The NetBSD crmfb driver describes 16-bit raster operations as 5:5:5 with red at bit 11, green at 6 and blue at 1 (software expectation, public driver). That places the fields differently. The conflict is not resolved here.
+ * 16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). The NetBSD crmfb driver describes 16-bit raster operations as 5:5:5 with red at bit 11, green at 6 and blue at 1 (software expectation, public driver). That places the fields differently. The conflict is not resolved here. Its pixel type and depth codes are rgba and bits16 in BUFMODE (inferred, on the same basis as RG3_B2).
  */
 /* word PIXEL_A1_RGB5: 16 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PIXEL_A1_RGB5_WIDTH                       16 /* established */
@@ -918,7 +919,22 @@
 #define RE_PIXEL_A1_RGB5_BLUE_INPLACE                (RE_PIXEL_A1_RGB5_BLUE_MASK << RE_PIXEL_A1_RGB5_BLUE_SHIFT)
 
 /*
- * 32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3).
+ * 8-bit RGB colour pixel, named RG3_B2 (332) in the specification: red in bits 7:5, green in bits 4:2 and blue in bits 1:0, with no alpha field (established, [spec] PDF 188, figure 7-5 in section 7.3.4.3). Its pixel type and depth codes are rgb and bits8 in BUFMODE (inferred: the figure gives the name and depth but does not print the codes).
+ */
+/* word PIXEL_RG3_B2: 8 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PIXEL_RG3_B2_WIDTH                        8 /* established */
+#define RE_PIXEL_RG3_B2_RED_SHIFT                    5 /* established */
+#define RE_PIXEL_RG3_B2_RED_MASK                     0x7u
+#define RE_PIXEL_RG3_B2_RED_INPLACE                  (RE_PIXEL_RG3_B2_RED_MASK << RE_PIXEL_RG3_B2_RED_SHIFT)
+#define RE_PIXEL_RG3_B2_GREEN_SHIFT                  2 /* established */
+#define RE_PIXEL_RG3_B2_GREEN_MASK                   0x7u
+#define RE_PIXEL_RG3_B2_GREEN_INPLACE                (RE_PIXEL_RG3_B2_GREEN_MASK << RE_PIXEL_RG3_B2_GREEN_SHIFT)
+#define RE_PIXEL_RG3_B2_BLUE_SHIFT                   0 /* established */
+#define RE_PIXEL_RG3_B2_BLUE_MASK                    0x3u
+#define RE_PIXEL_RG3_B2_BLUE_INPLACE                 (RE_PIXEL_RG3_B2_BLUE_MASK << RE_PIXEL_RG3_B2_BLUE_SHIFT)
+
+/*
+ * 32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). Its pixel type and depth codes are rgba and bits32 in BUFMODE (inferred, on the same basis as RG3_B2).
  */
 /* word PIXEL_RGBA8: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PIXEL_RGBA8_WIDTH                         32 /* established */

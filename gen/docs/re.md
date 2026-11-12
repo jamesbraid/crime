@@ -600,6 +600,7 @@ its write-zero use are established; that effect is inferred.
 | `IBADDR_HI` | 32 | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `LINENT` | 32 | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `PIXEL_A1_RGB5` | 16 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
+| `PIXEL_RG3_B2` | 8 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `PIXEL_RGBA8` | 32 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `SCRMASK_HI` | 32 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
 | `SCRMASK_LO` | 32 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |
@@ -621,6 +622,7 @@ value 3 of either depth field is not defined. Whether the hardware ignores
 bits 31:13 on write or returns them on read is unknown; no shipped software
 or published source depends on it.
 When doublePix is set, doublePixSel says which half of the word is selected (established, [spec] PDF 171-172). The specification does not say which bit value picks the front half and which the back, so that mapping is unknown.
+The pixel figure (established, [spec] PDF 188, figure 7-5 in section 7.3.4.3) draws no 32-bit RGB layout. It shows CI8, CI12, RG3_B2, A1_RGB5 and RGBA8 only. So the bit positions of red, green and blue for pix_type 1 at 32 bits are unknown, and so is whether the low byte is unused. Routes tried: that figure. Not yet tried: the 32-bit RGB paths in the public NetBSD driver and in shipped libGLcore readbacks.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -667,7 +669,7 @@ inferred to be a valid bit. LINENT describes one such entry.
 
 ### Word `PIXEL_A1_RGB5`
 
-16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). The NetBSD crmfb driver describes 16-bit raster operations as 5:5:5 with red at bit 11, green at 6 and blue at 1 (software expectation, public driver). That places the fields differently. The conflict is not resolved here.
+16-bit RGB(A) colour pixel, named A1_RGB5 in the specification: alpha in bit 15, red in bits 14:10, green in bits 9:5 and blue in bits 4:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). The NetBSD crmfb driver describes 16-bit raster operations as 5:5:5 with red at bit 11, green at 6 and blue at 1 (software expectation, public driver). That places the fields differently. The conflict is not resolved here. Its pixel type and depth codes are rgba and bits16 in BUFMODE (inferred, on the same basis as RG3_B2).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -676,9 +678,19 @@ inferred to be a valid bit. LINENT describes one such entry.
 | 9:5 | `green` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 | 4:0 | `blue` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
+### Word `PIXEL_RG3_B2`
+
+8-bit RGB colour pixel, named RG3_B2 (332) in the specification: red in bits 7:5, green in bits 4:2 and blue in bits 1:0, with no alpha field (established, [spec] PDF 188, figure 7-5 in section 7.3.4.3). Its pixel type and depth codes are rgb and bits8 in BUFMODE (inferred: the figure gives the name and depth but does not print the codes).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 7:5 | `red` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 4:2 | `green` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 1:0 | `blue` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+
 ### Word `PIXEL_RGBA8`
 
-32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3).
+32-bit RGBA colour pixel, named RGBA8 in the specification (8888): red in bits 31:24, green in bits 23:16, blue in bits 15:8 and alpha in bits 7:0 (established, [spec] PDF 188, figure 5 in section 7.3.4.3). Its pixel type and depth codes are rgba and bits32 in BUFMODE (inferred, on the same basis as RG3_B2).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -743,3 +755,4 @@ A vector is a value recorded from a source. An example only shows the layout.
 | `BUFMODE` | 0x504 | vector | buf_type=1, buf_depth=1, pix_type=0, pix_depth=1, double_pix=0 |
 | `IBADDR_HI` | 0x1a0a | example | index=10, group=2, lane=3, start_flag=0 |
 | `LINENT` | 0x80000123 | vector | page=291, valid=1 |
+| `PIXEL_RG3_B2` | 0xe3 | vector | red=7, green=0, blue=3 |
