@@ -172,9 +172,9 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
 - `+0x2080` Vertex.GL[0].x: the start x of the first GL vertex pair, 13.6 fixed point, written with its y as one 64-bit store (table 7-3). Established.
   `__glCrmFlatTriangle` and `__glCrmSmoothRGBTriangle` in `libGLcore.so` store the biased float window coordinates through it.
   `__glCrmAntiAliasLineRGB` stores the raw float bits, whose low six bits are the sixty-fourths of a pixel.
-- `+0x2084` Vertex.GL[0].y: the start y of the first pair, a 32-bit word whose value is the line number shifted left by 6 and masked (table 7-3).
+- `+0x2084` Vertex.GL[0].y: the y of the first GL vertex, a 32-bit write-only register in 13.6 fixed point (table 7-3). Its value is the line number shifted left by 6 and masked, the encoding that [pixel-transfer.md](pixel-transfer.md) gives for the Vertex.GL words.
   `StoreRGBA` in `libGLcore.so` stores the shifted y word of a point here, directly after x at `+0x2080`.
-  `__glCrmDumpPerPixelSpan` in `libGLcore.so` stores it twice at sites 2472 and 2474 of the span module.
+  `__glCrmDumpPerPixelSpan` in `libGLcore.so` stores it twice at sites 2472 and 2474 of the span module. Inferred.
 - `+0x2088` Vertex.GL[1].x: the end x of a line or the second corner of a triangle, 13.6 fixed point (table 7-3). Established.
   `__glCrmDepthLine` and `__glCrmColorOptLine` in `libGLcore.so` write the end point of a line here.
   The routine `crmLoadNonglobalsFromShadow` in `crime.o` replays it in its run of six vertex words.
@@ -184,6 +184,7 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
 - `+0x20b4` PixelXfer.dst.linStride: the destination row step of a pixel read-back into host memory, in bytes (table 7-3). Established.
   `crmReadPixelsXfer` in `libGLcore.so` stores the pixel size plus the stride excess here (offset 8372), and writes the same word to the shadow.
   `crmLoadNonglobalsFromShadow` in `crime.o` reloads it just after the destination address at `+0x20b0`.
+- `+0x20e0` Shade.Rs: the start value of red for colour interpolation, a 32-bit write-only register in 9.12 two's complement fixed point (table 7-3). `__glCrmSmoothRGBLine` in `libGLcore.so` stores it with green as one 64-bit word, red in the high word, as [opengl.md](opengl.md) describes for the smooth colour line. Inferred.
 - `+0x20e4` Shade.Gs: the start value of green for Gouraud shading, 9.12 fixed point (table 7-3). Established.
   `__glCrmSmoothRGBLine` in `libGLcore.so` stores it together with red as one 64-bit word, from the float-bias trick that leaves the component times 4096 in the low bits.
   The triangle routines `__glCrmSmoothRGBTriangle` and `__glCrmSmoothRGBATriangle` store it as a single float word.
@@ -192,10 +193,10 @@ One entry per rendering-engine register the shipped 6.5.30 code reaches, or that
   `__glCrmDumpSpan` writes it with the alpha start as one doubleword (`sdc1`) so that a span sets both together.
 - `+0x20ec` Shade.As: the start value of alpha, which also carries the colour index of an indexed-colour primitive (table 7-3).
   `__glCrmSmoothCIZTriangle` in `libGLcore.so` stores the index here instead of a blue or alpha value.
-  `__glCrmFillTriangle` in `libGLcore.so` stores it at three separate sites, lines 304, 355 and 406 of the textured-triangle module.
+  `__glCrmFillTriangle` in `libGLcore.so` stores it at three separate sites, lines 304, 355 and 406 of the textured-triangle module. Inferred.
 - `+0x20f4` Shade.dgdx: the green slope along x, 9.12 per pixel step (table 7-3).
   `__glCrmSmoothRGBLine` in `libGLcore.so` stores it as a float word truncated to an integer, at line 310 of the line-draw assembly module on the x-major path.
-  That path writes the red slope at `+0x20f0` and the blue slope at `+0x2100` beside it, then commits through the start alias at `+0x2904`.
+  That path writes the red slope at `+0x20f0` and the blue slope at `+0x2100` beside it, then commits through the start alias at `+0x2904`. Inferred.
 - `+0x20fc` Shade.dgdy: the green slope along y (table 7-3). Established.
   `__glCrmSmoothRGBLine` in `libGLcore.so` writes it on the y-major path at label `.L0d938014`, with the red slope at `+0x20f8` and the blue slope at `+0x2108`.
   `__glCrmAntiAliasLineRGB` zeroes it on the minor axis, so a stale triangle slope never survives into a line.

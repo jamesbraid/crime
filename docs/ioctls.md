@@ -20,7 +20,7 @@ Failures return a small number: 11, 12, 14, 16, 19 or 22 (established as the con
 | `0x55f9` | 0 | `crmUnmapChunk`, `crmUnmapPages` | unmap the block `0x55fc` mapped | established: a compare in `crimePrivate`, `crime.o` |
 | `0x55fc` | 4 out | `crmMapPages`, `crmMapChunk` | map the 0x600-byte GBE block of [gbe.md](gbe.md) and four 64 KiB chunks; return the block's address | established: the dispatcher compare in `crime.o` |
 | `0x55fd` | 8 | `crmFindFreeDidTbl` | when the first word is 1, return a free DID table in the second word (used by the X module's `gbeLoadDIDTable`) | established: a compare in `crimePrivate`, `crime.o` |
-| `0x55fe` | 0x14 | `crimeOpenPbuf` | open a pixel buffer; the 0x14 bytes are five words: drawable id, width, height, bytes per pixel and flags (field names unknown) | established: a compare in `crimePrivate`, `crime.o` |
+| `0x55fe` | 0x14 | `crimeOpenPbuf` | open a pixel buffer; the 0x14 bytes are five words, decoded in the entry below | established: a compare in `crimePrivate`, `crime.o` |
 | `0x55ff` | 0x118 | `crimeValidateDDClip` | validate a drawable's clip region; only the X module's clip validation and swap start send it | established: a compare in `crimePrivate`, `crime.o` |
 | `0x5600` | 8 | `crimeClosePbuf` | close a pixel buffer; the two words are the drawable id and a flag word | established: a compare in `crimePrivate`, `crime.o` |
 | `0x5601` | 0x10 | `crmAllocTex` | allocate texture memory, returns the 0x10-byte record | established: a compare in `crimePrivate`, `crime.o` |
@@ -129,6 +129,13 @@ The inventory's request scan matches any constant in the graphics number range, 
   `crimePrivate` needs the mapping record at client offset +0x4c (else 22) and a back-link of the board list that still points at the board (else 22).
   It answers 11 while the record's mapped-address word at +0x88 is zero, then clears the four chunk entries at +0x84 and calls `crmUnmapChunk`.
   After that it calls `crmUnmapPages` on the record at +0x1cc and zeroes both words.
+- `0x55fe`: the ioctl that opens a pixel buffer for a drawable, sent with a five-word argument. Established.
+  `crimeOpenPbuf` in `crime.o` at 0x3750 reads the five argument words.
+  Word 0 is the drawable id and must be non-zero, or the request takes its failure exit.
+  Words 1 and 2 must be positive, and word 3 must not be negative.
+  Word 4 is a flag word, and its bit 0 decides whether a 0x28-byte record is allocated and cleared first.
+  The request then calls `crmAllocPbuffer` (the call at 0x382c), with the drawable's word at +24 as its first argument and words 1 to 3 after it.
+  The other branch is unknown; the code after the bit 0 test would settle it.
 - `0x560c`: the ioctl that returns 32 bytes of frame information to the caller. Established.
   `crimeFrameInfo` in `crime_retrace.o` runs under the mutex at +840 of the record that board offset +140 points at.
   It scans 32 slots of 24 bytes for the calling client and sets output byte 26 when that slot's flag at +56 is non-zero.
