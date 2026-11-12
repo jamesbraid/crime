@@ -279,6 +279,24 @@ to 176, Table 7-9, the WinOffset format). The specification does not say
 whether the two halves are signed. The kernel writes each half as the window
 origin minus 4096 (see docs/context.md), so the sign convention is unknown.
 
+The Y row's description in Table 7-9 repeats the X row's text. The field names
+and bit positions give the split, X in bits 31:16 and Y in bits 15:0
+(established, [spec] PDF 175 to 176, Table 7-9).
+
+The register map has no renderer register in the one-word gap after this
+register, or in the one-word gap between the drawing window-offset register and
+the primitive register. The specification does not say what a read or a write
+of either gap does (established, [spec] Table 7-3, PDF 165).
+
+Which half of a 64-bit store reaches a 32-bit window-offset register is
+unknown. No shipped software or published source depends on it, as far as the
+constant-address scan shows. The scan records only 4-byte stores to the source
+and drawing window-offset registers (docs/inventory/mmio.tsv). Routes tried: [spec]
+Table 7-3 and Table 7-9, which give no store-width rule for these words, and the
+public NetBSD driver, which writes both offsets with 32-bit stores (inferred,
+software expectation). Not checked: whether a copy loop stores doublewords across
+these words.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:16 | `x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
@@ -288,7 +306,8 @@ origin minus 4096 (see docs/context.md), so the sign convention is unknown.
 
 Window-to-framebuffer offset for the drawing window (established, [spec] PDF
 175 to 176, Table 7-9). The layout and the sign question are the same as for
-the source offset (the read window's register).
+the source offset (the read window's register). The store-width question in
+that entry applies here too.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
