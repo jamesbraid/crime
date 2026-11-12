@@ -57,6 +57,34 @@ Sources: the kernel request above; `libGLcore` `__glCrmPickDrawPixels` (the CRIM
 - Inferred: the engine walks the source in the same direction as the destination traversal that the edge type selects, applying the positive step magnitudes in that direction; otherwise every reversed copy above would read the wrong pixels. So the source walk follows the Primitive edge type, not the sign of the step registers.
 - Unknown: whether the kernel's memory copy through the transfer engine splits a copy into forward chunks and has no overlap handling, and whether its callers copy only between distinct pages; no 6.5.30 kernel routine has been read for this. The kernel's transfer-engine copy routine would settle it. The MTE copy direction for overlapping frame-buffer copies is covered in `docs/mte.md` (NetBSD writes a negative Y step; IRIX orders boxes instead).
 
+## Indexed (CI8) transfers
+
+The step rules above apply with one-byte pixels. What follows is the CI8
+case, which none of the RGB paths above exercise.
+
+- Inferred (NetBSD `crmfb` driver, `crmfb.c` around lines 1554 to 1581, as
+  cited in the source review; the `netbsd/` submodule is not checked out
+  here, so those lines are not re-read): an upload from a linear CI8 buffer
+  goes to a tiled CI8 buffer held in 32-bit words. The logical index stays one
+  byte per pixel whatever the storage width. In `BUFMODE` terms that is
+  `buf_type` 0 to 2, `buf_depth` 2 (32 bits), `pix_type` 0 (CI) and
+  `pix_depth` 0 (8 bits).
+- Inferred (shipped 6.5.30 kernel and graphics-module callers): an upload
+  programs the source X step to 1 and the Y step to the row pitch minus the
+  row's valid bytes plus 1, then commits the source through the start alias.
+  A download selects a tiled CI8 source with both source steps at 1, and a
+  packed linear CI8 destination with its destination step at 1. These agree
+  with the Y-step rule above at pixel size one.
+- Established as code (`crime_kernel/decomp/crime_dma.c`, `crmpixdma`, the
+  upload branch that stores through `0x20a0 | 0x800`): the kernel stores the
+  chunk's source address without a mask. libGLcore masks the same register to
+  17 bits. Nothing here shows a chunk address above 17 bits, so the 17-bit
+  inference above is not contradicted, but it is no longer the only reading.
+- Unknown: which byte of a 32-bit tiled word holds the index. Big-endian order
+  would put it in the last byte, but no cited source settles that.
+- Unknown: the CI16 indexed layout. Its logical index width, destination lane
+  and plane-mask behaviour are not established by any cited source.
+
 ## Unknown
 
 - Settled: no GL entry point calls the kernel pixel DMA request; only the X module's image routines send it (`docs/ioctls.md`, senders).
