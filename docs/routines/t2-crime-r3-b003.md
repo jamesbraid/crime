@@ -5,100 +5,100 @@ software in these builds, not hardware behavior. Addresses are in the binary nam
 
 - `__gllc_RasterPos2f` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9805f0
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd98061c with 0x8 as its second argument. When that returns zero, the branch at 0xd98062c goes to 0xd98066c, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte FP-register values (swc1) at +0x10 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980660 with the allocation result as the second argument and 0xd98a71c as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos2fv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd98067c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9806a4 with 0x8 as its second argument. When that returns zero, the branch at 0xd9806b8 goes to 0xd9806f8, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte values at +0x10 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd9806ec with the allocation result as the second argument and 0xd98a71c as the third. The stored values follow loads (lwc1 at +0x0 (0xd9806cc) and +0x4 (0xd9806d4)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos2i` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980708
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980734 with 0x8 as its second argument. When that returns zero, the branch at 0xd980744 goes to 0xd980784, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980778 with the allocation result as the second argument and 0xd98a758 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos2iv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980794
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9807bc with 0x8 as its second argument. When that returns zero, the branch at 0xd9807d0 goes to 0xd980810, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980804 with the allocation result as the second argument and 0xd98a758 as the third. The stored values follow loads (lw at +0x0 (0xd9807e0) and +0x4 (0xd9807ec)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos2s` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980820
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd98084c with 0x4 as its second argument. When that returns zero, the branch at 0xd98085c goes to 0xd98089c, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10 and +0x12, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980890 with the allocation result as the second argument and 0xd98a794 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos2sv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9808ac
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9808d4 with 0x4 as its second argument. When that returns zero, the branch at 0xd9808e8 goes to 0xd980928, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10 and +0x12, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd98091c with the allocation result as the second argument and 0xd98a794 as the third. The stored values follow loads (lh at +0x0 (0xd9808f8) and +0x2 (0xd980904)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3d` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980938
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980964 with 0x18 as its second argument. When that returns zero, the branch at 0xd980974 goes to 0xd9809c4, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte FP-register values (sdc1) at +0x10, +0x18 and +0x20, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd9809b8 with the allocation result as the second argument and 0xd98a7d0 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3dv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9809d4
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980a00 with 0x18 as its second argument. When that returns zero, the branch at 0xd980a14 goes to 0xd980a64, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte values at +0x10, +0x18 and +0x20, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980a58 with the allocation result as the second argument and 0xd98a7d0 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (ldc1 at +0x0 (0xd980a30), +0x8 (0xd980a38) and +0x10 (0xd980a40)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3f` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980a74
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980aa4 with 0xc as its second argument. When that returns zero, the branch at 0xd980ab4 goes to 0xd980afc, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte FP-register values (swc1) at +0x10, +0x14 and +0x18, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980af0 with the allocation result as the second argument and 0xd98a80c as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3fv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980b0c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980b38 with 0xc as its second argument. When that returns zero, the branch at 0xd980b4c goes to 0xd980b94, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte values at +0x10, +0x14 and +0x18, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980b88 with the allocation result as the second argument and 0xd98a80c as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lwc1 at +0x0 (0xd980b60), +0x4 (0xd980b68) and +0x8 (0xd980b70)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3i` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980ba4
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980bd4 with 0xc as its second argument. When that returns zero, the branch at 0xd980be4 goes to 0xd980c2c, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10, +0x14 and +0x18, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980c20 with the allocation result as the second argument and 0xd98a848 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3iv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980c3c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980c68 with 0xc as its second argument. When that returns zero, the branch at 0xd980c7c goes to 0xd980cc4, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10, +0x14 and +0x18, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980cb8 with the allocation result as the second argument and 0xd98a848 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lw at +0x0 (0xd980c8c), +0x4 (0xd980c98) and +0x8 (0xd980ca0)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3s` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980cd4
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980d04 with 0x8 as its second argument. When that returns zero, the branch at 0xd980d14 goes to 0xd980d5c, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10, +0x12 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980d50 with the allocation result as the second argument and 0xd98a884 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos3sv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980d6c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980d98 with 0x8 as its second argument. When that returns zero, the branch at 0xd980dac goes to 0xd980df4, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10, +0x12 and +0x14, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980de8 with the allocation result as the second argument and 0xd98a884 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lh at +0x0 (0xd980dbc), +0x2 (0xd980dc8) and +0x4 (0xd980dd0)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4d` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980e04
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980e30 with 0x20 as its second argument. When that returns zero, the branch at 0xd980e40 goes to 0xd980e98, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte FP-register values (sdc1) at +0x10, +0x18, +0x20 and +0x28, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980e8c with the allocation result as the second argument and 0xd98a8c0 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4dv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980ea8
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980ed4 with 0x20 as its second argument. When that returns zero, the branch at 0xd980ee8 goes to 0xd980f40, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte values at +0x10, +0x18, +0x20 and +0x28, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980f34 with the allocation result as the second argument and 0xd98a8c0 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (ldc1 at +0x0 (0xd980f04), +0x8 (0xd980f0c), +0x10 (0xd980f14) and +0x18 (0xd980f1c)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4f` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980f50
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd980f84 with 0x10 as its second argument. When that returns zero, the branch at 0xd980f94 goes to 0xd980fe4, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte FP-register values (swc1) at +0x10, +0x14, +0x18 and +0x1c, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd980fd8 with the allocation result as the second argument and 0xd98a8fc as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4fv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd980ff4
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd981020 with 0x10 as its second argument. When that returns zero, the branch at 0xd981034 goes to 0xd981084, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte values at +0x10, +0x14, +0x18 and +0x1c, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd981078 with the allocation result as the second argument and 0xd98a8fc as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lwc1 at +0x0 (0xd981048), +0x4, +0x8 and +0xc (0xd981060)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4i` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd981094
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9810c8 with 0x10 as its second argument. When that returns zero, the branch at 0xd9810d8 goes to 0xd981128, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10, +0x14, +0x18 and +0x1c, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd98111c with the allocation result as the second argument and 0xd98a938 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4iv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd981138
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd981164 with 0x10 as its second argument. When that returns zero, the branch at 0xd981178 goes to 0xd9811c8, past the stores and the append call. Otherwise it stores a halfword at +0xc and words at +0x10, +0x14, +0x18 and +0x1c, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd9811bc with the allocation result as the second argument and 0xd98a938 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lw at +0x0 (0xd981188), +0x4 (0xd981194), +0x8 (0xd98119c) and +0xc (0xd9811a4)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4s` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9811d8
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd98120c with 0x8 as its second argument. When that returns zero, the branch at 0xd98121c goes to 0xd98126c, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10, +0x12, +0x14 and +0x16, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd981260 with the allocation result as the second argument and 0xd98a974 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_RasterPos4sv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd98127c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9812a8 with 0x8 as its second argument. When that returns zero, the branch at 0xd9812bc goes to 0xd98130c, past the stores and the append call. Otherwise it stores halfwords at +0xc, +0x10, +0x12, +0x14 and +0x16, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd981300 with the allocation result as the second argument and 0xd98a974 as the third, and the value a0 held at entry as the fourth. The stored values follow loads (lh at +0x0 (0xd9812cc), +0x2 (0xd9812d8), +0x4 (0xd9812e0) and +0x6 (0xd9812e8)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_Rectd` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd98131c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd981348 with 0x20 as its second argument. When that returns zero, the branch at 0xd981358 goes to 0xd9813b0, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte FP-register values (sdc1) at +0x10, +0x18, +0x20 and +0x28, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd9813a4 with the allocation result as the second argument and 0xd98a9b0 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_Rectdv` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd9813c0
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9813ec with 0x20 as its second argument. When that returns zero, the branch at 0xd981404 goes to 0xd98145c, past the stores and the append call. Otherwise it stores a halfword at +0xc, a byte at +0xe and 8-byte values at +0x10, +0x18, +0x20 and +0x28, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd981450 with the allocation result as the second argument and 0xd98a9b0 as the third, and the value a1 held at entry as the fourth. The stored values follow loads (ldc1 at +0x0 (0xd981420) and +0x8 (0xd981428), then again at +0x0 (0xd981430) and +0x8 (0xd981438)). The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12
 
 - `__gllc_Rectf` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd98146c
   **Inferred.** Calls `__glDlistAllocOp2` at 0xd9814a0 with 0x10 as its second argument. When that returns zero, the branch at 0xd9814b0 goes to 0xd981500, past the stores and the append call. Otherwise it stores a halfword at +0xc and 4-byte FP-register values (swc1) at +0x10, +0x14, +0x18 and +0x1c, loads and stores a word at +0x1384, and calls `__glDlistAppendOp` at 0xd9814f4 with the allocation result as the second argument and 0xd98a9f0 as the third. The facts do not show where the stored values come from. The facts do not show the base register of the stores and the +0x1384 load and store, so that they address the returned block or the 0x1010 context is inferred from the offsets alone. The routine returns the allocation result or the append result.
-  Reviewed: 2026-11-12 (sonnet)
+  Reviewed: 2026-11-12

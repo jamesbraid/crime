@@ -111,7 +111,7 @@ Each entry says what one routine does to the hardware and cites the instruction 
   Unknown: the instruction that combines -0x801 with a0 between 0xd94027c and 0xd940288 is absent
   from the bundle.
   Unknown: what the word at abs 0x1018 holds; the bundle lists the store at 0xd94024c under
-  memory-mapped I/O, and no mmio row or datasheet excerpt names it.
+  memory-mapped I/O, and no mmio row or published specification excerpt names it.
   Evidence grade: established.
 - `__glCrmEnableBlend` in `usr/gfx/arch/IP32CRM/libGLcore.so` at 0xd93e6f4 (o32).
   Inferred: the callee notes place the blend equation, the two blend factors and the constant
@@ -132,7 +132,7 @@ Each entry says what one routine does to the hardware and cites the instruction 
   0xd93e73c, since no value is given for those two stores; a linked row naming the field and a
   trace of their source registers would settle both.
   Unknown: whether abs 0x1018 is a hardware register; a linked mmio row for that address, or a
-  reviewed datasheet line naming it, would settle it. Settling test: check the base register of the
+  published specification line naming it, would settle it. Settling test: check the base register of the
   accesses at the two stores (a base of zero means a literal low address, which still has to be
   mapped to a device to be a register) and search the CRIME and MACE register tables for an offset 0x1018.
   Evidence grade: inferred.
@@ -236,7 +236,7 @@ Each entry says what one routine does to the hardware and cites the instruction 
   Inferred: the callee note takes the word at +0x660, through its low three bits, as the depth
   comparison, so the arg0 stored there is the comparison the engine receives.
   Unknown: which condition the value 1 at abs 0x1018 indicates, since this routine writes only 2 to
-  that word (`sw` at 0xd93ae94); a reviewed datasheet line for that address would settle it.
+  that word (`sw` at 0xd93ae94); a published specification line for that address would settle it.
   Unknown: which field the OR with 1 sets in the word at +0x2dec; a field table for the owning
   structure would settle it.
   Evidence grade: inferred.
@@ -250,7 +250,7 @@ Each entry says what one routine does to the hardware and cites the instruction 
   occupies the slot after the `bgezall` at 0xd93ced4; the routine returns that call's value (return
   at 0xd93cec4).
   Unknown: the field at +0x740 of that object, since the bundle has no field table for it and no
-  datasheet excerpt names it.
+  published specification excerpt names it.
   Unknown: what `a1` holds at the `bne` at 0xd93ceac; the bundle gives no value for it.
   Unknown: the register tested by the `bgezall` at 0xd93ced4, if that call is conditional at all.
   Evidence grade: established.
@@ -296,7 +296,7 @@ Each entry says what one routine does to the hardware and cites the instruction 
   Inferred: the callee note for `__glCrmPassStencilMask` says it writes the halfword at +0x68a to
   the mask register at +0x21e8 of both mappings only when the byte at +0x7d09 and bit 15 of the
   word at +0x700 are set.
-  Unknown: the device register, if any, at the absolute addresses 0x1018 and 0x1010; no datasheet
+  Unknown: the device register, if any, at the absolute addresses 0x1018 and 0x1010; no published specification
   excerpt in the bundle names either address. Settling test: the same base-register check as for
   0x1018 on the stores to both addresses, plus a search of the register tables for offsets 0x1010
   and 0x1018; if neither a register row nor a mapping to a device window appears, the question stays unknown.

@@ -77,7 +77,7 @@ The rows below are the areas view: what each block and area has covered.
 
 ## Priority
 
-Open problems, most important first. Opus readers take these in order.
+Open problems, most important first. Take these in order.
 
 1. **Rendering engine command grammar, texture and filtering.** The public specification's rendering chapter has explicit holes for translation, rasterization, texel lookup and filtering. Recover the register writes for every primitive, the texture formats and addressing, and the filter and depth arithmetic from libGLcore emission, the kernel driver and the X module. This blocks any accurate textured, depth-tested OpenGL.
 2. **libGLcore to CRIME command stream.** How software-transformed and lit vertices become rendering-register writes: start-alias use, state snapshot and flush ordering, FIFO flow control and the stall interrupt, and the rendering TLB set-up. Start from FIFO accesses at the rendering window `0x15000000` found by `analyze_fifo.py`.

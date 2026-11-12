@@ -1,6 +1,6 @@
 # Pixel arithmetic: depth, blending and texel filtering
 
-The arithmetic an emulator needs for the depth stepper and test, the blender and the texel filter of the CRIME rendering engine: bit widths, rounding and the order of operations. Register offsets and field layouts are in [CRIME_RE.h](../CRIME_RE.h).
+The arithmetic of the depth stepper and test, the blender and the texel filter of the CRIME rendering engine: bit widths, rounding and the order of operations. Register offsets and field layouts are in [CRIME_RE.h](../CRIME_RE.h).
 
 Labels: **established** (read from the cited source or code), **inferred** (reasoned, with the reasoning), **unknown**. Sources:
 

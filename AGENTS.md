@@ -201,7 +201,7 @@ finished when every inventory table reaches done, not when the rows look full.
 
 When you finish a task, regenerate the inventory, then pick the next entries
 below `understood` and carry on. Hand off only when your assigned area meets
-the definition above, or when the session ends. In that case, say in
+the definition above, or when you must stop. In that case, say in
 `docs/open-questions.md` where you stopped and what comes next.
 
 
@@ -237,8 +237,8 @@ Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mi
 
 Roles:
 
-- **Opus readers** take the open questions in `docs/open-questions.md` and take the rows of the rendering-engine, ioctl and token tables to `understood`.
-- **Sonnet readers** take the rows of the function, register-offset and specification tables below `understood` to `understood`, a binary at a time, `undocumented` first.
+- **Readers of open questions** take the open questions in `docs/open-questions.md` and take the rows of the rendering-engine, ioctl and token tables to `understood`.
+- **Table readers** take the rows of the function, register-offset and specification tables below `understood` to `understood`, a binary at a time, `undocumented` first.
 
 Output rules:
 
