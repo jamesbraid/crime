@@ -197,7 +197,10 @@
 /* mem_error_ecc_chk: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_ECC_CHK_OFFSET               0x268u /* established */
 
-/* mem_error_ecc_repl: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
+/*
+ * The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
+ */
+/* mem_error_ecc_repl: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_ECC_REPL_OFFSET              0x270u /* established */
 #define CRIME_MEM_ERROR_ECC_REPL_CHECK_SHIFT         0 /* established */
 #define CRIME_MEM_ERROR_ECC_REPL_CHECK_MASK          0xffull

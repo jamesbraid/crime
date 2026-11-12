@@ -98,7 +98,8 @@
   </struct>
   <struct name="MEM_ERROR_ECC_CHK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x268" access="r" reset="unknown">
   </struct>
-  <struct name="MEM_ERROR_ECC_REPL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x270" access="rw" reset="unknown">
+  <struct name="MEM_ERROR_ECC_REPL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x270" access="rw" reset="0x0">
+    <doc>The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).</doc>
     <field name="check" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="CPU_ERROR_STAT_15" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x4048" access="rw" reset="0x0">

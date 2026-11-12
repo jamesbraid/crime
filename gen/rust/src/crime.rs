@@ -444,7 +444,7 @@ pub mod mem_error_ecc_chk {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x268;
 }
-/// (established)
+/// The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's pu (established)
 pub mod mem_error_ecc_repl {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x270;

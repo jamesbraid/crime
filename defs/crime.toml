@@ -217,6 +217,9 @@ offset = 0x270
 access = "rw"
 width = 64
 grade = "established"
+reset = 0x0
+doc = """
+The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown)."""
 
 [registers.mem_error_ecc_repl.fields]
 check = { bits = [7, 0], grade = "established" }

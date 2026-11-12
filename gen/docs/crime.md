@@ -31,7 +31,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `mem_error_addr` | 0x258 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_error_ecc_syn` | 0x260 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_error_ecc_chk` | 0x268 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
-| `mem_error_ecc_repl` | 0x270 | rw | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
+| `mem_error_ecc_repl` | 0x270 | rw | 64 |  |  | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `cpu_error_stat_15` | 0x4048 | rw | 64 |  |  | 0x0 | inferred | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 
 ### Register `id`
@@ -156,6 +156,8 @@ Reset values differ per bank, so the REG line's reset=unknown stands for none of
 ### Register `mem_error_ecc_chk`
 
 ### Register `mem_error_ecc_repl`
+
+The published table defines only bits 7:0 and gives reset zero (established, [spec] Table 6-20, PDF 155). The full-width mask 0xffffffff in Linux's public crime header does not establish 32 independent replacement bits; it conflicts with that table (software expectation, inferred). Readback of bits 63:8 is unspecified (unknown).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
