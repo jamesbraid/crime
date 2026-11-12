@@ -213,6 +213,8 @@ counter FP_DE really uses is unknown.
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 13 | `fifo_reset` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 12:5 | `width_tiles` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 4:0 | `remainder` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `TILE_LIST_ENTRY`
 

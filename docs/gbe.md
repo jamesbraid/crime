@@ -274,6 +274,16 @@ How this meets IRIX (established from `gbeProbe`, `gbeStop`, `crimeInitInfo`):
 
 Settled in pass 7 (below): the revision nibble tells the rev 1.1 part (1) from its successor (2); the strap's only use is the gamma workaround, and its other meanings are labelled. Reset values after revision 1.1 are labelled there. What `io_0` to `io_2` and `io_7` to `io_9` drive is unknown: no shipped software or published source depends on it (routes in pass 7).
 
+## Frame and overlay FIFO reset bits (`FRM_0` 15, `OVR_0` 13)
+
+Established, rev 1.1 ([gbe-spec] pp. 42-43): both bits reset to 0 and the specification labels each "diagnostic bit, do not modify!". The same pages give the field layout in `defs/gbe.toml`: each plane's width is `width_tiles` (12:5, whole tiles) and `remainder` (4:0, 32-byte units). `FRM_1` bits 31:16 are the height in pixels for both the normal and the overlay planes ([gbe-spec] p. 43).
+
+Established, rev 1.1 ([gbe-spec] pp. 44-45): the DID and CMFIFO tables name no display-DMA FIFO reset control.
+
+Unknown: the specification gives no assertion duration, no self-clear or readback rule, no FIFO depth or contents, no behaviour when a bit is written while DMA is active, and no completion indication. A test that would settle these needs a physical O2 with the bit pulsed during active scanout and the output read back.
+
+Inferred, from public driver source: Linux `drivers/video/fbdev/gbefb.c` (commit `db2ddb87143519e20a95aa36c60b36107b736a58`, lines 211-306) and NetBSD `sys/arch/sgimips/dev/crmfb.c` (commit `07004b2a9dac23a1cdd33b76dc45b65be56c6f1f`, lines 932-970) request overlay, normal and DID DMA off and wait with finite timeouts for the controls and the clocks to stop. Both then pulse `FRM_0` bit 15 high and then low. Linux's timeout paths still reach the pulse, and NetBSD continues after its DMA wait fails. Neither driver pulses the overlay bit. Neither shows that DMA has stopped at the pulse. The IRIX start-up order above pulses both bits without a DMA stop before the pulse. Linux `include/video/gbe.h` (lines 194-220) names both bits.
+
 ## Pixel-clock source select (`CTRLSTAT` 29:28)
 
 Established, rev 1.1 ([gbe-spec] p. 36, the `pclksel` field; pin names from the pad table on pp. 3 and 4): the reset value is `00`, which selects the external TTL pixel-clock input. `01` selects the external differential pixel-clock input, a pad pair (`pad_pclk_in_pos` and `pad_pclk_in_neg`). `11` selects the internal dot-clock PLL. The TTL input is optional on the part (`pad_pclk_in`, "dot clock in from external PLL"). The internal PLL takes its reference from the 20 MHz crystal on `pad_xin`.

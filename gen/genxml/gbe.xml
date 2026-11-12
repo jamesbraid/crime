@@ -165,6 +165,8 @@ counter FP_DE really uses is unknown.</doc>
   </struct>
   <struct name="OVR_WIDTH_TILE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
     <field name="fifo_reset" start="13" size="1" type="uint" grade="established"/>
+    <field name="width_tiles" start="5" size="8" type="uint" grade="established"/>
+    <field name="remainder" start="0" size="5" type="uint" grade="established"/>
   </struct>
   <struct name="TILE_LIST_ENTRY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
     <field name="tile" start="0" size="13" type="uint" grade="established"/>

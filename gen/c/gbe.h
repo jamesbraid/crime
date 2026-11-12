@@ -246,6 +246,12 @@
 #define GBE_OVR_WIDTH_TILE_FIFO_RESET_SHIFT          13 /* established */
 #define GBE_OVR_WIDTH_TILE_FIFO_RESET_MASK           0x1u
 #define GBE_OVR_WIDTH_TILE_FIFO_RESET_INPLACE        (GBE_OVR_WIDTH_TILE_FIFO_RESET_MASK << GBE_OVR_WIDTH_TILE_FIFO_RESET_SHIFT)
+#define GBE_OVR_WIDTH_TILE_WIDTH_TILES_SHIFT         5 /* established */
+#define GBE_OVR_WIDTH_TILE_WIDTH_TILES_MASK          0xffu
+#define GBE_OVR_WIDTH_TILE_WIDTH_TILES_INPLACE       (GBE_OVR_WIDTH_TILE_WIDTH_TILES_MASK << GBE_OVR_WIDTH_TILE_WIDTH_TILES_SHIFT)
+#define GBE_OVR_WIDTH_TILE_REMAINDER_SHIFT           0 /* established */
+#define GBE_OVR_WIDTH_TILE_REMAINDER_MASK            0x1fu
+#define GBE_OVR_WIDTH_TILE_REMAINDER_INPLACE         (GBE_OVR_WIDTH_TILE_REMAINDER_MASK << GBE_OVR_WIDTH_TILE_REMAINDER_SHIFT)
 
 /* word TILE_LIST_ENTRY: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
 #define GBE_TILE_LIST_ENTRY_WIDTH                    32 /* established */

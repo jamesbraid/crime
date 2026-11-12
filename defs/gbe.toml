@@ -268,6 +268,8 @@ grade = "established"
 
 [words.OVR_WIDTH_TILE.fields]
 fifo_reset = { bits = [13, 13], grade = "established" }
+width_tiles = { bits = [12, 5], grade = "established" }
+remainder = { bits = [4, 0], grade = "established" }
 
 [words.TILE_LIST_ENTRY]
 width = 32
