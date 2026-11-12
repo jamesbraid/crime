@@ -76,6 +76,12 @@ Planned headers (`docs/coverage.md` tracks each):
 
 [docs/coverage.md](docs/coverage.md) is the map of what is written and what is missing, with the open problems in priority order. Prose that does not fit a header goes in `docs/` chapters.
 
+### Hardware definitions in `defs/`
+
+The register, word, field and constant facts that the `*_DECODE.h` headers used to carry are TOML sources in `defs/`: one file per block (`defs/<unit>.toml`), an optional revision overlay (`defs/<unit>.<rev>.toml`), hand-written C helpers in `defs/<unit>_helpers.h`, and the repository's check settings in `defs/check.toml`. Each item carries its grade (established, inferred or unknown) and the source it came from. `defs/` is the source of hardware facts: change a fact there, never in a generated file.
+
+`gen/` is written by `retools/tools/defs/defs-gen` and is never edited by hand. It holds the C headers (`gen/c/`), a Rust crate (`gen/rust/`), Python decode modules, flat JSON, a genxml export and the reference page for each block (`gen/docs/`), which is the published reference. The `*_DECODE.h` files at the root are forwarding headers that include `gen/c/`, so older consumers keep building. After a change to `defs/`, run `retools/tools/defs/defs-gen`, then `retools/tools/defs/defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when `gen/` is stale.
+
 ---
 
 ## 4. Software Driver Headers
@@ -237,6 +243,7 @@ Roles:
 Output rules:
 
 - Findings go in chip headers at the repository root plus `docs/` chapters, written in your own words.
+- Register, field and constant facts go in `defs/` (see the hardware definitions above), then regenerate `gen/`. Do not write them into a header by hand.
 - Label every fact established, inferred or unknown, with its derivation: binary and release, function or offset, or the document or capture.
 - Update `docs/coverage.md` in the same commit as the finding.
 - Commit disassembly, decompiled C and traces you produce as data; keep the proprietary binaries in `root/`. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps are gitignored.

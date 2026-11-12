@@ -37,6 +37,10 @@ To reproduce a cited result:
   function-similarity output as JSON (see `ghidra/README.md`); nothing else needs it. `retools/tools/README-analysis.md`
   describes the `.mdebug` importer and the kernel table extractors.
 
+## Hardware definitions
+
+Register, word, field and constant facts for CRIME, the rendering engine, the memory transfer engine, GBE, MACE video and VICE are TOML sources in `defs/`. `gen/` holds what is generated from them: C headers, a Rust crate, Python decode modules, JSON, a genxml export and a reference page per block in `gen/docs/`. Do not edit `gen/`. Change `defs/`, then run `retools/tools/defs/defs-gen` and `retools/tools/defs/defs-check --build`. The old `*_DECODE.h` names are forwarding headers for the generated C. [AGENTS.md](AGENTS.md) describes the layout.
+
 ## Documentation index
 
 Every tracked Markdown page under `docs/` and the top-level Markdown files, grouped by subject.
