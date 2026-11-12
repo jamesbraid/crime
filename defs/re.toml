@@ -1,0 +1,922 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "re"
+prefix = "RE"
+title = "O2 CRIME rendering engine: interface buffer, linear TLBs and clip state"
+doc = "CRIME rendering engine interface buffer, translation tables, pixel pipeline registers and status."
+from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+public_from = ["published CRIME 1.5 draft specification"]
+
+[c]
+legacy_header = "RE_DECODE.h"
+legacy_guard = "RE_DECODE_H"
+
+[spaces.re]
+
+[registers.ib_data]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+count = 64
+space = "re"
+doc = """
+The interface buffer holds 64 queued writes. The specification's table
+names 128 entries, but its address half sits 512 bytes above the data
+half, which leaves room for 64 doublewords of data, and shipped software
+walks a ring of 64 (RE_IB_ENTRIES). Each queued write has a data
+doubleword and an address doubleword; the address half is decoded below.
+The window shares its low offsets with the CRIME CPU-interface registers,
+so the rendering engine registers live in their own address space."""
+
+[registers.ib_addr]
+offset = 0x200
+access = "rw"
+width = 64
+grade = "established"
+count = 64
+space = "re"
+
+[registers.ib_ctl]
+offset = 0x400
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.ib_ctl.fields]
+full = { bits = [27, 21], grade = "inferred" }
+empty = { bits = [20, 14], grade = "inferred" }
+stall = { bits = [13, 7], grade = "inferred" }
+count = { bits = [6, 0], grade = "inferred" }
+
+[[registers.ib_ctl.tests]]
+value = 0xfefff0a
+expect = { count = 10, stall = 126, empty = 63, full = 127 }
+
+[registers.ib_reset]
+offset = 0x408
+access = "w"
+width = 32
+grade = "inferred"
+space = "re"
+
+[registers.tlb_fb_a]
+offset = 0x1000
+access = "rw"
+width = 64
+grade = "established"
+count = 64
+space = "re"
+doc = """
+The frame-buffer tables A, B and C each hold 64 doublewords, the texture
+table 28 and the clip-ID table 4. Shipped software loads all of them with
+64-bit stores. A frame-buffer, texture or clip-ID doubleword holds four
+16-bit tile entries, tile column 0 in bits 63:48. The entry is the physical
+address of a 64 KiB tile shifted right by 16 (the page number counted in
+64 KiB units). Shipped software sets the top bit of each frame-buffer and
+texture entry it uses and writes clip-ID entries without it, so the top
+bit is inferred to be a valid bit (and doubles as address bit 31 of the
+tile). The register index of tile (x, y) in a frame-buffer table is
+y * 4 + x / 4. The linear tables further down use 32-bit entries."""
+
+[registers.tlb_fb_b]
+offset = 0x1200
+access = "rw"
+width = 64
+grade = "established"
+count = 64
+space = "re"
+
+[registers.tlb_fb_c]
+offset = 0x1400
+access = "rw"
+width = 64
+grade = "established"
+count = 64
+space = "re"
+
+[registers.tlb_tex]
+offset = 0x1600
+access = "rw"
+width = 64
+grade = "established"
+count = 28
+space = "re"
+
+[registers.tlb_cid]
+offset = 0x16e0
+access = "rw"
+width = 64
+grade = "established"
+count = 4
+space = "re"
+
+[registers.tlb_lin_a]
+offset = 0x1700
+access = "rw"
+width = 64
+grade = "established"
+count = 16
+space = "re"
+
+[registers.tlb_lin_b]
+offset = 0x1780
+access = "rw"
+width = 64
+grade = "established"
+count = 16
+space = "re"
+
+[registers.bufmode_src]
+offset = 0x2000
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+The pixel pipeline group starts at the base of its own 4 KiB window. Sizes
+and the read/write column are the specification's register table. The
+specification lists the vertex and stepper registers as 32 or 64 bits and
+shipped software writes adjacent 32-bit registers with one 64-bit store
+(the GL vertex pair, for one). The transfer source stride is absent from
+the specification's table; the public NetBSD driver and shipped software
+both write it, so it is established from them. Registers marked w are
+written only; the others read back. Global registers apply once the pipe
+has drained, non-global ones per primitive ([spec] PDF 164).
+Writing any pixel pipeline register with the start-alias bit set commits
+the queued state as one primitive."""
+
+[registers.bufmode_dst]
+offset = 0x2008
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.clipmode]
+offset = 0x2010
+access = "rw"
+width = 32
+grade = "inferred"
+space = "re"
+
+[registers.clipmode.fields]
+clip_id_test = { bits = [11, 11], grade = "inferred" }
+clip_id_map = { bits = [10, 10], grade = "inferred" }
+enable = { bits = [9, 5], grade = "established" }
+mode = { bits = [4, 0], grade = "established" }
+
+[[registers.clipmode.tests]]
+value = 0x21
+expect = { mode = 1, enable = 1, clip_id_map = 0, clip_id_test = 0 }
+
+[[registers.clipmode.tests]]
+value = 0x63
+expect = { mode = 3, enable = 3 }
+
+[[registers.clipmode.tests]]
+value = 0x3ff
+expect = { mode = 31, enable = 31 }
+
+[[registers.clipmode.tests]]
+value = 0x821
+expect = { mode = 1, enable = 1, clip_id_test = 1 }
+
+[registers.drawmode]
+offset = 0x2018
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.drawmode.fields]
+no_conflict = { bits = [23, 23], grade = "established" }
+gl = { bits = [22, 22], grade = "established" }
+pixel_xfer = { bits = [21, 21], grade = "established" }
+scissor = { bits = [20, 20], grade = "established" }
+line_stipple = { bits = [19, 19], grade = "established" }
+poly_stipple = { bits = [18, 18], grade = "established" }
+opaque_stipple = { bits = [17, 17], grade = "established" }
+shade = { bits = [16, 16], grade = "established" }
+texture = { bits = [15, 15], grade = "established" }
+fog = { bits = [14, 14], grade = "established" }
+coverage = { bits = [13, 13], grade = "established" }
+aa_line = { bits = [12, 12], grade = "established" }
+alpha_test = { bits = [11, 11], grade = "established" }
+alpha_blend = { bits = [10, 10], grade = "established" }
+logic_op = { bits = [9, 9], grade = "established" }
+dither = { bits = [8, 8], grade = "established" }
+bit_mask = { bits = [7, 7], grade = "established" }
+byte_mask = { bits = [6, 3], grade = "established" }
+depth_test = { bits = [2, 2], grade = "established" }
+depth_mask = { bits = [1, 1], grade = "established" }
+stencil = { bits = [0, 0], grade = "established" }
+
+[registers.scrmask]
+offset = 0x2020
+access = "rw"
+width = 64
+grade = "established"
+count = 5
+space = "re"
+
+[registers.scissor]
+offset = 0x2048
+access = "rw"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.winoffset_src]
+offset = 0x2050
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.winoffset_dst]
+offset = 0x2058
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.primitive]
+offset = 0x2060
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.primitive.fields]
+line_skip_last = { bits = [18, 18], grade = "established" }
+line_width = { bits = [15, 0], grade = "established" }
+
+[registers.primitive.fields.op]
+bits = [31, 24]
+grade = "established"
+
+[registers.primitive.fields.op.enums]
+point = { value = 0, grade = "established" }
+line = { value = 1, grade = "established" }
+triangle = { value = 2, grade = "established" }
+rect = { value = 3, grade = "established" }
+
+[registers.primitive.fields.edge]
+bits = [17, 16]
+grade = "established"
+
+[registers.primitive.fields.edge.enums]
+lr_bt = { value = 0, grade = "established" }
+rl_bt = { value = 1, grade = "established" }
+lr_tb = { value = 2, grade = "established" }
+rl_tb = { value = 3, grade = "established" }
+
+[[registers.primitive.tests]]
+value = 0x3020000
+expect = { op = 3, line_skip_last = 0, edge = 2, line_width = 0 }
+
+[registers.vertex_x]
+offset = 0x2070
+access = "w"
+width = 32
+grade = "established"
+count = 3
+space = "re"
+
+[registers.vertex_gl]
+offset = 0x2080
+access = "w"
+width = 32
+grade = "established"
+count = 6
+space = "re"
+
+[registers.xfer_src_addr]
+offset = 0x20a0
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.xfer_src_stride]
+offset = 0x20a4
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.xfer_src_xstep]
+offset = 0x20a8
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.xfer_src_ystep]
+offset = 0x20ac
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.xfer_dst_addr]
+offset = 0x20b0
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.xfer_dst_stride]
+offset = 0x20b4
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.stipple_mode]
+offset = 0x20c0
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.stipple_pattern]
+offset = 0x20c4
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.fg_color]
+offset = 0x20d0
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.bg_color]
+offset = 0x20d8
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_start]
+offset = 0x20e0
+access = "w"
+width = 32
+grade = "established"
+count = 4
+space = "re"
+
+[registers.shade_drdx]
+offset = 0x20f0
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dgdx]
+offset = 0x20f4
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_drdy]
+offset = 0x20f8
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dgdy]
+offset = 0x20fc
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dbdx]
+offset = 0x2100
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dadx]
+offset = 0x2104
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dbdy]
+offset = 0x2108
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.shade_dady]
+offset = 0x210c
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_mode]
+offset = 0x2110
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_format]
+offset = 0x2118
+access = "rw"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_sqs]
+offset = 0x2120
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_tqs]
+offset = 0x2128
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_qs]
+offset = 0x2130
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_stflags]
+offset = 0x2134
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+tex_stflags sits between tex_qs and tex_dsqdx and is absent from the
+specification's register table, which skips from the one to the other.
+Shipped software computes one flag per texture coordinate for each textured
+triangle from range tests on the vertex values, writes the s flag in bit 0
+and the t flag in bit 1 with a 32-bit store, and scales the start and slope
+values of a flagged coordinate by 2^39 instead of 2^43. Inferred: a set
+flag tells the engine that coordinate's stepper carries four fewer fraction
+bits. The layout is established; that meaning is inferred."""
+
+[registers.tex_stflags.fields]
+t_flag = { bits = [1, 1], grade = "established" }
+s_flag = { bits = [0, 0], grade = "established" }
+
+[registers.tex_dsqdx]
+offset = 0x2138
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_dsqdy]
+offset = 0x2140
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_dtqdx]
+offset = 0x2148
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_dtqdy]
+offset = 0x2150
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.tex_dqdx]
+offset = 0x2158
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_dqdy]
+offset = 0x215c
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_border]
+offset = 0x2160
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.tex_envcolor]
+offset = 0x2168
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.fog_color]
+offset = 0x2170
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.fog_fs]
+offset = 0x2178
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.fog_dfdx]
+offset = 0x2180
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.fog_dfdy]
+offset = 0x2188
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.aa_line]
+offset = 0x2190
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.aa_cov]
+offset = 0x2194
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.alphatest]
+offset = 0x2198
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.blend_color]
+offset = 0x21a0
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.blend_func]
+offset = 0x21a8
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.blend_func.fields.op]
+bits = [11, 8]
+grade = "established"
+
+[registers.blend_func.fields.op.enums]
+add = { value = 0, grade = "established" }
+min = { value = 1, grade = "established" }
+max = { value = 2, grade = "established" }
+subtract = { value = 3, grade = "established" }
+reverse_subtract = { value = 4, grade = "established" }
+
+[registers.blend_func.fields.src]
+bits = [7, 4]
+grade = "established"
+
+[registers.blend_func.fields.src.enums]
+zero = { value = 0, grade = "established" }
+one = { value = 1, grade = "established" }
+dst_color = { value = 2, grade = "established" }
+one_minus_dst_color = { value = 3, grade = "established" }
+src_alpha = { value = 4, grade = "established" }
+one_minus_src_alpha = { value = 5, grade = "established" }
+dst_alpha = { value = 6, grade = "established" }
+one_minus_dst_alpha = { value = 7, grade = "established" }
+constant_color = { value = 8, grade = "established" }
+one_minus_constant_color = { value = 9, grade = "established" }
+constant_alpha = { value = 10, grade = "established" }
+one_minus_constant_alpha = { value = 11, grade = "established" }
+src_alpha_saturate = { value = 12, grade = "established" }
+
+[registers.blend_func.fields.dst]
+bits = [3, 0]
+grade = "established"
+
+[registers.blend_func.fields.dst.enums]
+zero = { value = 0, grade = "established" }
+one = { value = 1, grade = "established" }
+src_color = { value = 2, grade = "established" }
+one_minus_src_color = { value = 3, grade = "established" }
+src_alpha = { value = 4, grade = "established" }
+one_minus_src_alpha = { value = 5, grade = "established" }
+dst_alpha = { value = 6, grade = "established" }
+one_minus_dst_alpha = { value = 7, grade = "established" }
+constant_color = { value = 8, grade = "established" }
+one_minus_constant_color = { value = 9, grade = "established" }
+constant_alpha = { value = 10, grade = "established" }
+one_minus_constant_alpha = { value = 11, grade = "established" }
+
+[registers.logicop]
+offset = 0x21b0
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.colormask]
+offset = 0x21b8
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.depth_func]
+offset = 0x21c0
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.depth_zs]
+offset = 0x21c8
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.depth_dzdx]
+offset = 0x21d0
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.depth_dzdy]
+offset = 0x21d8
+access = "w"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.stencil_mode]
+offset = 0x21e0
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.stencil_mask]
+offset = 0x21e8
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.pixpipe_null]
+offset = 0x21f0
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.pixpipe_flush]
+offset = 0x21f8
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+
+[registers.status]
+offset = 0x4000
+access = "r"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+The status register is read with 32-bit loads. Shipped software polls the
+combined idle bit (28), reads the interface-buffer fill level from bits
+24:18 to count free slots (64 minus the level) and reads the start and write
+pointers when saving queued writes on a context switch. The read pointer
+(17:12) and the setup and pixel-pipe idle bits (27, 26) are taken from the
+public NetBSD driver and no shipped software reads them. Bit 25 is the
+memory transfer engine idle bit in the NetBSD driver; the OpenBSD driver
+names the same bit ready and never reads it. The kernel's transfer-wait
+routine tests bit 25, which fits an idle reading, so the position is
+established and the meaning inferred. The start field (5:0) is where the
+entries not yet committed begin; its meaning is inferred."""
+
+[registers.status.fields]
+idle = { bits = [28, 28], grade = "established" }
+setup_idle = { bits = [27, 27], grade = "established" }
+pixpipe_idle = { bits = [26, 26], grade = "established" }
+mte_idle = { bits = [25, 25], grade = "inferred" }
+level = { bits = [24, 18], grade = "established" }
+rd_ptr = { bits = [17, 12], grade = "established" }
+wr_ptr = { bits = [11, 6], grade = "established" }
+start = { bits = [5, 0], grade = "inferred" }
+
+[registers.ib_discard]
+offset = 0x4008
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+ib_discard sits two doublewords above the status register. Shipped kernel
+code stores zero to it with a 32-bit store, never reads it, and does so after
+saving the outgoing client's queued writes on a context switch, after the
+incoming client's loads, and at the end of each translation table loader.
+The user-mode library and the X server never write it. Inferred: the write
+discards the queued writes not yet committed. The register's position and
+its write-zero use are established; that effect is inferred."""
+
+[words.BUFMODE]
+width = 32
+doc = """
+The buffer mode words (source and destination share one layout) pick the
+buffer, its TLB and the pixel format. buf_type chooses tiled access
+through a frame-buffer table or linear access through a linear table;
+buf_depth is the word size in memory and pix_depth the pixel size, which
+must not exceed it. ycrcb is valid in the source word only. Shipped
+software writes the values in the vectors below; other bits are reserved
+(one shipped swap path sets bit 30 as well)."""
+grade = "established"
+
+[words.BUFMODE.fields]
+double_pix = { bits = [1, 1], grade = "established" }
+double_pix_sel = { bits = [0, 0], grade = "established" }
+
+[words.BUFMODE.fields.buf_type]
+bits = [12, 10]
+grade = "established"
+
+[words.BUFMODE.fields.buf_type.enums]
+fb_a = { value = 0, grade = "established" }
+fb_b = { value = 1, grade = "established" }
+fb_c = { value = 2, grade = "established" }
+lin_a = { value = 4, grade = "established" }
+lin_b = { value = 5, grade = "established" }
+
+[words.BUFMODE.fields.buf_depth]
+bits = [9, 8]
+grade = "established"
+
+[words.BUFMODE.fields.buf_depth.enums]
+bits8 = { value = 0, grade = "established" }
+bits16 = { value = 1, grade = "established" }
+bits32 = { value = 2, grade = "established" }
+
+[words.BUFMODE.fields.pix_type]
+bits = [7, 4]
+grade = "established"
+
+[words.BUFMODE.fields.pix_type.enums]
+ci = { value = 0, grade = "established" }
+rgb = { value = 1, grade = "established" }
+rgba = { value = 2, grade = "established" }
+abgr = { value = 3, grade = "established" }
+ycrcb = { value = 15, grade = "established" }
+
+[words.BUFMODE.fields.pix_depth]
+bits = [3, 2]
+grade = "established"
+
+[words.BUFMODE.fields.pix_depth.enums]
+bits8 = { value = 0, grade = "established" }
+bits16 = { value = 1, grade = "established" }
+bits32 = { value = 2, grade = "established" }
+
+[[words.BUFMODE.tests]]
+value = 0x504
+expect = { buf_type = 1, buf_depth = 1, pix_type = 0, pix_depth = 1, double_pix = 0 }
+
+[words.IBADDR_HI]
+width = 32
+doc = """
+ib_addr holds the address half of each queued write. Software decodes its
+upper 32 bits (IBADDR_HI, the word at the register's own address in
+big-endian layout) as the register's doubleword index within its group, the
+group, a byte lane code and one flag bit; the hardware meaning of the lane
+code and the flag is inferred. The index is address bits 10:3 and the group
+is address bits 14:12 of the register; bit 11, the start alias, is the
+address bit left out, so the flag is inferred to mark an entry written
+through the start alias. Replay by software writes lane 3 as one
+doubleword, lane 2 as the first (upper) data word at the register address,
+lane 1 as the second data word four bytes higher, and treats lane 0 as an
+error that writes nothing. The lower 32 bits are not decoded by any shipped
+software read."""
+grade = "inferred"
+
+[words.IBADDR_HI.fields]
+start_flag = { bits = [13, 13], grade = "inferred" }
+index = { bits = [7, 0], grade = "established" }
+
+[words.IBADDR_HI.fields.lane]
+bits = [12, 11]
+grade = "inferred"
+
+[words.IBADDR_HI.fields.lane.enums]
+none = { value = 0, grade = "inferred" }
+word1 = { value = 1, grade = "inferred" }
+word0 = { value = 2, grade = "inferred" }
+dword = { value = 3, grade = "inferred" }
+
+[words.IBADDR_HI.fields.group]
+bits = [10, 8]
+grade = "established"
+
+[words.IBADDR_HI.fields.group.enums]
+interface = { value = 0, grade = "established" }
+tlb = { value = 1, grade = "established" }
+pixel_pipe = { value = 2, grade = "established" }
+transfer = { value = 3, grade = "established" }
+
+[[words.IBADDR_HI.tests]]
+value = 0x1a0a
+kind = "example"
+expect = { index = 10, group = 2, lane = 3, start_flag = 0 }
+
+[words.LINENT]
+width = 32
+doc = """
+Each doubleword holds two 32-bit page entries, the even page in the upper
+word and the odd page in the lower word. Software indexes a table with
+address bits 16:13 and stores a page number with its top bit set, which is
+inferred to be a valid bit. LINENT describes one such entry."""
+grade = "inferred"
+
+[words.LINENT.fields]
+valid = { bits = [31, 31], grade = "inferred" }
+page = { bits = [30, 0], grade = "established" }
+
+[[words.LINENT.tests]]
+value = 0x80000123
+expect = { page = 291, valid = 1 }
+
+[words.SCRMASK_HI]
+width = 32
+doc = """
+Each screen mask is one clip rectangle; the end coordinates are exclusive.
+The upper word (SCRMASK_HI, at the register's own address in big-endian
+layout) holds the start corner and the lower word (SCRMASK_LO) the end
+corner."""
+grade = "established"
+
+[words.SCRMASK_HI.fields]
+x_start = { bits = [31, 16], grade = "established" }
+y_start = { bits = [15, 0], grade = "established" }
+
+[words.SCRMASK_LO]
+width = 32
+grade = "established"
+
+[words.SCRMASK_LO.fields]
+x_end = { bits = [31, 16], grade = "established" }
+y_end = { bits = [15, 0], grade = "established" }
+
+[words.TLBTILE]
+width = 32
+grade = "inferred"
+
+[words.TLBTILE.fields]
+valid = { bits = [15, 15], grade = "inferred" }
+page = { bits = [14, 0], grade = "established" }
+
+[constants]
+IB_ENTRIES = { value = 0x40, grade = "established", doc = "shipped software walks the buffer as a ring of 64; the specification text says 128" }
+LIN_TLB_REGS = { value = 0x10, grade = "established", doc = "doublewords per linear table, two page entries each" }
+START_ALIAS_BIT = { value = 0xb, grade = "established", doc = "address bit that selects the start alias of a register" }
+TLB_ENTRIES_PER_REG = { value = 0x4, grade = "established", doc = "four 16-bit tile entries in each frame-buffer, texture and clip-ID doubleword" }
+TLB_TILE_SHIFT = { value = 0x10, grade = "established", doc = "entry is the physical address >> 16 (64 KiB tiles)" }

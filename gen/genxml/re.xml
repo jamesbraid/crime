@@ -1,0 +1,452 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/re.toml by defs-gen - do not edit, change the source -->
+<genxml unit="re" prefix="RE" title="O2 CRIME rendering engine: interface buffer, linear TLBs and clip state" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+  <doc>CRIME rendering engine interface buffer, translation tables, pixel pipeline registers and status.</doc>
+  <space name="re" unit="byte"/>
+  <enum name="primitive_op">
+    <value name="point" value="0" grade="established"/>
+    <value name="line" value="1" grade="established"/>
+    <value name="triangle" value="2" grade="established"/>
+    <value name="rect" value="3" grade="established"/>
+  </enum>
+  <enum name="primitive_edge">
+    <value name="lr_bt" value="0" grade="established"/>
+    <value name="rl_bt" value="1" grade="established"/>
+    <value name="lr_tb" value="2" grade="established"/>
+    <value name="rl_tb" value="3" grade="established"/>
+  </enum>
+  <enum name="blend_func_op">
+    <value name="add" value="0" grade="established"/>
+    <value name="min" value="1" grade="established"/>
+    <value name="max" value="2" grade="established"/>
+    <value name="subtract" value="3" grade="established"/>
+    <value name="reverse_subtract" value="4" grade="established"/>
+  </enum>
+  <enum name="blend_func_src">
+    <value name="zero" value="0" grade="established"/>
+    <value name="one" value="1" grade="established"/>
+    <value name="dst_color" value="2" grade="established"/>
+    <value name="one_minus_dst_color" value="3" grade="established"/>
+    <value name="src_alpha" value="4" grade="established"/>
+    <value name="one_minus_src_alpha" value="5" grade="established"/>
+    <value name="dst_alpha" value="6" grade="established"/>
+    <value name="one_minus_dst_alpha" value="7" grade="established"/>
+    <value name="constant_color" value="8" grade="established"/>
+    <value name="one_minus_constant_color" value="9" grade="established"/>
+    <value name="constant_alpha" value="10" grade="established"/>
+    <value name="one_minus_constant_alpha" value="11" grade="established"/>
+    <value name="src_alpha_saturate" value="12" grade="established"/>
+  </enum>
+  <enum name="blend_func_dst">
+    <value name="zero" value="0" grade="established"/>
+    <value name="one" value="1" grade="established"/>
+    <value name="src_color" value="2" grade="established"/>
+    <value name="one_minus_src_color" value="3" grade="established"/>
+    <value name="src_alpha" value="4" grade="established"/>
+    <value name="one_minus_src_alpha" value="5" grade="established"/>
+    <value name="dst_alpha" value="6" grade="established"/>
+    <value name="one_minus_dst_alpha" value="7" grade="established"/>
+    <value name="constant_color" value="8" grade="established"/>
+    <value name="one_minus_constant_color" value="9" grade="established"/>
+    <value name="constant_alpha" value="10" grade="established"/>
+    <value name="one_minus_constant_alpha" value="11" grade="established"/>
+  </enum>
+  <enum name="bufmode_buf_type">
+    <value name="fb_a" value="0" grade="established"/>
+    <value name="fb_b" value="1" grade="established"/>
+    <value name="fb_c" value="2" grade="established"/>
+    <value name="lin_a" value="4" grade="established"/>
+    <value name="lin_b" value="5" grade="established"/>
+  </enum>
+  <enum name="bufmode_buf_depth">
+    <value name="bits8" value="0" grade="established"/>
+    <value name="bits16" value="1" grade="established"/>
+    <value name="bits32" value="2" grade="established"/>
+  </enum>
+  <enum name="bufmode_pix_type">
+    <value name="ci" value="0" grade="established"/>
+    <value name="rgb" value="1" grade="established"/>
+    <value name="rgba" value="2" grade="established"/>
+    <value name="abgr" value="3" grade="established"/>
+    <value name="ycrcb" value="15" grade="established"/>
+  </enum>
+  <enum name="bufmode_pix_depth">
+    <value name="bits8" value="0" grade="established"/>
+    <value name="bits16" value="1" grade="established"/>
+    <value name="bits32" value="2" grade="established"/>
+  </enum>
+  <enum name="ibaddr_hi_lane">
+    <value name="none" value="0" grade="inferred"/>
+    <value name="word1" value="1" grade="inferred"/>
+    <value name="word0" value="2" grade="inferred"/>
+    <value name="dword" value="3" grade="inferred"/>
+  </enum>
+  <enum name="ibaddr_hi_group">
+    <value name="interface" value="0" grade="established"/>
+    <value name="tlb" value="1" grade="established"/>
+    <value name="pixel_pipe" value="2" grade="established"/>
+    <value name="transfer" value="3" grade="established"/>
+  </enum>
+  <struct name="IB_DATA" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x0" access="rw" count="64" stride="8" space="re" reset="unknown">
+    <doc>The interface buffer holds 64 queued writes. The specification's table
+names 128 entries, but its address half sits 512 bytes above the data
+half, which leaves room for 64 doublewords of data, and shipped software
+walks a ring of 64 (RE_IB_ENTRIES). Each queued write has a data
+doubleword and an address doubleword; the address half is decoded below.
+The window shares its low offsets with the CRIME CPU-interface registers,
+so the rendering engine registers live in their own address space.</doc>
+  </struct>
+  <struct name="IB_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x200" access="rw" count="64" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="IB_CTL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x400" access="w" space="re" reset="unknown">
+    <field name="full" start="21" size="7" type="uint" grade="inferred"/>
+    <field name="empty" start="14" size="7" type="uint" grade="inferred"/>
+    <field name="stall" start="7" size="7" type="uint" grade="inferred"/>
+    <field name="count" start="0" size="7" type="uint" grade="inferred"/>
+    <test value="0xfefff0a" kind="vector">
+      <expect field="count" value="10"/>
+      <expect field="stall" value="126"/>
+      <expect field="empty" value="63"/>
+      <expect field="full" value="127"/>
+    </test>
+  </struct>
+  <struct name="IB_RESET" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x408" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_FB_A" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1000" access="rw" count="64" stride="8" space="re" reset="unknown">
+    <doc>The frame-buffer tables A, B and C each hold 64 doublewords, the texture
+table 28 and the clip-ID table 4. Shipped software loads all of them with
+64-bit stores. A frame-buffer, texture or clip-ID doubleword holds four
+16-bit tile entries, tile column 0 in bits 63:48. The entry is the physical
+address of a 64 KiB tile shifted right by 16 (the page number counted in
+64 KiB units). Shipped software sets the top bit of each frame-buffer and
+texture entry it uses and writes clip-ID entries without it, so the top
+bit is inferred to be a valid bit (and doubles as address bit 31 of the
+tile). The register index of tile (x, y) in a frame-buffer table is
+y * 4 + x / 4. The linear tables further down use 32-bit entries.</doc>
+  </struct>
+  <struct name="TLB_FB_B" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1200" access="rw" count="64" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_FB_C" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1400" access="rw" count="64" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_TEX" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1600" access="rw" count="28" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_CID" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x16e0" access="rw" count="4" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_LIN_A" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1700" access="rw" count="16" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="TLB_LIN_B" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x1780" access="rw" count="16" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="BUFMODE_SRC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2000" access="rw" space="re" reset="unknown">
+    <doc>The pixel pipeline group starts at the base of its own 4 KiB window. Sizes
+and the read/write column are the specification's register table. The
+specification lists the vertex and stepper registers as 32 or 64 bits and
+shipped software writes adjacent 32-bit registers with one 64-bit store
+(the GL vertex pair, for one). The transfer source stride is absent from
+the specification's table; the public NetBSD driver and shipped software
+both write it, so it is established from them. Registers marked w are
+written only; the others read back. Global registers apply once the pipe
+has drained, non-global ones per primitive ([spec] PDF 164).
+Writing any pixel pipeline register with the start-alias bit set commits
+the queued state as one primitive.</doc>
+  </struct>
+  <struct name="BUFMODE_DST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2008" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="CLIPMODE" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2010" access="rw" space="re" reset="unknown">
+    <field name="clip_id_test" start="11" size="1" type="uint" grade="inferred"/>
+    <field name="clip_id_map" start="10" size="1" type="uint" grade="inferred"/>
+    <field name="enable" start="5" size="5" type="uint" grade="established"/>
+    <field name="mode" start="0" size="5" type="uint" grade="established"/>
+    <test value="0x21" kind="vector">
+      <expect field="mode" value="1"/>
+      <expect field="enable" value="1"/>
+      <expect field="clip_id_map" value="0"/>
+      <expect field="clip_id_test" value="0"/>
+    </test>
+    <test value="0x63" kind="vector">
+      <expect field="mode" value="3"/>
+      <expect field="enable" value="3"/>
+    </test>
+    <test value="0x3ff" kind="vector">
+      <expect field="mode" value="31"/>
+      <expect field="enable" value="31"/>
+    </test>
+    <test value="0x821" kind="vector">
+      <expect field="mode" value="1"/>
+      <expect field="enable" value="1"/>
+      <expect field="clip_id_test" value="1"/>
+    </test>
+  </struct>
+  <struct name="DRAWMODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2018" access="rw" space="re" reset="unknown">
+    <field name="no_conflict" start="23" size="1" type="uint" grade="established"/>
+    <field name="gl" start="22" size="1" type="uint" grade="established"/>
+    <field name="pixel_xfer" start="21" size="1" type="uint" grade="established"/>
+    <field name="scissor" start="20" size="1" type="uint" grade="established"/>
+    <field name="line_stipple" start="19" size="1" type="uint" grade="established"/>
+    <field name="poly_stipple" start="18" size="1" type="uint" grade="established"/>
+    <field name="opaque_stipple" start="17" size="1" type="uint" grade="established"/>
+    <field name="shade" start="16" size="1" type="uint" grade="established"/>
+    <field name="texture" start="15" size="1" type="uint" grade="established"/>
+    <field name="fog" start="14" size="1" type="uint" grade="established"/>
+    <field name="coverage" start="13" size="1" type="uint" grade="established"/>
+    <field name="aa_line" start="12" size="1" type="uint" grade="established"/>
+    <field name="alpha_test" start="11" size="1" type="uint" grade="established"/>
+    <field name="alpha_blend" start="10" size="1" type="uint" grade="established"/>
+    <field name="logic_op" start="9" size="1" type="uint" grade="established"/>
+    <field name="dither" start="8" size="1" type="uint" grade="established"/>
+    <field name="bit_mask" start="7" size="1" type="uint" grade="established"/>
+    <field name="byte_mask" start="3" size="4" type="uint" grade="established"/>
+    <field name="depth_test" start="2" size="1" type="uint" grade="established"/>
+    <field name="depth_mask" start="1" size="1" type="uint" grade="established"/>
+    <field name="stencil" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="SCRMASK" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2020" access="rw" count="5" stride="8" space="re" reset="unknown">
+  </struct>
+  <struct name="SCISSOR" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2048" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="WINOFFSET_SRC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2050" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="WINOFFSET_DST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2058" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="PRIMITIVE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2060" access="w" space="re" reset="unknown">
+    <field name="op" start="24" size="8" type="primitive_op" grade="established"/>
+    <field name="line_skip_last" start="18" size="1" type="uint" grade="established"/>
+    <field name="edge" start="16" size="2" type="primitive_edge" grade="established"/>
+    <field name="line_width" start="0" size="16" type="uint" grade="established"/>
+    <test value="0x3020000" kind="vector">
+      <expect field="op" value="3"/>
+      <expect field="line_skip_last" value="0"/>
+      <expect field="edge" value="2"/>
+      <expect field="line_width" value="0"/>
+    </test>
+  </struct>
+  <struct name="VERTEX_X" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2070" access="w" count="3" stride="4" space="re" reset="unknown">
+  </struct>
+  <struct name="VERTEX_GL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2080" access="w" count="6" stride="4" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_SRC_ADDR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20a0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_SRC_STRIDE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20a4" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_SRC_XSTEP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20a8" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_SRC_YSTEP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20ac" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_DST_ADDR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20b0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="XFER_DST_STRIDE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20b4" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="STIPPLE_MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c0" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="STIPPLE_PATTERN" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c4" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="FG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20d0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="BG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20d8" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_START" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20e0" access="w" count="4" stride="4" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DRDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20f0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DGDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20f4" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DRDY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20f8" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DGDY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20fc" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DBDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2100" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DADX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2104" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DBDY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2108" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="SHADE_DADY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x210c" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2110" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_FORMAT" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2118" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_SQS" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2120" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_TQS" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2128" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_QS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2130" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_STFLAGS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2134" access="w" space="re" reset="unknown">
+    <doc>tex_stflags sits between tex_qs and tex_dsqdx and is absent from the
+specification's register table, which skips from the one to the other.
+Shipped software computes one flag per texture coordinate for each textured
+triangle from range tests on the vertex values, writes the s flag in bit 0
+and the t flag in bit 1 with a 32-bit store, and scales the start and slope
+values of a flagged coordinate by 2^39 instead of 2^43. Inferred: a set
+flag tells the engine that coordinate's stepper carries four fewer fraction
+bits. The layout is established; that meaning is inferred.</doc>
+    <field name="t_flag" start="1" size="1" type="uint" grade="established"/>
+    <field name="s_flag" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="TEX_DSQDX" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2138" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_DSQDY" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2140" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_DTQDX" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2148" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_DTQDY" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2150" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_DQDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2158" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_DQDY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x215c" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_BORDER" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2160" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="TEX_ENVCOLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2168" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="FOG_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2170" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="FOG_FS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2178" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="FOG_DFDX" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2180" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="FOG_DFDY" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2188" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="AA_LINE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2190" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="AA_COV" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2194" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="ALPHATEST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2198" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="BLEND_COLOR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21a0" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="BLEND_FUNC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21a8" access="rw" space="re" reset="unknown">
+    <field name="op" start="8" size="4" type="blend_func_op" grade="established"/>
+    <field name="src" start="4" size="4" type="blend_func_src" grade="established"/>
+    <field name="dst" start="0" size="4" type="blend_func_dst" grade="established"/>
+  </struct>
+  <struct name="LOGICOP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21b0" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="COLORMASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21b8" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="DEPTH_FUNC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21c0" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="DEPTH_ZS" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21c8" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="DEPTH_DZDX" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21d0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="DEPTH_DZDY" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21d8" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="STENCIL_MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21e0" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="STENCIL_MASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21e8" access="rw" space="re" reset="unknown">
+  </struct>
+  <struct name="PIXPIPE_NULL" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21f0" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="PIXPIPE_FLUSH" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21f8" access="w" space="re" reset="unknown">
+  </struct>
+  <struct name="STATUS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x4000" access="r" space="re" reset="unknown">
+    <doc>The status register is read with 32-bit loads. Shipped software polls the
+combined idle bit (28), reads the interface-buffer fill level from bits
+24:18 to count free slots (64 minus the level) and reads the start and write
+pointers when saving queued writes on a context switch. The read pointer
+(17:12) and the setup and pixel-pipe idle bits (27, 26) are taken from the
+public NetBSD driver and no shipped software reads them. Bit 25 is the
+memory transfer engine idle bit in the NetBSD driver; the OpenBSD driver
+names the same bit ready and never reads it. The kernel's transfer-wait
+routine tests bit 25, which fits an idle reading, so the position is
+established and the meaning inferred. The start field (5:0) is where the
+entries not yet committed begin; its meaning is inferred.</doc>
+    <field name="idle" start="28" size="1" type="uint" grade="established"/>
+    <field name="setup_idle" start="27" size="1" type="uint" grade="established"/>
+    <field name="pixpipe_idle" start="26" size="1" type="uint" grade="established"/>
+    <field name="mte_idle" start="25" size="1" type="uint" grade="inferred"/>
+    <field name="level" start="18" size="7" type="uint" grade="established"/>
+    <field name="rd_ptr" start="12" size="6" type="uint" grade="established"/>
+    <field name="wr_ptr" start="6" size="6" type="uint" grade="established"/>
+    <field name="start" start="0" size="6" type="uint" grade="inferred"/>
+  </struct>
+  <struct name="IB_DISCARD" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x4008" access="w" space="re" reset="unknown">
+    <doc>ib_discard sits two doublewords above the status register. Shipped kernel
+code stores zero to it with a 32-bit store, never reads it, and does so after
+saving the outgoing client's queued writes on a context switch, after the
+incoming client's loads, and at the end of each translation table loader.
+The user-mode library and the X server never write it. Inferred: the write
+discards the queued writes not yet committed. The register's position and
+its write-zero use are established; that effect is inferred.</doc>
+  </struct>
+  <struct name="BUFMODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <doc>The buffer mode words (source and destination share one layout) pick the
+buffer, its TLB and the pixel format. buf_type chooses tiled access
+through a frame-buffer table or linear access through a linear table;
+buf_depth is the word size in memory and pix_depth the pixel size, which
+must not exceed it. ycrcb is valid in the source word only. Shipped
+software writes the values in the vectors below; other bits are reserved
+(one shipped swap path sets bit 30 as well).</doc>
+    <field name="buf_type" start="10" size="3" type="bufmode_buf_type" grade="established"/>
+    <field name="buf_depth" start="8" size="2" type="bufmode_buf_depth" grade="established"/>
+    <field name="pix_type" start="4" size="4" type="bufmode_pix_type" grade="established"/>
+    <field name="pix_depth" start="2" size="2" type="bufmode_pix_depth" grade="established"/>
+    <field name="double_pix" start="1" size="1" type="uint" grade="established"/>
+    <field name="double_pix_sel" start="0" size="1" type="uint" grade="established"/>
+    <test value="0x504" kind="vector">
+      <expect field="buf_type" value="1"/>
+      <expect field="buf_depth" value="1"/>
+      <expect field="pix_type" value="0"/>
+      <expect field="pix_depth" value="1"/>
+      <expect field="double_pix" value="0"/>
+    </test>
+  </struct>
+  <struct name="IBADDR_HI" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <doc>ib_addr holds the address half of each queued write. Software decodes its
+upper 32 bits (IBADDR_HI, the word at the register's own address in
+big-endian layout) as the register's doubleword index within its group, the
+group, a byte lane code and one flag bit; the hardware meaning of the lane
+code and the flag is inferred. The index is address bits 10:3 and the group
+is address bits 14:12 of the register; bit 11, the start alias, is the
+address bit left out, so the flag is inferred to mark an entry written
+through the start alias. Replay by software writes lane 3 as one
+doubleword, lane 2 as the first (upper) data word at the register address,
+lane 1 as the second data word four bytes higher, and treats lane 0 as an
+error that writes nothing. The lower 32 bits are not decoded by any shipped
+software read.</doc>
+    <field name="start_flag" start="13" size="1" type="uint" grade="inferred"/>
+    <field name="lane" start="11" size="2" type="ibaddr_hi_lane" grade="inferred"/>
+    <field name="group" start="8" size="3" type="ibaddr_hi_group" grade="established"/>
+    <field name="index" start="0" size="8" type="uint" grade="established"/>
+    <test value="0x1a0a" kind="example">
+      <expect field="index" value="10"/>
+      <expect field="group" value="2"/>
+      <expect field="lane" value="3"/>
+      <expect field="start_flag" value="0"/>
+    </test>
+  </struct>
+  <struct name="LINENT" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <doc>Each doubleword holds two 32-bit page entries, the even page in the upper
+word and the odd page in the lower word. Software indexes a table with
+address bits 16:13 and stores a page number with its top bit set, which is
+inferred to be a valid bit. LINENT describes one such entry.</doc>
+    <field name="valid" start="31" size="1" type="uint" grade="inferred"/>
+    <field name="page" start="0" size="31" type="uint" grade="established"/>
+    <test value="0x80000123" kind="vector">
+      <expect field="page" value="291"/>
+      <expect field="valid" value="1"/>
+    </test>
+  </struct>
+  <struct name="SCRMASK_HI" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <doc>Each screen mask is one clip rectangle; the end coordinates are exclusive.
+The upper word (SCRMASK_HI, at the register's own address in big-endian
+layout) holds the start corner and the lower word (SCRMASK_LO) the end
+corner.</doc>
+    <field name="x_start" start="16" size="16" type="uint" grade="established"/>
+    <field name="y_start" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="SCRMASK_LO" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <field name="x_end" start="16" size="16" type="uint" grade="established"/>
+    <field name="y_end" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="TLBTILE" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
+    <field name="valid" start="15" size="1" type="uint" grade="inferred"/>
+    <field name="page" start="0" size="15" type="uint" grade="established"/>
+  </struct>
+  <constant name="IB_ENTRIES" value="0x40" grade="established"/>
+  <constant name="LIN_TLB_REGS" value="0x10" grade="established"/>
+  <constant name="START_ALIAS_BIT" value="0xb" grade="established"/>
+  <constant name="TLB_ENTRIES_PER_REG" value="0x4" grade="established"/>
+  <constant name="TLB_TILE_SHIFT" value="0x10" grade="established"/>
+</genxml>

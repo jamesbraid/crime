@@ -1,0 +1,173 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mace_video_in"
+prefix = "VIN"
+title = "O2 MACE video input channel registers"
+doc = "MACE video input channel registers."
+from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+public_from = ["published MACE 2.0 specification"]
+
+[c]
+legacy_header = "MACE_VIDEO_IN_DECODE.h"
+legacy_guard = "MACE_VIDEO_IN_DECODE_H"
+
+[spaces.mace_video_in]
+
+[registers.control]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_in"
+
+[registers.control.fields]
+int_gpib = { bits = [9, 9], grade = "established" }
+int_crime_error = { bits = [8, 8], grade = "established" }
+int_fifo_overflow = { bits = [7, 7], grade = "established" }
+int_v_overflow = { bits = [6, 6], grade = "established" }
+int_h_overflow = { bits = [5, 5], grade = "established" }
+int_buffer = { bits = [4, 4], grade = "established" }
+int_lost_sync = { bits = [3, 3], grade = "established" }
+int_dma_done = { bits = [2, 2], grade = "established" }
+int_vsync = { bits = [1, 1], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[registers.status]
+offset = 0x8
+access = "r"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_in"
+
+[registers.status.fields]
+sync_present = { bits = [10, 10], grade = "established" }
+gpib = { bits = [9, 9], grade = "established" }
+crime_error = { bits = [8, 8], grade = "established" }
+fifo_overflow = { bits = [7, 7], grade = "established" }
+v_overflow = { bits = [6, 6], grade = "established" }
+h_overflow = { bits = [5, 5], grade = "established" }
+buffer = { bits = [4, 4], grade = "established" }
+lost_sync = { bits = [3, 3], grade = "established" }
+dma_done = { bits = [2, 2], grade = "established" }
+vsync = { bits = [1, 1], grade = "established" }
+dma_active = { bits = [0, 0], grade = "established" }
+
+[registers.config]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.config.fields]
+interleaved = { bits = [16, 16], grade = "established" }
+dither = { bits = [13, 13], grade = "established" }
+sof_count = { bits = [9, 6], grade = "established" }
+d1_ecc = { bits = [5, 5], grade = "established" }
+d1_precision = { bits = [4, 4], grade = "established" }
+d1_reset = { bits = [1, 1], grade = "established" }
+channel_reset = { bits = [0, 0], grade = "established" }
+
+[registers.config.fields.mem_mode]
+bits = [15, 14]
+grade = "established"
+
+[registers.config.fields.mem_mode.enums]
+linear = { value = 0, grade = "established" }
+tiled = { value = 1, grade = "established" }
+mipmap_512x128 = { value = 2, grade = "established" }
+mipmap_512x256 = { value = 3, grade = "established" }
+
+[registers.config.fields.pixel_format]
+bits = [12, 10]
+grade = "established"
+
+[registers.config.fields.pixel_format.enums]
+rgba32 = { value = 0, grade = "established" }
+rgba5551 = { value = 1, grade = "established" }
+yuv422_8 = { value = 2, grade = "established" }
+yuv422_10 = { value = 3, grade = "established" }
+abgr32 = { value = 4, grade = "established" }
+yuva4224 = { value = 5, grade = "established" }
+
+[registers.config.fields.source]
+bits = [3, 2]
+grade = "established"
+
+[registers.config.fields.source.enums]
+primary = { value = 0, grade = "established" }
+secondary = { value = 1, grade = "established" }
+loopback_e = { value = 2, grade = "established" }
+loopback_f = { value = 3, grade = "established" }
+
+[registers.next_desc]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.fld_offset]
+offset = 0x20
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.line_width]
+offset = 0x28
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.hclip_odd]
+offset = 0x30
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.vclip_odd]
+offset = 0x38
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.alpha_odd]
+offset = 0x40
+access = "rw"
+width = 64
+grade = "inferred"
+space = "mace_video_in"
+
+[registers.hclip_even]
+offset = 0x48
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.vclip_even]
+offset = 0x50
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_in"
+
+[registers.alpha_even]
+offset = 0x58
+access = "rw"
+width = 64
+grade = "inferred"
+space = "mace_video_in"
+
+[registers.dma_desc]
+offset = 0x80
+access = "rw"
+width = 64
+grade = "established"
+count = 8
+space = "mace_video_in"

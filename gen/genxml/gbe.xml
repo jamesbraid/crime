@@ -1,0 +1,291 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/gbe.toml by defs-gen - do not edit, change the source -->
+<genxml unit="gbe" prefix="GBE" title="O2 GBE display back end register words" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+  <doc>GBE display back end register words, tables and offsets.</doc>
+  <enum name="ctrlstat_pclk_select">
+    <value name="external" value="0" grade="established"/>
+    <value name="internal" value="3" grade="established"/>
+  </enum>
+  <enum name="frm_size_tile_depth">
+    <value name="bits8" value="0" grade="established"/>
+    <value name="bits16" value="1" grade="established"/>
+    <value name="bits32" value="2" grade="established"/>
+  </enum>
+  <enum name="mode_entry_typ">
+    <value name="i8" value="0" grade="established"/>
+    <value name="i12" value="1" grade="established"/>
+    <value name="rg3b2" value="2" grade="established"/>
+    <value name="rgb4" value="3" grade="established"/>
+    <value name="rgb5" value="4" grade="established"/>
+    <value name="rgb8" value="5" grade="established"/>
+    <value name="rgba5" value="6" grade="established"/>
+    <value name="rgb10" value="7" grade="established"/>
+  </enum>
+  <enum name="mode_entry_buf">
+    <value name="lower" value="1" grade="established"/>
+    <value name="upper" value="2" grade="established"/>
+    <value name="both" value="3" grade="established"/>
+  </enum>
+  <struct name="CMAP_ENTRY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="r" start="24" size="8" type="uint" grade="established"/>
+    <field name="g" start="16" size="8" type="uint" grade="established"/>
+    <field name="b" start="8" size="8" type="uint" grade="established"/>
+    <test value="0xff804000" kind="vector">
+      <expect field="r" value="255"/>
+      <expect field="g" value="128"/>
+      <expect field="b" value="64"/>
+    </test>
+  </struct>
+  <struct name="CMAP_FIFO" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="free" start="0" size="6" type="uint" grade="established"/>
+  </struct>
+  <struct name="CRS_CTL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="CRS_START_XY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="starty" start="12" size="12" type="uint" grade="established"/>
+    <field name="startx" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="CTRLSTAT" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="pclk_select" start="28" size="2" type="ctrlstat_pclk_select" grade="established"/>
+    <field name="io6_data" start="18" size="1" type="uint" grade="established"/>
+    <field name="io5_data" start="16" size="1" type="uint" grade="established"/>
+    <field name="io4_data" start="14" size="1" type="uint" grade="established"/>
+    <field name="io3_data" start="12" size="1" type="uint" grade="established"/>
+    <field name="chip_rev" start="0" size="4" type="uint" grade="established"/>
+    <test value="0x30000000" kind="vector">
+      <expect field="pclk_select" value="3"/>
+      <expect field="chip_rev" value="0"/>
+    </test>
+  </struct>
+  <struct name="DID_CONTROL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="dma_enable" start="16" size="1" type="uint" grade="established"/>
+    <field name="did_base" start="0" size="16" type="uint" grade="established"/>
+    <test value="0x10005" kind="vector">
+      <expect field="did_base" value="5"/>
+      <expect field="dma_enable" value="1"/>
+    </test>
+  </struct>
+  <struct name="DID_FRAME" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="block" start="19" size="7" type="uint" grade="established"/>
+    <field name="offset" start="11" size="8" type="uint" grade="established"/>
+    <field name="yend" start="0" size="11" type="uint" grade="established"/>
+  </struct>
+  <struct name="DID_INHWCTRL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="dma_enable" start="16" size="1" type="uint" grade="established"/>
+    <field name="did_base" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="DID_LINE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="did" start="11" size="5" type="uint" grade="established"/>
+    <field name="xend" start="0" size="11" type="uint" grade="established"/>
+  </struct>
+  <struct name="DID_START_XY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="starty" start="12" size="12" type="uint" grade="established"/>
+    <field name="startx" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="DOTCLOCK" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="run" start="20" size="1" type="uint" grade="established"/>
+    <field name="p" start="14" size="2" type="uint" grade="established"/>
+    <field name="n_minus_1" start="8" size="6" type="uint" grade="established"/>
+    <field name="m_minus_1" start="0" size="8" type="uint" grade="established"/>
+    <test value="0x100000" kind="vector">
+      <expect field="run" value="1"/>
+      <expect field="p" value="0"/>
+    </test>
+  </struct>
+  <struct name="FP_DE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="on" start="12" size="12" type="uint" grade="established"/>
+    <field name="off" start="0" size="12" type="uint" grade="established"/>
+    <test value="0x303326" kind="vector">
+      <expect field="off" value="806"/>
+      <expect field="on" value="771"/>
+    </test>
+  </struct>
+  <struct name="FP_HDRV" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <doc>The three flat-panel drive registers and the three start-preset registers
+share one layout: two 12-bit counts, "off" or "x" in the low half. The
+specification names them VT_10 to VT_12 and VT_17 to VT_19 (pages 39 and
+40). It compares FP_HDRV, FP_DE and the "x" halves with the horizontal
+counter and FP_VDRV and the "y" halves with the vertical counter, but it
+compares both halves of FP_DE with the horizontal counter. The totals
+shipped software writes for two fixed panels (806 and 771, 1065 and 1024)
+look like line counts, not pixel counts (inferred from magnitude); which
+counter FP_DE really uses is unknown.</doc>
+    <field name="on" start="12" size="12" type="uint" grade="established"/>
+    <field name="off" start="0" size="12" type="uint" grade="established"/>
+    <test value="0xfff" kind="vector">
+      <expect field="off" value="4095"/>
+      <expect field="on" value="0"/>
+    </test>
+  </struct>
+  <struct name="FP_VDRV" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="on" start="12" size="12" type="uint" grade="established"/>
+    <field name="off" start="0" size="12" type="uint" grade="established"/>
+    <test value="0x1fff" kind="vector">
+      <expect field="off" value="4095"/>
+      <expect field="on" value="1"/>
+    </test>
+  </struct>
+  <struct name="FRM_CONTROL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="tile_list_ptr" start="5" size="27" type="uint" grade="established"/>
+    <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="FRM_INHWCTRL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="FRM_SIZE_TILE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="fifo_reset" start="15" size="1" type="uint" grade="established"/>
+    <field name="depth" start="13" size="2" type="frm_size_tile_depth" grade="established"/>
+    <field name="width_tiles" start="5" size="8" type="uint" grade="established"/>
+    <field name="remainder" start="0" size="5" type="uint" grade="established"/>
+  </struct>
+  <struct name="MODE_ENTRY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="aux" start="11" size="2" type="uint" grade="established"/>
+    <field name="gm" start="10" size="1" type="uint" grade="established"/>
+    <field name="cm" start="5" size="5" type="uint" grade="established"/>
+    <field name="typ" start="2" size="3" type="mode_entry_typ" grade="established"/>
+    <field name="buf" start="0" size="2" type="mode_entry_buf" grade="established"/>
+    <test value="0x41" kind="vector">
+      <expect field="buf" value="1"/>
+      <expect field="typ" value="0"/>
+      <expect field="cm" value="2"/>
+    </test>
+  </struct>
+  <struct name="OVR_CONTROL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="tile_list_ptr" start="5" size="27" type="uint" grade="established"/>
+    <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="OVR_INHWCTRL" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="OVR_WIDTH_TILE" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="fifo_reset" start="13" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="TILE_LIST_ENTRY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="tile" start="0" size="13" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_0" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="right" start="12" size="12" type="uint" grade="established"/>
+    <field name="left" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_1" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="bottom" start="12" size="12" type="uint" grade="established"/>
+    <field name="top" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_2" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="cs_bypass" start="4" size="1" type="uint" grade="established"/>
+    <field name="full_screen" start="3" size="1" type="uint" grade="established"/>
+    <field name="auto_field" start="2" size="1" type="uint" grade="established"/>
+    <field name="flicker_filter" start="1" size="1" type="uint" grade="established"/>
+    <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_3" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="descr_ptr" start="5" size="27" type="uint" grade="established"/>
+    <field name="current_field" start="4" size="1" type="uint" grade="established"/>
+    <field name="end_of_field" start="3" size="1" type="uint" grade="established"/>
+    <field name="field_corrupt" start="2" size="1" type="uint" grade="established"/>
+    <field name="descr_dma_enable" start="1" size="1" type="uint" grade="established"/>
+    <field name="field_select" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_START_XY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="starty" start="12" size="12" type="uint" grade="established"/>
+    <field name="startx" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VC_TILES" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="tile_first" start="16" size="16" type="uint" grade="established"/>
+    <field name="tile_second" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_FLAGS" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="sync_low" start="5" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_HCMAP" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="on" start="12" size="12" type="uint" grade="established"/>
+    <field name="off" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_INTR01" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="line0" start="12" size="12" type="uint" grade="established"/>
+    <field name="line1" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_INTR23" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="line2" start="12" size="12" type="uint" grade="established"/>
+    <field name="line3" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_VCMAP" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="on" start="12" size="12" type="uint" grade="established"/>
+    <field name="off" start="0" size="12" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_XY" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="freeze" start="31" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="VT_XYMAX" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
+    <field name="vtotal" start="12" size="12" type="uint" grade="established"/>
+    <field name="htotal" start="0" size="12" type="uint" grade="established"/>
+    <test value="0x20d320" kind="vector">
+      <expect field="htotal" value="800"/>
+      <expect field="vtotal" value="525"/>
+    </test>
+  </struct>
+  <constant name="CMAP_ENTRIES_REV1" value="0x1200" grade="established"/>
+  <constant name="CMAP_ENTRIES_REV2" value="0x1800" grade="inferred"/>
+  <constant name="CMAP_FIFO_DEPTH_REV1" value="0x40" grade="established"/>
+  <constant name="CMAP_FIFO_DEPTH_REV2" value="0x3f" grade="inferred"/>
+  <constant name="CMAP_FIFO_LOW_WATER" value="0x30" grade="established"/>
+  <constant name="DEVICE_ID_VALUE" value="0x666" grade="established"/>
+  <constant name="GMAP_ENTRIES" value="0x100" grade="established"/>
+  <constant name="MODE_ENTRIES" value="0x20" grade="established"/>
+  <constant name="MODE_ENTRY_STRIDE" value="0x4" grade="established"/>
+  <constant name="OFF_CMAP" value="0x50000" grade="established"/>
+  <constant name="OFF_CMAP_FIFO" value="0x58000" grade="established"/>
+  <constant name="OFF_CRS_CMAP" value="0x70008" grade="established"/>
+  <constant name="OFF_CRS_CTL" value="0x70004" grade="established"/>
+  <constant name="OFF_CRS_GLYPH" value="0x78000" grade="established"/>
+  <constant name="OFF_CRS_POS" value="0x70000" grade="established"/>
+  <constant name="OFF_CRS_START_XY" value="0x10048" grade="established"/>
+  <constant name="OFF_CTRLSTAT" value="0x0" grade="established"/>
+  <constant name="OFF_DEVICE_ID" value="0x14" grade="established"/>
+  <constant name="OFF_DID_CONTROL" value="0x40004" grade="established"/>
+  <constant name="OFF_DID_INHWCTRL" value="0x40000" grade="established"/>
+  <constant name="OFF_DID_START_XY" value="0x10044" grade="established"/>
+  <constant name="OFF_DOTCLOCK" value="0x4" grade="established"/>
+  <constant name="OFF_FP_DE" value="0x10030" grade="established"/>
+  <constant name="OFF_FP_HDRV" value="0x10028" grade="established"/>
+  <constant name="OFF_FP_VDRV" value="0x1002c" grade="established"/>
+  <constant name="OFF_FRM_CONTROL" value="0x3000c" grade="established"/>
+  <constant name="OFF_FRM_INHWCTRL" value="0x30008" grade="established"/>
+  <constant name="OFF_FRM_SIZE_PIXEL" value="0x30004" grade="established"/>
+  <constant name="OFF_FRM_SIZE_TILE" value="0x30000" grade="established"/>
+  <constant name="OFF_GMAP" value="0x60000" grade="established"/>
+  <constant name="OFF_I2C" value="0x8" grade="established"/>
+  <constant name="OFF_I2CFP" value="0x10" grade="established"/>
+  <constant name="OFF_MODE_TABLE" value="0x48000" grade="established"/>
+  <constant name="OFF_OVR_CONTROL" value="0x20008" grade="established"/>
+  <constant name="OFF_OVR_INHWCTRL" value="0x20004" grade="established"/>
+  <constant name="OFF_OVR_WIDTH_TILE" value="0x20000" grade="established"/>
+  <constant name="OFF_SYSCLK" value="0xc" grade="established"/>
+  <constant name="OFF_VC_0" value="0x80000" grade="established"/>
+  <constant name="OFF_VC_1" value="0x80004" grade="established"/>
+  <constant name="OFF_VC_2" value="0x80008" grade="established"/>
+  <constant name="OFF_VC_3" value="0x8000c" grade="established"/>
+  <constant name="OFF_VC_4" value="0x80010" grade="established"/>
+  <constant name="OFF_VC_5" value="0x80014" grade="established"/>
+  <constant name="OFF_VC_6" value="0x80018" grade="established"/>
+  <constant name="OFF_VC_7" value="0x8001c" grade="established"/>
+  <constant name="OFF_VC_8" value="0x80020" grade="established"/>
+  <constant name="OFF_VC_START_XY" value="0x1004c" grade="established"/>
+  <constant name="OFF_VT_F2RF_LOCK" value="0x1001c" grade="established"/>
+  <constant name="OFF_VT_FLAGS" value="0x10018" grade="established"/>
+  <constant name="OFF_VT_HBLANK" value="0x10014" grade="established"/>
+  <constant name="OFF_VT_HCMAP" value="0x1003c" grade="established"/>
+  <constant name="OFF_VT_HPIXEN" value="0x10034" grade="established"/>
+  <constant name="OFF_VT_HSYNC" value="0x1000c" grade="established"/>
+  <constant name="OFF_VT_INTR01" value="0x10020" grade="established"/>
+  <constant name="OFF_VT_INTR23" value="0x10024" grade="established"/>
+  <constant name="OFF_VT_VBLANK" value="0x10010" grade="established"/>
+  <constant name="OFF_VT_VCMAP" value="0x10040" grade="established"/>
+  <constant name="OFF_VT_VPIXEN" value="0x10038" grade="established"/>
+  <constant name="OFF_VT_VSYNC" value="0x10008" grade="established"/>
+  <constant name="OFF_VT_XY" value="0x10000" grade="established"/>
+  <constant name="OFF_VT_XYMAX" value="0x10004" grade="established"/>
+  <constant name="TILE_LIST_BYTES_UNIT" value="0x20" grade="established"/>
+  <constant name="VC_TILE_REGS" value="0x5" grade="established"/>
+</genxml>

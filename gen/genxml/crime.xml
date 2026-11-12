@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<!-- generated from defs/crime.toml by defs-gen - do not edit, change the source -->
+<genxml unit="crime" prefix="CRIME" title="O2 CRIME memory controller and CPU interface registers" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
+  <doc>CRIME memory controller and CPU-interface registers, and the interrupt input bit positions.</doc>
+  <struct name="ID" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x0" access="r" reset="unknown">
+    <field name="family" start="4" size="4" type="uint" grade="established"/>
+    <field name="rev" start="0" size="4" type="uint" grade="established"/>
+    <test value="0xa1" kind="vector">
+      <expect field="family" value="10"/>
+      <expect field="rev" value="1"/>
+    </test>
+  </struct>
+  <struct name="CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x8" access="rw" reset="0x0">
+    <field name="sysadc_gen_enable" start="13" size="1" type="uint" grade="established"/>
+    <field name="sysadc_check_enable" start="12" size="1" type="uint" grade="established"/>
+    <field name="cold_reset" start="11" size="1" type="uint" grade="established"/>
+    <field name="soft_reset" start="10" size="1" type="uint" grade="established"/>
+    <field name="watchdog_enable" start="9" size="1" type="uint" grade="established"/>
+    <field name="endian" start="8" size="1" type="uint" grade="established"/>
+    <test value="0x2200" kind="vector">
+      <expect field="sysadc_gen_enable" value="1"/>
+      <expect field="sysadc_check_enable" value="0"/>
+      <expect field="watchdog_enable" value="1"/>
+    </test>
+  </struct>
+  <struct name="INTSTAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x10" access="r" reset="unknown">
+  </struct>
+  <struct name="INTMASK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" reset="0x0">
+  </struct>
+  <struct name="SOFTINT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" reset="0x0">
+  </struct>
+  <struct name="HARDINT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" reset="unknown">
+  </struct>
+  <struct name="WATCHDOG" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x30" access="rw" reset="0x0">
+    <field name="warm_reset_timeout" start="20" size="1" type="uint" grade="established"/>
+    <field name="count" start="0" size="20" type="uint" grade="established"/>
+  </struct>
+  <struct name="CPU_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x40" access="r" reset="unknown">
+  </struct>
+  <struct name="CPU_ERROR_STAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x48" access="rw" reset="0x0">
+    <field name="illegal_addr" start="2" size="1" type="uint" grade="established"/>
+    <field name="vice_write_parity" start="1" size="1" type="uint" grade="established"/>
+    <field name="cpu_write_parity" start="0" size="1" type="uint" grade="established"/>
+    <test value="0x4" kind="vector">
+      <expect field="illegal_addr" value="1"/>
+      <expect field="cpu_write_parity" value="0"/>
+    </test>
+  </struct>
+  <struct name="CPU_ERROR_ENA" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" reset="unknown">
+  </struct>
+  <struct name="VICE_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x58" access="r" reset="unknown">
+  </struct>
+  <struct name="MEM_CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x200" access="rw" reset="0x0">
+    <field name="use_repl_check" start="1" size="1" type="uint" grade="established"/>
+    <field name="ecc_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="MEM_BANK_CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x208" access="rw" count="8" stride="8" reset="unknown">
+    <field name="sdram_geometry" start="8" size="1" type="uint" grade="established"/>
+    <field name="base_match" start="0" size="5" type="uint" grade="established"/>
+  </struct>
+  <struct name="MEM_ERROR_STAT" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x250" access="rw" reset="unknown">
+    <doc>Reset values differ per bank, so the REG line's reset=unknown stands for none of them: bank n resets to n for n = 0 to 7
+(established, [spec] table 6-14; no shipped software writes banks 2 to 7). With 32 MiB parts that puts bank n at n * 32 MiB.
+#define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 /* established: reset of bank 0
+#define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 /* established: reset of bank n is BASE + n * STEP</doc>
+    <field name="invalid_addr_rmw" start="27" size="1" type="uint" grade="established"/>
+    <field name="invalid_addr_write" start="26" size="1" type="uint" grade="established"/>
+    <field name="invalid_addr_read" start="25" size="1" type="uint" grade="established"/>
+    <field name="ecc_error_rmw" start="24" size="1" type="uint" grade="established"/>
+    <field name="ecc_error_read" start="23" size="1" type="uint" grade="established"/>
+    <field name="multiple_errors" start="22" size="1" type="uint" grade="established"/>
+    <field name="hard_error" start="21" size="1" type="uint" grade="established"/>
+    <field name="soft_error" start="20" size="1" type="uint" grade="established"/>
+    <field name="cpu_access" start="18" size="1" type="uint" grade="established"/>
+    <field name="vice_access" start="17" size="1" type="uint" grade="established"/>
+    <field name="gbe_access" start="16" size="1" type="uint" grade="established"/>
+    <field name="re_access" start="15" size="1" type="uint" grade="established"/>
+    <field name="re_id" start="8" size="7" type="uint" grade="established"/>
+    <field name="mace_access" start="7" size="1" type="uint" grade="established"/>
+    <field name="mace_id" start="0" size="7" type="uint" grade="established"/>
+  </struct>
+  <struct name="MEM_ERROR_ADDR" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x258" access="r" reset="unknown">
+  </struct>
+  <struct name="MEM_ERROR_ECC_SYN" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x260" access="r" reset="unknown">
+  </struct>
+  <struct name="MEM_ERROR_ECC_CHK" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x268" access="r" reset="unknown">
+  </struct>
+  <struct name="MEM_ERROR_ECC_REPL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x270" access="rw" reset="unknown">
+    <field name="check" start="0" size="8" type="uint" grade="established"/>
+  </struct>
+  <struct name="CPU_ERROR_STAT_15" size="8" grade="inferred" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x4048" access="rw" reset="0x0">
+  </struct>
+  <struct name="INTBIT" size="4" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
+    <field name="vice" start="31" size="1" type="uint" grade="established"/>
+    <field name="syscorerr" start="30" size="1" type="uint" grade="established"/>
+    <field name="soft1" start="29" size="1" type="uint" grade="established"/>
+    <field name="soft0" start="28" size="1" type="uint" grade="established"/>
+    <field name="re_idle" start="27" size="1" type="uint" grade="established"/>
+    <field name="re_full" start="26" size="1" type="uint" grade="established"/>
+    <field name="re_empty" start="25" size="1" type="uint" grade="established"/>
+    <field name="re_idle_edge" start="24" size="1" type="uint" grade="established"/>
+    <field name="re_full_edge" start="23" size="1" type="uint" grade="established"/>
+    <field name="re_empty_edge" start="22" size="1" type="uint" grade="established"/>
+    <field name="mem_error" start="21" size="1" type="uint" grade="established"/>
+    <field name="cpu_error" start="20" size="1" type="uint" grade="established"/>
+    <field name="gbe3" start="19" size="1" type="uint" grade="established"/>
+    <field name="gbe2" start="18" size="1" type="uint" grade="established"/>
+    <field name="gbe1" start="17" size="1" type="uint" grade="established"/>
+    <field name="gbe0" start="16" size="1" type="uint" grade="established"/>
+    <field name="mace" start="0" size="16" type="uint" grade="established"/>
+    <test value="0x10000" kind="vector">
+      <expect field="gbe0" value="1"/>
+      <expect field="gbe1" value="0"/>
+      <expect field="mace" value="0"/>
+    </test>
+    <test value="0x4000000" kind="vector">
+      <expect field="re_full" value="1"/>
+      <expect field="re_empty" value="0"/>
+    </test>
+  </struct>
+  <constant name="ID_FAMILY_SHIPPED" value="0xa0" grade="established"/>
+  <constant name="ID_LOW_BYTE_DRAFT" value="0xb1" grade="inferred"/>
+  <constant name="ID_LOW_BYTE_SHIPPED" value="0xa1" grade="established"/>
+  <constant name="MEM_BANKS" value="0x8" grade="established"/>
+  <constant name="MEM_BANK_CONTROL_RESET_BASE" value="0x0" grade="established"/>
+  <constant name="MEM_BANK_CONTROL_RESET_STEP" value="0x1" grade="established"/>
+  <constant name="PHYS_FULL_MEM_BASE" value="0x40000000" grade="established"/>
+  <constant name="PHYS_FULL_MEM_BYTES" value="0x40000000" grade="established"/>
+  <constant name="PHYS_HIGH_ALIAS_BASE" value="0x20000000" grade="established"/>
+  <constant name="PHYS_HIGH_ALIAS_BYTES" value="0x20000000" grade="established"/>
+  <constant name="PHYS_LOW_ALIAS_BASE" value="0x0" grade="established"/>
+  <constant name="PHYS_LOW_ALIAS_BYTES" value="0x10000000" grade="established"/>
+  <constant name="PHYS_NOECC_MEM_BASE" value="0x80000000" grade="established"/>
+  <constant name="PHYS_NOECC_MEM_BYTES" value="0x40000000" grade="established"/>
+  <constant name="WATCHDOG_COUNT_BITS" value="0x14" grade="established"/>
+</genxml>

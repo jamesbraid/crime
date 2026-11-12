@@ -1,0 +1,642 @@
+/* generated from defs/re.toml by defs-gen - do not edit, change the source */
+/* O2 CRIME rendering engine: interface buffer, linear TLBs and clip state */
+#ifndef RE_GEN_H
+#define RE_GEN_H
+
+#include <stdint.h>
+
+
+/*
+ * The interface buffer holds 64 queued writes. The specification's table
+ * names 128 entries, but its address half sits 512 bytes above the data
+ * half, which leaves room for 64 doublewords of data, and shipped software
+ * walks a ring of 64 (RE_IB_ENTRIES). Each queued write has a data
+ * doubleword and an address doubleword; the address half is decoded below.
+ * The window shares its low offsets with the CRIME CPU-interface registers,
+ * so the rendering engine registers live in their own address space.
+ */
+/* ib_data: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IB_DATA_OFFSET                            0x0u /* established */
+#define RE_IB_DATA_COUNT                             64
+#define RE_IB_DATA_STRIDE                            8
+
+/* ib_addr: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IB_ADDR_OFFSET                            0x200u /* established */
+#define RE_IB_ADDR_COUNT                             64
+#define RE_IB_ADDR_STRIDE                            8
+
+/* ib_ctl: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IB_CTL_OFFSET                             0x400u /* established */
+#define RE_IB_CTL_FULL_SHIFT                         21 /* inferred */
+#define RE_IB_CTL_FULL_MASK                          0x7fu
+#define RE_IB_CTL_FULL_INPLACE                       (RE_IB_CTL_FULL_MASK << RE_IB_CTL_FULL_SHIFT)
+#define RE_IB_CTL_EMPTY_SHIFT                        14 /* inferred */
+#define RE_IB_CTL_EMPTY_MASK                         0x7fu
+#define RE_IB_CTL_EMPTY_INPLACE                      (RE_IB_CTL_EMPTY_MASK << RE_IB_CTL_EMPTY_SHIFT)
+#define RE_IB_CTL_STALL_SHIFT                        7 /* inferred */
+#define RE_IB_CTL_STALL_MASK                         0x7fu
+#define RE_IB_CTL_STALL_INPLACE                      (RE_IB_CTL_STALL_MASK << RE_IB_CTL_STALL_SHIFT)
+#define RE_IB_CTL_COUNT_SHIFT                        0 /* inferred */
+#define RE_IB_CTL_COUNT_MASK                         0x7fu
+#define RE_IB_CTL_COUNT_INPLACE                      (RE_IB_CTL_COUNT_MASK << RE_IB_CTL_COUNT_SHIFT)
+
+/* ib_reset: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IB_RESET_OFFSET                           0x408u /* inferred */
+
+/*
+ * The frame-buffer tables A, B and C each hold 64 doublewords, the texture
+ * table 28 and the clip-ID table 4. Shipped software loads all of them with
+ * 64-bit stores. A frame-buffer, texture or clip-ID doubleword holds four
+ * 16-bit tile entries, tile column 0 in bits 63:48. The entry is the physical
+ * address of a 64 KiB tile shifted right by 16 (the page number counted in
+ * 64 KiB units). Shipped software sets the top bit of each frame-buffer and
+ * texture entry it uses and writes clip-ID entries without it, so the top
+ * bit is inferred to be a valid bit (and doubles as address bit 31 of the
+ * tile). The register index of tile (x, y) in a frame-buffer table is
+ * y * 4 + x / 4. The linear tables further down use 32-bit entries.
+ */
+/* tlb_fb_a: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_FB_A_OFFSET                           0x1000u /* established */
+#define RE_TLB_FB_A_COUNT                            64
+#define RE_TLB_FB_A_STRIDE                           8
+
+/* tlb_fb_b: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_FB_B_OFFSET                           0x1200u /* established */
+#define RE_TLB_FB_B_COUNT                            64
+#define RE_TLB_FB_B_STRIDE                           8
+
+/* tlb_fb_c: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_FB_C_OFFSET                           0x1400u /* established */
+#define RE_TLB_FB_C_COUNT                            64
+#define RE_TLB_FB_C_STRIDE                           8
+
+/* tlb_tex: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_TEX_OFFSET                            0x1600u /* established */
+#define RE_TLB_TEX_COUNT                             28
+#define RE_TLB_TEX_STRIDE                            8
+
+/* tlb_cid: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_CID_OFFSET                            0x16e0u /* established */
+#define RE_TLB_CID_COUNT                             4
+#define RE_TLB_CID_STRIDE                            8
+
+/* tlb_lin_a: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_LIN_A_OFFSET                          0x1700u /* established */
+#define RE_TLB_LIN_A_COUNT                           16
+#define RE_TLB_LIN_A_STRIDE                          8
+
+/* tlb_lin_b: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLB_LIN_B_OFFSET                          0x1780u /* established */
+#define RE_TLB_LIN_B_COUNT                           16
+#define RE_TLB_LIN_B_STRIDE                          8
+
+/*
+ * The pixel pipeline group starts at the base of its own 4 KiB window. Sizes
+ * and the read/write column are the specification's register table. The
+ * specification lists the vertex and stepper registers as 32 or 64 bits and
+ * shipped software writes adjacent 32-bit registers with one 64-bit store
+ * (the GL vertex pair, for one). The transfer source stride is absent from
+ * the specification's table; the public NetBSD driver and shipped software
+ * both write it, so it is established from them. Registers marked w are
+ * written only; the others read back. Global registers apply once the pipe
+ * has drained, non-global ones per primitive ([spec] PDF 164).
+ * Writing any pixel pipeline register with the start-alias bit set commits
+ * the queued state as one primitive.
+ */
+/* bufmode_src: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BUFMODE_SRC_OFFSET                        0x2000u /* established */
+
+/* bufmode_dst: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BUFMODE_DST_OFFSET                        0x2008u /* established */
+
+/* clipmode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_CLIPMODE_OFFSET                           0x2010u /* inferred */
+#define RE_CLIPMODE_CLIP_ID_TEST_SHIFT               11 /* inferred */
+#define RE_CLIPMODE_CLIP_ID_TEST_MASK                0x1u
+#define RE_CLIPMODE_CLIP_ID_TEST_INPLACE             (RE_CLIPMODE_CLIP_ID_TEST_MASK << RE_CLIPMODE_CLIP_ID_TEST_SHIFT)
+#define RE_CLIPMODE_CLIP_ID_MAP_SHIFT                10 /* inferred */
+#define RE_CLIPMODE_CLIP_ID_MAP_MASK                 0x1u
+#define RE_CLIPMODE_CLIP_ID_MAP_INPLACE              (RE_CLIPMODE_CLIP_ID_MAP_MASK << RE_CLIPMODE_CLIP_ID_MAP_SHIFT)
+#define RE_CLIPMODE_ENABLE_SHIFT                     5 /* established */
+#define RE_CLIPMODE_ENABLE_MASK                      0x1fu
+#define RE_CLIPMODE_ENABLE_INPLACE                   (RE_CLIPMODE_ENABLE_MASK << RE_CLIPMODE_ENABLE_SHIFT)
+#define RE_CLIPMODE_MODE_SHIFT                       0 /* established */
+#define RE_CLIPMODE_MODE_MASK                        0x1fu
+#define RE_CLIPMODE_MODE_INPLACE                     (RE_CLIPMODE_MODE_MASK << RE_CLIPMODE_MODE_SHIFT)
+
+/* drawmode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_DRAWMODE_OFFSET                           0x2018u /* established */
+#define RE_DRAWMODE_NO_CONFLICT_SHIFT                23 /* established */
+#define RE_DRAWMODE_NO_CONFLICT_MASK                 0x1u
+#define RE_DRAWMODE_NO_CONFLICT_INPLACE              (RE_DRAWMODE_NO_CONFLICT_MASK << RE_DRAWMODE_NO_CONFLICT_SHIFT)
+#define RE_DRAWMODE_GL_SHIFT                         22 /* established */
+#define RE_DRAWMODE_GL_MASK                          0x1u
+#define RE_DRAWMODE_GL_INPLACE                       (RE_DRAWMODE_GL_MASK << RE_DRAWMODE_GL_SHIFT)
+#define RE_DRAWMODE_PIXEL_XFER_SHIFT                 21 /* established */
+#define RE_DRAWMODE_PIXEL_XFER_MASK                  0x1u
+#define RE_DRAWMODE_PIXEL_XFER_INPLACE               (RE_DRAWMODE_PIXEL_XFER_MASK << RE_DRAWMODE_PIXEL_XFER_SHIFT)
+#define RE_DRAWMODE_SCISSOR_SHIFT                    20 /* established */
+#define RE_DRAWMODE_SCISSOR_MASK                     0x1u
+#define RE_DRAWMODE_SCISSOR_INPLACE                  (RE_DRAWMODE_SCISSOR_MASK << RE_DRAWMODE_SCISSOR_SHIFT)
+#define RE_DRAWMODE_LINE_STIPPLE_SHIFT               19 /* established */
+#define RE_DRAWMODE_LINE_STIPPLE_MASK                0x1u
+#define RE_DRAWMODE_LINE_STIPPLE_INPLACE             (RE_DRAWMODE_LINE_STIPPLE_MASK << RE_DRAWMODE_LINE_STIPPLE_SHIFT)
+#define RE_DRAWMODE_POLY_STIPPLE_SHIFT               18 /* established */
+#define RE_DRAWMODE_POLY_STIPPLE_MASK                0x1u
+#define RE_DRAWMODE_POLY_STIPPLE_INPLACE             (RE_DRAWMODE_POLY_STIPPLE_MASK << RE_DRAWMODE_POLY_STIPPLE_SHIFT)
+#define RE_DRAWMODE_OPAQUE_STIPPLE_SHIFT             17 /* established */
+#define RE_DRAWMODE_OPAQUE_STIPPLE_MASK              0x1u
+#define RE_DRAWMODE_OPAQUE_STIPPLE_INPLACE           (RE_DRAWMODE_OPAQUE_STIPPLE_MASK << RE_DRAWMODE_OPAQUE_STIPPLE_SHIFT)
+#define RE_DRAWMODE_SHADE_SHIFT                      16 /* established */
+#define RE_DRAWMODE_SHADE_MASK                       0x1u
+#define RE_DRAWMODE_SHADE_INPLACE                    (RE_DRAWMODE_SHADE_MASK << RE_DRAWMODE_SHADE_SHIFT)
+#define RE_DRAWMODE_TEXTURE_SHIFT                    15 /* established */
+#define RE_DRAWMODE_TEXTURE_MASK                     0x1u
+#define RE_DRAWMODE_TEXTURE_INPLACE                  (RE_DRAWMODE_TEXTURE_MASK << RE_DRAWMODE_TEXTURE_SHIFT)
+#define RE_DRAWMODE_FOG_SHIFT                        14 /* established */
+#define RE_DRAWMODE_FOG_MASK                         0x1u
+#define RE_DRAWMODE_FOG_INPLACE                      (RE_DRAWMODE_FOG_MASK << RE_DRAWMODE_FOG_SHIFT)
+#define RE_DRAWMODE_COVERAGE_SHIFT                   13 /* established */
+#define RE_DRAWMODE_COVERAGE_MASK                    0x1u
+#define RE_DRAWMODE_COVERAGE_INPLACE                 (RE_DRAWMODE_COVERAGE_MASK << RE_DRAWMODE_COVERAGE_SHIFT)
+#define RE_DRAWMODE_AA_LINE_SHIFT                    12 /* established */
+#define RE_DRAWMODE_AA_LINE_MASK                     0x1u
+#define RE_DRAWMODE_AA_LINE_INPLACE                  (RE_DRAWMODE_AA_LINE_MASK << RE_DRAWMODE_AA_LINE_SHIFT)
+#define RE_DRAWMODE_ALPHA_TEST_SHIFT                 11 /* established */
+#define RE_DRAWMODE_ALPHA_TEST_MASK                  0x1u
+#define RE_DRAWMODE_ALPHA_TEST_INPLACE               (RE_DRAWMODE_ALPHA_TEST_MASK << RE_DRAWMODE_ALPHA_TEST_SHIFT)
+#define RE_DRAWMODE_ALPHA_BLEND_SHIFT                10 /* established */
+#define RE_DRAWMODE_ALPHA_BLEND_MASK                 0x1u
+#define RE_DRAWMODE_ALPHA_BLEND_INPLACE              (RE_DRAWMODE_ALPHA_BLEND_MASK << RE_DRAWMODE_ALPHA_BLEND_SHIFT)
+#define RE_DRAWMODE_LOGIC_OP_SHIFT                   9 /* established */
+#define RE_DRAWMODE_LOGIC_OP_MASK                    0x1u
+#define RE_DRAWMODE_LOGIC_OP_INPLACE                 (RE_DRAWMODE_LOGIC_OP_MASK << RE_DRAWMODE_LOGIC_OP_SHIFT)
+#define RE_DRAWMODE_DITHER_SHIFT                     8 /* established */
+#define RE_DRAWMODE_DITHER_MASK                      0x1u
+#define RE_DRAWMODE_DITHER_INPLACE                   (RE_DRAWMODE_DITHER_MASK << RE_DRAWMODE_DITHER_SHIFT)
+#define RE_DRAWMODE_BIT_MASK_SHIFT                   7 /* established */
+#define RE_DRAWMODE_BIT_MASK_MASK                    0x1u
+#define RE_DRAWMODE_BIT_MASK_INPLACE                 (RE_DRAWMODE_BIT_MASK_MASK << RE_DRAWMODE_BIT_MASK_SHIFT)
+#define RE_DRAWMODE_BYTE_MASK_SHIFT                  3 /* established */
+#define RE_DRAWMODE_BYTE_MASK_MASK                   0xfu
+#define RE_DRAWMODE_BYTE_MASK_INPLACE                (RE_DRAWMODE_BYTE_MASK_MASK << RE_DRAWMODE_BYTE_MASK_SHIFT)
+#define RE_DRAWMODE_DEPTH_TEST_SHIFT                 2 /* established */
+#define RE_DRAWMODE_DEPTH_TEST_MASK                  0x1u
+#define RE_DRAWMODE_DEPTH_TEST_INPLACE               (RE_DRAWMODE_DEPTH_TEST_MASK << RE_DRAWMODE_DEPTH_TEST_SHIFT)
+#define RE_DRAWMODE_DEPTH_MASK_SHIFT                 1 /* established */
+#define RE_DRAWMODE_DEPTH_MASK_MASK                  0x1u
+#define RE_DRAWMODE_DEPTH_MASK_INPLACE               (RE_DRAWMODE_DEPTH_MASK_MASK << RE_DRAWMODE_DEPTH_MASK_SHIFT)
+#define RE_DRAWMODE_STENCIL_SHIFT                    0 /* established */
+#define RE_DRAWMODE_STENCIL_MASK                     0x1u
+#define RE_DRAWMODE_STENCIL_INPLACE                  (RE_DRAWMODE_STENCIL_MASK << RE_DRAWMODE_STENCIL_SHIFT)
+
+/* scrmask: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SCRMASK_OFFSET                            0x2020u /* established */
+#define RE_SCRMASK_COUNT                             5
+#define RE_SCRMASK_STRIDE                            8
+
+/* scissor: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SCISSOR_OFFSET                            0x2048u /* established */
+
+/* winoffset_src: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_WINOFFSET_SRC_OFFSET                      0x2050u /* established */
+
+/* winoffset_dst: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_WINOFFSET_DST_OFFSET                      0x2058u /* established */
+
+/* primitive: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PRIMITIVE_OFFSET                          0x2060u /* established */
+#define RE_PRIMITIVE_OP_SHIFT                        24 /* established */
+#define RE_PRIMITIVE_OP_MASK                         0xffu
+#define RE_PRIMITIVE_OP_INPLACE                      (RE_PRIMITIVE_OP_MASK << RE_PRIMITIVE_OP_SHIFT)
+#define RE_PRIMITIVE_OP_POINT                        0 /* established */
+#define RE_PRIMITIVE_OP_LINE                         1 /* established */
+#define RE_PRIMITIVE_OP_TRIANGLE                     2 /* established */
+#define RE_PRIMITIVE_OP_RECT                         3 /* established */
+#define RE_PRIMITIVE_LINE_SKIP_LAST_SHIFT            18 /* established */
+#define RE_PRIMITIVE_LINE_SKIP_LAST_MASK             0x1u
+#define RE_PRIMITIVE_LINE_SKIP_LAST_INPLACE          (RE_PRIMITIVE_LINE_SKIP_LAST_MASK << RE_PRIMITIVE_LINE_SKIP_LAST_SHIFT)
+#define RE_PRIMITIVE_EDGE_SHIFT                      16 /* established */
+#define RE_PRIMITIVE_EDGE_MASK                       0x3u
+#define RE_PRIMITIVE_EDGE_INPLACE                    (RE_PRIMITIVE_EDGE_MASK << RE_PRIMITIVE_EDGE_SHIFT)
+#define RE_PRIMITIVE_EDGE_LR_BT                      0 /* established */
+#define RE_PRIMITIVE_EDGE_RL_BT                      1 /* established */
+#define RE_PRIMITIVE_EDGE_LR_TB                      2 /* established */
+#define RE_PRIMITIVE_EDGE_RL_TB                      3 /* established */
+#define RE_PRIMITIVE_LINE_WIDTH_SHIFT                0 /* established */
+#define RE_PRIMITIVE_LINE_WIDTH_MASK                 0xffffu
+#define RE_PRIMITIVE_LINE_WIDTH_INPLACE              (RE_PRIMITIVE_LINE_WIDTH_MASK << RE_PRIMITIVE_LINE_WIDTH_SHIFT)
+
+/* vertex_x: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_VERTEX_X_OFFSET                           0x2070u /* established */
+#define RE_VERTEX_X_COUNT                            3
+#define RE_VERTEX_X_STRIDE                           4
+
+/* vertex_gl: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_VERTEX_GL_OFFSET                          0x2080u /* established */
+#define RE_VERTEX_GL_COUNT                           6
+#define RE_VERTEX_GL_STRIDE                          4
+
+/* xfer_src_addr: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_SRC_ADDR_OFFSET                      0x20a0u /* established */
+
+/* xfer_src_stride: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_SRC_STRIDE_OFFSET                    0x20a4u /* established */
+
+/* xfer_src_xstep: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_SRC_XSTEP_OFFSET                     0x20a8u /* established */
+
+/* xfer_src_ystep: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_SRC_YSTEP_OFFSET                     0x20acu /* established */
+
+/* xfer_dst_addr: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_DST_ADDR_OFFSET                      0x20b0u /* established */
+
+/* xfer_dst_stride: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_XFER_DST_STRIDE_OFFSET                    0x20b4u /* established */
+
+/* stipple_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_STIPPLE_MODE_OFFSET                       0x20c0u /* established */
+
+/* stipple_pattern: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_STIPPLE_PATTERN_OFFSET                    0x20c4u /* established */
+
+/* fg_color: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_FG_COLOR_OFFSET                           0x20d0u /* established */
+
+/* bg_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BG_COLOR_OFFSET                           0x20d8u /* established */
+
+/* shade_start: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_START_OFFSET                        0x20e0u /* established */
+#define RE_SHADE_START_COUNT                         4
+#define RE_SHADE_START_STRIDE                        4
+
+/* shade_drdx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DRDX_OFFSET                         0x20f0u /* established */
+
+/* shade_dgdx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DGDX_OFFSET                         0x20f4u /* established */
+
+/* shade_drdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DRDY_OFFSET                         0x20f8u /* established */
+
+/* shade_dgdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DGDY_OFFSET                         0x20fcu /* established */
+
+/* shade_dbdx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DBDX_OFFSET                         0x2100u /* established */
+
+/* shade_dadx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DADX_OFFSET                         0x2104u /* established */
+
+/* shade_dbdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DBDY_OFFSET                         0x2108u /* established */
+
+/* shade_dady: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SHADE_DADY_OFFSET                         0x210cu /* established */
+
+/* tex_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_MODE_OFFSET                           0x2110u /* established */
+
+/* tex_format: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_FORMAT_OFFSET                         0x2118u /* established */
+
+/* tex_sqs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_SQS_OFFSET                            0x2120u /* established */
+
+/* tex_tqs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_TQS_OFFSET                            0x2128u /* established */
+
+/* tex_qs: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_QS_OFFSET                             0x2130u /* established */
+
+/*
+ * tex_stflags sits between tex_qs and tex_dsqdx and is absent from the
+ * specification's register table, which skips from the one to the other.
+ * Shipped software computes one flag per texture coordinate for each textured
+ * triangle from range tests on the vertex values, writes the s flag in bit 0
+ * and the t flag in bit 1 with a 32-bit store, and scales the start and slope
+ * values of a flagged coordinate by 2^39 instead of 2^43. Inferred: a set
+ * flag tells the engine that coordinate's stepper carries four fewer fraction
+ * bits. The layout is established; that meaning is inferred.
+ */
+/* tex_stflags: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_STFLAGS_OFFSET                        0x2134u /* established */
+#define RE_TEX_STFLAGS_T_FLAG_SHIFT                  1 /* established */
+#define RE_TEX_STFLAGS_T_FLAG_MASK                   0x1u
+#define RE_TEX_STFLAGS_T_FLAG_INPLACE                (RE_TEX_STFLAGS_T_FLAG_MASK << RE_TEX_STFLAGS_T_FLAG_SHIFT)
+#define RE_TEX_STFLAGS_S_FLAG_SHIFT                  0 /* established */
+#define RE_TEX_STFLAGS_S_FLAG_MASK                   0x1u
+#define RE_TEX_STFLAGS_S_FLAG_INPLACE                (RE_TEX_STFLAGS_S_FLAG_MASK << RE_TEX_STFLAGS_S_FLAG_SHIFT)
+
+/* tex_dsqdx: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DSQDX_OFFSET                          0x2138u /* established */
+
+/* tex_dsqdy: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DSQDY_OFFSET                          0x2140u /* established */
+
+/* tex_dtqdx: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DTQDX_OFFSET                          0x2148u /* established */
+
+/* tex_dtqdy: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DTQDY_OFFSET                          0x2150u /* established */
+
+/* tex_dqdx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DQDX_OFFSET                           0x2158u /* established */
+
+/* tex_dqdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_DQDY_OFFSET                           0x215cu /* established */
+
+/* tex_border: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_BORDER_OFFSET                         0x2160u /* established */
+
+/* tex_envcolor: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TEX_ENVCOLOR_OFFSET                       0x2168u /* established */
+
+/* fog_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_FOG_COLOR_OFFSET                          0x2170u /* established */
+
+/* fog_fs: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_FOG_FS_OFFSET                             0x2178u /* established */
+
+/* fog_dfdx: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_FOG_DFDX_OFFSET                           0x2180u /* established */
+
+/* fog_dfdy: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_FOG_DFDY_OFFSET                           0x2188u /* established */
+
+/* aa_line: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_AA_LINE_OFFSET                            0x2190u /* established */
+
+/* aa_cov: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_AA_COV_OFFSET                             0x2194u /* established */
+
+/* alphatest: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_ALPHATEST_OFFSET                          0x2198u /* established */
+
+/* blend_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BLEND_COLOR_OFFSET                        0x21a0u /* established */
+
+/* blend_func: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BLEND_FUNC_OFFSET                         0x21a8u /* established */
+#define RE_BLEND_FUNC_OP_SHIFT                       8 /* established */
+#define RE_BLEND_FUNC_OP_MASK                        0xfu
+#define RE_BLEND_FUNC_OP_INPLACE                     (RE_BLEND_FUNC_OP_MASK << RE_BLEND_FUNC_OP_SHIFT)
+#define RE_BLEND_FUNC_OP_ADD                         0 /* established */
+#define RE_BLEND_FUNC_OP_MIN                         1 /* established */
+#define RE_BLEND_FUNC_OP_MAX                         2 /* established */
+#define RE_BLEND_FUNC_OP_SUBTRACT                    3 /* established */
+#define RE_BLEND_FUNC_OP_REVERSE_SUBTRACT            4 /* established */
+#define RE_BLEND_FUNC_SRC_SHIFT                      4 /* established */
+#define RE_BLEND_FUNC_SRC_MASK                       0xfu
+#define RE_BLEND_FUNC_SRC_INPLACE                    (RE_BLEND_FUNC_SRC_MASK << RE_BLEND_FUNC_SRC_SHIFT)
+#define RE_BLEND_FUNC_SRC_ZERO                       0 /* established */
+#define RE_BLEND_FUNC_SRC_ONE                        1 /* established */
+#define RE_BLEND_FUNC_SRC_DST_COLOR                  2 /* established */
+#define RE_BLEND_FUNC_SRC_ONE_MINUS_DST_COLOR        3 /* established */
+#define RE_BLEND_FUNC_SRC_SRC_ALPHA                  4 /* established */
+#define RE_BLEND_FUNC_SRC_ONE_MINUS_SRC_ALPHA        5 /* established */
+#define RE_BLEND_FUNC_SRC_DST_ALPHA                  6 /* established */
+#define RE_BLEND_FUNC_SRC_ONE_MINUS_DST_ALPHA        7 /* established */
+#define RE_BLEND_FUNC_SRC_CONSTANT_COLOR             8 /* established */
+#define RE_BLEND_FUNC_SRC_ONE_MINUS_CONSTANT_COLOR   9 /* established */
+#define RE_BLEND_FUNC_SRC_CONSTANT_ALPHA             10 /* established */
+#define RE_BLEND_FUNC_SRC_ONE_MINUS_CONSTANT_ALPHA   11 /* established */
+#define RE_BLEND_FUNC_SRC_SRC_ALPHA_SATURATE         12 /* established */
+#define RE_BLEND_FUNC_DST_SHIFT                      0 /* established */
+#define RE_BLEND_FUNC_DST_MASK                       0xfu
+#define RE_BLEND_FUNC_DST_INPLACE                    (RE_BLEND_FUNC_DST_MASK << RE_BLEND_FUNC_DST_SHIFT)
+#define RE_BLEND_FUNC_DST_ZERO                       0 /* established */
+#define RE_BLEND_FUNC_DST_ONE                        1 /* established */
+#define RE_BLEND_FUNC_DST_SRC_COLOR                  2 /* established */
+#define RE_BLEND_FUNC_DST_ONE_MINUS_SRC_COLOR        3 /* established */
+#define RE_BLEND_FUNC_DST_SRC_ALPHA                  4 /* established */
+#define RE_BLEND_FUNC_DST_ONE_MINUS_SRC_ALPHA        5 /* established */
+#define RE_BLEND_FUNC_DST_DST_ALPHA                  6 /* established */
+#define RE_BLEND_FUNC_DST_ONE_MINUS_DST_ALPHA        7 /* established */
+#define RE_BLEND_FUNC_DST_CONSTANT_COLOR             8 /* established */
+#define RE_BLEND_FUNC_DST_ONE_MINUS_CONSTANT_COLOR   9 /* established */
+#define RE_BLEND_FUNC_DST_CONSTANT_ALPHA             10 /* established */
+#define RE_BLEND_FUNC_DST_ONE_MINUS_CONSTANT_ALPHA   11 /* established */
+
+/* logicop: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_LOGICOP_OFFSET                            0x21b0u /* established */
+
+/* colormask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_COLORMASK_OFFSET                          0x21b8u /* established */
+
+/* depth_func: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_DEPTH_FUNC_OFFSET                         0x21c0u /* established */
+
+/* depth_zs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_DEPTH_ZS_OFFSET                           0x21c8u /* established */
+
+/* depth_dzdx: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_DEPTH_DZDX_OFFSET                         0x21d0u /* established */
+
+/* depth_dzdy: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_DEPTH_DZDY_OFFSET                         0x21d8u /* established */
+
+/* stencil_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_STENCIL_MODE_OFFSET                       0x21e0u /* established */
+
+/* stencil_mask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_STENCIL_MASK_OFFSET                       0x21e8u /* established */
+
+/* pixpipe_null: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PIXPIPE_NULL_OFFSET                       0x21f0u /* established */
+
+/* pixpipe_flush: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_PIXPIPE_FLUSH_OFFSET                      0x21f8u /* established */
+
+/*
+ * The status register is read with 32-bit loads. Shipped software polls the
+ * combined idle bit (28), reads the interface-buffer fill level from bits
+ * 24:18 to count free slots (64 minus the level) and reads the start and write
+ * pointers when saving queued writes on a context switch. The read pointer
+ * (17:12) and the setup and pixel-pipe idle bits (27, 26) are taken from the
+ * public NetBSD driver and no shipped software reads them. Bit 25 is the
+ * memory transfer engine idle bit in the NetBSD driver; the OpenBSD driver
+ * names the same bit ready and never reads it. The kernel's transfer-wait
+ * routine tests bit 25, which fits an idle reading, so the position is
+ * established and the meaning inferred. The start field (5:0) is where the
+ * entries not yet committed begin; its meaning is inferred.
+ */
+/* status: r32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_STATUS_OFFSET                             0x4000u /* established */
+#define RE_STATUS_IDLE_SHIFT                         28 /* established */
+#define RE_STATUS_IDLE_MASK                          0x1u
+#define RE_STATUS_IDLE_INPLACE                       (RE_STATUS_IDLE_MASK << RE_STATUS_IDLE_SHIFT)
+#define RE_STATUS_SETUP_IDLE_SHIFT                   27 /* established */
+#define RE_STATUS_SETUP_IDLE_MASK                    0x1u
+#define RE_STATUS_SETUP_IDLE_INPLACE                 (RE_STATUS_SETUP_IDLE_MASK << RE_STATUS_SETUP_IDLE_SHIFT)
+#define RE_STATUS_PIXPIPE_IDLE_SHIFT                 26 /* established */
+#define RE_STATUS_PIXPIPE_IDLE_MASK                  0x1u
+#define RE_STATUS_PIXPIPE_IDLE_INPLACE               (RE_STATUS_PIXPIPE_IDLE_MASK << RE_STATUS_PIXPIPE_IDLE_SHIFT)
+#define RE_STATUS_MTE_IDLE_SHIFT                     25 /* inferred */
+#define RE_STATUS_MTE_IDLE_MASK                      0x1u
+#define RE_STATUS_MTE_IDLE_INPLACE                   (RE_STATUS_MTE_IDLE_MASK << RE_STATUS_MTE_IDLE_SHIFT)
+#define RE_STATUS_LEVEL_SHIFT                        18 /* established */
+#define RE_STATUS_LEVEL_MASK                         0x7fu
+#define RE_STATUS_LEVEL_INPLACE                      (RE_STATUS_LEVEL_MASK << RE_STATUS_LEVEL_SHIFT)
+#define RE_STATUS_RD_PTR_SHIFT                       12 /* established */
+#define RE_STATUS_RD_PTR_MASK                        0x3fu
+#define RE_STATUS_RD_PTR_INPLACE                     (RE_STATUS_RD_PTR_MASK << RE_STATUS_RD_PTR_SHIFT)
+#define RE_STATUS_WR_PTR_SHIFT                       6 /* established */
+#define RE_STATUS_WR_PTR_MASK                        0x3fu
+#define RE_STATUS_WR_PTR_INPLACE                     (RE_STATUS_WR_PTR_MASK << RE_STATUS_WR_PTR_SHIFT)
+#define RE_STATUS_START_SHIFT                        0 /* inferred */
+#define RE_STATUS_START_MASK                         0x3fu
+#define RE_STATUS_START_INPLACE                      (RE_STATUS_START_MASK << RE_STATUS_START_SHIFT)
+
+/*
+ * ib_discard sits two doublewords above the status register. Shipped kernel
+ * code stores zero to it with a 32-bit store, never reads it, and does so after
+ * saving the outgoing client's queued writes on a context switch, after the
+ * incoming client's loads, and at the end of each translation table loader.
+ * The user-mode library and the X server never write it. Inferred: the write
+ * discards the queued writes not yet committed. The register's position and
+ * its write-zero use are established; that effect is inferred.
+ */
+/* ib_discard: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IB_DISCARD_OFFSET                         0x4008u /* established */
+
+/*
+ * The buffer mode words (source and destination share one layout) pick the
+ * buffer, its TLB and the pixel format. buf_type chooses tiled access
+ * through a frame-buffer table or linear access through a linear table;
+ * buf_depth is the word size in memory and pix_depth the pixel size, which
+ * must not exceed it. ycrcb is valid in the source word only. Shipped
+ * software writes the values in the vectors below; other bits are reserved
+ * (one shipped swap path sets bit 30 as well).
+ */
+/* word BUFMODE: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_BUFMODE_WIDTH                             32 /* established */
+#define RE_BUFMODE_BUF_TYPE_SHIFT                    10 /* established */
+#define RE_BUFMODE_BUF_TYPE_MASK                     0x7u
+#define RE_BUFMODE_BUF_TYPE_INPLACE                  (RE_BUFMODE_BUF_TYPE_MASK << RE_BUFMODE_BUF_TYPE_SHIFT)
+#define RE_BUFMODE_BUF_TYPE_FB_A                     0 /* established */
+#define RE_BUFMODE_BUF_TYPE_FB_B                     1 /* established */
+#define RE_BUFMODE_BUF_TYPE_FB_C                     2 /* established */
+#define RE_BUFMODE_BUF_TYPE_LIN_A                    4 /* established */
+#define RE_BUFMODE_BUF_TYPE_LIN_B                    5 /* established */
+#define RE_BUFMODE_BUF_DEPTH_SHIFT                   8 /* established */
+#define RE_BUFMODE_BUF_DEPTH_MASK                    0x3u
+#define RE_BUFMODE_BUF_DEPTH_INPLACE                 (RE_BUFMODE_BUF_DEPTH_MASK << RE_BUFMODE_BUF_DEPTH_SHIFT)
+#define RE_BUFMODE_BUF_DEPTH_BITS8                   0 /* established */
+#define RE_BUFMODE_BUF_DEPTH_BITS16                  1 /* established */
+#define RE_BUFMODE_BUF_DEPTH_BITS32                  2 /* established */
+#define RE_BUFMODE_PIX_TYPE_SHIFT                    4 /* established */
+#define RE_BUFMODE_PIX_TYPE_MASK                     0xfu
+#define RE_BUFMODE_PIX_TYPE_INPLACE                  (RE_BUFMODE_PIX_TYPE_MASK << RE_BUFMODE_PIX_TYPE_SHIFT)
+#define RE_BUFMODE_PIX_TYPE_CI                       0 /* established */
+#define RE_BUFMODE_PIX_TYPE_RGB                      1 /* established */
+#define RE_BUFMODE_PIX_TYPE_RGBA                     2 /* established */
+#define RE_BUFMODE_PIX_TYPE_ABGR                     3 /* established */
+#define RE_BUFMODE_PIX_TYPE_YCRCB                    15 /* established */
+#define RE_BUFMODE_PIX_DEPTH_SHIFT                   2 /* established */
+#define RE_BUFMODE_PIX_DEPTH_MASK                    0x3u
+#define RE_BUFMODE_PIX_DEPTH_INPLACE                 (RE_BUFMODE_PIX_DEPTH_MASK << RE_BUFMODE_PIX_DEPTH_SHIFT)
+#define RE_BUFMODE_PIX_DEPTH_BITS8                   0 /* established */
+#define RE_BUFMODE_PIX_DEPTH_BITS16                  1 /* established */
+#define RE_BUFMODE_PIX_DEPTH_BITS32                  2 /* established */
+#define RE_BUFMODE_DOUBLE_PIX_SHIFT                  1 /* established */
+#define RE_BUFMODE_DOUBLE_PIX_MASK                   0x1u
+#define RE_BUFMODE_DOUBLE_PIX_INPLACE                (RE_BUFMODE_DOUBLE_PIX_MASK << RE_BUFMODE_DOUBLE_PIX_SHIFT)
+#define RE_BUFMODE_DOUBLE_PIX_SEL_SHIFT              0 /* established */
+#define RE_BUFMODE_DOUBLE_PIX_SEL_MASK               0x1u
+#define RE_BUFMODE_DOUBLE_PIX_SEL_INPLACE            (RE_BUFMODE_DOUBLE_PIX_SEL_MASK << RE_BUFMODE_DOUBLE_PIX_SEL_SHIFT)
+
+/*
+ * ib_addr holds the address half of each queued write. Software decodes its
+ * upper 32 bits (IBADDR_HI, the word at the register's own address in
+ * big-endian layout) as the register's doubleword index within its group, the
+ * group, a byte lane code and one flag bit; the hardware meaning of the lane
+ * code and the flag is inferred. The index is address bits 10:3 and the group
+ * is address bits 14:12 of the register; bit 11, the start alias, is the
+ * address bit left out, so the flag is inferred to mark an entry written
+ * through the start alias. Replay by software writes lane 3 as one
+ * doubleword, lane 2 as the first (upper) data word at the register address,
+ * lane 1 as the second data word four bytes higher, and treats lane 0 as an
+ * error that writes nothing. The lower 32 bits are not decoded by any shipped
+ * software read.
+ */
+/* word IBADDR_HI: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_IBADDR_HI_WIDTH                           32 /* inferred */
+#define RE_IBADDR_HI_START_FLAG_SHIFT                13 /* inferred */
+#define RE_IBADDR_HI_START_FLAG_MASK                 0x1u
+#define RE_IBADDR_HI_START_FLAG_INPLACE              (RE_IBADDR_HI_START_FLAG_MASK << RE_IBADDR_HI_START_FLAG_SHIFT)
+#define RE_IBADDR_HI_LANE_SHIFT                      11 /* inferred */
+#define RE_IBADDR_HI_LANE_MASK                       0x3u
+#define RE_IBADDR_HI_LANE_INPLACE                    (RE_IBADDR_HI_LANE_MASK << RE_IBADDR_HI_LANE_SHIFT)
+#define RE_IBADDR_HI_LANE_NONE                       0 /* inferred */
+#define RE_IBADDR_HI_LANE_WORD1                      1 /* inferred */
+#define RE_IBADDR_HI_LANE_WORD0                      2 /* inferred */
+#define RE_IBADDR_HI_LANE_DWORD                      3 /* inferred */
+#define RE_IBADDR_HI_GROUP_SHIFT                     8 /* established */
+#define RE_IBADDR_HI_GROUP_MASK                      0x7u
+#define RE_IBADDR_HI_GROUP_INPLACE                   (RE_IBADDR_HI_GROUP_MASK << RE_IBADDR_HI_GROUP_SHIFT)
+#define RE_IBADDR_HI_GROUP_INTERFACE                 0 /* established */
+#define RE_IBADDR_HI_GROUP_TLB                       1 /* established */
+#define RE_IBADDR_HI_GROUP_PIXEL_PIPE                2 /* established */
+#define RE_IBADDR_HI_GROUP_TRANSFER                  3 /* established */
+#define RE_IBADDR_HI_INDEX_SHIFT                     0 /* established */
+#define RE_IBADDR_HI_INDEX_MASK                      0xffu
+#define RE_IBADDR_HI_INDEX_INPLACE                   (RE_IBADDR_HI_INDEX_MASK << RE_IBADDR_HI_INDEX_SHIFT)
+
+/*
+ * Each doubleword holds two 32-bit page entries, the even page in the upper
+ * word and the odd page in the lower word. Software indexes a table with
+ * address bits 16:13 and stores a page number with its top bit set, which is
+ * inferred to be a valid bit. LINENT describes one such entry.
+ */
+/* word LINENT: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_LINENT_WIDTH                              32 /* inferred */
+#define RE_LINENT_VALID_SHIFT                        31 /* inferred */
+#define RE_LINENT_VALID_MASK                         0x1u
+#define RE_LINENT_VALID_INPLACE                      (RE_LINENT_VALID_MASK << RE_LINENT_VALID_SHIFT)
+#define RE_LINENT_PAGE_SHIFT                         0 /* established */
+#define RE_LINENT_PAGE_MASK                          0x7fffffffu
+#define RE_LINENT_PAGE_INPLACE                       (RE_LINENT_PAGE_MASK << RE_LINENT_PAGE_SHIFT)
+
+/*
+ * Each screen mask is one clip rectangle; the end coordinates are exclusive.
+ * The upper word (SCRMASK_HI, at the register's own address in big-endian
+ * layout) holds the start corner and the lower word (SCRMASK_LO) the end
+ * corner.
+ */
+/* word SCRMASK_HI: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SCRMASK_HI_WIDTH                          32 /* established */
+#define RE_SCRMASK_HI_X_START_SHIFT                  16 /* established */
+#define RE_SCRMASK_HI_X_START_MASK                   0xffffu
+#define RE_SCRMASK_HI_X_START_INPLACE                (RE_SCRMASK_HI_X_START_MASK << RE_SCRMASK_HI_X_START_SHIFT)
+#define RE_SCRMASK_HI_Y_START_SHIFT                  0 /* established */
+#define RE_SCRMASK_HI_Y_START_MASK                   0xffffu
+#define RE_SCRMASK_HI_Y_START_INPLACE                (RE_SCRMASK_HI_Y_START_MASK << RE_SCRMASK_HI_Y_START_SHIFT)
+
+/* word SCRMASK_LO: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_SCRMASK_LO_WIDTH                          32 /* established */
+#define RE_SCRMASK_LO_X_END_SHIFT                    16 /* established */
+#define RE_SCRMASK_LO_X_END_MASK                     0xffffu
+#define RE_SCRMASK_LO_X_END_INPLACE                  (RE_SCRMASK_LO_X_END_MASK << RE_SCRMASK_LO_X_END_SHIFT)
+#define RE_SCRMASK_LO_Y_END_SHIFT                    0 /* established */
+#define RE_SCRMASK_LO_Y_END_MASK                     0xffffu
+#define RE_SCRMASK_LO_Y_END_INPLACE                  (RE_SCRMASK_LO_Y_END_MASK << RE_SCRMASK_LO_Y_END_SHIFT)
+
+/* word TLBTILE: 32 bits; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
+#define RE_TLBTILE_WIDTH                             32 /* inferred */
+#define RE_TLBTILE_VALID_SHIFT                       15 /* inferred */
+#define RE_TLBTILE_VALID_MASK                        0x1u
+#define RE_TLBTILE_VALID_INPLACE                     (RE_TLBTILE_VALID_MASK << RE_TLBTILE_VALID_SHIFT)
+#define RE_TLBTILE_PAGE_SHIFT                        0 /* established */
+#define RE_TLBTILE_PAGE_MASK                         0x7fffu
+#define RE_TLBTILE_PAGE_INPLACE                      (RE_TLBTILE_PAGE_MASK << RE_TLBTILE_PAGE_SHIFT)
+
+#define RE_IB_ENTRIES                                0x40u /* established */
+#define RE_LIN_TLB_REGS                              0x10u /* established */
+#define RE_START_ALIAS_BIT                           0xbu /* established */
+#define RE_TLB_ENTRIES_PER_REG                       0x4u /* established */
+#define RE_TLB_TILE_SHIFT                            0x10u /* established */
+
+#endif /* RE_GEN_H */

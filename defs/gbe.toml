@@ -1,0 +1,450 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "gbe"
+prefix = "GBE"
+title = "O2 GBE display back end register words"
+doc = "GBE display back end register words, tables and offsets."
+from = "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+public_from = ["published GBE 1.1 specification"]
+
+[c]
+legacy_header = "GBE_DECODE.h"
+legacy_guard = "GBE_DECODE_H"
+
+[words.CMAP_ENTRY]
+width = 32
+grade = "established"
+
+[words.CMAP_ENTRY.fields]
+r = { bits = [31, 24], grade = "established" }
+g = { bits = [23, 16], grade = "established" }
+b = { bits = [15, 8], grade = "established" }
+
+[[words.CMAP_ENTRY.tests]]
+value = 0xff804000
+expect = { r = 255, g = 128, b = 64 }
+
+[words.CMAP_FIFO]
+width = 32
+grade = "established"
+
+[words.CMAP_FIFO.fields]
+free = { bits = [5, 0], grade = "established" }
+
+[words.CRS_CTL]
+width = 32
+grade = "established"
+
+[words.CRS_CTL.fields]
+enable = { bits = [0, 0], grade = "established" }
+
+[words.CRS_START_XY]
+width = 32
+grade = "established"
+
+[words.CRS_START_XY.fields]
+starty = { bits = [23, 12], grade = "established" }
+startx = { bits = [11, 0], grade = "established" }
+
+[words.CTRLSTAT]
+width = 32
+grade = "established"
+
+[words.CTRLSTAT.fields]
+io6_data = { bits = [18, 18], grade = "established" }
+io5_data = { bits = [16, 16], grade = "established" }
+io4_data = { bits = [14, 14], grade = "established" }
+io3_data = { bits = [12, 12], grade = "established" }
+chip_rev = { bits = [3, 0], grade = "established" }
+
+[words.CTRLSTAT.fields.pclk_select]
+bits = [29, 28]
+grade = "established"
+
+[words.CTRLSTAT.fields.pclk_select.enums]
+external = { value = 0, grade = "established" }
+internal = { value = 3, grade = "established" }
+
+[[words.CTRLSTAT.tests]]
+value = 0x30000000
+expect = { pclk_select = 3, chip_rev = 0 }
+
+[words.DID_CONTROL]
+width = 32
+grade = "established"
+
+[words.DID_CONTROL.fields]
+dma_enable = { bits = [16, 16], grade = "established" }
+did_base = { bits = [15, 0], grade = "established" }
+
+[[words.DID_CONTROL.tests]]
+value = 0x10005
+expect = { did_base = 5, dma_enable = 1 }
+
+[words.DID_FRAME]
+width = 32
+grade = "established"
+
+[words.DID_FRAME.fields]
+block = { bits = [25, 19], grade = "established" }
+offset = { bits = [18, 11], grade = "established" }
+yend = { bits = [10, 0], grade = "established" }
+
+[words.DID_INHWCTRL]
+width = 32
+grade = "established"
+
+[words.DID_INHWCTRL.fields]
+dma_enable = { bits = [16, 16], grade = "established" }
+did_base = { bits = [15, 0], grade = "established" }
+
+[words.DID_LINE]
+width = 32
+grade = "established"
+
+[words.DID_LINE.fields]
+did = { bits = [15, 11], grade = "established" }
+xend = { bits = [10, 0], grade = "established" }
+
+[words.DID_START_XY]
+width = 32
+grade = "established"
+
+[words.DID_START_XY.fields]
+starty = { bits = [23, 12], grade = "established" }
+startx = { bits = [11, 0], grade = "established" }
+
+[words.DOTCLOCK]
+width = 32
+grade = "established"
+
+[words.DOTCLOCK.fields]
+run = { bits = [20, 20], grade = "established" }
+p = { bits = [15, 14], grade = "established" }
+n_minus_1 = { bits = [13, 8], grade = "established" }
+m_minus_1 = { bits = [7, 0], grade = "established" }
+
+[[words.DOTCLOCK.tests]]
+value = 0x100000
+expect = { run = 1, p = 0 }
+
+[words.FP_DE]
+width = 32
+grade = "established"
+
+[words.FP_DE.fields]
+on = { bits = [23, 12], grade = "established" }
+off = { bits = [11, 0], grade = "established" }
+
+[[words.FP_DE.tests]]
+value = 0x303326
+expect = { off = 806, on = 771 }
+
+[words.FP_HDRV]
+width = 32
+doc = """
+The three flat-panel drive registers and the three start-preset registers
+share one layout: two 12-bit counts, "off" or "x" in the low half. The
+specification names them VT_10 to VT_12 and VT_17 to VT_19 (pages 39 and
+40). It compares FP_HDRV, FP_DE and the "x" halves with the horizontal
+counter and FP_VDRV and the "y" halves with the vertical counter, but it
+compares both halves of FP_DE with the horizontal counter. The totals
+shipped software writes for two fixed panels (806 and 771, 1065 and 1024)
+look like line counts, not pixel counts (inferred from magnitude); which
+counter FP_DE really uses is unknown."""
+grade = "established"
+
+[words.FP_HDRV.fields]
+on = { bits = [23, 12], grade = "established" }
+off = { bits = [11, 0], grade = "established" }
+
+[[words.FP_HDRV.tests]]
+value = 0xfff
+expect = { off = 4095, on = 0 }
+
+[words.FP_VDRV]
+width = 32
+grade = "established"
+
+[words.FP_VDRV.fields]
+on = { bits = [23, 12], grade = "established" }
+off = { bits = [11, 0], grade = "established" }
+
+[[words.FP_VDRV.tests]]
+value = 0x1fff
+expect = { off = 4095, on = 1 }
+
+[words.FRM_CONTROL]
+width = 32
+grade = "established"
+
+[words.FRM_CONTROL.fields]
+tile_list_ptr = { bits = [31, 5], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[words.FRM_INHWCTRL]
+width = 32
+grade = "established"
+
+[words.FRM_INHWCTRL.fields]
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[words.FRM_SIZE_TILE]
+width = 32
+grade = "established"
+
+[words.FRM_SIZE_TILE.fields]
+fifo_reset = { bits = [15, 15], grade = "established" }
+width_tiles = { bits = [12, 5], grade = "established" }
+remainder = { bits = [4, 0], grade = "established" }
+
+[words.FRM_SIZE_TILE.fields.depth]
+bits = [14, 13]
+grade = "established"
+
+[words.FRM_SIZE_TILE.fields.depth.enums]
+bits8 = { value = 0, grade = "established" }
+bits16 = { value = 1, grade = "established" }
+bits32 = { value = 2, grade = "established" }
+
+[words.MODE_ENTRY]
+width = 32
+grade = "established"
+
+[words.MODE_ENTRY.fields]
+aux = { bits = [12, 11], grade = "established" }
+gm = { bits = [10, 10], grade = "established" }
+cm = { bits = [9, 5], grade = "established" }
+
+[words.MODE_ENTRY.fields.typ]
+bits = [4, 2]
+grade = "established"
+
+[words.MODE_ENTRY.fields.typ.enums]
+i8 = { value = 0, grade = "established" }
+i12 = { value = 1, grade = "established" }
+rg3b2 = { value = 2, grade = "established" }
+rgb4 = { value = 3, grade = "established" }
+rgb5 = { value = 4, grade = "established" }
+rgb8 = { value = 5, grade = "established" }
+rgba5 = { value = 6, grade = "established" }
+rgb10 = { value = 7, grade = "established" }
+
+[words.MODE_ENTRY.fields.buf]
+bits = [1, 0]
+grade = "established"
+
+[words.MODE_ENTRY.fields.buf.enums]
+lower = { value = 1, grade = "established" }
+upper = { value = 2, grade = "established" }
+both = { value = 3, grade = "established" }
+
+[[words.MODE_ENTRY.tests]]
+value = 0x41
+expect = { buf = 1, typ = 0, cm = 2 }
+
+[words.OVR_CONTROL]
+width = 32
+grade = "established"
+
+[words.OVR_CONTROL.fields]
+tile_list_ptr = { bits = [31, 5], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[words.OVR_INHWCTRL]
+width = 32
+grade = "established"
+
+[words.OVR_INHWCTRL.fields]
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[words.OVR_WIDTH_TILE]
+width = 32
+grade = "established"
+
+[words.OVR_WIDTH_TILE.fields]
+fifo_reset = { bits = [13, 13], grade = "established" }
+
+[words.TILE_LIST_ENTRY]
+width = 32
+grade = "established"
+
+[words.TILE_LIST_ENTRY.fields]
+tile = { bits = [12, 0], grade = "established" }
+
+[words.VC_0]
+width = 32
+grade = "established"
+
+[words.VC_0.fields]
+right = { bits = [23, 12], grade = "established" }
+left = { bits = [11, 0], grade = "established" }
+
+[words.VC_1]
+width = 32
+grade = "established"
+
+[words.VC_1.fields]
+bottom = { bits = [23, 12], grade = "established" }
+top = { bits = [11, 0], grade = "established" }
+
+[words.VC_2]
+width = 32
+grade = "established"
+
+[words.VC_2.fields]
+cs_bypass = { bits = [4, 4], grade = "established" }
+full_screen = { bits = [3, 3], grade = "established" }
+auto_field = { bits = [2, 2], grade = "established" }
+flicker_filter = { bits = [1, 1], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[words.VC_3]
+width = 32
+grade = "established"
+
+[words.VC_3.fields]
+descr_ptr = { bits = [31, 5], grade = "established" }
+current_field = { bits = [4, 4], grade = "established" }
+end_of_field = { bits = [3, 3], grade = "established" }
+field_corrupt = { bits = [2, 2], grade = "established" }
+descr_dma_enable = { bits = [1, 1], grade = "established" }
+field_select = { bits = [0, 0], grade = "established" }
+
+[words.VC_START_XY]
+width = 32
+grade = "established"
+
+[words.VC_START_XY.fields]
+starty = { bits = [23, 12], grade = "established" }
+startx = { bits = [11, 0], grade = "established" }
+
+[words.VC_TILES]
+width = 32
+grade = "established"
+
+[words.VC_TILES.fields]
+tile_first = { bits = [31, 16], grade = "established" }
+tile_second = { bits = [15, 0], grade = "established" }
+
+[words.VT_FLAGS]
+width = 32
+grade = "established"
+
+[words.VT_FLAGS.fields]
+sync_low = { bits = [5, 5], grade = "established" }
+
+[words.VT_HCMAP]
+width = 32
+grade = "established"
+
+[words.VT_HCMAP.fields]
+on = { bits = [23, 12], grade = "established" }
+off = { bits = [11, 0], grade = "established" }
+
+[words.VT_INTR01]
+width = 32
+grade = "established"
+
+[words.VT_INTR01.fields]
+line0 = { bits = [23, 12], grade = "established" }
+line1 = { bits = [11, 0], grade = "established" }
+
+[words.VT_INTR23]
+width = 32
+grade = "established"
+
+[words.VT_INTR23.fields]
+line2 = { bits = [23, 12], grade = "established" }
+line3 = { bits = [11, 0], grade = "established" }
+
+[words.VT_VCMAP]
+width = 32
+grade = "established"
+
+[words.VT_VCMAP.fields]
+on = { bits = [23, 12], grade = "established" }
+off = { bits = [11, 0], grade = "established" }
+
+[words.VT_XY]
+width = 32
+grade = "established"
+
+[words.VT_XY.fields]
+freeze = { bits = [31, 31], grade = "established" }
+
+[words.VT_XYMAX]
+width = 32
+grade = "established"
+
+[words.VT_XYMAX.fields]
+vtotal = { bits = [23, 12], grade = "established" }
+htotal = { bits = [11, 0], grade = "established" }
+
+[[words.VT_XYMAX.tests]]
+value = 0x20d320
+expect = { htotal = 800, vtotal = 525 }
+
+[constants]
+CMAP_ENTRIES_REV1 = { value = 0x1200, grade = "established", doc = "revision 1.1" }
+CMAP_ENTRIES_REV2 = { value = 0x1800, grade = "inferred", doc = "revision 2" }
+CMAP_FIFO_DEPTH_REV1 = { value = 0x40, grade = "established" }
+CMAP_FIFO_DEPTH_REV2 = { value = 0x3f, grade = "inferred" }
+CMAP_FIFO_LOW_WATER = { value = 0x30, grade = "established", doc = "free-slot threshold software waits for" }
+DEVICE_ID_VALUE = { value = 0x666, grade = "established", doc = "the probe requires this" }
+GMAP_ENTRIES = { value = 0x100, grade = "established" }
+MODE_ENTRIES = { value = 0x20, grade = "established" }
+MODE_ENTRY_STRIDE = { value = 0x4, grade = "established", doc = "entries are consecutive 32-bit words, so swap slot n sits at the table base plus 4 * n" }
+OFF_CMAP = { value = 0x50000, grade = "established", doc = "colour map" }
+OFF_CMAP_FIFO = { value = 0x58000, grade = "established" }
+OFF_CRS_CMAP = { value = 0x70008, grade = "established" }
+OFF_CRS_CTL = { value = 0x70004, grade = "established" }
+OFF_CRS_GLYPH = { value = 0x78000, grade = "established" }
+OFF_CRS_POS = { value = 0x70000, grade = "established" }
+OFF_CRS_START_XY = { value = 0x10048, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_CTRLSTAT = { value = 0x0, grade = "established" }
+OFF_DEVICE_ID = { value = 0x14, grade = "established" }
+OFF_DID_CONTROL = { value = 0x40004, grade = "established" }
+OFF_DID_INHWCTRL = { value = 0x40000, grade = "established" }
+OFF_DID_START_XY = { value = 0x10044, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_DOTCLOCK = { value = 0x4, grade = "established" }
+OFF_FP_DE = { value = 0x10030, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_FP_HDRV = { value = 0x10028, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_FP_VDRV = { value = 0x1002c, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_FRM_CONTROL = { value = 0x3000c, grade = "established" }
+OFF_FRM_INHWCTRL = { value = 0x30008, grade = "established" }
+OFF_FRM_SIZE_PIXEL = { value = 0x30004, grade = "established" }
+OFF_FRM_SIZE_TILE = { value = 0x30000, grade = "established" }
+OFF_GMAP = { value = 0x60000, grade = "established", doc = "256 gamma entries" }
+OFF_I2C = { value = 0x8, grade = "established" }
+OFF_I2CFP = { value = 0x10, grade = "established" }
+OFF_MODE_TABLE = { value = 0x48000, grade = "established", doc = "32 window-ID entries" }
+OFF_OVR_CONTROL = { value = 0x20008, grade = "established" }
+OFF_OVR_INHWCTRL = { value = 0x20004, grade = "established" }
+OFF_OVR_WIDTH_TILE = { value = 0x20000, grade = "established" }
+OFF_SYSCLK = { value = 0xc, grade = "established" }
+OFF_VC_0 = { value = 0x80000, grade = "established", doc = "video capture region, left and right" }
+OFF_VC_1 = { value = 0x80004, grade = "established", doc = "video capture region, top and bottom" }
+OFF_VC_2 = { value = 0x80008, grade = "established", doc = "video capture control" }
+OFF_VC_3 = { value = 0x8000c, grade = "established", doc = "video capture field and descriptor control" }
+OFF_VC_4 = { value = 0x80010, grade = "established", doc = "capture tile addresses, tiles 1 and 2" }
+OFF_VC_5 = { value = 0x80014, grade = "established", doc = "capture tile addresses, tiles 3 and 4" }
+OFF_VC_6 = { value = 0x80018, grade = "established", doc = "capture tile addresses, tiles 5 and 6" }
+OFF_VC_7 = { value = 0x8001c, grade = "established", doc = "capture tile addresses, tiles 7 and 8" }
+OFF_VC_8 = { value = 0x80020, grade = "established", doc = "capture tile addresses, tiles 9 and 10; write only" }
+OFF_VC_START_XY = { value = 0x1004c, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
+OFF_VT_F2RF_LOCK = { value = 0x1001c, grade = "established" }
+OFF_VT_FLAGS = { value = 0x10018, grade = "established" }
+OFF_VT_HBLANK = { value = 0x10014, grade = "established" }
+OFF_VT_HCMAP = { value = 0x1003c, grade = "established" }
+OFF_VT_HPIXEN = { value = 0x10034, grade = "established" }
+OFF_VT_HSYNC = { value = 0x1000c, grade = "established" }
+OFF_VT_INTR01 = { value = 0x10020, grade = "established" }
+OFF_VT_INTR23 = { value = 0x10024, grade = "established" }
+OFF_VT_VBLANK = { value = 0x10010, grade = "established" }
+OFF_VT_VCMAP = { value = 0x10040, grade = "established" }
+OFF_VT_VPIXEN = { value = 0x10038, grade = "established" }
+OFF_VT_VSYNC = { value = 0x10008, grade = "established" }
+OFF_VT_XY = { value = 0x10000, grade = "established" }
+OFF_VT_XYMAX = { value = 0x10004, grade = "established" }
+TILE_LIST_BYTES_UNIT = { value = 0x20, grade = "established", doc = "a changed tile pointer is seen by adding this" }
+VC_TILE_REGS = { value = 0x5, grade = "established", doc = "VC_4 to VC_8 hold the ten tiles of one captured field, two per register" }

@@ -1,0 +1,165 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mte"
+prefix = "MTE"
+title = "O2 CRIME memory transfer engine registers and tile layout"
+doc = "CRIME memory transfer engine registers, address word and tile geometry."
+from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+public_from = ["published CRIME 1.5 draft specification"]
+
+[c]
+legacy_header = "MTE_DECODE.h"
+legacy_guard = "MTE_DECODE_H"
+
+[spaces.re]
+
+[registers.mode]
+offset = 0x3000
+access = "rw"
+width = 64
+grade = "established"
+space = "re"
+
+[registers.mode.fields]
+copy = { bits = [11, 11], grade = "established" }
+stipple = { bits = [10, 10], grade = "established" }
+src_ecc = { bits = [1, 1], grade = "established" }
+dst_ecc = { bits = [0, 0], grade = "established" }
+
+[registers.mode.fields.depth]
+bits = [9, 8]
+grade = "established"
+
+[registers.mode.fields.depth.enums]
+bits8 = { value = 0, grade = "established" }
+bits16 = { value = 1, grade = "established" }
+bits32 = { value = 2, grade = "established" }
+
+[registers.mode.fields.src_buf]
+bits = [7, 5]
+grade = "established"
+
+[registers.mode.fields.src_buf.enums]
+fb_a = { value = 0, grade = "established" }
+fb_b = { value = 1, grade = "established" }
+fb_c = { value = 2, grade = "established" }
+tex = { value = 3, grade = "established" }
+lin_a = { value = 4, grade = "established" }
+lin_b = { value = 5, grade = "established" }
+cid = { value = 6, grade = "established" }
+
+[registers.mode.fields.dst_buf]
+bits = [4, 2]
+grade = "established"
+
+[registers.mode.fields.dst_buf.enums]
+fb_a = { value = 0, grade = "established" }
+fb_b = { value = 1, grade = "established" }
+fb_c = { value = 2, grade = "established" }
+tex = { value = 3, grade = "established" }
+lin_a = { value = 4, grade = "established" }
+lin_b = { value = 5, grade = "established" }
+cid = { value = 6, grade = "established" }
+
+[[registers.mode.tests]]
+value = 0x10b
+expect = { copy = 0, depth = 1, dst_buf = 2, src_ecc = 1, dst_ecc = 1 }
+
+[[registers.mode.tests]]
+value = 0x820
+expect = { copy = 1, stipple = 0, depth = 0, src_buf = 1, dst_buf = 0 }
+
+[registers.bytemask]
+offset = 0x3008
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.stipplemask]
+offset = 0x3010
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.fg]
+offset = 0x3018
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.src0]
+offset = 0x3020
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.src1]
+offset = 0x3028
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.dst0]
+offset = 0x3030
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.dst1]
+offset = 0x3038
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.src_ystep]
+offset = 0x3040
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.dst_ystep]
+offset = 0x3048
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.null]
+offset = 0x3070
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[registers.flush]
+offset = 0x3078
+access = "rw"
+width = 64
+grade = "inferred"
+space = "re"
+
+[words.ADDR]
+width = 32
+grade = "established"
+
+[words.ADDR.fields]
+byte_col = { bits = [31, 16], grade = "established" }
+row = { bits = [15, 0], grade = "established" }
+
+[[words.ADDR.tests]]
+value = 0x400020
+expect = { byte_col = 64, row = 32 }
+
+[constants]
+SUBTILE_BLOCK_BYTES = { value = 0x20, grade = "inferred", doc = "8 bytes by 4 rows" }
+SUBTILE_BYTES = { value = 0x2000, grade = "inferred", doc = "128 bytes by 64 rows" }
+TILE_BYTES = { value = 0x10000, grade = "established" }
+TILE_ROWS = { value = 0x80, grade = "established" }
+TILE_ROW_BYTES = { value = 0x200, grade = "established" }

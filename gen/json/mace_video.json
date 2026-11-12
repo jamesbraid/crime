@@ -1,0 +1,523 @@
+{
+ "schema": "defs-flat/1",
+ "source": "defs/mace_video.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "control",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_crime_error",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_fifo_underflow",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_buffer",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_genlock_lost",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_dma_done",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.int_vsync",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "control.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "status",
+   "offset": 8,
+   "access": "r",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.crime_error",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.fifo_underflow",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.buffer",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.lost_sync",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.dma_done",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.vsync",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "status.dma_active",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "config",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "next_desc",
+   "offset": 24,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "fld_offset",
+   "offset": 32,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "field_size",
+   "offset": 40,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "hpad_odd",
+   "offset": 48,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "vpad_odd",
+   "offset": 56,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "hpad_even",
+   "offset": 64,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "vpad_even",
+   "offset": 72,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "gen_dly",
+   "offset": 80,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "vhw_cfg",
+   "offset": 88,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.revision",
+   "hi": 35,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.sof_count_even",
+   "hi": 22,
+   "lo": 19,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.gpibo",
+   "hi": 18,
+   "lo": 18,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.sof_count_odd",
+   "hi": 17,
+   "lo": 14,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.gbe_framelock_ecc",
+   "hi": 13,
+   "lo": 13,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.gbe_framelock_precision",
+   "hi": 12,
+   "lo": 12,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.gbe_framelock_source",
+   "hi": 11,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.gbe_framelock_source.output_ef",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.gbe_framelock_source.external",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.gbe_framelock_source.port_ab",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.gbe_framelock_source.port_cd",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.gbe_framelock_reset",
+   "hi": 9,
+   "lo": 9,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.audio_sync_ecc",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.audio_sync_precision",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.audio_sync_source",
+   "hi": 6,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.audio_sync_source.none",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.audio_sync_source.external",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.audio_sync_source.port_ab",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "enum_value",
+   "name": "vhw_cfg.audio_sync_source.port_cd",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.audio_sync_reset",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.port_cd_select",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.port_cd_reset",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.port_ab_select",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "field",
+   "name": "vhw_cfg.port_ab_reset",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "register",
+   "name": "dma_desc",
+   "offset": 128,
+   "access": "rw",
+   "width": 64,
+   "count": 8,
+   "stride": 8,
+   "space": "mace_video_out",
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  }
+ ]
+}

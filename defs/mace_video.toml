@@ -1,0 +1,166 @@
+# Hardware definitions. Edit this file; gen/ is generated from it.
+unit = "mace_video"
+prefix = "VOUT"
+title = "O2 MACE video output channel and chip-level configuration"
+doc = "MACE video output channel registers and the chip-level hardware configuration word."
+from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+public_from = ["published MACE 2.0 specification"]
+
+[c]
+legacy_header = "MACE_VIDEO_DECODE.h"
+legacy_guard = "MACE_VIDEO_DECODE_H"
+
+[spaces.mace_video_out]
+
+[registers.control]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_out"
+doc = """
+---- output channel registers ----
+One channel set, offsets from the start of the output channel window. All
+are 64-bit doubleword accesses. The status register clears the pending
+causes on read; the DMA-active bit is live."""
+
+[registers.control.fields]
+int_crime_error = { bits = [8, 8], grade = "established" }
+int_fifo_underflow = { bits = [7, 7], grade = "established" }
+int_buffer = { bits = [4, 4], grade = "established" }
+int_genlock_lost = { bits = [3, 3], grade = "established" }
+int_dma_done = { bits = [2, 2], grade = "established" }
+int_vsync = { bits = [1, 1], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[registers.status]
+offset = 0x8
+access = "r"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_out"
+
+[registers.status.fields]
+crime_error = { bits = [8, 8], grade = "established" }
+fifo_underflow = { bits = [7, 7], grade = "established" }
+buffer = { bits = [4, 4], grade = "established" }
+lost_sync = { bits = [3, 3], grade = "established" }
+dma_done = { bits = [2, 2], grade = "established" }
+vsync = { bits = [1, 1], grade = "established" }
+dma_active = { bits = [0, 0], grade = "established" }
+
+[registers.config]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.next_desc]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.fld_offset]
+offset = 0x20
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.field_size]
+offset = 0x28
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.hpad_odd]
+offset = 0x30
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vpad_odd]
+offset = 0x38
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.hpad_even]
+offset = 0x40
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vpad_even]
+offset = 0x48
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.gen_dly]
+offset = 0x50
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vhw_cfg]
+offset = 0x58
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vhw_cfg.fields]
+revision = { bits = [35, 32], grade = "established" }
+sof_count_even = { bits = [22, 19], grade = "established" }
+gpibo = { bits = [18, 18], grade = "established" }
+sof_count_odd = { bits = [17, 14], grade = "established" }
+gbe_framelock_ecc = { bits = [13, 13], grade = "established" }
+gbe_framelock_precision = { bits = [12, 12], grade = "established" }
+gbe_framelock_reset = { bits = [9, 9], grade = "established" }
+audio_sync_ecc = { bits = [8, 8], grade = "established" }
+audio_sync_precision = { bits = [7, 7], grade = "established" }
+audio_sync_reset = { bits = [4, 4], grade = "established" }
+port_cd_select = { bits = [3, 3], grade = "established" }
+port_cd_reset = { bits = [2, 2], grade = "established" }
+port_ab_select = { bits = [1, 1], grade = "established" }
+port_ab_reset = { bits = [0, 0], grade = "established" }
+
+[registers.vhw_cfg.fields.gbe_framelock_source]
+bits = [11, 10]
+grade = "established"
+
+[registers.vhw_cfg.fields.gbe_framelock_source.enums]
+output_ef = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.vhw_cfg.fields.audio_sync_source]
+bits = [6, 5]
+grade = "established"
+
+[registers.vhw_cfg.fields.audio_sync_source.enums]
+none = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.dma_desc]
+offset = 0x80
+access = "rw"
+width = 64
+grade = "established"
+count = 8
+space = "mace_video_out"
