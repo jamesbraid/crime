@@ -98,6 +98,8 @@ Free-running counter. The specification defines bits 31:0 as read/write with res
 
 ### Register `mem_bank_control`
 
+Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).
+
 Array of 8 registers, stride 8.
 
 | Bits | Field | Grade | Values | Source | Description |

@@ -96,6 +96,9 @@
 #define CRIME_MEM_CONTROL_ECC_ENABLE_MASK            0x1ull
 #define CRIME_MEM_CONTROL_ECC_ENABLE_INPLACE         (CRIME_MEM_CONTROL_ECC_ENABLE_MASK << CRIME_MEM_CONTROL_ECC_ENABLE_SHIFT)
 
+/*
+ * Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).
+ */
 /* mem_bank_control: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_BANK_CONTROL_OFFSET                0x208u /* established */
 #define CRIME_MEM_BANK_CONTROL_COUNT                 8

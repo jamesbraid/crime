@@ -143,6 +143,8 @@ access = "rw"
 width = 64
 grade = "established"
 count = 8
+doc = """
+Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3)."""
 
 [registers.mem_bank_control.fields]
 sdram_geometry = { bits = [8, 8], grade = "established" }

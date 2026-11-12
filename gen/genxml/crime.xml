@@ -59,6 +59,7 @@
     <field name="ecc_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="MEM_BANK_CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x208" access="rw" count="8" stride="8" reset="unknown">
+    <doc>Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3).</doc>
     <field name="sdram_geometry" start="8" size="1" type="uint" grade="established"/>
     <field name="base_match" start="0" size="5" type="uint" grade="established"/>
   </struct>
