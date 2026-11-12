@@ -61,6 +61,24 @@
     <value name="constant_alpha" value="10" grade="established"/>
     <value name="one_minus_constant_alpha" value="11" grade="established"/>
   </enum>
+  <enum name="logicop_code">
+    <value name="clear" value="0" grade="inferred"/>
+    <value name="and" value="1" grade="inferred"/>
+    <value name="and_reverse" value="2" grade="inferred"/>
+    <value name="copy" value="3" grade="inferred"/>
+    <value name="and_inverted" value="4" grade="inferred"/>
+    <value name="noop" value="5" grade="inferred"/>
+    <value name="xor" value="6" grade="inferred"/>
+    <value name="or" value="7" grade="inferred"/>
+    <value name="nor" value="8" grade="inferred"/>
+    <value name="equiv" value="9" grade="inferred"/>
+    <value name="invert" value="10" grade="inferred"/>
+    <value name="or_reverse" value="11" grade="inferred"/>
+    <value name="copy_inverted" value="12" grade="inferred"/>
+    <value name="or_inverted" value="13" grade="inferred"/>
+    <value name="nand" value="14" grade="inferred"/>
+    <value name="set" value="15" grade="inferred"/>
+  </enum>
   <enum name="bufmode_buf_type">
     <value name="fb_a" value="0" grade="established"/>
     <value name="fb_b" value="1" grade="established"/>
@@ -162,6 +180,12 @@ the queued state as one primitive.</doc>
   <struct name="BUFMODE_DST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2008" access="rw" space="re" reset="unknown">
   </struct>
   <struct name="CLIPMODE" size="4" grade="inferred" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2010" access="rw" space="re" reset="unknown">
+    <doc>The specification's table (established, [spec] PDF 173, Table 7-6) puts the
+enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
+inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
+kernel sets bit 5 plus i and bit i for rectangle i (docs/context.md), which is
+the reverse order. Which order the engine uses is unknown. The fields below
+give the bit ranges only.</doc>
     <field name="clip_id_test" start="11" size="1" type="uint" grade="inferred"/>
     <field name="clip_id_map" start="10" size="1" type="uint" grade="inferred"/>
     <field name="enable" start="5" size="5" type="uint" grade="established"/>
@@ -187,7 +211,11 @@ the queued state as one primitive.</doc>
     </test>
   </struct>
   <struct name="DRAWMODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2018" access="rw" space="re" reset="unknown">
-    <doc>Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.</doc>
+    <doc>Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+
+The specification's table gives bit 8 as logic-op enable and bit 9 as dither
+(established, [spec] PDF 174, Table 7-7). The fields below follow the drivers,
+which use the reverse. That conflict is not settled; see docs/pixel-arithmetic.md.</doc>
     <field name="no_conflict" start="23" size="1" type="uint" grade="established"/>
     <field name="gl" start="22" size="1" type="uint" grade="established"/>
     <field name="pixel_xfer" start="21" size="1" type="uint" grade="established"/>
@@ -211,14 +239,52 @@ the queued state as one primitive.</doc>
     <field name="stencil" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="SCRMASK" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2020" access="rw" count="5" stride="8" space="re" reset="unknown">
+    <doc>Screen mask n is one rectangle in framebuffer coordinates, not window
+coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the
+same as the scissor's. The enable and inside-select bits are in ClipMode;
+see the note there for the order in which the bits pair with the masks.</doc>
+    <field name="min_x" start="48" size="16" type="uint" grade="established"/>
+    <field name="min_y" start="32" size="16" type="uint" grade="established"/>
+    <field name="max_x" start="16" size="16" type="uint" grade="established"/>
+    <field name="max_y" start="0" size="16" type="uint" grade="established"/>
   </struct>
   <struct name="SCISSOR" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2048" access="rw" space="re" reset="unknown">
+    <doc>Scissor rectangle in window coordinates. The minimum edges are inclusive and
+the maximum edges exclusive. DrawMode bit 20 enables the test (established,
+[spec] PDF 176, Table 7-10).</doc>
+    <field name="min_x" start="48" size="16" type="uint" grade="established"/>
+    <field name="min_y" start="32" size="16" type="uint" grade="established"/>
+    <field name="max_x" start="16" size="16" type="uint" grade="established"/>
+    <field name="max_y" start="0" size="16" type="uint" grade="established"/>
   </struct>
   <struct name="WINOFFSET_SRC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2050" access="rw" space="re" reset="unknown">
+    <doc>Window-to-framebuffer offset for the read window (established, [spec] PDF 175
+to 176, Table 7-9, the WinOffset format). The specification does not say
+whether the two halves are signed. The kernel writes each half as the window
+origin minus 4096 (see docs/context.md), so the sign convention is unknown.</doc>
+    <field name="x" start="16" size="16" type="uint" grade="established"/>
+    <field name="y" start="0" size="16" type="uint" grade="established"/>
+    <test value="0x10002" kind="vector">
+      <expect field="x" value="1"/>
+      <expect field="y" value="2"/>
+    </test>
   </struct>
   <struct name="WINOFFSET_DST" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2058" access="rw" space="re" reset="unknown">
+    <doc>Window-to-framebuffer offset for the drawing window (established, [spec] PDF
+175 to 176, Table 7-9). The layout and the sign question are the same as for
+the source offset (the read window's register).</doc>
+    <field name="x" start="16" size="16" type="uint" grade="established"/>
+    <field name="y" start="0" size="16" type="uint" grade="established"/>
+    <test value="0x10002" kind="vector">
+      <expect field="x" value="1"/>
+      <expect field="y" value="2"/>
+    </test>
   </struct>
   <struct name="PRIMITIVE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2060" access="w" space="re" reset="unknown">
+    <doc>The specification gives line_width as the subpixel line width divided by two
+(established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
+specification. DrawMode bit 19, which enables line stipple, is a separate
+control and does not appear in the primitive word.</doc>
     <field name="op" start="24" size="8" type="primitive_op" grade="established"/>
     <field name="line_skip_last" start="18" size="1" type="uint" grade="established"/>
     <field name="edge" start="16" size="2" type="primitive_edge" grade="established"/>
@@ -247,6 +313,22 @@ the queued state as one primitive.</doc>
   <struct name="XFER_DST_STRIDE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20b4" access="w" space="re" reset="unknown">
   </struct>
   <struct name="STIPPLE_MODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c0" access="rw" space="re" reset="unknown">
+    <doc>Stipple sequence state: the starting pattern index, the maximum pattern index,
+the starting repeat count and the maximum repeat count (established, [spec]
+PDF 177, Table 7-12). The specification's reserved range is 23:20, which
+includes bit 20, the top bit of max_index. max_index is therefore inferred
+(conflict). The specification does not say what the sequence does after
+max_index, so that behaviour is unknown.</doc>
+    <field name="index" start="24" size="5" type="uint" grade="established"/>
+    <field name="max_index" start="16" size="5" type="uint" grade="inferred"/>
+    <field name="repeat" start="8" size="8" type="uint" grade="established"/>
+    <field name="max_repeat" start="0" size="8" type="uint" grade="established"/>
+    <test value="0x2050000" kind="vector">
+      <expect field="index" value="2"/>
+      <expect field="max_index" value="5"/>
+      <expect field="repeat" value="0"/>
+      <expect field="max_repeat" value="0"/>
+    </test>
   </struct>
   <struct name="STIPPLE_PATTERN" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x20c4" access="rw" space="re" reset="unknown">
   </struct>
@@ -343,6 +425,7 @@ is discarded.</doc>
   </struct>
   <struct name="LOGICOP" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21b0" access="rw" space="re" reset="unknown">
     <doc>The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification.</doc>
+    <field name="code" start="0" size="4" type="logicop_code" grade="inferred"/>
   </struct>
   <struct name="COLORMASK" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21b8" access="rw" space="re" reset="unknown">
   </struct>

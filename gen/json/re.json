@@ -490,6 +490,42 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "scrmask.min_x",
+   "hi": 63,
+   "lo": 48,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scrmask.min_y",
+   "hi": 47,
+   "lo": 32,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scrmask.max_x",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scrmask.max_y",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "scissor",
    "offset": 8264,
@@ -499,6 +535,42 @@
    "stride": 8,
    "space": "re",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scissor.min_x",
+   "hi": 63,
+   "lo": 48,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scissor.min_y",
+   "hi": 47,
+   "lo": 32,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scissor.max_x",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "scissor.max_y",
+   "hi": 15,
+   "lo": 0,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
@@ -518,6 +590,24 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "winoffset_src.x",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "winoffset_src.y",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "winoffset_dst",
    "offset": 8280,
@@ -527,6 +617,24 @@
    "stride": 4,
    "space": "re",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "winoffset_dst.x",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "winoffset_dst.y",
+   "hi": 15,
+   "lo": 0,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
@@ -767,6 +875,42 @@
    "stride": 4,
    "space": "re",
    "reset": "unknown",
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stipple_mode.index",
+   "hi": 28,
+   "lo": 24,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stipple_mode.max_index",
+   "hi": 20,
+   "lo": 16,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stipple_mode.repeat",
+   "hi": 15,
+   "lo": 8,
+   "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "stipple_mode.max_repeat",
+   "hi": 7,
+   "lo": 0,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
@@ -1639,6 +1783,143 @@
    "space": "re",
    "reset": "unknown",
    "grade": "established",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "field",
+   "name": "logicop.code",
+   "hi": 3,
+   "lo": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.clear",
+   "value": 0,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.and",
+   "value": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.and_reverse",
+   "value": 2,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.copy",
+   "value": 3,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.and_inverted",
+   "value": 4,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.noop",
+   "value": 5,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.xor",
+   "value": 6,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.or",
+   "value": 7,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.nor",
+   "value": 8,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.equiv",
+   "value": 9,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.invert",
+   "value": 10,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.or_reverse",
+   "value": 11,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.copy_inverted",
+   "value": 12,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.or_inverted",
+   "value": 13,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.nand",
+   "value": 14,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "enum_value",
+   "name": "logicop.code.set",
+   "value": 15,
+   "grade": "inferred",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
   },
   {

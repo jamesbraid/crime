@@ -60,6 +60,7 @@ Each line takes its description from the page's own title or opening sentence.
 - [docs/hw-explanations-crime-p1.md](docs/hw-explanations-crime-p1.md): Hardware-facing routine explanations for CRIME and neighbours, pilot 1
 - [docs/memory.md](docs/memory.md): Rendering TLB formats, texture levels, interrupts and CPU windows
 - [docs/mte.md](docs/mte.md): MTE copies, fills and the address word, as IRIX drives them
+- [docs/de-2d-drawing.md](docs/de-2d-drawing.md): Rendering engine 2D drawing: coordinates, primitives, stipple, logic ops and clip order
 - [docs/pixel-arithmetic.md](docs/pixel-arithmetic.md): Pixel arithmetic: depth, blending and texel filtering
 - [docs/pixel-transfer.md](docs/pixel-transfer.md): Pixel transfer: DrawPixels, ReadPixels and the kernel pixel DMA
 - [docs/reset.md](docs/reset.md): Rendering engine initialisation, error recovery and kernel MTE helpers

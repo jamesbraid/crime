@@ -180,6 +180,13 @@ the queued state as one primitive.
 
 ### Register `clipmode`
 
+The specification's table (established, [spec] PDF 173, Table 7-6) puts the
+enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
+inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
+kernel sets bit 5 plus i and bit i for rectangle i (docs/context.md), which is
+the reverse order. Which order the engine uses is unknown. The fields below
+give the bit ranges only.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 11 | `clip_id_test` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
@@ -190,6 +197,10 @@ the queued state as one primitive.
 ### Register `drawmode`
 
 Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+
+The specification's table gives bit 8 as logic-op enable and bit 9 as dither
+(established, [spec] PDF 174, Table 7-7). The fields below follow the drivers,
+which use the reverse. That conflict is not settled; see docs/pixel-arithmetic.md.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -217,15 +228,62 @@ Point and rectangle primitives are always flat shaded, whatever the shade bit (1
 
 ### Register `scrmask`
 
+Screen mask n is one rectangle in framebuffer coordinates, not window
+coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the
+same as the scissor's. The enable and inside-select bits are in ClipMode;
+see the note there for the order in which the bits pair with the masks.
+
 Array of 5 registers, stride 8.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 63:48 | `min_x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 47:32 | `min_y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 31:16 | `max_x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:0 | `max_y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `scissor`
 
+Scissor rectangle in window coordinates. The minimum edges are inclusive and
+the maximum edges exclusive. DrawMode bit 20 enables the test (established,
+[spec] PDF 176, Table 7-10).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 63:48 | `min_x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 47:32 | `min_y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 31:16 | `max_x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:0 | `max_y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+
 ### Register `winoffset_src`
+
+Window-to-framebuffer offset for the read window (established, [spec] PDF 175
+to 176, Table 7-9, the WinOffset format). The specification does not say
+whether the two halves are signed. The kernel writes each half as the window
+origin minus 4096 (see docs/context.md), so the sign convention is unknown.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:16 | `x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:0 | `y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `winoffset_dst`
 
+Window-to-framebuffer offset for the drawing window (established, [spec] PDF
+175 to 176, Table 7-9). The layout and the sign question are the same as for
+the source offset (the read window's register).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:16 | `x` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:0 | `y` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+
 ### Register `primitive`
+
+The specification gives line_width as the subpixel line width divided by two
+(established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
+specification. DrawMode bit 19, which enables line stipple, is a separate
+control and does not appear in the primitive word.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -255,6 +313,20 @@ Array of 6 registers, stride 4.
 ### Register `xfer_dst_stride`
 
 ### Register `stipple_mode`
+
+Stipple sequence state: the starting pattern index, the maximum pattern index,
+the starting repeat count and the maximum repeat count (established, [spec]
+PDF 177, Table 7-12). The specification's reserved range is 23:20, which
+includes bit 20, the top bit of max_index. max_index is therefore inferred
+(conflict). The specification does not say what the sequence does after
+max_index, so that behaviour is unknown.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 28:24 | `index` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 20:16 | `max_index` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 15:8 | `repeat` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| 7:0 | `max_repeat` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `stipple_pattern`
 
@@ -368,6 +440,10 @@ Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row
 ### Register `logicop`
 
 The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 3:0 | `code` | inferred | clear=0, and=1, and_reverse=2, copy=3, and_inverted=4, noop=5, xor=6, or=7, nor=8, equiv=9, invert=10, or_reverse=11, copy_inverted=12, or_inverted=13, nand=14, set=15 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 
 ### Register `colormask`
 
@@ -564,7 +640,10 @@ A vector is a value recorded from a source. An example only shows the layout.
 | `clipmode` | 0x63 | vector | mode=3, enable=3 |
 | `clipmode` | 0x3ff | vector | mode=31, enable=31 |
 | `clipmode` | 0x821 | vector | mode=1, enable=1, clip_id_test=1 |
+| `winoffset_src` | 0x10002 | vector | x=1, y=2 |
+| `winoffset_dst` | 0x10002 | vector | x=1, y=2 |
 | `primitive` | 0x3020000 | vector | op=3, line_skip_last=0, edge=2, line_width=0 |
+| `stipple_mode` | 0x2050000 | vector | index=2, max_index=5, repeat=0, max_repeat=0 |
 | `BUFMODE` | 0x504 | vector | buf_type=1, buf_depth=1, pix_type=0, pix_depth=1, double_pix=0 |
 | `IBADDR_HI` | 0x1a0a | example | index=10, group=2, lane=3, start_flag=0 |
 | `LINENT` | 0x80000123 | vector | page=291, valid=1 |

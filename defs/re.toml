@@ -159,6 +159,13 @@ access = "rw"
 width = 32
 grade = "inferred"
 space = "re"
+doc = """
+The specification's table (established, [spec] PDF 173, Table 7-6) puts the
+enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
+inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
+kernel sets bit 5 plus i and bit i for rectangle i (docs/context.md), which is
+the reverse order. Which order the engine uses is unknown. The fields below
+give the bit ranges only."""
 
 [registers.clipmode.fields]
 clip_id_test = { bits = [11, 11], grade = "inferred" }
@@ -189,7 +196,11 @@ width = 32
 grade = "established"
 space = "re"
 doc = """
-Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set."""
+Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+
+The specification's table gives bit 8 as logic-op enable and bit 9 as dither
+(established, [spec] PDF 174, Table 7-7). The fields below follow the drivers,
+which use the reverse. That conflict is not settled; see docs/pixel-arithmetic.md."""
 
 [registers.drawmode.fields]
 no_conflict = { bits = [23, 23], grade = "established" }
@@ -221,6 +232,17 @@ width = 64
 grade = "established"
 count = 5
 space = "re"
+doc = """
+Screen mask n is one rectangle in framebuffer coordinates, not window
+coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the
+same as the scissor's. The enable and inside-select bits are in ClipMode;
+see the note there for the order in which the bits pair with the masks."""
+
+[registers.scrmask.fields]
+min_x = { bits = [63, 48], grade = "established" }
+min_y = { bits = [47, 32], grade = "established" }
+max_x = { bits = [31, 16], grade = "established" }
+max_y = { bits = [15, 0], grade = "established" }
 
 [registers.scissor]
 offset = 0x2048
@@ -228,6 +250,16 @@ access = "rw"
 width = 64
 grade = "established"
 space = "re"
+doc = """
+Scissor rectangle in window coordinates. The minimum edges are inclusive and
+the maximum edges exclusive. DrawMode bit 20 enables the test (established,
+[spec] PDF 176, Table 7-10)."""
+
+[registers.scissor.fields]
+min_x = { bits = [63, 48], grade = "established" }
+min_y = { bits = [47, 32], grade = "established" }
+max_x = { bits = [31, 16], grade = "established" }
+max_y = { bits = [15, 0], grade = "established" }
 
 [registers.winoffset_src]
 offset = 0x2050
@@ -235,6 +267,19 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Window-to-framebuffer offset for the read window (established, [spec] PDF 175
+to 176, Table 7-9, the WinOffset format). The specification does not say
+whether the two halves are signed. The kernel writes each half as the window
+origin minus 4096 (see docs/context.md), so the sign convention is unknown."""
+
+[registers.winoffset_src.fields]
+x = { bits = [31, 16], grade = "established" }
+y = { bits = [15, 0], grade = "established" }
+
+[[registers.winoffset_src.tests]]
+value = 0x00010002
+expect = { x = 1, y = 2 }
 
 [registers.winoffset_dst]
 offset = 0x2058
@@ -242,6 +287,18 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Window-to-framebuffer offset for the drawing window (established, [spec] PDF
+175 to 176, Table 7-9). The layout and the sign question are the same as for
+the source offset (the read window's register)."""
+
+[registers.winoffset_dst.fields]
+x = { bits = [31, 16], grade = "established" }
+y = { bits = [15, 0], grade = "established" }
+
+[[registers.winoffset_dst.tests]]
+value = 0x00010002
+expect = { x = 1, y = 2 }
 
 [registers.primitive]
 offset = 0x2060
@@ -249,6 +306,11 @@ access = "w"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+The specification gives line_width as the subpixel line width divided by two
+(established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
+specification. DrawMode bit 19, which enables line stipple, is a separate
+control and does not appear in the primitive word."""
 
 [registers.primitive.fields]
 line_skip_last = { bits = [18, 18], grade = "established" }
@@ -342,6 +404,23 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = """
+Stipple sequence state: the starting pattern index, the maximum pattern index,
+the starting repeat count and the maximum repeat count (established, [spec]
+PDF 177, Table 7-12). The specification's reserved range is 23:20, which
+includes bit 20, the top bit of max_index. max_index is therefore inferred
+(conflict). The specification does not say what the sequence does after
+max_index, so that behaviour is unknown."""
+
+[registers.stipple_mode.fields]
+index = { bits = [28, 24], grade = "established" }
+max_index = { bits = [20, 16], grade = "inferred" }
+repeat = { bits = [15, 8], grade = "established" }
+max_repeat = { bits = [7, 0], grade = "established" }
+
+[[registers.stipple_mode.tests]]
+value = 0x02050000
+expect = { index = 2, max_index = 5, repeat = 0, max_repeat = 0 }
 
 [registers.stipple_pattern]
 offset = 0x20c4
@@ -692,6 +771,28 @@ grade = "established"
 space = "re"
 doc = """
 The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification."""
+
+[registers.logicop.fields.code]
+bits = [3, 0]
+grade = "inferred"
+
+[registers.logicop.fields.code.enums]
+clear = { value = 0, grade = "inferred" }
+and = { value = 1, grade = "inferred" }
+and_reverse = { value = 2, grade = "inferred" }
+copy = { value = 3, grade = "inferred" }
+and_inverted = { value = 4, grade = "inferred" }
+noop = { value = 5, grade = "inferred" }
+xor = { value = 6, grade = "inferred" }
+or = { value = 7, grade = "inferred" }
+nor = { value = 8, grade = "inferred" }
+equiv = { value = 9, grade = "inferred" }
+invert = { value = 10, grade = "inferred" }
+or_reverse = { value = 11, grade = "inferred" }
+copy_inverted = { value = 12, grade = "inferred" }
+or_inverted = { value = 13, grade = "inferred" }
+nand = { value = 14, grade = "inferred" }
+set = { value = 15, grade = "inferred" }
 
 [registers.colormask]
 offset = 0x21b8

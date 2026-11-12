@@ -125,7 +125,7 @@ pub mod bufmode_dst {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2008;
 }
-/// (inferred)
+/// The specification's table (established, [spec] PDF 173, Table 7-6) puts the enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the inside (inferred)
 pub mod clipmode {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2010;
@@ -385,29 +385,149 @@ pub mod drawmode {
         }
     }
 }
-/// (established)
+/// Screen mask n is one rectangle in framebuffer coordinates, not window coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the same a (established)
 pub mod scrmask {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2020;
     pub const COUNT: u32 = 5;
     pub const STRIDE: u64 = 8;
+    pub mod min_x { // bits 63:48, established
+        pub const SHIFT: u32 = 48;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod min_y { // bits 47:32, established
+        pub const SHIFT: u32 = 32;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_x { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_y { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Scissor rectangle in window coordinates. The minimum edges are inclusive and the maximum edges exclusive. DrawMode bit 20 enables the test (establishe (established)
 pub mod scissor {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2048;
+    pub mod min_x { // bits 63:48, established
+        pub const SHIFT: u32 = 48;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod min_y { // bits 47:32, established
+        pub const SHIFT: u32 = 32;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_x { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_y { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u64 = 0xffff;
+        pub const fn get(v: u64) -> u64 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u64, x: u64) -> u64 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Window-to-framebuffer offset for the read window (established, [spec] PDF 175 to 176, Table 7-9, the WinOffset format). The specification does not say (established)
 pub mod winoffset_src {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2050;
+    pub mod x { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod y { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// Window-to-framebuffer offset for the drawing window (established, [spec] PDF 175 to 176, Table 7-9). The layout and the sign question are the same as  (established)
 pub mod winoffset_dst {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2058;
+    pub mod x { // bits 31:16, established
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod y { // bits 15:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
-/// (established)
+/// The specification gives line_width as the subpixel line width divided by two (established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the  (established)
 pub mod primitive {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2060;
@@ -560,10 +680,50 @@ pub mod xfer_dst_stride {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20b4;
 }
-/// (established)
+/// Stipple sequence state: the starting pattern index, the maximum pattern index, the starting repeat count and the maximum repeat count (established, [s (established)
 pub mod stipple_mode {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20c0;
+    pub mod index { // bits 28:24, established
+        pub const SHIFT: u32 = 24;
+        pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_index { // bits 20:16, inferred
+        pub const SHIFT: u32 = 16;
+        pub const MASK: u32 = 0x1f;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod repeat { // bits 15:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod max_repeat { // bits 7:0, established
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod stipple_pattern {
@@ -1032,6 +1192,96 @@ pub mod blend_func {
 pub mod logicop {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21b0;
+    pub mod code { // bits 3:0, inferred
+        pub const SHIFT: u32 = 0;
+        pub const MASK: u32 = 0xf;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+        pub const CLEAR: u32 = 0; // inferred
+        pub const AND: u32 = 1; // inferred
+        pub const AND_REVERSE: u32 = 2; // inferred
+        pub const COPY: u32 = 3; // inferred
+        pub const AND_INVERTED: u32 = 4; // inferred
+        pub const NOOP: u32 = 5; // inferred
+        pub const XOR: u32 = 6; // inferred
+        pub const OR: u32 = 7; // inferred
+        pub const NOR: u32 = 8; // inferred
+        pub const EQUIV: u32 = 9; // inferred
+        pub const INVERT: u32 = 10; // inferred
+        pub const OR_REVERSE: u32 = 11; // inferred
+        pub const COPY_INVERTED: u32 = 12; // inferred
+        pub const OR_INVERTED: u32 = 13; // inferred
+        pub const NAND: u32 = 14; // inferred
+        pub const SET: u32 = 15; // inferred
+        #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+        pub enum Value {
+            Clear,
+            And,
+            AndReverse,
+            Copy,
+            AndInverted,
+            Noop,
+            Xor,
+            Or,
+            Nor,
+            Equiv,
+            Invert,
+            OrReverse,
+            CopyInverted,
+            OrInverted,
+            Nand,
+            Set,
+            Other(u32),
+        }
+        impl Value {
+            pub const fn from_raw(v: u32) -> Self {
+                match v {
+                    0 => Self::Clear,
+                    1 => Self::And,
+                    2 => Self::AndReverse,
+                    3 => Self::Copy,
+                    4 => Self::AndInverted,
+                    5 => Self::Noop,
+                    6 => Self::Xor,
+                    7 => Self::Or,
+                    8 => Self::Nor,
+                    9 => Self::Equiv,
+                    10 => Self::Invert,
+                    11 => Self::OrReverse,
+                    12 => Self::CopyInverted,
+                    13 => Self::OrInverted,
+                    14 => Self::Nand,
+                    15 => Self::Set,
+                    _ => Self::Other(v),
+                }
+            }
+            pub const fn raw(self) -> u32 {
+                match self {
+                    Self::Clear => 0,
+                    Self::And => 1,
+                    Self::AndReverse => 2,
+                    Self::Copy => 3,
+                    Self::AndInverted => 4,
+                    Self::Noop => 5,
+                    Self::Xor => 6,
+                    Self::Or => 7,
+                    Self::Nor => 8,
+                    Self::Equiv => 9,
+                    Self::Invert => 10,
+                    Self::OrReverse => 11,
+                    Self::CopyInverted => 12,
+                    Self::OrInverted => 13,
+                    Self::Nand => 14,
+                    Self::Set => 15,
+                    Self::Other(v) => v,
+                }
+            }
+        }
+    }
 }
 /// (established)
 pub mod colormask {
@@ -1698,11 +1948,31 @@ mod tests {
     }
 
     #[test]
+    fn winoffset_src_10002() {
+        assert_eq!(winoffset_src::x::get(0x10002), 1);
+        assert_eq!(winoffset_src::y::get(0x10002), 2);
+    }
+
+    #[test]
+    fn winoffset_dst_10002() {
+        assert_eq!(winoffset_dst::x::get(0x10002), 1);
+        assert_eq!(winoffset_dst::y::get(0x10002), 2);
+    }
+
+    #[test]
     fn primitive_3020000() {
         assert_eq!(primitive::op::get(0x3020000), 3);
         assert_eq!(primitive::line_skip_last::get(0x3020000), 0);
         assert_eq!(primitive::edge::get(0x3020000), 2);
         assert_eq!(primitive::line_width::get(0x3020000), 0);
+    }
+
+    #[test]
+    fn stipple_mode_2050000() {
+        assert_eq!(stipple_mode::index::get(0x2050000), 2);
+        assert_eq!(stipple_mode::max_index::get(0x2050000), 5);
+        assert_eq!(stipple_mode::repeat::get(0x2050000), 0);
+        assert_eq!(stipple_mode::max_repeat::get(0x2050000), 0);
     }
 
     #[test]

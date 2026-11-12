@@ -109,6 +109,14 @@
 /* bufmode_dst: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_BUFMODE_DST_OFFSET                        0x2008u /* established */
 
+/*
+ * The specification's table (established, [spec] PDF 173, Table 7-6) puts the
+ * enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
+ * inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
+ * kernel sets bit 5 plus i and bit i for rectangle i (docs/context.md), which is
+ * the reverse order. Which order the engine uses is unknown. The fields below
+ * give the bit ranges only.
+ */
 /* clipmode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_CLIPMODE_OFFSET                           0x2010u /* inferred */
 #define RE_CLIPMODE_CLIP_ID_TEST_SHIFT               11 /* inferred */
@@ -126,6 +134,10 @@
 
 /*
  * Point and rectangle primitives are always flat shaded, whatever the shade bit (16) says. Their colour is the foreground colour register alone (established, [spec] PDF 200, section 7.3.7.1). Triangles and lines are smooth shaded only when bit 16 is set.
+ *
+ * The specification's table gives bit 8 as logic-op enable and bit 9 as dither
+ * (established, [spec] PDF 174, Table 7-7). The fields below follow the drivers,
+ * which use the reverse. That conflict is not settled; see docs/pixel-arithmetic.md.
  */
 /* drawmode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_DRAWMODE_OFFSET                           0x2018u /* established */
@@ -193,20 +205,84 @@
 #define RE_DRAWMODE_STENCIL_MASK                     0x1u
 #define RE_DRAWMODE_STENCIL_INPLACE                  (RE_DRAWMODE_STENCIL_MASK << RE_DRAWMODE_STENCIL_SHIFT)
 
+/*
+ * Screen mask n is one rectangle in framebuffer coordinates, not window
+ * coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the
+ * same as the scissor's. The enable and inside-select bits are in ClipMode;
+ * see the note there for the order in which the bits pair with the masks.
+ */
 /* scrmask: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_SCRMASK_OFFSET                            0x2020u /* established */
 #define RE_SCRMASK_COUNT                             5
 #define RE_SCRMASK_STRIDE                            8
+#define RE_SCRMASK_MIN_X_SHIFT                       48 /* established */
+#define RE_SCRMASK_MIN_X_MASK                        0xffffull
+#define RE_SCRMASK_MIN_X_INPLACE                     (RE_SCRMASK_MIN_X_MASK << RE_SCRMASK_MIN_X_SHIFT)
+#define RE_SCRMASK_MIN_Y_SHIFT                       32 /* established */
+#define RE_SCRMASK_MIN_Y_MASK                        0xffffull
+#define RE_SCRMASK_MIN_Y_INPLACE                     (RE_SCRMASK_MIN_Y_MASK << RE_SCRMASK_MIN_Y_SHIFT)
+#define RE_SCRMASK_MAX_X_SHIFT                       16 /* established */
+#define RE_SCRMASK_MAX_X_MASK                        0xffffull
+#define RE_SCRMASK_MAX_X_INPLACE                     (RE_SCRMASK_MAX_X_MASK << RE_SCRMASK_MAX_X_SHIFT)
+#define RE_SCRMASK_MAX_Y_SHIFT                       0 /* established */
+#define RE_SCRMASK_MAX_Y_MASK                        0xffffull
+#define RE_SCRMASK_MAX_Y_INPLACE                     (RE_SCRMASK_MAX_Y_MASK << RE_SCRMASK_MAX_Y_SHIFT)
 
+/*
+ * Scissor rectangle in window coordinates. The minimum edges are inclusive and
+ * the maximum edges exclusive. DrawMode bit 20 enables the test (established,
+ * [spec] PDF 176, Table 7-10).
+ */
 /* scissor: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_SCISSOR_OFFSET                            0x2048u /* established */
+#define RE_SCISSOR_MIN_X_SHIFT                       48 /* established */
+#define RE_SCISSOR_MIN_X_MASK                        0xffffull
+#define RE_SCISSOR_MIN_X_INPLACE                     (RE_SCISSOR_MIN_X_MASK << RE_SCISSOR_MIN_X_SHIFT)
+#define RE_SCISSOR_MIN_Y_SHIFT                       32 /* established */
+#define RE_SCISSOR_MIN_Y_MASK                        0xffffull
+#define RE_SCISSOR_MIN_Y_INPLACE                     (RE_SCISSOR_MIN_Y_MASK << RE_SCISSOR_MIN_Y_SHIFT)
+#define RE_SCISSOR_MAX_X_SHIFT                       16 /* established */
+#define RE_SCISSOR_MAX_X_MASK                        0xffffull
+#define RE_SCISSOR_MAX_X_INPLACE                     (RE_SCISSOR_MAX_X_MASK << RE_SCISSOR_MAX_X_SHIFT)
+#define RE_SCISSOR_MAX_Y_SHIFT                       0 /* established */
+#define RE_SCISSOR_MAX_Y_MASK                        0xffffull
+#define RE_SCISSOR_MAX_Y_INPLACE                     (RE_SCISSOR_MAX_Y_MASK << RE_SCISSOR_MAX_Y_SHIFT)
 
+/*
+ * Window-to-framebuffer offset for the read window (established, [spec] PDF 175
+ * to 176, Table 7-9, the WinOffset format). The specification does not say
+ * whether the two halves are signed. The kernel writes each half as the window
+ * origin minus 4096 (see docs/context.md), so the sign convention is unknown.
+ */
 /* winoffset_src: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_WINOFFSET_SRC_OFFSET                      0x2050u /* established */
+#define RE_WINOFFSET_SRC_X_SHIFT                     16 /* established */
+#define RE_WINOFFSET_SRC_X_MASK                      0xffffu
+#define RE_WINOFFSET_SRC_X_INPLACE                   (RE_WINOFFSET_SRC_X_MASK << RE_WINOFFSET_SRC_X_SHIFT)
+#define RE_WINOFFSET_SRC_Y_SHIFT                     0 /* established */
+#define RE_WINOFFSET_SRC_Y_MASK                      0xffffu
+#define RE_WINOFFSET_SRC_Y_INPLACE                   (RE_WINOFFSET_SRC_Y_MASK << RE_WINOFFSET_SRC_Y_SHIFT)
 
+/*
+ * Window-to-framebuffer offset for the drawing window (established, [spec] PDF
+ * 175 to 176, Table 7-9). The layout and the sign question are the same as for
+ * the source offset (the read window's register).
+ */
 /* winoffset_dst: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_WINOFFSET_DST_OFFSET                      0x2058u /* established */
+#define RE_WINOFFSET_DST_X_SHIFT                     16 /* established */
+#define RE_WINOFFSET_DST_X_MASK                      0xffffu
+#define RE_WINOFFSET_DST_X_INPLACE                   (RE_WINOFFSET_DST_X_MASK << RE_WINOFFSET_DST_X_SHIFT)
+#define RE_WINOFFSET_DST_Y_SHIFT                     0 /* established */
+#define RE_WINOFFSET_DST_Y_MASK                      0xffffu
+#define RE_WINOFFSET_DST_Y_INPLACE                   (RE_WINOFFSET_DST_Y_MASK << RE_WINOFFSET_DST_Y_SHIFT)
 
+/*
+ * The specification gives line_width as the subpixel line width divided by two
+ * (established, [spec] PDF 175, Table 7-8). Bits 23:19 are reserved in the
+ * specification. DrawMode bit 19, which enables line stipple, is a separate
+ * control and does not appear in the primitive word.
+ */
 /* primitive: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PRIMITIVE_OFFSET                          0x2060u /* established */
 #define RE_PRIMITIVE_OP_SHIFT                        24 /* established */
@@ -258,8 +334,28 @@
 /* xfer_dst_stride: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_XFER_DST_STRIDE_OFFSET                    0x20b4u /* established */
 
+/*
+ * Stipple sequence state: the starting pattern index, the maximum pattern index,
+ * the starting repeat count and the maximum repeat count (established, [spec]
+ * PDF 177, Table 7-12). The specification's reserved range is 23:20, which
+ * includes bit 20, the top bit of max_index. max_index is therefore inferred
+ * (conflict). The specification does not say what the sequence does after
+ * max_index, so that behaviour is unknown.
+ */
 /* stipple_mode: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STIPPLE_MODE_OFFSET                       0x20c0u /* established */
+#define RE_STIPPLE_MODE_INDEX_SHIFT                  24 /* established */
+#define RE_STIPPLE_MODE_INDEX_MASK                   0x1fu
+#define RE_STIPPLE_MODE_INDEX_INPLACE                (RE_STIPPLE_MODE_INDEX_MASK << RE_STIPPLE_MODE_INDEX_SHIFT)
+#define RE_STIPPLE_MODE_MAX_INDEX_SHIFT              16 /* inferred */
+#define RE_STIPPLE_MODE_MAX_INDEX_MASK               0x1fu
+#define RE_STIPPLE_MODE_MAX_INDEX_INPLACE            (RE_STIPPLE_MODE_MAX_INDEX_MASK << RE_STIPPLE_MODE_MAX_INDEX_SHIFT)
+#define RE_STIPPLE_MODE_REPEAT_SHIFT                 8 /* established */
+#define RE_STIPPLE_MODE_REPEAT_MASK                  0xffu
+#define RE_STIPPLE_MODE_REPEAT_INPLACE               (RE_STIPPLE_MODE_REPEAT_MASK << RE_STIPPLE_MODE_REPEAT_SHIFT)
+#define RE_STIPPLE_MODE_MAX_REPEAT_SHIFT             0 /* established */
+#define RE_STIPPLE_MODE_MAX_REPEAT_MASK              0xffu
+#define RE_STIPPLE_MODE_MAX_REPEAT_INPLACE           (RE_STIPPLE_MODE_MAX_REPEAT_MASK << RE_STIPPLE_MODE_MAX_REPEAT_SHIFT)
 
 /* stipple_pattern: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STIPPLE_PATTERN_OFFSET                    0x20c4u /* established */
@@ -458,6 +554,25 @@
  */
 /* logicop: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_LOGICOP_OFFSET                            0x21b0u /* established */
+#define RE_LOGICOP_CODE_SHIFT                        0 /* inferred */
+#define RE_LOGICOP_CODE_MASK                         0xfu
+#define RE_LOGICOP_CODE_INPLACE                      (RE_LOGICOP_CODE_MASK << RE_LOGICOP_CODE_SHIFT)
+#define RE_LOGICOP_CODE_CLEAR                        0 /* inferred */
+#define RE_LOGICOP_CODE_AND                          1 /* inferred */
+#define RE_LOGICOP_CODE_AND_REVERSE                  2 /* inferred */
+#define RE_LOGICOP_CODE_COPY                         3 /* inferred */
+#define RE_LOGICOP_CODE_AND_INVERTED                 4 /* inferred */
+#define RE_LOGICOP_CODE_NOOP                         5 /* inferred */
+#define RE_LOGICOP_CODE_XOR                          6 /* inferred */
+#define RE_LOGICOP_CODE_OR                           7 /* inferred */
+#define RE_LOGICOP_CODE_NOR                          8 /* inferred */
+#define RE_LOGICOP_CODE_EQUIV                        9 /* inferred */
+#define RE_LOGICOP_CODE_INVERT                       10 /* inferred */
+#define RE_LOGICOP_CODE_OR_REVERSE                   11 /* inferred */
+#define RE_LOGICOP_CODE_COPY_INVERTED                12 /* inferred */
+#define RE_LOGICOP_CODE_OR_INVERTED                  13 /* inferred */
+#define RE_LOGICOP_CODE_NAND                         14 /* inferred */
+#define RE_LOGICOP_CODE_SET                          15 /* inferred */
 
 /* colormask: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_COLORMASK_OFFSET                          0x21b8u /* established */
