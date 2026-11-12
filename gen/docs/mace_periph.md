@@ -14,6 +14,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | Register | Offset | Access | Width | Count | Space | Reset | Grade | Source |
 |---|---|---|---|---|---|---|---|---|
 | `ring_base` | 0x0 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |
+| `misc_control` | 0x8 | rw | 64 |  |  | 0x20 | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |
 | `periph_status` | 0x10 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |
 | `periph_mask` | 0x18 | rw | 64 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |
 
@@ -25,6 +26,22 @@ Bit 0 asserts the external serial and parallel controller reset; it resets to on
 |---|---|---|---|---|---|
 | 31:15 | `dma_ring_base` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
 | 0 | `ext_reset` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
+
+### Register `misc_control`
+
+Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 8 | `sa20_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 0 leaves SA20 as an address bit. 1 makes it the game port chip select. Resets to 0 (printed page 124). |
+| 7 | `test_ust_timer` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 1 selects the timer test mode. Resets to 0 (printed page 124). |
+| 6 | `dpram_write_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 1 enables PIO writes to the DP-RAM. Resets to 0 (printed page 124). |
+| 5 | `green_led_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 0 enables the green LED colour and 1 disables it. Resets to 1 (printed page 124). |
+| 4 | `red_led_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 0 enables the red LED colour and 1 disables it. Resets to 0 (printed page 124). |
+| 3 | `nic_level` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. The current level of the Number-In-a-Can line: 0 is low, 1 is high. The reset column prints 0 (printed page 124). |
+| 2 | `nic_deassert` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Drives the Number-In-a-Can line. 0 holds the bidirectional line low. 1 is no operation, so the line is released. Resets to 0 (printed page 124). |
+| 1 | `password_clear_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. 1 means the external password clear is enabled (printed page 124). |
+| 0 | `flash_write_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | 1 enables writes to the external Flash-ROM. 0 sends writes into a bit bucket (printed page 124). |
 
 ### Register `periph_status`
 

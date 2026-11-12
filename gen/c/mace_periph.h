@@ -19,6 +19,39 @@
 #define MACE_PERIPH_RING_BASE_EXT_RESET_INPLACE      (MACE_PERIPH_RING_BASE_EXT_RESET_MASK << MACE_PERIPH_RING_BASE_EXT_RESET_SHIFT)
 
 /*
+ * Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122).
+ */
+/* misc_control: rw64, reset 0x20; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
+#define MACE_PERIPH_MISC_CONTROL_OFFSET              0x8u /* established */
+#define MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_SHIFT   8 /* established */
+#define MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_MASK    0x1ull
+#define MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_TEST_UST_TIMER_SHIFT 7 /* established */
+#define MACE_PERIPH_MISC_CONTROL_TEST_UST_TIMER_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_TEST_UST_TIMER_INPLACE (MACE_PERIPH_MISC_CONTROL_TEST_UST_TIMER_MASK << MACE_PERIPH_MISC_CONTROL_TEST_UST_TIMER_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_DPRAM_WRITE_ENABLE_SHIFT 6 /* established */
+#define MACE_PERIPH_MISC_CONTROL_DPRAM_WRITE_ENABLE_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_DPRAM_WRITE_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_DPRAM_WRITE_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_DPRAM_WRITE_ENABLE_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_GREEN_LED_ENABLE_SHIFT 5 /* established */
+#define MACE_PERIPH_MISC_CONTROL_GREEN_LED_ENABLE_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_GREEN_LED_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_GREEN_LED_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_GREEN_LED_ENABLE_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_SHIFT 4 /* established */
+#define MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_SHIFT     3 /* established */
+#define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_MASK      0x1ull
+#define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_INPLACE   (MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_MASK << MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_SHIFT  2 /* established */
+#define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_MASK   0x1ull
+#define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_INPLACE (MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_MASK << MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_PASSWORD_CLEAR_ENABLE_SHIFT 1 /* established */
+#define MACE_PERIPH_MISC_CONTROL_PASSWORD_CLEAR_ENABLE_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_PASSWORD_CLEAR_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_PASSWORD_CLEAR_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_PASSWORD_CLEAR_ENABLE_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_SHIFT 0 /* established */
+#define MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_MASK 0x1ull
+#define MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_SHIFT)
+
+/*
  * Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).
  */
 /* periph_status: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */

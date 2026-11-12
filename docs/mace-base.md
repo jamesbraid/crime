@@ -4,8 +4,9 @@ This page covers the parts of the O2 MACE I/O ASIC that the register sources
 in `defs/mace_pci.toml`, `defs/mace_periph.toml` and `defs/mace_timer.toml`
 do not state in prose: where the PCI devices sit and which CRIME bits they
 reach, how PCI byte positions and bus-master windows map, the CPU apertures
-onto PCI memory, the PCI reset path, and the external serial and RTC
-frontends. Register offsets, widths and reset values live in the defs; this
+onto PCI memory, the PCI reset path, the external serial and RTC
+frontends, and the Misc Control register with its Number-In-a-Can line.
+Register offsets, widths and reset values live in the defs; this
 page does not repeat them.
 
 Grades follow [AGENTS.md](../AGENTS.md): **established** (a published document
@@ -237,6 +238,30 @@ resetting the PCI bus.
   Register meanings belong to the clock's own contract, which this repository
   does not yet hold.
 
+## Misc Control and the Number-In-a-Can line
+
+- Misc Control sits at offset `0x08` of the peripheral block, beside the ring
+  base and the interrupt status and mask (established, [mace] 122). It holds the
+  Flash-ROM write enable, the Number-In-a-Can line control, the LED enables,
+  the DP-RAM write enable and the timer test mode (established, [mace] 124).
+  Its fields are in `defs/mace_periph.toml`.
+- The specification lists a "simple interface to Number-In-a-Can serial PROM"
+  among the ISA features (established, [mace] 121). The register drives one
+  bidirectional line. Bit 2 holds it low when clear and releases it when set.
+  Bit 3 reads its current level (established, [mace] 124).
+- The protocol on that line, its timing, the part on the other end and the
+  bytes it holds are not in the specification (unknown).
+- The specification puts the system serial number and the Ethernet address in
+  the Dallas calendar module, which has a unique 56-bit silicon serial number
+  embedded in it (established, [mace] 121). Nothing in the Misc Control
+  description assigns the address to the Number-In-a-Can line, so the line is
+  not a source for the address on the specification's evidence (established as
+  an absence in [mace] 121 to 124).
+- The specification says every register is read and written by 64-bit
+  programmed I/O (established, [mace] 122). It does not say what a narrower
+  access to Misc Control does, and it does not place a 32-bit word of the
+  register in either half of the 64-bit value (unknown).
+
 ## Unresolved
 
 - The `PCIRst_N` timing and what a PCI reset clears (see the reset table).
@@ -252,4 +277,7 @@ resetting the PCI bus.
 - The physical pin that the second onboard SCSI controller uses (the table
   label and the route to CRIME bit 9 disagree on the label).
 - The serial DMA channel blocks, which this page does not cover.
+- The Number-In-a-Can line protocol, timing, part and contents (see the Misc
+  Control section above).
+- Narrow access to Misc Control (see the same section).
 - Slot width and signalling voltage.

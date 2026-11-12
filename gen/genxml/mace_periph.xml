@@ -7,6 +7,18 @@
     <field name="dma_ring_base" start="15" size="17" type="uint" grade="established"/>
     <field name="ext_reset" start="0" size="1" type="uint" grade="established"/>
   </struct>
+  <struct name="MISC_CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x8" access="rw" reset="0x20">
+    <doc>Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122).</doc>
+    <field name="sa20_enable" start="8" size="1" type="uint" grade="established"/>
+    <field name="test_ust_timer" start="7" size="1" type="uint" grade="established"/>
+    <field name="dpram_write_enable" start="6" size="1" type="uint" grade="established"/>
+    <field name="green_led_enable" start="5" size="1" type="uint" grade="established"/>
+    <field name="red_led_enable" start="4" size="1" type="uint" grade="established"/>
+    <field name="nic_level" start="3" size="1" type="uint" grade="established"/>
+    <field name="nic_deassert" start="2" size="1" type="uint" grade="established"/>
+    <field name="password_clear_enable" start="1" size="1" type="uint" grade="established"/>
+    <field name="flash_write_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
   <struct name="PERIPH_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x10" access="rw" reset="unknown">
     <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).</doc>
     <field name="serial_b" start="26" size="1" type="uint" grade="established"/>
