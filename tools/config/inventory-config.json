@@ -4,7 +4,7 @@
   "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
     "prose": ["devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md", "evidence/routines/*.md"],
-    "headers": ["*.h", "devices/*/*.h", "generated/c/*.h", "software/kernel/include/*.h", "software/opengl/include/*.h"],
+    "headers": ["devices/*/*.h", "generated/c/*.h", "software/kernel/include/*.h", "software/opengl/include/*.h"],
     "tables": [],
     "index": ["AGENTS.md", "README.md", "evidence/irix-files.md", "evidence/coverage.md", "questions/README.md"],
     "dumps": [],
@@ -605,7 +605,7 @@
     {"name": "MACEVCH", "size": "0x80000", "physical": "0x1f100000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
     {"name": "MACEI2C", "size": "0x10000", "physical": "0x1f330000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
     {"name": "MACETIMER", "size": "0x10000", "physical": "0x1f340000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
-    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "devices/*/*.h", "generated/c/*.h", "devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md"]},
+    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["devices/*/*.h", "generated/c/*.h", "devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md"]},
     {"name": "VICE", "size": "0x1000000", "physical": "0x17000000", "docs": ["devices/vice/vice.md"]}
   ],
   "bases": [

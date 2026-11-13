@@ -30,7 +30,7 @@ All registers sit on doubleword boundaries whatever their width; unused bits rea
 
 ### Chip
 
-The registers in this and the next two sections, with the shared interrupt cause, mailbox and DMA control and status layouts, are recorded in [VICE_DECODE.h](../../VICE_DECODE.h). The descriptor registers are not. The memory regions (bitstream buffers, data RAM banks) and the translation buffer's first entry and entry format are listed in the same header; the access widths of the regions are inferred.
+The registers in this and the next two sections, with the shared interrupt cause, mailbox and DMA control and status layouts, are recorded in [generated/c/vice.h](../../generated/c/vice.h). The descriptor registers are not. The memory regions (bitstream buffers, data RAM banks) and the translation buffer's first entry and entry format are listed in the same header; the access widths of the regions are inferred.
 
 - `VICE_ID` at `+0x8`: established ([vice] PDF 40, 44). The read-only revision register; its low nibble numbers the chip revision from one to three, and the register map gives it a reset value of `0xe1`. A family tag in the high nibble is inferred.
 - `VICE_CFG` at `+0xe000`: established ([vice] PDF 40, 44). Bit 0 asks the chip to check the data-error flag on bus data it receives; bit 1 lets the MSP bypass the translation buffer when the DMA control register also asks for it. Both reset to zero; the bypass bit is the host's safety switch.

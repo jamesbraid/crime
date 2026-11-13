@@ -6,10 +6,6 @@ doc = "GBE display back end register words, tables and offsets."
 from = "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
 public_from = ["published GBE 1.1 specification", "shipped IRIX"]
 
-[c]
-legacy_header = "GBE_DECODE.h"
-legacy_guard = "GBE_DECODE_H"
-
 [words.CMAP_ENTRY]
 width = 32
 grade = "established"

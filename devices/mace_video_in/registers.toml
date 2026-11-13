@@ -6,10 +6,6 @@ doc = "MACE video input channel registers."
 from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
 public_from = ["published MACE 2.0 specification", "shipped IRIX"]
 
-[c]
-legacy_header = "MACE_VIDEO_IN_DECODE.h"
-legacy_guard = "MACE_VIDEO_IN_DECODE_H"
-
 [spaces.mace_video_in]
 
 [registers.control]

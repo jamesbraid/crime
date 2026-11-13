@@ -6,10 +6,6 @@ doc = "CRIME memory controller and CPU-interface registers, and the interrupt in
 from = "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
 public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
-[c]
-legacy_header = "CRIME_DECODE.h"
-legacy_guard = "CRIME_DECODE_H"
-
 [registers.id]
 offset = 0x0
 access = "r"

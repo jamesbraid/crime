@@ -6,10 +6,6 @@ doc = "CRIME memory transfer engine registers, address word and tile geometry."
 from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
 public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
-[c]
-legacy_header = "MTE_DECODE.h"
-legacy_guard = "MTE_DECODE_H"
-
 [spaces.re]
 
 [registers.mode]

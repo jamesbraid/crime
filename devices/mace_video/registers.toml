@@ -6,10 +6,6 @@ doc = "MACE video output channel registers and the chip-level hardware configura
 from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
 public_from = ["published MACE 2.0 specification", "shipped IRIX"]
 
-[c]
-legacy_header = "MACE_VIDEO_DECODE.h"
-legacy_guard = "MACE_VIDEO_DECODE_H"
-
 [spaces.mace_video_out]
 
 [registers.control]

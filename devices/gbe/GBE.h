@@ -175,7 +175,7 @@
 /* VC_0/VC_1 region bounds, VC_2 mode, VC_3 field and descriptor control;
  * VC_4 to VC_8 hold the ten capture tile addresses, two 16-bit entries per
  * register with the earlier tile in the upper half [E, gbe-spec pp. 47-48].
- * VC_8 has no read path. Fields: GBE_DECODE.h. */
+ * VC_8 has no read path. Fields: generated/c/gbe.h. */
 #define GBE_VC_0            0x80000
 #define GBE_VC_1            0x80004
 #define GBE_VC_2            0x80008

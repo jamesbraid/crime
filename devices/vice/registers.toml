@@ -6,10 +6,6 @@ doc = "VICE imaging and compression engine chip, signal processor, bitstream pro
 from = "published VICE design specification"
 public_from = ["published VICE design specification"]
 
-[c]
-legacy_header = "VICE_DECODE.h"
-legacy_guard = "VICE_DECODE_H"
-
 [spaces.vice]
 
 [registers.id]

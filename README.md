@@ -52,7 +52,7 @@ To reproduce a cited result:
 
 ## Hardware definitions
 
-Register, word, field and constant facts for CRIME, the rendering engine, the memory transfer engine, GBE, MACE and VICE are TOML sources, one `devices/<unit>/registers.toml` per block. `generated/` holds what is generated from them: C headers, a Rust crate, Python decode modules, JSON and a genxml export, and each block's reference page is `devices/<unit>/registers.md`. Do not edit the generated files. Change `registers.toml`, then run `retools/tools/defs/defs-gen` and `retools/tools/defs/defs-check --build`. The old `*_DECODE.h` names are forwarding headers for the generated C. [AGENTS.md](AGENTS.md) describes the layout.
+Register, word, field and constant facts for CRIME, the rendering engine, the memory transfer engine, GBE, MACE and VICE are TOML sources, one `devices/<unit>/registers.toml` per block. `generated/` holds what is generated from them: C headers, a Rust crate, Python decode modules, JSON and a genxml export, and each block's reference page is `devices/<unit>/registers.md`. Do not edit the generated files. Change `registers.toml`, then run `retools/tools/defs/defs-gen` and `retools/tools/defs/defs-check --build`. [AGENTS.md](AGENTS.md) describes the layout.
 
 ## Documentation index
 

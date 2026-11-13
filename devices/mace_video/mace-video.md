@@ -44,7 +44,7 @@ Scope: the spec is a design document of 1996. It lists seven unsettled design qu
 
 ## Registers
 
-All registers are 64-bit, big-endian doubleword accesses. The layouts below are recorded in [MACE_VIDEO_IN_DECODE.h](../../MACE_VIDEO_IN_DECODE.h) for the input channel and [MACE_VIDEO_DECODE.h](../../MACE_VIDEO_DECODE.h) for the output channel; fields are decoded for the control and status registers and the input configuration register, and the other registers are listed by offset only. A register marked double-buffered takes effect at the next field, when the next-descriptor register is read. Offsets are within one channel's set; the input set repeats at `+0x80000`.
+All registers are 64-bit, big-endian doubleword accesses. The layouts below are recorded in [generated/c/mace_video_in.h](../../generated/c/mace_video_in.h) for the input channel and [generated/c/mace_video.h](../../generated/c/mace_video.h) for the output channel; fields are decoded for the control and status registers and the input configuration register, and the other registers are listed by offset only. A register marked double-buffered takes effect at the next field, when the next-descriptor register is read. Offsets are within one channel's set; the input set repeats at `+0x80000`.
 
 ### Input channel
 
@@ -75,7 +75,7 @@ All registers are 64-bit, big-endian doubleword accesses. The layouts below are 
 - `VOUT.HPAD_EVEN` at `+0x40`: established ([mace] PDF 51). The even-field copy of the odd horizontal timing register.
 - `VOUT.VPAD_EVEN` at `+0x48`: established ([mace] PDF 52). The even-field copy of the odd vertical timing register.
 - `VOUT.GEN_DLY` at `+0x50`: established ([mace] PDF 52-53). Extra genlock delay of up to a line in bits 10:0, in clocks; it must never be zero when a genlock source is used. The fixed delay is 15 clocks from a D1 source and 10 from the external sync, so the minimum totals are 16 and 11.
-- `VOUT.VHW_CFG` at `+0x58`: established ([mace] PDF 53-55). Chip-level video setup that belongs to neither channel: reset and AB/CD select for the two input ports, the audio-sync source with its precision and correction bits, the same set for GBE framelock, the general-purpose output pin in bit 18, and a four-bit chip revision code in bits 35:32. Recorded in [MACE_VIDEO_DECODE.h](../../MACE_VIDEO_DECODE.h).
+- `VOUT.VHW_CFG` at `+0x58`: established ([mace] PDF 53-55). Chip-level video setup that belongs to neither channel: reset and AB/CD select for the two input ports, the audio-sync source with its precision and correction bits, the same set for GBE framelock, the general-purpose output pin in bit 18, and a four-bit chip revision code in bits 35:32. Recorded in [generated/c/mace_video.h](../../generated/c/mace_video.h).
 - `VOUT.DMA_DESC` at `+0x80` to `+0xb8`: established ([mace] PDF 56). Same format as the input descriptors, linear or tiled only.
 
 The counter that stamps each field lives in the MACE timer block, not here: its low bit says odd (0) or even (1) field and its upper half snapshots the system uptime at start of field ([mace] PDF 56). Established.

@@ -6,10 +6,6 @@ doc = "CRIME rendering engine interface buffer, translation tables, pixel pipeli
 from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
 public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
-[c]
-legacy_header = "RE_DECODE.h"
-legacy_guard = "RE_DECODE_H"
-
 [spaces.re]
 
 [registers.ib_data]
