@@ -46,7 +46,7 @@ Command and control, bits 5:0 (established, printed page 141, table 73). Reset t
 
 [registers.control.fields]
 inhibit_after_transmit = { bits = [0, 0], grade = "established", doc = "One releases the clock output after the next serial stream is transmitted; zero keeps it asserted (printed page 141)." }
-transmit_enable = { bits = [1, 1], grade = "established", doc = "One lets the transmit buffer shift out on the data line, on the falling edge of the device clock; zero disables that shift and the timeout (printed page 141). The timeout itself is not defined in the specification (unknown)." }
+transmit_enable = { bits = [1, 1], grade = "established", doc = "One lets the transmit buffer shift out on the data line, on the falling edge of the device clock; zero disables the timeout (printed page 141); whether it also stops the shift is not stated. The timeout itself is not defined in the specification (unknown)." }
 transmit_interrupt_enable = { bits = [2, 2], grade = "established", doc = "One asserts the port interrupt when the transmit buffer is empty (printed page 141)." }
 receive_interrupt_enable = { bits = [3, 3], grade = "established", doc = "One asserts the port interrupt when the receive buffer is full (printed page 141)." }
 clock_permit = { bits = [4, 4], grade = "established", doc = "One asserts the clock output, which lets the device exchange data; zero releases it and pauses both directions (printed page 141). Resets to one." }

@@ -16,11 +16,9 @@ Sources:
   1996. Stored as `references/documents/specs/mace-2.0-specification.pdf`. Page
   numbers are the printed ones.
 - Public Linux driver `drivers/input/serio/maceps2.c` at
-  `db2ddb87143519e20a95aa36c60b36107b736a58`, and
-  `arch/mips/include/asm/ip32/mace.h` at the same revision. These show what
-  software expects. They do not prove hardware behaviour. The driver was not
-  re-read against that revision for this page; the claims below are the
-  ones recorded when the page was written.
+  `c339f4010dea`, the pinned `references/code/linux` revision, which was re-read
+  for the software expectations below. These show what software expects. They do
+  not prove hardware behaviour.
 
 ## Address map and serial frame
 
@@ -71,7 +69,7 @@ Sources:
   inferred from that description, so a poll bit can be set with both
   interrupt enables clear.
 - Masking a peripheral source does not clear the device condition behind it
-  (established, [mace] 125 and 147).
+  (inferred from [mace] 147, which clears the timer condition separately; the specification does not state it).
 
 ## Software expectations
 
