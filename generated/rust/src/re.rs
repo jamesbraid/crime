@@ -650,7 +650,7 @@ pub mod vertex_gl {
     pub const COUNT: u32 = 6;
     pub const STRIDE: u64 = 4;
 }
-/// Readback source start (inferred, software expectation). For a readback from a buffer H rows high, the driver writes the x component as the window x an (established)
+/// Readback source start (inferred, software expectation). The shipped GL readback routine writes the integer part of the start x as the x component and  (established)
 pub mod xfer_src_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20a0;
@@ -675,7 +675,7 @@ pub mod xfer_dst_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20b0;
 }
-/// Readback row-end increment (inferred, software expectation). With S bytes per pixel, a scratch row pitch P and a programmed copy width C, the driver w (established)
+/// Readback row-end increment (inferred, software expectation). With S bytes per pixel, a programmed copy width C and a scratch row pitch P that exceeds  (established)
 pub mod xfer_dst_stride {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20b4;

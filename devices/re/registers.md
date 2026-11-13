@@ -350,11 +350,10 @@ Table 7-3 lists each GL vertex word as 32 bits, non-global and write-only, in 13
 
 Start-alias stores (inferred, software expectation, evidence/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
 
-Readback extents (inferred, software expectation). A GL readback of a
-rectangle writes inclusive pixel indices, not the half-open edges of the
+Readback extents (inferred, software expectation). The shipped GL readback routine writes inclusive pixel indices, not the half-open edges of the
 scissor: the far x is the start x plus the programmed copy width minus one,
-and the far y is the start y minus the row count plus one, each as
-(index << 6) & 0x7ffff. A one-row readback therefore writes equal y words and
+and the far y is the start y minus the chunk's row count plus one, each as
+(index << 6) & 0x7ffff. A one-row chunk therefore writes equal y words and
 still copies one row. Only driver writes show this. How the engine resolves a
 fractional edge is unknown. See software/opengl/pixel-transfer.md.
 
@@ -362,10 +361,7 @@ Array of 6 registers, stride 4.
 
 ### Register `xfer_src_addr`
 
-Readback source start (inferred, software expectation). For a readback from a
-buffer H rows high, the driver writes the x component as the window x and the
-y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
-bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
+Readback source start (inferred, software expectation). The shipped GL readback routine writes the integer part of the start x as the x component and the integer part of the start y as the y component, each masked to 11 bits. Whether that start y is the buffer height minus one minus the window y is unverified. The
 equation that combines this packed start with SrcWinOffset is unknown. See
 software/opengl/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0.
 
@@ -382,10 +378,9 @@ The shipped IRIX kernel writes it for an unbound caller as (zoom - 1) << 28 | (s
 ### Register `xfer_dst_stride`
 
 Readback row-end increment (inferred, software expectation). With S bytes per
-pixel, a scratch row pitch P and a programmed copy width C, the driver writes
-S + max(P - C * S, 0). The row pitch is then (C - 1) * S + that value, which
-equals P. The width C is the aligned width, not the requested width: the
-driver rounds it up until the row is a multiple of eight bytes, so a
+pixel, a programmed copy width C and a scratch row pitch P that exceeds C * S,
+the shipped GL readback routine writes S + (P - C * S); otherwise it writes S. The width C is the aligned width, not the requested width: the
+routine adds pixels until the row is a multiple of eight bytes, so a
 requested width of 15 at four bytes per pixel programs 16. See
 software/opengl/pixel-transfer.md.
 

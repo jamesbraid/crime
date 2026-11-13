@@ -62,24 +62,10 @@ Sources: the kernel request above; `libGLcore` `__glCrmPickDrawPixels` (the CRIM
 The step rules above apply with one-byte pixels. What follows is the CI8
 case, which none of the RGB paths above exercise.
 
-- Inferred (NetBSD `crmfb` driver, `crmfb.c` around lines 1554 to 1581, as
-  cited in the source review; the `references/code/netbsd/` submodule is not checked out
-  here, so those lines are not re-read): an upload from a linear CI8 buffer
-  goes to a tiled CI8 buffer held in 32-bit words. The logical index stays one
-  byte per pixel whatever the storage width. In `BUFMODE` terms that is
-  `buf_type` 0 to 2, `buf_depth` 2 (32 bits), `pix_type` 0 (CI) and
-  `pix_depth` 0 (8 bits).
-- Inferred (shipped 6.5.30 kernel and graphics-module callers): an upload
-  programs the source X step to 1 and the Y step to the row pitch minus the
-  row's valid bytes plus 1, then commits the source through the start alias.
-  A download selects a tiled CI8 source with both source steps at 1, and a
-  packed linear CI8 destination with its destination step at 1. These agree
-  with the Y-step rule above at pixel size one.
-- Established as code (`software/kernel/decomp/crime_dma.c`, `crmpixdma`, the
-  upload branch that stores through `0x20a0 | 0x800`): the kernel stores the
-  chunk's source address without a mask. libGLcore masks the same register to
-  17 bits. Nothing here shows a chunk address above 17 bits, so the 17-bit
-  inference above is not contradicted, but it is no longer the only reading.
+- Inferred (public NetBSD `crmfb` driver at the pinned `references/code/netbsd` revision, `sys/arch/sgimips/dev/crmfb.c`, `crmfb_putchar_aa`, lines 1554 to 1581, re-read): an upload from a linear CI8 buffer goes to a tiled CI8 buffer held in 32-bit words. The driver sets the source to a linear 8-bit CI buffer and the destination to a tiled 32-bit buffer with CI pixels of 8 bits, with a source X step of 1. The logical index stays one byte per pixel whatever the storage width. In `BUFMODE` terms the destination is `buf_type` 0 to 2, `buf_depth` 2 (32 bits), `pix_type` 0 (CI) and `pix_depth` 0 (8 bits).
+- Inferred (shipped 6.5.30 kernel, `crmpixdma` in `crime_dma.o`): the source Y step the kernel programs is the row pitch minus the row's valid bytes plus the pixel size, which is one at CI8, followed by a commit through the start alias. This agrees with the Y-step rule above at pixel size one.
+- Unknown: the source X step the kernel and the X module use for a CI8 upload, and the steps for a download (a tiled CI8 source and a packed linear CI8 destination). An earlier note gave 1 for each, but only the NetBSD driver's source X step is confirmed here, and the X module's image routines were not read. Route: read the image routines of the X module `crm.so` and the pixel-transfer request setup in `crimePixelDma`.
+- Established as code (`software/kernel/decomp/crime_dma.c`, `crmpixdma`, the branch taken when request flag bit 3 is set, which stores through `0x20a0 | 0x800`): the kernel stores the chunk's source address without a mask. libGLcore masks the same register to 17 bits. Nothing here shows a chunk address above 17 bits, so the 17-bit inference above is not contradicted, but it is no longer the only reading.
 - Unknown: which byte of a 32-bit tiled word holds the index. Big-endian order
   would put it in the last byte, but no cited source settles that.
 - Unknown: the CI16 indexed layout. Its logical index width, destination lane
@@ -87,17 +73,17 @@ case, which none of the RGB paths above exercise.
 
 ## RGBA32 readback through the GL rectangle
 
-Every fact here is inferred: it is a software expectation of the IRIX 6.5.30 client driver (N32 `libGLcore.so`, SHA-256 `b33ef449a0ffa93afd9242bc331eeb81111e22e81e3d8b7f1b6045c666cc9492`), read from what the driver writes. No hardware capture backs it, and no public file states it.
+Source: `crmReadPixelsXfer` in the N32 `libGLcore.so` (SHA-256 `b33ef449a0ffa93afd9242bc331eeb81111e22e81e3d8b7f1b6045c666cc9492`), read from `software/opengl/asm/CRIME/crm_pixel.s`. What the driver writes is a software expectation, not a hardware rule. No hardware capture backs it, and no public file states it.
 
-Exposure: an author who read restricted vendor source supplied these statements. The text here is in our own words. Anyone implementing or reviewing the RGBA32 readback must work from the public material and their own evidence, not from this section.
+Read from the routine's disassembly, which I read in the parts that write these registers and not as a whole (inferred, software expectation):
 
-The route moves four-byte RGBA storage from a tiled frame buffer to a linear scratch buffer. A CPU routine then copies bytes zero to two of each pixel and drops byte three. The hardware writes RGBA, not RGB.
+- Extents. For start x X, start y Y, programmed copy width C and R rows in the chunk, the driver writes `(X << 6) & 0x7ffff` and `((X + C - 1) << 6) & 0x7ffff` as the x words, and `(Y << 6) & 0x7ffff` and `((Y - R + 1) << 6) & 0x7ffff` as the y words. The far edges are inclusive, unlike the scissor's exclusive maximum edges, so a one-row chunk writes equal y words and still copies one row. See `devices/re/registers.toml`, `vertex_gl`.
+- Aligned width. The routine adds one pixel to C, and recomputes the row byte count, until the row is a multiple of eight bytes. A requested width of 15 at four bytes per pixel programs 16.
+- Row end. With S the bytes per pixel and C the aligned width, the routine writes `S + (P - C * S)` to the destination step when the scratch row pitch P, which it reads back from its own argument slot after the scratch allocation call, exceeds the aligned row byte count `C * S`, and S otherwise. The resulting row pitch is then P. See `devices/re/registers.toml`, `xfer_dst_stride`.
+- Primitive. The routine takes the existing Primitive word, sets the rectangle opcode to 3, clears the edge field and keeps the other fields. This conflicts with the Primitive statement in step 3 above, which picks the edge from the order flags. Both statements are unresolved for this route. Both source steps carry literal 1, so the walk direction has to come from the Primitive edge, not from the sign of the step.
+- Source start. The x component is the integer part of the transfer's start x and the y component the integer part of its start y, each masked to 11 bits. See `devices/re/registers.toml`, `xfer_src_addr`.
 
-- Extents. For start x X, start y Y, programmed copy width C and R rows, the four GL words are `(X << 6) & 0x7ffff`, `((X + C - 1) << 6) & 0x7ffff`, `(Y << 6) & 0x7ffff` and `((Y - R + 1) << 6) & 0x7ffff`. The far edges are inclusive, unlike the scissor's exclusive maximum edges. A one-row readback writes equal y words and still copies one row. See `devices/re/registers.toml`, `vertex_gl`.
-- Aligned width. The driver increases the programmed width C until a row is a multiple of eight bytes. A requested width of 15 at four bytes per pixel programs 16. The hardware touches the whole aligned pixel. The CPU routine returns only the requested pixels, so scratch must have room for the aligned row.
-- Source start. The driver writes x as the window x and y as H - 1 - window y, each masked to 11 bits, with H the buffer height. For a 128-row buffer, y = 127 - window y. See `devices/re/registers.toml`, `xfer_src_addr`.
-- Row end. The row-end increment is `S + max(P - C * S, 0)`, with S the bytes per pixel and P the scratch row pitch. For C = 16, S = 4 and P = 64 it is 4, not 64. The row pitch is `(C - 1) * S + increment`, which equals P. See `devices/re/registers.toml`, `xfer_dst_stride`.
-- Primitive. For this route the driver forces the rectangle opcode to 3 and the edge field to 0 (`lr_bt`) and keeps the other fields. The driver's reading is that, under the upper-left orientation, the walk runs toward increasing x and decreasing y. This conflicts with the Primitive statement in step 3 above, which picks the edge from the order flags. Both statements are unresolved for this route. Both source steps carry literal 1, so the walk direction has to come from the Primitive edge, not from the sign of the step.
+Unverified (an earlier note said these, and the routine alone does not show them): that the start y reaches the routine as H - 1 - window y for a buffer H rows high, with the 0x21000 window bias dropping out under the mask; that the hardware writes RGBA and a CPU routine then copies bytes zero to two and drops byte three; and that scratch must have room for the aligned row. Route: read the callers that fill the transfer's start fields and the routine that unpacks the scratch rows.
 
 What the driver writes does not give a complete rule for the hardware. The following are unknown:
 
