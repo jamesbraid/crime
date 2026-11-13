@@ -407,7 +407,7 @@ pub mod periph_status {
         }
     }
 }
-/// Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset  (established)
+/// Gates delivery of the status bits. Page 147 has the timer condition cleared by writing its compare register and the mask handled separately, so a mask (established)
 pub mod periph_mask {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;

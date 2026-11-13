@@ -92,8 +92,8 @@ CRIME bit. The device column is the inferred numbering above.
 
 | PCI device | INTA | INTB | INTC | INTD | Grade |
 |---|---|---|---|---|---|
-| 1, SCSI controller 0 | CRIME 8 (input 0) | unrouted | unrouted | unrouted | INTA established; B to D unrouted inferred (OpenBSD maps none, NetBSD refuses them) |
-| 2, SCSI controller 1 | CRIME 9 (input 1) | unrouted | unrouted | unrouted | INTA established; B to D unrouted inferred |
+| 1, SCSI controller 0 | CRIME 8 (input 0) | unrouted | unrouted | unrouted | INTA established; B to D unrouted inferred (OpenBSD maps none, NetBSD refuses them; Linux's table sends all four pins to the SCSI interrupt) |
+| 2, SCSI controller 1 | CRIME 9 (input 1) | unrouted | unrouted | unrouted | INTA established; B to D unrouted inferred (Linux sends all four pins to the SCSI interrupt) |
 | 3, option board | CRIME 10 (input 2) | CRIME 13 (input 5) | CRIME 14 (input 6) | CRIME 15 (input 7) | chip wiring established; the connector wiring on the O2 board is inferred |
 | 4, slot one | CRIME 11 (input 3) | CRIME 15 (input 7) | CRIME 13 (input 5) | CRIME 14 (input 6) | chip wiring established; no stock slot inferred |
 | 5, slot two | CRIME 12 (input 4) | CRIME 14 (input 6) | CRIME 15 (input 7) | CRIME 13 (input 5) | chip wiring established; no stock slot inferred |
@@ -123,7 +123,7 @@ how software sees PCI programmed I/O and bus-master memory on this bridge.
 
 | CPU access width | Effect | Grade |
 |---|---|---|
-| 8-bit | A PCI byte at offset `p` is reached at CPU offset `p ^ 3`. The value is not swapped. | established for PCI programmed I/O ([guide] 398, Table 15-3) |
+| 8-bit | A PCI byte at offset `p` is reached at CPU offset `p ^ 3`. The value is not swapped. | the offset rule is established ([guide] Table 15-3, printed page 398); that the byte value is not swapped is inferred |
 | 16-bit | Offset `p ^ 2`. The halfword value is not swapped. | the offset rule is established ([guide] Table 15-3). The no-swap reading follows from [guide] 397 and the table, which gives only address bits |
 | 32-bit | Address and value unchanged. | established ([guide] 397) |
 | 64-bit | Not specified. Drivers do not swap it, and the bridge issues only 32-bit cycles. | unknown |
@@ -210,11 +210,12 @@ revisions. The MACE 2.0 register readback is 1 (see `devices/mace_pci/registers.
   that DMA data is visible in memory. This applies to PCI storage DMA and to any
   MACE DMA engine (established, [mace] 179). The rule does not settle the
   byte-swap view above.
-- A timer interrupt is acknowledged by writing its compare register. RTC and
-  UART interrupts are acknowledged in those devices, and then the peripheral
-  group falls (established, [mace] 147 and 125 to 126).
+- A timer interrupt is acknowledged by writing its compare register. That is established
+  ([mace] 147). That RTC and UART interrupts are acknowledged in those devices,
+  after which the peripheral group falls, is inferred: the specification names
+  no acknowledge for them ([mace] 125 to 126).
 - Peripheral mask bits gate delivery. They do not clear the device condition
-  behind a status bit (established, [mace] 125 and 147).
+  behind a status bit (inferred from [mace] 147, which clears the timer condition by writing the compare register; the specification does not state it).
 
 ## PCI reset
 
@@ -238,10 +239,11 @@ resetting the PCI bus.
 - Two external 16C550-compatible UARTs sit at `0x1f390000` and `0x1f398000`,
   with byte registers on a 256-byte stride (established, [mace] 133). The
   registers have the standard 16550 meanings, and the chip's serial mode is
-  described as behaving exactly like a National 16550 (established, [mace] 129).
+  described as behaving exactly like a National 16550 while the serial DMA engine is disabled (established, [mace] 129).
 - The TI IR and clock register sits at the 16550 scratch-register position.
-  It can be read and written only while LCR DLAB is set (established, [mace]
-  126, Table 55).
+  It is accessible only while LCR DLAB is set (established, [mace]
+  126). Table 55 types every field read-only, so whether software writes it is
+  unresolved.
 - In that register, bit 7 selects the IR encoder and decoder. Bits 5:0 are a
   clock prescaler that divides the input clock by 0 to 31.5 in steps of 0.5
   (established, [mace] 126).
@@ -257,11 +259,11 @@ resetting the PCI bus.
   pages 25 and 30). The part's identity in the O2 is not established, so this
   stays inferred until it is. The register items are in
   `devices/mace_uart/registers.toml`.
-- The same data sheet puts the infrared select on bit 6 of the scratch-position
-  register, with the prescaler in bits 5:0, and after reset makes UART 0 an
+- The same data sheet puts the prescaler in the six low bits of the scratch-position
+  register, says infrared is selected by "the seventh bit", and after reset makes UART 0 an
   infrared channel and UART 1 an ordinary UART (inferred, TI SLLS222A printed
-  page 33). That conflicts with the MACE specification's bit 7 above. The data
-  sheet's UART 0 and UART 1 are not mapped to MACE ports 1 and 2 here, since
+  page 33). "The seventh bit" carries no bit number, so it does not clearly differ
+  from the MACE specification's bit 7 above. The data sheet's UART 0 and UART 1 are not mapped to MACE ports 1 and 2 here, since
   that wiring is unknown. See the unresolved list.
 - The MACE serial DMA channels are a separate feature, covered in
   [mace-serial-dma.md](../../devices/mace_serial_dma/mace-serial-dma.md). A PIO-only frontend must not claim
@@ -274,8 +276,8 @@ resetting the PCI bus.
   [mace] 121 and 133). It is not an IOC3-style address and data pair.
 - The MACE supplies the clock's alarm interrupt to peripheral status bit 8, and
   the clock has no DMA channel (established, [mace] 121, 125 and 133).
-- Deassertion must come from the clock's own status acknowledgment. The MACE
-  has no separate response (established, [mace] 125 to 126).
+- Deassertion is taken to come from the clock's own status acknowledgment, and the MACE
+  to have no separate response (inferred; [mace] 125 to 126 names none).
 - The contents of battery-backed RAM and the power-on calendar value are unknown.
   Register meanings belong to the clock's own contract, which this repository
   does not yet hold.
@@ -320,9 +322,8 @@ resetting the PCI bus.
   source for the modem control bit and the scratch reset above, so those stay
   inferred until the part is identified.
 - The infrared select bit in the scratch-position register: bit 7 in the MACE
-  specification (printed page 126) and bit 6 in the TI data sheet (printed page
-  33). The MACE reading is established as printed, so the conflict is recorded,
-  not settled.
+  specification (printed page 126). The TI data sheet (printed page 33) says only
+  "the seventh bit", which reads as bit 6 or bit 7 depending on whether the count starts at 0 or 1, so it is not a settled difference. The MACE reading is established as printed.
 - Whether the scratch value survives the MACE external reset from ring-base bit
   0. The TI data sheet says master reset has no effect on it, but nothing shows
   that the MACE reset pin is a master reset.

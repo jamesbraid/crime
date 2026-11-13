@@ -80,7 +80,7 @@ Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/wr
 
 ### Register `periph_mask`
 
-Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.
+Gates delivery of the status bits. Page 147 has the timer condition cleared by writing its compare register and the mask handled separately, so a mask bit is read as not clearing the condition behind a status bit (inferred; the specification does not state it). Reset value not stated.
 
 ## Constants
 

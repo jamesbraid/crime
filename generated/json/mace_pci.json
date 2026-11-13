@@ -97,7 +97,7 @@
   {
    "unit": "mace_pci",
    "kind": "field",
-   "name": "pci_error_flags.addr_valid",
+   "name": "pci_error_flags.master_abort_addr",
    "hi": 19,
    "lo": 19,
    "grade": "established",
@@ -199,7 +199,7 @@
    "kind": "register",
    "name": "pci_cfg_addr",
    "offset": 3320,
-   "access": "rw",
+   "access": "w",
    "width": 32,
    "count": 1,
    "stride": 4,

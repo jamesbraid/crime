@@ -17,12 +17,12 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `pci_error_flags` | 0x4 | rw | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
 | `pci_control` | 0x8 | rw | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
 | `pci_rev` | 0xc | rw | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
-| `pci_cfg_addr` | 0xcf8 | rw | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
+| `pci_cfg_addr` | 0xcf8 | w | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
 | `pci_cfg_data` | 0xcfc | rw | 32 |  |  | unknown | established | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |
 
 ### Register `pci_error_addr`
 
-Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163).
+Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (established, printed page 162).
 
 ### Register `pci_error_flags`
 
@@ -37,7 +37,7 @@ Error flags. Bits 23 to 31 and bit 4 clear when written as zero; writing one pre
 | 26 | `system_error` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
 | 24 | `parity` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
 | 23 | `read_buffer_overrun` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
-| 19 | `addr_valid` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 19 | `master_abort_addr` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers | Error Address for Master Abort, read-only: set together with bit 31 and says the captured address belongs to a master abort (printed page 163). |
 
 ### Register `pci_control`
 
@@ -59,7 +59,7 @@ Read-buffer flush and revision. Reads return 1 for MACE 2.0 and 0 for the first 
 
 ### Register `pci_cfg_addr`
 
-Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printed page 161).
+Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Write-only, word accesses only (established, printed page 162, Table 82).
 
 ### Register `pci_cfg_data`
 

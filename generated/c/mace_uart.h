@@ -16,7 +16,7 @@
 #define MACE_UART_MCR_EXT_INT_ENABLE_INPLACE         (MACE_UART_MCR_EXT_INT_ENABLE_MASK << MACE_UART_MCR_EXT_INT_ENABLE_SHIFT)
 
 /*
- * Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which platforms/ip32/mace-base.md records.
+ * Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the MACE specification gives the infrared select as bit 7 and the TI data sheet only calls it the seventh bit, which platforms/ip32/mace-base.md records.
  */
 /* scratch: rw8, reset unknown; TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996) */
 #define MACE_UART_SCRATCH_OFFSET                     0x700u /* inferred */

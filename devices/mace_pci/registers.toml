@@ -13,7 +13,7 @@ width = 32
 grade = "established"
 reset = 0x0
 doc = """
-Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163)."""
+Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (established, printed page 162)."""
 
 [registers.pci_error_flags]
 offset = 0x4
@@ -30,7 +30,7 @@ system_error = { bits = [26, 26], grade = "established" }
 retry = { bits = [28, 28], grade = "established" }
 data_parity = { bits = [29, 29], grade = "established" }
 target_abort = { bits = [30, 30], grade = "established" }
-addr_valid = { bits = [19, 19], grade = "established" }
+master_abort_addr = { bits = [19, 19], grade = "established", doc = "Error Address for Master Abort, read-only: set together with bit 31 and says the captured address belongs to a master abort (printed page 163)." }
 master_abort = { bits = [31, 31], grade = "established" }
 
 [registers.pci_control]
@@ -60,11 +60,11 @@ Read-buffer flush and revision. Reads return 1 for MACE 2.0 and 0 for the first 
 
 [registers.pci_cfg_addr]
 offset = 0xcf8
-access = "rw"
+access = "w"
 width = 32
 grade = "established"
 doc = """
-Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printed page 161)."""
+Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Write-only, word accesses only (established, printed page 162, Table 82)."""
 
 [registers.pci_cfg_data]
 offset = 0xcfc

@@ -2,7 +2,7 @@
 // O2 MACE PCI host bridge control registers
 #![allow(dead_code)]
 
-/// Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163). (established)
+/// Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (establi (established)
 pub mod pci_error_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x0;
@@ -81,7 +81,7 @@ pub mod pci_error_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod addr_valid { // bits 19:19, established
+    pub mod master_abort_addr { // bits 19:19, established
         pub const SHIFT: u32 = 19;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -172,7 +172,7 @@ pub mod pci_rev {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0xc;
 }
-/// Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printe (established)
+/// Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Write-only, word accesses only (established, printed page 162, Tab (established)
 pub mod pci_cfg_addr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0xcf8;

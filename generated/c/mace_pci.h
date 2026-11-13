@@ -7,7 +7,7 @@
 
 
 /*
- * Captured address of a PCI error. Valid only while the address-valid flag is set (established, printed pages 162 and 163).
+ * Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (established, printed page 162).
  */
 /* pci_error_addr: r32, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PCI_PCI_ERROR_ADDR_OFFSET               0x0u /* established */
@@ -38,9 +38,9 @@
 #define MACE_PCI_PCI_ERROR_FLAGS_READ_BUFFER_OVERRUN_SHIFT 23 /* established */
 #define MACE_PCI_PCI_ERROR_FLAGS_READ_BUFFER_OVERRUN_MASK 0x1u
 #define MACE_PCI_PCI_ERROR_FLAGS_READ_BUFFER_OVERRUN_INPLACE (MACE_PCI_PCI_ERROR_FLAGS_READ_BUFFER_OVERRUN_MASK << MACE_PCI_PCI_ERROR_FLAGS_READ_BUFFER_OVERRUN_SHIFT)
-#define MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_SHIFT    19 /* established */
-#define MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_MASK     0x1u
-#define MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_INPLACE  (MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_MASK << MACE_PCI_PCI_ERROR_FLAGS_ADDR_VALID_SHIFT)
+#define MACE_PCI_PCI_ERROR_FLAGS_MASTER_ABORT_ADDR_SHIFT 19 /* established */
+#define MACE_PCI_PCI_ERROR_FLAGS_MASTER_ABORT_ADDR_MASK 0x1u
+#define MACE_PCI_PCI_ERROR_FLAGS_MASTER_ABORT_ADDR_INPLACE (MACE_PCI_PCI_ERROR_FLAGS_MASTER_ABORT_ADDR_MASK << MACE_PCI_PCI_ERROR_FLAGS_MASTER_ABORT_ADDR_SHIFT)
 
 /*
  * Enables for the PCI inputs (bits 0 to 7), SERR_N signalling (bit 8), parity-error response (bit 10) and the error interrupts (bits 24 to 31). Every bit resets to zero (established, printed pages 164 and 165, Table 85). Bit 9 is reserved on revision 0 and an arbiter control on revision 1. Input n of bits 0 to 7 reaches CRIME bit 8 plus n, and PCI error conditions reach CRIME bit 7 (established, printed page 179).
@@ -76,9 +76,9 @@
 #define MACE_PCI_PCI_REV_OFFSET                      0xcu /* established */
 
 /*
- * Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Access width is 32 bits for the address write (established, printed page 161).
+ * Configuration address port, PCI mechanism 1, bus zero on the directly attached bus. Write-only, word accesses only (established, printed page 162, Table 82).
  */
-/* pci_cfg_addr: rw32, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers */
+/* pci_cfg_addr: w32, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PCI_PCI_CFG_ADDR_OFFSET                 0xcf8u /* established */
 
 /*

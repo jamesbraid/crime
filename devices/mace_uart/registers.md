@@ -26,4 +26,4 @@ Modem control register of one port. Master reset clears every bit, and bits 6 an
 
 ### Register `scratch`
 
-Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which platforms/ip32/mace-base.md records.
+Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the MACE specification gives the infrared select as bit 7 and the TI data sheet only calls it the seventh bit, which platforms/ip32/mace-base.md records.

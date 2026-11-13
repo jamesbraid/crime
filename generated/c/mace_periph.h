@@ -142,7 +142,7 @@
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_SHIFT)
 
 /*
- * Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.
+ * Gates delivery of the status bits. Page 147 has the timer condition cleared by writing its compare register and the mask handled separately, so a mask bit is read as not clearing the condition behind a status bit (inferred; the specification does not state it). Reset value not stated.
  */
 /* periph_mask: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_PERIPH_MASK_OFFSET               0x18u /* established */

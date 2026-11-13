@@ -7,6 +7,6 @@
     <field name="ext_int_enable" start="3" size="1" type="uint" grade="inferred"/>
   </struct>
   <struct name="SCRATCH" size="1" grade="inferred" from="TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)" register="yes" offset="0x700" access="rw" reset="unknown">
-    <doc>Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which platforms/ip32/mace-base.md records.</doc>
+    <doc>Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the MACE specification gives the infrared select as bit 7 and the TI data sheet only calls it the seventh bit, which platforms/ip32/mace-base.md records.</doc>
   </struct>
 </genxml>

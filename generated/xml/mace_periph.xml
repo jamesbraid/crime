@@ -51,7 +51,7 @@
     <field name="audio_codec_mask" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="PERIPH_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x18" access="rw" reset="unknown">
-    <doc>Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.</doc>
+    <doc>Gates delivery of the status bits. Page 147 has the timer condition cleared by writing its compare register and the mask handled separately, so a mask bit is read as not clearing the condition behind a status bit (inferred; the specification does not state it). Reset value not stated.</doc>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f310000" grade="established"/>
   <constant name="ISA_BASE" value="0x1f380000" grade="established"/>
