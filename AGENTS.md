@@ -15,7 +15,7 @@ Facts in this file are labelled **established** (read directly from a published 
 
 ### Established from public sources
 
-Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 1997 (public copy at `https://bukosek.si/hardware/collection/sgi-o2/o2-CRIME-spec.pdf`, SHA-256 `5420aa06a28f0a696e79512b03bf7cc9ebd5f0bbcd432ac2c79daaa9bf48c925`); page numbers are PDF pages. **[linux]** is the `linux/` submodule, **[netbsd]** is `netbsd/`, **[mame]** is `mame/`.
+Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 1997 (public copy at `https://bukosek.si/hardware/collection/sgi-o2/o2-CRIME-spec.pdf`, SHA-256 `5420aa06a28f0a696e79512b03bf7cc9ebd5f0bbcd432ac2c79daaa9bf48c925`); page numbers are PDF pages. **[linux]** is the `references/code/linux/` submodule, **[netbsd]** is `references/code/netbsd/`, **[mame]** is `references/code/mame/`.
 
 - CPU physical windows (established, [spec] PDF 47-52): low RAM alias at `0x00000000` (256 MiB); frame buffer aperture `0x10000000` (32 MiB); depth buffer aperture `0x12000000` (32 MiB); CRIME registers `0x14000000` (32 MiB); GBE registers `0x16000000` (16 MiB); VICE `0x17000000` (16 MiB); MACE windows from `0x18000000`; high RAM alias `0x20000000` (512 MiB); full RAM `0x40000000` (1 GiB); no-ECC RAM alias `0x80000000` (1 GiB). Mixing the low, high and full aliases of one location needs software cache maintenance. GBE DMA uses the full RAM window.
 - Rendering register groups (established, [spec] PDF 187-205): they start at `0x15000000`, with translation at +`0x1000`, pixel state at +`0x2000`, memory transfer at +`0x3000` and status at +`0x4000`. A write to the start alias snapshots primitive state; operations run in order; a flush waits for RAM updates. The numeric start-alias offset `0x0800` comes from the [netbsd] headers, not from the specification, which names the alias without a number.
@@ -52,14 +52,14 @@ Debug information by release: no release has DWARF with types or structure membe
 
 Other public sources in this repository:
 
-- `linux/`: `drivers/video/fbdev/gbefb.c`, `include/video/gbe.h`, `arch/mips/sgi-ip32/` (`crime.c`, `ip32-memory.c`, `ip32-dma.c`), `arch/mips/include/asm/ip32/crime.h` and `mace.h`.
-- `netbsd/`: the `sgimips` port under `sys/arch/sgimips/`, in particular its CRIME and `crmfb` sources. Inferred: `crmfb` is the public driver that drives the rendering engine (copy, fill and text), so it is the main source for command encoding. Confirm the file names in the checkout.
-- `mame/`: `src/mame/sgi/o2.cpp` and `crime.cpp`; a skeleton with the CRIME base registers mapped and no renderer, so a lead for register names only.
-- `openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `netbsd/`, so it is weak independent support. `docs/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
-- `gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
-- `sgi-docs/`, `OpenGL-Registry/`, `ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
-- `irix-657m-src/`: a public link included for symmetry with gr4. Hint only, never evidence: reading it exposes you to vendor source.
-- `docs/sources/`: full copies of the chip specifications (CRIME, GBE, MACE, VICE) and of the published patents, papers, technical reports, manuals, product guides and white papers that [docs/published-sources.md](docs/published-sources.md) cites for the O2 graphics and media chips, one entry each with its SHA-256 in [docs/sources/README.md](docs/sources/README.md). These are published designers' statements (labelled "established (published)" or "inferred" as that file says), not vendor source. Documents already in the `sgi-docs/` submodule are cited there, not copied.
+- `references/code/linux/`: `drivers/video/fbdev/gbefb.c`, `include/video/gbe.h`, `arch/mips/sgi-ip32/` (`crime.c`, `ip32-memory.c`, `ip32-dma.c`), `arch/mips/include/asm/ip32/crime.h` and `mace.h`.
+- `references/code/netbsd/`: the `sgimips` port under `sys/arch/sgimips/`, in particular its CRIME and `crmfb` sources. Inferred: `crmfb` is the public driver that drives the rendering engine (copy, fill and text), so it is the main source for command encoding. Confirm the file names in the checkout.
+- `references/code/mame/`: `src/mame/sgi/o2.cpp` and `crime.cpp`; a skeleton with the CRIME base registers mapped and no renderer, so a lead for register names only.
+- `references/code/openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `references/code/netbsd/`, so it is weak independent support. `docs/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
+- `references/code/gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
+- `references/code/sgi-docs/`, `references/code/opengl-registry/`, `references/code/ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
+- `references/code/irix-657m-src/`: a public link included for symmetry with gr4. Hint only, never evidence: reading it exposes you to vendor source.
+- `docs/sources/`: full copies of the chip specifications (CRIME, GBE, MACE, VICE) and of the published patents, papers, technical reports, manuals, product guides and white papers that [docs/published-sources.md](docs/published-sources.md) cites for the O2 graphics and media chips, one entry each with its SHA-256 in [docs/sources/README.md](docs/sources/README.md). These are published designers' statements (labelled "established (published)" or "inferred" as that file says), not vendor source. Documents already in the `references/code/sgi-docs/` submodule are cited there, not copied.
 
 ---
 
@@ -98,13 +98,13 @@ Local headers capture internal driver structures:
 
 Install these on your workstation:
 
-- **`dwarfdump`**: build `libdwarf-code` (submodule) so that `libdwarf-code/build/src/bin/dwarfdump/dwarfdump` exists. It parses SGI MIPS DWARF-2.
+- **`dwarfdump`**: build `references/code/libdwarf` (submodule) so that `references/code/libdwarf/build/src/bin/dwarfdump/dwarfdump` exists. It parses SGI MIPS DWARF-2.
 - **MIPS cross binutils**: `objdump`, `readelf`, `nm`, `gcc` for a big-endian MIPS target, normally `mips-unknown-linux-gnu-`. The scripts also accept `mips64-linux-gnuabi64-` and `mips-linux-gnu-`; set `MIPS_OBJDUMP` or `MIPS_READELF` to name another.
-- **`m2c`**: the assembly-to-C decompiler in the `m2c` submodule, run as `m2c/m2c.py -t mipsn32` (N32) or `-t mips` (o32, 64-bit objects).
-- **`spimdisasm`**: the `spimdisasm` submodule, for object-file disassembly and symbol recovery.
+- **`m2c`**: the assembly-to-C decompiler in the `references/code/m2c` submodule, run as `references/code/m2c/m2c.py -t mipsn32` (N32) or `-t mips` (o32, 64-bit objects).
+- **`spimdisasm`**: the `references/code/spimdisasm` submodule, for object-file disassembly and symbol recovery.
 - **Python 3** with `pyelftools` (the scripts import `elftools`).
 
-Initialise only the submodules you need: `git submodule update --init m2c spimdisasm libdwarf-code`. `linux`, `netbsd` and `openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 linux netbsd openbsd`).
+Initialise only the submodules you need: `git submodule update --init references/code/m2c references/code/spimdisasm references/code/libdwarf`. `references/code/linux`, `references/code/netbsd` and `references/code/openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 references/code/linux references/code/netbsd references/code/openbsd`).
 
 Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `scripts/` keeps only this workspace's configuration and data:
 

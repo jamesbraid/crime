@@ -5,8 +5,8 @@
  * Labels: [E] established, [I] inferred, [U] unknown.
  * Sources:
  *   [spec]    CRIME 1.5 Specification rev 0.3, 2 June 1997 (PDF page numbers).
- *   [netbsd]  netbsd/sys/arch/sgimips/dev/crimereg.h, crime.c.
- *   [linux]   linux/arch/mips/sgi-ip32/ip32-irq.c, crime.c,
+ *   [netbsd]  references/code/netbsd/sys/arch/sgimips/dev/crimereg.h, crime.c.
+ *   [linux]   references/code/linux/arch/mips/sgi-ip32/ip32-irq.c, crime.c,
  *             arch/mips/include/asm/ip32/crime.h.
  *   [ide:ADDR] the shipped IRIX 6.5.30 stand-alone diagnostics
  *             sbin/stand/ide.IP32 (diags/ide.IP32), stripped; ADDR is the

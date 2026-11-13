@@ -63,7 +63,7 @@ The step rules above apply with one-byte pixels. What follows is the CI8
 case, which none of the RGB paths above exercise.
 
 - Inferred (NetBSD `crmfb` driver, `crmfb.c` around lines 1554 to 1581, as
-  cited in the source review; the `netbsd/` submodule is not checked out
+  cited in the source review; the `references/code/netbsd/` submodule is not checked out
   here, so those lines are not re-read): an upload from a linear CI8 buffer
   goes to a tiled CI8 buffer held in 32-bit words. The logical index stays one
   byte per pixel whatever the storage width. In `BUFMODE` terms that is

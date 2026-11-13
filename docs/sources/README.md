@@ -4,7 +4,7 @@ Full copies of the published patents, papers, technical reports, manuals and whi
 
 Layout: `specs/` for the chip specifications (CRIME, GBE, MACE, VICE); `patents/` by US patent number; `papers/` for conference and journal papers and slide decks; `reports/` for SGI technical reports, white papers, product guides and option data sheets, plus the web pages and posts cited beside them; `manuals/` for SGI manuals, named by document number.
 
-Documents that the `sgi-docs` submodule already holds (six IRIS GL manuals and a format note, no hardware documents) are not repeated; cite `sgi-docs/` for those.
+Documents that the `references/code/sgi-docs` submodule already holds (six IRIS GL manuals and a format note, no hardware documents) are not repeated; cite `references/code/sgi-docs/` for those.
 
 Each copy is the file as fetched from the URL below, checked against its SHA-256. The two part-numbered manuals come from a mirror of the former SGI technical publications site, whose original address no longer answers, and the 1997 product guide has no recorded address. A copy that was not on its original host any more comes from the Wayback Machine capture named in the URL.
 

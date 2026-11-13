@@ -6,7 +6,7 @@
  * those two tags are register classes, not grades.
  * Sources:
  *   [spec]   CRIME 1.5 Specification rev 0.3, 2 June 1997 (PDF page numbers).
- *   [netbsd] netbsd/sys/arch/sgimips/dev/crmfbreg.h.
+ *   [netbsd] references/code/netbsd/sys/arch/sgimips/dev/crmfbreg.h.
  *   [hdr]    IRIX register layout headers: 6.5.5 root/usr/include/sys/
  *            crimereg.h and crimedef.h (shipped with the release). Field
  *            names cited, layout restated in our own words.

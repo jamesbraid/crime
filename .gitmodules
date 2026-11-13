@@ -1,39 +1,39 @@
 [submodule "m2c"]
-	path = m2c
+	path = references/code/m2c
 	url = https://github.com/techomancer/m2c.git
 	branch = irixn32
 [submodule "spimdisasm"]
-	path = spimdisasm
+	path = references/code/spimdisasm
 	url = https://github.com/Decompollaborate/spimdisasm.git
 [submodule "irix-657m-src"]
-	path = irix-657m-src
+	path = references/code/irix-657m-src
 	url = https://github.com/calmsacibis995/irix-657m-src.git
 [submodule "mame"]
-	path = mame
+	path = references/code/mame
 	url = https://github.com/mamedev/mame.git
-[submodule "OpenGL-Registry"]
-	path = OpenGL-Registry
+[submodule "opengl-registry"]
+	path = references/code/opengl-registry
 	url = https://github.com/KhronosGroup/OpenGL-Registry.git
-[submodule "libdwarf-code"]
-	path = libdwarf-code
+[submodule "libdwarf"]
+	path = references/code/libdwarf
 	url = https://github.com/davea42/libdwarf-code.git
 [submodule "netbsd"]
-	path = netbsd
+	path = references/code/netbsd
 	url = https://github.com/NetBSD/src.git
 [submodule "ogl-sample"]
-	path = ogl-sample
+	path = references/code/ogl-sample
 	url = https://github.com/jrmuizel/ogl-sample.git
 [submodule "sgi-docs"]
-	path = sgi-docs
+	path = references/code/sgi-docs
 	url = https://github.com/sgi-demos/sgi-docs.git
 [submodule "linux"]
-	path = linux
+	path = references/code/linux
 	url = https://github.com/torvalds/linux.git
 [submodule "openbsd"]
-	path = openbsd
+	path = references/code/openbsd
 	url = https://github.com/openbsd/src.git
 [submodule "gxemul"]
-	path = gxemul
+	path = references/code/gxemul
 	url = https://github.com/retroprom/gxemul.git
 [submodule "retools"]
 	path = retools

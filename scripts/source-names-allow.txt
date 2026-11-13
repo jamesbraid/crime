@@ -116,7 +116,7 @@ ip32-dma.c	name in published Linux or OpenBSD source
 ip32-memory.c	name in published Linux or OpenBSD source
 libglcore/asm/ODYSSEY/x.s	path to a file in this workspace
 lighting.h	name in the published OpenGL sample implementation
-linux/arch/mips/include/asm/ip32/crime.h	name in published Linux source
+references/code/linux/arch/mips/include/asm/ip32/crime.h	name in published Linux source
 mace.h	name in published Linux or OpenBSD source
 mi/miarc.c	name in published OpenBSD X.Org source
 mi/mibitblt.c	name in published OpenBSD X.Org source
@@ -138,13 +138,13 @@ mi/miwindow.c	name in published OpenBSD X.Org source
 mi/mizerarc.c	name in published OpenBSD X.Org source
 mi/mizerline.c	name in published OpenBSD X.Org source
 migc.c	name in published NetBSD, X.Org or Mesa source
-netbsd/sys/arch/sgimips/dev/crimereg.h	name in published NetBSD source
-ogl-sample/gfx/lib/opengl/glcore/px_upack.c	path in the published OpenGL sample implementation
-ogl-sample/gfx/lib/opengl/glcore/s_blend.c	path in the published OpenGL sample implementation
-ogl-sample/gfx/lib/opengl/glcore/s_eval.c	path in the published OpenGL sample implementation
-ogl-sample/gfx/lib/opengl/glcore/s_names.c	path in the published OpenGL sample implementation
-ogl-sample/gfx/lib/opengl/glcore/s_sten.c	path in the published OpenGL sample implementation
-ogl-sample/gfx/lib/opengl/glcore/s_varray.c	path in the published OpenGL sample implementation
+references/code/netbsd/sys/arch/sgimips/dev/crimereg.h	name in published NetBSD source
+references/code/ogl-sample/gfx/lib/opengl/glcore/px_upack.c	path in the published OpenGL sample implementation
+references/code/ogl-sample/gfx/lib/opengl/glcore/s_blend.c	path in the published OpenGL sample implementation
+references/code/ogl-sample/gfx/lib/opengl/glcore/s_eval.c	path in the published OpenGL sample implementation
+references/code/ogl-sample/gfx/lib/opengl/glcore/s_names.c	path in the published OpenGL sample implementation
+references/code/ogl-sample/gfx/lib/opengl/glcore/s_sten.c	path in the published OpenGL sample implementation
+references/code/ogl-sample/gfx/lib/opengl/glcore/s_varray.c	path in the published OpenGL sample implementation
 osunix.h	name in the published OpenGL sample implementation
 px_api.c	name in the published OpenGL sample implementation
 px_pack.c	name in the published OpenGL sample implementation
