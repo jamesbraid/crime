@@ -1,12 +1,12 @@
 # MTE: copies, fills and the address word
 
-How IRIX 6.5.30 drives the memory transfer engine beyond the kernel buffer clear. Register names and mode fields are in [MTE.h](../MTE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Citations of `crm.so` give lines of `ddx/asm/crm/crm/crm.s` (the module is stripped, so there are no useful function bounds; the listing's `glabel` lines do not match the code that follows them). Register offsets are decimal in that listing: the MTE group is 12288 (0x3000) to 12408 (0x3078).
+How IRIX 6.5.30 drives the memory transfer engine beyond the kernel buffer clear. Register names and mode fields are in [devices/mte/MTE.h](../devices/mte/MTE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Citations of `crm.so` give lines of `ddx/asm/crm/crm/crm.s` (the module is stripped, so there are no useful function bounds; the listing's `glabel` lines do not match the code that follows them). Register offsets are decimal in that listing: the MTE group is 12288 (0x3000) to 12408 (0x3078).
 
 ## Engine rules from the specification
 
 Established, [spec] PDF 160: the engine performs byte-aligned clears and copies on both linear buffers and framebuffers. That is the whole stated alignment rule. The 32-byte alignment under "Address word" below is still inferred; the specification does not state it.
 
-Established, [spec] PDF 186: a host commits an operation by offsetting its last parameter write by a START_OFFSET number of bytes. The specification does not give that number. The X server and NetBSD use `0x800`, the start alias in `defs/re.toml`. Writes after the commit do not change the committed operation. Committed operations run in commit order, each to completion, with no interruption. The specification states these rules for primitives in the host interface buffer. MTE writes use the same buffer, so applying them to MTE operations is inferred.
+Established, [spec] PDF 186: a host commits an operation by offsetting its last parameter write by a START_OFFSET number of bytes. The specification does not give that number. The X server and NetBSD use `0x800`, the start alias in `devices/re/registers.toml`. Writes after the commit do not change the committed operation. Committed operations run in commit order, each to completion, with no interruption. The specification states these rules for primitives in the host interface buffer. MTE writes use the same buffer, so applying them to MTE operations is inferred.
 
 ## Address word
 
@@ -37,7 +37,7 @@ Established: several fills load an 8-bit-per-mask constant such as `0x0a0a0a0a` 
 
 ## Kernel clear, for comparison
 
-The kernel clear (`crime_clear_buffer`) uses the same address word. See MTE.h for its sequence.
+The kernel clear (`crime_clear_buffer`) uses the same address word. See devices/mte/MTE.h for its sequence.
 
 ## Unknown
 

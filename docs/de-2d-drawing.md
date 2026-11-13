@@ -2,8 +2,8 @@
 
 What the CRIME rendering engine does for points, lines, rectangles, stipple
 and tiled copies, as far as the published CRIME 1.5 specification and the
-drivers pin it down. Registers and fields are in [defs/re.toml](../defs/re.toml)
-and [gen/docs/re.md](../gen/docs/re.md). This page covers the behaviour the
+drivers pin it down. Registers and fields are in [devices/re/registers.toml](../devices/re/registers.toml)
+and [devices/re/registers.md](../devices/re/registers.md). This page covers the behaviour the
 fields do not show.
 
 Source: the CRIME 1.5 Specification, revision 0.3, 2 June 1997, a copy of which
@@ -50,7 +50,7 @@ unknown, as in [AGENTS.md](../AGENTS.md).
   section is marked "TBD" (PDF 195), and its point and line subsections
   (PDF 196 to 197) are headings with no body text. The text gives no rule for
   sample positions, endpoints or width. The unit of the line width field is
-  also unknown; see [defs/re.toml](../defs/re.toml) under `primitive`.
+  also unknown; see [devices/re/registers.toml](../devices/re/registers.toml) under `primitive`.
 
 ## Triangles and edge functions
 
@@ -77,7 +77,7 @@ unknown, as in [AGENTS.md](../AGENTS.md).
   and 195 are marked "TBD".
 - Established ([spec] PDF 197): in the primitive list of section 7.3.6.1, the
   triangle item is a heading with no body text. The GL-mode coordinate format
-  on the same page is in [defs/re.toml](../defs/re.toml) under `vertex_gl`.
+  on the same page is in [devices/re/registers.toml](../devices/re/registers.toml) under `vertex_gl`.
 
 ## Stipple
 
@@ -109,7 +109,7 @@ unknown, as in [AGENTS.md](../AGENTS.md).
 
 - Inferred (drivers): the 16 logic operations use the codes 0 to 15 in the GL
   order, from clear (0) to set (15). The field list in
-  [defs/re.toml](../defs/re.toml) gives the names. The specification's field
+  [devices/re/registers.toml](../devices/re/registers.toml) gives the names. The specification's field
   table for the register is empty.
 - Conflict: the specification puts logic-op enable at DrawMode bit 8 and dither
   at bit 9. The drivers use the reverse. Which is right is not settled, and the

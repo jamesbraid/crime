@@ -7,7 +7,7 @@ Source: N32 `usr/gfx/arch/IP32CRM32/libGLcore.so` from IRIX 6.5.30, disassembled
 How each row was derived (established, from the disassembly):
 
 - **request**: the request number in `$a1` at a call to `ioctl` or to the wrapper `__glCrmIoctl`, named as in [ioctls.md](ioctls.md).
-- **writes**: stores through the register base the routine loads from the context word at `gc+0x7db8` (32184), named as in [CRIME_RE.h](../CRIME_RE.h). A store with offset bit 11 set goes through the start alias and commits. Routines that receive the base from their caller in a register are not detected, so a routine without "writes" may still write registers through a base it was handed.
+- **writes**: stores through the register base the routine loads from the context word at `gc+0x7db8` (32184), named as in [devices/re/CRIME_RE.h](../devices/re/CRIME_RE.h). A store with offset bit 11 set goes through the start alias and commits. Routines that receive the base from their caller in a register are not detected, so a routine without "writes" may still write registers through a base it was handed.
 - **calls**, **called by**: direct calls (`jal`, `bal` and `$t9` calls through the global offset table). **Takes the address of** and **address taken by**: a routine loads another's address without calling it, which is how procedure tables in the context and display-list executors are filled.
 Routines whose code shows no register store, request or procedure-table use are not listed here: their role would rest on the name alone, which this chapter does not count as a derivation.
 

@@ -1,0 +1,44 @@
+{
+ "schema": "defs-flat/1",
+ "source": "devices/mace_uart/registers.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_uart",
+   "kind": "register",
+   "name": "mcr",
+   "offset": 1024,
+   "access": "rw",
+   "width": 8,
+   "count": 1,
+   "stride": 1,
+   "space": null,
+   "reset": 0,
+   "grade": "inferred",
+   "from": "TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)"
+  },
+  {
+   "unit": "mace_uart",
+   "kind": "field",
+   "name": "mcr.ext_int_enable",
+   "hi": 3,
+   "lo": 3,
+   "grade": "inferred",
+   "from": "TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)"
+  },
+  {
+   "unit": "mace_uart",
+   "kind": "register",
+   "name": "scratch",
+   "offset": 1792,
+   "access": "rw",
+   "width": 8,
+   "count": 1,
+   "stride": 1,
+   "space": null,
+   "reset": "unknown",
+   "grade": "inferred",
+   "from": "TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)"
+  }
+ ]
+}

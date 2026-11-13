@@ -28,18 +28,18 @@ included; with no command it opens a shell. `root/` is your own copy of the IRIX
 To reproduce a cited result:
 
 - Generated tables under `docs/inventory/` come from `retools/tools/re-run python3 retools/tools/inventory.py`.
-  `git status --short docs` shows nothing afterwards when your `root/` matches `scripts/inventory-root.sha256`.
-- A claim an entry marks as established by execution is reproduced by the script in `scripts/` that
+  `git status --short docs` shows nothing afterwards when your `root/` matches `tools/config/inventory-root.sha256`.
+- A claim an entry marks as established by execution is reproduced by the script in `tools/config/` that
   the entry names; its docstring says what it reproduces and how to run it, always as
   `retools/tools/re-run python3 retools/tools/NAME.py ...` (device scripts are under `retools/tools/crime/`).
-- The shared tooling (container definitions, wrappers, Ghidra scripts, the inventory, fact sheet and claim checker, and the device extractors) is the `retools/` submodule (sgi-retools); tools are run by their submodule path from this repository's root, as `retools/tools/NAME` (shared) or `retools/tools/crime/NAME` (CRIME), and find this workspace from the current directory. A change to them is made in retools and the pin here moves with a commit. `scripts/` holds only this workspace's configuration and data, and `tools/setup-clone.sh` is the stub that fetches the submodule. The optional Ghidra image is built from `retools/tools/Containerfile.ghidra` by
+- The shared tooling (container definitions, wrappers, Ghidra scripts, the inventory, fact sheet and claim checker, and the device extractors) is the `retools/` submodule (sgi-retools); tools are run by their submodule path from this repository's root, as `retools/tools/NAME` (shared) or `retools/tools/crime/NAME` (CRIME), and find this workspace from the current directory. A change to them is made in retools and the pin here moves with a commit. `tools/config/` holds only this workspace's configuration and data, and `tools/setup-clone.sh` is the stub that fetches the submodule. The optional Ghidra image is built from `retools/tools/Containerfile.ghidra` by
   `retools/tools/re-run --ghidra COMMAND`, and `retools/tools/re-run --ghidra-export OBJECT` writes decompiled C and
   function-similarity output as JSON (see `ghidra/README.md`); nothing else needs it. `retools/tools/README-analysis.md`
   describes the `.mdebug` importer and the kernel table extractors.
 
 ## Hardware definitions
 
-Register, word, field and constant facts for CRIME, the rendering engine, the memory transfer engine, GBE, MACE video and VICE are TOML sources in `defs/`. `gen/` holds what is generated from them: C headers, a Rust crate, Python decode modules, JSON, a genxml export and a reference page per block in `gen/docs/`. Do not edit `gen/`. Change `defs/`, then run `retools/tools/defs/defs-gen` and `retools/tools/defs/defs-check --build`. The old `*_DECODE.h` names are forwarding headers for the generated C. [AGENTS.md](AGENTS.md) describes the layout.
+Register, word, field and constant facts for CRIME, the rendering engine, the memory transfer engine, GBE, MACE video and VICE are TOML sources in `devices/`. `generated/` holds what is generated from them: C headers, a Rust crate, Python decode modules, JSON, a genxml export and a reference page per block in `generated/docs/`. Do not edit `generated/`. Change `devices/`, then run `retools/tools/defs/defs-gen` and `retools/tools/defs/defs-check --build`. The old `*_DECODE.h` names are forwarding headers for the generated C. [AGENTS.md](AGENTS.md) describes the layout.
 
 ## Documentation index
 

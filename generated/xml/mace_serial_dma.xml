@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_serial_dma" prefix="MACE_SERIAL_DMA" title="O2 MACE serial port DMA channels: channel control, ring pointers and depth" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)">
+  <doc>MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in docs/mace-serial-dma.md.</doc>
+  <enum name="serial_ring">
+    <value name="scratch" value="3" grade="established"/>
+    <value name="port1_tx" value="4" grade="established"/>
+    <value name="port1_rx" value="5" grade="established"/>
+    <value name="port2_tx" value="6" grade="established"/>
+    <value name="port2_rx" value="7" grade="established"/>
+  </enum>
+  <enum name="serial_threshold">
+    <value name="off" value="0" grade="established"/>
+    <value name="depth_quarter" value="1" grade="established"/>
+    <value name="depth_half" value="2" grade="established"/>
+    <value name="depth_three_quarter" value="3" grade="established"/>
+    <value name="empty" value="4" grade="established"/>
+    <value name="not_empty" value="5" grade="established"/>
+    <value name="full" value="6" grade="established"/>
+    <value name="not_full" value="7" grade="established"/>
+  </enum>
+  <struct name="CHANNEL_CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)" register="yes" offset="0x0" access="rw" count="2" stride="32" reset="0x400">
+    <doc>Control of the transmit channel (index 0, offset 0x00) and the receive channel (index 1, offset 0x20). Bits not listed read zero and ignore writes (established, printed page 127, table 58). Both channels share this layout.</doc>
+    <field name="channel_reset" start="10" size="1" type="uint" grade="established"/>
+    <field name="dma_enable" start="9" size="1" type="uint" grade="established"/>
+    <field name="threshold" start="5" size="3" type="serial_threshold" grade="established"/>
+  </struct>
+  <struct name="CHANNEL_READ" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)" register="yes" offset="0x8" access="rw" count="2" stride="32" reset="0x0">
+    <doc>Read pointer of each channel, in 32-byte blocks. On the transmit channel the DMA engine owns it, and on the receive channel software owns it (established for the ownership text, printed page 128). The printed register tables mark both pointers read/write (printed pages 122 and 127), so whether a software write to the engine-owned pointer is ignored is unknown.</doc>
+    <field name="block_index" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <struct name="CHANNEL_WRITE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)" register="yes" offset="0x10" access="rw" count="2" stride="32" reset="0x0">
+    <doc>Write pointer of each channel, in 32-byte blocks. On the transmit channel software owns it, and on the receive channel the DMA engine owns it (established for the ownership text, printed page 128). The same table conflict as channel_read applies, so a software write to the engine-owned pointer is unknown.</doc>
+    <field name="block_index" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <struct name="CHANNEL_DEPTH" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)" register="yes" offset="0x18" access="r" count="2" stride="32" reset="0x0">
+    <doc>Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See docs/mace-serial-dma.md.</doc>
+    <field name="blocks" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f318000" grade="established"/>
+  <constant name="PORT2_BLOCK_BASE" value="0x1f31c000" grade="established"/>
+  <constant name="RING_BASE_ALIGN" value="0x8000" grade="established"/>
+  <constant name="RING_BYTES" value="0x1000" grade="established"/>
+</genxml>

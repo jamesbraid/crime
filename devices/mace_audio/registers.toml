@@ -1,0 +1,144 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "mace_audio"
+prefix = "MACE_AUDIO"
+title = "O2 MACE audio interface: codec command, stereo DMA ring control and pointers"
+doc = "MACE audio block: the codec reset, presence and command registers, and the three stereo DMA channels (one input, two output) with their ring control, read and write pointers and depth. Offsets are from the block base (constant BLOCK_BASE). The codec's own registers are in ad1843.toml, the MSC/UST pairs are in mace_timer.toml and the audio interrupt causes are in mace_periph.toml. Channel index 0 is the capture channel, 1 is playback 1 (block 0x40) and 2 is playback 2 (block 0x60)."
+from = "published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)"
+public_from = ["published MACE 2.0 I/O ASIC specification"]
+
+[enums.codec_direction]
+doc = "Direction of a codec register access."
+
+[enums.codec_direction.values]
+write = { value = 0, grade = "established" }
+read = { value = 1, grade = "established" }
+
+[enums.ring_threshold]
+doc = "Interrupt threshold of a DMA channel. The level numbers are block counts out of 128: 32, 64 and 96 blocks are one quarter, one half and three quarters of the 4 KiB ring."
+
+[enums.ring_threshold.values]
+off = { value = 0, grade = "established" }
+depth_quarter = { value = 1, grade = "established" }
+depth_half = { value = 2, grade = "established" }
+depth_three_quarter = { value = 3, grade = "established" }
+empty = { value = 4, grade = "established" }
+not_empty = { value = 5, grade = "established" }
+full = { value = 6, grade = "established" }
+not_full = { value = 7, grade = "established" }
+
+[constants]
+BLOCK_BASE = { value = 0x1f300000, grade = "established", doc = "physical base of the audio interface registers (printed page 179, sub-address map, block 000)" }
+
+[registers.ctl_status]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x1
+doc = """
+Codec reset and presence, the mirrored ring pointers of the two engines and the two volume-button latches. Bits not listed read zero (established, printed page 62, table 27 and table 26)."""
+
+[registers.ctl_status.fields]
+codec_reset = { bits = [0, 0], grade = "established", doc = "1 holds the codec's reset input active. Resets to 1." }
+codec_present = { bits = [1, 1], grade = "established", doc = "Read-only. 1 when a codec is detected on the serial bus, that is when its serial clock runs." }
+capture_write_alias = { bits = [8, 2], grade = "established", doc = "Read-only alias of the capture channel write pointer, in 32-byte blocks." }
+playback1_read_alias = { bits = [15, 9], grade = "established", doc = "Read-only alias of the playback 1 read pointer." }
+playback2_read_alias = { bits = [22, 16], grade = "established", doc = "Read-only alias of the playback 2 read pointer." }
+volume_edge_23 = { bits = [23, 23], grade = "established", doc = "Latched on a rising edge of an external volume push button. Clear by writing zero to the bit; writing one keeps the latch. The table does not name the button." }
+volume_edge_24 = { bits = [24, 24], grade = "established", doc = "Latched on a rising edge of the second external volume push button. Clear by writing zero; writing one keeps the latch." }
+
+[registers.codec_cmd]
+offset = 0x8
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x10000
+doc = """
+Codec register access. The word written here is sent to the codec on every serial frame and repeats until it is replaced. A read request makes the codec's answer appear in codec_response. The reset value is a read request with the address field zero (established, printed page 63, table 28)."""
+
+[registers.codec_cmd.fields]
+codec_addr = { bits = [23, 17], grade = "established", doc = "Codec register number. The AD1843 decodes only five address bits of it (see ad1843.toml)." }
+codec_direction = { bits = [16, 16], grade = "established", enum = "codec_direction", doc = "0 writes the data field to the register, 1 reads the register." }
+codec_data = { bits = [15, 0], grade = "established", doc = "Data word for a write." }
+
+[registers.response_mask]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+doc = """
+Mask applied to the last codec response. The codec-response interrupt cause is set when any masked bit of the response is one (established, printed page 63, table 29, and printed page 125, slot 6 index 0)."""
+
+[registers.response_mask.fields]
+mask = { bits = [15, 0], grade = "established" }
+
+[registers.codec_response]
+offset = 0x18
+access = "r"
+width = 64
+grade = "established"
+reset = 0x0
+doc = """
+The most recent 16-bit register word the codec returned, whichever register was addressed (established, printed page 63, table 30). The table describes no codec access or status change on read, so none is assumed (inferred)."""
+
+[registers.codec_response.fields]
+word = { bits = [15, 0], grade = "established" }
+
+[registers.ring_control]
+offset = 0x20
+access = "rw"
+width = 64
+count = 3
+stride = 0x20
+grade = "established"
+reset = 0x400
+doc = """
+Control of the three stereo DMA channels, in order: capture at 0x20, playback 1 at 0x40 and playback 2 at 0x60. Writable bits are 10, 9 and 7:5. Bit 8 and bits 4:0 read zero and ignore writes (established, printed page 64, table 33)."""
+
+[registers.ring_control.fields]
+channel_reset = { bits = [10, 10], grade = "established", doc = "1 holds the channel in reset: the pointers and depth go to zero, the FIFO is flushed, the fatal latch and the channel interrupt clear and MSC does not count. Other writes are ignored while it is held. Resets to 1." }
+dma_enable = { bits = [9, 9], grade = "established", doc = "1 enables DMA. Clearing it freezes the channel's pointers and state without changing them." }
+threshold = { bits = [7, 5], grade = "established", enum = "ring_threshold", doc = "Interrupt condition, see the ring_threshold enum." }
+
+[registers.ring_read]
+offset = 0x28
+access = "rw"
+width = 64
+count = 3
+stride = 0x20
+grade = "established"
+reset = 0x0
+doc = """
+Read pointer of each channel, in 32-byte blocks. The playback engines own it, so software owns it only on the capture channel. The printed register tables mark it read/write for every channel, but the ownership text makes the engine's pointer read-only. Whether the engine ignores software writes to that pointer while DMA runs is unknown (established for the ownership text, printed page 66; unknown for the writes)."""
+
+[registers.ring_read.fields]
+block_index = { bits = [11, 5], grade = "established", doc = "Position in 32-byte blocks within the 4 KiB ring. Bits 4:0 and 15:12 read zero." }
+
+[registers.ring_write]
+offset = 0x30
+access = "rw"
+width = 64
+count = 3
+stride = 0x20
+grade = "established"
+reset = 0x0
+doc = """
+Write pointer of each channel, in 32-byte blocks. The capture engine owns it, so software owns it on the two playback channels. The same table and text conflict as ring_read applies (established for the ownership text, printed page 66; unknown for the writes)."""
+
+[registers.ring_write.fields]
+block_index = { bits = [11, 5], grade = "established", doc = "Position in 32-byte blocks within the 4 KiB ring. Bits 4:0 and 15:12 read zero." }
+
+[registers.ring_depth]
+offset = 0x38
+access = "r"
+width = 64
+count = 3
+stride = 0x20
+grade = "established"
+reset = 0x0
+doc = """
+Blocks of ring data in use, computed as write pointer minus read pointer. Zero is empty and 127 is full, so one of the 128 blocks is never used (established, printed page 64, table 34, and printed page 66)."""
+
+[registers.ring_depth.fields]
+blocks = { bits = [11, 5], grade = "established" }

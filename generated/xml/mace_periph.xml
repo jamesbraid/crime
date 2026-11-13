@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_periph" prefix="MACE_PERIPH" title="O2 MACE peripheral ring base and interrupt status and mask" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers">
+  <doc>MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE).</doc>
+  <struct name="RING_BASE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="rw" reset="unknown">
+    <doc>Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That reset drives the RstISA pin in the ISA pin group, not a PCI pin (established, printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.</doc>
+    <field name="dma_ring_base" start="15" size="17" type="uint" grade="established"/>
+    <field name="ext_reset" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="MISC_CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x8" access="rw" reset="0x20">
+    <doc>Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122).</doc>
+    <field name="sa20_enable" start="8" size="1" type="uint" grade="established"/>
+    <field name="test_ust_timer" start="7" size="1" type="uint" grade="established"/>
+    <field name="dpram_write_enable" start="6" size="1" type="uint" grade="established"/>
+    <field name="green_led_enable" start="5" size="1" type="uint" grade="established"/>
+    <field name="red_led_enable" start="4" size="1" type="uint" grade="established"/>
+    <field name="nic_level" start="3" size="1" type="uint" grade="established"/>
+    <field name="nic_deassert" start="2" size="1" type="uint" grade="established"/>
+    <field name="password_clear_enable" start="1" size="1" type="uint" grade="established"/>
+    <field name="flash_write_enable" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="PERIPH_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x10" access="rw" reset="unknown">
+    <doc>Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).</doc>
+    <field name="serial_b_rx_overrun" start="31" size="1" type="uint" grade="established"/>
+    <field name="serial_b_rx_threshold" start="30" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_error" start="29" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_pair" start="28" size="1" type="uint" grade="established"/>
+    <field name="serial_b_tx_threshold" start="27" size="1" type="uint" grade="established"/>
+    <field name="serial_b" start="26" size="1" type="uint" grade="established"/>
+    <field name="serial_a_rx_overrun" start="25" size="1" type="uint" grade="established"/>
+    <field name="serial_a_rx_threshold" start="24" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_error" start="23" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_pair" start="22" size="1" type="uint" grade="established"/>
+    <field name="serial_a_tx_threshold" start="21" size="1" type="uint" grade="established"/>
+    <field name="serial_a" start="20" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp2" start="15" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp1" start="14" size="1" type="uint" grade="established"/>
+    <field name="timer_cmp0" start="13" size="1" type="uint" grade="established"/>
+    <field name="ps2_mouse_poll" start="12" size="1" type="uint" grade="established"/>
+    <field name="ps2_mouse_irq" start="11" size="1" type="uint" grade="established"/>
+    <field name="ps2_kbd_poll" start="10" size="1" type="uint" grade="established"/>
+    <field name="ps2_kbd_irq" start="9" size="1" type="uint" grade="established"/>
+    <field name="rtc" start="8" size="1" type="uint" grade="established"/>
+    <field name="audio_playback2_error" start="7" size="1" type="uint" grade="established"/>
+    <field name="audio_playback2_threshold" start="6" size="1" type="uint" grade="established"/>
+    <field name="audio_playback1_error" start="5" size="1" type="uint" grade="established"/>
+    <field name="audio_playback1_threshold" start="4" size="1" type="uint" grade="established"/>
+    <field name="audio_capture_overflow" start="3" size="1" type="uint" grade="established"/>
+    <field name="audio_capture_threshold" start="2" size="1" type="uint" grade="established"/>
+    <field name="audio_volume" start="1" size="1" type="uint" grade="established"/>
+    <field name="audio_codec_mask" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="PERIPH_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x18" access="rw" reset="unknown">
+    <doc>Gates delivery of the status bits. A mask bit does not clear the device condition behind a status bit (established, printed pages 125 and 147). Reset value not stated.</doc>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f310000" grade="established"/>
+  <constant name="ISA_BASE" value="0x1f380000" grade="established"/>
+  <constant name="ISA_REG_STRIDE" value="0x100" grade="established"/>
+  <constant name="RTC_BASE" value="0x1f3a0000" grade="established"/>
+  <constant name="SERIAL_A_BASE" value="0x1f390000" grade="established"/>
+  <constant name="SERIAL_B_BASE" value="0x1f398000" grade="established"/>
+</genxml>

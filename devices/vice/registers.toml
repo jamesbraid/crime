@@ -1,0 +1,1170 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "vice"
+prefix = "VICE"
+title = "O2 VICE imaging and compression engine registers"
+doc = "VICE imaging and compression engine chip, signal processor, bitstream processor, mailbox and DMA channel registers."
+from = "published VICE design specification"
+public_from = ["published VICE design specification"]
+
+[c]
+legacy_header = "VICE_DECODE.h"
+legacy_guard = "VICE_DECODE_H"
+
+[spaces.vice]
+
+[registers.id]
+offset = 0x8
+access = "r"
+width = 8
+reset = 0xe1
+grade = "established"
+space = "vice"
+doc = """
+Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is
+"TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRIX
+identity probe reads the 32-bit word at offset 0xc, the low half of this doubleword,
+and compares the whole word (established, kernel add_vice and hinv disassembly).
+The upper word is not read by the probe, and its value is unknown."""
+
+[registers.id.fields.revision]
+bits = [3, 0]
+grade = "established"
+
+[registers.id.fields.revision.enums]
+vice_a = { value = 1, grade = "established" }
+vice_b = { value = 2, grade = "established" }
+vice_c = { value = 3, grade = "established" }
+
+[registers.hst_bsp_in_box]
+offset = 0x28
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.hst_bsp_out_box]
+offset = 0x30
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.msp_ctl_stat]
+offset = 0x40
+access = "rw"
+width = 32
+reset = 0x0
+grade = "established"
+space = "vice"
+
+[registers.msp_ctl_stat.fields]
+reset_release = { bits = [1, 1], grade = "established" }
+go = { bits = [0, 0], grade = "established" }
+
+[registers.msp_excp_flag]
+offset = 0x48
+access = "rw"
+width = 32
+reset = 0x0
+grade = "established"
+space = "vice"
+
+[registers.msp_excp_flag.fields]
+adel = { bits = [0, 0], grade = "established" }
+ades = { bits = [1, 1], grade = "established" }
+bp = { bits = [2, 2], grade = "established" }
+wp = { bits = [3, 3], grade = "established" }
+suri = { bits = [4, 4], grade = "established" }
+vuri = { bits = [5, 5], grade = "established" }
+con = { bits = [6, 6], grade = "established" }
+adei = { bits = [7, 7], grade = "established" }
+
+[registers.msp_pc]
+offset = 0x50
+access = "rw"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.msp_pc.fields]
+pc = { bits = [15, 2], grade = "established" }
+
+[registers.msp_bad_addr]
+offset = 0x58
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.msp_watchpoint]
+offset = 0x60
+access = "rw"
+width = 32
+reset = 0x0
+grade = "established"
+space = "vice"
+
+[registers.msp_epc]
+offset = 0x68
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.msp_epc.fields]
+pc = { bits = [15, 2], grade = "established" }
+
+[registers.msp_cause]
+offset = 0x70
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.msp_cause.fields]
+branch_delay = { bits = [31, 31], grade = "established" }
+
+[registers.msp_cause.fields.code]
+bits = [6, 2]
+grade = "established"
+
+[registers.msp_cause.fields.code.enums]
+adel = { value = 0, grade = "established" }
+ades = { value = 1, grade = "established" }
+bp = { value = 2, grade = "established" }
+wp = { value = 3, grade = "established" }
+suri = { value = 4, grade = "established" }
+vuri = { value = 5, grade = "established" }
+con = { value = 6, grade = "established" }
+adei = { value = 7, grade = "established" }
+
+[registers.bsp_sw_int]
+offset = 0x80
+access = "w"
+width = 32
+grade = "inferred"
+space = "vice"
+doc = """
+The software-interrupt registers carry no data in the specification's
+register map (size 0): any write sets the matching cause bit. The 32-bit
+width is a placeholder and the grade says so."""
+
+[registers.msp_d_ram]
+offset = 0x100
+access = "rw"
+width = 32
+reset = 0x0
+grade = "established"
+space = "vice"
+
+[registers.msp_d_ram.fields]
+bank_c = { bits = [2, 2], grade = "established" }
+bank_b = { bits = [1, 1], grade = "established" }
+bank_a = { bits = [0, 0], grade = "established" }
+
+[registers.msp_count]
+offset = 0x108
+access = "rw"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.bsp_ctl_stat]
+offset = 0x110
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_ctl_stat.fields]
+flags = { bits = [15, 12], grade = "established" }
+ext = { bits = [11, 9], grade = "established" }
+
+[registers.bsp_watchpoint]
+offset = 0x118
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_in_count]
+offset = 0x120
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.bsp_out_count]
+offset = 0x128
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.bsp_pc]
+offset = 0x140
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_epc]
+offset = 0x148
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_halt_reset]
+offset = 0x150
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+bsp_halt_reset: the specification's field table puts the reset bit at 0 and
+the go and halt bit at 1, while its prose says bit 1 releases reset and
+does not number the go bit. No field is declared until that is settled."""
+
+[registers.bsp_cause]
+offset = 0x158
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.int]
+offset = 0x160
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+The three interrupt registers share one nine-bit cause layout (CAUSE).
+VICE.int reads the causes, VICE.int_reset clears the bits written as one and
+VICE.int_en masks the interrupt pin only; the cause bits are set whatever
+the mask says. The cause bits are set by hardware and by any write to the
+two software-interrupt registers."""
+
+[registers.bsp_fifo_ctl_stat]
+offset = 0x168
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_fifo_ctl_stat.fields]
+bsp_signal = { bits = [4, 4], grade = "established" }
+msp_signal = { bits = [3, 3], grade = "established" }
+in_reset = { bits = [2, 2], grade = "established" }
+in_full = { bits = [1, 1], grade = "established" }
+in_empty = { bits = [0, 0], grade = "established" }
+
+[registers.bsp_avalid_bits]
+offset = 0x170
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_avalid_bits.fields]
+pointer = { bits = [5, 0], grade = "established" }
+
+[registers.bsp_fvalid_bits]
+offset = 0x178
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_fvalid_bits.fields]
+pointer = { bits = [5, 0], grade = "established" }
+
+[registers.dma_ctl_ch1]
+offset = 0x180
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+Channel 2 repeats channel 1's registers at a fixed distance and shares the
+control (DMACTL) and status layouts. The four descriptor sets of each channel
+are separate registers below; every set uses the DMA_DESC_CTL layout for its
+control word."""
+
+[registers.dma_stat_ch1]
+offset = 0x188
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_data_ch1]
+offset = 0x190
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_mem_pt_ch1]
+offset = 0x198
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.dma_vice_pt_ch1]
+offset = 0x1a0
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_count_ch1]
+offset = 0x1a8
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.msp_sw_int]
+offset = 0x1b8
+access = "w"
+width = 32
+grade = "inferred"
+space = "vice"
+
+[registers.dma_ctl_ch2]
+offset = 0x1c0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_stat_ch2]
+offset = 0x1c8
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_data_ch2]
+offset = 0x1d0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_mem_pt_ch2]
+offset = 0x1d8
+access = "r"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.dma_vice_pt_ch2]
+offset = 0x1e0
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_count_ch2]
+offset = 0x1e8
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_in_box]
+offset = 0x1f0
+access = "r"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+The two mailboxes share a layout (MBOX): a 15-bit message and a signal bit
+that any write sets and any read clears. The host shadow registers read
+the same words without clearing the signal. The specification's register map
+lists the input mailbox read-only and the output mailbox read-write, while
+its register text lets the signal processor write the input one and the
+bitstream processor the output one; the directions here are the map's."""
+
+[registers.bsp_out_box]
+offset = 0x1f8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_ctl_ch1_d1]
+offset = 0x1000
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_smem_hi_ch1_d1]
+offset = 0x1008
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_smem_lo_ch1_d1]
+offset = 0x1010
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_width_ch1_d1]
+offset = 0x1018
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_stride_ch1_d1]
+offset = 0x1020
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_lines_ch1_d1]
+offset = 0x1028
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_vmem_y_ch1_d1]
+offset = 0x1030
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_vmem_c_ch1_d1]
+offset = 0x1038
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_ctl_ch2_d1]
+offset = 0x1100
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_smem_hi_ch2_d1]
+offset = 0x1108
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_smem_lo_ch2_d1]
+offset = 0x1110
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_width_ch2_d1]
+offset = 0x1118
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_stride_ch2_d1]
+offset = 0x1120
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_lines_ch2_d1]
+offset = 0x1128
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_vmem_y_ch2_d1]
+offset = 0x1130
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.dma_vmem_c_ch2_d1]
+offset = 0x1138
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.bsp_out_buf]
+offset = 0x7000
+access = "rw"
+width = 16
+grade = "inferred"
+count = 1024
+space = "vice"
+doc = """
+The chip's memories sit in the same 64 KiB window as its registers. Each
+region's base and extent are the specification's address map: the bitstream
+processor's output buffer and input buffer (2 KiB each), the three
+2 KiB data RAM banks and the translation buffer. An access to an
+unimplemented part of a range reads zeros. The access width is not given
+by the map: banks are listed at the 32-bit width of the signal processor's
+scalar unit and the bitstream buffers at the 16-bit width of the bitstream
+processor, which is inferred. The translation buffer has 64 entries and the
+specification gives no entry stride, so only its first entry is listed."""
+
+[registers.bsp_in_buf]
+offset = 0x7800
+access = "rw"
+width = 16
+grade = "inferred"
+count = 1024
+space = "vice"
+
+[registers.data_ram_a]
+offset = 0x8000
+access = "rw"
+width = 32
+grade = "inferred"
+count = 512
+space = "vice"
+
+[registers.data_ram_b]
+offset = 0x8800
+access = "rw"
+width = 32
+grade = "inferred"
+count = 512
+space = "vice"
+
+[registers.data_ram_c]
+offset = 0x9000
+access = "rw"
+width = 32
+grade = "inferred"
+count = 512
+space = "vice"
+
+[registers.cfg]
+offset = 0xe000
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.cfg.fields]
+msp_tlb_bypass = { bits = [1, 1], grade = "established" }
+check_data = { bits = [0, 0], grade = "established" }
+
+[registers.int_reset]
+offset = 0xe008
+access = "w"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.int_en]
+offset = 0xe010
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+[registers.tlb]
+offset = 0xf000
+access = "rw"
+width = 32
+grade = "established"
+space = "vice"
+
+[registers.bsp_rpage]
+offset = 0x78
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+doc = """
+Listed in the register map as the BSP R Page, 16 bits read and write, with no
+register section. The specification names an RPage register as the base for
+bitstream processor loads and stores; that it is the host's view of the same
+register is inferred."""
+
+[registers.msp_i_ram]
+offset = 0x2000
+access = "rw"
+width = 32
+count = 1024
+grade = "inferred"
+space = "vice"
+doc = """
+MSP instruction RAM, 4 KB. The map gives the size and the specification says
+the host loads it, while the MSP itself can only fetch from it. The access
+width is not published: 32 bits is inferred from the scalar instruction size.
+The DMA location table lists this RAM at 16 bits, so the width is unresolved."""
+
+[registers.bsp_i_ram]
+offset = 0x4000
+access = "rw"
+width = 16
+count = 1024
+grade = "established"
+space = "vice"
+doc = """
+BSP instruction RAM, 1K by 16 bits (2 KB). The host loads it; the BSP can only
+fetch from it. The unused tail of the window is not implemented and reads zero."""
+
+[registers.table_mem]
+offset = 0x5000
+access = "rw"
+width = 32
+count = 1280
+grade = "inferred"
+space = "vice"
+doc = """
+Bitstream processor table memory, 1280 entries of 22 bits (block diagram and
+map). Each entry is presented as a 32-bit word, with the top ten bits reading
+zero. The 32-bit presentation is inferred from the span the map gives."""
+
+[registers.table_mem.fields.value]
+bits = [21, 0]
+grade = "established"
+
+[registers.dma_ctl_ch1_d2]
+offset = 0x1040
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d2]
+offset = 0x1048
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d2]
+offset = 0x1050
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d2]
+offset = 0x1058
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d2]
+offset = 0x1060
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d2]
+offset = 0x1068
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d2]
+offset = 0x1070
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d2]
+offset = 0x1078
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch1_d3]
+offset = 0x1080
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d3]
+offset = 0x1088
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d3]
+offset = 0x1090
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d3]
+offset = 0x1098
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d3]
+offset = 0x10a0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d3]
+offset = 0x10a8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d3]
+offset = 0x10b0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d3]
+offset = 0x10b8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch1_d4]
+offset = 0x10c0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch1_d4]
+offset = 0x10c8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch1_d4]
+offset = 0x10d0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch1_d4]
+offset = 0x10d8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch1_d4]
+offset = 0x10e0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch1_d4]
+offset = 0x10e8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch1_d4]
+offset = 0x10f0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch1_d4]
+offset = 0x10f8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d2]
+offset = 0x1140
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d2]
+offset = 0x1148
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d2]
+offset = 0x1150
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d2]
+offset = 0x1158
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d2]
+offset = 0x1160
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d2]
+offset = 0x1168
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d2]
+offset = 0x1170
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d2]
+offset = 0x1178
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d3]
+offset = 0x1180
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d3]
+offset = 0x1188
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d3]
+offset = 0x1190
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d3]
+offset = 0x1198
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d3]
+offset = 0x11a0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d3]
+offset = 0x11a8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d3]
+offset = 0x11b0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d3]
+offset = 0x11b8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_ctl_ch2_d4]
+offset = 0x11c0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_hi_ch2_d4]
+offset = 0x11c8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_smem_lo_ch2_d4]
+offset = 0x11d0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_width_ch2_d4]
+offset = 0x11d8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_stride_ch2_d4]
+offset = 0x11e0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_lines_ch2_d4]
+offset = 0x11e8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_y_ch2_d4]
+offset = 0x11f0
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[registers.dma_vmem_c_ch2_d4]
+offset = 0x11f8
+access = "rw"
+width = 16
+grade = "established"
+space = "vice"
+
+
+[words.DMA_DESC_CTL]
+width = 16
+grade = "established"
+doc = """
+Control word of a DMA descriptor set. Each set of each channel uses this layout.
+The published field table marks the half-pel flags, the half-pel enable and the
+location field as not implemented; the bits are still defined so that software
+writes are seen."""
+
+[words.DMA_DESC_CTL.fields.chroma_half]
+bits = [1, 0]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.chroma_only]
+bits = [2, 2]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.half_pel_enable]
+bits = [3, 3]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.location]
+bits = [6, 4]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.location.enums]
+ram_a = { value = 0, grade = "established" }
+ram_b = { value = 1, grade = "established" }
+ram_c = { value = 2, grade = "established" }
+msp_i_ram = { value = 3, grade = "established" }
+bsp_i_ram = { value = 4, grade = "established" }
+bsp_table = { value = 5, grade = "established" }
+bsp_fifo = { value = 6, grade = "established" }
+tlb_ram = { value = 7, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.interleave]
+bits = [7, 7]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.interleave.enums]
+block = { value = 0, grade = "established" }
+interleave = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.luma_half]
+bits = [9, 8]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.yc]
+bits = [11, 10]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.yc.enums]
+block = { value = 0, grade = "established" }
+split_420 = { value = 1, grade = "established" }
+split_422 = { value = 2, grade = "established" }
+y_only = { value = 3, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.fill_source]
+bits = [12, 12]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.fill_source.enums]
+system = { value = 0, grade = "established" }
+data_register = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.direction]
+bits = [13, 13]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.direction.enums]
+write = { value = 0, grade = "established" }
+read = { value = 1, grade = "established" }
+
+[words.DMA_DESC_CTL.fields.skip]
+bits = [14, 14]
+grade = "established"
+
+[words.DMA_DESC_CTL.fields.halt]
+bits = [15, 15]
+grade = "established"
+
+[words.CAUSE]
+width = 32
+grade = "established"
+
+[words.CAUSE.fields]
+dma2_error = { bits = [8, 8], grade = "established" }
+dma2_done = { bits = [7, 7], grade = "established" }
+bad_data = { bits = [6, 6], grade = "established" }
+bsp_exception = { bits = [5, 5], grade = "established" }
+bsp_sw = { bits = [4, 4], grade = "established" }
+msp_exception = { bits = [3, 3], grade = "established" }
+msp_sw = { bits = [2, 2], grade = "established" }
+dma1_error = { bits = [1, 1], grade = "established" }
+dma1_done = { bits = [0, 0], grade = "established" }
+
+[words.DMACTL]
+width = 32
+grade = "established"
+
+[words.DMACTL.fields]
+flush_buf = { bits = [9, 9], grade = "established" }
+tlb_bypass = { bits = [8, 8], grade = "established" }
+descr_pt = { bits = [7, 4], grade = "established" }
+reset = { bits = [3, 3], grade = "established" }
+stop = { bits = [2, 2], grade = "established" }
+ie = { bits = [1, 1], grade = "established" }
+go = { bits = [0, 0], grade = "established" }
+
+[words.DMASTAT]
+width = 32
+grade = "established"
+
+[words.DMASTAT.fields]
+code = { bits = [11, 8], grade = "established" }
+descr_pt = { bits = [7, 4], grade = "established" }
+rw = { bits = [3, 3], grade = "established" }
+active = { bits = [2, 2], grade = "established" }
+error = { bits = [1, 1], grade = "established" }
+done = { bits = [0, 0], grade = "established" }
+
+[words.MBOX]
+width = 32
+grade = "established"
+
+[words.MBOX.fields]
+signal = { bits = [15, 15], grade = "established" }
+message = { bits = [14, 0], grade = "established" }
+
+[words.TLB_ENTRY]
+width = 32
+doc = """
+A translation buffer entry is a 32-bit word written whole: valid in bit 0,
+writable (permits DMA writes to the page) in bit 1 and the 64 KiB physical
+page number in bits 31:16."""
+grade = "established"
+
+[words.TLB_ENTRY.fields]
+page = { bits = [31, 16], grade = "established" }
+writable = { bits = [1, 1], grade = "established" }
+valid = { bits = [0, 0], grade = "established" }

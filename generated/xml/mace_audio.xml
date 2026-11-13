@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_audio" prefix="MACE_AUDIO" title="O2 MACE audio interface: codec command, stereo DMA ring control and pointers" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)">
+  <doc>MACE audio block: the codec reset, presence and command registers, and the three stereo DMA channels (one input, two output) with their ring control, read and write pointers and depth. Offsets are from the block base (constant BLOCK_BASE). The codec's own registers are in ad1843.toml, the MSC/UST pairs are in mace_timer.toml and the audio interrupt causes are in mace_periph.toml. Channel index 0 is the capture channel, 1 is playback 1 (block 0x40) and 2 is playback 2 (block 0x60).</doc>
+  <enum name="codec_direction">
+    <value name="write" value="0" grade="established"/>
+    <value name="read" value="1" grade="established"/>
+  </enum>
+  <enum name="ring_threshold">
+    <value name="off" value="0" grade="established"/>
+    <value name="depth_quarter" value="1" grade="established"/>
+    <value name="depth_half" value="2" grade="established"/>
+    <value name="depth_three_quarter" value="3" grade="established"/>
+    <value name="empty" value="4" grade="established"/>
+    <value name="not_empty" value="5" grade="established"/>
+    <value name="full" value="6" grade="established"/>
+    <value name="not_full" value="7" grade="established"/>
+  </enum>
+  <struct name="CTL_STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x0" access="rw" reset="0x1">
+    <doc>Codec reset and presence, the mirrored ring pointers of the two engines and the two volume-button latches. Bits not listed read zero (established, printed page 62, table 27 and table 26).</doc>
+    <field name="volume_edge_24" start="24" size="1" type="uint" grade="established"/>
+    <field name="volume_edge_23" start="23" size="1" type="uint" grade="established"/>
+    <field name="playback2_read_alias" start="16" size="7" type="uint" grade="established"/>
+    <field name="playback1_read_alias" start="9" size="7" type="uint" grade="established"/>
+    <field name="capture_write_alias" start="2" size="7" type="uint" grade="established"/>
+    <field name="codec_present" start="1" size="1" type="uint" grade="established"/>
+    <field name="codec_reset" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="CODEC_CMD" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x8" access="rw" reset="0x10000">
+    <doc>Codec register access. The word written here is sent to the codec on every serial frame and repeats until it is replaced. A read request makes the codec's answer appear in codec_response. The reset value is a read request with the address field zero (established, printed page 63, table 28).</doc>
+    <field name="codec_addr" start="17" size="7" type="uint" grade="established"/>
+    <field name="codec_direction" start="16" size="1" type="codec_direction" grade="established"/>
+    <field name="codec_data" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="RESPONSE_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x10" access="rw" reset="0x0">
+    <doc>Mask applied to the last codec response. The codec-response interrupt cause is set when any masked bit of the response is one (established, printed page 63, table 29, and printed page 125, slot 6 index 0).</doc>
+    <field name="mask" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="CODEC_RESPONSE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x18" access="r" reset="0x0">
+    <doc>The most recent 16-bit register word the codec returned, whichever register was addressed (established, printed page 63, table 30). The table describes no codec access or status change on read, so none is assumed (inferred).</doc>
+    <field name="word" start="0" size="16" type="uint" grade="established"/>
+  </struct>
+  <struct name="RING_CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x20" access="rw" count="3" stride="32" reset="0x400">
+    <doc>Control of the three stereo DMA channels, in order: capture at 0x20, playback 1 at 0x40 and playback 2 at 0x60. Writable bits are 10, 9 and 7:5. Bit 8 and bits 4:0 read zero and ignore writes (established, printed page 64, table 33).</doc>
+    <field name="channel_reset" start="10" size="1" type="uint" grade="established"/>
+    <field name="dma_enable" start="9" size="1" type="uint" grade="established"/>
+    <field name="threshold" start="5" size="3" type="ring_threshold" grade="established"/>
+  </struct>
+  <struct name="RING_READ" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x28" access="rw" count="3" stride="32" reset="0x0">
+    <doc>Read pointer of each channel, in 32-byte blocks. The playback engines own it, so software owns it only on the capture channel. The printed register tables mark it read/write for every channel, but the ownership text makes the engine's pointer read-only. Whether the engine ignores software writes to that pointer while DMA runs is unknown (established for the ownership text, printed page 66; unknown for the writes).</doc>
+    <field name="block_index" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <struct name="RING_WRITE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x30" access="rw" count="3" stride="32" reset="0x0">
+    <doc>Write pointer of each channel, in 32-byte blocks. The capture engine owns it, so software owns it on the two playback channels. The same table and text conflict as ring_read applies (established for the ownership text, printed page 66; unknown for the writes).</doc>
+    <field name="block_index" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <struct name="RING_DEPTH" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x38" access="r" count="3" stride="32" reset="0x0">
+    <doc>Blocks of ring data in use, computed as write pointer minus read pointer. Zero is empty and 127 is full, so one of the 128 blocks is never used (established, printed page 64, table 34, and printed page 66).</doc>
+    <field name="blocks" start="5" size="7" type="uint" grade="established"/>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f300000" grade="established"/>
+</genxml>

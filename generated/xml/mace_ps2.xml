@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_ps2" prefix="MACE_PS2" title="O2 MACE PS/2 keyboard and mouse ports" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)">
+  <doc>MACE PS/2 keyboard and mouse ports: one serial port per device, each with a transmit buffer, a receive buffer, a control register and a status register. Offsets are from the port's bank base (constants KEYBOARD_BASE and MOUSE_BASE).</doc>
+  <struct name="TRANSMIT" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x0" access="w" reset="0x0">
+    <doc>Transmit buffer, bits 7:0: the byte currently shifted out of the data line (established, printed page 140, table 71). Write only. Reset zero (established, printed page 141).</doc>
+    <field name="byte" start="0" size="8" type="uint" grade="established"/>
+  </struct>
+  <struct name="RECEIVE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x8" access="r" reset="0x0">
+    <doc>Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140). The status table resets status bit 1, which this alias mirrors at bit 9, to one (printed page 142), so the alias reset conflicts between the two tables (established as printed; the reset level of bit 9 is unknown).</doc>
+    <field name="status_alias" start="8" size="8" type="uint" grade="established"/>
+    <field name="byte" start="0" size="8" type="uint" grade="established"/>
+  </struct>
+  <struct name="CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x10" access="rw" reset="0x10">
+    <doc>Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed page 141). Bits 7:6 are not defined.</doc>
+    <field name="internal_reset" start="5" size="1" type="uint" grade="established"/>
+    <field name="clock_permit" start="4" size="1" type="uint" grade="established"/>
+    <field name="receive_interrupt_enable" start="3" size="1" type="uint" grade="established"/>
+    <field name="transmit_interrupt_enable" start="2" size="1" type="uint" grade="established"/>
+    <field name="transmit_enable" start="1" size="1" type="uint" grade="established"/>
+    <field name="inhibit_after_transmit" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="STATUS" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x18" access="r" reset="unknown">
+    <doc>Transmit and receive status and error flags, bits 7:0 (established, printed page 142, table 74). Read only. The table gives bit 0 an unknown reset level and bit 3 a reset of zero, which the table prints although the transmitter is idle; bit 1 resets to one. No single reset word is given, so the register has no fixed reset value (unknown).</doc>
+    <field name="framing_error" start="7" size="1" type="uint" grade="established"/>
+    <field name="parity_error" start="6" size="1" type="uint" grade="established"/>
+    <field name="reception_in_progress" start="5" size="1" type="uint" grade="established"/>
+    <field name="receive_full" start="4" size="1" type="uint" grade="established"/>
+    <field name="transmit_empty" start="3" size="1" type="uint" grade="established"/>
+    <field name="transmit_in_progress" start="2" size="1" type="uint" grade="established"/>
+    <field name="clock_permitted" start="1" size="1" type="uint" grade="established"/>
+    <field name="clock_level" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <constant name="BLOCK_BASE" value="0x1f320000" grade="established"/>
+  <constant name="DEVICE_POLL_INTERVAL_US" value="0x64" grade="established"/>
+  <constant name="FRAME_BITS" value="0xb" grade="established"/>
+  <constant name="KEYBOARD_BASE" value="0x0" grade="established"/>
+  <constant name="MOUSE_BASE" value="0x20" grade="established"/>
+</genxml>

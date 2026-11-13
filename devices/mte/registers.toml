@@ -1,0 +1,196 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "mte"
+prefix = "MTE"
+title = "O2 CRIME memory transfer engine registers and tile layout"
+doc = "CRIME memory transfer engine registers, address word and tile geometry."
+from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
+
+[c]
+legacy_header = "MTE_DECODE.h"
+legacy_guard = "MTE_DECODE_H"
+
+[spaces.re]
+
+[registers.mode]
+offset = 0x3000
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185)."""
+
+[registers.mode.fields]
+copy = { bits = [11, 11], grade = "established" }
+stipple = { bits = [10, 10], grade = "established" }
+src_ecc = { bits = [1, 1], grade = "established" }
+dst_ecc = { bits = [0, 0], grade = "established" }
+
+[registers.mode.fields.depth]
+bits = [9, 8]
+grade = "established"
+
+[registers.mode.fields.depth.enums]
+bits8 = { value = 0, grade = "established" }
+bits16 = { value = 1, grade = "established" }
+bits32 = { value = 2, grade = "established" }
+
+[registers.mode.fields.src_buf]
+bits = [7, 5]
+grade = "established"
+
+[registers.mode.fields.src_buf.enums]
+fb_a = { value = 0, grade = "established" }
+fb_b = { value = 1, grade = "established" }
+fb_c = { value = 2, grade = "established" }
+tex = { value = 3, grade = "established" }
+lin_a = { value = 4, grade = "established" }
+lin_b = { value = 5, grade = "established" }
+cid = { value = 6, grade = "established" }
+
+[registers.mode.fields.dst_buf]
+bits = [4, 2]
+grade = "established"
+
+[registers.mode.fields.dst_buf.enums]
+fb_a = { value = 0, grade = "established" }
+fb_b = { value = 1, grade = "established" }
+fb_c = { value = 2, grade = "established" }
+tex = { value = 3, grade = "established" }
+lin_a = { value = 4, grade = "established" }
+lin_b = { value = 5, grade = "established" }
+cid = { value = 6, grade = "established" }
+
+[[registers.mode.tests]]
+value = 0x10b
+expect = { copy = 0, depth = 1, dst_buf = 2, src_ecc = 1, dst_ecc = 1 }
+
+[[registers.mode.tests]]
+value = 0x820
+expect = { copy = 1, stipple = 0, depth = 0, src_buf = 1, dst_buf = 0 }
+
+[registers.bytemask]
+offset = 0x3008
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown)."""
+
+[registers.stipplemask]
+offset = 0x3010
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined."""
+
+[registers.fg]
+offset = 0x3018
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+The clear value, 32 bits, readable and writable (established, [spec] PDF 183)."""
+
+[registers.src0]
+offset = 0x3020
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183)."""
+
+[registers.src1]
+offset = 0x3028
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183)."""
+
+[registers.dst0]
+offset = 0x3030
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
+
+[registers.dst1]
+offset = 0x3038
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
+
+[registers.src_ystep]
+offset = 0x3040
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Source row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
+
+[registers.dst_ystep]
+offset = 0x3048
+access = "rw"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Destination row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
+
+[registers.null]
+offset = 0x3070
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md)."""
+
+[registers.flush]
+offset = 0x3078
+access = "w"
+width = 32
+grade = "established"
+space = "re"
+doc = """
+Flush command, 32 bits, write-only (established, [spec] PDF 184)."""
+
+[words.ADDR]
+width = 32
+grade = "established"
+
+[words.ADDR.fields]
+byte_col = { bits = [31, 16], grade = "established" }
+row = { bits = [15, 0], grade = "established" }
+
+[[words.ADDR.tests]]
+value = 0x400020
+expect = { byte_col = 64, row = 32 }
+
+[constants]
+SUBTILE_BLOCK_BYTES = { value = 0x20, grade = "inferred", doc = "8 bytes by 4 rows" }
+SUBTILE_BYTES = { value = 0x2000, grade = "inferred", doc = "128 bytes by 64 rows" }
+TILE_BYTES = { value = 0x10000, grade = "established" }
+TILE_ROWS = { value = 0x80, grade = "established" }
+TILE_ROW_BYTES = { value = 0x200, grade = "established" }
+MODE_X_COPY = { value = 0x820, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word the shipped IRIX X server uses for a copy: copy, source TLB B, destination TLB A, 8-bit." }
+MODE_HOST_CLEAR = { value = 0x11, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word of the shipped IRIX kernel's host-memory clear: clear, linear A, destination ECC." }
+MODE_HOST_COPY = { value = 0x897, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word of the shipped IRIX kernel's host-memory copy: copy, linear A to linear B, both ECC bits." }
+HOST_CHUNK_BYTES = { value = 0x20000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Largest chunk of a kernel host-memory clear or copy." }
+X_BLOCK_BYTES = { value = 0x100, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Width in bytes of the whole-row blocks the X server sends to the engine." }
+X_ROWS_16 = { value = 0x10, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Rows in a block at 16 bits per pixel." }
+X_ROWS_32 = { value = 8, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Rows in a block at 32 bits per pixel." }

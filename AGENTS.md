@@ -23,7 +23,7 @@ Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 19
 - CPU-interface registers take 64-bit doubleword accesses only (established, [spec] PDF 113-115). Eight memory bank controls sit at +`0x208` to +`0x240`; bit 8 selects 16 Mbit or 64 Mbit SDRAM geometry (established, [spec] PDF 150, 152).
 - Revisions (established, [spec] PDF 113-119, 49, 215): CRIME 1.5 reads ID `0xb1`; the draft records 1.1 as `0xa1`, earlier `0xa0`, with the CPU error-status register at `0x14000048` instead of `0x14004048` and a 36-bit rather than 40-bit CPU decode. [linux] (`arch/mips/sgi-ip32/crime.c`) uses the earlier offset. The ID of shipped silicon is **unknown** here, and the specification says its rendering chapter still needs updating for 1.1.
 - GBE interrupts route to CRIME interrupt inputs 16-19 (established, [spec]). GBE reads its frame buffer from system memory in 64 KiB tiles (established, [linux] `drivers/video/fbdev/gbefb.c`).
-- The rendering chapter is unfinished in the specification: translation, rasterization, texel lookup and filtering have explicit holes (PDF 187, 191, 193, 195, 202-205). The chapter overview says it is to be updated for CRIME 1.1 and that no rendering change is anticipated for 1.5 (established, [spec] PDF 157). The specification text gives a 128-entry FIFO; shipped software and [netbsd] use 64 (established: 6-bit pointers, a 64-slot ring in the IRIX save routine, overflow tested at 65; see `CRIME_RE.h`). The memory-error interrupt prose says input 20 while its table assigns memory to 21 and CPU to 20; the table is right (established: [linux] and [netbsd] agree, see `docs/memory.md`).
+- The rendering chapter is unfinished in the specification: translation, rasterization, texel lookup and filtering have explicit holes (PDF 187, 191, 193, 195, 202-205). The chapter overview says it is to be updated for CRIME 1.1 and that no rendering change is anticipated for 1.5 (established, [spec] PDF 157). The specification text gives a 128-entry FIFO; shipped software and [netbsd] use 64 (established: 6-bit pointers, a 64-slot ring in the IRIX save routine, overflow tested at 65; see `devices/re/CRIME_RE.h`). The memory-error interrupt prose says input 20 while its table assigns memory to 21 and CPU to 20; the table is right (established: [linux] and [netbsd] agree, see `docs/memory.md`).
 
 ### Major blocks
 
@@ -69,18 +69,18 @@ Our primary output is a set of C header files at the repository root, one per ch
 
 Planned headers (`docs/coverage.md` tracks each):
 
-1. **`CRIME.h`**: address map, CPU interface, memory controller, interrupts, ID and reset.
-2. **`CRIME_RE.h`**: rendering engine registers, primitive and pixel state, FIFO, TLB, texture.
-3. **`MTE.h`**: the memory transfer engine.
-4. **`GBE.h`**: display back end registers, tiles, overlay, cursor, colormap, timing.
+1. **`devices/crime/CRIME.h`**: address map, CPU interface, memory controller, interrupts, ID and reset.
+2. **`devices/re/CRIME_RE.h`**: rendering engine registers, primitive and pixel state, FIFO, TLB, texture.
+3. **`devices/mte/MTE.h`**: the memory transfer engine.
+4. **`devices/gbe/GBE.h`**: display back end registers, tiles, overlay, cursor, colormap, timing.
 
 [docs/coverage.md](docs/coverage.md) is the map of what is written and what is missing, with the open problems in priority order. Prose that does not fit a header goes in `docs/` chapters.
 
-### Hardware definitions in `defs/`
+### Hardware definitions in `devices/`
 
-The register, word, field and constant facts that the `*_DECODE.h` headers used to carry are TOML sources in `defs/`: one file per block (`defs/<unit>.toml`), an optional revision overlay (`defs/<unit>.<rev>.toml`), hand-written C helpers in `defs/<unit>_helpers.h`, and the repository's check settings in `defs/check.toml`. Each item carries its grade (established, inferred or unknown) and the source it came from. `defs/` is the source of hardware facts: change a fact there, never in a generated file.
+The register, word, field and constant facts that the `*_DECODE.h` headers used to carry are TOML sources in `devices/`: one file per block (`devices/<unit>.toml`), an optional revision overlay (`devices/<unit>.<rev>.toml`), hand-written C helpers in `devices/<unit>_helpers.h`, and the repository's check settings in `tools/config/defs-check.toml`. Each item carries its grade (established, inferred or unknown) and the source it came from. `devices/` is the source of hardware facts: change a fact there, never in a generated file.
 
-`gen/` is written by `retools/tools/defs/defs-gen` and is never edited by hand. It holds the C headers (`gen/c/`), a Rust crate (`gen/rust/`), Python decode modules, flat JSON, a genxml export and the reference page for each block (`gen/docs/`), which is the published reference. The `*_DECODE.h` files at the root are forwarding headers that include `gen/c/`, so older consumers keep building. After a change to `defs/`, run `retools/tools/defs/defs-gen`, then `retools/tools/defs/defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when `gen/` is stale.
+`generated/` is written by `retools/tools/defs/defs-gen` and is never edited by hand. It holds the C headers (`generated/c/`), a Rust crate (`generated/rust/`), Python decode modules, flat JSON, a genxml export and the reference page for each block (`generated/docs/`), which is the published reference. The `*_DECODE.h` files at the root are forwarding headers that include `generated/c/`, so older consumers keep building. After a change to `devices/`, run `retools/tools/defs/defs-gen`, then `retools/tools/defs/defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when `generated/` is stale.
 
 ---
 
@@ -106,9 +106,9 @@ Install these on your workstation:
 
 Initialise only the submodules you need: `git submodule update --init references/code/m2c references/code/spimdisasm references/code/libdwarf`. `references/code/linux`, `references/code/netbsd` and `references/code/openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 references/code/linux references/code/netbsd references/code/openbsd`).
 
-Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `scripts/` keeps only this workspace's configuration and data:
+Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `tools/config/` keeps only this workspace's configuration and data:
 
-- `map_binaries.py`: catalogue every linked binary (sections, functions, DWARF compilation units) into `binaries_manifest.json`.
+- `map_binaries.py`: catalogue every linked binary (sections, functions, DWARF compilation units) into `tools/config/binaries_manifest.json`.
 - `disasm_kernel.py`: disassemble the kernel `.o` objects into m2c-ready assembly under `crime_kernel/disasm/`. Unpack archives (`.a`) with `ar x` first.
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
 - `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `libglcore/asm/` and `manifest.json`, and write `libglcore/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
@@ -233,7 +233,7 @@ In the same commit as any finding:
 1. Run `retools/tools/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `docs/inventory/` and `docs/coverage.md`.
 2. Update the affected area row in `docs/coverage.md`.
 
-Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `scripts/inventory-config.json` and say why in the commit. `retools/tools/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `scripts/inventory-config.json`.
+Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `tools/config/inventory-config.json` and say why in the commit. `retools/tools/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `tools/config/inventory-config.json`.
 
 Roles:
 
@@ -243,7 +243,7 @@ Roles:
 Output rules:
 
 - Findings go in chip headers at the repository root plus `docs/` chapters, written in your own words.
-- Register, field and constant facts go in `defs/` (see the hardware definitions above), then regenerate `gen/`. Do not write them into a header by hand.
+- Register, field and constant facts go in `devices/` (see the hardware definitions above), then regenerate `generated/`. Do not write them into a header by hand.
 - Label every fact established, inferred or unknown, with its derivation: binary and release, function or offset, or the document or capture.
 - Update `docs/coverage.md` in the same commit as the finding.
 - Commit disassembly, decompiled C and traces you produce as data; keep the proprietary binaries in `root/`. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps are gitignored.

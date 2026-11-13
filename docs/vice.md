@@ -15,7 +15,7 @@ Labels follow [AGENTS.md](../AGENTS.md). Source key: **[vice]** is the *VICE Des
 ## Address map and translation
 
 - Established ([vice] PDF 22-24, table 2): system addresses `0x17000000` to `0x1700ffff` hold the chip: data RAM banks A, B and C at `+0x8000`, `+0x8800` and `+0x9000` (2 KB each), the bitstream processor's input and output buffers in `+0x7000` to `+0x7fff` (output at `+0x7000`, input at `+0x7800`), kernel-restricted registers at `+0xe000`, the translation buffer at `+0xf000`, and the ordinary registers in the low page. An access to an unimplemented part of a range reads zeros rather than faulting.
-- Established ([vice] PDF 22-23): two address pins select one of four 1 MB blocks at `0x17000000`, `0x17100000`, `0x17200000` and `0x17300000`, matched against bus address bits 21:20 so that several chips could share the bus. The specification says more than one chip was never tested, even in simulation. The CRIME window of `0x17000000` for 16 MiB ([spec], [CRIME.h](../CRIME.h)) agrees with the first block.
+- Established ([vice] PDF 22-23): two address pins select one of four 1 MB blocks at `0x17000000`, `0x17100000`, `0x17200000` and `0x17300000`, matched against bus address bits 21:20 so that several chips could share the bus. The specification says more than one chip was never tested, even in simulation. The CRIME window of `0x17000000` for 16 MiB ([spec], [devices/crime/CRIME.h](../devices/crime/CRIME.h)) agrees with the first block.
 - Established ([vice] PDF 24-25, table 2): the instruction RAMs sit in the chip's window too. The MSP instruction RAM is 4 KB at `+0x2000` and the BSP instruction RAM is 1K by 16 bits (2 KB) at `+0x4000`. Each is loaded by the host and the DMA engine, and the owning processor can only fetch from it. The unimplemented tails and the reserved MSP expansion at `+0x3000` read zeros from the host.
 - Established ([vice] PDF 24 and the block diagram): the bitstream processor's table memory is 1280 entries of 22 bits at `+0x5000` (the map gives 8 KB for the window). The 32-bit presentation of each entry is inferred from the span the map gives.
 - Established ([vice] PDF 133): the specification says only big-endian mode is supported.
@@ -163,7 +163,7 @@ The IRIX kernel probes for the chip once, at boot, and adds an inventory entry w
   | `0x000000e4` | `QT` |
   | any other | the word in hexadecimal |
 
-  `hinv` compares the whole word and nothing else. `DX` and `TRE` are revisions 2 and 3, as the published names in [defs/vice.toml](../defs/vice.toml) say.
+  `hinv` compares the whole word and nothing else. `DX` and `TRE` are revisions 2 and 3, as the published names in [devices/vice/registers.toml](../devices/vice/registers.toml) say.
 - Inferred (`libvice.so` of the same media, read from its disassembly): the library picks the microcode directory from the same word, obtained through a driver ioctl whose code was not read. It tests for `0xe1` (directory `vice`) and `0xe2` (`vicedx`) and takes `vicetre` for every other word.
 - Established (kernel `add_vice`): the probe writes `4` to the enable word at `+0xe014`, the low half of the slot at `+0xe010`, and does not restore it, so cause 2 stays enabled after boot. Other writers of that slot were not checked.
 - Unknown: the value of the upper word of the ID doubleword, and whether any later consumer reads the ID again. The library reads it once through the driver when it chooses the directory.

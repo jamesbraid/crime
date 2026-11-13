@@ -2,7 +2,7 @@
 
 The MACE I/O ASIC has two PS/2 serial ports, one for a keyboard and one for
 a mouse. Each port is an IBM PS/2 auxiliary-device interface. The register
-offsets, widths and bit meanings live in `defs/mace_ps2.toml`; this page
+offsets, widths and bit meanings live in `devices/mace_ps2/registers.toml`; this page
 covers what the specification says in prose, the interrupt levels, and the
 open questions.
 

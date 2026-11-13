@@ -3,7 +3,7 @@
 This page covers the MACE Fast-Ethernet block: the MAC and interrupt registers,
 the transmit ring and receive cluster FIFO, the PHY bus, the address filter and
 the message formats in memory. The register offsets, widths, reset values and
-field positions are in `defs/mace_ethernet.toml`, and this page does not repeat
+field positions are in `devices/mace_ethernet/registers.toml`, and this page does not repeat
 them. The page covers what the defs cannot say: behaviour, timing, interactions
 and what the specification leaves open. The transmit queue diagnostic registers,
 the incoming message queue and the multicast hash algorithm are not covered yet.

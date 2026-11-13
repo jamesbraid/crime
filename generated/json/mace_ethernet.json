@@ -1,0 +1,1354 @@
+{
+ "schema": "defs-flat/1",
+ "source": "devices/mace_ethernet/registers.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "mac_control",
+   "offset": 0,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 536870913,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.revision",
+   "hi": 31,
+   "lo": 29,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.ipg_r2",
+   "hi": 28,
+   "lo": 22,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.ipg_r1",
+   "hi": 21,
+   "lo": 15,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.ipg_t",
+   "hi": 14,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.link_failure_enable",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.dest_filter_mode",
+   "hi": 6,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "mac_control.dest_filter_mode.physical_only",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "mac_control.dest_filter_mode.physical_broadcast_multicast",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "mac_control.dest_filter_mode.physical_broadcast_all_multicast",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "mac_control.dest_filter_mode.any_packet",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.m10t_sia_select",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.speed_100",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.loopback_internal",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.full_duplex",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "mac_control.core_reset",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "interrupt_status",
+   "offset": 8,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.multicast_hash_output",
+   "hi": 30,
+   "lo": 30,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.rx_sequence",
+   "hi": 29,
+   "lo": 25,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_read_pointer",
+   "hi": 24,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.rx_cluster_read_pointer",
+   "hi": 12,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.rx_dma_fifo_overflow",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.rx_cluster_fifo_underflow",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.rx_threshold",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_abort",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_memory_error",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_link_failure",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_user_request",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_status.tx_ring_empty",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "dma_control",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_dma_enable",
+   "hi": 15,
+   "lo": 15,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_start_offset",
+   "hi": 14,
+   "lo": 12,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_gather_enable",
+   "hi": 11,
+   "lo": 11,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_runt_enable",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_interrupt_enable",
+   "hi": 9,
+   "lo": 9,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.rx_interrupt_threshold",
+   "hi": 8,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.tx_ring_size",
+   "hi": 3,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "dma_control.tx_ring_size.kib8",
+   "value": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "dma_control.tx_ring_size.kib16",
+   "value": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "dma_control.tx_ring_size.kib32",
+   "value": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "enum_value",
+   "name": "dma_control.tx_ring_size.kib64",
+   "value": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.tx_dma_enable",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "dma_control.tx_interrupt_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "interrupt_delay",
+   "offset": 24,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_delay.count",
+   "hi": 5,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "tx_interrupt_alias",
+   "offset": 32,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "tx_interrupt_alias.tx_interrupt_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "rx_interrupt_alias",
+   "offset": 40,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_interrupt_alias.rx_interrupt_enable",
+   "hi": 9,
+   "lo": 9,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_interrupt_alias.rx_interrupt_threshold",
+   "hi": 8,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "tx_ring_pointers",
+   "offset": 48,
+   "access": "rw",
+   "width": 64,
+   "count": 2,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "tx_ring_pointers.read_pointer",
+   "hi": 24,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "tx_ring_pointers.write_pointer",
+   "hi": 8,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "rx_fifo_pointers",
+   "offset": 64,
+   "access": "r",
+   "width": 64,
+   "count": 3,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_pointers.write_generation",
+   "hi": 20,
+   "lo": 20,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_pointers.write_index",
+   "hi": 19,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_pointers.read_generation",
+   "hi": 12,
+   "lo": 12,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_pointers.read_index",
+   "hi": 11,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_pointers.count",
+   "hi": 4,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "interrupt_request",
+   "offset": 88,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_request.write_enable",
+   "hi": 31,
+   "lo": 16,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "interrupt_request.value",
+   "hi": 15,
+   "lo": 0,
+   "grade": "inferred",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "phy_data",
+   "offset": 96,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "phy_data.busy",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "phy_data.data",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "phy_address",
+   "offset": 104,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "phy_address.device_address",
+   "hi": 9,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "phy_address.register_address",
+   "hi": 4,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "phy_read_start",
+   "offset": 112,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "phy_read_start.start",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "backoff_seed",
+   "offset": 120,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "backoff_seed.seed",
+   "hi": 10,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "station_address",
+   "offset": 160,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_5",
+   "hi": 47,
+   "lo": 40,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_4",
+   "hi": 39,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_3",
+   "hi": 31,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_2",
+   "hi": 23,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_1",
+   "hi": 15,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "station_address.address_byte_0",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "secondary_station_address",
+   "offset": 168,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "secondary_station_address.address",
+   "hi": 47,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "multicast_filter",
+   "offset": 176,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "multicast_filter.mask",
+   "hi": 63,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "tx_ring_base",
+   "offset": 184,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "tx_ring_base.base",
+   "hi": 31,
+   "lo": 13,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "register",
+   "name": "rx_fifo_data",
+   "offset": 256,
+   "access": "rw",
+   "width": 64,
+   "count": 32,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_data.cluster_base",
+   "hi": 31,
+   "lo": 12,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "rx_fifo_data.zero_low",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "word",
+   "name": "RX_STATUS_VECTOR",
+   "width": 64,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.always_one",
+   "hi": 63,
+   "lo": 63,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.zero_filled",
+   "hi": 62,
+   "lo": 48,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.partial_checksum",
+   "hi": 47,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.sequence",
+   "hi": 31,
+   "lo": 27,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.physical_address_match",
+   "hi": 26,
+   "lo": 26,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.multicast_filter_match",
+   "hi": 25,
+   "lo": 25,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.carrier_event_seen",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.bad_packet",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.long_event_seen",
+   "hi": 22,
+   "lo": 22,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.invalid_preamble",
+   "hi": 21,
+   "lo": 21,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.broadcast_packet",
+   "hi": 20,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.multicast_packet",
+   "hi": 19,
+   "lo": 19,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.crc_error",
+   "hi": 18,
+   "lo": 18,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.dribble_nibble",
+   "hi": 17,
+   "lo": 17,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.code_violation",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "RX_STATUS_VECTOR.length",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "word",
+   "name": "TX_COMMAND",
+   "width": 64,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.must_be_zero",
+   "hi": 63,
+   "lo": 28,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.pointer3_valid",
+   "hi": 27,
+   "lo": 27,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.pointer2_valid",
+   "hi": 26,
+   "lo": 26,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.pointer1_valid",
+   "hi": 25,
+   "lo": 25,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.completion_interrupt",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.stop_on_abort",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.inline_start",
+   "hi": 22,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_COMMAND.length_minus_one",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "word",
+   "name": "TX_CONCAT_POINTER",
+   "width": 64,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_CONCAT_POINTER.zero_high",
+   "hi": 63,
+   "lo": 48,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_CONCAT_POINTER.length_minus_one",
+   "hi": 47,
+   "lo": 32,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_CONCAT_POINTER.address",
+   "hi": 31,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_CONCAT_POINTER.zero_low",
+   "hi": 2,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "word",
+   "name": "TX_STATUS_VECTOR",
+   "width": 64,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.one_filled",
+   "hi": 63,
+   "lo": 63,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.zero_filled",
+   "hi": 62,
+   "lo": 29,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.late_collision_drop",
+   "hi": 28,
+   "lo": 28,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.excessive_deferral",
+   "hi": 27,
+   "lo": 27,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.excess_collisions",
+   "hi": 26,
+   "lo": 26,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.underrun",
+   "hi": 25,
+   "lo": 25,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.excessive_length",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.completed",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.deferred",
+   "hi": 22,
+   "lo": 22,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.crc_error",
+   "hi": 21,
+   "lo": 21,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.late_collision",
+   "hi": 20,
+   "lo": 20,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.collision_retries",
+   "hi": 19,
+   "lo": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "field",
+   "name": "TX_STATUS_VECTOR.length",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 522715136,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "INTERRUPT_DELAY_TICK_NS",
+   "value": 30690,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "INTERRUPT_SLOT",
+   "value": 3,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "INTERRUPT_UPDATE_TAG",
+   "value": 12,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "RX_BUCKET_BYTES",
+   "value": 256,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "RX_CLUSTER_BYTES",
+   "value": 4096,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "RX_CLUSTER_FIFO_DEPTH",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  },
+  {
+   "unit": "mace_ethernet",
+   "kind": "constant",
+   "name": "TX_ENTRY_BYTES",
+   "value": 128,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 70 to 81, 173, 175, 179 and 181)"
+  }
+ ]
+}

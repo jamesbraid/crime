@@ -1,0 +1,672 @@
+{
+  "family": "O2 (CRIME and GBE)",
+  "review_required": ["docs/routines/t1-*.md", "docs/routines/t2-*.md"],
+  "siblings": {"kona": "../kona", "odsy": "../odsy"},
+  "docs": {
+    "prose": ["docs/*.md", "docs/routines/*.md"],
+    "headers": ["*.h", "devices/*/*.h", "generated/c/*.h", "crime_kernel/include/*.h", "libglcore/include/*.h"],
+    "tables": [],
+    "index": ["AGENTS.md", "README.md", "IRIX_FILES.md", "docs/coverage.md", "docs/open-questions.md", "docs/captures.md"],
+    "dumps": [],
+    "skip": ["docs/inventory/*"]
+  },
+  "prepare": [],
+  "binaries": [
+    {"group": "kernel", "role": "board-kernel", "paths": ["usr/cpu/sysgen/IP32boot/crime.a", "usr/cpu/sysgen/IP32boot/mace.o"]},
+    {"group": "kernel-video", "role": "board-kernel", "paths": ["usr/cpu/sysgen/IP32boot/mvp.o", "usr/cpu/sysgen/IP32boot/a3_dd.o"]},
+    {"group": "kernel-shared", "role": "shared-kernel", "paths": ["usr/cpu/sysgen/IP32boot/gfx.o", "usr/cpu/sysgen/IP32boot/gfxs.a", "usr/cpu/sysgen/IP32boot/rrm.o", "usr/cpu/sysgen/IP32boot/kernel.o"]},
+    {"group": "kernel-shared", "role": "shared-kernel", "paths": ["usr/cpu/sysgen/IP32boot/os.a"], "members": ["tile.o"]},
+    {"group": "libraries", "role": "board-library", "paths": ["usr/gfx/arch/IP32CRM/libGL.so", "usr/gfx/arch/IP32CRM/libGLcore.so", "usr/gfx/arch/IP32CRM32/libGL.so", "usr/gfx/arch/IP32CRM32/libGLcore.so"]},
+    {"group": "x-module", "role": "board-x-module", "paths": ["usr/lib/X11/dyDDX/crm.so"]},
+    {"group": "x-shared", "role": "shared-x-server", "paths": ["usr/lib/X11/dyDDX/glx.so", "usr/gfx/arch/GENERIC/Xsgi"]},
+    {"group": "video-libraries", "role": "board-library", "paths": ["usr/lib32/libXsgivc.so", "usr/lib/libXsgivc.so", "usr/lib64/libXsgivc.so", "usr/lib/dmedia/video/mvp.so", "usr/lib/dmedia/video/debug/mvp.so", "usr/lib32/dmedia/video/mvp.so", "usr/lib32/dmedia/video/debug/mvp.so", "usr/lib/internal/libvice.so", "usr/lib32/internal/libvice.so", "usr/lib/dmedia/imageconverters/vice*.so", "usr/lib32/dmedia/imageconverters/vice*.so", "usr/lib/dmedia/imageconverters/debug/vice*.so", "usr/lib32/dmedia/imageconverters/debug/vice*.so"]},
+    {"group": "tools", "role": "shared-tool", "paths": ["usr/gfx/gfxinit", "usr/gfx/setmon"]},
+    {"group": "video-formats", "role": "board-data", "paths": ["usr/gfx/ucode/CRM/vof"]},
+    {"group": "standalone", "role": "board-diagnostic", "paths": ["sbin/stand/ide.IP32", "sbin/stand/symmon.IP32", "usr/sbin/Confidence/dualchannel"]},
+    {"group": "firmware", "role": "board-firmware", "paths": ["usr/cpu/firmware/ip32prom.image"]}
+  ],
+  "exclude": [],
+  "scope": [
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "MIPS CPU exception vectors, TLB refill handlers and TLB maintenance: no graphics register, token or ioctl use",
+      "patterns": [
+        "utlbmiss.*",
+        "eutlbmiss.*",
+        "kmiss.*",
+        "kvmiss_hit",
+        "VEC_(?:addrerr|breakpoint|cpfault|fpe|ii|nofault|syscall|tlbmiss|tlbmod|trap|unexp)",
+        "_?_?j?_?(?:end)?exceptnorm.*",
+        "_j_.*exceptnorm.*",
+        "exception.*",
+        "ecommon.*",
+        "handle_(?:brkpt|ii|watch)",
+        "fixade_error",
+        "systrap",
+        "intrnorm",
+        "strayc0",
+        "tlb[a-z_]*",
+        "unmaptlb.*",
+        "invaltlb",
+        "dumptlb",
+        "checkAllTlbsDumped",
+        "set_tlbpid",
+        "flush_tlb",
+        "da_flush_tlb",
+        "check_delay_tlbflush",
+        "tfi_(?:restore|save)"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "MIPS floating-point unit emulation and FPU state handling: no graphics register, token or ioctl use",
+      "patterns": [
+        "_(?:abs|add|comp|cvt\\w+|div|madd|msub|mul|neg|nmadd|nmsub|rsqrt|sqrt|sub)_sd",
+        "breakout_.*_sd",
+        "screen_nan_sd",
+        "fp_(?:find|init|init_glob|intr)",
+        "fp(?:unit_fp)?(?:load|store)_[a-z]+",
+        "round_[dlsw]",
+        "renorm_[ds]",
+        "maddrnd_[ds]",
+        "madd",
+        "checkfp",
+        "illfpinst",
+        "(?:get|set)_fpc_(?:csr|irr)",
+        "load_fpcsr",
+        "store_fpcsr",
+        "sendSIGFPE",
+        "strayfp_intr",
+        "tfp_special_int_exit",
+        "softfp_.*",
+        "get_fpc_irr"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU cache maintenance primitives: no graphics register, token or ioctl use",
+      "patterns": [
+        "__cache_wb_inval",
+        "__dcache_.*",
+        "__icache_inval",
+        "__vm_dcache_.*",
+        "__prefetch_.*",
+        "_c_(?:hinv|hwb|hwbinv|ilt|ilt_n_ecc|ist)",
+        "_r4600sc_.*",
+        "cacheOP",
+        "cache_(?:preempt_limit|sync|sync_bp_end|sync_bp_start|tag_ecc)",
+        "clean_[di]cache",
+        "d?cache_?wb(?:inval)?",
+        "dcache_wbinval",
+        "_dki_dcache_.*",
+        "dki_dcache_wb",
+        "flush_cache",
+        "getcachesz",
+        "size_2nd_cache",
+        "sw_cachesynch.*",
+        "config_cache",
+        "_read_tag",
+        "_write_tag",
+        "ecc_cacheOp",
+        "ecc_cacheop_get",
+        "ecc_cache_(?:block_mask|line_size)",
+        "do_sync_instruction",
+        "check_delay_iflush",
+        "pg_setcachable",
+        "pte_cachebits"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic C library, memory copy, user-access and checksum routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "bcmp",
+        "bcopy(?:[bdhnw])?",
+        "bcopy_end",
+        "ovbcopy",
+        "bzero(?:_end)?",
+        "bzerror",
+        "blkclr",
+        "mem(?:cmp|cpy|move|set)",
+        "copyin",
+        "copyout",
+        "swcopyin",
+        "swcopyout",
+        "swbcopy",
+        "[fs]u(?:i?byte|iword|word|long|half|ibyte)",
+        "su(?:error|ibyte|iword|byte)",
+        "uload_.*",
+        "ustore_.*",
+        "uzero",
+        "sfu32v?",
+        "spu32",
+        "strlen",
+        "string_sum",
+        "checksum",
+        "in_cksum_.*",
+        "gensum",
+        "bitcount",
+        "lowbitset",
+        "setjmp",
+        "longjmp",
+        "xlate_bit",
+        "syn_to_data_bit",
+        "etoh",
+        "mul64"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic kernel atomics, locks, semaphores and interrupt-priority-level helpers: no graphics register, token or ioctl use",
+      "patterns": [
+        "atomic[A-Z]\\w*",
+        "bitlock_.*",
+        "compare_and_.*",
+        "comparegt_and_swap_int",
+        "swap_(?:int|int64|long|ptr)",
+        "test_and_set_.*",
+        "(?:and|or)[bhw]_rmw",
+        "store_atomic",
+        "apcpsema",
+        "apcvsema",
+        "appsema",
+        "apsfail",
+        "apvsema",
+        "mutex_set_always",
+        "rtlock_ownerstamp",
+        "isspl0",
+        "issplhi",
+        "issplprof",
+        "spl[1356]",
+        "spl65",
+        "splecc",
+        "splgio[012]",
+        "splhi_relnet",
+        "splhintr",
+        "splimp",
+        "splnet",
+        "spltty",
+        "splvme",
+        "splxecc",
+        "setsplmasks"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU counter, kernel clock, time-of-day, timeout and delay routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "(?:ack|slow|start)kgclock(?:_r4000)?",
+        "(?:ack|start)rtclock(?:_r4000)?",
+        "_clock_func",
+        "clearbadclock",
+        "setbadclock",
+        "isbadclock",
+        "clkset",
+        "clr_r4kcount_intr",
+        "r4kcount_intr(?:_r4000)?",
+        "_get_r4k_counter",
+        "get_r4k_(?:compare|config|counter)",
+        "set_r4k_compare",
+        "set_timer_intr",
+        "_get_timestamp",
+        "get_(?:ust|updated_ust_i)",
+        "update_ust(?:_i)?",
+        "ust_init",
+        "ust_to_nano",
+        "nano_to_ust",
+        "nano(?:time|time_syscall)",
+        "timestamp_init",
+        "microtime",
+        "gettimetrim",
+        "settimetrim",
+        "settime",
+        "inittodr",
+        "resettodr",
+        "inithrestime",
+        "doadjtime",
+        "callout_time_to_hz",
+        "chktimedrift",
+        "chktimeout_tick",
+        "fast_time(?:out|out_nothrd|poke)",
+        "fastick_maint",
+        "timeout_get_queuehead",
+        "timein(?:_body)?",
+        "timepoke",
+        "tick_(?:actions|maint)",
+        "onesec_maint",
+        "migrate_timeouts",
+        "init_timer",
+        "stopclocks(?:_r4000)?",
+        "startprfclk",
+        "stopprfclk",
+        "enable_fastclock",
+        "query_(?:cyclecntr|cyclecntr_size|fasttimer)",
+        "findcpufreq(?:_raw)?",
+        "cpu_mhz_rating",
+        "get_dayof_week",
+        "us_delay(?:bus)?",
+        "delay_for_intr",
+        "delayloop"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "CPU performance-counter and branch-prediction control: no graphics register, token or ioctl use",
+      "patterns": [
+        "hwperf_.*",
+        "r1nk\\w*",
+        "r10k_perf_overflow_intr",
+        "r12k_perf_overflow_intr",
+        "set_hwperf_intr",
+        "read_branch_diag",
+        "write_branch_diag",
+        "branch_prediction_.*",
+        "get_r10k_config",
+        "set_r10k_config",
+        "get_cpu_irr"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Flash ROM, NVRAM, firmware-call and environment-variable routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "flash_.*",
+        "get_flash_version",
+        "update_flash_version",
+        "init_flash_rom",
+        "find_named_flash_seg",
+        "valid_seg_hdr",
+        "set_env_var",
+        "set_nvram",
+        "load_nvram_tab",
+        "dump_nvram_vars",
+        "read_dallas_nvram",
+        "write_dallas_nvram",
+        "arcs_.*",
+        "prom_.*",
+        "call_prom_cached",
+        "devnamefromarcs",
+        "set_autopoweron",
+        "rtc_init",
+        "wtodc",
+        "btool_.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Context switch, thread start-up, signal delivery and debugger-trap routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "resume(?:idle|thread)?",
+        "save",
+        "sthread_launch",
+        "post_sig",
+        "p0_launch",
+        "toidlestk",
+        "loopxthread",
+        "restartxthread",
+        "other_prda",
+        "otherprda",
+        "getcvpriority",
+        "upath",
+        "uerror",
+        "backtouser",
+        "icode",
+        "eicode",
+        "is_thd",
+        "cpumon_alloc",
+        "engr_dvt_thread",
+        "stk(?:ovflw|scr1|scr2|undflw)",
+        "sstepbp",
+        "kernelbp",
+        "debug_stop_all_cpus",
+        "idbg_ecc_info"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Kernel memory-map bookkeeping and CPU hot-plug routines: no graphics register, token or ioctl use",
+      "patterns": [
+        "extk0_.*",
+        "is_extk0_pfn",
+        "is_in_pfdat",
+        "pmem_getfirstclick",
+        "node_getfirstfree",
+        "node_getmaxclick",
+        "first_address",
+        "last_phys_pfn",
+        "next_seg",
+        "mlclosure",
+        "szmem",
+        "error_(?:mark|reclaim)_page",
+        "cpu_(?:godown|isvalid|powerdown|waitforreset)",
+        "add_cpu",
+        "add_cpuboard",
+        "cpuboard",
+        "allowboot",
+        "disallowboot",
+        "setupbadmem"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "X protocol request dispatch and byte-swapped dispatch of the generic server; none reaches CRIME or GBE registers or an ioctl",
+      "patterns": [
+        "(?:AwareMode)?S?Proc[A-Z].*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "X keyboard extension: keymap and keyboard state, not display hardware",
+      "patterns": [
+        "Xkb(?!DDX).*",
+        "Xkm.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Low-bandwidth X proxy extension, session-manager protocol, authorisation, security and record extensions, host access control: network and policy code",
+      "patterns": [
+        "Lbx.*",
+        "Xdmcp.*",
+        "Xau.*",
+        "Auth.*",
+        "AddAuthorization",
+        "Security.*",
+        "Record.*",
+        "Xag.*",
+        "Access.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Font loading, font-file formats, font-server client and decompression: no display hardware access",
+      "patterns": [
+        "Font.*",
+        "Bitmap.*",
+        "bitmap.*",
+        "bdf.*",
+        "pcf.*",
+        "snf.*",
+        "Speedo.*",
+        "_fs.*",
+        "fs_.*",
+        "inflate.*",
+        "deflate.*",
+        "Zlib.*",
+        "_tr_.*",
+        "Buf(?:File|Compressed).*",
+        "BitVector.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/arch/GENERIC/Xsgi"
+      ],
+      "reason": "Synchronisation, multi-screen, double-buffer, multibuffer, printing, shared-memory and screen-saver extensions: software state, no register or ioctl access",
+      "patterns": [
+        "Sync.*",
+        "Xinerama.*",
+        "Panorami.*",
+        "Dbe.*",
+        "Multibuffer.*",
+        "Printer.*",
+        "Shm.*",
+        "Mit.*"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "R10000/R4000-family cache-error and secondary-cache ECC handling (error vectors, tag and data correction, error logging and printing): CPU code that reads the processor's own cache and error registers, with no graphics register, token or ioctl use",
+      "names": [
+        "r10k_ecc_handler",
+        "r10k_ecc_exception",
+        "r10k_ecc_panic",
+        "_r10k_ecc_end",
+        "_r10k_ecc_errorvec",
+        "_ecc_end",
+        "_ecc_errorvec",
+        "ecc_exception",
+        "ecc_assign_msg",
+        "ecc_bad_ptag",
+        "ecc_bitcount",
+        "ecc_cleanRegion",
+        "ecc_cleanup",
+        "ecc_compute_scdata_ecc",
+        "ecc_compute_sctag_ecc",
+        "ecc_display",
+        "ecc_find_bad_cline",
+        "ecc_fixcache",
+        "ecc_fixcdata",
+        "ecc_fixctag",
+        "ecc_force_cache_line_invalid",
+        "ecc_get_perr_addr",
+        "ecc_is_branch",
+        "ecc_log",
+        "ecc_log_error",
+        "ecc_panic",
+        "ecc_printPending",
+        "ecc_same_cache_block",
+        "ecc_scache_bits_in_error",
+        "ecc_swap_s_tag",
+        "eccword",
+        "log_ecc_err",
+        "print_ecc_info",
+        "print_ecctype",
+        "scache_data_bit_error",
+        "_munge_decc",
+        "getecc",
+        "setecc",
+        "init_ecc_info",
+        "ecc_init",
+        "early_ecc_init",
+        "rmi_fixecc"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic CPU and FPU helpers (single-instruction coprocessor-0 register accessors, FPU conversion and arithmetic emulation, MIPS instruction decoding, time-of-day conversion): no graphics register, token or ioctl use",
+      "names": [
+        "_cvtd_s",
+        "_cvts_d",
+        "_cvtsd_l",
+        "_cvtsd_w",
+        "add",
+        "breakout_sd",
+        "getsr",
+        "get_sr",
+        "setsr",
+        "set_sr",
+        "getcause",
+        "setcause",
+        "getbadvaddr",
+        "get_lladdr",
+        "set_lladdr",
+        "getgp",
+        "getpc",
+        "getpcsp",
+        "getsp",
+        "getcpuid",
+        "getrand",
+        "tlbdrop2in",
+        "rtodc",
+        "decode_inst",
+        "longway"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/cpu/sysgen/IP32boot/kernel.o"
+      ],
+      "reason": "Generic kernel and board-support leaf routines (empty stubs and constant returns, software-interrupt and processor-state helpers, block fill and copy, fault-recovery and memory-probe helpers, front-panel LED and system-identity routines, diagnostic printing, assertion failure, power button, profiling tick, the zero-fill and copy entry points of the block routines and the software trap vector alias): each body read in full, with no CRIME or GBE register, token or ioctl use",
+      "names": [
+        "dummy_func",
+        "dummyret0_func",
+        "dummyret1_func",
+        "vme_init",
+        "vme_ivec_init",
+        "vme_adapter",
+        "is_vme_space",
+        "wd93_init",
+        "dma_mapinit",
+        "disarm_threeway_trigger",
+        "threeway_trigger_armed",
+        "is_fullhouse",
+        "silence_all_audio",
+        "silence_bell",
+        "runcached",
+        "uncached",
+        "siron",
+        "siroff",
+        "fkiword",
+        "adderr",
+        "cerror",
+        "warn",
+        "dumpcopy",
+        "assbuffer",
+        "__cdx_blkfill",
+        "__cdx_blkcopy",
+        "r_phys_word_erl",
+        "get_except_norm",
+        "reviderror",
+        "wbadmemaddr",
+        "earlynofault",
+        "scrub_memory",
+        "getsysid",
+        "readadapters",
+        "addr_to_bank",
+        "reset_leds",
+        "set_leds",
+        "bump_leds",
+        "sys_setled",
+        "addupc",
+        "ip26_enable_ucmem",
+        "ip26_return_ucmem",
+        "ip28_enable_ucmem",
+        "ip28_return_ucmem",
+        "dprintf",
+        "assfail",
+        "power_dump",
+        "powerintr",
+        "init_sysid",
+        "bzero_cdx_entry",
+        "bcopy_cdx_entry",
+        "soft_trap"
+      ]
+    },
+    {
+      "binaries": [
+        "usr/gfx/setmon"
+      ],
+      "reason": "C start-up, profiling hook and empty initialiser stub of the executable: no graphics register, token or ioctl use",
+      "names": [
+        "__start",
+        "_mcount",
+        "__istart"
+      ]
+    }
+  ],
+  "windows": [
+    {"name": "CRIME", "size": "0x1000000", "physical": "0x14000000", "docs": ["devices/crime/CRIME.h", "docs/memory.md", "docs/reset.md"]},
+    {"name": "RE", "size": "0x1000000", "physical": "0x15000000", "docs": ["devices/re/CRIME_RE.h", "devices/mte/MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md", "docs/memory.md"]},
+    {"name": "GBE", "size": "0x1000000", "physical": "0x16000000", "docs": ["devices/gbe/GBE.h", "docs/gbe.md"]},
+    {"name": "MACEV", "size": "0x180000", "physical": "0x1f100000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
+    {"name": "MACEVCH", "size": "0x80000", "physical": "0x1f100000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
+    {"name": "MACEI2C", "size": "0x10000", "physical": "0x1f330000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
+    {"name": "MACETIMER", "size": "0x10000", "physical": "0x1f340000", "docs": ["docs/mace-video.md", "docs/functions.md"]},
+    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["*.h", "generated/c/*.h", "docs/*.md"]},
+    {"name": "VICE", "size": "0x1000000", "physical": "0x17000000", "docs": ["docs/vice.md"]}
+  ],
+  "bases": [
+    {"type": "constant", "lo": "0x14000000", "hi": "0x15000000", "window": "CRIME", "translate": true, "computed": true, "label": "constant address", "why": "CPU interface and memory controller registers (CRIME 1.5 specification, tables 5-7 and 6-12)"},
+    {"type": "constant", "lo": "0x15000000", "hi": "0x16000000", "window": "RE", "translate": true, "computed": true, "label": "constant address", "why": "rendering engine (CRIME 1.5 specification, figure 7-3)"},
+    {"type": "constant", "lo": "0x16000000", "hi": "0x17000000", "window": "GBE", "translate": true, "computed": true, "label": "constant address", "why": "display back end (GBE specification, section 3.1)"},
+    {"type": "constant", "lo": "0x1f100000", "hi": "0x1f280000", "window": "MACEV", "translate": true, "computed": true, "label": "constant address", "why": "MACE video in 1, video in 2 and video out, three 0x80000 windows (Linux asm/ip32/mace.h struct sgi_mace)"},
+    {"type": "constant", "lo": "0x1f400000", "hi": "0x1f800000", "window": "MACEAV", "translate": true, "computed": true, "label": "constant address", "why": "the audio and video block the CRIME specification system map lists at 0x1f400000"},
+    {"type": "constant", "lo": "0x1f330000", "hi": "0x1f340000", "window": "MACEI2C", "translate": true, "computed": true, "label": "constant address", "why": "the MACE two-wire bus interface, sub-block 3 of the peripheral controller (MACE specification, peripheral controller sub-address map and the I2C interface registers)"},
+    {"type": "field", "disp": 32184, "window": "RE", "label": "context +32184", "binaries": ["*libGLcore.so"], "why": "gc+32184 is the hardware pointer libGLcore stores register writes through (docs/context.md)"},
+    {"type": "field", "disp": 120, "window": "RE", "label": "board record +120", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "board record +120 holds the KSEG1 pointer to 0x15000000 (crime_kernel/include/crime_kern.h CRB_RE_BASE)"},
+    {"type": "field", "disp": 128, "window": "GBE", "label": "board record +128", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "board record +128 holds the KSEG1 pointer to the GBE window: crimeSetGammaRamp adds 0x60000 (the gamma map) to it and crimeBlankscreen adds 0x1002c (a flat-panel timing word)"},
+    {"type": "global", "symbol": "crimeBoards", "disp": 4, "window": "GBE", "label": "crimeBoards+4", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "crimeBoards+4 holds the GBE KSEG1 base (crime_kernel/include/crime_kern.h)"},
+    {"type": "argument", "function": "gbeProbe", "reg": 4, "window": "GBE", "label": "gbeProbe argument", "binaries": ["usr/cpu/sysgen/IP32boot/crime.a*"], "why": "gbeProbe reads the device id at +0x14 of its first argument and compares it with 0x666 (docs/gbe.md, GBE.h)"},
+    {"type": "argument", "function": "crmSetSmask", "reg": 4, "window": "RE", "label": "crmSetSmask argument", "binaries": ["usr/lib/X11/dyDDX/crm.so"], "why": "all 23 callers in the X module pass the rendering-register mapping (word 0 of the module's screen private record) as the first argument; the scan cannot follow that two-level chain itself (docs/xmodule.md, register access)"},
+    {"type": "argument", "function": "mvpi2c_reset", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_reset argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "clears and re-arms the bus interface; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "argument", "function": "mvpi2c_check", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_check argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "polls the bus status; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "argument", "function": "mvpi2c_read_reg", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_read_reg argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "reads one chip register over the bus; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "argument", "function": "mvpi2c_write_reg", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_write_reg argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "writes one chip register over the bus; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "field", "disp": 16, "window": "MACEI2C", "label": "bus object +16", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "functions": ["mvpi2c_fastmode", "mvpi2c_init_regs"], "loads": ["lw"], "why": "these two routines take the bus object, not the interface base; the object word at +16 is the interface base 0xbf330000, which both chip objects hold (docs/mace-video.md, Driver access)"},
+    {"type": "argument", "function": "mvpi2c_config", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_config argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "writes the bus configuration; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "argument", "function": "mvpi2c_read_config", "reg": 4, "window": "MACEI2C", "label": "mvpi2c_read_config argument", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "reads the bus configuration; its first argument is the bus interface base, which both chip objects of the driver hold at object +16 as 0xbf330000 (docs/mace-video.md, Driver access)"},
+    {"type": "global", "symbol": ".data", "disp": 2592, "window": "CRIME", "label": "mvp.o data +0xa20 (CRIME base)", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "the word at data +0xa20 is 0xb4000000, the KSEG1 address of the CRIME registers, which the video interrupt routines read the interrupt status and mask through (docs/mace-video.md, Driver access)"},
+    {"type": "global", "symbol": ".data", "disp": 0, "window": "MACETIMER", "label": "mvp.o data +0x0 (timer block base)", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "the word at data +0 is 0xbf340000, the KSEG1 address of the MACE count and compare timer block (sub-block 4 of the peripheral controller, MACE specification PDF 148 and 181), which the video driver reads the per-channel time stamp and field count snapshots through (docs/mace-video.md, Timer block)"},
+    {"type": "field", "disp": 192, "window": "MACEVCH", "label": "video record +192 (channel from the path)", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "functions": ["mvptransfer_start_dma", "mvptransfer_stop_dma", "mvptransfer_enablechannel", "mvpinterrupt_clear", "mvpreg_initmace", "mvpreg_syncpath_controls", "mvptransfer_setup", "mvptransfer_interrupt", "mvpcontrol_item_get"], "loads": ["lw"], "why": "the video driver's controller record holds one KSEG1 register-set pointer per MACE video channel at +192 + 4 * channel (input 1, input 2, output); mvpreg_init stores 0xbf100000, 0xbf180000 and 0xbf200000 there. These routines index it with a channel number taken from the path, so the offset is relative to that channel's own 0x80000 register set (docs/mace-video.md, Driver access)"},
+    {"type": "field", "disp": 200, "window": "MACEV", "offset": "0x100000", "label": "video record +200 (output channel)", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "functions": ["mvptransfer_fix_output", "mvptransfer_cleardma", "mvpreg_initmace", "mvpreg_setpassthru", "mvpreg_syncpath_controls", "mvpreg_syncdevice_controls", "mvptransfer_screen_interrupt", "mvptransfer_interrupt", "mvpcontrol_item_set"], "loads": ["lw"], "why": "the controller record word at +200 is the output-channel pointer, 0xbf200000, which mvpreg_init stores at 0xbdc4 (docs/mace-video.md, Driver access)"},
+    {"type": "field", "disp": 204, "window": "GBE", "offset": "0x80000", "label": "video record +204 (GBE capture block)", "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "functions": ["mvptransfer_start_dma", "mvptransfer_stop_dma", "mvpreg_initmace", "mvpreg_syncpath_controls", "mvptransfer_screen_interrupt"], "loads": ["lw"], "why": "the controller record word at +204 is 0xb6080000, the KSEG1 address of GBE offset 0x80000 where the capture registers VC_0 to VC_8 start, which mvpreg_init stores at 0xbdcc (docs/gbe.md, docs/mace-video.md, Driver access)"},
+    {"type": "chain", "label": "screen private record", "array_disp": 436, "index_disp": -28072, "loads": ["lw"], "fields": [{"disp": 0, "window": "RE", "offset": 0, "label": "private +0x0"}, {"disp": 8, "window": "GBE", "offset": 0, "label": "private +0x8"}], "binaries": ["usr/lib/X11/dyDDX/crm.so"], "why": "the module reads the screen's private array at +0x1b4, adds the slot named by crmScreenPrivateIndex (0x5aa0f8, gp-28072) scaled by 4, loads the private record from slot word 0, and takes the rendering-engine mapping from private +0x0 and the GBE mapping from private +0x8 (docs/xmodule.md, The pointer chain)"}
+  ],
+  "accessors": [
+    {"function": "pciio_pio_read64", "address_reg": 4, "access": "r", "width": 8, "binaries": ["usr/cpu/sysgen/IP32boot/mvp.o"], "why": "the video driver defines this weak routine and reads every MACE register that is not a plain load through it; its first argument is the register address (docs/mace-video.md, Driver access)"}
+  ],
+  "aliases": [
+    {"window": "RE", "lo": "0x2800", "hi": "0x4000", "bit": "0x800", "why": "a store to offset + 0x800 in the pixel-pipe and transfer-engine groups is the start alias of offset (CRIME 1.5 specification)"}
+  ],
+  "tokens": {
+    "window": "RE",
+    "docs": ["devices/re/CRIME_RE.h", "devices/mte/MTE.h", "docs/mte.md", "docs/pixel-transfer.md", "docs/context.md", "docs/opengl.md", "docs/xmodule.md"],
+    "sources": [
+      {"type": "stores", "label": "code", "kind": "word", "window": "RE", "lo": "0x2000", "hi": "0x4000", "register": true}
+    ]
+  },
+  "ioctls": {
+    "send_functions": ["ioctl", "fcntl"],
+    "ranges": [
+      ["0x5200", "0x56ff"]
+    ],
+    "min_decimal": 1000000000,
+    "docs": ["docs/ioctls.md", "docs/context.md", "docs/gbe.md", "docs/pixel-transfer.md", "docs/memory.md"],
+    "dispatchers": [
+      {"type": "compare", "name": "crime private", "functions": "(?i)ioctl|dispatch|crimePrivate", "range": ["0x5200", "0x56ff"]}
+    ],
+    "classes": [
+      {"lo": "0x5200", "hi": "0x56ff", "name": "graphics"}
+    ]
+  },
+  "ucode": [],
+  "spec_registers": [
+    {"type": "rows", "spec": "CRIME 1.5", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["5-7", 113, "CRIME", "0x0", "ID-Revision", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x8", "CPU Interface Control", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x10", "Interrupt Status", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x18", "Interrupt Enable", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x20", "Software Interrupt", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x28", "Hardware Interrupt", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x30", "Watchdog Timer", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x38", "Crime Timer", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x40", "CPU Error Address", 1, 0, 64, ""], ["5-7", 113, "CRIME", "0x4048", "CPU Error Status", 1, 0, 64, ""], ["7-1", 163, "RE", "0x0", "IntfBuf.data[128]", 128, 8, 64, "R/W"], ["7-1", 164, "RE", "0x200", "IntfBuf.addr[128]", 128, 8, 64, "R/W"], ["7-1", 164, "RE", "0x400", "IntfBuf.ctl", 1, 0, 32, "W"], ["6-12", 150, "CRIME", "0x200", "MC Status/Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x208", "Bank 0 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x210", "Bank 1 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x218", "Bank 2 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x220", "Bank 3 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x228", "Bank 4 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x230", "Bank 5 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x238", "Bank 6 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x240", "Bank 7 Control", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x248", "Refresh Counter", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x250", "Memory Error Status", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x258", "Memory Error Address", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x260", "ECC Syndrome Bits", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x268", "ECC Generated Check Bits", 1, 0, 64, ""], ["6-12", 150, "CRIME", "0x270", "ECC Replacement Check Bits", 1, 0, 64, ""], ["7-15", 183, "RE", "0x3000", "MTE.mode", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3008", "MTE.byteMask", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3010", "MTE.stippleMask", 1, 0, 32, "W"], ["7-15", 183, "RE", "0x3018", "MTE.fgValue", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3020", "MTE.src0", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3028", "MTE.src1", 1, 0, 32, "R/W"], ["7-15", 183, "RE", "0x3030", "MTE.dst0", 1, 0, 32, "W"], ["7-15", 183, "RE", "0x3038", "MTE.dst1", 1, 0, 32, "W"], ["7-15", 184, "RE", "0x3040", "MTE.srcYStep", 1, 0, 32, "R/W"], ["7-15", 184, "RE", "0x3048", "MTE.dstYStep", 1, 0, 32, "R/W"], ["7-15", 184, "RE", "0x3070", "MTE.null", 1, 0, 32, "W"], ["7-15", 184, "RE", "0x3078", "MTE.\ufb02ush", 1, 0, 32, "W"], ["7-3", 165, "RE", "0x2000", "BufMode.src", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2008", "BufMode.dst", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2010", "ClipMode", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2018", "DrawMode", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2020", "ScrMask[0]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2028", "ScrMask[1]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2030", "ScrMask[2]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2038", "ScrMask[3]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2040", "ScrMask[4]", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2048", "Scissor", 1, 0, 64, "R/W"], ["7-3", 165, "RE", "0x2050", "WinOffset.src", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2058", "WinOffset.dst", 1, 0, 32, "R/W"], ["7-3", 165, "RE", "0x2060", "Primitive", 1, 0, 32, "W"], ["7-3", 165, "RE", "0x2070", "Vertex.X[0]", 1, 0, 32, "W"], ["7-3", 165, "RE", "0x2074", "Vertex.X[1]", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2078", "Vertex.X[2]", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2080", "Vertex.GL[0].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2084", "Vertex.GL[0].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2088", "Vertex.GL[1].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x208c", "Vertex.GL[1].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2090", "Vertex.GL[2].x", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x2094", "Vertex.GL[2].y", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20a0", "PixelXfer.src.addr", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20a8", "PixelXfer.src.xStep", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20ac", "PixelXfer.src.yStep", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20b0", "PixelXfer.dst.linAddr", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20b4", "PixelXfer.dst.linStride", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20c0", "Stipple.mode", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20c4", "Stipple.pattern", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20d0", "Shade.fgColor", 1, 0, 32, "W"], ["7-3", 166, "RE", "0x20d8", "Shade.bgColor", 1, 0, 32, "R/W"], ["7-3", 166, "RE", "0x20e0", "Shade.Rs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20e4", "Shade.Gs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20e8", "Shade.Bs", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20ec", "Shade.As", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f0", "Shade.drdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f4", "Shade.dgdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20f8", "Shade.drdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x20fc", "Shade.dgdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2100", "Shade.dbdx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2104", "Shade.dadx", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2108", "Shade.dbdy", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x210c", "Shade.dady", 1, 0, 32, "W"], ["7-3", 167, "RE", "0x2110", "Texture.mode", 1, 0, 32, "R/W"], ["7-3", 167, "RE", "0x2118", "Texture.format", 1, 0, 64, "R/W"], ["7-3", 167, "RE", "0x2120", "Texture.SQs", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2128", "Texture.TQs", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2130", "Texture.Qs", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x2138", "Texture.dsqdx", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2140", "Texture.dsqdy", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2148", "Texture.dtqdx", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2150", "Texture.dtqdy", 1, 0, 64, "W"], ["7-3", 168, "RE", "0x2158", "Texture.dqdx", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x215c", "Texture.dqdy", 1, 0, 32, "W"], ["7-3", 168, "RE", "0x2160", "Texture.borderColor", 1, 0, 32, "R/W"], ["7-3", 168, "RE", "0x2168", "Texture.envColor", 1, 0, 32, "R/W"], ["7-3", 168, "RE", "0x2170", "Fog.color", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x2178", "Fog.Fs", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2180", "Fog.dfdx", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2188", "Fog.dfdy", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2190", "Antialias.line", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2194", "Antialias.cov", 1, 0, 32, "W"], ["7-3", 169, "RE", "0x2198", "AlphaTest", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21a0", "Blend.constColor", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21a8", "Blend.func", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21b0", "LogicOp", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21b8", "ColorMask", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21c0", "Depth.func", 1, 0, 32, "R/W"], ["7-3", 169, "RE", "0x21c8", "Depth.Zs", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21d0", "Depth.dzdx", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21d8", "Depth.dzdy", 1, 0, 64, "W"], ["7-3", 169, "RE", "0x21e0", "Stencil.mode", 1, 0, 32, "R/W"], ["7-3", 170, "RE", "0x21e8", "Stencil.mask", 1, 0, 32, "R/W"], ["7-3", 170, "RE", "0x21f0", "PixPipeNull", 1, 0, 32, "W"], ["7-3", 170, "RE", "0x21f8", "PixPipeFlush", 1, 0, 32, "W"], ["7-2", 164, "RE", "0x1000", "TLB.fbA[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1200", "TLB.fbB[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1400", "TLB.fbC[64]", 64, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1600", "TLB.tex[28]", 28, 8, 64, "R/W"], ["7-2", 164, "RE", "0x16e0", "TLB.cid[4]", 4, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1700", "TLB.linearA[16]", 16, 8, 64, "R/W"], ["7-2", 164, "RE", "0x1780", "TLB.linearB[16]", 16, 8, 64, "R/W"]]},
+    {"type": "rows", "spec": "GBE rev 1.1", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["3.2", 36, "GBE", "0x0", "CTRLSTAT", 1, 0, 32, "R/W"], ["3.2", 36, "GBE", "0x4", "DOTCLK", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x8", "I2C", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0xc", "SYSCLK", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x10", "I2CFP", 1, 0, 32, "R/W"], ["3.2", 37, "GBE", "0x14", "DEVICE_ID", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10000", "VT_0", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10004", "VT_1", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10008", "VT_2", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x1000c", "VT_3", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10010", "VT_4", 1, 0, 32, "R/W"], ["3.2", 38, "GBE", "0x10014", "VT_5", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10018", "VT_6", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x1001c", "VT_7", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10020", "VT_8", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10024", "VT_9", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x10028", "VT_10", 1, 0, 32, "R/W"], ["3.2", 39, "GBE", "0x1002c", "VT_11", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10030", "VT_12", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10034", "VT_13", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10038", "VT_14", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x1003c", "VT_15", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10040", "VT_16", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10044", "VT_17", 1, 0, 32, "R/W"], ["3.2", 40, "GBE", "0x10048", "VT_18", 1, 0, 32, "R/W"], ["3.2", 41, "GBE", "0x1004c", "VT_19", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20000", "OVR_0", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20004", "OVR_1", 1, 0, 32, "R/W"], ["3.2", 42, "GBE", "0x20008", "OVR_2", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30000", "FRM_0", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30004", "FRM_1", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x30008", "FRM_2", 1, 0, 32, "R/W"], ["3.2", 43, "GBE", "0x3000c", "FRM_3", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x40000", "DID", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x40004", "DID_SHADOW", 1, 0, 32, "R/W"], ["3.2", 44, "GBE", "0x48000", "WID[32]", 32, 4, 32, "R/W"], ["3.2", 45, "GBE", "0x50000", "CMAP[4608]", 4608, 4, 32, "R/W"], ["3.2", 45, "GBE", "0x58000", "CMFIFO", 1, 0, 32, "R/W"], ["3.2", 45, "GBE", "0x60000", "GMAP[256]", 256, 4, 32, "R/W"], ["3.2", 46, "GBE", "0x70000", "CRS_0", 1, 0, 32, "R/W"], ["3.2", 46, "GBE", "0x70004", "CRS_1", 1, 0, 32, "R/W"], ["3.2", 46, "GBE", "0x70008", "CRS_CM[3]", 3, 4, 32, "R/W"], ["3.2", 46, "GBE", "0x78000", "CRS_GLY[64]", 64, 4, 32, "R/W"], ["3.2", 47, "GBE", "0x80000", "VC_0", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80004", "VC_1", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80008", "VC_2", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x8000c", "VC_3", 1, 0, 32, "R/W"], ["3.2", 47, "GBE", "0x80010", "VC_4", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80014", "VC_5", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80018", "VC_6", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x8001c", "VC_7", 1, 0, 32, "R/W"], ["3.2", 48, "GBE", "0x80020", "VC_8", 1, 0, 32, "R/W"]]},
+    {"type": "rows", "spec": "MACE 2.0 video", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["5", 33, "MACEV", "0x0", "VIN.CONTROL", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x8", "VIN.STATUS", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x10", "VIN.CONFIG", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x18", "VIN.NEXT_DESC", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x20", "VIN.FLD_OFFSET", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x28", "VIN.LINE_WIDTH", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x30", "VIN.HCLIP_ODD", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x38", "VIN.VCLIP_ODD", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x40", "VIN.ALPHA_ODD", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x48", "VIN.HCLIP_EVEN", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x50", "VIN.VCLIP_EVEN", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x58", "VIN.ALPHA_EVEN", 2, 524288, 64, "R/W"], ["5", 33, "MACEV", "0x80", "VIN.DMA_DESC", 8, 8, 64, "R/W"], ["5", 33, "MACEV", "0x100000", "VOUT.CONTROL", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100008", "VOUT.STATUS", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100010", "VOUT.CONFIG", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100018", "VOUT.NEXT_DESC", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100020", "VOUT.FLD_OFFSET", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100028", "VOUT.FIELD_SIZE", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100030", "VOUT.HPAD_ODD", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100038", "VOUT.VPAD_ODD", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100040", "VOUT.HPAD_EVEN", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100048", "VOUT.VPAD_EVEN", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100050", "VOUT.GEN_DLY", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100058", "VOUT.VHW_CFG", 1, 0, 64, "R/W"], ["5", 33, "MACEV", "0x100080", "VOUT.DMA_DESC", 8, 8, 64, "R/W"]]},
+    {"type": "rows", "spec": "VICE 1.0", "columns": ["table", "page", "window", "offset", "name", "count", "stride", "width", "rw"], "rows": [["6", 40, "VICE", "0x8", "VICE_ID", 1, 0, 8, "R"], ["6", 40, "VICE", "0x28", "HST_BSP_IN_BOX", 1, 0, 16, "R"], ["6", 40, "VICE", "0x30", "HST_BSP_OUT_BOX", 1, 0, 16, "R"], ["6", 40, "VICE", "0x40", "MSP_CTL_STAT", 1, 0, 32, "R/W"], ["6", 40, "VICE", "0x48", "MSP_ExcpFlag", 1, 0, 32, "R/W"], ["6", 40, "VICE", "0x50", "MSP_PC", 1, 0, 32, "R/W"], ["6", 40, "VICE", "0x58", "MSP_BadAddr", 1, 0, 32, "R"], ["6", 40, "VICE", "0x60", "MSP_WatchPoint", 1, 0, 32, "R/W"], ["6", 40, "VICE", "0x68", "MSP_EPC", 1, 0, 32, "R"], ["6", 40, "VICE", "0x70", "MSP_CAUSE", 1, 0, 32, "R"], ["6", 40, "VICE", "0x78", "BSP_RPAGE", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0x80", "BSP_SW_INT", 1, 0, 16, "W"], ["6", 40, "VICE", "0x100", "MSP_D_RAM", 1, 0, 32, "R/W"], ["6", 40, "VICE", "0x108", "VICEMSP_COUNT", 1, 0, 32, "R"], ["6", 40, "VICE", "0x110", "BSP_CTL_STAT", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0x118", "BSP_WatchPoint", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0x120", "BSP_IN_COUNT", 1, 0, 24, "R"], ["6", 40, "VICE", "0x128", "BSP_OUT_COUNT", 1, 0, 24, "R"], ["6", 40, "VICE", "0x140", "BSP_PC", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0x148", "BSP_EPC", 1, 0, 16, "R"], ["6", 41, "VICE", "0x150", "BSP_HALT_RESET", 1, 0, 2, "R/W"], ["6", 41, "VICE", "0x158", "BSP_CAUSE", 1, 0, 16, "R"], ["6", 41, "VICE", "0x160", "VICE_INT", 1, 0, 9, "R"], ["6", 41, "VICE", "0x168", "BSP_FIFO_CTL_STAT", 1, 0, 6, "R/W"], ["6", 41, "VICE", "0x170", "BSP_AVALID_BITS", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x178", "BSP_FVALID_BITS", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x180", "DMA_CTL_CH1", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x188", "DMA_STAT_CH1", 1, 0, 16, "R"], ["6", 41, "VICE", "0x190", "DMA_DATA_CH1", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x198", "DMA_MEM_PT_CH1", 1, 0, 32, "R"], ["6", 41, "VICE", "0x1a0", "DMA_VICE_PT_CH1", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1a8", "DMA_COUNT_CH1", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1b8", "MSP_SW_INT", 1, 0, 16, "W"], ["6", 41, "VICE", "0x1c0", "DMA_CTL_CH2", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x1c8", "DMA_STAT_CH2", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1d0", "DMA_DATA_CH2", 1, 0, 16, "R/W"], ["6", 41, "VICE", "0x1d8", "DMA_MEM_PT_CH2", 1, 0, 32, "R"], ["6", 41, "VICE", "0x1e0", "DMA_VICE_PT_CH2", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1e8", "DMA_COUNT_CH2", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1f0", "BSP_IN_BOX", 1, 0, 16, "R"], ["6", 41, "VICE", "0x1f8", "BSP_OUT_BOX", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0xe000", "VICE_CFG", 1, 0, 16, "R/W"], ["6", 40, "VICE", "0xe008", "VICE_INT_RESET", 1, 0, 9, "W"], ["6", 40, "VICE", "0xe010", "VICE_INT_EN", 1, 0, 9, "R/W"], ["7", 42, "VICE", "0x1000", "DMA_CTL_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1008", "DMA_SMEM_HI_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1010", "DMA_SMEM_LO_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1018", "DMA_WIDTH_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1020", "DMA_STRIDE_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1028", "DMA_LINES_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1030", "DMA_VMEM_Y_CH1_D1", 4, 64, 16, "R/W"], ["7", 42, "VICE", "0x1038", "DMA_VMEM_C_CH1_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1100", "DMA_CTL_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1108", "DMA_SMEM_HI_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1110", "DMA_SMEM_LO_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1118", "DMA_WIDTH_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1120", "DMA_STRIDE_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1128", "DMA_LINES_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1130", "DMA_VMEM_Y_CH2_D1", 4, 64, 16, "R/W"], ["7", 43, "VICE", "0x1138", "DMA_VMEM_C_CH2_D1", 4, 64, 16, "R/W"]]}
+  ]
+}

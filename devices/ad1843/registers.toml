@@ -1,0 +1,533 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "ad1843"
+prefix = "AD1843"
+title = "Analog Devices AD1843 stereo codec: the 29 internal registers"
+doc = "The AD1843 serial-port codec used by the O2 MACE audio interface. Register numbers are the codec's own, not MACE byte offsets, and are reached through the MACE codec command register (mace_audio.toml, codec_cmd). Each register is 16 bits. Field masks follow the published register table; bits the table does not define are not listed."
+from = "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+public_from = ["Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996)"]
+
+[spaces.codec_reg]
+unit = "reg"
+doc = "Codec register numbers. Offsets in this unit are register numbers, not bytes."
+
+[enums.analog_source]
+doc = "ADC analog input selection, one per channel."
+
+[enums.analog_source.values]
+line = { value = 0, grade = "established" }
+mic = { value = 1, grade = "established" }
+aux1 = { value = 2, grade = "established" }
+aux2 = { value = 3, grade = "established" }
+aux3 = { value = 4, grade = "established" }
+mono_in = { value = 5, grade = "established" }
+dac1_out = { value = 6, grade = "established", doc = "DAC1 analog output after its gain and mute (published post-mixed description; the exact physical tap is not established)." }
+dac2_out = { value = 7, grade = "established", doc = "DAC2 analog output after its gain and mute." }
+
+[enums.pcm_format]
+doc = "Serial sample format of a converter or ADC."
+
+[enums.pcm_format.values]
+unsigned8 = { value = 0, grade = "established", doc = "8-bit unsigned linear, carried in serial bits 15:8." }
+signed16 = { value = 1, grade = "established", doc = "16-bit two's complement." }
+mulaw = { value = 2, grade = "established", doc = "8-bit mu-law (ITU-T G.711 characters), carried in serial bits 15:8." }
+alaw = { value = 3, grade = "established", doc = "8-bit A-law (ITU-T G.711 characters), carried in serial bits 15:8." }
+
+[enums.digital_source]
+doc = "ADC digital source. Code 1 is reserved."
+
+[enums.digital_source.values]
+analog = { value = 0, grade = "established" }
+reserved = { value = 1, grade = "established" }
+dac1 = { value = 2, grade = "established" }
+dac2 = { value = 3, grade = "established" }
+
+[enums.clock_select]
+doc = "Sample-rate source for a converter or ADC."
+
+[enums.clock_select.values]
+fixed48k = { value = 0, grade = "established", doc = "Fixed 48 kHz clock." }
+gen1 = { value = 1, grade = "established" }
+gen2 = { value = 2, grade = "established" }
+gen3 = { value = 3, grade = "established" }
+
+[enums.line_mode]
+doc = "Line input wiring for one channel."
+
+[enums.line_mode.values]
+single_ended = { value = 0, grade = "established" }
+differential = { value = 1, grade = "established" }
+
+[enums.gain_timing]
+doc = "When a DAC gain change takes effect."
+
+[enums.gain_timing.values]
+zero_cross = { value = 0, grade = "established", doc = "Waits for a zero crossing of the signal, or a timeout." }
+immediate = { value = 1, grade = "established", doc = "Applies at the register write." }
+
+[registers.status_id]
+offset = 0
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xc001
+doc = """
+INIT, the converter power-down state and the silicon revision. Reset sets INIT and power-down, so the codec starts in initialisation. The revision field is read-only and resets to 1, the first-silicon value in the table; the revision of a fitted part is not measured here (established, register pages 28-50 and summary page 52)."""
+
+[registers.status_id.fields]
+init = { bits = [15, 15], grade = "established", doc = "INIT. Blocks control writes while it is set." }
+converter_powerdown = { bits = [14, 14], grade = "established", doc = "Holds the registers 1 to 15, 25 and 27 at their reset values and blocks their writes." }
+revision = { bits = [3, 0], grade = "established", doc = "Read-only silicon revision." }
+
+[registers.underrun_peak]
+offset = 1
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = """
+DAC underrun flags and the peak level of each ADC channel. A read returns the status and clears all of it. Any write clears all of it too, so this register is not write-one-to-clear (established, register pages 28-50)."""
+
+[registers.underrun_peak.fields]
+dac2_underrun = { bits = [9, 9], grade = "established" }
+dac1_underrun = { bits = [8, 8], grade = "established" }
+r_peak = { bits = [3, 2], grade = "established", doc = "Largest right ADC level since the last clear: more than 1 dB below full scale, within 1 dB below, 0 to 1 dB above, more than 1 dB above, in increasing order." }
+l_peak = { bits = [1, 0], grade = "established", doc = "Largest left ADC level since the last clear, same four levels as r_peak." }
+
+[registers.adc_input]
+offset = 2
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = """
+Analog source, microphone boost and gain for each ADC channel. The gain steps are 1.5 dB per code and the microphone boost adds 20 dB (established, register pages 28-50 and the routing text)."""
+
+[registers.adc_input.fields]
+l_source = { bits = [15, 13], grade = "established", enum = "analog_source" }
+l_mic_boost = { bits = [12, 12], grade = "established" }
+l_gain = { bits = [11, 8], grade = "established" }
+r_source = { bits = [7, 5], grade = "established", enum = "analog_source" }
+r_mic_boost = { bits = [4, 4], grade = "established" }
+r_gain = { bits = [3, 0], grade = "established" }
+
+[registers.dac2_to_dac1_mix]
+offset = 3
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "inferred"
+reset = 0x8888
+doc = """
+Analog mix of DAC2 into the DAC1 output. Page 53 identifies the register as DAC2-to-DAC1 mixing; the summary's own names for it differ (inferred). Gain is 12 minus 1.5 times the code, in dB. The mute bits are separate from the gain."""
+
+[registers.dac2_to_dac1_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [12, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [4, 0], grade = "established" }
+
+[registers.aux1_mix]
+offset = 4
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "Analog mix of the AUX1 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
+
+[registers.aux1_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [12, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [4, 0], grade = "established" }
+
+[registers.aux2_mix]
+offset = 5
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "Analog mix of the AUX2 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
+
+[registers.aux2_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [12, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [4, 0], grade = "established" }
+
+[registers.aux3_mix]
+offset = 6
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "Analog mix of the AUX3 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
+
+[registers.aux3_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [12, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [4, 0], grade = "established" }
+
+[registers.mic_mix]
+offset = 7
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "Analog mix of the microphone input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
+
+[registers.mic_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [12, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [4, 0], grade = "established" }
+
+[registers.mono_control]
+offset = 8
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8868
+doc = """
+Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see docs/mace-audio.md)."""
+
+[registers.mono_control.fields]
+mono_mix_mute = { bits = [15, 15], grade = "established" }
+mono_mix_gain = { bits = [12, 8], grade = "established" }
+all_mix_mute = { bits = [7, 7], grade = "inferred", doc = "Scope from the diagram, see the register doc." }
+mono_mute = { bits = [6, 6], grade = "established" }
+headphone_mute = { bits = [5, 5], grade = "established" }
+swing = { bits = [4, 4], grade = "established", doc = "Named swing in the register table. The datasheet gives no further meaning for this bit." }
+sum_mute = { bits = [3, 3], grade = "established", doc = "Mute of the external SUML and SUMR inputs, which enter through the SUMM node." }
+dac2_gain_timing = { bits = [1, 1], grade = "established", enum = "gain_timing" }
+dac1_gain_timing = { bits = [0, 0], grade = "established", enum = "gain_timing" }
+
+[registers.dac1_output]
+offset = 9
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "DAC1 output gain and mute, left and right. Gain is six bits, mute is separate. Resets muted (established, register pages 28-50)."
+
+[registers.dac1_output.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [5, 0], grade = "established" }
+
+[registers.dac2_output]
+offset = 10
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8888
+doc = "DAC2 output gain and mute, left and right. Same layout as dac1_output. Gain and mute here control the separate DAC2 output branch. The DAC2 contribution into the DAC1 mix is taken before this gain (inferred from the routing diagram, page 53)."
+
+[registers.dac2_output.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_gain = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_gain = { bits = [5, 0], grade = "established" }
+
+[registers.dac1_digital_att]
+offset = 11
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register pages 28-50 and the routing text)."
+
+[registers.dac1_digital_att.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_att = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_att = { bits = [5, 0], grade = "established" }
+
+[registers.dac2_digital_att]
+offset = 12
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50)."
+
+[registers.dac2_digital_att.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_att = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_att = { bits = [5, 0], grade = "established" }
+
+[registers.adc_to_dac1_mix]
+offset = 13
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8080
+doc = "Digital mix of the ADC data into DAC1, attenuation and mute per channel. Code 63 is full mute here, unlike the ordinary DAC attenuator (established, register pages 28-50 and the routing text)."
+
+[registers.adc_to_dac1_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_att = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_att = { bits = [5, 0], grade = "established" }
+
+[registers.adc_to_dac2_mix]
+offset = 14
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x8080
+doc = "Digital mix of the ADC data into DAC2. Same layout and code-63 rule as adc_to_dac1_mix (established, register pages 28-50)."
+
+[registers.adc_to_dac2_mix.fields]
+l_mute = { bits = [15, 15], grade = "established" }
+l_att = { bits = [13, 8], grade = "established" }
+r_mute = { bits = [7, 7], grade = "established" }
+r_att = { bits = [5, 0], grade = "established" }
+
+[registers.clock_select]
+offset = 15
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Sample-rate source of each DAC and ADC: 0 is the fixed 48 kHz clock and 1 to 3 are generators 1 to 3. The published table lists code 1 twice for the ADC selectors. Page 53 reads the right ADC code 2 as clock 2, as for the other three selectors (inferred)."
+
+[registers.clock_select.fields]
+dac2_clock = { bits = [11, 10], grade = "established", enum = "clock_select" }
+dac1_clock = { bits = [9, 8], grade = "established", enum = "clock_select" }
+r_adc_clock = { bits = [3, 2], grade = "inferred", enum = "clock_select" }
+l_adc_clock = { bits = [1, 0], grade = "established", enum = "clock_select" }
+
+[registers.clock1_mode]
+offset = 16
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00ff
+doc = """
+Mode of generator 1. Clock 2 and clock 3 use the same layout at registers 19 and 22. Bits 9 and 8 are not defined (established, register pages 38 to 43)."""
+
+[registers.clock1_mode.fields]
+ref = { bits = [15, 15], grade = "inferred", doc = "Reference select. The datasheet describes REF=0 as its own oscillator mode and REF=1 as a SYNC-locked mode in which the phase work is held. The mapping of the bit value to each mode is inferred from that description." }
+video_select = { bits = [14, 14], grade = "unknown", doc = "Named video select. The datasheet gives no meaning for it." }
+pll_gain = { bits = [13, 13], grade = "unknown", doc = "Named PLL gain. The datasheet gives no meaning for it." }
+bit_plus_200hz = { bits = [12, 12], grade = "established", doc = "Adds 200 Hz to the BIT rate. The scaling order is an interpretation (see docs/mace-audio.md)." }
+conv_8_7_multiplier = { bits = [11, 11], grade = "established", doc = "Scales the conversion rate by 8/7." }
+conv_128_multiplier = { bits = [10, 10], grade = "established", doc = "Scales the CONV output by 128." }
+conv_modifier = { bits = [7, 4], grade = "established", doc = "Conversion code, see the BIT and CONV table in docs/mace-audio.md." }
+bit_modifier = { bits = [3, 0], grade = "established", doc = "BIT code, see the BIT and CONV table in docs/mace-audio.md." }
+
+[registers.clock1_hz]
+offset = 17
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xbb80
+doc = "Nominal rate of generator 1 in Hz. Reset is 48000 (established, register pages 28-50). Clock 2 and clock 3 use registers 20 and 23."
+
+[registers.clock1_hz.fields]
+hz = { bits = [15, 0], grade = "established" }
+
+[registers.clock1_phase]
+offset = 18
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = """
+Phase work for generator 1. A write replaces the remaining work. Units are 1/3000 of a conversion cycle (0.12 degrees). Direction 0 advances the phase and 1 retards it. Clock 2 and clock 3 use registers 21 and 24 (established, register pages 39, 42 and 45, and the phase section)."""
+
+[registers.clock1_phase.fields]
+direction = { bits = [8, 8], grade = "established" }
+magnitude = { bits = [7, 0], grade = "established" }
+
+[registers.clock2_mode]
+offset = 19
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00ff
+doc = "Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred)."
+
+[registers.clock2_mode.fields]
+ref = { bits = [15, 15], grade = "inferred" }
+video_select = { bits = [14, 14], grade = "unknown" }
+pll_gain = { bits = [13, 13], grade = "unknown" }
+bit_plus_200hz = { bits = [12, 12], grade = "established" }
+conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
+conv_128_multiplier = { bits = [10, 10], grade = "established" }
+conv_modifier = { bits = [7, 4], grade = "established" }
+bit_modifier = { bits = [3, 0], grade = "established" }
+
+[registers.clock2_hz]
+offset = 20
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xbb80
+doc = "Nominal rate of generator 2 in Hz. Reset is 48000 (established, register pages 28-50)."
+
+[registers.clock2_hz.fields]
+hz = { bits = [15, 0], grade = "established" }
+
+[registers.clock2_phase]
+offset = 21
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Phase work for generator 2, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
+
+[registers.clock2_phase.fields]
+direction = { bits = [8, 8], grade = "established" }
+magnitude = { bits = [7, 0], grade = "established" }
+
+[registers.clock3_mode]
+offset = 22
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00ff
+doc = "Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43)."
+
+[registers.clock3_mode.fields]
+ref = { bits = [15, 15], grade = "inferred" }
+video_select = { bits = [14, 14], grade = "unknown" }
+pll_gain = { bits = [13, 13], grade = "unknown" }
+bit_plus_200hz = { bits = [12, 12], grade = "established" }
+conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
+conv_128_multiplier = { bits = [10, 10], grade = "established" }
+conv_modifier = { bits = [7, 4], grade = "established" }
+bit_modifier = { bits = [3, 0], grade = "established" }
+
+[registers.clock3_hz]
+offset = 23
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xbb80
+doc = "Nominal rate of generator 3 in Hz. Reset is 48000 (established, register pages 28-50)."
+
+[registers.clock3_hz.fields]
+hz = { bits = [15, 0], grade = "established" }
+
+[registers.clock3_phase]
+offset = 24
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Phase work for generator 3, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
+
+[registers.clock3_phase.fields]
+direction = { bits = [8, 8], grade = "established" }
+magnitude = { bits = [7, 0], grade = "established" }
+
+[registers.digital_filter]
+offset = 25
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Digital ADC source, resample filter and DAC mix mode. The resample filter and DAC mix mode change only while the converters they affect are off (established, register pages 28-50 and the constraints text)."
+
+[registers.digital_filter.fields]
+resample_filter = { bits = [15, 15], grade = "established" }
+dac_mix = { bits = [14, 14], grade = "established", doc = "Mixes the two DAC contributions into one stream before conversion. Requires both DACs off to change." }
+dac2_filter = { bits = [9, 9], grade = "established" }
+dac1_filter = { bits = [8, 8], grade = "established" }
+r_digital_source = { bits = [7, 6], grade = "established", enum = "digital_source" }
+l_digital_source = { bits = [5, 4], grade = "established", enum = "digital_source" }
+r_adc_filter = { bits = [1, 1], grade = "established" }
+l_adc_filter = { bits = [0, 0], grade = "established" }
+
+[registers.format_lock]
+offset = 26
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x0
+doc = "Sample format, mono mode, the frame-rate and SDFS options and the ADC lock. Bits 7 to 5 are the SCF, FRS and FRST controls (established, register pages 28-50 and the serial-frame section)."
+
+[registers.format_lock.fields]
+dac2_mono = { bits = [15, 15], grade = "established", doc = "Mono DAC2 mode: duplicates the left input and ignores the right." }
+dac1_mono = { bits = [14, 14], grade = "established", doc = "Mono DAC1 mode: duplicates the left input and ignores the right." }
+dac2_format = { bits = [11, 10], grade = "established", enum = "pcm_format" }
+
+dac1_format = { bits = [9, 8], grade = "established", enum = "pcm_format" }
+scf = { bits = [7, 7], grade = "established", doc = "Selects the 16.384 MHz serial clock instead of the 12.288 MHz reset clock." }
+frs = { bits = [6, 6], grade = "established", doc = "0 gives 32 serial slots per SDFS frame, 1 gives 16." }
+frst = { bits = [5, 5], grade = "established", doc = "1 requests an immediate change of the frame size, 0 applies it after the current frame." }
+adc_lock = { bits = [4, 4], grade = "established", doc = "Locks the two ADCs to one rate. May be set while both are off. Enable and disable both together while it is set, and require equal rates when enabling the pair." }
+r_adc_format = { bits = [3, 2], grade = "established", enum = "pcm_format" }
+l_adc_format = { bits = [1, 0], grade = "established", enum = "pcm_format" }
+
+[registers.enables]
+offset = 27
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0x00c0
+doc = "Power and enable bits for the converters, ADCs, analog paths and headphone output. Registers 1 to 15, 25 and 27 are held at reset while converter power-down is set (established, register pages 28-50)."
+
+[registers.enables.fields]
+resource_free = { bits = [15, 15], grade = "established", doc = "Frees the resources of the normal mode. Needed for rates above 49 kHz." }
+dac2_analog_mix = { bits = [12, 12], grade = "established" }
+dac2_enable = { bits = [9, 9], grade = "established" }
+dac1_enable = { bits = [8, 8], grade = "established" }
+analog_enable = { bits = [7, 7], grade = "established" }
+headphone_enable = { bits = [6, 6], grade = "established", doc = "Powers only the stereo headphone driver. The mono output is separate." }
+analog_mix_enable = { bits = [4, 4], grade = "established" }
+r_adc_enable = { bits = [1, 1], grade = "established" }
+l_adc_enable = { bits = [0, 0], grade = "established" }
+
+[registers.power_clock]
+offset = 28
+access = "rw"
+width = 16
+space = "codec_reg"
+grade = "established"
+reset = 0xc400
+doc = """
+Converter power, auto-calibration, generator enables, clock output and the line input modes. Bit 15 is PDNI, which resets to 1. Clearing it starts converter startup. Auto-calibration cannot be cleared before the first completed startup (established, register pages 28-50 and the initialisation text)."""
+
+[registers.power_clock.fields]
+pdni = { bits = [15, 15], grade = "established" }
+autocal = { bits = [14, 14], grade = "established" }
+clock3_enable = { bits = [13, 13], grade = "established" }
+clock2_enable = { bits = [12, 12], grade = "established" }
+clock1_enable = { bits = [11, 11], grade = "established" }
+clock_output = { bits = [10, 10], grade = "established", doc = "Drives the external CLKOUT pin. It does not gate the MACE serial clock." }
+ttl_outputs = { bits = [9, 8], grade = "established", doc = "Drive the independent TTL outputs XCTL1 and XCTL0. They do not control the crystal oscillator." }
+conv_bit_outputs = { bits = [7, 2], grade = "established" }
+r_line_mode = { bits = [1, 1], grade = "established", enum = "line_mode" }
+l_line_mode = { bits = [0, 0], grade = "established", enum = "line_mode" }

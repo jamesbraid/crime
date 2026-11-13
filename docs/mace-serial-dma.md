@@ -4,8 +4,8 @@ The MACE I/O ASIC can run a DMA channel in each direction for each of its two
 serial ports. A channel moves 64-bit words between a ring buffer in system
 memory and the external 16550 UART, packing and unpacking control and data
 bytes as it goes. The register offsets, widths and bit meanings are in
-`defs/mace_serial_dma.toml`, and the interrupt causes are in
-`defs/mace_periph.toml`. This page covers the ring placement, the packet
+`devices/mace_serial_dma/registers.toml`, and the interrupt causes are in
+`devices/mace_periph/registers.toml`. This page covers the ring placement, the packet
 formats, the interaction with the UART, and the open questions. The UART
 frontend itself is in [mace-base.md](mace-base.md).
 
@@ -47,7 +47,7 @@ Sources:
 
 ### Ring placement
 
-The peripheral ring base register (see `defs/mace_periph.toml`) holds a
+The peripheral ring base register (see `devices/mace_periph/registers.toml`) holds a
 32 KiB-aligned base in bits 31:15. Eight 4 KiB rings sit in that 32 KiB block.
 The serial rings use the last four (established, [mace] 123 and 128).
 

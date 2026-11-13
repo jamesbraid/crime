@@ -1,0 +1,418 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/vice/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="vice" prefix="VICE" title="O2 VICE imaging and compression engine registers" from="published VICE design specification">
+  <doc>VICE imaging and compression engine chip, signal processor, bitstream processor, mailbox and DMA channel registers.</doc>
+  <space name="vice" unit="byte"/>
+  <enum name="id_revision">
+    <value name="vice_a" value="1" grade="established"/>
+    <value name="vice_b" value="2" grade="established"/>
+    <value name="vice_c" value="3" grade="established"/>
+  </enum>
+  <enum name="msp_cause_code">
+    <value name="adel" value="0" grade="established"/>
+    <value name="ades" value="1" grade="established"/>
+    <value name="bp" value="2" grade="established"/>
+    <value name="wp" value="3" grade="established"/>
+    <value name="suri" value="4" grade="established"/>
+    <value name="vuri" value="5" grade="established"/>
+    <value name="con" value="6" grade="established"/>
+    <value name="adei" value="7" grade="established"/>
+  </enum>
+  <enum name="dma_desc_ctl_direction">
+    <value name="write" value="0" grade="established"/>
+    <value name="read" value="1" grade="established"/>
+  </enum>
+  <enum name="dma_desc_ctl_fill_source">
+    <value name="system" value="0" grade="established"/>
+    <value name="data_register" value="1" grade="established"/>
+  </enum>
+  <enum name="dma_desc_ctl_yc">
+    <value name="block" value="0" grade="established"/>
+    <value name="split_420" value="1" grade="established"/>
+    <value name="split_422" value="2" grade="established"/>
+    <value name="y_only" value="3" grade="established"/>
+  </enum>
+  <enum name="dma_desc_ctl_interleave">
+    <value name="block" value="0" grade="established"/>
+    <value name="interleave" value="1" grade="established"/>
+  </enum>
+  <enum name="dma_desc_ctl_location">
+    <value name="ram_a" value="0" grade="established"/>
+    <value name="ram_b" value="1" grade="established"/>
+    <value name="ram_c" value="2" grade="established"/>
+    <value name="msp_i_ram" value="3" grade="established"/>
+    <value name="bsp_i_ram" value="4" grade="established"/>
+    <value name="bsp_table" value="5" grade="established"/>
+    <value name="bsp_fifo" value="6" grade="established"/>
+    <value name="tlb_ram" value="7" grade="established"/>
+  </enum>
+  <struct name="ID" size="1" grade="established" from="published VICE design specification" register="yes" offset="0x8" access="r" space="vice" reset="0xe1">
+    <doc>Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is
+"TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRIX
+identity probe reads the 32-bit word at offset 0xc, the low half of this doubleword,
+and compares the whole word (established, kernel add_vice and hinv disassembly).
+The upper word is not read by the probe, and its value is unknown.</doc>
+    <field name="revision" start="0" size="4" type="id_revision" grade="established"/>
+  </struct>
+  <struct name="HST_BSP_IN_BOX" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x28" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="HST_BSP_OUT_BOX" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x30" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="MSP_CTL_STAT" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x40" access="rw" space="vice" reset="0x0">
+    <field name="reset_release" start="1" size="1" type="uint" grade="established"/>
+    <field name="go" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="MSP_EXCP_FLAG" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x48" access="rw" space="vice" reset="0x0">
+    <field name="adei" start="7" size="1" type="uint" grade="established"/>
+    <field name="con" start="6" size="1" type="uint" grade="established"/>
+    <field name="vuri" start="5" size="1" type="uint" grade="established"/>
+    <field name="suri" start="4" size="1" type="uint" grade="established"/>
+    <field name="wp" start="3" size="1" type="uint" grade="established"/>
+    <field name="bp" start="2" size="1" type="uint" grade="established"/>
+    <field name="ades" start="1" size="1" type="uint" grade="established"/>
+    <field name="adel" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="MSP_PC" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x50" access="rw" space="vice" reset="unknown">
+    <field name="pc" start="2" size="14" type="uint" grade="established"/>
+  </struct>
+  <struct name="MSP_BAD_ADDR" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x58" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="MSP_WATCHPOINT" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x60" access="rw" space="vice" reset="0x0">
+  </struct>
+  <struct name="MSP_EPC" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x68" access="r" space="vice" reset="unknown">
+    <field name="pc" start="2" size="14" type="uint" grade="established"/>
+  </struct>
+  <struct name="MSP_CAUSE" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x70" access="r" space="vice" reset="unknown">
+    <field name="branch_delay" start="31" size="1" type="uint" grade="established"/>
+    <field name="code" start="2" size="5" type="msp_cause_code" grade="established"/>
+  </struct>
+  <struct name="BSP_RPAGE" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x78" access="rw" space="vice" reset="unknown">
+    <doc>Listed in the register map as the BSP R Page, 16 bits read and write, with no
+register section. The specification names an RPage register as the base for
+bitstream processor loads and stores; that it is the host's view of the same
+register is inferred.</doc>
+  </struct>
+  <struct name="BSP_SW_INT" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x80" access="w" space="vice" reset="unknown">
+    <doc>The software-interrupt registers carry no data in the specification's
+register map (size 0): any write sets the matching cause bit. The 32-bit
+width is a placeholder and the grade says so.</doc>
+  </struct>
+  <struct name="MSP_D_RAM" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x100" access="rw" space="vice" reset="0x0">
+    <field name="bank_c" start="2" size="1" type="uint" grade="established"/>
+    <field name="bank_b" start="1" size="1" type="uint" grade="established"/>
+    <field name="bank_a" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="MSP_COUNT" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x108" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_CTL_STAT" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x110" access="rw" space="vice" reset="unknown">
+    <field name="flags" start="12" size="4" type="uint" grade="established"/>
+    <field name="ext" start="9" size="3" type="uint" grade="established"/>
+  </struct>
+  <struct name="BSP_WATCHPOINT" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x118" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_IN_COUNT" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x120" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_OUT_COUNT" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x128" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_PC" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x140" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_EPC" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x148" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_HALT_RESET" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x150" access="rw" space="vice" reset="unknown">
+    <doc>bsp_halt_reset: the specification's field table puts the reset bit at 0 and
+the go and halt bit at 1, while its prose says bit 1 releases reset and
+does not number the go bit. No field is declared until that is settled.</doc>
+  </struct>
+  <struct name="BSP_CAUSE" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x158" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="INT" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x160" access="r" space="vice" reset="unknown">
+    <doc>The three interrupt registers share one nine-bit cause layout (CAUSE).
+VICE.int reads the causes, VICE.int_reset clears the bits written as one and
+VICE.int_en masks the interrupt pin only; the cause bits are set whatever
+the mask says. The cause bits are set by hardware and by any write to the
+two software-interrupt registers.</doc>
+  </struct>
+  <struct name="BSP_FIFO_CTL_STAT" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x168" access="rw" space="vice" reset="unknown">
+    <field name="bsp_signal" start="4" size="1" type="uint" grade="established"/>
+    <field name="msp_signal" start="3" size="1" type="uint" grade="established"/>
+    <field name="in_reset" start="2" size="1" type="uint" grade="established"/>
+    <field name="in_full" start="1" size="1" type="uint" grade="established"/>
+    <field name="in_empty" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="BSP_AVALID_BITS" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x170" access="rw" space="vice" reset="unknown">
+    <field name="pointer" start="0" size="6" type="uint" grade="established"/>
+  </struct>
+  <struct name="BSP_FVALID_BITS" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x178" access="rw" space="vice" reset="unknown">
+    <field name="pointer" start="0" size="6" type="uint" grade="established"/>
+  </struct>
+  <struct name="DMA_CTL_CH1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x180" access="rw" space="vice" reset="unknown">
+    <doc>Channel 2 repeats channel 1's registers at a fixed distance and shares the
+control (DMACTL) and status layouts. The four descriptor sets of each channel
+are separate registers below; every set uses the DMA_DESC_CTL layout for its
+control word.</doc>
+  </struct>
+  <struct name="DMA_STAT_CH1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x188" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_DATA_CH1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x190" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_MEM_PT_CH1" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x198" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VICE_PT_CH1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1a0" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_COUNT_CH1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1a8" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="MSP_SW_INT" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x1b8" access="w" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1c0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STAT_CH2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1c8" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_DATA_CH2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1d0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_MEM_PT_CH2" size="4" grade="established" from="published VICE design specification" register="yes" offset="0x1d8" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VICE_PT_CH2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1e0" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_COUNT_CH2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1e8" access="r" space="vice" reset="unknown">
+  </struct>
+  <struct name="BSP_IN_BOX" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1f0" access="r" space="vice" reset="unknown">
+    <doc>The two mailboxes share a layout (MBOX): a 15-bit message and a signal bit
+that any write sets and any read clears. The host shadow registers read
+the same words without clearing the signal. The specification's register map
+lists the input mailbox read-only and the output mailbox read-write, while
+its register text lets the signal processor write the input one and the
+bitstream processor the output one; the directions here are the map's.</doc>
+  </struct>
+  <struct name="BSP_OUT_BOX" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1f8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1000" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1008" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1010" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1018" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1020" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1028" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1030" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH1_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1038" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1040" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1048" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1050" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1058" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1060" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1068" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1070" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH1_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1078" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1080" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1088" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1090" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1098" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10a0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10a8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10b0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH1_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10b8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10c0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10c8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10d0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10d8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10e0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10e8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10f0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH1_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x10f8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1100" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1108" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1110" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1118" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1120" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1128" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1130" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH2_D1" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1138" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1140" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1148" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1150" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1158" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1160" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1168" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1170" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH2_D2" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1178" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1180" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1188" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1190" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x1198" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11a0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11a8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11b0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH2_D3" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11b8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_CTL_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11c0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_HI_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11c8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_SMEM_LO_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11d0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_WIDTH_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11d8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_STRIDE_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11e0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_LINES_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11e8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_Y_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11f0" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="DMA_VMEM_C_CH2_D4" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x11f8" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="MSP_I_RAM" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x2000" access="rw" count="1024" stride="4" space="vice" reset="unknown">
+    <doc>MSP instruction RAM, 4 KB. The map gives the size and the specification says
+the host loads it, while the MSP itself can only fetch from it. The access
+width is not published: 32 bits is inferred from the scalar instruction size.
+The DMA location table lists this RAM at 16 bits, so the width is unresolved.</doc>
+  </struct>
+  <struct name="BSP_I_RAM" size="2" grade="established" from="published VICE design specification" register="yes" offset="0x4000" access="rw" count="1024" stride="2" space="vice" reset="unknown">
+    <doc>BSP instruction RAM, 1K by 16 bits (2 KB). The host loads it; the BSP can only
+fetch from it. The unused tail of the window is not implemented and reads zero.</doc>
+  </struct>
+  <struct name="TABLE_MEM" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x5000" access="rw" count="1280" stride="4" space="vice" reset="unknown">
+    <doc>Bitstream processor table memory, 1280 entries of 22 bits (block diagram and
+map). Each entry is presented as a 32-bit word, with the top ten bits reading
+zero. The 32-bit presentation is inferred from the span the map gives.</doc>
+    <field name="value" start="0" size="22" type="uint" grade="established"/>
+  </struct>
+  <struct name="BSP_OUT_BUF" size="2" grade="inferred" from="published VICE design specification" register="yes" offset="0x7000" access="rw" count="1024" stride="2" space="vice" reset="unknown">
+    <doc>The chip's memories sit in the same 64 KiB window as its registers. Each
+region's base and extent are the specification's address map: the bitstream
+processor's output buffer and input buffer (2 KiB each), the three
+2 KiB data RAM banks and the translation buffer. An access to an
+unimplemented part of a range reads zeros. The access width is not given
+by the map: banks are listed at the 32-bit width of the signal processor's
+scalar unit and the bitstream buffers at the 16-bit width of the bitstream
+processor, which is inferred. The translation buffer has 64 entries and the
+specification gives no entry stride, so only its first entry is listed.</doc>
+  </struct>
+  <struct name="BSP_IN_BUF" size="2" grade="inferred" from="published VICE design specification" register="yes" offset="0x7800" access="rw" count="1024" stride="2" space="vice" reset="unknown">
+  </struct>
+  <struct name="DATA_RAM_A" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x8000" access="rw" count="512" stride="4" space="vice" reset="unknown">
+  </struct>
+  <struct name="DATA_RAM_B" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x8800" access="rw" count="512" stride="4" space="vice" reset="unknown">
+  </struct>
+  <struct name="DATA_RAM_C" size="4" grade="inferred" from="published VICE design specification" register="yes" offset="0x9000" access="rw" count="512" stride="4" space="vice" reset="unknown">
+  </struct>
+  <struct name="CFG" size="2" grade="established" from="published VICE design specification" register="yes" offset="0xe000" access="rw" space="vice" reset="unknown">
+    <field name="msp_tlb_bypass" start="1" size="1" type="uint" grade="established"/>
+    <field name="check_data" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="INT_RESET" size="2" grade="established" from="published VICE design specification" register="yes" offset="0xe008" access="w" space="vice" reset="unknown">
+  </struct>
+  <struct name="INT_EN" size="2" grade="established" from="published VICE design specification" register="yes" offset="0xe010" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="TLB" size="4" grade="established" from="published VICE design specification" register="yes" offset="0xf000" access="rw" space="vice" reset="unknown">
+  </struct>
+  <struct name="CAUSE" size="4" grade="established" from="published VICE design specification">
+    <field name="dma2_error" start="8" size="1" type="uint" grade="established"/>
+    <field name="dma2_done" start="7" size="1" type="uint" grade="established"/>
+    <field name="bad_data" start="6" size="1" type="uint" grade="established"/>
+    <field name="bsp_exception" start="5" size="1" type="uint" grade="established"/>
+    <field name="bsp_sw" start="4" size="1" type="uint" grade="established"/>
+    <field name="msp_exception" start="3" size="1" type="uint" grade="established"/>
+    <field name="msp_sw" start="2" size="1" type="uint" grade="established"/>
+    <field name="dma1_error" start="1" size="1" type="uint" grade="established"/>
+    <field name="dma1_done" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="DMACTL" size="4" grade="established" from="published VICE design specification">
+    <field name="flush_buf" start="9" size="1" type="uint" grade="established"/>
+    <field name="tlb_bypass" start="8" size="1" type="uint" grade="established"/>
+    <field name="descr_pt" start="4" size="4" type="uint" grade="established"/>
+    <field name="reset" start="3" size="1" type="uint" grade="established"/>
+    <field name="stop" start="2" size="1" type="uint" grade="established"/>
+    <field name="ie" start="1" size="1" type="uint" grade="established"/>
+    <field name="go" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="DMASTAT" size="4" grade="established" from="published VICE design specification">
+    <field name="code" start="8" size="4" type="uint" grade="established"/>
+    <field name="descr_pt" start="4" size="4" type="uint" grade="established"/>
+    <field name="rw" start="3" size="1" type="uint" grade="established"/>
+    <field name="active" start="2" size="1" type="uint" grade="established"/>
+    <field name="error" start="1" size="1" type="uint" grade="established"/>
+    <field name="done" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+  <struct name="DMA_DESC_CTL" size="2" grade="established" from="published VICE design specification">
+    <doc>Control word of a DMA descriptor set. Each set of each channel uses this layout.
+The published field table marks the half-pel flags, the half-pel enable and the
+location field as not implemented; the bits are still defined so that software
+writes are seen.</doc>
+    <field name="halt" start="15" size="1" type="uint" grade="established"/>
+    <field name="skip" start="14" size="1" type="uint" grade="established"/>
+    <field name="direction" start="13" size="1" type="dma_desc_ctl_direction" grade="established"/>
+    <field name="fill_source" start="12" size="1" type="dma_desc_ctl_fill_source" grade="established"/>
+    <field name="yc" start="10" size="2" type="dma_desc_ctl_yc" grade="established"/>
+    <field name="luma_half" start="8" size="2" type="uint" grade="established"/>
+    <field name="interleave" start="7" size="1" type="dma_desc_ctl_interleave" grade="established"/>
+    <field name="location" start="4" size="3" type="dma_desc_ctl_location" grade="established"/>
+    <field name="half_pel_enable" start="3" size="1" type="uint" grade="established"/>
+    <field name="chroma_only" start="2" size="1" type="uint" grade="established"/>
+    <field name="chroma_half" start="0" size="2" type="uint" grade="established"/>
+  </struct>
+  <struct name="MBOX" size="4" grade="established" from="published VICE design specification">
+    <field name="signal" start="15" size="1" type="uint" grade="established"/>
+    <field name="message" start="0" size="15" type="uint" grade="established"/>
+  </struct>
+  <struct name="TLB_ENTRY" size="4" grade="established" from="published VICE design specification">
+    <doc>A translation buffer entry is a 32-bit word written whole: valid in bit 0,
+writable (permits DMA writes to the page) in bit 1 and the 64 KiB physical
+page number in bits 31:16.</doc>
+    <field name="page" start="16" size="16" type="uint" grade="established"/>
+    <field name="writable" start="1" size="1" type="uint" grade="established"/>
+    <field name="valid" start="0" size="1" type="uint" grade="established"/>
+  </struct>
+</genxml>

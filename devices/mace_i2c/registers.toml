@@ -1,0 +1,67 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "mace_i2c"
+prefix = "MACE_I2C"
+title = "O2 MACE two-wire (I2C) bus interface"
+doc = "MACE two-wire bus interface: the configuration and reset register, its alias, the control and status register and the data register. Offsets are from the block base (constant BLOCK_BASE)."
+from = "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
+public_from = ["published MACE 2.0 I/O ASIC specification", "shipped IRIX"]
+
+# Registers are doubleword accesses at 8-byte offsets. Only the low eight bits
+# of each register are defined, and the upper bits are not described.
+
+[registers.config]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Bus configuration and reset, bits 5:0 (established, printed pages 150 and 151, tables 76 and 79). Bits 0 to 3 are read/write and reset to zero. Bits 4 and 5 are read-only input levels with no fixed reset value, so the register has no single reset value (table 79 marks them X). The shipped IRIX video driver's configuration helper reads it and writes it back with the bits selected by its mask replaced, only the low four bits; it writes 1 to request a bus reset."""
+
+[registers.config.fields]
+reset = { bits = [0, 0], grade = "established", doc = "One resets the interface's internal state machines; zero releases the reset (printed page 151)." }
+fast_mode = { bits = [1, 1], grade = "established", doc = "One selects the 400 kHz data rate; zero selects the default 100 kHz (printed page 151)." }
+data_pin_override = { bits = [2, 2], grade = "established", doc = "One pulls the external data line low; zero has no effect (printed page 151)." }
+clock_pin_override = { bits = [3, 3], grade = "established", doc = "One pulls the external clock line low; zero has no effect (printed page 151)." }
+data_in = { bits = [4, 4], grade = "established", doc = "Read-only. The current level of the data line. Reset not fixed (printed page 151)." }
+clock_in = { bits = [5, 5], grade = "established", doc = "Read-only. The current level of the clock line. Reset not fixed (printed page 151)." }
+
+[registers.config_alias]
+offset = 0x8
+access = "rw"
+width = 64
+grade = "established"
+doc = """
+Labelled reserved in the register table, with the note that it aliases the configuration register above. Bits 5:0 only (established, printed page 150, table 76). This section records no access to it."""
+
+[registers.control]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+doc = """
+Control and status, bits 7:0. Bits 0, 1 and 2 are read/write; bits 4, 5 and 7 are read-only status; bits 3 and 6 are reserved read-only, kept for compatibility with the VINO interface (established, printed page 150, table 77). Every bit resets to zero. The shipped IRIX video driver's transfer routines poll the status bits; it writes 1, 3 and 5 as commands, whose meanings the kernel reading infers."""
+notes = "The kernel reading named bit 0 not_idle (bus not idle, also set by the force-idle command, which stores its argument with the bit cleared) where this register names it force_idle, and tested bit 7 (bus_error) only on the force-idle path. Read against this layout, the values 1, 3 and 5 set force_idle alone, force_idle with direction, and force_idle with hold. This layout's names are kept."
+
+[registers.control.fields]
+force_idle = { bits = [0, 0], grade = "established", doc = "Written zero, forces the bus idle. Written one, has no effect. Read one means not idle, read zero means idle (printed page 150)." }
+direction = { bits = [1, 1], grade = "established", doc = "One means read data; zero means write data (printed page 150)." }
+hold = { bits = [2, 2], grade = "established", doc = "One keeps the bus for more bytes. Zero is the last byte and releases the bus (printed page 150)." }
+transfer_busy = { bits = [4, 4], grade = "established", doc = "Read-only. One means a transfer is in progress; zero means done (printed page 150)." }
+ack_missing = { bits = [5, 5], grade = "established", doc = "Read-only. One means no acknowledgment was received; zero means one was (printed page 150)." }
+bus_error = { bits = [7, 7], grade = "established", doc = "Read-only. One means a bus error (printed page 150)." }
+
+[registers.data]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+doc = """
+Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see docs/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer."""
+
+[registers.data.fields]
+byte = { bits = [7, 0], grade = "established" }
+
+[constants]
+BLOCK_BASE = { value = 0x1f330000, grade = "established", doc = "physical base of the two-wire interface block, sub-block 011 of the peripheral controller (printed page 181, table 92)" }

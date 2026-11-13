@@ -1,0 +1,261 @@
+{
+ "schema": "defs-flat/1",
+ "source": "devices/mace_ps2/registers.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "mace_ps2",
+   "kind": "register",
+   "name": "transmit",
+   "offset": 0,
+   "access": "w",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "transmit.byte",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "register",
+   "name": "receive",
+   "offset": 8,
+   "access": "r",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "receive.status_alias",
+   "hi": 15,
+   "lo": 8,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "receive.byte",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "register",
+   "name": "control",
+   "offset": 16,
+   "access": "rw",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": 16,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.internal_reset",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.clock_permit",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.receive_interrupt_enable",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.transmit_interrupt_enable",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.transmit_enable",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "control.inhibit_after_transmit",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "register",
+   "name": "status",
+   "offset": 24,
+   "access": "r",
+   "width": 64,
+   "count": 1,
+   "stride": 8,
+   "space": null,
+   "reset": "unknown",
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.framing_error",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.parity_error",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.reception_in_progress",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.receive_full",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.transmit_empty",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.transmit_in_progress",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.clock_permitted",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "field",
+   "name": "status.clock_level",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "constant",
+   "name": "BLOCK_BASE",
+   "value": 523370496,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "constant",
+   "name": "DEVICE_POLL_INTERVAL_US",
+   "value": 100,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "constant",
+   "name": "FRAME_BITS",
+   "value": 11,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "constant",
+   "name": "KEYBOARD_BASE",
+   "value": 0,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  },
+  {
+   "unit": "mace_ps2",
+   "kind": "constant",
+   "name": "MOUSE_BASE",
+   "value": 32,
+   "count": 1,
+   "grade": "established",
+   "from": "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
+  }
+ ]
+}

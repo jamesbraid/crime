@@ -1,0 +1,2589 @@
+{
+ "schema": "defs-flat/1",
+ "source": "devices/gbe/registers.toml",
+ "profile": "public",
+ "rows": [
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CMAP_ENTRY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CMAP_ENTRY.r",
+   "hi": 31,
+   "lo": 24,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CMAP_ENTRY.g",
+   "hi": 23,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CMAP_ENTRY.b",
+   "hi": 15,
+   "lo": 8,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CMAP_FIFO",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CMAP_FIFO.free",
+   "hi": 5,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CRS_CTL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_CTL.crosshair",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_CTL.enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CRS_POS",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_POS.y",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_POS.x",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CRS_START_XY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_START_XY.starty",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CRS_START_XY.startx",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "CTRLSTAT",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.pclk_select",
+   "hi": 29,
+   "lo": 28,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "CTRLSTAT.pclk_select.external",
+   "value": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "CTRLSTAT.pclk_select.differential",
+   "value": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "CTRLSTAT.pclk_select.internal",
+   "value": 3,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.csync_polarity",
+   "hi": 27,
+   "lo": 27,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.half_phase",
+   "hi": 26,
+   "lo": 26,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io9_oe_n",
+   "hi": 25,
+   "lo": 25,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io9_data",
+   "hi": 24,
+   "lo": 24,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io8_oe_n",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io8_data",
+   "hi": 22,
+   "lo": 22,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io7_oe_n",
+   "hi": 21,
+   "lo": 21,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io7_data",
+   "hi": 20,
+   "lo": 20,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io6_oe_n",
+   "hi": 19,
+   "lo": 19,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io6_data",
+   "hi": 18,
+   "lo": 18,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io5_oe_n",
+   "hi": 17,
+   "lo": 17,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io5_data",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io4_oe_n",
+   "hi": 15,
+   "lo": 15,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io4_data",
+   "hi": 14,
+   "lo": 14,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io3_oe_n",
+   "hi": 13,
+   "lo": 13,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io3_data",
+   "hi": 12,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io2_oe_n",
+   "hi": 11,
+   "lo": 11,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io2_data",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io1_oe_n",
+   "hi": 9,
+   "lo": 9,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io1_data",
+   "hi": 8,
+   "lo": 8,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io0_oe_n",
+   "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.io0_data",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.monitor_sense",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "CTRLSTAT.chip_rev",
+   "hi": 3,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DID_CONTROL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_CONTROL.dma_enable",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_CONTROL.did_base",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DID_FRAME",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_FRAME.block",
+   "hi": 25,
+   "lo": 19,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_FRAME.offset",
+   "hi": 18,
+   "lo": 11,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_FRAME.yend",
+   "hi": 10,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DID_INHWCTRL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_INHWCTRL.dma_enable",
+   "hi": 16,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_INHWCTRL.did_base",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DID_LINE",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_LINE.did",
+   "hi": 15,
+   "lo": 11,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_LINE.xend",
+   "hi": 10,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DID_START_XY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_START_XY.starty",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DID_START_XY.startx",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "DOTCLOCK",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.test",
+   "hi": 25,
+   "lo": 24,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.out_of_lock",
+   "hi": 23,
+   "lo": 23,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.out_of_range",
+   "hi": 22,
+   "lo": 22,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.run",
+   "hi": 20,
+   "lo": 20,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.p",
+   "hi": 15,
+   "lo": 14,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.n_minus_1",
+   "hi": 13,
+   "lo": 8,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "DOTCLOCK.m_minus_1",
+   "hi": 7,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FP_DE",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_DE.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_DE.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FP_HDRV",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_HDRV.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_HDRV.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FP_VDRV",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_VDRV.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FP_VDRV.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FRM_CONTROL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_CONTROL.tile_list_ptr",
+   "hi": 31,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_CONTROL.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FRM_INHWCTRL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_INHWCTRL.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FRM_SIZE_PIXEL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_SIZE_PIXEL.height",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "FRM_SIZE_TILE",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_SIZE_TILE.fifo_reset",
+   "hi": 15,
+   "lo": 15,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_SIZE_TILE.depth",
+   "hi": 14,
+   "lo": 13,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "FRM_SIZE_TILE.depth.bits8",
+   "value": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "FRM_SIZE_TILE.depth.bits16",
+   "value": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "FRM_SIZE_TILE.depth.bits32",
+   "value": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_SIZE_TILE.width_tiles",
+   "hi": 12,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "FRM_SIZE_TILE.remainder",
+   "hi": 4,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "I2C",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "I2C.sdc",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "I2C.sda",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "I2CFP",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "I2CFP.sdc",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "I2CFP.sda",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "MODE_ENTRY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "MODE_ENTRY.aux",
+   "hi": 12,
+   "lo": 11,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "MODE_ENTRY.gm",
+   "hi": 10,
+   "lo": 10,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "MODE_ENTRY.cm",
+   "hi": 9,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "MODE_ENTRY.typ",
+   "hi": 4,
+   "lo": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.i8",
+   "value": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.i12",
+   "value": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rg3b2",
+   "value": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rgb4",
+   "value": 3,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rgb5",
+   "value": 4,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rgb8",
+   "value": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rgba5",
+   "value": 6,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.typ.rgb10",
+   "value": 7,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "MODE_ENTRY.buf",
+   "hi": 1,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.buf.lower",
+   "value": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.buf.upper",
+   "value": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "enum_value",
+   "name": "MODE_ENTRY.buf.both",
+   "value": 3,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "OVR_CONTROL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_CONTROL.tile_list_ptr",
+   "hi": 31,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_CONTROL.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "OVR_INHWCTRL",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_INHWCTRL.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "OVR_WIDTH_TILE",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_WIDTH_TILE.fifo_reset",
+   "hi": 13,
+   "lo": 13,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_WIDTH_TILE.width_tiles",
+   "hi": 12,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "OVR_WIDTH_TILE.remainder",
+   "hi": 4,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "SYSCLK",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "SYSCLK.divider",
+   "hi": 14,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "SYSCLK.current_gain",
+   "hi": 11,
+   "lo": 10,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "SYSCLK.voltage_gain",
+   "hi": 9,
+   "lo": 8,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "SYSCLK.tm",
+   "hi": 3,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "TILE_LIST_ENTRY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "TILE_LIST_ENTRY.tile",
+   "hi": 12,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_0",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_0.right",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_0.left",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_1",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_1.bottom",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_1.top",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_2",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_2.cs_bypass",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_2.full_screen",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_2.auto_field",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_2.flicker_filter",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_2.dma_enable",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_3",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.descr_ptr",
+   "hi": 31,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.current_field",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.end_of_field",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.field_corrupt",
+   "hi": 2,
+   "lo": 2,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.descr_dma_enable",
+   "hi": 1,
+   "lo": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_3.field_select",
+   "hi": 0,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_START_XY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_START_XY.starty",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_START_XY.startx",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VC_TILES",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_TILES.tile_first",
+   "hi": 31,
+   "lo": 16,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VC_TILES.tile_second",
+   "hi": 15,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_F2RF_LOCK",
+   "width": 32,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_F2RF_LOCK.frame_lock_y",
+   "hi": 23,
+   "lo": 12,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_F2RF_LOCK.stereo_toggle_y",
+   "hi": 11,
+   "lo": 0,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_FLAGS",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.stereo_forced_high",
+   "hi": 6,
+   "lo": 6,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.sync_low",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.composite_sync_high",
+   "hi": 4,
+   "lo": 4,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.horizontal_forced_low",
+   "hi": 3,
+   "lo": 3,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.horizontal_invert",
+   "hi": 2,
+   "lo": 2,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.vertical_forced_low",
+   "hi": 1,
+   "lo": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_FLAGS.vertical_invert",
+   "hi": 0,
+   "lo": 0,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_HBLANK",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HBLANK.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HBLANK.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_HCMAP",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HCMAP.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HCMAP.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_HPIXEN",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HPIXEN.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HPIXEN.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_HSYNC",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HSYNC.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_HSYNC.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_INTR01",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_INTR01.line0",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_INTR01.line1",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_INTR23",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_INTR23.line2",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_INTR23.line3",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_VBLANK",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VBLANK.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VBLANK.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_VCMAP",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VCMAP.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VCMAP.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_VPIXEN",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VPIXEN.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VPIXEN.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_VSYNC",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VSYNC.on",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_VSYNC.off",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_XY",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_XY.freeze",
+   "hi": 31,
+   "lo": 31,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_XY.y",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_XY.x",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "word",
+   "name": "VT_XYMAX",
+   "width": 32,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_XYMAX.vtotal",
+   "hi": 23,
+   "lo": 12,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "field",
+   "name": "VT_XYMAX.htotal",
+   "hi": 11,
+   "lo": 0,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMAP_ENTRIES_REV1",
+   "value": 4608,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMAP_ENTRIES_REV2",
+   "value": 6144,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMAP_FIFO_DEPTH_REV1",
+   "value": 64,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMAP_FIFO_DEPTH_REV2",
+   "value": 63,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMAP_FIFO_LOW_WATER",
+   "value": 48,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "CMFIFO_BATCH",
+   "value": 33,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DEVICE_ID_VALUE",
+   "value": 1638,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_BLOCK_BYTES",
+   "value": 512,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_BLOCK_ENTRIES",
+   "value": 256,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_END_BLOCK",
+   "value": 128,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_LAST_XEND",
+   "value": 2047,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_LINE_TABLE_OFFSET",
+   "value": 8192,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_TABLE_BYTES",
+   "value": 65536,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DOTCLK_SETTLE_MS",
+   "value": 11,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "GBE_LINE_IRQ_BASE",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "GMAP_ENTRIES",
+   "value": 256,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "MODE_ENTRIES",
+   "value": 32,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "MODE_ENTRY_STRIDE",
+   "value": 4,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CMAP",
+   "value": 327680,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CMAP_FIFO",
+   "value": 360448,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_CMAP",
+   "value": 458760,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_COLOR2",
+   "value": 458764,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_CTL",
+   "value": 458756,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_GLYPH",
+   "value": 491520,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_POS",
+   "value": 458752,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_START_XY",
+   "value": 65608,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CTRLSTAT",
+   "value": 0,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_DEVICE_ID",
+   "value": 20,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_DID_CONTROL",
+   "value": 262148,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_DID_INHWCTRL",
+   "value": 262144,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_DID_START_XY",
+   "value": 65604,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_DOTCLOCK",
+   "value": 4,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FP_DE",
+   "value": 65584,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FP_HDRV",
+   "value": 65576,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FP_VDRV",
+   "value": 65580,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FRM_CONTROL",
+   "value": 196620,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FRM_INHWCTRL",
+   "value": 196616,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FRM_SIZE_PIXEL",
+   "value": 196612,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_FRM_SIZE_TILE",
+   "value": 196608,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_GMAP",
+   "value": 393216,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_I2C",
+   "value": 8,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_I2CFP",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_MODE_TABLE",
+   "value": 294912,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_OVR_CONTROL",
+   "value": 131080,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_OVR_INHWCTRL",
+   "value": 131076,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_OVR_WIDTH_TILE",
+   "value": 131072,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_SYSCLK",
+   "value": 12,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_0",
+   "value": 524288,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_1",
+   "value": 524292,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_2",
+   "value": 524296,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_3",
+   "value": 524300,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_4",
+   "value": 524304,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_5",
+   "value": 524308,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_6",
+   "value": 524312,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_7",
+   "value": 524316,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_8",
+   "value": 524320,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VC_START_XY",
+   "value": 65612,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_F2RF_LOCK",
+   "value": 65564,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_FLAGS",
+   "value": 65560,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_HBLANK",
+   "value": 65556,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_HCMAP",
+   "value": 65596,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_HPIXEN",
+   "value": 65588,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_HSYNC",
+   "value": 65548,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_INTR01",
+   "value": 65568,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_INTR23",
+   "value": 65572,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_VBLANK",
+   "value": 65552,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_VCMAP",
+   "value": 65600,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_VPIXEN",
+   "value": 65592,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_VSYNC",
+   "value": 65544,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_XY",
+   "value": 65536,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_VT_XYMAX",
+   "value": 65540,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_CMD_CLOCK_KHZ",
+   "value": 100000,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_CMD_ID_HIGH",
+   "value": 255,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_CMD_ID_LOW",
+   "value": 127,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_DELAY_SMALL",
+   "value": 2,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_ID_MASK",
+   "value": 96,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_ID_RESTORE",
+   "value": 112,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_INSTALLED_LIMIT",
+   "value": 9,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_PORT_ADDR",
+   "value": 126,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OVERLAY_TRANSPARENT_INDEX",
+   "value": 0,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "REF_CLOCK_KHZ",
+   "value": 20000,
+   "count": 1,
+   "grade": "inferred",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_ALIGN_BYTES",
+   "value": 512,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_BYTES_UNIT",
+   "value": 32,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_OUTSTANDING",
+   "value": 8,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_PAGE_BYTES",
+   "value": 8192,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_NUMBER_MASK",
+   "value": 8191,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TWO_WIRE_WAIT_BIT",
+   "value": 1,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TWO_WIRE_WAIT_LIMIT",
+   "value": 60,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "VC_TILE_REGS",
+   "value": 5,
+   "count": 1,
+   "grade": "established",
+   "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "VT_XY_FREEZE",
+   "value": 2147483648,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  }
+ ]
+}

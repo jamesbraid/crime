@@ -5,9 +5,9 @@ to one Analog Devices AD1843 codec, and three stereo DMA channels move samples
 between that bus and main memory. This page covers what the register defs cannot
 carry: serial timing, sample formats, codec timing and routing, and the places
 where the sources disagree. Register fields live in
-[defs/mace_audio.toml](../defs/mace_audio.toml) (controller), [defs/ad1843.toml](../defs/ad1843.toml)
-(codec), [defs/mace_timer.toml](../defs/mace_timer.toml) (audio time stamps) and
-[defs/mace_periph.toml](../defs/mace_periph.toml) (audio interrupt causes).
+[devices/mace_audio/registers.toml](../devices/mace_audio/registers.toml) (controller), [devices/ad1843/registers.toml](../devices/ad1843/registers.toml)
+(codec), [devices/mace_timer/registers.toml](../devices/mace_timer/registers.toml) (audio time stamps) and
+[devices/mace_periph/registers.toml](../devices/mace_periph/registers.toml) (audio interrupt causes).
 
 Ratings follow [AGENTS.md](../AGENTS.md): **established** means read in the cited
 passage, **inferred** is a reasoned reading, **unknown** means the sources do not settle it.
@@ -59,7 +59,7 @@ passage, **inferred** is a reasoned reading, **unknown** means the sources do no
 - Every audio cause is a read-only bit in the peripheral status register at
   `0x1f310010`, bits 0 to 7, and the group drives CRIME interrupt slot 6
   (established, [mace] 125 and 147). The CRIME side is already recorded in
-  [defs/crime.toml](../defs/crime.toml) as `IP5_CAUSES` bit 6.
+  [devices/crime/registers.toml](../devices/crime/registers.toml) as `IP5_CAUSES` bit 6.
 - Software reads the peripheral master status, dispatches to the audio
   subsystem, and that subsystem clears its own cause (established, [mace] 61,
   section 3.2.1).

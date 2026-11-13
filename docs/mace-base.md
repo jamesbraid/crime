@@ -1,7 +1,7 @@
 # O2 MACE base: PCI bridge, interrupt routing, serial and RTC frontends
 
 This page covers the parts of the O2 MACE I/O ASIC that the register sources
-in `defs/mace_pci.toml`, `defs/mace_periph.toml` and `defs/mace_timer.toml`
+in `devices/mace_pci/registers.toml`, `devices/mace_periph/registers.toml` and `devices/mace_timer/registers.toml`
 do not state in prose: where the PCI devices sit and which CRIME bits they
 reach, how PCI byte positions and bus-master windows map, the CPU apertures
 onto PCI memory, the PCI reset path, the external serial and RTC
@@ -111,7 +111,7 @@ CRIME bit. The device column is the inferred numbering above.
   devfn `0x18`.
 
 The PCI error condition reaches CRIME bit 7, and the MACE PCI control enables
-for inputs 0 to 7 are described in `defs/mace_pci.toml`.
+for inputs 0 to 7 are described in `devices/mace_pci/registers.toml`.
 
 ## PCI byte positions
 
@@ -166,7 +166,7 @@ readback cannot tell the two CRIME variants apart.
 ### Revision 0 errata
 
 The specification lists these under revision 0 and gives no status for later
-revisions. The MACE 2.0 register readback is 1 (see `defs/mace_pci.toml`).
+revisions. The MACE 2.0 register readback is 1 (see `devices/mace_pci/registers.toml`).
 
 - The bridge gives PCI I/O cycles a 4-byte-aligned address. Byte and halfword
   I/O accesses may miss on a device that decodes the full address (established,
@@ -186,7 +186,7 @@ revisions. The MACE 2.0 register readback is 1 (see `defs/mace_pci.toml`).
   configured cache-line size may be smaller (established, [mace] 158 to 159).
 - Memory Read and Memory Read Line get the same read-ahead. Memory Read
   Multiple gets read-ahead only when PCI Control bit 11 is set, and then only
-  when the master reads across a 128-byte boundary. See `defs/mace_pci.toml`
+  when the master reads across a 128-byte boundary. See `devices/mace_pci/registers.toml`
   (established, [mace] 158 and 164).
 - Read-ahead is a prefetch hint. It is not hardware cache coherency.
 - A PCI memory write invalidates buffered reads for the same 128-byte region
@@ -258,7 +258,7 @@ resetting the PCI bus.
   modem control bit 3, which master reset clears (inferred, TI SLLS222A printed
   pages 25 and 30). The part's identity in the O2 is not established, so this
   stays inferred until it is. The register items are in
-  `defs/mace_uart.toml`.
+  `devices/mace_uart/registers.toml`.
 - The same data sheet puts the infrared select on bit 6 of the scratch-position
   register, with the prescaler in bits 5:0, and after reset makes UART 0 an
   infrared channel and UART 1 an ordinary UART (inferred, TI SLLS222A printed
@@ -288,7 +288,7 @@ resetting the PCI bus.
   base and the interrupt status and mask (established, [mace] 122). It holds the
   Flash-ROM write enable, the Number-In-a-Can line control, the LED enables,
   the DP-RAM write enable and the timer test mode (established, [mace] 124).
-  Its fields are in `defs/mace_periph.toml`.
+  Its fields are in `devices/mace_periph/registers.toml`.
 - The specification lists a "simple interface to Number-In-a-Can serial PROM"
   among the ISA features (established, [mace] 121). The register drives one
   bidirectional line. Bit 2 holds it low when clear and releases it when set.
@@ -339,7 +339,7 @@ resetting the PCI bus.
 - Read-buffer capacity, replacement, latency and initial contents, and whether
   a CPU store invalidates read buffers (see the bursts and read-ahead section).
 - Whether PCI Control bit 16 invalidates only prefetch buffers or all read
-  buffers, as the printed table's split suggests (see `defs/mace_pci.toml`).
+  buffers, as the printed table's split suggests (see `devices/mace_pci/registers.toml`).
 - Bus grant timing under PCI Control bit 15 (park on host or on the last master
   in use). The published text names the two parking targets and nothing about
   when a grant moves between them (unknown).

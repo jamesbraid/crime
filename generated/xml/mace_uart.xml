@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!-- generated from devices/mace_uart/registers.toml by defs-gen - do not edit, change the source -->
+<genxml unit="mace_uart" prefix="MACE_UART" title="O2 MACE external 16550-compatible serial port: modem control and scratch registers" from="TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)">
+  <doc>One external serial port of the MACE chip, a 16550-compatible UART. Offsets are from each port's base (the serial base constants in mace_periph.toml). Only the modem control and scratch registers are defined here; the rest of the register set is in docs/mace-base.md.</doc>
+  <struct name="MCR" size="1" grade="inferred" from="TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)" register="yes" offset="0x400" access="rw" reset="0x0">
+    <doc>Modem control register of one port. Master reset clears every bit, and bits 6 and 7 are permanently zero (inferred, printed page 25). Bit 3 enables the port's external serial interrupt output (inferred, printed page 30).</doc>
+    <field name="ext_int_enable" start="3" size="1" type="uint" grade="inferred"/>
+  </struct>
+  <struct name="SCRATCH" size="1" grade="inferred" from="TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)" register="yes" offset="0x700" access="rw" reset="unknown">
+    <doc>Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which docs/mace-base.md records.</doc>
+  </struct>
+</genxml>

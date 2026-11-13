@@ -10,7 +10,7 @@ Scope: the spec is a design document of 1996. It lists seven unsettled design qu
 
 - Established ([mace] PDF 32, table 4): the video registers sit in three 0x80000-byte sets, at offsets `0x100000` (input channel 1), `0x180000` (input channel 2) and `0x200000` (output channel) from the MACE register base. Inferred: the base is `0x1f000000`, which puts the sets at `0x1f100000`, `0x1f180000` and `0x1f200000` which are the addresses the inventory configuration takes from the Linux `struct sgi_mace` layout. Every register is 64-bit aligned and takes 64-bit accesses; undefined bits read as zero ([mace] PDF 32).
 - Established ([spec] PDF 107-108, table 5-5): CRIME interrupt input 0 is video input channel 1, input 1 is video input channel 2 and input 2 is the video output channel, each with the R10000 interrupt number 3 in the table's last column (inferred reading of that column). This agrees with the interrupt numbering of [netbsd] noted in [memory.md](memory.md) and fixes the three video inputs among the sixteen MACE-routed ones.
-- Established ([spec] PDF 109, section 5.7.2): bit 31 of the CRIME interrupt status register is a registered copy of the VICE interrupt pin, read-only. That is a second source for `CRIME_INT_VICE` in [CRIME.h](../CRIME.h), which cited [netbsd] alone. See [vice.md](vice.md).
+- Established ([spec] PDF 109, section 5.7.2): bit 31 of the CRIME interrupt status register is a registered copy of the VICE interrupt pin, read-only. That is a second source for `CRIME_INT_VICE` in [devices/crime/CRIME.h](../devices/crime/CRIME.h), which cited [netbsd] alone. See [vice.md](vice.md).
 
 ## Ports and routing
 
@@ -185,7 +185,7 @@ The pointer at controller `+208` and at object `+16` of the two video-port chip 
 
 ### Published scope and open points
 
-These points come from the published chapter ([mace] PDF 149 to 151 and the address map on PDF 181). The register and field grades are in `defs/mace_i2c.toml`.
+These points come from the published chapter ([mace] PDF 149 to 151 and the address map on PDF 181). The register and field grades are in `devices/mace_i2c/registers.toml`.
 
 - Established ([mace] PDF 149): the bus is an open-collector party line with several masters, and collision detection is in hardware. Address recognition, backoff and retry after a collision, and remote reset are not in hardware. Software does them.
 - Established ([mace] PDF 149): the chapter supports only the 400 kHz and 100 kHz rates, selected by configuration bit 1.

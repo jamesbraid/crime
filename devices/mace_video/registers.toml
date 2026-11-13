@@ -1,0 +1,321 @@
+# Hardware definitions. Edit this file; generated/ is generated from it.
+unit = "mace_video"
+prefix = "VOUT"
+title = "O2 MACE video output channel and chip-level configuration"
+doc = "MACE video output channel registers and the chip-level hardware configuration word."
+from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+public_from = ["published MACE 2.0 specification", "shipped IRIX"]
+
+[c]
+legacy_header = "MACE_VIDEO_DECODE.h"
+legacy_guard = "MACE_VIDEO_DECODE_H"
+
+[spaces.mace_video_out]
+
+[registers.control]
+offset = 0x0
+access = "rw"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_out"
+doc = """
+---- output channel registers ----
+One channel set, offsets from the start of the output channel window. All
+are 64-bit doubleword accesses. The status register clears the pending
+causes on read; the DMA-active bit is live. The shipped IRIX video driver writes the whole word, changing only its low nine bits; its output recovery routines pulse bit 0."""
+
+[registers.control.fields]
+int_crime_error = { bits = [8, 8], grade = "established" }
+int_fifo_underflow = { bits = [7, 7], grade = "established" }
+int_buffer = { bits = [4, 4], grade = "established" }
+int_genlock_lost = { bits = [3, 3], grade = "established" }
+int_dma_done = { bits = [2, 2], grade = "established" }
+int_vsync = { bits = [1, 1], grade = "established" }
+dma_enable = { bits = [0, 0], grade = "established" }
+
+[registers.status]
+offset = 0x8
+access = "r"
+width = 64
+grade = "established"
+reset = 0x0
+space = "mace_video_out"
+doc = "The shipped IRIX output recovery routines read it after their last write and discard the value."
+
+[registers.status.fields]
+crime_error = { bits = [8, 8], grade = "established" }
+fifo_underflow = { bits = [7, 7], grade = "established" }
+buffer = { bits = [4, 4], grade = "established" }
+lost_sync = { bits = [3, 3], grade = "established" }
+dma_done = { bits = [2, 2], grade = "established" }
+vsync = { bits = [1, 1], grade = "established" }
+dma_active = { bits = [0, 0], grade = "established" }
+
+[registers.config]
+offset = 0x10
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+doc = "The shipped IRIX video driver writes it at start-up."
+
+[registers.config.fields]
+channel_enable = { bits = [0, 0], grade = "established", doc = "Zero resets processing of this channel, one enables it (printed page 40, table 11)." }
+genlock_reset = { bits = [5, 5], grade = "established", doc = "Zero resets the genlock and clocked output circuitry, one enables it. It must be one even for free-running output (printed page 40, table 11)." }
+genlock_precision = { bits = [8, 8], grade = "established", doc = "Pixel precision of the genlock source: zero for 8-bit D1, one for 10-bit (printed page 40, table 11)." }
+genlock_ecc = { bits = [9, 9], grade = "established", doc = "One enables D1 error correction on the genlock source (printed page 40, table 11)." }
+sof_count_odd = { bits = [13, 10], grade = "established", doc = "Lines to wait after the start of vertical blank before checking the field ID for an odd field (printed page 40, table 11)." }
+notch_filter = { bits = [17, 17], grade = "established", doc = "One enables the notch filter, which the table says is generally used for RGB data that was dithered earlier (printed page 41, table 11)." }
+interleaved = { bits = [20, 20], grade = "established", doc = "Zero is field mode, one is interleaved frame mode (printed page 41, table 11)." }
+sof_count_even = { bits = [25, 22], grade = "established", doc = "Lines to wait after the start of vertical blank before checking the field ID for an even field (printed page 41, table 11)." }
+
+[registers.config.fields.port_e_source]
+bits = [2, 1]
+grade = "established"
+doc = "Data source for output port E (printed page 40, table 11)."
+
+[registers.config.fields.port_e_source.enums]
+disabled = { value = 0, grade = "established" }
+genlock_passthrough = { value = 1, grade = "established" }
+yuv = { value = 2, grade = "established" }
+alpha = { value = 3, grade = "established" }
+
+[registers.config.fields.port_f_source]
+bits = [4, 3]
+grade = "established"
+doc = "Data source for output port F, with the same values as port E (printed page 40, table 11)."
+
+[registers.config.fields.port_f_source.enums]
+disabled = { value = 0, grade = "established" }
+genlock_passthrough = { value = 1, grade = "established" }
+yuv = { value = 2, grade = "established" }
+alpha = { value = 3, grade = "established" }
+
+[registers.config.fields.genlock_source]
+bits = [7, 6]
+grade = "established"
+doc = "Output reference. Zero runs on the 13.5 MHz pixel clock with internal timing, with no genlock (printed page 40, table 11)."
+
+[registers.config.fields.genlock_source.enums]
+none = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.config.fields.pixel_format]
+bits = [16, 14]
+grade = "established"
+doc = "DMA pixel format, the same six codes as the input channel (printed page 40, table 11)."
+
+[registers.config.fields.pixel_format.enums]
+rgba32 = { value = 0, grade = "established" }
+rgba5551 = { value = 1, grade = "established" }
+yuv422_8 = { value = 2, grade = "established" }
+yuv422_10 = { value = 3, grade = "established" }
+abgr32 = { value = 4, grade = "established" }
+yuva4224 = { value = 5, grade = "established" }
+
+[registers.config.fields.clamping]
+bits = [19, 18]
+grade = "established"
+doc = "Output clamping or expansion (printed page 41, table 11)."
+
+[registers.config.fields.clamping.enums]
+none = { value = 0, grade = "established" }
+extended = { value = 1, grade = "established" }
+legal = { value = 2, grade = "established" }
+special_expansion = { value = 3, grade = "established" }
+
+[registers.config.fields.mem_mode]
+bits = [21, 21]
+grade = "established"
+doc = "Memory organisation. The output channel has linear and tiled modes only (printed page 41, table 11)."
+
+[registers.config.fields.mem_mode.enums]
+linear = { value = 0, grade = "established" }
+tiled = { value = 1, grade = "established" }
+
+[registers.next_desc]
+offset = 0x18
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+doc = "The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines write it as well."
+
+[registers.next_desc.fields]
+table_address = { bits = [31, 6], grade = "established", doc = "Physical address of the 64-byte descriptor table (printed page 44, table 13)." }
+valid = { bits = [2, 2], grade = "established", doc = "Software sets it to queue a descriptor. Hardware clears it after copying the descriptor (printed page 44, table 13)." }
+bit1 = { bits = [1, 1], grade = "established", doc = "Unused (printed page 44, table 13)." }
+
+[registers.next_desc.fields.field_to_send]
+bits = [0, 0]
+grade = "established"
+doc = "Field to send next. Zero sends odd, one sends even. This is not an input-style selector (printed page 44, table 13)."
+
+[registers.next_desc.fields.field_to_send.enums]
+odd = { value = 0, grade = "established" }
+even = { value = 1, grade = "established" }
+
+[registers.fld_offset]
+offset = 0x20
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+doc = "The shipped IRIX video driver writes the low halfword of a transfer-record word here."
+
+[registers.fld_offset.fields]
+byte_offset = { bits = [15, 3], grade = "established", doc = "Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14)." }
+
+[registers.field_size]
+offset = 0x28
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+doc = "Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line count and the bytes per line from one stored value: 243 lines of 2880 bytes in one set and 288 lines in the other."
+
+[registers.field_size.fields]
+bytes = { bits = [11, 3], grade = "established", doc = "Bytes per line, a multiple of eight, stored literally (printed page 45, table 16)." }
+lines = { bits = [21, 12], grade = "established", doc = "Lines in the memory image, stored literally with no plus one. It describes the image, not the raster totals (printed page 45, table 16)." }
+
+[registers.hpad_odd]
+offset = 0x30
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.hpad_odd.fields]
+eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20)." }
+eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
+eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
+filter_count = { bits = [39, 30], grade = "established", doc = "Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20)." }
+
+[registers.hpad_odd.fields.filter_mode]
+bits = [41, 40]
+grade = "established"
+doc = "Square-to-non-square filter on the output (printed page 51, table 20)."
+
+[registers.hpad_odd.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_11_12 = { value = 1, grade = "established" }
+ntsc_11_10 = { value = 2, grade = "established" }
+double_width = { value = 3, grade = "established" }
+
+[registers.vpad_odd]
+offset = 0x38
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vpad_odd.fields]
+leading_blank_end = { bits = [9, 0], grade = "established", doc = "Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21)." }
+trailing_blank_start = { bits = [19, 10], grade = "established", doc = "Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52)." }
+field_end = { bits = [29, 20], grade = "established", doc = "Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52)." }
+image_start = { bits = [39, 30], grade = "established", doc = "Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52)." }
+
+[registers.hpad_even]
+offset = 0x40
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.hpad_even.fields]
+eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels (printed page 51, table 20)." }
+eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
+eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
+filter_count = { bits = [39, 30], grade = "established", doc = "Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20)." }
+
+[registers.hpad_even.fields.filter_mode]
+bits = [41, 40]
+grade = "established"
+doc = "Square-to-non-square filter on the output (printed page 51, table 20)."
+
+[registers.hpad_even.fields.filter_mode.enums]
+none = { value = 0, grade = "established" }
+pal_11_12 = { value = 1, grade = "established" }
+ntsc_11_10 = { value = 2, grade = "established" }
+double_width = { value = 3, grade = "established" }
+
+[registers.vpad_even]
+offset = 0x48
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vpad_even.fields]
+leading_blank_end = { bits = [9, 0], grade = "established", doc = "Stored as count minus one: leading blank ends after value plus 1 lines (printed pages 51 and 52, tables 20 and 21)." }
+trailing_blank_start = { bits = [19, 10], grade = "established", doc = "Stored as count minus one: trailing blanking starts at raster line value plus 1 (printed pages 51 and 52)." }
+field_end = { bits = [29, 20], grade = "established", doc = "Stored as count minus one: total raster lines are value plus 1 (printed pages 51 and 52)." }
+image_start = { bits = [39, 30], grade = "established", doc = "Stored as count minus one: the memory image starts at raster line value plus 1 (printed pages 51 and 52)." }
+
+[registers.gen_dly]
+offset = 0x50
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+
+[registers.vhw_cfg]
+offset = 0x58
+access = "rw"
+width = 64
+grade = "established"
+space = "mace_video_out"
+doc = "The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video probe reads bits 35:32; the value that identifies the part is not recorded."
+notes = "The kernel reading named bit 13 framelock_correction (here gbe_framelock_ecc), bit 18 general_output (gpibo), bits 35:32 ident (revision), and left bits 4, 7, 8 and the audio-sync reset unassigned (here audio_sync_reset at 4, audio_sync_precision at 7 and audio_sync_ecc at 8). The positions agree; the specification's names are kept."
+
+[registers.vhw_cfg.fields]
+revision = { bits = [35, 32], grade = "established", doc = "Four-bit chip revision code. The numeric value for MACE revision 2.0 is not published (printed page 54, table 23), so no value is recorded here." }
+sof_count_even = { bits = [22, 19], grade = "established" }
+gpibo = { bits = [18, 18], grade = "established" }
+sof_count_odd = { bits = [17, 14], grade = "established" }
+gbe_framelock_ecc = { bits = [13, 13], grade = "established" }
+gbe_framelock_precision = { bits = [12, 12], grade = "established" }
+gbe_framelock_reset = { bits = [9, 9], grade = "established" }
+audio_sync_ecc = { bits = [8, 8], grade = "established" }
+audio_sync_precision = { bits = [7, 7], grade = "established" }
+audio_sync_reset = { bits = [4, 4], grade = "established" }
+port_cd_select = { bits = [3, 3], grade = "established" }
+port_cd_reset = { bits = [2, 2], grade = "established" }
+port_ab_select = { bits = [1, 1], grade = "established" }
+port_ab_reset = { bits = [0, 0], grade = "established" }
+
+[registers.vhw_cfg.fields.gbe_framelock_source]
+bits = [11, 10]
+grade = "established"
+
+[registers.vhw_cfg.fields.gbe_framelock_source.enums]
+output_ef = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.vhw_cfg.fields.audio_sync_source]
+bits = [6, 5]
+grade = "established"
+
+[registers.vhw_cfg.fields.audio_sync_source.enums]
+none = { value = 0, grade = "established" }
+external = { value = 1, grade = "established" }
+port_ab = { value = 2, grade = "established" }
+port_cd = { value = 3, grade = "established" }
+
+[registers.dma_desc]
+offset = 0x80
+access = "rw"
+width = 64
+grade = "established"
+count = 8
+space = "mace_video_out"
+
+[constants]
+WINDOW_PHYS_ADDR = { value = 0x1f100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1." }
+IN2_OFF = { value = 0x80000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of input channel 2 from the start of the video window." }
+OUT_OFF = { value = 0x100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of the output channel from the start of the video window." }
