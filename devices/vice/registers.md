@@ -142,7 +142,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is
 "TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRIX
 identity probe reads the 32-bit word at offset 0xc, the low half of this doubleword,
-and compares the whole word (established, kernel add_vice and hinv disassembly).
+(established, kernel add_vice). Whether the hinv utility compares the whole word is unverified.
 The upper word is not read by the probe, and its value is unknown.
 
 | Bits | Field | Grade | Values | Source | Description |

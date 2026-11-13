@@ -61,7 +61,7 @@ The scalar unit is a pipelined processor for a subset of MIPS I. The specificati
 - Established ([vice] PDF 125, 130-131): five stages, IF, RD, EX, LS and WB. Two multiplexers in front of the ALU forward results that are still in the pipeline.
 - Established ([vice] PDF 117): an issue group holds at most one scalar and one vector instruction, in either order. Coprocessor moves and vector loads and stores count as scalar instructions for grouping. A branch delay slot always issues alone, and a branch may be the second half of a group whose first half is a vector computation.
 - Established ([vice] PDF 125-126): the branch target is computed in RD and the condition in EX. A taken branch or jump costs no penalty. An untaken branch costs one cycle to refetch the in-line stream. The delay slot executes on both outcomes ([vice] PDF 126, figures 37 and 38).
-- Established ([vice] PDF 131): the programmer must place an instruction with no dependency on the two preceding instructions in the delay slot, or a NOP. The hardware does not stall for it.
+- Established ([vice] PDF 131): the programmer must place an instruction with no dependency on the two preceding instructions in the delay slot, or a NOP. The specification states this as a rule on the programmer and gives no interlock for the slot; that the hardware does not stall for it is inferred.
 - Established ([vice] PDF 127): a load, MFCz or CFCz result is available two cycles later, and the hardware interlocks a dependent instruction. The check compares the destination with the RS field of every valid scalar instruction and with the RT field of all of them except LWC2, SWC2 and immediate instructions. The specification says this may cause false stalls, and Table 70 gives the field positions for each instruction.
 - Established ([vice] PDF 127, table 70): in coprocessor moves the RS field selects the transfer: 0 for MFC, 2 for CFC, 4 for MTC and 6 for CTC.
 - Established ([vice] PDF 117): the instruction PC is 32 bits wide, but bits 31:16 and 1:0 are grounded. A `jr` to an unaligned address, or to one with high bits outside instruction RAM, is not detected. A branch offset that carries past instruction RAM is not detected either.
@@ -151,20 +151,11 @@ Not in `root/`; read from the 6.5 base media directories `var/arch/vicedx/` and 
 
 ## IRIX identity probe
 
-The IRIX kernel probes for the chip once, at boot, and adds an inventory entry when it answers. The register sequence is in [functions.md](../../software/kernel/functions.md) under `add_vice`. The name `hinv` prints depends only on the 32-bit ID word the probe reads (`VICE_ID` at `+0x8`, its low half at `+0xc`).
+The IRIX kernel probes for the chip once, at boot, and adds an inventory entry when it answers. The register sequence is in [functions.md](../../software/kernel/functions.md) under `add_vice`. The probe reads the 32-bit ID word at `+0xc`, the low half of the `VICE_ID` doubleword at `+0x8` (`add_vice`, `kernel.o` offset `0x8168`, a `lw` from `+0xc` passed as the last argument of `add_to_inventory`).
 
-- Established (`sbin/hinv` of the 6.5.30 media, read from its disassembly; `hinv` prints `Vice: ` followed by):
-
-  | ID word | Printed |
-  |---|---|
-  | `0x000000e1` | `EN` |
-  | `0x000000e2` | `DX` |
-  | `0x000000e3` | `TRE` |
-  | `0x000000e4` | `QT` |
-  | any other | the word in hexadecimal |
-
-  `hinv` compares the whole word and nothing else. `DX` and `TRE` are revisions 2 and 3, as the published names in [devices/vice/registers.toml](registers.toml) say.
-- Inferred (`libvice.so` of the same media, read from its disassembly): the library picks the microcode directory from the same word, obtained through a driver ioctl whose code was not read. It tests for `0xe1` (directory `vice`) and `0xe2` (`vicedx`) and takes `vicetre` for every other word.
+- Established ([vice] PDF 44, table 8, and the published `hinv` dumps above): `hinv` prints `Vice: DX` for revision 2 and `Vice: TRE` for revision 3.
+- Unknown: the names `hinv` prints for ID words `0xe1` and `0xe4`, the form it prints for any other word, and whether it compares the whole 32-bit word. These came from a reading of `sbin/hinv` that cannot be repeated here, because `sbin/hinv` is not in `root/`. Route: read `sbin/hinv` from the 6.5.30 media and check the compare and the name table.
+- Inferred (`libvice.so` of the same media, read from its disassembly): the library picks the microcode directory from the same word, obtained through a driver ioctl whose code was not read. It tests for `0xe1` (directory `vice`) and `0xe2` (`vicedx`) and takes `vicetre` for every other word (`vice_file`, N32 `libvice.so`, compares against 225 at `0xd0024b8` and 226 at `0xd0024a8`).
 - Established (kernel `add_vice`): the probe writes `4` to the enable word at `+0xe014`, the low half of the slot at `+0xe010`, and does not restore it, so cause 2 stays enabled after boot. Other writers of that slot were not checked.
 - Unknown: the value of the upper word of the ID doubleword, and whether any later consumer reads the ID again. The library reads it once through the driver when it chooses the directory.
 
@@ -182,6 +173,7 @@ The IRIX kernel probes for the chip once, at boot, and adds an inventory entry w
 - Conflict: the descriptor path for channel 2. The common-bus section says the scalar unit reaches channel 2 descriptors with CTC1 and CFC1 ([vice] PDF 118), while the address map gives the whole `+0x1000` to `+0x1fff` descriptor range to MTC3 and CTC3 ([vice] PDF 24). Unresolved.
 - Conflict: the scalar instruction set is a subset of MIPS I in one place ([vice] PDF 120) and of "MIPS R300" in another ([vice] PDF 122). The mnemonic list is the same either way.
 - Open: halfword alignment. The address-error section requires halfwords to sit on a word boundary ([vice] PDF 27), which differs from ordinary MIPS two-byte alignment. The text does not say which was built.
+- Conflict: the DMA location table gives the BSP instruction RAM a width of 64 bits and the BSP table RAM 32 bits ([vice] PDF 69, table 43), while the register map gives the BSP instruction RAM as 1K by 16 bits ([vice] PDF 24). The defs keep 16 bits from the map. The 32-bit table RAM agrees with the presentation inferred above. Unresolved.
 - Open: the full-chip reset length is printed as "16 clocks?" with a question mark ([vice] PDF 26). The register-initiated reset of at least 16 clocks is stated without one.
 - Open: a failing scalar load or store has undefined data and an undefined memory effect ([vice] PDF 27). The spec does not say what the host should expect to read back.
 - Open: DMA may write MSP instruction RAM while the MSP runs ([vice] PDF 30), but the text does not say whether an already fetched word sees that write.
