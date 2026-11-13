@@ -34,7 +34,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `mode`
 
-Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, docs/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185).
+Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184). Bit 11 selects clear (0) or copy (1) (established, [spec] PDF 184). Bit 10 is described as enabling stipple application during clear operations; the table prints its values as 0 and 1 with enable and disable in that order. The X server sets bit 10 for its stippled fill (established, devices/mte/mte.md), so 1 means enabled (inferred). Pixel depth value 3 is reserved (established, [spec] PDF 184). Buffer selector value 7 is reserved in both the source and destination fields (established, [spec] PDF 184 and 185). Bits 1 and 0 ask for ECC when reading the source and when writing the destination (established, [spec] PDF 185).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -84,7 +84,7 @@ Destination row step, 32 bits, readable and writable (established, [spec] PDF 18
 
 ### Register `null`
 
-Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md).
+Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see devices/mte/mte.md).
 
 ### Register `flush`
 

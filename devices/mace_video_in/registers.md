@@ -111,7 +111,7 @@ The shipped IRIX video driver's start-up writes it with a 64-bit store.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md. |
+| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in devices/mace_video/mace-video.md. |
 | 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17). |
 | 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17). |
 | 29:20 | `filt_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17). |
@@ -134,7 +134,7 @@ The shipped IRIX video driver's start-up writes it with a 64-bit store.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md. |
+| 40:39 | `filter_mode` | established | none=0, pal_nonsquare=1, ntsc_nonsquare=2, half=3 | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in devices/mace_video/mace-video.md. |
 | 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables horizontal down-scaling, zero is no scaling (printed pages 46 and 47, table 17). |
 | 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit horizontal ratio: the scaled-down size times 256, used only when scaling is on. The table prints the range as 30:37 (printed pages 46 and 47, table 17). |
 | 29:20 | `filt_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the non-square filter. The table uses it only with that filter and says it must be even (printed pages 46 and 47, table 17). |

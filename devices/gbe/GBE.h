@@ -13,7 +13,7 @@
  * pair 11 (input), clock select 00; DOTCLK 0; I2C and I2CFP released (1);
  * SYSCLK tm(0) 1; DEVICE_ID 0x666; VT_XY freeze 1; all other timing, plane,
  * DID and cursor registers 0; CMFIFO 0; VC_2 flicker and auto-field 1.
- * Details and what IRIX does with them: docs/gbe.md, pass 6.
+ * Details and what IRIX does with them: devices/gbe/gbe.md, pass 6.
  */
 #ifndef GBE_H
 #define GBE_H
@@ -26,7 +26,7 @@
  * data bits 12, 14, 16, 18 of io_3..io_6, read as inputs, form a 4-bit
  * board strap (bit 12 = bit 0) whose only known use is the gamma
  * workaround on value 0 [E, ide.IP32 0xa00e2c54 and 0xa00e2be4; k:crime_init;
- * docs/gbe.md pass 7]. */
+ * devices/gbe/gbe.md pass 7]. */
 #define   GBE_CTRLSTAT_REV_MASK     0x0000000fu /* 1 rev 1.1 part, 2 successor [E] */
 #define   GBE_CTRLSTAT_BOARDREV_BITS 0x00055000u /* [E] */
 #define GBE_DOTCLOCK        0x00004
@@ -61,7 +61,7 @@
 #define GBE_VT_VPIXEN       0x10038
 #define GBE_VT_HCMAP        0x1003c
 #define GBE_VT_VCMAP        0x10040
-#define GBE_DID_START_XY    0x10044 /* names [linux]; formulas in docs/gbe.md [E] */
+#define GBE_DID_START_XY    0x10044 /* names [linux]; formulas in devices/gbe/gbe.md [E] */
 #define GBE_CRS_START_XY    0x10048
 #define GBE_VC_START_XY     0x1004c
 /*
@@ -69,7 +69,7 @@
  * (M - 1) | (N - 1) << 8 | P << 14 | 1 << 20 (run). M 1..256, N 1..64,
  * P 0..3 are the only values the kernel accepts from a user table.
  * How every timing register is derived from the kernel's timing record,
- * and the .vfo timing values: docs/gbe.md.
+ * and the .vfo timing values: devices/gbe/gbe.md.
  */
 #define GBE_DOTCLOCK_RUN    (1u << 20)
 #define GBE_DOTCLOCK(m, n, p) ((((m) - 1) & 0xff) | ((((n) - 1) & 0x3f) << 8) | (((p) & 3) << 14))
@@ -86,7 +86,7 @@
 #define GBE_DID_CONTROL     0x40004
 /*
  * DID table, as IRIX 6.5.30 builds it [E, x crm.so gbeLoadDispIDs 0x45a350;
- * docs/gbe.md pass 9]:
+ * devices/gbe/gbe.md pass 9]:
  * one 64 KiB table per DID_CONTROL base. Frame table of 32-bit entries from
  * byte 0 (blocks 0-15): yend 10:0 (last line of the band), offset 18:11
  * (16-bit units), block 25:19 (512-byte block). Line tables packed in
@@ -153,7 +153,7 @@
  * which treats the same field as an occupancy count [E, linux gbefb.c];
  * Linux's reading disagrees with the specification and with IRIX.
  * Established [shipped 6.5.30 ide.IP32 colour-map waits, revision-gated,
- * 0xa00d2674..0xa00d2788; docs/gbe.md pass 7]: software reads the field as
+ * 0xa00d2674..0xa00d2788; devices/gbe/gbe.md pass 7]: software reads the field as
  * free entries on both revisions; it waits for 63 on revision 2 and for 0
  * on revision 1 to see an empty FIFO, and wants more than 16 free (or 0 on
  * revision 1) before a batch. Inferred: revision 2 queues at most 63, so
@@ -201,6 +201,6 @@
  * (11:0, input 19) belong to the kernel's high-level interrupt scheduler,
  * which multiplexes per-frame line requests over them and parks an idle
  * line at 0xfff [E, k:crime_retrace 0x2a64-0x316c, crime:crimeInterrupt;
- * docs/gbe.md]. */
+ * devices/gbe/gbe.md]. */
 
 #endif /* GBE_H */

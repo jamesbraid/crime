@@ -190,7 +190,7 @@
 #define AD1843_MIC_MIX_R_GAIN_INPLACE                (AD1843_MIC_MIX_R_GAIN_MASK << AD1843_MIC_MIX_R_GAIN_SHIFT)
 
 /*
- * Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see docs/mace-audio.md).
+ * Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see devices/mace_audio/mace-audio.md).
  */
 /* mono_control: rw16, space codec_reg, reset 0x8868; Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here. */
 #define AD1843_MONO_CONTROL_OFFSET                   0x8u /* established */

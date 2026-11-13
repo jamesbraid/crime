@@ -61,7 +61,7 @@
 #define MACE_I2C_CONTROL_FORCE_IDLE_INPLACE          (MACE_I2C_CONTROL_FORCE_IDLE_MASK << MACE_I2C_CONTROL_FORCE_IDLE_SHIFT)
 
 /*
- * Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see docs/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer.
+ * Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see devices/mace_video/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer.
  */
 /* data: rw64, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181) */
 #define MACE_I2C_DATA_OFFSET                         0x18u /* established */

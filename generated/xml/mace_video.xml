@@ -172,7 +172,7 @@ causes on read; the DMA-active bit is live. The shipped IRIX video driver writes
   </struct>
   <struct name="DMA_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x80" access="rw" count="8" stride="8" space="mace_video_out" reset="unknown">
   </struct>
-  <constant name="IN2_OFF" value="0x80000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
-  <constant name="OUT_OFF" value="0x100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
-  <constant name="WINDOW_PHYS_ADDR" value="0x1f100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
+  <constant name="IN2_OFF" value="0x80000" grade="established" from="shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"/>
+  <constant name="OUT_OFF" value="0x100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"/>
+  <constant name="WINDOW_PHYS_ADDR" value="0x1f100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"/>
 </genxml>

@@ -136,7 +136,7 @@ The published interface-buffer address map lists the data RAM, the address
 RAM and the control word, and no register at the doubleword after the control
 word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
 does not access that doubleword either. Its name, width and access come from
-the shipped kernel's zero stores, so they stay inferred. See docs/reset.md. The shipped IRIX kernel writes zero here, waits 10 microseconds and rewrites the interface-buffer control word. Whether that control word is ib_ctl is inferred.
+the shipped kernel's zero stores, so they stay inferred. See software/kernel/reset.md. The shipped IRIX kernel writes zero here, waits 10 microseconds and rewrites the interface-buffer control word. Whether that control word is ib_ctl is inferred.
 
 ### Register `tlb_fb_a`
 
@@ -208,7 +208,7 @@ to completion (established, [spec] PDF 186, printed 7-30).
 The specification's table (established, [spec] PDF 173, Table 7-6) puts the
 enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
 inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
-kernel sets bit 5 plus i and bit i for rectangle i (docs/context.md), which is
+kernel sets bit 5 plus i and bit i for rectangle i (software/kernel/context.md), which is
 the reverse order. Which order the engine uses is unknown. The fields below
 give the bit ranges only.
 
@@ -225,7 +225,7 @@ Point and rectangle primitives are always flat shaded, whatever the shade bit (1
 
 The specification's table gives bit 8 as logic-op enable and bit 9 as dither
 (established, [spec] PDF 174, Table 7-7). The fields below follow the drivers,
-which use the reverse. That conflict is not settled; see docs/pixel-arithmetic.md.
+which use the reverse. That conflict is not settled; see devices/re/pixel-arithmetic.md.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -285,7 +285,7 @@ the maximum edges exclusive. DrawMode bit 20 enables the test (established,
 Window-to-framebuffer offset for the read window (established, [spec] PDF 175
 to 176, Table 7-9, the WinOffset format). The specification does not say
 whether the two halves are signed. The kernel writes each half as the window
-origin minus 4096 (see docs/context.md), so the sign convention is unknown.
+origin minus 4096 (see software/kernel/context.md), so the sign convention is unknown.
 
 The Y row's description in Table 7-9 repeats the X row's text. The field names
 and bit positions give the split, X in bits 31:16 and Y in bits 15:0
@@ -299,7 +299,7 @@ of either gap does (established, [spec] Table 7-3, PDF 165).
 Which half of a 64-bit store reaches a 32-bit window-offset register is
 unknown. No shipped software or published source depends on it, as far as the
 constant-address scan shows. The scan records only 4-byte stores to the source
-and drawing window-offset registers (docs/inventory/mmio.tsv). Routes tried: [spec]
+and drawing window-offset registers (evidence/inventory/mmio.tsv). Routes tried: [spec]
 Table 7-3 and Table 7-9, which give no store-width rule for these words, and the
 public NetBSD driver, which writes both offsets with 32-bit stores (inferred,
 software expectation). Not checked: whether a copy loop stores doublewords across
@@ -329,7 +329,7 @@ The specification gives line_width as the subpixel line width divided by two
 specification. DrawMode bit 19, which enables line stipple, is a separate
 control and does not appear in the primitive word.
 
-The unit of the line width is unknown. The specification's six-bit subpixel precision (established, [spec] PDF 159) is listed for OpenGL rasterization, not for X lines. The public NetBSD O2 framebuffer driver's register header calls the field half pixels (inferred, software expectation). Which scale the X engine uses is unknown. See docs/de-2d-drawing.md.
+The unit of the line width is unknown. The specification's six-bit subpixel precision (established, [spec] PDF 159) is listed for OpenGL rasterization, not for X lines. The public NetBSD O2 framebuffer driver's register header calls the field half pixels (inferred, software expectation). Which scale the X engine uses is unknown. See devices/re/de-2d-drawing.md.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -340,7 +340,7 @@ The unit of the line width is unknown. The specification's six-bit subpixel prec
 
 ### Register `vertex_x`
 
-In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md. The shipped IRIX kernel writes the 16-bit X vertex form for a pixel DMA caller that is bound to the engine.
+In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See devices/re/de-2d-drawing.md. The shipped IRIX kernel writes the 16-bit X vertex form for a pixel DMA caller that is bound to the engine.
 
 Array of 3 registers, stride 4.
 
@@ -348,7 +348,7 @@ Array of 3 registers, stride 4.
 
 Table 7-3 lists each GL vertex word as 32 bits, non-global and write-only, in 13.6 fixed point (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
 
-Start-alias stores (inferred, software expectation, docs/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
+Start-alias stores (inferred, software expectation, evidence/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
 
 Readback extents (inferred, software expectation). A GL readback of a
 rectangle writes inclusive pixel indices, not the half-open edges of the
@@ -356,7 +356,7 @@ scissor: the far x is the start x plus the programmed copy width minus one,
 and the far y is the start y minus the row count plus one, each as
 (index << 6) & 0x7ffff. A one-row readback therefore writes equal y words and
 still copies one row. Only driver writes show this. How the engine resolves a
-fractional edge is unknown. See docs/pixel-transfer.md.
+fractional edge is unknown. See software/opengl/pixel-transfer.md.
 
 Array of 6 registers, stride 4.
 
@@ -367,7 +367,7 @@ buffer H rows high, the driver writes the x component as the window x and the
 y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
 bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
 equation that combines this packed start with SrcWinOffset is unknown. See
-docs/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0.
+software/opengl/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0.
 
 ### Register `xfer_src_stride`
 
@@ -387,7 +387,7 @@ S + max(P - C * S, 0). The row pitch is then (C - 1) * S + that value, which
 equals P. The width C is the aligned width, not the requested width: the
 driver rounds it up until the row is a multiple of eight bytes, so a
 requested width of 15 at four bytes per pixel programs 16. See
-docs/pixel-transfer.md.
+software/opengl/pixel-transfer.md.
 
 ### Register `stipple_mode`
 
@@ -407,7 +407,7 @@ max_index, so that behaviour is unknown.
 
 ### Register `stipple_pattern`
 
-The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a glyph row sits in the word. The public NetBSD O2 framebuffer driver places an 8-bit font row at bits 31:24 and a 16-bit row at bits 31:16 (inferred, software expectation), so rows fill the high end of the word. Sample order within the word is unknown. See docs/de-2d-drawing.md.
+The specification gives the pattern as one 32-bit word (established, [spec] PDF 166, Table 7-3). It does not say which bit is drawn first or where a glyph row sits in the word. The public NetBSD O2 framebuffer driver places an 8-bit font row at bits 31:24 and a 16-bit row at bits 31:16 (inferred, software expectation), so rows fill the high end of the word. Sample order within the word is unknown. See devices/re/de-2d-drawing.md.
 
 ### Register `fg_color`
 
@@ -417,7 +417,7 @@ Flat-shaded colour for triangles and lines with DrawMode shade bit 16 clear, and
 
 ### Register `shade_start`
 
-The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; docs/opengl.md notes that the upper bits of the starts are ignored (inferred). One unit is 4096 (twelve fraction bits), so 255.0 is the word 255 times 4096 (established, [spec] PDF 200-201). Colour arithmetic and its clamp are in docs/pixel-arithmetic.md.
+The R, G, B and A colour starts here, and the eight slope registers after them (Shade.drdx through Shade.dady), are 21-bit two's complement steppers in 9.12 form, with twelve fraction bits (established, [spec] PDF 200-201 and Table 16 on printed page 7-45). The specification does not say which 21 bits of the 32-bit word hold the value. Reading the low 21 bits is inferred; software/opengl/opengl.md notes that the upper bits of the starts are ignored (inferred). One unit is 4096 (twelve fraction bits), so 255.0 is the word 255 times 4096 (established, [spec] PDF 200-201). Colour arithmetic and its clamp are in devices/re/pixel-arithmetic.md.
 
 Table 7-3 marks all twelve shading words as 32-bit, non-global and write-only (established, [spec] PDF 166-167).
 
@@ -532,7 +532,7 @@ The shipped IRIX library keeps three 8-bit colour components in bits 31:8.
 ### Register `aa_line`
 
 Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
-The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md). The shipped IRIX library writes the minor-axis slope in bits 31:16 and the start position with 8 fraction bits in bits 15:0.
+The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. software/opengl/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, software/opengl/opengl.md). The shipped IRIX library writes the minor-axis slope in bits 31:16 and the start position with 8 fraction bits in bits 15:0.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -541,7 +541,7 @@ The register map gives this word as a 2.12 two's complement value for both the s
 
 ### Register `aa_cov`
 
-The register map gives this word as the start and end endpoint coverage values, each a 7-bit value (established, [spec] register map, PDF 169). The published text does not place them within the word. The split below is a software reading (inferred, docs/opengl.md): the driver writes values from 1 to 64, which fit in 7 bits, with the start value in bits 15:8 and the end value in bits 7:0.
+The register map gives this word as the start and end endpoint coverage values, each a 7-bit value (established, [spec] register map, PDF 169). The published text does not place them within the word. The split below is a software reading (inferred, software/opengl/opengl.md): the driver writes values from 1 to 64, which fit in 7 bits, with the start value in bits 15:8 and the end value in bits 7:0.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -566,7 +566,7 @@ Blend constant colour, read and written as a 32-bit word (established, [spec] re
 
 ### Register `blend_func`
 
-Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row with no factor given, and the destination factor table has no such code (established absence, [spec] Tables 7-20 and 7-21, PDF 208-209). The specification's factor arithmetic therefore omits it. It also gives no clamp for ADD or SUBTRACT. Both are unknown here; see docs/pixel-arithmetic.md.
+Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row with no factor given, and the destination factor table has no such code (established absence, [spec] Tables 7-20 and 7-21, PDF 208-209). The specification's factor arithmetic therefore omits it. It also gives no clamp for ADD or SUBTRACT. Both are unknown here; see devices/re/pixel-arithmetic.md.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -576,7 +576,7 @@ Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row
 
 ### Register `logicop`
 
-The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification. The shipped IRIX library writes the GL logic operation code minus GL_CLEAR, a value in 0 to 15.
+The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and devices/re/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification. The shipped IRIX library writes the GL logic operation code minus GL_CLEAR, a value in 0 to 15.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -587,7 +587,7 @@ The register's own field table is empty in the specification (section 7.3.1.17).
 A 1 in the mask updates the matching colour bit and a 0 leaves it unchanged. The
 engine has no per-bit write, so it does a read-modify-write of the pixel
 (established, [spec] PDF 211, section 7.3.7.15). The mask applies to colour-index
-and RGB(A) pixels alike. Its use with DrawMode bit 7 is in docs/de-2d-drawing.md.
+and RGB(A) pixels alike. Its use with DrawMode bit 7 is in devices/re/de-2d-drawing.md.
 
 ### Register `depth_func`
 
@@ -599,8 +599,8 @@ meaning.
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 27:25 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Depth comparison. The codes follow the GL order from NEVER (0) to ALWAYS (7). The driver writes the GL function minus GL_NEVER. Codes are a software expectation, not a measured chip encoding. |
-| 24 | `tag_clear` | unknown |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | The driver sets this bit on its tagged-clear path (docs/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use. |
-| 23:0 | `clear` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Clear depth in 24-bit depth-buffer units, computed by the driver from glClearDepth with truncation (docs/pixel-arithmetic.md). |
+| 24 | `tag_clear` | unknown |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | The driver sets this bit on its tagged-clear path (devices/re/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use. |
+| 23:0 | `clear` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Clear depth in 24-bit depth-buffer units, computed by the driver from glClearDepth with truncation (devices/re/pixel-arithmetic.md). |
 
 ### Register `depth_zs`
 
@@ -626,12 +626,12 @@ Stencil test and update word. The specification leaves its field table empty
 words the shipped driver stores here. The six operation names are established
 from [spec] Table 7-27 (PDF 214), but the specification's stencil section is
 marked TBD. Its orientation of the comparison conflicts with the API and the
-driver; see docs/pixel-arithmetic.md. Written through its start alias.
+driver; see devices/re/pixel-arithmetic.md. Written through its start alias.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:24 | `ref` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil reference value, eight bits. |
-| 23:16 | `value_mask` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Comparison mask, eight bits, from the API stencil mask. Whether the chip applies it to both operands as the API does is unknown (docs/pixel-arithmetic.md). |
+| 23:16 | `value_mask` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Comparison mask, eight bits, from the API stencil mask. Whether the chip applies it to both operands as the API does is unknown (devices/re/pixel-arithmetic.md). |
 | 15:12 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil comparison. Codes 0 to 7 follow the GL order as for the depth comparison. The driver writes bit 15 clear. Codes 8 to 15 have no meaning in any source read here. |
 | 11:8 | `fail_op` | inferred | keep=0, zero=1, replace=2, incr=3, decr=4, invert=5 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil update when the stencil test fails. Codes 0 to 5 are the operations below; codes 6 to 15 have no meaning in any source read here. |
 | 7:4 | `depth_fail_op` | inferred |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Stencil update when the stencil test passes and the depth test fails. Same codes as fail_op. Which stored stencil operation the chip applies on a depth failure is not given by the specification (unknown). |

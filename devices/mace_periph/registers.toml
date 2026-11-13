@@ -7,7 +7,7 @@ from = "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 14
 public_from = ["published MACE 2.0 I/O ASIC specification"]
 
 # Access direction is taken from the register table. The prose and table
-# disagree for the status register; see docs/open-questions.md.
+# disagree for the status register; see questions/README.md.
 
 [registers.ring_base]
 offset = 0x0
@@ -57,12 +57,12 @@ timer_cmp2 = { bits = [15, 15], grade = "established" }
 serial_a = { bits = [20, 20], grade = "established" }
 serial_b = { bits = [26, 26], grade = "established" }
 serial_a_tx_threshold = { bits = [21, 21], grade = "established", doc = "Read-only. The port 1 transmit ring meets its interrupt threshold (printed page 125)." }
-serial_a_tx_pair = { bits = [22, 22], grade = "established", doc = "Read/write. A transmit pair with its interrupt bit set has been processed (printed page 125). The write behaviour is not given; see docs/mace-serial-dma.md." }
+serial_a_tx_pair = { bits = [22, 22], grade = "established", doc = "Read/write. A transmit pair with its interrupt bit set has been processed (printed page 125). The write behaviour is not given; see devices/mace_serial_dma/mace-serial-dma.md." }
 serial_a_tx_error = { bits = [23, 23], grade = "established", doc = "Read-only. A memory error stopped the port 1 transmit DMA; the channel is fatally stopped (printed page 125)." }
 serial_a_rx_threshold = { bits = [24, 24], grade = "established", doc = "Read-only. The port 1 receive ring meets its interrupt threshold (printed page 125)." }
 serial_a_rx_overrun = { bits = [25, 25], grade = "established", doc = "Read-only. A UART overrun was indicated during receive DMA; the channel has stopped (printed page 125)." }
 serial_b_tx_threshold = { bits = [27, 27], grade = "established", doc = "Read-only. The port 2 transmit ring meets its interrupt threshold (printed page 125)." }
-serial_b_tx_pair = { bits = [28, 28], grade = "established", doc = "Read/write. A port 2 transmit pair with its interrupt bit set has been processed (printed page 125). The write behaviour is not given; see docs/mace-serial-dma.md." }
+serial_b_tx_pair = { bits = [28, 28], grade = "established", doc = "Read/write. A port 2 transmit pair with its interrupt bit set has been processed (printed page 125). The write behaviour is not given; see devices/mace_serial_dma/mace-serial-dma.md." }
 serial_b_tx_error = { bits = [29, 29], grade = "established", doc = "Read-only. A memory error stopped the port 2 transmit DMA; the channel is fatally stopped (printed page 125)." }
 serial_b_rx_threshold = { bits = [30, 30], grade = "established", doc = "Read-only. The port 2 receive ring meets its interrupt threshold (printed page 125)." }
 serial_b_rx_overrun = { bits = [31, 31], grade = "established", doc = "Read-only. A UART overrun was indicated during receive DMA; the channel has stopped (printed page 125)." }

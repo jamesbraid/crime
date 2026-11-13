@@ -134,7 +134,7 @@
  * and zeroes the rest (0xa00e3450..0xa00e34a0); the spec has the engine
  * suppress any access through an invalid entry, PDF 137]; the kernel's
  * frame-buffer loader copies tile numbers that already carry it when the
- * allocator returns them so (docs/memory.md).
+ * allocator returns them so (devices/re/memory.md).
  */
 #define TLB_FB_TILES_PER_REG    4
 #define TLB_FB_ENTRY(phys)      ((uint16_t)((phys) >> 16))  /* [I] */
@@ -146,15 +146,15 @@
  * linear TLB maps 32 pages of 4 KiB. The caller's list comes from
  * crm_curproc_vtop and is taken to be a 4 KiB page-frame number [I].
  */
-#define TLB_LIN_VALID           0x80000000u /* [E] value set by every loader; valid bit [I, strong, docs/memory.md pass 7] */
+#define TLB_LIN_VALID           0x80000000u /* [E] value set by every loader; valid bit [I, strong, devices/re/memory.md pass 7] */
 
 /*
  * Texture TLB [E, k:crime_tiles:crmDefineTex, crmLoadTexTlb]: 28 registers,
  * four 16-bit entries each, value = (physical address >> 16) | 0x8000.
  * Colour-index TLB [E, k:crime_tiles:crmLoadCidTlb]: 4 registers, four
  * 16-bit entries each, entry = tile number without a flag bit. Full
- * table of all clients and the texture level layout: docs/memory.md.
- * Bit 15 is the valid bit [I, strong]; see docs/memory.md pass 7.
+ * table of all clients and the texture level layout: devices/re/memory.md.
+ * Bit 15 is the valid bit [I, strong]; see devices/re/memory.md pass 7.
  */
 #define TLB_TEX_ENTRY(phys)     ((uint16_t)(((phys) >> 16) | 0x8000))  /* [E value, I meaning] */
 
@@ -176,7 +176,7 @@
  * write to +0x4008 discards them (resets the uncommitted part of the
  * interface buffer). Its use after TLB loads would then clear any partial
  * user state left behind the kernel's writes [U]; routes tried and the
- * next one in docs/open-questions.md.
+ * next one in questions/README.md.
  */
 #define RE_IB_DISCARD           0x4008  /* [I] name */
 
@@ -194,7 +194,7 @@
 #define PP_VERTEX_X(n)      (0x2070 + 4 * (n))  /* NG, X primitives */
 #define PP_VERTEX_GL_X(n)   (0x2080 + 8 * (n))  /* NG */
 #define PP_VERTEX_GL_Y(n)   (0x2084 + 8 * (n))  /* NG */
-/* Transfer registers as IRIX writes them: see docs/pixel-transfer.md. [E]
+/* Transfer registers as IRIX writes them: see software/opengl/pixel-transfer.md. [E]
  * 0x20a0 source: screen position (x 31:16, y 15:0, 11 bits each) when the
  * source buffer is a drawable, or a linear offset (low 17 bits) when it is
  * linear TLB A or B; 0x20b0 is the destination linear offset. BufMode bits
@@ -228,7 +228,7 @@
 #define PP_TEX_SQS          0x2120  /* 64-bit, 36.12 */
 #define PP_TEX_TQS          0x2128  /* 64-bit, 36.12 */
 #define PP_TEX_QS           0x2130  /* 32-bit, 18.12 */
-/* 0x2134: s/t stepper shift flags, named stShift in [hdr]; see docs/opengl.md */
+/* 0x2134: s/t stepper shift flags, named stShift in [hdr]; see software/opengl/opengl.md */
 #define PP_TEX_DSQDX        0x2138
 #define PP_TEX_DSQDY        0x2140
 #define PP_TEX_DTQDX        0x2148
@@ -361,7 +361,7 @@
  * clear value in buffer units [I].
  * The driver does not add the half unit the spec recommends for rounding
  * [E, all four Z triangle routines], so depths are truncated; stepper
- * arithmetic, clamping and the test: docs/pixel-arithmetic.md.
+ * arithmetic, clamping and the test: devices/re/pixel-arithmetic.md.
  */
 #define DEPTH_WINDOW_MAX    0x3fffffffu /* [E] */
 #define DEPTH_SCALE         64.0f
@@ -420,7 +420,7 @@
  * get +2048 (half of the 12-bit fraction) after truncation, the slopes
  * do not [E, __glCrmFillTriangle]. Level of detail, the software
  * formula as the intended arithmetic and what stays unknown:
- * docs/pixel-arithmetic.md.
+ * devices/re/pixel-arithmetic.md.
  *
  * Texel storage [E, gl:crm_texture, k:crime_tiles]:
  * - The kernel prepares a per-texture image of all 28 texture TLB
@@ -454,7 +454,7 @@
  * the drawable has no alpha bits, DST_ALPHA is sent as ONE (1),
  * ONE_MINUS_DST_ALPHA as ZERO (0) and SRC_ALPHA_SATURATE as ZERO, so the
  * hardware need not invent destination alpha [E]. Product width and
- * rounding are [U]: docs/pixel-arithmetic.md. */
+ * rounding are [U]: devices/re/pixel-arithmetic.md. */
 
 /* ---- LogicOp (+0x21b0) [E, gl:crm_attrib:__glCrmPassLogicOp jump table] -- */
 /* bits 3:0 = GL op - GL_CLEAR (0x1500); identity for all 16 ops. The spec

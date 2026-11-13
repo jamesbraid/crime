@@ -1149,7 +1149,7 @@
    "value": 524288,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   },
   {
    "unit": "mace_video",
@@ -1158,7 +1158,7 @@
    "value": 1048576,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   },
   {
    "unit": "mace_video",
@@ -1167,7 +1167,7 @@
    "value": 521142272,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   }
  ]
 }

@@ -197,7 +197,7 @@ space = "codec_reg"
 grade = "established"
 reset = 0x8868
 doc = """
-Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see docs/mace-audio.md)."""
+Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see devices/mace_audio/mace-audio.md)."""
 
 [registers.mono_control.fields]
 mono_mix_mute = { bits = [15, 15], grade = "established" }
@@ -329,11 +329,11 @@ Mode of generator 1. Clock 2 and clock 3 use the same layout at registers 19 and
 ref = { bits = [15, 15], grade = "inferred", doc = "Reference select. The datasheet describes REF=0 as its own oscillator mode and REF=1 as a SYNC-locked mode in which the phase work is held. The mapping of the bit value to each mode is inferred from that description." }
 video_select = { bits = [14, 14], grade = "unknown", doc = "Named video select. The datasheet gives no meaning for it." }
 pll_gain = { bits = [13, 13], grade = "unknown", doc = "Named PLL gain. The datasheet gives no meaning for it." }
-bit_plus_200hz = { bits = [12, 12], grade = "established", doc = "Adds 200 Hz to the BIT rate. The scaling order is an interpretation (see docs/mace-audio.md)." }
+bit_plus_200hz = { bits = [12, 12], grade = "established", doc = "Adds 200 Hz to the BIT rate. The scaling order is an interpretation (see devices/mace_audio/mace-audio.md)." }
 conv_8_7_multiplier = { bits = [11, 11], grade = "established", doc = "Scales the conversion rate by 8/7." }
 conv_128_multiplier = { bits = [10, 10], grade = "established", doc = "Scales the CONV output by 128." }
-conv_modifier = { bits = [7, 4], grade = "established", doc = "Conversion code, see the BIT and CONV table in docs/mace-audio.md." }
-bit_modifier = { bits = [3, 0], grade = "established", doc = "BIT code, see the BIT and CONV table in docs/mace-audio.md." }
+conv_modifier = { bits = [7, 4], grade = "established", doc = "Conversion code, see the BIT and CONV table in devices/mace_audio/mace-audio.md." }
+bit_modifier = { bits = [3, 0], grade = "established", doc = "BIT code, see the BIT and CONV table in devices/mace_audio/mace-audio.md." }
 
 [registers.clock1_hz]
 offset = 17

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source -->
 <genxml unit="mace_serial_dma" prefix="MACE_SERIAL_DMA" title="O2 MACE serial port DMA channels: channel control, ring pointers and depth" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)">
-  <doc>MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in docs/mace-serial-dma.md.</doc>
+  <doc>MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in devices/mace_serial_dma/mace-serial-dma.md.</doc>
   <enum name="serial_ring">
     <value name="scratch" value="3" grade="established"/>
     <value name="port1_tx" value="4" grade="established"/>
@@ -34,7 +34,7 @@
     <field name="block_index" start="5" size="7" type="uint" grade="established"/>
   </struct>
   <struct name="CHANNEL_DEPTH" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)" register="yes" offset="0x18" access="r" count="2" stride="32" reset="0x0">
-    <doc>Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See docs/mace-serial-dma.md.</doc>
+    <doc>Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See devices/mace_serial_dma/mace-serial-dma.md.</doc>
     <field name="blocks" start="5" size="7" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f318000" grade="established"/>

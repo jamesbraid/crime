@@ -7,7 +7,7 @@
 
 
 /*
- * One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see docs/open-questions.md).
+ * One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see questions/README.md).
  */
 /* counter: rw64, reset 0x0; published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
 #define MACE_TIMER_COUNTER_OFFSET                    0x0u /* established */

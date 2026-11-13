@@ -552,23 +552,23 @@ The shipped IRIX timing routine writes 0 here, and the start-up sequence writes 
 | `CMAP_FIFO_DEPTH_REV1` | 0x40 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `CMAP_FIFO_DEPTH_REV2` | 0x3f | inferred | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `CMAP_FIFO_LOW_WATER` | 0x30 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | free-slot threshold software waits for The shipped IRIX X module waits for this many free entries after each batch of 33 colour-map writes (CMFIFO_BATCH). |
-| `CMFIFO_BATCH` | 0x21 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Colour-map writes the shipped IRIX X module issues between FIFO checks. |
+| `CMFIFO_BATCH` | 0x21 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Colour-map writes the shipped IRIX X module issues between FIFO checks. |
 | `DEVICE_ID_VALUE` | 0x666 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | the probe requires this The shipped IRIX kernel reads the identity word first and leaves the block untouched when it reads any other value. |
-| `DID_BLOCK_BYTES` | 0x200 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Size of one block of a display-ID table; line tables are packed in 16-bit units inside a block. |
-| `DID_BLOCK_ENTRIES` | 0x100 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Entries after which packing restarts in the next block. |
-| `DID_END_BLOCK` | 0x80 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Block number that ends a display-ID table; the X module stops filling it there. |
-| `DID_LAST_XEND` | 0x7ff | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Right-hand column of the last band's line entry, which covers every line below the screen. |
-| `DID_LINE_TABLE_OFFSET` | 0x2000 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Byte offset of the first line table in a display-ID table. |
-| `DID_TABLE_BYTES` | 0x10000 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Size of one display-ID table as the shipped IRIX X module fills it. The frame table starts at byte 0 and the line tables start at DID_LINE_TABLE_OFFSET. |
-| `DOTCLK_SETTLE_MS` | 0xb | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Milliseconds the shipped IRIX kernel waits after it writes the dot-clock word with the run bit set. |
-| `GBE_LINE_IRQ_BASE` | 0x10 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | CRIME interrupt bit of GBE line 0; GBE line n raises bit 16 + n. Lines 2 and 3 are the CRIME inputs 18 and 19. |
+| `DID_BLOCK_BYTES` | 0x200 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Size of one block of a display-ID table; line tables are packed in 16-bit units inside a block. |
+| `DID_BLOCK_ENTRIES` | 0x100 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Entries after which packing restarts in the next block. |
+| `DID_END_BLOCK` | 0x80 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Block number that ends a display-ID table; the X module stops filling it there. |
+| `DID_LAST_XEND` | 0x7ff | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Right-hand column of the last band's line entry, which covers every line below the screen. |
+| `DID_LINE_TABLE_OFFSET` | 0x2000 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Byte offset of the first line table in a display-ID table. |
+| `DID_TABLE_BYTES` | 0x10000 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Size of one display-ID table as the shipped IRIX X module fills it. The frame table starts at byte 0 and the line tables start at DID_LINE_TABLE_OFFSET. |
+| `DOTCLK_SETTLE_MS` | 0xb | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Milliseconds the shipped IRIX kernel waits after it writes the dot-clock word with the run bit set. |
+| `GBE_LINE_IRQ_BASE` | 0x10 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | CRIME interrupt bit of GBE line 0; GBE line n raises bit 16 + n. Lines 2 and 3 are the CRIME inputs 18 and 19. |
 | `GMAP_ENTRIES` | 0x100 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `MODE_ENTRIES` | 0x20 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `MODE_ENTRY_STRIDE` | 0x4 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | entries are consecutive 32-bit words, so swap slot n sits at the table base plus 4 * n |
 | `OFF_CMAP` | 0x50000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | colour map |
 | `OFF_CMAP_FIFO` | 0x58000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_CRS_CMAP` | 0x70008 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | First cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xffffff00. |
-| `OFF_CRS_COLOR2` | 0x7000c | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Second cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xff000000. |
+| `OFF_CRS_COLOR2` | 0x7000c | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Second cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xff000000. |
 | `OFF_CRS_CTL` | 0x70004 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_CRS_GLYPH` | 0x78000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | page 46 table start; the page 34 table gives a different start offset, conflict open 64 words; the shipped IRIX text port loads words 0 to 31 from a 32-word table and writes 0 to words 32 to 63. Reading the words as a 32 by 32 bitmap at two bits per pixel is inferred; the text port draws with the first 32 words only (inferred). |
 | `OFF_CRS_POS` | 0x70000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
@@ -618,25 +618,25 @@ The shipped IRIX timing routine writes 0 here, and the start-up sequence writes 
 | `OFF_VT_VSYNC` | 0x10008 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_VT_XY` | 0x10000 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | `OFF_VT_XYMAX` | 0x10004 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| `OPT_CMD_CLOCK_KHZ` | 0x186a0 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Pixel clock in kHz. Above this the shipped IRIX timing routine sends 0xff to the option port; at or below it, 0x7f. |
-| `OPT_CMD_ID_HIGH` | 0xff | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Command written before the first id read. Its id bits come from bits 6 and 5 of the byte read. |
-| `OPT_CMD_ID_LOW` | 0x7f | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Command written before the second id read. Its id bits come from bits 6 and 5 of the byte read. |
-| `OPT_DELAY_SMALL` | 0x2 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Horizontal delay used when the installed value is below the limit. It is zero otherwise. |
-| `OPT_ID_MASK` | 0x60 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Bits 6 and 5 of an id read. |
-| `OPT_ID_RESTORE` | 0x70 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Bits ORed into the first byte read when the probe writes that byte back. |
-| `OPT_INSTALLED_LIMIT` | 0x9 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Installed values below this use the small horizontal delay. The reason for the split is inferred. |
-| `OPT_PORT_ADDR` | 0x7e | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Write address of the option port on the flat-panel bus. A read uses the same address with bit 0 set. |
+| `OPT_CMD_CLOCK_KHZ` | 0x186a0 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Pixel clock in kHz. Above this the shipped IRIX timing routine sends 0xff to the option port; at or below it, 0x7f. |
+| `OPT_CMD_ID_HIGH` | 0xff | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Command written before the first id read. Its id bits come from bits 6 and 5 of the byte read. |
+| `OPT_CMD_ID_LOW` | 0x7f | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Command written before the second id read. Its id bits come from bits 6 and 5 of the byte read. |
+| `OPT_DELAY_SMALL` | 0x2 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Horizontal delay used when the installed value is below the limit. It is zero otherwise. |
+| `OPT_ID_MASK` | 0x60 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Bits 6 and 5 of an id read. |
+| `OPT_ID_RESTORE` | 0x70 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Bits ORed into the first byte read when the probe writes that byte back. |
+| `OPT_INSTALLED_LIMIT` | 0x9 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Installed values below this use the small horizontal delay. The reason for the split is inferred. |
+| `OPT_PORT_ADDR` | 0x7e | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Write address of the option port on the flat-panel bus. A read uses the same address with bit 0 set. |
 | `OVERLAY_TRANSPARENT_INDEX` | 0x0 | inferred | published GBE 1.1 specification | Overlay pixel value that is transparent, so the normal planes show through. |
-| `REF_CLOCK_KHZ` | 0x4e20 | inferred | shipped IRIX kernel binaries, per kudzu docs/gbe.md | PLL reference clock behind the dot-clock table. The kernel states none; the source reading takes 20 MHz from a public Linux driver, not re-checked. |
+| `REF_CLOCK_KHZ` | 0x4e20 | inferred | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | PLL reference clock behind the dot-clock table. The kernel states none; the source reading takes 20 MHz from a public Linux driver, not re-checked. |
 | `TILE_LIST_ALIGN_BYTES` | 0x200 | inferred | published GBE 1.1 specification | Tile-list requests start on this boundary. |
 | `TILE_LIST_BYTES_UNIT` | 0x20 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | a changed tile pointer is seen by adding this |
 | `TILE_LIST_OUTSTANDING` | 0x8 | inferred | published GBE 1.1 specification | Tile-list requests that may be outstanding at once. |
 | `TILE_LIST_PAGE_BYTES` | 0x2000 | inferred | published GBE 1.1 specification | A tile-list request does not cross a page of this size. |
-| `TILE_NUMBER_MASK` | 0x1fff | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Mask the shipped IRIX kernel applies to a physical tile address before it is written into a tile list. |
-| `TWO_WIRE_WAIT_BIT` | 0x1 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Bit of the bus register that a start condition waits to read clear. |
-| `TWO_WIRE_WAIT_LIMIT` | 0x3c | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Most delays a start condition polls the bus bit before it gives up. |
+| `TILE_NUMBER_MASK` | 0x1fff | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Mask the shipped IRIX kernel applies to a physical tile address before it is written into a tile list. |
+| `TWO_WIRE_WAIT_BIT` | 0x1 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Bit of the bus register that a start condition waits to read clear. |
+| `TWO_WIRE_WAIT_LIMIT` | 0x3c | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Most delays a start condition polls the bus bit before it gives up. |
 | `VC_TILE_REGS` | 0x5 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings | VC_4 to VC_8 hold the ten tiles of one captured field, two per register |
-| `VT_XY_FREEZE` | 0x80000000 | established | shipped IRIX kernel binaries, per kudzu docs/gbe.md | Value the shipped IRIX kernel writes to the vertical timing position word to freeze it; the word's bit 31 is read first as the freeze state. |
+| `VT_XY_FREEZE` | 0x80000000 | established | shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md | Value the shipped IRIX kernel writes to the vertical timing position word to freeze it; the word's bit 31 is read first as the freeze state. |
 
 ## Test vectors
 

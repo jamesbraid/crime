@@ -2,7 +2,7 @@
 
 # O2 MACE external 16550-compatible serial port: modem control and scratch registers
 
-One external serial port of the MACE chip, a 16550-compatible UART. Offsets are from each port's base (the serial base constants in mace_periph.toml). Only the modem control and scratch registers are defined here; the rest of the register set is in docs/mace-base.md.
+One external serial port of the MACE chip, a 16550-compatible UART. Offsets are from each port's base (the serial base constants in mace_periph.toml). Only the modem control and scratch registers are defined here; the rest of the register set is in platforms/ip32/mace-base.md.
 
 Unit `mace_uart`, macro prefix `MACE_UART`.
 Default source: TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996).
@@ -26,4 +26,4 @@ Modem control register of one port. Master reset clears every bit, and bits 6 an
 
 ### Register `scratch`
 
-Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which docs/mace-base.md records.
+Scratch byte for programmer use, with DLAB clear. Master reset has no effect on it (inferred, printed page 25). With DLAB set, the same position holds the clock prescaler and the infrared select. That use has no field here: the sources disagree on the infrared bit, which platforms/ip32/mace-base.md records.

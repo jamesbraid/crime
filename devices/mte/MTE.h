@@ -61,7 +61,7 @@ enum mte_buf {  /* [E, spec PDF 185, MTE version of the table] */
  * SRC0/SRC1/DST0/DST1: byte column in 31:16, row in 15:0, whatever the pixel
  * size. End word = last byte of the last pixel, so the X server adds 0x10000
  * (16 bit) or 0x30000 (32 bit) to (x_end - 1) << (16 + log2 bytes per pixel).
- * Full description: docs/mte.md. */
+ * Full description: devices/mte/mte.md. */
 #define MTE_ADDR(col_byte, row)   (((uint32_t)(col_byte) << 16) | ((row) & 0xffff))
 
 /* ---- Frame-buffer tiles [E, spec PDF 186-187] ----------------------------- */
@@ -115,7 +115,7 @@ enum mte_buf {  /* [E, spec PDF 185, MTE version of the table] */
  * bit 24 is set]. The layout is in bytes, so a 32-bit subtiled texture
  * holds 2 x 4 texels per cell and 32 x 64 per subtile [E, same code].
  * The driver subtiles every level it creates, 16- and 32-bit alike,
- * unless GLCRMTEXUSEONCE is set [E, crmComputeTexLevelSize; docs/opengl.md].
+ * unless GLCRMTEXUSEONCE is set [E, crmComputeTexLevelSize; software/opengl/opengl.md].
  */
 #define SUBTILE_BLOCK_BYTES 32      /* [E] 8 bytes x 4 rows */
 #define SUBTILE_BYTES       0x2000  /* [E] 128 bytes x 64 rows */

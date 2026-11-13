@@ -24,7 +24,7 @@
     <field name="force_idle" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="DATA" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)" register="yes" offset="0x18" access="rw" reset="0x0">
-    <doc>Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see docs/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer.</doc>
+    <doc>Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see devices/mace_video/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer.</doc>
     <field name="byte" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f330000" grade="established"/>

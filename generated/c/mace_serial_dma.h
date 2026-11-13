@@ -63,7 +63,7 @@
 #define MACE_SERIAL_DMA_CHANNEL_WRITE_BLOCK_INDEX_INPLACE (MACE_SERIAL_DMA_CHANNEL_WRITE_BLOCK_INDEX_MASK << MACE_SERIAL_DMA_CHANNEL_WRITE_BLOCK_INDEX_SHIFT)
 
 /*
- * Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See docs/mace-serial-dma.md.
+ * Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See devices/mace_serial_dma/mace-serial-dma.md.
  */
 /* channel_depth: r64, reset 0x0; published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130) */
 #define MACE_SERIAL_DMA_CHANNEL_DEPTH_OFFSET         0x18u /* established */

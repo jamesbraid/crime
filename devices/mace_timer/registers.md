@@ -22,7 +22,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `counter`
 
-One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see docs/open-questions.md).
+One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see questions/README.md).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -83,6 +83,6 @@ Array of 3 registers, stride 8.
 | `CMP0_ALIAS` | 0x1f350000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181) |
 | `CMP1_ALIAS` | 0x1f360000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x10, numbered #2 (printed page 181) |
 | `CMP2_ALIAS` | 0x1f370000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x18, numbered #3 (printed page 181) |
-| `TIMER_SNAP_IN1_OFF` | 0x38 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Timer snapshot doubleword for input channel 1, from the timer block base. |
-| `TIMER_SNAP_IN2_OFF` | 0x40 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Timer snapshot doubleword for input channel 2, from the timer block base. |
-| `TIMER_SNAP_OUT_OFF` | 0x48 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Timer snapshot doubleword for the output channel, from the timer block base. |
+| `TIMER_SNAP_IN1_OFF` | 0x38 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 1, from the timer block base. |
+| `TIMER_SNAP_IN2_OFF` | 0x40 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 2, from the timer block base. |
+| `TIMER_SNAP_OUT_OFF` | 0x48 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for the output channel, from the timer block base. |

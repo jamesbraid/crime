@@ -163,7 +163,7 @@ scale_on = { bits = [38, 38], grade = "established", doc = "One enables horizont
 [registers.hclip_odd.fields.filter_mode]
 bits = [40, 39]
 grade = "established"
-doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md."
+doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in devices/mace_video/mace-video.md."
 
 [registers.hclip_odd.fields.filter_mode.enums]
 none = { value = 0, grade = "established" }
@@ -209,7 +209,7 @@ scale_on = { bits = [38, 38], grade = "established", doc = "One enables horizont
 [registers.hclip_even.fields.filter_mode]
 bits = [40, 39]
 grade = "established"
-doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in docs/mace-video.md."
+doc = "Non-square to square filter. The table prints the range as 39:40 (printed pages 46 and 47, table 17). Its PAL and NTSC ratios differ from the overview; see the conflicts in devices/mace_video/mace-video.md."
 
 [registers.hclip_even.fields.filter_mode.enums]
 none = { value = 0, grade = "established" }

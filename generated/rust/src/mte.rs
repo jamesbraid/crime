@@ -238,7 +238,7 @@ pub mod dst_ystep {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3048;
 }
-/// Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see docs/mte.md). (established)
+/// Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see devices/mte/mte.md). (established)
 pub mod null {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3070;

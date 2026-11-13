@@ -137,7 +137,7 @@
  * Inputs 15 to 0 are routed from MACE [E, spec PDF 107-108, table 5-5]; the
  * MACE video channels are the first three. All sixteen are read-only in the
  * hardware interrupt register. IRIX registers only the MACE ISA and
- * miscellaneous inputs (docs/memory.md); the video numbers below are from the
+ * miscellaneous inputs (devices/re/memory.md); the video numbers below are from the
  * specification and agree with netbsd's grouping, no IRIX object in scope
  * names them.
  */
@@ -162,7 +162,7 @@
  *   clears +0x048 and +0x250 by writing zero
  * kernel.o also carries separate decoders print_buserr_rev0 and
  * print_buserr_rev1; rev0 serves the revision-0 part and rev1 every later
- * one (docs/memory.md). Bit meanings:
+ * one (devices/re/memory.md). Bit meanings:
  *   CPU error status, revision 1 and later (3 bits) [E, spec PDF 118
  *     table 5-17; linux crime.h]: 2 CPU illegal address, 1 VICE write
  *     parity, 0 CPU write parity; software clears them by writing. The
@@ -210,7 +210,7 @@
  * 7:5 (reset 001), while netbsd and linux name 7:4 and 3:0 as
  * write-buffer and command-queue high-water marks (netbsd, linux names).
  * Watchdog (+0x030) [spec table 5-14]: bit 20 warm-reset time-out flag,
- * 19:0 count, both reset 0. See docs/memory.md.
+ * 19:0 count, both reset 0. See devices/re/memory.md.
  */
 #define CRIME_CONTROL           0x008       /* [E, k:kernel:mlreset] */
 #define CRIME_INT_MACE_A        4           /* [E] */

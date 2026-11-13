@@ -184,6 +184,6 @@ Array of 8 registers, stride 8.
 
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
-| `IN2_OFF` | 0x80000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Offset of input channel 2 from the start of the video window. |
-| `OUT_OFF` | 0x100000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Offset of the output channel from the start of the video window. |
-| `WINDOW_PHYS_ADDR` | 0x1f100000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1. |
+| `IN2_OFF` | 0x80000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of input channel 2 from the start of the video window. |
+| `OUT_OFF` | 0x100000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of the output channel from the start of the video window. |
+| `WINDOW_PHYS_ADDR` | 0x1f100000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1. |

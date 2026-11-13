@@ -2,7 +2,7 @@
 
 # O2 MACE serial port DMA channels: channel control, ring pointers and depth
 
-MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in docs/mace-serial-dma.md.
+MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in devices/mace_serial_dma/mace-serial-dma.md.
 
 Unit `mace_serial_dma`, macro prefix `MACE_SERIAL_DMA`.
 Default source: published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130).
@@ -52,7 +52,7 @@ Array of 2 registers, stride 32.
 
 ### Register `channel_depth`
 
-Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See docs/mace-serial-dma.md.
+Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See devices/mace_serial_dma/mace-serial-dma.md.
 
 Array of 2 registers, stride 32.
 

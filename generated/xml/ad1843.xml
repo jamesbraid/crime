@@ -97,7 +97,7 @@
     <field name="r_gain" start="0" size="5" type="uint" grade="established"/>
   </struct>
   <struct name="MONO_CONTROL" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here." register="yes" offset="0x8" access="rw" space="codec_reg" reset="0x8868">
-    <doc>Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see docs/mace-audio.md).</doc>
+    <doc>Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see devices/mace_audio/mace-audio.md).</doc>
     <field name="mono_mix_mute" start="15" size="1" type="uint" grade="established"/>
     <field name="mono_mix_gain" start="8" size="5" type="uint" grade="established"/>
     <field name="all_mix_mute" start="7" size="1" type="uint" grade="inferred"/>

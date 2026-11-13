@@ -316,6 +316,6 @@ count = 8
 space = "mace_video_out"
 
 [constants]
-WINDOW_PHYS_ADDR = { value = 0x1f100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1." }
-IN2_OFF = { value = 0x80000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of input channel 2 from the start of the video window." }
-OUT_OFF = { value = 0x100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of the output channel from the start of the video window." }
+WINDOW_PHYS_ADDR = { value = 0x1f100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1." }
+IN2_OFF = { value = 0x80000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Offset of input channel 2 from the start of the video window." }
+OUT_OFF = { value = 0x100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Offset of the output channel from the start of the video window." }
