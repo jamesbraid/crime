@@ -6,7 +6,7 @@
  * Sources: [spec] CRIME 1.5 Specification rev 0.3 (PDF pages);
  * [netbsd] crmfbreg.h; [k:...] IRIX 6.5.30 IP32boot crime.a;
  * [gl:...] IRIX 6.5.30 N32 libGLcore; [x:...] IRIX 6.5.30 crm.so (stripped,
- * cited by line in ddx/asm/crm/crm/crm.s).
+ * cited by line in software/xsgi/asm/crm/crm/crm.s).
  * Offsets are from 0x15000000; the MTE group is user-mappable [E, spec].
  */
 #ifndef MTE_H

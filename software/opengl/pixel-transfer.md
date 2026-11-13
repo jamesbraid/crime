@@ -1,6 +1,6 @@
 # Pixel transfer: DrawPixels, ReadPixels and the kernel pixel DMA
 
-How IRIX 6.5.30 moves pixels between user memory and the frame buffer. Registers are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Sources: N32 `libGLcore` unit `crm_pixel` (`libglcore/decomp/CRIME/crm_pixel.c`, `libglcore/asm/CRIME/crm_pixel.s`) and the kernel's `crime_dma` unit (`crime_kernel/decomp/crime_dma.c`, `crime_kernel/disasm/crime_dma/crime_dma.text.s`). No source in this repository shows a host-memory DMA engine as such: the transfer is the pixel pipeline's transfer mode reading or writing memory through a linear TLB.
+How IRIX 6.5.30 moves pixels between user memory and the frame buffer. Registers are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Sources: N32 `libGLcore` unit `crm_pixel` (`software/opengl/decomp/CRIME/crm_pixel.c`, `software/opengl/asm/CRIME/crm_pixel.s`) and the kernel's `crime_dma` unit (`software/kernel/decomp/crime_dma.c`, `software/kernel/disasm/crime_dma/crime_dma.text.s`). No source in this repository shows a host-memory DMA engine as such: the transfer is the pixel pipeline's transfer mode reading or writing memory through a linear TLB.
 
 ## Linear TLB loading
 
@@ -41,7 +41,7 @@ Established (`crimePixelDma` `0x4a4`..`0x50c`, `crmpixdma` `0xe8`..`0x144` in `c
 
 ## The step registers
 
-Sources: the kernel request above; `libGLcore` `__glCrmPickDrawPixels` (the CRIME GL driver pixel assembly unit source lines 401-440, the zoom set-up), `crmDrawPixelsXfer2` (lines 2280-2330), `crmCopyPixelsXfer` (lines 2884-2994); the X module's unnamed copy routines (`ddx/asm/crm/crm/crm.s` lines 28440-28540 and 57267-57845).
+Sources: the kernel request above; `libGLcore` `__glCrmPickDrawPixels` (the CRIME GL driver pixel assembly unit source lines 401-440, the zoom set-up), `crmDrawPixelsXfer2` (lines 2280-2330), `crmCopyPixelsXfer` (lines 2884-2994); the X module's unnamed copy routines (`software/xsgi/asm/crm/crm/crm.s` lines 28440-28540 and 57267-57845).
 
 - Established (zoom set-up, lines 412-440): for each axis libGLcore turns the GL pixel zoom into two integers. A zoom whose truncated magnitude is 1 to 16 gives a replication field of `zoom - 1` and a skip of 1. A zoom below 1 gives a replication field of 0 and a skip of `round(1 / zoom)` masked to 11 bits. Any other zoom (above 1 but not an integer up to 16) gives 0 and 1, and is drawn by a different path.
 - Established (`crmDrawPixelsXfer2`, line 2286 and 2330): the source X step is `(x skip * bytes per pixel) & 0x1ffff | x replication << 28` and the source Y step carries the y replication in bits 31:28 over a 17-bit byte distance; the bytes per pixel is `1 << ((BufMode >> 8) & 3)`. The kernel puts its vertical zoom in the same bits 31:28 as `zoom - 1`.
@@ -75,7 +75,7 @@ case, which none of the RGB paths above exercise.
   A download selects a tiled CI8 source with both source steps at 1, and a
   packed linear CI8 destination with its destination step at 1. These agree
   with the Y-step rule above at pixel size one.
-- Established as code (`crime_kernel/decomp/crime_dma.c`, `crmpixdma`, the
+- Established as code (`software/kernel/decomp/crime_dma.c`, `crmpixdma`, the
   upload branch that stores through `0x20a0 | 0x800`): the kernel stores the
   chunk's source address without a mask. libGLcore masks the same register to
   17 bits. Nothing here shows a chunk address above 17 bits, so the 17-bit

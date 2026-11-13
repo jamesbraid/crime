@@ -9,11 +9,11 @@
  *   [linux]   references/code/linux/arch/mips/sgi-ip32/ip32-irq.c, crime.c,
  *             arch/mips/include/asm/ip32/crime.h.
  *   [ide:ADDR] the shipped IRIX 6.5.30 stand-alone diagnostics
- *             sbin/stand/ide.IP32 (diags/ide.IP32), stripped; ADDR is the
+ *             sbin/stand/ide.IP32 (software/diags/ide.IP32), stripped; ADDR is the
  *             virtual address in its objdump listing.
  *   [k:FILE:FUNC+OFF] IRIX 6.5.30 IP32boot crime.a member FILE, function and
  *             byte offset in the relocated objdump listing (the m2c-ready copy
- *             is crime_kernel/disasm/FILE/FILE.text.s).
+ *             is software/kernel/disasm/FILE/FILE.text.s).
  * All registers here are 64-bit and take doubleword accesses only [E, spec
  * PDF 113-115]. The kernel reaches them through KSEG1 at 0xB4000000.
  */

@@ -1,7 +1,7 @@
 {
-  "crime_kernel": [
+  "software/kernel": [
     {
-      "path": "crime_kernel/crime.o",
+      "path": "software/kernel/crime.o",
       "filename": "crime.o",
       "size": 61572,
       "sections": {
@@ -444,7 +444,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_busts.o",
+      "path": "software/kernel/crime_busts.o",
       "filename": "crime_busts.o",
       "size": 980,
       "sections": {
@@ -474,7 +474,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_db.o",
+      "path": "software/kernel/crime_db.o",
       "filename": "crime_db.o",
       "size": 4820,
       "sections": {
@@ -530,7 +530,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_debug.o",
+      "path": "software/kernel/crime_debug.o",
       "filename": "crime_debug.o",
       "size": 4244,
       "sections": {
@@ -586,7 +586,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_dma.o",
+      "path": "software/kernel/crime_dma.o",
       "filename": "crime_dma.o",
       "size": 11268,
       "sections": {
@@ -668,7 +668,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_i2c.o",
+      "path": "software/kernel/crime_i2c.o",
       "filename": "crime_i2c.o",
       "size": 45284,
       "sections": {
@@ -1036,7 +1036,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_init.o",
+      "path": "software/kernel/crime_init.o",
       "filename": "crime_init.o",
       "size": 19972,
       "sections": {
@@ -1170,7 +1170,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_retrace.o",
+      "path": "software/kernel/crime_retrace.o",
       "filename": "crime_retrace.o",
       "size": 32916,
       "sections": {
@@ -1394,7 +1394,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_tiles.o",
+      "path": "software/kernel/crime_tiles.o",
       "filename": "crime_tiles.o",
       "size": 26388,
       "sections": {
@@ -1640,7 +1640,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_tp.o",
+      "path": "software/kernel/crime_tp.o",
       "filename": "crime_tp.o",
       "size": 11412,
       "sections": {
@@ -1756,7 +1756,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/crime_zbuf.o",
+      "path": "software/kernel/crime_zbuf.o",
       "filename": "crime_zbuf.o",
       "size": 5876,
       "sections": {
@@ -1812,7 +1812,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/gfx.o",
+      "path": "software/kernel/gfx.o",
       "filename": "gfx.o",
       "size": 40296,
       "sections": {
@@ -2206,7 +2206,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/gfxs/gfx.o",
+      "path": "software/kernel/gfxs/gfx.o",
       "filename": "gfx.o",
       "size": 40308,
       "sections": {
@@ -2600,7 +2600,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/gfxs/gfx_debug.o",
+      "path": "software/kernel/gfxs/gfx_debug.o",
       "filename": "gfx_debug.o",
       "size": 964,
       "sections": {
@@ -2630,7 +2630,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/mace.o",
+      "path": "software/kernel/mace.o",
       "filename": "mace.o",
       "size": 9704,
       "sections": {
@@ -2752,7 +2752,7 @@
       "type": "ET_REL"
     },
     {
-      "path": "crime_kernel/rrm.o",
+      "path": "software/kernel/rrm.o",
       "filename": "rrm.o",
       "size": 50168,
       "sections": {
@@ -3226,7 +3226,7 @@
   ],
   "libglcore": [
     {
-      "path": "libglcore/libGL_n32.so",
+      "path": "software/opengl/libGL_n32.so",
       "filename": "libGL_n32.so",
       "size": 518648,
       "sections": {
@@ -7915,7 +7915,7 @@
       "type": "ET_DYN"
     },
     {
-      "path": "libglcore/libGL_o32.so",
+      "path": "software/opengl/libGL_o32.so",
       "filename": "libGL_o32.so",
       "size": 487952,
       "sections": {
@@ -12327,7 +12327,7 @@
       "type": "ET_DYN"
     },
     {
-      "path": "libglcore/libGLcore_n32.so",
+      "path": "software/opengl/libGLcore_n32.so",
       "filename": "libGLcore_n32.so",
       "size": 2572500,
       "sections": {
@@ -31137,7 +31137,7 @@
       "type": "ET_DYN"
     },
     {
-      "path": "libglcore/libGLcore_o32.so",
+      "path": "software/opengl/libGLcore_o32.so",
       "filename": "libGLcore_o32.so",
       "size": 2360688,
       "sections": {
@@ -49199,7 +49199,7 @@
   ],
   "ddx": [
     {
-      "path": "ddx/Xsgi",
+      "path": "software/xsgi/Xsgi",
       "filename": "Xsgi",
       "size": 3120928,
       "sections": {
@@ -67750,7 +67750,7 @@
       "type": "ET_EXEC"
     },
     {
-      "path": "ddx/crm.so",
+      "path": "software/xsgi/crm.so",
       "filename": "crm.so",
       "size": 1861396,
       "sections": {
@@ -72935,7 +72935,7 @@
       "type": "ET_DYN"
     },
     {
-      "path": "ddx/glx.so",
+      "path": "software/xsgi/glx.so",
       "filename": "glx.so",
       "size": 646360,
       "sections": {
@@ -80853,137 +80853,137 @@
   ],
   "diags": [
     {
-      "filename": "diags/crm_vof/1024x768_60.vfo",
+      "filename": "software/diags/crm_vof/1024x768_60.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1024x768_60p.vfo",
+      "filename": "software/diags/crm_vof/1024x768_60p.vfo",
       "size": 12436,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1024x768_70.vfo",
+      "filename": "software/diags/crm_vof/1024x768_70.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1024x768_75.vfo",
+      "filename": "software/diags/crm_vof/1024x768_75.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1024x768_96s.vfo",
+      "filename": "software/diags/crm_vof/1024x768_96s.vfo",
       "size": 12748,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_48.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_48.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_50.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_50.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_60.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_60.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_60p.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_60p.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_72.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_72.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x1024_75.vfo",
+      "filename": "software/diags/crm_vof/1280x1024_75.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1280x492_120s.vfo",
+      "filename": "software/diags/crm_vof/1280x492_120s.vfo",
       "size": 12740,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1600x1024_48p.vfo",
+      "filename": "software/diags/crm_vof/1600x1024_48p.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1600x1024_50p.vfo",
+      "filename": "software/diags/crm_vof/1600x1024_50p.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/1600x1024_60p.vfo",
+      "filename": "software/diags/crm_vof/1600x1024_60p.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1024x768_60.vfo",
+      "filename": "software/diags/crm_vof/2@1024x768_60.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1024x768_70.vfo",
+      "filename": "software/diags/crm_vof/2@1024x768_70.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1024x768_75.vfo",
+      "filename": "software/diags/crm_vof/2@1024x768_75.vfo",
       "size": 12440,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1280x1024_48.vfo",
+      "filename": "software/diags/crm_vof/2@1280x1024_48.vfo",
       "size": 12444,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1280x1024_50.vfo",
+      "filename": "software/diags/crm_vof/2@1280x1024_50.vfo",
       "size": 12444,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1280x1024_60.vfo",
+      "filename": "software/diags/crm_vof/2@1280x1024_60.vfo",
       "size": 12444,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1280x1024_72.vfo",
+      "filename": "software/diags/crm_vof/2@1280x1024_72.vfo",
       "size": 12444,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/2@1280x1024_75.vfo",
+      "filename": "software/diags/crm_vof/2@1280x1024_75.vfo",
       "size": 12444,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/640x480_60.vfo",
+      "filename": "software/diags/crm_vof/640x480_60.vfo",
       "size": 12416,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/800x600_60.vfo",
+      "filename": "software/diags/crm_vof/800x600_60.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "filename": "diags/crm_vof/800x600_72.vfo",
+      "filename": "software/diags/crm_vof/800x600_72.vfo",
       "size": 12424,
       "type": "data"
     },
     {
-      "path": "diags/gfxinit",
+      "path": "software/diags/gfxinit",
       "filename": "gfxinit",
       "size": 177132,
       "sections": {
@@ -82835,7 +82835,7 @@
       "type": "ET_EXEC"
     },
     {
-      "path": "diags/ide.IP32",
+      "path": "software/diags/ide.IP32",
       "filename": "ide.IP32",
       "size": 763504,
       "sections": {

@@ -2,7 +2,7 @@
 
 The internal routines of the CRIME build of `libGLcore.so` that no other chapter names, grouped by the compilation unit the debugging information assigns them to. The exported OpenGL entry points are in [gl-entry-points.md](gl-entry-points.md) and the CRIME command sequences in [opengl.md](opengl.md), [pixel-transfer.md](pixel-transfer.md) and [context.md](../kernel/context.md).
 
-Source: N32 `usr/gfx/arch/IP32CRM32/libGLcore.so` from IRIX 6.5.30, disassembled in full; routine bounds and units from its DWARF information (`libglcore/manifest.json`). The o32 build (`IP32CRM`) has the same routine names.
+Source: N32 `usr/gfx/arch/IP32CRM32/libGLcore.so` from IRIX 6.5.30, disassembled in full; routine bounds and units from its DWARF information (`software/opengl/manifest.json`). The o32 build (`IP32CRM`) has the same routine names.
 
 How each row was derived (established, from the disassembly):
 

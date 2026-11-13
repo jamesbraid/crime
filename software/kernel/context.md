@@ -1,6 +1,6 @@
 # Context save and restore (IRIX 6.5.30, O2)
 
-How the IRIX kernel driver moves the rendering engine between clients, and how libGLcore cooperates. Register names are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h) and [devices/mte/MTE.h](../../devices/mte/MTE.h). Labels: **established** (read from the cited function in the committed decompilation under `crime_kernel/decomp/` and checked against the object disassembly), **inferred**, **unknown**. `k:` means the kernel `crime.o`/`crime_debug.o`/`crime_tiles.o`, `gl:` means N32 `libGLcore.so`.
+How the IRIX kernel driver moves the rendering engine between clients, and how libGLcore cooperates. Register names are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h) and [devices/mte/MTE.h](../../devices/mte/MTE.h). Labels: **established** (read from the cited function in the committed decompilation under `software/kernel/decomp/` and checked against the object disassembly), **inferred**, **unknown**. `k:` means the kernel `crime.o`/`crime_debug.o`/`crime_tiles.o`, `gl:` means N32 `libGLcore.so`.
 
 ## Summary
 
@@ -13,7 +13,7 @@ How the IRIX kernel driver moves the rendering engine between clients, and how l
 - libGLcore asks the kernel for it with ioctl `0x55f3` (kernel `crimeIoctl`); the kernel maps pages for the client (`crmMapPages(..., 0x288, ...)`) and returns the user address (established). libGLcore stores the result minus `0x2000` (`gl:crm_context`, MakeCurrent), so the shadow of pixel-pipe register `0x2000 + x` sits at record offset `x` (established).
 - Pixel-pipe registers `0x2000` to `0x21e8` use that mapping. The memory-transfer registers `0x3000 + x` (x up to `0x48`) sit at record offset `0x200 + x` (established, `crmLoadGlobalsFromShadow`, `crmLoadNonglobalsFromShadow`).
 - Record offset `0x1f0` (the slot of register `0x21f0`, PixPipeNull, which is never read back) holds a software flag word instead (established, `k:crmLoadGlobalsFromShadow`, `gl:crm_context`, `gl:crm_pick`). Nothing in the engine reads it.
-- libGLcore writes every global register to the hardware and to the shadow with the same value; non-global registers go to the hardware only (see `libglcore/include/glcore_crime.h`).
+- libGLcore writes every global register to the hardware and to the shadow with the same value; non-global registers go to the hardware only (see `software/opengl/include/glcore_crime.h`).
 
 ## The flag word at record offset 0x1f0
 
@@ -94,7 +94,7 @@ Inferred effect as shipped (from the callee's code applied to those registers): 
 
 ## Window clip set-up in the kernel (`crimeValidateClip`)
 
-Sources: 6.5.30 `crime.o` (`crimeValidateClip`, `objdump -d` and `crime_kernel/decomp/crime.c`); the ClipMode, ScrMask and WinOffset tables of the CRIME 1.5 specification. Labels as above.
+Sources: 6.5.30 `crime.o` (`crimeValidateClip`, `objdump -d` and `software/kernel/decomp/crime.c`); the ClipMode, ScrMask and WinOffset tables of the CRIME 1.5 specification. Labels as above.
 
 Established: when a window's clip list changes, the kernel rewrites the clip-related global registers of the client that owns it, from a descriptor holding the window origin (words at `+0x8`, `+0xc`), the bounding width and height (`+0x10`, `+0x14`), a rectangle count (`+0x18`) and a pointer to the list (`+0x1c`), each rectangle being four words: x, y, width, height. The new values always go into the client's shadow record; when the caller says the client is the one loaded on the engine, they also go to the hardware, with the pending writes saved and replayed around the update (`crmSavePP`, `crmRestorePP`): `0x2010` (ClipMode), the five 64-bit screen masks `0x2020`, `0x2028`, `0x2030`, `0x2038` and `0x2040`, and `0x2050`, `0x2058` (window offsets), followed by a write of 0 to `0x4008`.
 
@@ -128,7 +128,7 @@ GBE registers are not part of the switch (see Summary). Per-drawable display sta
 
 ## Rendering-engine registers by access site (6.5.30)
 
-One entry per rendering-engine register the shipped 6.5.30 code reaches, or that the CRIME 1.5 specification lists and no code reaches, from `crime_kernel/disasm/`, `libglcore/asm/CRIME/` and the register tables of `root/spec/crime.txt` (tables 7-1 to 7-3). Offsets are from the rendering-engine window. Every entry carries a label.
+One entry per rendering-engine register the shipped 6.5.30 code reaches, or that the CRIME 1.5 specification lists and no code reaches, from `software/kernel/disasm/`, `software/opengl/asm/CRIME/` and the register tables of `root/spec/crime.txt` (tables 7-1 to 7-3). Offsets are from the rendering-engine window. Every entry carries a label.
 
 - `IntfBuf.data` at `+0x0`: 128 doubleword slots of the host interface buffer, which hold the data half of each register write waiting for the engine (table 7-1). Established. Recorded as `ib_data` and `ib_addr` (64 entries each) in [RE_DECODE.h](../../RE_DECODE.h).
   `crmSavePP` in `crime.o` reads the low and high words of slot `s` at byte `8 * s` of the window and the matching address from `+0x200 + 8 * s`.

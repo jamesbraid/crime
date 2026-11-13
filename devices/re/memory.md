@@ -1,6 +1,6 @@
 # Rendering TLB formats
 
-Every client of the rendering TLB group at `0x15001000`, as the IRIX 6.5.30 kernel loads it. Offsets and register counts are in [devices/re/CRIME_RE.h](CRIME_RE.h). Labels: **established** (read from the cited function), **inferred**, **unknown**. Sources: `crime_kernel/decomp/crime_tiles.c` and the CRIME kernel driver DMA source unit, same names in `crime_kernel/disasm/`.
+Every client of the rendering TLB group at `0x15001000`, as the IRIX 6.5.30 kernel loads it. Offsets and register counts are in [devices/re/CRIME_RE.h](CRIME_RE.h). Labels: **established** (read from the cited function), **inferred**, **unknown**. Sources: `software/kernel/decomp/crime_tiles.c` and the CRIME kernel driver DMA source unit, same names in `software/kernel/disasm/`.
 
 All loaders write 64-bit values through KSEG1 (`0xA0000000 | address`) and, for the tile TLBs, finish with a write of 0 to `+0x4008` (established).
 
@@ -65,7 +65,7 @@ How a texture's mip levels are placed in the 112 entries of the texture TLB (`+0
 
 # Interrupt controller as IRIX 6.5.30 drives it
 
-Sources: kernel objects `kernel.o` (functions `VEC_int`, the unnamed CRIME dispatcher before `intr`, `intr`, `crime_intr_enable`, `crime_intr_disable`, `setcrimevector`, `mlreset`), `mace.o` (`setmaceisavector`), `crime.o` (`crime_init`). Disassembly is under `crime_kernel/disasm/kernel/kernel.text.s` and `crime_kernel/disasm/mace/mace.text.s`. Labels as above.
+Sources: kernel objects `kernel.o` (functions `VEC_int`, the unnamed CRIME dispatcher before `intr`, `intr`, `crime_intr_enable`, `crime_intr_disable`, `setcrimevector`, `mlreset`), `mace.o` (`setmaceisavector`), `crime.o` (`crime_init`). Disassembly is under `software/kernel/disasm/kernel/kernel.text.s` and `software/kernel/disasm/mace/mace.text.s`. Labels as above.
 
 ## Inputs IRIX registers
 
@@ -99,7 +99,7 @@ Inferred: inputs 28 and 29 are software interrupts. The end of the dispatcher re
 
 # Control, watchdog, time, ECC enable and revision code (pass 4)
 
-Sources: `crime_kernel/disasm/kernel/kernel.text.s` (`mlreset`, `ecc_disable`, `get_crimerev`, `query_cyclecntr`, `absolute_rtc_current_time`, `dobuserre`, `print_buserr_rev0`, `print_buserr_rev1`); public register names from `references/code/netbsd/sys/arch/sgimips/dev/crimereg.h` and `references/code/linux/arch/mips/include/asm/ip32/crime.h`. Method: every `lui 0xb400` (CRIME registers in KSEG1) in the kernel, `crime`, `crime_init` and `crime_retrace` listings was followed to the offsets it reaches. Offsets seen: `0x00`, `0x08`, `0x10`, `0x18`, `0x20`, `0x28`, `0x30`, `0x38`, `0x40`, `0x48`, `0x58`, `0x200`, `0x250`, `0x258`, `0x260`, `0x268`.
+Sources: `software/kernel/disasm/kernel/kernel.text.s` (`mlreset`, `ecc_disable`, `get_crimerev`, `query_cyclecntr`, `absolute_rtc_current_time`, `dobuserre`, `print_buserr_rev0`, `print_buserr_rev1`); public register names from `references/code/netbsd/sys/arch/sgimips/dev/crimereg.h` and `references/code/linux/arch/mips/include/asm/ip32/crime.h`. Method: every `lui 0xb400` (CRIME registers in KSEG1) in the kernel, `crime`, `crime_init` and `crime_retrace` listings was followed to the offsets it reaches. Offsets seen: `0x00`, `0x08`, `0x10`, `0x18`, `0x20`, `0x28`, `0x30`, `0x38`, `0x40`, `0x48`, `0x58`, `0x200`, `0x250`, `0x258`, `0x260`, `0x268`.
 
 - Established ([netbsd], [linux] names): CONTROL (`+0x08`) bit 13 is TRITON_SYSADC, bit 12 CRIME_SYSADC, bit 11 hard reset, bit 10 soft reset, bit 9 watchdog enable, bit 8 big-endian, bits 7:4 write-buffer high-water mark, bits 3:0 command-queue high-water mark. `mlreset` therefore clears the watchdog enable on every CPU, and on a CPU implementation of 0x23 or later also sets the two SysAD bits (established); what the two bits control is stated by the specification's CONTROL table ([spec] PDF 114-115, table 5-9; established): bit 13 enables parity generation from CRIME to an R5000, bit 12 enables checking of the SysADC parity lines on data cycles coming in from it, and both are marked not used in CRIME 1.5, so this part's R10000-family systems rely on ECC instead. What `mlreset` intends by setting them for CPU implementation 0x23 or later (an R5000-class part) is the inferred reading that it enables parity on the R5000 bus; no read code shows a second purpose.
 - Established: `mlreset` writes zero to `+0x30` (the watchdog register; [netbsd] says writing zero resets the watchdog and that bits 32 and 31 record a power-on and a warm reset). So IRIX disables and clears the watchdog during start-up. Nothing in the kernel files read arms it again.
@@ -123,7 +123,7 @@ Sources: [spec] CRIME 1.5 specification, PDF 144-146 (memory controller, ECC log
 
 # CPU address windows and aliases (pass 6)
 
-Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 135-153 (memory controller); Linux `arch/mips/sgi-ip32/ip32-memory.c`, `ip32-dma.c`, `arch/mips/include/asm/ip32/crime.h`; MAME `src/mame/sgi/o2.cpp`; the IRIX kernel listings under `crime_kernel/`. Labels as above.
+Sources: [spec] CRIME 1.5 specification, PDF 46-53 (system address map) and PDF 135-153 (memory controller); Linux `arch/mips/sgi-ip32/ip32-memory.c`, `ip32-dma.c`, `arch/mips/include/asm/ip32/crime.h`; MAME `src/mame/sgi/o2.cpp`; the IRIX kernel listings under `software/kernel/`. Labels as above.
 
 ## The map (established, [spec] PDF 47-48, table 3-1)
 
@@ -226,7 +226,7 @@ Read 2026-11 from the memory controller chapter ([spec] PDF 134-142). These are 
 
 ## CRIME registers by access site (6.5.30)
 
-One row per register offset the shipped code reaches, from the disassembly under `crime_kernel/disasm/` and from `ide.IP32` and `symmon.IP32` in `sbin/stand/`. Field layouts are those of the CRIME 1.5 specification (`root/spec/crime.txt`, register tables 5-8 to 5-17 and 6-13 to 6-20). Every row carries a label in its last column.
+One row per register offset the shipped code reaches, from the disassembly under `software/kernel/disasm/` and from `ide.IP32` and `symmon.IP32` in `sbin/stand/`. Field layouts are those of the CRIME 1.5 specification (`root/spec/crime.txt`, register tables 5-8 to 5-17 and 6-13 to 6-20). Every row carries a label in its last column.
 
 | Offset | Register | Role, hardware effect and the code that shows it | Label |
 |---|---|---|---|

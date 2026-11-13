@@ -1,6 +1,6 @@
 # GBE display timing
 
-How IRIX 6.5.30 turns a video format into GBE timing registers, and what the shipped `.vfo` format files hold. Registers are in [devices/gbe/GBE.h](GBE.h); field layouts agree with Linux `include/video/gbe.h` where cited. Labels: **established** (read from the cited code or file), **inferred**, **unknown**. Kernel sources: `crime_kernel/decomp/crime_init.c` (`gbeSetTimingRegs`, `gbeStartVideoTiming`), `crime_kernel/decomp/crime.c` (`crimeLoadTimingTable`) and the matching disassembly. Format files: `root/usr/gfx/ucode/CRM/vof/*.vfo` (26 files, linked as `diags/crm_vof`); only the numbers derived below are committed.
+How IRIX 6.5.30 turns a video format into GBE timing registers, and what the shipped `.vfo` format files hold. Registers are in [devices/gbe/GBE.h](GBE.h); field layouts agree with Linux `include/video/gbe.h` where cited. Labels: **established** (read from the cited code or file), **inferred**, **unknown**. Kernel sources: `software/kernel/decomp/crime_init.c` (`gbeSetTimingRegs`, `gbeStartVideoTiming`), `software/kernel/decomp/crime.c` (`crimeLoadTimingTable`) and the matching disassembly. Format files: `root/usr/gfx/ucode/CRM/vof/*.vfo` (26 files, linked as `software/diags/crm_vof`); only the numbers derived below are committed.
 
 ## Kernel timing record
 
@@ -78,7 +78,7 @@ Stereo formats, decoded below: `1024x768_96s` and `1280x492_120s`.
 
 ## Stereo format files and the conversion to the kernel record
 
-Sources: the two stereo `.vfo` files, `ddx/crm.so` (`crmLoadTimingTable`, dynsym-visible, 0x48c5d0), the kernel built-in table in `crime_kernel/crime_init.o` (`.data`, 15 records of 0x30 bytes from file offset 0x22e8), kernel `crime_setvideotiming`. `gfxinit` only holds the paths `/var/X11/Xvc/Crm0_TimingTable` and `Crm1_TimingTable` and a monitor-info reader, and no vfo conversion code (strings and dynsym checked); the conversion lives in the X module, which reads the format file through the `SDB` read routines it imports.
+Sources: the two stereo `.vfo` files, `software/xsgi/crm.so` (`crmLoadTimingTable`, dynsym-visible, 0x48c5d0), the kernel built-in table in `software/kernel/crime_init.o` (`.data`, 15 records of 0x30 bytes from file offset 0x22e8), kernel `crime_setvideotiming`. `gfxinit` only holds the paths `/var/X11/Xvc/Crm0_TimingTable` and `Crm1_TimingTable` and a monitor-info reader, and no vfo conversion code (strings and dynsym checked); the conversion lives in the X module, which reads the format file through the `SDB` read routines it imports.
 
 ### Layout of the stereo files (established by position and arithmetic)
 
@@ -124,7 +124,7 @@ Cross-check (established): applying these rules to the numbers of 13 of the 14 m
 
 # Window ID table and the tile lists
 
-Sources: `crime_kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitGbeData`, `crmLoadGbelists`), `crime_kernel/decomp/crime_init.c` (`crmInitTp`), Linux `include/video/gbe.h`. Labels as above.
+Sources: `software/kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitGbeData`, `crmLoadGbelists`), `software/kernel/decomp/crime_init.c` (`crmInitTp`), Linux `include/video/gbe.h`. Labels as above.
 
 ## Window ID table (`+0x48000`)
 
@@ -136,7 +136,7 @@ Sources: `crime_kernel/decomp/crime_retrace.c` (`crimeSetDisplayMode`, `crmInitG
 
 ## Window ID type and colour-map codes
 
-Sources: Linux `include/video/gbe.h` and `gbefb.c`, NetBSD `crmfbreg.h` and `crmfb.c`, the X module `ddx/crm.so` (dynsym-visible data and `gbeInit`), Xsgi's `rrmSetReservedDID`, kernel `crimeSetDisplayMode`. MAME's `o2.cpp` and `crime.cpp` model no GBE window table (checked: no WID, overlay or mode-register code), so it adds nothing here.
+Sources: Linux `include/video/gbe.h` and `gbefb.c`, NetBSD `crmfbreg.h` and `crmfb.c`, the X module `software/xsgi/crm.so` (dynsym-visible data and `gbeInit`), Xsgi's `rrmSetReservedDID`, kernel `crimeSetDisplayMode`. MAME's `o2.cpp` and `crime.cpp` model no GBE window table (checked: no WID, overlay or mode-register code), so it adds nothing here.
 
 - Established (Linux `gbe.h`, NetBSD `crmfbreg.h`): `TYP` (bits 4:2) codes are 0 I8, 1 I12, 2 RG3B2, 3 RGB4, 4 ARGB5, 5 RGB8; Linux also names 6 RGBA5 and 7 RGB10 (NetBSD stops at 5). `BUF` 3 means "both buffers" in both drivers. `CM` (bits 9:5) is a colour-map selector; NetBSD calls bits 12:11 `FP_ENABLE` (two bits) where Linux calls them `AUX`; neither driver sets them. Both drivers write all 32 entries with one value (TYP chosen from the pixel depth, `BUF` 3).
 - Established (data in `crm.so`, objects `gbeModeTable16`, `gbeModeTable24`, `arModeTable16`, `arModeTable24`, 32 twelve-byte records each, `.sdata` at `0x5b4220`, `0x5b43a0`, `0x5b4520`, `0x5b46a0`): the X module programs a small table of window IDs at start-up. Each record is three big-endian words: the WID index, the WID value, and a third word of the form `0x3c0n` (n = 0 to 3). Only the first 8 to 11 records are non-zero.
@@ -181,7 +181,7 @@ Established: the overlay plane is an 8-bit plane described by `OVR_WIDTH_TILE`, 
 
 ## Colour-map writes and the FIFO (`crmInstallPseudoColorMap`)
 
-Sources: `ddx/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), devices/gbe/GBE.h. GBE has no command stream; the only FIFO a driver sees is the colour-map write FIFO at `+0x58000`. Labels as above.
+Sources: `software/xsgi/crm.so` `crmInstallPseudoColorMap` (dynsym-visible, 0x473890), devices/gbe/GBE.h. GBE has no command stream; the only FIFO a driver sees is the colour-map write FIFO at `+0x58000`. Labels as above.
 
 - Established: the X module installs a pseudo-colour map one entry at a time from a list of 8-byte records (a 16-bit index at +2, red, green, blue bytes at +4, +5, +6). Each entry becomes one 32-bit store to `GBE + 0x50000 + 4 * index` of `red << 24 | green << 16 | blue << 8`, the layout `GBE_CMAP_ENTRY` gives. The index is the global entry number, so a window's colour-map group (the `CM` value of its window ID times 256, see above) is part of the index.
 - Established: alongside each hardware store it keeps a software copy of the entry as `blue << 16 | green << 8 | red` in a table the screen record points at (offset +0x40).
@@ -212,7 +212,7 @@ Settled for GBE revision 1.1 by the specification (see "Overlay, cursor and disp
 - Established (`crime_tp`): the kernel textport draws colour c as pixel value `c + 1` (`crime_color` replicates `c + 1` into all four bytes) and loads that colour into map entry `0x1100 + c + 1` (`crime_mapcolor` writes at `+0x54404 + 4c`). So entry `0x1102` is the textport's colour 1.
 - Inferred: the X module skips `0x1102` while its screen flag (+0x18) is set so as not to overwrite the colour the kernel textport is using. What sets that flag was not traced.
 
-### libXsgivc (`ddx/libXsgivc_n32.so`)
+### libXsgivc (`software/xsgi/libXsgivc_n32.so`)
 
 - Established: the library is only the client side of the `SGI-VIDEO-CONTROL` X extension. It imports Xlib transport functions (`_XSend`, `_XReply`, `_XRead`) and no file functions, so it never reads `.vfo` files. `XSGIvcLoadVideoFormat` and its variants only send requests to the server, which builds the kernel record (see the vfo conversion above).
 - Established (`ReadFormatInfo`, DWARF names): the server describes a format in a 48-byte reply record. The library unpacks it into the caller's structure: four 16-bit values (stored at +260, +256, +268, +264), two 32-bit rates divided by 1000.0 into floats (+272, +276), seven more 32-bit values, a name whose length is in the record, and a count of 36-byte field records read by `ReadFieldInfo`.
@@ -220,7 +220,7 @@ Settled for GBE revision 1.1 by the specification (see "Overlay, cursor and disp
 
 ## Pass 4: the third WID word and overlay, read again
 
-Binaries: IRIX 6.5.30 `ddx/crm.so`, `ddx/Xsgi`, and the kernel `crime.o` decompilation. Addresses are the virtual addresses shown by `objdump -d` of each file.
+Binaries: IRIX 6.5.30 `software/xsgi/crm.so`, `software/xsgi/Xsgi`, and the kernel `crime.o` decompilation. Addresses are the virtual addresses shown by `objdump -d` of each file.
 
 ### What the third word is
 
@@ -364,7 +364,7 @@ The decompiler prints every global-pointer-relative load as the same name; resol
 
 # Pass 7: the diagnostics and the remaining display questions
 
-Sources: the shipped IRIX 6.5.30 stand-alone diagnostics `ide.IP32` (`diags/ide.IP32`, stripped; `ide:ADDR` is a virtual address in its `objdump -d` listing); the 6.5.30 kernel objects `crime_i2c.o`, `crime_init.o` and `crime.o` (`objdump -d -r`); the X module `crm.so` and `setmon` strings; `mvp.o` (`nm`); the rev 1.1 GBE specification ([gbe-spec]); Linux `gbefb`.
+Sources: the shipped IRIX 6.5.30 stand-alone diagnostics `ide.IP32` (`software/diags/ide.IP32`, stripped; `ide:ADDR` is a virtual address in its `objdump -d` listing); the 6.5.30 kernel objects `crime_i2c.o`, `crime_init.o` and `crime.o` (`objdump -d -r`); the X module `crm.so` and `setmon` strings; `mvp.o` (`nm`); the rev 1.1 GBE specification ([gbe-spec]); Linux `gbefb`.
 
 ## Chip revision and the colour-map FIFO
 
@@ -498,7 +498,7 @@ Binaries: IRIX 6.5.30 `crm.so` (`usr/lib/X11/dyDDX/crm.so`, gp `0x5b0ea0`) and `
 
 ## Specification registers by IRIX use
 
-One row per GBE register of the revision 1.1 specification that the sections above describe only as part of a group. The spec name comes first, then the offset and the Linux name, then what IRIX writes. Sources: the kernel listings under `crime_kernel/`, the X module and [gbe-spec].
+One row per GBE register of the revision 1.1 specification that the sections above describe only as part of a group. The spec name comes first, then the offset and the Linux name, then what IRIX writes. Sources: the kernel listings under `software/kernel/`, the X module and [gbe-spec].
 
 | Spec name | Offset | Role and IRIX use | Label |
 |---|---|---|---|
@@ -530,7 +530,7 @@ The capture block registers `VC_0` to `VC_8` have their own entries under "GBE r
 
 # GBE registers by access site (6.5.30)
 
-One entry per register that the shipped 6.5.30 code reaches, or that the revision 1.1 specification lists and nothing reaches, from `crime_kernel/disasm/` and `root/spec/gbe.txt` (register tables on pages 36 to 48). Every entry carries a label.
+One entry per register that the shipped 6.5.30 code reaches, or that the revision 1.1 specification lists and nothing reaches, from `software/kernel/disasm/` and `root/spec/gbe.txt` (register tables on pages 36 to 48). Every entry carries a label.
 
 - `CTRLSTAT` at `+0x0`: the general control word, with chip revision in bits 3:0, ten two-bit pin pairs and the pixel-clock select in bits 29:28. Established.
   `gbeProbe` in `crime_init.o` stores 0x30000000 to it once the identity check passes, which selects the internal dot-clock PLL and drives every pin low.

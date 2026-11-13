@@ -1,6 +1,6 @@
 # Rendering engine initialisation and error recovery, and the kernel's use of the memory transfer engine
 
-What the IRIX 6.5.30 kernel writes to bring the rendering engine to a known state, how it recovers after an engine error, and how its own bulk-memory helpers drive the memory transfer engine (MTE). Register names are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h) and [devices/mte/MTE.h](../../devices/mte/MTE.h). Labels: **established** (read from the cited function in the decompilation under `crime_kernel/decomp/` and checked against the object disassembly), **inferred**, **unknown**. `k:` is the kernel (`crime_init.o`, `crime.o`, `kernel.o`).
+What the IRIX 6.5.30 kernel writes to bring the rendering engine to a known state, how it recovers after an engine error, and how its own bulk-memory helpers drive the memory transfer engine (MTE). Register names are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h) and [devices/mte/MTE.h](../../devices/mte/MTE.h). Labels: **established** (read from the cited function in the decompilation under `software/kernel/decomp/` and checked against the object disassembly), **inferred**, **unknown**. `k:` is the kernel (`crime_init.o`, `crime.o`, `kernel.o`).
 
 ## Initialisation (`k:crime_init:crimeInitHW`)
 
@@ -24,7 +24,7 @@ Called when a drain or idle wait times out (`crmSavePP`, `crimePcxSwap`) and whe
 
 ## Kernel bulk zero and copy through the MTE
 
-The kernel uses the MTE to clear and copy host memory (`early_mte_zero`, `mte_zero`, `mte_copy`, `mte_set_tlb`, `mte_fifo_wait`, `mte_spin`, `mte_delay` in `kernel.o`, `crime_kernel/disasm/kernel/kernel.text.s`). The MTE reads and writes host memory only through the linear TLBs (established: both source and destination select codes in the mode words below are the linear codes of `devices/mte/MTE.h`).
+The kernel uses the MTE to clear and copy host memory (`early_mte_zero`, `mte_zero`, `mte_copy`, `mte_set_tlb`, `mte_fifo_wait`, `mte_spin`, `mte_delay` in `kernel.o`, `software/kernel/disasm/kernel/kernel.text.s`). The MTE reads and writes host memory only through the linear TLBs (established: both source and destination select codes in the mode words below are the linear codes of `devices/mte/MTE.h`).
 
 - Clear (`early_mte_zero`, `mte_zero`; established): mode `0x11` (clear, destination select 4 = linear A, destination ECC bit 1) is written through the start alias (`+0x3800`) after BYTEMASK (`+0x3008`) = -1, FG (`+0x3018`) = 0, DST0 (`+0x3030`) = the start address, DST1 (`+0x3038`) = start + length - 1. Each pass covers at most `0x20000` bytes; the loop repeats with the next chunk. Before each pass it waits for 5 free interface-buffer slots (`mte_fifo_wait`).
 - Copy (`mte_copy`; established): mode `0x897` (copy, source select 4 = linear A, destination select 5 = linear B, both ECC bits, 8-bit depth field 0): source in linear A, destination in linear B. It writes SRC0 (`+0x3020`), DST0 (`+0x3030`), SRC1 (`+0x3028`) = SRC0 + n - 1, DST1 (`+0x3038`) = DST0 + n - 1, BYTEMASK = -1, then the mode through the start alias. It waits for 6 free slots first. The chunk is the smaller of the remaining length and what both TLBs mapped.

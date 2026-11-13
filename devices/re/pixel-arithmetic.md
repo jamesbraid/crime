@@ -6,7 +6,7 @@ Labels: **established** (read from the cited source or code), **inferred** (reas
 
 - [spec]: the CRIME 1.5 Specification, revision 0.3 (PDF page numbers).
 - [hdr]: the register layout headers shipped with IRIX 6.5.5 as the CRIME stack header 22 and the CRIME stack header 21. They declare each pixel-pipe register as a bit-field structure; the field names are cited, the layout restated in our own words.
-- [gl]: IRIX 6.5.30 N32 `libGLcore` (`usr/gfx/arch/IP32CRM32`), by unit under `libglcore/asm/` and function. The software rasteriser units under `libglcore/asm/soft/` are the generic OpenGL fallback; they show the formula the library computes when it draws without the engine, not the engine's arithmetic.
+- [gl]: IRIX 6.5.30 N32 `libGLcore` (`usr/gfx/arch/IP32CRM32`), by unit under `software/opengl/asm/` and function. The software rasteriser units under `software/opengl/asm/soft/` are the generic OpenGL fallback; they show the formula the library computes when it draws without the engine, not the engine's arithmetic.
 - [ide]: the IP32 stand-alone diagnostics, 6.5.30 `stand/ide.IP32` (binary).
 
 ## Depth

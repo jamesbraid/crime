@@ -1,6 +1,6 @@
 # MTE: copies, fills and the address word
 
-How IRIX 6.5.30 drives the memory transfer engine beyond the kernel buffer clear. Register names and mode fields are in [devices/mte/MTE.h](MTE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Citations of `crm.so` give lines of `ddx/asm/crm/crm/crm.s` (the module is stripped, so there are no useful function bounds; the listing's `glabel` lines do not match the code that follows them). Register offsets are decimal in that listing: the MTE group is 12288 (0x3000) to 12408 (0x3078).
+How IRIX 6.5.30 drives the memory transfer engine beyond the kernel buffer clear. Register names and mode fields are in [devices/mte/MTE.h](MTE.h). Labels: **established** (read from the cited code), **inferred**, **unknown**. Citations of `crm.so` give lines of `software/xsgi/asm/crm/crm/crm.s` (the module is stripped, so there are no useful function bounds; the listing's `glabel` lines do not match the code that follows them). Register offsets are decimal in that listing: the MTE group is 12288 (0x3000) to 12408 (0x3078).
 
 ## Engine rules from the specification
 
@@ -48,7 +48,7 @@ The kernel clear (`crime_clear_buffer`) uses the same address word. See devices/
 
 ## Buffer swap by copy in the kernel (`crmSwapBufd`)
 
-Sources: the 6.5.30 kernel object `crime_retrace.o` (`crmSwapBufd`, `crm_copy_swap_boxes`) and `crime_dma.o` (`crime_clear_buffer`), read from `objdump -d` and the decompilation in `crime_kernel/decomp/`; the register tables of the specification (BufMode, ClipMode, WinOffset, MTE.mode). Labels as above.
+Sources: the 6.5.30 kernel object `crime_retrace.o` (`crmSwapBufd`, `crm_copy_swap_boxes`) and `crime_dma.o` (`crime_clear_buffer`), read from `objdump -d` and the decompilation in `software/kernel/decomp/`; the register tables of the specification (BufMode, ClipMode, WinOffset, MTE.mode). Labels as above.
 
 Established: the kernel swaps a double-buffered window by copying, not by flipping a display pointer. For each batch of pending swap boxes `crmSwapBufd` loads frame-buffer TLBs A and B for the drawable (`crmLoadTlbABC`, index 0 and 1), then writes a fixed register set once before copying. The set depends on the pixel size of the screen, which the function takes from the byte at offset `0x2f` of the board's mode record (value `0x20` means 32-bit pixels):
 

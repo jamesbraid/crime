@@ -1,6 +1,6 @@
 # Functions by role
 
-What each routine of the IRIX 6.5.30 graphics kernel objects does, grouped by what it serves. Sources: the objects `crime.o`, `crime_tiles.o`, `crime_db.o`, `crime_zbuf.o`, `crime_retrace.o`, `crime_tp.o`, `crime_init.o`, `crime_i2c.o` (members of `crime.a`) and `mace.o`, and the shared kernel objects `gfx.o`, `rrm.o` and `tile.o` (a member of `os.a`), read from `objdump -d` and the decompilation in `crime_kernel/decomp/`, whose function names are the symbols of the objects. Labels: **established** (read from the function's own code and calls), **inferred** (from its name and its callers). Argument layouts are given only where the code shows them. Register-level behaviour has its own chapters: [context.md](context.md), [memory.md](../../devices/re/memory.md), [mte.md](../../devices/mte/mte.md), [gbe.md](../../devices/gbe/gbe.md).
+What each routine of the IRIX 6.5.30 graphics kernel objects does, grouped by what it serves. Sources: the objects `crime.o`, `crime_tiles.o`, `crime_db.o`, `crime_zbuf.o`, `crime_retrace.o`, `crime_tp.o`, `crime_init.o`, `crime_i2c.o` (members of `crime.a`) and `mace.o`, and the shared kernel objects `gfx.o`, `rrm.o` and `tile.o` (a member of `os.a`), read from `objdump -d` and the decompilation in `software/kernel/decomp/`, whose function names are the symbols of the objects. Labels: **established** (read from the function's own code and calls), **inferred** (from its name and its callers). Argument layouts are given only where the code shows them. Register-level behaviour has its own chapters: [context.md](context.md), [memory.md](../../devices/re/memory.md), [mte.md](../../devices/mte/mte.md), [gbe.md](../../devices/gbe/gbe.md).
 
 ## Board entry points and set-up (`crime.o`)
 
@@ -195,7 +195,7 @@ The monitor is probed over the DDC bus of the display connector, and the optiona
 
 # Kernel routines, one entry each (`crime.o`)
 
-Each entry names one routine of the 6.5.30 `crime.o` (a member of `crime.a`), says what it does to the board or the kernel, and cites the routines it calls or the offsets it reads, from `objdump -d -r` and `crime_kernel/disasm/crime/crime.text.s`. Every entry carries a label.
+Each entry names one routine of the 6.5.30 `crime.o` (a member of `crime.a`), says what it does to the board or the kernel, and cites the routines it calls or the offsets it reads, from `objdump -d -r` and `software/kernel/disasm/crime/crime.text.s`. Every entry carries a label.
 
 ## Interrupt and FIFO handlers
 
@@ -379,7 +379,7 @@ Each entry names one routine of the 6.5.30 `crime.o` (a member of `crime.a`), sa
 
 # Kernel routines, one entry each (`crime_init.o` and `crime_retrace.o`)
 
-Each entry names one routine of the 6.5.30 `crime_init.o` or `crime_retrace.o` (members of `crime.a`), says what it does to GBE, the engine or the retrace machinery, and cites callees, offsets or sites, from `objdump -d -r` and the listings under `crime_kernel/disasm/`. Every entry carries a label.
+Each entry names one routine of the 6.5.30 `crime_init.o` or `crime_retrace.o` (members of `crime.a`), says what it does to GBE, the engine or the retrace machinery, and cites callees, offsets or sites, from `objdump -d -r` and the listings under `software/kernel/disasm/`. Every entry carries a label.
 
 ## Chip probe and display start (`crime_init.o`)
 
@@ -502,7 +502,7 @@ Each entry names one routine of the 6.5.30 `crime_init.o` or `crime_retrace.o` (
 
 # Kernel routines, one entry each (`crime_tp.o`, `crime_tiles.o` and the smaller objects)
 
-Each entry names one routine of the 6.5.30 `crime_tp.o`, `crime_tiles.o`, `crime_dma.o`, `crime_zbuf.o`, `crime_db.o` or `crime_debug.o` (members of `crime.a`), says what it does to the engine or the tile pool, and cites callees or offsets, from `objdump -d -r` and `crime_kernel/disasm/`. Every entry carries a label.
+Each entry names one routine of the 6.5.30 `crime_tp.o`, `crime_tiles.o`, `crime_dma.o`, `crime_zbuf.o`, `crime_db.o` or `crime_debug.o` (members of `crime.a`), says what it does to the engine or the tile pool, and cites callees or offsets, from `objdump -d -r` and `software/kernel/disasm/`. Every entry carries a label.
 
 ## Kernel textport (`crime_tp.o`)
 
@@ -808,7 +808,7 @@ Each entry names one routine of the 6.5.30 `crime_i2c.o` (a member of `crime.a`)
 
 # Kernel routines, one entry each (`kernel.o`, CRIME and GBE users)
 
-Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that touches CRIME, GBE or the CRIME interrupt path, says what it does to the registers, and cites offsets or callees, from `objdump -d -r` and `crime_kernel/disasm/kernel/kernel.text.s`. Every entry carries a label.
+Each entry names one routine of the 6.5.30 base kernel object `kernel.o` that touches CRIME, GBE or the CRIME interrupt path, says what it does to the registers, and cites offsets or callees, from `objdump -d -r` and `software/kernel/disasm/kernel/kernel.text.s`. Every entry carries a label.
 
 ## Start-up and revision
 

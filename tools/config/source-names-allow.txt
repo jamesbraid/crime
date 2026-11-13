@@ -114,7 +114,7 @@ include/vertex.h	path in the published OpenGL sample implementation
 include/video/gbe.h	name in published Linux source
 ip32-dma.c	name in published Linux or OpenBSD source
 ip32-memory.c	name in published Linux or OpenBSD source
-libglcore/asm/ODYSSEY/x.s	path to a file in this workspace
+software/opengl/asm/ODYSSEY/x.s	path to a file in this workspace
 lighting.h	name in the published OpenGL sample implementation
 references/code/linux/arch/mips/include/asm/ip32/crime.h	name in published Linux source
 mace.h	name in published Linux or OpenBSD source

@@ -43,10 +43,10 @@ The subdirectories below contain relative symbolic links, one per file, resolvin
 
 | Directory | Contents | Target in `root/` | Debug level (6.5.30) |
 |---|---|---|---|
-| `crime_kernel/` | `crime.a` members (`crime*.o`), `mace.o`, `gfx.o`, `rrm.o`, `gfxs/` (`gfxs.a` members) | `usr/cpu/sysgen/IP32boot/` | DWARF with lines (names, no types); `crime_busts.o` and `gfx_debug.o` have no lines |
-| `libglcore/` | `libGLcore_n32.so`, `libGL_n32.so`, `libGLcore_o32.so`, `libGL_o32.so` | `usr/gfx/arch/IP32CRM32/`, `IP32CRM/` | N32: DWARF with lines (164 compile units in libGLcore); o32: `.mdebug` symbols only |
-| `ddx/` | `crm.so`, `glx.so`, `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` | stripped |
-| `diags/` | `gfxinit`, `ide.IP32`, `crm_vof/` (video format files) | `usr/gfx/`, `sbin/stand/`, `usr/gfx/ucode/CRM/` | stripped |
+| `software/kernel/` | `crime.a` members (`crime*.o`), `mace.o`, `gfx.o`, `rrm.o`, `gfxs/` (`gfxs.a` members) | `usr/cpu/sysgen/IP32boot/` | DWARF with lines (names, no types); `crime_busts.o` and `gfx_debug.o` have no lines |
+| `software/opengl/` | `libGLcore_n32.so`, `libGL_n32.so`, `libGLcore_o32.so`, `libGL_o32.so` | `usr/gfx/arch/IP32CRM32/`, `IP32CRM/` | N32: DWARF with lines (164 compile units in libGLcore); o32: `.mdebug` symbols only |
+| `software/xsgi/` | `crm.so`, `glx.so`, `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` | stripped |
+| `software/diags/` | `gfxinit`, `ide.IP32`, `crm_vof/` (video format files) | `usr/gfx/`, `sbin/stand/`, `usr/gfx/ucode/CRM/` | stripped |
 
 Debug information by release: no release has DWARF with types or structure members for this board (evidence/irix-files.md section 5). Names and line numbers are the most any file gives, so recover structures from the CRIME specification, the Linux and NetBSD drivers and the code.
 
@@ -88,9 +88,9 @@ The register, word, field and constant facts that the `*_DECODE.h` headers used 
 
 Local headers capture internal driver structures:
 
-- `crime_kernel/include/crime_kern.h`: kernel driver structures.
-- `libglcore/include/glcore_crime.h`: OpenGL driver context, software transform and lighting state, and CRIME command emission.
-- `ddx/include/crime_ddx.h`: X server module structures.
+- `software/kernel/include/crime_kern.h`: kernel driver structures.
+- `software/opengl/include/glcore_crime.h`: OpenGL driver context, software transform and lighting state, and CRIME command emission.
+- `software/xsgi/include/crime_ddx.h`: X server module structures.
 
 ---
 
@@ -109,10 +109,10 @@ Initialise only the submodules you need: `git submodule update --init references
 Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `tools/config/` keeps only this workspace's configuration and data:
 
 - `map_binaries.py`: catalogue every linked binary (sections, functions, DWARF compilation units) into `tools/config/binaries_manifest.json`.
-- `disasm_kernel.py`: disassemble the kernel `.o` objects into m2c-ready assembly under `crime_kernel/disasm/`. Unpack archives (`.a`) with `ar x` first.
+- `disasm_kernel.py`: disassemble the kernel `.o` objects into m2c-ready assembly under `software/kernel/disasm/`. Unpack archives (`.a`) with `ar x` first.
 - `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
-- `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `libglcore/asm/` and `manifest.json`, and write `libglcore/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
-- `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `ddx/groups.json`. Its default module path is a placeholder; pass the real one.
+- `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `software/opengl/asm/` and `manifest.json`, and write `software/opengl/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
+- `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `software/xsgi/groups.json`. Its default module path is a placeholder; pass the real one.
 - `inventory.py`: count what the in-scope binaries contain and grade each entry understood, located, named-only, undocumented or no-software-dependency. It writes `evidence/inventory/` and the measured table at the top of `evidence/coverage.md`; see section 8.
 - `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
 - `retools/ghidra/scripts/`: Ghidra headless scripts for IRIX code (gp and jump-table recovery, register-window stores, call edges, struct typing, bulk decompile), with the rules for choosing between Ghidra and the pipeline in [retools/ghidra/scripts/README.md](retools/ghidra/scripts/README.md). Shared, byte for byte, with the other graphics workspaces.

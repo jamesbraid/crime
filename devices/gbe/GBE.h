@@ -5,7 +5,7 @@
  * Sources: [linux] include/video/gbe.h, drivers/video/fbdev/gbefb.c;
  * [netbsd] sys/arch/sgimips/dev/crmfbreg.h; [k:FILE:FUNC+OFF] IRIX 6.5.30
  * IP32boot crime.a; [x:LINE] IRIX 6.5.30 crm.so, line in
- * ddx/asm/crm/crm/crm.s (the module is stripped).
+ * software/xsgi/asm/crm/crm/crm.s (the module is stripped).
  * [gbe-spec] "GBE ASIC spec for REV1.1", 18 July 1996 (its own page numbers);
  * it describes revision 1.1 only, so "rev 1.1" marks facts from it.
  * Offsets are from 0x16000000. All registers are 32-bit [E, linux; gbe-spec p.34].

@@ -13,7 +13,7 @@
  *   [k:FILE:FUNC+OFF] IRIX 6.5.30 IP32boot crime.a member, function, byte
  *            offset in the relocated objdump listing.
  *   [gl:UNIT:FUNC] IRIX 6.5.30 N32 libGLcore (usr/gfx/arch/IP32CRM32), the
- *            unit under libglcore/asm/ and function name.
+ *            unit under software/opengl/asm/ and function name.
  * Offsets are from CRIME_RE_PHYS_BASE (0x15000000). The host sees five
  * 4 KiB groups; the first two are kernel-only, the rest user-mappable
  * [E, spec PDF 162-163, figure 7-3].

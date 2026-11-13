@@ -1,6 +1,6 @@
 # libGLcore to CRIME command stream
 
-How the IRIX 6.5.30 N32 OpenGL driver (`usr/gfx/arch/IP32CRM32/libGLcore.so`) turns transformed vertices into CRIME rendering-engine writes. Register names and encodings are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h); context offsets are in [glcore_crime.h](../../libglcore/include/glcore_crime.h). Labels: **established** (read from the cited function), **inferred**, **unknown**.
+How the IRIX 6.5.30 N32 OpenGL driver (`usr/gfx/arch/IP32CRM32/libGLcore.so`) turns transformed vertices into CRIME rendering-engine writes. Register names and encodings are in [devices/re/CRIME_RE.h](../../devices/re/CRIME_RE.h); context offsets are in [glcore_crime.h](include/glcore_crime.h). Labels: **established** (read from the cited function), **inferred**, **unknown**.
 
 ## Where the work happens
 
@@ -32,7 +32,7 @@ The thresholds differ by CPU module: 20 for R10000-family and RM7000 modules, 48
 
 ## Transform and clip check (read pass)
 
-Sources: `libglcore/asm/CRIME.IP32.N32_M4.O/mips4_xform.s`, the MIPS assembly fast path assembly unit 1 and the N32 `libGLcore.so` disassembly with condition-code operands (the committed listing drops them). Labels as above.
+Sources: `software/opengl/asm/CRIME.IP32.N32_M4.O/mips4_xform.s`, the MIPS assembly fast path assembly unit 1 and the N32 `libGLcore.so` disassembly with condition-code operands (the committed listing drops them). Labels as above.
 
 - Established (`__glMipsXForm4`): output vector at `a0`, input vector at `a1`, matrix at `a2`, all 32-bit floats. Output component `i` is the sum over `j` of `in[j] * M[4 * j + i]`, with the matrix stored column-major (`M[0]`, `M[4]`, `M[8]`, `M[12]` give the x row). The routine ends by computing `1/w` with `recip.s` into `$f8`, which the next stage consumes. Sibling entry points (`XForm2`, `XForm3`, `_W`, `_2DW`, `_2DNRW` variants, `__glMipsMultMatrix`) are named in the unit but were not read.
 - Established (`__glMipsClipCheckFrustum`): takes clip-space x, y, z in `$f0`, `$f2`, `$f4`, w in `$f6`, `1/w` in `$f8`. It compares each of x, y, z with `-w` and with `w` (strict less-than) and returns the six results as a mask: bit 0 x < -w, bit 1 x > w, bit 2 y < -w, bit 3 y > w, bit 4 z < -w, bit 5 z > w (the results go to condition codes 1 to 6 and the routine reads them out of the FP status register shifted down by 25 and masked with `0x3f`). A zero mask means the vertex is inside the frustum.
