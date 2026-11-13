@@ -125,7 +125,7 @@ The shipped IRIX video driver's start-up writes it with a 64-bit store.
 | 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18). |
 | 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18). |
 | 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
-| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
+| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Lines from start up to this value are forced to black when it exceeds start, and zero adds no black lines (printed page 48). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |
 
 ### Register `alpha_odd`
@@ -148,7 +148,7 @@ The shipped IRIX video driver's start-up writes it with a 64-bit store.
 | 38 | `scale_on` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18). |
 | 37:30 | `scale_ratio` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18). |
 | 29:20 | `end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18). |
-| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49). |
+| 19:10 | `blank_end` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Leading black-fill boundary in lines. Lines from start up to this value are forced to black when it exceeds start, and zero adds no black lines (printed page 48). |
 | 9:0 | `start` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18). |
 
 ### Register `alpha_even`

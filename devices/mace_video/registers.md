@@ -121,7 +121,7 @@ Double-buffered: a new value takes effect at the next field (revision history it
 | 39:30 | `filter_count` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20). |
 | 29:20 | `eav_image` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20). |
 | 19:10 | `eav_eav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20). |
-| 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20). |
+| 9:0 | `eav_sav` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20). |
 
 ### Register `vpad_odd`
 

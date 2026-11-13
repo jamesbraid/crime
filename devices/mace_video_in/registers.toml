@@ -176,7 +176,7 @@ space = "mace_video_in"
 
 [registers.vclip_odd.fields]
 start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
-blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
+blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Lines from start up to this value are forced to black when it exceeds start, and zero adds no black lines (printed page 48)." }
 end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
 scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18)." }
 scale_on = { bits = [38, 38], grade = "established", doc = "One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18)." }
@@ -222,7 +222,7 @@ space = "mace_video_in"
 
 [registers.vclip_even.fields]
 start = { bits = [9, 0], grade = "established", doc = "First captured line, counted from the first line after decoded start of field (printed pages 48 and 49, table 18)." }
-blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Its effect on the captured lines is a reviewed interpretation and is not recorded here (printed pages 48 and 49)." }
+blank_end = { bits = [19, 10], grade = "established", doc = "Leading black-fill boundary in lines. Lines from start up to this value are forced to black when it exceeds start, and zero adds no black lines (printed page 48)." }
 end = { bits = [29, 20], grade = "established", doc = "Last captured line, inclusive. The captured line count is end minus start plus 1 (printed pages 48 and 49, table 18)." }
 scale_ratio = { bits = [37, 30], grade = "established", doc = "Eight-bit vertical ratio: the scaled-down size times 256, used only when scaling is on (printed pages 48 and 49, table 18)." }
 scale_on = { bits = [38, 38], grade = "established", doc = "One enables vertical down-scaling, zero is no scaling (printed pages 48 and 49, table 18)." }

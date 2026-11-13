@@ -185,7 +185,7 @@ grade = "established"
 space = "mace_video_out"
 
 [registers.hpad_odd.fields]
-eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The automatic SAV is the final four bytes of that blanking. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20)." }
+eav_sav = { bits = [9, 0], grade = "established", doc = "End-of-active to start-of-active blanking, in pixel pairs: 2 times (value plus 2) D1 pixels. The all-ones value disables automatic SAV for ancillary data (printed page 51, table 20)." }
 eav_eav = { bits = [19, 10], grade = "established", doc = "End to end, in pixel pairs: total raster pixels per line are 2 times (value plus 1) (printed page 51, table 20)." }
 eav_image = { bits = [29, 20], grade = "established", doc = "End to first image pixel, in pixel pairs: 2 times (value plus 1) pixels precede the memory image (printed page 51, table 20)." }
 filter_count = { bits = [39, 30], grade = "established", doc = "Pixels per line at the output of the square-to-non-square filter (printed page 51, table 20)." }
