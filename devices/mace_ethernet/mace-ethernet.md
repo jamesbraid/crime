@@ -18,7 +18,8 @@ Source:
   dated May 31, 1996 and the page footers July 16, 1996. Stored as
   `references/documents/specs/mace-2.0-specification.pdf`. Page numbers are the printed ones.
 - **[linux]** Linux `drivers/net/ethernet/sgi/meth.c` and `meth.h` at
-  `db2ddb8`. **[openbsd]** OpenBSD `sys/arch/sgi/dev/if_mec.c` at `2df91d8`.
+  `c339f4010dea`, the pinned `references/code/linux` revision. **[openbsd]** OpenBSD
+  `sys/arch/sgi/dev/if_mec.c` at `7011342f6a72`, the pinned `references/code/openbsd` revision.
 
 The facts below come from the specification. A bullet that cites a driver is a
 software expectation and is graded inferred. It shows what software assumes, not
@@ -120,9 +121,10 @@ what the chip does. No capture is used.
 - Each ring message starts on a 128-byte boundary. Its first doubleword is the
   command header (established, [mace] 78 and 79).
 - The page does not say whether the pointer values wrap at the selected ring size,
-  or whether the empty comparison masks higher bits. Page 78 gives the full
-  condition as the write pointer at the N-1 entry without giving N (unknown,
-  [mace] 74 and 78).
+  or whether the empty comparison masks higher bits. Page 74 gives the full
+  condition as the write pointer at the N-1 entry, and page 78 gives a ring of 64
+  to 512 entries, so N follows from the ring size mask; neither says where the
+  pointers wrap (unknown, [mace] 74 and 78).
 - Linux uses 64 entries (`TX_RING_ENTRIES 64` in `meth.h`), so its driver
   exercises only the 8 KiB ring (software expectation, inferred; [linux]).
 - Linux advances its consumer modulo 64 and compares it with the transmit read
@@ -274,7 +276,7 @@ what the chip does. No capture is used.
   in `meth.c`).
 - OpenBSD notes that an early scan can see responses at addresses 10 and 11 that
   settle to address 8 shortly after reset (software expectation, inferred;
-  `if_mec.c` lines 694 to 700). That is a driver observation, not a reset value,
+  `if_mec.c` lines 694 to 702). That is a driver observation, not a reset value,
   and it does not say which PHY any machine has.
 - Linux's debug build names the ICS1890 among the PHY identifiers it can print
   (software expectation, inferred; `meth.c` debug output). That does not show
