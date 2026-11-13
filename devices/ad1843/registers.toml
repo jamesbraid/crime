@@ -3,7 +3,7 @@ unit = "ad1843"
 prefix = "AD1843"
 title = "Analog Devices AD1843 stereo codec: the 29 internal registers"
 doc = "The AD1843 serial-port codec used by the O2 MACE audio interface. Register numbers are the codec's own, not MACE byte offsets, and are reached through the MACE codec command register (mace_audio.toml, codec_cmd). Each register is 16 bits. Field masks follow the published register table; bits the table does not define are not listed."
-from = "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+from = "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
 public_from = ["Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996)"]
 
 [spaces.codec_reg]
@@ -66,13 +66,13 @@ immediate = { value = 1, grade = "established", doc = "Applies at the register w
 
 [registers.status_id]
 offset = 0
-access = "rw"
+access = "r"
 width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xc001
 doc = """
-INIT, the converter power-down state and the silicon revision. Reset sets INIT and power-down, so the codec starts in initialisation. The revision field is read-only and resets to 1, the first-silicon value in the table; the revision of a fitted part is not measured here (established, register pages 28-50 and summary page 52)."""
+INIT, the converter power-down state and the silicon revision. Read-only ([AD1843 REV.0 page 28]). Reset sets INIT and power-down, so the codec starts in initialisation. The revision field is read-only and resets to 1, the first-silicon value in the table; the revision of a fitted part is not measured here (established, register pages 28-50 and summary page 52)."""
 
 [registers.status_id.fields]
 init = { bits = [15, 15], grade = "established", doc = "INIT. Blocks control writes while it is set." }
@@ -326,9 +326,9 @@ doc = """
 Mode of generator 1. Clock 2 and clock 3 use the same layout at registers 19 and 22. Bits 9 and 8 are not defined (established, register pages 38 to 43)."""
 
 [registers.clock1_mode.fields]
-ref = { bits = [15, 15], grade = "inferred", doc = "Reference select. The datasheet describes REF=0 as its own oscillator mode and REF=1 as a SYNC-locked mode in which the phase work is held. The mapping of the bit value to each mode is inferred from that description." }
-video_select = { bits = [14, 14], grade = "unknown", doc = "Named video select. The datasheet gives no meaning for it." }
-pll_gain = { bits = [13, 13], grade = "unknown", doc = "Named PLL gain. The datasheet gives no meaning for it." }
+ref = { bits = [15, 15], grade = "established", doc = "Reference select. 0 references the generator to the XTALI crystal or master clock input, with the sample rate from the hz register and the phase shiftable. 1 references it to the SYNC pin, with the sample phase locked and the hz and phase registers ignored (AD1843 REV.0 page 37)." }
+video_select = { bits = [14, 14], grade = "established", doc = "Video lock mode, used only when the reference is the SYNC pin and written zero otherwise. 0 is normal lock with a bit clock. 1 is video lock, where the conversion rate comes from the clock modifier bits and no bit clock is produced (AD1843 REV.0 page 38)." }
+pll_gain = { bits = [13, 13], grade = "established", doc = "PLL loop gain. 0 selects finite loop gain, the nominal setting. 1 selects infinite gain, which may help locking to some SYNC inputs and may add conversion noise (AD1843 REV.0 page 38)." }
 bit_plus_200hz = { bits = [12, 12], grade = "established", doc = "Adds 200 Hz to the BIT rate. The scaling order is an interpretation (see devices/mace_audio/mace-audio.md)." }
 conv_8_7_multiplier = { bits = [11, 11], grade = "established", doc = "Scales the conversion rate by 8/7." }
 conv_128_multiplier = { bits = [10, 10], grade = "established", doc = "Scales the CONV output by 128." }
@@ -371,9 +371,9 @@ reset = 0x00ff
 doc = "Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred)."
 
 [registers.clock2_mode.fields]
-ref = { bits = [15, 15], grade = "inferred" }
-video_select = { bits = [14, 14], grade = "unknown" }
-pll_gain = { bits = [13, 13], grade = "unknown" }
+ref = { bits = [15, 15], grade = "established" }
+video_select = { bits = [14, 14], grade = "established" }
+pll_gain = { bits = [13, 13], grade = "established" }
 bit_plus_200hz = { bits = [12, 12], grade = "established" }
 conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
 conv_128_multiplier = { bits = [10, 10], grade = "established" }
@@ -415,9 +415,9 @@ reset = 0x00ff
 doc = "Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43)."
 
 [registers.clock3_mode.fields]
-ref = { bits = [15, 15], grade = "inferred" }
-video_select = { bits = [14, 14], grade = "unknown" }
-pll_gain = { bits = [13, 13], grade = "unknown" }
+ref = { bits = [15, 15], grade = "established" }
+video_select = { bits = [14, 14], grade = "established" }
+pll_gain = { bits = [13, 13], grade = "established" }
 bit_plus_200hz = { bits = [12, 12], grade = "established" }
 conv_8_7_multiplier = { bits = [11, 11], grade = "established" }
 conv_128_multiplier = { bits = [10, 10], grade = "established" }

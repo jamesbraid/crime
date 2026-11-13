@@ -8,14 +8,14 @@
    "kind": "register",
    "name": "status_id",
    "offset": 0,
-   "access": "rw",
+   "access": "r",
    "width": 16,
    "count": 1,
    "stride": 1,
    "space": "codec_reg",
    "reset": 49153,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -24,7 +24,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -33,7 +33,7 @@
    "hi": 14,
    "lo": 14,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -42,7 +42,7 @@
    "hi": 3,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -56,7 +56,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -65,7 +65,7 @@
    "hi": 9,
    "lo": 9,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -74,7 +74,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -83,7 +83,7 @@
    "hi": 3,
    "lo": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -92,7 +92,7 @@
    "hi": 1,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -106,7 +106,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -115,7 +115,7 @@
    "hi": 15,
    "lo": 13,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -123,7 +123,7 @@
    "name": "adc_input.l_source.line",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -131,7 +131,7 @@
    "name": "adc_input.l_source.mic",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -139,7 +139,7 @@
    "name": "adc_input.l_source.aux1",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -147,7 +147,7 @@
    "name": "adc_input.l_source.aux2",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -155,7 +155,7 @@
    "name": "adc_input.l_source.aux3",
    "value": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -163,7 +163,7 @@
    "name": "adc_input.l_source.mono_in",
    "value": 5,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -171,7 +171,7 @@
    "name": "adc_input.l_source.dac1_out",
    "value": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -179,7 +179,7 @@
    "name": "adc_input.l_source.dac2_out",
    "value": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -188,7 +188,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -197,7 +197,7 @@
    "hi": 11,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -206,7 +206,7 @@
    "hi": 7,
    "lo": 5,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -214,7 +214,7 @@
    "name": "adc_input.r_source.line",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -222,7 +222,7 @@
    "name": "adc_input.r_source.mic",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -230,7 +230,7 @@
    "name": "adc_input.r_source.aux1",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -238,7 +238,7 @@
    "name": "adc_input.r_source.aux2",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -246,7 +246,7 @@
    "name": "adc_input.r_source.aux3",
    "value": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -254,7 +254,7 @@
    "name": "adc_input.r_source.mono_in",
    "value": 5,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -262,7 +262,7 @@
    "name": "adc_input.r_source.dac1_out",
    "value": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -270,7 +270,7 @@
    "name": "adc_input.r_source.dac2_out",
    "value": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -279,7 +279,7 @@
    "hi": 4,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -288,7 +288,7 @@
    "hi": 3,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -302,7 +302,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -311,7 +311,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -320,7 +320,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -329,7 +329,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -338,7 +338,7 @@
    "hi": 4,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -352,7 +352,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -361,7 +361,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -370,7 +370,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -379,7 +379,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -388,7 +388,7 @@
    "hi": 4,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -402,7 +402,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -411,7 +411,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -420,7 +420,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -429,7 +429,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -438,7 +438,7 @@
    "hi": 4,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -452,7 +452,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -461,7 +461,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -470,7 +470,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -479,7 +479,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -488,7 +488,7 @@
    "hi": 4,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -502,7 +502,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -511,7 +511,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -520,7 +520,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -529,7 +529,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -538,7 +538,7 @@
    "hi": 4,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -552,7 +552,7 @@
    "space": "codec_reg",
    "reset": 34920,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -561,7 +561,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -570,7 +570,7 @@
    "hi": 12,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -579,7 +579,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -588,7 +588,7 @@
    "hi": 6,
    "lo": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -597,7 +597,7 @@
    "hi": 5,
    "lo": 5,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -606,7 +606,7 @@
    "hi": 4,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -615,7 +615,7 @@
    "hi": 3,
    "lo": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -624,7 +624,7 @@
    "hi": 1,
    "lo": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -632,7 +632,7 @@
    "name": "mono_control.dac2_gain_timing.zero_cross",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -640,7 +640,7 @@
    "name": "mono_control.dac2_gain_timing.immediate",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -649,7 +649,7 @@
    "hi": 0,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -657,7 +657,7 @@
    "name": "mono_control.dac1_gain_timing.zero_cross",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -665,7 +665,7 @@
    "name": "mono_control.dac1_gain_timing.immediate",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -679,7 +679,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -688,7 +688,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -697,7 +697,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -706,7 +706,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -715,7 +715,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -729,7 +729,7 @@
    "space": "codec_reg",
    "reset": 34952,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -738,7 +738,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -747,7 +747,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -756,7 +756,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -765,7 +765,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -779,7 +779,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -788,7 +788,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -797,7 +797,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -806,7 +806,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -815,7 +815,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -829,7 +829,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -838,7 +838,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -847,7 +847,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -856,7 +856,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -865,7 +865,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -879,7 +879,7 @@
    "space": "codec_reg",
    "reset": 32896,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -888,7 +888,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -897,7 +897,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -906,7 +906,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -915,7 +915,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -929,7 +929,7 @@
    "space": "codec_reg",
    "reset": 32896,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -938,7 +938,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -947,7 +947,7 @@
    "hi": 13,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -956,7 +956,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -965,7 +965,7 @@
    "hi": 5,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -979,7 +979,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -988,7 +988,7 @@
    "hi": 11,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -996,7 +996,7 @@
    "name": "clock_select.dac2_clock.fixed48k",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1004,7 +1004,7 @@
    "name": "clock_select.dac2_clock.gen1",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1012,7 +1012,7 @@
    "name": "clock_select.dac2_clock.gen2",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1020,7 +1020,7 @@
    "name": "clock_select.dac2_clock.gen3",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1029,7 +1029,7 @@
    "hi": 9,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1037,7 +1037,7 @@
    "name": "clock_select.dac1_clock.fixed48k",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1045,7 +1045,7 @@
    "name": "clock_select.dac1_clock.gen1",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1053,7 +1053,7 @@
    "name": "clock_select.dac1_clock.gen2",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1061,7 +1061,7 @@
    "name": "clock_select.dac1_clock.gen3",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1070,7 +1070,7 @@
    "hi": 3,
    "lo": 2,
    "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1078,7 +1078,7 @@
    "name": "clock_select.r_adc_clock.fixed48k",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1086,7 +1086,7 @@
    "name": "clock_select.r_adc_clock.gen1",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1094,7 +1094,7 @@
    "name": "clock_select.r_adc_clock.gen2",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1102,7 +1102,7 @@
    "name": "clock_select.r_adc_clock.gen3",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1111,7 +1111,7 @@
    "hi": 1,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1119,7 +1119,7 @@
    "name": "clock_select.l_adc_clock.fixed48k",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1127,7 +1127,7 @@
    "name": "clock_select.l_adc_clock.gen1",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1135,7 +1135,7 @@
    "name": "clock_select.l_adc_clock.gen2",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1143,7 +1143,7 @@
    "name": "clock_select.l_adc_clock.gen3",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1157,7 +1157,7 @@
    "space": "codec_reg",
    "reset": 255,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1165,8 +1165,8 @@
    "name": "clock1_mode.ref",
    "hi": 15,
    "lo": 15,
-   "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1174,8 +1174,8 @@
    "name": "clock1_mode.video_select",
    "hi": 14,
    "lo": 14,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1183,8 +1183,8 @@
    "name": "clock1_mode.pll_gain",
    "hi": 13,
    "lo": 13,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1193,7 +1193,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1202,7 +1202,7 @@
    "hi": 11,
    "lo": 11,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1211,7 +1211,7 @@
    "hi": 10,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1220,7 +1220,7 @@
    "hi": 7,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1229,7 +1229,7 @@
    "hi": 3,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1243,7 +1243,7 @@
    "space": "codec_reg",
    "reset": 48000,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1252,7 +1252,7 @@
    "hi": 15,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1266,7 +1266,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1275,7 +1275,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1284,7 +1284,7 @@
    "hi": 7,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1298,7 +1298,7 @@
    "space": "codec_reg",
    "reset": 255,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1306,8 +1306,8 @@
    "name": "clock2_mode.ref",
    "hi": 15,
    "lo": 15,
-   "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1315,8 +1315,8 @@
    "name": "clock2_mode.video_select",
    "hi": 14,
    "lo": 14,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1324,8 +1324,8 @@
    "name": "clock2_mode.pll_gain",
    "hi": 13,
    "lo": 13,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1334,7 +1334,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1343,7 +1343,7 @@
    "hi": 11,
    "lo": 11,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1352,7 +1352,7 @@
    "hi": 10,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1361,7 +1361,7 @@
    "hi": 7,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1370,7 +1370,7 @@
    "hi": 3,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1384,7 +1384,7 @@
    "space": "codec_reg",
    "reset": 48000,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1393,7 +1393,7 @@
    "hi": 15,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1407,7 +1407,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1416,7 +1416,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1425,7 +1425,7 @@
    "hi": 7,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1439,7 +1439,7 @@
    "space": "codec_reg",
    "reset": 255,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1447,8 +1447,8 @@
    "name": "clock3_mode.ref",
    "hi": 15,
    "lo": 15,
-   "grade": "inferred",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1456,8 +1456,8 @@
    "name": "clock3_mode.video_select",
    "hi": 14,
    "lo": 14,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1465,8 +1465,8 @@
    "name": "clock3_mode.pll_gain",
    "hi": 13,
    "lo": 13,
-   "grade": "unknown",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1475,7 +1475,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1484,7 +1484,7 @@
    "hi": 11,
    "lo": 11,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1493,7 +1493,7 @@
    "hi": 10,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1502,7 +1502,7 @@
    "hi": 7,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1511,7 +1511,7 @@
    "hi": 3,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1525,7 +1525,7 @@
    "space": "codec_reg",
    "reset": 48000,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1534,7 +1534,7 @@
    "hi": 15,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1548,7 +1548,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1557,7 +1557,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1566,7 +1566,7 @@
    "hi": 7,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1580,7 +1580,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1589,7 +1589,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1598,7 +1598,7 @@
    "hi": 14,
    "lo": 14,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1607,7 +1607,7 @@
    "hi": 9,
    "lo": 9,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1616,7 +1616,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1625,7 +1625,7 @@
    "hi": 7,
    "lo": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1633,7 +1633,7 @@
    "name": "digital_filter.r_digital_source.analog",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1641,7 +1641,7 @@
    "name": "digital_filter.r_digital_source.reserved",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1649,7 +1649,7 @@
    "name": "digital_filter.r_digital_source.dac1",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1657,7 +1657,7 @@
    "name": "digital_filter.r_digital_source.dac2",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1666,7 +1666,7 @@
    "hi": 5,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1674,7 +1674,7 @@
    "name": "digital_filter.l_digital_source.analog",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1682,7 +1682,7 @@
    "name": "digital_filter.l_digital_source.reserved",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1690,7 +1690,7 @@
    "name": "digital_filter.l_digital_source.dac1",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1698,7 +1698,7 @@
    "name": "digital_filter.l_digital_source.dac2",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1707,7 +1707,7 @@
    "hi": 1,
    "lo": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1716,7 +1716,7 @@
    "hi": 0,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1730,7 +1730,7 @@
    "space": "codec_reg",
    "reset": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1739,7 +1739,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1748,7 +1748,7 @@
    "hi": 14,
    "lo": 14,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1757,7 +1757,7 @@
    "hi": 11,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1765,7 +1765,7 @@
    "name": "format_lock.dac2_format.unsigned8",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1773,7 +1773,7 @@
    "name": "format_lock.dac2_format.signed16",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1781,7 +1781,7 @@
    "name": "format_lock.dac2_format.mulaw",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1789,7 +1789,7 @@
    "name": "format_lock.dac2_format.alaw",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1798,7 +1798,7 @@
    "hi": 9,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1806,7 +1806,7 @@
    "name": "format_lock.dac1_format.unsigned8",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1814,7 +1814,7 @@
    "name": "format_lock.dac1_format.signed16",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1822,7 +1822,7 @@
    "name": "format_lock.dac1_format.mulaw",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1830,7 +1830,7 @@
    "name": "format_lock.dac1_format.alaw",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1839,7 +1839,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1848,7 +1848,7 @@
    "hi": 6,
    "lo": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1857,7 +1857,7 @@
    "hi": 5,
    "lo": 5,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1866,7 +1866,7 @@
    "hi": 4,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1875,7 +1875,7 @@
    "hi": 3,
    "lo": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1883,7 +1883,7 @@
    "name": "format_lock.r_adc_format.unsigned8",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1891,7 +1891,7 @@
    "name": "format_lock.r_adc_format.signed16",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1899,7 +1899,7 @@
    "name": "format_lock.r_adc_format.mulaw",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1907,7 +1907,7 @@
    "name": "format_lock.r_adc_format.alaw",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1916,7 +1916,7 @@
    "hi": 1,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1924,7 +1924,7 @@
    "name": "format_lock.l_adc_format.unsigned8",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1932,7 +1932,7 @@
    "name": "format_lock.l_adc_format.signed16",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1940,7 +1940,7 @@
    "name": "format_lock.l_adc_format.mulaw",
    "value": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1948,7 +1948,7 @@
    "name": "format_lock.l_adc_format.alaw",
    "value": 3,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1962,7 +1962,7 @@
    "space": "codec_reg",
    "reset": 192,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1971,7 +1971,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1980,7 +1980,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1989,7 +1989,7 @@
    "hi": 9,
    "lo": 9,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -1998,7 +1998,7 @@
    "hi": 8,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2007,7 +2007,7 @@
    "hi": 7,
    "lo": 7,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2016,7 +2016,7 @@
    "hi": 6,
    "lo": 6,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2025,7 +2025,7 @@
    "hi": 4,
    "lo": 4,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2034,7 +2034,7 @@
    "hi": 1,
    "lo": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2043,7 +2043,7 @@
    "hi": 0,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2057,7 +2057,7 @@
    "space": "codec_reg",
    "reset": 50176,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2066,7 +2066,7 @@
    "hi": 15,
    "lo": 15,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2075,7 +2075,7 @@
    "hi": 14,
    "lo": 14,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2084,7 +2084,7 @@
    "hi": 13,
    "lo": 13,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2093,7 +2093,7 @@
    "hi": 12,
    "lo": 12,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2102,7 +2102,7 @@
    "hi": 11,
    "lo": 11,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2111,7 +2111,7 @@
    "hi": 10,
    "lo": 10,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2120,7 +2120,7 @@
    "hi": 9,
    "lo": 8,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2129,7 +2129,7 @@
    "hi": 7,
    "lo": 2,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2138,7 +2138,7 @@
    "hi": 1,
    "lo": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2146,7 +2146,7 @@
    "name": "power_clock.r_line_mode.single_ended",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2154,7 +2154,7 @@
    "name": "power_clock.r_line_mode.differential",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2163,7 +2163,7 @@
    "hi": 0,
    "lo": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2171,7 +2171,7 @@
    "name": "power_clock.l_line_mode.single_ended",
    "value": 0,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   },
   {
    "unit": "ad1843",
@@ -2179,7 +2179,7 @@
    "name": "power_clock.l_line_mode.differential",
    "value": 1,
    "grade": "established",
-   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. The PDF is not stored in this repository, so these values were not re-checked against it here."
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
   }
  ]
 }

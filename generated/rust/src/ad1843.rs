@@ -209,7 +209,7 @@ pub mod enums {
     }
 }
 
-/// INIT, the converter power-down state and the silicon revision. Reset sets INIT and power-down, so the codec starts in initialisation. The revision fie (established)
+/// INIT, the converter power-down state and the silicon revision. Read-only ([AD1843 REV.0 page 28]). Reset sets INIT and power-down, so the codec starts (established)
 pub mod status_id {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x0;
@@ -1001,7 +1001,7 @@ pub mod clock_select {
 pub mod clock1_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x10;
-    pub mod r#ref { // bits 15:15, inferred
+    pub mod r#ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1011,7 +1011,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, unknown
+    pub mod video_select { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1021,7 +1021,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, unknown
+    pub mod pll_gain { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1126,7 +1126,7 @@ pub mod clock1_phase {
 pub mod clock2_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x13;
-    pub mod r#ref { // bits 15:15, inferred
+    pub mod r#ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1136,7 +1136,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, unknown
+    pub mod video_select { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1146,7 +1146,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, unknown
+    pub mod pll_gain { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1251,7 +1251,7 @@ pub mod clock2_phase {
 pub mod clock3_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x16;
-    pub mod r#ref { // bits 15:15, inferred
+    pub mod r#ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1261,7 +1261,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, unknown
+    pub mod video_select { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1271,7 +1271,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, unknown
+    pub mod pll_gain { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {

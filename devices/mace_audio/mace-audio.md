@@ -21,9 +21,8 @@ passage, **inferred** is a reasoned reading, **unknown** means the sources do no
   The pages cited here were checked against that copy.
 - **[ad1843]** Analog Devices, *AD1843 Serial-Port 16-Bit SoundComm Codec*,
   REV.0, 1996. Register pages 28 to 50, the register summary on page 52, and the
-  serial, reset and routing text. The PDF is not stored here, and the codec
-  facts were not re-checked against it. Where this page cites a codec page
-  number, it is the number the source gives.
+  serial, reset and routing text. The codec facts were checked against the
+  published REV.0 document, and the page numbers cited are its printed pages.
 - **[g711]** ITU-T G.711 (11/1988), tables 1a/1b (A-law) and 2a/2b (mu-law).
 
 ## Controller
@@ -145,8 +144,11 @@ passage, **inferred** is a reasoned reading, **unknown** means the sources do no
 
 ## Reset and startup
 
-- RESET and PWRDWN are asynchronous and need at least 100 ns of assertion
-  (established, [ad1843] initial-state text).
+- RESET must be held low for at least 100 ns, with the BM pin tied to select
+  master or slave mode (established, [ad1843] 52, start-up sequence). RESET powers
+  the codec down asynchronously and PWRDWN does it synchronously and quietly.
+  Without a crystal, PWRDWN needs a 24.576 MHz clock on XTALI for at least 5 ms
+  (established, [ad1843] 10, pin descriptions).
 - A hardware RESET or PWRDWN returns every register to its reset value and blocks
   writes (established, [ad1843] register pages 28 to 50).
 - INIT clears about 600 µs after reset release with the reference present. The
@@ -155,12 +157,13 @@ passage, **inferred** is a reasoned reading, **unknown** means the sources do no
 - Clearing PDNI starts converter startup. PDNO stays asserted until startup or
   power-down completes. Power-down takes 5 ms (established, [ad1843]
   initialisation text).
-- Calibration: a hardware reset or power-down invalidates it, and the next startup
-  calibrates regardless of the auto-calibration bit (inferred, [ad1843] register
-  28 and initialisation text).
-- Startup and calibration durations: the source gives 470 ms, 474 ms and 4 ms,
-  and says it selected them. No published figure is quoted, so the true values
-  are unknown.
+- Calibration: a hardware reset or power-down clears the calibration, and the
+  startup that follows always runs an autocalibration cycle regardless of the
+  auto-calibration bit (established, [ad1843] 15 and 52).
+- Startup durations: leaving power-down takes approximately 470 ms, 474 ms when
+  an autocalibration cycle runs, and the autocalibration cycle takes approximately
+  4 ms (established, [ad1843] 10, 15, 49 and 52). The codec figures are typical
+  and approximate; the datasheet gives no tolerance (unknown).
 - The delay from a converter enable to its first conversion: the source selects
   one and gives no published figure (unknown).
 
@@ -171,9 +174,10 @@ passage, **inferred** is a reasoned reading, **unknown** means the sources do no
 - Normal rates run from 4 to 49 kHz with all resources on. Rates up to 54 kHz
   need the resource-free mode and either one DAC pair or both ADCs off
   (established, [ad1843] register 27 and the rate text).
-- The introduction gives the internal rate as 512 times the reference. That
-  conflicts with the explicit conditions above. The explicit conditions govern
-  here (unknown which the silicon follows).
+- The XTALI pin text asks for an external clock of at least 512 times the
+  maximum sampling frequency ([ad1843] 10), while also calling a 24.576 MHz
+  crystal right for 4 to 54 kHz; 24.576 MHz is only 512 times 48 kHz. The explicit
+  rate conditions above govern here (unknown which the silicon follows).
 - Phase work is in units of 1/3000 of a conversion cycle, which is 0.12 degrees.
   Direction 0 advances the phase and 1 retards it (established, [ad1843]
   register pages 28 to 50 and the phase section).
@@ -323,7 +327,6 @@ conversion basis (established, [ad1843] pages 38, 41 and 43). Values in hertz:
 - The DAC gain-change timeout: 384 conversion samples or 10 to 12 ms.
 - The internal rate as a multiple of the reference (512 times, or the explicit
   conditions).
-- Published startup and calibration durations, which the sources do not give.
 - The silicon revision of a fitted codec. The table reset gives 1, the first silicon
   revision. A fitted part has not been read.
 - Whether silicon applies the 24-to-16-bit clip rule as printed for every input.
