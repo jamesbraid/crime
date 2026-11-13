@@ -609,7 +609,7 @@ OFF_CMAP = { value = 0x50000, grade = "established", doc = "colour map" }
 OFF_CMAP_FIFO = { value = 0x58000, grade = "established" }
 OFF_CRS_CMAP = { value = 0x70008, grade = "established", doc = "First cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xffffff00." }
 OFF_CRS_CTL = { value = 0x70004, grade = "established" }
-OFF_CRS_GLYPH = { value = 0x78000, grade = "established", doc = "page 46 table start; the page 34 table gives a different start offset, conflict open 64 words; the shipped IRIX text port loads words 0 to 31 from a 32-word table and writes 0 to words 32 to 63. Reading the words as a 32 by 32 bitmap at two bits per pixel is inferred; the text port draws with the first 32 words only (inferred)." }
+OFF_CRS_GLYPH = { value = 0x78000, grade = "established", doc = "start from the page 34 address table (0x078000 to 0x0780FC, which is 64 words); the page 46 register heading prints the start as 0x0780000, seven digits, which is taken as a typo because it does not fit the 24-bit register space or the 0x0780FC end. 64 words; the shipped IRIX text port loads words 0 to 31 from a 32-word table and writes 0 to words 32 to 63. Reading the words as a 32 by 32 bitmap at two bits per pixel is inferred; the text port draws with the first 32 words only (inferred)." }
 OFF_CRS_POS = { value = 0x70000, grade = "established" }
 OFF_CRS_START_XY = { value = 0x10048, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
 OFF_CTRLSTAT = { value = 0x0, grade = "established" }

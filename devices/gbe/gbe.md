@@ -603,7 +603,7 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
   `crime_tpinit` in `crime_tp.o` writes colour 1 at `+0x70008` with -256, that is 0xffffff00 (white).
   It writes colour 2 at `+0x7000c` with `lui at,0xff00`, that is 0xff000000 (red).
   The third colour is never written by the kernel.
-- `CRS_GLY` at `+0x78000`: the 64 words of the 32 by 32 cursor glyph, two bits per pixel (page 46). Established.
+- `CRS_GLY` at `+0x78000`: the 64 words of the 32 by 32 cursor glyph, two bits per pixel (pages 34 and 46). Established.
   `crime_tpinit` in `crime_tp.o` copies the first 32 words from a table in its data section in a counted loop to `+0x78000` onward.
   It then clears words 32 to 63 from `+0x78080`, three stores to `+0x78080`, `+0x78084` and `+0x78088` per loop pass.
 - `VC_0` at `+0x80000`: the capture region's horizontal bounds, the left edge in bits 11:0 and the right edge in bits 23:12 (page 47). Established.
@@ -657,7 +657,7 @@ Facts here come from the GBE 1.1 specification, cited as [gbe-spec] with its own
 
 ## Cursor glyph and crosshair
 
-- Established ([gbe-spec] pp. 21-22, 46): the glyph is 64 words, two per 32-pixel row, rows from top to bottom. Each word holds 16 pixels at two bits each, the leftmost in bits 31:30 and the rightmost in bits 1:0. Glyph index 0 is transparent. The 64 words end at `0x780fc`. The page-34 table gives a different start offset from page 46's `0x78000`; that value is not recorded here, and the conflict is open.
+- Established ([gbe-spec] pp. 21-22, 46): the glyph is 64 words, two per 32-pixel row, rows from top to bottom. Each word holds 16 pixels at two bits each, the leftmost in bits 31:30 and the rightmost in bits 1:0. Glyph index 0 is transparent. The 64 words end at `0x780fc`. The page-34 address table gives the start as `0x078000`; the page-46 heading prints `0x0780000` with seven digits, which is read as a typo because it does not fit the 24-bit register space or the `0x0780FC` end (inferred).
 - Established ([gbe-spec] p. 22): crosshair mode (`CRS_CTL` bit 1) draws in cursor colour 1, ignores glyph RAM and centres on the cursor position.
 - Unknown: cursor position width and sign. The register table gives 16-bit fields, the functional text (pp. 20-22) says 12-bit, and NetBSD treats the fields as signed. `devices/gbe/registers.toml` carries the table reading only.
 
