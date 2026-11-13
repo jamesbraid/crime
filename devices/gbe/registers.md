@@ -46,7 +46,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `VC_3` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_START_XY` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VC_TILES` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
-| `VT_F2RF_LOCK` | 32 | inferred | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
+| `VT_F2RF_LOCK` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_FLAGS` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_HBLANK` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
 | `VT_HCMAP` | 32 | established | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |
@@ -188,7 +188,8 @@ The shipped IRIX kernel writes a vertical part of minus (vertical blank start mi
 
 Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their
 reset contents unspecified, and the spec gives no PLL lock time or frequency limits.
-Bits 25:24 are manufacturer test controls and are not described. The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined.
+Bits 25:24 are the PLL test inputs tdwni and tupi, described only as their normal
+operation state, with reset zero ([gbe-spec] p. 36). The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -336,8 +337,9 @@ Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole
 
 ### Word `SYSCLK`
 
-System PLL test controls, gains and divider. Reset has bit 3 set (test control 0)
-and every other defined bit zero.
+System PLL test controls, gains and divider ([gbe-spec] p. 37). Bits 1:0 are tdwni and
+tupi and bits 3:2 tm(1) and tm(0), described as normal operation states; the field
+below spans all four. Reset has bit 3 set and every other defined bit zero.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -409,31 +411,31 @@ The shipped IRIX kernel writes the same vertical part as DID_START_XY without th
 
 ### Word `VT_F2RF_LOCK`
 
-Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a
-stereo toggle line and a frame-lock line. Which half holds which is inferred from the
-listing order in the register table, the same order the interrupt words use. No reset
-table is given. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff.
+Field-to-frame lock line, VT_7. The register table ([gbe-spec] p. 39) puts vt_f2rf, the
+line where the left/right synchronisation signal toggles, in bits 11:0 and vt_frmlock, the
+line vt_y is preset to on a frame-lock edge, in bits 23:12, and gives both a reset of zero. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 23:12 | `frame_lock_y` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 11:0 | `stereo_toggle_y` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 23:12 | `frame_lock_y` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 11:0 | `stereo_toggle_y` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `VT_FLAGS`
 
-Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other
-bits follow the public Linux and NetBSD encodings, which are software expectations,
-and the table gives no reset value for them. The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails.
+Output polarity and control bits 6:0 (VT_6). The register table ([gbe-spec] p. 39) names
+every bit and gives all of them a reset of zero: vsync invert, vsync forced low, hsync
+invert, hsync forced low, composite sync forced high (4) or low (5), and left/right
+signal forced high (6). The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 6 | `stereo_forced_high` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 6 | `stereo_forced_high` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 | 5 | `sync_low` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 4 | `composite_sync_high` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 3 | `horizontal_forced_low` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 2 | `horizontal_invert` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 1 | `vertical_forced_low` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
-| 0 | `vertical_invert` | inferred |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 4 | `composite_sync_high` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 3 | `horizontal_forced_low` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 2 | `horizontal_invert` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 1 | `vertical_forced_low` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
+| 0 | `vertical_invert` | established |  | published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings |  |
 
 ### Word `VT_HBLANK`
 

@@ -1054,7 +1054,7 @@ pub mod ovr_width_tile {
         }
     }
 }
-/// System PLL test controls, gains and divider. Reset has bit 3 set (test control 0) and every other defined bit zero. (established)
+/// System PLL test controls, gains and divider ([gbe-spec] p. 37). Bits 1:0 are tdwni and tupi and bits 3:2 tm(1) and tm(0), described as normal operatio (established)
 pub mod sysclk {
     pub const WIDTH: u32 = 32;
     pub mod divider { // bits 14:12, established
@@ -1326,10 +1326,10 @@ pub mod vc_tiles {
         }
     }
 }
-/// Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a stereo toggle line and a frame-lock line. Which half holds which is (inferred)
+/// Field-to-frame lock line, VT_7. The register table ([gbe-spec] p. 39) puts vt_f2rf, the line where the left/right synchronisation signal toggles, in b (established)
 pub mod vt_f2rf_lock {
     pub const WIDTH: u32 = 32;
-    pub mod frame_lock_y { // bits 23:12, inferred
+    pub mod frame_lock_y { // bits 23:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0xfff;
         pub const fn get(v: u32) -> u32 {
@@ -1339,7 +1339,7 @@ pub mod vt_f2rf_lock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod stereo_toggle_y { // bits 11:0, inferred
+    pub mod stereo_toggle_y { // bits 11:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xfff;
         pub const fn get(v: u32) -> u32 {
@@ -1350,10 +1350,10 @@ pub mod vt_f2rf_lock {
         }
     }
 }
-/// Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other bits follow the public Linux and NetBSD encodings, which are softw (established)
+/// Output polarity and control bits 6:0 (VT_6). The register table ([gbe-spec] p. 39) names every bit and gives all of them a reset of zero: vsync invert (established)
 pub mod vt_flags {
     pub const WIDTH: u32 = 32;
-    pub mod stereo_forced_high { // bits 6:6, inferred
+    pub mod stereo_forced_high { // bits 6:6, established
         pub const SHIFT: u32 = 6;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1373,7 +1373,7 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod composite_sync_high { // bits 4:4, inferred
+    pub mod composite_sync_high { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1383,7 +1383,7 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod horizontal_forced_low { // bits 3:3, inferred
+    pub mod horizontal_forced_low { // bits 3:3, established
         pub const SHIFT: u32 = 3;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1393,7 +1393,7 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod horizontal_invert { // bits 2:2, inferred
+    pub mod horizontal_invert { // bits 2:2, established
         pub const SHIFT: u32 = 2;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1403,7 +1403,7 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod vertical_forced_low { // bits 1:1, inferred
+    pub mod vertical_forced_low { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1413,7 +1413,7 @@ pub mod vt_flags {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod vertical_invert { // bits 0:0, inferred
+    pub mod vertical_invert { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {

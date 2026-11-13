@@ -165,7 +165,8 @@ grade = "established"
 doc = """
 Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their
 reset contents unspecified, and the spec gives no PLL lock time or frequency limits.
-Bits 25:24 are manufacturer test controls and are not described. The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined."""
+Bits 25:24 are the PLL test inputs tdwni and tupi, described only as their normal
+operation state, with reset zero ([gbe-spec] p. 36). The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined."""
 
 [words.DOTCLOCK.fields]
 out_of_lock = { bits = [23, 23], grade = "established" }
@@ -368,8 +369,9 @@ remainder = { bits = [4, 0], grade = "established" }
 width = 32
 grade = "established"
 doc = """
-System PLL test controls, gains and divider. Reset has bit 3 set (test control 0)
-and every other defined bit zero."""
+System PLL test controls, gains and divider ([gbe-spec] p. 37). Bits 1:0 are tdwni and
+tupi and bits 3:2 tm(1) and tm(0), described as normal operation states; the field
+below spans all four. Reset has bit 3 set and every other defined bit zero."""
 
 [words.SYSCLK.fields]
 tm = { bits = [3, 0], grade = "established" }
@@ -448,17 +450,16 @@ tile_second = { bits = [15, 0], grade = "established" }
 
 [words.VT_F2RF_LOCK]
 width = 32
-grade = "inferred"
+grade = "established"
 doc = """
-Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a
-stereo toggle line and a frame-lock line. Which half holds which is inferred from the
-listing order in the register table, the same order the interrupt words use. No reset
-table is given. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff."""
+Field-to-frame lock line, VT_7. The register table ([gbe-spec] p. 39) puts vt_f2rf, the
+line where the left/right synchronisation signal toggles, in bits 11:0 and vt_frmlock, the
+line vt_y is preset to on a frame-lock edge, in bits 23:12, and gives both a reset of zero. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff."""
 notes = "The kernel reading called the fields blank_start and low and the word VT_7; the word's use as a frame-lock position is the specification's. The two readings put the same value in the high field. Names kept as the specification gives them."
 
 [words.VT_F2RF_LOCK.fields]
-stereo_toggle_y = { bits = [11, 0], grade = "inferred" }
-frame_lock_y = { bits = [23, 12], grade = "inferred" }
+stereo_toggle_y = { bits = [11, 0], grade = "established" }
+frame_lock_y = { bits = [23, 12], grade = "established" }
 
 [words.VT_HBLANK]
 width = 32
@@ -523,18 +524,19 @@ on = { bits = [23, 12], grade = "established" }
 width = 32
 grade = "established"
 doc = """
-Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other
-bits follow the public Linux and NetBSD encodings, which are software expectations,
-and the table gives no reset value for them. The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails."""
+Output polarity and control bits 6:0 (VT_6). The register table ([gbe-spec] p. 39) names
+every bit and gives all of them a reset of zero: vsync invert, vsync forced low, hsync
+invert, hsync forced low, composite sync forced high (4) or low (5), and left/right
+signal forced high (6). The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails."""
 
 [words.VT_FLAGS.fields]
 sync_low = { bits = [5, 5], grade = "established" }
-vertical_invert = { bits = [0, 0], grade = "inferred" }
-vertical_forced_low = { bits = [1, 1], grade = "inferred" }
-horizontal_invert = { bits = [2, 2], grade = "inferred" }
-horizontal_forced_low = { bits = [3, 3], grade = "inferred" }
-composite_sync_high = { bits = [4, 4], grade = "inferred" }
-stereo_forced_high = { bits = [6, 6], grade = "inferred" }
+vertical_invert = { bits = [0, 0], grade = "established" }
+vertical_forced_low = { bits = [1, 1], grade = "established" }
+horizontal_invert = { bits = [2, 2], grade = "established" }
+horizontal_forced_low = { bits = [3, 3], grade = "established" }
+composite_sync_high = { bits = [4, 4], grade = "established" }
+stereo_forced_high = { bits = [6, 6], grade = "established" }
 
 [words.VT_HCMAP]
 width = 32

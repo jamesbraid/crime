@@ -213,7 +213,8 @@
 /*
  * Bits 22 (out of range) and 23 (out of lock) are status bits. The table leaves their
  * reset contents unspecified, and the spec gives no PLL lock time or frequency limits.
- * Bits 25:24 are manufacturer test controls and are not described. The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined.
+ * Bits 25:24 are the PLL test inputs tdwni and tupi, described only as their normal
+ * operation state, with reset zero ([gbe-spec] p. 36). The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined.
  */
 /* word DOTCLOCK: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
 #define GBE_DOTCLOCK_WIDTH                           32 /* established */
@@ -432,8 +433,9 @@
 #define GBE_OVR_WIDTH_TILE_REMAINDER_INPLACE         (GBE_OVR_WIDTH_TILE_REMAINDER_MASK << GBE_OVR_WIDTH_TILE_REMAINDER_SHIFT)
 
 /*
- * System PLL test controls, gains and divider. Reset has bit 3 set (test control 0)
- * and every other defined bit zero.
+ * System PLL test controls, gains and divider ([gbe-spec] p. 37). Bits 1:0 are tdwni and
+ * tupi and bits 3:2 tm(1) and tm(0), described as normal operation states; the field
+ * below spans all four. Reset has bit 3 set and every other defined bit zero.
  */
 /* word SYSCLK: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
 #define GBE_SYSCLK_WIDTH                             32 /* established */
@@ -541,46 +543,46 @@
 #define GBE_VC_TILES_TILE_SECOND_INPLACE             (GBE_VC_TILES_TILE_SECOND_MASK << GBE_VC_TILES_TILE_SECOND_SHIFT)
 
 /*
- * Field-to-frame lock line, VT_7. The page 21 diagram and the NetBSD encoding name a
- * stereo toggle line and a frame-lock line. Which half holds which is inferred from the
- * listing order in the register table, the same order the interrupt words use. No reset
- * table is given. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff.
+ * Field-to-frame lock line, VT_7. The register table ([gbe-spec] p. 39) puts vt_f2rf, the
+ * line where the left/right synchronisation signal toggles, in bits 11:0 and vt_frmlock, the
+ * line vt_y is preset to on a frame-lock edge, in bits 23:12, and gives both a reset of zero. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff.
  */
 /* word VT_F2RF_LOCK: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
-#define GBE_VT_F2RF_LOCK_WIDTH                       32 /* inferred */
-#define GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_SHIFT          12 /* inferred */
+#define GBE_VT_F2RF_LOCK_WIDTH                       32 /* established */
+#define GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_SHIFT          12 /* established */
 #define GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_MASK           0xfffu
 #define GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_INPLACE        (GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_MASK << GBE_VT_F2RF_LOCK_FRAME_LOCK_Y_SHIFT)
-#define GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_SHIFT       0 /* inferred */
+#define GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_SHIFT       0 /* established */
 #define GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_MASK        0xfffu
 #define GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_INPLACE     (GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_MASK << GBE_VT_F2RF_LOCK_STEREO_TOGGLE_Y_SHIFT)
 
 /*
- * Output polarity and control bits 6:0 (VT_6). Composite sync low is bit 5. The other
- * bits follow the public Linux and NetBSD encodings, which are software expectations,
- * and the table gives no reset value for them. The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails.
+ * Output polarity and control bits 6:0 (VT_6). The register table ([gbe-spec] p. 39) names
+ * every bit and gives all of them a reset of zero: vsync invert, vsync forced low, hsync
+ * invert, hsync forced low, composite sync forced high (4) or low (5), and left/right
+ * signal forced high (6). The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails.
  */
 /* word VT_FLAGS: 32 bits; published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings */
 #define GBE_VT_FLAGS_WIDTH                           32 /* established */
-#define GBE_VT_FLAGS_STEREO_FORCED_HIGH_SHIFT        6 /* inferred */
+#define GBE_VT_FLAGS_STEREO_FORCED_HIGH_SHIFT        6 /* established */
 #define GBE_VT_FLAGS_STEREO_FORCED_HIGH_MASK         0x1u
 #define GBE_VT_FLAGS_STEREO_FORCED_HIGH_INPLACE      (GBE_VT_FLAGS_STEREO_FORCED_HIGH_MASK << GBE_VT_FLAGS_STEREO_FORCED_HIGH_SHIFT)
 #define GBE_VT_FLAGS_SYNC_LOW_SHIFT                  5 /* established */
 #define GBE_VT_FLAGS_SYNC_LOW_MASK                   0x1u
 #define GBE_VT_FLAGS_SYNC_LOW_INPLACE                (GBE_VT_FLAGS_SYNC_LOW_MASK << GBE_VT_FLAGS_SYNC_LOW_SHIFT)
-#define GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_SHIFT       4 /* inferred */
+#define GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_SHIFT       4 /* established */
 #define GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_MASK        0x1u
 #define GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_INPLACE     (GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_MASK << GBE_VT_FLAGS_COMPOSITE_SYNC_HIGH_SHIFT)
-#define GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_SHIFT     3 /* inferred */
+#define GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_SHIFT     3 /* established */
 #define GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_MASK      0x1u
 #define GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_INPLACE   (GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_MASK << GBE_VT_FLAGS_HORIZONTAL_FORCED_LOW_SHIFT)
-#define GBE_VT_FLAGS_HORIZONTAL_INVERT_SHIFT         2 /* inferred */
+#define GBE_VT_FLAGS_HORIZONTAL_INVERT_SHIFT         2 /* established */
 #define GBE_VT_FLAGS_HORIZONTAL_INVERT_MASK          0x1u
 #define GBE_VT_FLAGS_HORIZONTAL_INVERT_INPLACE       (GBE_VT_FLAGS_HORIZONTAL_INVERT_MASK << GBE_VT_FLAGS_HORIZONTAL_INVERT_SHIFT)
-#define GBE_VT_FLAGS_VERTICAL_FORCED_LOW_SHIFT       1 /* inferred */
+#define GBE_VT_FLAGS_VERTICAL_FORCED_LOW_SHIFT       1 /* established */
 #define GBE_VT_FLAGS_VERTICAL_FORCED_LOW_MASK        0x1u
 #define GBE_VT_FLAGS_VERTICAL_FORCED_LOW_INPLACE     (GBE_VT_FLAGS_VERTICAL_FORCED_LOW_MASK << GBE_VT_FLAGS_VERTICAL_FORCED_LOW_SHIFT)
-#define GBE_VT_FLAGS_VERTICAL_INVERT_SHIFT           0 /* inferred */
+#define GBE_VT_FLAGS_VERTICAL_INVERT_SHIFT           0 /* established */
 #define GBE_VT_FLAGS_VERTICAL_INVERT_MASK            0x1u
 #define GBE_VT_FLAGS_VERTICAL_INVERT_INPLACE         (GBE_VT_FLAGS_VERTICAL_INVERT_MASK << GBE_VT_FLAGS_VERTICAL_INVERT_SHIFT)
 

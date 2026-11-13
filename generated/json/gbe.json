@@ -1362,7 +1362,7 @@
    "kind": "word",
    "name": "VT_F2RF_LOCK",
    "width": 32,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1371,7 +1371,7 @@
    "name": "VT_F2RF_LOCK.frame_lock_y",
    "hi": 23,
    "lo": 12,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1380,7 +1380,7 @@
    "name": "VT_F2RF_LOCK.stereo_toggle_y",
    "hi": 11,
    "lo": 0,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1397,7 +1397,7 @@
    "name": "VT_FLAGS.stereo_forced_high",
    "hi": 6,
    "lo": 6,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1415,7 +1415,7 @@
    "name": "VT_FLAGS.composite_sync_high",
    "hi": 4,
    "lo": 4,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1424,7 +1424,7 @@
    "name": "VT_FLAGS.horizontal_forced_low",
    "hi": 3,
    "lo": 3,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1433,7 +1433,7 @@
    "name": "VT_FLAGS.horizontal_invert",
    "hi": 2,
    "lo": 2,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1442,7 +1442,7 @@
    "name": "VT_FLAGS.vertical_forced_low",
    "hi": 1,
    "lo": 1,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {
@@ -1451,7 +1451,7 @@
    "name": "VT_FLAGS.vertical_invert",
    "hi": 0,
    "lo": 0,
-   "grade": "inferred",
+   "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
   },
   {

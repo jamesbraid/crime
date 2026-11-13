@@ -281,9 +281,9 @@ Established, rev 1.1 ([gbe-spec] pp. 42-43): both bits reset to 0 and the specif
 
 Established, rev 1.1 ([gbe-spec] pp. 44-45): the DID and CMFIFO tables name no display-DMA FIFO reset control.
 
-Unknown: the specification gives no assertion duration, no self-clear or readback rule, no FIFO depth or contents, no behaviour when a bit is written while DMA is active, and no completion indication. A test that would settle these needs a physical O2 with the bit pulsed during active scanout and the output read back.
+Unknown: the specification gives no assertion duration, no self-clear or readback rule, no FIFO depth or contents, no behaviour when a bit is written while DMA is active, and no completion indication.
 
-Inferred, from public driver source: Linux `drivers/video/fbdev/gbefb.c` (commit `db2ddb87143519e20a95aa36c60b36107b736a58`, lines 211-306) and NetBSD `sys/arch/sgimips/dev/crmfb.c` (commit `07004b2a9dac23a1cdd33b76dc45b65be56c6f1f`, lines 932-970) request overlay, normal and DID DMA off and wait with finite timeouts for the controls and the clocks to stop. Both then pulse `FRM_0` bit 15 high and then low. Linux's timeout paths still reach the pulse, and NetBSD continues after its DMA wait fails. Neither driver pulses the overlay bit. Neither shows that DMA has stopped at the pulse. The IRIX start-up order above pulses both bits without a DMA stop before the pulse. Linux `include/video/gbe.h` (lines 194-220) names both bits.
+Inferred, from public driver source: Linux `drivers/video/fbdev/gbefb.c` (the pinned `references/code/linux` commit `c339f4010dea`, lines 211-306) and NetBSD `sys/arch/sgimips/dev/crmfb.c` (the pinned `references/code/netbsd` commit `0747dc050541`, lines 932-970) request overlay, normal and DID DMA off and wait with finite timeouts for the controls and the clocks to stop. Both then pulse `FRM_0` bit 15 high and then low. Linux's timeout paths still reach the pulse, and NetBSD continues after its DMA wait fails. Neither driver pulses the overlay bit. Neither shows that DMA has stopped at the pulse. The IRIX start-up order above pulses both bits without a DMA stop before the pulse. Linux `include/video/gbe.h` (lines 194-220) names both bits.
 
 ## Pixel-clock source select (`CTRLSTAT` 29:28)
 
@@ -652,7 +652,7 @@ Facts here come from the GBE 1.1 specification, cited as [gbe-spec] with its own
 
 ## Clock status
 
-- Established ([gbe-spec] pp. 36-37): `DOTCLOCK` bits 22 (out of range) and 23 (out of lock) are status bits with unspecified reset contents. Bits 25:24 are manufacturer test controls and are not described.
+- Established ([gbe-spec] pp. 36-37): `DOTCLOCK` bits 22 (out of range) and 23 (out of lock) are status bits with unspecified reset contents. Bits 25:24 are the PLL test inputs `tdwni` and `tupi`, described only as their normal operation state.
 - Unknown: PLL lock time and the frequency limits. The pages read give neither.
 
 ## Cursor glyph and crosshair
