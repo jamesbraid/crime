@@ -540,12 +540,12 @@ Each word also has a START alias, which sits 2048 bytes above it. The manual nam
     </test>
   </struct>
   <struct name="TEX_SQS" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2120" access="w" space="re" reset="unknown">
-    <doc>The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown).</doc>
+    <doc>The START alias of this 64-bit word is 2048 bytes above it (established, the NetBSD O2 framebuffer driver's register definitions, `CRIME_DE_START` 0x0800; the specification, PDF 186, names a START_OFFSET without giving its value). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown).</doc>
   </struct>
   <struct name="TEX_TQS" size="8" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2128" access="w" space="re" reset="unknown">
   </struct>
   <struct name="TEX_QS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2130" access="w" space="re" reset="unknown">
-    <doc>The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: a shipped IRIX graphics driver's triangle set-up, also recorded in the survey of shipped software). The public manual does not say which register commits a textured primitive.</doc>
+    <doc>The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: the `__glCrmFillTriangle` entry in software/opengl/libglcore.md, whose texture set-up stores the S and T numerators at their ordinary addresses and then this word through its START alias). The public manual does not say which register commits a textured primitive.</doc>
   </struct>
   <struct name="TEX_STFLAGS" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x2134" access="w" space="re" reset="unknown">
     <doc>tex_stflags sits between tex_qs and tex_dsqdx and is absent from the
@@ -633,7 +633,7 @@ and RGB(A) pixels alike. Its use with DrawMode bit 7 is in devices/re/de-2d-draw
   </struct>
   <struct name="DEPTH_FUNC" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x21c0" access="rw" space="re" reset="unknown">
     <doc>Depth comparison and clear-depth word. The specification omits the field
-encoding (established, [spec] PDF 169-170). The field layout below is inferred
+encoding: the register map names the register (PDF 169) and its field table is empty (established, [spec] PDF 182). The field layout below is inferred
 from the words the shipped driver stores here. Bits 31:28 have no established
 meaning.</doc>
     <field name="func" start="25" size="3" type="depth_func_func" grade="inferred"/>
@@ -693,7 +693,7 @@ routine tests bit 25, which fits an idle reading, so the position is
 established and the meaning inferred. The start field (5:0) is where the
 entries not yet committed begin; its meaning is inferred. The specification's
 register map lists the status registers as a user-space region, placed after
-the MTE registers in the rendering block (established, [spec] PDF 162).</doc>
+the MTE registers in the rendering block (established, [spec] PDF 162 and figure 7-3 on PDF 163).</doc>
     <field name="idle" start="28" size="1" type="uint" grade="established"/>
     <field name="setup_idle" start="27" size="1" type="uint" grade="established"/>
     <field name="pixpipe_idle" start="26" size="1" type="uint" grade="established"/>

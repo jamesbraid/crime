@@ -589,7 +589,7 @@
 #define RE_TEX_FORMAT_V_INDEX_MASK_INPLACE           (RE_TEX_FORMAT_V_INDEX_MASK_MASK << RE_TEX_FORMAT_V_INDEX_MASK_SHIFT)
 
 /*
- * The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown).
+ * The START alias of this 64-bit word is 2048 bytes above it (established, the NetBSD O2 framebuffer driver's register definitions, `CRIME_DE_START` 0x0800; the specification, PDF 186, names a START_OFFSET without giving its value). Its write width is unknown: the public manual gives no START width for the texture plane words, and the survey of shipped software records no 8-byte START store to any of the 64-bit texture plane words (unknown).
  */
 /* tex_sqs: w64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_TEX_SQS_OFFSET                            0x2120u /* established */
@@ -598,7 +598,7 @@
 #define RE_TEX_TQS_OFFSET                            0x2128u /* established */
 
 /*
- * The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: a shipped IRIX graphics driver's triangle set-up, also recorded in the survey of shipped software). The public manual does not say which register commits a textured primitive.
+ * The textured triangle set-up commits the primitive with a 4-byte write to this word's START alias, which is the last texture write it makes. It writes the other texture words at their ordinary addresses first (inferred, software expectation: the `__glCrmFillTriangle` entry in software/opengl/libglcore.md, whose texture set-up stores the S and T numerators at their ordinary addresses and then this word through its START alias). The public manual does not say which register commits a textured primitive.
  */
 /* tex_qs: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_TEX_QS_OFFSET                             0x2130u /* established */
@@ -799,7 +799,7 @@
 
 /*
  * Depth comparison and clear-depth word. The specification omits the field
- * encoding (established, [spec] PDF 169-170). The field layout below is inferred
+ * encoding: the register map names the register (PDF 169) and its field table is empty (established, [spec] PDF 182). The field layout below is inferred
  * from the words the shipped driver stores here. Bits 31:28 have no established
  * meaning.
  */
@@ -925,7 +925,7 @@
  * established and the meaning inferred. The start field (5:0) is where the
  * entries not yet committed begin; its meaning is inferred. The specification's
  * register map lists the status registers as a user-space region, placed after
- * the MTE registers in the rendering block (established, [spec] PDF 162).
+ * the MTE registers in the rendering block (established, [spec] PDF 162 and figure 7-3 on PDF 163).
  */
 /* status: r32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_STATUS_OFFSET                             0x4000u /* established */

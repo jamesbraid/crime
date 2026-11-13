@@ -48,7 +48,7 @@ unknown, as in [AGENTS.md](../../AGENTS.md).
   Their colour comes from the foreground register alone.
 - Unknown: how a point or a line is rasterized. The geometric primitives
   section is marked "TBD" (PDF 195), and its point and line subsections
-  (PDF 196 to 197) are headings with no body text. The text gives no rule for
+  (headings on PDF 195, and a line-traversal figure on PDF 196) have no body text. The text gives no rule for
   sample positions, endpoints or width. The unit of the line width field is
   also unknown; see [devices/re/registers.toml](registers.toml) under `primitive`.
 

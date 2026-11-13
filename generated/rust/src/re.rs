@@ -1185,7 +1185,7 @@ pub mod tex_format {
         }
     }
 }
-/// The START alias of this 64-bit word is 2048 bytes above it (established, public NetBSD driver and the manual). Its write width is unknown: the public  (established)
+/// The START alias of this 64-bit word is 2048 bytes above it (established, the NetBSD O2 framebuffer driver's register definitions, `CRIME_DE_START` 0x0 (established)
 pub mod tex_sqs {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x2120;
@@ -1726,7 +1726,7 @@ pub mod colormask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21b8;
 }
-/// Depth comparison and clear-depth word. The specification omits the field encoding (established, [spec] PDF 169-170). The field layout below is inferre (established)
+/// Depth comparison and clear-depth word. The specification omits the field encoding: the register map names the register (PDF 169) and its field table i (established)
 pub mod depth_func {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21c0;
