@@ -186,10 +186,14 @@ what the chip does. No capture is used.
   capture checks it.
 - Linux's receive read-index alias covers bits 11 to 8, four bits, which matches
   a sixteen-entry FIFO (software expectation, inferred; `METH_INT_RX_RPTR_MASK`
-  in `meth.h`). Its inactive mask, `0x1F00`, includes bit 12, and a comment asks
-  whether the FIFO has 16 or 32 entries (software expectation, inferred; public
-  Linux `meth.h` at `db2ddb8`). The OpenBSD and NetBSD definitions were not
-  checked for this note, so the software view of bit 12 is unresolved.
+  in `meth.h`, line 187, pinned `references/code/linux` commit `c339f4010dea`).
+  The header also keeps a commented-out earlier definition of the mask as
+  `0x1F00`, which includes bit 12 (line 186), and its comment on the live line asks
+  whether the FIFO has 16 or 32 entries (software expectation, inferred).
+  NetBSD defines the alias as `0x1f00`, five bits shifted by 8
+  (`MEC_INT_RX_MCL_FIFO_ALIAS`, `sys/arch/sgimips/mace/if_mecreg.h` line 76), which
+  agrees with the specification's five-bit alias. OpenBSD was not checked, and
+  neither driver says what bit 12 means.
 
 ## Receive packets, buckets and status
 
