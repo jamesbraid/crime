@@ -139,7 +139,7 @@
 #define CRIME_MEM_CONTROL_ECC_ENABLE_INPLACE         (CRIME_MEM_CONTROL_ECC_ENABLE_MASK << CRIME_MEM_CONTROL_ECC_ENABLE_SHIFT)
 
 /*
- * Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
+ * Bits 7:5 are reserved and read as zero (established, [spec] PDF 152, table 6-14, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
  */
 /* mem_bank_control: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_BANK_CONTROL_OFFSET                0x208u /* established */
@@ -158,7 +158,7 @@
  * #define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 / * established: reset of bank 0
  * #define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 / * established: reset of bank n is BASE + n * STEP
  *
- * The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here). The shipped IRIX capture routine clears it by writing zero.
+ * The shipped IRIX kernel's `badaddr` stores zero here before a probe and afterwards tests hardware interrupt status bits 21 and 20 (mask 0x300080, with MACE line 7) for an error (software expectation, inferred; see devices/re/memory.md). Whether a zero write clears the latch on the part is unknown: the specification says only that the bits are set by hardware, cleared by software and read/write ([spec] PDF 152 to 153, table 6-16), without a clear polarity. The shipped IRIX capture routine clears it by writing zero.
  */
 /* mem_error_stat: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_STAT_OFFSET                  0x250u /* established */

@@ -257,7 +257,7 @@ pub mod mem_control {
         }
     }
 }
-/// Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] (established)
+/// Bits 7:5 are reserved and read as zero (established, [spec] PDF 152, table 6-14, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [s (established)
 pub mod mem_bank_control {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x208;

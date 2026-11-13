@@ -129,7 +129,7 @@ Memory control. Both defined bits reset clear (established, [spec] PDF 150). The
 
 ### Register `mem_bank_control`
 
-Bits 7:5 are reserved and read as zero (established, [spec] PDF 150 and 152, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
+Bits 7:5 are reserved and read as zero (established, [spec] PDF 152, table 6-14, CRIME 1.5 specification rev 0.3). Bit 8 resets clear (established, [spec] PDF 152, table 6-14). The memory-controller registers, from 0x14000200 up, take double-word operations only (established, [spec] PDF 149, section 6.2.7).
 
 Array of 8 registers, stride 8.
 
@@ -145,7 +145,7 @@ Reset values differ per bank, so the REG line's reset=unknown stands for none of
 #define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 /* established: reset of bank 0
 #define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 /* established: reset of bank n is BASE + n * STEP
 
-The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here). The shipped IRIX capture routine clears it by writing zero.
+The shipped IRIX kernel's `badaddr` stores zero here before a probe and afterwards tests hardware interrupt status bits 21 and 20 (mask 0x300080, with MACE line 7) for an error (software expectation, inferred; see devices/re/memory.md). Whether a zero write clears the latch on the part is unknown: the specification says only that the bits are set by hardware, cleared by software and read/write ([spec] PDF 152 to 153, table 6-16), without a clear polarity. The shipped IRIX capture routine clears it by writing zero.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
