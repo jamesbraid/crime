@@ -7,7 +7,7 @@ WORDS = {}
 FIELDS = {'counter': {'count': (31, 0)}, 'cmp0': {'value': (31, 0)}, 'cmp1': {'value': (31, 0)}, 'cmp2': {'value': (31, 0)}, 'audio_pair': {'ust': (63, 32), 'msc': (31, 0)}, 'video_pair': {'ust': (63, 32), 'frame_count': (31, 1), 'field_id': (0, 0)}}
 ENUMS = {}
 FIELD_ENUM = {}
-CONSTANTS = {'BLOCK_BASE': {'value': 523501568, 'count': 1, 'stride': 1}, 'CMP0_ALIAS': {'value': 523567104, 'count': 1, 'stride': 1}, 'CMP1_ALIAS': {'value': 523632640, 'count': 1, 'stride': 1}, 'CMP2_ALIAS': {'value': 523698176, 'count': 1, 'stride': 1}}
+CONSTANTS = {'BLOCK_BASE': {'value': 523501568, 'count': 1, 'stride': 1}, 'CMP0_ALIAS': {'value': 523567104, 'count': 1, 'stride': 1}, 'CMP1_ALIAS': {'value': 523632640, 'count': 1, 'stride': 1}, 'CMP2_ALIAS': {'value': 523698176, 'count': 1, 'stride': 1}, 'TIMER_SNAP_IN1_OFF': {'value': 56, 'count': 1, 'stride': 1}, 'TIMER_SNAP_IN2_OFF': {'value': 64, 'count': 1, 'stride': 1}, 'TIMER_SNAP_OUT_OFF': {'value': 72, 'count': 1, 'stride': 1}}
 TESTS = []
 
 

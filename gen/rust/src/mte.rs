@@ -272,11 +272,18 @@ pub mod addr {
         }
     }
 }
+pub const HOST_CHUNK_BYTES: u32 = 0x20000; // established
+pub const MODE_HOST_CLEAR: u32 = 0x11; // established
+pub const MODE_HOST_COPY: u32 = 0x897; // established
+pub const MODE_X_COPY: u32 = 0x820; // established
 pub const SUBTILE_BLOCK_BYTES: u32 = 0x20; // inferred
 pub const SUBTILE_BYTES: u32 = 0x2000; // inferred
 pub const TILE_BYTES: u32 = 0x10000; // established
 pub const TILE_ROWS: u32 = 0x80; // established
 pub const TILE_ROW_BYTES: u32 = 0x200; // established
+pub const X_BLOCK_BYTES: u32 = 0x100; // established
+pub const X_ROWS_16: u32 = 0x10; // established
+pub const X_ROWS_32: u32 = 0x8; // established
 
 #[cfg(test)]
 mod tests {

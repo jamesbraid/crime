@@ -77,7 +77,7 @@ pub mod control {
         }
     }
 }
-/// (established)
+/// The shipped IRIX output recovery routines read it after their last write and discard the value. (established)
 pub mod status {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x8;
@@ -152,7 +152,7 @@ pub mod status {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver writes it at start-up. (established)
 pub mod config {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x10;
@@ -489,7 +489,7 @@ pub mod config {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines writ (established)
 pub mod next_desc {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
@@ -558,7 +558,7 @@ pub mod next_desc {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver writes the low halfword of a transfer-record word here. (established)
 pub mod fld_offset {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
@@ -573,7 +573,7 @@ pub mod fld_offset {
         }
     }
 }
-/// Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). (established)
+/// Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line  (established)
 pub mod field_size {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;
@@ -867,7 +867,7 @@ pub mod gen_dly {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x50;
 }
-/// (established)
+/// The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video  (established)
 pub mod vhw_cfg {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x58;
@@ -1103,3 +1103,6 @@ pub mod dma_desc {
     pub const COUNT: u32 = 8;
     pub const STRIDE: u64 = 8;
 }
+pub const IN2_OFF: u32 = 0x80000; // established
+pub const OUT_OFF: u32 = 0x100000; // established
+pub const WINDOW_PHYS_ADDR: u32 = 0x1f100000; // established

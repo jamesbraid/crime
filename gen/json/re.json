@@ -1688,6 +1688,15 @@
   },
   {
    "unit": "re",
+   "kind": "field",
+   "name": "fog_color.rgb",
+   "hi": 31,
+   "lo": 8,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
    "kind": "register",
    "name": "fog_fs",
    "offset": 8568,
@@ -3354,11 +3363,47 @@
   {
    "unit": "re",
    "kind": "constant",
+   "name": "GL_UNBOUND_BIAS",
+   "value": 135168,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "GL_VERTEX_BIAS",
+   "value": 4096,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
    "name": "IB_ENTRIES",
    "value": 64,
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "LINEAR_WINDOW_MASK",
+   "value": 131071,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "LIN_TLB_MAX_PAGES",
+   "value": 32,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   },
   {
    "unit": "re",
@@ -3372,11 +3417,128 @@
   {
    "unit": "re",
    "kind": "constant",
+   "name": "PRIM_RECT",
+   "value": 50462720,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "PRIM_TRIANGLE",
+   "value": 33554432,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_COUNT_INIT",
+   "value": 10,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_CTL_INIT",
+   "value": 267386634,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R10K_EMPTY",
+   "value": 0,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R10K_FULL",
+   "value": 20,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R10K_STALL",
+   "value": 19,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R5K_EMPTY",
+   "value": 24,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R5K_FULL",
+   "value": 48,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "RENDER_R5K_STALL",
+   "value": 47,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
    "name": "START_ALIAS_BIT",
    "value": 11,
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "TEX_MAX_TEXELS",
+   "value": 1024,
+   "count": 1,
+   "grade": "inferred",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "TEX_SUBTILE_CELL_BYTES",
+   "value": 32,
+   "count": 1,
+   "grade": "inferred",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "TILE_PAGES",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   },
   {
    "unit": "re",
@@ -3395,6 +3557,33 @@
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "VTX_DEPTH_BASE",
+   "value": 8650752,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "VTX_STEP",
+   "value": 64,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "re",
+   "kind": "constant",
+   "name": "VTX_TRI_BASE",
+   "value": 1208221696,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   }
  ]
 }

@@ -780,6 +780,51 @@
   {
    "unit": "crime",
    "kind": "constant",
+   "name": "BLOCK_ADDR",
+   "value": 335544320,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "DEPTH_APERTURE_ADDR",
+   "value": 301989888,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), PDF pages 47-52"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "FRAME_APERTURE_ADDR",
+   "value": 268435456,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), PDF pages 47-52"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "GBE_WINDOW_ADDR",
+   "value": 369098752,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), PDF pages 47-52"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "ID_FAMILY_ACCEPTED",
+   "value": 10,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
    "name": "ID_FAMILY_SHIPPED",
    "value": 160,
    "count": 1,
@@ -803,6 +848,15 @@
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "ID_REFUSED_BYTE",
+   "value": 160,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   },
   {
    "unit": "crime",
@@ -848,6 +902,42 @@
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IRQ_MACE_ISA_A",
+   "value": 4,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "IRQ_MACE_ISA_B",
+   "value": 5,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "LINE_MATCH_LATCHES",
+   "value": 4,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "MACE_WINDOW_ADDR",
+   "value": 402653184,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published CRIME 1.5 draft specification (rev 0.3), PDF pages 47-52"
   },
   {
    "unit": "crime",
@@ -947,6 +1037,15 @@
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "crime",
+   "kind": "constant",
+   "name": "TIME_RESOLUTION",
+   "value": 15000,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   },
   {
    "unit": "crime",

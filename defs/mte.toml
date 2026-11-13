@@ -4,7 +4,7 @@ prefix = "MTE"
 title = "O2 CRIME memory transfer engine registers and tile layout"
 doc = "CRIME memory transfer engine registers, address word and tile geometry."
 from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
-public_from = ["published CRIME 1.5 draft specification"]
+public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
 [c]
 legacy_header = "MTE_DECODE.h"
@@ -187,3 +187,10 @@ SUBTILE_BYTES = { value = 0x2000, grade = "inferred", doc = "128 bytes by 64 row
 TILE_BYTES = { value = 0x10000, grade = "established" }
 TILE_ROWS = { value = 0x80, grade = "established" }
 TILE_ROW_BYTES = { value = 0x200, grade = "established" }
+MODE_X_COPY = { value = 0x820, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word the shipped IRIX X server uses for a copy: copy, source TLB B, destination TLB A, 8-bit." }
+MODE_HOST_CLEAR = { value = 0x11, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word of the shipped IRIX kernel's host-memory clear: clear, linear A, destination ECC." }
+MODE_HOST_COPY = { value = 0x897, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mode word of the shipped IRIX kernel's host-memory copy: copy, linear A to linear B, both ECC bits." }
+HOST_CHUNK_BYTES = { value = 0x20000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Largest chunk of a kernel host-memory clear or copy." }
+X_BLOCK_BYTES = { value = 0x100, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Width in bytes of the whole-row blocks the X server sends to the engine." }
+X_ROWS_16 = { value = 0x10, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Rows in a block at 16 bits per pixel." }
+X_ROWS_32 = { value = 8, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Rows in a block at 32 bits per pixel." }

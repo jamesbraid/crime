@@ -4,7 +4,7 @@ prefix = "RE"
 title = "O2 CRIME rendering engine: interface buffer, linear TLBs and clip state"
 doc = "CRIME rendering engine interface buffer, translation tables, pixel pipeline registers and status."
 from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
-public_from = ["published CRIME 1.5 draft specification"]
+public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
 [c]
 legacy_header = "RE_DECODE.h"
@@ -35,6 +35,8 @@ width = 64
 grade = "established"
 count = 64
 space = "re"
+doc = "The shipped IRIX kernel decodes the 64-bit interface-buffer address word in software: register index in bits 39:32, group in 42:40, lane in 44:43, and a marker in bit 45 that its decoder uses as the stop entry."
+notes = "The kernel reading names bit 45 a stop marker; the word IBADDR_HI (the high half of this word) calls the same bit start_flag. Same position, opposite sense of name; the specification's start_flag is kept in IBADDR_HI and the kernel's role is recorded in the doc."
 
 [registers.ib_ctl]
 offset = 0x400
@@ -48,7 +50,8 @@ Above the stall level, host writes stall for the stall count, given in 66 MHz
 cycles. Above the interrupt level, the host receives an interrupt; it then
 either polls the status register until the level falls or enables the
 buffer-empty interrupt (established, [spec] PDF 185). The specification gives
-no bit layout for these thresholds, so the field bits below stay inferred."""
+no bit layout for these thresholds, so the field bits below stay inferred. The shipped IRIX kernel writes the first value 0x0fefff0a (full 127, empty 63, stall 126, count 10), keeps count at 10 in every later control word, and chooses the thresholds by processor module: R10000-family and RM7000 modules get full 20, empty 0 and stall 19; the other R5000-class modules get full 48, empty 24 and stall 47."""
+notes = "The kernel reading graded the four field positions established; the specification gives no layout and the names are the specification's own, so they stay inferred here."
 
 [registers.ib_ctl.fields]
 full = { bits = [27, 21], grade = "inferred" }
@@ -71,7 +74,7 @@ The published interface-buffer address map lists the data RAM, the address
 RAM and the control word, and no register at the doubleword after the control
 word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
 does not access that doubleword either. Its name, width and access come from
-the shipped kernel's zero stores, so they stay inferred. See docs/reset.md."""
+the shipped kernel's zero stores, so they stay inferred. See docs/reset.md. The shipped IRIX kernel writes zero here, waits 10 microseconds and rewrites the interface-buffer control word. Whether that control word is ib_ctl is inferred."""
 
 [registers.tlb_fb_a]
 offset = 0x1000
@@ -396,7 +399,7 @@ grade = "established"
 count = 3
 space = "re"
 doc = """
-In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md."""
+In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md. The shipped IRIX kernel writes the 16-bit X vertex form for a pixel DMA caller that is bound to the engine."""
 
 [registers.vertex_gl]
 offset = 0x2080
@@ -430,7 +433,7 @@ buffer H rows high, the driver writes the x component as the window x and the
 y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
 bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
 equation that combines this packed start with SrcWinOffset is unknown. See
-docs/pixel-transfer.md."""
+docs/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0."""
 
 [registers.xfer_src_stride]
 offset = 0x20a4
@@ -452,6 +455,7 @@ access = "w"
 width = 32
 grade = "established"
 space = "re"
+doc = "The shipped IRIX kernel writes it for an unbound caller as (zoom - 1) << 28 | (stride + pixel size - width)."
 
 [registers.xfer_dst_addr]
 offset = 0x20b0
@@ -605,6 +609,7 @@ space = "re"
 from = "published CRIME 1.5 draft specification, PDF 178-179, Table 7-13"
 doc = """
 Texture mode register, 32 bits (established, [spec] PDF 178-179, Table 7-13). Bits 31:25 are reserved. The fields below carry the table's bit ranges and names. Enumerated values are the table's own; encodings it marks reserved have no name here."""
+notes = "The shipped IRIX library's reading: the filter codes, wrap codes, environment function, level bits and the subtiled flag (bit 24) all sit where the fields here put them."
 
 [registers.tex_mode.fields]
 tiled = { bits = [24, 24], grade = "established" }
@@ -631,6 +636,7 @@ luminance_alpha = { value = 8, grade = "established" }
 [registers.tex_mode.fields.texel_depth]
 bits = [19, 18]
 grade = "established"
+doc = "The shipped OpenGL library treats these two bits as log2 of the bytes per texel."
 
 [registers.tex_mode.fields.texel_depth.enums]
 bits16 = { value = 1, grade = "established" }
@@ -695,14 +701,15 @@ space = "re"
 from = "published CRIME 1.5 draft specification, PDF 179, Table 7-14"
 doc = """
 Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:48 are reserved. The table names six fields and their bit ranges but gives no description for any of them, so what each field computes is unknown here."""
+notes = "The kernel reading named the fields width_inv, height_inv, width_log2, height_log2, width_mask and height_mask; the positions agree with the specification's names kept here."
 
 [registers.tex_format.fields]
-u_shift = { bits = [47, 44], grade = "established" }
-v_shift = { bits = [43, 40], grade = "established" }
-u_wrap_shift = { bits = [39, 36], grade = "established" }
-v_wrap_shift = { bits = [35, 32], grade = "established" }
-u_index_mask = { bits = [31, 16], grade = "established" }
-v_index_mask = { bits = [15, 0], grade = "established" }
+u_shift = { bits = [47, 44], grade = "established", doc = "The shipped OpenGL library writes 10 minus log2 of the texture width here." }
+v_shift = { bits = [43, 40], grade = "established", doc = "The shipped OpenGL library writes 10 minus log2 of the texture height here." }
+u_wrap_shift = { bits = [39, 36], grade = "established", doc = "The shipped OpenGL library writes log2 of the texture width here." }
+v_wrap_shift = { bits = [35, 32], grade = "established", doc = "The shipped OpenGL library writes log2 of the texture height here." }
+u_index_mask = { bits = [31, 16], grade = "established", doc = "The shipped OpenGL library writes (1 << (log2 width + 4)) - 1 here." }
+v_index_mask = { bits = [15, 0], grade = "established", doc = "The shipped OpenGL library writes (1 << (log2 height + 4)) - 1 here." }
 
 [[registers.tex_format.tests]]
 value = 0xa32100ff0fff
@@ -815,6 +822,7 @@ access = "rw"
 width = 32
 grade = "established"
 space = "re"
+doc = "The shipped IRIX library keeps three 8-bit colour components in bits 31:8."
 
 [registers.fog_fs]
 offset = 0x2178
@@ -845,7 +853,7 @@ grade = "established"
 space = "re"
 doc = """
 Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
-The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md)."""
+The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md). The shipped IRIX library writes the minor-axis slope in bits 31:16 and the start position with 8 fraction bits in bits 15:0."""
 
 [registers.aa_line.fields]
 slope = { bits = [31, 16], grade = "established" }
@@ -979,7 +987,7 @@ width = 32
 grade = "established"
 space = "re"
 doc = """
-The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification."""
+The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification. The shipped IRIX library writes the GL logic operation code minus GL_CLEAR, a value in 0 to 15."""
 
 [registers.logicop.fields.code]
 bits = [3, 0]
@@ -1047,6 +1055,7 @@ always = { value = 7, grade = "inferred" }
 bits = [24, 24]
 grade = "unknown"
 doc = "The driver sets this bit on its tagged-clear path (docs/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use."
+notes = "The kernel reading takes this bit as a stencil-only flag; the driver reading above sets it on its tagged-clear path. The two readings name different roles for the same bit and neither is confirmed, so it stays unknown."
 
 [registers.depth_func.fields.clear]
 bits = [23, 0]
@@ -1169,6 +1178,7 @@ access = "w"
 width = 32
 grade = "established"
 space = "re"
+doc = "The shipped IRIX kernel treats this null pixel-pipeline register as global."
 
 [registers.pixpipe_flush]
 offset = 0x21f8
@@ -1176,6 +1186,7 @@ access = "w"
 width = 32
 grade = "established"
 space = "re"
+doc = "The shipped IRIX library writes zero and then polls the idle bit."
 
 [registers.status]
 offset = 0x4000
@@ -1197,6 +1208,7 @@ established and the meaning inferred. The start field (5:0) is where the
 entries not yet committed begin; its meaning is inferred. The specification's
 register map lists the status registers as a user-space region, placed after
 the MTE registers in the rendering block (established, [spec] PDF 162)."""
+notes = "The kernel reading names the idle bit 28, the occupancy field 24:18 (seven bits), the write pointer 11:6 and the start pointer 5:0; all agree with the fields here."
 
 [registers.status.fields]
 idle = { bits = [28, 28], grade = "established" }
@@ -1222,6 +1234,7 @@ incoming client's loads, and at the end of each translation table loader.
 The user-mode library and the X server never write it. Inferred: the write
 discards the queued writes not yet committed. The register's position and
 its write-zero use are established; that effect is inferred."""
+notes = "The kernel reading names this word the renderer flush: written with zero after TLB loads, context switches and clip validation, it discards entries after the start pointer."
 
 [words.BUFMODE]
 width = 32
@@ -1428,3 +1441,26 @@ LIN_TLB_REGS = { value = 0x10, grade = "established", doc = "doublewords per lin
 START_ALIAS_BIT = { value = 0xb, grade = "established", doc = "address bit that selects the start alias of a register" }
 TLB_ENTRIES_PER_REG = { value = 0x4, grade = "established", doc = "four 16-bit tile entries in each frame-buffer, texture and clip-ID doubleword" }
 TLB_TILE_SHIFT = { value = 0x10, grade = "established", doc = "entry is the physical address >> 16 (64 KiB tiles)" }
+LINEAR_WINDOW_MASK = { value = 0x1ffff, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Mask on the linear source address of a draw; the linear window is 128 KiB." }
+PRIM_TRIANGLE = { value = 0x2000000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Primitive word the shipped IRIX library writes for triangles; the edge number is ORed in at bit 16." }
+PRIM_RECT = { value = 0x3020000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Primitive word for rectangles: depth clears and the X server's copies." }
+VTX_TRI_BASE = { value = 0x48040000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Biased binary32 vertex word for triangles; each step adds 64 times the coordinate." }
+VTX_DEPTH_BASE = { value = 0x840000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Biased binary32 vertex word for depth clears; the same bias as triangles in bits 18:0." }
+VTX_STEP = { value = 0x40, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Scale applied to a coordinate before it is ORed into a vertex word." }
+GL_VERTEX_BIAS = { value = 0x1000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Bias the shipped IRIX library applies to GL vertex halves in pixel DMA." }
+GL_UNBOUND_BIAS = { value = 0x21000, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Bias the shipped IRIX kernel removes from coordinates for a caller that is not bound to the engine." }
+RENDER_CTL_INIT = { value = 0xfefff0a, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "First value the shipped IRIX kernel writes to the interface-buffer control word: full 127, empty 63, stall 126, count 10." }
+RENDER_COUNT_INIT = { value = 0xa, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Count field value in every control word the kernel writes." }
+RENDER_R10K_FULL = { value = 0x14, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Full threshold the kernel writes for R10000-family and RM7000 modules." }
+RENDER_R10K_EMPTY = { value = 0, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Empty threshold for R10000-family and RM7000 modules." }
+RENDER_R10K_STALL = { value = 0x13, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Stall threshold for R10000-family and RM7000 modules." }
+RENDER_R5K_FULL = { value = 0x30, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Full threshold for the other R5000-class modules." }
+RENDER_R5K_EMPTY = { value = 0x18, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Empty threshold for the other R5000-class modules." }
+RENDER_R5K_STALL = { value = 0x2f, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Stall threshold for the other R5000-class modules." }
+LIN_TLB_MAX_PAGES = { value = 0x20, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Most pages a pinned user buffer may have when the shipped IRIX kernel loads it into a linear TLB." }
+TILE_PAGES = { value = 0x10, grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Page frames in one 64 KiB tile. The kernel maps tile entry v as frames v << 4 through (v << 4) + 15." }
+TEX_MAX_TEXELS = { value = 0x400, grade = "inferred", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Largest texture dimension the format record leaves room for, from the coordinate scale." }
+TEX_SUBTILE_CELL_BYTES = { value = 0x20, grade = "inferred", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "Cell size of a subtiled texture, from the shipped library's address stepping." }
+
+[registers.fog_color.fields]
+rgb = { bits = [31, 8], grade = "established", from = "shipped IRIX O2 graphics objects, per kudzu docs/crime.md", doc = "three 8-bit fog colour components" }

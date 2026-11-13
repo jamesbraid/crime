@@ -4,7 +4,7 @@ prefix = "VIN"
 title = "O2 MACE video input channel registers"
 doc = "MACE video input channel registers."
 from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
-public_from = ["published MACE 2.0 specification"]
+public_from = ["published MACE 2.0 specification", "shipped IRIX"]
 
 [c]
 legacy_header = "MACE_VIDEO_IN_DECODE.h"
@@ -19,6 +19,7 @@ width = 64
 grade = "established"
 reset = 0x0
 space = "mace_video_in"
+doc = "The shipped IRIX video driver writes the whole word, changing only its low nine bits."
 
 [registers.control.fields]
 int_gpib = { bits = [9, 9], grade = "established" }
@@ -107,6 +108,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+doc = "The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; which bits carry the flag is not stated."
 
 [registers.next_desc.fields]
 table_address = { bits = [31, 6], grade = "established", doc = "Physical address of the 64-byte descriptor table (printed page 44, table 12)." }
@@ -128,6 +130,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+doc = "The shipped IRIX video driver writes the low halfword of a transfer-record word here."
 
 [registers.fld_offset.fields]
 byte_offset = { bits = [15, 3], grade = "established", doc = "Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14)." }
@@ -138,6 +141,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_in"
+doc = "The shipped IRIX video driver's start-up writes it with a 64-bit store."
 
 [registers.line_width.fields]
 bytes = { bits = [11, 3], grade = "established", doc = "Input line width in bytes, a multiple of eight, stored literally. It is neither a pixel count nor minus one (printed page 45, table 15)." }

@@ -27,7 +27,7 @@ pub mod id {
         }
     }
 }
-/// (established)
+/// The shipped IRIX early-reset code writes bits 13:12 and 9 of it. (established)
 pub mod control {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x8;
@@ -112,7 +112,7 @@ pub mod intmask {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel's two software interrupts are inputs 28 and 29; that this word raises them is inferred from the kernel's software-interrupt us (established)
 pub mod softint {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
@@ -122,7 +122,7 @@ pub mod hardint {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;
 }
-/// (established)
+/// The shipped IRIX kernel writes zero at start-up and never arms it. (established)
 pub mod watchdog {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x30;
@@ -648,14 +648,24 @@ pub mod intbit {
         }
     }
 }
+pub const BLOCK_ADDR: u32 = 0x14000000; // established
+pub const DEPTH_APERTURE_ADDR: u32 = 0x12000000; // inferred
+pub const FRAME_APERTURE_ADDR: u32 = 0x10000000; // inferred
+pub const GBE_WINDOW_ADDR: u32 = 0x16000000; // inferred
+pub const ID_FAMILY_ACCEPTED: u32 = 0xa; // established
 pub const ID_FAMILY_SHIPPED: u32 = 0xa0; // established
 pub const ID_LOW_BYTE_DRAFT: u32 = 0xb1; // inferred
 pub const ID_LOW_BYTE_SHIPPED: u32 = 0xa1; // established
+pub const ID_REFUSED_BYTE: u32 = 0xa0; // established
 pub const IP2_CAUSES: u32 = 0x8fc00038; // established
 pub const IP3_CAUSES: u32 = 0xfff07; // established
 pub const IP4_CAUSES: u32 = 0x10000000; // established
 pub const IP5_CAUSES: u32 = 0x20000040; // established
 pub const IP6_CAUSES: u32 = 0x40300080; // established
+pub const IRQ_MACE_ISA_A: u32 = 0x4; // established
+pub const IRQ_MACE_ISA_B: u32 = 0x5; // established
+pub const LINE_MATCH_LATCHES: u32 = 0x4; // inferred
+pub const MACE_WINDOW_ADDR: u32 = 0x18000000; // inferred
 pub const MEM_BANKS: u32 = 0x8; // established
 pub const MEM_BANK_CONTROL_RESET_BASE: u32 = 0x0; // established
 pub const MEM_BANK_CONTROL_RESET_STEP: u32 = 0x1; // established
@@ -667,6 +677,7 @@ pub const PHYS_LOW_ALIAS_BASE: u32 = 0x0; // established
 pub const PHYS_LOW_ALIAS_BYTES: u32 = 0x10000000; // established
 pub const PHYS_NOECC_MEM_BASE: u32 = 0x80000000; // established
 pub const PHYS_NOECC_MEM_BYTES: u32 = 0x40000000; // established
+pub const TIME_RESOLUTION: u32 = 0x3a98; // established
 pub const WATCHDOG_COUNT_BITS: u32 = 0x14; // established
 
 #[cfg(test)]

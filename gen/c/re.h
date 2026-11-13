@@ -20,6 +20,9 @@
 #define RE_IB_DATA_COUNT                             64
 #define RE_IB_DATA_STRIDE                            8
 
+/*
+ * The shipped IRIX kernel decodes the 64-bit interface-buffer address word in software: register index in bits 39:32, group in 42:40, lane in 44:43, and a marker in bit 45 that its decoder uses as the stop entry.
+ */
 /* ib_addr: rw64, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_IB_ADDR_OFFSET                            0x200u /* established */
 #define RE_IB_ADDR_COUNT                             64
@@ -31,7 +34,7 @@
  * cycles. Above the interrupt level, the host receives an interrupt; it then
  * either polls the status register until the level falls or enables the
  * buffer-empty interrupt (established, [spec] PDF 185). The specification gives
- * no bit layout for these thresholds, so the field bits below stay inferred.
+ * no bit layout for these thresholds, so the field bits below stay inferred. The shipped IRIX kernel writes the first value 0x0fefff0a (full 127, empty 63, stall 126, count 10), keeps count at 10 in every later control word, and chooses the thresholds by processor module: R10000-family and RM7000 modules get full 20, empty 0 and stall 19; the other R5000-class modules get full 48, empty 24 and stall 47.
  */
 /* ib_ctl: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_IB_CTL_OFFSET                             0x400u /* established */
@@ -53,7 +56,7 @@
  * RAM and the control word, and no register at the doubleword after the control
  * word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
  * does not access that doubleword either. Its name, width and access come from
- * the shipped kernel's zero stores, so they stay inferred. See docs/reset.md.
+ * the shipped kernel's zero stores, so they stay inferred. See docs/reset.md. The shipped IRIX kernel writes zero here, waits 10 microseconds and rewrites the interface-buffer control word. Whether that control word is ib_ctl is inferred.
  */
 /* ib_reset: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_IB_RESET_OFFSET                           0x408u /* inferred */
@@ -357,7 +360,7 @@
 #define RE_PRIMITIVE_LINE_WIDTH_INPLACE              (RE_PRIMITIVE_LINE_WIDTH_MASK << RE_PRIMITIVE_LINE_WIDTH_SHIFT)
 
 /*
- * In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md.
+ * In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md. The shipped IRIX kernel writes the 16-bit X vertex form for a pixel DMA caller that is bound to the engine.
  */
 /* vertex_x: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_VERTEX_X_OFFSET                           0x2070u /* established */
@@ -388,7 +391,7 @@
  * y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
  * bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
  * equation that combines this packed start with SrcWinOffset is unknown. See
- * docs/pixel-transfer.md.
+ * docs/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0.
  */
 /* xfer_src_addr: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_XFER_SRC_ADDR_OFFSET                      0x20a0u /* established */
@@ -399,6 +402,9 @@
 /* xfer_src_xstep: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_XFER_SRC_XSTEP_OFFSET                     0x20a8u /* established */
 
+/*
+ * The shipped IRIX kernel writes it for an unbound caller as (zoom - 1) << 28 | (stride + pixel size - width).
+ */
 /* xfer_src_ystep: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_XFER_SRC_YSTEP_OFFSET                     0x20acu /* established */
 
@@ -640,8 +646,14 @@
 /* tex_envcolor: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_TEX_ENVCOLOR_OFFSET                       0x2168u /* established */
 
+/*
+ * The shipped IRIX library keeps three 8-bit colour components in bits 31:8.
+ */
 /* fog_color: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_FOG_COLOR_OFFSET                          0x2170u /* established */
+#define RE_FOG_COLOR_RGB_SHIFT                       8 /* established */
+#define RE_FOG_COLOR_RGB_MASK                        0xffffffu
+#define RE_FOG_COLOR_RGB_INPLACE                     (RE_FOG_COLOR_RGB_MASK << RE_FOG_COLOR_RGB_SHIFT)
 
 /* fog_fs: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_FOG_FS_OFFSET                             0x2178u /* established */
@@ -654,7 +666,7 @@
 
 /*
  * Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
- * The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md).
+ * The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md). The shipped IRIX library writes the minor-axis slope in bits 31:16 and the start position with 8 fraction bits in bits 15:0.
  */
 /* aa_line: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_AA_LINE_OFFSET                            0x2190u /* established */
@@ -752,7 +764,7 @@
 #define RE_BLEND_FUNC_DST_ONE_MINUS_CONSTANT_ALPHA   11 /* established */
 
 /*
- * The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification.
+ * The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification. The shipped IRIX library writes the GL logic operation code minus GL_CLEAR, a value in 0 to 15.
  */
 /* logicop: rw32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_LOGICOP_OFFSET                            0x21b0u /* established */
@@ -888,9 +900,15 @@
 #define RE_STENCIL_MASK_WRITE_MASK_MASK              0xffu
 #define RE_STENCIL_MASK_WRITE_MASK_INPLACE           (RE_STENCIL_MASK_WRITE_MASK_MASK << RE_STENCIL_MASK_WRITE_MASK_SHIFT)
 
+/*
+ * The shipped IRIX kernel treats this null pixel-pipeline register as global.
+ */
 /* pixpipe_null: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PIXPIPE_NULL_OFFSET                       0x21f0u /* established */
 
+/*
+ * The shipped IRIX library writes zero and then polls the idle bit.
+ */
 /* pixpipe_flush: w32, space re, reset unknown; published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings */
 #define RE_PIXPIPE_FLUSH_OFFSET                      0x21f8u /* established */
 
@@ -1138,10 +1156,30 @@
 #define RE_TLBTILE_PAGE_MASK                         0x7fffu
 #define RE_TLBTILE_PAGE_INPLACE                      (RE_TLBTILE_PAGE_MASK << RE_TLBTILE_PAGE_SHIFT)
 
+#define RE_GL_UNBOUND_BIAS                           0x21000u /* established */
+#define RE_GL_VERTEX_BIAS                            0x1000u /* established */
 #define RE_IB_ENTRIES                                0x40u /* established */
+#define RE_LINEAR_WINDOW_MASK                        0x1ffffu /* established */
+#define RE_LIN_TLB_MAX_PAGES                         0x20u /* established */
 #define RE_LIN_TLB_REGS                              0x10u /* established */
+#define RE_PRIM_RECT                                 0x3020000u /* established */
+#define RE_PRIM_TRIANGLE                             0x2000000u /* established */
+#define RE_RENDER_COUNT_INIT                         0xau /* established */
+#define RE_RENDER_CTL_INIT                           0xfefff0au /* established */
+#define RE_RENDER_R10K_EMPTY                         0x0u /* established */
+#define RE_RENDER_R10K_FULL                          0x14u /* established */
+#define RE_RENDER_R10K_STALL                         0x13u /* established */
+#define RE_RENDER_R5K_EMPTY                          0x18u /* established */
+#define RE_RENDER_R5K_FULL                           0x30u /* established */
+#define RE_RENDER_R5K_STALL                          0x2fu /* established */
 #define RE_START_ALIAS_BIT                           0xbu /* established */
+#define RE_TEX_MAX_TEXELS                            0x400u /* inferred */
+#define RE_TEX_SUBTILE_CELL_BYTES                    0x20u /* inferred */
+#define RE_TILE_PAGES                                0x10u /* established */
 #define RE_TLB_ENTRIES_PER_REG                       0x4u /* established */
 #define RE_TLB_TILE_SHIFT                            0x10u /* established */
+#define RE_VTX_DEPTH_BASE                            0x840000u /* established */
+#define RE_VTX_STEP                                  0x40u /* established */
+#define RE_VTX_TRI_BASE                              0x48040000u /* established */
 
 #endif /* RE_GEN_H */

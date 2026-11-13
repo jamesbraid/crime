@@ -9,7 +9,7 @@ pub mod ib_data {
     pub const COUNT: u32 = 64;
     pub const STRIDE: u64 = 8;
 }
-/// (established)
+/// The shipped IRIX kernel decodes the 64-bit interface-buffer address word in software: register index in bits 39:32, group in 42:40, lane in 44:43, and (established)
 pub mod ib_addr {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x200;
@@ -665,7 +665,7 @@ pub mod xfer_src_xstep {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20a8;
 }
-/// (established)
+/// The shipped IRIX kernel writes it for an unbound caller as (zoom - 1) << 28 | (stride + pixel size - width). (established)
 pub mod xfer_src_ystep {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x20ac;
@@ -1265,10 +1265,20 @@ pub mod tex_envcolor {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2168;
 }
-/// (established)
+/// The shipped IRIX library keeps three 8-bit colour components in bits 31:8. (established)
 pub mod fog_color {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2170;
+    pub mod rgb { // bits 31:8, established
+        pub const SHIFT: u32 = 8;
+        pub const MASK: u32 = 0xffffff;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
 }
 /// (established)
 pub mod fog_fs {
@@ -1982,12 +1992,12 @@ pub mod stencil_mask {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel treats this null pixel-pipeline register as global. (established)
 pub mod pixpipe_null {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21f0;
 }
-/// (established)
+/// The shipped IRIX library writes zero and then polls the idle bit. (established)
 pub mod pixpipe_flush {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x21f8;
@@ -2600,11 +2610,31 @@ pub mod tlbtile {
         }
     }
 }
+pub const GL_UNBOUND_BIAS: u32 = 0x21000; // established
+pub const GL_VERTEX_BIAS: u32 = 0x1000; // established
 pub const IB_ENTRIES: u32 = 0x40; // established
+pub const LINEAR_WINDOW_MASK: u32 = 0x1ffff; // established
+pub const LIN_TLB_MAX_PAGES: u32 = 0x20; // established
 pub const LIN_TLB_REGS: u32 = 0x10; // established
+pub const PRIM_RECT: u32 = 0x3020000; // established
+pub const PRIM_TRIANGLE: u32 = 0x2000000; // established
+pub const RENDER_COUNT_INIT: u32 = 0xa; // established
+pub const RENDER_CTL_INIT: u32 = 0xfefff0a; // established
+pub const RENDER_R10K_EMPTY: u32 = 0x0; // established
+pub const RENDER_R10K_FULL: u32 = 0x14; // established
+pub const RENDER_R10K_STALL: u32 = 0x13; // established
+pub const RENDER_R5K_EMPTY: u32 = 0x18; // established
+pub const RENDER_R5K_FULL: u32 = 0x30; // established
+pub const RENDER_R5K_STALL: u32 = 0x2f; // established
 pub const START_ALIAS_BIT: u32 = 0xb; // established
+pub const TEX_MAX_TEXELS: u32 = 0x400; // inferred
+pub const TEX_SUBTILE_CELL_BYTES: u32 = 0x20; // inferred
+pub const TILE_PAGES: u32 = 0x10; // established
 pub const TLB_ENTRIES_PER_REG: u32 = 0x4; // established
 pub const TLB_TILE_SHIFT: u32 = 0x10; // established
+pub const VTX_DEPTH_BASE: u32 = 0x840000; // established
+pub const VTX_STEP: u32 = 0x40; // established
+pub const VTX_TRI_BASE: u32 = 0x48040000; // established
 
 #[cfg(test)]
 mod tests {

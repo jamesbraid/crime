@@ -2,7 +2,7 @@
 // O2 MACE video input channel registers
 #![allow(dead_code)]
 
-/// (established)
+/// The shipped IRIX video driver writes the whole word, changing only its low nine bits. (established)
 pub mod control {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x0;
@@ -431,7 +431,7 @@ pub mod config {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; which bits carry the flag is not  (established)
 pub mod next_desc {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
@@ -494,7 +494,7 @@ pub mod next_desc {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver writes the low halfword of a transfer-record word here. (established)
 pub mod fld_offset {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x20;
@@ -509,7 +509,7 @@ pub mod fld_offset {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver's start-up writes it with a 64-bit store. (established)
 pub mod line_width {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x28;

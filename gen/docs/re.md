@@ -110,6 +110,8 @@ Array of 64 registers, stride 8.
 
 ### Register `ib_addr`
 
+The shipped IRIX kernel decodes the 64-bit interface-buffer address word in software: register index in bits 39:32, group in 42:40, lane in 44:43, and a marker in bit 45 that its decoder uses as the stop entry.
+
 Array of 64 registers, stride 8.
 
 ### Register `ib_ctl`
@@ -119,7 +121,7 @@ Above the stall level, host writes stall for the stall count, given in 66 MHz
 cycles. Above the interrupt level, the host receives an interrupt; it then
 either polls the status register until the level falls or enables the
 buffer-empty interrupt (established, [spec] PDF 185). The specification gives
-no bit layout for these thresholds, so the field bits below stay inferred.
+no bit layout for these thresholds, so the field bits below stay inferred. The shipped IRIX kernel writes the first value 0x0fefff0a (full 127, empty 63, stall 126, count 10), keeps count at 10 in every later control word, and chooses the thresholds by processor module: R10000-family and RM7000 modules get full 20, empty 0 and stall 19; the other R5000-class modules get full 48, empty 24 and stall 47.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -134,7 +136,7 @@ The published interface-buffer address map lists the data RAM, the address
 RAM and the control word, and no register at the doubleword after the control
 word (established, [spec] PDF 163-164, Table 7-1). The public NetBSD driver
 does not access that doubleword either. Its name, width and access come from
-the shipped kernel's zero stores, so they stay inferred. See docs/reset.md.
+the shipped kernel's zero stores, so they stay inferred. See docs/reset.md. The shipped IRIX kernel writes zero here, waits 10 microseconds and rewrites the interface-buffer control word. Whether that control word is ib_ctl is inferred.
 
 ### Register `tlb_fb_a`
 
@@ -338,7 +340,7 @@ The unit of the line width is unknown. The specification's six-bit subpixel prec
 
 ### Register `vertex_x`
 
-In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md.
+In X mode the host gives each coordinate as a 16-bit unsigned value, in the range [0, 2^16) (established, [spec] PDF 197). The specification does not say how the two coordinates share a vertex word. The public NetBSD O2 framebuffer driver puts X in bits 31:16 and Y in bits 15:0 (inferred, software expectation). See docs/de-2d-drawing.md. The shipped IRIX kernel writes the 16-bit X vertex form for a pixel DMA caller that is bound to the engine.
 
 Array of 3 registers, stride 4.
 
@@ -365,13 +367,15 @@ buffer H rows high, the driver writes the x component as the window x and the
 y component as H - 1 - window y, each masked to 11 bits. The 0x21000 window
 bias drops out under that mask. For a 128-row buffer, y = 127 - window y. The
 equation that combines this packed start with SrcWinOffset is unknown. See
-docs/pixel-transfer.md.
+docs/pixel-transfer.md. The shipped IRIX kernel names this word the pixel-transfer screen position, x in bits 26:16 and y in bits 10:0.
 
 ### Register `xfer_src_stride`
 
 ### Register `xfer_src_xstep`
 
 ### Register `xfer_src_ystep`
+
+The shipped IRIX kernel writes it for an unbound caller as (zoom - 1) << 28 | (stride + pixel size - width).
 
 ### Register `xfer_dst_addr`
 
@@ -447,7 +451,7 @@ Texture mode register, 32 bits (established, [spec] PDF 178-179, Table 7-13). Bi
 |---|---|---|---|---|---|
 | 24 | `tiled` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
 | 23:20 | `texel_type` | established | rgb=1, rgba=2, rgba4=4, alpha=5, intensity=6, luminance=7, luminance_alpha=8 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
-| 19:18 | `texel_depth` | established | bits16=1, bits32=2 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
+| 19:18 | `texel_depth` | established | bits16=1, bits32=2 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 | The shipped OpenGL library treats these two bits as log2 of the bytes per texel. |
 | 17:14 | `map_level` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
 | 13:10 | `max_level` | established |  | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
 | 9:7 | `min_filter` | established | nearest=0, linear=1, nearest_mipmap_nearest=2, linear_mipmap_nearest=3, nearest_mipmap_linear=4, linear_mipmap_linear=5 | published CRIME 1.5 draft specification, PDF 178-179, Table 7-13 |  |
@@ -462,12 +466,12 @@ Texture format word, 64 bits (established, [spec] PDF 179, Table 7-14). Bits 63:
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 47:44 | `u_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
-| 43:40 | `v_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
-| 39:36 | `u_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
-| 35:32 | `v_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
-| 31:16 | `u_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
-| 15:0 | `v_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 |  |
+| 47:44 | `u_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes 10 minus log2 of the texture width here. |
+| 43:40 | `v_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes 10 minus log2 of the texture height here. |
+| 39:36 | `u_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes log2 of the texture width here. |
+| 35:32 | `v_wrap_shift` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes log2 of the texture height here. |
+| 31:16 | `u_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes (1 << (log2 width + 4)) - 1 here. |
+| 15:0 | `v_index_mask` | established |  | published CRIME 1.5 draft specification, PDF 179, Table 7-14 | The shipped OpenGL library writes (1 << (log2 height + 4)) - 1 here. |
 
 ### Register `tex_sqs`
 
@@ -513,6 +517,12 @@ bits. The layout is established; that meaning is inferred.
 
 ### Register `fog_color`
 
+The shipped IRIX library keeps three 8-bit colour components in bits 31:8.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:8 | `rgb` | established |  | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | three 8-bit fog colour components |
+
 ### Register `fog_fs`
 
 ### Register `fog_dfdx`
@@ -522,7 +532,7 @@ bits. The layout is established; that meaning is inferred.
 ### Register `aa_line`
 
 Antialiasing applies only to point and line primitives and only to RGB(A) pixels. It acts on alpha after fogging and before the alpha test. For antialiased lines the specification assumes a line width of two (established, [spec] PDF 206, section 7.3.7.10). The coverage value is a 0.8 fixed-point number, computed from a 128 by 8 slope-and-distance table and a 128 by 4-bit endpoint table, both in ROM (established, [spec] PDF 206-207). The ROM contents are not published, so they are unknown.
-The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md).
+The register map gives this word as a 2.12 two's complement value for both the slope and the ideal minor coordinate (established, [spec] register map, PDF 169). The antialiasing register table on PDF 180 gives the same bit split but calls both halves 2.14 (established), and the prose on PDF 207 says 2.12. docs/opengl.md reads both halves as 2.14, the precision the driver's arithmetic uses. The precision is not resolved here. The bit split below is the one PDF 180 and the driver reads share. The driver reduces the ideal minor coordinate modulo four pixels (inferred, docs/opengl.md). The shipped IRIX library writes the minor-axis slope in bits 31:16 and the start position with 8 fraction bits in bits 15:0.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -566,7 +576,7 @@ Blend equation and factors. The source factor table has a SRC_ALPHA_SATURATE row
 
 ### Register `logicop`
 
-The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification.
+The register's own field table is empty in the specification (section 7.3.1.17). The sixteen bitwise operations are listed in Table 7-23 (established, [spec] PDF 210-211, section 7.3.7.14), and docs/pixel-arithmetic.md gives them. The operation acts on the source colour after dithering and the destination read from the frame buffer. The numeric code for each operation comes from the drivers, not the specification. The shipped IRIX library writes the GL logic operation code minus GL_CLEAR, a value in 0 to 15.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -639,7 +649,11 @@ Written through its start alias, as for the start depth.
 
 ### Register `pixpipe_null`
 
+The shipped IRIX kernel treats this null pixel-pipeline register as global.
+
 ### Register `pixpipe_flush`
+
+The shipped IRIX library writes zero and then polls the idle bit.
 
 ### Register `status`
 
@@ -815,11 +829,31 @@ corner.
 
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
+| `GL_UNBOUND_BIAS` | 0x21000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Bias the shipped IRIX kernel removes from coordinates for a caller that is not bound to the engine. |
+| `GL_VERTEX_BIAS` | 0x1000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Bias the shipped IRIX library applies to GL vertex halves in pixel DMA. |
 | `IB_ENTRIES` | 0x40 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | shipped software walks the buffer as a ring of 64; the specification text says 128 |
+| `LINEAR_WINDOW_MASK` | 0x1ffff | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Mask on the linear source address of a draw; the linear window is 128 KiB. |
+| `LIN_TLB_MAX_PAGES` | 0x20 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Most pages a pinned user buffer may have when the shipped IRIX kernel loads it into a linear TLB. |
 | `LIN_TLB_REGS` | 0x10 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | doublewords per linear table, two page entries each |
+| `PRIM_RECT` | 0x3020000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Primitive word for rectangles: depth clears and the X server's copies. |
+| `PRIM_TRIANGLE` | 0x2000000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Primitive word the shipped IRIX library writes for triangles; the edge number is ORed in at bit 16. |
+| `RENDER_COUNT_INIT` | 0xa | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Count field value in every control word the kernel writes. |
+| `RENDER_CTL_INIT` | 0xfefff0a | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | First value the shipped IRIX kernel writes to the interface-buffer control word: full 127, empty 63, stall 126, count 10. |
+| `RENDER_R10K_EMPTY` | 0x0 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Empty threshold for R10000-family and RM7000 modules. |
+| `RENDER_R10K_FULL` | 0x14 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Full threshold the kernel writes for R10000-family and RM7000 modules. |
+| `RENDER_R10K_STALL` | 0x13 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Stall threshold for R10000-family and RM7000 modules. |
+| `RENDER_R5K_EMPTY` | 0x18 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Empty threshold for the other R5000-class modules. |
+| `RENDER_R5K_FULL` | 0x30 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Full threshold for the other R5000-class modules. |
+| `RENDER_R5K_STALL` | 0x2f | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Stall threshold for the other R5000-class modules. |
 | `START_ALIAS_BIT` | 0xb | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | address bit that selects the start alias of a register |
+| `TEX_MAX_TEXELS` | 0x400 | inferred | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Largest texture dimension the format record leaves room for, from the coordinate scale. |
+| `TEX_SUBTILE_CELL_BYTES` | 0x20 | inferred | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Cell size of a subtiled texture, from the shipped library's address stepping. |
+| `TILE_PAGES` | 0x10 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Page frames in one 64 KiB tile. The kernel maps tile entry v as frames v << 4 through (v << 4) + 15. |
 | `TLB_ENTRIES_PER_REG` | 0x4 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | four 16-bit tile entries in each frame-buffer, texture and clip-ID doubleword |
 | `TLB_TILE_SHIFT` | 0x10 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | entry is the physical address >> 16 (64 KiB tiles) |
+| `VTX_DEPTH_BASE` | 0x840000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Biased binary32 vertex word for depth clears; the same bias as triangles in bits 18:0. |
+| `VTX_STEP` | 0x40 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Scale applied to a coordinate before it is ORed into a vertex word. |
+| `VTX_TRI_BASE` | 0x48040000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Biased binary32 vertex word for triangles; each step adds 64 times the coordinate. |
 
 ## Test vectors
 

@@ -57,7 +57,7 @@
 #define MACE_TIMER_AUDIO_PAIR_MSC_INPLACE            (MACE_TIMER_AUDIO_PAIR_MSC_MASK << MACE_TIMER_AUDIO_PAIR_MSC_SHIFT)
 
 /*
- * Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active. DMA enable does not clock it, and software can write it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published.
+ * Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active. DMA enable does not clock it, and software can write it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published. The shipped IRIX video driver reads a timestamp snapshot doubleword per channel from the timer block: input channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at 0x48 (TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF, TIMER_SNAP_OUT_OFF).
  */
 /* video_pair: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
 #define MACE_TIMER_VIDEO_PAIR_OFFSET                 0x38u /* established */
@@ -77,5 +77,8 @@
 #define MACE_TIMER_CMP0_ALIAS                        0x1f350000u /* established */
 #define MACE_TIMER_CMP1_ALIAS                        0x1f360000u /* established */
 #define MACE_TIMER_CMP2_ALIAS                        0x1f370000u /* established */
+#define MACE_TIMER_TIMER_SNAP_IN1_OFF                0x38u /* established */
+#define MACE_TIMER_TIMER_SNAP_IN2_OFF                0x40u /* established */
+#define MACE_TIMER_TIMER_SNAP_OUT_OFF                0x48u /* established */
 
 #endif /* MACE_TIMER_GEN_H */

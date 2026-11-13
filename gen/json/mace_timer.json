@@ -203,6 +203,33 @@
    "count": 1,
    "grade": "established",
    "from": "published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "TIMER_SNAP_IN1_OFF",
+   "value": 56,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "TIMER_SNAP_IN2_OFF",
+   "value": 64,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+  },
+  {
+   "unit": "mace_timer",
+   "kind": "constant",
+   "name": "TIMER_SNAP_OUT_OFF",
+   "value": 72,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
   }
  ]
 }

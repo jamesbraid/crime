@@ -4,7 +4,7 @@ prefix = "VOUT"
 title = "O2 MACE video output channel and chip-level configuration"
 doc = "MACE video output channel registers and the chip-level hardware configuration word."
 from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
-public_from = ["published MACE 2.0 specification"]
+public_from = ["published MACE 2.0 specification", "shipped IRIX"]
 
 [c]
 legacy_header = "MACE_VIDEO_DECODE.h"
@@ -23,7 +23,7 @@ doc = """
 ---- output channel registers ----
 One channel set, offsets from the start of the output channel window. All
 are 64-bit doubleword accesses. The status register clears the pending
-causes on read; the DMA-active bit is live."""
+causes on read; the DMA-active bit is live. The shipped IRIX video driver writes the whole word, changing only its low nine bits; its output recovery routines pulse bit 0."""
 
 [registers.control.fields]
 int_crime_error = { bits = [8, 8], grade = "established" }
@@ -41,6 +41,7 @@ width = 64
 grade = "established"
 reset = 0x0
 space = "mace_video_out"
+doc = "The shipped IRIX output recovery routines read it after their last write and discard the value."
 
 [registers.status.fields]
 crime_error = { bits = [8, 8], grade = "established" }
@@ -57,6 +58,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+doc = "The shipped IRIX video driver writes it at start-up."
 
 [registers.config.fields]
 channel_enable = { bits = [0, 0], grade = "established", doc = "Zero resets processing of this channel, one enables it (printed page 40, table 11)." }
@@ -140,6 +142,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+doc = "The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines write it as well."
 
 [registers.next_desc.fields]
 table_address = { bits = [31, 6], grade = "established", doc = "Physical address of the 64-byte descriptor table (printed page 44, table 13)." }
@@ -161,6 +164,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+doc = "The shipped IRIX video driver writes the low halfword of a transfer-record word here."
 
 [registers.fld_offset.fields]
 byte_offset = { bits = [15, 3], grade = "established", doc = "Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14)." }
@@ -171,7 +175,7 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
-doc = "Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59)."
+doc = "Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line count and the bytes per line from one stored value: 243 lines of 2880 bytes in one set and 288 lines in the other."
 
 [registers.field_size.fields]
 bytes = { bits = [11, 3], grade = "established", doc = "Bytes per line, a multiple of eight, stored literally (printed page 45, table 16)." }
@@ -264,6 +268,8 @@ access = "rw"
 width = 64
 grade = "established"
 space = "mace_video_out"
+doc = "The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video probe reads bits 35:32; the value that identifies the part is not recorded."
+notes = "The kernel reading named bit 13 framelock_correction (here gbe_framelock_ecc), bit 18 general_output (gpibo), bits 35:32 ident (revision), and left bits 4, 7, 8 and the audio-sync reset unassigned (here audio_sync_reset at 4, audio_sync_precision at 7 and audio_sync_ecc at 8). The positions agree; the specification's names are kept."
 
 [registers.vhw_cfg.fields]
 revision = { bits = [35, 32], grade = "established", doc = "Four-bit chip revision code. The numeric value for MACE revision 2.0 is not published (printed page 54, table 23), so no value is recorded here." }
@@ -308,3 +314,8 @@ width = 64
 grade = "established"
 count = 8
 space = "mace_video_out"
+
+[constants]
+WINDOW_PHYS_ADDR = { value = 0x1f100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1." }
+IN2_OFF = { value = 0x80000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of input channel 2 from the start of the video window." }
+OUT_OFF = { value = 0x100000, grade = "established", from = "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md", doc = "Offset of the output channel from the start of the video window." }

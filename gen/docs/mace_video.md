@@ -38,7 +38,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 ---- output channel registers ----
 One channel set, offsets from the start of the output channel window. All
 are 64-bit doubleword accesses. The status register clears the pending
-causes on read; the DMA-active bit is live.
+causes on read; the DMA-active bit is live. The shipped IRIX video driver writes the whole word, changing only its low nine bits; its output recovery routines pulse bit 0.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -52,6 +52,8 @@ causes on read; the DMA-active bit is live.
 
 ### Register `status`
 
+The shipped IRIX output recovery routines read it after their last write and discard the value.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 8 | `crime_error` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
@@ -63,6 +65,8 @@ causes on read; the DMA-active bit is live.
 | 0 | `dma_active` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
 
 ### Register `config`
+
+The shipped IRIX video driver writes it at start-up.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -83,6 +87,8 @@ causes on read; the DMA-active bit is live.
 
 ### Register `next_desc`
 
+The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines write it as well.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:6 | `table_address` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Physical address of the 64-byte descriptor table (printed page 44, table 13). |
@@ -92,13 +98,15 @@ causes on read; the DMA-active bit is live.
 
 ### Register `fld_offset`
 
+The shipped IRIX video driver writes the low halfword of a transfer-record word here.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 15:3 | `byte_offset` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14). |
 
 ### Register `field_size`
 
-Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).
+Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line count and the bytes per line from one stored value: 243 lines of 2880 bytes in one set and 288 lines in the other.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -147,6 +155,8 @@ Double-buffered: a new value takes effect at the next field (revision history it
 
 ### Register `vhw_cfg`
 
+The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video probe reads bits 35:32; the value that identifies the part is not recorded.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 35:32 | `revision` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Four-bit chip revision code. The numeric value for MACE revision 2.0 is not published (printed page 54, table 23), so no value is recorded here. |
@@ -169,3 +179,11 @@ Double-buffered: a new value takes effect at the next field (revision history it
 ### Register `dma_desc`
 
 Array of 8 registers, stride 8.
+
+## Constants
+
+| Constant | Value | Grade | Source | Description |
+|---|---|---|---|---|
+| `IN2_OFF` | 0x80000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Offset of input channel 2 from the start of the video window. |
+| `OUT_OFF` | 0x100000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Offset of the output channel from the start of the video window. |
+| `WINDOW_PHYS_ADDR` | 0x1f100000 | established | shipped IRIX O2 video driver object, per kudzu docs/mace-video.md | Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1. |

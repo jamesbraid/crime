@@ -125,10 +125,17 @@
 #define MTE_ADDR_ROW_MASK                            0xffffu
 #define MTE_ADDR_ROW_INPLACE                         (MTE_ADDR_ROW_MASK << MTE_ADDR_ROW_SHIFT)
 
+#define MTE_HOST_CHUNK_BYTES                         0x20000u /* established */
+#define MTE_MODE_HOST_CLEAR                          0x11u /* established */
+#define MTE_MODE_HOST_COPY                           0x897u /* established */
+#define MTE_MODE_X_COPY                              0x820u /* established */
 #define MTE_SUBTILE_BLOCK_BYTES                      0x20u /* inferred */
 #define MTE_SUBTILE_BYTES                            0x2000u /* inferred */
 #define MTE_TILE_BYTES                               0x10000u /* established */
 #define MTE_TILE_ROWS                                0x80u /* established */
 #define MTE_TILE_ROW_BYTES                           0x200u /* established */
+#define MTE_X_BLOCK_BYTES                            0x100u /* established */
+#define MTE_X_ROWS_16                                0x10u /* established */
+#define MTE_X_ROWS_32                                0x8u /* established */
 
 #endif /* MTE_GEN_H */

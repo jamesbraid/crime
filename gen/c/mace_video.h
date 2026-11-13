@@ -10,7 +10,7 @@
  * ---- output channel registers ----
  * One channel set, offsets from the start of the output channel window. All
  * are 64-bit doubleword accesses. The status register clears the pending
- * causes on read; the DMA-active bit is live.
+ * causes on read; the DMA-active bit is live. The shipped IRIX video driver writes the whole word, changing only its low nine bits; its output recovery routines pulse bit 0.
  */
 /* control: rw64, space mace_video_out, reset 0x0; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_CONTROL_OFFSET                          0x0u /* established */
@@ -36,6 +36,9 @@
 #define VOUT_CONTROL_DMA_ENABLE_MASK                 0x1ull
 #define VOUT_CONTROL_DMA_ENABLE_INPLACE              (VOUT_CONTROL_DMA_ENABLE_MASK << VOUT_CONTROL_DMA_ENABLE_SHIFT)
 
+/*
+ * The shipped IRIX output recovery routines read it after their last write and discard the value.
+ */
 /* status: r64, space mace_video_out, reset 0x0; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_STATUS_OFFSET                           0x8u /* established */
 #define VOUT_STATUS_CRIME_ERROR_SHIFT                8 /* established */
@@ -60,6 +63,9 @@
 #define VOUT_STATUS_DMA_ACTIVE_MASK                  0x1ull
 #define VOUT_STATUS_DMA_ACTIVE_INPLACE               (VOUT_STATUS_DMA_ACTIVE_MASK << VOUT_STATUS_DMA_ACTIVE_SHIFT)
 
+/*
+ * The shipped IRIX video driver writes it at start-up.
+ */
 /* config: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_CONFIG_OFFSET                           0x10u /* established */
 #define VOUT_CONFIG_SOF_COUNT_EVEN_SHIFT             22 /* established */
@@ -129,6 +135,9 @@
 #define VOUT_CONFIG_CHANNEL_ENABLE_MASK              0x1ull
 #define VOUT_CONFIG_CHANNEL_ENABLE_INPLACE           (VOUT_CONFIG_CHANNEL_ENABLE_MASK << VOUT_CONFIG_CHANNEL_ENABLE_SHIFT)
 
+/*
+ * The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines write it as well.
+ */
 /* next_desc: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_NEXT_DESC_OFFSET                        0x18u /* established */
 #define VOUT_NEXT_DESC_TABLE_ADDRESS_SHIFT           6 /* established */
@@ -146,6 +155,9 @@
 #define VOUT_NEXT_DESC_FIELD_TO_SEND_ODD             0 /* established */
 #define VOUT_NEXT_DESC_FIELD_TO_SEND_EVEN            1 /* established */
 
+/*
+ * The shipped IRIX video driver writes the low halfword of a transfer-record word here.
+ */
 /* fld_offset: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_FLD_OFFSET_OFFSET                       0x20u /* established */
 #define VOUT_FLD_OFFSET_BYTE_OFFSET_SHIFT            3 /* established */
@@ -153,7 +165,7 @@
 #define VOUT_FLD_OFFSET_BYTE_OFFSET_INPLACE          (VOUT_FLD_OFFSET_BYTE_OFFSET_MASK << VOUT_FLD_OFFSET_BYTE_OFFSET_SHIFT)
 
 /*
- * Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).
+ * Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line count and the bytes per line from one stored value: 243 lines of 2880 bytes in one set and 288 lines in the other.
  */
 /* field_size: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_FIELD_SIZE_OFFSET                       0x28u /* established */
@@ -241,6 +253,9 @@
 /* gen_dly: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_GEN_DLY_OFFSET                          0x50u /* established */
 
+/*
+ * The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video probe reads bits 35:32; the value that identifies the part is not recorded.
+ */
 /* vhw_cfg: rw64, space mace_video_out, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VOUT_VHW_CFG_OFFSET                          0x58u /* established */
 #define VOUT_VHW_CFG_REVISION_SHIFT                  32 /* established */
@@ -304,5 +319,9 @@
 #define VOUT_DMA_DESC_OFFSET                         0x80u /* established */
 #define VOUT_DMA_DESC_COUNT                          8
 #define VOUT_DMA_DESC_STRIDE                         8
+
+#define VOUT_IN2_OFF                                 0x80000u /* established */
+#define VOUT_OUT_OFF                                 0x100000u /* established */
+#define VOUT_WINDOW_PHYS_ADDR                        0x1f100000u /* established */
 
 #endif /* VOUT_GEN_H */

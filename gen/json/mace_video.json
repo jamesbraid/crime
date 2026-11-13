@@ -1141,6 +1141,33 @@
    "reset": "unknown",
    "grade": "established",
    "from": "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "constant",
+   "name": "IN2_OFF",
+   "value": 524288,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "constant",
+   "name": "OUT_OFF",
+   "value": 1048576,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "constant",
+   "name": "WINDOW_PHYS_ADDR",
+   "value": 521142272,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"
   }
  ]
 }

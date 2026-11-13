@@ -1823,11 +1823,92 @@
   {
    "unit": "gbe",
    "kind": "constant",
+   "name": "CMFIFO_BATCH",
+   "value": 33,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
    "name": "DEVICE_ID_VALUE",
    "value": 1638,
    "count": 1,
    "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_BLOCK_BYTES",
+   "value": 512,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_BLOCK_ENTRIES",
+   "value": 256,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_END_BLOCK",
+   "value": 128,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_LAST_XEND",
+   "value": 2047,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_LINE_TABLE_OFFSET",
+   "value": 8192,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DID_TABLE_BYTES",
+   "value": 65536,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "DOTCLK_SETTLE_MS",
+   "value": 11,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "GBE_LINE_IRQ_BASE",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
   },
   {
    "unit": "gbe",
@@ -1882,6 +1963,15 @@
    "count": 1,
    "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OFF_CRS_COLOR2",
+   "value": 458764,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
   },
   {
    "unit": "gbe",
@@ -2327,6 +2417,105 @@
   {
    "unit": "gbe",
    "kind": "constant",
+   "name": "OPT_CMD_CLOCK_KHZ",
+   "value": 100000,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_CMD_ID_HIGH",
+   "value": 255,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_CMD_ID_LOW",
+   "value": 127,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_DELAY_SMALL",
+   "value": 2,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_ID_MASK",
+   "value": 96,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_ID_RESTORE",
+   "value": 112,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_INSTALLED_LIMIT",
+   "value": 9,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OPT_PORT_ADDR",
+   "value": 126,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "OVERLAY_TRANSPARENT_INDEX",
+   "value": 0,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "REF_CLOCK_KHZ",
+   "value": 20000,
+   "count": 1,
+   "grade": "inferred",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_ALIGN_BYTES",
+   "value": 512,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
    "name": "TILE_LIST_BYTES_UNIT",
    "value": 32,
    "count": 1,
@@ -2336,11 +2525,65 @@
   {
    "unit": "gbe",
    "kind": "constant",
+   "name": "TILE_LIST_OUTSTANDING",
+   "value": 8,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_LIST_PAGE_BYTES",
+   "value": 8192,
+   "count": 1,
+   "grade": "inferred",
+   "from": "published GBE 1.1 specification"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TILE_NUMBER_MASK",
+   "value": 8191,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TWO_WIRE_WAIT_BIT",
+   "value": 1,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "TWO_WIRE_WAIT_LIMIT",
+   "value": 60,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
    "name": "VC_TILE_REGS",
    "value": 5,
    "count": 1,
    "grade": "established",
    "from": "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
+  },
+  {
+   "unit": "gbe",
+   "kind": "constant",
+   "name": "VT_XY_FREEZE",
+   "value": 2147483648,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX kernel binaries, per kudzu docs/gbe.md"
   }
  ]
 }

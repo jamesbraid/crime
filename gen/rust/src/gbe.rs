@@ -50,7 +50,7 @@ pub mod cmap_fifo {
         }
     }
 }
-/// (established)
+/// The shipped IRIX text port writes 1 after the glyph and colours are loaded; what the other bits mean there is unknown. (established)
 pub mod crs_ctl {
     pub const WIDTH: u32 = 32;
     pub mod crosshair { // bits 1:1, established
@@ -98,7 +98,7 @@ pub mod crs_pos {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel writes the same vertical part as DID_START_XY, with one line added (0x1000), and the horizontal blank end minus 54 with total  (established)
 pub mod crs_start_xy {
     pub const WIDTH: u32 = 32;
     pub mod starty { // bits 23:12, established
@@ -404,7 +404,7 @@ pub mod ctrlstat {
         }
     }
 }
-/// (established)
+/// The shipped IRIX stop routine tests the enable bit at entry, clears it and leaves the word otherwise unwritten; the kernel never writes the table addr (established)
 pub mod did_control {
     pub const WIDTH: u32 = 32;
     pub mod dma_enable { // bits 16:16, established
@@ -428,7 +428,7 @@ pub mod did_control {
         }
     }
 }
-/// (established)
+/// The shipped IRIX X module packs a frame entry as block << 19 | offset << 11 | yend, one per horizontal band of lines. (established)
 pub mod did_frame {
     pub const WIDTH: u32 = 32;
     pub mod block { // bits 25:19, established
@@ -486,7 +486,7 @@ pub mod did_inhwctrl {
         }
     }
 }
-/// (established)
+/// The shipped IRIX X module packs a line-table entry as index << 11 | xend, one per rectangle in a band and sorted by its last column, in 16-bit units i (established)
 pub mod did_line {
     pub const WIDTH: u32 = 32;
     pub mod did { // bits 15:11, established
@@ -510,7 +510,7 @@ pub mod did_line {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel writes a vertical part of minus (vertical blank start minus vertical blank end minus 1) when that difference is positive, else (established)
 pub mod did_start_xy {
     pub const WIDTH: u32 = 32;
     pub mod starty { // bits 23:12, established
@@ -608,7 +608,7 @@ pub mod dotclock {
         }
     }
 }
-/// (established)
+/// The shipped IRIX timing routine writes it only for the default set-up and panel set-ups 130 and 131, and only when no dual-channel option is fitted. (established)
 pub mod fp_de {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -656,7 +656,7 @@ pub mod fp_hdrv {
         }
     }
 }
-/// (established)
+/// The value the shipped IRIX timing routine writes depends on the board's panel set-up byte and on whether a dual-channel option is fitted. (established)
 pub mod fp_vdrv {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -680,7 +680,7 @@ pub mod fp_vdrv {
         }
     }
 }
-/// (established)
+/// The shipped IRIX stop routine saves it, clears its enable bit, and later writes it back with its pointer field bumped by one unit. (established)
 pub mod frm_control {
     pub const WIDTH: u32 = 32;
     pub mod tile_list_ptr { // bits 31:5, established
@@ -704,7 +704,7 @@ pub mod frm_control {
         }
     }
 }
-/// (established)
+/// The shipped IRIX start-up sequence polls bit 0 until it equals bit 0 of the value it has just written to the frame control word. (established)
 pub mod frm_inhwctrl {
     pub const WIDTH: u32 = 32;
     pub mod dma_enable { // bits 0:0, established
@@ -852,7 +852,7 @@ pub mod i2cfp {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel rejects window indices of 32 or more and writes entry 0 with 3 at text-port set-up. Its compare mask (0x7fc) leaves the auxili (established)
 pub mod mode_entry {
     pub const WIDTH: u32 = 32;
     pub mod aux { // bits 12:11, established
@@ -982,7 +982,7 @@ pub mod mode_entry {
         }
     }
 }
-/// (established)
+/// The shipped IRIX stop routine clears its enable bit and leaves the word otherwise unwritten; reading the enable as a DMA enable is inferred. (established)
 pub mod ovr_control {
     pub const WIDTH: u32 = 32;
     pub mod tile_list_ptr { // bits 31:5, established
@@ -1006,7 +1006,7 @@ pub mod ovr_control {
         }
     }
 }
-/// (established)
+/// The shipped IRIX start-up sequence polls bit 0 until it equals bit 0 of the value it has just written to the overlay control word. (established)
 pub mod ovr_inhwctrl {
     pub const WIDTH: u32 = 32;
     pub mod dma_enable { // bits 0:0, established
@@ -1160,7 +1160,7 @@ pub mod vc_1 {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver clears VC_0 to VC_3 (written as zero when a capture path stops); bit 0 of VC_2 enabling DMA is inferred from its start r (established)
 pub mod vc_2 {
     pub const WIDTH: u32 = 32;
     pub mod cs_bypass { // bits 4:4, established
@@ -1214,7 +1214,7 @@ pub mod vc_2 {
         }
     }
 }
-/// (established)
+/// The shipped IRIX video driver clears it when a capture path stops and holds a path byte in it; that reading is inferred from the start routine. (established)
 pub mod vc_3 {
     pub const WIDTH: u32 = 32;
     pub mod descr_ptr { // bits 31:5, established
@@ -1278,7 +1278,7 @@ pub mod vc_3 {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel writes the same vertical part as DID_START_XY without the extra line, and the horizontal blank end minus 4. The placement of t (established)
 pub mod vc_start_xy {
     pub const WIDTH: u32 = 32;
     pub mod starty { // bits 23:12, established
@@ -1424,7 +1424,7 @@ pub mod vt_flags {
         }
     }
 }
-/// Horizontal blanking turns off and on at these pixel counts (VT_5). (established)
+/// Horizontal blanking turns off and on at these pixel counts (VT_5). The shipped IRIX timing routine stores it in the interlace case and when no dual-ch (established)
 pub mod vt_hblank {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1448,7 +1448,7 @@ pub mod vt_hblank {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel writes the horizontal blank window: start in the high field, end in the low field, in pixels. (established)
 pub mod vt_hcmap {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1472,7 +1472,7 @@ pub mod vt_hcmap {
         }
     }
 }
-/// Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical enables combine with OR. The table does not settle that rule. (established)
+/// Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical enables combine with OR. The table does not settle that rule. T (established)
 pub mod vt_hpixen {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1568,7 +1568,7 @@ pub mod vt_intr23 {
         }
     }
 }
-/// Vertical blanking turns off and on at these lines (VT_4). (established)
+/// Vertical blanking turns off and on at these lines (VT_4). The shipped IRIX timing routine stores it in the interlace case and when no dual-channel opt (established)
 pub mod vt_vblank {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1592,7 +1592,7 @@ pub mod vt_vblank {
         }
     }
 }
-/// (established)
+/// The shipped IRIX kernel writes the vertical blank window: start in the high field, end in the low field, in lines. (established)
 pub mod vt_vcmap {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1616,7 +1616,7 @@ pub mod vt_vcmap {
         }
     }
 }
-/// Vertical pixel-enable window, VT_14. (established)
+/// Vertical pixel-enable window, VT_14. The shipped IRIX kernel parks 0xffffff here and writes it last in the start-up sequence with the vertical blank e (established)
 pub mod vt_vpixen {
     pub const WIDTH: u32 = 32;
     pub mod on { // bits 23:12, established
@@ -1664,7 +1664,7 @@ pub mod vt_vsync {
         }
     }
 }
-/// (established)
+/// The shipped IRIX start-up sequence compares its whole unmasked value with the vertical blank start line; the stop sequence reads bit 31 as the freeze  (established)
 pub mod vt_xy {
     pub const WIDTH: u32 = 32;
     pub mod freeze { // bits 31:31, established
@@ -1698,7 +1698,7 @@ pub mod vt_xy {
         }
     }
 }
-/// (established)
+/// The shipped IRIX timing routine writes 0 here, and the start-up sequence writes the totals once the frame buffer is set up. The kernel stores the reco (established)
 pub mod vt_xymax {
     pub const WIDTH: u32 = 32;
     pub mod vtotal { // bits 23:12, established
@@ -1727,13 +1727,23 @@ pub const CMAP_ENTRIES_REV2: u32 = 0x1800; // inferred
 pub const CMAP_FIFO_DEPTH_REV1: u32 = 0x40; // established
 pub const CMAP_FIFO_DEPTH_REV2: u32 = 0x3f; // inferred
 pub const CMAP_FIFO_LOW_WATER: u32 = 0x30; // established
+pub const CMFIFO_BATCH: u32 = 0x21; // established
 pub const DEVICE_ID_VALUE: u32 = 0x666; // established
+pub const DID_BLOCK_BYTES: u32 = 0x200; // established
+pub const DID_BLOCK_ENTRIES: u32 = 0x100; // established
+pub const DID_END_BLOCK: u32 = 0x80; // established
+pub const DID_LAST_XEND: u32 = 0x7ff; // established
+pub const DID_LINE_TABLE_OFFSET: u32 = 0x2000; // established
+pub const DID_TABLE_BYTES: u32 = 0x10000; // established
+pub const DOTCLK_SETTLE_MS: u32 = 0xb; // established
+pub const GBE_LINE_IRQ_BASE: u32 = 0x10; // established
 pub const GMAP_ENTRIES: u32 = 0x100; // established
 pub const MODE_ENTRIES: u32 = 0x20; // established
 pub const MODE_ENTRY_STRIDE: u32 = 0x4; // established
 pub const OFF_CMAP: u32 = 0x50000; // established
 pub const OFF_CMAP_FIFO: u32 = 0x58000; // established
 pub const OFF_CRS_CMAP: u32 = 0x70008; // established
+pub const OFF_CRS_COLOR2: u32 = 0x7000c; // established
 pub const OFF_CRS_CTL: u32 = 0x70004; // established
 pub const OFF_CRS_GLYPH: u32 = 0x78000; // established
 pub const OFF_CRS_POS: u32 = 0x70000; // established
@@ -1783,8 +1793,25 @@ pub const OFF_VT_VPIXEN: u32 = 0x10038; // established
 pub const OFF_VT_VSYNC: u32 = 0x10008; // established
 pub const OFF_VT_XY: u32 = 0x10000; // established
 pub const OFF_VT_XYMAX: u32 = 0x10004; // established
+pub const OPT_CMD_CLOCK_KHZ: u32 = 0x186a0; // established
+pub const OPT_CMD_ID_HIGH: u32 = 0xff; // established
+pub const OPT_CMD_ID_LOW: u32 = 0x7f; // established
+pub const OPT_DELAY_SMALL: u32 = 0x2; // established
+pub const OPT_ID_MASK: u32 = 0x60; // established
+pub const OPT_ID_RESTORE: u32 = 0x70; // established
+pub const OPT_INSTALLED_LIMIT: u32 = 0x9; // established
+pub const OPT_PORT_ADDR: u32 = 0x7e; // established
+pub const OVERLAY_TRANSPARENT_INDEX: u32 = 0x0; // inferred
+pub const REF_CLOCK_KHZ: u32 = 0x4e20; // inferred
+pub const TILE_LIST_ALIGN_BYTES: u32 = 0x200; // inferred
 pub const TILE_LIST_BYTES_UNIT: u32 = 0x20; // established
+pub const TILE_LIST_OUTSTANDING: u32 = 0x8; // inferred
+pub const TILE_LIST_PAGE_BYTES: u32 = 0x2000; // inferred
+pub const TILE_NUMBER_MASK: u32 = 0x1fff; // established
+pub const TWO_WIRE_WAIT_BIT: u32 = 0x1; // established
+pub const TWO_WIRE_WAIT_LIMIT: u32 = 0x3c; // established
 pub const VC_TILE_REGS: u32 = 0x5; // established
+pub const VT_XY_FREEZE: u32 = 0x80000000; // established
 
 #[cfg(test)]
 mod tests {

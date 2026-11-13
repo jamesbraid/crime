@@ -107,11 +107,18 @@ Flush command, 32 bits, write-only (established, [spec] PDF 184).
 
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
+| `HOST_CHUNK_BYTES` | 0x20000 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Largest chunk of a kernel host-memory clear or copy. |
+| `MODE_HOST_CLEAR` | 0x11 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Mode word of the shipped IRIX kernel's host-memory clear: clear, linear A, destination ECC. |
+| `MODE_HOST_COPY` | 0x897 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Mode word of the shipped IRIX kernel's host-memory copy: copy, linear A to linear B, both ECC bits. |
+| `MODE_X_COPY` | 0x820 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Mode word the shipped IRIX X server uses for a copy: copy, source TLB B, destination TLB A, 8-bit. |
 | `SUBTILE_BLOCK_BYTES` | 0x20 | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | 8 bytes by 4 rows |
 | `SUBTILE_BYTES` | 0x2000 | inferred | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | 128 bytes by 64 rows |
 | `TILE_BYTES` | 0x10000 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 | `TILE_ROWS` | 0x80 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
 | `TILE_ROW_BYTES` | 0x200 | established | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings |  |
+| `X_BLOCK_BYTES` | 0x100 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Width in bytes of the whole-row blocks the X server sends to the engine. |
+| `X_ROWS_16` | 0x10 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Rows in a block at 16 bits per pixel. |
+| `X_ROWS_32` | 0x8 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | Rows in a block at 32 bits per pixel. |
 
 ## Test vectors
 

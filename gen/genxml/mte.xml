@@ -91,9 +91,16 @@
       <expect field="row" value="32"/>
     </test>
   </struct>
+  <constant name="HOST_CHUNK_BYTES" value="0x20000" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
+  <constant name="MODE_HOST_CLEAR" value="0x11" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
+  <constant name="MODE_HOST_COPY" value="0x897" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
+  <constant name="MODE_X_COPY" value="0x820" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
   <constant name="SUBTILE_BLOCK_BYTES" value="0x20" grade="inferred"/>
   <constant name="SUBTILE_BYTES" value="0x2000" grade="inferred"/>
   <constant name="TILE_BYTES" value="0x10000" grade="established"/>
   <constant name="TILE_ROWS" value="0x80" grade="established"/>
   <constant name="TILE_ROW_BYTES" value="0x200" grade="established"/>
+  <constant name="X_BLOCK_BYTES" value="0x100" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
+  <constant name="X_ROWS_16" value="0x10" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
+  <constant name="X_ROWS_32" value="0x8" grade="established" from="shipped IRIX O2 graphics objects, per kudzu docs/crime.md"/>
 </genxml>

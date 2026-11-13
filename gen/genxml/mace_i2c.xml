@@ -3,7 +3,7 @@
 <genxml unit="mace_i2c" prefix="MACE_I2C" title="O2 MACE two-wire (I2C) bus interface" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)">
   <doc>MACE two-wire bus interface: the configuration and reset register, its alias, the control and status register and the data register. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="CONFIG" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)" register="yes" offset="0x0" access="rw" reset="unknown">
-    <doc>Bus configuration and reset, bits 5:0 (established, printed pages 150 and 151, tables 76 and 79). Bits 0 to 3 are read/write and reset to zero. Bits 4 and 5 are read-only input levels with no fixed reset value, so the register has no single reset value (table 79 marks them X).</doc>
+    <doc>Bus configuration and reset, bits 5:0 (established, printed pages 150 and 151, tables 76 and 79). Bits 0 to 3 are read/write and reset to zero. Bits 4 and 5 are read-only input levels with no fixed reset value, so the register has no single reset value (table 79 marks them X). The shipped IRIX video driver's configuration helper reads it and writes it back with the bits selected by its mask replaced, only the low four bits; it writes 1 to request a bus reset.</doc>
     <field name="clock_in" start="5" size="1" type="uint" grade="established"/>
     <field name="data_in" start="4" size="1" type="uint" grade="established"/>
     <field name="clock_pin_override" start="3" size="1" type="uint" grade="established"/>
@@ -15,7 +15,7 @@
     <doc>Labelled reserved in the register table, with the note that it aliases the configuration register above. Bits 5:0 only (established, printed page 150, table 76). This section records no access to it.</doc>
   </struct>
   <struct name="CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)" register="yes" offset="0x10" access="rw" reset="0x0">
-    <doc>Control and status, bits 7:0. Bits 0, 1 and 2 are read/write; bits 4, 5 and 7 are read-only status; bits 3 and 6 are reserved read-only, kept for compatibility with the VINO interface (established, printed page 150, table 77). Every bit resets to zero.</doc>
+    <doc>Control and status, bits 7:0. Bits 0, 1 and 2 are read/write; bits 4, 5 and 7 are read-only status; bits 3 and 6 are reserved read-only, kept for compatibility with the VINO interface (established, printed page 150, table 77). Every bit resets to zero. The shipped IRIX video driver's transfer routines poll the status bits; it writes 1, 3 and 5 as commands, whose meanings the kernel reading infers.</doc>
     <field name="bus_error" start="7" size="1" type="uint" grade="established"/>
     <field name="ack_missing" start="5" size="1" type="uint" grade="established"/>
     <field name="transfer_busy" start="4" size="1" type="uint" grade="established"/>
@@ -24,7 +24,7 @@
     <field name="force_idle" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="DATA" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)" register="yes" offset="0x18" access="rw" reset="0x0">
-    <doc>Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see docs/mace-video.md).</doc>
+    <doc>Bus data, bits 7:0, reset to zero (established, printed page 150, table 78). The register text says a write starts a write cycle when control bit 1 is one, and a read starts a new read cycle. Control bit 1 is one for read in table 77 (printed page 150), so the two tables disagree about the write case. The disagreement is not resolved here (see docs/mace-video.md). The shipped IRIX video driver's read and write routines store the chip address byte and the register number byte through it and read it back after the transfer.</doc>
     <field name="byte" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f330000" grade="established"/>

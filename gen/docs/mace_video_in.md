@@ -35,6 +35,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `control`
 
+The shipped IRIX video driver writes the whole word, changing only its low nine bits.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 9 | `int_gpib` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings |  |
@@ -81,6 +83,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `next_desc`
 
+The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; which bits carry the flag is not stated.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 31:6 | `table_address` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Physical address of the 64-byte descriptor table (printed page 44, table 12). |
@@ -89,11 +93,15 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 ### Register `fld_offset`
 
+The shipped IRIX video driver writes the low halfword of a transfer-record word here.
+
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 15:3 | `byte_offset` | established |  | published MACE 2.0 specification, video chapter, and shipped IRIX software readings | Byte offset of the first pixel within the first 64 KiB page, stored literally with no adjustment (printed page 45, table 14). |
 
 ### Register `line_width`
+
+The shipped IRIX video driver's start-up writes it with a 64-bit store.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|

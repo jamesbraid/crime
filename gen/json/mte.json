@@ -399,6 +399,42 @@
   {
    "unit": "mte",
    "kind": "constant",
+   "name": "HOST_CHUNK_BYTES",
+   "value": 131072,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "MODE_HOST_CLEAR",
+   "value": 17,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "MODE_HOST_COPY",
+   "value": 2199,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "MODE_X_COPY",
+   "value": 2080,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
    "name": "SUBTILE_BLOCK_BYTES",
    "value": 32,
    "count": 1,
@@ -440,6 +476,33 @@
    "count": 1,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "X_BLOCK_BYTES",
+   "value": 256,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "X_ROWS_16",
+   "value": 16,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
+  },
+  {
+   "unit": "mte",
+   "kind": "constant",
+   "name": "X_ROWS_32",
+   "value": 8,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX O2 graphics objects, per kudzu docs/crime.md"
   }
  ]
 }

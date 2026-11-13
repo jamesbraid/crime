@@ -130,3 +130,6 @@ pub const BLOCK_BASE: u32 = 0x1f340000; // established
 pub const CMP0_ALIAS: u32 = 0x1f350000; // established
 pub const CMP1_ALIAS: u32 = 0x1f360000; // established
 pub const CMP2_ALIAS: u32 = 0x1f370000; // established
+pub const TIMER_SNAP_IN1_OFF: u32 = 0x38; // established
+pub const TIMER_SNAP_IN2_OFF: u32 = 0x40; // established
+pub const TIMER_SNAP_OUT_OFF: u32 = 0x48; // established

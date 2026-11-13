@@ -7,7 +7,7 @@
 
 
 /*
- * The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114).
+ * The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114). The graphics probe in the shipped IRIX kernel reads the low byte and accepts the part only when bits 7:4 are the family 0xa and the byte is not 0xa0.
  */
 /* id: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_ID_OFFSET                              0x0u /* established */
@@ -18,6 +18,9 @@
 #define CRIME_ID_REV_MASK                            0xfull
 #define CRIME_ID_REV_INPLACE                         (CRIME_ID_REV_MASK << CRIME_ID_REV_SHIFT)
 
+/*
+ * The shipped IRIX early-reset code writes bits 13:12 and 9 of it.
+ */
 /* control: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CONTROL_OFFSET                         0x8u /* established */
 #define CRIME_CONTROL_SYSADC_GEN_ENABLE_SHIFT        13 /* established */
@@ -40,13 +43,13 @@
 #define CRIME_CONTROL_ENDIAN_INPLACE                 (CRIME_CONTROL_ENDIAN_MASK << CRIME_CONTROL_ENDIAN_SHIFT)
 
 /*
- * Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106).
+ * Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106). The shipped IRIX dispatcher reads its low 32 bits ANDed with the saved mask.
  */
 /* intstat: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTSTAT_OFFSET                         0x10u /* established */
 
 /*
- * A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233). Table 5-11 (PDF 117) gives bits 31:0 as read/write, 1 enabling, reset zero. It has no row for bits 63:32, so their effect on the hardware is unknown.
+ * A status bit reaches the processor only when the same bit here is set. The status register is ANDed with this one, bit for bit, to make the interrupts (established, [spec] PDF 106 and PDF 233). Table 5-11 (PDF 117) gives bits 31:0 as read/write, 1 enabling, reset zero. It has no row for bits 63:32, so their effect on the hardware is unknown. The shipped IRIX entry path saves it and installs a per-priority mask.
  */
 /* intmask: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_INTMASK_OFFSET                         0x18u /* established */
@@ -54,15 +57,21 @@
 #define CRIME_INTMASK_ENABLE_MASK                    0xffffffffull
 #define CRIME_INTMASK_ENABLE_INPLACE                 (CRIME_INTMASK_ENABLE_MASK << CRIME_INTMASK_ENABLE_SHIFT)
 
+/*
+ * The shipped IRIX kernel's two software interrupts are inputs 28 and 29; that this word raises them is inferred from the kernel's software-interrupt use and the public NetBSD names.
+ */
 /* softint: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_SOFTINT_OFFSET                         0x20u /* established */
 
 /*
- * Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr), 24 to 22 (rendering idle, full and empty) and 19 to 16 (GBE). It marks 27 to 25 (rendering idle, full and empty levels) level-sensitive. The table leaves the other status bits unlabelled (established).
+ * Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr), 24 to 22 (rendering idle, full and empty) and 19 to 16 (GBE). It marks 27 to 25 (rendering idle, full and empty levels) level-sensitive. The table leaves the other status bits unlabelled (established). The shipped IRIX retrace and pre-blank handlers acknowledge by clearing bit 16 or 17 of this word with a read-modify-write.
  */
 /* hardint: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_HARDINT_OFFSET                         0x28u /* established */
 
+/*
+ * The shipped IRIX kernel writes zero at start-up and never arms it.
+ */
 /* watchdog: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_WATCHDOG_OFFSET                        0x30u /* established */
 #define CRIME_WATCHDOG_WARM_RESET_TIMEOUT_SHIFT      20 /* established */
@@ -73,7 +82,7 @@
 #define CRIME_WATCHDOG_COUNT_INPLACE                 (CRIME_WATCHDOG_COUNT_MASK << CRIME_WATCHDOG_COUNT_SHIFT)
 
 /*
- * Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md). The low word would sit at offset 0x3c under big-endian addressing, and IRIX's query_cyclecntr returns 0xb400003c as the address of the counter's low word (software expectation, so inferred; docs/functions.md). Whether a four-byte read there returns the same count is unknown. The CPU-interface rule allows doubleword accesses only (established, [spec] PDF 113), and Table 5-1 (printed page 5-5, PDF 93) lists single and partial-word processor requests without saying whether they reach these registers (see docs/open-questions.md).
+ * Free-running counter. The specification defines bits 31:0 as read/write with reset zero and gives no field above bit 31 (established, [spec] PDF 113 places it at offset 0x38 and Table 5-15 on PDF 119 defines the low 32 bits). The same page gives a nominal rate of about 66.7 MHz (established as spec prose; not an oscillator measurement). NetBSD's crime header masks 48 bits, so the width above bit 31 is open (see docs/open-questions.md). The low word would sit at offset 0x3c under big-endian addressing, and IRIX's query_cyclecntr returns 0xb400003c as the address of the counter's low word (software expectation, so inferred; docs/functions.md). Whether a four-byte read there returns the same count is unknown. The CPU-interface rule allows doubleword accesses only (established, [spec] PDF 113), and Table 5-1 (printed page 5-5, PDF 93) lists single and partial-word processor requests without saying whether they reach these registers (see docs/open-questions.md). The shipped IRIX kernel reads its low word. It states the resolution as 15000, whose unit is inferred to be picoseconds (a 66.67 MHz tick); see TIME_RESOLUTION.
  */
 /* timer: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_TIMER_OFFSET                           0x38u /* established */
@@ -91,7 +100,7 @@
 #define CRIME_CPU_ERROR_ADDR_ADDR_33_2_INPLACE       (CRIME_CPU_ERROR_ADDR_ADDR_33_2_MASK << CRIME_CPU_ERROR_ADDR_ADDR_33_2_SHIFT)
 
 /*
- * Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register's address as 0x14004048 (see cpu_error_stat_15). Bits 1 and 0 are no longer supported on 1.5 because SysADC is not used (established, PDF 120). Bits 8:3 hold address bits 39:34 on 1.5 "if it can be implemented"; whether fitted parts do is unknown. The spec does not define "invalid address", so whether a refused CPU access sets bit 2 is unknown.
+ * Set by hardware, cleared by software (established, [spec] Table 5-17, PDF 120). This is the CRIME 1.1 offset; the 1.5 specification gives the register's address as 0x14004048 (see cpu_error_stat_15). Bits 1 and 0 are no longer supported on 1.5 because SysADC is not used (established, PDF 120). Bits 8:3 hold address bits 39:34 on 1.5 "if it can be implemented"; whether fitted parts do is unknown. The spec does not define "invalid address", so whether a refused CPU access sets bit 2 is unknown. The shipped IRIX capture routine clears it by writing zero.
  */
 /* cpu_error_stat: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CPU_ERROR_STAT_OFFSET                  0x48u /* established */
@@ -118,7 +127,7 @@
 #define CRIME_VICE_ERROR_ADDR_OFFSET                 0x58u /* established */
 
 /*
- * Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150).
+ * Memory control. Both defined bits reset clear (established, [spec] PDF 150). The specification pages examined do not define the read value or write effect of bits above bit 1 (unknown, [spec] PDF 149 to 150). The shipped IRIX kernel writes 1 to enable and 0 to disable, and never writes the bank or refresh registers.
  */
 /* mem_control: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_CONTROL_OFFSET                     0x200u /* established */
@@ -149,7 +158,7 @@
  * #define CRIME_MEM_BANK_CONTROL_RESET_BASE 0 / * established: reset of bank 0
  * #define CRIME_MEM_BANK_CONTROL_RESET_STEP 1 / * established: reset of bank n is BASE + n * STEP
  *
- * The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here).
+ * The shipped IRIX kernel's address probes write zero here before each probe, then check that causes 20 and 21 read clear (software expectation, inferred). Whether a zero write clears the latch on the part is unknown: the specification's clear polarity for this register is not established (PDF 152 to 155, unread here). The shipped IRIX capture routine clears it by writing zero.
  */
 /* mem_error_stat: rw64, reset unknown; published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_MEM_ERROR_STAT_OFFSET                  0x250u /* established */
@@ -280,14 +289,24 @@
 #define CRIME_INTBIT_MACE_MASK                       0xffffu
 #define CRIME_INTBIT_MACE_INPLACE                    (CRIME_INTBIT_MACE_MASK << CRIME_INTBIT_MACE_SHIFT)
 
+#define CRIME_BLOCK_ADDR                             0x14000000u /* established */
+#define CRIME_DEPTH_APERTURE_ADDR                    0x12000000u /* inferred */
+#define CRIME_FRAME_APERTURE_ADDR                    0x10000000u /* inferred */
+#define CRIME_GBE_WINDOW_ADDR                        0x16000000u /* inferred */
+#define CRIME_ID_FAMILY_ACCEPTED                     0xau /* established */
 #define CRIME_ID_FAMILY_SHIPPED                      0xa0u /* established */
 #define CRIME_ID_LOW_BYTE_DRAFT                      0xb1u /* inferred */
 #define CRIME_ID_LOW_BYTE_SHIPPED                    0xa1u /* established */
+#define CRIME_ID_REFUSED_BYTE                        0xa0u /* established */
 #define CRIME_IP2_CAUSES                             0x8fc00038u /* established */
 #define CRIME_IP3_CAUSES                             0xfff07u /* established */
 #define CRIME_IP4_CAUSES                             0x10000000u /* established */
 #define CRIME_IP5_CAUSES                             0x20000040u /* established */
 #define CRIME_IP6_CAUSES                             0x40300080u /* established */
+#define CRIME_IRQ_MACE_ISA_A                         0x4u /* established */
+#define CRIME_IRQ_MACE_ISA_B                         0x5u /* established */
+#define CRIME_LINE_MATCH_LATCHES                     0x4u /* inferred */
+#define CRIME_MACE_WINDOW_ADDR                       0x18000000u /* inferred */
 #define CRIME_MEM_BANKS                              0x8u /* established */
 #define CRIME_MEM_BANK_CONTROL_RESET_BASE            0x0u /* established */
 #define CRIME_MEM_BANK_CONTROL_RESET_STEP            0x1u /* established */
@@ -299,6 +318,7 @@
 #define CRIME_PHYS_LOW_ALIAS_BYTES                   0x10000000u /* established */
 #define CRIME_PHYS_NOECC_MEM_BASE                    0x80000000u /* established */
 #define CRIME_PHYS_NOECC_MEM_BYTES                   0x40000000u /* established */
+#define CRIME_TIME_RESOLUTION                        0x3a98u /* established */
 #define CRIME_WATCHDOG_COUNT_BITS                    0x14u /* established */
 
 #endif /* CRIME_GEN_H */

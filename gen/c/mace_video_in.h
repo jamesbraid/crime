@@ -6,6 +6,9 @@
 #include <stdint.h>
 
 
+/*
+ * The shipped IRIX video driver writes the whole word, changing only its low nine bits.
+ */
 /* control: rw64, space mace_video_in, reset 0x0; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_CONTROL_OFFSET                           0x0u /* established */
 #define VIN_CONTROL_INT_GPIB_SHIFT                   9 /* established */
@@ -122,6 +125,9 @@
 #define VIN_CONFIG_CHANNEL_RESET_MASK                0x1ull
 #define VIN_CONFIG_CHANNEL_RESET_INPLACE             (VIN_CONFIG_CHANNEL_RESET_MASK << VIN_CONFIG_CHANNEL_RESET_SHIFT)
 
+/*
+ * The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; which bits carry the flag is not stated.
+ */
 /* next_desc: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_NEXT_DESC_OFFSET                         0x18u /* established */
 #define VIN_NEXT_DESC_TABLE_ADDRESS_SHIFT            6 /* established */
@@ -137,12 +143,18 @@
 #define VIN_NEXT_DESC_FIELD_SELECT_ODD               2 /* established */
 #define VIN_NEXT_DESC_FIELD_SELECT_EVEN              3 /* established */
 
+/*
+ * The shipped IRIX video driver writes the low halfword of a transfer-record word here.
+ */
 /* fld_offset: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_FLD_OFFSET_OFFSET                        0x20u /* established */
 #define VIN_FLD_OFFSET_BYTE_OFFSET_SHIFT             3 /* established */
 #define VIN_FLD_OFFSET_BYTE_OFFSET_MASK              0x1fffull
 #define VIN_FLD_OFFSET_BYTE_OFFSET_INPLACE           (VIN_FLD_OFFSET_BYTE_OFFSET_MASK << VIN_FLD_OFFSET_BYTE_OFFSET_SHIFT)
 
+/*
+ * The shipped IRIX video driver's start-up writes it with a 64-bit store.
+ */
 /* line_width: rw64, space mace_video_in, reset unknown; published MACE 2.0 specification, video chapter, and shipped IRIX software readings */
 #define VIN_LINE_WIDTH_OFFSET                        0x28u /* established */
 #define VIN_LINE_WIDTH_BYTES_SHIFT                   3 /* established */

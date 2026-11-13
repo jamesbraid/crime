@@ -71,7 +71,7 @@
     <doc>---- output channel registers ----
 One channel set, offsets from the start of the output channel window. All
 are 64-bit doubleword accesses. The status register clears the pending
-causes on read; the DMA-active bit is live.</doc>
+causes on read; the DMA-active bit is live. The shipped IRIX video driver writes the whole word, changing only its low nine bits; its output recovery routines pulse bit 0.</doc>
     <field name="int_crime_error" start="8" size="1" type="uint" grade="established"/>
     <field name="int_fifo_underflow" start="7" size="1" type="uint" grade="established"/>
     <field name="int_buffer" start="4" size="1" type="uint" grade="established"/>
@@ -81,6 +81,7 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="dma_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="STATUS" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x8" access="r" space="mace_video_out" reset="0x0">
+    <doc>The shipped IRIX output recovery routines read it after their last write and discard the value.</doc>
     <field name="crime_error" start="8" size="1" type="uint" grade="established"/>
     <field name="fifo_underflow" start="7" size="1" type="uint" grade="established"/>
     <field name="buffer" start="4" size="1" type="uint" grade="established"/>
@@ -90,6 +91,7 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="dma_active" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="CONFIG" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x10" access="rw" space="mace_video_out" reset="unknown">
+    <doc>The shipped IRIX video driver writes it at start-up.</doc>
     <field name="sof_count_even" start="22" size="4" type="uint" grade="established"/>
     <field name="mem_mode" start="21" size="1" type="config_mem_mode" grade="established"/>
     <field name="interleaved" start="20" size="1" type="uint" grade="established"/>
@@ -106,16 +108,18 @@ causes on read; the DMA-active bit is live.</doc>
     <field name="channel_enable" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <struct name="NEXT_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x18" access="rw" space="mace_video_out" reset="unknown">
+    <doc>The shipped IRIX video driver holds the physical address as a zero-extended 32-bit word and ORs a flag byte into it; the output recovery routines write it as well.</doc>
     <field name="table_address" start="6" size="26" type="uint" grade="established"/>
     <field name="valid" start="2" size="1" type="uint" grade="established"/>
     <field name="bit1" start="1" size="1" type="uint" grade="established"/>
     <field name="field_to_send" start="0" size="1" type="next_desc_field_to_send" grade="established"/>
   </struct>
   <struct name="FLD_OFFSET" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x20" access="rw" space="mace_video_out" reset="unknown">
+    <doc>The shipped IRIX video driver writes the low halfword of a transfer-record word here.</doc>
     <field name="byte_offset" start="3" size="13" type="uint" grade="established"/>
   </struct>
   <struct name="FIELD_SIZE" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x28" access="rw" space="mace_video_out" reset="unknown">
-    <doc>Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59).</doc>
+    <doc>Double-buffered: a new value takes effect at the next field (revision history item 46, printed page 59). The shipped IRIX video driver takes the line count and the bytes per line from one stored value: 243 lines of 2880 bytes in one set and 288 lines in the other.</doc>
     <field name="lines" start="12" size="10" type="uint" grade="established"/>
     <field name="bytes" start="3" size="9" type="uint" grade="established"/>
   </struct>
@@ -148,6 +152,7 @@ causes on read; the DMA-active bit is live.</doc>
   <struct name="GEN_DLY" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x50" access="rw" space="mace_video_out" reset="unknown">
   </struct>
   <struct name="VHW_CFG" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x58" access="rw" space="mace_video_out" reset="unknown">
+    <doc>The shipped IRIX video driver releases the port A/B reset (bit 0) and the port C/D reset (bit 2) whenever an input or output is set up, and its video probe reads bits 35:32; the value that identifies the part is not recorded.</doc>
     <field name="revision" start="32" size="4" type="uint" grade="established"/>
     <field name="sof_count_even" start="19" size="4" type="uint" grade="established"/>
     <field name="gpibo" start="18" size="1" type="uint" grade="established"/>
@@ -167,4 +172,7 @@ causes on read; the DMA-active bit is live.</doc>
   </struct>
   <struct name="DMA_DESC" size="8" grade="established" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings" register="yes" offset="0x80" access="rw" count="8" stride="8" space="mace_video_out" reset="unknown">
   </struct>
+  <constant name="IN2_OFF" value="0x80000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
+  <constant name="OUT_OFF" value="0x100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
+  <constant name="WINDOW_PHYS_ADDR" value="0x1f100000" grade="established" from="shipped IRIX O2 video driver object, per kudzu docs/mace-video.md"/>
 </genxml>
