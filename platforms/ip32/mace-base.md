@@ -179,9 +179,7 @@ revisions. The MACE 2.0 register readback is 1 (see `devices/mace_pci/registers.
 - A burst ends at a 128-byte line boundary. The bridge disconnects there, and
   a master that continues must start another transaction. The chip text's
   example is a 256-byte read: a 128-byte burst, a disconnect at the line end,
-  and another transaction for the rest (established, [mace] 158). PCI 2.1
-  (printed pages 41 to 43) treats Disconnect as a normal target termination
-  that can fall on a resource boundary.
+  and another transaction for the rest (established, [mace] 158).
 - The bridge's virtual PCI cache line is at most 128 bytes. A device's
   configured cache-line size may be smaller (established, [mace] 158 to 159).
 - Memory Read and Memory Read Line get the same read-ahead. Memory Read
