@@ -1,263 +1,114 @@
-# SGI O2 CRIME Reverse Engineering Project
+# SGI O2 CRIME reverse engineering
 
-This project reverse-engineers the graphics of the SGI **O2** (board IP32): the **CRIME** ASIC, which is both the system's memory controller and its 2D/3D rendering engine, and **GBE**, the display back end.
-The goal is to document the hardware as C headers and notes, so that emulator authors, FPGA builders and the vintage SGI community can work from published findings.
+This project documents the graphics of the SGI O2 (board IP32): the CRIME ASIC, which is both the
+memory controller and the 2D/3D rendering engine, and GBE, the display back end. MACE and VICE are
+in scope where graphics and media depend on them. The output is hardware facts as TOML, generated C
+headers and notes, so emulator authors, FPGA builders and the SGI community can work from published
+findings without reading the binaries. Layout and working style follow Dominik Behr's
+[gr2](https://github.com/techomancer/gr2) and [gr4](https://github.com/techomancer/gr4). Where this
+file is silent, do what gr4 does.
 
-The layout and working style follow [gr2](https://github.com/techomancer/gr2) and [gr4](https://github.com/techomancer/gr4) by Dominik Behr. Where this file is silent, do what gr4 does.
+The O2 has no geometry engine. libGLcore transforms, lights and clips on the CPU and feeds CRIME
+finished primitives. The first configuration read is a stock-graphics O2 on IRIX 6.5.30. Other CPU
+modules, chip revisions and options are separate configurations. No fact from one, from another SGI
+graphics family or from an emulator fills a gap in another.
 
----
+## Labels
 
-## 1. Board Overview
-
-The O2 has no geometry engine. CRIME rasterizes, textures and depth-tests primitives that the host CPU has already transformed, lit and clipped, so IRIX's `libGLcore` does that work in software and feeds CRIME commands. CRIME also owns the CPU interface, the system memory controller, the interrupt controller and the aperture windows through which the CPU sees the frame and depth buffers. GBE reads the frame buffer from system memory and generates the video timing. The rest of the machine sits behind MACE (PCI, audio, serial, ROM decode), which is outside this project except where graphics depends on it. The first configuration this project reads is an O2 with stock graphics and IRIX 6.5.30; other CPU modules, chip revisions and options are separate configurations, and a fact from one does not fill a gap in another.
-
-Facts in this file are labelled **established** (read directly from a published document, a capture, a shipped binary, the public IRIX source tree (cited by path) or public open-source code (cited by project, revision and file), with the page, install path, function, offset or source path), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Anything unlabelled is unknown. Do not fill gaps from memory, from other SGI graphics families or from other emulators.
-
-### Established from public sources
-
-Source key: **[spec]** is the *CRIME 1.5 Specification*, revision 0.3, 2 June 1997 (public copy at `https://bukosek.si/hardware/collection/sgi-o2/o2-CRIME-spec.pdf`, SHA-256 `5420aa06a28f0a696e79512b03bf7cc9ebd5f0bbcd432ac2c79daaa9bf48c925`); page numbers are PDF pages. **[linux]** is the `references/code/linux/` submodule, **[netbsd]** is `references/code/netbsd/`, **[mame]** is `references/code/mame/`.
-
-- CPU physical windows (established, [spec] PDF 47-52): low RAM alias at `0x00000000` (256 MiB); frame buffer aperture `0x10000000` (32 MiB); depth buffer aperture `0x12000000` (32 MiB); CRIME registers `0x14000000` (32 MiB); GBE registers `0x16000000` (16 MiB); VICE `0x17000000` (16 MiB); MACE windows from `0x18000000`; high RAM alias `0x20000000` (512 MiB); full RAM `0x40000000` (1 GiB); no-ECC RAM alias `0x80000000` (1 GiB). Mixing the low, high and full aliases of one location needs software cache maintenance. GBE DMA uses the full RAM window.
-- Rendering register groups (established, [spec] PDF 187-205): they start at `0x15000000`, with translation at +`0x1000`, pixel state at +`0x2000`, memory transfer at +`0x3000` and status at +`0x4000`. A write to the start alias snapshots primitive state; operations run in order; a flush waits for RAM updates. The numeric start-alias offset `0x0800` comes from the [netbsd] headers, not from the specification, which names the alias without a number.
-- Smooth colour (established, [spec] PDF 200-201): 21-bit two's-complement 9.12 RGBA steppers; fractional bits are discarded before clipping; truncated bits 8:7 equal to `10` clamp to 255 and `11` to 0, for fragments whose iterated values stay within 127 of the 0-255 range, the manual's stated assumption (see [devices/re/pixel-arithmetic.md](devices/re/pixel-arithmetic.md#smooth-colour)).
-- CPU-interface registers take 64-bit doubleword accesses only (established, [spec] PDF 113-115). Eight memory bank controls sit at +`0x208` to +`0x240`; bit 8 selects 16 Mbit or 64 Mbit SDRAM geometry (established, [spec] PDF 150, 152).
-- Revisions (established, [spec] PDF 113-119, 49, 215): CRIME 1.5 reads ID `0xb1`; the draft records 1.1 as `0xa1`, earlier `0xa0`, with the CPU error-status register at `0x14000048` instead of `0x14004048` and a 36-bit rather than 40-bit CPU decode. [linux] (`arch/mips/sgi-ip32/crime.c`) uses the earlier offset. The ID of shipped silicon is **unknown** here, and the specification says its rendering chapter still needs updating for 1.1.
-- GBE interrupts route to CRIME interrupt inputs 16-19 (established, [spec]). GBE reads its frame buffer from system memory in 64 KiB tiles (established, [linux] `drivers/video/fbdev/gbefb.c`).
-- The rendering chapter is unfinished in the specification: translation, rasterization, texel lookup and filtering have explicit holes (PDF 187, 191, 193, 195, 202-205). The chapter overview says it is to be updated for CRIME 1.1 and that no rendering change is anticipated for 1.5 (established, [spec] PDF 157). The specification text gives a 128-entry FIFO; shipped software and [netbsd] use 64 (established: 6-bit pointers, a 64-slot ring in the IRIX save routine, overflow tested at 65; see `devices/re/CRIME_RE.h`). The memory-error interrupt prose says input 20 while its table assigns memory to 21 and CPU to 20; the table is right (established: [linux] and [netbsd] agree, see `devices/re/memory.md`).
-
-### Major blocks
-
-- **CRIME rendering engine**: lines, triangles, span fills, texture and depth. Role: partly known from [spec]; texture and filtering semantics unknown.
-- **MTE**: the memory transfer engine (copies, fills, transfers to and from host memory). Role: named in [spec]; register and mode fields, the byte-column address word and the kernel and X-server uses are established in [devices/mte/mte.md](devices/mte/mte.md); overlap and ordering against the pixel pipeline stay open there.
-- **CRIME memory, TLB and interrupts**: the ECC memory controller, the rendering TLB and the interrupt controller as graphics uses them. Role: base registers known from [spec].
-- **GBE**: the display back end, with frame buffer, overlay, cursor, colormap and timing. Role: known from [spec] and [linux]; fine details unknown.
-- **libGLcore to CRIME command stream**: what the OpenGL driver writes and in what order. Role: unknown.
-
----
-
-## 2. Project Binaries & Evidence
-
-For licensing reasons proprietary SGI binaries are **not checked into source control** (the local `root/` tree is gitignored). Copy them from an authentic IRIX distribution into `root/` following [evidence/irix-files.md](evidence/irix-files.md). Disassembly, decompiled C, headers and notes derived from them are committed.
-
-The subdirectories below contain relative symbolic links, one per file, resolving into `root/` (committed; the `links` and `archives` blocks in evidence/irix-files.md list them). The targets were verified against IRIX 6.5.30 (O2 install and install media).
-
-| Directory | Contents | Target in `root/` | Debug level (6.5.30) |
-|---|---|---|---|
-| `software/kernel/` | `crime.a` members (`crime*.o`), `mace.o`, `gfx.o`, `rrm.o`, `gfxs/` (`gfxs.a` members) | `usr/cpu/sysgen/IP32boot/` | DWARF with lines (names, no types); `crime_busts.o` and `gfx_debug.o` have no lines |
-| `software/opengl/` | `libGLcore_n32.so`, `libGL_n32.so`, `libGLcore_o32.so`, `libGL_o32.so` | `usr/gfx/arch/IP32CRM32/`, `IP32CRM/` | N32: DWARF with lines (164 compile units in libGLcore); o32: `.mdebug` symbols only |
-| `software/xsgi/` | `crm.so`, `glx.so`, `Xsgi` | `usr/lib/X11/dyDDX/`, `usr/gfx/arch/GENERIC/` | stripped |
-| `software/diags/` | `gfxinit`, `ide.IP32`, `crm_vof/` (video format files) | `usr/gfx/`, `sbin/stand/`, `usr/gfx/ucode/CRM/` | stripped |
-
-Debug information by release: no release has DWARF with types or structure members for this board (evidence/irix-files.md section 5). Names and line numbers are the most any file gives, so recover structures from the CRIME specification, the Linux and NetBSD drivers and the code.
-
-Other public sources in this repository:
-
-- `references/code/linux/`: `drivers/video/fbdev/gbefb.c`, `include/video/gbe.h`, `arch/mips/sgi-ip32/` (`crime.c`, `ip32-memory.c`, `ip32-dma.c`), `arch/mips/include/asm/ip32/crime.h` and `mace.h`.
-- `references/code/netbsd/`: the `sgimips` port under `sys/arch/sgimips/`, in particular its CRIME and `crmfb` sources. Inferred: `crmfb` is the public driver that drives the rendering engine (copy, fill and text), so it is the main source for command encoding. Confirm the file names in the checkout.
-- `references/code/mame/`: `src/mame/sgi/o2.cpp` and `crime.cpp`; a skeleton with the CRIME base registers mapped and no renderer, so a lead for register names only.
-- `references/code/openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `references/code/netbsd/`, so it is weak independent support. `devices/gbe/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
-- `references/code/gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
-- `references/code/sgi-docs/`, `references/code/opengl-registry/`, `references/code/ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
-- `references/code/irix-657m-src/`: a public link included for symmetry with gr4. Its facts are evidence under the evidence order, cited by path. Reading it exposes you to vendor source.
-- `references/documents/`: full copies of the chip specifications (CRIME, GBE, MACE, VICE) and of the published patents, papers, technical reports, manuals, product guides and white papers that [references/documents/published-sources.md](references/documents/published-sources.md) cites for the O2 graphics and media chips, one entry each with its SHA-256 in [references/documents/README.md](references/documents/README.md). These are published designers' statements (labelled "established (published)" or "inferred" as that file says), not vendor source. Documents already in the `references/code/sgi-docs/` submodule are cited there, not copied.
-
----
-
-## 3. Deliverables: The Hardware Headers
-
-Our primary output is a set of annotated C header files, one per chip or block and kept in that block's directory under `devices/`, in the style of gr2 and gr4. **The code is the document.** Each header holds register offsets and fields, packet and token formats, state machines and constants, with a comment on every definition saying how it was derived and whether it is established, inferred or unknown.
-
-Planned headers (`evidence/coverage.md` tracks each):
-
-1. **`devices/crime/CRIME.h`**: address map, CPU interface, memory controller, interrupts, ID and reset.
-2. **`devices/re/CRIME_RE.h`**: rendering engine registers, primitive and pixel state, FIFO, TLB, texture.
-3. **`devices/mte/MTE.h`**: the memory transfer engine.
-4. **`devices/gbe/GBE.h`**: display back end registers, tiles, overlay, cursor, colormap, timing.
-
-[evidence/coverage.md](evidence/coverage.md) is the map of what is written and what is missing, with the open problems in priority order. Prose that does not fit a header goes in a page beside the block it describes (`devices/<unit>/`), in `platforms/ip32/` for the board, or in `software/<component>/` for how IRIX drives it.
-
-### Hardware definitions in `devices/`
-
-The register, word, field and constant facts are TOML sources in `devices/`: one directory per block (`devices/<unit>/`) holding its register map (`registers.toml`), an optional revision overlay (`registers.<rev>.toml`), hand-written C helpers (`helpers.h`) and the generated reference table (`registers.md`), and the repository's check settings in `tools/config/defs-check.toml`. Each item carries its grade (established, inferred or unknown) and the source it came from. The `registers.toml` files are the source of hardware facts: change a fact there, never in a generated file.
-
-`generated/` is written by `retools/tools/defs/defs-gen` and is never edited by hand. It holds the C headers (`generated/c/`), a Rust crate (`generated/rust/`), Python decode modules, flat JSON, a genxml export and, beside each register map, the reference page for the block (`devices/<unit>/registers.md`), which is the published reference. After a change to `devices/`, run `retools/tools/defs/defs-gen`, then `retools/tools/defs/defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when `generated/` is stale.
-
----
-
-## 4. Software Driver Headers
-
-Local headers capture internal driver structures:
-
-- `software/kernel/include/crime_kern.h`: kernel driver structures.
-- `software/opengl/include/glcore_crime.h`: OpenGL driver context, software transform and lighting state, and CRIME command emission.
-- `software/xsgi/include/crime_ddx.h`: X server module structures.
-
----
-
-## 5. Reverse Engineering Toolchain & Pipeline
-
-Install these on your workstation:
-
-- **`dwarfdump`**: build `references/code/libdwarf` (submodule) so that `references/code/libdwarf/build/src/bin/dwarfdump/dwarfdump` exists. It parses SGI MIPS DWARF-2.
-- **MIPS cross binutils**: `objdump`, `readelf`, `nm`, `gcc` for a big-endian MIPS target, normally `mips-unknown-linux-gnu-`. The scripts also accept `mips64-linux-gnuabi64-` and `mips-linux-gnu-`; set `MIPS_OBJDUMP` or `MIPS_READELF` to name another.
-- **`m2c`**: the assembly-to-C decompiler in the `references/code/m2c` submodule, run as `references/code/m2c/m2c.py -t mipsn32` (N32) or `-t mips` (o32, 64-bit objects).
-- **`spimdisasm`**: the `references/code/spimdisasm` submodule, for object-file disassembly and symbol recovery.
-- **Python 3** with `pyelftools` (the scripts import `elftools`).
-
-Initialise only the submodules you need: `git submodule update --init references/code/m2c references/code/spimdisasm references/code/libdwarf`. `references/code/linux`, `references/code/netbsd` and `references/code/openbsd` are very large; fetch them shallow (`git submodule update --init --depth 1 references/code/linux references/code/netbsd references/code/openbsd`).
-
-Tools (the `retools/` submodule, run from the repository root as `retools/tools/NAME` for the shared ones and `retools/tools/crime/NAME` for the CRIME ones; they find this workspace from the current directory). `tools/config/` keeps only this workspace's configuration and data:
-
-- `map_binaries.py`: catalogue every linked binary (sections, functions, DWARF compilation units) into `tools/config/binaries_manifest.json`.
-- `disasm_kernel.py`: disassemble the kernel `.o` objects into m2c-ready assembly under `software/kernel/disasm/`. Unpack archives (`.a`) with `ar x` first.
-- `resolve_got.py`, `clean_asm.py`: resolve `$gp`-relative GOT loads to symbol names.
-- `extract_libglcore.py`: extract compilation units, types and functions from `libGLcore.so` into `software/opengl/asm/` and `manifest.json`, and write `software/opengl/decompile_libglcore.sh`. A binary without DWARF falls back to its symbol table.
-- `extract_crime_ddx.py`: the same for an X server module, grouped by function-name prefix or by your own `software/xsgi/groups.json`. Its default module path is a placeholder; pass the real one.
-- `inventory.py`: count what the in-scope binaries contain and grade each entry understood, located, named-only, undocumented or no-software-dependency. It writes `evidence/inventory/` and the measured table at the top of `evidence/coverage.md`; see section 8.
-- `analyze_fifo.py`, `extract_gl_tokens.py`: find accesses to a hardware address window in the assembly, and map the first FIFO word each decompiled GL function stores to that function. Both take the address window or FIFO address as arguments; none is built in. For CRIME, start from the rendering window at `0x15000000`.
-- `retools/ghidra/scripts/`: Ghidra headless scripts for IRIX code (gp and jump-table recovery, register-window stores, call edges, struct typing, bulk decompile), with the rules for choosing between Ghidra and the pipeline in [retools/ghidra/scripts/README.md](retools/ghidra/scripts/README.md). Shared, byte for byte, with the other graphics workspaces.
-
-The scripts descend from gr4's and carry its BSD-3 notice ([retools/tools/LICENSE-gr4](retools/tools/LICENSE-gr4)). They were copied from a sibling workspace and parameterised but have not yet been run on O2 binaries.
-
----
+Every fact is **established** (read in full from a published document, a capture, a shipped binary,
+the public IRIX source tree cited by path, or public open-source code cited by project, revision and
+file), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Unlabelled means unknown.
+Established needs the whole function body or table. Readings built from call lists, register-store
+summaries, a sibling build or a name are inferred. An entry not yet checked against its source ends
+"Unverified." and grades at most `located`. Re-read it, correct it and relabel it. Never reword or
+reformat an entry to change its grade. Independent audits sample entries against the binaries, and
+their measured rates are published beside the coverage figures.
 
 ## Evidence order
 
-For a register or behaviour fact, take it from the highest source that states it and grade it by that source:
+Take a register or behaviour fact from the highest source that states it and grade it by that source:
+the public IRIX source tree (`irix-657m-src`), then shipped binaries, then public Linux, NetBSD and
+OpenBSD drivers, then published manuals, then notes from other projects. The last may confirm or
+contradict a fact and never supply one. A driver fact is established only once a shipped binary or a
+published document confirms it. Reset values and physical reads follow the shared rules. Emulator runs
+are model behaviour, never hardware evidence. Full text and the checks that enforce it:
+[retools/tools/README-analysis.md](retools/tools/README-analysis.md#evidence-order).
 
-1. IRIX source (public `irix-657m-src` tree): read it, write the fact in your own words, never copy source text, cite the path in the tree. A fact it defines is `established`.
-2. Shipped binaries (PROMs, kernels, libraries): confirm the fact at an address in the shipped image, and note the release differences (6.5.7 source, 6.5.22 and 6.5.30 binaries).
-3. Public Linux, OpenBSD and NetBSD headers and drivers: established only once a shipped binary or a published document confirms them.
-4. Published SGI and vendor manuals and specifications.
-5. Notes from other projects (emulator code, QEMU manual pages, other workspaces): they may confirm or contradict a fact and never supply one. A fact that rests only on one stays unknown, with the note named.
+## Evidence: software only
 
-Reset values: established when a source states a power-on default, or PROM code relies on a reset state; the reset must then name that source in `reset_from`. Inferred when the PROM depends on a value before its first write (cite the PROM address). A register read after firmware initialisation is not a reset value and can only rule values out. Otherwise unknown. A physical hardware read needs the repository owner's approval, and it counts as a reset value only for a register firmware provably never writes. Emulator runs show model behaviour, never hardware evidence.
+No hardware is available. Never plan, request or wait for a measurement on a real machine. Answer
+every question from shipped binaries on any IRIX release (and any disassembly of them), the public
+IRIX source tree, vendor specifications including embedded source or HDL pages, public drivers and
+emulators, manuals and man pages, and published output from real machines (`hinv`, `gfxinfo`,
+`irsaudit`, ide transcripts, X logs and screenshots in newsgroup and mailing-list posts). A row is not
+finished while any of these still has something to read. Running shipped software under an emulator to
+see which registers it touches is evidence of the driver's expectation, not of hardware behaviour.
+The IRIX source tree is first-rank evidence, and reading it exposes you to vendor source.
 
-Full text and the checks that enforce it: `retools/tools/README-analysis.md#evidence-order`.
+Write findings in your own words. Never paste vendor source, HDL, comments, macro bodies or
+proprietary binaries. Symbol names from a shipped binary's own tables and names in published headers
+and manuals are fine.
 
-## 6. Evidence: software only, any source
+Before calling a fact unknown, search the binaries, documents, captures, the device's diagnostics and
+PROM code, and the source tree, and list those routes. If every route fails, label it "unknown: no
+shipped software or published source depends on it" with the routes tried, so an emulator author can
+choose a value and document the choice. Never write "needs capture".
 
-No hardware is available for this work. Do not plan, request or wait for
-measurements on a real machine. Every question is answered from software and
-published material, and a row is not finished while either still has
-something to read.
+An open question is not a stopping point. Record it in [questions/README.md](questions/README.md)
+with the routes tried and the next one, then carry on. When it is answered, move the answer into the
+owning header or page and delete the entry.
 
-Readers may open anything:
+## Repository layout
 
-- every shipped binary on every IRIX release, and any disassembly or
-  decompilation of it;
-- the public IRIX source tree (`irix-657m-src`): a fact it defines is established, cited by path in that tree and written in our own words;
-- vendor specifications, including any embedded source code or HDL pages;
-- public drivers and emulators: Linux, NetBSD, OpenBSD, MAME and others;
-- manuals, release notes and man pages;
-- published output from real machines: `hinv`, `gfxinfo`, `irsaudit`, ide
-  diagnostic transcripts, X server logs and screenshots in newsgroup and
-  mailing-list posts, web pages, archives and forums.
+Proprietary binaries are not committed. Copy them from your own IRIX install into the ignored `root/`
+as [evidence/irix-files.md](evidence/irix-files.md) lists. The committed relative symlinks under
+`software/` resolve into it. The in-scope binaries are listed in [evidence/binaries.md](evidence/binaries.md).
+No release has DWARF types for this board, so recover structures from the CRIME specification, the
+Linux and NetBSD drivers and the code.
 
-Running the shipped software under an emulator, to watch which registers it
-touches and what it expects back, is also software evidence. Label what it
-shows as the driver's expectation, not as proof of hardware behaviour.
+- `devices/<unit>/`: `registers.toml` (the source of hardware facts, each item graded and sourced),
+  an optional `registers.<rev>.toml`, `helpers.h`, the annotated C header and the generated
+  `registers.md`. Change a fact in the TOML, never in a generated file.
+- `generated/`: written by `retools/tools/defs/defs-gen`, never edited. After a change to `devices/`,
+  run `defs-gen` then `defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when
+  `generated/` is stale.
+- `platforms/ip32/`, `software/<component>/`, `evidence/`, `questions/`: prose beside the facts.
+  Driver structures live in `software/kernel/include/` and `software/opengl/include/`.
+- `references/code/` holds public sources as submodules (Linux, NetBSD, OpenBSD, MAME, GXemul,
+  OpenGL references, `irix-657m-src`). Fetch the large ones shallow. GXemul is an author's model:
+  a match is a consistency check and a difference is a lead. `references/documents/` holds
+  published specifications, patents and papers with checksums.
+- `retools/` is the shared tooling submodule. Change tools there and move the pin here.
+  `tools/config/` holds this workspace's configuration. Toolchain setup is in the
+  [README](README.md#using-it).
 
-Write findings in your own words. Never paste vendor source, HDL or
-proprietary binaries into the repository.
+## Working on it
 
-The IRIX source tree is first-rank evidence. A fact it defines is established.
-Cite the path in the tree, write the fact in your own words, and never copy
-source text, comments or macro bodies into the repository. Symbol names in a
-shipped binary's own symbol table or debug information, and names in published
-headers and manuals, are fine.
+The inventory is the work list. A coverage row is done when every entry in `evidence/inventory/` is
+`understood` or `no-software-dependency`. The repository is finished when every table reaches done,
+not when the rows look full. An entry is understood when a table row, list item, heading or header
+comment whose subject it is carries a label, a role and hardware effect, and a citation specific to
+the item (offset, address, callee, archive member). Mentions and lists of more than three names reach
+`named-only`. More than five entries sharing one sentence pattern count as `located`, so write each
+item its own sentence. A function is understood only in the binary the entry cites, plus builds with
+identical code. The exact rule is in [evidence/inventory/README.md](evidence/inventory/README.md).
 
-Before you call a fact unknown, search the shipped binaries and the published
-documents and captures for the device, its diagnostics and its PROM code, and
-list those routes among the routes tried, and search the IRIX source tree too.
+Open-question readers take the questions in `questions/README.md` and the rendering-engine, ioctl and
+token rows. Table readers take function, register-offset and specification rows binary by binary.
+Take `undocumented` rows first, then `named-only` and `located`. Do `mmio`, `ioctls`,
+`spec-registers` and `tokens` before `functions`, which goes by binary, kernel objects first. Group
+rows that belong together: read one function and settle every row it touches. In the same commit as
+a finding:
 
-Label honestly. Use "established" only for what you read in full: the whole
-function body or table in a shipped binary, the passage in a published document or capture, or the passage of the IRIX source tree that defines the fact (cited by path). A reading built from call lists,
-register-store summaries, a sibling build or a name is "inferred". Never
-reword or reformat an entry to change its grade. Independent audits sample
-entries against the binaries, and their measured rates are published beside
-the coverage figures.
-
-An entry that was written quickly and not yet checked against the binary, its
-document or public open-source code (cited by project, revision and file) ends with "Unverified." in place of "Inferred." or "Established.".
-It grades at most `located`, whatever else it says, so the understood figure
-counts only what has been read. When you re-read it, correct it and change the
-label to established or inferred.
-
-Some facts no software reveals, such as the reset value of a register no
-driver reads. When every route is exhausted, label the fact "unknown: no
-shipped software or published source depends on it" and list the routes you
-tried. An emulator author then chooses a value and documents the choice. Never
-write "needs capture".
-
-An open question is not a stopping point. Record it in
-`questions/README.md` with every route already tried and the next one to
-try, then carry on with other work. When a question is answered, move it into
-the owning chip header or chapter and delete the entry.
-
-## 7. When work is finished
-
-A coverage row is done when every inventory entry in its area
-(`evidence/inventory/`) is `understood` or `no-software-dependency`. `understood`
-means the entry for that item carries a label (established or inferred), a role
-and hardware effect, and a derivation citation (release, binary and its install path under `root/`,
-offset, callee) in the same entry. Naming an item, or listing it
-with others, is not enough. `no-software-dependency` is the section 6 label
-"unknown: no shipped software or published source depends on it", with the
-routes tried. `located` (identity, address or size, and callers or sites cited,
-behaviour labelled unknown) and `named-only` are partial. The repository is
-finished when every inventory table reaches done, not when the rows look full.
-
-When you finish a task, regenerate the inventory, then pick the next entries
-below `understood` and carry on. Hand off only when your assigned area meets
-the definition above, or when you must stop. In that case, say in
-`questions/README.md` where you stopped and what comes next.
-
-
-A row becomes `understood` only through an entry whose subject it is: a table row whose first column is the item, a list item or heading that starts with it, or a header comment on it. That entry carries a label, a role and hardware effect, and a citation specific to the item (its offset, address, callee, archive member, not just a release). Other names in the entry count as mentions. A function is understood only in the binary the entry cites, plus any build with identical code. When more than five entries share one sentence pattern, they count at most as `located`, so read each item and write its own sentence. [evidence/inventory/README.md](evidence/inventory/README.md) gives the exact rule.
-
----
-
-## 8. Working on this repository
-
-Workflow: populate `root/` (evidence/irix-files.md), run `retools/tools/inventory.py`, pick work from the inventory, then read, write headers and docs, and regenerate the inventory.
-
-### Picking work
-
-The inventory is the work list. [evidence/coverage.md](evidence/coverage.md) shows the measured percentage for each table, and the rows themselves are in `evidence/inventory/`:
-
-- `binaries.tsv`: every file in scope, with its role and access counts.
-- `functions.tsv`: every function symbol in each in-scope binary.
-- `mmio.tsv`: every CRIME, rendering-engine, GBE and MACE-video offset the code reaches.
-- `tokens.tsv`: constant words stored to rendering-engine registers.
-- `ioctls.tsv`: graphics ioctl requests sent or handled.
-- `ucode.tsv`: empty for this family, which has no microcode.
-- `spec-registers.tsv`: every register in the public CRIME 1.5 and GBE specifications.
-- `summary.tsv`: the counts behind the table in `evidence/coverage.md`.
-
-Take rows whose status is `undocumented` (then `named-only` and `located`), and take each to `understood`, sorted by the table you are working on. Start with `mmio.tsv`, `ioctls.tsv`, `spec-registers.tsv` and `tokens.tsv`, whose rows are few and each one is a hardware fact, and take `functions.tsv` rows by binary, kernel objects first. Group rows that belong together: read one function and settle every row it touches. A row becomes `understood` when an entry (a table row, list item, paragraph or header comment) names it and also carries a label (established or inferred), a role and hardware effect, and a derivation citation, with no more than three items named on a line; a mention or a list of names reaches `named-only` at most. `retools/tools/inventory.py` finds that by search, so use the exact register name, `+0xOFFSET` form or function name in backticks. Read `evidence/inventory/README.md` for how rows are detected and what the detection cannot see.
-
-In the same commit as any finding:
-
-1. Run `retools/tools/inventory.py` (inside the toolchain environment; see section 5) and commit the regenerated `evidence/inventory/` and `evidence/coverage.md`.
+1. Run `retools/tools/re-run python3 retools/tools/inventory.py` and commit `evidence/inventory/` and
+   `evidence/coverage.md`. Never edit a `.tsv` by hand. If the script mis-detects a row, change
+   `tools/config/inventory-config.json` and say why in the commit.
 2. Update the affected area row in `evidence/coverage.md`.
+3. Put register, field and constant facts in `devices/` and regenerate `generated/`.
 
-Never edit a `.tsv` by hand; fix the doc or the script instead. If the script mis-detects a row, change `tools/config/inventory-config.json` and say why in the commit. `retools/tools/inventory.py` is shared, byte for byte, with the other graphics workspaces; what belongs to this family is in `tools/config/inventory-config.json`.
-
-Roles:
-
-- **Readers of open questions** take the open questions in `questions/README.md` and take the rows of the rendering-engine, ioctl and token tables to `understood`.
-- **Table readers** take the rows of the function, register-offset and specification tables below `understood` to `understood`, a binary at a time, `undocumented` first.
-
-Output rules:
-
-- Findings go in the chip headers and pages of the block's directory, or in the `software/`, `platforms/` and `evidence/` pages, written in your own words.
-- Register, field and constant facts go in `devices/` (see the hardware definitions above), then regenerate `generated/`. Do not write them into a header by hand.
-- Label every fact established, inferred or unknown, with its derivation: binary and release, function or offset, or the document or capture.
-- Update `evidence/coverage.md` in the same commit as the finding.
-- Commit disassembly, decompiled C and traces you produce as data; keep the proprietary binaries in `root/`. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps are gitignored.
-- Commit what you cite: findings may rest on any source section 6 allows, named in the finding.
-
-Downstream emulator projects consume the headers and docs; they should not need to read the binaries.
-
-Commit small and often, straight to `main`. Subjects are lowercase, component-prefixed imperatives (`libglcore: label the span-fill command`); bodies say why. Do not wait to batch work.
+Commit disassembly, decompiled C and traces as data. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps
+are gitignored. Commit what you cite. Commit small and often, straight to `main`, with lowercase
+component-prefixed imperative subjects (`libglcore: label the span-fill command`) and a body saying
+why. When you finish a task, regenerate the inventory and pick the next entries below `understood`.
+Hand off only when your area meets the definition above or you must stop. Then say in
+`questions/README.md` where you stopped and what comes next.
