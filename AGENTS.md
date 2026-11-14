@@ -11,7 +11,7 @@ The layout and working style follow [gr2](https://github.com/techomancer/gr2) an
 
 The O2 has no geometry engine. CRIME rasterizes, textures and depth-tests primitives that the host CPU has already transformed, lit and clipped, so IRIX's `libGLcore` does that work in software and feeds CRIME commands. CRIME also owns the CPU interface, the system memory controller, the interrupt controller and the aperture windows through which the CPU sees the frame and depth buffers. GBE reads the frame buffer from system memory and generates the video timing. The rest of the machine sits behind MACE (PCI, audio, serial, ROM decode), which is outside this project except where graphics depends on it. The first configuration this project reads is an O2 with stock graphics and IRIX 6.5.30; other CPU modules, chip revisions and options are separate configurations, and a fact from one does not fill a gap in another.
 
-Facts in this file are labelled **established** (read directly from a published document, a capture, a shipped binary or public open-source code (cited by project, revision and file), with the page, install path, function or offset), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Anything unlabelled is unknown. Do not fill gaps from memory, from other SGI graphics families or from other emulators.
+Facts in this file are labelled **established** (read directly from a published document, a capture, a shipped binary, the public IRIX source tree (cited by path) or public open-source code (cited by project, revision and file), with the page, install path, function, offset or source path), **inferred** (a reasoned reading, with the reasoning) or **unknown**. Anything unlabelled is unknown. Do not fill gaps from memory, from other SGI graphics families or from other emulators.
 
 ### Established from public sources
 
@@ -58,7 +58,7 @@ Other public sources in this repository:
 - `references/code/openbsd/`: the OpenBSD sgi port, pinned to the last commit before it was retired from the tree (7011342f6a72, May 2021). `sys/arch/sgi/dev/gbe.c` and `gbereg.h` are an O2 console driver that programs both the GBE display chip and the rendering engine (fill, copy, cursor), and `sys/arch/sgi/localbus/crimebus.h` has the CRIME interrupt and memory-error registers. It follows the same register layout as `references/code/netbsd/`, so it is weak independent support. `devices/gbe/gbe.md`, "Public driver cross-check", records what each part programs against the binaries.
 - `references/code/gxemul/`: a mirror of the GXemul emulator (234a181a1711, August 2021), with no canonical git repository of its own. `src/devices/dev_sgi_re.c` models the rendering engine (TLBs, pixel pipeline, transfer engine, status) and `dev_sgi_gbe.c` the display chip. Its header calls it guesswork from the Linux, NetBSD and OpenBSD drivers, so read it as an emulator author's model: a match is a consistency check and a difference is a lead, never hardware evidence.
 - `references/code/sgi-docs/`, `references/code/opengl-registry/`, `references/code/ogl-sample/`: OpenGL semantics for what `libGLcore` implements.
-- `references/code/irix-657m-src/`: a public link included for symmetry with gr4. Hint only, never evidence: reading it exposes you to vendor source.
+- `references/code/irix-657m-src/`: a public link included for symmetry with gr4. Its facts are evidence under the evidence order, cited by path. Reading it exposes you to vendor source.
 - `references/documents/`: full copies of the chip specifications (CRIME, GBE, MACE, VICE) and of the published patents, papers, technical reports, manuals, product guides and white papers that [references/documents/published-sources.md](references/documents/published-sources.md) cites for the O2 graphics and media chips, one entry each with its SHA-256 in [references/documents/README.md](references/documents/README.md). These are published designers' statements (labelled "established (published)" or "inferred" as that file says), not vendor source. Documents already in the `references/code/sgi-docs/` submodule are cited there, not copied.
 
 ---
@@ -125,7 +125,7 @@ The scripts descend from gr4's and carry its BSD-3 notice ([retools/tools/LICENS
 
 For a register or behaviour fact, take it from the highest source that states it and grade it by that source:
 
-1. IRIX source: a hint only in this repository. Its paths are never cited, and no fact is graded by it. Confirm the fact in a shipped binary or a published document, as Section 6 requires.
+1. IRIX source (public `irix-657m-src` tree): read it, write the fact in your own words, never copy source text, cite the path in the tree. A fact it defines is `established`.
 2. Shipped binaries (PROMs, kernels, libraries): confirm the fact at an address in the shipped image, and note the release differences (6.5.7 source, 6.5.22 and 6.5.30 binaries).
 3. Public Linux, OpenBSD and NetBSD headers and drivers: established only once a shipped binary or a published document confirms them.
 4. Published SGI and vendor manuals and specifications.
@@ -146,7 +146,7 @@ Readers may open anything:
 
 - every shipped binary on every IRIX release, and any disassembly or
   decompilation of it;
-- the IRIX source tree linked from this repository (hint only, never evidence);
+- the public IRIX source tree (`irix-657m-src`): a fact it defines is established, cited by path in that tree and written in our own words;
 - vendor specifications, including any embedded source code or HDL pages;
 - public drivers and emulators: Linux, NetBSD, OpenBSD, MAME and others;
 - manuals, release notes and man pages;
@@ -161,23 +161,18 @@ shows as the driver's expectation, not as proof of hardware behaviour.
 Write findings in your own words. Never paste vendor source, HDL or
 proprietary binaries into the repository.
 
-Source trees are hints only. The linked IRIX source tree may suggest where to
-look in a binary or a published document, but a hint is never evidence. Do not
-cite it by path, release or file name, and do not compare a routine with it in
-committed text. Every fact must be confirmed at an address in a shipped 6.5.30
-binary or in a published document or capture; otherwise it is graded inferred
-or unknown. No source text, comments, macro bodies, file layout, source paths or
-internal identifiers from the source tree go into the repository. Symbol names
-in a shipped binary's own symbol table or debug information, and names in
-published headers and manuals, are fine.
+The IRIX source tree is first-rank evidence. A fact it defines is established.
+Cite the path in the tree, write the fact in your own words, and never copy
+source text, comments or macro bodies into the repository. Symbol names in a
+shipped binary's own symbol table or debug information, and names in published
+headers and manuals, are fine.
 
 Before you call a fact unknown, search the shipped binaries and the published
 documents and captures for the device, its diagnostics and its PROM code, and
-list those routes among the routes tried. Searches of the source tree may
-suggest where to look; they are not among the routes tried.
+list those routes among the routes tried, and search the IRIX source tree too.
 
 Label honestly. Use "established" only for what you read in full: the whole
-function body or table in a shipped binary, or the passage in a published document or capture. A reading built from call lists,
+function body or table in a shipped binary, the passage in a published document or capture, or the passage of the IRIX source tree that defines the fact (cited by path). A reading built from call lists,
 register-store summaries, a sibling build or a name is "inferred". Never
 reword or reformat an entry to change its grade. Independent audits sample
 entries against the binaries, and their measured rates are published beside
