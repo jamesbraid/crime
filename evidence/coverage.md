@@ -59,7 +59,7 @@ The share of understood rows that an independent audit found real when it re-der
 
 Cross-workspace role check: compared 3051 entries with the entries of kona and odsy for the same function and capped 166 at located (the role text is the sibling's, at least 90% alike, and states no offset, immediate value or callee address of its own build).
 
-Inputs (also in [summary.tsv](inventory/summary.tsv)): root manifest 37867dc1ef46ce29, 71 files; sibling kona 465e4a779cd5; sibling odsy 544f1f903934.
+Inputs (also in [summary.tsv](inventory/summary.tsv)): root manifest 37867dc1ef46ce29, 71 files; sibling kona cd85f4e33623; sibling odsy 112a89bcffb7.
 
 Function rows rejected as ambiguous, at most named-only: 63 whose name is defined in several compilation units, 214 whose address another name shares (a row can be in both).
 

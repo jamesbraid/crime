@@ -8,8 +8,8 @@ ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0
 ucode	0	0	0	0	0	0	0	0	0	0	0.0	0.0	0.0	0.0						0	0				
 spec-registers	260	0	258	3	247	0	0	0	0	2	99.2	100.0	100.0	100.0			100.0	10	2026-10-29		0				
 input root manifest	71																								37867dc1ef46ce2954eaddab1b8ff3a59a186822e2c3e1e8a338351c76430055
-input sibling kona																									465e4a779cd50acacd36d1fb157986d521c67b84
-input sibling odsy																									544f1f90393436de97d635edb79e365d16d19841
+input sibling kona																									cd85f4e33623e1dc7a5672c046ee4a7a0fc387e8
+input sibling odsy																									112a89bcffb79577dade71d7e3d8fa906599d4b0
 functions in sbin/stand/symmon.IP32	755	0	389	4	361	362	365	1	0	0	51.5	99.9	100.0	51.5							0	1	72	0	
 functions in usr/cpu/sysgen/IP32boot/a3_dd.o	55	0	55	0	55	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime.o)	65	0	65	0	65	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
