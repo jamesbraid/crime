@@ -29,8 +29,8 @@ their measured rates are published beside the coverage figures.
 Take a register or behaviour fact from the highest source that states it and grade it by that source:
 the public IRIX source tree (`irix-657m-src`), then shipped binaries, then public Linux, NetBSD and
 OpenBSD drivers, then published manuals, then notes from other projects. The last may confirm or
-contradict a fact and never supply one. A driver fact is established only once a shipped binary or a
-published document confirms it. Reset values and physical reads follow the shared rules. Emulator runs
+contradict a fact and never supply one. A driver fact is established only once the IRIX source or a
+shipped binary confirms it, or, where neither covers the fact, a published document does. Reset values and physical reads follow the shared rules. Emulator runs
 are model behaviour, never hardware evidence. Full text and the checks that enforce it:
 [retools/tools/README-analysis.md](retools/tools/README-analysis.md#evidence-order).
 
