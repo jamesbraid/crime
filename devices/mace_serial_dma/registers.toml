@@ -43,6 +43,7 @@ count = 2
 stride = 0x20
 grade = "established"
 reset = 0x400
+reset_from = "MACE 2.0 I/O ASIC specification, Table 58"
 doc = """
 Control of the transmit channel (index 0, offset 0x00) and the receive channel (index 1, offset 0x20). Bits not listed read zero and ignore writes (established, printed page 127, table 58). Both channels share this layout."""
 
@@ -59,6 +60,7 @@ count = 2
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 56"
 doc = """
 Read pointer of each channel, in 32-byte blocks. On the transmit channel the DMA engine owns it, and on the receive channel software owns it (established for the ownership text, printed page 128). The printed register tables mark both pointers read/write (printed pages 122 and 127), so whether a software write to the engine-owned pointer is ignored is unknown."""
 
@@ -73,6 +75,7 @@ count = 2
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 57"
 doc = """
 Write pointer of each channel, in 32-byte blocks. On the transmit channel software owns it, and on the receive channel the DMA engine owns it (established for the ownership text, printed page 128). The same table conflict as channel_read applies, so a software write to the engine-owned pointer is unknown."""
 
@@ -87,6 +90,7 @@ count = 2
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 59"
 doc = """
 Blocks of ring data in use, computed as the write pointer minus the read pointer. Zero is empty and 127 is full (established, printed page 127, table 59). Page 128 says equal pointers mean the ring is full on an input channel and empty on an output channel, which conflicts with the depth-zero reading. See devices/mace_serial_dma/mace-serial-dma.md."""
 

@@ -26,6 +26,7 @@ offset = 0x08
 access = "rw"
 width = 64
 reset = 0x20
+reset_from = "MACE 2.0 I/O ASIC specification, Table 54 (flash-ROM and NIC control register, green LED disable reset to 1)"
 grade = "established"
 doc = """
 Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122)."""

@@ -35,6 +35,7 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x1
+reset_from = "MACE 2.0 I/O ASIC specification, Table 27"
 doc = """
 Codec reset and presence, the mirrored ring pointers of the two engines and the two volume-button latches. Bits not listed read zero (established, printed page 62, table 27 and table 26)."""
 
@@ -53,6 +54,7 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x10000
+reset_from = "MACE 2.0 I/O ASIC specification, Table 28"
 doc = """
 Codec register access. The word written here is sent to the codec on every serial frame and repeats until it is replaced. A read request makes the codec's answer appear in codec_response. The reset value is a read request with the address field zero (established, printed page 63, table 28)."""
 
@@ -67,6 +69,7 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 29"
 doc = """
 Mask applied to the last codec response. The codec-response interrupt cause is set when any masked bit of the response is one (established, printed page 63, table 29, and printed page 125, slot 6 index 0)."""
 
@@ -79,6 +82,7 @@ access = "r"
 width = 64
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 30"
 doc = """
 The most recent 16-bit register word the codec returned, whichever register was addressed (established, printed page 63, table 30). The table describes no codec access or status change on read, so none is assumed (inferred)."""
 
@@ -93,6 +97,7 @@ count = 3
 stride = 0x20
 grade = "established"
 reset = 0x400
+reset_from = "MACE 2.0 I/O ASIC specification, Table 33"
 doc = """
 Control of the three stereo DMA channels, in order: capture at 0x20, playback 1 at 0x40 and playback 2 at 0x60. Writable bits are 10, 9 and 7:5. Bit 8 and bits 4:0 read zero and ignore writes (established, printed page 64, table 33)."""
 
@@ -109,6 +114,7 @@ count = 3
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 31"
 doc = """
 Read pointer of each channel, in 32-byte blocks. The playback engines own it, so software owns it only on the capture channel. The printed register tables mark it read/write for every channel, but the ownership text makes the engine's pointer read-only. Whether the engine ignores software writes to that pointer while DMA runs is unknown (established for the ownership text, printed page 66; unknown for the writes)."""
 
@@ -123,6 +129,7 @@ count = 3
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 32"
 doc = """
 Write pointer of each channel, in 32-byte blocks. The capture engine owns it, so software owns it on the two playback channels. The same table and text conflict as ring_read applies (established for the ownership text, printed page 66; unknown for the writes)."""
 
@@ -137,6 +144,7 @@ count = 3
 stride = 0x20
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 34"
 doc = """
 Blocks of ring data in use, computed as write pointer minus read pointer. Zero is empty and 127 is full, so one of the 128 blocks is never used (established, printed page 64, table 34, and printed page 66)."""
 

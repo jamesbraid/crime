@@ -29,6 +29,7 @@ offset = 0x00
 access = "rw"
 width = 64
 reset = 0x20000001
+reset_from = "MACE 2.0 I/O ASIC specification, Table 38"
 grade = "established"
 doc = """
 MAC configuration and the MAC core reset. Bits not listed read zero (printed page 70). Reset sets core reset (bit 0) and the read-only revision field to 1, so the reset value is 0x20000001 (printed page 71)."""
@@ -51,6 +52,7 @@ offset = 0x08
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 39"
 grade = "established"
 doc = """
 Interrupt event flags for the Fast-Ethernet interface, with read-only pointer and sequence aliases. Writing one to a flag bit clears it. Writing zero leaves it unchanged (printed page 72). The interface drives CRIME interrupt slot 3 (printed page 179). Bits not listed read zero."""
@@ -74,6 +76,7 @@ offset = 0x10
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 40"
 grade = "established"
 doc = """
 Transmit and receive DMA control. Bits not listed read zero (printed pages 73 and 74). The table lists no DMA reset bit, although the transmit pointer section refers to one (unknown, printed page 74)."""
@@ -94,6 +97,7 @@ offset = 0x18
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 41"
 grade = "established"
 doc = """
 Receive interrupt delay. The count is in 30.69 microsecond ticks, so the 63 maximum is about 2 ms (printed page 73). A new packet starts the count-down. Expiry delivers the pending receive threshold condition to interrupt status. The count ends early when the receive FIFO drops below four entries (printed pages 73 and 80). Restart-on-each-packet behaviour is not stated (unknown)."""
@@ -106,6 +110,7 @@ offset = 0x20
 access = "w"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 42"
 grade = "established"
 doc = """
 Write-only alias of the transmit interrupt enable in DMA control (printed page 74). Reads are not described."""
@@ -118,6 +123,7 @@ offset = 0x28
 access = "w"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 43"
 grade = "established"
 doc = """
 Write-only alias of the receive interrupt enable and threshold in DMA control (printed page 74). Reads are not described."""
@@ -132,6 +138,7 @@ count = 2
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 44"
 grade = "established"
 doc = """
 Transmit ring read and write pointers. The ring is empty when the two are equal and full when the write pointer is one entry behind the read pointer, so one entry is never used (printed pages 74 and 78). Software writes only the write pointer. The read pointer can be reset to zero only through a DMA reset control whose bit the table does not give (unknown). The page does not say whether the pointer values wrap at the selected ring size, or whether the empty comparison masks higher bits (unknown, printed pages 74 and 78). The second element is an alias (printed page 70)."""
@@ -146,6 +153,7 @@ count = 3
 access = "r"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 45"
 grade = "established"
 doc = """
 Receive cluster FIFO count and read and write indexes. Hardware updates them atomically. The FIFO holds 16 cluster addresses (printed pages 75 and 80). The text says reset clears the indexes and count (printed page 75). Table 45 also prints a reset of zero for both generation bits, which the text does not mention (printed page 75). Software should not read the FIFO while receive DMA is enabled (printed page 75). The second and third elements are aliases (printed page 70)."""
@@ -175,6 +183,7 @@ offset = 0x60
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 47"
 grade = "established"
 doc = """
 PHY serial bus data. A write sets the outgoing value. After a read, the field holds the value read from the PHY (printed page 76)."""
@@ -188,6 +197,7 @@ offset = 0x68
 access = "rw"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 48"
 grade = "established"
 doc = """
 PHY device and register address for the next access (printed page 76)."""

@@ -12,6 +12,7 @@ access = "r"
 width = 32
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 83"
 doc = """
 Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (established, printed page 162)."""
 

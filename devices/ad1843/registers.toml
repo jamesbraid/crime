@@ -71,6 +71,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xc001
+reset_from = "AD1843 REV.0 (1996) page 28"
 doc = """
 INIT, the converter power-down state and the silicon revision. Read-only ([AD1843 REV.0 page 28]). Reset sets INIT and power-down, so the codec starts in initialisation. The revision field is read-only and resets to 1, the first-silicon value in the table; the revision of a fitted part is not measured here (established, register pages 28-50 and summary page 52)."""
 
@@ -86,6 +87,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 29"
 doc = """
 DAC underrun flags and the peak level of each ADC channel. A read returns the status and clears all of it. Any write clears all of it too, so this register is not write-one-to-clear (established, register pages 28-50)."""
 
@@ -102,6 +104,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 29"
 doc = """
 Analog source, microphone boost and gain for each ADC channel. The gain steps are 1.5 dB per code and the microphone boost adds 20 dB (established, register pages 28-50 and the routing text)."""
 
@@ -136,6 +139,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 31"
 doc = "Analog mix of the AUX1 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
 
 [registers.aux1_mix.fields]
@@ -151,6 +155,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 31"
 doc = "Analog mix of the AUX2 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
 
 [registers.aux2_mix.fields]
@@ -166,6 +171,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 32"
 doc = "Analog mix of the AUX3 input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
 
 [registers.aux3_mix.fields]
@@ -181,6 +187,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 32"
 doc = "Analog mix of the microphone input. Same layout and gain law as dac2_to_dac1_mix (established, register pages 28-50)."
 
 [registers.mic_mix.fields]
@@ -196,6 +203,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8868
+reset_from = "AD1843 REV.0 (1996) page 33"
 doc = """
 Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute, the mono and headphone mutes, the output swing, the sum mute and the gain-change timing of each DAC (established, register page 33). The all-mix mute is read from the detailed diagram as covering the DAC2, AUX1 to AUX3 and microphone analog contributions only (inferred). The prose describes it more broadly, and the two readings conflict (see devices/mace_audio/mace-audio.md)."""
 
@@ -217,6 +225,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 34"
 doc = "DAC1 output gain and mute, left and right. Gain is six bits, mute is separate. Resets muted (established, register pages 28-50)."
 
 [registers.dac1_output.fields]
@@ -232,6 +241,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8888
+reset_from = "AD1843 REV.0 (1996) page 34"
 doc = "DAC2 output gain and mute, left and right. Same layout as dac1_output. Gain and mute here control the separate DAC2 output branch. The DAC2 contribution into the DAC1 mix is taken before this gain (inferred from the routing diagram, page 53)."
 
 [registers.dac2_output.fields]
@@ -247,6 +257,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 35"
 doc = "DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register pages 28-50 and the routing text)."
 
 [registers.dac1_digital_att.fields]
@@ -262,6 +273,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 35"
 doc = "DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50)."
 
 [registers.dac2_digital_att.fields]
@@ -277,6 +289,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8080
+reset_from = "AD1843 REV.0 (1996) page 36"
 doc = "Digital mix of the ADC data into DAC1, attenuation and mute per channel. Code 63 is full mute here, unlike the ordinary DAC attenuator (established, register pages 28-50 and the routing text)."
 
 [registers.adc_to_dac1_mix.fields]
@@ -292,6 +305,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x8080
+reset_from = "AD1843 REV.0 (1996) page 36"
 doc = "Digital mix of the ADC data into DAC2. Same layout and code-63 rule as adc_to_dac1_mix (established, register pages 28-50)."
 
 [registers.adc_to_dac2_mix.fields]
@@ -307,6 +321,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 37"
 doc = "Sample-rate source of each DAC and ADC: 0 is the fixed 48 kHz clock and 1 to 3 are generators 1 to 3. The published table lists code 1 twice for the ADC selectors. Page 53 reads the right ADC code 2 as clock 2, as for the other three selectors (inferred)."
 
 [registers.clock_select.fields]
@@ -322,6 +337,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x00ff
+reset_from = "AD1843 REV.0 (1996) page 39"
 doc = """
 Mode of generator 1. Clock 2 and clock 3 use the same layout at registers 19 and 22. Bits 9 and 8 are not defined (established, register pages 38 to 43)."""
 
@@ -342,6 +358,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xbb80
+reset_from = "AD1843 REV.0 (1996) page 39"
 doc = "Nominal rate of generator 1 in Hz. Reset is 48000 (established, register pages 28-50). Clock 2 and clock 3 use registers 20 and 23."
 
 [registers.clock1_hz.fields]
@@ -354,6 +371,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 40"
 doc = """
 Phase work for generator 1. A write replaces the remaining work. Units are 1/3000 of a conversion cycle (0.12 degrees). Direction 0 advances the phase and 1 retards it. Clock 2 and clock 3 use registers 21 and 24 (established, register pages 39, 42 and 45, and the phase section)."""
 
@@ -368,6 +386,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x00ff
+reset_from = "AD1843 REV.0 (1996) page 41"
 doc = "Mode of generator 2, same layout and reset as clock1_mode (established, register pages 38 to 43). The source notes that a description citing registers 17 and 18 for clock 2 means 20 and 21 (inferred)."
 
 [registers.clock2_mode.fields]
@@ -387,6 +406,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xbb80
+reset_from = "AD1843 REV.0 (1996) page 42"
 doc = "Nominal rate of generator 2 in Hz. Reset is 48000 (established, register pages 28-50)."
 
 [registers.clock2_hz.fields]
@@ -399,6 +419,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 42"
 doc = "Phase work for generator 2, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
 
 [registers.clock2_phase.fields]
@@ -412,6 +433,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x00ff
+reset_from = "AD1843 REV.0 (1996) page 44"
 doc = "Mode of generator 3, same layout and reset as clock1_mode (established, register pages 38 to 43)."
 
 [registers.clock3_mode.fields]
@@ -431,6 +453,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xbb80
+reset_from = "AD1843 REV.0 (1996) page 44"
 doc = "Nominal rate of generator 3 in Hz. Reset is 48000 (established, register pages 28-50)."
 
 [registers.clock3_hz.fields]
@@ -443,6 +466,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 45"
 doc = "Phase work for generator 3, same units and direction rule as clock1_phase (established, register pages 39, 42 and 45)."
 
 [registers.clock3_phase.fields]
@@ -456,6 +480,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 46"
 doc = "Digital ADC source, resample filter and DAC mix mode. The resample filter and DAC mix mode change only while the converters they affect are off (established, register pages 28-50 and the constraints text)."
 
 [registers.digital_filter.fields]
@@ -475,6 +500,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x0
+reset_from = "AD1843 REV.0 (1996) page 47"
 doc = "Sample format, mono mode, the frame-rate and SDFS options and the ADC lock. Bits 7 to 5 are the SCF, FRS and FRST controls (established, register pages 28-50 and the serial-frame section)."
 
 [registers.format_lock.fields]
@@ -497,6 +523,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0x00c0
+reset_from = "AD1843 REV.0 (1996) page 49"
 doc = "Power and enable bits for the converters, ADCs, analog paths and headphone output. Registers 1 to 15, 25 and 27 are held at reset while converter power-down is set (established, register pages 28-50)."
 
 [registers.enables.fields]
@@ -517,6 +544,7 @@ width = 16
 space = "codec_reg"
 grade = "established"
 reset = 0xc400
+reset_from = "AD1843 REV.0 (1996) page 50"
 doc = """
 Converter power, auto-calibration, generator enables, clock output and the line input modes. Bit 15 is PDNI, which resets to 1. Clearing it starts converter startup. Auto-calibration cannot be cleared before the first completed startup (established, register pages 28-50 and the initialisation text)."""
 

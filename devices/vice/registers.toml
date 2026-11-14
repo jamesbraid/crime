@@ -13,6 +13,7 @@ offset = 0x8
 access = "r"
 width = 8
 reset = 0xe1
+reset_from = "VICE design specification 099-0123-003, Table (register map, VICE_ID at offset 0x0008, reset 0xE1)"
 grade = "established"
 space = "vice"
 doc = """
@@ -50,6 +51,7 @@ offset = 0x40
 access = "rw"
 width = 32
 reset = 0x0
+reset_from = "VICE design specification 099-0123-003, register map (MSP_CTL_STAT, reset 0x00)"
 grade = "established"
 space = "vice"
 
@@ -62,6 +64,7 @@ offset = 0x48
 access = "rw"
 width = 32
 reset = 0x0
+reset_from = "VICE design specification 099-0123-003, register map (MSP_ExcpFlag, reset 0x00)"
 grade = "established"
 space = "vice"
 
@@ -97,6 +100,7 @@ offset = 0x60
 access = "rw"
 width = 32
 reset = 0x0
+reset_from = "VICE design specification 099-0123-003, register map (MSP_WatchPoint, reset 0x00)"
 grade = "established"
 space = "vice"
 
@@ -150,6 +154,7 @@ offset = 0x100
 access = "rw"
 width = 32
 reset = 0x0
+reset_from = "VICE design specification 099-0123-003, register map (MSP_D_RAM, reset 0x00)"
 grade = "established"
 space = "vice"
 

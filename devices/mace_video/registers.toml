@@ -14,6 +14,7 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, section 2.3.5.1 (video channel control register, all bits reset to 0)"
 space = "mace_video_out"
 doc = """
 ---- output channel registers ----
@@ -36,6 +37,7 @@ access = "r"
 width = 64
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, section 2.3.5.2 (video DMA status register, all bits reset to 0)"
 space = "mace_video_out"
 doc = "The shipped IRIX output recovery routines read it after their last write and discard the value."
 

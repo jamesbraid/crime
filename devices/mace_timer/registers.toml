@@ -12,6 +12,7 @@ access = "rw"
 width = 64
 grade = "established"
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, timer chapter, power-up reset text (time base reset to zero)"
 doc = """
 One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (established, printed page 147). The prose calls it read-only while the register table labels it read/write (printed page 148); the access is open (see questions/README.md)."""
 

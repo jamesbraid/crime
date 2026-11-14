@@ -15,6 +15,7 @@ offset = 0x0
 access = "w"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 71"
 grade = "established"
 doc = """
 Transmit buffer, bits 7:0: the byte currently shifted out of the data line (established, printed page 140, table 71). Write only. Reset zero (established, printed page 141)."""
@@ -27,6 +28,7 @@ offset = 0x8
 access = "r"
 width = 64
 reset = 0x0
+reset_from = "MACE 2.0 I/O ASIC specification, Table 72"
 grade = "established"
 doc = """
 Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; bits 15:8 are an alias of the status register (established, printed page 140, table 72). Read only. Both parts reset to zero (established, printed page 140). The status table resets status bit 1, which this alias mirrors at bit 9, to one (printed page 142), so the alias reset conflicts between the two tables (established as printed; the reset level of bit 9 is unknown)."""
@@ -40,6 +42,7 @@ offset = 0x10
 access = "rw"
 width = 64
 reset = 0x10
+reset_from = "MACE 2.0 I/O ASIC specification, Table 73"
 grade = "established"
 doc = """
 Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed page 141). Bits 7:6 are not defined."""
