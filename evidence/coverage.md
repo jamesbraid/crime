@@ -57,9 +57,9 @@ The share of understood rows that an independent audit found real when it re-der
 | ioctls | 100.0% | 10 | 2026-10-29 |
 | spec-registers | 100.0% | 10 | 2026-10-29 |
 
-Cross-workspace role check: compared 1890 entries with the entries of kona and odsy for the same function and capped 166 at located (the role text is the sibling's, at least 90% alike, and states no offset, immediate value or callee address of its own build).
+Cross-workspace role check: compared 3051 entries with the entries of kona and odsy for the same function and capped 166 at located (the role text is the sibling's, at least 90% alike, and states no offset, immediate value or callee address of its own build).
 
-Inputs (also in [summary.tsv](inventory/summary.tsv)): root manifest 37867dc1ef46ce29, 71 files; sibling kona 99f969a532ff; sibling odsy d26e4eb50277.
+Inputs (also in [summary.tsv](inventory/summary.tsv)): root manifest 37867dc1ef46ce29, 71 files; sibling kona 465e4a779cd5; sibling odsy 544f1f903934.
 
 Function rows rejected as ambiguous, at most named-only: 63 whose name is defined in several compilation units, 214 whose address another name shares (a row can be in both).
 
