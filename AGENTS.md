@@ -121,6 +121,20 @@ The scripts descend from gr4's and carry its BSD-3 notice ([retools/tools/LICENS
 
 ---
 
+## Evidence order
+
+For a register or behaviour fact, take it from the highest source that states it and grade it by that source:
+
+1. IRIX source: a hint only in this repository. Its paths are never cited, and no fact is graded by it. Confirm the fact in a shipped binary or a published document, as Section 6 requires.
+2. Shipped binaries (PROMs, kernels, libraries): confirm the fact at an address in the shipped image, and note the release differences (6.5.7 source, 6.5.22 and 6.5.30 binaries).
+3. Public Linux, OpenBSD and NetBSD headers and drivers: established only once a shipped binary or a published document confirms them.
+4. Published SGI and vendor manuals and specifications.
+5. Notes from other projects (emulator code, QEMU manual pages, other workspaces): they may confirm or contradict a fact and never supply one. A fact that rests only on one stays unknown, with the note named.
+
+Reset values: established when a source states a power-on default, or PROM code relies on a reset state; the reset must then name that source in `reset_from`. Inferred when the PROM depends on a value before its first write (cite the PROM address). A register read after firmware initialisation is not a reset value and can only rule values out. Otherwise unknown. A physical hardware read needs the repository owner's approval, and it counts as a reset value only for a register firmware provably never writes. Emulator runs show model behaviour, never hardware evidence.
+
+Full text and the checks that enforce it: `retools/tools/README-analysis.md#evidence-order`.
+
 ## 6. Evidence: software only, any source
 
 No hardware is available for this work. Do not plan, request or wait for
