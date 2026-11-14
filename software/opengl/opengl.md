@@ -6,6 +6,28 @@ How the IRIX 6.5.30 N32 OpenGL driver (`usr/gfx/arch/IP32CRM32/libGLcore.so`) tu
 
 CRIME has no geometry engine. The `CRIME.IP32.N32_M4.O` units do transform, lighting and clipping on the CPU (`mips4_xform`, `mips4_lighting`, `mips4_vclip`), and the hand-written `crm_astri` and `crm_astextri` units set up one triangle each (established, unit names and DWARF line tables). `__glMipsClipCheckFrustum` writes the window x, y, z and 1/w floats at vertex offsets 128, 132, 136 and 140 (established).
 
+<!-- Question: between a GL call and a lit pixel, what runs on the CPU and what in CRIME?
+     Evidence: software/opengl/opengl.md, software/kernel/ioctls.md, devices/mte/mte.md
+     (X server drives MTE), devices/gbe/gbe.md (GBE reads the frame buffer in tiles). -->
+```mermaid
+flowchart LR
+  subgraph cpu["CPU, user space"]
+    gl["GL app"] --> libgl["libGL"] --> core["libGLcore: transform, lighting,<br/>clip, per-triangle set-up"]
+    x["Xsgi + crm.so"]
+  end
+  ioctl["kernel driver: crimeIoctl<br/>(TLB loads, page mapping, gamma, GBE timing)"]
+  subgraph crime["CRIME"]
+    fifo["interface buffer"] --> re["rendering engine + TLB"]; mte["memory transfer engine"]
+  end
+  ram[("system memory:<br/>frame buffer")]
+  core -->|"writes to mapped<br/>rendering registers"| fifo
+  core -->|ioctl| ioctl; x -->|ioctl| ioctl
+  x -->|"copy / fill"| mte
+  ioctl -->|"loads TLBs, GBE tables"| crime
+  re --> ram; mte --> ram
+  ram -->|"64 KiB tiles"| gbe["GBE"] -->|video out| mon(["monitor"])
+```
+
 ## One flat triangle
 
 `__glCrmFlatTriangle` (the CRIME GL driver assembly unit 3, source lines 444-522) is the shortest complete primitive (established):

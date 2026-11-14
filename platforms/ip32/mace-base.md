@@ -217,6 +217,30 @@ revisions. The MACE 2.0 register readback is 1 (see `devices/mace_pci/registers.
 - Peripheral mask bits gate delivery. They do not clear the device condition
   behind a status bit (inferred from [mace] 147, which clears the timer condition by writing the compare register; the specification does not state it).
 
+<!-- Question: which CRIME interrupt status bit does each chip raise, and how does each reach memory?
+     Evidence: devices/crime/registers.toml, platforms/ip32/mace-base.md (PCI bits, bus-master
+     windows), devices/vice/vice.md (window 0x17000000, DMA through a 64-entry TLB). -->
+```mermaid
+flowchart TB
+  cpu["CPU"]
+  subgraph crime["CRIME"]
+    mem["memory controller"]; irq["interrupt status"]
+  end
+  ram[("system memory")]; gbe["GBE"]; vice["VICE"]
+  mace["MACE: PCI bridge, audio, video,<br/>serial, ethernet, timers"]
+  cpu <-->|"windows from 0x10000000"| crime
+  cpu <-->|"window 0x17000000"| vice
+  cpu <-->|"windows from 0x18000000"| mace
+  mem <--> ram
+  gbe -->|"frame buffer reads"| mem
+  vice -->|"DMA via 64-entry TLB"| mem
+  mace -->|"bus-master DMA"| mem
+  gbe -->|"bits 16-19"| irq
+  vice -->|"bit 31"| irq
+  mace -->|"PCI 8-15, PCI error 7, peripheral 4-6"| irq
+  mem -->|"memory error 21, CPU error 20"| irq
+```
+
 ## PCI reset
 
 | Fact | Grade | Source |
