@@ -72,7 +72,7 @@ Linux and NetBSD drivers and the code.
 - `generated/`: written by `retools/tools/defs/defs-gen`, never edited. After a change to `devices/`,
   run `defs-gen` then `defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when
   `generated/` is stale.
-- `platforms/ip32/`, `software/<component>/`, `evidence/`, `questions/`: prose beside the facts.
+- `platforms/ip32/`, `software/<component>/`, `references/`, `questions/`: prose beside the facts.
   Driver structures live in `software/kernel/include/` and `software/opengl/include/`.
 - `references/code/` holds public sources as submodules (Linux, NetBSD, OpenBSD, MAME, GXemul,
   OpenGL references, `irix-657m-src`). Fetch the large ones shallow. GXemul is an author's model:
@@ -112,3 +112,21 @@ component-prefixed imperative subjects (`libglcore: label the span-fill command`
 why. When you finish a task, regenerate the inventory and pick the next entries below `understood`.
 Hand off only when your area meets the definition above or you must stop. Then say in
 `questions/README.md` where you stopped and what comes next.
+
+## Where new work goes
+
+There is no `evidence/` directory. File each page by what it is about:
+
+- `devices/<chip>/`, `platforms/<board>/`, `formats/<name>/`, `software/<area>/`: a note about one device, platform,
+  format or software component.
+- `<subject>/readings/<binary>.md`: per-routine readings of one binary, filed under the subject it explains (a driver
+  object under its chip, a kernel object under `software/kernel/<platform>/`). `retools/tools/reading_round.py` files
+  its entries there; `tools/config/readings-subjects.json` says which subject a binary belongs to.
+- `references/`: what we hold and cite: binary, PROM and firmware lists with checksums, scope lists, source lists.
+  Code submodules stay under `references/code/`.
+- `generated/`: tool output that is regenerated and never hand-edited (`generated/inventory/`, diff tables, symbol
+  tables, register output). Hand-kept audit tables sit in `generated/inventory/audits.tsv` by exception.
+- `COVERAGE.md` at the root: progress tallies. The inventory block in it is rewritten by `retools/tools/inventory.py`.
+- `questions/`: open questions.
+
+`retools/tools/defs/ci-check` fails when an `evidence/` directory comes back.

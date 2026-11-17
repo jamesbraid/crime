@@ -1,9 +1,8 @@
 {
   "family": "O2 (CRIME and GBE)",
-  "review_required": ["evidence/routines/t1-*.md", "evidence/routines/t2-*.md"],
   "siblings": {"kona": "../kona", "odsy": "../odsy"},
   "docs": {
-    "prose": ["devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md", "evidence/routines/*.md"],
+    "prose": ["devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "devices/*/readings/*.md", "platforms/*/readings/*.md", "software/*/readings/*.md", "software/*/*/readings/*.md", "references/*.md", "references/documents/published-sources.md"],
     "headers": ["devices/*/*.h", "generated/c/*.h", "software/kernel/include/*.h", "software/opengl/include/*.h"],
     "tables": [],
     "index": ["AGENTS.md", "README.md", "references/irix-files.md", "COVERAGE.md", "questions/README.md"],
@@ -605,7 +604,7 @@
     {"name": "MACEVCH", "size": "0x80000", "physical": "0x1f100000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
     {"name": "MACEI2C", "size": "0x10000", "physical": "0x1f330000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
     {"name": "MACETIMER", "size": "0x10000", "physical": "0x1f340000", "docs": ["devices/mace_video/mace-video.md", "software/kernel/functions.md"]},
-    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["devices/*/*.h", "generated/c/*.h", "devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md"]},
+    {"name": "MACEAV", "size": "0x400000", "physical": "0x1f400000", "docs": ["devices/*/*.h", "generated/c/*.h", "devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "devices/*/readings/*.md", "platforms/*/readings/*.md", "software/*/readings/*.md", "software/*/*/readings/*.md", "references/*.md", "references/documents/published-sources.md"]},
     {"name": "VICE", "size": "0x1000000", "physical": "0x17000000", "docs": ["devices/vice/vice.md"]}
   ],
   "bases": [
