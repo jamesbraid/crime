@@ -1,0 +1,10 @@
+{
+ "default": "software/kernel",
+ "rules": [
+  {"match": "/libGL(core)?\\.so$", "dir": "software/opengl"},
+  {"match": "/(Xsgi|crm\\.so|glx\\.so|libXsgivc\\.so)$", "dir": "software/xsgi"},
+  {"match": "/(vice[a-z]+|libvice)\\.so$", "dir": "devices/vice"},
+  {"match": "/dmedia/video/(debug/)?mvp\\.so$", "dir": "software/video"},
+  {"match": "(^sbin/stand/|/gfxinit$|/setmon$|/Confidence/)", "dir": "software/diags"}
+ ]
+}
