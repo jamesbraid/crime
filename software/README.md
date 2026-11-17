@@ -7,6 +7,7 @@
 | Page | Title | Summary |
 |---|---|---|
 | [context.md](kernel/context.md) | Context save and restore (IRIX 6.5.30, O2) | How the IRIX kernel driver moves the rendering engine between clients, and how libGLcore cooperates. |
+| [diagnostic-messages.md](kernel/diagnostic-messages.md) | CRIME, MACE and GBE diagnostic messages | Text the O2 graphics kernel code prints, or passes to its error reporter, and where each message is printed. |
 | [functions.md](kernel/functions.md) | Functions by role | What each routine of the IRIX 6.5.30 graphics kernel objects does, grouped by what it serves. |
 | [ioctls.md](kernel/ioctls.md) | Graphics ioctl interface (IRIX 6.5.30, O2) | The requests the kernel graphics driver accepts and the requests libGLcore and the X module send. |
 | [reset.md](kernel/reset.md) | Rendering engine initialisation and error recovery, and the kernel's use of the memory transfer engine | What the IRIX 6.5.30 kernel writes to bring the rendering engine to a known state, how it recovers after an engine... |
