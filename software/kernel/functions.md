@@ -2368,7 +2368,7 @@ Short routines of the board set-up program, read from the 6.5.30 executable `usr
 
 # Routines of `gfxinit`, CRIME board report
 
-The two routines that print this board's section of the board report (the program's `gfxinfo` name selects them), read in full from `objdump -d` of the 6.5.30 N32 executable `usr/gfx/gfxinit`, with the strings taken from `.rodata` and `.srdata`. The board record they walk is built by the kernel; its fields are named in [binaries.md](../../evidence/binaries.md#display-configuration-tools).
+The two routines that print this board's section of the board report (the program's `gfxinfo` name selects them), read in full from `objdump -d` of the 6.5.30 N32 executable `usr/gfx/gfxinit`, with the strings taken from `.rodata` and `.srdata`. The board record they walk is built by the kernel; its fields are named in [binaries.md](../../references/binaries.md#display-configuration-tools).
 
 - `crime_monitor_info` in `usr/gfx/gfxinit`: prints one monitor's name from an identification block that starts with the 8-byte header 00 ff ff ff ff ff ff 00, a 216-byte routine at address 0x1000dcfc. Established.
   Its first argument is the monitor number and the second a pointer to the block. It prints "\t Monitor %d type: " (0x10022760) with the number (`printf`, call at 0x1000dd28), then calls the static routine at 0x1000dc8c with the block pointer. That routine, which `objdump` labels as part of `printXvcInfo`, returns 1 only when byte 0 is zero, bytes 1 to 6 are 0xff and byte 7 is zero (the loads at 0x1000dc8c to 0x1000dce0), and 0 on any other value.
@@ -2378,7 +2378,7 @@ The two routines that print this board's section of the board report (the progra
   Its argument is the board record. It prints a tab (0x10027e70), then tests the byte at `+43`. A non-zero byte prints "%d + %d bitplanes\n\t" (0x10022778) with the byte at `+47` as both numbers; a zero byte prints "%d bitplanes\n\t" (0x10022790) with the byte at `+47` (the path at 0x1000df54).
   It then prints "board revision %d, " (0x100227a0) with the byte at `+40`, "CRM revision %c, " (0x100227b8) with the byte at `+41` plus 65 and "GBE revision %c\n" (0x100227d0) with the byte at `+42` plus 65. A non-zero byte at `+44` prints "\tDual Channel Display option\n" (0x100227e8).
   A non-zero word at `+56` prints "\tTiming table flags:" (0x10022808), then "  Fullscreen Stereo" (0x10022820) when bit 1 is set, "  Quadbuffer Stereo" (0x10022838) when bit 4 is set and "  Sync on green" (0x10022850) when bit 3 is set, in that order, and a newline. A zero word skips all of it.
-  It then calls `crime_monitor_info` (0x1000dcfc) with 0 and the address `+100`, and, only when the byte at `+45` is non-zero, again with 1 and the address `+234`. It ends with a newline print whose result it returns. The record's bytes at `+40`, `+41`, `+42` and `+47` are only read here; their sources are in [binaries.md](../../evidence/binaries.md#display-configuration-tools).
+  It then calls `crime_monitor_info` (0x1000dcfc) with 0 and the address `+100`, and, only when the byte at `+45` is non-zero, again with 1 and the address `+234`. It ends with a newline print whose result it returns. The record's bytes at `+40`, `+41`, `+42` and `+47` are only read here; their sources are in [binaries.md](../../references/binaries.md#display-configuration-tools).
 
 # Venice and VS2 helpers of `gfxinit`, one entry each
 

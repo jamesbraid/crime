@@ -6,9 +6,9 @@
     "prose": ["devices/*/[!Rr]*.md", "platforms/*/*.md", "software/*/*.md", "evidence/[!i]*.md", "evidence/instruction-readings-*.md", "references/documents/published-sources.md", "evidence/routines/*.md"],
     "headers": ["devices/*/*.h", "generated/c/*.h", "software/kernel/include/*.h", "software/opengl/include/*.h"],
     "tables": [],
-    "index": ["AGENTS.md", "README.md", "evidence/irix-files.md", "evidence/coverage.md", "questions/README.md"],
+    "index": ["AGENTS.md", "README.md", "references/irix-files.md", "COVERAGE.md", "questions/README.md"],
     "dumps": [],
-    "skip": ["evidence/inventory/*", "platforms/*/README.md", "software/*/README.md"]
+    "skip": ["generated/inventory/*", "platforms/*/README.md", "software/*/README.md"]
   },
   "prepare": [],
   "binaries": [

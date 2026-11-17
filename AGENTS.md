@@ -61,8 +61,8 @@ owning header or page and delete the entry.
 ## Repository layout
 
 Proprietary binaries are not committed. Copy them from your own IRIX install into the ignored `root/`
-as [evidence/irix-files.md](evidence/irix-files.md) lists. The committed relative symlinks under
-`software/` resolve into it. The in-scope binaries are listed in [evidence/binaries.md](evidence/binaries.md).
+as [references/irix-files.md](references/irix-files.md) lists. The committed relative symlinks under
+`software/` resolve into it. The in-scope binaries are listed in [references/binaries.md](references/binaries.md).
 No release has DWARF types for this board, so recover structures from the CRIME specification, the
 Linux and NetBSD drivers and the code.
 
@@ -84,14 +84,14 @@ Linux and NetBSD drivers and the code.
 
 ## Working on it
 
-The inventory is the work list. A coverage row is done when every entry in `evidence/inventory/` is
+The inventory is the work list. A coverage row is done when every entry in `generated/inventory/` is
 `understood` or `no-software-dependency`. The repository is finished when every table reaches done,
 not when the rows look full. An entry is understood when a table row, list item, heading or header
 comment whose subject it is carries a label, a role and hardware effect, and a citation specific to
 the item (offset, address, callee, archive member). Mentions and lists of more than three names reach
 `named-only`. More than five entries sharing one sentence pattern count as `located`, so write each
 item its own sentence. A function is understood only in the binary the entry cites, plus builds with
-identical code. The exact rule is in [evidence/inventory/README.md](evidence/inventory/README.md).
+identical code. The exact rule is in [generated/inventory/README.md](generated/inventory/README.md).
 
 Open-question readers take the questions in `questions/README.md` and the rendering-engine, ioctl and
 token rows. Table readers take function, register-offset and specification rows binary by binary.
@@ -100,10 +100,10 @@ Take `undocumented` rows first, then `named-only` and `located`. Do `mmio`, `ioc
 rows that belong together: read one function and settle every row it touches. In the same commit as
 a finding:
 
-1. Run `retools/tools/re-run python3 retools/tools/inventory.py` and commit `evidence/inventory/` and
-   `evidence/coverage.md`. Never edit a `.tsv` by hand. If the script mis-detects a row, change
+1. Run `retools/tools/re-run python3 retools/tools/inventory.py` and commit `generated/inventory/` and
+   `COVERAGE.md`. Never edit a `.tsv` by hand. If the script mis-detects a row, change
    `tools/config/inventory-config.json` and say why in the commit.
-2. Update the affected area row in `evidence/coverage.md`.
+2. Update the affected area row in `COVERAGE.md`.
 3. Put register, field and constant facts in `devices/` and regenerate `generated/`.
 
 Commit disassembly, decompiled C and traces as data. Flat `*_disasm.txt` and `*_dwarfdump.txt` dumps

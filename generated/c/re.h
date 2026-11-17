@@ -298,7 +298,7 @@
  * Which half of a 64-bit store reaches a 32-bit window-offset register is
  * unknown. No shipped software or published source depends on it, as far as the
  * constant-address scan shows. The scan records only 4-byte stores to the source
- * and drawing window-offset registers (evidence/inventory/mmio.tsv). Routes tried: [spec]
+ * and drawing window-offset registers (generated/inventory/mmio.tsv). Routes tried: [spec]
  * Table 7-3 and Table 7-9, which give no store-width rule for these words, and the
  * public NetBSD driver, which writes both offsets with 32-bit stores (inferred,
  * software expectation). Not checked: whether a copy loop stores doublewords across
@@ -370,7 +370,7 @@
 /*
  * Table 7-3 lists each GL vertex word as 32 bits, non-global and write-only, in 13.6 fixed point (established, [spec] PDF 166). The GL-mode text on PDF 197 instead gives 13.4 unsigned fixed point over [0, 2^13) (established). The feature list on PDF 159 gives 6-bit subpixel precision, which fits the 13.6 reading. The two engine descriptions conflict. Which one the engine implements is unknown.
  *
- * Start-alias stores (inferred, software expectation, evidence/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
+ * Start-alias stores (inferred, software expectation, generated/inventory/mmio.tsv). The scan records 32-bit stores through the start alias of the x and y words of Vertex.GL[0] and Vertex.GL[1]. It records 64-bit alias stores to Vertex.GL[0].x and Vertex.GL[1].x as well, and no alias store to any Vertex.GL[2] word. The 64-bit alias stores are not explained, so the alias width is unsettled.
  *
  * Readback extents (inferred, software expectation). The shipped GL readback routine writes inclusive pixel indices, not the half-open edges of the
  * scissor: the far x is the start x plus the programmed copy width minus one,

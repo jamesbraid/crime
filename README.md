@@ -34,7 +34,7 @@ tools/setup-clone.sh --root /path/to/your/irix/files
 retools/tools/re-run retools/tools/defs/ci-check
 ```
 
-You'll need Podman, git, python3 and your own IRIX files. [evidence/irix-files.md](evidence/irix-files.md) lists
+You'll need Podman, git, python3 and your own IRIX files. [references/irix-files.md](references/irix-files.md) lists
 which ones.
 
 ## How far along
