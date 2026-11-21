@@ -1,4 +1,6 @@
 """generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source
+defs-gen 2
+input sha256 b5d75f0e8c87833d72210b12de51fe2f48f891366a4285572d75026fe1b1f60e
 O2 MACE PS/2 keyboard and mouse ports"""
 
 UNIT = 'mace_ps2'

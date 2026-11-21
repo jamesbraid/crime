@@ -1,4 +1,6 @@
 {
+ "generator": "defs-gen 2",
+ "input_sha256": "bab2f6d227cfb062e38a947b70a1bd06f1b91c0523748caa4201657d432ef446",
  "schema": "defs-flat/1",
  "source": "devices/mace_video_in/registers.toml",
  "profile": "public",

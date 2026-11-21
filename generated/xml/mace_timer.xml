@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3 -->
 <genxml unit="mace_timer" prefix="MACE_TIMER" title="O2 MACE free-running counter, three compare registers and audio and video time stamps" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout">
   <doc>MACE timer block: the 32-bit counter, the three 32-bit compare registers that set level interrupts, and the audio and video UST/MSC pairs. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="COUNTER" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout" register="yes" offset="0x0" access="rw" reset="0x0">

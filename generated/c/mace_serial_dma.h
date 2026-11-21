@@ -1,4 +1,6 @@
 /* generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source */
+/* defs-gen 2 */
+/* input sha256 973eff955dd467d8089ba111d4a9a8cc67729cd40457a98d06cdf52535c24845 */
 /* O2 MACE serial port DMA channels: channel control, ring pointers and depth */
 #ifndef MACE_SERIAL_DMA_GEN_H
 #define MACE_SERIAL_DMA_GEN_H

@@ -1,4 +1,6 @@
 // generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 2
+// input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3
 // O2 MACE free-running counter, three compare registers and audio and video time stamps
 #![allow(dead_code)]
 

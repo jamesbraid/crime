@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138 -->
 <genxml unit="mace_video" prefix="VOUT" title="O2 MACE video output channel and chip-level configuration" from="published MACE 2.0 specification, video chapter, and shipped IRIX software readings">
   <doc>MACE video output channel registers and the chip-level hardware configuration word.</doc>
   <space name="mace_video_out" unit="byte"/>

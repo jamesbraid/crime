@@ -1,4 +1,6 @@
 """generated from devices/mace_video_in/registers.toml by defs-gen - do not edit, change the source
+defs-gen 2
+input sha256 bab2f6d227cfb062e38a947b70a1bd06f1b91c0523748caa4201657d432ef446
 O2 MACE video input channel registers"""
 
 UNIT = 'mace_video_in'

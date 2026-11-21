@@ -1,4 +1,6 @@
 <!-- generated from devices/mace_pci/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 73f0a222e041d85dd1c9e05cf7f897c0e55137b35d4d3121cffb83577da06496 -->
 
 # O2 MACE PCI host bridge control registers
 

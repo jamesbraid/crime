@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_i2c/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 721a7c3a20c7c022f231a7bcc7dd72d4e8f78c360f6d41c8d660f07a3cfa0d33 -->
 <genxml unit="mace_i2c" prefix="MACE_I2C" title="O2 MACE two-wire (I2C) bus interface" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)">
   <doc>MACE two-wire bus interface: the configuration and reset register, its alias, the control and status register and the data register. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="CONFIG" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)" register="yes" offset="0x0" access="rw" reset="unknown">

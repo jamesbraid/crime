@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 b5d75f0e8c87833d72210b12de51fe2f48f891366a4285572d75026fe1b1f60e -->
 <genxml unit="mace_ps2" prefix="MACE_PS2" title="O2 MACE PS/2 keyboard and mouse ports" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)">
   <doc>MACE PS/2 keyboard and mouse ports: one serial port per device, each with a transmit buffer, a receive buffer, a control register and a status register. Offsets are from the port's bank base (constants KEYBOARD_BASE and MOUSE_BASE).</doc>
   <struct name="TRANSMIT" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x0" access="w" reset="0x0">

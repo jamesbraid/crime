@@ -1,4 +1,6 @@
 /* generated from devices/mte/registers.toml by defs-gen - do not edit, change the source */
+/* defs-gen 2 */
+/* input sha256 7b064581899b3a6b903ea534f29f417cc394463f7569d3c87540eed280f15528 */
 /* O2 CRIME memory transfer engine registers and tile layout */
 #ifndef MTE_GEN_H
 #define MTE_GEN_H

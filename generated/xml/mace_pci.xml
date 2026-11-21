@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_pci/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 73f0a222e041d85dd1c9e05cf7f897c0e55137b35d4d3121cffb83577da06496 -->
 <genxml unit="mace_pci" prefix="MACE_PCI" title="O2 MACE PCI host bridge control registers" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers">
   <doc>MACE PCI control block: error capture, interrupt and error enables, read-buffer revision, and the configuration address and data ports. Offsets are from the block base (constant BLOCK_BASE). Only these six registers exist in the block, and they are not repeated across it (established, printed pages 161 and 181). A read of any other offset in the block returns 0xff in each byte position it covers, and a write to one is discarded (established, printed pages 161 and 162).</doc>
   <struct name="PCI_ERROR_ADDR" size="4" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="r" reset="0x0">

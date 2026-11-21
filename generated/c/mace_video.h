@@ -1,4 +1,6 @@
 /* generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source */
+/* defs-gen 2 */
+/* input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138 */
 /* O2 MACE video output channel and chip-level configuration */
 #ifndef VOUT_GEN_H
 #define VOUT_GEN_H

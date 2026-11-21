@@ -1,4 +1,6 @@
 /* generated from devices/mace_ethernet/registers.toml by defs-gen - do not edit, change the source */
+/* defs-gen 2 */
+/* input sha256 fc82e9772a46bdaf6938ab147c3e5157348eb2057c381ff7402d6e97c874bfc7 */
 /* O2 MACE Fast-Ethernet block: registers, DMA message formats and diagnostic port */
 #ifndef MACE_ETHERNET_GEN_H
 #define MACE_ETHERNET_GEN_H

@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source -->
+<!-- defs-gen 2 -->
+<!-- input sha256 4d52877ce718f4815943b4386ac9ac4dbf31d509f277043c28bfcfb81c0c8a6e -->
 <genxml unit="mace_periph" prefix="MACE_PERIPH" title="O2 MACE peripheral ring base and interrupt status and mask" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers">
   <doc>MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE).</doc>
   <struct name="RING_BASE" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers" register="yes" offset="0x0" access="rw" reset="unknown">
