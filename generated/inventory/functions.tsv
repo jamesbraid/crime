@@ -3261,7 +3261,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124020	220	FontFileGetInfoBit
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124100	332	ProcUngrabKey	dynsym	fc0f9e55b4a3		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124250	1008	irixKernInit	dynsym	9cc2140f8522		in	understood	software/xsgi/xsgi.md#board-bring-up	Board bring-up
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10124640	152	SertafiedDelete..EEE	dynsym	9cb42eba0d75		in	located	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101246e0	528	ProcSGIvcQueryVideoScreenInfo	dynsym	86ec3d682338		out:11	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101246e0	528	ProcSGIvcQueryVideoScreenInfo	dynsym	86ec3d682338		out:11	named-only	software/xsgi/xmodule.md#monitor-status-names-and-channel-origins-re-read-2026-11-21	Monitor status, names and channel origins (re-read 2026-11-21)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101248f0	3244	ProcXineramaSGICapRegisterInterest..GPD	dynsym	ae38fbdac40e		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101255a0	284	FontFileOpen	dynsym	0ccf460b699d		out:14	named-only	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101256c0	1488	CopyActionMessageArgs..LMF	dynsym	464f16991bce		in	located	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
@@ -3374,7 +3374,7 @@ usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10137b40	1864	SProcCreateImageB
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10138290	288	ProcSGIvcStoreGammaColors16	dynsym	3139e3b19499		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101383b0	260	set_sun_path..DH	dynsym	fcb1eae1ce3a		in	located	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101384c0	412	FreeFontNames	dynsym	64dc08c99dae		in	located	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
-usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10138660	4592	ProcSGIvcQueryChannelInfo	dynsym	a28a9b1431d0		out:11	undocumented		
+usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10138660	4592	ProcSGIvcQueryChannelInfo	dynsym	a28a9b1431d0		out:11	named-only	software/xsgi/xmodule.md#monitor-status-names-and-channel-origins-re-read-2026-11-21	Monitor status, names and channel origins (re-read 2026-11-21)
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x10139850	124	SGetImageReply	dynsym	e9179f6279e5		in	located	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101398d0	264	ProcXGetExtensionVersion	dynsym	0bb6711c2262		out:11	undocumented		
 usr/gfx/arch/GENERIC/Xsgi	shared-x-server	n32		0x101399e0	740	ShmInfoInit	dynsym	b3b18449053f		out:15	named-only	software/xsgi/readings/usr-gfx-arch-GENERIC-Xsgi.md#readings-usrgfxarchgenericxsgi	Readings: `usr/gfx/arch/GENERIC/Xsgi`

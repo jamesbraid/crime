@@ -355,6 +355,26 @@ Negative result, established over the same disassembly: none of the 165 `mi`, 16
 | `crmLdFmtByName..NC` | 0x595740 | Inferred (crm.so, 6.5.30): loads a video format by name, 1576 bytes. It checks the file with `stat`, builds the path with `crmMakeFileName..PB`, allocates the format record and its per-field array, reads the file with `SDBreadOpenDatabase`, applies it with `crmLoadTimingTable`, and can write the chosen format name to a startup file (fopen, fprintf, creat); each failure prints its own message. |
 | `crmSetBacklight..N` | 0x5987e0 | Inferred (crm.so, 6.5.30): drives the flat-panel backlight through ioctl 0x5213 (21011). For the off level it sends 9 with a record pointer into the solid-fill table; for the on levels it sends 1, then a mode 2 record naming a per-screen word in that table (+0x638), and for a blanked screen finishes with a zero; the per-screen blank word at 0x5a99b0 + 4 * screen + 0x5d0 selects the path. |
 
+#### Monitor status, names and channel origins (re-read 2026-11-21)
+
+The two routines above stay inferred as wholes. The statements below are graded one by one.
+
+- `crmQryMonitor` (crm.so, 0x48d410) names the monitor that `gfxinfo` prints after "Monitor Type:" from the kernel's monitor status in the board record at +0xe8 ([functions.md](../kernel/functions.md), entry `crime_validate_ddc_data`). Established from the disassembly constants at 0x48d694 to 0x48d6e4 and the strings at 0x5a34d8 to 0x5a3540; the control flow is inferred from decompiler output.
+  A flat-panel board type in board byte +0x2e (0x80 to 0x84) gives one of five panel names.
+  Status 0 keeps the default name "unknown".
+  A nonzero status with maker code 0x4cf8 or 0x4ce9 names the product (byte 11 times 256 plus byte 10): 0x1100 is "SGI-4352", 0x0100 is "SGI-256", 0x1000 is "SGI-4096", 0x1200 is "SGI-4608" and 0x2000 is "SGI-8192".
+  Another product from that maker takes the name from a text descriptor of the block, and "GDM-4011P" is renamed "SGI-512" (which descriptor is not pinned; inferred).
+  A block from any other maker is named by its three-letter maker code, a hyphen and the decimal product.
+  Nothing in it compares timings with a video format, so an unsupported display changes the name and nothing else.
+- `crmAttachXvc` (crm.so, 0x48b7e0) uses the same status for the screen's physical size. Established from the disassembly at 0x48b820 to 0x48b88c.
+  A nonzero status makes the size the block's bytes 21 and 22 times 10 mm.
+  A dual-channel screen (third argument, board byte +0x2d) doubles the height and takes a channel count of 2 instead of 1 (0x48b980 to 0x48b98c).
+- `crmAttachXvc` builds the channel records that `XSGIvcQueryChannelInfo` returns. Established from the stores at 0x48c544 to 0x48c598.
+  The records are 0x1f8 bytes each; channel 0 has enable 1 at +0, origin (0, 0) as floats at +4 and +8 and the screen height and width as floats at +0xc and +0x10.
+  For a dual-channel screen it halves the channel height, copies the record to the second slot, sets that slot's origin y to half the screen height and its field at +0x1e8 to 1.
+  `ProcSGIvcQueryChannelInfo` (`Xsgi`, 0x10138660) returns the floats rounded and `ProcSGIvcQueryVideoScreenInfo` (0x101246e0) returns the count (inferred, decompiler output).
+  A 1280 by 1024 channel on a 2048-line screen puts channel 1 at (0, 1024); the 2048 is inferred from the height doubling that `crmInit` applies before ioctl 0x560d (0x48a4c8 to 0x48a4dc).
+
 ### Bell and audio
 
 | Routine | Address | Role and derivation |

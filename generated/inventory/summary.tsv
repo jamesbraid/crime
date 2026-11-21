@@ -1,7 +1,7 @@
 table	rows	out_of_scope	understood	understood_with_open	understood_distinct	templated	located	named_only	undocumented	no_software_dependency	pct_understood	pct_located_or_better	pct_mentioned	pct_done	unresolved_sites	truncated	audited_real_pct	audited_sample	audited_date	computes	reused	multi_unit	shared_address	address_unknown	input
 binaries	82	0	81	3	77	0	1	0	0	0	98.8	100.0	100.0	98.8			100.0	20	2026-11-02		0				
-functions	15124	2156	3153	84	2980	9314	11059	912	0	0	20.8	94.0	100.0	20.8			75.0	16	2026-11-02		86	63	214	0	
-functions (distinct names)	9635	2091	2563	81	2520	6167	7071	1	0	0	26.6	100.0	100.0	26.6							42				
+functions	15124	2156	3153	85	2980	9314	11059	912	0	0	20.8	94.0	100.0	20.8			75.0	16	2026-11-02		86	63	214	0	
+functions (distinct names)	9635	2091	2563	82	2520	6167	7071	1	0	0	26.6	100.0	100.0	26.6							42				
 mmio	199	0	199	2	186	0	0	0	0	0	100.0	100.0	100.0	100.0	60		75.0	20	2026-11-02		0				
 tokens	83	0	83	3	77	0	0	0	0	0	100.0	100.0	100.0	100.0			90.0	20	2026-10-30		0				
 ioctls	42	0	42	0	31	0	0	0	0	0	100.0	100.0	100.0	100.0			100.0	10	2026-10-29		0				
@@ -19,7 +19,7 @@ functions in usr/cpu/sysgen/IP32boot/crime.a(crime_retrace.o)	29	0	29	0	29	0	0	0
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_zbuf.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_tp.o)	11	0	11	0	11	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_tiles.o)	33	0	33	0	33	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
-functions in usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	52	0	52	0	52	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
+functions in usr/cpu/sysgen/IP32boot/crime.a(crime_i2c.o)	52	0	52	1	52	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_db.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/crime.a(crime_debug.o)	2	0	2	0	2	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
 functions in usr/cpu/sysgen/IP32boot/gfx.o	57	0	57	1	57	0	0	0	0	0	100.0	100.0	100.0	100.0							0	0	0	0	
