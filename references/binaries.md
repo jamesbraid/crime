@@ -553,3 +553,7 @@ Roles are inferred from the export names unless a routine is read in full.
   The `mmap` call takes address 0, length 0x14000, protection 3, flags 1, the descriptor and offset 0 (established, constants).
   A map result of -1 calls `_vice_unit_unfind`, closes the descriptor and returns -1.
   Otherwise the routine stores the descriptor in `_vicefd` and the map address in `_vice_base`, each at 4 times the unit index, and returns the unit index (established, stores and the `move v0,s1` in a delay slot).
+
+## Review note
+
+Independent review, 2026-11-21 (not the author). Re-read: the `setmon` stereo alias table at 0x1003ee14 (five-word records; `stereo`, `str_rect` and `st492` give code 15, `str_bot` 27 and `str_top` 28, all with `1280x492_120s`), the `XSGISetStereoMode` arguments (height 0x1ec = 492, offset 0x200 = 512, modes 1 and 2, at 0x1000eff8 and 0x1000f01c) against the older routine's 0x214 = 532 at 0x1000b7dc; and the PROM sound dispatcher in the held 6.5.30 `ip32prom.image`: the link address of file offset 0x9b48 is 0x1000848, the 8-entry table at file offset 0x52694 holds valid code addresses with the documented targets, entries 0 and 1 reach the audio routine with 0, entries 3 to 5 with 1, entry 6 plays nothing and entry 7 skips the sound, and every case ends in a non-returning branch. All hold. Not re-read: the `gfxinfo` printers (0x10008754, 0x1000d54c), the stereo refusal on the second-buffer flag, and the first-stage start-up chain.

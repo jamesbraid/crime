@@ -459,3 +459,7 @@ The two routines above stay inferred as wholes. The statements below are graded 
 |---|---|---|
 | `sgiReleaseCapabilityUnsupported` | 0x560450 | Inferred (crm.so, 6.5.30): the release entry of the capability interface for a board with none to give, 28 bytes. It loads the module's error base word `nmbxErrorBase` and returns it plus 1 without any other effect. |
 | `sgiEnableCapabilityUnsupported` | 0x560470 | Inferred (crm.so, 6.5.30): the enable entry of the capability interface, the twin of the release stub. In 28 bytes it loads the error base word `nmbxErrorBase` and returns it plus 1, touching no hardware and no other state, so enabling a capability always answers not supported. |
+
+## Review note
+
+Independent review, 2026-11-21 (not the author). Re-read in `crm.so`: `crmAttachXvc` (the half-height store, the 0x1f8-byte record copy, the second record's origin y at +8 set to half the screen height and its +0x1e8 field set to 1, at 0x48c544 to 0x48c598) and `crmSetStereoMode` (532 rewritten to 512 at 0x519b28 to 0x519b40). Both hold. `crmQryMonitor`'s name table, `nfbSetStereoMode` and the screen-height inference (2048 lines) were not re-read.
