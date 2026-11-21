@@ -32,5 +32,5 @@
 | [nfb-layer.md](xsgi/nfb-layer.md) | SGI frame-buffer layer in the X module (`nfb`) | `usr/lib/X11/dyDDX/crm.so` carries 165 routines whose names begin `nfb`. |
 | [sample-server.md](xsgi/sample-server.md) | Sample-server code in the X module (`crm.so`) | Re-reading found wrong details in 30 to 49 percent of the fast-written entries, so every entry still marked... |
 | [xmodule.md](xsgi/xmodule.md) | X module functions by role | What the routines of the IRIX 6.5.30 X module `usr/lib/X11/dyDDX/crm.so` do, by group. |
-| [xsgi.md](xsgi/xsgi.md) | The X server (`Xsgi`): board bring-up and the resource-manager layer | The board-independent X server `Xsgi` (IRIX 6.5.30, `usr/gfx/arch/GENERIC/`) starts the graphics board for the board... |
+| [xsgi.md](xsgi/xsgi.md) | The X server (`Xsgi`): board bring-up and the resource-manager layer | The board-independent X server `Xsgi` (`usr/gfx/arch/GENERIC/Xsgi`) (IRIX 6.5.30, `usr/gfx/arch/GENERIC/`) starts... |
 | [xsgivc.md](xsgi/xsgivc.md) | Video-control client library (`libXsgivc.so`) | `libXsgivc.so` is the client side of the X server's video-control extension: the interface through which `gfxinit`... |

@@ -249,7 +249,7 @@ Earlier pass, 29 October 2026, reader pass 12 (audit and sample-server code). Fu
 Writing rules learned from the grader, for the next reader:
 
 - An entry counts its subject, every distinct identifier (any word with an underscore, a digit or an inner capital counts even unticked, and `OpenGL`, `IP32CRM32` and `N32` count) and every list of numbers (`0x800 and 0xc00`, `1, 2`). More than three is named-only. Write numbers apart with words between them, and keep at most two other names per table row. List-form kernel entries are counted per physical line, so callees go on continuation lines.
-- A routine that exists in two builds with different code (the N32 and o32 `libGLcore.so`) is understood only in the build the entry cites by path. Cite it as a link, `([build](../root/usr/gfx/arch/IP32CRM32/libGLcore.so))`, which names the build without adding an identifier.
+- A routine that exists in two builds with different code (the N32 and o32 `libGLcore.so`) is understood only in the build the entry cites by path. Cite it as a path, `(usr/gfx/arch/IP32CRM32/libGLcore.so)`, which names the build without adding an identifier.
 - `..` suffixed `crm.so` names (`ValidateClip..GE`) are not counted as identifiers, so they are free to use, but they do not count as a binary-plus-routine citation: give an offset or a `calls` phrase.
 - An entry that names the subject, `crm.so` and more than one other backticked routine, or a list of more than two offsets, is graded named-only: name one callee in code and describe the rest in words.
 - `unknown`, `named for`, `not shown` and the other hedges demote the whole entry. Say what was read in the entry and put an open fact in a sentence of its own.
