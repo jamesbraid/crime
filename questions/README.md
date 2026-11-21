@@ -3,24 +3,24 @@
 
 Facts no source read so far settles. No hardware is available, so every question is settled from software and published material. Each entry gives the owning file, the routes already tried and the next route to try. Answered questions move into the owning header or chapter and are deleted from here. A fact that every route leaves open is labelled "unknown: no shipped software or published source depends on it" in its owning file, with the routes listed, and leaves this file.
 
-## Triage (2026-11-01)
+## Triage (2026-11-21)
 
 Each item below carries a tag at its end: `software now` (a concrete software read or search exists), `missing release or binary` (the answer lies in a release, binary or document not in this clone), `hardware only` (only a real machine or a timing model can settle it; recorded, not scheduled), or `settled by existing result` (a Result line in [published-sources.md, section 14](../references/documents/published-sources.md#14-recollections-and-history-leads-unverified) or a tested line already answers it; confirm and remove the item).
 
-Counts, 80 items: software now 50; missing release or binary 8; hardware only 13; settled by existing result 9. Two software-now items were settled and deleted on 2026-11-10 (FIFO timeout message order, tile clearing on allocation); six more carry a "Partly settled" note. Four more were settled and deleted later that day (the media library slot leak, the public drivers' tile-pointer shift, the 32-bit O2 restriction and the module-PROM configuration read); two were narrowed (the DMbuffer cache question and the two A/V board setup routines). On 2026-11-11 six settled-by-existing-result items were closed (section below) and seven software-now items were answered and deleted (the VICE MPEG-2 programs, the DVD names, the translation groups, the antialias table, the SDRAM refresh and CAS timing, the DMbuffer cache coherence and the `crmInitHW..HB` argument); the counts above are the 2026-11-01 figures.
+Counts on 2026-11-21: 59 tagged items, software now 38 (the six priority items and 32 others), missing release or binary 7, hardware only 14. No item carries the settled tag any more. Two software-now items were settled and deleted on 2026-11-10 (FIFO timeout message order, tile clearing on allocation); six more carry a "Partly settled" note. Four more were settled and deleted later that day (the media library slot leak, the public drivers' tile-pointer shift, the 32-bit O2 restriction and the module-PROM configuration read); two were narrowed (the DMbuffer cache question and the two A/V board setup routines). On 2026-11-11 six settled-by-existing-result items were closed (section below) and seven software-now items were answered and deleted (the VICE MPEG-2 programs, the DVD names, the translation groups, the antialias table, the SDRAM refresh and CAS timing, the DMbuffer cache coherence and the `crmInitHW..HB` argument); the counts above are the 2026-11-01 figures.
 
 Method and limits: each item was read with its cited evidence, meaning the lead's Result line in section 14 and the chapter it cites, and each cited binary was checked for presence in this clone. The binaries were not reopened item by item, so the tags rest on the cited evidence. Nothing listed as a software step has been run; the items answered in the 2026-11-01 pass (tile no-ECC flag, audio DMA ring, CPU error status bit 2, FIFO control word, and eight settled leads) were run and moved into the owning chapters.
 
 ### Software now, in priority order
 
-3. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
-4. **Video driver routines.** `mvptransfer_interrupt`, the one `mvp.o` routine still named only (`av1_setup` and `av2_setup` were read 2026-11, see [functions.md](../software/kernel/functions.md)).
-5. **o32 `DrawMode` and `Primitive` words** in `ClearCI`, `ClearRGBA`, `ClearStencil` and `crmCopyPixelsXfer`.
-6. **Stereo, four-buffer and framebuffer-depth gating.** Static tables decoded 2026-11 ([xmodule.md](../software/xsgi/xmodule.md#glx-capability-tables-crmso)); what is left is whether the server edits the stereo entries at run time (the test is in that section).
-7. **MVP zoom limit and 10-bit packing.** Read the `VL_MVP_ZOOMSIZE` handler and the 10-bit converter in `mvp.so`.
-8. **Chime routine in the PROM image.** Located 2026-11 ([binaries.md](../references/binaries.md), audio output in the PROM paragraph); what is left is which of its eleven sounds the power-on path plays.
+1. **MACE framelock and genlock, and the PAL filter ratio.** Read the register writes in `mvp.o`, `mvp.so` and `libXsgivc.so`.
+2. **Video driver routines.** `mvptransfer_interrupt`, the one `mvp.o` routine still named only (`av1_setup` and `av2_setup` were read 2026-11, see [functions.md](../software/kernel/functions.md)).
+3. **o32 `DrawMode` and `Primitive` words** in `ClearCI`, `ClearRGBA`, `ClearStencil` and `crmCopyPixelsXfer`.
+4. **Stereo, four-buffer and framebuffer-depth gating.** Static tables decoded 2026-11 ([xmodule.md](../software/xsgi/xmodule.md#glx-capability-tables-crmso)); what is left is whether the server edits the stereo entries at run time (the test is in that section).
+5. **MVP zoom limit and 10-bit packing.** Read the `VL_MVP_ZOOMSIZE` handler and the 10-bit converter in `mvp.so`.
+6. **Chime routine in the PROM image.** Located 2026-11 ([binaries.md](../references/binaries.md), audio output in the PROM paragraph); what is left is which of its eleven sounds the power-on path plays.
 
-The other 44 software-now items follow in file order, each with its step inline.
+The other 32 software-now items follow in file order, each with its step inline; six of them sit in the later driver-routine sections.
 
 ### Found while triaging
 
