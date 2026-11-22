@@ -2379,72 +2379,63 @@
    "name": "depth_func.func",
    "hi": 27,
    "lo": 25,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.never",
    "value": 0,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.less",
    "value": 1,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.equal",
    "value": 2,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.lequal",
    "value": 3,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.greater",
    "value": 4,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.notequal",
    "value": 5,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.gequal",
    "value": 6,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",
    "kind": "enum_value",
    "name": "depth_func.func.always",
    "value": 7,
-   "grade": "inferred",
-   "from": "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
+   "grade": "inferred"
   },
   {
    "unit": "re",

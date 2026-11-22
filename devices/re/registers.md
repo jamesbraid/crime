@@ -595,7 +595,7 @@ meaning.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 27:25 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Depth comparison. The codes follow the GL order from NEVER (0) to ALWAYS (7). The driver writes the GL function minus GL_NEVER. Codes are a software expectation, not a measured chip encoding. |
+| 27:25 | `func` | inferred | never=0, less=1, equal=2, lequal=3, greater=4, notequal=5, gequal=6, always=7 |  | Depth comparison. The codes follow the GL order from NEVER (0) to ALWAYS (7). The driver writes the GL function minus GL_NEVER. Codes are a software expectation, not a measured chip encoding. |
 | 24 | `tag_clear` | unknown |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | The driver sets this bit on its tagged-clear path (devices/re/pixel-arithmetic.md). What the engine does with it is unknown: no shipped software or published source depends on more than that use. |
 | 23:0 | `clear` | established |  | published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings | Clear depth in 24-bit depth-buffer units, computed by the driver from glClearDepth with truncation (devices/re/pixel-arithmetic.md). |
 

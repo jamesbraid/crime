@@ -235,7 +235,7 @@ Interrupt status bit positions, from the CRIME 1.5 specification's Table 5-5 (PD
 | `IP6_CAUSES` | 0x40300080 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | INTBIT bits on IP6: CPU SysCorErr (30), memory error (21), CPU interface error (20), MACE PCI error (7) |
 | `IRQ_MACE_ISA_A` | 0x4 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | MACE ISA interrupt input; the shipped IRIX kernel registers 4 or 5. |
 | `IRQ_MACE_ISA_B` | 0x5 | established | shipped IRIX O2 graphics objects, per kudzu docs/crime.md | MACE ISA interrupt input; the shipped IRIX kernel registers 4 or 5. |
-| `LINE_MATCH_LATCHES` | 0x4 | inferred | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | Line-match interrupts that latch in CRIME; only software clears them there. |
+| `LINE_MATCH_LATCHES` | 0x4 | inferred |  | Line-match interrupts that latch in CRIME; only software clears them there. |
 | `MACE_WINDOW_ADDR` | 0x18000000 | inferred | published CRIME 1.5 draft specification (rev 0.3), PDF pages 47-52 | Start of the MACE window, which runs to 0x1fffffff. |
 | `MEM_BANKS` | 0x8 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | memory bank control registers |
 | `MEM_BANK_CONTROL_RESET_BASE` | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | reset of bank 0 |
