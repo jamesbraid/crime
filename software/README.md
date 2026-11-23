@@ -10,6 +10,7 @@
 | [diagnostic-messages.md](kernel/diagnostic-messages.md) | CRIME, MACE and GBE diagnostic messages | Text the O2 graphics kernel code prints, or passes to its error reporter, and where each message is printed. |
 | [functions.md](kernel/functions.md) | Functions by role | What each routine of the IRIX 6.5.30 graphics kernel objects does, grouped by what it serves. |
 | [ioctls.md](kernel/ioctls.md) | Graphics ioctl interface (IRIX 6.5.30, O2) | The requests the kernel graphics driver accepts and the requests libGLcore and the X module send. |
+| [memory-banks.md](kernel/memory-banks.md) | How the IRIX 6.5.30 IP32 kernel reads the CRIME memory bank registers | The kernel never programs the eight bank controls. The PROM does that before the kernel loads. |
 | [r5000.md](kernel/r5000.md) | The IRIX 6.5.30 kernel on an O2 with an R5000: Config, clock, caches, TLB and CPU-keyed CRIME programming | The IP32 kernel decides what to do from the CP0 PRId implementation byte, reads a handful of Config fields once at... |
 | [reset.md](kernel/reset.md) | Rendering engine initialisation and error recovery, and the kernel's use of the memory transfer engine | What the IRIX 6.5.30 kernel writes to bring the rendering engine to a known state, how it recovers after an engine... |
 
