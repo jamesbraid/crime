@@ -10,6 +10,7 @@ The values are in [registers.toml](registers.toml), each graded and sourced, and
 
 - [Rendering engine: ordinary 2D drawing](de-2d-drawing.md)
 - [Rendering TLB formats](memory.md)
+- [Clip-ID plane and the ClipMode clip-ID test](clip-id.md)
 - [Pixel arithmetic: depth, blending and texel filtering](pixel-arithmetic.md)
 - [CRIME_RE.h, the annotated header](CRIME_RE.h)
 
