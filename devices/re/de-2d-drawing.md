@@ -125,12 +125,42 @@ unknown, as in [AGENTS.md](../../AGENTS.md).
 - Established ([spec] PDF 173): each screen mask has an enable bit and a mode
   bit. A mode bit of 1 passes pixels inside the mask, and 0 passes pixels
   outside it.
-- Conflict: the specification's table puts mask 0 at enable bit 9 and mode bit
-  4, and mask 4 at enable bit 5 and mode bit 0. The kernel sets bit 5 plus i and
-  bit i for rectangle i ([software/kernel/context.md](../../software/kernel/context.md)), which is the reverse
-  order. Which order the engine uses is unknown.
-- Unknown: how the engine combines several enabled masks. The specification
-  states the per-mask test and not the combination.
+- Conflict, settled by the shipped software as an expectation: the
+  specification's ClipMode table (PDF 173, Table 7-6) puts the enable for mask 0
+  at bit 9 and for mask 4 at bit 5, with the inside-select for mask 0 at bit 4
+  and for mask 4 at bit 0, and its register map labels all five ScrMask rows
+  "screen mask 0". Both writers of the word in shipped software pair the
+  registers the other way round: the register at `+0x2020` goes with enable bit
+  5 and inside-select bit 0, `+0x2028` with bits 6 and 1, up to `+0x2040` with
+  bits 9 and 4. Established as what shipped software writes: the X server's
+  `crmSetSmask` (`crm.so` `0x58a930`) stores one to five masks from `+0x2020`
+  upward (count 1 writes only `+0x2020`) and then ClipMode from a six-entry
+  table at `0x5a2400` (`0x0`, `0x21`, `0x63`, `0xe7`, `0x1ef`, `0x3ff`), and the
+  kernel's `crimeValidateClip` (`crime.o` `0x21b0`, ClipMode store at `0x23a4`)
+  builds the same words for the same registers. libGLcore never writes ClipMode
+  or a screen mask (no store to `+0x2010`, `+0x2020` to `+0x2040` or their start
+  aliases in the N32 disassembly, the o32 build not scanned; the kernel's swap
+  code writes ClipMode 0).
+- Inferred (engine behaviour): the engine pairs the bits as the software does.
+  With the specification's order a one-rectangle window would enable mask 4 (the
+  register at `+0x2040`, which neither writer touched for a count of 1) and
+  test pixels against a stale rectangle, so every single-rectangle window
+  would fail. The spec table's numbering therefore runs opposite to the
+  register order, or its bit labels are mirrored; an emulator that follows the
+  register order of the shipped software (enable bit `5 + i` and inside-select
+  bit `i` for the register at `+0x2020 + 8i`) matches both writers. No shipped
+  code distinguishes the two orders for any word with a gap (an enabled mask
+  above a disabled one), so the whole inference rests on the contiguous words
+  the software writes.
+- Inferred (combination, software expectation): enabled masks combine as a
+  union for the inside-select case. A window's clip list is a set of
+  non-overlapping rectangles, the X server and kernel load up to five of them
+  as separate masks with every inside-select bit set, and the window must
+  show every rectangle; an intersection of masks would draw nothing for two
+  disjoint rectangles. Windows with more than five rectangles use the clip-ID
+  plane (ClipMode bit 11, words `0x800` and `0xc00`) instead. Unknown: how
+  outside-select (mode bit 0) masks combine, with each other and with inside
+  ones; no shipped software sets one.
 
 ## What is not here
 
