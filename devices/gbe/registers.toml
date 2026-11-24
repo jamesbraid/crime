@@ -1,41 +1,60 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "gbe"
 prefix = "GBE"
+name_source = "ours"
 title = "O2 GBE display back end register words"
 doc = "GBE display back end register words, tables and offsets."
 from = "published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings"
 public_from = ["published GBE 1.1 specification", "shipped IRIX"]
 
-[words.CMAP_ENTRY]
+[registers.cmap]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x50000
+access = "rw"
+count = 4608
+stride = 0x4
 width = 32
 grade = "established"
 
-[words.CMAP_ENTRY.fields]
+[registers.cmap.fields]
 r = { bits = [31, 24], grade = "established" }
 g = { bits = [23, 16], grade = "established" }
 b = { bits = [15, 8], grade = "established" }
 
-[[words.CMAP_ENTRY.tests]]
+[[registers.cmap.tests]]
 value = 0xff804000
 expect = { r = 255, g = 128, b = 64 }
 
-[words.CMAP_FIFO]
+[registers.cmap_fifo]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x58000
+access = "rw"
 width = 32
 grade = "established"
 
-[words.CMAP_FIFO.fields]
+[registers.cmap_fifo.fields]
 free = { bits = [5, 0], grade = "established" }
 
-[words.CRS_CTL]
+[registers.crs_ctl]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x70004
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX text port writes 1 after the glyph and colours are loaded; what the other bits mean there is unknown."
 
-[words.CRS_CTL.fields]
+[registers.crs_ctl.fields]
 enable = { bits = [0, 0], grade = "established" }
 crosshair = { bits = [1, 1], grade = "established" }
 
-[words.CRS_POS]
+[registers.crs_pos]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x70000
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -43,20 +62,24 @@ Cursor position, CRS_0. The table gives 16-bit X in bits 15:0 and Y in bits 31:1
 reset zero. The spec's functional text (pp. 20-22) calls positions 12-bit, and NetBSD
 treats the fields as signed. Width and signedness are unresolved. The shipped IRIX text port writes 0 at set-up."""
 
-[words.CRS_POS.fields]
+[registers.crs_pos.fields]
 x = { bits = [15, 0], grade = "established" }
 y = { bits = [31, 16], grade = "established" }
 
-[words.CRS_START_XY]
+[registers.crs_start_xy]
+offset = 0x10048
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel writes the same vertical part as DID_START_XY, with one line added (0x1000), and the horizontal blank end minus 54 with total pixels added when that is negative; the 54 is a kernel constant. The placement of the parts follows the fields here (inferred)."
 
-[words.CRS_START_XY.fields]
+[registers.crs_start_xy.fields]
 starty = { bits = [23, 12], grade = "established" }
 startx = { bits = [11, 0], grade = "established" }
 
-[words.CTRLSTAT]
+[registers.ctrlstat]
+offset = 0x0
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -66,7 +89,7 @@ is an input. Bit 4 is the monitor sense pin, an external read-only input whose
 polarity and wiring are not established. Bits 26 (half-phase) and 27 (composite
 sync polarity) reset to zero. Bits 3:0 are the chip revision, read-only."""
 
-[words.CTRLSTAT.fields]
+[registers.ctrlstat.fields]
 monitor_sense = { bits = [4, 4], grade = "established" }
 half_phase = { bits = [26, 26], grade = "established" }
 csync_polarity = { bits = [27, 27], grade = "established" }
@@ -92,37 +115,43 @@ io0_oe_n = { bits = [7, 7], grade = "established" }
 io0_data = { bits = [6, 6], grade = "established" }
 chip_rev = { bits = [3, 0], grade = "established" }
 
-[words.CTRLSTAT.fields.pclk_select]
+[registers.ctrlstat.fields.pclk_select]
 bits = [29, 28]
 grade = "established"
 
-[words.CTRLSTAT.fields.pclk_select.enums]
+[registers.ctrlstat.fields.pclk_select.enums]
 external = { value = 0, grade = "established" }
 differential = { value = 1, grade = "established" }
 internal = { value = 3, grade = "established" }
 
-[[words.CTRLSTAT.tests]]
+[[registers.ctrlstat.tests]]
 value = 0x30000000
 expect = { pclk_select = 3, chip_rev = 0 }
 
-[[words.CTRLSTAT.tests]]
+[[registers.ctrlstat.tests]]
 value = 0x10000000
 expect = { pclk_select = 1, chip_rev = 0 }
 
-[words.DID_CONTROL]
+[registers.did_control]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x40004
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX stop routine tests the enable bit at entry, clears it and leaves the word otherwise unwritten; the kernel never writes the table address field."
 
-[words.DID_CONTROL.fields]
+[registers.did_control.fields]
 dma_enable = { bits = [16, 16], grade = "established" }
 did_base = { bits = [15, 0], grade = "established" }
 
-[[words.DID_CONTROL.tests]]
+[[registers.did_control.tests]]
 value = 0x10005
 expect = { did_base = 5, dma_enable = 1 }
 
 [words.DID_FRAME]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
 width = 32
 grade = "established"
 doc = "The shipped IRIX X module packs a frame entry as block << 19 | offset << 11 | yend, one per horizontal band of lines."
@@ -132,11 +161,13 @@ block = { bits = [25, 19], grade = "established" }
 offset = { bits = [18, 11], grade = "established" }
 yend = { bits = [10, 0], grade = "established" }
 
-[words.DID_INHWCTRL]
+[registers.did_inhwctrl]
+offset = 0x40000
+access = "rw"
 width = 32
 grade = "established"
 
-[words.DID_INHWCTRL.fields]
+[registers.did_inhwctrl.fields]
 dma_enable = { bits = [16, 16], grade = "established" }
 did_base = { bits = [15, 0], grade = "established" }
 
@@ -150,16 +181,20 @@ notes = "The kernel reading treats a line-table entry as 16 bits wide; this word
 did = { bits = [15, 11], grade = "established" }
 xend = { bits = [10, 0], grade = "established" }
 
-[words.DID_START_XY]
+[registers.did_start_xy]
+offset = 0x10044
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel writes a vertical part of minus (vertical blank start minus vertical blank end minus 1) when that difference is positive, else the difference, masked to 12 bits, and a horizontal part of the horizontal blank end minus 20 (total pixels added when the blank end is below 20). The bit placement of the two parts is not stated by the kernel and follows the fields here."
 
-[words.DID_START_XY.fields]
+[registers.did_start_xy.fields]
 starty = { bits = [23, 12], grade = "established" }
 startx = { bits = [11, 0], grade = "established" }
 
-[words.DOTCLOCK]
+[registers.dotclock]
+offset = 0x4
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -168,7 +203,7 @@ reset contents unspecified, and the spec gives no PLL lock time or frequency lim
 Bits 25:24 are the PLL test inputs tdwni and tupi, described only as their normal
 operation state, with reset zero ([gbe-spec] p. 36). The shipped IRIX kernel clears the run bit, writes the timing words, then writes this word with the run bit set and waits 11 milliseconds (DOTCLK_SETTLE_MS). It stores M minus one, N minus one and P unchanged. What the run bit does in the hardware is inferred; the specification leaves it undefined."""
 
-[words.DOTCLOCK.fields]
+[registers.dotclock.fields]
 out_of_lock = { bits = [23, 23], grade = "established" }
 out_of_range = { bits = [22, 22], grade = "established" }
 test = { bits = [25, 24], grade = "established" }
@@ -177,24 +212,32 @@ p = { bits = [15, 14], grade = "established" }
 n_minus_1 = { bits = [13, 8], grade = "established" }
 m_minus_1 = { bits = [7, 0], grade = "established" }
 
-[[words.DOTCLOCK.tests]]
+[[registers.dotclock.tests]]
 value = 0x100000
 expect = { run = 1, p = 0 }
 
-[words.FP_DE]
+[registers.fp_de]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x10030
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX timing routine writes it only for the default set-up and panel set-ups 130 and 131, and only when no dual-channel option is fitted."
 
-[words.FP_DE.fields]
+[registers.fp_de.fields]
 on = { bits = [23, 12], grade = "established" }
 off = { bits = [11, 0], grade = "established" }
 
-[[words.FP_DE.tests]]
+[[registers.fp_de.tests]]
 value = 0x303326
 expect = { off = 806, on = 771 }
 
-[words.FP_HDRV]
+[registers.fp_hdrv]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x10028
+access = "rw"
 width = 32
 doc = """
 The three flat-panel drive registers and the three start-preset registers
@@ -208,71 +251,87 @@ look like line counts, not pixel counts (inferred from magnitude); which
 counter FP_DE really uses is unknown. The value the shipped IRIX timing routine writes depends on the board's panel set-up byte and on whether a dual-channel option is fitted."""
 grade = "established"
 
-[words.FP_HDRV.fields]
+[registers.fp_hdrv.fields]
 on = { bits = [23, 12], grade = "established" }
 off = { bits = [11, 0], grade = "established" }
 
-[[words.FP_HDRV.tests]]
+[[registers.fp_hdrv.tests]]
 value = 0xfff
 expect = { off = 4095, on = 0 }
 
-[words.FP_VDRV]
+[registers.fp_vdrv]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x1002c
+access = "rw"
 width = 32
 grade = "established"
 doc = "The value the shipped IRIX timing routine writes depends on the board's panel set-up byte and on whether a dual-channel option is fitted."
 
-[words.FP_VDRV.fields]
+[registers.fp_vdrv.fields]
 on = { bits = [23, 12], grade = "established" }
 off = { bits = [11, 0], grade = "established" }
 
-[[words.FP_VDRV.tests]]
+[[registers.fp_vdrv.tests]]
 value = 0x1fff
 expect = { off = 4095, on = 1 }
 
-[words.FRM_CONTROL]
+[registers.frm_control]
+offset = 0x3000c
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX stop routine saves it, clears its enable bit, and later writes it back with its pointer field bumped by one unit."
 
-[words.FRM_CONTROL.fields]
+[registers.frm_control.fields]
 tile_list_ptr = { bits = [31, 5], grade = "established" }
 dma_enable = { bits = [0, 0], grade = "established" }
 
-[words.FRM_INHWCTRL]
+[registers.frm_inhwctrl]
+offset = 0x30008
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX start-up sequence polls bit 0 until it equals bit 0 of the value it has just written to the frame control word."
 
-[words.FRM_INHWCTRL.fields]
+[registers.frm_inhwctrl.fields]
 dma_enable = { bits = [0, 0], grade = "established" }
 
-[words.FRM_SIZE_PIXEL]
+[registers.frm_size_pixel]
+offset = 0x30004
+access = "rw"
 width = 32
 grade = "established"
 doc = "Frame height in pixels, shared by the normal and overlay planes. Reset zero."
 
-[words.FRM_SIZE_PIXEL.fields]
+[registers.frm_size_pixel.fields]
 height = { bits = [31, 16], grade = "established" }
 
-[words.FRM_SIZE_TILE]
+[registers.frm_size_tile]
+offset = 0x30000
+access = "rw"
 width = 32
 grade = "established"
 
-[words.FRM_SIZE_TILE.fields]
+[registers.frm_size_tile.fields]
 fifo_reset = { bits = [15, 15], grade = "established" }
 width_tiles = { bits = [12, 5], grade = "established" }
 remainder = { bits = [4, 0], grade = "established" }
 
-[words.FRM_SIZE_TILE.fields.depth]
+[registers.frm_size_tile.fields.depth]
 bits = [14, 13]
 grade = "established"
 
-[words.FRM_SIZE_TILE.fields.depth.enums]
+[registers.frm_size_tile.fields.depth.enums]
 bits8 = { value = 0, grade = "established" }
 bits16 = { value = 1, grade = "established" }
 bits32 = { value = 2, grade = "established" }
 
-[words.I2C]
+[registers.i2c]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x8
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -284,11 +343,15 @@ active. That is a software expectation (inferred), and the register table alone 
 not say whether writing 1 releases a line. Whether the reset value 1 means released
 is therefore not established."""
 
-[words.I2C.fields]
+[registers.i2c.fields]
 sda = { bits = [0, 0], grade = "established" }
 sdc = { bits = [1, 1], grade = "established" }
 
-[words.I2CFP]
+[registers.i2cfp]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -296,26 +359,30 @@ Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both r
 to 1. The spec places external pullups on the flat-panel clock and data outputs
 (page 4). The inverted-convention caveat under I2C applies here too."""
 
-[words.I2CFP.fields]
+[registers.i2cfp.fields]
 sda = { bits = [0, 0], grade = "established" }
 sdc = { bits = [1, 1], grade = "established" }
 
-[words.MODE_ENTRY]
+[registers.wid]
+offset = 0x48000
+access = "rw"
+count = 32
+stride = 0x4
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel rejects window indices of 32 or more and writes entry 0 with 3 at text-port set-up. Its compare mask (0x7fc) leaves the auxiliary field out, and it clears the gamma disable bit before a write when the alternative gamma table is in use. Buffer code: 3 buffers both, 0 marks the window to be skipped by the buffer flip, 1 and 2 exchange on a swap. Pixel type: 0 indexed 8-bit, 1 indexed 12-bit, 2 RG3B2, 4 RGB5, 5 RGB8. The colour-map group's first entry is the group value times 256."
 notes = "The kernel reading called the fields aux, gamma_disable, map_group, type and buf for aux, gm, cm, typ and buf here, and graded its bit positions for aux, map_group, type and buf inferred from table values and the compare mask; the specification places all five established, so the positions here stand."
 
-[words.MODE_ENTRY.fields]
+[registers.wid.fields]
 aux = { bits = [12, 11], grade = "established" }
 gm = { bits = [10, 10], grade = "established" }
 cm = { bits = [9, 5], grade = "established" }
 
-[words.MODE_ENTRY.fields.typ]
+[registers.wid.fields.typ]
 bits = [4, 2]
 grade = "established"
 
-[words.MODE_ENTRY.fields.typ.enums]
+[registers.wid.fields.typ.enums]
 i8 = { value = 0, grade = "established" }
 i12 = { value = 1, grade = "established" }
 rg3b2 = { value = 2, grade = "established" }
@@ -325,47 +392,55 @@ rgb8 = { value = 5, grade = "established" }
 rgba5 = { value = 6, grade = "established" }
 rgb10 = { value = 7, grade = "established" }
 
-[words.MODE_ENTRY.fields.buf]
+[registers.wid.fields.buf]
 bits = [1, 0]
 grade = "established"
 
-[words.MODE_ENTRY.fields.buf.enums]
+[registers.wid.fields.buf.enums]
 lower = { value = 1, grade = "established" }
 upper = { value = 2, grade = "established" }
 both = { value = 3, grade = "established" }
 
-[[words.MODE_ENTRY.tests]]
+[[registers.wid.tests]]
 value = 0x41
 expect = { buf = 1, typ = 0, cm = 2 }
 
-[words.OVR_CONTROL]
+[registers.ovr_control]
+offset = 0x20008
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX stop routine clears its enable bit and leaves the word otherwise unwritten; reading the enable as a DMA enable is inferred."
 
-[words.OVR_CONTROL.fields]
+[registers.ovr_control.fields]
 tile_list_ptr = { bits = [31, 5], grade = "established" }
 dma_enable = { bits = [0, 0], grade = "established" }
 
-[words.OVR_INHWCTRL]
+[registers.ovr_inhwctrl]
+offset = 0x20004
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX start-up sequence polls bit 0 until it equals bit 0 of the value it has just written to the overlay control word."
 
-[words.OVR_INHWCTRL.fields]
+[registers.ovr_inhwctrl.fields]
 dma_enable = { bits = [0, 0], grade = "established" }
 
-[words.OVR_WIDTH_TILE]
+[registers.ovr_width_tile]
+offset = 0x20000
+access = "rw"
 width = 32
 grade = "established"
 doc = "Overlay width must be a multiple of 32 pixels, so the 32-byte remainder is whole pixels at 8 bits (GBE 1.1 pp. 13-14)."
 
-[words.OVR_WIDTH_TILE.fields]
+[registers.ovr_width_tile.fields]
 fifo_reset = { bits = [13, 13], grade = "established" }
 width_tiles = { bits = [12, 5], grade = "established" }
 remainder = { bits = [4, 0], grade = "established" }
 
-[words.SYSCLK]
+[registers.sysclk]
+offset = 0xc
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -373,13 +448,13 @@ System PLL test controls, gains and divider ([gbe-spec] p. 37). Bits 1:0 are tdw
 tupi and bits 3:2 tm(1) and tm(0), described as normal operation states; the field
 below spans all four. Reset has bit 3 set and every other defined bit zero."""
 
-[words.SYSCLK.fields]
+[registers.sysclk.fields]
 tm = { bits = [3, 0], grade = "established" }
 voltage_gain = { bits = [9, 8], grade = "established" }
 current_gain = { bits = [11, 10], grade = "established" }
 divider = { bits = [14, 12], grade = "established" }
 
-[[words.SYSCLK.tests]]
+[[registers.sysclk.tests]]
 value = 0x8
 expect = { tm = 8 }
 
@@ -390,40 +465,52 @@ grade = "established"
 [words.TILE_LIST_ENTRY.fields]
 tile = { bits = [12, 0], grade = "established" }
 
-[words.VC_0]
+[registers.vc_0]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x80000
+access = "rw"
 width = 32
 grade = "established"
 
-[words.VC_0.fields]
+[registers.vc_0.fields]
 right = { bits = [23, 12], grade = "established" }
 left = { bits = [11, 0], grade = "established" }
 
-[words.VC_1]
+[registers.vc_1]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x80004
+access = "rw"
 width = 32
 grade = "established"
 
-[words.VC_1.fields]
+[registers.vc_1.fields]
 bottom = { bits = [23, 12], grade = "established" }
 top = { bits = [11, 0], grade = "established" }
 
-[words.VC_2]
+[registers.vc_2]
+offset = 0x80008
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX video driver clears VC_0 to VC_3 (written as zero when a capture path stops); bit 0 of VC_2 enabling DMA is inferred from its start routine."
 
-[words.VC_2.fields]
+[registers.vc_2.fields]
 cs_bypass = { bits = [4, 4], grade = "established" }
 full_screen = { bits = [3, 3], grade = "established" }
 auto_field = { bits = [2, 2], grade = "established" }
 flicker_filter = { bits = [1, 1], grade = "established" }
 dma_enable = { bits = [0, 0], grade = "established" }
 
-[words.VC_3]
+[registers.vc_3]
+offset = 0x8000c
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX video driver clears it when a capture path stops and holds a path byte in it; that reading is inferred from the start routine."
 
-[words.VC_3.fields]
+[registers.vc_3.fields]
 descr_ptr = { bits = [31, 5], grade = "established" }
 current_field = { bits = [4, 4], grade = "established" }
 end_of_field = { bits = [3, 3], grade = "established" }
@@ -431,24 +518,32 @@ field_corrupt = { bits = [2, 2], grade = "established" }
 descr_dma_enable = { bits = [1, 1], grade = "established" }
 field_select = { bits = [0, 0], grade = "established" }
 
-[words.VC_START_XY]
+[registers.vc_start_xy]
+offset = 0x1004c
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel writes the same vertical part as DID_START_XY without the extra line, and the horizontal blank end minus 4. The placement of the parts follows the fields here (inferred)."
 
-[words.VC_START_XY.fields]
+[registers.vc_start_xy.fields]
 starty = { bits = [23, 12], grade = "established" }
 startx = { bits = [11, 0], grade = "established" }
 
-[words.VC_TILES]
+[registers.vc_tiles]
+offset = 0x80010
+access = "rw"
+count = 5
+stride = 0x4
 width = 32
 grade = "established"
 
-[words.VC_TILES.fields]
+[registers.vc_tiles.fields]
 tile_first = { bits = [31, 16], grade = "established" }
 tile_second = { bits = [15, 0], grade = "established" }
 
-[words.VT_F2RF_LOCK]
+[registers.vt_f2rf_lock]
+offset = 0x1001c
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -457,58 +552,82 @@ line where the left/right synchronisation signal toggles, in bits 11:0 and vt_fr
 line vt_y is preset to on a frame-lock edge, in bits 23:12, and gives both a reset of zero. The shipped IRIX timing routine stores the vertical blank start line in the high field, and repeats it in the low field when the frame-lock flag bits (mask 0x12) of its timing record are set, else 0xfff."""
 notes = "The kernel reading called the fields blank_start and low and the word VT_7; the word's use as a frame-lock position is the specification's. The two readings put the same value in the high field. Names kept as the specification gives them."
 
-[words.VT_F2RF_LOCK.fields]
+[registers.vt_f2rf_lock.fields]
 stereo_toggle_y = { bits = [11, 0], grade = "established" }
 frame_lock_y = { bits = [23, 12], grade = "established" }
 
-[words.VT_HBLANK]
+[registers.vt_hblank]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10014
+access = "rw"
 width = 32
 grade = "established"
 doc = "Horizontal blanking turns off and on at these pixel counts (VT_5). The shipped IRIX timing routine stores it in the interlace case and when no dual-channel option is fitted, packing the active width in the high field and 0xfff in the low field."
 
-[words.VT_HBLANK.fields]
+[registers.vt_hblank.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_HPIXEN]
+[registers.vt_hpixen]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10034
+access = "rw"
 width = 32
 grade = "established"
 doc = """
 Horizontal pixel-enable window, VT_13. The spec prose says the horizontal and vertical
 enables combine with OR. The table does not settle that rule. The shipped IRIX kernel parks 0xffffff here before the frame buffer is set up and writes it last in the start-up sequence: the high field is the horizontal blank end minus 0x13 (total pixels added first when that is negative), the low field is (active width + that value - 2) modulo total pixels."""
 
-[words.VT_HPIXEN.fields]
+[registers.vt_hpixen.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_HSYNC]
+[registers.vt_hsync]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x1000c
+access = "rw"
 width = 32
 grade = "established"
 doc = "Horizontal sync turns off and on at these pixel counts (VT_3)."
 
-[words.VT_HSYNC.fields]
+[registers.vt_hsync.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_VBLANK]
+[registers.vt_vblank]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10010
+access = "rw"
 width = 32
 grade = "established"
 doc = "Vertical blanking turns off and on at these lines (VT_4). The shipped IRIX timing routine stores it in the interlace case and when no dual-channel option is fitted, packing the active height in the high field and 0xfff in the low field."
 
-[words.VT_VBLANK.fields]
+[registers.vt_vblank.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_VPIXEN]
+[registers.vt_vpixen]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10038
+access = "rw"
 width = 32
 grade = "established"
 doc = "Vertical pixel-enable window, VT_14. The shipped IRIX kernel parks 0xffffff here and writes it last in the start-up sequence with the vertical blank end in the high field and the vertical blank start in the low field."
 
-[words.VT_VPIXEN.fields]
+[registers.vt_vpixen.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_VSYNC]
+[registers.vt_vsync]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10008
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -516,11 +635,13 @@ Vertical sync turns off and on at these lines (VT_2). The page 38 text for the o
 row repeats the off comparator, so the positions are established but that description
 is not."""
 
-[words.VT_VSYNC.fields]
+[registers.vt_vsync.fields]
 off = { bits = [11, 0], grade = "established" }
 on = { bits = [23, 12], grade = "established" }
 
-[words.VT_FLAGS]
+[registers.vt_flags]
+offset = 0x10018
+access = "rw"
 width = 32
 grade = "established"
 doc = """
@@ -529,7 +650,7 @@ every bit and gives all of them a reset of zero: vsync invert, vsync forced low,
 invert, hsync forced low, composite sync forced high (4) or low (5), and left/right
 signal forced high (6). The shipped IRIX timing routine reads it, clears bits 1 and 7, and ORs in 0 or 2 for the board's panel set-up byte 132. What bit 1 does to the hardware is unknown. The value is undefined when the option lookup that feeds it fails."""
 
-[words.VT_FLAGS.fields]
+[registers.vt_flags.fields]
 sync_low = { bits = [5, 5], grade = "established" }
 vertical_invert = { bits = [0, 0], grade = "established" }
 vertical_forced_low = { bits = [1, 1], grade = "established" }
@@ -538,62 +659,120 @@ horizontal_forced_low = { bits = [3, 3], grade = "established" }
 composite_sync_high = { bits = [4, 4], grade = "established" }
 stereo_forced_high = { bits = [6, 6], grade = "established" }
 
-[words.VT_HCMAP]
+[registers.vt_hcmap]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x1003c
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel writes the horizontal blank window: start in the high field, end in the low field, in pixels."
 
-[words.VT_HCMAP.fields]
+[registers.vt_hcmap.fields]
 on = { bits = [23, 12], grade = "established" }
 off = { bits = [11, 0], grade = "established" }
 
-[words.VT_INTR01]
+[registers.vt_intr01]
+offset = 0x10020
+access = "rw"
 width = 32
 grade = "established"
 
-[words.VT_INTR01.fields]
+[registers.vt_intr01.fields]
 line0 = { bits = [23, 12], grade = "established" }
 line1 = { bits = [11, 0], grade = "established" }
 
-[words.VT_INTR23]
+[registers.vt_intr23]
+offset = 0x10024
+access = "rw"
 width = 32
 grade = "established"
 
-[words.VT_INTR23.fields]
+[registers.vt_intr23.fields]
 line2 = { bits = [23, 12], grade = "established" }
 line3 = { bits = [11, 0], grade = "established" }
 
-[words.VT_VCMAP]
+[registers.vt_vcmap]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x10040
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX kernel writes the vertical blank window: start in the high field, end in the low field, in lines."
 
-[words.VT_VCMAP.fields]
+[registers.vt_vcmap.fields]
 on = { bits = [23, 12], grade = "established" }
 off = { bits = [11, 0], grade = "established" }
 
-[words.VT_XY]
+[registers.vt_xy]
+offset = 0x10000
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX start-up sequence compares its whole unmasked value with the vertical blank start line; the stop sequence reads bit 31 as the freeze state and freezes the word by writing VT_XY_FREEZE. The kernel reading derived this offset from the numbering of the other timing words and graded it inferred; the specification's table gives it."
 
-[words.VT_XY.fields]
+[registers.vt_xy.fields]
 x = { bits = [11, 0], grade = "established" }
 y = { bits = [23, 12], grade = "established" }
 freeze = { bits = [31, 31], grade = "established" }
 
-[words.VT_XYMAX]
+[registers.vt_xymax]
+offset = 0x10004
+access = "rw"
 width = 32
 grade = "established"
 doc = "The shipped IRIX timing routine writes 0 here, and the start-up sequence writes the totals once the frame buffer is set up. The kernel stores the record's total pixels and total lines, not one less than them; whether the hardware expects one less is unknown."
 
-[words.VT_XYMAX.fields]
+[registers.vt_xymax.fields]
 vtotal = { bits = [23, 12], grade = "established" }
 htotal = { bits = [11, 0], grade = "established" }
 
-[[words.VT_XYMAX.tests]]
+[[registers.vt_xymax.tests]]
 value = 0x20d320
 expect = { htotal = 800, vtotal = 525 }
+
+[registers.device_id]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x14
+access = "rw"
+width = 32
+grade = "established"
+doc = "Device identity and chip revision (gbe-spec register table, page 34). The shipped IRIX kernel reads this word first and leaves the block untouched unless it reads DEVICE_ID_VALUE; the field split is not recorded."
+
+[registers.gmap]
+name_source = "public"
+name_cite = "public Linux gbefb.c and NetBSD sgimips crmfbreg.h register macro names"
+offset = 0x60000
+access = "rw"
+width = 32
+count = 256
+stride = 0x4
+grade = "established"
+doc = "256 gamma map entries (gbe-spec register table, page 34). The entry layout is not recorded here."
+
+[registers.crs_cm]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x70008
+access = "rw"
+width = 32
+count = 3
+stride = 0x4
+grade = "established"
+doc = "Cursor colour map, three entries (gbe-spec register table, page 34). Each is in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xffffff00 to the first and 0xff000000 to the second."
+
+[registers.crs_gly]
+name_source = "public"
+name_cite = "GBE specification (18 July 1996), memory map and register tables"
+offset = 0x78000
+access = "rw"
+width = 32
+count = 64
+stride = 0x4
+grade = "established"
+doc = "Cursor glyph RAM, 64 words from the page 34 address table (0x078000 to 0x0780FC). The page 46 register heading prints the start as 0x0780000, seven digits, taken as a typo because it does not fit the 24-bit register space or the 0x0780FC end. The shipped IRIX text port loads words 0 to 31 from a 32-word table and writes 0 to words 32 to 63. Reading the words as a 32 by 32 bitmap at two bits per pixel is inferred; the text port draws with the first 32 words only (inferred)."
 
 [constants]
 CMAP_ENTRIES_REV1 = { value = 0x1200, grade = "established", doc = "revision 1.1" }
@@ -605,58 +784,6 @@ DEVICE_ID_VALUE = { value = 0x666, grade = "established", doc = "the probe requi
 GMAP_ENTRIES = { value = 0x100, grade = "established" }
 MODE_ENTRIES = { value = 0x20, grade = "established" }
 MODE_ENTRY_STRIDE = { value = 0x4, grade = "established", doc = "entries are consecutive 32-bit words, so swap slot n sits at the table base plus 4 * n" }
-OFF_CMAP = { value = 0x50000, grade = "established", doc = "colour map" }
-OFF_CMAP_FIFO = { value = 0x58000, grade = "established" }
-OFF_CRS_CMAP = { value = 0x70008, grade = "established", doc = "First cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xffffff00." }
-OFF_CRS_CTL = { value = 0x70004, grade = "established" }
-OFF_CRS_GLYPH = { value = 0x78000, grade = "established", doc = "start from the page 34 address table (0x078000 to 0x0780FC, which is 64 words); the page 46 register heading prints the start as 0x0780000, seven digits, which is taken as a typo because it does not fit the 24-bit register space or the 0x0780FC end. 64 words; the shipped IRIX text port loads words 0 to 31 from a 32-word table and writes 0 to words 32 to 63. Reading the words as a 32 by 32 bitmap at two bits per pixel is inferred; the text port draws with the first 32 words only (inferred)." }
-OFF_CRS_POS = { value = 0x70000, grade = "established" }
-OFF_CRS_START_XY = { value = 0x10048, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_CTRLSTAT = { value = 0x0, grade = "established" }
-OFF_DEVICE_ID = { value = 0x14, grade = "established" }
-OFF_DID_CONTROL = { value = 0x40004, grade = "established" }
-OFF_DID_INHWCTRL = { value = 0x40000, grade = "established" }
-OFF_DID_START_XY = { value = 0x10044, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_DOTCLOCK = { value = 0x4, grade = "established" }
-OFF_FP_DE = { value = 0x10030, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_FP_HDRV = { value = 0x10028, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_FP_VDRV = { value = 0x1002c, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_FRM_CONTROL = { value = 0x3000c, grade = "established" }
-OFF_FRM_INHWCTRL = { value = 0x30008, grade = "established" }
-OFF_FRM_SIZE_PIXEL = { value = 0x30004, grade = "established" }
-OFF_FRM_SIZE_TILE = { value = 0x30000, grade = "established" }
-OFF_GMAP = { value = 0x60000, grade = "established", doc = "256 gamma entries" }
-OFF_I2C = { value = 0x8, grade = "established" }
-OFF_I2CFP = { value = 0x10, grade = "established" }
-OFF_MODE_TABLE = { value = 0x48000, grade = "established", doc = "32 window-ID entries" }
-OFF_OVR_CONTROL = { value = 0x20008, grade = "established" }
-OFF_OVR_INHWCTRL = { value = 0x20004, grade = "established" }
-OFF_OVR_WIDTH_TILE = { value = 0x20000, grade = "established" }
-OFF_SYSCLK = { value = 0xc, grade = "established" }
-OFF_VC_0 = { value = 0x80000, grade = "established", doc = "video capture region, left and right" }
-OFF_VC_1 = { value = 0x80004, grade = "established", doc = "video capture region, top and bottom" }
-OFF_VC_2 = { value = 0x80008, grade = "established", doc = "video capture control" }
-OFF_VC_3 = { value = 0x8000c, grade = "established", doc = "video capture field and descriptor control" }
-OFF_VC_4 = { value = 0x80010, grade = "established", doc = "capture tile addresses, tiles 1 and 2" }
-OFF_VC_5 = { value = 0x80014, grade = "established", doc = "capture tile addresses, tiles 3 and 4" }
-OFF_VC_6 = { value = 0x80018, grade = "established", doc = "capture tile addresses, tiles 5 and 6" }
-OFF_VC_7 = { value = 0x8001c, grade = "established", doc = "capture tile addresses, tiles 7 and 8" }
-OFF_VC_8 = { value = 0x80020, grade = "established", doc = "capture tile addresses, tiles 9 and 10; write only" }
-OFF_VC_START_XY = { value = 0x1004c, grade = "established", doc = "gbe-spec register table, pages 39 and 40" }
-OFF_VT_F2RF_LOCK = { value = 0x1001c, grade = "established" }
-OFF_VT_FLAGS = { value = 0x10018, grade = "established" }
-OFF_VT_HBLANK = { value = 0x10014, grade = "established" }
-OFF_VT_HCMAP = { value = 0x1003c, grade = "established" }
-OFF_VT_HPIXEN = { value = 0x10034, grade = "established" }
-OFF_VT_HSYNC = { value = 0x1000c, grade = "established" }
-OFF_VT_INTR01 = { value = 0x10020, grade = "established" }
-OFF_VT_INTR23 = { value = 0x10024, grade = "established" }
-OFF_VT_VBLANK = { value = 0x10010, grade = "established" }
-OFF_VT_VCMAP = { value = 0x10040, grade = "established" }
-OFF_VT_VPIXEN = { value = 0x10038, grade = "established" }
-OFF_VT_VSYNC = { value = 0x10008, grade = "established" }
-OFF_VT_XY = { value = 0x10000, grade = "established" }
-OFF_VT_XYMAX = { value = 0x10004, grade = "established" }
 TILE_LIST_BYTES_UNIT = { value = 0x20, grade = "established", doc = "a changed tile pointer is seen by adding this" }
 VC_TILE_REGS = { value = 0x5, grade = "established", doc = "VC_4 to VC_8 hold the ten tiles of one captured field, two per register" }
 VT_XY_FREEZE = { value = 0x80000000, grade = "established", from = "shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md", doc = "Value the shipped IRIX kernel writes to the vertical timing position word to freeze it; the word's bit 31 is read first as the freeze state." }
@@ -685,4 +812,3 @@ TILE_LIST_ALIGN_BYTES = { value = 0x200, grade = "inferred", from = "published G
 TILE_LIST_PAGE_BYTES = { value = 0x2000, grade = "inferred", from = "published GBE 1.1 specification", doc = "A tile-list request does not cross a page of this size." }
 TILE_LIST_OUTSTANDING = { value = 8, grade = "inferred", from = "published GBE 1.1 specification", doc = "Tile-list requests that may be outstanding at once." }
 OVERLAY_TRANSPARENT_INDEX = { value = 0, grade = "inferred", from = "published GBE 1.1 specification", doc = "Overlay pixel value that is transparent, so the normal planes show through." }
-OFF_CRS_COLOR2 = { value = 0x7000c, grade = "established", from = "shipped IRIX kernel binaries, per kudzu devices/gbe/gbe.md", doc = "Second cursor colour in the byte order red, green, blue, zero; the shipped IRIX text port writes 0xff000000." }

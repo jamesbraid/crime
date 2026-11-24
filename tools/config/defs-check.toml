@@ -2,7 +2,8 @@
 name = "o2gfx"
 
 [checks]
-address_bits = 16
+address_bits = 24
+max_reg_offset = 0xffffff
 
 [[banned.extra]]
 label = "kernel routine prefix"
@@ -28,9 +29,11 @@ group = "mace_video_in"
 
 [units.gbe]
 group = "gbe"
+prose_offsets = false
 
 [units.mace_periph]
 group = "mace_periph"
+prose_offsets = false
 
 [units.mace_timer]
 group = "mace_timer"
@@ -63,10 +66,10 @@ label = "dot clock fields"
 doc = "devices/gbe/gbe.md"
 regex = '`M` (\d+):(\d+), `N` (\d+):(\d+), `P` (\d+):(\d+), run (\d+)'
 binds = [
-  ["F", "DOTCLOCK.m_minus_1", 1, 2],
-  ["F", "DOTCLOCK.n_minus_1", 3, 4],
-  ["F", "DOTCLOCK.p", 5, 6],
-  ["F", "DOTCLOCK.run", 7],
+  ["F", "GBE.dotclock.m_minus_1", 1, 2],
+  ["F", "GBE.dotclock.n_minus_1", 3, 4],
+  ["F", "GBE.dotclock.p", 5, 6],
+  ["F", "GBE.dotclock.run", 7],
 ]
 
 [[claims]]
@@ -75,8 +78,8 @@ label = "frame size totals"
 doc = "devices/gbe/gbe.md"
 regex = 'total pixels per line in (\d+):(\d+), total lines in (\d+):(\d+)'
 binds = [
-  ["F", "VT_XYMAX.htotal", 1, 2],
-  ["F", "VT_XYMAX.vtotal", 3, 4],
+  ["F", "GBE.vt_xymax.htotal", 1, 2],
+  ["F", "GBE.vt_xymax.vtotal", 3, 4],
 ]
 
 [[claims]]
@@ -85,8 +88,8 @@ label = "display-ID control"
 doc = "devices/gbe/gbe.md"
 regex = '`did_base` in bits (\d+):(\d+) \(the upper 16 bits.*?DMA enable in bit (\d+)'
 binds = [
-  ["F", "DID_CONTROL.did_base", 1, 2],
-  ["F", "DID_CONTROL.dma_enable", 3],
+  ["F", "GBE.did_control.did_base", 1, 2],
+  ["F", "GBE.did_control.dma_enable", 3],
 ]
 
 [[claims]]
@@ -95,9 +98,9 @@ label = "frame size tile fields"
 doc = "devices/gbe/gbe.md"
 regex = 'width in whole tiles at (\d+):(\d+), remainder in 32-byte units at (\d+):(\d+), depth at (\d+):(\d+)'
 binds = [
-  ["F", "FRM_SIZE_TILE.width_tiles", 1, 2],
-  ["F", "FRM_SIZE_TILE.remainder", 3, 4],
-  ["F", "FRM_SIZE_TILE.depth", 5, 6],
+  ["F", "GBE.frm_size_tile.width_tiles", 1, 2],
+  ["F", "GBE.frm_size_tile.remainder", 3, 4],
+  ["F", "GBE.frm_size_tile.depth", 5, 6],
 ]
 
 [[claims]]
@@ -109,3 +112,23 @@ binds = [
   ["F", "ADDR.byte_col", 1, 2],
   ["F", "ADDR.row", 3, 4],
 ]
+
+# Registers, fields and constants of the O2 graphics blocks for QEMU (c-regfields) and the Rust crate (rust-regs).
+[gen.export]
+profiles = ["rust-regs", "c-regfields"]
+
+[gen.export.units.crime]
+base = 0x0
+constants = ["BLOCK_ADDR", "DEPTH_APERTURE_ADDR", "FRAME_APERTURE_ADDR", "GBE_WINDOW_ADDR", "ID_FAMILY_ACCEPTED", "ID_FAMILY_SHIPPED", "ID_LOW_BYTE_DRAFT", "ID_LOW_BYTE_SHIPPED", "ID_REFUSED_BYTE", "IP2_CAUSES", "IP3_CAUSES", "IP4_CAUSES", "IP5_CAUSES", "IP6_CAUSES", "IRQ_MACE_ISA_A", "IRQ_MACE_ISA_B", "LINE_MATCH_LATCHES", "MACE_WINDOW_ADDR", "MEM_BANKS", "MEM_BANK_CONTROL_RESET_BASE", "MEM_BANK_CONTROL_RESET_STEP", "PHYS_FULL_MEM_BASE", "PHYS_FULL_MEM_BYTES", "PHYS_HIGH_ALIAS_BASE", "PHYS_HIGH_ALIAS_BYTES", "PHYS_LOW_ALIAS_BASE", "PHYS_LOW_ALIAS_BYTES", "PHYS_NOECC_MEM_BASE", "PHYS_NOECC_MEM_BYTES", "TIME_RESOLUTION", "WATCHDOG_COUNT_BITS"]
+
+[gen.export.units.mte]
+base = 0x0
+constants = ["HOST_CHUNK_BYTES", "MODE_HOST_CLEAR", "MODE_HOST_COPY", "MODE_X_COPY", "SUBTILE_BLOCK_BYTES", "SUBTILE_BYTES", "TILE_BYTES", "TILE_ROWS", "TILE_ROW_BYTES", "X_BLOCK_BYTES", "X_ROWS_16", "X_ROWS_32"]
+
+[gen.export.units.re]
+base = 0x0
+constants = ["GL_UNBOUND_BIAS", "GL_VERTEX_BIAS", "IB_ENTRIES", "LINEAR_WINDOW_MASK", "LIN_TLB_MAX_PAGES", "LIN_TLB_REGS", "PRIM_RECT", "PRIM_TRIANGLE", "RENDER_COUNT_INIT", "RENDER_CTL_INIT", "RENDER_R10K_EMPTY", "RENDER_R10K_FULL", "RENDER_R10K_STALL", "RENDER_R5K_EMPTY", "RENDER_R5K_FULL", "RENDER_R5K_STALL", "START_ALIAS_BIT", "TEX_MAX_TEXELS", "TEX_SUBTILE_CELL_BYTES", "TILE_PAGES", "TLB_ENTRIES_PER_REG", "TLB_TILE_SHIFT", "VTX_DEPTH_BASE", "VTX_STEP", "VTX_TRI_BASE"]
+
+[gen.export.units.gbe]
+base = 0x0
+constants = ["CMAP_ENTRIES_REV1", "CMAP_ENTRIES_REV2", "CMAP_FIFO_DEPTH_REV1", "CMAP_FIFO_DEPTH_REV2", "CMAP_FIFO_LOW_WATER", "CMFIFO_BATCH", "DEVICE_ID_VALUE", "DID_BLOCK_BYTES", "DID_BLOCK_ENTRIES", "DID_END_BLOCK", "DID_LAST_XEND", "DID_LINE_TABLE_OFFSET", "DID_TABLE_BYTES", "DOTCLK_SETTLE_MS", "GBE_LINE_IRQ_BASE", "GMAP_ENTRIES", "MODE_ENTRIES", "MODE_ENTRY_STRIDE", "OPT_CMD_CLOCK_KHZ", "OPT_CMD_ID_HIGH", "OPT_CMD_ID_LOW", "OPT_DELAY_SMALL", "OPT_ID_MASK", "OPT_ID_RESTORE", "OPT_INSTALLED_LIMIT", "OPT_PORT_ADDR", "OVERLAY_TRANSPARENT_INDEX", "REF_CLOCK_KHZ", "TILE_LIST_ALIGN_BYTES", "TILE_LIST_BYTES_UNIT", "TILE_LIST_OUTSTANDING", "TILE_LIST_PAGE_BYTES", "TILE_NUMBER_MASK", "TWO_WIRE_WAIT_BIT", "TWO_WIRE_WAIT_LIMIT", "VC_TILE_REGS", "VT_XY_FREEZE"]

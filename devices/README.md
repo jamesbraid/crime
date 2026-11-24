@@ -4,6 +4,7 @@
 
 | Page | Title | Summary |
 |---|---|---|
+| [names.md](names.md) | Where the register names come from | Every register, word, field, enum value and constant name in the `crime`, `mte`, `re` and `gbe` units, graded by... |
 | [ad1843/](ad1843/README.md) | ad1843 | The AD1843 serial-port codec used by the O2 MACE audio interface. |
 | [crime/](crime/README.md) | crime | CRIME memory controller and CPU-interface registers, and the interrupt input bit positions. |
 | [gbe/](gbe/README.md) | gbe | GBE display back end register words, tables and offsets. |

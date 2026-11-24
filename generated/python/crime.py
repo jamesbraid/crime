@@ -1,6 +1,6 @@
 """generated from devices/crime/registers.toml by defs-gen - do not edit, change the source
 defs-gen 4
-input sha256 4c9f8372ef5d0a31c7073617aee0a75f2f238f85c9f0b71b8d0ab617da878fb2
+input sha256 5f6b1f3d636cdb047b00e9af46d8ab9629ca610988c533948d7e0aecfa385dbb
 O2 CRIME memory controller and CPU interface registers"""
 
 UNIT = 'crime'

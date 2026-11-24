@@ -1,12 +1,15 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "crime"
 prefix = "CRIME"
+name_source = "ours"
 title = "O2 CRIME memory controller and CPU interface registers"
 doc = "CRIME memory controller and CPU-interface registers, and the interrupt input bit positions."
 from = "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
 public_from = ["published CRIME 1.5 draft specification", "shipped IRIX"]
 
 [registers.id]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x0
 access = "r"
 width = 64
@@ -44,6 +47,8 @@ value = 0x2200
 expect = { sysadc_gen_enable = 1, sysadc_check_enable = 0, watchdog_enable = 1 }
 
 [registers.intstat]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x10
 access = "r"
 width = 64
@@ -52,6 +57,8 @@ doc = """
 Read-only (established, [spec] Table 5-10, PDF 116). Each bit is the OR of the matching bit of the hardware interrupt register and of the software interrupt register (established, [spec] PDF 106). The shipped IRIX dispatcher reads its low 32 bits ANDed with the saved mask."""
 
 [registers.intmask]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x18
 access = "rw"
 width = 64
@@ -65,6 +72,8 @@ A status bit reaches the processor only when the same bit here is set. The statu
 enable = { bits = [31, 0], grade = "established" }
 
 [registers.softint]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x20
 access = "rw"
 width = 64
@@ -74,6 +83,8 @@ reset_from = "CRIME 1.5 specification, Table 5-12"
 doc = "The shipped IRIX kernel's two software interrupts are inputs 28 and 29; that this word raises them is inferred from the kernel's software-interrupt use and the public NetBSD names."
 
 [registers.hardint]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x28
 access = "rw"
 width = 64
@@ -83,6 +94,8 @@ Table 5-13 (PDF 117 to 118) marks these bits edge-sensitive: 30 (CPU SysCorErr),
 notes = "The kernel reading calls this word the interrupt edge word; the public names call it the hard interrupt word. Same offset and use, kept under the owner's name."
 
 [registers.watchdog]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x30
 access = "rw"
 width = 64
@@ -96,6 +109,8 @@ warm_reset_timeout = { bits = [20, 20], grade = "established" }
 count = { bits = [19, 0], grade = "established" }
 
 [registers.timer]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), register tables"
 offset = 0x38
 access = "rw"
 width = 64
@@ -140,6 +155,8 @@ value = 0x4
 expect = { illegal_addr = 1, cpu_write_parity = 0 }
 
 [registers.cpu_error_ena]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x50
 access = "rw"
 width = 64
@@ -148,6 +165,8 @@ doc = """
 The CRIME 1.5 CPU interface register map has no row for this offset. It lists the CPU error address and the CPU error status (cpu_error_stat_15) and nothing in between (established, [spec] Table 5-7, PDF 113). The name CRIME_CPU_ERROR_ENA and this offset come from NetBSD's public crime header, which places it after the CPU error status. The driver in that tree does not program the name (software expectation, inferred). Linux's public O2 crime header leaves the same slot as padding after the status (software expectation, inferred). Reset value, field layout and readback are unknown from any published source; the revision-0 enable word that IRIX writes is described in devices/re/memory.md."""
 
 [registers.vice_error_addr]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x58
 access = "r"
 width = 64
@@ -211,24 +230,32 @@ mace_access = { bits = [7, 7], grade = "established" }
 mace_id = { bits = [6, 0], grade = "established" }
 
 [registers.mem_error_addr]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x258
 access = "r"
 width = 64
 grade = "established"
 
 [registers.mem_error_ecc_syn]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x260
 access = "r"
 width = 64
 grade = "established"
 
 [registers.mem_error_ecc_chk]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x268
 access = "r"
 width = 64
 grade = "established"
 
 [registers.mem_error_ecc_repl]
+name_source = "public"
+name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x270
 access = "rw"
 width = 64

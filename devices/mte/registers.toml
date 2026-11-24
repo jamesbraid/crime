@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mte"
 prefix = "MTE"
+name_source = "ours"
 title = "O2 CRIME memory transfer engine registers and tile layout"
 doc = "CRIME memory transfer engine registers, address word and tile geometry."
 from = "published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings"
@@ -67,6 +68,8 @@ value = 0x820
 expect = { copy = 1, stipple = 0, depth = 0, src_buf = 1, dst_buf = 0 }
 
 [registers.bytemask]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3008
 access = "rw"
 width = 32
@@ -76,6 +79,8 @@ doc = """
 Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown)."""
 
 [registers.stipplemask]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3010
 access = "w"
 width = 32
@@ -94,6 +99,8 @@ doc = """
 The clear value, 32 bits, readable and writable (established, [spec] PDF 183)."""
 
 [registers.src0]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3020
 access = "rw"
 width = 32
@@ -103,6 +110,8 @@ doc = """
 Source start address, framebuffer or linear, 32 bits, readable and writable (established, [spec] PDF 183)."""
 
 [registers.src1]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3028
 access = "rw"
 width = 32
@@ -112,6 +121,8 @@ doc = """
 Second source address word, framebuffer or linear, 32 bits, readable and writable. Table 7-15 describes it as a start address, the same as src0 (established, [spec] PDF 183)."""
 
 [registers.dst0]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3030
 access = "w"
 width = 32
@@ -121,6 +132,8 @@ doc = """
 Destination start address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
 
 [registers.dst1]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3038
 access = "w"
 width = 32
@@ -130,6 +143,8 @@ doc = """
 Destination end address, framebuffer or linear, 32 bits, write-only and marked non-global (established, [spec] PDF 183)."""
 
 [registers.src_ystep]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3040
 access = "rw"
 width = 32
@@ -139,6 +154,8 @@ doc = """
 Source row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
 
 [registers.dst_ystep]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3048
 access = "rw"
 width = 32
@@ -148,6 +165,8 @@ doc = """
 Destination row step, 32 bits, readable and writable (established, [spec] PDF 184)."""
 
 [registers.null]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3070
 access = "w"
 width = 32
@@ -157,6 +176,8 @@ doc = """
 Null register, write-only and marked non-global (established, [spec] PDF 184). Its effect is not stated (see devices/mte/mte.md)."""
 
 [registers.flush]
+name_source = "public"
+name_cite = "CRIME 1.5 Specification, revision 0.3 (2 June 1997), rendering engine and MTE register tables"
 offset = 0x3078
 access = "w"
 width = 32
