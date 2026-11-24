@@ -76,7 +76,7 @@ width = 32
 grade = "established"
 space = "re"
 doc = """
-Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification (unknown)."""
+Table 7-15 gives the byte mask as 32 bits, readable and writable (established, [spec] PDF 183). Its bit polarity and bit-to-byte order are not stated in the specification. The X server builds it from the plane mask as (b0 & 0x11) | (b1 & 0x22) | (b2 & 0x44) | (b3 & 0x88) over the plane mask's bytes b0 (low) to b3 (high), repeated into all eight nibbles, and the kernel writes 0xffffffff for a full-width write: a set bit enables the write (established as what software writes: the X server and the kernel). Inferred for the engine: bit 31 gates byte 0 of the 32-byte block holding the row's first byte, so a 32-bit pixel's low byte (plane mask 0x000000ff, word 0x11111111) is the byte at offset 3 (devices/mte/mte.md)."""
 
 [registers.stipplemask]
 name_source = "public"
@@ -87,7 +87,7 @@ width = 32
 grade = "established"
 space = "re"
 doc = """
-Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined."""
+Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined. The X server writes it once per destination row of a stippled fill (mode bit 10 set) with a 32-bit word whose pixel 0 is bit 31, rotated right by the start pixel column masked with 31, 15 or 7 for 8, 16 and 32-bit pixels (established as what software writes: the X server). Inferred: the engine numbers the bits from the 32-byte block holding the row's first byte, most significant first, wrapping after 32 pixels, and a set bit draws (devices/mte/mte.md)."""
 
 [registers.fg]
 offset = 0x3018

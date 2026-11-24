@@ -1,6 +1,6 @@
 // @generated from devices/mte/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 1b49daaafdbcf8bd5457a37ed9b5cc7642cf54a3dbd30d891a5ecca578761f67
+// input sha256 13ecc6567984307c9c298025a4a617560d9d1dccbd1bea5f87664debe460f641
 // O2 CRIME memory transfer engine registers and tile layout
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -202,7 +202,7 @@ pub mod bytemask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3008;
 }
-/// Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined. (established)
+/// Write-only, and marked non-global in Table 7-15 (established, [spec] PDF 183). Reads are not defined. The X server writes it once per destination row  (established)
 pub mod stipplemask {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x3010;

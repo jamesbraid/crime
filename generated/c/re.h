@@ -1,7 +1,7 @@
 /* generated from devices/re/registers.toml by defs-gen - do not edit, change
  * the source */
 /* defs-gen 4 */
-/* input sha256 57f044e43ace12a8c30c442d2300ee14d34a3385b990b59d926a3bb571f0d773 */
+/* input sha256 60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9 */
 /* O2 CRIME rendering engine: interface buffer, linear TLBs and clip state */
 #ifndef RE_GEN_H
 #define RE_GEN_H
@@ -49,7 +49,13 @@
  * 63, stall 126, count 10), keeps count at 10 in every later control word, and
  * chooses the thresholds by processor module: R10000-family and RM7000 modules
  * get full 20, empty 0 and stall 19; the other R5000-class modules get full 48,
- * empty 24 and stall 47.
+ * empty 24 and stall 47. Shipped software also reads the word: the kernel's
+ * overflow handler loads it into its message, and the PROM loads it at two
+ * sites and tests bit 0 only (clear names the graphics record revision B, set
+ * revision C, and it picks between two timing-table entries); nothing in the
+ * PROM writes it. The specification's write-only classification is therefore
+ * not what the software assumes. The reset value is unknown (established that
+ * these reads exist, from the shipped PROM image and kernel).
  */
 /* ib_ctl: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -76,7 +82,16 @@
  * the shipped kernel's zero stores, so they stay inferred. See
  * software/kernel/reset.md. The shipped IRIX kernel writes zero here, waits 10
  * microseconds and rewrites the interface-buffer control word. Whether that
- * control word is ib_ctl is inferred.
+ * control word is ib_ctl is inferred. The writers are the kernel's hardware
+ * initialisation, its error recovery, its early initialisation and the
+ * diagnostics, each a 32-bit store of zero. In the initialisation, the error
+ * recovery and the diagnostics the next engine write is the control word, after
+ * the 10 microsecond wait (in the error recovery the store sits in the delay
+ * slot of the wait call); the early initialisation follows it with the
+ * dual-channel probe and no control-word write. The kernel reloads the
+ * translation tables after the initialisation and not after the error recovery,
+ * so whether the write clears them is unknown; inferred: it empties the queue
+ * and returns the control word to its unprogrammed value.
  */
 /* ib_reset: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -128,7 +143,12 @@
 
 /*
  * Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164,
- * Table 7-2).
+ * Table 7-2). The specification gives no entry layout. The one kernel loader
+ * packs four 16-bit tile numbers into each doubleword with entry 0 in bits
+ * 63:48, stores all four doublewords every time (entries past its count as
+ * zero), sets no flag bit in an entry, and writes zero to ib_discard last
+ * (established, shipped kernel, devices/re/clip-id.md). Whether the engine
+ * ignores or requires bit 15 for this table is unknown.
  */
 /* tlb_cid: rw64, space re, reset unknown; published CRIME 1.5 draft
  * specification, PDF 164, Table 7-2 */
@@ -184,11 +204,24 @@
 /*
  * The specification's table (established, [spec] PDF 173, Table 7-6) puts the
  * enable for screen mask 0 at bit 9 and for mask 4 at bit 5, with the
- * inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0. The
- * kernel sets bit 5 plus i and bit i for rectangle i
- * (software/kernel/context.md), which is
- * the reverse order. Which order the engine uses is unknown. The fields below
- * give the bit ranges only.
+ * inside-select (scrMaskMode) for mask 0 at bit 4 and for mask 4 at bit 0, and
+ * its register map labels all five screen mask registers "screen mask 0". Both
+ * writers of the word in shipped software pair the registers the other way
+ * round: screen mask register i (counting from the first) goes with enable
+ * bit 5 + i and inside-select bit i, so one rectangle gives 0x21, two give
+ * 0x63, up to five giving 0x3ff (established as what software writes: the X
+ * server's screen-mask routine and the kernel's clip validation). The engine is
+ * inferred to follow
+ * the software, because the specification's order would make every
+ * one-rectangle window test a stale mask. Bit 11 (clip-ID test) with bit 10
+ * (map
+ * select) is written as 0x800 for map 0 and 0xc00 for map 1 (and as 0x821 or
+ * 0xc21 by the kernel for a window with no rectangles but a plane,
+ * established as software writes); the specification repeats the bit 11 text
+ * for
+ * bit 10, so what the select does is inferred from the software drawing the
+ * plane at +256 byte columns under bit 10 (devices/re/clip-id.md). The fields
+ * below give the bit ranges only.
  */
 /* clipmode: rw32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -290,8 +323,14 @@
 /*
  * Screen mask n is one rectangle in framebuffer coordinates, not window
  * coordinates (established, [spec] PDF 176, Table 7-11). Its fields are the
- * same as the scissor's. The enable and inside-select bits are in ClipMode;
- * see the note there for the order in which the bits pair with the masks.
+ * same as the scissor's. The enable and inside-select bits are in ClipMode.
+ * The register map labels all five rows "screen mask 0". The shipped software
+ * pairs screen mask register i (counting from the first) with enable bit 5 + i
+ * and inside-select bit i, loading a window's clip rectangles into consecutive
+ * registers from the first (inferred for the engine, established as what
+ * software writes; see ClipMode).
+ * Enabled inside-select masks combine as a union (inferred); how outside-select
+ * masks combine is unknown.
  */
 /* scrmask: rw64, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -791,7 +830,14 @@
  * and the t flag in bit 1 with a 32-bit store, and scales the start and slope
  * values of a flagged coordinate by 2^39 instead of 2^43. Inferred: a set
  * flag tells the engine that coordinate's stepper carries four fewer fraction
- * bits. The layout is established; that meaning is inferred.
+ * bits. The layout is established; that meaning is inferred. The driver adds
+ * 1.0 to the three vertex values of a coordinate whose wrap mode is not
+ * repeat and flags it when the largest exceeds 7.0 or the smallest is below
+ * -7.0; for repeat it first subtracts floor(min) - 1 and flags when the
+ * largest then exceeds 15.0; a one-dimensional texture never flags t. It
+ * writes the register before the stepper words (established, [binary]
+ * libGLcore __glCrmFillSlowTriangle and the span writers,
+ * devices/re/memory.md).
  */
 /* tex_stflags: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -839,6 +885,15 @@
  * readings */
 #define RE_TEX_BORDER_OFFSET                         0x2160u /* established */
 
+/*
+ * Texture environment colour. The shipped library writes it, to both register
+ * windows, only when the texture environment mode is GL_BLEND, as the four
+ * environment floats (already 0 to 255) truncated and packed red in 31:24,
+ * green 23:16, blue 15:8 and alpha 7:0, the same packing as tex_border
+ * (established, shipped OpenGL library). The engine's BLEND equation is
+ * inferred to be OpenGL's; the specification gives none. Rounding and whether
+ * the colour is scaled by 255 or 256 are unknown (devices/re/memory.md).
+ */
 /* tex_envcolor: rw32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
  * readings */
@@ -855,16 +910,37 @@
 #define RE_FOG_COLOR_RGB_MASK                        0xffffffu
 #define RE_FOG_COLOR_RGB_INPLACE (RE_FOG_COLOR_RGB_MASK << RE_FOG_COLOR_RGB_SHIFT)
 
+/*
+ * Initial fog blending factor. The register map gives it as 9.12 two's
+ * complement (established, [spec] PDF 169); the prose table on PDF 7-50 calls
+ * the same words 1.20 and the two disagree. The shipped library writes the
+ * factor (1.0 unfogged) times 255.0 times 4096.0, truncated, which is the 9.12
+ * reading with 0 to 255 in the integer part (established, shipped OpenGL
+ * library, point and line routines). The untextured fogged line is parked at a
+ * start of 255 in the integer part with both slopes zero. Rounding and the
+ * stepper width beyond the 12 fraction bits are unknown.
+ */
 /* fog_fs: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
  * readings */
 #define RE_FOG_FS_OFFSET                             0x2178u /* established */
 
+/*
+ * Fog slope along x, 9.12 two's complement (established, [spec] PDF 169). The
+ * shipped library writes the factor difference over the major-axis length times
+ * 255.0 times 4096.0 here for an x-major line and zero for a y-major one
+ * (established, shipped OpenGL library).
+ */
 /* fog_dfdx: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
  * readings */
 #define RE_FOG_DFDX_OFFSET                           0x2180u /* established */
 
+/*
+ * Fog slope along y, 9.12 two's complement (established, [spec] PDF 169).
+ * Written by the shipped library for a y-major line and zero for an x-major one
+ * (established, shipped OpenGL library).
+ */
 /* fog_dfdy: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
  * readings */
@@ -950,8 +1026,10 @@
  * Blend constant colour, read and written as a 32-bit word (established, [spec]
  * register map, PDF 169, which names it "blend RGBA constant color"). The
  * constant-color and constant-alpha factor codes of Blend.func select it. The
- * specification does not draw its per-byte layout, so the byte order is
- * unknown.
+ * specification does not draw its per-byte layout. The shipped library packs
+ * the four clamped floats, each times 255.0 and truncated, as red in 31:24,
+ * green 23:16, blue 15:8 and alpha 7:0 (established, [binary] libGLcore
+ * __glCrmPassBlendColor); the engine's reading is inferred to match.
  */
 /* blend_color: rw32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -1125,6 +1203,17 @@
  * from [spec] Table 7-27 (PDF 214), but the specification's stencil section is
  * marked TBD. Its orientation of the comparison conflicts with the API and the
  * driver; see devices/re/pixel-arithmetic.md. Written through its start alias.
+ * The driver builds the word as established (the shipped OpenGL library's
+ * stencil setter):
+ * reference in 31:24, comparison mask in 23:16, comparison code in 14:12 (the
+ * low three bits of the API function enum, bit 15 clear) and the three
+ * operations in 11:8, 7:4 and 3:0; it writes only operation codes 0 to 5 and
+ * comparison codes 0 to 7. The library's own software test takes LESS as the
+ * masked reference below the masked stored value (API order), LEQUAL, GREATER
+ * and GEQUAL likewise with the reference on the left, and its operation table
+ * saturates increment and decrement; the driver sends both straight to the
+ * engine. These are software expectations for the engine (inferred). Codes 6 to
+ * 15 and bit 15 are unknown.
  */
 /* stencil_mode: rw32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
@@ -1240,12 +1329,20 @@
 
 /*
  * ib_discard sits two doublewords above the status register. Shipped kernel
- * code stores zero to it with a 32-bit store, never reads it, and does so after
- * saving the outgoing client's queued writes on a context switch, after the
- * incoming client's loads, and at the end of each translation table loader.
- * The user-mode library and the X server never write it. Inferred: the write
- * discards the queued writes not yet committed. The register's position and
- * its write-zero use are established; that effect is inferred.
+ * code stores zero to it with a 32-bit store at 18 sites and never reads it:
+ * after bulk translation-table and register loads, after the clip words in
+ * its clip validation, and after saving the outgoing client's queued writes on
+ * a
+ * context switch. The user-mode library and the X server never write it, and
+ * the kernel's own linear-table loads need no such store. The
+ * register's position and its write-zero use are established. The name comes
+ * from an earlier reading in which the write discards queued writes not yet
+ * committed; that reading is contradicted by the call pattern, since in 12 of
+ * the 18 sites the stores just before it are loads the kernel needs to take
+ * effect (inferred, strong). The hardware's effect is unknown. Inferred, weak:
+ * it moves the start field of the status word to the write pointer. A model
+ * may accept the write and change nothing observable
+ * (devices/re/interface-buffer.md).
  */
 /* ib_discard: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software

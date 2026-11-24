@@ -1,6 +1,6 @@
 // @generated from devices/re/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 57f044e43ace12a8c30c442d2300ee14d34a3385b990b59d926a3bb571f0d773
+// input sha256 60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9
 // O2 CRIME rendering engine: interface buffer, linear TLBs and clip state
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -98,7 +98,7 @@ pub mod tlb_tex {
     pub const COUNT: u32 = 28;
     pub const STRIDE: u64 = 8;
 }
-/// Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). (established)
+/// Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). The specification gives no entry layout. The one kernel loader (established)
 pub mod tlb_cid {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x16e0;
@@ -1264,7 +1264,7 @@ pub mod tex_border {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2160;
 }
-/// (established)
+/// Texture environment colour. The shipped library writes it, to both register windows, only when the texture environment mode is GL_BLEND, as the four e (established)
 pub mod tex_envcolor {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2168;
@@ -1284,17 +1284,17 @@ pub mod fog_color {
         }
     }
 }
-/// (established)
+/// Initial fog blending factor. The register map gives it as 9.12 two's complement (established, [spec] PDF 169); the prose table on PDF 7-50 calls the s (established)
 pub mod fog_fs {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2178;
 }
-/// (established)
+/// Fog slope along x, 9.12 two's complement (established, [spec] PDF 169). The shipped library writes the factor difference over the major-axis length ti (established)
 pub mod fog_dfdx {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2180;
 }
-/// (established)
+/// Fog slope along y, 9.12 two's complement (established, [spec] PDF 169). Written by the shipped library for a y-major line and zero for an x-major one  (established)
 pub mod fog_dfdy {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x2188;
@@ -2091,7 +2091,7 @@ pub mod status {
         }
     }
 }
-/// ib_discard sits two doublewords above the status register. Shipped kernel code stores zero to it with a 32-bit store, never reads it, and does so afte (established)
+/// ib_discard sits two doublewords above the status register. Shipped kernel code stores zero to it with a 32-bit store at 18 sites and never reads it: a (established)
 pub mod ib_discard {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x4008;
@@ -2677,6 +2677,14 @@ mod tests {
         assert_eq!(clipmode::mode::get(0x821), 1);
         assert_eq!(clipmode::enable::get(0x821), 1);
         assert_eq!(clipmode::clip_id_test::get(0x821), 1);
+    }
+
+    #[test]
+    fn clipmode_c21() {
+        assert_eq!(clipmode::mode::get(0xc21), 1);
+        assert_eq!(clipmode::enable::get(0xc21), 1);
+        assert_eq!(clipmode::clip_id_test::get(0xc21), 1);
+        assert_eq!(clipmode::clip_id_map::get(0xc21), 1);
     }
 
     #[test]
