@@ -169,3 +169,13 @@ endpoints and the choice of copy direction, is left out. It has no image
 address or registry entry, so it cannot be cited yet. Stipple wrap-around and
 copy ordering rules that appear in no published source are left out for the
 same reason.
+
+## Review (2026-11-24): screen-mask and ClipMode order
+
+An independent re-read against `crm.so` and `crime.o` (6.5.30).
+
+- Confirmed: the six-entry table at `crm.so` `0x5a2400` holds `0x0`, `0x21`, `0x63`, `0xe7`, `0x1ef`, `0x3ff`, and the pointer `crmSetSmask` loads (`gp - 0x724c`) reaches it at table base plus `0x140`, indexed by the mask count.
+- Confirmed: `crmSetSmask` (`crm.so` `0x58a930`) stores one to five 64-bit masks, highest first, at `+0x2040`, `+0x2038`, `+0x2030`, `+0x2028` and `+0x2020`, falling through by count (count 1 writes `+0x2020` only), then the ClipMode word at `+0x2010`; each store has a twin at the start alias.
+- Confirmed: `crimeValidateClip` (`crime.o` `0x21b0`) starts the ClipMode accumulator at `0x21` and ORs in `0x21 << i` per rectangle, stores the word at `0x23a4` and the masks at `+0x2020` to `+0x2040` in index order, with the rectangle's own bounds in each. The pairing (register `+0x2020 + 8i` with enable bit `5 + i` and inside-select bit `i`) holds in both writers.
+- Grade: both writers are shipped software, so "established as what software writes" is right and the engine's behaviour stays inferred, as the page says. The union reading for inside-select masks is inferred from disjoint clip lists, which is sound. The specification's register map prints all five rows as "screen mask 0" (checked in the PDF text), which supports a labelling defect in the specification, not an engine fact.
+- Not re-checked: that libGLcore never writes ClipMode or a screen mask. A scan of the N32 disassembly for stores at these offsets finds only stores into the library's own state words (for example the texture-environment copies at `0x0d9735dc`), which the page's claim already excludes in its wording; no register-window store was found, but no register-window provenance check was made for every store.
