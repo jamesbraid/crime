@@ -63,6 +63,70 @@ How a texture's mip levels are placed in the 112 entries of the texture TLB (`+0
 - Established (`libGLcore` `.data`, the word at `0x0da46440 - 4 * log2 s`, read at `0x0d96e78c`): the byte offset of such a level inside its shared tile is 0 for size 64, `0x8000` for 32, `0xc000` for 16, `0xe000` for 8, `0xf000` for 4, `0xf800` for 2 and `0xfc00` for 1. With 512-byte tile rows these are rows 0, 64, 96, 112, 120, 124 and 126, that is row `128 - 2s` for every size below 64. The texels are then written from that address by the same store routines as for large levels (`crmSubtileSpan` or `crmTileSpan`, `devices/mte/MTE.h`).
 - Inferred: the engine computes the same placement from `log2 s` when it fetches a small level: entry 92 for sizes 64 and 16, entry 93 for 32 and 8 and below, and the row offset above. The alternation for 64, 32, 16 and 8 puts neighbouring levels in different tiles; no code read states the reason. Whether the engine reads the sizes 4, 2 and 1 from entry 93 by the same rule or by a separate one is not shown by any writer beyond this placement.
 
+## Where a texel sits inside a tile
+
+Sources: N32 `libGLcore` (`usr/gfx/arch/IP32CRM32/libGLcore.so`, 6.5.30) `crmSubtileTexels` (`0x0d972eb0`), `crmSubtileSpan` (`0x0d973a40`) and the address set-up in `crmTexSubImageStore` (`0x0d9751f8`..`0x0d9752a4`) on the write side, and `crmExtractTexel` (`0x0d970460`, the read-back used by `glGetTexImage`) on the read side. Tags: [binary] shipped 6.5.30 object, [public] published CRIME 1.5 specification.
+
+- Established [binary]: two independent routines compute the same byte offset inside a 64 KiB tile for a subtiled texture (Texture.mode bit 24). `crmExtractTexel` builds it from the texel's row `y` (low 7 bits, `yl`) and byte column `b` (texel x shifted left by the texel depth, low 9 bits, `bl`) with these masks and shifts, and the store path in `crmTexSubImageStore` and the span writers step the destination by the same rule:
+
+  | Offset bits | Taken from | Instruction evidence (`crmExtractTexel`) |
+  |---|---|---|
+  | 2:0 | `bl` bits 2:0 | `andi 7` |
+  | 4:3 | `yl` bits 1:0 | `andi 3`, shift left 3 |
+  | 8:5 | `bl` bits 6:3 | `andi 0x78`, shift left 2 |
+  | 10:9 | `yl` bits 5:4 | `andi 0x30`, shift left 5 |
+  | 12:11 | `yl` bits 3:2 | `yl` masked with `~0x33`, shift left 9 |
+  | 14:13 | `bl` bits 8:7 | `bl` masked with `~0x7f`, shift left 6 |
+  | 15 | `yl` bit 6 | same `~0x33` mask, shift left 9 |
+
+  The write side agrees: `crmSubtileTexels` and `crmSubtileSpan` copy 8 bytes, then advance the destination by `0x18` (to the next 32-byte cell), and when the address's bits 8:5 wrap to zero add a further `0x1e00` (the carry into bit 13 instead of bit 9). This is the permutation in `devices/mte/MTE.h`; this section is the second, independent confirmation and the full bit table. The tile is chosen outside the permutation: tile entry = `(y >> 7) * pitch + (b >> 9)` counted from the level's first entry (the pitch is in the level table above).
+- Established [binary]: the permutation is in bytes, so it is the same for 16-bit and 32-bit texels. A 32-byte cell is 8 bytes wide by 4 rows: 2 texels by 4 rows at 32 bits, 4 by 4 at 16 bits.
+- Inferred: the engine reads the same layout when Texture.mode bit 24 is set. The specification's texel look-up section is marked "TBD" ([public] PDF 7-49), so the only evidence for the engine side is that the driver writes it and reads it back this way, and that the driver sets bit 24 on every level it creates unless `GLCRMTEXUSEONCE` is in the environment.
+- Unknown: what the engine does for Texture.mode bit 24 clear (a plain row-major tile of 512-byte rows is what the tile size implies). No shipped code creates such a level, so no software depends on it: the only writer, `crmTileSpan`, is reached only when the driver's subtile flag is off.
+
+## Mip level placement, levels 128 to 1,024 (restated)
+
+The two sections above already settle these; this is the consolidated rule with the checks made on 2026-11-24.
+
+- Established [binary]: slot `k = 10 - log2(larger side)`; start entries 0, 64, 80, 88 for slots 0 to 3; row pitch 8 entries for slot 0 and 4 for slots 1 to 5. `crmDefineTex`'s inner loop was re-read: the row step is `pitch - w` after each row, the pitch register is set to 8 for the first slot and 4 for every later one, and the entry is stored at register `e >> 2`, slot `e & 3`.
+- Arithmetic (established from the above): tiles for a level are `ceil(width_bytes / 512)` across and `ceil(height / 128)` down, where `width_bytes = width << depth` (depth 1 or 2). So a 1,024 by 1,024 level is 8 by 8 tiles at 32 bits (entries 0 to 63) and 4 by 8 at 16 bits, using entries 8 apart: columns 0 to 3 of every row of the pitch-8 grid. A 512 level is 4 by 4 (2 by 4 at 16 bits) from entry 64 at pitch 4; a 256 level is 2 by 2 (1 by 2) at entries 80, 81, 84, 85 (80 and 84); a 128 level is one tile at entry 88, half full at 16 bits. A tall narrow level needs the slot-0 pitch of 8: 16 by 1,024 at 32 bits is one tile wide and eight tall, entries 0, 8, 16 and so on to 56.
+- Inferred: the engine derives a level's slot from `mapLevel` plus the level number and its tile from the same start and pitch table. The kernel loader proves the table; no code reads a tile back through the engine's own computation.
+- Unknown: the largest level number the driver accepts (10 is not proven from any bound compare).
+
+## 16-bit texel types 4 to 8
+
+The specification draws four texel formats ([public] PDF 7-33, figure 7-7): LA8 (L in bits 15:8, A in 7:0), A1_RGB5 (A bit 15, R 14:10, G 9:5, B 4:0), RGBA4 (R 15:12, G 11:8, B 7:4, A 3:0) and RGBA8 (R 31:24, G 23:16, B 15:8, A 7:0). It names nine texel types in Texture.mode but draws no 16-bit alpha, intensity or luminance texel. The driver fills the gap:
+
+| Type | Name | Stored form | Evidence |
+|---|---|---|---|
+| 1 | RGB | A1_RGB5 (16-bit) or RGBA8 (32-bit) | the decoder takes bits 14:10, 9:5 and 4:0 as R, G, B |
+| 2 | RGBA | A1_RGB5 or RGBA8 | alpha is bit 15 at 16 bits |
+| 4 | RGBA4 | RGBA4 | `crmExtractTexel` reads R 15:12, G 11:8, B 7:4, A 3:0; `crmSpan_RGBA8_to_RGBA4` packs `R[7:4] << 12 \| G[7:4] << 8 \| B[7:4] << 4 \| A[7:4]` |
+| 5 | ALPHA | halfword `0x00AA` | the writer `crmSpan_A16_to_A8` stores the source's top byte in the low byte of each halfword, the reader takes bits 7:0 as alpha |
+| 6 | INTENSITY | I in bits 15:8 | the reader takes bits 15:8 as intensity |
+| 7 | LUMINANCE | L in bits 15:8 | the reader takes bits 15:8 as luminance |
+| 8 | LUMINANCE_ALPHA | LA8 | the reader takes L from bits 15:8; the alpha part is described below |
+
+- Established [binary] for types 1, 2 and 4 (read and write both). Established [binary] for type 5 (writer and reader). Types 6 and 7 are established for the reader only (`crmExtractTexel` through the stored-format jump table at `0x0da44298`, case indexes 4 and 15, stored formats `GL_LUMINANCE16` and `GL_INTENSITY16`). The writer for those two goes through the library's generic image-copy path (`__glGenericPickCopyImageSpan`), which has no converter of its own to read, so the write side is inferred from the read side. The three 16-bit non-colour types are stored at depth 1 only: `crmComputeTexLevelSize` never gives them depth 2.
+- Observed quirk [binary], low weight: for the stored `GL_LUMINANCE8_ALPHA8` format the read-back routine computes alpha from `(v & 0xff00) / 255` without the shift that luminance gets, so it returns alpha as the high-byte value scaled by 256. This is the library's read-back arithmetic, not the engine's; the layout above (L high, A low) is the specification's LA8 and what the read-back's luminance half uses.
+- Inferred: what the engine returns in the channels a type lacks. No code states the engine's output for the missing channels, so the usual OpenGL rule (missing colour channels are 1 for alpha-only, missing alpha is 1, intensity replicates into all four) is a software expectation only.
+- iris's reading (alpha low byte, luminance and intensity high byte, RGBA4 R-high) agrees with all of the above; it had called types 5 to 7 "a guess".
+
+## Texture.envColor and the BLEND function
+
+- Established [binary]: the register is `+0x2168` (`Texture.envColor`, [public] PDF register map, offset `0x168`). `crmSetTextureParam` writes it only when the texture environment mode is `GL_BLEND` (`0xbe2`); the branch for that mode sets the function field (bits 1:0 of Texture.mode) to 2 and a flag that enables the store, and `GL_MODULATE` and `GL_REPLACE` leave it off (the `GL_DECAL` branch was not followed). The store is a 32-bit write to both register views.
+- Established [binary]: the value is the four environment floats (the context's RGBA environment colour, already in 0 to 255 range, kept at offsets +4 to +16 of the environment block), each truncated (not rounded) to an integer, red in bits 31:24, green 23:16, blue 15:8, alpha 7:0 (`sll 24, 16, 8, 0` then `or`). It is the same packing as the border colour at `+0x2160`, which the same routine builds from the object's border floats times the context scale words.
+- Inferred: the engine's BLEND equation is OpenGL's (`C = Cf * (1 - Ct) + Cc * Ct`, alpha by the base-format rule). The specification's texture application section says only that the fragment colour is "modulated or blended" with the texel ([public] PDF 7-49); there is no equation. The library has no software fallback for BLEND on this path that would show another rule.
+- Unknown: rounding of the multiplies, and whether the 8-bit environment colour is scaled by 255 or 256 before the multiply.
+
+## Texture.stflags at `+0x2134`
+
+- Established [binary]: the two bits are per-coordinate scale flags the triangle set-up computes. In `__glCrmFillSlowTriangle` (`0x0d949390`, the textured set-up around `0x0d949630`..`0x0d949fd0`) the driver forms a scaled coordinate for each of the three vertices (the vertex's s or t, at vertex offsets 48 and 52, times a per-vertex reciprocal), then stores a shift of 0 or 4 per coordinate in the context: word `+32496` for s, `+32500` for t.
+- Established [binary]: the rule for a coordinate whose wrap mode is not `GL_REPEAT` (`0x2901`): add 1.0 to each vertex value; the coordinate is flagged when the largest is above 7.0 or the smallest is below -7.0, that is, when a vertex value lies above 6 or below -8. For `GL_REPEAT` the driver first shifts all three values down by an integer (`floor(min) - 1`) so the smallest lies in [1, 2), then flags the coordinate when the largest value after that is above 15.0. A one-dimensional texture (the texture object's word at +232 equal to 1) never flags t.
+- Established [binary]: the driver turns the two shift words into the register value `(sShift >> 2) | (tShift >> 1)` (s flag bit 0, t flag bit 1) and stores it as a 32-bit word to `+0x2134`; the span writers (for example `__glCrmDumpPerPixelStippledSpan`, `0x0d96a9c0`) write it before the stepper words (`+0x2120`, `+0x2128`, `+0x2130`, `+0x2138`...). The same shift words scale the 64-bit steppers: the span routines divide the constant `1 << 43` by `2^shift` with an arithmetic shift, so an unflagged coordinate's start and slopes are multiplied by 2^43 and a flagged one by 2^39 (`dsll32 1, 11` then `dsrav` by the shift).
+- Inferred, now with the reason: the stepper register carries a fixed number of fraction bits (43); a flagged coordinate is stored with four fewer (39), which buys four more integer bits, a 16-fold range, for triangles whose coordinates run far past the texture. The engine must therefore read a flagged stepper as its register value divided by 2^39 instead of 2^43, i.e. 16 times larger. iris's rule (a flagged coordinate is read 16 times its register value) is the same statement. What the engine does with a flagged coordinate beyond that (for instance whether the texel index wrap uses a different shift) is not shown by any software read.
+- The specification omits this register; its table jumps from `Texture.Qs` (`0x130`) to `Texture.dsqdx` (`0x138`).
+
 # Interrupt controller as IRIX 6.5.30 drives it
 
 Sources: kernel objects `kernel.o` (functions `VEC_int`, the unnamed CRIME dispatcher before `intr`, `intr`, `crime_intr_enable`, `crime_intr_disable`, `setcrimevector`, `mlreset`), `mace.o` (`setmaceisavector`), `crime.o` (`crime_init`). Disassembly is under `software/kernel/disasm/kernel/kernel.text.s` and `software/kernel/disasm/mace/mace.text.s`. Labels as above.
