@@ -658,7 +658,7 @@ One entry per register that the shipped 6.5.30 code reaches, or that the revisio
 - `VC_8` at `+0x80020`: the last pair of capture tile addresses, tiles 9 and 10, write only (page 48). Established. Offset and layout recorded in [generated/c/gbe.h](../../generated/c/gbe.h).
   `mvpreg_initmace` stores zero here at `0xb810`; `mvptransfer_start_dma` copies the fifth word here at `0x7e0` in copy mode. Established (the instructions).
   A read returns no defined value because the register has no read path; the driver never reads it.
-- `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established. The table base, its 32-bit entry stride and the entry fields (`MODE_ENTRY`) are in [generated/c/gbe.h](../../generated/c/gbe.h).
+- `WID` at `+0x48004`: the second of 32 window-ID entries, the one for swap slot 1 (page 44). Established. The table base, its 32-bit entry stride and the entry fields (the `wid` register) are in [generated/c/gbe.h](../../generated/c/gbe.h).
   `crimeRetraceHandler` in `crime_retrace.o` walks the 32 swap slots of 24 bytes each and advances its table pointer by 4 bytes per slot.
   For a slot whose swap is due it rewrites the buffer bits of that slot's entry, the pair of low bits of the word.
   `crimeSetDisplayMode` writes the same entry for ioctl 0x55f4 with index 1.
