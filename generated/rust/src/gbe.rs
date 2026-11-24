@@ -1,8 +1,10 @@
-// generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 395773a399b34d8aaa981073d7d32d7522fe9ae7b7297260ad9cad14df025841
 // O2 GBE display back end register words
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// (established)
 pub mod cmap_entry {

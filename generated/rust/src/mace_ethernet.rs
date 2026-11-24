@@ -1,8 +1,10 @@
-// generated from devices/mace_ethernet/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_ethernet/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 fc82e9772a46bdaf6938ab147c3e5157348eb2057c381ff7402d6e97c874bfc7
 // O2 MACE Fast-Ethernet block: registers, DMA message formats and diagnostic port
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 pub mod enums {
     pub mod dest_filter_mode {
@@ -138,6 +140,7 @@ pub mod mac_control {
         pub const fn set(v: u64, x: u64) -> u64 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::dest_filter_mode::Value;
     }
     pub mod m10t_sia_select { // bits 4:4, established
@@ -389,6 +392,7 @@ pub mod dma_control {
         pub const fn set(v: u64, x: u64) -> u64 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::tx_ring_size::Value;
     }
     pub mod tx_dma_enable { // bits 1:1, established

@@ -1,8 +1,10 @@
-// generated from devices/mace_pci/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_pci/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 73f0a222e041d85dd1c9e05cf7f897c0e55137b35d4d3121cffb83577da06496
 // O2 MACE PCI host bridge control registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Captured address of a PCI error. Valid only while one of the four Error Address Type flags, bits 16 to 19 of the error flags register, is set (establi (established)
 pub mod pci_error_addr {

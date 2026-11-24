@@ -1,8 +1,10 @@
-// generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 973eff955dd467d8089ba111d4a9a8cc67729cd40457a98d06cdf52535c24845
 // O2 MACE serial port DMA channels: channel control, ring pointers and depth
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 pub mod enums {
     pub mod serial_ring {
@@ -130,6 +132,7 @@ pub mod channel_control {
         pub const fn set(v: u64, x: u64) -> u64 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::serial_threshold::Value;
     }
 }

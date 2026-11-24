@@ -1,8 +1,10 @@
-// generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138
 // O2 MACE video output channel and chip-level configuration
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// ---- output channel registers ---- One channel set, offsets from the start of the output channel window. All are 64-bit doubleword accesses. The statu (established)
 pub mod control {

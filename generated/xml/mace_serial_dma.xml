@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_serial_dma/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 973eff955dd467d8089ba111d4a9a8cc67729cd40457a98d06cdf52535c24845 -->
 <genxml unit="mace_serial_dma" prefix="MACE_SERIAL_DMA" title="O2 MACE serial port DMA channels: channel control, ring pointers and depth" from="published MACE 2.0 I/O ASIC specification: register tables (printed pages 122 and 127), serial ring buffer registers and ring placement (printed pages 127 and 128), packet formats (printed pages 129 and 130)">
   <doc>MACE serial DMA block for one serial port: the transmit and receive channel control, read and write pointers and depth. Offsets are from the port block base (constant BLOCK_BASE for port 1, PORT2_BLOCK_BASE for port 2; the two blocks use the same offsets). Index 0 of each register is the transmit channel and index 1 is the receive channel. The ring interrupt causes are in mace_periph.toml, and the packet formats and ring placement are in devices/mace_serial_dma/mace-serial-dma.md.</doc>

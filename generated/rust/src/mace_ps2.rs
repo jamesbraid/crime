@@ -1,8 +1,10 @@
-// generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 b5d75f0e8c87833d72210b12de51fe2f48f891366a4285572d75026fe1b1f60e
 // O2 MACE PS/2 keyboard and mouse ports
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Transmit buffer, bits 7:0: the byte currently shifted out of the data line (established, printed page 140, table 71). Write only. Reset zero (establis (established)
 pub mod transmit {

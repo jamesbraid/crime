@@ -1,8 +1,10 @@
-// generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3
 // O2 MACE free-running counter, three compare registers and audio and video time stamps
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32). It starts at zero on power-on reset and wraps in 32 bits (establish (established)
 pub mod counter {

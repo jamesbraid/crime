@@ -1,8 +1,10 @@
-// generated from devices/vice/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/vice/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 6977fa738f5b9ca17ebc20750e1c3808cd207eb9ba1ce2850506eb7721636337
 // O2 VICE imaging and compression engine registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Published names: revision 2 is "DX" (Vice-B, 099-0123-002) and revision 3 is "TRE" (Vice-C, 099-0123-003), spec PDF 44, table 8 (established). The IRI (established)
 pub mod id {

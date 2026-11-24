@@ -1,8 +1,10 @@
-// generated from devices/mace_i2c/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_i2c/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 721a7c3a20c7c022f231a7bcc7dd72d4e8f78c360f6d41c8d660f07a3cfa0d33
 // O2 MACE two-wire (I2C) bus interface
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Bus configuration and reset, bits 5:0 (established, printed pages 150 and 151, tables 76 and 79). Bits 0 to 3 are read/write and reset to zero. Bits 4 (established)
 pub mod config {

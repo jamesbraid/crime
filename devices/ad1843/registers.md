@@ -1,5 +1,5 @@
 <!-- generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 2f5da76be195476733826988d6e15e7fb4af26828801c7874e312356e6abf9fe -->
 
 # Analog Devices AD1843 stereo codec: the 29 internal registers

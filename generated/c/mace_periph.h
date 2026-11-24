@@ -1,5 +1,6 @@
-/* generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source */
-/* defs-gen 2 */
+/* generated from devices/mace_periph/registers.toml by defs-gen - do not edit,
+ * change the source */
+/* defs-gen 4 */
 /* input sha256 4d52877ce718f4815943b4386ac9ac4dbf31d509f277043c28bfcfb81c0c8a6e */
 /* O2 MACE peripheral ring base and interrupt status and mask */
 #ifndef MACE_PERIPH_GEN_H
@@ -9,21 +10,34 @@
 
 
 /*
- * Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That reset drives the RstISA pin in the ISA pin group, not a PCI pin (established, printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral DMA rings (established, printed page 123). Bits 14:1 are not described.
+ * Bit 0 asserts the external serial and parallel controller reset; it resets to
+ * one and writing zero releases it (established, printed page 123). That reset
+ * drives the RstISA pin in the ISA pin group, not a PCI pin (established,
+ * printed page 185). Bits 31:15 hold the 32 KiB-aligned base of the peripheral
+ * DMA rings (established, printed page 123). Bits 14:1 are not described.
  */
-/* ring_base: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
+/* ring_base: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD
+ * and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_RING_BASE_OFFSET                 0x0u /* established */
 #define MACE_PERIPH_RING_BASE_DMA_RING_BASE_SHIFT    15 /* established */
 #define MACE_PERIPH_RING_BASE_DMA_RING_BASE_MASK     0x1ffffull
-#define MACE_PERIPH_RING_BASE_DMA_RING_BASE_INPLACE  (MACE_PERIPH_RING_BASE_DMA_RING_BASE_MASK << MACE_PERIPH_RING_BASE_DMA_RING_BASE_SHIFT)
+#define MACE_PERIPH_RING_BASE_DMA_RING_BASE_INPLACE (MACE_PERIPH_RING_BASE_DMA_RING_BASE_MASK << MACE_PERIPH_RING_BASE_DMA_RING_BASE_SHIFT)
 #define MACE_PERIPH_RING_BASE_EXT_RESET_SHIFT        0 /* established */
 #define MACE_PERIPH_RING_BASE_EXT_RESET_MASK         0x1ull
-#define MACE_PERIPH_RING_BASE_EXT_RESET_INPLACE      (MACE_PERIPH_RING_BASE_EXT_RESET_MASK << MACE_PERIPH_RING_BASE_EXT_RESET_SHIFT)
+#define MACE_PERIPH_RING_BASE_EXT_RESET_INPLACE (MACE_PERIPH_RING_BASE_EXT_RESET_MASK << MACE_PERIPH_RING_BASE_EXT_RESET_SHIFT)
 
 /*
- * Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are defined and the rest read zero (established, printed page 122). Reset is 0x20: only the green LED disable bit is set (established, printed page 124). Like the other registers in the block it is 64-bit aligned and read or written by 64-bit programmed I/O. The specification does not say what a narrower access does (unknown, printed page 122).
+ * Flash-ROM, Number-In-a-Can line, LED, DP-RAM and test control. Bits 8:0 are
+ * defined and the rest read zero (established, printed page 122). Reset is
+ * 0x20: only the green LED disable bit is set (established, printed page 124).
+ * Like the other registers in the block it is 64-bit aligned and read or
+ * written by 64-bit programmed I/O. The specification does not say what a
+ * narrower access does (unknown, printed page 122).
  */
-/* misc_control: rw64, reset 0x20; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
+/* misc_control: rw64, reset 0x20; published MACE 2.0 I/O ASIC specification
+ * (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD
+ * and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_MISC_CONTROL_OFFSET              0x8u /* established */
 #define MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_SHIFT   8 /* established */
 #define MACE_PERIPH_MISC_CONTROL_SA20_ENABLE_MASK    0x1ull
@@ -42,7 +56,7 @@
 #define MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_RED_LED_ENABLE_SHIFT)
 #define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_SHIFT     3 /* established */
 #define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_MASK      0x1ull
-#define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_INPLACE   (MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_MASK << MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_SHIFT)
+#define MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_INPLACE (MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_MASK << MACE_PERIPH_MISC_CONTROL_NIC_LEVEL_SHIFT)
 #define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_SHIFT  2 /* established */
 #define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_MASK   0x1ull
 #define MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_INPLACE (MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_MASK << MACE_PERIPH_MISC_CONTROL_NIC_DEASSERT_SHIFT)
@@ -54,14 +68,24 @@
 #define MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_INPLACE (MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_MASK << MACE_PERIPH_MISC_CONTROL_FLASH_WRITE_ENABLE_SHIFT)
 
 /*
- * Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/write for external parallel and serial-DMA edge requests; the other listed sources are read-only (established, printed page 125). Timer compares 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit 20 and serial device B is bit 26 (established, printed page 125). Status bits 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31 into CRIME bit 4. A group signals CRIME whenever its level changes (established, printed page 179).
+ * Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are
+ * read/write for external parallel and serial-DMA edge requests; the other
+ * listed sources are read-only (established, printed page 125). Timer compares
+ * 0, 1 and 2 are bits 13, 14 and 15, the RTC is bit 8, serial device A is bit
+ * 20 and serial device B is bit 26 (established, printed page 125). Status bits
+ * 0 to 7 OR into CRIME bit 6, bits 8 to 15 into CRIME bit 5 and bits 16 to 31
+ * into CRIME bit 4. A group signals CRIME whenever its level changes
+ * (established, printed page 179).
  */
-/* periph_status: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
+/* periph_status: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD
+ * and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_PERIPH_STATUS_OFFSET             0x10u /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_OVERRUN_SHIFT 31 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_OVERRUN_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_OVERRUN_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_OVERRUN_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_OVERRUN_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_SHIFT 30 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_SHIFT 30
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_RX_THRESHOLD_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_ERROR_SHIFT 29 /* established */
@@ -70,16 +94,18 @@
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_PAIR_SHIFT 28 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_PAIR_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_PAIR_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_PAIR_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_PAIR_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_SHIFT 27 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_SHIFT 27
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_TX_THRESHOLD_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_SHIFT     26 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_MASK      0x1ull
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_INPLACE   (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_SHIFT)
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_B_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_B_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_B_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_OVERRUN_SHIFT 25 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_OVERRUN_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_OVERRUN_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_OVERRUN_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_OVERRUN_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_SHIFT 24 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_SHIFT 24
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_RX_THRESHOLD_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_ERROR_SHIFT 23 /* established */
@@ -88,12 +114,13 @@
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_PAIR_SHIFT 22 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_PAIR_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_PAIR_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_PAIR_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_PAIR_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_SHIFT 21 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_SHIFT 21
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_TX_THRESHOLD_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_SHIFT     20 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_MASK      0x1ull
-#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_INPLACE   (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_SHIFT)
+#define MACE_PERIPH_PERIPH_STATUS_SERIAL_A_INPLACE (MACE_PERIPH_PERIPH_STATUS_SERIAL_A_MASK << MACE_PERIPH_PERIPH_STATUS_SERIAL_A_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_TIMER_CMP2_SHIFT   15 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_TIMER_CMP2_MASK    0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_TIMER_CMP2_INPLACE (MACE_PERIPH_PERIPH_STATUS_TIMER_CMP2_MASK << MACE_PERIPH_PERIPH_STATUS_TIMER_CMP2_SHIFT)
@@ -117,23 +144,29 @@
 #define MACE_PERIPH_PERIPH_STATUS_PS2_KBD_IRQ_INPLACE (MACE_PERIPH_PERIPH_STATUS_PS2_KBD_IRQ_MASK << MACE_PERIPH_PERIPH_STATUS_PS2_KBD_IRQ_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_RTC_SHIFT          8 /* established */
 #define MACE_PERIPH_PERIPH_STATUS_RTC_MASK           0x1ull
-#define MACE_PERIPH_PERIPH_STATUS_RTC_INPLACE        (MACE_PERIPH_PERIPH_STATUS_RTC_MASK << MACE_PERIPH_PERIPH_STATUS_RTC_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_SHIFT 7 /* established */
+#define MACE_PERIPH_PERIPH_STATUS_RTC_INPLACE (MACE_PERIPH_PERIPH_STATUS_RTC_MASK << MACE_PERIPH_PERIPH_STATUS_RTC_SHIFT)
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_SHIFT 7
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_ERROR_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_SHIFT 6 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_SHIFT 6
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK2_THRESHOLD_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_SHIFT 5 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_SHIFT 5
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_ERROR_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_SHIFT 4 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_SHIFT 4
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_PLAYBACK1_THRESHOLD_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_SHIFT 3 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_SHIFT 3
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_OVERFLOW_SHIFT)
-#define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_SHIFT 2 /* established */
+/* established */
+#define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_SHIFT 2
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_MASK 0x1ull
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_CAPTURE_THRESHOLD_SHIFT)
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_VOLUME_SHIFT 1 /* established */
@@ -144,16 +177,26 @@
 #define MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_INPLACE (MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_MASK << MACE_PERIPH_PERIPH_STATUS_AUDIO_CODEC_MASK_SHIFT)
 
 /*
- * Gates delivery of the status bits. Page 147 has the timer condition cleared by writing its compare register and the mask handled separately, so a mask bit is read as not clearing the condition behind a status bit (inferred; the specification does not state it). Reset value not stated.
+ * Gates delivery of the status bits. Page 147 has the timer condition cleared
+ * by writing its compare register and the mask handled separately, so a mask
+ * bit is read as not clearing the condition behind a status bit (inferred; the
+ * specification does not state it). Reset value not stated.
  */
-/* periph_mask: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers */
+/* periph_mask: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD
+ * and NetBSD O2 MACE drivers */
 #define MACE_PERIPH_PERIPH_MASK_OFFSET               0x18u /* established */
 
-#define MACE_PERIPH_BLOCK_BASE                       0x1f310000u /* established */
-#define MACE_PERIPH_ISA_BASE                         0x1f380000u /* established */
+/* established */
+#define MACE_PERIPH_BLOCK_BASE                       0x1f310000u
+/* established */
+#define MACE_PERIPH_ISA_BASE                         0x1f380000u
 #define MACE_PERIPH_ISA_REG_STRIDE                   0x100u /* established */
-#define MACE_PERIPH_RTC_BASE                         0x1f3a0000u /* established */
-#define MACE_PERIPH_SERIAL_A_BASE                    0x1f390000u /* established */
-#define MACE_PERIPH_SERIAL_B_BASE                    0x1f398000u /* established */
+/* established */
+#define MACE_PERIPH_RTC_BASE                         0x1f3a0000u
+/* established */
+#define MACE_PERIPH_SERIAL_A_BASE                    0x1f390000u
+/* established */
+#define MACE_PERIPH_SERIAL_B_BASE                    0x1f398000u
 
 #endif /* MACE_PERIPH_GEN_H */

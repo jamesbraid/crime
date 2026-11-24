@@ -1,5 +1,5 @@
 {
- "generator": "defs-gen 2",
+ "generator": "defs-gen 4",
  "input_sha256": "4c9f8372ef5d0a31c7073617aee0a75f2f238f85c9f0b71b8d0ab617da878fb2",
  "schema": "defs-flat/1",
  "source": "devices/crime/registers.toml",

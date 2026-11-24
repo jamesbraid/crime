@@ -1,8 +1,10 @@
-// generated from devices/mte/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mte/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 7b064581899b3a6b903ea534f29f417cc394463f7569d3c87540eed280f15528
 // O2 CRIME memory transfer engine registers and tile layout
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Table 7-15 gives the register as 32 bits, readable and writable (established, [spec] PDF 183). Bits 31:12 are reserved (established, [spec] PDF 184).  (established)
 pub mod mode {

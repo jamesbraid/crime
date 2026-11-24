@@ -1,8 +1,10 @@
-// generated from devices/crime/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/crime/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 4c9f8372ef5d0a31c7073617aee0a75f2f238f85c9f0b71b8d0ab617da878fb2
 // O2 CRIME memory controller and CPU interface registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a questi (established)
 pub mod id {

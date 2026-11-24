@@ -1,8 +1,10 @@
-// generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 0532f8940b65efce0c300882507ff37384ab91c9a6342a2c7647107f068cd16f
 // O2 MACE audio interface: codec command, stereo DMA ring control and pointers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 pub mod enums {
     pub mod codec_direction {
@@ -181,6 +183,7 @@ pub mod codec_cmd {
         pub const fn set(v: u64, x: u64) -> u64 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::codec_direction::Value;
     }
     pub mod codec_data { // bits 15:0, established
@@ -259,6 +262,7 @@ pub mod ring_control {
         pub const fn set(v: u64, x: u64) -> u64 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::ring_threshold::Value;
     }
 }

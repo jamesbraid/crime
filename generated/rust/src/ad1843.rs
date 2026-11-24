@@ -1,8 +1,10 @@
-// generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 2f5da76be195476733826988d6e15e7fb4af26828801c7874e312356e6abf9fe
 // Analog Devices AD1843 stereo codec: the 29 internal registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 pub mod enums {
     pub mod analog_source {
@@ -304,6 +306,7 @@ pub mod adc_input {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::analog_source::Value;
     }
     pub mod l_mic_boost { // bits 12:12, established
@@ -335,6 +338,7 @@ pub mod adc_input {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::analog_source::Value;
     }
     pub mod r_mic_boost { // bits 4:4, established
@@ -666,6 +670,7 @@ pub mod mono_control {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::gain_timing::Value;
     }
     pub mod dac1_gain_timing { // bits 0:0, established
@@ -677,6 +682,7 @@ pub mod mono_control {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::gain_timing::Value;
     }
 }
@@ -963,6 +969,7 @@ pub mod clock_select {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
     pub mod dac1_clock { // bits 9:8, established
@@ -974,6 +981,7 @@ pub mod clock_select {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
     pub mod r_adc_clock { // bits 3:2, inferred
@@ -985,6 +993,7 @@ pub mod clock_select {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
     pub mod l_adc_clock { // bits 1:0, established
@@ -996,6 +1005,7 @@ pub mod clock_select {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
 }
@@ -1427,6 +1437,7 @@ pub mod digital_filter {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::digital_source::Value;
     }
     pub mod l_digital_source { // bits 5:4, established
@@ -1438,6 +1449,7 @@ pub mod digital_filter {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::digital_source::Value;
     }
     pub mod r_adc_filter { // bits 1:1, established
@@ -1494,6 +1506,7 @@ pub mod format_lock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
     pub mod dac1_format { // bits 9:8, established
@@ -1505,6 +1518,7 @@ pub mod format_lock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
     pub mod scf { // bits 7:7, established
@@ -1556,6 +1570,7 @@ pub mod format_lock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
     pub mod l_adc_format { // bits 1:0, established
@@ -1567,6 +1582,7 @@ pub mod format_lock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
 }
@@ -1758,6 +1774,7 @@ pub mod power_clock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::line_mode::Value;
     }
     pub mod l_line_mode { // bits 0:0, established
@@ -1769,6 +1786,7 @@ pub mod power_clock {
         pub const fn set(v: u32, x: u32) -> u32 {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
+        #[allow(unused_imports)]
         pub use super::super::enums::line_mode::Value;
     }
 }

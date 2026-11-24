@@ -1,8 +1,10 @@
-// generated from devices/re/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/re/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 421f158df7a8325a289ca1b402520aeca72a64d3ae0f01760f330731502e7bac
 // O2 CRIME rendering engine: interface buffer, linear TLBs and clip state
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// The interface buffer holds 64 queued writes. The specification's table names 128 entries, but its address half sits 512 bytes above the data half, whi (established)
 pub mod ib_data {

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 2f5da76be195476733826988d6e15e7fb4af26828801c7874e312356e6abf9fe -->
 <genxml unit="ad1843" prefix="AD1843" title="Analog Devices AD1843 stereo codec: the 29 internal registers" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages.">
   <doc>The AD1843 serial-port codec used by the O2 MACE audio interface. Register numbers are the codec's own, not MACE byte offsets, and are reached through the MACE codec command register (mace_audio.toml, codec_cmd). Each register is 16 bits. Field masks follow the published register table; bits the table does not define are not listed.</doc>

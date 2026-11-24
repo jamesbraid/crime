@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_uart/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 b276052059012fda511b92866ac98277d32c8d9041f8828f1258aa42e1efb19c -->
 <genxml unit="mace_uart" prefix="MACE_UART" title="O2 MACE external 16550-compatible serial port: modem control and scratch registers" from="TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)">
   <doc>One external serial port of the MACE chip, a 16550-compatible UART. Offsets are from each port's base (the serial base constants in mace_periph.toml). Only the modem control and scratch registers are defined here; the rest of the register set is in platforms/ip32/mace-base.md.</doc>

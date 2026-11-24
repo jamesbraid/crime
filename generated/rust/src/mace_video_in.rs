@@ -1,8 +1,10 @@
-// generated from devices/mace_video_in/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_video_in/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 bab2f6d227cfb062e38a947b70a1bd06f1b91c0523748caa4201657d432ef446
 // O2 MACE video input channel registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// The shipped IRIX video driver writes the whole word, changing only its low nine bits. (established)
 pub mod control {

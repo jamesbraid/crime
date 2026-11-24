@@ -1,5 +1,5 @@
 <!-- generated from devices/mace_uart/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 b276052059012fda511b92866ac98277d32c8d9041f8828f1258aa42e1efb19c -->
 
 # O2 MACE external 16550-compatible serial port: modem control and scratch registers

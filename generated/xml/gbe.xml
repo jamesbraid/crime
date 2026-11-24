@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 395773a399b34d8aaa981073d7d32d7522fe9ae7b7297260ad9cad14df025841 -->
 <genxml unit="gbe" prefix="GBE" title="O2 GBE display back end register words" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
   <doc>GBE display back end register words, tables and offsets.</doc>

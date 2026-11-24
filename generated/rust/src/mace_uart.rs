@@ -1,8 +1,10 @@
-// generated from devices/mace_uart/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_uart/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 b276052059012fda511b92866ac98277d32c8d9041f8828f1258aa42e1efb19c
 // O2 MACE external 16550-compatible serial port: modem control and scratch registers
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Modem control register of one port. Master reset clears every bit, and bits 6 and 7 are permanently zero (inferred, printed page 25). Bit 3 enables th (inferred)
 pub mod mcr {

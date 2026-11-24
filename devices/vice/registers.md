@@ -1,5 +1,5 @@
 <!-- generated from devices/vice/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 2 -->
+<!-- defs-gen 4 -->
 <!-- input sha256 6977fa738f5b9ca17ebc20750e1c3808cd207eb9ba1ce2850506eb7721636337 -->
 
 # O2 VICE imaging and compression engine registers

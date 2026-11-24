@@ -1,8 +1,10 @@
-// generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 2
+// @generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source
+// defs-gen 4
 // input sha256 4d52877ce718f4815943b4386ac9ac4dbf31d509f277043c28bfcfb81c0c8a6e
 // O2 MACE peripheral ring base and interrupt status and mask
 #![allow(dead_code)]
+#![allow(clippy::doc_markdown)]
+#![cfg_attr(rustfmt, rustfmt_skip)]
 
 /// Bit 0 asserts the external serial and parallel controller reset; it resets to one and writing zero releases it (established, printed page 123). That r (established)
 pub mod ring_base {
