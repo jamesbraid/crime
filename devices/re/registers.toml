@@ -138,7 +138,7 @@ count = 4
 space = "re"
 from = "published CRIME 1.5 draft specification, PDF 164, Table 7-2"
 doc = """
-Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). The specification gives no entry layout. The one kernel loader packs four 16-bit tile numbers into each doubleword with entry 0 in bits 63:48, stores all four doublewords every time (entries past its count as zero), sets no flag bit in an entry, and writes zero to ib_discard last (established, shipped kernel, devices/re/clip-id.md). Whether the engine ignores or requires bit 15 for this table is unknown."""
+Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). The specification gives no entry layout. The one kernel loader packs four 16-bit tile numbers into each doubleword with entry 0 in bits 63:48, stores all four doublewords every time (entries past its count as zero), sets no flag bit in an entry, and writes zero to set_startptr last (established, shipped kernel, devices/re/clip-id.md). Whether the engine ignores or requires bit 15 for this table is unknown."""
 
 [registers.tlb_lin_a]
 offset = 0x1700
@@ -1329,27 +1329,25 @@ rd_ptr = { bits = [17, 12], grade = "established" }
 wr_ptr = { bits = [11, 6], grade = "established" }
 start = { bits = [5, 0], grade = "inferred" }
 
-[registers.ib_discard]
+[registers.set_startptr]
 offset = 0x4008
 access = "w"
 width = 32
 grade = "established"
 space = "re"
 doc = """
-ib_discard sits two doublewords above the status register. Shipped kernel
+set_startptr sits two doublewords above the status register. Shipped kernel
 code stores zero to it with a 32-bit store at 18 sites and never reads it:
 after bulk translation-table and register loads, after the clip words in
 its clip validation, and after saving the outgoing client's queued writes on a
 context switch. The user-mode library and the X server never write it, and
 the kernel's own linear-table loads need no such store. The
-register's position and its write-zero use are established. The name comes
-from an earlier reading in which the write discards queued writes not yet
-committed; that reading is contradicted by the call pattern, since in 12 of
-the 18 sites the stores just before it are loads the kernel needs to take
-effect (inferred, strong). The hardware's effect is unknown. Inferred, weak:
-it moves the start field of the status word to the write pointer. A model
-may accept the write and change nothing observable (devices/re/interface-buffer.md)."""
-notes = "An earlier kernel reading named this word the renderer flush and said it discards entries after the start pointer; the call pattern contradicts a discard of earlier writes."
+register's position and its write-zero use are established. The name is the
+one the IRIX source tree gives this offset: SET_STARTPTR_REG, the second word
+of the status block in its CRIME register layout. The hardware's effect is
+unknown. Inferred, weak: it moves the start field of the
+status word to the write pointer, which the name fits. A model may accept the
+write and change nothing observable (devices/re/interface-buffer.md)."""
 
 [words.BUFMODE]
 width = 32

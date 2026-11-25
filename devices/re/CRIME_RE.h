@@ -173,12 +173,10 @@
  * Inferred: entries between the start pointer and the write pointer are
  * parameters written since the last start-alias commit, which the engine
  * holds until a commit; the kernel saves them on a context switch and the
- * write to +0x4008 discards them (resets the uncommitted part of the
- * interface buffer). Its use after TLB loads would then clear any partial
- * user state left behind the kernel's writes [U]; routes tried and the
- * next one in questions/README.md.
+ * write to +0x4008 moves the start pointer to the write pointer (inferred,
+ * weak). The name is the IRIX header's; see devices/re/registers.toml.
  */
-#define RE_IB_DISCARD           0x4008  /* [I] name */
+#define RE_SET_STARTPTR         0x4008  /* IRIX name */
 
 /* ==== Pixel pipeline (+0x2000) ============================================ */
 /* G = global (applied after the pipe drains), NG = per primitive [E, spec PDF 164]. */

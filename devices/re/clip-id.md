@@ -71,7 +71,7 @@ For whoever owns `registers.toml` and the generated pages (not changed here):
 - `tlb_cid`: entry format as above, graded established for the entry (tile number, no flag bit, four per doubleword, slot 0 in bits 63:48), the zero fill past the count, and the single loader. The kernel stores all four doublewords every time.
 - `clipmode` bit 11 `clip_id_test`: pass if the plane bit is 1 (inferred). Bit 10 `clip_id_map`: 0 selects byte columns `0x000` to `0x0ff` of the plane, 1 selects `0x100` to `0x1ff` (established for the software pairing, inferred for the hardware). The specification's duplicated description for bit 10 should be recorded as a specification defect.
 - The MTE destination code 6 plane geometry: 512 byte columns by up to 2048 rows, one bit per pixel, most significant bit leftmost.
-- `ib_discard` is written at the end of the loader ([interface-buffer.md](interface-buffer.md)).
+- `set_startptr` is written at the end of the loader ([interface-buffer.md](interface-buffer.md)).
 
 ## Review (2026-11-24)
 

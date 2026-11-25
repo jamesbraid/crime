@@ -1,7 +1,7 @@
 /* generated from devices/re/registers.toml by defs-gen - do not edit, change
  * the source */
 /* defs-gen 4 */
-/* input sha256 60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9 */
+/* input sha256 b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1 */
 /* O2 CRIME rendering engine: interface buffer, linear TLBs and clip state */
 #ifndef RE_GEN_H
 #define RE_GEN_H
@@ -146,7 +146,7 @@
  * Table 7-2). The specification gives no entry layout. The one kernel loader
  * packs four 16-bit tile numbers into each doubleword with entry 0 in bits
  * 63:48, stores all four doublewords every time (entries past its count as
- * zero), sets no flag bit in an entry, and writes zero to ib_discard last
+ * zero), sets no flag bit in an entry, and writes zero to set_startptr last
  * (established, shipped kernel, devices/re/clip-id.md). Whether the engine
  * ignores or requires bit 15 for this table is unknown.
  */
@@ -1328,26 +1328,24 @@
 #define RE_STATUS_START_INPLACE (RE_STATUS_START_MASK << RE_STATUS_START_SHIFT)
 
 /*
- * ib_discard sits two doublewords above the status register. Shipped kernel
+ * set_startptr sits two doublewords above the status register. Shipped kernel
  * code stores zero to it with a 32-bit store at 18 sites and never reads it:
  * after bulk translation-table and register loads, after the clip words in
  * its clip validation, and after saving the outgoing client's queued writes on
  * a
  * context switch. The user-mode library and the X server never write it, and
  * the kernel's own linear-table loads need no such store. The
- * register's position and its write-zero use are established. The name comes
- * from an earlier reading in which the write discards queued writes not yet
- * committed; that reading is contradicted by the call pattern, since in 12 of
- * the 18 sites the stores just before it are loads the kernel needs to take
- * effect (inferred, strong). The hardware's effect is unknown. Inferred, weak:
- * it moves the start field of the status word to the write pointer. A model
- * may accept the write and change nothing observable
- * (devices/re/interface-buffer.md).
+ * register's position and its write-zero use are established. The name is the
+ * one the IRIX source tree gives this offset: SET_STARTPTR_REG, the second word
+ * of the status block in its CRIME register layout. The hardware's effect is
+ * unknown. Inferred, weak: it moves the start field of the
+ * status word to the write pointer, which the name fits. A model may accept the
+ * write and change nothing observable (devices/re/interface-buffer.md).
  */
-/* ib_discard: w32, space re, reset unknown; published CRIME 1.5 draft
+/* set_startptr: w32, space re, reset unknown; published CRIME 1.5 draft
  * specification, public NetBSD O2 framebuffer driver, and shipped IRIX software
  * readings */
-#define RE_IB_DISCARD_OFFSET                         0x4008u /* established */
+#define RE_SET_STARTPTR_OFFSET                       0x4008u /* established */
 
 /*
  * The buffer mode words (source and destination share one layout) pick the

@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9",
+ "input_sha256": "b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1",
  "schema": "defs-flat/1",
  "source": "devices/re/registers.toml",
  "profile": "public",
@@ -2817,7 +2817,7 @@
   {
    "unit": "re",
    "kind": "register",
-   "name": "ib_discard",
+   "name": "set_startptr",
    "offset": 16392,
    "access": "w",
    "width": 32,

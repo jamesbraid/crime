@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/re/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9 -->
+<!-- input sha256 b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1 -->
 <genxml unit="re" prefix="RE" title="O2 CRIME rendering engine: interface buffer, linear TLBs and clip state" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
   <doc>CRIME rendering engine interface buffer, translation tables, pixel pipeline registers and status.</doc>
   <space name="re" unit="byte"/>
@@ -245,7 +245,7 @@ y * 4 + x / 4. The linear tables further down use 32-bit entries.</doc>
     <doc>Texture translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2).</doc>
   </struct>
   <struct name="TLB_CID" size="8" grade="established" from="published CRIME 1.5 draft specification, PDF 164, Table 7-2" register="yes" offset="0x16e0" access="rw" count="4" stride="8" space="re" reset="unknown">
-    <doc>Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). The specification gives no entry layout. The one kernel loader packs four 16-bit tile numbers into each doubleword with entry 0 in bits 63:48, stores all four doublewords every time (entries past its count as zero), sets no flag bit in an entry, and writes zero to ib_discard last (established, shipped kernel, devices/re/clip-id.md). Whether the engine ignores or requires bit 15 for this table is unknown.</doc>
+    <doc>Clip-ID translation entries name 64 KiB tiles (established, [spec] PDF 164, Table 7-2). The specification gives no entry layout. The one kernel loader packs four 16-bit tile numbers into each doubleword with entry 0 in bits 63:48, stores all four doublewords every time (entries past its count as zero), sets no flag bit in an entry, and writes zero to set_startptr last (established, shipped kernel, devices/re/clip-id.md). Whether the engine ignores or requires bit 15 for this table is unknown.</doc>
   </struct>
   <struct name="TLB_LIN_A" size="8" grade="established" from="published CRIME 1.5 draft specification, PDF 164, Table 7-2" register="yes" offset="0x1700" access="rw" count="16" stride="8" space="re" reset="unknown">
     <doc>Linear translation entries name 4 KiB pages, not 64 KiB tiles (established, [spec] PDF 164, Table 7-2).</doc>
@@ -742,20 +742,19 @@ the MTE registers in the rendering block (established, [spec] PDF 162 and figure
     <field name="wr_ptr" start="6" size="6" type="uint" grade="established"/>
     <field name="start" start="0" size="6" type="uint" grade="inferred"/>
   </struct>
-  <struct name="IB_DISCARD" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x4008" access="w" space="re" reset="unknown">
-    <doc>ib_discard sits two doublewords above the status register. Shipped kernel
+  <struct name="SET_STARTPTR" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings" register="yes" offset="0x4008" access="w" space="re" reset="unknown">
+    <doc>set_startptr sits two doublewords above the status register. Shipped kernel
 code stores zero to it with a 32-bit store at 18 sites and never reads it:
 after bulk translation-table and register loads, after the clip words in
 its clip validation, and after saving the outgoing client's queued writes on a
 context switch. The user-mode library and the X server never write it, and
 the kernel's own linear-table loads need no such store. The
-register's position and its write-zero use are established. The name comes
-from an earlier reading in which the write discards queued writes not yet
-committed; that reading is contradicted by the call pattern, since in 12 of
-the 18 sites the stores just before it are loads the kernel needs to take
-effect (inferred, strong). The hardware's effect is unknown. Inferred, weak:
-it moves the start field of the status word to the write pointer. A model
-may accept the write and change nothing observable (devices/re/interface-buffer.md).</doc>
+register's position and its write-zero use are established. The name is the
+one the IRIX source tree gives this offset: SET_STARTPTR_REG, the second word
+of the status block in its CRIME register layout. The hardware's effect is
+unknown. Inferred, weak: it moves the start field of the
+status word to the write pointer, which the name fits. A model may accept the
+write and change nothing observable (devices/re/interface-buffer.md).</doc>
   </struct>
   <struct name="BUFMODE" size="4" grade="established" from="published CRIME 1.5 draft specification, public NetBSD O2 framebuffer driver, and shipped IRIX software readings">
     <doc>The buffer mode words (source and destination share one layout) pick the

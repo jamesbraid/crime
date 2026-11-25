@@ -1,6 +1,6 @@
 // @generated from devices/re/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 60baea5dda44ab74b2e7e58392d2c478ef5906e8ecf44edc488197f688538da9
+// input sha256 b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1
 // O2 CRIME rendering engine: interface buffer, linear TLBs and clip state
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -2091,8 +2091,8 @@ pub mod status {
         }
     }
 }
-/// ib_discard sits two doublewords above the status register. Shipped kernel code stores zero to it with a 32-bit store at 18 sites and never reads it: a (established)
-pub mod ib_discard {
+/// set_startptr sits two doublewords above the status register. Shipped kernel code stores zero to it with a 32-bit store at 18 sites and never reads it: (established)
+pub mod set_startptr {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x4008;
 }
