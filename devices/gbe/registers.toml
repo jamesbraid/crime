@@ -339,9 +339,10 @@ Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 
 The spec gives separate output and synchronized input pins (page 22): a write sets
 the outputs, and a read returns the bus state, which can differ from the output
 latch. IRIX treats both bits as active low: it writes 1 to pull a line low and reads
-1 for a low line (software expectation, established from its bus routines; the
-output driver is an inverting open-collector part). So the reset value 1 pulls both
-lines low until the first write of 0."""
+1 for a low line (established from its bus routines as IRIX behaviour; for the
+hardware this is a software expectation). An inverting open-collector driver would
+explain it, and the reset value 1 would then hold both lines low until the first
+write of 0 (inferred, not observed)."""
 
 [registers.i2c.fields]
 sda = { bits = [0, 0], grade = "established" }

@@ -1,6 +1,6 @@
 // @generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 52b337c18d8f12eb68833f6e73b9f453a69239d46738dc62031c79403dce753f
+// input sha256 0023aea84682198875c8cd840923aab749482c5f5580b2a5183b36c767a3f8ab
 // O2 GBE display back end register words
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
