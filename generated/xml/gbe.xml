@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 398235f0e6d11f0340b6a04b87db02103d6f06177a9da5348eac0a50fd45a5f3 -->
+<!-- input sha256 52b337c18d8f12eb68833f6e73b9f453a69239d46738dc62031c79403dce753f -->
 <genxml unit="gbe" prefix="GBE" title="O2 GBE display back end register words" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings">
   <doc>GBE display back end register words, tables and offsets.</doc>
   <enum name="ctrlstat_pclk_select">
@@ -90,10 +90,10 @@ operation state, with reset zero ([gbe-spec] p. 36). The shipped IRIX kernel cle
     <doc>Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 1.
 The spec gives separate output and synchronized input pins (page 22): a write sets
 the outputs, and a read returns the bus state, which can differ from the output
-latch. NetBSD XORs both written and read bits with 3 and calls the fields low
-active. That is a software expectation (inferred), and the register table alone does
-not say whether writing 1 releases a line. Whether the reset value 1 means released
-is therefore not established.</doc>
+latch. IRIX treats both bits as active low: it writes 1 to pull a line low and reads
+1 for a low line (software expectation, established from its bus routines; the
+output driver is an inverting open-collector part). So the reset value 1 pulls both
+lines low until the first write of 0.</doc>
     <field name="sdc" start="1" size="1" type="uint" grade="established"/>
     <field name="sda" start="0" size="1" type="uint" grade="established"/>
   </struct>
@@ -110,9 +110,10 @@ below spans all four. Reset has bit 3 set and every other defined bit zero.</doc
     </test>
   </struct>
   <struct name="I2CFP" size="4" grade="established" from="published GBE 1.1 specification, public Linux and NetBSD O2 framebuffer drivers, and shipped IRIX software readings" register="yes" offset="0x10" access="rw" reset="unknown">
-    <doc>Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset
-to 1. The spec places external pullups on the flat-panel clock and data outputs
-(page 4). The inverted-convention caveat under I2C applies here too.</doc>
+    <doc>Flat-panel I2C bus, same layout and active-low polarity as I2C: data at bit 0 and
+clock at bit 1, both reset to 1. The spec places external pullups on the flat-panel
+clock and data outputs (page 4). The 1600SW adapter and the dual-channel option are
+detected through it (devices/gbe/flat-panel-1600sw.md).</doc>
     <field name="sdc" start="1" size="1" type="uint" grade="established"/>
     <field name="sda" start="0" size="1" type="uint" grade="established"/>
   </struct>

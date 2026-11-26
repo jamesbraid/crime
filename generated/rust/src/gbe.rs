@@ -1,6 +1,6 @@
 // @generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 398235f0e6d11f0340b6a04b87db02103d6f06177a9da5348eac0a50fd45a5f3
+// input sha256 52b337c18d8f12eb68833f6e73b9f453a69239d46738dc62031c79403dce753f
 // O2 GBE display back end register words
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -434,7 +434,7 @@ pub mod sysclk {
         }
     }
 }
-/// Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset to 1. The spec places external pullups on the flat-panel clock an (established)
+/// Flat-panel I2C bus, same layout and active-low polarity as I2C: data at bit 0 and clock at bit 1, both reset to 1. The spec places external pullups on (established)
 pub mod i2cfp {
     pub const WIDTH: u32 = 32;
     pub const OFFSET: u64 = 0x10;

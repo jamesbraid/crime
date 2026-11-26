@@ -338,10 +338,10 @@ doc = """
 Monitor DDC bus. Bit 0 is the data line and bit 1 the clock line; both reset to 1.
 The spec gives separate output and synchronized input pins (page 22): a write sets
 the outputs, and a read returns the bus state, which can differ from the output
-latch. NetBSD XORs both written and read bits with 3 and calls the fields low
-active. That is a software expectation (inferred), and the register table alone does
-not say whether writing 1 releases a line. Whether the reset value 1 means released
-is therefore not established."""
+latch. IRIX treats both bits as active low: it writes 1 to pull a line low and reads
+1 for a low line (software expectation, established from its bus routines; the
+output driver is an inverting open-collector part). So the reset value 1 pulls both
+lines low until the first write of 0."""
 
 [registers.i2c.fields]
 sda = { bits = [0, 0], grade = "established" }
@@ -355,9 +355,10 @@ access = "rw"
 width = 32
 grade = "established"
 doc = """
-Flat-panel DDC bus, same layout as I2C: data at bit 0 and clock at bit 1, both reset
-to 1. The spec places external pullups on the flat-panel clock and data outputs
-(page 4). The inverted-convention caveat under I2C applies here too."""
+Flat-panel I2C bus, same layout and active-low polarity as I2C: data at bit 0 and
+clock at bit 1, both reset to 1. The spec places external pullups on the flat-panel
+clock and data outputs (page 4). The 1600SW adapter and the dual-channel option are
+detected through it (devices/gbe/flat-panel-1600sw.md)."""
 
 [registers.i2cfp.fields]
 sda = { bits = [0, 0], grade = "established" }
