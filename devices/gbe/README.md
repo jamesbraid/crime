@@ -9,6 +9,7 @@ The values are in [registers.toml](registers.toml), each graded and sourced, and
 ## Pages
 
 - [GBE display timing](gbe.md)
+- [SGI 1600SW flat panel adapter (O2)](flat-panel-1600sw.md)
 - [GBE.h, the annotated header](GBE.h)
 
 ## Used by
