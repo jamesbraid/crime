@@ -197,7 +197,7 @@ Established from the SHA-256 of the bytes read from the release discs.
 | **Total** | **82** | **28** | **54** |
 
 - The 28 identical items are `crime.a(crime_busts.o)`, `gfxs.a(gfx_debug.o)` and
-  all 26 `.vfo` files. Each has the same bytes in both releases, so the 6.5.30
+  all 26 `.vfo` files. Each has the same bytes in the 6.5.22 and 6.5.30 releases (the 6.5 base set's 15 files differ, see gbe.md), so the 6.5.30
   rows stand for the 6.5.22 copies too.
 - The 54 changed items are the reading queue. Every one differs in bytes.
 - Install paths present in both releases: all 42 top-level files exist in both.
