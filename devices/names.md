@@ -222,7 +222,7 @@ Each unit says `name_source = "ours"`. Its names are descriptive spellings: ever
 | mace_ethernet | 133 | 0 | 133 | none |
 | mace_i2c | 18 | 0 | 18 | none |
 | mace_periph | 49 | 0 | 49 | timer_cmp0, timer_cmp1 and timer_cmp2 renamed to timer_compare0, timer_compare1 and timer_compare2 |
-| mace_ps2 | 26 | 0 | 26 | none |
+| mace_ps2 | 26 | 0 | 26 | clock_permit and clock_permitted renamed to clock_enable and clock_enabled (the specification says Clock Inhibit with the bit set meaning the clock is asserted, and the public Linux driver calls the same bit a clock enable) |
 | mace_serial_dma | 14 | 0 | 14 | none |
 | mace_uart | 3 | 0 | 3 | none |
 | mace_pci | 22 | 1 | 21 | none |

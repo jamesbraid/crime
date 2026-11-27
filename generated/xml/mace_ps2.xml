@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 87fe8585a0e2d9078bf43f21564177a98384cc4c598b66f290056a8e22270ee9 -->
+<!-- input sha256 7212eb4ecf685d025d8d406110a67f3ebba615e8345f685c9da568eb6ff1c8f4 -->
 <genxml unit="mace_ps2" prefix="MACE_PS2" title="O2 MACE PS/2 keyboard and mouse ports" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)">
   <doc>MACE PS/2 keyboard and mouse ports: one serial port per device, each with a transmit buffer, a receive buffer, a control register and a status register. Offsets are from the port's bank base (constants KEYBOARD_BASE and MOUSE_BASE).</doc>
   <struct name="TRANSMIT" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x0" access="w" reset="0x0">
@@ -14,9 +14,9 @@
     <field name="byte" start="0" size="8" type="uint" grade="established"/>
   </struct>
   <struct name="CONTROL" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)" register="yes" offset="0x10" access="rw" reset="0x10">
-    <doc>Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed page 141). Bits 7:6 are not defined.</doc>
+    <doc>Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-enable bit (established, printed page 141). Bits 7:6 are not defined.</doc>
     <field name="internal_reset" start="5" size="1" type="uint" grade="established"/>
-    <field name="clock_permit" start="4" size="1" type="uint" grade="established"/>
+    <field name="clock_enable" start="4" size="1" type="uint" grade="established"/>
     <field name="receive_interrupt_enable" start="3" size="1" type="uint" grade="established"/>
     <field name="transmit_interrupt_enable" start="2" size="1" type="uint" grade="established"/>
     <field name="transmit_enable" start="1" size="1" type="uint" grade="established"/>
@@ -30,7 +30,7 @@
     <field name="receive_full" start="4" size="1" type="uint" grade="established"/>
     <field name="transmit_empty" start="3" size="1" type="uint" grade="established"/>
     <field name="transmit_in_progress" start="2" size="1" type="uint" grade="established"/>
-    <field name="clock_permitted" start="1" size="1" type="uint" grade="established"/>
+    <field name="clock_enabled" start="1" size="1" type="uint" grade="established"/>
     <field name="clock_level" start="0" size="1" type="uint" grade="established"/>
   </struct>
   <constant name="BLOCK_BASE" value="0x1f320000" grade="established"/>

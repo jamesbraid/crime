@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 87fe8585a0e2d9078bf43f21564177a98384cc4c598b66f290056a8e22270ee9 -->
+<!-- input sha256 7212eb4ecf685d025d8d406110a67f3ebba615e8345f685c9da568eb6ff1c8f4 -->
 
 # O2 MACE PS/2 keyboard and mouse ports
 
@@ -39,12 +39,12 @@ Receive buffer. Bits 7:0 are the byte currently shifted in from the data line; b
 
 ### Register `control`
 
-Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed page 141). Bits 7:6 are not defined.
+Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-enable bit (established, printed page 141). Bits 7:6 are not defined.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
 | 5 | `internal_reset` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One holds the port's internal state machines in reset; zero releases them (printed page 141). Reset to zero. |
-| 4 | `clock_permit` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One asserts the clock output, which lets the device exchange data; zero releases it and pauses both directions (printed page 141). Resets to one. |
+| 4 | `clock_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One asserts the clock output, which lets the device exchange data; zero releases it and pauses both directions (printed page 141). Resets to one. |
 | 3 | `receive_interrupt_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One asserts the port interrupt when the receive buffer is full (printed page 141). |
 | 2 | `transmit_interrupt_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One asserts the port interrupt when the transmit buffer is empty (printed page 141). |
 | 1 | `transmit_enable` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One lets the transmit buffer shift out on the data line, on the falling edge of the device clock; zero disables the timeout (printed page 141); whether it also stops the shift is not stated. The timeout itself is not defined in the specification (unknown). |
@@ -62,7 +62,7 @@ Transmit and receive status and error flags, bits 7:0 (established, printed page
 | 4 | `receive_full` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One when the receive buffer holds a byte waiting to be read (printed page 142). Resets to zero. |
 | 3 | `transmit_empty` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One when the transmit buffer is empty and zero while it holds a byte waiting to be sent (printed page 142). Resets to zero in the table. |
 | 2 | `transmit_in_progress` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | One while the data line is shifting an output byte (printed page 142). Resets to zero. |
-| 1 | `clock_permitted` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | The output that the clock-permit control bit drives: one when the clock is asserted. Resets to one (printed page 142). |
+| 1 | `clock_enabled` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | The output that the clock-enable control bit drives: one when the clock is asserted. Resets to one (printed page 142). |
 | 0 | `clock_level` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | Level of the external device clock: one when asserted, zero when de-asserted (printed page 142). Reset not fixed. |
 
 ## Constants
@@ -70,7 +70,7 @@ Transmit and receive status and error flags, bits 7:0 (established, printed page
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
 | `BLOCK_BASE` | 0x1f320000 | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | physical base of the keyboard and mouse slice, sub-block 010 of the peripheral controller (printed page 181, table 92) |
-| `DEVICE_POLL_INTERVAL_US` | 0x64 | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | the auxiliary device polls the clock at this interval; software must allow settling time after changing clock permit (printed page 141) |
+| `DEVICE_POLL_INTERVAL_US` | 0x64 | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | the auxiliary device polls the clock at this interval; software must allow settling time after changing clock enable (printed page 141) |
 | `FRAME_BITS` | 0xb | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | bits in one serial stream: start (0), eight data bits least significant first, odd parity, stop (1) (printed page 139, table 69) |
 | `KEYBOARD_BASE` | 0x0 | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | keyboard port bank, offset from BLOCK_BASE; address bit 5 is zero (printed page 181, table 93) |
 | `MOUSE_BASE` | 0x20 | established | published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181) | mouse port bank, offset from BLOCK_BASE; address bit 5 is one (printed page 181, table 93) |

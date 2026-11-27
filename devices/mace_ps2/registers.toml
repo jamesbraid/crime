@@ -46,14 +46,14 @@ reset = 0x10
 reset_from = "MACE 2.0 I/O ASIC specification, Table 73"
 grade = "established"
 doc = """
-Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed page 141). Bits 7:6 are not defined."""
+Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-enable bit (established, printed page 141). Bits 7:6 are not defined."""
 
 [registers.control.fields]
 inhibit_after_transmit = { bits = [0, 0], grade = "established", doc = "One releases the clock output after the next serial stream is transmitted; zero keeps it asserted (printed page 141)." }
 transmit_enable = { bits = [1, 1], grade = "established", doc = "One lets the transmit buffer shift out on the data line, on the falling edge of the device clock; zero disables the timeout (printed page 141); whether it also stops the shift is not stated. The timeout itself is not defined in the specification (unknown)." }
 transmit_interrupt_enable = { bits = [2, 2], grade = "established", doc = "One asserts the port interrupt when the transmit buffer is empty (printed page 141)." }
 receive_interrupt_enable = { bits = [3, 3], grade = "established", doc = "One asserts the port interrupt when the receive buffer is full (printed page 141)." }
-clock_permit = { bits = [4, 4], grade = "established", doc = "One asserts the clock output, which lets the device exchange data; zero releases it and pauses both directions (printed page 141). Resets to one." }
+clock_enable = { bits = [4, 4], grade = "established", doc = "One asserts the clock output, which lets the device exchange data; zero releases it and pauses both directions (printed page 141). Resets to one." }
 internal_reset = { bits = [5, 5], grade = "established", doc = "One holds the port's internal state machines in reset; zero releases them (printed page 141). Reset to zero." }
 
 [registers.status]
@@ -66,7 +66,7 @@ Transmit and receive status and error flags, bits 7:0 (established, printed page
 
 [registers.status.fields]
 clock_level = { bits = [0, 0], grade = "established", doc = "Level of the external device clock: one when asserted, zero when de-asserted (printed page 142). Reset not fixed." }
-clock_permitted = { bits = [1, 1], grade = "established", doc = "The output that the clock-permit control bit drives: one when the clock is asserted. Resets to one (printed page 142)." }
+clock_enabled = { bits = [1, 1], grade = "established", doc = "The output that the clock-enable control bit drives: one when the clock is asserted. Resets to one (printed page 142)." }
 transmit_in_progress = { bits = [2, 2], grade = "established", doc = "One while the data line is shifting an output byte (printed page 142). Resets to zero." }
 transmit_empty = { bits = [3, 3], grade = "established", doc = "One when the transmit buffer is empty and zero while it holds a byte waiting to be sent (printed page 142). Resets to zero in the table." }
 receive_full = { bits = [4, 4], grade = "established", doc = "One when the receive buffer holds a byte waiting to be read (printed page 142). Resets to zero." }
@@ -79,4 +79,4 @@ BLOCK_BASE = { value = 0x1f320000, grade = "established", doc = "physical base o
 KEYBOARD_BASE = { value = 0x0, grade = "established", doc = "keyboard port bank, offset from BLOCK_BASE; address bit 5 is zero (printed page 181, table 93)" }
 MOUSE_BASE = { value = 0x20, grade = "established", doc = "mouse port bank, offset from BLOCK_BASE; address bit 5 is one (printed page 181, table 93)" }
 FRAME_BITS = { value = 11, grade = "established", doc = "bits in one serial stream: start (0), eight data bits least significant first, odd parity, stop (1) (printed page 139, table 69)" }
-DEVICE_POLL_INTERVAL_US = { value = 100, grade = "established", doc = "the auxiliary device polls the clock at this interval; software must allow settling time after changing clock permit (printed page 141)" }
+DEVICE_POLL_INTERVAL_US = { value = 100, grade = "established", doc = "the auxiliary device polls the clock at this interval; software must allow settling time after changing clock enable (printed page 141)" }

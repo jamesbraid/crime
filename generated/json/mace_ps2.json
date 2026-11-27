@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "87fe8585a0e2d9078bf43f21564177a98384cc4c598b66f290056a8e22270ee9",
+ "input_sha256": "7212eb4ecf685d025d8d406110a67f3ebba615e8345f685c9da568eb6ff1c8f4",
  "schema": "defs-flat/1",
  "source": "devices/mace_ps2/registers.toml",
  "profile": "public",
@@ -86,7 +86,7 @@
   {
    "unit": "mace_ps2",
    "kind": "field",
-   "name": "control.clock_permit",
+   "name": "control.clock_enable",
    "hi": 4,
    "lo": 4,
    "grade": "established",
@@ -199,7 +199,7 @@
   {
    "unit": "mace_ps2",
    "kind": "field",
-   "name": "status.clock_permitted",
+   "name": "status.clock_enabled",
    "hi": 1,
    "lo": 1,
    "grade": "established",

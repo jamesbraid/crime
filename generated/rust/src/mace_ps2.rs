@@ -1,6 +1,6 @@
 // @generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 87fe8585a0e2d9078bf43f21564177a98384cc4c598b66f290056a8e22270ee9
+// input sha256 7212eb4ecf685d025d8d406110a67f3ebba615e8345f685c9da568eb6ff1c8f4
 // O2 MACE PS/2 keyboard and mouse ports
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -46,7 +46,7 @@ pub mod receive {
         }
     }
 }
-/// Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-permit bit (established, printed pag (established)
+/// Command and control, bits 5:0 (established, printed page 141, table 73). Reset to 0x10, which sets only the clock-enable bit (established, printed pag (established)
 pub mod control {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x10;
@@ -60,7 +60,7 @@ pub mod control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock_permit { // bits 4:4, established
+    pub mod clock_enable { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u64 = 0x1;
         pub const fn get(v: u64) -> u64 {
@@ -175,7 +175,7 @@ pub mod status {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock_permitted { // bits 1:1, established
+    pub mod clock_enabled { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u64 = 0x1;
         pub const fn get(v: u64) -> u64 {

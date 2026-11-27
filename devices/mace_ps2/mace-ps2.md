@@ -35,7 +35,7 @@ Sources:
   line is open-collector, and the port's clock-enable output can inhibit it
   (established, [mace] 141).
 - The auxiliary device polls the clock at 100 microsecond intervals, so software
-  must allow settling time after it changes clock permit (established, [mace] 141).
+  must allow settling time after it changes clock enable (established, [mace] 141).
   The specification does not give a full clock period. The clock frequency and
   bit timing are unknown.
 
@@ -89,7 +89,7 @@ hardware evidence.
 ## Reset
 
 - Control resets to `0x10` (established, [mace] 141).
-- The status register's reset table gives clock permitted a reset of one, and
+- The status register's reset table gives clock enabled a reset of one, and
   transmit empty a reset of zero. It leaves the clock level unfixed
   (established, [mace] 142).
 - The specification's reset table and the driver's expectation disagree
