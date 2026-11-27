@@ -5,8 +5,8 @@
 /* input sha256 475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c */
 /* O2 CRIME memory controller and CPU interface registers */
 /* Names are IP32_CRIME_*; name source: ours. */
-#ifndef HW_SGI_GPU_IP32_CRIME_REGS_H
-#define HW_SGI_GPU_IP32_CRIME_REGS_H
+#ifndef HW_IP32_CRIME_REGS_H
+#define HW_IP32_CRIME_REGS_H
 
 #include "hw/core/registerfields.h"
 
@@ -192,4 +192,4 @@ FIELD(IP32_CRIME_INTBIT, MACE, 0, 16) /* established */
 #define IP32_CRIME_TIME_RESOLUTION 0x3a98u /* established */
 #define IP32_CRIME_WATCHDOG_COUNT_BITS 0x14u /* established */
 
-#endif /* HW_SGI_GPU_IP32_CRIME_REGS_H */
+#endif /* HW_IP32_CRIME_REGS_H */

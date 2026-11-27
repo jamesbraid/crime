@@ -5,8 +5,8 @@
 /* input sha256 b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1 */
 /* O2 CRIME rendering engine: interface buffer, linear TLBs and clip state */
 /* Names are IP32_RE_*; name source: ours. */
-#ifndef HW_SGI_GPU_IP32_RE_REGS_H
-#define HW_SGI_GPU_IP32_RE_REGS_H
+#ifndef HW_IP32_RE_REGS_H
+#define HW_IP32_RE_REGS_H
 
 #include "hw/core/registerfields.h"
 
@@ -566,4 +566,4 @@ FIELD(IP32_RE_TLBTILE, PAGE, 0, 15) /* established */
 #define IP32_RE_VTX_STEP 0x40u /* established */
 #define IP32_RE_VTX_TRI_BASE 0x48040000u /* established */
 
-#endif /* HW_SGI_GPU_IP32_RE_REGS_H */
+#endif /* HW_IP32_RE_REGS_H */

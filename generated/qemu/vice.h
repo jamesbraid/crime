@@ -5,8 +5,8 @@
 /* input sha256 531a15113af2c834f84b093118e096274948ae8d18d527fe6d6aa066db1c0a2b */
 /* O2 VICE imaging and compression engine registers */
 /* Names are IP32_VICE_*; name source: ours. */
-#ifndef HW_SGI_GPU_IP32_VICE_REGS_H
-#define HW_SGI_GPU_IP32_VICE_REGS_H
+#ifndef HW_IP32_VICE_REGS_H
+#define HW_IP32_VICE_REGS_H
 
 #include "hw/core/registerfields.h"
 
@@ -692,4 +692,4 @@ FIELD(IP32_VICE_TLB_ENTRY, PAGE, 16, 16) /* established */
 FIELD(IP32_VICE_TLB_ENTRY, WRITABLE, 1, 1) /* established */
 FIELD(IP32_VICE_TLB_ENTRY, VALID, 0, 1) /* established */
 
-#endif /* HW_SGI_GPU_IP32_VICE_REGS_H */
+#endif /* HW_IP32_VICE_REGS_H */

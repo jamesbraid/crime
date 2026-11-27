@@ -5,8 +5,8 @@
 /* input sha256 0023aea84682198875c8cd840923aab749482c5f5580b2a5183b36c767a3f8ab */
 /* O2 GBE display back end register words */
 /* Names are IP32_GBE_*; name source: ours. */
-#ifndef HW_SGI_GPU_IP32_GBE_REGS_H
-#define HW_SGI_GPU_IP32_GBE_REGS_H
+#ifndef HW_IP32_GBE_REGS_H
+#define HW_IP32_GBE_REGS_H
 
 #include "hw/core/registerfields.h"
 
@@ -369,4 +369,4 @@ FIELD(IP32_GBE_TILE_LIST_ENTRY, TILE, 0, 13) /* established */
 #define IP32_GBE_VC_TILE_REGS 0x5u /* established */
 #define IP32_GBE_VT_XY_FREEZE 0x80000000u /* established */
 
-#endif /* HW_SGI_GPU_IP32_GBE_REGS_H */
+#endif /* HW_IP32_GBE_REGS_H */

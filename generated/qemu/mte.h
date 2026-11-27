@@ -5,8 +5,8 @@
 /* input sha256 13ecc6567984307c9c298025a4a617560d9d1dccbd1bea5f87664debe460f641 */
 /* O2 CRIME memory transfer engine registers and tile layout */
 /* Names are IP32_MTE_*; name source: ours. */
-#ifndef HW_SGI_GPU_IP32_MTE_REGS_H
-#define HW_SGI_GPU_IP32_MTE_REGS_H
+#ifndef HW_IP32_MTE_REGS_H
+#define HW_IP32_MTE_REGS_H
 
 #include "hw/core/registerfields.h"
 
@@ -95,4 +95,4 @@ FIELD(IP32_MTE_ADDR, ROW, 0, 16) /* established */
 #define IP32_MTE_X_ROWS_16 0x10u /* established */
 #define IP32_MTE_X_ROWS_32 0x8u /* established */
 
-#endif /* HW_SGI_GPU_IP32_MTE_REGS_H */
+#endif /* HW_IP32_MTE_REGS_H */
