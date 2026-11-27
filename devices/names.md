@@ -230,3 +230,6 @@ Each unit says `name_source = "ours"`. Its names are descriptive spellings: ever
 | mace_video | 85 | 0 | 85 | WINDOW_PHYS_ADDR, IN2_OFF and OUT_OFF renamed to VIN1, VIN2_OFF and VOUT_OFF |
 | mace_video_in | 71 | 0 | 71 | none |
 | vice | 191 | 139 | 52 | none |
+| ad1843 | 169 | 140 | 29 | all 140 field names renamed to the data sheet's bit mnemonics (for example l_source to lss, converter_powerdown to pdno) |
+
+AD1843: the data sheet prints a mnemonic for every register bit (INIT, LSS2:0, C1M7:4 and so on) and only a title for each register. Every field is now the lower-case mnemonic, with a multi-bit field named for its stem (`LIG3:0` is `lig`) and the split clock-rate nibbles written `c1m_7_4` and `c1m_3_0`. The 29 register names are our short spellings of the data sheet's register titles, so they stay ours. A field cannot carry its own `name_source`, so the unit says ours while the 140 field names are the public ones.

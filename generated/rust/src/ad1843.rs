@@ -1,6 +1,6 @@
 // @generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 2f5da76be195476733826988d6e15e7fb4af26828801c7874e312356e6abf9fe
+// input sha256 929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f
 // Analog Devices AD1843 stereo codec: the 29 internal registers
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -227,7 +227,7 @@ pub mod status_id {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod converter_powerdown { // bits 14:14, established
+    pub mod pdno { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -237,7 +237,7 @@ pub mod status_id {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod revision { // bits 3:0, established
+    pub mod id { // bits 3:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -252,7 +252,7 @@ pub mod status_id {
 pub mod underrun_peak {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x1;
-    pub mod dac2_underrun { // bits 9:9, established
+    pub mod su2 { // bits 9:9, established
         pub const SHIFT: u32 = 9;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -262,7 +262,7 @@ pub mod underrun_peak {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac1_underrun { // bits 8:8, established
+    pub mod su1 { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -272,7 +272,7 @@ pub mod underrun_peak {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_peak { // bits 3:2, established
+    pub mod ovr { // bits 3:2, established
         pub const SHIFT: u32 = 2;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -282,7 +282,7 @@ pub mod underrun_peak {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_peak { // bits 1:0, established
+    pub mod ovl { // bits 1:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -297,7 +297,7 @@ pub mod underrun_peak {
 pub mod adc_input {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x2;
-    pub mod l_source { // bits 15:13, established
+    pub mod lss { // bits 15:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x7;
         pub const fn get(v: u32) -> u32 {
@@ -309,7 +309,7 @@ pub mod adc_input {
         #[allow(unused_imports)]
         pub use super::super::enums::analog_source::Value;
     }
-    pub mod l_mic_boost { // bits 12:12, established
+    pub mod lmge { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -319,7 +319,7 @@ pub mod adc_input {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 11:8, established
+    pub mod lig { // bits 11:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -329,7 +329,7 @@ pub mod adc_input {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_source { // bits 7:5, established
+    pub mod rss { // bits 7:5, established
         pub const SHIFT: u32 = 5;
         pub const MASK: u32 = 0x7;
         pub const fn get(v: u32) -> u32 {
@@ -341,7 +341,7 @@ pub mod adc_input {
         #[allow(unused_imports)]
         pub use super::super::enums::analog_source::Value;
     }
-    pub mod r_mic_boost { // bits 4:4, established
+    pub mod rmge { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -351,7 +351,7 @@ pub mod adc_input {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 3:0, established
+    pub mod rig { // bits 3:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -366,7 +366,7 @@ pub mod adc_input {
 pub mod dac2_to_dac1_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x3;
-    pub mod l_mute { // bits 15:15, established
+    pub mod ld2mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -376,7 +376,7 @@ pub mod dac2_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 12:8, established
+    pub mod ld2m { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -386,7 +386,7 @@ pub mod dac2_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rd2mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -396,7 +396,7 @@ pub mod dac2_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 4:0, established
+    pub mod rd2m { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -411,7 +411,7 @@ pub mod dac2_to_dac1_mix {
 pub mod aux1_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x4;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lx1mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -421,7 +421,7 @@ pub mod aux1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 12:8, established
+    pub mod lx1m { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -431,7 +431,7 @@ pub mod aux1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rx1mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -441,7 +441,7 @@ pub mod aux1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 4:0, established
+    pub mod rx1m { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -456,7 +456,7 @@ pub mod aux1_mix {
 pub mod aux2_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x5;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lx2mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -466,7 +466,7 @@ pub mod aux2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 12:8, established
+    pub mod lx2m { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -476,7 +476,7 @@ pub mod aux2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rx2mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -486,7 +486,7 @@ pub mod aux2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 4:0, established
+    pub mod rx2m { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -501,7 +501,7 @@ pub mod aux2_mix {
 pub mod aux3_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x6;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lx3mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -511,7 +511,7 @@ pub mod aux3_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 12:8, established
+    pub mod lx3m { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -521,7 +521,7 @@ pub mod aux3_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rx3mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -531,7 +531,7 @@ pub mod aux3_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 4:0, established
+    pub mod rx3m { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -546,7 +546,7 @@ pub mod aux3_mix {
 pub mod mic_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x7;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lmcmm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -556,7 +556,7 @@ pub mod mic_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 12:8, established
+    pub mod lmcm { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -566,7 +566,7 @@ pub mod mic_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rmcmm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -576,7 +576,7 @@ pub mod mic_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 4:0, established
+    pub mod rmcm { // bits 4:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -591,7 +591,7 @@ pub mod mic_mix {
 pub mod mono_control {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x8;
-    pub mod mono_mix_mute { // bits 15:15, established
+    pub mod mnmm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -601,7 +601,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod mono_mix_gain { // bits 12:8, established
+    pub mod mnm { // bits 12:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1f;
         pub const fn get(v: u32) -> u32 {
@@ -611,7 +611,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod all_mix_mute { // bits 7:7, inferred
+    pub mod allmm { // bits 7:7, inferred
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -621,7 +621,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod mono_mute { // bits 6:6, established
+    pub mod mnom { // bits 6:6, established
         pub const SHIFT: u32 = 6;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -631,7 +631,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod headphone_mute { // bits 5:5, established
+    pub mod hpom { // bits 5:5, established
         pub const SHIFT: u32 = 5;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -641,7 +641,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod swing { // bits 4:4, established
+    pub mod hpos { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -651,7 +651,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod sum_mute { // bits 3:3, established
+    pub mod summ { // bits 3:3, established
         pub const SHIFT: u32 = 3;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -661,7 +661,7 @@ pub mod mono_control {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac2_gain_timing { // bits 1:1, established
+    pub mod dac2t { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -673,7 +673,7 @@ pub mod mono_control {
         #[allow(unused_imports)]
         pub use super::super::enums::gain_timing::Value;
     }
-    pub mod dac1_gain_timing { // bits 0:0, established
+    pub mod dac1t { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -690,7 +690,7 @@ pub mod mono_control {
 pub mod dac1_output {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x9;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lda1gm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -700,7 +700,7 @@ pub mod dac1_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 13:8, established
+    pub mod lda1g { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -710,7 +710,7 @@ pub mod dac1_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rda1gm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -720,7 +720,7 @@ pub mod dac1_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 5:0, established
+    pub mod rda1g { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -735,7 +735,7 @@ pub mod dac1_output {
 pub mod dac2_output {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xa;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lda2gm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -745,7 +745,7 @@ pub mod dac2_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_gain { // bits 13:8, established
+    pub mod lda2g { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -755,7 +755,7 @@ pub mod dac2_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rda2gm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -765,7 +765,7 @@ pub mod dac2_output {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_gain { // bits 5:0, established
+    pub mod rda2g { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -780,7 +780,7 @@ pub mod dac2_output {
 pub mod dac1_digital_att {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xb;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lda1am { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -790,7 +790,7 @@ pub mod dac1_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_att { // bits 13:8, established
+    pub mod lda1a { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -800,7 +800,7 @@ pub mod dac1_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rda1am { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -810,7 +810,7 @@ pub mod dac1_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_att { // bits 5:0, established
+    pub mod rda1a { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -825,7 +825,7 @@ pub mod dac1_digital_att {
 pub mod dac2_digital_att {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xc;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lda2am { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -835,7 +835,7 @@ pub mod dac2_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_att { // bits 13:8, established
+    pub mod lda2a { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -845,7 +845,7 @@ pub mod dac2_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rda2am { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -855,7 +855,7 @@ pub mod dac2_digital_att {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_att { // bits 5:0, established
+    pub mod rda2a { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -870,7 +870,7 @@ pub mod dac2_digital_att {
 pub mod adc_to_dac1_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xd;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lad1mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -880,7 +880,7 @@ pub mod adc_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_att { // bits 13:8, established
+    pub mod lad1m { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -890,7 +890,7 @@ pub mod adc_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rad1mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -900,7 +900,7 @@ pub mod adc_to_dac1_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_att { // bits 5:0, established
+    pub mod rad1m { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -915,7 +915,7 @@ pub mod adc_to_dac1_mix {
 pub mod adc_to_dac2_mix {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xe;
-    pub mod l_mute { // bits 15:15, established
+    pub mod lad2mm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -925,7 +925,7 @@ pub mod adc_to_dac2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_att { // bits 13:8, established
+    pub mod lad2m { // bits 13:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -935,7 +935,7 @@ pub mod adc_to_dac2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_mute { // bits 7:7, established
+    pub mod rad2mm { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -945,7 +945,7 @@ pub mod adc_to_dac2_mix {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_att { // bits 5:0, established
+    pub mod rad2m { // bits 5:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -960,7 +960,7 @@ pub mod adc_to_dac2_mix {
 pub mod clock_select {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xf;
-    pub mod dac2_clock { // bits 11:10, established
+    pub mod da2c { // bits 11:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -972,7 +972,7 @@ pub mod clock_select {
         #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
-    pub mod dac1_clock { // bits 9:8, established
+    pub mod da1c { // bits 9:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -984,7 +984,7 @@ pub mod clock_select {
         #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
-    pub mod r_adc_clock { // bits 3:2, inferred
+    pub mod adrc { // bits 3:2, inferred
         pub const SHIFT: u32 = 2;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -996,7 +996,7 @@ pub mod clock_select {
         #[allow(unused_imports)]
         pub use super::super::enums::clock_select::Value;
     }
-    pub mod l_adc_clock { // bits 1:0, established
+    pub mod adlc { // bits 1:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1013,7 +1013,7 @@ pub mod clock_select {
 pub mod clock1_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x10;
-    pub mod r#ref { // bits 15:15, established
+    pub mod c1ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1023,7 +1023,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, established
+    pub mod c1vid { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1033,7 +1033,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, established
+    pub mod c1pllg { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1043,7 +1043,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_plus_200hz { // bits 12:12, established
+    pub mod c1p200 { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1053,7 +1053,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_8_7_multiplier { // bits 11:11, established
+    pub mod c1x8_7 { // bits 11:11, established
         pub const SHIFT: u32 = 11;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1063,7 +1063,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_128_multiplier { // bits 10:10, established
+    pub mod c1c128 { // bits 10:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1073,7 +1073,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_modifier { // bits 7:4, established
+    pub mod c1m_7_4 { // bits 7:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1083,7 +1083,7 @@ pub mod clock1_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_modifier { // bits 3:0, established
+    pub mod c1m_3_0 { // bits 3:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1098,7 +1098,7 @@ pub mod clock1_mode {
 pub mod clock1_hz {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x11;
-    pub mod hz { // bits 15:0, established
+    pub mod c1c { // bits 15:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xffff;
         pub const fn get(v: u32) -> u32 {
@@ -1113,7 +1113,7 @@ pub mod clock1_hz {
 pub mod clock1_phase {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x12;
-    pub mod direction { // bits 8:8, established
+    pub mod c1pd { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1123,7 +1123,7 @@ pub mod clock1_phase {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod magnitude { // bits 7:0, established
+    pub mod c1p { // bits 7:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xff;
         pub const fn get(v: u32) -> u32 {
@@ -1138,7 +1138,7 @@ pub mod clock1_phase {
 pub mod clock2_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x13;
-    pub mod r#ref { // bits 15:15, established
+    pub mod c2ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1148,7 +1148,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, established
+    pub mod c2vid { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1158,7 +1158,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, established
+    pub mod c2pllg { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1168,7 +1168,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_plus_200hz { // bits 12:12, established
+    pub mod c2p200 { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1178,7 +1178,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_8_7_multiplier { // bits 11:11, established
+    pub mod c2x8_7 { // bits 11:11, established
         pub const SHIFT: u32 = 11;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1188,7 +1188,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_128_multiplier { // bits 10:10, established
+    pub mod c2c128 { // bits 10:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1198,7 +1198,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_modifier { // bits 7:4, established
+    pub mod c2m_7_4 { // bits 7:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1208,7 +1208,7 @@ pub mod clock2_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_modifier { // bits 3:0, established
+    pub mod c2m_3_0 { // bits 3:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1223,7 +1223,7 @@ pub mod clock2_mode {
 pub mod clock2_hz {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x14;
-    pub mod hz { // bits 15:0, established
+    pub mod c2c { // bits 15:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xffff;
         pub const fn get(v: u32) -> u32 {
@@ -1238,7 +1238,7 @@ pub mod clock2_hz {
 pub mod clock2_phase {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x15;
-    pub mod direction { // bits 8:8, established
+    pub mod c2pd { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1248,7 +1248,7 @@ pub mod clock2_phase {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod magnitude { // bits 7:0, established
+    pub mod c2p { // bits 7:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xff;
         pub const fn get(v: u32) -> u32 {
@@ -1263,7 +1263,7 @@ pub mod clock2_phase {
 pub mod clock3_mode {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x16;
-    pub mod r#ref { // bits 15:15, established
+    pub mod c3ref { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1273,7 +1273,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod video_select { // bits 14:14, established
+    pub mod c3vid { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1283,7 +1283,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod pll_gain { // bits 13:13, established
+    pub mod c3pllg { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1293,7 +1293,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_plus_200hz { // bits 12:12, established
+    pub mod c3p200 { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1303,7 +1303,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_8_7_multiplier { // bits 11:11, established
+    pub mod c3x8_7 { // bits 11:11, established
         pub const SHIFT: u32 = 11;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1313,7 +1313,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_128_multiplier { // bits 10:10, established
+    pub mod c3c128 { // bits 10:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1323,7 +1323,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_modifier { // bits 7:4, established
+    pub mod c3m_7_4 { // bits 7:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1333,7 +1333,7 @@ pub mod clock3_mode {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod bit_modifier { // bits 3:0, established
+    pub mod c3m_3_0 { // bits 3:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xf;
         pub const fn get(v: u32) -> u32 {
@@ -1348,7 +1348,7 @@ pub mod clock3_mode {
 pub mod clock3_hz {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x17;
-    pub mod hz { // bits 15:0, established
+    pub mod c3c { // bits 15:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xffff;
         pub const fn get(v: u32) -> u32 {
@@ -1363,7 +1363,7 @@ pub mod clock3_hz {
 pub mod clock3_phase {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x18;
-    pub mod direction { // bits 8:8, established
+    pub mod c3pd { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1373,7 +1373,7 @@ pub mod clock3_phase {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod magnitude { // bits 7:0, established
+    pub mod c3p { // bits 7:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0xff;
         pub const fn get(v: u32) -> u32 {
@@ -1388,7 +1388,7 @@ pub mod clock3_phase {
 pub mod digital_filter {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x19;
-    pub mod resample_filter { // bits 15:15, established
+    pub mod drsflt { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1398,7 +1398,7 @@ pub mod digital_filter {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac_mix { // bits 14:14, established
+    pub mod damix { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1408,7 +1408,7 @@ pub mod digital_filter {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac2_filter { // bits 9:9, established
+    pub mod da2flt { // bits 9:9, established
         pub const SHIFT: u32 = 9;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1418,7 +1418,7 @@ pub mod digital_filter {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac1_filter { // bits 8:8, established
+    pub mod da1flt { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1428,7 +1428,7 @@ pub mod digital_filter {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_digital_source { // bits 7:6, established
+    pub mod daadr { // bits 7:6, established
         pub const SHIFT: u32 = 6;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1440,7 +1440,7 @@ pub mod digital_filter {
         #[allow(unused_imports)]
         pub use super::super::enums::digital_source::Value;
     }
-    pub mod l_digital_source { // bits 5:4, established
+    pub mod daadl { // bits 5:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1452,7 +1452,7 @@ pub mod digital_filter {
         #[allow(unused_imports)]
         pub use super::super::enums::digital_source::Value;
     }
-    pub mod r_adc_filter { // bits 1:1, established
+    pub mod adrflt { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1462,7 +1462,7 @@ pub mod digital_filter {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_adc_filter { // bits 0:0, established
+    pub mod adlflt { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1477,7 +1477,7 @@ pub mod digital_filter {
 pub mod format_lock {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x1a;
-    pub mod dac2_mono { // bits 15:15, established
+    pub mod da2sm { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1487,7 +1487,7 @@ pub mod format_lock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac1_mono { // bits 14:14, established
+    pub mod da1sm { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1497,7 +1497,7 @@ pub mod format_lock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac2_format { // bits 11:10, established
+    pub mod da2f { // bits 11:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1509,7 +1509,7 @@ pub mod format_lock {
         #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
-    pub mod dac1_format { // bits 9:8, established
+    pub mod da1f { // bits 9:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1551,7 +1551,7 @@ pub mod format_lock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod adc_lock { // bits 4:4, established
+    pub mod adtlk { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1561,7 +1561,7 @@ pub mod format_lock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_adc_format { // bits 3:2, established
+    pub mod adrf { // bits 3:2, established
         pub const SHIFT: u32 = 2;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1573,7 +1573,7 @@ pub mod format_lock {
         #[allow(unused_imports)]
         pub use super::super::enums::pcm_format::Value;
     }
-    pub mod l_adc_format { // bits 1:0, established
+    pub mod adlf { // bits 1:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1590,7 +1590,7 @@ pub mod format_lock {
 pub mod enables {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0x1b;
-    pub mod resource_free { // bits 15:15, established
+    pub mod dfree { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1600,7 +1600,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac2_analog_mix { // bits 12:12, established
+    pub mod ddmen { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1610,7 +1610,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac2_enable { // bits 9:9, established
+    pub mod da2en { // bits 9:9, established
         pub const SHIFT: u32 = 9;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1620,7 +1620,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod dac1_enable { // bits 8:8, established
+    pub mod da1en { // bits 8:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1630,7 +1630,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod analog_enable { // bits 7:7, established
+    pub mod anaen { // bits 7:7, established
         pub const SHIFT: u32 = 7;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1640,7 +1640,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod headphone_enable { // bits 6:6, established
+    pub mod hpen { // bits 6:6, established
         pub const SHIFT: u32 = 6;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1650,7 +1650,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod analog_mix_enable { // bits 4:4, established
+    pub mod aamen { // bits 4:4, established
         pub const SHIFT: u32 = 4;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1660,7 +1660,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_adc_enable { // bits 1:1, established
+    pub mod adren { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1670,7 +1670,7 @@ pub mod enables {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod l_adc_enable { // bits 0:0, established
+    pub mod adlen { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1695,7 +1695,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod autocal { // bits 14:14, established
+    pub mod acen { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1705,7 +1705,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock3_enable { // bits 13:13, established
+    pub mod c3en { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1715,7 +1715,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock2_enable { // bits 12:12, established
+    pub mod c2en { // bits 12:12, established
         pub const SHIFT: u32 = 12;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1725,7 +1725,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock1_enable { // bits 11:11, established
+    pub mod c1en { // bits 11:11, established
         pub const SHIFT: u32 = 11;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1735,7 +1735,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod clock_output { // bits 10:10, established
+    pub mod enclko { // bits 10:10, established
         pub const SHIFT: u32 = 10;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1745,7 +1745,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod ttl_outputs { // bits 9:8, established
+    pub mod xctl { // bits 9:8, established
         pub const SHIFT: u32 = 8;
         pub const MASK: u32 = 0x3;
         pub const fn get(v: u32) -> u32 {
@@ -1755,7 +1755,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod conv_bit_outputs { // bits 7:2, established
+    pub mod encv3_enbt1 { // bits 7:2, established
         pub const SHIFT: u32 = 2;
         pub const MASK: u32 = 0x3f;
         pub const fn get(v: u32) -> u32 {
@@ -1765,7 +1765,7 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod r_line_mode { // bits 1:1, established
+    pub mod linrsd { // bits 1:1, established
         pub const SHIFT: u32 = 1;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
@@ -1777,7 +1777,7 @@ pub mod power_clock {
         #[allow(unused_imports)]
         pub use super::super::enums::line_mode::Value;
     }
-    pub mod l_line_mode { // bits 0:0, established
+    pub mod linlsd { // bits 0:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {

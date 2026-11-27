@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "2f5da76be195476733826988d6e15e7fb4af26828801c7874e312356e6abf9fe",
+ "input_sha256": "929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f",
  "schema": "defs-flat/1",
  "source": "devices/ad1843/registers.toml",
  "profile": "public",
@@ -31,7 +31,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "status_id.converter_powerdown",
+   "name": "status_id.pdno",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -40,7 +40,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "status_id.revision",
+   "name": "status_id.id",
    "hi": 3,
    "lo": 0,
    "grade": "established",
@@ -63,7 +63,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "underrun_peak.dac2_underrun",
+   "name": "underrun_peak.su2",
    "hi": 9,
    "lo": 9,
    "grade": "established",
@@ -72,7 +72,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "underrun_peak.dac1_underrun",
+   "name": "underrun_peak.su1",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -81,7 +81,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "underrun_peak.r_peak",
+   "name": "underrun_peak.ovr",
    "hi": 3,
    "lo": 2,
    "grade": "established",
@@ -90,7 +90,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "underrun_peak.l_peak",
+   "name": "underrun_peak.ovl",
    "hi": 1,
    "lo": 0,
    "grade": "established",
@@ -113,7 +113,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.l_source",
+   "name": "adc_input.lss",
    "hi": 15,
    "lo": 13,
    "grade": "established",
@@ -122,7 +122,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.line",
+   "name": "adc_input.lss.line",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -130,7 +130,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.mic",
+   "name": "adc_input.lss.mic",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -138,7 +138,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.aux1",
+   "name": "adc_input.lss.aux1",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -146,7 +146,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.aux2",
+   "name": "adc_input.lss.aux2",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -154,7 +154,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.aux3",
+   "name": "adc_input.lss.aux3",
    "value": 4,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -162,7 +162,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.mono_in",
+   "name": "adc_input.lss.mono_in",
    "value": 5,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -170,7 +170,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.dac1_out",
+   "name": "adc_input.lss.dac1_out",
    "value": 6,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -178,7 +178,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.l_source.dac2_out",
+   "name": "adc_input.lss.dac2_out",
    "value": 7,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -186,7 +186,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.l_mic_boost",
+   "name": "adc_input.lmge",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -195,7 +195,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.l_gain",
+   "name": "adc_input.lig",
    "hi": 11,
    "lo": 8,
    "grade": "established",
@@ -204,7 +204,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.r_source",
+   "name": "adc_input.rss",
    "hi": 7,
    "lo": 5,
    "grade": "established",
@@ -213,7 +213,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.line",
+   "name": "adc_input.rss.line",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -221,7 +221,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.mic",
+   "name": "adc_input.rss.mic",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -229,7 +229,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.aux1",
+   "name": "adc_input.rss.aux1",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -237,7 +237,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.aux2",
+   "name": "adc_input.rss.aux2",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -245,7 +245,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.aux3",
+   "name": "adc_input.rss.aux3",
    "value": 4,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -253,7 +253,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.mono_in",
+   "name": "adc_input.rss.mono_in",
    "value": 5,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -261,7 +261,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.dac1_out",
+   "name": "adc_input.rss.dac1_out",
    "value": 6,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -269,7 +269,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "adc_input.r_source.dac2_out",
+   "name": "adc_input.rss.dac2_out",
    "value": 7,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -277,7 +277,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.r_mic_boost",
+   "name": "adc_input.rmge",
    "hi": 4,
    "lo": 4,
    "grade": "established",
@@ -286,7 +286,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_input.r_gain",
+   "name": "adc_input.rig",
    "hi": 3,
    "lo": 0,
    "grade": "established",
@@ -309,7 +309,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_to_dac1_mix.l_mute",
+   "name": "dac2_to_dac1_mix.ld2mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -318,7 +318,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_to_dac1_mix.l_gain",
+   "name": "dac2_to_dac1_mix.ld2m",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -327,7 +327,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_to_dac1_mix.r_mute",
+   "name": "dac2_to_dac1_mix.rd2mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -336,7 +336,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_to_dac1_mix.r_gain",
+   "name": "dac2_to_dac1_mix.rd2m",
    "hi": 4,
    "lo": 0,
    "grade": "established",
@@ -359,7 +359,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux1_mix.l_mute",
+   "name": "aux1_mix.lx1mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -368,7 +368,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux1_mix.l_gain",
+   "name": "aux1_mix.lx1m",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -377,7 +377,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux1_mix.r_mute",
+   "name": "aux1_mix.rx1mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -386,7 +386,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux1_mix.r_gain",
+   "name": "aux1_mix.rx1m",
    "hi": 4,
    "lo": 0,
    "grade": "established",
@@ -409,7 +409,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux2_mix.l_mute",
+   "name": "aux2_mix.lx2mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -418,7 +418,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux2_mix.l_gain",
+   "name": "aux2_mix.lx2m",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -427,7 +427,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux2_mix.r_mute",
+   "name": "aux2_mix.rx2mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -436,7 +436,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux2_mix.r_gain",
+   "name": "aux2_mix.rx2m",
    "hi": 4,
    "lo": 0,
    "grade": "established",
@@ -459,7 +459,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux3_mix.l_mute",
+   "name": "aux3_mix.lx3mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -468,7 +468,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux3_mix.l_gain",
+   "name": "aux3_mix.lx3m",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -477,7 +477,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux3_mix.r_mute",
+   "name": "aux3_mix.rx3mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -486,7 +486,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "aux3_mix.r_gain",
+   "name": "aux3_mix.rx3m",
    "hi": 4,
    "lo": 0,
    "grade": "established",
@@ -509,7 +509,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mic_mix.l_mute",
+   "name": "mic_mix.lmcmm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -518,7 +518,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mic_mix.l_gain",
+   "name": "mic_mix.lmcm",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -527,7 +527,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mic_mix.r_mute",
+   "name": "mic_mix.rmcmm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -536,7 +536,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mic_mix.r_gain",
+   "name": "mic_mix.rmcm",
    "hi": 4,
    "lo": 0,
    "grade": "established",
@@ -559,7 +559,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.mono_mix_mute",
+   "name": "mono_control.mnmm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -568,7 +568,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.mono_mix_gain",
+   "name": "mono_control.mnm",
    "hi": 12,
    "lo": 8,
    "grade": "established",
@@ -577,7 +577,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.all_mix_mute",
+   "name": "mono_control.allmm",
    "hi": 7,
    "lo": 7,
    "grade": "inferred",
@@ -586,7 +586,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.mono_mute",
+   "name": "mono_control.mnom",
    "hi": 6,
    "lo": 6,
    "grade": "established",
@@ -595,7 +595,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.headphone_mute",
+   "name": "mono_control.hpom",
    "hi": 5,
    "lo": 5,
    "grade": "established",
@@ -604,7 +604,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.swing",
+   "name": "mono_control.hpos",
    "hi": 4,
    "lo": 4,
    "grade": "established",
@@ -613,7 +613,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.sum_mute",
+   "name": "mono_control.summ",
    "hi": 3,
    "lo": 3,
    "grade": "established",
@@ -622,7 +622,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.dac2_gain_timing",
+   "name": "mono_control.dac2t",
    "hi": 1,
    "lo": 1,
    "grade": "established",
@@ -631,7 +631,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "mono_control.dac2_gain_timing.zero_cross",
+   "name": "mono_control.dac2t.zero_cross",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -639,7 +639,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "mono_control.dac2_gain_timing.immediate",
+   "name": "mono_control.dac2t.immediate",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -647,7 +647,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "mono_control.dac1_gain_timing",
+   "name": "mono_control.dac1t",
    "hi": 0,
    "lo": 0,
    "grade": "established",
@@ -656,7 +656,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "mono_control.dac1_gain_timing.zero_cross",
+   "name": "mono_control.dac1t.zero_cross",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -664,7 +664,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "mono_control.dac1_gain_timing.immediate",
+   "name": "mono_control.dac1t.immediate",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -686,7 +686,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_output.l_mute",
+   "name": "dac1_output.lda1gm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -695,7 +695,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_output.l_gain",
+   "name": "dac1_output.lda1g",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -704,7 +704,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_output.r_mute",
+   "name": "dac1_output.rda1gm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -713,7 +713,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_output.r_gain",
+   "name": "dac1_output.rda1g",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -736,7 +736,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_output.l_mute",
+   "name": "dac2_output.lda2gm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -745,7 +745,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_output.l_gain",
+   "name": "dac2_output.lda2g",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -754,7 +754,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_output.r_mute",
+   "name": "dac2_output.rda2gm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -763,7 +763,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_output.r_gain",
+   "name": "dac2_output.rda2g",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -786,7 +786,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.l_mute",
+   "name": "dac1_digital_att.lda1am",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -795,7 +795,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.l_att",
+   "name": "dac1_digital_att.lda1a",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -804,7 +804,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.r_mute",
+   "name": "dac1_digital_att.rda1am",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -813,7 +813,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.r_att",
+   "name": "dac1_digital_att.rda1a",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -836,7 +836,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.l_mute",
+   "name": "dac2_digital_att.lda2am",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -845,7 +845,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.l_att",
+   "name": "dac2_digital_att.lda2a",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -854,7 +854,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.r_mute",
+   "name": "dac2_digital_att.rda2am",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -863,7 +863,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.r_att",
+   "name": "dac2_digital_att.rda2a",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -886,7 +886,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac1_mix.l_mute",
+   "name": "adc_to_dac1_mix.lad1mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -895,7 +895,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac1_mix.l_att",
+   "name": "adc_to_dac1_mix.lad1m",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -904,7 +904,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac1_mix.r_mute",
+   "name": "adc_to_dac1_mix.rad1mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -913,7 +913,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac1_mix.r_att",
+   "name": "adc_to_dac1_mix.rad1m",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -936,7 +936,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac2_mix.l_mute",
+   "name": "adc_to_dac2_mix.lad2mm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -945,7 +945,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac2_mix.l_att",
+   "name": "adc_to_dac2_mix.lad2m",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -954,7 +954,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac2_mix.r_mute",
+   "name": "adc_to_dac2_mix.rad2mm",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -963,7 +963,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "adc_to_dac2_mix.r_att",
+   "name": "adc_to_dac2_mix.rad2m",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -986,7 +986,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock_select.dac2_clock",
+   "name": "clock_select.da2c",
    "hi": 11,
    "lo": 10,
    "grade": "established",
@@ -995,7 +995,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac2_clock.fixed48k",
+   "name": "clock_select.da2c.fixed48k",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1003,7 +1003,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac2_clock.gen1",
+   "name": "clock_select.da2c.gen1",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1011,7 +1011,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac2_clock.gen2",
+   "name": "clock_select.da2c.gen2",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1019,7 +1019,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac2_clock.gen3",
+   "name": "clock_select.da2c.gen3",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1027,7 +1027,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock_select.dac1_clock",
+   "name": "clock_select.da1c",
    "hi": 9,
    "lo": 8,
    "grade": "established",
@@ -1036,7 +1036,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac1_clock.fixed48k",
+   "name": "clock_select.da1c.fixed48k",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1044,7 +1044,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac1_clock.gen1",
+   "name": "clock_select.da1c.gen1",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1052,7 +1052,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac1_clock.gen2",
+   "name": "clock_select.da1c.gen2",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1060,7 +1060,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.dac1_clock.gen3",
+   "name": "clock_select.da1c.gen3",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1068,7 +1068,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock_select.r_adc_clock",
+   "name": "clock_select.adrc",
    "hi": 3,
    "lo": 2,
    "grade": "inferred",
@@ -1077,7 +1077,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.r_adc_clock.fixed48k",
+   "name": "clock_select.adrc.fixed48k",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1085,7 +1085,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.r_adc_clock.gen1",
+   "name": "clock_select.adrc.gen1",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1093,7 +1093,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.r_adc_clock.gen2",
+   "name": "clock_select.adrc.gen2",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1101,7 +1101,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.r_adc_clock.gen3",
+   "name": "clock_select.adrc.gen3",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1109,7 +1109,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock_select.l_adc_clock",
+   "name": "clock_select.adlc",
    "hi": 1,
    "lo": 0,
    "grade": "established",
@@ -1118,7 +1118,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.l_adc_clock.fixed48k",
+   "name": "clock_select.adlc.fixed48k",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1126,7 +1126,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.l_adc_clock.gen1",
+   "name": "clock_select.adlc.gen1",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1134,7 +1134,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.l_adc_clock.gen2",
+   "name": "clock_select.adlc.gen2",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1142,7 +1142,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "clock_select.l_adc_clock.gen3",
+   "name": "clock_select.adlc.gen3",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1164,7 +1164,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.ref",
+   "name": "clock1_mode.c1ref",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1173,7 +1173,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.video_select",
+   "name": "clock1_mode.c1vid",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -1182,7 +1182,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.pll_gain",
+   "name": "clock1_mode.c1pllg",
    "hi": 13,
    "lo": 13,
    "grade": "established",
@@ -1191,7 +1191,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.bit_plus_200hz",
+   "name": "clock1_mode.c1p200",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -1200,7 +1200,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.conv_8_7_multiplier",
+   "name": "clock1_mode.c1x8_7",
    "hi": 11,
    "lo": 11,
    "grade": "established",
@@ -1209,7 +1209,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.conv_128_multiplier",
+   "name": "clock1_mode.c1c128",
    "hi": 10,
    "lo": 10,
    "grade": "established",
@@ -1218,7 +1218,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.conv_modifier",
+   "name": "clock1_mode.c1m_7_4",
    "hi": 7,
    "lo": 4,
    "grade": "established",
@@ -1227,7 +1227,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_mode.bit_modifier",
+   "name": "clock1_mode.c1m_3_0",
    "hi": 3,
    "lo": 0,
    "grade": "established",
@@ -1250,7 +1250,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_hz.hz",
+   "name": "clock1_hz.c1c",
    "hi": 15,
    "lo": 0,
    "grade": "established",
@@ -1273,7 +1273,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_phase.direction",
+   "name": "clock1_phase.c1pd",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -1282,7 +1282,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock1_phase.magnitude",
+   "name": "clock1_phase.c1p",
    "hi": 7,
    "lo": 0,
    "grade": "established",
@@ -1305,7 +1305,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.ref",
+   "name": "clock2_mode.c2ref",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1314,7 +1314,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.video_select",
+   "name": "clock2_mode.c2vid",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -1323,7 +1323,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.pll_gain",
+   "name": "clock2_mode.c2pllg",
    "hi": 13,
    "lo": 13,
    "grade": "established",
@@ -1332,7 +1332,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.bit_plus_200hz",
+   "name": "clock2_mode.c2p200",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -1341,7 +1341,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.conv_8_7_multiplier",
+   "name": "clock2_mode.c2x8_7",
    "hi": 11,
    "lo": 11,
    "grade": "established",
@@ -1350,7 +1350,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.conv_128_multiplier",
+   "name": "clock2_mode.c2c128",
    "hi": 10,
    "lo": 10,
    "grade": "established",
@@ -1359,7 +1359,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.conv_modifier",
+   "name": "clock2_mode.c2m_7_4",
    "hi": 7,
    "lo": 4,
    "grade": "established",
@@ -1368,7 +1368,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_mode.bit_modifier",
+   "name": "clock2_mode.c2m_3_0",
    "hi": 3,
    "lo": 0,
    "grade": "established",
@@ -1391,7 +1391,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_hz.hz",
+   "name": "clock2_hz.c2c",
    "hi": 15,
    "lo": 0,
    "grade": "established",
@@ -1414,7 +1414,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_phase.direction",
+   "name": "clock2_phase.c2pd",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -1423,7 +1423,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock2_phase.magnitude",
+   "name": "clock2_phase.c2p",
    "hi": 7,
    "lo": 0,
    "grade": "established",
@@ -1446,7 +1446,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.ref",
+   "name": "clock3_mode.c3ref",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1455,7 +1455,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.video_select",
+   "name": "clock3_mode.c3vid",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -1464,7 +1464,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.pll_gain",
+   "name": "clock3_mode.c3pllg",
    "hi": 13,
    "lo": 13,
    "grade": "established",
@@ -1473,7 +1473,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.bit_plus_200hz",
+   "name": "clock3_mode.c3p200",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -1482,7 +1482,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.conv_8_7_multiplier",
+   "name": "clock3_mode.c3x8_7",
    "hi": 11,
    "lo": 11,
    "grade": "established",
@@ -1491,7 +1491,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.conv_128_multiplier",
+   "name": "clock3_mode.c3c128",
    "hi": 10,
    "lo": 10,
    "grade": "established",
@@ -1500,7 +1500,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.conv_modifier",
+   "name": "clock3_mode.c3m_7_4",
    "hi": 7,
    "lo": 4,
    "grade": "established",
@@ -1509,7 +1509,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_mode.bit_modifier",
+   "name": "clock3_mode.c3m_3_0",
    "hi": 3,
    "lo": 0,
    "grade": "established",
@@ -1532,7 +1532,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_hz.hz",
+   "name": "clock3_hz.c3c",
    "hi": 15,
    "lo": 0,
    "grade": "established",
@@ -1555,7 +1555,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_phase.direction",
+   "name": "clock3_phase.c3pd",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -1564,7 +1564,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "clock3_phase.magnitude",
+   "name": "clock3_phase.c3p",
    "hi": 7,
    "lo": 0,
    "grade": "established",
@@ -1587,7 +1587,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.resample_filter",
+   "name": "digital_filter.drsflt",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1596,7 +1596,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.dac_mix",
+   "name": "digital_filter.damix",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -1605,7 +1605,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.dac2_filter",
+   "name": "digital_filter.da2flt",
    "hi": 9,
    "lo": 9,
    "grade": "established",
@@ -1614,7 +1614,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.dac1_filter",
+   "name": "digital_filter.da1flt",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -1623,7 +1623,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.r_digital_source",
+   "name": "digital_filter.daadr",
    "hi": 7,
    "lo": 6,
    "grade": "established",
@@ -1632,7 +1632,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.r_digital_source.analog",
+   "name": "digital_filter.daadr.analog",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1640,7 +1640,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.r_digital_source.reserved",
+   "name": "digital_filter.daadr.reserved",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1648,7 +1648,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.r_digital_source.dac1",
+   "name": "digital_filter.daadr.dac1",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1656,7 +1656,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.r_digital_source.dac2",
+   "name": "digital_filter.daadr.dac2",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1664,7 +1664,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.l_digital_source",
+   "name": "digital_filter.daadl",
    "hi": 5,
    "lo": 4,
    "grade": "established",
@@ -1673,7 +1673,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.l_digital_source.analog",
+   "name": "digital_filter.daadl.analog",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1681,7 +1681,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.l_digital_source.reserved",
+   "name": "digital_filter.daadl.reserved",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1689,7 +1689,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.l_digital_source.dac1",
+   "name": "digital_filter.daadl.dac1",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1697,7 +1697,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "digital_filter.l_digital_source.dac2",
+   "name": "digital_filter.daadl.dac2",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1705,7 +1705,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.r_adc_filter",
+   "name": "digital_filter.adrflt",
    "hi": 1,
    "lo": 1,
    "grade": "established",
@@ -1714,7 +1714,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "digital_filter.l_adc_filter",
+   "name": "digital_filter.adlflt",
    "hi": 0,
    "lo": 0,
    "grade": "established",
@@ -1737,7 +1737,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.dac2_mono",
+   "name": "format_lock.da2sm",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1746,7 +1746,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.dac1_mono",
+   "name": "format_lock.da1sm",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -1755,7 +1755,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.dac2_format",
+   "name": "format_lock.da2f",
    "hi": 11,
    "lo": 10,
    "grade": "established",
@@ -1764,7 +1764,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac2_format.unsigned8",
+   "name": "format_lock.da2f.unsigned8",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1772,7 +1772,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac2_format.signed16",
+   "name": "format_lock.da2f.signed16",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1780,7 +1780,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac2_format.mulaw",
+   "name": "format_lock.da2f.mulaw",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1788,7 +1788,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac2_format.alaw",
+   "name": "format_lock.da2f.alaw",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1796,7 +1796,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.dac1_format",
+   "name": "format_lock.da1f",
    "hi": 9,
    "lo": 8,
    "grade": "established",
@@ -1805,7 +1805,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac1_format.unsigned8",
+   "name": "format_lock.da1f.unsigned8",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1813,7 +1813,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac1_format.signed16",
+   "name": "format_lock.da1f.signed16",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1821,7 +1821,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac1_format.mulaw",
+   "name": "format_lock.da1f.mulaw",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1829,7 +1829,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.dac1_format.alaw",
+   "name": "format_lock.da1f.alaw",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1864,7 +1864,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.adc_lock",
+   "name": "format_lock.adtlk",
    "hi": 4,
    "lo": 4,
    "grade": "established",
@@ -1873,7 +1873,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.r_adc_format",
+   "name": "format_lock.adrf",
    "hi": 3,
    "lo": 2,
    "grade": "established",
@@ -1882,7 +1882,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.r_adc_format.unsigned8",
+   "name": "format_lock.adrf.unsigned8",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1890,7 +1890,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.r_adc_format.signed16",
+   "name": "format_lock.adrf.signed16",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1898,7 +1898,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.r_adc_format.mulaw",
+   "name": "format_lock.adrf.mulaw",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1906,7 +1906,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.r_adc_format.alaw",
+   "name": "format_lock.adrf.alaw",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1914,7 +1914,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "format_lock.l_adc_format",
+   "name": "format_lock.adlf",
    "hi": 1,
    "lo": 0,
    "grade": "established",
@@ -1923,7 +1923,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.l_adc_format.unsigned8",
+   "name": "format_lock.adlf.unsigned8",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1931,7 +1931,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.l_adc_format.signed16",
+   "name": "format_lock.adlf.signed16",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1939,7 +1939,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.l_adc_format.mulaw",
+   "name": "format_lock.adlf.mulaw",
    "value": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1947,7 +1947,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "format_lock.l_adc_format.alaw",
+   "name": "format_lock.adlf.alaw",
    "value": 3,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -1969,7 +1969,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.resource_free",
+   "name": "enables.dfree",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -1978,7 +1978,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.dac2_analog_mix",
+   "name": "enables.ddmen",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -1987,7 +1987,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.dac2_enable",
+   "name": "enables.da2en",
    "hi": 9,
    "lo": 9,
    "grade": "established",
@@ -1996,7 +1996,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.dac1_enable",
+   "name": "enables.da1en",
    "hi": 8,
    "lo": 8,
    "grade": "established",
@@ -2005,7 +2005,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.analog_enable",
+   "name": "enables.anaen",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -2014,7 +2014,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.headphone_enable",
+   "name": "enables.hpen",
    "hi": 6,
    "lo": 6,
    "grade": "established",
@@ -2023,7 +2023,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.analog_mix_enable",
+   "name": "enables.aamen",
    "hi": 4,
    "lo": 4,
    "grade": "established",
@@ -2032,7 +2032,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.r_adc_enable",
+   "name": "enables.adren",
    "hi": 1,
    "lo": 1,
    "grade": "established",
@@ -2041,7 +2041,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "enables.l_adc_enable",
+   "name": "enables.adlen",
    "hi": 0,
    "lo": 0,
    "grade": "established",
@@ -2073,7 +2073,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.autocal",
+   "name": "power_clock.acen",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -2082,7 +2082,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.clock3_enable",
+   "name": "power_clock.c3en",
    "hi": 13,
    "lo": 13,
    "grade": "established",
@@ -2091,7 +2091,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.clock2_enable",
+   "name": "power_clock.c2en",
    "hi": 12,
    "lo": 12,
    "grade": "established",
@@ -2100,7 +2100,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.clock1_enable",
+   "name": "power_clock.c1en",
    "hi": 11,
    "lo": 11,
    "grade": "established",
@@ -2109,7 +2109,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.clock_output",
+   "name": "power_clock.enclko",
    "hi": 10,
    "lo": 10,
    "grade": "established",
@@ -2118,7 +2118,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.ttl_outputs",
+   "name": "power_clock.xctl",
    "hi": 9,
    "lo": 8,
    "grade": "established",
@@ -2127,7 +2127,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.conv_bit_outputs",
+   "name": "power_clock.encv3_enbt1",
    "hi": 7,
    "lo": 2,
    "grade": "established",
@@ -2136,7 +2136,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.r_line_mode",
+   "name": "power_clock.linrsd",
    "hi": 1,
    "lo": 1,
    "grade": "established",
@@ -2145,7 +2145,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "power_clock.r_line_mode.single_ended",
+   "name": "power_clock.linrsd.single_ended",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -2153,7 +2153,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "power_clock.r_line_mode.differential",
+   "name": "power_clock.linrsd.differential",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -2161,7 +2161,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.l_line_mode",
+   "name": "power_clock.linlsd",
    "hi": 0,
    "lo": 0,
    "grade": "established",
@@ -2170,7 +2170,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "power_clock.l_line_mode.single_ended",
+   "name": "power_clock.linlsd.single_ended",
    "value": 0,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
@@ -2178,7 +2178,7 @@
   {
    "unit": "ad1843",
    "kind": "enum_value",
-   "name": "power_clock.l_line_mode.differential",
+   "name": "power_clock.linlsd.differential",
    "value": 1,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
