@@ -1,6 +1,6 @@
 <!-- generated from devices/crime/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 5f6b1f3d636cdb047b00e9af46d8ab9629ca610988c533948d7e0aecfa385dbb -->
+<!-- input sha256 ec600ef86fc06d9d949ec7084a75ffd875d344c1c6cadd6d7c23663a47a5d95c -->
 
 # O2 CRIME memory controller and CPU interface registers
 
@@ -29,6 +29,7 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `vice_error_addr` | 0x58 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_control` | 0x200 | rw | 64 |  |  | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_bank_control` | 0x208 | rw | 64 | 8 |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
+| `mem_refresh` | 0x248 | rw | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_error_stat` | 0x250 | rw | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_error_addr` | 0x258 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `mem_error_ecc_syn` | 0x260 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
@@ -57,6 +58,7 @@ The shipped IRIX early-reset code writes bits 13:12 and 9 of it.
 | 10 | `soft_reset` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 9 | `watchdog_enable` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 8 | `endian` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 7:5 | `juice_mode` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | Load-ignore threshold for coherent loads. Resets to 001 (established, [spec] PDF 114 to 115, Table 5-9). |
 
 ### Register `intstat`
 
@@ -140,6 +142,14 @@ Array of 8 registers, stride 8.
 | 8 | `sdram_geometry` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 | 4:0 | `base_match` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 
+### Register `mem_refresh`
+
+Refresh counter. Table 6-15 gives the reset as "count value", not a number, so the reset is unknown (established, [spec] PDF 152).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 10:0 | `refresh_count` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+
 ### Register `mem_error_stat`
 
 Reset values differ per bank, so the REG line's reset=unknown stands for none of them: bank n resets to n for n = 0 to 7
@@ -169,9 +179,31 @@ The shipped IRIX kernel's `badaddr` stores zero here before a probe and afterwar
 
 ### Register `mem_error_addr`
 
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 29:0 | `address` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+
 ### Register `mem_error_ecc_syn`
 
+ECC syndrome bits for the 256-bit memory word, one byte per 64-bit slice. Resets to 0 (established, [spec] Table 6-18, PDF 154).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:24 | `syn_255_192` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 23:16 | `syn_191_128` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 15:8 | `syn_127_64` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 7:0 | `syn_63_0` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+
 ### Register `mem_error_ecc_chk`
+
+ECC check bits generated by the hardware for the 256-bit memory word, one byte per 64-bit slice. Resets to 0 (established, [spec] Table 6-19, PDF 154).
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 31:24 | `chk_255_192` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 23:16 | `chk_191_128` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 15:8 | `chk_127_64` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 7:0 | `chk_63_0` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
 
 ### Register `mem_error_ecc_repl`
 
@@ -184,6 +216,13 @@ The published table defines only bits 7:0 and gives reset zero (established, [sp
 ### Register `cpu_error_stat_15`
 
 The CRIME 1.5 specification places the CPU error status register here, on its own 16 KiB page so that it can be mapped to user programs (established, [spec] Table 5-7 and its note, PDF 113). Bit layout as in Table 5-17 (PDF 120). The grade stays inferred: whether a fitted part implements this offset is not established.
+
+| Bits | Field | Grade | Values | Source | Description |
+|---|---|---|---|---|---|
+| 8:3 | `addr_39_34` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | Address bits 39:34 of a CPU PIO error. Table 5-17 marks it new in 1.5 "if it can be implemented", so whether a fitted part sets it is unknown. |
+| 2 | `illegal_addr` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |  |
+| 1 | `vice_write_parity` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | No longer supported on 1.5, because SysADC is not used (Table 5-17, PDF 120). |
+| 0 | `cpu_write_parity` | established |  | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings | No longer supported on 1.5, because SysADC is not used (Table 5-17, PDF 120). |
 
 ## Words
 
