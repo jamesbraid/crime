@@ -42,6 +42,16 @@ Route key, used in the tables:
 - **P**: published output from real O2s: `hinv`, `gfxinfo`, kernel and X server messages in newsgroup and mailing-list posts, found through public search.
 - **E**: running the shipped software under an emulator to record what it writes and expects back; it shows the driver's expectation, not the hardware's behaviour.
 
+## Little-endian host and the 2D engine (2026-11-27)
+
+Asked by a driver for a little-endian processor on the O2. The answers are in [devices/re/memory.md](../devices/re/memory.md#cpu-access-widths-and-a-little-endian-processor-2026-11-27), [devices/gbe/gbe.md](../devices/gbe/gbe.md#tile-and-pixel-layout-by-depth-and-what-a-little-endian-processor-stores-2026-11-27) and [devices/re/de-2d-drawing.md](../devices/re/de-2d-drawing.md#command-sequences-for-a-2d-driver-2026-11-27). What stays open:
+
+1. **What CRIME does for a little-endian processor.** Unknown: no shipped software or published source depends on it (no little-endian software ever ran on an O2). The sub-questions are whether a doubleword store keeps its value (lane rule) or is byte-reversed (address-invariant rule), which half a word access reaches in the engine, the transfer engine and GBE, and whether host memory is doubleword-invariant for the display and engine (pixel pairs exchanged). Routes tried: the CRIME 1.5 specification (pin list, tables 5-4 and 5-9, the open-issue list), the GBE specification, the R10000 and VR5000 manuals, the IRIX 6.5.7 source tree and the 6.5.30 kernel and PROM listings (no code tests the endian bit), Linux and NetBSD (big-endian only), a Library search for the module's serial-ROM endian strap (only the same specification came back). Next routes: a CRIME 1.1 specification or errata that keeps the little-endian protocol text; the R5000 module's own manual for the `BigEndian` pin wiring. The decision does not wait on them: the driver reads the ID register with `ld` and the GBE `DEVICE_ID` with `lw` and picks the rule (see the page).
+2. **Which pixels a hardware line covers.** The specification's point and line subsections are empty. Routes tried: the specification, NetBSD (draws no lines), the diagnostics and X module (use the hardware line, never compare it). Next route: none in software. Unknown: no shipped software or published source depends on it beyond that the X module sends wide lines to software.
+3. **Primitive opcode 4.** The 6.5.7 stand-alone header names it `flush`; the specification reserves it; nothing issues it. Unknown: no shipped software or published source depends on it.
+4. **What the flush register adds to the interface buffer's ordering**, and the meaning of the two MTE ECC mode bits. Unknown: no shipped software or published source depends on it. Routes tried: the shipped writers (all flush at the end of a batch), the specification ("pipeline flush command").
+5. **Zero entry in the normal-plane tile list** (what GBE displays for an entry of 0, and whether bit 15 means anything there). Unchanged from [devices/gbe/gbe.md](../devices/gbe/gbe.md); the four known list writers never write either.
+
 ## Closed 2026-11-11, already answered elsewhere
 
 Each was open here after a result had landed in the owning file. The pointer is the answer.
