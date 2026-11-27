@@ -216,20 +216,22 @@ Audited on 2026-11-27 against the published MACE 2.0 specification, the VICE des
 
 Each unit says `name_source = "ours"`. Its names are descriptive spellings: every word in them turns up in those documents, drivers or headers, apart from number suffixes and units such as `kib8` or `quarter`. A register or word says `"public"` only when its own name is printed as spelled by a public document, driver or shipped header and every field and enum value in it is too. No name comes from a binary's symbol table. A second reviewer searched the IRIX source tree for every name in these units as a whole word, in either case. Names that match there only as a generic word or in a file for an unrelated device stay. Names whose only match was the source tree, or whose spelling used an abbreviation only the source tree uses, were renamed to words the specification or a public driver prints (see the last column).
 
+Names count registers, words, fields, constants, enum types and enum values.
+
 | Unit | Names | public | ours | Excluded or renamed |
 |---|---|---|---|---|
-| mace_audio | 27 | 0 | 27 | codec_addr and codec_data renamed to codec_address and codec_word |
-| mace_ethernet | 133 | 0 | 133 | none |
+| mace_audio | 39 | 0 | 39 | codec_addr and codec_data renamed to codec_address and codec_word |
+| mace_ethernet | 143 | 0 | 143 | none |
 | mace_i2c | 18 | 0 | 18 | none |
 | mace_periph | 49 | 0 | 49 | timer_cmp0, timer_cmp1 and timer_cmp2 renamed to timer_compare0, timer_compare1 and timer_compare2 |
 | mace_ps2 | 26 | 0 | 26 | clock_permit and clock_permitted renamed to clock_enable and clock_enabled (the specification says Clock Inhibit with the bit set meaning the clock is asserted, and the public Linux driver calls the same bit a clock enable) |
-| mace_serial_dma | 14 | 0 | 14 | none |
+| mace_serial_dma | 29 | 0 | 29 | none |
 | mace_uart | 3 | 0 | 3 | none |
 | mace_pci | 22 | 1 | 21 | none |
 | mace_timer | 22 | 0 | 22 | cmp0, cmp1, cmp2 and CMP0_ALIAS to CMP2_ALIAS renamed to compare0 to compare2 and COMPARE0_ALIAS to COMPARE2_ALIAS; TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF and TIMER_SNAP_OUT_OFF renamed to VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF |
-| mace_video | 85 | 0 | 85 | WINDOW_PHYS_ADDR, IN2_OFF and OUT_OFF renamed to VIN1, VIN2_OFF and VOUT_OFF |
-| mace_video_in | 71 | 0 | 71 | none |
-| vice | 191 | 139 | 52 | none |
-| ad1843 | 169 | 140 | 29 | dac1_digital_att and dac2_digital_att renamed to dac1_digital_attenuation and dac2_digital_attenuation; the six pin-enable bits of register 28 split from one field into six; all 145 field names renamed to the data sheet's bit mnemonics (for example l_source to lss, converter_powerdown to pdno) |
+| mace_video | 127 | 0 | 127 | WINDOW_PHYS_ADDR, IN2_OFF and OUT_OFF renamed to VIN1, VIN2_OFF and VOUT_OFF |
+| mace_video_in | 96 | 0 | 96 | none |
+| vice | 220 | 139 | 81 | none |
+| ad1843 | 204 | 145 | 59 | dac1_digital_att and dac2_digital_att renamed to dac1_digital_attenuation and dac2_digital_attenuation; the six pin-enable bits of register 28 split from one field into six; all 145 field names renamed to the data sheet's bit mnemonics (for example l_source to lss, converter_powerdown to pdno) |
 
-AD1843: the data sheet prints a mnemonic for every register bit (INIT, LSS2:0, C1M7:4 and so on) and only a title for each register. Every field is now the lower-case mnemonic, with a multi-bit field named for its stem (`LIG3:0` is `lig`) and the split clock-rate nibbles written `c1m_7_4` and `c1m_3_0`. The six pin-enable bits of register 28 are six fields, `encv3`, `enbt3`, `encv2`, `enbt2`, `encv1` and `enbt1`, as the data sheet prints them. The 29 register names are our short spellings of the data sheet's register titles, so they stay ours. A field cannot carry its own `name_source`, so the unit says ours while the 145 field names are the public ones.
+AD1843: the data sheet prints a mnemonic for every register bit (INIT, LSS2:0, C1M7:4 and so on) and only a title for each register. Every field is now the lower-case mnemonic, with a multi-bit field named for its stem (`LIG3:0` is `lig`) and the split clock-rate nibbles written `c1m_7_4` and `c1m_3_0`. The six pin-enable bits of register 28 are six fields, `encv3`, `enbt3`, `encv2`, `enbt2`, `encv1` and `enbt1`, as the data sheet prints them. The 29 register names are our short spellings of the data sheet's register titles, and the 6 enum type and 24 enum value names are our descriptions of its code tables, so they stay ours. A field cannot carry its own `name_source`, so the unit says ours while the 145 field names are the public ones.
