@@ -183,7 +183,7 @@ Routine roles read from the disassembly of each routine listed. An independent a
   **Inferred.** Writes a0 at record +4 and a1 at +8 in a 0xc-byte record. The record carries the opcode 0x55 at +2 and the length 0xc at +0. The pointer is advanced by 0xc, and an overflow calls `__glXFlushRenderBuffer`.
 
 - `__glx_TexGeniv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd810ce4
-  **Inferred.** Sizes the parameter list with `__glXTexGeniv_size`, called with the pname from a1, and converts the count to bytes. The coordinate in a0 goes to record +4 and the pname to +8, and `memcpy` moves the integers from a1 to +0xc. The opcode 0x78 is written at +2, and the length is the byte count plus 0xc. An overflow calls `__glXFlushRenderBuffer` with the buffer and the new write pointer.
+  **Inferred.** Sizes the parameter list with `__glXTexGeniv_size`, called with the pname from a1, and converts the count to bytes. The coordinate in a0 goes to record +4 and the pname to +8, and `memcpy` moves the integers from a2 to +0xc. The opcode 0x78 is written at +2, and the length is the byte count plus 0xc. An overflow calls `__glXFlushRenderBuffer` with the buffer and the new write pointer.
 
 - `__glx_FrontFace` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd810dc4
   **Inferred.** Records the single argument a0 at +4 of an 8-byte record, with the opcode 0x54 at +2 and the length 8 at +0. The write pointer moves by 8, and past the end limit the routine calls `__glXFlushRenderBuffer`.
@@ -204,13 +204,13 @@ Routine roles read from the disassembly of each routine listed. An independent a
   **Inferred.** Copies the double argument f14 from its frame slot at sp +0x40 into record +4 with an 8-byte `memcpy`. The coordinate from a0 goes to +0xc and the pname from a1 to +0x10. The record is 0x14 bytes, with the opcode 0x73 at +2 and the length 0x14 at +0. The write pointer moves by 0x14, and past the limit the routine calls `__glXFlushRenderBuffer` with the buffer and the new pointer.
 
 - `__glx_TexGendv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8111e4
-  **Inferred.** Calls `__glXTexGendv_size` with the pname in a1 and multiplies the result by 8 because each value is a double. The coordinate in a0 goes to record +4 and the pname to +8, and `memcpy` moves the double array from a1 to +0xc. The length is the byte count plus 0xc, rounded to a multiple of 4, and the opcode 0x74 goes at +2.
+  **Inferred.** Calls `__glXTexGendv_size` with the pname in a1 and multiplies the result by 8 because each value is a double. The coordinate in a0 goes to record +4 and the pname to +8, and `memcpy` moves the double array from a2 to +0xc. The length is the byte count plus 0xc, rounded to a multiple of 4, and the opcode 0x74 goes at +2.
 
 - `__glx_TexGenf` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8112c4
   **Inferred.** Writes a0 at +4, a1 at +8 and the float f14 at +0xc of a 0x10-byte record. The opcode 0x75 is stored at +2 and the length 0x10 at +0. The pointer advances by 0x10, and an overflow calls `__glXFlushRenderBuffer`.
 
 - `__glx_TexGenfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81133c
-  **Inferred.** Gets the float count from `__glXTexGenfv_size` for the pname in a1 and converts it to bytes. The coordinate in a0 and the pname go to record +4 and +8, the floats are copied from a1 by `memcpy` to +0xc, and the opcode 0x76 is written at +2. An overflow leads to `__glXFlushRenderBuffer`.
+  **Inferred.** Gets the float count from `__glXTexGenfv_size` for the pname in a1 and converts it to bytes. The coordinate in a0 and the pname go to record +4 and +8, the floats are copied from a2 by `memcpy` to +0xc, and the opcode 0x76 is written at +2. An overflow leads to `__glXFlushRenderBuffer`.
 
 - `__glx_Materiali` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81141c
   **Inferred.** Packs three integers into a 0x10-byte record: a0 at +4, a1 at +8 and a2 at +0xc. The opcode 0x62 goes at +2 and the length 0x10 at +0. The write pointer is advanced by 0x10 and checked against the end limit, and past it the routine calls `__glXFlushRenderBuffer`.
@@ -459,25 +459,25 @@ Routine roles read from the disassembly of each routine listed. An independent a
   **Inferred.** Writes nine words, a0 to a3, t0 to t3 and t7, into a 40-byte request at offsets 4 through 0x24. The opcode halfword is 0x101b and the length halfword 0x28, and the flush routine handles the overrun.
 
 - `__glx_GetMapdv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd814114
-  **Inferred.** When the list-compile record at state +0xd8 is set, it flushes, runs the before-hook, and writes a 4-length request with opcode 0x78 at +1. The low byte of the word at state +0x110 goes to offset 0, the state word at +0x3c to offset 4, and the two argument words to +8 and +0xc. It then calls the GOT slot gp-0x7e38 routine with the stack slot sp+0 as its output and reads the count back from sp+0xc. A count of 1 copies one double from sp+0x10 into the caller's buffer through the copy routine, and any other count fetches count times eight bytes with the gp-0x7e10 routine.
+  **Inferred.** When the display pointer at state +0xd8 is set, it flushes, runs the before-hook, and writes a 4-length request with opcode 0x78 at +1. The low byte of the word at state +0x110 goes to offset 0, the state word at +0x3c to offset 4, and the two argument words to +8 and +0xc. It then calls the GOT slot gp-0x7e38 routine with the stack slot sp+0 as its output and reads the count back from sp+0xc. A count of 1 copies one double from sp+0x10 into the caller's buffer through the copy routine, and any other count fetches count times eight bytes with the gp-0x7e10 routine.
 
 - `__glx_GetLightiv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd814288
   **Inferred.** After the flush and the before-hook, it builds the same kind of 4-length request as GetMapdv, with opcode 0x77 in the second byte, and calls the reply routine in GOT slot gp-0x7e38 with the output at sp+0. The reply count is read from sp+0xc and the single word at sp+0x10 is stored to the caller's pointer when the count is 1. Larger counts go to the gp-0x7e10 routine with a2 set to count times four.
 
 - `__glx_GetLightfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8143f0
-  **Inferred.** Writes a 4-length request with opcode 0x76 and calls the reply routine in GOT slot gp-0x7e38. When the count at sp+0xc is 1 the float at sp+0x10 is stored straight to the caller's pointer, and otherwise the routine copies count times four bytes through the gp-0x7e10 routine. The list-compile hook at +0x4d0 is called on both sides of the request.
+  **Inferred.** Writes a 4-length request with opcode 0x76 and calls the reply routine in GOT slot gp-0x7e38. When the count at sp+0xc is 1 the float at sp+0x10 is stored straight to the caller's pointer, and otherwise the routine copies count times four bytes through the gp-0x7e10 routine. The hook table at +0x4d0 is used on both sides of the request: its first entry runs before it and its second after the reply.
 
 - `__glx_GenLists` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd814558
-  **Inferred.** When the list-compile record at state +0xd8 is nonzero, it flushes, runs the before-hook, and reserves a 12-byte record with opcode 0x68 and length 3. The range argument a0 is stored at record offset 8 and the state word at +0x3c at offset 4. It then calls the GOT slot gp-0x7e38 routine with a1 pointing at the stack and reads back the word at sp+8 as its return value. With the record pointer zero the routine returns 0 at once.
+  **Inferred.** When the display pointer at state +0xd8 is nonzero, it flushes, runs the before-hook, and reserves a 12-byte record with opcode 0x68 and length 3. The range argument a0 is stored at record offset 8 and the state word at +0x3c at offset 4. It then calls the GOT slot gp-0x7e38 routine with a1 pointing at the stack and reads back the word at sp+8 as its return value. With the record pointer zero the routine returns 0 at once.
 
 - `__glx_DeleteLists` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8146a8
-  **Inferred.** Appends a 16-byte record with opcode 0x67 for a deletion when the list-compile record is set. The list argument a0 goes to offset 8 and the range argument a1 to offset 0xc, and the state word at +0x3c goes to offset 4. The record is preceded by a flush and a before-hook, and followed by the after-hook at +4 and the callback at +0x7c.
+  **Inferred.** Appends a 16-byte record with opcode 0x67 for a deletion when the display pointer at state +0xd8 is set. The list argument a0 goes to offset 8 and the range argument a1 to offset 0xc, and the state word at +0x3c goes to offset 4. The record is preceded by a flush and a before-hook, and followed by the after-hook at +4 and the callback at +0x7c.
 
 - `__glx_EndList` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8147c4
-  **Inferred.** Writes an 8-byte record with opcode 0x66 (byte 1) and length 2 (halfword 2) when the list-compile record is set, and copies the state word at +0x3c into record offset 4. The routine flushes first, runs the before-hook, and calls the after-hook and the +0x7c callback at the end. The routine in GOT slot gp-0x7e4c is called when the record does not fit.
+  **Inferred.** Writes an 8-byte record with opcode 0x66 (byte 1) and length 2 (halfword 2) when the display pointer at state +0xd8 is set, and copies the state word at +0x3c into record offset 4. The routine flushes first, runs the before-hook, and calls the after-hook and the +0x7c callback at the end. The routine in GOT slot gp-0x7e4c is called when the record does not fit.
 
 - `__glx_NewList` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8148c8
-  **Inferred.** Adds a 16-byte record with opcode 0x65 and length 4 when the list-compile record at state +0xd8 is set. The list number from a0 goes to offset 8, the mode from a1 to offset 0xc, and the state word at +0x3c to offset 4. Before the record is written the routine flushes the buffer and calls the before-hook; after it, the after-hook and the +0x7c callback run.
+  **Inferred.** Adds a 16-byte record with opcode 0x65 and length 4 when the display pointer at state +0xd8 is set. The list number from a0 goes to offset 8, the mode from a1 to offset 0xc, and the state word at +0x3c to offset 4. Before the record is written the routine flushes the buffer and calls the before-hook; after it, the after-hook and the +0x7c callback run.
 
 - `__glx_ColorTableParameterfvSGI` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8149e4
   **Inferred.** Appends a variable-length render record for the colour-table float parameter call. It first calls `__glXColorTableParameterfvSGI_size` with the second argument, and the count it returns sets the record: the length halfword at +0 is four times the count plus 12, and the opcode 0x806 sits at +2. The target (a0) is stored at +4 and the parameter name (a1) at +8, then `memcpy` copies the parameter array (a2) to +12. The write pointer kept at +4 of the render state moves forward by the record length.
@@ -522,79 +522,79 @@ Routine roles read from the disassembly of each routine listed. An independent a
   **Inferred.** The detail-texture-function counterpart of the sharpen record. The same guard on a1 + a1 applies. The record carries opcode 0x803, the target at +4 and the count at +8, and copies the points with `memcpy` into +12 at eight bytes each. The length is 8 times the count plus 12, and the flush after the pointer bump follows the limit check at +8.
 
 - `__glx_IsList` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd816950
-  **Inferred.** Makes a synchronous query for whether a display list name is valid. If the display pointer read from state +0xd8 is null it returns 0 without doing anything. Otherwise it writes a 12-byte request with opcode 0x8d at +1, length 3 at +2, and the list name at +8, sends it with `_XReply` into a reply buffer on the stack, and returns the byte at reply offset 11 by parking it on the stack and reloading it on the way out. `_XFlush` ends the call.
+  **Inferred.** Makes a synchronous query for whether a display list name is valid. If the display pointer read from state +0xd8 is null it returns 0 without doing anything. Otherwise it writes a 12-byte request with opcode 0x8d at +1, length 3 at +2, and the list name at +8, sends it with `_XReply` into a reply buffer on the stack, and returns the byte at reply offset 11 by parking it on the stack and reloading it on the way out. After the reply it runs the second hook-table entry and the callback at +0x7c, each only when set. `_XFlush` runs only when the request does not fit in the output buffer, before the request is written.
 
 - `__glx_GetMapfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81537c
-  **Inferred.** Synchronous request for the float map data. It flushes the render buffer first, then writes a 16-byte request with minor opcode 0x79 at +1 and length 4 at +2. The target (a0) goes to +8 and the map name (a1) to +0xc. After `_XReply`, one float store goes into the caller's pointer at a2, and the map data is read into that pointer with `_XRead`. `_XFlush` ends the request. Callees through the display's function table at +0x4d0 sit between the steps and have no names in the symbol table.
+  **Inferred.** Synchronous request for the float map data. It flushes the render buffer first, then writes a 16-byte request with minor opcode 0x79 at +1 and length 4 at +2. The target (a0) goes to +8 and the map name (a1) to +0xc. After `_XReply`, a reply count of 1 stores the one float straight into the caller's pointer at a2, and any other count is read into that pointer with `_XRead`, four bytes per element. `_XFlush` runs only when the request does not fit in the output buffer, before the request is written. The normal path ends with the second entry of the display's function table at +0x4d0 and then the callback at +0x7c, each only when set. The table callees have no names in the symbol table.
 
 - `__glx_GetDetailTexFuncSGIS` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8154e4
-  **Inferred.** Vendor-private query for the detail texture function. The request is 16 bytes: byte 0 is 0x10, byte 1 is 0x11, the vendor code 0x1000 is at +4, and the target from a0 is at +0xc. It calls `_XReply`, then reads the points into the pointer in a1 with `_XRead`, and ends with `_XFlush`. A float store into the caller's pointer sits between the reply and the read.
+  **Inferred.** Vendor-private query for the detail texture function. The request is 16 bytes: byte 1 is 0x11, the vendor code 0x1000 is at +4, the state word at +0x3c is at +8, and the target from a0 is at +0xc. Byte 0 is first set to 0x10 and then overwritten by the low byte of the state word at +0x110. After `_XReply`, a reply count of 1 stores one float directly into the pointer in a1, and any other count is read into it with `_XRead`. `_XFlush` runs only on the overflow path; the normal path ends with the second hook-table entry and the callback at +0x7c, each only when set.
 
 - `__glx_GetMinmaxParameterivEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81564c
-  **Inferred.** Vendor-private query for an integer minmax parameter. It writes a 20-byte request with byte 0 at 0x10, byte 1 at 0x11, the vendor code 0x0a at +4, the target at +0xc and the parameter name at +0x10. The reply is read through `_XReply` and `_XRead` into the caller's pointer at a2, with a single word store to a2 between the two calls.
+  **Inferred.** Vendor-private query for an integer minmax parameter. It writes a 20-byte request with byte 1 at 0x11, the vendor code 0x0a at +4, the state word at +0x3c at +8, the target at +0xc and the parameter name at +0x10. Byte 0 is first set to 0x10 and then overwritten by the low byte of the state word at +0x110. After `_XReply`, a reply count of 1 stores one word straight into the caller's pointer at a2, and any other count is read into a2 with `_XRead`, four bytes per element. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetMinmaxParameterfvEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8157c0
-  **Inferred.** The float counterpart of the minmax query. Its request layout matches the integer form, but the vendor code at +4 is 0x09. The single store to the caller's pointer after `_XReply` is a float store from $f0, and `_XRead` then fills the result into a2, with `_XFlush` after the read.
+  **Inferred.** The float counterpart of the minmax query. Its request layout matches the integer form, but the vendor code at +4 is 0x09. A reply count of 1 stores the one result as a float from $f0 straight into a2, and any other count goes to `_XRead` into a2. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetHistogramParameterivEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd815934
-  **Inferred.** Queries an integer histogram parameter from the server. The 20-byte request carries vendor code 0x07 at +4, the target at +0xc and the parameter at +0x10, with byte 0 set to 0x10 and byte 1 to 0x11. The reply is fetched by `_XReply`, a single word goes into the pointer at a2, `_XRead` fills the rest, and `_XFlush` is the last call.
+  **Inferred.** Queries an integer histogram parameter from the server. The 20-byte request carries vendor code 0x07 at +4, the target at +0xc and the parameter at +0x10, with byte 1 set to 0x11 and the state word at +0x3c at +8. Byte 0 gets 0x10 first and is then overwritten by the low byte of the state word at +0x110. After `_XReply`, a reply count of 1 stores one word into the pointer at a2, and any other count is read there with `_XRead`. `_XFlush` is called only when the request does not fit in the output buffer.
 
 - `__glx_GetHistogramParameterfvEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd815aa8
-  **Inferred.** The float histogram query. Vendor code 0x06 sits at +4 in the same 20-byte request, and the store to the caller's pointer after the reply is a float store from $f0 instead of a word.
+  **Inferred.** The float histogram query. Vendor code 0x06 sits at +4 in the same 20-byte request, and a reply count of 1 stores a float from $f0 instead of a word; larger counts go to `_XRead` as in the integer form.
 
 - `__glx_GetConvolutionParameterivEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd815c1c
-  **Inferred.** Integer convolution parameter query. The request is 20 bytes with byte 0 0x10, byte 1 0x11 and vendor code 0x03 at +4. The target and parameter name occupy +0xc and +0x10, and the result is written through a2 after `_XReply`, with `_XRead` fetching the rest and `_XFlush` as the last call.
+  **Inferred.** Integer convolution parameter query. The request is 20 bytes with byte 1 0x11 and vendor code 0x03 at +4. Byte 0 gets 0x10 first and is then overwritten by the low byte of the state word at +0x110. The target and parameter name occupy +0xc and +0x10. After `_XReply`, a reply count of 1 stores one word through a2 and any other count goes to `_XRead` into a2. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetConvolutionParameterfvEXT` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd815d90
-  **Inferred.** Float convolution parameter query, using vendor code 0x02 in the same 20-byte layout. The post-reply store into a2 is a float store from $f0.
+  **Inferred.** Float convolution parameter query, using vendor code 0x02 in the same 20-byte layout. A reply count of 1 stores a float from $f0 into a2, and other counts use `_XRead` as in the integer form.
 
 - `__glx_GetSharpenTexFuncSGIS` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd815f04
-  **Inferred.** Fetches the sharpen-texture points. The request is 16 bytes with byte 1 at 0x11, byte 0 at 0x10 and vendor code 0x1001 at +4, and the target goes to +0xc. After `_XReply` the reply is read into the points pointer in a1 with `_XRead`, and the function ends with `_XFlush` after the display function-table calls.
+  **Inferred.** Fetches the sharpen-texture points. The request is 16 bytes with byte 1 at 0x11 and vendor code 0x1001 at +4, and the target goes to +0xc. Byte 0 gets 0x10 first and is then overwritten by the low byte of the state word at +0x110. After `_XReply`, a reply count of 1 stores one float directly into the points pointer in a1, and any other count is read into it with `_XRead`. `_XFlush` runs only on the overflow path; the normal path ends with the second hook-table entry and the callback at +0x7c, each only when set.
 
 - `__glx_GetColorTableParameterivSGI` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81606c
-  **Inferred.** Colour-table integer parameter query. It writes the 20-byte vendor-private request with vendor code 0x1004 at +4, the target at +0xc and the parameter name at +0x10. `_XReply` precedes a word store into the caller's pointer at a2, and `_XRead` plus `_XFlush` complete the call.
+  **Inferred.** Colour-table integer parameter query. It writes the 20-byte vendor-private request with vendor code 0x1004 at +4, the target at +0xc and the parameter name at +0x10. After `_XReply`, a reply count of 1 stores one word into the caller's pointer at a2, and any other count goes to `_XRead` into a2. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetColorTableParameterfvSGI` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8161e0
-  **Inferred.** The float form of the colour-table query, with vendor code 0x1003 at +4 in the same 20-byte request. The store into a2 after the reply is a float store from $f0.
+  **Inferred.** The float form of the colour-table query, with vendor code 0x1003 at +4 in the same 20-byte request. A reply count of 1 stores a float from $f0 into a2, and other counts use `_XRead` as in the integer form.
 
 - `__glx_GetTexEnvfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd816aa0
-  **Inferred.** Synchronous query for a texture environment value, with minor opcode 0x82. It writes a 16-byte request: byte 0 is loaded from the render state at +0x110, byte 1 is 0x82, length 4 sits at +2, and the target and pname go to +8 and +0xc. Then it calls `_XReply` and reads the result into the caller's pointer (a2) with `_XRead`, using a byte count of four times a4. A float store to a2 sits between the reply and the read.
+  **Inferred.** Synchronous query for a texture environment value, with minor opcode 0x82. It writes a 16-byte request: byte 0 is loaded from the render state at +0x110, byte 1 is 0x82, length 4 sits at +2, and the target and pname go to +8 and +0xc. Then it calls `_XReply`. A reply count of 1 stores the one float from the reply straight into the caller's pointer (a2), and any other count is read into a2 with `_XRead`, four bytes per element. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetPixelMapusv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd816c08
-  **Inferred.** Reads a pixel map as unsigned shorts. It writes a 12-byte request with minor opcode 0x7f at +1 and length 3 at +2, sends it with `_XReply`, and reads the map through `_XRead`. After `_XRead` it also calls `_XEatData`, and `_XFlush` ends the call.
+  **Inferred.** Reads a pixel map as unsigned shorts. It writes a 12-byte request with minor opcode 0x7f at +1 and length 3 at +2, sends it with `_XReply`. A reply count of 1 stores one halfword straight into the caller's pointer (a1). Any other count is read there with `_XRead`, two bytes per element, and when that byte count is not a multiple of 4 `_XEatData` discards the padding. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetPixelMapuiv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd816d84
-  **Inferred.** Unsigned-integer pixel map query. Its 12-byte request uses minor opcode 0x7e at +1. After `_XReply` it reads the entries with `_XRead` and ends with `_XFlush`. Unlike the short variant it makes no `_XEatData` call.
+  **Inferred.** Unsigned-integer pixel map query. Its 12-byte request uses minor opcode 0x7e at +1. After `_XReply`, a reply count of 1 stores one word into the caller's pointer (a1), and any other count is read there with `_XRead`, four bytes per element. Unlike the short variant it makes no `_XEatData` call. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetPixelMapfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd816ee0
-  **Inferred.** Float pixel map query. The 12-byte request has minor opcode 0x7d at +1 and length 3 at +2. A float store from $f0 goes to the caller's pointer between `_XReply` and `_XRead`, and `_XFlush` ends the request.
+  **Inferred.** Float pixel map query. The 12-byte request has minor opcode 0x7d at +1 and length 3 at +2. After `_XReply`, a reply count of 1 stores a float from $f0 into the caller's pointer (a1), and any other count goes to `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetMaterialiv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81703c
-  **Inferred.** Synchronous query for an integer material value. It writes a 16-byte request with minor opcode 0x7c at +1 and length 4 at +2. It sends the request with `_XReply`, stores one word into the caller's pointer at a2, and reads the rest with `_XRead` before `_XFlush`.
+  **Inferred.** Synchronous query for an integer material value. It writes a 16-byte request with minor opcode 0x7c at +1 and length 4 at +2. It sends the request with `_XReply`. A reply count of 1 stores that word into the caller's pointer at a2, and any other count is read into a2 with `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetMaterialfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8171a4
-  **Inferred.** Float material query. The request uses minor opcode 0x7b at +1 and length 4 at +2. Argument a0 goes to +8 and a1 to +0xc. The float result is stored from $f0 into a2 after `_XReply`, and `_XRead` and `_XFlush` finish the call.
+  **Inferred.** Float material query. The request uses minor opcode 0x7b at +1 and length 4 at +2. Argument a0 goes to +8 and a1 to +0xc. After `_XReply`, a reply count of 1 stores the float from $f0 into a2, and any other count goes to `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetMapiv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd81730c
-  **Inferred.** Integer map query, with minor opcode 0x7a at +1 in a 16-byte request. Its flow matches the other map queries: a flush of the render buffer, the request, `_XReply`, one word store into a2, `_XRead` and `_XFlush`.
+  **Inferred.** Integer map query, with minor opcode 0x7a at +1 in a 16-byte request. Its flow matches the other map queries: a flush of the render buffer, the request, `_XReply`, then a one-word store into a2 for a reply count of 1 or `_XRead` into a2 for any other count. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetTexEnviv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817474
-  **Inferred.** Integer texture environment query. It builds the same 16-byte request as the float form, with minor opcode 0x83 at +1 and length 4 at +2. The integer result is written as a word to a2 after the reply and read with `_XRead`, and `_XFlush` ends the call.
+  **Inferred.** Integer texture environment query. It builds the same 16-byte request as the float form, with minor opcode 0x83 at +1 and length 4 at +2. After the reply, a count of 1 stores the integer as a word at a2, and any other count is read into a2 with `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetTexLevelParameterfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817750
-  **Inferred.** The float texture-level query. Its 20-byte request carries target at +8, parameter name at +0xc and level at +0x10, with minor opcode 0x8a at +1 and length 5 at +2. A float store from $f0 goes to a2 between `_XReply` and `_XRead`.
+  **Inferred.** The float texture-level query. Its 20-byte request carries target at +8, parameter name at +0xc and level at +0x10, with minor opcode 0x8a at +1 and length 5 at +2. The result pointer is a3. After `_XReply`, a reply count of 1 stores a float from $f0 into it, and any other count is read into it with `_XRead`.
 
 - `__glx_GetTexParameteriv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd8178c4
-  **Inferred.** Integer texture-parameter query. The 16-byte request has minor opcode 0x89 at +1, length 4 at +2, and the target and pname at +8 and +0xc. One word store goes to the result pointer after `_XReply`, and the call ends with `_XRead` and `_XFlush`.
+  **Inferred.** Integer texture-parameter query. The 16-byte request has minor opcode 0x89 at +1, length 4 at +2, and the target and pname at +8 and +0xc. After `_XReply`, a reply count of 1 stores one word into the result pointer, and any other count goes to `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetTexParameterfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817a2c
-  **Inferred.** Float texture-parameter query, minor opcode 0x88 at +1 in a 16-byte request. The result reaches the caller through a float store from $f0 into a2 after `_XReply`, followed by `_XRead`.
+  **Inferred.** Float texture-parameter query, minor opcode 0x88 at +1 in a 16-byte request. After `_XReply`, a reply count of 1 stores a float from $f0 into a2, and any other count goes to `_XRead` into a2.
 
 - `__glx_GetTexGeniv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817b94
-  **Inferred.** Integer texture-coordinate generation query. Its 16-byte request uses minor opcode 0x86 at +1 and length 4 at +2, and after the reply a word store goes into the caller's pointer before `_XRead`.
+  **Inferred.** Integer texture-coordinate generation query. Its 16-byte request uses minor opcode 0x86 at +1 and length 4 at +2, and after the reply a count of 1 stores a word into the caller's pointer, while any other count goes to `_XRead`.
 
 - `__glx_GetTexGenfv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817cfc
-  **Inferred.** Float texture-coordinate generation query. Minor opcode 0x85 sits at +1 of the 16-byte request, with target and pname at +8 and +0xc. A float store from $f0 goes to a2 after the reply, and `_XFlush` closes the call.
+  **Inferred.** Float texture-coordinate generation query. Minor opcode 0x85 sits at +1 of the 16-byte request, with target and pname at +8 and +0xc. After the reply, a count of 1 stores a float from $f0 into a2, and any other count goes to `_XRead`. `_XFlush` runs only on the overflow path.
 
 - `__glx_GetTexGendv` in `usr/gfx/arch/IP32CRM32/libGL.so` at 0xd817e64
   **Inferred.** Synchronous query for glGetTexGendv. The Display pointer is the word at state +0xd8, and the routine returns at once when it is null. Otherwise it flushes the render buffer, calls entry 0 of the table at Display +0x4d0 before the request, and compares Display +0x6c plus 16 with the limit at +0x70, calling `_XFlush` on overflow. The 16-byte request has the context tag from state +0x110 in byte 0, 0x84 in byte 1, length 4 in the halfword at +2, the value from state +0x3c at +4, and the target and pname at +8 and +0xc. The request counter at Display +0x60 goes up by one. `_XReply` fills a stack buffer, and if the word at reply +0xc is 1 the routine copies 8 bytes from reply +0x10 into params. Any other count is read with `_XRead` as count shifted left three bytes. Entry 1 of the +0x4d0 table runs after the reply, and the hook at Display +0x7c runs last.
