@@ -241,7 +241,7 @@ mace_access = { bits = [7, 7], grade = "established" }
 mace_id = { bits = [6, 0], grade = "established" }
 
 [registers.mem_error_addr]
-name_source = "public"
+name_source = "ours"
 name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
 offset = 0x258
 access = "r"
@@ -252,8 +252,8 @@ grade = "established"
 address = { bits = [29, 0], grade = "established" }
 
 [registers.mem_error_ecc_syn]
-name_source = "public"
-name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
+name_source = "ours"
+name_cite = "CRIME 1.5 specification, Table 6-18 (ECC Syndrome Bits)"
 offset = 0x260
 access = "r"
 width = 64
@@ -267,8 +267,8 @@ syn_127_64 = { bits = [15, 8], grade = "established" }
 syn_63_0 = { bits = [7, 0], grade = "established" }
 
 [registers.mem_error_ecc_chk]
-name_source = "public"
-name_cite = "public NetBSD sgimips crimereg.h and Linux ip32/crime.h register macro names"
+name_source = "ours"
+name_cite = "CRIME 1.5 specification, Table 6-19 (ECC Generated Check Bits)"
 offset = 0x268
 access = "r"
 width = 64

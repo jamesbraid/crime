@@ -2,7 +2,7 @@
  * the source */
 /* SPDX-License-Identifier: BSD-3-Clause */
 /* defs-gen 5 */
-/* input sha256 ec600ef86fc06d9d949ec7084a75ffd875d344c1c6cadd6d7c23663a47a5d95c */
+/* input sha256 475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c */
 /* O2 CRIME memory controller and CPU interface registers */
 #ifndef CRIME_GEN_H
 #define CRIME_GEN_H
