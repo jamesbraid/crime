@@ -5,6 +5,9 @@ name = "o2gfx"
 address_bits = 24
 max_reg_offset = 0xffffff
 
+[allowlists]
+source_names = "tools/config/source-names-allow.txt"
+
 [[banned.extra]]
 label = "kernel routine prefix"
 regex = '\b(?:crime|crm|gbe)[A-Z]\w*'
@@ -97,3 +100,16 @@ constants = ["GL_UNBOUND_BIAS", "GL_VERTEX_BIAS", "IB_ENTRIES", "LINEAR_WINDOW_M
 [gen.export.units.gbe]
 base = 0x0
 constants = ["CMAP_ENTRIES_REV1", "CMAP_ENTRIES_REV2", "CMAP_FIFO_DEPTH_REV1", "CMAP_FIFO_DEPTH_REV2", "CMAP_FIFO_LOW_WATER", "CMFIFO_BATCH", "DEVICE_ID_VALUE", "DID_BLOCK_BYTES", "DID_BLOCK_ENTRIES", "DID_END_BLOCK", "DID_LAST_XEND", "DID_LINE_TABLE_OFFSET", "DID_TABLE_BYTES", "DOTCLK_SETTLE_MS", "GBE_LINE_IRQ_BASE", "GMAP_ENTRIES", "MODE_ENTRIES", "MODE_ENTRY_STRIDE", "OPT_CMD_CLOCK_KHZ", "OPT_CMD_ID_HIGH", "OPT_CMD_ID_LOW", "OPT_DELAY_SMALL", "OPT_ID_MASK", "OPT_ID_RESTORE", "OPT_INSTALLED_LIMIT", "OPT_PORT_ADDR", "OVERLAY_TRANSPARENT_INDEX", "REF_CLOCK_KHZ", "TILE_LIST_ALIGN_BYTES", "TILE_LIST_BYTES_UNIT", "TILE_LIST_OUTSTANDING", "TILE_LIST_PAGE_BYTES", "TILE_NUMBER_MASK", "TWO_WIRE_WAIT_BIT", "TWO_WIRE_WAIT_LIMIT", "VC_TILE_REGS", "VT_XY_FREEZE"]
+
+[gen.qemu]
+board = "IP32"
+
+[gen.qemu.units.crime]
+
+[gen.qemu.units.mte]
+
+[gen.qemu.units.re]
+
+[gen.qemu.units.gbe]
+
+[gen.qemu.units.vice]
