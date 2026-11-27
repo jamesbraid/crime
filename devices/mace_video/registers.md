@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138 -->
+<!-- input sha256 73d7b6d9867b2973e10a9411955d22263084be24028227c32047d1a486ac66f5 -->
 
 # O2 MACE video output channel and chip-level configuration
 
@@ -186,6 +186,6 @@ Array of 8 registers, stride 8.
 
 | Constant | Value | Grade | Source | Description |
 |---|---|---|---|---|
-| `IN2_OFF` | 0x80000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of input channel 2 from the start of the video window. |
-| `OUT_OFF` | 0x100000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of the output channel from the start of the video window. |
-| `WINDOW_PHYS_ADDR` | 0x1f100000 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1. |
+| `VIN1` | 0x1f100000 | established | shipped IRIX MACE header name MACE_VIN1, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Physical base of the video window. The shipped IRIX video driver reaches it through the uncached address 0xbf100000 and stores that pointer as input channel 1. |
+| `VIN2_OFF` | 0x80000 | established | shipped IRIX MACE header name MACE_VIN2, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of input channel 2 from the start of the video window. |
+| `VOUT_OFF` | 0x100000 | established | shipped IRIX MACE header name MACE_VOUT, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Offset of the output channel from the start of the video window. |

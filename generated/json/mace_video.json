@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138",
+ "input_sha256": "73d7b6d9867b2973e10a9411955d22263084be24028227c32047d1a486ac66f5",
  "schema": "defs-flat/1",
  "source": "devices/mace_video/registers.toml",
  "profile": "public",
@@ -1147,29 +1147,29 @@
   {
    "unit": "mace_video",
    "kind": "constant",
-   "name": "IN2_OFF",
-   "value": 524288,
-   "count": 1,
-   "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
-  },
-  {
-   "unit": "mace_video",
-   "kind": "constant",
-   "name": "OUT_OFF",
-   "value": 1048576,
-   "count": 1,
-   "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
-  },
-  {
-   "unit": "mace_video",
-   "kind": "constant",
-   "name": "WINDOW_PHYS_ADDR",
+   "name": "VIN1",
    "value": 521142272,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+   "from": "shipped IRIX MACE header name MACE_VIN1, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "constant",
+   "name": "VIN2_OFF",
+   "value": 524288,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX MACE header name MACE_VIN2, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+  },
+  {
+   "unit": "mace_video",
+   "kind": "constant",
+   "name": "VOUT_OFF",
+   "value": 1048576,
+   "count": 1,
+   "grade": "established",
+   "from": "shipped IRIX MACE header name MACE_VOUT, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   }
  ]
 }

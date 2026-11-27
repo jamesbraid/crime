@@ -1,6 +1,6 @@
 // @generated from devices/mace_video/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138
+// input sha256 73d7b6d9867b2973e10a9411955d22263084be24028227c32047d1a486ac66f5
 // O2 MACE video output channel and chip-level configuration
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -1107,6 +1107,6 @@ pub mod dma_desc {
     pub const COUNT: u32 = 8;
     pub const STRIDE: u64 = 8;
 }
-pub const IN2_OFF: u32 = 0x80000; // established
-pub const OUT_OFF: u32 = 0x100000; // established
-pub const WINDOW_PHYS_ADDR: u32 = 0x1f100000; // established
+pub const VIN1: u32 = 0x1f100000; // established
+pub const VIN2_OFF: u32 = 0x80000; // established
+pub const VOUT_OFF: u32 = 0x100000; // established

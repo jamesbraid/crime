@@ -1,7 +1,7 @@
 /* generated from devices/mace_video/registers.toml by defs-gen - do not edit,
  * change the source */
 /* defs-gen 4 */
-/* input sha256 c170b079f41a2933d19974802e6ce03e3429343d5002efbf091f6c8391af5138 */
+/* input sha256 73d7b6d9867b2973e10a9411955d22263084be24028227c32047d1a486ac66f5 */
 /* O2 MACE video output channel and chip-level configuration */
 #ifndef VOUT_GEN_H
 #define VOUT_GEN_H
@@ -347,9 +347,9 @@
 #define VOUT_DMA_DESC_COUNT                          8
 #define VOUT_DMA_DESC_STRIDE                         8
 
-#define VOUT_IN2_OFF                                 0x80000u /* established */
-#define VOUT_OUT_OFF                                 0x100000u /* established */
 /* established */
-#define VOUT_WINDOW_PHYS_ADDR                        0x1f100000u
+#define VOUT_VIN1                                    0x1f100000u
+#define VOUT_VIN2_OFF                                0x80000u /* established */
+#define VOUT_VOUT_OFF                                0x100000u /* established */
 
 #endif /* VOUT_GEN_H */
