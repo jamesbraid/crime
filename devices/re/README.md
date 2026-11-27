@@ -13,6 +13,7 @@ The values are in [registers.toml](registers.toml), each graded and sourced, and
 - [Clip-ID plane and the ClipMode clip-ID test](clip-id.md)
 - [Interface buffer: +0x4008, +0x408, the status word and a full buffer](interface-buffer.md)
 - [Pixel arithmetic: depth, blending and texel filtering](pixel-arithmetic.md)
+- [Rendering states an emulator may refuse: dither, clip-ID and the rest](refused-states.md)
 - [CRIME_RE.h, the annotated header](CRIME_RE.h)
 
 ## Used by

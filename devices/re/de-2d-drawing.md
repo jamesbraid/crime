@@ -114,7 +114,9 @@ unknown, as in [AGENTS.md](../../AGENTS.md).
 - Conflict: the specification puts logic-op enable at DrawMode bit 8 and dither
   at bit 9. The drivers use the reverse. Which is right is not settled, and the
   pipeline order in [devices/re/pixel-arithmetic.md](pixel-arithmetic.md) follows the
-  drivers.
+  drivers. The IRIX source headers give the drivers'
+  bit positions, and the X server's use of the logic-op bit settles the chip
+  to the same reading (inferred); see [refused-states.md](refused-states.md#which-bit).
 - Established ([spec] PDF 211, section 7.3.7.15): the ColorMask register is the
   colour plane mask. A 1 updates the matching bit of the colour buffer and a 0
   leaves it as it was. The chip has no per-bit write, so the masking is a

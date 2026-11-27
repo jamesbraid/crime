@@ -1,0 +1,175 @@
+# Rendering states an emulator may refuse: dither, clip-ID and the rest
+
+What the CRIME 1.5 specification, the IRIX source tree and the shipped 6.5.30 software say about the draw states that an emulator's renderer cannot yet model: the dither stage, ClipMode bits 11 and 10 on OpenGL draws, and sixteen other refusal classes (fog, stencil, blend, texture, transfers and so on). For each state the page gives what is known about the hardware, whether IRIX 6.5.30 ever issues the state at the desktop or in OpenGL programs, and what stays unknown. The open parts are in [questions/README.md](../../questions/README.md#refused-states-2026-11-27).
+
+Ratings (six, used on every claim):
+
+- **established**: read in full from the cited specification page, source file or binary routine. It is a fact about that source. About the chip it is a fact only where the source is the specification.
+- **observed**: measured on hardware. None exists for this chip in any source here, so no claim below carries it.
+- **software expectation**: what shipped software writes or assumes. It says what a guest needs, not what the chip does.
+- **inferred**: reasoned from the sources above, with the reasoning given.
+- **approximation**: a choice a model has to make where no source decides. It is advice, not a finding.
+- **unknown**: no shipped software or published source depends on it, with the routes tried.
+
+Sources and tags: `[spec]` the CRIME 1.5 specification, revision 0.3 (PDF page numbers, as in the other pages; chapter 7 printed page N is PDF page N + 156). `[src]` the IRIX 6.5.7 source tree (`irix-657m-src`), cited by path and described in our words. `[binary]` the 6.5.30 O2 set: N32 `libGLcore.so` (`usr/gfx/arch/IP32CRM32`, sha256 `b33ef449...`), `crm.so` (`usr/lib/X11/dyDDX`, sha256 `4d5bf5d1...`), the kernel objects of `crime.a`. `[netbsd]` `sys/arch/sgimips/dev/crmfb.c` and `crmfbreg.h` at the revision pinned in [de-2d-drawing.md](de-2d-drawing.md). Linux `gbefb` drives the display back end only and has no rendering-engine code. Addresses are virtual addresses in the named object.
+
+The request behind the page is an inventory of states the Origami O2 renderer stops on (items A1, A4 and R1 to R16 there). The item numbers are used below so the two can be read side by side.
+
+## Answers in brief
+
+| Item | Answer | Rating | Issued by IRIX 6.5.30? |
+|---|---|---|---|
+| A1, R6 dither matrix | The specification has none (section 7.3.7.13 is "TBD") and no register holds one. The only matrix in IRIX is the OpenGL library's software table | unknown (engine); software expectation (table) | OpenGL: bit set by default. X server and kernel: never |
+| Dither bit | Bit 8. The specification's table puts dither at bit 9 and logic op at bit 8, the reverse of the IRIX source, NetBSD and every shipped writer | established (IRIX contract); inferred (chip) | n/a |
+| Dither formats | RG3_B2 and A1_RGB5 only; not CI, not RGBA8 | established (specification text); inferred (consequences) | OpenGL sets the bit on every visual, CI included |
+| Dither and BufMode `0x104`, `0x100`, `0x103` | CI pixels. The chip does not dither them | inferred (strong) | bit 8 is set by default on these visuals in OpenGL |
+| A4, R8 ClipMode bit 10 | Selects one of two 256-byte-column halves of a one-bit-per-pixel plane, and only matters with bit 11 | inferred | never, unless `CRM_USECID` is set in the X server's environment |
+| R1 fog | Equation, 1.8 factor and register layouts known; product rounding unknown | established / unknown | OpenGL with GL_FOG, bit 14 set on points, lines and textured triangles |
+| R2, R3 stencil and depth | Operation codes 0 to 5 verified in the driver; 6 to 15 never written | established (driver); inferred (chip) | OpenGL only; 2D never |
+| R4 blend | Source factor 12 is sent on alpha visuals | established | OpenGL only; 2D never |
+| R5 2D blend or dither | Never issued | established (absence) | no |
+| R7 formats | Pixel type 3 (ABGR) is written by the X module for one 24-bit visual | inferred | only on that visual |
+| R9 clip-ID clear | Issued at every X server start, with parameters inside the Origami admission limits | established | yes |
+| R10 texture | Every (type, depth) pair the driver can send is listed; all textures are subtiled | established | OpenGL only |
+| R12, R13 | The driver sends only codes 0 to 7 and 0 to 15 | established | OpenGL |
+
+## Dither (item A1, R5, R6, R7)
+
+### What the specification says
+
+- **Established** ([spec] PDF 159, features list): "dithering for 8-bit and 16-bit RGB pixels". That names the formats RG3_B2 and A1_RGB5 of figure 7-5 ([spec] PDF 188, section 7.3.4.3), the only RGB pixels of those widths in the figure. The figure shows no other format: CI8, CI12, RG3_B2, A1_RGB5, RGBA8.
+- **Established** ([spec] PDF 174, table 7-7): the DrawMode enable is described as "enable RGB dithering". The table puts it at bit 9 and logic-op enable at bit 8.
+- **Established** ([spec] section 7.3.7.13, printed page 7-54, PDF 210): the section "Dithering" has the body "TBD". There is no matrix, index rule, rounding rule or seed anywhere in the text. A search of the whole extracted text finds the words dither and dithering in only these three places, and no occurrence of "ordered" or "matrix" that concerns pixels. The register map holds no matrix or offset register either (searched against [CRIME_RE.h](CRIME_RE.h) and the register map at [spec] PDF 164 to 170).
+- **Established** ([spec] sections 7.3.7.12 and 7.3.7.14, PDF 208 to 211): the order of the colour stages is blend, then dither, then logic op ("the fragment's source colour after dithering"). Dither is the last stage that changes the colour value.
+
+### Which bit
+
+- **Established** ([src] `stand/arcs/IP32prom/include/sys/crimedef.h`, DrawMode names; `crimereg.h`, the bit-field layout of the same register): IRIX's own headers put dither at bit 8, logic op at bit 9 and blend at bit 10, with colour mask at bit 7. The bit-field struct declares the fields from the top down, which gives the same positions. The 6.5.30 libGLcore agrees (below), and so does [netbsd] (`DE_DRAWMODE_DITHER` `0x100`, `DE_DRAWMODE_ROP` `0x200`).
+- **Inferred** (the chip follows the driver, not the table): every X draw word carries bit 9 and a LogicOp register set from the graphics context's function (`crmValidateWindowGC`, `crmValidateReducedGC` in `crm.so`; for example the draw word is `0x200` plus the byte-mask bits for every solid fill, and the register at `+0x21b0` receives the function). If bit 9 were dither, the X server could not perform XOR or any non-copy raster function, because it never sets bit 8. The specification's table is therefore a draft error. Earlier pages called this conflict unsettled; the source headers and this argument settle it to the grade stated.
+
+### What IRIX 6.5.30 sets
+
+- **Established** (`crm.so`, the 78 stores to the draw-mode register of the hardware and shadow mappings, each source value followed back through the disassembly): the X module never sets bit 8. Seventy-six of the stores trace to one of the constants `0x2f8`, `0xf8`, `0x278`, `0x200078`, `0x200278`, `0x2002f8`, or to `0x200` ORed with a word whose bits are only the four byte-mask bits (`0x40`, `0x20`, `0x10`, `0x08`) that `crmValidateReducedGC` builds. Two stores were not followed to a constant (the second loop of `crmValidateVisual`, whose registers are set on an earlier branch, and a value spilled to the stack in `crmTiledFS`); the same routines' other stores of the register are `0xf8`, `0x278` and `0x200278`. The kernel's own draws (`crime_tp.o`, `crime_retrace.o`) store `0x2f8`, `0x802f8` and `0x200278`. The IRIX 6.5.7 stand-alone code (the PROM console, the diagnostics) uses `DM_ENLOGICOP | DM_ENCOLORMASK | byte mask` and never the dither name (`stand/arcs/lib/libsk/graphics/CRIME/crm_tp.c`, `crm_init.c`, `stand/arcs/ide/IP32/graphics/crmRECommands.c`). So the desktop (X) never dithers.
+- **Established** (`__glCrmEnableDither`, N32 `0x0d940810`, 108 bytes, whole body read): it copies the GL_DITHER enable into bit 8 of the context's draw-mode word and writes the word to the register in both mappings. It tests nothing else: not the pixel type, not the visual, not the blend state. The o32 build (`0xd93ece8`) does the same.
+- **Established** (`__glSoftResetContext`, `0x0d9cdf40`, the enable-word update at source line 732): a new context has GL_DITHER on, as OpenGL requires. `__glcrmim_Enable`, `__glcrmim_Disable`, `__glcrmim_PopAttrib` and `__glCrmUpdateHardwareState` call `__glCrmEnableDither`. So an OpenGL program that never calls `glDisable(GL_DITHER)` issues every hardware draw with bit 8 set once the deferred state is flushed, on every visual. The public SGI OpenGL sample programs that disable it (`abgr.c`, `star.c`) are the exception.
+- **Established** (`ClearCI`, N32 `0x0d9423c0`; o32 notes in [libglcore-o32.md](../../software/opengl/libglcore-o32.md)): a colour-index clear composes its draw word from bits 7 to 3 of the context word, bit 20 and the GL-mode bit, and never bit 8. `ClearRGBA` (`0x0d967980`) copies bit 8 only when it draws by hand rather than through the kernel buffer-clear request.
+
+### Which output formats dither
+
+| Output | BufMode example | Specification | IRIX issues bit 8 | Rating |
+|---|---|---|---|---|
+| RG3_B2 (RGB type, 8-bit pixel) | `0x010`, double-buffered `0x113` | dithers | yes, with GL_DITHER | established (text); the effect is unknown |
+| A1_RGB5 (RGBA type, 16-bit pixel) | `0x124`, double-buffered `0x227` | dithers | yes | established (text); the effect is unknown |
+| RGBA8 (32-bit pixel) | `0x228` | not listed | yes | inferred: nothing to drop, so the bit has no effect |
+| CI8, CI12 | `0x000`, `0x100`, `0x103`, `0x104`, `0x207` | "RGB dithering" only | yes (in OpenGL) | inferred (strong): no effect |
+
+The example words are decoded from what `crmGetBufMode` composes, not read from a capture. BufMode words are decoded with [spec] PDF 171 to 172 (tables 7-4 and 7-5): `0x104` is a 16-bit buffer word with a 16-bit colour-index pixel, `0x100` a 16-bit word holding one 8-bit index, and `0x103` the same with the double-buffer halves on and the upper half selected. The RGB type for 8-bit output and the RGBA type for 16-bit output are what `crmGetBufMode` (N32 `0x0d943f10`) chooses from the visual's colour-bit total: a total of 8 or fewer gives type 1, anything above gives type 2.
+
+Why the CI modes are not dithered, by the strongest argument available: libGLcore draws colour-index points and clears through the engine with the draw word from the context (`StoreCI`, `ClearCI`), and the context has bit 8 set by default. If the engine dithered an index it would corrupt every default OpenGL colour-index draw. Shipped software would not have worked. This is an inference about the chip, not a measurement. The specification's own wording ("RGB dithering") says the same. A model that ignores bit 8 for CI pixel types is consistent with both.
+
+The 16-bit and 8-bit CI visuals the X server offers in its 16-bit configuration (8-plane PseudoColor, 12-plane CI) are the ones that use `0x100`, `0x103` and `0x104` ([xmodule.md](../../software/xsgi/xmodule.md#visual-and-depth-tables-crmso), the `16` and `16db` sets). `crmValidateVisual`, `crmInvalidate`, `crmDestroyWindow` and `crmInitiateBufferSwap` store `0x40000104` into the register (bit 30 is a software tag the chip must ignore, see R7). The window records built by `crmValidateReducedGC` hold `0x103`, `0x104`, `0x204`, `0x207`, `0x228` and `0x238` (decimal 259, 260, 516, 519, 552, 568) as their buffer-mode word. The memory size that selects the 16-bit configuration is the kernel's choice at start-up and was not traced here.
+
+### The arithmetic: what is and is not known
+
+- **Unknown** (no shipped software or published source depends on it): the engine's matrix, the index (window-relative or frame-buffer position), whether alpha or the one alpha bit dithers, the rounding of the conversion from 8 bits, and what the stage does at the top step. Routes tried: the specification (all of chapter 7 for dither, ordered, matrix, rounding), the register scans, `crm.so`, the kernel objects, both libGLcore builds, the IRIX 6.5.7 source (header names only), NetBSD (the constant is defined and no code sets it), Linux (no engine code), and the 6.5.30 `ide.IP32` strings (no dither test).
+- **Software expectation** (`ClearRGBA`, N32 `0x0d967980`; the 3:3:2 and 5:5:5 branches read from the instructions): when the driver packs an 8-bit channel for the kernel clear it truncates to the top bits: red `& 0xe0`, green `(>> 3) & 0x1c`, blue `>> 6` for 3:3:2, and `>> 3` per colour with the alpha bit taken from bit 7 of alpha for 5:5:5. For the 3:3:2 layout with GL_DITHER on, the driver first requires every channel to be on the destination grid (red and green with the low five bits clear, blue with the low six clear, or the value 255) and otherwise draws through the engine with the dither bit. Read as an expectation about the engine: the engine's undithered conversion is truncation, dither adds a non-negative offset smaller than one destination step before the truncation, a channel on the grid is unchanged, and 255 stays at the top step (the clamp is from above). That is a weak expectation, because the grid test exists only for the 3:3:2 layout and the 16-bit branch has no test.
+- **Established** (the software renderer, not the engine): `__glDitherTable`, 16 bytes at N32 `0x0da47a38` (o32 `0x0da4e930`, identical): row 0 `0 8 2 10`, row 1 `12 4 14 6`, row 2 `3 11 1 9`, row 3 `15 7 13 5`. `__glDitherRGBASpan` (`0x0da01bc0`) takes entry `((y & 3) << 2) + (x & 3)` of the span's own x and y, the same entry `t` for all four channels. For a channel value `c` already scaled to the destination range (0 to 7, 0 to 3, 0 to 31) it computes `trunc(16 c + 0.5)`, adds `t`, shifts right by 4 and clamps at the channel maximum (the context holds 0.5 at `+3540`). So a channel with fraction `f` rounds up when `round(16 f) + t >= 16`, a threshold near `(31 - 2t) / 32`. `__glDitherCISpan` does the same to a colour index, with the table's offset applied to the index scaled by 16. The memory-buffer stores of the `crm_rgb` unit add `(2t + 1) / 32` of a step and truncate, which is the same threshold. The generic software store routines only produce pixels in memory the engine does not draw into.
+- **Approximation** (what a model may do): use the table above with the span's thresholds, scale 8-bit channels by truncation to the top bits first, and ignore the bit for CI and for 32-bit output. It is a choice. It must not be called the hardware's matrix.
+- The Origami O2 renderer's dither (`color.rs`, the version read at QEMU commit `465fdd6388b`) uses the same sixteen numbers but compares the fraction against `(2t + 1) / 32` and rounds up when it is larger, which is the mirror image of both IRIX software forms (t = 0 rounds up almost always instead of almost never). It also converts 8-bit channels with `31 * v / 255`, not the truncation the driver packs. Neither choice is contradicted by hardware evidence, since none exists, but both differ from the only software expectation. Dither is applied to 5:5:5 output only, which matches the chip's formats. The ignore-for-CI choice matches the argument above.
+
+## Clip-ID, ClipMode bits 11 and 10, on native OpenGL draws (item A4, R8, R9)
+
+The plane, its table and the software that fills it are in [clip-id.md](clip-id.md). The additions here are who sets the bits for OpenGL and what a model can rely on.
+
+- **Established** ([spec] PDF 173, table 7-6): bit 11 `enCid` "enable clip ID testing"; bit 10 `cidMapSel` with the same wording, so the specification does not say what bit 10 does. The clip-ID translation table is `TLB.cid[4]` ([spec] PDF 164, table 7-2); the transfer engine reaches the plane as buffer type 6 "tiled buffer - clipID TLB" ([spec] PDF 184 to 185, the transfer engine's mode table). `BufMode` buffer types 6 and 3 are reserved, so the pixel pipeline cannot address the plane.
+- **Established** (absence): no register holds an ID to compare against. ClipMode has no value field and the register map has no clip-ID value register; the only clip-ID storage is the table of 16 tile numbers and the plane in memory. The "ID" is therefore not compared with anything: the plane bit of the pixel is the pass flag. **Inferred** (the plane is built with set bits over the visible area and cleared elsewhere, no shipped code sets it outside): a pixel passes when its plane bit is 1.
+- **Established** ([clip-id.md](clip-id.md) and `crm.so` `crmDrawCID` `0x516500`): the plane is written by the transfer engine, mode word `0x18` (clear operation, 8-bit pixels, destination buffer 6), byte mask all ones, with edge bytes taken from two nine-entry tables so that pixel `x mod 8 = 0` is bit 7. Bit 10 clear writes byte columns 0 to 255, set writes columns 256 to 511 (the writer shifts every box by 256 columns for map 1).
+- **Inferred**: bit 10 chooses the map and does nothing when bit 11 is clear. The specification's wording could also be read as a second enable ("enable clip ID testing"); no shipped word sets bit 10 without bit 11, so no software distinguishes the readings. A model that ignores bit 10 when bit 11 is clear is consistent with every shipped write.
+- **Effect on primitives. Inferred**: the specification lists clip IDs with screen masks as the window-clipping stage for all four primitives ([spec] PDF 159) and describes no per-primitive rule. The only shipped user draws points, lines, segments, spans and rectangles under the same ClipMode word (`crmSetSmask`, `crmLineSS`, `crmSegmentSS`, `crmPolyPoint` consult the same `use_cid` word), which is a software expectation that the test applies to each. Position of the lookup (frame-buffer position after the window offset, or window-relative) is unknown; the plane is built in screen space, so the screen position is the only one that works.
+- **Established** (when IRIX sets the bits): `crmSetSmask` (`crm.so` `0x58a930`) writes `0x800` or `0xc00` only when `use_cid` is non-zero, and `crmInit` (`0x48a250`) sets it only when the environment variable `CRM_USECID` exists. The kernel's `crimeValidateClip` (`crime.o` `0x21b0`) writes `0x821`, or `0xc21`, only when the clip descriptor's word at `+0x24` is non-zero, and the writer of that word was not found (see [clip-id.md](clip-id.md) and the question list). libGLcore never writes ClipMode: no store to `+0x2010` or its alias exists in any CRIME unit of the N32 disassembly. OpenGL commands therefore arrive in the ClipMode the kernel validated for the window, restored from the client's shadow record at every context switch (`crmLoadGlobalsFromShadow`, shadow word at `+16` to `+0x2010`). On a stock session that word is one of `0x0`, `0x21`, `0x63`, `0xe7`, `0x1ef`, `0x3ff`, so bit 11 and bit 10 are never set at the desktop or in an OpenGL demo. Refusing bit 11 on OpenGL draws, as the Origami renderer does, matches the stock path. Accepting bit 10 with bit 11 clear and ignoring it is also consistent with every shipped write (**inferred**).
+- **Established** (the clear): `crmInitHW..HB` (`0x58a2b0`) clears map 1 at every X server start, through the transfer engine: mode `0x18`, byte mask all ones, step 1, foreground 0, destination start `0x01000000` (column 256, row 0), end `0x01ff0000 | (height - 1)`. The Origami admission limits for the clip clear (mode byte at most `0xff`, byte mask all ones, step 1, right edge below 512, bottom edge below 2048) all accept this write for any screen height up to 2048. This is the one clip-ID action IRIX performs unconditionally, so R9 must not refuse it.
+- **Established** ([clip-id.md](clip-id.md), `crmAllocCid`): at screen width 1280 the plane shares tiles with the overlay buffer, and map 1 is exactly the unused half of the overlay's last tile column. A model that backs the plane with separate memory is unaffected; one that shares tiles must not let a map-0 write reach overlay pixels 1024 to 1279.
+
+## The other refusal classes (R1 to R16)
+
+Each entry: the state, what the specification and the shipped software establish, whether IRIX 6.5.30 issues it at the desktop or in OpenGL programs, and what is open. Pages for the full arithmetic are linked rather than repeated.
+
+### R1 Fog (DrawMode bit 14)
+
+- **Established** ([spec] sections 7.3.7.9, PDF 205 to 206; table 7-18; register map PDF 169): the stage blends red, green and blue with the fog colour as `f * (Cr - Fc) + Fc`, leaves alpha alone, comes after texture application and before antialias coverage, alpha test and blend. `f` is an 8-bit value of 1.8 form made from a stepper: the registers are `Fog.Fs`, `dfdx`, `dfdy` at `+0x2178`, `+0x2180`, `+0x2188`, and `Fog.color` at `+0x2170` (red 31:24, green 23:16, blue 15:8). The register map calls the stepper words 9.12, the section's table calls them 1.20; the driver writes `factor * 255 * 4096`, so 9.12 is the one used. The 12 fraction bits are dropped, the value clamped to 0 to 255, and a result above 128 is incremented. The specification's sentence on the increment breaks off, so why it exists is not stated (inferred: it makes 255 mean 256 over 256, exactly 1.0). Full arithmetic: [opengl.md](../../software/opengl/opengl.md#fog) and [pixel-arithmetic.md](pixel-arithmetic.md#fog).
+- **Established** (`__glCrmEnableFogTest`, both ABIs): bit 14 is set exactly when GL_FOG is on in an RGB visual, never in colour-index mode.
+- **Issued by IRIX, established** ([opengl.md](../../software/opengl/opengl.md#fog), `__glCrmPickAllProcs`, `__glCrmPickLineProcs`): untextured fogged triangles clear bit 14 and are Gouraud-shaded with fogged vertex colours ("cheap fog"), so they never reach the stage. Untextured fogged lines keep bit 14 and write `Fog.Fs = 0xff000`, both gradients zero (`__glCrmRenderCheapFogLine`, `0x0d94bcb0`): an identity fog whose factor is 256 over 256 (inferred from the increment rule), colours pre-blended on the CPU. Fogged points, textured triangles and hardware antialiased lines use real stepper values. The X server and kernel never use fog. So the first thing an OpenGL program with GL_FOG hits is bit 14 with start `0xff000` and zero slopes on lines. A model that admits bit 14 for exactly that identity case, and refuses other fog values, passes untextured fogged lines. If the engine's factor for 255 were 255 and not 256 the pass-through would be off by at most one in the low bit (**unknown**, the rounding below).
+- **Unknown** (no shipped software or published source depends on it): the rounding of `f * (Cr - Fc)`, and the stepper range beyond 12 fraction bits. Routes: [pixel-arithmetic.md](pixel-arithmetic.md#fog), plus the specification, both libGLcore builds, `ide.IP32`, MAME, Linux, NetBSD. Fog is not an approximation anyone has hardware evidence for.
+
+### R2 and R3 Stencil and depth control words
+
+- **Established** (`__glCrmPassStencilMode`, N32 `0x0d96d250`, 500 bytes, whole body read; stores to `+0x21e0`): fail operation 11:8, depth-fail 7:4, pass 3:0, comparison in 14:12 from the GL function's low three bits, mask in 23:16, reference in 31:24. The operation codes are KEEP 0, ZERO 1, REPLACE 2, INCR 3, DECR 4, INVERT 5; any other API value maps to 0. Specification table 7-27 lists the names in the order ZERO, KEEP, REPLACE, INCR, DECR, INVERT ([spec] PDF 214), which is not the numeric order; the numeric codes come from the driver only. `ClearStencil` sets the comparison to ALWAYS and all three operations to REPLACE (`0x7222` in the low half). The Origami `stencil_operation` follows the driver's numbering.
+- **Software expectation**: codes 6 to 15 and comparison codes with bit 15 set are never written. Refusing them is correct for every shipped guest. Saturation of INCR and DECR is the library's software rule (`buildOpTable`, `0x0da064a0`); the chip's rule is **unknown**, as is which stored operation applies when the depth test fails with stencil disabled ([spec] section 7.3.7.18 is "TBD").
+- **Issued**: OpenGL programs with a stencil buffer, every `glClear` that clears depth or stencil (`ClearDepth`, `ClearStencil`), and polygon stipple, which loads the pattern into the stencil byte (`__glCrmUpdatePolyStipple`) and has the triangle wrappers set bit 0 ([opengl.md](../../software/opengl/opengl.md#fog)). The 2D path (R3) never sets bits 0 to 2: every draw word of `crm.so` and the kernel listed under dither has them clear, so a refusal there costs no shipped guest (**established**, absence).
+- **Unknown**: the exact tagged-clear word forms; [registers.md](registers.md) records the driver's two words and names bit 24 of `Depth.func` as unconfirmed.
+
+### R4 Blend function (and A2)
+
+- **Established** ([spec] table 7-20 to 7-22, register table PDF 181): operations ADD 0, MIN 1, MAX 2, SUBTRACT 3, REVERSE_SUBTRACT 4 in bits 11:8; source factor codes 0 to 12 in 7:4 with SRC_ALPHA_SATURATE as 12 and no formula; destination factor codes 0 to 11 in 3:0 and no saturate code. **Established** (`__glCrmPassBlendFunc`, N32 `0x0d940420`): the driver sends source code 12 for SRC_ALPHA_SATURATE when the visual has alpha bits and 0 when it has none, and never a destination code above 11. So refusing destination 12 to 15 and operations above 4 costs no guest. Source code 12 is issued only by OpenGL programs that call `glBlendFunc` with SRC_ALPHA_SATURATE on an alpha visual.
+- **Unknown**: the saturate formula, the width and rounding of `Cs * S`, and whether ADD and SUBTRACT saturate; OpenGL's `min(As, 1 - Ad)` is **approximation** only (the specification defines nothing).
+
+### R5 Blend or dither on a 2D command
+
+- **Established** (absence): the 2D (X) draw words listed under dither never set bit 10 or bit 8. Refusing them stops no X guest. The conflict over bit 8 against bit 9 is argued above.
+
+### R7 Output formats
+
+- **Established** ([spec] PDF 188): the engine's colour pixel formats are CI8, CI12, RG3_B2, A1_RGB5, RGBA8; the BufMode pixel type field also lists RGB 1, RGBA 2, ABGR 3 and YCrCb 15 (source only). The figure draws no 32-bit RGB layout and no layout for ABGR.
+- **Established** (`crmGetBufMode`, N32 `0x0d943f10`): OpenGL chooses type RGB (1) only for a visual of eight or fewer colour bits (3:3:2), and type RGBA (2) otherwise, with pixel depth 8, 16 or 32 from the bit total and buffer depth raised to hold the double-buffer halves. It never chooses ABGR or YCrCb on the draw side. A 24-bit visual is RGBA, 32 bits.
+- **Inferred** (`crmValidateReducedGC`, `crm.so`): the X module's window record carries `0x238` (decimal 568), which decodes as a 32-bit buffer, ABGR type, 32-bit pixel, for the byte-reversed 24-bit TrueColor visual; the other record words are `0x103`, `0x104`, `0x204`, `0x207` and `0x228`. Only a client that creates a window on the byte-reversed visual causes `0x238`.
+- **Established** (the stores): the X module writes words of the form `0x40000104` and `0x40000504` into the buffer-mode register (`crmValidateVisual` and three more routines store the first), so upper bits 31:29 carry software tags (bit 30 here, and `0x20000000`/`0x80000000` in the comparison constants) that the chip must ignore: bits 31:13 are reserved in [spec]. `crmInitHW..HB` (`0x58a2b0`), which runs at every X server start, stores `0x40000104` as the destination mode of its first colour clear in the 16-bit configuration (the branch on its depth argument equal to 16) and `0x228` in the 32-bit one, with draw word `0x278` and primitive `0x03020000`. A renderer that refuses a mode word for reserved upper bits therefore stops a 16-bit X session at start-up. **Inferred**: the tags have no hardware meaning.
+- **Unknown**: bit layout of RGB (type 1) at 32 bits and ABGR; [registers.md](registers.md) records the figure's gap.
+
+### R8 Screen masks and ClipMode bit 11
+
+- **Established** ([de-2d-drawing.md](de-2d-drawing.md#clipping-order)): every ClipMode word shipped software writes for screen masks sets inside-select for each enabled mask and enables masks in order from `+0x2020`, so mixed polarity and gaps are never issued. Union for inside-select is **inferred**. Bits 11 and 10: see the clip-ID section. Whether an ordinary draw can carry an empty screen mask or an empty scissor was not traced (the library's clears skip an empty scissor box); that is **unknown**, and an empty scissor is a legal OpenGL state.
+
+### R9 Clip-ID clear
+
+- See the clip-ID section. The clear is issued at every X start and passes the stated limits.
+
+### R10 Texture state
+
+- **Established** ([opengl.md](../../software/opengl/opengl.md), the format table, from `crmComputeTexLevelSize` and `crmSetTextureParam`, N32 `0xd96efc0`): the driver sends only these texel (type, depth) pairs: ALPHA (5, 16-bit), LUMINANCE (7, 16), LUMINANCE_ALPHA (8, 16), INTENSITY (6, 16), RGB (1, 32 or 16), RGBA (2, 32; 2, 16 for the 5-5-5-1 form) and RGBA4 (4, 16). Types 0 and 3 are reserved in [spec] and never produced; depth 8 does not exist. That is exactly the set the Origami sampler admits (kinds 1 and 2 at both depths, 4 and 5 to 8 at 16-bit only).
+- **Established**: every texture level the library creates is subtiled (`Texture.mode` bit 24) unless the environment variable `GLCRMTEXUSEONCE` is set. The subtile address permutation is **established** in two independent routines in [memory.md](memory.md#where-a-texel-sits-inside-a-tile) (the byte offset inside a 64 KiB tile for bit 24; the inventory behind the request had not read this page). Bit 24 clear has no shipped writer (**unknown**).
+- **Established**: wrap codes the driver sends are 0, 1 and 2 only, never the specification's 3 ([CRIME_RE.h](CRIME_RE.h)). Function codes 0 to 3 (MODULATE, DECAL, BLEND, REPLACE) are sent for any texel type, including DECAL on ALPHA, LUMINANCE or INTENSITY, which OpenGL leaves undefined. The Origami refusal of DECAL on kinds 5 to 8 can therefore be reached by an OpenGL program that does that, and no source states what the chip does (**unknown**).
+- **Unknown**: bits of word `+0x2134` beyond the two-bit shift select; minification and magnification arithmetic, look-up and application ([spec] sections 7.3.7.6 to 7.3.7.8 "TBD" or one paragraph; [pixel-arithmetic.md](pixel-arithmetic.md#texel-filtering)).
+
+### R11 Texture sample failures
+
+- Host budgets, not hardware states. The only hardware-relevant part is the valid bit of a texture table entry, a tile number with bit 15 set, which [memory.md](memory.md#validity-and-misses-pass-7) infers to be the valid bit.
+
+### R12 Alpha test
+
+- **Established** (`CRIME_RE.h`, `__glCrmPassAlphaFunc`): bits 11:8 are the OpenGL function minus GL_NEVER, so only 0 to 7 are ever sent; the reference is `trunc(ref * 255)` in 7:0. Codes 8 to 15 have no entry in [spec] table 7-19 (**unknown**). Keep the refusal.
+
+### R13 Logic operation
+
+- **Established** (`__glCrmPassLogicOp`, jump table): bits 3:0 are the OpenGL operation minus GL_CLEAR, identity for all sixteen. Refusal above 15 costs nothing. The X server writes 3 (copy) or the graphics context's function (0 to 15).
+
+### R14 START, stipple and composition
+
+- **Established** ([spec] PDF 186; [de-2d-drawing.md](de-2d-drawing.md#rules-that-apply-to-every-sequence)): a write to a register's offset plus `0x800` is the commit. Shipped code commits with the last vertex or the source address. Stipple: line stipple (bit 19) with `Stipple.mode = 0x001f0000` (maximum index 31) and a start index (the PROM uses 16), or polygon stipple (bit 18) for NetBSD rectangles; `crm.so` writes the pattern per row. Other mode words are not issued.
+- **Established** (`__glCrmAntiAliasLineRGB` `0x0d933200`, `__glCrmTexturedLine` `0x0d94cf20`): OpenGL issues an antialiased line together with flat or smooth colour, fog stepper, depth stepper and, for the textured form, the texture stage and a 64-bit coverage word at `+0x2190`. Only width at most 1, RGB, no line stipple lines are antialiased in hardware (`__glCrmPickLineProcs`). So any model that admits hardware antialiased lines must compose them with fog, depth, shade and texture, not alone. Composition rules between line stipple and the other stages are **unknown**: the library never issues them together.
+
+### R15 Structural transfer refusals
+
+- **Established** ([pixel-transfer.md](../../software/opengl/pixel-transfer.md)): the linear table holds at most 32 pages; a chunk is at most `0x20000` bytes (`0x1f000` when the buffer is not page aligned) in whole rows; the source address is masked to 17 bits; the step registers carry a zoom replication count in bits 31:28 over a 17-bit byte step; the `glReadPixels` path widens each row to a multiple of eight bytes and writes inclusive far edges. These bound what any shipped guest issues, and a refusal outside them (strides below 4 or above `0x1ffff`, non-unit frame-buffer steps) costs no shipped guest. Everything else in the structural family (aliasing, overlap, plan size) has no hardware source and is **unknown** or a host limit.
+- **Unknown**: the unused step bits (27:17 linear, 27:11 frame buffer) and a zero step; the CI16 indexed layout; which byte of a 32-bit tiled word holds an 8-bit index ([pixel-transfer.md](../../software/opengl/pixel-transfer.md#indexed-ci8-transfers)).
+
+### R16 Host limits and failed allocations
+
+- Not hardware states. No source applies.
+
+## Corrections to the inventory behind the request
+
+- The subtile addressing formula exists ([memory.md](memory.md)); A6 is grounded.
+- The stencil operation numbering is the driver's (KEEP 0, ZERO 1), not the specification table's order; the existing engine follows the driver.
+- The conflict between the specification and the drivers on DrawMode bits 8 and 9 is settled for software by the IRIX source headers, and for the chip by the argument under dither above.
+- Bit 10 of ClipMode is never set without bit 11 by any shipped code, and neither is set in a stock session.
+- Of the refusals, the ones a stock IRIX program can reach are: fog on lines, points and textured triangles (R1), source blend factor 12 on alpha visuals (R4) and DECAL on non-colour textures (R10), plus 3:3:2 output and the ABGR visual (R7) for a program that asks for those visuals. The clip-ID clear (R9) is reached by every X start and is accepted today.
