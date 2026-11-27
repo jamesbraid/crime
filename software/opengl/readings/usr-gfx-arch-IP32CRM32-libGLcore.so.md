@@ -28696,3 +28696,38 @@ One entry per routine, filed here from the reading batches by binary.
   The return at 0xda4180c has v0 = ?.
   The return at 0xda41814 has v0 = 0x1.
   The return at 0xda4181c has v0 = 0x0.
+
+## Dispatch stub and wrapper families
+
+```family
+binaries: usr/gfx/arch/IP32CRM32/libGLcore.so
+members: gl*
+match: 8c 19 .. .. 03 20 00 08 00 00 00 00
+field: slot = s16be@2
+shape: Three words: load t9 from the absolute address slot through the zero register, jump through t9, and run an empty delay slot.
+varies: The slot, the absolute address (0x1050 to 0x17a4 across the members) the first word loads the function pointer from.
+role: Inferred. Entry stub for a public GL entry point: it jumps through the function pointer in its slot of the jump table based at 0x1050, so the caller's arguments and return address reach the target untouched. Representative member glNewList at 0xd931540.
+```
+
+```family
+binaries: usr/gfx/arch/IP32CRM32/libGLcore.so
+members: __glle_*v,__glle_LoadMatrix*,__glle_MultMatrix*,__glle_ReferencePlaneSGIX
+match: 27 bd ff e0 3c 01 00 0c ff bc 00 10 24 21 .. .. 03 21 e0 21 8c 19 .. .. ff be 00 08 00 00 00 00 ff bf 00 00 03 20 f8 09 00 80 f0 25 df bf 00 00 df bc 00 10 27 c2 00 .. df be 00 08 03 e0 00 08 27 bd 00 20
+field: gp = s16be@14
+field: slot = s16be@22
+field: step = u8be@55
+shape: The 64-bit form of the same wrapper: it opens a frame, sets gp from t9 with a lui, an addiu and an addu, saves ra, gp and fp, copies a0 into fp, loads the function pointer from the absolute address slot, calls through t9, restores them, and returns fp plus the step.
+varies: The gp displacement (low half of the addiu), the slot, and the step (the addiu immediate on v0).
+role: Inferred. List-execute wrapper for a vector, matrix or reference-plane GL entry point: it calls the jump-table slot of the public entry point of the same name (`glColor3dv` for `__glle_Color3dv`) with its argument unchanged and returns that argument advanced by a constant per entry, the byte size of the data the entry consumes rounded up to a multiple of four. Representative member __glle_Color3dv at 0xd989ca0.
+```
+
+```family
+binaries: usr/gfx/arch/IP32CRM32/libGLcore.so
+members: glMultiTexCoord*
+match: 3c 01 00 02 27 bd ff f0 24 21 .. .. ff bc 00 08 03 21 e0 21 8f 99 .. .. ff bf 00 00 03 20 f8 09 00 a0 20 25 df bf 00 00 df bc 00 08 03 e0 00 08 27 bd 00 10
+field: gp = s16be@10
+field: slot = s16be@22
+shape: Opens a frame, sets gp from t9 with lui at, addiu at and addu, loads the function pointer from the gp-relative slot, saves ra and gp, moves a1 into a0, calls through t9, restores ra and gp, and returns with the call's result in v0.
+varies: The gp displacement (low half of the addiu at) and the gp-relative slot the function pointer is loaded from.
+role: Inferred. Immediate-mode glMultiTexCoord entry for the SGIS vector forms: it drops its first argument (the texture target in the published API), passes its second as the first to the glTexCoord stub of the same dimension and type (`glTexCoord1sv` for `glMultiTexCoord1svSGIS`), which it reaches through the global offset table slot, and returns that call's result. Representative member glMultiTexCoord1svSGIS at 0xda33840.
+```
