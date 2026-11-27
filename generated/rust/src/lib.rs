@@ -1,6 +1,6 @@
 // @generated from devices/ and formats/ by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 5fdf55e74a8adbfc393fc6721c4e1cf6340f6ec79b0e65e59007636029ce4b9d
+// input sha256 ed537680f35f3f65166a6fe20a46e13b9e4fb260bb79f77824565e614b77d501
 #![no_std]
 #![cfg_attr(rustfmt, rustfmt_skip)]
 pub mod ad1843;

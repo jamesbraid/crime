@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_i2c/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 721a7c3a20c7c022f231a7bcc7dd72d4e8f78c360f6d41c8d660f07a3cfa0d33 -->
+<!-- input sha256 c333ff4065c0d69bccfea6f7fae85ff85f36db17dd655f26ea710661d6b0eb13 -->
 
 # O2 MACE two-wire (I2C) bus interface
 

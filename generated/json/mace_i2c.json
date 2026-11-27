@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "721a7c3a20c7c022f231a7bcc7dd72d4e8f78c360f6d41c8d660f07a3cfa0d33",
+ "input_sha256": "c333ff4065c0d69bccfea6f7fae85ff85f36db17dd655f26ea710661d6b0eb13",
  "schema": "defs-flat/1",
  "source": "devices/mace_i2c/registers.toml",
  "profile": "public",

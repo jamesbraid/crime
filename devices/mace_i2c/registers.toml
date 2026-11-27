@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_i2c"
 prefix = "MACE_I2C"
+name_source = "ours"
 title = "O2 MACE two-wire (I2C) bus interface"
 doc = "MACE two-wire bus interface: the configuration and reset register, its alias, the control and status register and the data register. Offsets are from the block base (constant BLOCK_BASE)."
 from = "published MACE 2.0 I/O ASIC specification (printed pages 149 to 151 and 181)"
