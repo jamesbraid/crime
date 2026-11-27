@@ -106,8 +106,10 @@ constants = ["CMAP_ENTRIES_REV1", "CMAP_ENTRIES_REV2", "CMAP_FIFO_DEPTH_REV1", "
 [gen.qemu.units.crime]
 
 [gen.qemu.units.mte]
+name = "CRIME_MTE"
 
 [gen.qemu.units.re]
+name = "CRIME_RE"
 
 [gen.qemu.units.gbe]
 
