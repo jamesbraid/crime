@@ -219,3 +219,4 @@ Each unit says `name_source = "ours"`. Its names are descriptive spellings: ever
 | Unit | Names | public | ours | Excluded or renamed |
 |---|---|---|---|---|
 | mace_audio | 27 | 0 | 27 | none |
+| mace_ethernet | 133 | 0 | 133 | none |
