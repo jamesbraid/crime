@@ -1,8 +1,8 @@
 # SGI O2 CRIME reverse engineering
 
 This project documents the graphics of the SGI O2 (board IP32): the CRIME ASIC, which is both the
-memory controller and the 2D/3D rendering engine, and GBE, the display back end. MACE and VICE are
-in scope where graphics and media depend on them. The output is hardware facts as TOML, generated C
+memory controller and the 2D/3D rendering engine, and GBE, the display back end. VICE is in scope where
+media depends on it. MACE, the I/O ASIC, and the AD1843 codec are kept in the chips repository. The output is hardware facts as TOML, generated C
 headers and notes, so emulator authors, FPGA builders and the SGI community can work from published
 findings without reading the binaries. Layout and working style follow Dominik Behr's
 [gr2](https://github.com/techomancer/gr2) and [gr4](https://github.com/techomancer/gr4). Where this
@@ -72,7 +72,7 @@ Linux and NetBSD drivers and the code.
 - `generated/`: written by `retools/tools/defs/defs-gen`, never edited. After a change to `devices/`,
   run `defs-gen` then `defs-check --build`. CI runs `retools/tools/defs/ci-check` and fails when
   `generated/` is stale.
-- `platforms/ip32/`, `software/<component>/`, `references/`, `questions/`: prose beside the facts.
+- `software/<component>/`, `references/`, `questions/`: prose beside the facts.
   Driver structures live in `software/kernel/include/` and `software/opengl/include/`.
 - `references/code/` holds public sources as submodules (Linux, NetBSD, OpenBSD, MAME, GXemul,
   OpenGL references, `irix-657m-src`). Fetch the large ones shallow. GXemul is an author's model:

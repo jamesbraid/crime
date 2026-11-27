@@ -21,44 +21,9 @@ group = "re"
 [units.vice]
 group = "vice"
 
-[units.mace_video]
-group = "mace_video"
-
-[units.mace_video_in]
-group = "mace_video_in"
-
 [units.gbe]
 group = "gbe"
 prose_offsets = false
-
-[units.mace_periph]
-group = "mace_periph"
-prose_offsets = false
-
-[units.mace_timer]
-group = "mace_timer"
-
-[units.mace_i2c]
-group = "mace_i2c"
-
-[units.mace_serial_dma]
-group = "mace_serial_dma"
-
-[units.mace_uart]
-group = "mace_uart"
-
-[units.mace_pci]
-group = "mace_pci"
-prose_offsets = false
-
-[units.mace_audio]
-group = "mace_audio"
-
-[units.mace_ethernet]
-group = "mace_ethernet"
-
-[units.ad1843]
-group = "ad1843"
 
 [[claims]]
 group = "gbe"

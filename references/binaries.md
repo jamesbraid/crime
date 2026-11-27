@@ -366,7 +366,7 @@ One entry per format file, in table order. Each gives the clock word at its offs
   The video monitor command `videovhw_cfg` is at 0x52954 (established, strings).
   The video monitor command `colorbars` is at 0x527f8 (established, strings).
   The video monitor command `initvideo` is at 0x528f0 (established, strings).
-  Their names match the video window described in [mace-video.md](../devices/mace_video/mace-video.md) (inferred from the command names).
+  Their names match the video window described in `mace-video.md` in the chips repository (inferred from the command names).
   A `video()` entry is at 0x58bb0 (established, strings).
   The board name `SGI-CRM, Rev B` is at 0x5acf0 (established, strings).
   The board name `SGI-CRM, Rev C` is at 0x5ad00 (established, strings).
