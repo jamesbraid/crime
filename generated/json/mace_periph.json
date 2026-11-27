@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "4d52877ce718f4815943b4386ac9ac4dbf31d509f277043c28bfcfb81c0c8a6e",
+ "input_sha256": "5ee0e4b4bca193221b371f777a0a2ed3d259868d4a9ae92a039d09544dcec01c",
  "schema": "defs-flat/1",
  "source": "devices/mace_periph/registers.toml",
  "profile": "public",

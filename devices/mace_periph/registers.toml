@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_periph"
 prefix = "MACE_PERIPH"
+name_source = "ours"
 title = "O2 MACE peripheral ring base and interrupt status and mask"
 doc = "MACE peripheral block: the serial and parallel ring base with external reset, and the peripheral interrupt status and mask. Offsets are from the block base (constant BLOCK_BASE)."
 from = "published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers"

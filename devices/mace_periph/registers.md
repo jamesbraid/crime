@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 4d52877ce718f4815943b4386ac9ac4dbf31d509f277043c28bfcfb81c0c8a6e -->
+<!-- input sha256 5ee0e4b4bca193221b371f777a0a2ed3d259868d4a9ae92a039d09544dcec01c -->
 
 # O2 MACE peripheral ring base and interrupt status and mask
 
