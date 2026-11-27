@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3 -->
+<!-- input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a -->
 
 # O2 MACE free-running counter, three compare registers and audio and video time stamps
 
@@ -67,7 +67,7 @@ Array of 3 registers, stride 8.
 
 ### Register `video_pair`
 
-Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active, and software can write it to reset it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published. The shipped IRIX video driver reads a timestamp snapshot doubleword per channel from the timer block: input channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at 0x48 (TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF, TIMER_SNAP_OUT_OFF).
+Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active, and software can write it to reset it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published. The shipped IRIX video driver reads a timestamp snapshot doubleword per channel from the timer block: input channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF, the names the shipped IRIX MACE header gives the three addresses).
 
 Array of 3 registers, stride 8.
 
@@ -85,6 +85,6 @@ Array of 3 registers, stride 8.
 | `CMP0_ALIAS` | 0x1f350000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181) |
 | `CMP1_ALIAS` | 0x1f360000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x10, numbered #2 (printed page 181) |
 | `CMP2_ALIAS` | 0x1f370000 | established | published MACE 2.0 I/O ASIC specification (printed pages 63, 147 and 148) and the public Linux mace_timers layout | alias of the compare register at offset 0x18, numbered #3 (printed page 181) |
-| `TIMER_SNAP_IN1_OFF` | 0x38 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 1, from the timer block base. |
-| `TIMER_SNAP_IN2_OFF` | 0x40 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 2, from the timer block base. |
-| `TIMER_SNAP_OUT_OFF` | 0x48 | established | shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for the output channel, from the timer block base. |
+| `VIN1_MSC_UST_OFF` | 0x38 | established | shipped IRIX MACE header name MACE_VIN1_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 1, from the timer block base. |
+| `VIN2_MSC_UST_OFF` | 0x40 | established | shipped IRIX MACE header name MACE_VIN2_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for input channel 2, from the timer block base. |
+| `VOUT_MSC_UST_OFF` | 0x48 | established | shipped IRIX MACE header name MACE_VOUT_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md | Timer snapshot doubleword for the output channel, from the timer block base. |

@@ -1,7 +1,7 @@
 /* generated from devices/mace_timer/registers.toml by defs-gen - do not edit,
  * change the source */
 /* defs-gen 4 */
-/* input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3 */
+/* input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a */
 /* O2 MACE free-running counter, three compare registers and audio and video
  * time stamps */
 #ifndef MACE_TIMER_GEN_H
@@ -97,7 +97,8 @@
  * partial access behaves, is not published. The shipped IRIX video driver reads
  * a timestamp snapshot doubleword per channel from the timer block: input
  * channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at
- * 0x48 (TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF, TIMER_SNAP_OUT_OFF).
+ * 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF, the
+ * names the shipped IRIX MACE header gives the three addresses).
  */
 /* video_pair: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
  * (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
@@ -122,8 +123,8 @@
 #define MACE_TIMER_CMP1_ALIAS                        0x1f360000u
 /* established */
 #define MACE_TIMER_CMP2_ALIAS                        0x1f370000u
-#define MACE_TIMER_TIMER_SNAP_IN1_OFF                0x38u /* established */
-#define MACE_TIMER_TIMER_SNAP_IN2_OFF                0x40u /* established */
-#define MACE_TIMER_TIMER_SNAP_OUT_OFF                0x48u /* established */
+#define MACE_TIMER_VIN1_MSC_UST_OFF                  0x38u /* established */
+#define MACE_TIMER_VIN2_MSC_UST_OFF                  0x40u /* established */
+#define MACE_TIMER_VOUT_MSC_UST_OFF                  0x48u /* established */
 
 #endif /* MACE_TIMER_GEN_H */

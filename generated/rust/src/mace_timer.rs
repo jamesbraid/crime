@@ -1,6 +1,6 @@
 // @generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3
+// input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a
 // O2 MACE free-running counter, three compare registers and audio and video time stamps
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -134,6 +134,6 @@ pub const BLOCK_BASE: u32 = 0x1f340000; // established
 pub const CMP0_ALIAS: u32 = 0x1f350000; // established
 pub const CMP1_ALIAS: u32 = 0x1f360000; // established
 pub const CMP2_ALIAS: u32 = 0x1f370000; // established
-pub const TIMER_SNAP_IN1_OFF: u32 = 0x38; // established
-pub const TIMER_SNAP_IN2_OFF: u32 = 0x40; // established
-pub const TIMER_SNAP_OUT_OFF: u32 = 0x48; // established
+pub const VIN1_MSC_UST_OFF: u32 = 0x38; // established
+pub const VIN2_MSC_UST_OFF: u32 = 0x40; // established
+pub const VOUT_MSC_UST_OFF: u32 = 0x48; // established

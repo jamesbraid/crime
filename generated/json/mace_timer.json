@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3",
+ "input_sha256": "d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a",
  "schema": "defs-flat/1",
  "source": "devices/mace_timer/registers.toml",
  "profile": "public",
@@ -209,29 +209,29 @@
   {
    "unit": "mace_timer",
    "kind": "constant",
-   "name": "TIMER_SNAP_IN1_OFF",
+   "name": "VIN1_MSC_UST_OFF",
    "value": 56,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+   "from": "shipped IRIX MACE header name MACE_VIN1_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   },
   {
    "unit": "mace_timer",
    "kind": "constant",
-   "name": "TIMER_SNAP_IN2_OFF",
+   "name": "VIN2_MSC_UST_OFF",
    "value": 64,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+   "from": "shipped IRIX MACE header name MACE_VIN2_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   },
   {
    "unit": "mace_timer",
    "kind": "constant",
-   "name": "TIMER_SNAP_OUT_OFF",
+   "name": "VOUT_MSC_UST_OFF",
    "value": 72,
    "count": 1,
    "grade": "established",
-   "from": "shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
+   "from": "shipped IRIX MACE header name MACE_VOUT_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md"
   }
  ]
 }

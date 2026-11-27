@@ -226,3 +226,4 @@ Each unit says `name_source = "ours"`. Its names are descriptive spellings: ever
 | mace_serial_dma | 14 | 0 | 14 | none |
 | mace_uart | 3 | 0 | 3 | none |
 | mace_pci | 22 | 1 | 21 | none |
+| mace_timer | 22 | 0 | 22 | TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF and TIMER_SNAP_OUT_OFF renamed to VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF |

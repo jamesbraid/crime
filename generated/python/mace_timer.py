@@ -1,6 +1,6 @@
 """generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
 defs-gen 4
-input sha256 894f50d429e5e9da8b4b0d5cbaec42be5cd402d9053b38405104c146e2b6f5b3
+input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a
 O2 MACE free-running counter, three compare registers and audio and video time stamps"""
 
 UNIT = 'mace_timer'
@@ -9,7 +9,7 @@ WORDS = {}
 FIELDS = {'counter': {'count': (31, 0)}, 'cmp0': {'value': (31, 0)}, 'cmp1': {'value': (31, 0)}, 'cmp2': {'value': (31, 0)}, 'audio_pair': {'ust': (63, 32), 'msc': (31, 0)}, 'video_pair': {'ust': (63, 32), 'frame_count': (31, 1), 'field_id': (0, 0)}}
 ENUMS = {}
 FIELD_ENUM = {}
-CONSTANTS = {'BLOCK_BASE': {'value': 523501568, 'count': 1, 'stride': 1}, 'CMP0_ALIAS': {'value': 523567104, 'count': 1, 'stride': 1}, 'CMP1_ALIAS': {'value': 523632640, 'count': 1, 'stride': 1}, 'CMP2_ALIAS': {'value': 523698176, 'count': 1, 'stride': 1}, 'TIMER_SNAP_IN1_OFF': {'value': 56, 'count': 1, 'stride': 1}, 'TIMER_SNAP_IN2_OFF': {'value': 64, 'count': 1, 'stride': 1}, 'TIMER_SNAP_OUT_OFF': {'value': 72, 'count': 1, 'stride': 1}}
+CONSTANTS = {'BLOCK_BASE': {'value': 523501568, 'count': 1, 'stride': 1}, 'CMP0_ALIAS': {'value': 523567104, 'count': 1, 'stride': 1}, 'CMP1_ALIAS': {'value': 523632640, 'count': 1, 'stride': 1}, 'CMP2_ALIAS': {'value': 523698176, 'count': 1, 'stride': 1}, 'VIN1_MSC_UST_OFF': {'value': 56, 'count': 1, 'stride': 1}, 'VIN2_MSC_UST_OFF': {'value': 64, 'count': 1, 'stride': 1}, 'VOUT_MSC_UST_OFF': {'value': 72, 'count': 1, 'stride': 1}}
 TESTS = []
 
 
