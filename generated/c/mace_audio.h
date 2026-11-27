@@ -1,7 +1,7 @@
 /* generated from devices/mace_audio/registers.toml by defs-gen - do not edit,
  * change the source */
 /* defs-gen 4 */
-/* input sha256 0532f8940b65efce0c300882507ff37384ab91c9a6342a2c7647107f068cd16f */
+/* input sha256 fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9 */
 /* O2 MACE audio interface: codec command, stereo DMA ring control and pointers
  */
 #ifndef MACE_AUDIO_GEN_H

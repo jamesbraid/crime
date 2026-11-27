@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "0532f8940b65efce0c300882507ff37384ab91c9a6342a2c7647107f068cd16f",
+ "input_sha256": "fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9",
  "schema": "defs-flat/1",
  "source": "devices/mace_audio/registers.toml",
  "profile": "public",

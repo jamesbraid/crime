@@ -1,6 +1,6 @@
 # Where the register names come from
 
-Every register, word, field, enum value and constant name in the `crime`, `mte`, `re` and `gbe` units, graded by where the name itself comes from.
+Every register, word, field, enum value and constant name in the `crime`, `mte`, `re` and `gbe` units, graded by where the name itself comes from. The MACE, VICE and AD1843 units follow in [their own section](#mace-vice-and-ad1843-units).
 
 - **public: specification**: the name is, apart from case and punctuation, a name printed in the published CRIME 1.5 or GBE specification (a register table row, a memory-map row or a bit-table heading).
 - **public: driver**: the name is, apart from case, prefix and punctuation, a register macro in a public driver: NetBSD `crimereg.h`, `crmfbreg.h` and `crmfb.c`, or Linux `ip32/crime.h` and `gbefb.c`.
@@ -209,3 +209,13 @@ Names per class, registers, words, fields, enum values and constants together:
 | gbe | `DID_FRAME` | word | specification | public | 3 of 3 |
 | gbe | `DID_LINE` | word | none | ours | 2 of 2 |
 | gbe | `TILE_LIST_ENTRY` | word | none | ours | 1 of 1 |
+
+## MACE, VICE and AD1843 units
+
+Audited on 2026-11-27 against the published MACE 2.0 specification, the VICE design specification and the AD1843 data sheet, the public Linux, NetBSD and OpenBSD O2 drivers, and the shipped IRIX 6.5 `sys/mace.h`, `sys/IP32.h` and `sys/crime.h`.
+
+Each unit says `name_source = "ours"`. Its names are descriptive spellings: every word in them turns up in those documents, drivers or headers, apart from number suffixes and units such as `kib8` or `quarter`. A register or word says `"public"` only when its own name is printed as spelled by a public document, driver or shipped header and every field and enum value in it is too. No name comes from a binary's symbol table. Names were not searched against the non-public IRIX source tree: no unit cites it, and the search was not run.
+
+| Unit | Names | public | ours | Excluded or renamed |
+|---|---|---|---|---|
+| mace_audio | 27 | 0 | 27 | none |
