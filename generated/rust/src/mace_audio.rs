@@ -1,6 +1,6 @@
 // @generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9
+// input sha256 9d96b0d455ce6c9ee886b21255ad6148435c33e6f41b4166bac31c4d46c41a4c
 // O2 MACE audio interface: codec command, stereo DMA ring control and pointers
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -164,7 +164,7 @@ pub mod ctl_status {
 pub mod codec_cmd {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x8;
-    pub mod codec_addr { // bits 23:17, established
+    pub mod codec_address { // bits 23:17, established
         pub const SHIFT: u32 = 17;
         pub const MASK: u64 = 0x7f;
         pub const fn get(v: u64) -> u64 {
@@ -186,7 +186,7 @@ pub mod codec_cmd {
         #[allow(unused_imports)]
         pub use super::super::enums::codec_direction::Value;
     }
-    pub mod codec_data { // bits 15:0, established
+    pub mod codec_word { // bits 15:0, established
         pub const SHIFT: u32 = 0;
         pub const MASK: u64 = 0xffff;
         pub const fn get(v: u64) -> u64 {

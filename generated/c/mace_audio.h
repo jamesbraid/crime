@@ -1,7 +1,7 @@
 /* generated from devices/mace_audio/registers.toml by defs-gen - do not edit,
  * change the source */
 /* defs-gen 4 */
-/* input sha256 fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9 */
+/* input sha256 9d96b0d455ce6c9ee886b21255ad6148435c33e6f41b4166bac31c4d46c41a4c */
 /* O2 MACE audio interface: codec command, stereo DMA ring control and pointers
  */
 #ifndef MACE_AUDIO_GEN_H
@@ -67,15 +67,15 @@
  * audio chapter (printed pages 61-66), register tables 26-35, the sub-address
  * map (printed page 179) */
 #define MACE_AUDIO_CODEC_CMD_OFFSET                  0x8u /* established */
-#define MACE_AUDIO_CODEC_CMD_CODEC_ADDR_SHIFT        17 /* established */
-#define MACE_AUDIO_CODEC_CMD_CODEC_ADDR_MASK         0x7full
-#define MACE_AUDIO_CODEC_CMD_CODEC_ADDR_INPLACE (MACE_AUDIO_CODEC_CMD_CODEC_ADDR_MASK << MACE_AUDIO_CODEC_CMD_CODEC_ADDR_SHIFT)
+#define MACE_AUDIO_CODEC_CMD_CODEC_ADDRESS_SHIFT     17 /* established */
+#define MACE_AUDIO_CODEC_CMD_CODEC_ADDRESS_MASK      0x7full
+#define MACE_AUDIO_CODEC_CMD_CODEC_ADDRESS_INPLACE (MACE_AUDIO_CODEC_CMD_CODEC_ADDRESS_MASK << MACE_AUDIO_CODEC_CMD_CODEC_ADDRESS_SHIFT)
 #define MACE_AUDIO_CODEC_CMD_CODEC_DIRECTION_SHIFT   16 /* established */
 #define MACE_AUDIO_CODEC_CMD_CODEC_DIRECTION_MASK    0x1ull
 #define MACE_AUDIO_CODEC_CMD_CODEC_DIRECTION_INPLACE (MACE_AUDIO_CODEC_CMD_CODEC_DIRECTION_MASK << MACE_AUDIO_CODEC_CMD_CODEC_DIRECTION_SHIFT)
-#define MACE_AUDIO_CODEC_CMD_CODEC_DATA_SHIFT        0 /* established */
-#define MACE_AUDIO_CODEC_CMD_CODEC_DATA_MASK         0xffffull
-#define MACE_AUDIO_CODEC_CMD_CODEC_DATA_INPLACE (MACE_AUDIO_CODEC_CMD_CODEC_DATA_MASK << MACE_AUDIO_CODEC_CMD_CODEC_DATA_SHIFT)
+#define MACE_AUDIO_CODEC_CMD_CODEC_WORD_SHIFT        0 /* established */
+#define MACE_AUDIO_CODEC_CMD_CODEC_WORD_MASK         0xffffull
+#define MACE_AUDIO_CODEC_CMD_CODEC_WORD_INPLACE (MACE_AUDIO_CODEC_CMD_CODEC_WORD_MASK << MACE_AUDIO_CODEC_CMD_CODEC_WORD_SHIFT)
 
 /*
  * Mask applied to the last codec response. The codec-response interrupt cause

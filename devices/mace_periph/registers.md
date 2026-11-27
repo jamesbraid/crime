@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 5ee0e4b4bca193221b371f777a0a2ed3d259868d4a9ae92a039d09544dcec01c -->
+<!-- input sha256 e1eb75d1ad818d04444d83f0561272f929a4f7c1861460b906d0c2692eec182f -->
 
 # O2 MACE peripheral ring base and interrupt status and mask
 
@@ -63,9 +63,9 @@ Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/wr
 | 22 | `serial_a_tx_pair` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read/write. A transmit pair with its interrupt bit set has been processed (printed page 125). The write behaviour is not given; see devices/mace_serial_dma/mace-serial-dma.md. |
 | 21 | `serial_a_tx_threshold` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. The port 1 transmit ring meets its interrupt threshold (printed page 125). |
 | 20 | `serial_a` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
-| 15 | `timer_cmp2` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
-| 14 | `timer_cmp1` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
-| 13 | `timer_cmp0` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 15 | `timer_compare2` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 14 | `timer_compare1` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
+| 13 | `timer_compare0` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers |  |
 | 12 | `ps2_mouse_poll` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. Unmasked mouse poll flag, the non-interrupt version of the mouse request (established, printed page 125, slot 5). |
 | 11 | `ps2_mouse_irq` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. Mouse port interrupt request (established, printed page 125, slot 5). |
 | 10 | `ps2_kbd_poll` | established |  | published MACE 2.0 I/O ASIC specification (printed pages 123, 125 and 147), public Linux O2 interrupt code, and OpenBSD and NetBSD O2 MACE drivers | Read-only. Unmasked keyboard poll flag, the non-interrupt version of the keyboard request (established, printed page 125, slot 5). |

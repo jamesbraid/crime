@@ -60,9 +60,9 @@ doc = """
 Codec register access. The word written here is sent to the codec on every serial frame and repeats until it is replaced. A read request makes the codec's answer appear in codec_response. The reset value is a read request with the address field zero (established, printed page 63, table 28)."""
 
 [registers.codec_cmd.fields]
-codec_addr = { bits = [23, 17], grade = "established", doc = "Codec register number. The AD1843 decodes only five address bits of it (see ad1843.toml)." }
+codec_address = { bits = [23, 17], grade = "established", doc = "Codec register number. The AD1843 decodes only five address bits of it (see ad1843.toml)." }
 codec_direction = { bits = [16, 16], grade = "established", enum = "codec_direction", doc = "0 writes the data field to the register, 1 reads the register." }
-codec_data = { bits = [15, 0], grade = "established", doc = "Data word for a write." }
+codec_word = { bits = [15, 0], grade = "established", doc = "Data word for a write." }
 
 [registers.response_mask]
 offset = 0x10

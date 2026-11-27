@@ -20,7 +20,7 @@ One 32-bit counter, clocked every 960 ns (the 33.333 MHz PCI clock divided by 32
 [registers.counter.fields]
 count = { bits = [31, 0], grade = "established" }
 
-[registers.cmp0]
+[registers.compare0]
 offset = 0x8
 access = "rw"
 width = 64
@@ -28,10 +28,10 @@ grade = "established"
 doc = """
 32-bit compare. Equality sets level interrupt latch 0, which drives peripheral status bit 13. Writing the register clears the latch, and the latch resets low. The reset value of the compare is not stated (established, printed page 147)."""
 
-[registers.cmp0.fields]
+[registers.compare0.fields]
 value = { bits = [31, 0], grade = "established" }
 
-[registers.cmp1]
+[registers.compare1]
 offset = 0x10
 access = "rw"
 width = 64
@@ -39,10 +39,10 @@ grade = "established"
 doc = """
 32-bit compare. Equality sets level interrupt latch 1, which drives peripheral status bit 14. Writing clears the latch. Reset value not stated (established, printed page 147)."""
 
-[registers.cmp1.fields]
+[registers.compare1.fields]
 value = { bits = [31, 0], grade = "established" }
 
-[registers.cmp2]
+[registers.compare2]
 offset = 0x18
 access = "rw"
 width = 64
@@ -50,7 +50,7 @@ grade = "established"
 doc = """
 32-bit compare. Equality sets level interrupt latch 2, which drives peripheral status bit 15. Writing clears the latch. Reset value not stated (established, printed page 147)."""
 
-[registers.cmp2.fields]
+[registers.compare2.fields]
 value = { bits = [31, 0], grade = "established" }
 
 [registers.audio_pair]
@@ -75,7 +75,7 @@ count = 3
 stride = 0x8
 grade = "established"
 doc = """
-Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active, and software can write it to reset it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published. The shipped IRIX video driver reads a timestamp snapshot doubleword per channel from the timer block: input channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF, the names the shipped IRIX MACE header gives the three addresses)."""
+Video time stamp pairs: input channel 1 at 0x38, input channel 2 at 0x40 and the output channel at 0x48 (printed page 148, table 75; printed page 56 for the layout). A 64-bit aligned read returns UST in bits 63:32 and the field count in bits 31:0, which holds the frame count in bits 31:1 and the field ID in bit 0, zero for odd and one for even (established, printed page 56, table 25). UST is the 960 ns counter captured at field start. The count advances at field end while a video signal is active, and software can write it to reset it (established, printed page 56). The timer chapter's table on printed page 148 names UST at the pair base and MSC at base plus four, the reverse of this bit layout; the chapter's atomic-read rule on the same page agrees with the layout here. Whether 32-bit accesses to each half reach UST or MSC, and how a partial access behaves, is not published. The shipped IRIX video driver reads a timestamp snapshot doubleword per channel from the timer block: input channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF: the shipped IRIX MACE header names MACE_VIN1_MSC_UST, MACE_VIN2_MSC_UST and MACE_VOUT_MSC_UST for the three addresses, without the prefix and with an offset suffix)."""
 
 [registers.video_pair.fields]
 ust = { bits = [63, 32], grade = "established" }
@@ -84,9 +84,9 @@ field_id = { bits = [0, 0], grade = "established", doc = "Zero for odd, one for 
 
 [constants]
 BLOCK_BASE = { value = 0x1f340000, grade = "established", doc = "physical base of the timer block (printed page 147)" }
-CMP0_ALIAS = { value = 0x1f350000, grade = "established", doc = "alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181)" }
-CMP1_ALIAS = { value = 0x1f360000, grade = "established", doc = "alias of the compare register at offset 0x10, numbered #2 (printed page 181)" }
-CMP2_ALIAS = { value = 0x1f370000, grade = "established", doc = "alias of the compare register at offset 0x18, numbered #3 (printed page 181)" }
+COMPARE0_ALIAS = { value = 0x1f350000, grade = "established", doc = "alias of the compare register at offset 0x8, which the address map numbers #1 (printed page 181)" }
+COMPARE1_ALIAS = { value = 0x1f360000, grade = "established", doc = "alias of the compare register at offset 0x10, numbered #2 (printed page 181)" }
+COMPARE2_ALIAS = { value = 0x1f370000, grade = "established", doc = "alias of the compare register at offset 0x18, numbered #3 (printed page 181)" }
 VIN1_MSC_UST_OFF = { value = 0x38, grade = "established", from = "shipped IRIX MACE header name MACE_VIN1_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Timer snapshot doubleword for input channel 1, from the timer block base." }
 VIN2_MSC_UST_OFF = { value = 0x40, grade = "established", from = "shipped IRIX MACE header name MACE_VIN2_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Timer snapshot doubleword for input channel 2, from the timer block base." }
 VOUT_MSC_UST_OFF = { value = 0x48, grade = "established", from = "shipped IRIX MACE header name MACE_VOUT_MSC_UST, also read from the shipped IRIX O2 video driver object, per kudzu devices/mace_video/mace-video.md", doc = "Timer snapshot doubleword for the output channel, from the timer block base." }

@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9 -->
+<!-- input sha256 9d96b0d455ce6c9ee886b21255ad6148435c33e6f41b4166bac31c4d46c41a4c -->
 
 # O2 MACE audio interface: codec command, stereo DMA ring control and pointers
 
@@ -44,9 +44,9 @@ Codec register access. The word written here is sent to the codec on every seria
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 23:17 | `codec_addr` | established |  | published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179) | Codec register number. The AD1843 decodes only five address bits of it (see ad1843.toml). |
+| 23:17 | `codec_address` | established |  | published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179) | Codec register number. The AD1843 decodes only five address bits of it (see ad1843.toml). |
 | 16 | `codec_direction` | established | codec_direction (write=0, read=1) | published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179) | 0 writes the data field to the register, 1 reads the register. |
-| 15:0 | `codec_data` | established |  | published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179) | Data word for a write. |
+| 15:0 | `codec_word` | established |  | published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179) | Data word for a write. |
 
 ### Register `response_mask`
 

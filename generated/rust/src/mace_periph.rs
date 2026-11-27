@@ -1,6 +1,6 @@
 // @generated from devices/mace_periph/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 5ee0e4b4bca193221b371f777a0a2ed3d259868d4a9ae92a039d09544dcec01c
+// input sha256 e1eb75d1ad818d04444d83f0561272f929a4f7c1861460b906d0c2692eec182f
 // O2 MACE peripheral ring base and interrupt status and mask
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -250,7 +250,7 @@ pub mod periph_status {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod timer_cmp2 { // bits 15:15, established
+    pub mod timer_compare2 { // bits 15:15, established
         pub const SHIFT: u32 = 15;
         pub const MASK: u64 = 0x1;
         pub const fn get(v: u64) -> u64 {
@@ -260,7 +260,7 @@ pub mod periph_status {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod timer_cmp1 { // bits 14:14, established
+    pub mod timer_compare1 { // bits 14:14, established
         pub const SHIFT: u32 = 14;
         pub const MASK: u64 = 0x1;
         pub const fn get(v: u64) -> u64 {
@@ -270,7 +270,7 @@ pub mod periph_status {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod timer_cmp0 { // bits 13:13, established
+    pub mod timer_compare0 { // bits 13:13, established
         pub const SHIFT: u32 = 13;
         pub const MASK: u64 = 0x1;
         pub const fn get(v: u64) -> u64 {

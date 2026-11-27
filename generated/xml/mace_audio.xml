@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/mace_audio/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9 -->
+<!-- input sha256 9d96b0d455ce6c9ee886b21255ad6148435c33e6f41b4166bac31c4d46c41a4c -->
 <genxml unit="mace_audio" prefix="MACE_AUDIO" title="O2 MACE audio interface: codec command, stereo DMA ring control and pointers" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)">
   <doc>MACE audio block: the codec reset, presence and command registers, and the three stereo DMA channels (one input, two output) with their ring control, read and write pointers and depth. Offsets are from the block base (constant BLOCK_BASE). The codec's own registers are in ad1843.toml, the MSC/UST pairs are in mace_timer.toml and the audio interrupt causes are in mace_periph.toml. Channel index 0 is the capture channel, 1 is playback 1 (block 0x40) and 2 is playback 2 (block 0x60).</doc>
   <enum name="codec_direction">
@@ -30,9 +30,9 @@
   </struct>
   <struct name="CODEC_CMD" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x8" access="rw" reset="0x10000">
     <doc>Codec register access. The word written here is sent to the codec on every serial frame and repeats until it is replaced. A read request makes the codec's answer appear in codec_response. The reset value is a read request with the address field zero (established, printed page 63, table 28).</doc>
-    <field name="codec_addr" start="17" size="7" type="uint" grade="established"/>
+    <field name="codec_address" start="17" size="7" type="uint" grade="established"/>
     <field name="codec_direction" start="16" size="1" type="codec_direction" grade="established"/>
-    <field name="codec_data" start="0" size="16" type="uint" grade="established"/>
+    <field name="codec_word" start="0" size="16" type="uint" grade="established"/>
   </struct>
   <struct name="RESPONSE_MASK" size="8" grade="established" from="published MACE 2.0 I/O ASIC specification: audio chapter (printed pages 61-66), register tables 26-35, the sub-address map (printed page 179)" register="yes" offset="0x10" access="rw" reset="0x0">
     <doc>Mask applied to the last codec response. The codec-response interrupt cause is set when any masked bit of the response is one (established, printed page 63, table 29, and printed page 125, slot 6 index 0).</doc>

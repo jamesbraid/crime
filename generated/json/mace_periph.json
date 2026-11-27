@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "5ee0e4b4bca193221b371f777a0a2ed3d259868d4a9ae92a039d09544dcec01c",
+ "input_sha256": "e1eb75d1ad818d04444d83f0561272f929a4f7c1861460b906d0c2692eec182f",
  "schema": "defs-flat/1",
  "source": "devices/mace_periph/registers.toml",
  "profile": "public",
@@ -257,7 +257,7 @@
   {
    "unit": "mace_periph",
    "kind": "field",
-   "name": "periph_status.timer_cmp2",
+   "name": "periph_status.timer_compare2",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -266,7 +266,7 @@
   {
    "unit": "mace_periph",
    "kind": "field",
-   "name": "periph_status.timer_cmp1",
+   "name": "periph_status.timer_compare1",
    "hi": 14,
    "lo": 14,
    "grade": "established",
@@ -275,7 +275,7 @@
   {
    "unit": "mace_periph",
    "kind": "field",
-   "name": "periph_status.timer_cmp0",
+   "name": "periph_status.timer_compare0",
    "hi": 13,
    "lo": 13,
    "grade": "established",

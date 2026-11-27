@@ -53,9 +53,9 @@ Level sources summed into CRIME interrupt groups. Bits 16, 22 and 28 are read/wr
 
 [registers.periph_status.fields]
 rtc = { bits = [8, 8], grade = "established" }
-timer_cmp0 = { bits = [13, 13], grade = "established" }
-timer_cmp1 = { bits = [14, 14], grade = "established" }
-timer_cmp2 = { bits = [15, 15], grade = "established" }
+timer_compare0 = { bits = [13, 13], grade = "established" }
+timer_compare1 = { bits = [14, 14], grade = "established" }
+timer_compare2 = { bits = [15, 15], grade = "established" }
 serial_a = { bits = [20, 20], grade = "established" }
 serial_b = { bits = [26, 26], grade = "established" }
 serial_a_tx_threshold = { bits = [21, 21], grade = "established", doc = "Read-only. The port 1 transmit ring meets its interrupt threshold (printed page 125)." }

@@ -214,19 +214,19 @@ Names per class, registers, words, fields, enum values and constants together:
 
 Audited on 2026-11-27 against the published MACE 2.0 specification, the VICE design specification and the AD1843 data sheet, the public Linux, NetBSD and OpenBSD O2 drivers, and the shipped IRIX 6.5 `sys/mace.h`, `sys/IP32.h` and `sys/crime.h`.
 
-Each unit says `name_source = "ours"`. Its names are descriptive spellings: every word in them turns up in those documents, drivers or headers, apart from number suffixes and units such as `kib8` or `quarter`. A register or word says `"public"` only when its own name is printed as spelled by a public document, driver or shipped header and every field and enum value in it is too. No name comes from a binary's symbol table. Names were not searched against the non-public IRIX source tree: no unit cites it, and the search was not run.
+Each unit says `name_source = "ours"`. Its names are descriptive spellings: every word in them turns up in those documents, drivers or headers, apart from number suffixes and units such as `kib8` or `quarter`. A register or word says `"public"` only when its own name is printed as spelled by a public document, driver or shipped header and every field and enum value in it is too. No name comes from a binary's symbol table. A second reviewer searched the IRIX source tree for every name in these units as a whole word, in either case. Names that match there only as a generic word or in a file for an unrelated device stay. Names whose only match was the source tree, or whose spelling used an abbreviation only the source tree uses, were renamed to words the specification or a public driver prints (see the last column).
 
 | Unit | Names | public | ours | Excluded or renamed |
 |---|---|---|---|---|
-| mace_audio | 27 | 0 | 27 | none |
+| mace_audio | 27 | 0 | 27 | codec_addr and codec_data renamed to codec_address and codec_word |
 | mace_ethernet | 133 | 0 | 133 | none |
 | mace_i2c | 18 | 0 | 18 | none |
-| mace_periph | 49 | 0 | 49 | none |
+| mace_periph | 49 | 0 | 49 | timer_cmp0, timer_cmp1 and timer_cmp2 renamed to timer_compare0, timer_compare1 and timer_compare2 |
 | mace_ps2 | 26 | 0 | 26 | none |
 | mace_serial_dma | 14 | 0 | 14 | none |
 | mace_uart | 3 | 0 | 3 | none |
 | mace_pci | 22 | 1 | 21 | none |
-| mace_timer | 22 | 0 | 22 | TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF and TIMER_SNAP_OUT_OFF renamed to VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF |
+| mace_timer | 22 | 0 | 22 | cmp0, cmp1, cmp2 and CMP0_ALIAS to CMP2_ALIAS renamed to compare0 to compare2 and COMPARE0_ALIAS to COMPARE2_ALIAS; TIMER_SNAP_IN1_OFF, TIMER_SNAP_IN2_OFF and TIMER_SNAP_OUT_OFF renamed to VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF |
 | mace_video | 85 | 0 | 85 | WINDOW_PHYS_ADDR, IN2_OFF and OUT_OFF renamed to VIN1, VIN2_OFF and VOUT_OFF |
 | mace_video_in | 71 | 0 | 71 | none |
 | vice | 191 | 139 | 52 | none |

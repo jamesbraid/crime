@@ -1,7 +1,7 @@
 /* generated from devices/mace_timer/registers.toml by defs-gen - do not edit,
  * change the source */
 /* defs-gen 4 */
-/* input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a */
+/* input sha256 debcbdff0e539a7bfa24ba47b1cc14dcf2468c6bbf77aa6bb0852956c3230b66 */
 /* O2 MACE free-running counter, three compare registers and audio and video
  * time stamps */
 #ifndef MACE_TIMER_GEN_H
@@ -30,36 +30,36 @@
  * latch resets low. The reset value of the compare is not stated (established,
  * printed page 147).
  */
-/* cmp0: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed
- * pages 63, 147 and 148) and the public Linux mace_timers layout */
-#define MACE_TIMER_CMP0_OFFSET                       0x8u /* established */
-#define MACE_TIMER_CMP0_VALUE_SHIFT                  0 /* established */
-#define MACE_TIMER_CMP0_VALUE_MASK                   0xffffffffull
-#define MACE_TIMER_CMP0_VALUE_INPLACE (MACE_TIMER_CMP0_VALUE_MASK << MACE_TIMER_CMP0_VALUE_SHIFT)
+/* compare0: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
+#define MACE_TIMER_COMPARE0_OFFSET                   0x8u /* established */
+#define MACE_TIMER_COMPARE0_VALUE_SHIFT              0 /* established */
+#define MACE_TIMER_COMPARE0_VALUE_MASK               0xffffffffull
+#define MACE_TIMER_COMPARE0_VALUE_INPLACE (MACE_TIMER_COMPARE0_VALUE_MASK << MACE_TIMER_COMPARE0_VALUE_SHIFT)
 
 /*
  * 32-bit compare. Equality sets level interrupt latch 1, which drives
  * peripheral status bit 14. Writing clears the latch. Reset value not stated
  * (established, printed page 147).
  */
-/* cmp1: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed
- * pages 63, 147 and 148) and the public Linux mace_timers layout */
-#define MACE_TIMER_CMP1_OFFSET                       0x10u /* established */
-#define MACE_TIMER_CMP1_VALUE_SHIFT                  0 /* established */
-#define MACE_TIMER_CMP1_VALUE_MASK                   0xffffffffull
-#define MACE_TIMER_CMP1_VALUE_INPLACE (MACE_TIMER_CMP1_VALUE_MASK << MACE_TIMER_CMP1_VALUE_SHIFT)
+/* compare1: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
+#define MACE_TIMER_COMPARE1_OFFSET                   0x10u /* established */
+#define MACE_TIMER_COMPARE1_VALUE_SHIFT              0 /* established */
+#define MACE_TIMER_COMPARE1_VALUE_MASK               0xffffffffull
+#define MACE_TIMER_COMPARE1_VALUE_INPLACE (MACE_TIMER_COMPARE1_VALUE_MASK << MACE_TIMER_COMPARE1_VALUE_SHIFT)
 
 /*
  * 32-bit compare. Equality sets level interrupt latch 2, which drives
  * peripheral status bit 15. Writing clears the latch. Reset value not stated
  * (established, printed page 147).
  */
-/* cmp2: rw64, reset unknown; published MACE 2.0 I/O ASIC specification (printed
- * pages 63, 147 and 148) and the public Linux mace_timers layout */
-#define MACE_TIMER_CMP2_OFFSET                       0x18u /* established */
-#define MACE_TIMER_CMP2_VALUE_SHIFT                  0 /* established */
-#define MACE_TIMER_CMP2_VALUE_MASK                   0xffffffffull
-#define MACE_TIMER_CMP2_VALUE_INPLACE (MACE_TIMER_CMP2_VALUE_MASK << MACE_TIMER_CMP2_VALUE_SHIFT)
+/* compare2: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
+ * (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
+#define MACE_TIMER_COMPARE2_OFFSET                   0x18u /* established */
+#define MACE_TIMER_COMPARE2_VALUE_SHIFT              0 /* established */
+#define MACE_TIMER_COMPARE2_VALUE_MASK               0xffffffffull
+#define MACE_TIMER_COMPARE2_VALUE_INPLACE (MACE_TIMER_COMPARE2_VALUE_MASK << MACE_TIMER_COMPARE2_VALUE_SHIFT)
 
 /*
  * Audio time stamp pairs: capture at 0x20, playback 1 at 0x28 and playback 2 at
@@ -97,8 +97,10 @@
  * partial access behaves, is not published. The shipped IRIX video driver reads
  * a timestamp snapshot doubleword per channel from the timer block: input
  * channel 1 at offset 0x38, input channel 2 at 0x40 and the output channel at
- * 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF, the
- * names the shipped IRIX MACE header gives the three addresses).
+ * 0x48 (constants VIN1_MSC_UST_OFF, VIN2_MSC_UST_OFF and VOUT_MSC_UST_OFF: the
+ * shipped IRIX MACE header names MACE_VIN1_MSC_UST, MACE_VIN2_MSC_UST and
+ * MACE_VOUT_MSC_UST for the three addresses, without the prefix and with an
+ * offset suffix).
  */
 /* video_pair: rw64, reset unknown; published MACE 2.0 I/O ASIC specification
  * (printed pages 63, 147 and 148) and the public Linux mace_timers layout */
@@ -118,11 +120,11 @@
 /* established */
 #define MACE_TIMER_BLOCK_BASE                        0x1f340000u
 /* established */
-#define MACE_TIMER_CMP0_ALIAS                        0x1f350000u
+#define MACE_TIMER_COMPARE0_ALIAS                    0x1f350000u
 /* established */
-#define MACE_TIMER_CMP1_ALIAS                        0x1f360000u
+#define MACE_TIMER_COMPARE1_ALIAS                    0x1f360000u
 /* established */
-#define MACE_TIMER_CMP2_ALIAS                        0x1f370000u
+#define MACE_TIMER_COMPARE2_ALIAS                    0x1f370000u
 #define MACE_TIMER_VIN1_MSC_UST_OFF                  0x38u /* established */
 #define MACE_TIMER_VIN2_MSC_UST_OFF                  0x40u /* established */
 #define MACE_TIMER_VOUT_MSC_UST_OFF                  0x48u /* established */

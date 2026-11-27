@@ -1,6 +1,6 @@
 // @generated from devices/mace_timer/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 d5f147ae29389c0013ae8ccea7c4babea10ed9e5368a7b4cc5c6985a1d11935a
+// input sha256 debcbdff0e539a7bfa24ba47b1cc14dcf2468c6bbf77aa6bb0852956c3230b66
 // O2 MACE free-running counter, three compare registers and audio and video time stamps
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -22,7 +22,7 @@ pub mod counter {
     }
 }
 /// 32-bit compare. Equality sets level interrupt latch 0, which drives peripheral status bit 13. Writing the register clears the latch, and the latch res (established)
-pub mod cmp0 {
+pub mod compare0 {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x8;
     pub mod value { // bits 31:0, established
@@ -37,7 +37,7 @@ pub mod cmp0 {
     }
 }
 /// 32-bit compare. Equality sets level interrupt latch 1, which drives peripheral status bit 14. Writing clears the latch. Reset value not stated (establ (established)
-pub mod cmp1 {
+pub mod compare1 {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x10;
     pub mod value { // bits 31:0, established
@@ -52,7 +52,7 @@ pub mod cmp1 {
     }
 }
 /// 32-bit compare. Equality sets level interrupt latch 2, which drives peripheral status bit 15. Writing clears the latch. Reset value not stated (establ (established)
-pub mod cmp2 {
+pub mod compare2 {
     pub const WIDTH: u32 = 64;
     pub const OFFSET: u64 = 0x18;
     pub mod value { // bits 31:0, established
@@ -131,9 +131,9 @@ pub mod video_pair {
     }
 }
 pub const BLOCK_BASE: u32 = 0x1f340000; // established
-pub const CMP0_ALIAS: u32 = 0x1f350000; // established
-pub const CMP1_ALIAS: u32 = 0x1f360000; // established
-pub const CMP2_ALIAS: u32 = 0x1f370000; // established
+pub const COMPARE0_ALIAS: u32 = 0x1f350000; // established
+pub const COMPARE1_ALIAS: u32 = 0x1f360000; // established
+pub const COMPARE2_ALIAS: u32 = 0x1f370000; // established
 pub const VIN1_MSC_UST_OFF: u32 = 0x38; // established
 pub const VIN2_MSC_UST_OFF: u32 = 0x40; // established
 pub const VOUT_MSC_UST_OFF: u32 = 0x48; // established

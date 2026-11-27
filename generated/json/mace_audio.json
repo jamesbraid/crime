@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "fe473f84afca6ef9ed994b36ed32ad18d77b967f58473dab20a957933a1e79e9",
+ "input_sha256": "9d96b0d455ce6c9ee886b21255ad6148435c33e6f41b4166bac31c4d46c41a4c",
  "schema": "defs-flat/1",
  "source": "devices/mace_audio/registers.toml",
  "profile": "public",
@@ -99,7 +99,7 @@
   {
    "unit": "mace_audio",
    "kind": "field",
-   "name": "codec_cmd.codec_addr",
+   "name": "codec_cmd.codec_address",
    "hi": 23,
    "lo": 17,
    "grade": "established",
@@ -133,7 +133,7 @@
   {
    "unit": "mace_audio",
    "kind": "field",
-   "name": "codec_cmd.codec_data",
+   "name": "codec_cmd.codec_word",
    "hi": 15,
    "lo": 0,
    "grade": "established",
