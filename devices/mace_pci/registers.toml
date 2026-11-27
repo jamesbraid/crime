@@ -1,12 +1,15 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_pci"
 prefix = "MACE_PCI"
+name_source = "ours"
 title = "O2 MACE PCI host bridge control registers"
 doc = "MACE PCI control block: error capture, interrupt and error enables, read-buffer revision, and the configuration address and data ports. Offsets are from the block base (constant BLOCK_BASE). Only these six registers exist in the block, and they are not repeated across it (established, printed pages 161 and 181). A read of any other offset in the block returns 0xff in each byte position it covers, and a write to one is discarded (established, printed pages 161 and 162)."
 from = "published MACE 2.0 I/O ASIC specification (printed pages 161 to 165), public Linux MACE PCI accessor, and OpenBSD and NetBSD O2 MACE drivers"
 public_from = ["published MACE 2.0 I/O ASIC specification"]
 
 [registers.pci_error_addr]
+name_source = "public"
+name_cite = "NetBSD sgimips macereg.h MACE_PCI_ERROR_ADDR and the shipped IRIX sys/mace.h PCI_ERROR_ADDR"
 offset = 0x0
 access = "r"
 width = 32
