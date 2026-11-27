@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "b276052059012fda511b92866ac98277d32c8d9041f8828f1258aa42e1efb19c",
+ "input_sha256": "6beec0a4dc0d88e18521a9e8395cf1b1cf2b94549666096a3a7e9e289c6c318b",
  "schema": "defs-flat/1",
  "source": "devices/mace_uart/registers.toml",
  "profile": "public",

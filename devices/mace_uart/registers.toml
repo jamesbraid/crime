@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_uart"
 prefix = "MACE_UART"
+name_source = "ours"
 title = "O2 MACE external 16550-compatible serial port: modem control and scratch registers"
 doc = "One external serial port of the MACE chip, a 16550-compatible UART. Offsets are from each port's base (the serial base constants in mace_periph.toml). Only the modem control and scratch registers are defined here; the rest of the register set is in platforms/ip32/mace-base.md."
 from = "TI TL16PIR552PH data sheet, SLLS222A (December 1995, revised August 1996)"
