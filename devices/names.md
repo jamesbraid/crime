@@ -223,3 +223,4 @@ Each unit says `name_source = "ours"`. Its names are descriptive spellings: ever
 | mace_i2c | 18 | 0 | 18 | none |
 | mace_periph | 49 | 0 | 49 | none |
 | mace_ps2 | 26 | 0 | 26 | none |
+| mace_serial_dma | 14 | 0 | 14 | none |
