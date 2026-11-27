@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "6977fa738f5b9ca17ebc20750e1c3808cd207eb9ba1ce2850506eb7721636337",
+ "input_sha256": "531a15113af2c834f84b093118e096274948ae8d18d527fe6d6aa066db1c0a2b",
  "schema": "defs-flat/1",
  "source": "devices/vice/registers.toml",
  "profile": "public",

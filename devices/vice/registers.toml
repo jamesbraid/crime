@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "vice"
 prefix = "VICE"
+name_source = "ours"
 title = "O2 VICE imaging and compression engine registers"
 doc = "VICE imaging and compression engine chip, signal processor, bitstream processor, mailbox and DMA channel registers."
 from = "published VICE design specification"
@@ -9,6 +10,8 @@ public_from = ["published VICE design specification"]
 [spaces.vice]
 
 [registers.id]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x8
 access = "r"
 width = 8
@@ -33,6 +36,8 @@ vice_b = { value = 2, grade = "established" }
 vice_c = { value = 3, grade = "established" }
 
 [registers.hst_bsp_in_box]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x28
 access = "r"
 width = 16
@@ -40,6 +45,8 @@ grade = "established"
 space = "vice"
 
 [registers.hst_bsp_out_box]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x30
 access = "r"
 width = 16
@@ -60,6 +67,8 @@ reset_release = { bits = [1, 1], grade = "established" }
 go = { bits = [0, 0], grade = "established" }
 
 [registers.msp_excp_flag]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x48
 access = "rw"
 width = 32
@@ -79,6 +88,8 @@ con = { bits = [6, 6], grade = "established" }
 adei = { bits = [7, 7], grade = "established" }
 
 [registers.msp_pc]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x50
 access = "rw"
 width = 32
@@ -89,6 +100,8 @@ space = "vice"
 pc = { bits = [15, 2], grade = "established" }
 
 [registers.msp_bad_addr]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x58
 access = "r"
 width = 32
@@ -96,6 +109,8 @@ grade = "established"
 space = "vice"
 
 [registers.msp_watchpoint]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x60
 access = "rw"
 width = 32
@@ -105,6 +120,8 @@ grade = "established"
 space = "vice"
 
 [registers.msp_epc]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x68
 access = "r"
 width = 32
@@ -115,6 +132,8 @@ space = "vice"
 pc = { bits = [15, 2], grade = "established" }
 
 [registers.msp_cause]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x70
 access = "r"
 width = 32
@@ -150,6 +169,8 @@ register map (size 0): any write sets the matching cause bit. The 32-bit
 width is a placeholder and the grade says so."""
 
 [registers.msp_d_ram]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x100
 access = "rw"
 width = 32
@@ -164,6 +185,8 @@ bank_b = { bits = [1, 1], grade = "established" }
 bank_a = { bits = [0, 0], grade = "established" }
 
 [registers.msp_count]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x108
 access = "rw"
 width = 32
@@ -171,6 +194,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_ctl_stat]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x110
 access = "rw"
 width = 16
@@ -182,6 +207,8 @@ flags = { bits = [15, 12], grade = "established" }
 ext = { bits = [11, 9], grade = "established" }
 
 [registers.bsp_watchpoint]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x118
 access = "rw"
 width = 16
@@ -189,6 +216,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_in_count]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x120
 access = "r"
 width = 32
@@ -196,6 +225,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_out_count]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x128
 access = "r"
 width = 32
@@ -203,6 +234,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_pc]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x140
 access = "rw"
 width = 16
@@ -210,6 +243,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_epc]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x148
 access = "r"
 width = 16
@@ -217,6 +252,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_halt_reset]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x150
 access = "rw"
 width = 16
@@ -228,6 +265,8 @@ the go and halt bit at 1, while its prose says bit 1 releases reset and
 does not number the go bit. No field is declared until that is settled."""
 
 [registers.bsp_cause]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x158
 access = "r"
 width = 16
@@ -235,6 +274,8 @@ grade = "established"
 space = "vice"
 
 [registers.int]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x160
 access = "r"
 width = 16
@@ -262,6 +303,8 @@ in_full = { bits = [1, 1], grade = "established" }
 in_empty = { bits = [0, 0], grade = "established" }
 
 [registers.bsp_avalid_bits]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x170
 access = "rw"
 width = 16
@@ -272,6 +315,8 @@ space = "vice"
 pointer = { bits = [5, 0], grade = "established" }
 
 [registers.bsp_fvalid_bits]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x178
 access = "rw"
 width = 16
@@ -282,6 +327,8 @@ space = "vice"
 pointer = { bits = [5, 0], grade = "established" }
 
 [registers.dma_ctl_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x180
 access = "rw"
 width = 16
@@ -294,6 +341,8 @@ are separate registers below; every set uses the DMA_DESC_CTL layout for its
 control word."""
 
 [registers.dma_stat_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x188
 access = "r"
 width = 16
@@ -301,6 +350,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_data_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x190
 access = "rw"
 width = 16
@@ -308,6 +359,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_mem_pt_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x198
 access = "r"
 width = 32
@@ -315,6 +368,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vice_pt_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1a0
 access = "r"
 width = 16
@@ -322,6 +377,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_count_ch1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1a8
 access = "r"
 width = 16
@@ -336,6 +393,8 @@ grade = "inferred"
 space = "vice"
 
 [registers.dma_ctl_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1c0
 access = "rw"
 width = 16
@@ -343,6 +402,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_stat_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1c8
 access = "r"
 width = 16
@@ -350,6 +411,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_data_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1d0
 access = "rw"
 width = 16
@@ -357,6 +420,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_mem_pt_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1d8
 access = "r"
 width = 32
@@ -364,6 +429,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vice_pt_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1e0
 access = "r"
 width = 16
@@ -371,6 +438,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_count_ch2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1e8
 access = "r"
 width = 16
@@ -378,6 +447,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_in_box]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1f0
 access = "r"
 width = 16
@@ -392,6 +463,8 @@ its register text lets the signal processor write the input one and the
 bitstream processor the output one; the directions here are the map's."""
 
 [registers.bsp_out_box]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1f8
 access = "rw"
 width = 16
@@ -399,6 +472,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_ctl_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1000
 access = "rw"
 width = 16
@@ -406,6 +481,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_smem_hi_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1008
 access = "rw"
 width = 16
@@ -413,6 +490,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_smem_lo_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1010
 access = "rw"
 width = 16
@@ -420,6 +499,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_width_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1018
 access = "rw"
 width = 16
@@ -427,6 +508,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_stride_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1020
 access = "rw"
 width = 16
@@ -434,6 +517,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_lines_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1028
 access = "rw"
 width = 16
@@ -441,6 +526,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vmem_y_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1030
 access = "rw"
 width = 16
@@ -448,6 +535,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vmem_c_ch1_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1038
 access = "rw"
 width = 16
@@ -455,6 +544,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_ctl_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1100
 access = "rw"
 width = 16
@@ -462,6 +553,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_smem_hi_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1108
 access = "rw"
 width = 16
@@ -469,6 +562,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_smem_lo_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1110
 access = "rw"
 width = 16
@@ -476,6 +571,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_width_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1118
 access = "rw"
 width = 16
@@ -483,6 +580,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_stride_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1120
 access = "rw"
 width = 16
@@ -490,6 +589,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_lines_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1128
 access = "rw"
 width = 16
@@ -497,6 +598,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vmem_y_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1130
 access = "rw"
 width = 16
@@ -504,6 +607,8 @@ grade = "established"
 space = "vice"
 
 [registers.dma_vmem_c_ch2_d1]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1138
 access = "rw"
 width = 16
@@ -561,6 +666,8 @@ count = 512
 space = "vice"
 
 [registers.cfg]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0xe000
 access = "rw"
 width = 16
@@ -572,6 +679,8 @@ msp_tlb_bypass = { bits = [1, 1], grade = "established" }
 check_data = { bits = [0, 0], grade = "established" }
 
 [registers.int_reset]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0xe008
 access = "w"
 width = 16
@@ -579,6 +688,8 @@ grade = "established"
 space = "vice"
 
 [registers.int_en]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0xe010
 access = "rw"
 width = 16
@@ -586,6 +697,8 @@ grade = "established"
 space = "vice"
 
 [registers.tlb]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0xf000
 access = "rw"
 width = 32
@@ -593,6 +706,8 @@ grade = "established"
 space = "vice"
 
 [registers.bsp_rpage]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x78
 access = "rw"
 width = 16
@@ -618,6 +733,8 @@ width is not published: 32 bits is inferred from the scalar instruction size.
 The DMA location table lists this RAM at 16 bits, so the width is unresolved."""
 
 [registers.bsp_i_ram]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x4000
 access = "rw"
 width = 16
@@ -645,6 +762,8 @@ bits = [21, 0]
 grade = "established"
 
 [registers.dma_ctl_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1040
 access = "rw"
 width = 16
@@ -653,6 +772,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1048
 access = "rw"
 width = 16
@@ -661,6 +782,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1050
 access = "rw"
 width = 16
@@ -669,6 +792,8 @@ space = "vice"
 
 
 [registers.dma_width_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1058
 access = "rw"
 width = 16
@@ -677,6 +802,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1060
 access = "rw"
 width = 16
@@ -685,6 +812,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1068
 access = "rw"
 width = 16
@@ -693,6 +822,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1070
 access = "rw"
 width = 16
@@ -701,6 +832,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch1_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1078
 access = "rw"
 width = 16
@@ -709,6 +842,8 @@ space = "vice"
 
 
 [registers.dma_ctl_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1080
 access = "rw"
 width = 16
@@ -717,6 +852,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1088
 access = "rw"
 width = 16
@@ -725,6 +862,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1090
 access = "rw"
 width = 16
@@ -733,6 +872,8 @@ space = "vice"
 
 
 [registers.dma_width_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1098
 access = "rw"
 width = 16
@@ -741,6 +882,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10a0
 access = "rw"
 width = 16
@@ -749,6 +892,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10a8
 access = "rw"
 width = 16
@@ -757,6 +902,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10b0
 access = "rw"
 width = 16
@@ -765,6 +912,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch1_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10b8
 access = "rw"
 width = 16
@@ -773,6 +922,8 @@ space = "vice"
 
 
 [registers.dma_ctl_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10c0
 access = "rw"
 width = 16
@@ -781,6 +932,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10c8
 access = "rw"
 width = 16
@@ -789,6 +942,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10d0
 access = "rw"
 width = 16
@@ -797,6 +952,8 @@ space = "vice"
 
 
 [registers.dma_width_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10d8
 access = "rw"
 width = 16
@@ -805,6 +962,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10e0
 access = "rw"
 width = 16
@@ -813,6 +972,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10e8
 access = "rw"
 width = 16
@@ -821,6 +982,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10f0
 access = "rw"
 width = 16
@@ -829,6 +992,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch1_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x10f8
 access = "rw"
 width = 16
@@ -837,6 +1002,8 @@ space = "vice"
 
 
 [registers.dma_ctl_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1140
 access = "rw"
 width = 16
@@ -845,6 +1012,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1148
 access = "rw"
 width = 16
@@ -853,6 +1022,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1150
 access = "rw"
 width = 16
@@ -861,6 +1032,8 @@ space = "vice"
 
 
 [registers.dma_width_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1158
 access = "rw"
 width = 16
@@ -869,6 +1042,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1160
 access = "rw"
 width = 16
@@ -877,6 +1052,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1168
 access = "rw"
 width = 16
@@ -885,6 +1062,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1170
 access = "rw"
 width = 16
@@ -893,6 +1072,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch2_d2]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1178
 access = "rw"
 width = 16
@@ -901,6 +1082,8 @@ space = "vice"
 
 
 [registers.dma_ctl_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1180
 access = "rw"
 width = 16
@@ -909,6 +1092,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1188
 access = "rw"
 width = 16
@@ -917,6 +1102,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1190
 access = "rw"
 width = 16
@@ -925,6 +1112,8 @@ space = "vice"
 
 
 [registers.dma_width_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x1198
 access = "rw"
 width = 16
@@ -933,6 +1122,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11a0
 access = "rw"
 width = 16
@@ -941,6 +1132,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11a8
 access = "rw"
 width = 16
@@ -949,6 +1142,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11b0
 access = "rw"
 width = 16
@@ -957,6 +1152,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch2_d3]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11b8
 access = "rw"
 width = 16
@@ -965,6 +1162,8 @@ space = "vice"
 
 
 [registers.dma_ctl_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11c0
 access = "rw"
 width = 16
@@ -973,6 +1172,8 @@ space = "vice"
 
 
 [registers.dma_smem_hi_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11c8
 access = "rw"
 width = 16
@@ -981,6 +1182,8 @@ space = "vice"
 
 
 [registers.dma_smem_lo_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11d0
 access = "rw"
 width = 16
@@ -989,6 +1192,8 @@ space = "vice"
 
 
 [registers.dma_width_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11d8
 access = "rw"
 width = 16
@@ -997,6 +1202,8 @@ space = "vice"
 
 
 [registers.dma_stride_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11e0
 access = "rw"
 width = 16
@@ -1005,6 +1212,8 @@ space = "vice"
 
 
 [registers.dma_lines_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11e8
 access = "rw"
 width = 16
@@ -1013,6 +1222,8 @@ space = "vice"
 
 
 [registers.dma_vmem_y_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11f0
 access = "rw"
 width = 16
@@ -1021,6 +1232,8 @@ space = "vice"
 
 
 [registers.dma_vmem_c_ch2_d4]
+name_source = "public"
+name_cite = "VICE design specification 099-0123-003, register address map summary (table 6) and DMA descriptor address map (table 7)"
 offset = 0x11f8
 access = "rw"
 width = 16
