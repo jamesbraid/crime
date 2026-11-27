@@ -1,5 +1,6 @@
 {
- "generator": "defs-gen 4",
+ "license": "BSD-3-Clause",
+ "generator": "defs-gen 5",
  "input_sha256": "0023aea84682198875c8cd840923aab749482c5f5580b2a5183b36c767a3f8ab",
  "schema": "defs-flat/1",
  "source": "devices/gbe/registers.toml",

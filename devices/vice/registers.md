@@ -1,5 +1,6 @@
 <!-- generated from devices/vice/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 4 -->
+<!-- SPDX-License-Identifier: BSD-3-Clause -->
+<!-- defs-gen 5 -->
 <!-- input sha256 531a15113af2c834f84b093118e096274948ae8d18d527fe6d6aa066db1c0a2b -->
 
 # O2 VICE imaging and compression engine registers

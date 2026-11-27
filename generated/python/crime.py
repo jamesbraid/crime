@@ -1,5 +1,6 @@
 """generated from devices/crime/registers.toml by defs-gen - do not edit, change the source
-defs-gen 4
+SPDX-License-Identifier: BSD-3-Clause
+defs-gen 5
 input sha256 ec600ef86fc06d9d949ec7084a75ffd875d344c1c6cadd6d7c23663a47a5d95c
 O2 CRIME memory controller and CPU interface registers"""
 

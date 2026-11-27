@@ -1,5 +1,6 @@
 // @generated from devices/mte/registers.toml by defs-gen - do not edit, change the source
-// defs-gen 4
+// SPDX-License-Identifier: BSD-3-Clause
+// defs-gen 5
 // input sha256 13ecc6567984307c9c298025a4a617560d9d1dccbd1bea5f87664debe460f641
 // O2 CRIME memory transfer engine registers and tile layout
 #![allow(dead_code)]

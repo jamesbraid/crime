@@ -1,5 +1,6 @@
 <!-- generated from devices/gbe/registers.toml by defs-gen - do not edit, change the source -->
-<!-- defs-gen 4 -->
+<!-- SPDX-License-Identifier: BSD-3-Clause -->
+<!-- defs-gen 5 -->
 <!-- input sha256 0023aea84682198875c8cd840923aab749482c5f5580b2a5183b36c767a3f8ab -->
 
 # O2 GBE display back end register words

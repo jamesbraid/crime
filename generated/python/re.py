@@ -1,5 +1,6 @@
 """generated from devices/re/registers.toml by defs-gen - do not edit, change the source
-defs-gen 4
+SPDX-License-Identifier: BSD-3-Clause
+defs-gen 5
 input sha256 b3997066db69a952bd6f352b0e208ac914191e015e62c72bbe4f3cab396d8de1
 O2 CRIME rendering engine: interface buffer, linear TLBs and clip state"""
 
