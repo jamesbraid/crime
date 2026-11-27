@@ -214,7 +214,7 @@ mnm = { bits = [12, 8], grade = "established" }
 allmm = { bits = [7, 7], grade = "inferred", doc = "Scope from the diagram, see the register doc." }
 mnom = { bits = [6, 6], grade = "established" }
 hpom = { bits = [5, 5], grade = "established" }
-hpos = { bits = [4, 4], grade = "established", doc = "Named swing in the register table. The datasheet gives no further meaning for this bit." }
+hpos = { bits = [4, 4], grade = "established", doc = "Headphone output voltage swing, both channels: 0 is 2 V peak-to-peak, 1 is 4 V peak-to-peak." }
 summ = { bits = [3, 3], grade = "established", doc = "Mute of the external SUML and SUMR inputs, which enter through the SUMM node." }
 dac2t = { bits = [1, 1], grade = "established", enum = "gain_timing" }
 dac1t = { bits = [0, 0], grade = "established", enum = "gain_timing" }
@@ -251,7 +251,7 @@ lda2g = { bits = [13, 8], grade = "established" }
 rda2gm = { bits = [7, 7], grade = "established" }
 rda2g = { bits = [5, 0], grade = "established" }
 
-[registers.dac1_digital_att]
+[registers.dac1_digital_attenuation]
 offset = 11
 access = "rw"
 width = 16
@@ -261,13 +261,13 @@ reset = 0x0
 reset_from = "AD1843 REV.0 (1996) page 35"
 doc = "DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register pages 28-50 and the routing text)."
 
-[registers.dac1_digital_att.fields]
+[registers.dac1_digital_attenuation.fields]
 lda1am = { bits = [15, 15], grade = "established" }
 lda1a = { bits = [13, 8], grade = "established" }
 rda1am = { bits = [7, 7], grade = "established" }
 rda1a = { bits = [5, 0], grade = "established" }
 
-[registers.dac2_digital_att]
+[registers.dac2_digital_attenuation]
 offset = 12
 access = "rw"
 width = 16
@@ -275,9 +275,9 @@ space = "codec_reg"
 grade = "established"
 reset = 0x0
 reset_from = "AD1843 REV.0 (1996) page 35"
-doc = "DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50)."
+doc = "DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_attenuation (established, register pages 28-50)."
 
-[registers.dac2_digital_att.fields]
+[registers.dac2_digital_attenuation.fields]
 lda2am = { bits = [15, 15], grade = "established" }
 lda2a = { bits = [13, 8], grade = "established" }
 rda2am = { bits = [7, 7], grade = "established" }
@@ -513,7 +513,7 @@ da1f = { bits = [9, 8], grade = "established", enum = "pcm_format" }
 scf = { bits = [7, 7], grade = "established", doc = "Selects the 16.384 MHz serial clock instead of the 12.288 MHz reset clock." }
 frs = { bits = [6, 6], grade = "established", doc = "0 gives 32 serial slots per SDFS frame, 1 gives 16." }
 frst = { bits = [5, 5], grade = "established", doc = "1 requests an immediate change of the frame size, 0 applies it after the current frame." }
-adtlk = { bits = [4, 4], grade = "established", doc = "Locks the two ADCs to one rate. May be set while both are off. Enable and disable both together while it is set, and require equal rates when enabling the pair." }
+adtlk = { bits = [4, 4], grade = "established", doc = "ADC transmit lock mode. 1 sends a left and right ADC sample in a frame only when both are ready, so the pair stays together; 0 sends each as it becomes ready. Set it only while both ADCs are off and program both to the same rate once they are enabled. While it is set, enable and disable both ADCs together." }
 adrf = { bits = [3, 2], grade = "established", enum = "pcm_format" }
 adlf = { bits = [1, 0], grade = "established", enum = "pcm_format" }
 
@@ -528,8 +528,8 @@ reset_from = "AD1843 REV.0 (1996) page 49"
 doc = "Power and enable bits for the converters, ADCs, analog paths and headphone output. Registers 1 to 15, 25 and 27 are held at reset while converter power-down is set (established, register pages 28-50)."
 
 [registers.enables.fields]
-dfree = { bits = [15, 15], grade = "established", doc = "Frees the resources of the normal mode. Needed for rates above 49 kHz." }
-ddmen = { bits = [12, 12], grade = "established" }
+dfree = { bits = [15, 15], grade = "established", doc = "Digital resource free. 1 leaves the digital resources of powered-down channels available to the enabled ones, which allows conversion rates above the 49 kHz limit with all four converters running. 0 powers them down completely." }
+ddmen = { bits = [12, 12], grade = "established", doc = "DAC2-to-DAC1 mix enable and power down. 0 powers the mix down and clears register 3 (dac2_to_dac1_mix), which then cannot be written; 1 enables it." }
 da2en = { bits = [9, 9], grade = "established" }
 da1en = { bits = [8, 8], grade = "established" }
 anaen = { bits = [7, 7], grade = "established" }
@@ -557,6 +557,11 @@ c2en = { bits = [12, 12], grade = "established" }
 c1en = { bits = [11, 11], grade = "established" }
 enclko = { bits = [10, 10], grade = "established", doc = "Drives the external CLKOUT pin. It does not gate the MACE serial clock." }
 xctl = { bits = [9, 8], grade = "established", doc = "Drive the independent TTL outputs XCTL1 and XCTL0. They do not control the crystal oscillator." }
-encv3_enbt1 = { bits = [7, 2], grade = "established" }
+encv3 = { bits = [7, 7], grade = "established", doc = "CONV3 pin enable. Zero three-states the pin." }
+enbt3 = { bits = [6, 6], grade = "established", doc = "BIT3 pin enable. Zero three-states the pin." }
+encv2 = { bits = [5, 5], grade = "established", doc = "CONV2 pin enable. Zero three-states the pin." }
+enbt2 = { bits = [4, 4], grade = "established", doc = "BIT2 pin enable. Zero three-states the pin." }
+encv1 = { bits = [3, 3], grade = "established", doc = "CONV1 pin enable. Zero three-states the pin." }
+enbt1 = { bits = [2, 2], grade = "established", doc = "BIT1 pin enable. Zero three-states the pin." }
 linrsd = { bits = [1, 1], grade = "established", enum = "line_mode" }
 linlsd = { bits = [0, 0], grade = "established", enum = "line_mode" }

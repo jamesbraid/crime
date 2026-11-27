@@ -1,6 +1,6 @@
 {
  "generator": "defs-gen 4",
- "input_sha256": "929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f",
+ "input_sha256": "8c5aee84504454f4cf65a84aedb87a4571f16f099bea697abb6e49f5efe9deda",
  "schema": "defs-flat/1",
  "source": "devices/ad1843/registers.toml",
  "profile": "public",
@@ -772,7 +772,7 @@
   {
    "unit": "ad1843",
    "kind": "register",
-   "name": "dac1_digital_att",
+   "name": "dac1_digital_attenuation",
    "offset": 11,
    "access": "rw",
    "width": 16,
@@ -786,7 +786,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.lda1am",
+   "name": "dac1_digital_attenuation.lda1am",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -795,7 +795,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.lda1a",
+   "name": "dac1_digital_attenuation.lda1a",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -804,7 +804,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.rda1am",
+   "name": "dac1_digital_attenuation.rda1am",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -813,7 +813,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac1_digital_att.rda1a",
+   "name": "dac1_digital_attenuation.rda1a",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -822,7 +822,7 @@
   {
    "unit": "ad1843",
    "kind": "register",
-   "name": "dac2_digital_att",
+   "name": "dac2_digital_attenuation",
    "offset": 12,
    "access": "rw",
    "width": 16,
@@ -836,7 +836,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.lda2am",
+   "name": "dac2_digital_attenuation.lda2am",
    "hi": 15,
    "lo": 15,
    "grade": "established",
@@ -845,7 +845,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.lda2a",
+   "name": "dac2_digital_attenuation.lda2a",
    "hi": 13,
    "lo": 8,
    "grade": "established",
@@ -854,7 +854,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.rda2am",
+   "name": "dac2_digital_attenuation.rda2am",
    "hi": 7,
    "lo": 7,
    "grade": "established",
@@ -863,7 +863,7 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "dac2_digital_att.rda2a",
+   "name": "dac2_digital_attenuation.rda2a",
    "hi": 5,
    "lo": 0,
    "grade": "established",
@@ -2127,8 +2127,53 @@
   {
    "unit": "ad1843",
    "kind": "field",
-   "name": "power_clock.encv3_enbt1",
+   "name": "power_clock.encv3",
    "hi": 7,
+   "lo": 7,
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
+  },
+  {
+   "unit": "ad1843",
+   "kind": "field",
+   "name": "power_clock.enbt3",
+   "hi": 6,
+   "lo": 6,
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
+  },
+  {
+   "unit": "ad1843",
+   "kind": "field",
+   "name": "power_clock.encv2",
+   "hi": 5,
+   "lo": 5,
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
+  },
+  {
+   "unit": "ad1843",
+   "kind": "field",
+   "name": "power_clock.enbt2",
+   "hi": 4,
+   "lo": 4,
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
+  },
+  {
+   "unit": "ad1843",
+   "kind": "field",
+   "name": "power_clock.encv1",
+   "hi": 3,
+   "lo": 3,
+   "grade": "established",
+   "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."
+  },
+  {
+   "unit": "ad1843",
+   "kind": "field",
+   "name": "power_clock.enbt1",
+   "hi": 2,
    "lo": 2,
    "grade": "established",
    "from": "Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages."

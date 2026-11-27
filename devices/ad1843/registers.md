@@ -1,6 +1,6 @@
 <!-- generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f -->
+<!-- input sha256 8c5aee84504454f4cf65a84aedb87a4571f16f099bea697abb6e49f5efe9deda -->
 
 # Analog Devices AD1843 stereo codec: the 29 internal registers
 
@@ -32,8 +32,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 | `mono_control` | 0x8 | rw | 16 |  | codec_reg | 0x8868 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
 | `dac1_output` | 0x9 | rw | 16 |  | codec_reg | 0x8888 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
 | `dac2_output` | 0xa | rw | 16 |  | codec_reg | 0x8888 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
-| `dac1_digital_att` | 0xb | rw | 16 |  | codec_reg | 0x0 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
-| `dac2_digital_att` | 0xc | rw | 16 |  | codec_reg | 0x0 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
+| `dac1_digital_attenuation` | 0xb | rw | 16 |  | codec_reg | 0x0 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
+| `dac2_digital_attenuation` | 0xc | rw | 16 |  | codec_reg | 0x0 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
 | `adc_to_dac1_mix` | 0xd | rw | 16 |  | codec_reg | 0x8080 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
 | `adc_to_dac2_mix` | 0xe | rw | 16 |  | codec_reg | 0x8080 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
 | `clock_select` | 0xf | rw | 16 |  | codec_reg | 0x0 | established | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |
@@ -151,7 +151,7 @@ Mono mix gain and mute in the upper byte. The lower byte holds the all-mix mute,
 | 7 | `allmm` | inferred |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Scope from the diagram, see the register doc. |
 | 6 | `mnom` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 5 | `hpom` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
-| 4 | `hpos` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Named swing in the register table. The datasheet gives no further meaning for this bit. |
+| 4 | `hpos` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Headphone output voltage swing, both channels: 0 is 2 V peak-to-peak, 1 is 4 V peak-to-peak. |
 | 3 | `summ` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Mute of the external SUML and SUMR inputs, which enter through the SUMM node. |
 | 1 | `dac2t` | established | gain_timing (zero_cross=0, immediate=1) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 0 | `dac1t` | established | gain_timing (zero_cross=0, immediate=1) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
@@ -178,7 +178,7 @@ DAC2 output gain and mute, left and right. Same layout as dac1_output. Gain and 
 | 7 | `rda2gm` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 5:0 | `rda2g` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 
-### Register `dac1_digital_att`
+### Register `dac1_digital_attenuation`
 
 DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register pages 28-50 and the routing text).
 
@@ -189,9 +189,9 @@ DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per cod
 | 7 | `rda1am` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 5:0 | `rda1a` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 
-### Register `dac2_digital_att`
+### Register `dac2_digital_attenuation`
 
-DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50).
+DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_attenuation (established, register pages 28-50).
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
@@ -357,7 +357,7 @@ Sample format, mono mode, the frame-rate and SDFS options and the ADC lock. Bits
 | 7 | `scf` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Selects the 16.384 MHz serial clock instead of the 12.288 MHz reset clock. |
 | 6 | `frs` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | 0 gives 32 serial slots per SDFS frame, 1 gives 16. |
 | 5 | `frst` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | 1 requests an immediate change of the frame size, 0 applies it after the current frame. |
-| 4 | `adtlk` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Locks the two ADCs to one rate. May be set while both are off. Enable and disable both together while it is set, and require equal rates when enabling the pair. |
+| 4 | `adtlk` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | ADC transmit lock mode. 1 sends a left and right ADC sample in a frame only when both are ready, so the pair stays together; 0 sends each as it becomes ready. Set it only while both ADCs are off and program both to the same rate once they are enabled. While it is set, enable and disable both ADCs together. |
 | 3:2 | `adrf` | established | pcm_format (unsigned8=0, signed16=1, mulaw=2, alaw=3) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 1:0 | `adlf` | established | pcm_format (unsigned8=0, signed16=1, mulaw=2, alaw=3) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 
@@ -367,8 +367,8 @@ Power and enable bits for the converters, ADCs, analog paths and headphone outpu
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|
-| 15 | `dfree` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Frees the resources of the normal mode. Needed for rates above 49 kHz. |
-| 12 | `ddmen` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
+| 15 | `dfree` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Digital resource free. 1 leaves the digital resources of powered-down channels available to the enabled ones, which allows conversion rates above the 49 kHz limit with all four converters running. 0 powers them down completely. |
+| 12 | `ddmen` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | DAC2-to-DAC1 mix enable and power down. 0 powers the mix down and clears register 3 (dac2_to_dac1_mix), which then cannot be written; 1 enables it. |
 | 9 | `da2en` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 8 | `da1en` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 7 | `anaen` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
@@ -390,7 +390,12 @@ Converter power, auto-calibration, generator enables, clock output and the line 
 | 11 | `c1en` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 10 | `enclko` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Drives the external CLKOUT pin. It does not gate the MACE serial clock. |
 | 9:8 | `xctl` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | Drive the independent TTL outputs XCTL1 and XCTL0. They do not control the crystal oscillator. |
-| 7:2 | `encv3_enbt1` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
+| 7 | `encv3` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | CONV3 pin enable. Zero three-states the pin. |
+| 6 | `enbt3` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | BIT3 pin enable. Zero three-states the pin. |
+| 5 | `encv2` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | CONV2 pin enable. Zero three-states the pin. |
+| 4 | `enbt2` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | BIT2 pin enable. Zero three-states the pin. |
+| 3 | `encv1` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | CONV1 pin enable. Zero three-states the pin. |
+| 2 | `enbt1` | established |  | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. | BIT1 pin enable. Zero three-states the pin. |
 | 1 | `linrsd` | established | line_mode (single_ended=0, differential=1) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 | 0 | `linlsd` | established | line_mode (single_ended=0, differential=1) | Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages. |  |
 

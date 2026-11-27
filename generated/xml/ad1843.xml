@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f -->
+<!-- input sha256 8c5aee84504454f4cf65a84aedb87a4571f16f099bea697abb6e49f5efe9deda -->
 <genxml unit="ad1843" prefix="AD1843" title="Analog Devices AD1843 stereo codec: the 29 internal registers" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages.">
   <doc>The AD1843 serial-port codec used by the O2 MACE audio interface. Register numbers are the codec's own, not MACE byte offsets, and are reached through the MACE codec command register (mace_audio.toml, codec_cmd). Each register is 16 bits. Field masks follow the published register table; bits the table does not define are not listed.</doc>
   <space name="codec_reg" unit="reg"/>
@@ -124,15 +124,15 @@
     <field name="rda2gm" start="7" size="1" type="uint" grade="established"/>
     <field name="rda2g" start="0" size="6" type="uint" grade="established"/>
   </struct>
-  <struct name="DAC1_DIGITAL_ATT" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages." register="yes" offset="0xb" access="rw" space="codec_reg" reset="0x0">
+  <struct name="DAC1_DIGITAL_ATTENUATION" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages." register="yes" offset="0xb" access="rw" space="codec_reg" reset="0x0">
     <doc>DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register pages 28-50 and the routing text).</doc>
     <field name="lda1am" start="15" size="1" type="uint" grade="established"/>
     <field name="lda1a" start="8" size="6" type="uint" grade="established"/>
     <field name="rda1am" start="7" size="1" type="uint" grade="established"/>
     <field name="rda1a" start="0" size="6" type="uint" grade="established"/>
   </struct>
-  <struct name="DAC2_DIGITAL_ATT" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages." register="yes" offset="0xc" access="rw" space="codec_reg" reset="0x0">
-    <doc>DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50).</doc>
+  <struct name="DAC2_DIGITAL_ATTENUATION" size="2" grade="established" from="Analog Devices AD1843 Serial-Port 16-Bit SoundComm Codec, REV.0 (1996): register pages 28-50 and the register summary on page 52. Every register layout and reset value was checked against those pages." register="yes" offset="0xc" access="rw" space="codec_reg" reset="0x0">
+    <doc>DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_attenuation (established, register pages 28-50).</doc>
     <field name="lda2am" start="15" size="1" type="uint" grade="established"/>
     <field name="lda2a" start="8" size="6" type="uint" grade="established"/>
     <field name="rda2am" start="7" size="1" type="uint" grade="established"/>
@@ -264,7 +264,12 @@
     <field name="c1en" start="11" size="1" type="uint" grade="established"/>
     <field name="enclko" start="10" size="1" type="uint" grade="established"/>
     <field name="xctl" start="8" size="2" type="uint" grade="established"/>
-    <field name="encv3_enbt1" start="2" size="6" type="uint" grade="established"/>
+    <field name="encv3" start="7" size="1" type="uint" grade="established"/>
+    <field name="enbt3" start="6" size="1" type="uint" grade="established"/>
+    <field name="encv2" start="5" size="1" type="uint" grade="established"/>
+    <field name="enbt2" start="4" size="1" type="uint" grade="established"/>
+    <field name="encv1" start="3" size="1" type="uint" grade="established"/>
+    <field name="enbt1" start="2" size="1" type="uint" grade="established"/>
     <field name="linrsd" start="1" size="1" type="line_mode" grade="established"/>
     <field name="linlsd" start="0" size="1" type="line_mode" grade="established"/>
   </struct>

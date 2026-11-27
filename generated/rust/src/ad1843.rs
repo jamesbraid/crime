@@ -1,6 +1,6 @@
 // @generated from devices/ad1843/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 929afb21e71ee62ab8ca18eb5e79989c999f45ff0edf12bd83378ec3fde48f4f
+// input sha256 8c5aee84504454f4cf65a84aedb87a4571f16f099bea697abb6e49f5efe9deda
 // Analog Devices AD1843 stereo codec: the 29 internal registers
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]
@@ -777,7 +777,7 @@ pub mod dac2_output {
     }
 }
 /// DAC1 digital attenuation and mute, left and right. Attenuation is 1.5 dB per code and code 63 is finite attenuation, not mute (established, register p (established)
-pub mod dac1_digital_att {
+pub mod dac1_digital_attenuation {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xb;
     pub mod lda1am { // bits 15:15, established
@@ -821,8 +821,8 @@ pub mod dac1_digital_att {
         }
     }
 }
-/// DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_att (established, register pages 28-50). (established)
-pub mod dac2_digital_att {
+/// DAC2 digital attenuation and mute, left and right. Same layout and law as dac1_digital_attenuation (established, register pages 28-50). (established)
+pub mod dac2_digital_attenuation {
     pub const WIDTH: u32 = 16;
     pub const OFFSET: u64 = 0xc;
     pub mod lda2am { // bits 15:15, established
@@ -1755,9 +1755,59 @@ pub mod power_clock {
             (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
         }
     }
-    pub mod encv3_enbt1 { // bits 7:2, established
+    pub mod encv3 { // bits 7:7, established
+        pub const SHIFT: u32 = 7;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod enbt3 { // bits 6:6, established
+        pub const SHIFT: u32 = 6;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod encv2 { // bits 5:5, established
+        pub const SHIFT: u32 = 5;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod enbt2 { // bits 4:4, established
+        pub const SHIFT: u32 = 4;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod encv1 { // bits 3:3, established
+        pub const SHIFT: u32 = 3;
+        pub const MASK: u32 = 0x1;
+        pub const fn get(v: u32) -> u32 {
+            (v >> SHIFT) & MASK
+        }
+        pub const fn set(v: u32, x: u32) -> u32 {
+            (v & !(MASK << SHIFT)) | ((x & MASK) << SHIFT)
+        }
+    }
+    pub mod enbt1 { // bits 2:2, established
         pub const SHIFT: u32 = 2;
-        pub const MASK: u32 = 0x3f;
+        pub const MASK: u32 = 0x1;
         pub const fn get(v: u32) -> u32 {
             (v >> SHIFT) & MASK
         }
