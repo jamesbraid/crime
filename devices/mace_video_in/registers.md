@@ -1,6 +1,6 @@
 <!-- generated from devices/mace_video_in/registers.toml by defs-gen - do not edit, change the source -->
 <!-- defs-gen 4 -->
-<!-- input sha256 bab2f6d227cfb062e38a947b70a1bd06f1b91c0523748caa4201657d432ef446 -->
+<!-- input sha256 746b495d02bec94986cdf404cef03bef782819eadc8a3036913782a9c7642d9d -->
 
 # O2 MACE video input channel registers
 

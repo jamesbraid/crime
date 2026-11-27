@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_video_in"
 prefix = "VIN"
+name_source = "ours"
 title = "O2 MACE video input channel registers"
 doc = "MACE video input channel registers."
 from = "published MACE 2.0 specification, video chapter, and shipped IRIX software readings"
