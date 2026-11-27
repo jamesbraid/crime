@@ -1,6 +1,6 @@
 // @generated from devices/mace_ps2/registers.toml by defs-gen - do not edit, change the source
 // defs-gen 4
-// input sha256 b5d75f0e8c87833d72210b12de51fe2f48f891366a4285572d75026fe1b1f60e
+// input sha256 87fe8585a0e2d9078bf43f21564177a98384cc4c598b66f290056a8e22270ee9
 // O2 MACE PS/2 keyboard and mouse ports
 #![allow(dead_code)]
 #![allow(clippy::doc_markdown)]

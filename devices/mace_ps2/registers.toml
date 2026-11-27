@@ -1,6 +1,7 @@
 # Hardware definitions. Edit this file; generated/ is generated from it.
 unit = "mace_ps2"
 prefix = "MACE_PS2"
+name_source = "ours"
 title = "O2 MACE PS/2 keyboard and mouse ports"
 doc = "MACE PS/2 keyboard and mouse ports: one serial port per device, each with a transmit buffer, a receive buffer, a control register and a status register. Offsets are from the port's bank base (constants KEYBOARD_BASE and MOUSE_BASE)."
 from = "published MACE 2.0 I/O ASIC specification (printed pages 139 to 142 and 181)"
