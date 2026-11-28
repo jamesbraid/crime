@@ -1,7 +1,7 @@
 <!-- generated from devices/crime/registers.toml by defs-gen - do not edit, change the source -->
 <!-- SPDX-License-Identifier: BSD-3-Clause -->
 <!-- defs-gen 5 -->
-<!-- input sha256 475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c -->
+<!-- input sha256 14bc49f2731f254414d717cc7e77c2b94aee5470f9af71257d95ebe43f5bd6d2 -->
 
 # O2 CRIME memory controller and CPU interface registers
 
@@ -16,8 +16,8 @@ Every item has a grade: established, inferred or unknown. A grade says how the i
 
 | Register | Offset | Access | Width | Count | Space | Reset | Grade | Source |
 |---|---|---|---|---|---|---|---|---|
-| `id` | 0x0 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
-| `control` | 0x8 | rw | 64 |  |  | 0x0 (inferred) | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
+| `id` | 0x0 | r | 64 |  |  | 0xa1 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
+| `control` | 0x8 | rw | 64 |  |  | 0x20 (inferred) | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `intstat` | 0x10 | r | 64 |  |  | unknown | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `intmask` | 0x18 | rw | 64 |  |  | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
 | `softint` | 0x20 | rw | 64 |  |  | 0x0 | established | published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings |
@@ -49,7 +49,7 @@ The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses
 
 ### Register `control`
 
-The shipped IRIX early-reset code writes bits 13:12 and 9 of it.
+The shipped IRIX early-reset code writes bits 13:12 and 9 of it. The reset 0x20 is the specification's juice_mode reset alone; the endian strap in bit 8 is not part of it. Inferred for shipped parts: the specification describes revision 1.5, the shipped IRIX kernel header names bits 7:0 as queue high-water marks instead, and no shipped software reads the reset state.
 
 | Bits | Field | Grade | Values | Source | Description |
 |---|---|---|---|---|---|

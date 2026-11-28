@@ -2,7 +2,7 @@
  * the source */
 /* SPDX-License-Identifier: BSD-3-Clause */
 /* defs-gen 5 */
-/* input sha256 475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c */
+/* input sha256 14bc49f2731f254414d717cc7e77c2b94aee5470f9af71257d95ebe43f5bd6d2 */
 /* O2 CRIME memory controller and CPU interface registers */
 #ifndef CRIME_GEN_H
 #define CRIME_GEN_H
@@ -21,7 +21,7 @@
  * accepts the part only when bits 7:4 are the family 0xa and the byte is not
  * 0xa0.
  */
-/* id: r64, reset unknown; published CRIME 1.5 draft specification (rev 0.3),
+/* id: r64, reset 0xa1; published CRIME 1.5 draft specification (rev 0.3),
  * public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_ID_OFFSET                              0x0u /* established */
 #define CRIME_ID_FAMILY_SHIFT                        4 /* established */
@@ -32,9 +32,13 @@
 #define CRIME_ID_REV_INPLACE (CRIME_ID_REV_MASK << CRIME_ID_REV_SHIFT)
 
 /*
- * The shipped IRIX early-reset code writes bits 13:12 and 9 of it.
+ * The shipped IRIX early-reset code writes bits 13:12 and 9 of it. The reset
+ * 0x20 is the specification's juice_mode reset alone; the endian strap in bit 8
+ * is not part of it. Inferred for shipped parts: the specification describes
+ * revision 1.5, the shipped IRIX kernel header names bits 7:0 as queue
+ * high-water marks instead, and no shipped software reads the reset state.
  */
-/* control: rw64, reset 0x0; published CRIME 1.5 draft specification (rev 0.3),
+/* control: rw64, reset 0x20; published CRIME 1.5 draft specification (rev 0.3),
  * public Linux and NetBSD O2 drivers, and shipped IRIX software readings */
 #define CRIME_CONTROL_OFFSET                         0x8u /* established */
 #define CRIME_CONTROL_SYSADC_GEN_ENABLE_SHIFT        13 /* established */

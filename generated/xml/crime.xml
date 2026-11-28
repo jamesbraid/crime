@@ -2,10 +2,10 @@
 <!-- generated from devices/crime/registers.toml by defs-gen - do not edit, change the source -->
 <!-- SPDX-License-Identifier: BSD-3-Clause -->
 <!-- defs-gen 5 -->
-<!-- input sha256 475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c -->
+<!-- input sha256 14bc49f2731f254414d717cc7e77c2b94aee5470f9af71257d95ebe43f5bd6d2 -->
 <genxml unit="crime" prefix="CRIME" title="O2 CRIME memory controller and CPU interface registers" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings">
   <doc>CRIME memory controller and CPU-interface registers, and the interrupt input bit positions.</doc>
-  <struct name="ID" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x0" access="r" reset="unknown">
+  <struct name="ID" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x0" access="r" reset="0xa1">
     <doc>The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114). The graphics probe in the shipped IRIX kernel reads the low byte and accepts the part only when bits 7:4 are the family 0xa and the byte is not 0xa0.</doc>
     <field name="family" start="4" size="4" type="uint" grade="established"/>
     <field name="rev" start="0" size="4" type="uint" grade="established"/>
@@ -14,8 +14,8 @@
       <expect field="rev" value="1"/>
     </test>
   </struct>
-  <struct name="CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x8" access="rw" reset="0x0">
-    <doc>The shipped IRIX early-reset code writes bits 13:12 and 9 of it.</doc>
+  <struct name="CONTROL" size="8" grade="established" from="published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings" register="yes" offset="0x8" access="rw" reset="0x20">
+    <doc>The shipped IRIX early-reset code writes bits 13:12 and 9 of it. The reset 0x20 is the specification's juice_mode reset alone; the endian strap in bit 8 is not part of it. Inferred for shipped parts: the specification describes revision 1.5, the shipped IRIX kernel header names bits 7:0 as queue high-water marks instead, and no shipped software reads the reset state.</doc>
     <field name="sysadc_gen_enable" start="13" size="1" type="uint" grade="established"/>
     <field name="sysadc_check_enable" start="12" size="1" type="uint" grade="established"/>
     <field name="cold_reset" start="11" size="1" type="uint" grade="established"/>

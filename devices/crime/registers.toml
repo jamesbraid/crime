@@ -17,6 +17,9 @@ grade = "established"
 doc = """
 The CPU interface registers, 0x14000000 to 0x14004048, take double-word accesses only (established, [spec] PDF 113). The same page asks, with a question mark, whether the memory control and rendering addresses follow that rule too. PDF 149 settles the memory-control block (see mem_bank_control); the rendering addresses stay unknown. Table 5-8 gives the 1.5 reset value as 0xb1, and its note gives the CRIME 1.1 ID as 0xa1 (established, [spec] PDF 114). The graphics probe in the shipped IRIX kernel reads the low byte and accepts the part only when bits 7:4 are the family 0xa and the byte is not 0xa0."""
 
+reset = 0xa1
+reset_from = "low byte: the only value the shipped graphics probe accepts (see ID_LOW_BYTE_SHIPPED), and the CRIME 1.5 specification note giving 0xa1 for CRIME 1.1; the kernel get_crimerev reads revision 1.1 as a nonzero low nibble with a zero upper word, and classes an upper word of 1 as 1.3 and any other nonzero upper word as 1.4, so 1.3 and 1.4 differ in the upper bits. Table 5-8 gives 0xb1 for revision 1.5, which the graphics probe refuses"
+
 [registers.id.fields]
 family = { bits = [7, 4], grade = "established" }
 rev = { bits = [3, 0], grade = "established" }
@@ -30,9 +33,10 @@ offset = 0x8
 access = "rw"
 width = 64
 grade = "established"
-reset = 0x0
+reset = 0x20
 reset_grade = "inferred"
-doc = "The shipped IRIX early-reset code writes bits 13:12 and 9 of it."
+reset_from = "CRIME 1.5 specification, Table 5-9 (PDF 114 to 115): bits 13:9 and 4:0 reset to 0 and bits 7:5 to 001; bit 8 is the endianness strap, reset not applicable"
+doc = "The shipped IRIX early-reset code writes bits 13:12 and 9 of it. The reset 0x20 is the specification's juice_mode reset alone; the endian strap in bit 8 is not part of it. Inferred for shipped parts: the specification describes revision 1.5, the shipped IRIX kernel header names bits 7:0 as queue high-water marks instead, and no shipped software reads the reset state."
 
 [registers.control.fields]
 sysadc_gen_enable = { bits = [13, 13], grade = "established" }

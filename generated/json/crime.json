@@ -1,7 +1,7 @@
 {
  "license": "BSD-3-Clause",
  "generator": "defs-gen 5",
- "input_sha256": "475ae8eab2315b4e1f89a9a4e5e3c302a70b6dd9df45c811f426d6a2bf22d22c",
+ "input_sha256": "14bc49f2731f254414d717cc7e77c2b94aee5470f9af71257d95ebe43f5bd6d2",
  "schema": "defs-flat/1",
  "source": "devices/crime/registers.toml",
  "profile": "public",
@@ -16,7 +16,7 @@
    "count": 1,
    "stride": 8,
    "space": null,
-   "reset": "unknown",
+   "reset": 161,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
   },
@@ -48,7 +48,7 @@
    "count": 1,
    "stride": 8,
    "space": null,
-   "reset": 0,
+   "reset": 32,
    "grade": "established",
    "from": "published CRIME 1.5 draft specification (rev 0.3), public Linux and NetBSD O2 drivers, and shipped IRIX software readings"
   },
