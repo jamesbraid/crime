@@ -82,6 +82,9 @@ binds = [
 ]
 
 # Registers, fields and constants of the O2 graphics blocks for QEMU (c-regfields) and the Rust crate (rust-regs).
+[gen]
+rust_crate = "crime-defs"
+
 [gen.export]
 profiles = ["rust-regs", "c-regfields"]
 
